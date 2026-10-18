@@ -1,4 +1,8 @@
 @startuml
+' model: hbmapkeys
+' project: sampleModel
+' owner: User
+' description: New project
 class hbmapkeys_Book {
   + title : str
 }
@@ -13,10 +17,10 @@ class hbmapkeys_Writer {
 }
 class hbmapkeys_WriterToCityMapEntry {
 }
-hbmapkeys_Book "1..1" *-- "0..9999" hbmapkeys_WriterToCityMapEntry : cityByWriter1
-hbmapkeys_City "1..1" -- "1..1" hbmapkeys_Writer : cityWriter3
-hbmapkeys_Writer "0..1" -- "1..1" hbmapkeys_WriterToCityMapEntry : key7
-hbmapkeys_City "0..1" -- "1..1" hbmapkeys_WriterToCityMapEntry : value10
-hbmapkeys_StringToWriterMapEntry "1..1" -- "0..1" hbmapkeys_Writer : value4
-hbmapkeys_Book "1..1" *-- "0..9999" hbmapkeys_StringToWriterMapEntry : writersByName0
+hbmapkeys_Book "hbmapkeys_WriterToCityMapEntry 1..1" *-- "hbmapkeys_Book2 0..9999" hbmapkeys_WriterToCityMapEntry : cityByWriter1
+hbmapkeys_City "hbmapkeys_Writer 1..1" -- "hbmapkeys_City 1..1" hbmapkeys_Writer : cityWriter3
+hbmapkeys_Writer "hbmapkeys_WriterToCityMapEntry8 0..1" -- "hbmapkeys_Writer9 1..1" hbmapkeys_WriterToCityMapEntry : key7
+hbmapkeys_City "hbmapkeys_WriterToCityMapEntry11 0..1" -- "hbmapkeys_City12 1..1" hbmapkeys_WriterToCityMapEntry : value10
+hbmapkeys_StringToWriterMapEntry "hbmapkeys_Writer6 1..1" -- "hbmapkeys_StringToWriterMapEntry5 0..1" hbmapkeys_Writer : value4
+hbmapkeys_Book "hbmapkeys_StringToWriterMapEntry 1..1" *-- "hbmapkeys_Book 0..9999" hbmapkeys_StringToWriterMapEntry : writersByName0
 @enduml

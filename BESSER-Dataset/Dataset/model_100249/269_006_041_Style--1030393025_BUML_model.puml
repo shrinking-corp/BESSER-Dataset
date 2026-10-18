@@ -1,4 +1,8 @@
 @startuml
+' model: styles
+' project: sampleModel
+' owner: User
+' description: New project
 class Color {
 }
 enum ColorConstants {
@@ -103,21 +107,21 @@ ColorWithTransparency <|-- styles_Color
 ColorWithTransparency <|-- styles_Transparent
 StyleContainerElement <|-- styles_Gradient
 StyleContainerElement <|-- styles_Style
-styles_ColorOrGradient "0..1" --* "1..1" styles_HighlightingValues : allowed24
-styles_GradientColorArea "0..9999" --* "1..1" styles_GradientLayout : area16
-styles_ColorOrGradient "0..1" --* "1..1" styles_StyleLayout : background8
-styles_Color "0..1" --* "1..1" styles_GradientColorArea : color30
-styles_Color "0..1" --* "1..1" styles_StyleLayout : fontColor14
-styles_GradientRef "1..1" *-- "0..1" styles_JvmTypeReference : gradientRef33
-styles_Gradient "0..1" -- "1..1" styles_GradientRef : gradientRefFromDsl35
-styles_HighlightingValues "0..1" --* "1..1" styles_StyleLayout : highlighting10
-styles_Style "1..1" *-- "0..1" styles_StyleLayout : layout5
-styles_Gradient "1..1" *-- "0..1" styles_GradientLayout : layout7
-styles_ColorWithTransparency "0..1" --* "1..1" styles_StyleLayout : lineColor12
-styles_ColorOrGradient "0..1" --* "1..1" styles_HighlightingValues : multiselected21
-styles_ColorOrGradient "0..1" --* "1..1" styles_HighlightingValues : selected18
-styles_StyleContainer "1..1" *-- "0..9999" styles_StyleContainerElement : styleContainerElement0
-styles_JvmTypeReference "0..1" --* "1..1" styles_Style : superStyle1
-styles_Style "0..1" -- "1..1" styles_Style : superStyleFromDsl3
-styles_ColorOrGradient "0..1" --* "1..1" styles_HighlightingValues : unallowed27
+styles_ColorOrGradient "styles_HighlightingValues25 0..1" --* "styles_ColorOrGradient26 1..1" styles_HighlightingValues : allowed24
+styles_GradientColorArea "styles_GradientLayout17 0..9999" --* "styles_GradientColorArea 1..1" styles_GradientLayout : area16
+styles_ColorOrGradient "styles_StyleLayout9 0..1" --* "styles_ColorOrGradient 1..1" styles_StyleLayout : background8
+styles_Color "styles_GradientColorArea31 0..1" --* "styles_Color32 1..1" styles_GradientColorArea : color30
+styles_Color "styles_StyleLayout15 0..1" --* "styles_Color 1..1" styles_StyleLayout : fontColor14
+styles_GradientRef "styles_JvmTypeReference34 1..1" *-- "styles_GradientRef 0..1" styles_JvmTypeReference : gradientRef33
+styles_Gradient "styles_GradientRef36 0..1" -- "styles_Gradient37 1..1" styles_GradientRef : gradientRefFromDsl35
+styles_HighlightingValues "styles_StyleLayout11 0..1" --* "styles_HighlightingValues 1..1" styles_StyleLayout : highlighting10
+styles_Style "styles_StyleLayout 1..1" *-- "styles_Style6 0..1" styles_StyleLayout : layout5
+styles_Gradient "styles_GradientLayout 1..1" *-- "styles_Gradient 0..1" styles_GradientLayout : layout7
+styles_ColorWithTransparency "styles_StyleLayout13 0..1" --* "styles_ColorWithTransparency 1..1" styles_StyleLayout : lineColor12
+styles_ColorOrGradient "styles_HighlightingValues22 0..1" --* "styles_ColorOrGradient23 1..1" styles_HighlightingValues : multiselected21
+styles_ColorOrGradient "styles_HighlightingValues19 0..1" --* "styles_ColorOrGradient20 1..1" styles_HighlightingValues : selected18
+styles_StyleContainer "styles_StyleContainerElement 1..1" *-- "styles_StyleContainer 0..9999" styles_StyleContainerElement : styleContainerElement0
+styles_JvmTypeReference "styles_Style 0..1" --* "styles_JvmTypeReference 1..1" styles_Style : superStyle1
+styles_Style "styles_Style2 0..1" -- "styles_Style4 1..1" styles_Style : superStyleFromDsl3
+styles_ColorOrGradient "styles_HighlightingValues28 0..1" --* "styles_ColorOrGradient29 1..1" styles_HighlightingValues : unallowed27
 @enduml

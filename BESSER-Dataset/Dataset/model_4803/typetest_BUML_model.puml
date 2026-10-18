@@ -1,4 +1,8 @@
 @startuml
+' model: pltest
+' project: sampleModel
+' owner: User
+' description: New project
 class Base {
 }
 class Child1 {
@@ -86,11 +90,11 @@ TestClassifier <|-- pltest_TestClass
 TestClassifier <|-- pltest_TestInterface
 TestPackageableElement <|-- pltest_TestClassifier
 TestPackageableElement <|-- pltest_TestPackage
-pltest_Child1 "1..1" -- "0..1" pltest_Common : a10
-pltest_Child2 "1..1" -- "0..1" pltest_Common : a21
-pltest_TestClass "1..1" *-- "0..9999" pltest_TestClassifier : nestedClassifier10
-pltest_TestPackage "1..1" *-- "0..9999" pltest_TestPackageableElement : ownedElements7
-pltest_TestPackage "0..1" -- "1..1" pltest_TestPackageableElement : owningPackage6
-pltest_Circle "1..1" -- "0..9999" pltest_Red : red3
-pltest_Circle "0..1" -- "1..1" pltest_WhatEver : someRef4
+pltest_Child1 "pltest_Common 1..1" -- "pltest_Child1 0..1" pltest_Common : a10
+pltest_Child2 "pltest_Common2 1..1" -- "pltest_Child2 0..1" pltest_Common : a21
+pltest_TestClass "pltest_TestClassifier 1..1" *-- "pltest_TestClass 0..9999" pltest_TestClassifier : nestedClassifier10
+pltest_TestPackage "pltest_TestPackageableElement9 1..1" *-- "pltest_TestPackage8 0..9999" pltest_TestPackageableElement : ownedElements7
+pltest_TestPackage "pltest_TestPackageableElement 0..1" -- "pltest_TestPackage 1..1" pltest_TestPackageableElement : owningPackage6
+pltest_Circle "pltest_Red 1..1" -- "pltest_Circle 0..9999" pltest_Red : red3
+pltest_Circle "pltest_WhatEver 0..1" -- "pltest_Circle5 1..1" pltest_WhatEver : someRef4
 @enduml

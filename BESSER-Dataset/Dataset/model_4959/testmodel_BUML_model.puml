@@ -1,4 +1,8 @@
 @startuml
+' model: testmodel
+' project: sampleModel
+' owner: User
+' description: New project
 class Model {
 }
 class ModelElement {
@@ -33,10 +37,10 @@ ModelElement <|-- testmodel_Group
 NamedElement <|-- testmodel_ModelElement
 NamedElement <|-- testmodel_TypedElement
 TypedElement <|-- testmodel_Attribute
-testmodel_Attribute "0..9999" --* "1..1" testmodel_Class : attributes2
-testmodel_Model "1..1" *-- "0..9999" testmodel_ModelElement : elements0
-testmodel_Association "1..1" -- "1..1" testmodel_Class : first4
-testmodel_Attribute "1..1" -- "1..1" testmodel_Class : owner3
-testmodel_Association "1..1" -- "1..1" testmodel_Class : second6
-testmodel_Class "1..1" -- "1..1" testmodel_TypedElement : type1
+testmodel_Attribute "owner 0..9999" --* "Attribute 1..1" testmodel_Class : attributes2
+testmodel_Model "testmodel_ModelElement 1..1" *-- "testmodel_Model 0..9999" testmodel_ModelElement : elements0
+testmodel_Association "testmodel_Class5 1..1" -- "testmodel_Association 1..1" testmodel_Class : first4
+testmodel_Attribute "Class 1..1" -- "attributes 1..1" testmodel_Class : owner3
+testmodel_Association "testmodel_Class8 1..1" -- "testmodel_Association7 1..1" testmodel_Class : second6
+testmodel_Class "testmodel_TypedElement 1..1" -- "testmodel_Class 1..1" testmodel_TypedElement : type1
 @enduml

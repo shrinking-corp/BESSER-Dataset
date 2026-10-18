@@ -62,9 +62,9 @@ def test_assoc_Admin_Student_stub_double():
     partner = Admin()
     setattr(partner, 'student12', None)
     _safe_set(owner, 'admin13', partner)
-    assert getattr(partner, 'student12') == owner
+    assert owner in getattr(partner, 'student12')
     _safe_set(owner, 'admin13', None)
-    assert getattr(partner, 'student12') is None
+    assert owner not in getattr(partner, 'student12')
 
 
 def test_assoc_Student_Access_Information_stub_double():

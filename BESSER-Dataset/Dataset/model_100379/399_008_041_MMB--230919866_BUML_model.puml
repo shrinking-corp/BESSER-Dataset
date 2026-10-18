@@ -1,4 +1,8 @@
 @startuml
+' model: mmb
+' project: sampleModel
+' owner: User
+' description: New project
 class mmb_Automaton {
   + Name : str
 }
@@ -18,10 +22,10 @@ class mmb_Modification {
 class mmb_Transition {
   + Event : str
 }
-mmb_Mode "1..1" *-- "0..9999" mmb_Modification : Modifications5
-mmb_Automaton "1..9999" --* "1..1" mmb_Model : automata0
-mmb_Automaton "1..1" *-- "1..9999" mmb_Mode : modes1
-mmb_Mode "1..1" -- "1..1" mmb_Transition : sourceMode7
-mmb_Mode "1..1" -- "1..1" mmb_Transition : targetMode10
-mmb_Automaton "1..1" *-- "0..9999" mmb_Transition : transistions3
+mmb_Mode "mmb_Modification 1..1" *-- "mmb_Mode6 0..9999" mmb_Modification : Modifications5
+mmb_Automaton "mmb_Model 1..9999" --* "mmb_Automaton 1..1" mmb_Model : automata0
+mmb_Automaton "mmb_Mode 1..1" *-- "mmb_Automaton2 1..9999" mmb_Mode : modes1
+mmb_Mode "mmb_Transition8 1..1" -- "mmb_Mode9 1..1" mmb_Transition : sourceMode7
+mmb_Mode "mmb_Transition11 1..1" -- "mmb_Mode12 1..1" mmb_Transition : targetMode10
+mmb_Automaton "mmb_Transition 1..1" *-- "mmb_Automaton4 0..9999" mmb_Transition : transistions3
 @enduml

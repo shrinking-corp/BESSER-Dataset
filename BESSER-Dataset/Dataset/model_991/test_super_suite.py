@@ -222,28 +222,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=dfs_DepthFirstSearch_strategy)
-@settings(max_examples=30)
-def test_hyp_dfs_depthfirstsearch_incrementpretraversalcounter_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.incrementPreTraversalCounter()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.incrementPreTraversalCounter).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'incrementPreTraversalCounter' in dfs_DepthFirstSearch is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'incrementPreTraversalCounter' in dfs_DepthFirstSearch did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'incrementPreTraversalCounter' in dfs_DepthFirstSearch is not implemented or raised an error")
 
 import warnings
 import copy
@@ -251,30 +229,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=dfs_DepthFirstSearch_strategy)
-@settings(max_examples=30)
-def test_hyp_dfs_depthfirstsearch_processedge_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.processEdge(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.processEdge).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'processEdge' in dfs_DepthFirstSearch is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'processEdge' in dfs_DepthFirstSearch did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'processEdge' in dfs_DepthFirstSearch is not implemented or raised an error")
 
 import warnings
 import copy
@@ -282,30 +236,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=dfs_DepthFirstSearch_strategy)
-@settings(max_examples=30)
-def test_hyp_dfs_depthfirstsearch_processnode_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.processNode(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.processNode).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'processNode' in dfs_DepthFirstSearch is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'processNode' in dfs_DepthFirstSearch did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'processNode' in dfs_DepthFirstSearch is not implemented or raised an error")
 
 import warnings
 import copy
@@ -313,28 +243,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=dfs_DepthFirstSearch_strategy)
-@settings(max_examples=30)
-def test_hyp_dfs_depthfirstsearch_incrementposttraversalcounter_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.incrementPostTraversalCounter()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.incrementPostTraversalCounter).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'incrementPostTraversalCounter' in dfs_DepthFirstSearch is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'incrementPostTraversalCounter' in dfs_DepthFirstSearch did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'incrementPostTraversalCounter' in dfs_DepthFirstSearch is not implemented or raised an error")
 
 
 
@@ -344,30 +252,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=dfs_EdgeProcessor_strategy)
-@settings(max_examples=30)
-def test_hyp_dfs_edgeprocessor_processnode_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.processNode(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.processNode).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'processNode' in dfs_EdgeProcessor is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'processNode' in dfs_EdgeProcessor did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'processNode' in dfs_EdgeProcessor is not implemented or raised an error")
 
 import warnings
 import copy
@@ -375,30 +259,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=dfs_EdgeProcessor_strategy)
-@settings(max_examples=30)
-def test_hyp_dfs_edgeprocessor_processedge_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.processEdge(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.processEdge).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'processEdge' in dfs_EdgeProcessor is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'processEdge' in dfs_EdgeProcessor did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'processEdge' in dfs_EdgeProcessor is not implemented or raised an error")
 
 
 
@@ -949,9 +809,9 @@ def test_assoc_edges14_stub_double():
     partner = dfs_DFSGraph()
     setattr(partner, 'graph', None)
     _safe_set(owner, 'Edge15', partner)
-    assert getattr(partner, 'graph') == owner
+    assert owner in getattr(partner, 'graph')
     _safe_set(owner, 'Edge15', None)
-    assert getattr(partner, 'graph') is None
+    assert owner not in getattr(partner, 'graph')
 
 
 def test_assoc_graph3_stub_double():
@@ -994,9 +854,9 @@ def test_assoc_nodes16_stub_double():
     partner = dfs_DFSGraph()
     setattr(partner, 'graph17', None)
     _safe_set(owner, 'Node18', partner)
-    assert getattr(partner, 'graph17') == owner
+    assert owner in getattr(partner, 'graph17')
     _safe_set(owner, 'Node18', None)
-    assert getattr(partner, 'graph17') is None
+    assert owner not in getattr(partner, 'graph17')
 
 
 def test_assoc_origin10_stub_double():
@@ -1031,28 +891,8 @@ def test_assoc_origin4_stub_double():
 
 
 
-from enum import Enum
 from python_code import EdgeType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(EdgeType.FORWARD_EDGE, 0, '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(EdgeType.TREE_EDGE, '', '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(EdgeType.CROSS_EDGE, '', 0, 0) == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(EdgeType.TREE_EDGE, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(EdgeType.TREE_EDGE, 'TREE_EDGE') == EdgeType.TREE_EDGE
-
 from python_code import dfs_DepthFirstSearch
 
 def test_dfs_DepthFirstSearch___init__():

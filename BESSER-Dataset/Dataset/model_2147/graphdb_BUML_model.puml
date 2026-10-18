@@ -1,4 +1,8 @@
 @startuml
+' model: graphdb
+' project: sampleModel
+' owner: User
+' description: New project
 enum DatabaseKind {
   GREMLIN
 }
@@ -36,14 +40,14 @@ Element <|-- graphdb_GraphElement
 Element <|-- graphdb_Property
 GraphElement <|-- graphdb_Edge
 GraphElement <|-- graphdb_Vertex
-graphdb_Edge "0..9999" --* "1..1" graphdb_Graph : edges1
-graphdb_Edge "1..1" -- "0..1" graphdb_Graph : graph13
-graphdb_Graph "0..1" -- "1..1" graphdb_Vertex : graph8
-graphdb_Edge "1..1" -- "0..1" graphdb_Vertex : head11
-graphdb_Edge "0..9999" -- "1..1" graphdb_Vertex : inEdges4
-graphdb_Edge "0..9999" -- "1..1" graphdb_Vertex : outEdges6
-graphdb_GraphElement "0..1" -- "1..1" graphdb_Property : owner15
-graphdb_GraphElement "1..1" *-- "0..9999" graphdb_Property : properties3
-graphdb_Edge "1..1" -- "0..1" graphdb_Vertex : tail9
-graphdb_Graph "1..1" *-- "0..9999" graphdb_Vertex : vertices0
+graphdb_Edge "graph2 0..9999" --* "Edge 1..1" graphdb_Graph : edges1
+graphdb_Edge "Graph14 1..1" -- "edges 0..1" graphdb_Graph : graph13
+graphdb_Graph "vertices 0..1" -- "Graph 1..1" graphdb_Vertex : graph8
+graphdb_Edge "Vertex12 1..1" -- "inEdges 0..1" graphdb_Vertex : head11
+graphdb_Edge "head 0..9999" -- "Edge5 1..1" graphdb_Vertex : inEdges4
+graphdb_Edge "tail 0..9999" -- "Edge7 1..1" graphdb_Vertex : outEdges6
+graphdb_GraphElement "properties 0..1" -- "GraphElement 1..1" graphdb_Property : owner15
+graphdb_GraphElement "Property 1..1" *-- "owner 0..9999" graphdb_Property : properties3
+graphdb_Edge "Vertex10 1..1" -- "outEdges 0..1" graphdb_Vertex : tail9
+graphdb_Graph "Vertex 1..1" *-- "graph 0..9999" graphdb_Vertex : vertices0
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: error3
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractComponent {
 }
 class NamedElement {
@@ -40,17 +44,17 @@ AbstractComponent <|-- error3_NestedComponent
 AbstractComponent <|-- error3_RecursiveComponen
 NamedElement <|-- error3_RelatedTo
 NamedElement <|-- error3_Thing
-error3_Bazbar "0..9999" --* "1..1" error3_RecursiveComponen : bazbars19
-error3_Binding "0..9999" --* "1..1" error3_Required : bindings5
-error3_RecursiveComponen "0..9999" --* "1..1" error3_RecursiveComponen : components22
-error3_RelatedTo "1..1" -- "0..1" error3_Thing : fromThing2
-error3_NestedComponent "0..9999" --* "1..1" error3_RecursiveComponen : levels117
-error3_Level2 "0..9999" --* "1..1" error3_NestedComponent : levels216
-error3_AbstractComponent "1..1" *-- "0..9999" error3_Provided : providedInterfaces13
-error3_RelatedTo "0..9999" --* "1..1" error3_Thing : relations1
-error3_AbstractComponent "1..1" *-- "0..9999" error3_Required : requiredInterfaces11
-error3_Binding "1..1" -- "0..1" error3_Required : src6
-error3_Thing "0..9999" --* "1..1" error3_World : things0
-error3_RelatedTo "1..1" -- "0..1" error3_Thing : toThing3
-error3_Binding "1..1" -- "0..1" error3_Provided : trg9
+error3_Bazbar "error3_RecursiveComponen20 0..9999" --* "error3_Bazbar 1..1" error3_RecursiveComponen : bazbars19
+error3_Binding "error3_Required 0..9999" --* "error3_Binding 1..1" error3_Required : bindings5
+error3_RecursiveComponen "error3_RecursiveComponen21 0..9999" --* "error3_RecursiveComponen23 1..1" error3_RecursiveComponen : components22
+error3_RelatedTo "Thing 1..1" -- "relations 0..1" error3_Thing : fromThing2
+error3_NestedComponent "error3_RecursiveComponen 0..9999" --* "error3_NestedComponent18 1..1" error3_RecursiveComponen : levels117
+error3_Level2 "error3_NestedComponent 0..9999" --* "error3_Level2 1..1" error3_NestedComponent : levels216
+error3_AbstractComponent "error3_Provided15 1..1" *-- "error3_AbstractComponent14 0..9999" error3_Provided : providedInterfaces13
+error3_RelatedTo "fromThing 0..9999" --* "RelatedTo 1..1" error3_Thing : relations1
+error3_AbstractComponent "error3_Required12 1..1" *-- "error3_AbstractComponent 0..9999" error3_Required : requiredInterfaces11
+error3_Binding "error3_Required8 1..1" -- "error3_Binding7 0..1" error3_Required : src6
+error3_Thing "error3_World 0..9999" --* "error3_Thing 1..1" error3_World : things0
+error3_RelatedTo "error3_Thing4 1..1" -- "error3_RelatedTo 0..1" error3_Thing : toThing3
+error3_Binding "error3_Provided 1..1" -- "error3_Binding10 0..1" error3_Provided : trg9
 @enduml

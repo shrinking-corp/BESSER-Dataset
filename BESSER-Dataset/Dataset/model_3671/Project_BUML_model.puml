@@ -1,4 +1,8 @@
 @startuml
+' model: Project
+' project: sampleModel
+' owner: User
+' description: New project
 class Project_Department {
   + budget : int
   + location : str
@@ -12,10 +16,10 @@ class Project_Project {
   + budget : int
   + name : str
 }
-Project_Department "1..1" -- "1..1" Project_Project : Controls_Department7
-Project_Department "1..1" -- "0..9999" Project_Project : Controls_Project3
-Project_Department "1..9999" -- "1..1" Project_Employee : WorksIn_Department0
-Project_Department "1..1" -- "0..9999" Project_Employee : WorksIn_Employee2
-Project_Employee "0..9999" -- "1..1" Project_Project : WorksOn_Employee5
-Project_Employee "1..1" -- "0..9999" Project_Project : WorksOn_Project1
+Project_Department "Controls_Project 1..1" -- "Department8 1..1" Project_Project : Controls_Department7
+Project_Department "Project4 1..1" -- "Controls_Department 0..9999" Project_Project : Controls_Project3
+Project_Department "WorksIn_Employee 1..9999" -- "Department 1..1" Project_Employee : WorksIn_Department0
+Project_Department "Employee 1..1" -- "WorksIn_Department 0..9999" Project_Employee : WorksIn_Employee2
+Project_Employee "WorksOn_Project 0..9999" -- "Employee6 1..1" Project_Project : WorksOn_Employee5
+Project_Employee "Project 1..1" -- "WorksOn_Employee 0..9999" Project_Project : WorksOn_Project1
 @enduml

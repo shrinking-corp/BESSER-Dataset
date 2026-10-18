@@ -1,4 +1,8 @@
 @startuml
+' model: di
+' project: sampleModel
+' owner: User
+' description: New project
 class ContainerShape {
 }
 class DiNode {
@@ -24,11 +28,11 @@ ContainerShape <|-- di_Diagram
 ContainerShape <|-- di_Shape
 DiNode <|-- di_ContainerShape
 DiNode <|-- di_Link
-di_Diagram "1..1" *-- "0..9999" di_Link : links7
-di_DiNode "1..1" *-- "0..9999" di_EStringToStringMapEntry : properties8
-di_ContainerShape "1..1" *-- "0..9999" di_Shape : shapes0
-di_Link "1..1" -- "0..1" di_Shape : source4
-di_Link "0..9999" -- "1..1" di_Shape : sourceLinks1
-di_Link "1..1" -- "0..1" di_Shape : target5
-di_Link "0..9999" -- "1..1" di_Shape : targetLinks2
+di_Diagram "di_Link 1..1" *-- "di_Diagram 0..9999" di_Link : links7
+di_DiNode "di_EStringToStringMapEntry 1..1" *-- "di_DiNode 0..9999" di_EStringToStringMapEntry : properties8
+di_ContainerShape "di_Shape 1..1" *-- "di_ContainerShape 0..9999" di_Shape : shapes0
+di_Link "Shape 1..1" -- "targetLinks 0..1" di_Shape : source4
+di_Link "target 0..9999" -- "Link 1..1" di_Shape : sourceLinks1
+di_Link "Shape6 1..1" -- "sourceLinks 0..1" di_Shape : target5
+di_Link "source 0..9999" -- "Link3 1..1" di_Shape : targetLinks2
 @enduml

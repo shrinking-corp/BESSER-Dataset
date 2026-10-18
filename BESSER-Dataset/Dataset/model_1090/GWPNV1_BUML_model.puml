@@ -1,16 +1,20 @@
 @startuml
+' model: PetriNet
+' project: sampleModel
+' owner: User
+' description: New project
 class PetriNet_Net {
 }
 class PetriNet_Place {
 }
 class PetriNet_Transition {
 }
-PetriNet_Place "1..1" -- "0..9999" PetriNet_Transition : dst2
-PetriNet_Place "1..9999" -- "1..1" PetriNet_Transition : dst8
-PetriNet_Net "1..1" -- "1..1" PetriNet_Place : net0
-PetriNet_Net "1..1" -- "1..1" PetriNet_Transition : net4
-PetriNet_Net "1..1" *-- "1..9999" PetriNet_Place : place11
-PetriNet_Place "1..1" -- "0..9999" PetriNet_Transition : src1
-PetriNet_Place "1..9999" -- "1..1" PetriNet_Transition : src6
-PetriNet_Net "1..1" *-- "1..9999" PetriNet_Transition : transition13
+PetriNet_Place "Transition3 1..1" -- "src 0..9999" PetriNet_Transition : dst2
+PetriNet_Place "src9 1..9999" -- "Place10 1..1" PetriNet_Transition : dst8
+PetriNet_Net "place 1..1" -- "Net 1..1" PetriNet_Place : net0
+PetriNet_Net "transition 1..1" -- "Net5 1..1" PetriNet_Transition : net4
+PetriNet_Net "Place12 1..1" *-- "net 1..9999" PetriNet_Place : place11
+PetriNet_Place "Transition 1..1" -- "dst 0..9999" PetriNet_Transition : src1
+PetriNet_Place "dst7 1..9999" -- "Place 1..1" PetriNet_Transition : src6
+PetriNet_Net "Transition15 1..1" *-- "net14 1..9999" PetriNet_Transition : transition13
 @enduml

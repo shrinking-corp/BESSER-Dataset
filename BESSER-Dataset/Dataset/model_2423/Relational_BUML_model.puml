@@ -1,4 +1,8 @@
 @startuml
+' model: Relational
+' project: sampleModel
+' owner: User
+' description: New project
 class Named {
 }
 class Relational_Column {
@@ -17,14 +21,14 @@ class Relational_Type {
 Named <|-- Relational_Column
 Named <|-- Relational_Table
 Named <|-- Relational_Type
-Relational_Column "0..9999" --* "1..1" Relational_Table : col0
-Relational_Column "1..1" -- "1..1" Relational_FKey : cols11
-Relational_FKey "0..9999" --* "1..1" Relational_Table : fkeys3
-Relational_Column "0..9999" -- "1..1" Relational_Table : key1
-Relational_Column "1..1" -- "0..1" Relational_Table : keyOf5
-Relational_Column "1..1" -- "1..1" Relational_Table : owner4
-Relational_FKey "1..1" -- "1..1" Relational_Table : ref8
-Relational_ERModel "1..1" *-- "1..9999" Relational_Table : table14
-Relational_ERModel "1..1" *-- "0..9999" Relational_Type : type16
-Relational_Column "1..1" -- "1..1" Relational_Type : type7
+Relational_Column "owner 0..9999" --* "Column 1..1" Relational_Table : col0
+Relational_Column "Relational_FKey12 1..1" -- "Relational_Column13 1..1" Relational_FKey : cols11
+Relational_FKey "Relational_Table 0..9999" --* "Relational_FKey 1..1" Relational_Table : fkeys3
+Relational_Column "keyOf 0..9999" -- "Column2 1..1" Relational_Table : key1
+Relational_Column "Table6 1..1" -- "key 0..1" Relational_Table : keyOf5
+Relational_Column "Table 1..1" -- "col 1..1" Relational_Table : owner4
+Relational_FKey "Relational_Table10 1..1" -- "Relational_FKey9 1..1" Relational_Table : ref8
+Relational_ERModel "Relational_Table15 1..1" *-- "Relational_ERModel 1..9999" Relational_Table : table14
+Relational_ERModel "Relational_Type18 1..1" *-- "Relational_ERModel17 0..9999" Relational_Type : type16
+Relational_Column "Relational_Type 1..1" -- "Relational_Column 1..1" Relational_Type : type7
 @enduml

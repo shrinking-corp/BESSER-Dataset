@@ -1,4 +1,8 @@
 @startuml
+' model: model
+' project: sampleModel
+' owner: User
+' description: New project
 class model_IHost {
   + address : str
   + name : str
@@ -24,8 +28,8 @@ class model_IServiceTypeID {
   + ecfServiceTypeID : str
   + ecfServices : str
 }
-model_IHost "0..9999" --* "1..1" model_INetwork : hosts1
-model_IServiceID "0..1" -- "1..1" model_IServiceInfo : serviceID0
-model_IServiceID "1..1" -- "0..1" model_IServiceTypeID : serviceTypeID5
-model_IHost "1..1" *-- "0..9999" model_IServiceInfo : services2
+model_IHost "model_INetwork 0..9999" --* "model_IHost 1..1" model_INetwork : hosts1
+model_IServiceID "model_IServiceInfo 0..1" -- "model_IServiceID 1..1" model_IServiceInfo : serviceID0
+model_IServiceID "model_IServiceTypeID 1..1" -- "model_IServiceID6 0..1" model_IServiceTypeID : serviceTypeID5
+model_IHost "model_IServiceInfo4 1..1" *-- "model_IHost3 0..9999" model_IServiceInfo : services2
 @enduml

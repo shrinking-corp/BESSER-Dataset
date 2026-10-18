@@ -1,4 +1,8 @@
 @startuml
+' model: qVTcDataDependencyGraph
+' project: sampleModel
+' owner: User
+' description: New project
 enum DependencyDirection {
   input
   output
@@ -52,14 +56,14 @@ Element <|-- qVTcDataDependencyGraph_Node
 Node <|-- qVTcDataDependencyGraph_ClassNode
 Node <|-- qVTcDataDependencyGraph_DataTypeNode
 Node <|-- qVTcDataDependencyGraph_MappingNode
-qVTcDataDependencyGraph_DataTypeNode "1..1" -- "1..1" qVTcDataDependencyGraph_EObject : attribute0
-qVTcDataDependencyGraph_Element "0..9999" --* "1..1" qVTcDataDependencyGraph_Graph : elements10
-qVTcDataDependencyGraph_Element "1..1" -- "1..1" qVTcDataDependencyGraph_Graph : graph9
-qVTcDataDependencyGraph_Edge "0..9999" -- "1..1" qVTcDataDependencyGraph_Node : incoming11
-qVTcDataDependencyGraph_Edge "0..9999" -- "1..1" qVTcDataDependencyGraph_Node : outgoing12
-qVTcDataDependencyGraph_EObject "0..1" -- "1..1" qVTcDataDependencyGraph_Node : qvtAstNode14
-qVTcDataDependencyGraph_EObject "0..1" -- "1..1" qVTcDataDependencyGraph_Edge : referredProperty7
-qVTcDataDependencyGraph_Edge "1..1" -- "1..1" qVTcDataDependencyGraph_Node : source5
-qVTcDataDependencyGraph_Edge "1..1" -- "1..1" qVTcDataDependencyGraph_Node : target4
-qVTcDataDependencyGraph_DataTypeNode "1..1" -- "1..1" qVTcDataDependencyGraph_EObject : type1
+qVTcDataDependencyGraph_DataTypeNode "qVTcDataDependencyGraph_EObject 1..1" -- "qVTcDataDependencyGraph_DataTypeNode 1..1" qVTcDataDependencyGraph_EObject : attribute0
+qVTcDataDependencyGraph_Element "graph 0..9999" --* "Element 1..1" qVTcDataDependencyGraph_Graph : elements10
+qVTcDataDependencyGraph_Element "Graph 1..1" -- "elements 1..1" qVTcDataDependencyGraph_Graph : graph9
+qVTcDataDependencyGraph_Edge "target 0..9999" -- "Edge 1..1" qVTcDataDependencyGraph_Node : incoming11
+qVTcDataDependencyGraph_Edge "source 0..9999" -- "Edge13 1..1" qVTcDataDependencyGraph_Node : outgoing12
+qVTcDataDependencyGraph_EObject "qVTcDataDependencyGraph_Node 0..1" -- "qVTcDataDependencyGraph_EObject15 1..1" qVTcDataDependencyGraph_Node : qvtAstNode14
+qVTcDataDependencyGraph_EObject "qVTcDataDependencyGraph_Edge 0..1" -- "qVTcDataDependencyGraph_EObject8 1..1" qVTcDataDependencyGraph_Edge : referredProperty7
+qVTcDataDependencyGraph_Edge "Node6 1..1" -- "outgoing 1..1" qVTcDataDependencyGraph_Node : source5
+qVTcDataDependencyGraph_Edge "Node 1..1" -- "incoming 1..1" qVTcDataDependencyGraph_Node : target4
+qVTcDataDependencyGraph_DataTypeNode "qVTcDataDependencyGraph_EObject3 1..1" -- "qVTcDataDependencyGraph_DataTypeNode2 1..1" qVTcDataDependencyGraph_EObject : type1
 @enduml

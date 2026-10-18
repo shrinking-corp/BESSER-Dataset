@@ -1,4 +1,8 @@
 @startuml
+' model: oving4
+' project: sampleModel
+' owner: User
+' description: New project
 enum CourseWorkType {
   Exercise
   InDepth
@@ -92,41 +96,41 @@ class oving4_TimeTableElement {
   + durationInMinutes : int
   + room : str
 }
-oving4_Assignment "1..1" -- "1..1" oving4_EvaluationElement : belongToEvEl61
-oving4_EvaluationElement "1..1" -- "1..1" oving4_Exam : belongsToEvaluationElement56
-oving4_EvaluationElement "1..1" -- "1..1" oving4_Project : belongsToEvaluationel57
-oving4_Assignment "1..1" --* "1..1" oving4_EvaluationElement : containsAssignment55
-oving4_Course "0..9999" -- "1..1" oving4_StudyProgram : containsCourse10
-oving4_CourseInstance "1..1" *-- "0..9999" oving4_CourseWork : containsCourseWork23
-oving4_Evaluation "1..1" *-- "0..9999" oving4_EvaluationElement : containsElement44
-oving4_CourseInstance "1..1" *-- "0..9999" oving4_Evaluation : containsEvaluation26
-oving4_EvaluationElement "1..1" *-- "1..1" oving4_Exam : containsExam53
-oving4_EvaluationElement "1..1" -- "1..1" oving4_Project : containsProject54
-oving4_TimeTable "1..1" *-- "0..9999" oving4_TimeTableElement : containsTimeTableElement36
-oving4_Course "1..1" *-- "0..9999" oving4_CourseInstance : courseInstance16
-oving4_CourseInstance "1..1" -- "1..1" oving4_Evaluation : courseInstance45
-oving4_Department "1..1" -- "1..1" oving4_PersonRole : employedByDepartment34
-oving4_PersonRole "1..1" -- "0..1" oving4_StudyProgram : employedOfStudyProgram30
-oving4_PersonRole "0..1" -- "1..1" oving4_StudyProgram : hasEmployee11
-oving4_Department "1..1" -- "0..9999" oving4_PersonRole : hasEmployee9
-oving4_Evaluation "0..9999" -- "1..1" oving4_Person : hasEvaluation15
-oving4_CourseInstance "1..1" -- "0..9999" oving4_PersonRole : hasMember24
-oving4_PersonRole "0..9999" -- "1..1" oving4_Project : hasMembers59
-oving4_Course "1..1" *-- "0..9999" oving4_Precondition : hasPrecondition18
-oving4_Person "1..1" *-- "0..9999" oving4_PersonRole : hasRole13
-oving4_CourseInstance "1..1" *-- "1..1" oving4_TimeTable : hasTimeTable20
-oving4_CourseInstance "0..9999" -- "1..1" oving4_PersonRole : memberOfCourse32
-oving4_Course "1..1" -- "1..1" oving4_CourseInstance : ownedBy21
-oving4_CourseInstance "1..1" -- "1..1" oving4_TimeTable : ownedByCourseInstance40
-oving4_Course "0..9999" --* "1..1" oving4_Department : ownsCourse7
-oving4_Department "0..9999" --* "1..1" oving4_Root : ownsDepartment0
-oving4_Person "0..9999" --* "1..1" oving4_Root : ownsPerson1
-oving4_Project "0..9999" --* "1..1" oving4_Root : ownsProject5
-oving4_Root "1..1" *-- "0..9999" oving4_StudyProgram : ownsStudyProgram3
-oving4_Person "0..1" -- "1..1" oving4_PersonRole : person29
-oving4_Evaluation "1..1" -- "1..1" oving4_Person : personEvaluated42
-oving4_Course "0..1" -- "1..1" oving4_Precondition : preconditionCourse47
-oving4_Course "1..1" -- "1..1" oving4_StudyProgram : studyprogram17
-oving4_CourseWork "1..1" -- "1..1" oving4_TimeTableElement : usedByCourseWork50
-oving4_StudyProgram "0..1" -- "1..1" oving4_TimeTable : usedByStudyProgram37
+oving4_Assignment "EvaluationElement62 1..1" -- "containsAssignment 1..1" oving4_EvaluationElement : belongToEvEl61
+oving4_EvaluationElement "containsExam 1..1" -- "EvaluationElement 1..1" oving4_Exam : belongsToEvaluationElement56
+oving4_EvaluationElement "containsProject 1..1" -- "EvaluationElement58 1..1" oving4_Project : belongsToEvaluationel57
+oving4_Assignment "belongToEvEl 1..1" --* "Assignment 1..1" oving4_EvaluationElement : containsAssignment55
+oving4_Course "studyprogram 0..9999" -- "Course 1..1" oving4_StudyProgram : containsCourse10
+oving4_CourseInstance "oving4_CourseWork 1..1" *-- "oving4_CourseInstance 0..9999" oving4_CourseWork : containsCourseWork23
+oving4_Evaluation "oving4_EvaluationElement 1..1" *-- "oving4_Evaluation 0..9999" oving4_EvaluationElement : containsElement44
+oving4_CourseInstance "Evaluation28 1..1" *-- "courseInstance27 0..9999" oving4_Evaluation : containsEvaluation26
+oving4_EvaluationElement "Exam 1..1" *-- "belongsToEvaluationElement 1..1" oving4_Exam : containsExam53
+oving4_EvaluationElement "Project 1..1" -- "belongsToEvaluationel 1..1" oving4_Project : containsProject54
+oving4_TimeTable "oving4_TimeTableElement 1..1" *-- "oving4_TimeTable 0..9999" oving4_TimeTableElement : containsTimeTableElement36
+oving4_Course "CourseInstance 1..1" *-- "ownedBy 0..9999" oving4_CourseInstance : courseInstance16
+oving4_CourseInstance "containsEvaluation 1..1" -- "CourseInstance46 1..1" oving4_Evaluation : courseInstance45
+oving4_Department "hasEmployee35 1..1" -- "Department 1..1" oving4_PersonRole : employedByDepartment34
+oving4_PersonRole "StudyProgram31 1..1" -- "hasEmployee 0..1" oving4_StudyProgram : employedOfStudyProgram30
+oving4_PersonRole "employedOfStudyProgram 0..1" -- "PersonRole12 1..1" oving4_StudyProgram : hasEmployee11
+oving4_Department "PersonRole 1..1" -- "employedByDepartment 0..9999" oving4_PersonRole : hasEmployee9
+oving4_Evaluation "personEvaluated 0..9999" -- "Evaluation 1..1" oving4_Person : hasEvaluation15
+oving4_CourseInstance "PersonRole25 1..1" -- "memberOfCourse 0..9999" oving4_PersonRole : hasMember24
+oving4_PersonRole "oving4_Project60 0..9999" -- "oving4_PersonRole 1..1" oving4_Project : hasMembers59
+oving4_Course "oving4_Precondition 1..1" *-- "oving4_Course19 0..9999" oving4_Precondition : hasPrecondition18
+oving4_Person "PersonRole14 1..1" *-- "person 0..9999" oving4_PersonRole : hasRole13
+oving4_CourseInstance "TimeTable 1..1" *-- "ownedByCourseInstance 1..1" oving4_TimeTable : hasTimeTable20
+oving4_CourseInstance "hasMember 0..9999" -- "CourseInstance33 1..1" oving4_PersonRole : memberOfCourse32
+oving4_Course "courseInstance 1..1" -- "Course22 1..1" oving4_CourseInstance : ownedBy21
+oving4_CourseInstance "hasTimeTable 1..1" -- "CourseInstance41 1..1" oving4_TimeTable : ownedByCourseInstance40
+oving4_Course "oving4_Department8 0..9999" --* "oving4_Course 1..1" oving4_Department : ownsCourse7
+oving4_Department "oving4_Root 0..9999" --* "oving4_Department 1..1" oving4_Root : ownsDepartment0
+oving4_Person "oving4_Root2 0..9999" --* "oving4_Person 1..1" oving4_Root : ownsPerson1
+oving4_Project "oving4_Root6 0..9999" --* "oving4_Project 1..1" oving4_Root : ownsProject5
+oving4_Root "oving4_StudyProgram 1..1" *-- "oving4_Root4 0..9999" oving4_StudyProgram : ownsStudyProgram3
+oving4_Person "hasRole 0..1" -- "Person 1..1" oving4_PersonRole : person29
+oving4_Evaluation "Person43 1..1" -- "hasEvaluation 1..1" oving4_Person : personEvaluated42
+oving4_Course "oving4_Precondition48 0..1" -- "oving4_Course49 1..1" oving4_Precondition : preconditionCourse47
+oving4_Course "StudyProgram 1..1" -- "containsCourse 1..1" oving4_StudyProgram : studyprogram17
+oving4_CourseWork "oving4_TimeTableElement51 1..1" -- "oving4_CourseWork52 1..1" oving4_TimeTableElement : usedByCourseWork50
+oving4_StudyProgram "oving4_TimeTable38 0..1" -- "oving4_StudyProgram39 1..1" oving4_TimeTable : usedByStudyProgram37
 @enduml

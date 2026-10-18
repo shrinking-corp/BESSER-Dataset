@@ -1,4 +1,8 @@
 @startuml
+' model: pycom
+' project: sampleModel
+' owner: User
+' description: New project
 class BoardMember {
 }
 class ExpMember {
@@ -80,37 +84,37 @@ BoardMember <|-- pycom_Actuator
 BoardMember <|-- pycom_Communication
 ExpMember <|-- pycom_ConditionalAction
 ExpMember <|-- pycom_Function
-pycom_ConditionalAction "1..1" *-- "0..9999" pycom_ExpMember : ExpMembers27
-pycom_Actuator "1..1" *-- "0..1" pycom_ModuleName : actuatorName37
-pycom_Board "0..1" -- "1..1" pycom_Function : board65
-pycom_BoardMember "1..1" *-- "0..1" pycom_Sensor : boardMember23
-pycom_Board "1..1" *-- "0..9999" pycom_BoardMember : boardMembers21
-pycom_Board "0..9999" --* "1..1" pycom_System : boards3
-pycom_Boolean "0..1" --* "1..1" pycom_LogicExp : boolVal54
-pycom_ComparisonExp "0..1" --* "1..1" pycom_LogicExp : compExp56
-pycom_Condition "0..1" --* "1..1" pycom_ConditionalAction : condition25
-pycom_Connection "0..1" --* "1..1" pycom_Server : conn12
-pycom_ConditionalAction "0..9999" --* "1..1" pycom_Server : exps14
-pycom_Function "1..1" -- "0..1" pycom_Import : functionName68
-pycom_Connection "1..1" *-- "0..1" pycom_Host : host16
-pycom_Import "0..9999" --* "1..1" pycom_System : imports1
-pycom_Import "0..9999" --* "1..1" pycom_Library : imports7
-pycom_Pin "1..1" *-- "0..1" pycom_PinName : input46
-pycom_ComparisonExp "1..1" *-- "0..1" pycom_Expression : left58
-pycom_Library "0..9999" --* "1..1" pycom_System : libraries0
-pycom_Board "1..1" -- "0..9999" pycom_Library : library18
-pycom_Condition "1..1" *-- "0..1" pycom_LogicExp : logicEx49
-pycom_Condition "0..1" --* "1..1" pycom_Condition : nestedCondition52
-pycom_Expression "1..1" *-- "0..1" pycom_Function : outputfunction63
-pycom_Import "1..1" *-- "0..9999" pycom_ParameterType : parameter10
-pycom_Pin "0..1" --* "1..1" pycom_Sensor : pins33
-pycom_Actuator "1..1" *-- "0..1" pycom_Pin : pins40
-pycom_Function "1..1" *-- "0..9999" pycom_Pin : pins71
-pycom_Pin "1..1" *-- "0..1" pycom_PinName : power44
-pycom_ComparisonExp "1..1" *-- "0..1" pycom_Expression : right60
-pycom_ModuleName "0..1" --* "1..1" pycom_Sensor : sensorName31
-pycom_Server "0..9999" --* "1..1" pycom_System : servers5
-pycom_Communication "1..1" *-- "0..1" pycom_CommunicationType : type43
-pycom_ModuleType "0..1" --* "1..1" pycom_Sensor : typeName29
-pycom_Actuator "1..1" *-- "0..1" pycom_ModuleType : typeName35
+pycom_ConditionalAction "pycom_ExpMember 1..1" *-- "pycom_ConditionalAction28 0..9999" pycom_ExpMember : ExpMembers27
+pycom_Actuator "pycom_ModuleName39 1..1" *-- "pycom_Actuator38 0..1" pycom_ModuleName : actuatorName37
+pycom_Board "pycom_Function66 0..1" -- "pycom_Board67 1..1" pycom_Function : board65
+pycom_BoardMember "pycom_Sensor 1..1" *-- "pycom_BoardMember24 0..1" pycom_Sensor : boardMember23
+pycom_Board "pycom_BoardMember 1..1" *-- "pycom_Board22 0..9999" pycom_BoardMember : boardMembers21
+pycom_Board "pycom_System4 0..9999" --* "pycom_Board 1..1" pycom_System : boards3
+pycom_Boolean "pycom_LogicExp55 0..1" --* "pycom_Boolean 1..1" pycom_LogicExp : boolVal54
+pycom_ComparisonExp "pycom_LogicExp57 0..1" --* "pycom_ComparisonExp 1..1" pycom_LogicExp : compExp56
+pycom_Condition "pycom_ConditionalAction26 0..1" --* "pycom_Condition 1..1" pycom_ConditionalAction : condition25
+pycom_Connection "pycom_Server13 0..1" --* "pycom_Connection 1..1" pycom_Server : conn12
+pycom_ConditionalAction "pycom_Server15 0..9999" --* "pycom_ConditionalAction 1..1" pycom_Server : exps14
+pycom_Function "pycom_Import70 1..1" -- "pycom_Function69 0..1" pycom_Import : functionName68
+pycom_Connection "pycom_Host 1..1" *-- "pycom_Connection17 0..1" pycom_Host : host16
+pycom_Import "pycom_System2 0..9999" --* "pycom_Import 1..1" pycom_System : imports1
+pycom_Import "pycom_Library8 0..9999" --* "pycom_Import9 1..1" pycom_Library : imports7
+pycom_Pin "pycom_PinName48 1..1" *-- "pycom_Pin47 0..1" pycom_PinName : input46
+pycom_ComparisonExp "pycom_Expression 1..1" *-- "pycom_ComparisonExp59 0..1" pycom_Expression : left58
+pycom_Library "pycom_System 0..9999" --* "pycom_Library 1..1" pycom_System : libraries0
+pycom_Board "pycom_Library20 1..1" -- "pycom_Board19 0..9999" pycom_Library : library18
+pycom_Condition "pycom_LogicExp 1..1" *-- "pycom_Condition50 0..1" pycom_LogicExp : logicEx49
+pycom_Condition "pycom_Condition51 0..1" --* "pycom_Condition53 1..1" pycom_Condition : nestedCondition52
+pycom_Expression "pycom_Function 1..1" *-- "pycom_Expression64 0..1" pycom_Function : outputfunction63
+pycom_Import "pycom_ParameterType 1..1" *-- "pycom_Import11 0..9999" pycom_ParameterType : parameter10
+pycom_Pin "pycom_Sensor34 0..1" --* "pycom_Pin 1..1" pycom_Sensor : pins33
+pycom_Actuator "pycom_Pin42 1..1" *-- "pycom_Actuator41 0..1" pycom_Pin : pins40
+pycom_Function "pycom_Pin73 1..1" *-- "pycom_Function72 0..9999" pycom_Pin : pins71
+pycom_Pin "pycom_PinName 1..1" *-- "pycom_Pin45 0..1" pycom_PinName : power44
+pycom_ComparisonExp "pycom_Expression62 1..1" *-- "pycom_ComparisonExp61 0..1" pycom_Expression : right60
+pycom_ModuleName "pycom_Sensor32 0..1" --* "pycom_ModuleName 1..1" pycom_Sensor : sensorName31
+pycom_Server "pycom_System6 0..9999" --* "pycom_Server 1..1" pycom_System : servers5
+pycom_Communication "pycom_CommunicationType 1..1" *-- "pycom_Communication 0..1" pycom_CommunicationType : type43
+pycom_ModuleType "pycom_Sensor30 0..1" --* "pycom_ModuleType 1..1" pycom_Sensor : typeName29
+pycom_Actuator "pycom_ModuleType36 1..1" *-- "pycom_Actuator 0..1" pycom_ModuleType : typeName35
 @enduml

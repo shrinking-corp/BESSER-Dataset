@@ -1,4 +1,8 @@
 @startuml
+' model: studyprograms
+' project: sampleModel
+' owner: User
+' description: New project
 enum Access {
   M1A
   M2A
@@ -52,12 +56,12 @@ class studyprograms_Specialisation {
   + name : str
   + startSemester : int
 }
-studyprograms_CourseAccess "0..9999" --* "1..1" studyprograms_Semester : courseAccess8
-studyprograms_Course "0..9999" -- "1..1" studyprograms_CourseAccess : courses10
-studyprograms_Course "0..9999" --* "1..1" studyprograms_Department : courses14
-studyprograms_Department "1..1" *-- "0..9999" studyprograms_Programme : programmes12
-studyprograms_Programme "1..1" *-- "0..9999" studyprograms_Semester : semesters1
-studyprograms_Semester "0..9999" --* "1..1" studyprograms_Specialisation : semesters3
-studyprograms_IndividualStudyPlan "1..1" *-- "0..9999" studyprograms_Semester : semesters6
-studyprograms_Programme "1..1" *-- "0..9999" studyprograms_Specialisation : specialisations0
+studyprograms_CourseAccess "studyprograms_Semester9 0..9999" --* "studyprograms_CourseAccess 1..1" studyprograms_Semester : courseAccess8
+studyprograms_Course "studyprograms_CourseAccess11 0..9999" -- "studyprograms_Course 1..1" studyprograms_CourseAccess : courses10
+studyprograms_Course "studyprograms_Department15 0..9999" --* "studyprograms_Course16 1..1" studyprograms_Department : courses14
+studyprograms_Department "studyprograms_Programme13 1..1" *-- "studyprograms_Department 0..9999" studyprograms_Programme : programmes12
+studyprograms_Programme "studyprograms_Semester 1..1" *-- "studyprograms_Programme2 0..9999" studyprograms_Semester : semesters1
+studyprograms_Semester "studyprograms_Specialisation4 0..9999" --* "studyprograms_Semester5 1..1" studyprograms_Specialisation : semesters3
+studyprograms_IndividualStudyPlan "studyprograms_Semester7 1..1" *-- "studyprograms_IndividualStudyPlan 0..9999" studyprograms_Semester : semesters6
+studyprograms_Programme "studyprograms_Specialisation 1..1" *-- "studyprograms_Programme 0..9999" studyprograms_Specialisation : specialisations0
 @enduml

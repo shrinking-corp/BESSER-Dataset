@@ -1,4 +1,8 @@
 @startuml
+' model: ex
+' project: sampleModel
+' owner: User
+' description: New project
 class InitState {
 }
 class InputState {
@@ -36,11 +40,11 @@ State <|-- ex_stateMachine_InputState
 State <|-- ex_stateMachine_OutputState
 stateMachine_InputState <|-- ex_stateMachine_StandardState
 stateMachine_OutputState <|-- ex_stateMachine_StandardState
-Transition "0..9999" -- "1..1" ex_stateMachine_InputState : ingoingTransitions8
-InitState "1..1" -- "1..1" ex_stateMachine_StateMachine : initState0
-Transition "0..9999" -- "1..1" ex_stateMachine_OutputState : outgoingTransitions10
-OutputState "1..1" -- "1..1" ex_stateMachine_Transition : source5
-State "0..9999" --* "1..1" ex_stateMachine_StateMachine : states1
-InputState "1..1" -- "1..1" ex_stateMachine_Transition : target6
-Transition "0..9999" --* "1..1" ex_stateMachine_StateMachine : transitions3
+Transition "ex_stateMachine_InputState 0..9999" -- "Transition9 1..1" ex_stateMachine_InputState : ingoingTransitions8
+InitState "ex_stateMachine_StateMachine 1..1" -- "InitState 1..1" ex_stateMachine_StateMachine : initState0
+Transition "ex_stateMachine_OutputState 0..9999" -- "Transition11 1..1" ex_stateMachine_OutputState : outgoingTransitions10
+OutputState "ex_stateMachine_Transition 1..1" -- "OutputState 1..1" ex_stateMachine_Transition : source5
+State "ex_stateMachine_StateMachine2 0..9999" --* "State 1..1" ex_stateMachine_StateMachine : states1
+InputState "ex_stateMachine_Transition7 1..1" -- "InputState 1..1" ex_stateMachine_Transition : target6
+Transition "ex_stateMachine_StateMachine4 0..9999" --* "Transition 1..1" ex_stateMachine_StateMachine : transitions3
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: fta
+' project: sampleModel
+' owner: User
+' description: New project
 class Diagram {
 }
 enum GateType {
@@ -23,8 +27,8 @@ class fta_Hazard {
 Diagram <|-- fta_Condition
 Diagram <|-- fta_Event
 Diagram <|-- fta_Hazard
-fta_Condition "0..1" -- "1..1" fta_Event : condition2
-fta_Condition "0..9999" -- "1..1" fta_Hazard : conditions1
-fta_Diagram "0..9999" --* "1..1" fta_FTA : diagrams0
-fta_Condition "1..1" -- "0..9999" fta_Event : events4
+fta_Condition "fta_Event 0..1" -- "fta_Condition3 1..1" fta_Event : condition2
+fta_Condition "fta_Hazard 0..9999" -- "fta_Condition 1..1" fta_Hazard : conditions1
+fta_Diagram "fta_FTA 0..9999" --* "fta_Diagram 1..1" fta_FTA : diagrams0
+fta_Condition "fta_Event6 1..1" -- "fta_Condition5 0..9999" fta_Event : events4
 @enduml

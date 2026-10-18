@@ -1,4 +1,8 @@
 @startuml
+' model: UATMM_structure
+' project: sampleModel
+' owner: User
+' description: New project
 class Connector {
 }
 enum EdgeKind {
@@ -71,14 +75,14 @@ Connector <|-- UATMM_structure_Spare
 Connector <|-- UATMM_structure_TAND
 Connector <|-- UATMM_structure_Weighted
 Connector <|-- UATMM_structure_XOR
-UATMM_structure_AttackTree "1..1" *-- "0..9999" UATMM_structure_Edge : Edges4
-UATMM_structure_AttackTree "1..1" *-- "1..9999" UATMM_structure_Node : Nodes1
-UATMM_structure_AttackTree "1..1" -- "1..1" UATMM_structure_Node : Root0
-UATMM_structure_Edge "1..1" -- "1..1" UATMM_structure_Node : Source17
-UATMM_structure_Edge "1..1" -- "1..1" UATMM_structure_Node : Target14
-UATMM_structure_Node "1..1" -- "0..9999" UATMM_structure_Node : children10
-UATMM_structure_Connector "0..1" --* "1..1" UATMM_structure_Node : connector8
-UATMM_structure_Connector "1..1" -- "1..1" UATMM_structure_Node : gate20
-UATMM_structure_AttackTree "1..1" *-- "0..9999" UATMM_structure_TreeMetaData : metadata6
-UATMM_structure_Node "1..1" -- "0..9999" UATMM_structure_Node : parents12
+UATMM_structure_AttackTree "UATMM_structure_Edge 1..1" *-- "UATMM_structure_AttackTree5 0..9999" UATMM_structure_Edge : Edges4
+UATMM_structure_AttackTree "UATMM_structure_Node3 1..1" *-- "UATMM_structure_AttackTree2 1..9999" UATMM_structure_Node : Nodes1
+UATMM_structure_AttackTree "UATMM_structure_Node 1..1" -- "UATMM_structure_AttackTree 1..1" UATMM_structure_Node : Root0
+UATMM_structure_Edge "UATMM_structure_Node19 1..1" -- "UATMM_structure_Edge18 1..1" UATMM_structure_Node : Source17
+UATMM_structure_Edge "UATMM_structure_Node16 1..1" -- "UATMM_structure_Edge15 1..1" UATMM_structure_Node : Target14
+UATMM_structure_Node "Node 1..1" -- "parents 0..9999" UATMM_structure_Node : children10
+UATMM_structure_Connector "gate 0..1" --* "Connector 1..1" UATMM_structure_Node : connector8
+UATMM_structure_Connector "Node21 1..1" -- "connector 1..1" UATMM_structure_Node : gate20
+UATMM_structure_AttackTree "UATMM_structure_TreeMetaData 1..1" *-- "UATMM_structure_AttackTree7 0..9999" UATMM_structure_TreeMetaData : metadata6
+UATMM_structure_Node "Node13 1..1" -- "children 0..9999" UATMM_structure_Node : parents12
 @enduml

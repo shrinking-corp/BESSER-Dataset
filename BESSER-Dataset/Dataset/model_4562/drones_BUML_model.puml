@@ -1,4 +1,8 @@
 @startuml
+' model: drones
+' project: sampleModel
+' owner: User
+' description: New project
 enum ActionKind {
   ADD
   SET
@@ -74,12 +78,12 @@ SizedElement <|-- drones_FieldObject
 TemporalContainmentProxy <|-- drones_Action
 TemporalContainmentProxy <|-- drones_Battery
 TemporalContainmentProxy <|-- drones_Parameter
-drones_Action "0..9999" --* "1..1" drones_Mission : actions13
-drones_Battery "1..1" --* "1..1" drones_Drone : battery1
-drones_ChargeStation "1..1" -- "1..1" drones_Drone : chargeStation2
-drones_Drone "1..9999" --* "1..1" drones_Mission : drones8
-drones_FieldObject "1..9999" --* "1..1" drones_Mission : fieldObjects6
-drones_FieldObject "1..1" *-- "0..9999" drones_Parameter : parameters0
-drones_Action "0..9999" -- "1..1" drones_Drone : supportedActions4
-drones_Mission "1..1" *-- "0..9999" drones_TemporalContainmentProxy : temporalObjects11
+drones_Action "drones_Mission14 0..9999" --* "drones_Action15 1..1" drones_Mission : actions13
+drones_Battery "drones_Drone 1..1" --* "drones_Battery 1..1" drones_Drone : battery1
+drones_ChargeStation "drones_Drone3 1..1" -- "drones_ChargeStation 1..1" drones_Drone : chargeStation2
+drones_Drone "drones_Mission9 1..9999" --* "drones_Drone10 1..1" drones_Mission : drones8
+drones_FieldObject "drones_Mission 1..9999" --* "drones_FieldObject7 1..1" drones_Mission : fieldObjects6
+drones_FieldObject "drones_Parameter 1..1" *-- "drones_FieldObject 0..9999" drones_Parameter : parameters0
+drones_Action "drones_Drone5 0..9999" -- "drones_Action 1..1" drones_Drone : supportedActions4
+drones_Mission "drones_TemporalContainmentProxy 1..1" *-- "drones_Mission12 0..9999" drones_TemporalContainmentProxy : temporalObjects11
 @enduml

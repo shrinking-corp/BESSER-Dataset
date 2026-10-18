@@ -1,4 +1,8 @@
 @startuml
+' model: statemachine
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractState {
 }
 class Behaviour {
@@ -40,11 +44,11 @@ ObeoDSMObject <|-- statemachine_NamedElement
 ObeoDSMObject <|-- statemachine_Transition
 StateMachineDescription <|-- statemachine_Region
 StateMachineDescription <|-- statemachine_StateMachine
-statemachine_AbstractState "1..1" -- "1..1" statemachine_Transition : from_7
-statemachine_AbstractState "1..1" -- "0..9999" statemachine_Transition : incomingTransitions4
-statemachine_AbstractState "1..1" -- "0..9999" statemachine_Transition : outcomingTransitions5
-statemachine_Region "0..9999" --* "1..1" statemachine_StateMachine : regions0
-statemachine_AbstractState "0..9999" --* "1..1" statemachine_StateMachineDescription : states1
-statemachine_AbstractState "1..1" -- "1..1" statemachine_Transition : to8
-statemachine_StateMachineDescription "1..1" *-- "0..9999" statemachine_Transition : transitions2
+statemachine_AbstractState "outcomingTransitions 1..1" -- "AbstractState 1..1" statemachine_Transition : from_7
+statemachine_AbstractState "Transition 1..1" -- "to 0..9999" statemachine_Transition : incomingTransitions4
+statemachine_AbstractState "Transition6 1..1" -- "from_ 0..9999" statemachine_Transition : outcomingTransitions5
+statemachine_Region "statemachine_StateMachine 0..9999" --* "statemachine_Region 1..1" statemachine_StateMachine : regions0
+statemachine_AbstractState "statemachine_StateMachineDescription 0..9999" --* "statemachine_AbstractState 1..1" statemachine_StateMachineDescription : states1
+statemachine_AbstractState "incomingTransitions 1..1" -- "AbstractState9 1..1" statemachine_Transition : to8
+statemachine_StateMachineDescription "statemachine_Transition 1..1" *-- "statemachine_StateMachineDescription3 0..9999" statemachine_Transition : transitions2
 @enduml

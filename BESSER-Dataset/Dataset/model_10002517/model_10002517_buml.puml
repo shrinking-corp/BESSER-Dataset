@@ -1,4 +1,8 @@
 @startuml
+' model: bc00e7fa_4d5b_4f96_8cef_e3a2ea8f0773
+' project: sampleModel
+' owner: User
+' description: New project
 class Avatar {
 }
 class Card {
@@ -19,10 +23,10 @@ enum Suit {
 }
 class Theme {
 }
-Card "1..9999" -- "1..1" Deck : Deck_Card
-Deck "0..9999" -- "1..1" Theme : Deck_Theme
-Deck "1..9999" -- "0..9999" Game : Game_Deck
-Game "0..9999" -- "1..9999" Player : Game_Player
-Avatar "0..1" -- "0..9999" Player : Player_Avatar
-Card "1..9999" -- "0..1" Player : Player_Card
+Card "cards0 1..9999" -- "deck1 1..1" Deck : Deck_Card
+Deck "decks3 0..9999" -- "theme2 1..1" Theme : Deck_Theme
+Deck "decks8 1..9999" -- "games9 0..9999" Game : Game_Deck
+Game "games7 0..9999" -- "players6 1..9999" Player : Game_Player
+Avatar "avatar4 0..1" -- "players5 0..9999" Player : Player_Avatar
+Card "cards10 1..9999" -- "player11 0..1" Player : Player_Card
 @enduml

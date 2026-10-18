@@ -1770,31 +1770,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=CodePack_ICheckIn_strategy)
-@settings(max_examples=30)
-def test_hyp_codepack_icheckin_assignguesttobooking_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.assignGuestToBooking(
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.assignGuestToBooking).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'assignGuestToBooking' in CodePack_ICheckIn is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'assignGuestToBooking' in CodePack_ICheckIn did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'assignGuestToBooking' in CodePack_ICheckIn is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1802,30 +1777,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=CodePack_ICheckIn_strategy)
-@settings(max_examples=30)
-def test_hyp_codepack_icheckin_validatebooking_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.validateBooking(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.validateBooking).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'validateBooking' in CodePack_ICheckIn is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'validateBooking' in CodePack_ICheckIn did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'validateBooking' in CodePack_ICheckIn is not implemented or raised an error")
 
 
 
@@ -1838,28 +1789,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=CodePack_CheckInMachine_strategy)
-@settings(max_examples=30)
-def test_hyp_codepack_checkinmachine_startui_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.startUI()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.startUI).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'startUI' in CodePack_CheckInMachine is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'startUI' in CodePack_CheckInMachine did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'startUI' in CodePack_CheckInMachine is not implemented or raised an error")
 
 
 
@@ -1869,28 +1798,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=CodePack_UserGUI_strategy)
-@settings(max_examples=30)
-def test_hyp_codepack_usergui_startui_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.startUI()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.startUI).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'startUI' in CodePack_UserGUI is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'startUI' in CodePack_UserGUI did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'startUI' in CodePack_UserGUI is not implemented or raised an error")
 
 
 
@@ -1901,28 +1808,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=CodePack_StaffGUI_strategy)
-@settings(max_examples=30)
-def test_hyp_codepack_staffgui_startui_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.startUI()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.startUI).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'startUI' in CodePack_StaffGUI is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'startUI' in CodePack_StaffGUI did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'startUI' in CodePack_StaffGUI is not implemented or raised an error")
 
 
 import warnings
@@ -1931,31 +1816,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=CodePack_IStaffAuthentication_strategy)
-@settings(max_examples=30)
-def test_hyp_codepack_istaffauthentication_login_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.login(
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.login).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'login' in CodePack_IStaffAuthentication is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'login' in CodePack_IStaffAuthentication did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'login' in CodePack_IStaffAuthentication is not implemented or raised an error")
 
 
 
@@ -1966,253 +1826,12 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=CodePack_IManagement_strategy)
-@settings(max_examples=30)
-def test_hyp_codepack_imanagement_addroom_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.addRoom(
-            "test", 
-            "test", 
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.addRoom).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'addRoom' in CodePack_IManagement is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'addRoom' in CodePack_IManagement did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'addRoom' in CodePack_IManagement is not implemented or raised an error")
 
 import warnings
 import copy
 import inspect
 import ast
 from hypothesis import given, settings
-
-@given(instance=CodePack_IManagement_strategy)
-@settings(max_examples=30)
-def test_hyp_codepack_imanagement_removeroom_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.removeRoom(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.removeRoom).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'removeRoom' in CodePack_IManagement is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'removeRoom' in CodePack_IManagement did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'removeRoom' in CodePack_IManagement is not implemented or raised an error")
-
-import warnings
-import copy
-import inspect
-import ast
-from hypothesis import given, settings
-
-@given(instance=CodePack_IManagement_strategy)
-@settings(max_examples=30)
-def test_hyp_codepack_imanagement_removeroomtype_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.removeRoomType(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.removeRoomType).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'removeRoomType' in CodePack_IManagement is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'removeRoomType' in CodePack_IManagement did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'removeRoomType' in CodePack_IManagement is not implemented or raised an error")
-
-import warnings
-import copy
-import inspect
-import ast
-from hypothesis import given, settings
-
-@given(instance=CodePack_IManagement_strategy)
-@settings(max_examples=30)
-def test_hyp_codepack_imanagement_removeservicetype_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.removeServiceType(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.removeServiceType).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'removeServiceType' in CodePack_IManagement is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'removeServiceType' in CodePack_IManagement did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'removeServiceType' in CodePack_IManagement is not implemented or raised an error")
-
-import warnings
-import copy
-import inspect
-import ast
-from hypothesis import given, settings
-
-@given(instance=CodePack_IManagement_strategy)
-@settings(max_examples=30)
-def test_hyp_codepack_imanagement_addroomtype_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.addRoomType(
-            "test", 
-            "test", 
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.addRoomType).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'addRoomType' in CodePack_IManagement is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'addRoomType' in CodePack_IManagement did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'addRoomType' in CodePack_IManagement is not implemented or raised an error")
-
-import warnings
-import copy
-import inspect
-import ast
-from hypothesis import given, settings
-
-@given(instance=CodePack_IManagement_strategy)
-@settings(max_examples=30)
-def test_hyp_codepack_imanagement_updateroomtype_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.updateRoomType(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.updateRoomType).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'updateRoomType' in CodePack_IManagement is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'updateRoomType' in CodePack_IManagement did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'updateRoomType' in CodePack_IManagement is not implemented or raised an error")
-
-import warnings
-import copy
-import inspect
-import ast
-from hypothesis import given, settings
-
-@given(instance=CodePack_IManagement_strategy)
-@settings(max_examples=30)
-def test_hyp_codepack_imanagement_updateroom_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.updateRoom(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.updateRoom).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'updateRoom' in CodePack_IManagement is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'updateRoom' in CodePack_IManagement did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'updateRoom' in CodePack_IManagement is not implemented or raised an error")
-
-import warnings
-import copy
-import inspect
-import ast
-from hypothesis import given, settings
-
-@given(instance=CodePack_IManagement_strategy)
-@settings(max_examples=30)
-def test_hyp_codepack_imanagement_updateservicetype_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.updateServiceType(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.updateServiceType).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'updateServiceType' in CodePack_IManagement is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'updateServiceType' in CodePack_IManagement did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'updateServiceType' in CodePack_IManagement is not implemented or raised an error")
 
 
 import warnings
@@ -2221,30 +1840,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=CodePack_IStaffAdmin_strategy)
-@settings(max_examples=30)
-def test_hyp_codepack_istaffadmin_removestaffaccount_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.removeStaffAccount(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.removeStaffAccount).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'removeStaffAccount' in CodePack_IStaffAdmin is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'removeStaffAccount' in CodePack_IStaffAdmin did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'removeStaffAccount' in CodePack_IStaffAdmin is not implemented or raised an error")
 
 import warnings
 import copy
@@ -2252,30 +1847,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=CodePack_IStaffAdmin_strategy)
-@settings(max_examples=30)
-def test_hyp_codepack_istaffadmin_updatestaffrole_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.updateStaffRole(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.updateStaffRole).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'updateStaffRole' in CodePack_IStaffAdmin is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'updateStaffRole' in CodePack_IStaffAdmin did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'updateStaffRole' in CodePack_IStaffAdmin is not implemented or raised an error")
 
 import warnings
 import copy
@@ -2283,34 +1854,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=CodePack_IStaffAdmin_strategy)
-@settings(max_examples=30)
-def test_hyp_codepack_istaffadmin_addstaffrole_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.addStaffRole(
-            "test", 
-            "test", 
-            "test", 
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.addStaffRole).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'addStaffRole' in CodePack_IStaffAdmin is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'addStaffRole' in CodePack_IStaffAdmin did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'addStaffRole' in CodePack_IStaffAdmin is not implemented or raised an error")
 
 import warnings
 import copy
@@ -2318,30 +1861,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=CodePack_IStaffAdmin_strategy)
-@settings(max_examples=30)
-def test_hyp_codepack_istaffadmin_removestaffrole_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.removeStaffRole(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.removeStaffRole).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'removeStaffRole' in CodePack_IStaffAdmin is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'removeStaffRole' in CodePack_IStaffAdmin did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'removeStaffRole' in CodePack_IStaffAdmin is not implemented or raised an error")
 
 import warnings
 import copy
@@ -2349,65 +1868,12 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=CodePack_IStaffAdmin_strategy)
-@settings(max_examples=30)
-def test_hyp_codepack_istaffadmin_updatestaffaccount_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.updateStaffAccount(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.updateStaffAccount).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'updateStaffAccount' in CodePack_IStaffAdmin is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'updateStaffAccount' in CodePack_IStaffAdmin did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'updateStaffAccount' in CodePack_IStaffAdmin is not implemented or raised an error")
 
 import warnings
 import copy
 import inspect
 import ast
 from hypothesis import given, settings
-
-@given(instance=CodePack_IStaffAdmin_strategy)
-@settings(max_examples=30)
-def test_hyp_codepack_istaffadmin_registerstaffaccount_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.registerStaffAccount(
-            "test", 
-            "test", 
-            "test", 
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.registerStaffAccount).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'registerStaffAccount' in CodePack_IStaffAdmin is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'registerStaffAccount' in CodePack_IStaffAdmin did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'registerStaffAccount' in CodePack_IStaffAdmin is not implemented or raised an error")
 
 
 
@@ -2417,92 +1883,12 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=CodePack_IReceptionOperations_rename_required_strategy)
-@settings(max_examples=30)
-def test_hyp_codepack_ireceptionoperations_rename_required_ischeckedin_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isCheckedIn(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isCheckedIn).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isCheckedIn' in CodePack_IReceptionOperations_rename_required is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isCheckedIn' in CodePack_IReceptionOperations_rename_required did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isCheckedIn' in CodePack_IReceptionOperations_rename_required is not implemented or raised an error")
 
 import warnings
 import copy
 import inspect
 import ast
 from hypothesis import given, settings
-
-@given(instance=CodePack_IReceptionOperations_rename_required_strategy)
-@settings(max_examples=30)
-def test_hyp_codepack_ireceptionoperations_rename_required_generatereceipt_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.generateReceipt(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.generateReceipt).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'generateReceipt' in CodePack_IReceptionOperations_rename_required is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'generateReceipt' in CodePack_IReceptionOperations_rename_required did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'generateReceipt' in CodePack_IReceptionOperations_rename_required is not implemented or raised an error")
-
-import warnings
-import copy
-import inspect
-import ast
-from hypothesis import given, settings
-
-@given(instance=CodePack_IReceptionOperations_rename_required_strategy)
-@settings(max_examples=30)
-def test_hyp_codepack_ireceptionoperations_rename_required_generatebill_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.generateBill(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.generateBill).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'generateBill' in CodePack_IReceptionOperations_rename_required is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'generateBill' in CodePack_IReceptionOperations_rename_required did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'generateBill' in CodePack_IReceptionOperations_rename_required is not implemented or raised an error")
 
 
 import warnings
@@ -2511,201 +1897,12 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=CodePack_IUserAccount_strategy)
-@settings(max_examples=30)
-def test_hyp_codepack_iuseraccount_login_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.login(
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.login).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'login' in CodePack_IUserAccount is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'login' in CodePack_IUserAccount did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'login' in CodePack_IUserAccount is not implemented or raised an error")
 
 import warnings
 import copy
 import inspect
 import ast
 from hypothesis import given, settings
-
-@given(instance=CodePack_IUserAccount_strategy)
-@settings(max_examples=30)
-def test_hyp_codepack_iuseraccount_updatecustomerinfo_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.updateCustomerInfo(
-            "test", 
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.updateCustomerInfo).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'updateCustomerInfo' in CodePack_IUserAccount is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'updateCustomerInfo' in CodePack_IUserAccount did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'updateCustomerInfo' in CodePack_IUserAccount is not implemented or raised an error")
-
-import warnings
-import copy
-import inspect
-import ast
-from hypothesis import given, settings
-
-@given(instance=CodePack_IUserAccount_strategy)
-@settings(max_examples=30)
-def test_hyp_codepack_iuseraccount_updatecustomercc_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.updateCustomerCC(
-            "test", 
-            "test", 
-            "test", 
-            "test", 
-            "test", 
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.updateCustomerCC).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'updateCustomerCC' in CodePack_IUserAccount is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'updateCustomerCC' in CodePack_IUserAccount did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'updateCustomerCC' in CodePack_IUserAccount is not implemented or raised an error")
-
-import warnings
-import copy
-import inspect
-import ast
-from hypothesis import given, settings
-
-@given(instance=CodePack_IUserAccount_strategy)
-@settings(max_examples=30)
-def test_hyp_codepack_iuseraccount_registercustomer_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.registerCustomer(
-            "test", 
-            "test", 
-            "test", 
-            "test", 
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.registerCustomer).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'registerCustomer' in CodePack_IUserAccount is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'registerCustomer' in CodePack_IUserAccount did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'registerCustomer' in CodePack_IUserAccount is not implemented or raised an error")
-
-import warnings
-import copy
-import inspect
-import ast
-from hypothesis import given, settings
-
-@given(instance=CodePack_IUserAccount_strategy)
-@settings(max_examples=30)
-def test_hyp_codepack_iuseraccount_updatecustomerpwd_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.updateCustomerPwd(
-            "test", 
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.updateCustomerPwd).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'updateCustomerPwd' in CodePack_IUserAccount is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'updateCustomerPwd' in CodePack_IUserAccount did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'updateCustomerPwd' in CodePack_IUserAccount is not implemented or raised an error")
-
-import warnings
-import copy
-import inspect
-import ast
-from hypothesis import given, settings
-
-@given(instance=CodePack_IUserAccount_strategy)
-@settings(max_examples=30)
-def test_hyp_codepack_iuseraccount_isemailavailable_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isEmailAvailable(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isEmailAvailable).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isEmailAvailable' in CodePack_IUserAccount is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isEmailAvailable' in CodePack_IUserAccount did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isEmailAvailable' in CodePack_IUserAccount is not implemented or raised an error")
 
 
 import warnings
@@ -2714,30 +1911,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=CodePack_IBookings_strategy)
-@settings(max_examples=30)
-def test_hyp_codepack_ibookings_cancelbooking_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.cancelBooking(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.cancelBooking).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'cancelBooking' in CodePack_IBookings is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'cancelBooking' in CodePack_IBookings did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'cancelBooking' in CodePack_IBookings is not implemented or raised an error")
 
 import warnings
 import copy
@@ -2745,31 +1918,8 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=CodePack_IBookings_strategy)
-@settings(max_examples=30)
-def test_hyp_codepack_ibookings_updateserviceforbooking_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.updateServiceForBooking(
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.updateServiceForBooking).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'updateServiceForBooking' in CodePack_IBookings is empty"
 
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'updateServiceForBooking' in CodePack_IBookings did not change state; check implementation")
 
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'updateServiceForBooking' in CodePack_IBookings is not implemented or raised an error")
 
 import warnings
 import copy
@@ -2777,32 +1927,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=CodePack_IBookings_strategy)
-@settings(max_examples=30)
-def test_hyp_codepack_ibookings_updateroomforbooking_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.updateRoomForBooking(
-            "test", 
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.updateRoomForBooking).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'updateRoomForBooking' in CodePack_IBookings is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'updateRoomForBooking' in CodePack_IBookings did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'updateRoomForBooking' in CodePack_IBookings is not implemented or raised an error")
 
 import warnings
 import copy
@@ -2810,36 +1934,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=CodePack_IBookings_strategy)
-@settings(max_examples=30)
-def test_hyp_codepack_ibookings_createbooking_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.createBooking(
-            "test", 
-            "test", 
-            "test", 
-            "test", 
-            "test", 
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.createBooking).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'createBooking' in CodePack_IBookings is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'createBooking' in CodePack_IBookings did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'createBooking' in CodePack_IBookings is not implemented or raised an error")
 
 import warnings
 import copy
@@ -2847,32 +1941,7 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=CodePack_IBookings_strategy)
-@settings(max_examples=30)
-def test_hyp_codepack_ibookings_isroomavailable_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isRoomAvailable(
-            "test", 
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isRoomAvailable).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isRoomAvailable' in CodePack_IBookings is empty"
 
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isRoomAvailable' in CodePack_IBookings did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isRoomAvailable' in CodePack_IBookings is not implemented or raised an error")
 
 import warnings
 import copy
@@ -2880,32 +1949,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=CodePack_IBookings_strategy)
-@settings(max_examples=30)
-def test_hyp_codepack_ibookings_updatetimeforbooking_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.updateTimeForBooking(
-            "test", 
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.updateTimeForBooking).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'updateTimeForBooking' in CodePack_IBookings is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'updateTimeForBooking' in CodePack_IBookings did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'updateTimeForBooking' in CodePack_IBookings is not implemented or raised an error")
 
 import warnings
 import copy
@@ -2913,36 +1956,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=CodePack_IBookings_strategy)
-@settings(max_examples=30)
-def test_hyp_codepack_ibookings_createbookingforcustomer_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.createBookingForCustomer(
-            "test", 
-            "test", 
-            "test", 
-            "test", 
-            "test", 
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.createBookingForCustomer).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'createBookingForCustomer' in CodePack_IBookings is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'createBookingForCustomer' in CodePack_IBookings did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'createBookingForCustomer' in CodePack_IBookings is not implemented or raised an error")
 
 import warnings
 import copy
@@ -2950,30 +1963,84 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=CodePack_IBookings_strategy)
-@settings(max_examples=30)
-def test_hyp_codepack_ibookings_sendcomfimationmail_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.sendComfimationMail(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.sendComfimationMail).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'sendComfimationMail' in CodePack_IBookings is empty"
 
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'sendComfimationMail' in CodePack_IBookings did not change state; check implementation")
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
 
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'sendComfimationMail' in CodePack_IBookings is not implemented or raised an error")
+
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
+
+
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
+
+
+
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
+
+
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
+
+
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
+
+
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
+
+
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
+
+
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
+
+
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
+
+
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
+
 
 
 # ----- SECTION B: test_structural_full.py (deterministic-first suite) -----
@@ -4308,6 +3375,7 @@ def test_assoc_services_ordered30_stub_double():
 
 
 
+import datetime as _ch_datetime
 from python_code import CheckInHandler
 from python_code import CodePack_CheckInMachine
 
@@ -4316,69 +3384,56 @@ def test_CodePack_CheckInMachine___init__():
 
 def test_CodePack_CheckInMachine_startUI():
     assert CodePack_CheckInMachine.startUI(CodePack_CheckInMachine(CodePack_CheckInMachine=CheckInHandler())) == None
-
 from python_code import CodePack_DataModels_Bill
 
 def test_CodePack_DataModels_Bill___init__():
     assert CodePack_DataModels_Bill.__init__(CodePack_DataModels_Bill(0, 0.0, CodePack_DataModels_Bill=set(), CodePack_DataModels_Bill31=set()), 0, 0.0, CodePack_DataModels_Bill=set(), CodePack_DataModels_Bill31=set()) == None
-
 from python_code import CodePack_DataModels_Booking
 from python_code import Room
 
 def test_CodePack_DataModels_Booking___init__():
-    assert CodePack_DataModels_Booking.__init__(CodePack_DataModels_Booking(0, datetime.date(1, 1, 1), datetime.date(1, 1, 1), False, 0.0, '', 0, '', 0, 0, 0, CodePack_DataModels_Booking=Room()), 0, datetime.date(1, 1, 1), datetime.date(1, 1, 1), False, 0.0, '', 0, '', 0, 0, 0, CodePack_DataModels_Booking=Room()) == None
-
+    assert CodePack_DataModels_Booking.__init__(CodePack_DataModels_Booking(0, _ch_datetime.date(1, 1, 1), _ch_datetime.date(1, 1, 1), False, 0.0, '', 0, '', 0, 0, 0, CodePack_DataModels_Booking=Room()), 0, _ch_datetime.date(1, 1, 1), _ch_datetime.date(1, 1, 1), False, 0.0, '', 0, '', 0, 0, 0, CodePack_DataModels_Booking=Room()) == None
 from python_code import CodePack_DataModels_Customer
 
 def test_CodePack_DataModels_Customer___init__():
-    assert CodePack_DataModels_Customer.__init__(CodePack_DataModels_Customer('', datetime.date(1, 1, 1), 0, '', '', 0, 0, 0, ''), '', datetime.date(1, 1, 1), 0, '', '', 0, 0, 0, '') == None
-
+    assert CodePack_DataModels_Customer.__init__(CodePack_DataModels_Customer('', _ch_datetime.date(1, 1, 1), 0, '', '', 0, 0, 0, ''), '', _ch_datetime.date(1, 1, 1), 0, '', '', 0, 0, 0, '') == None
 from python_code import CodePack_DataModels_ExtraService
 
 def test_CodePack_DataModels_ExtraService___init__():
-    assert CodePack_DataModels_ExtraService.__init__(CodePack_DataModels_ExtraService(datetime.date(1, 1, 2), datetime.date(1, 1, 1), 0, 0.0, ''), datetime.date(1, 1, 1), datetime.date(1, 1, 1), 0, 0.0, '') == None
-
+    assert CodePack_DataModels_ExtraService.__init__(CodePack_DataModels_ExtraService(_ch_datetime.date(1, 1, 2), _ch_datetime.date(1, 1, 1), 0, 0.0, ''), _ch_datetime.date(1, 1, 1), _ch_datetime.date(1, 1, 1), 0, 0.0, '') == None
 from python_code import CodePack_DataModels_Guest
 
 def test_CodePack_DataModels_Guest___init__():
     assert CodePack_DataModels_Guest.__init__(CodePack_DataModels_Guest('', 0), '', 0) == None
-
 from python_code import CodePack_DataModels_PaymentData
 
 def test_CodePack_DataModels_PaymentData___init__():
     assert CodePack_DataModels_PaymentData.__init__(CodePack_DataModels_PaymentData('', '', 0, 0, '', '', 0), '', '\x00', 0, 0, '', '', 0) == None
-
 from python_code import CodePack_DataModels_Room
 
 def test_CodePack_DataModels_Room___init__():
     assert CodePack_DataModels_Room.__init__(CodePack_DataModels_Room(0, '\x00', False, ''), 0, '', False, '') == None
-
 from python_code import Booking
 from python_code import CodePack_DataModels_RoomBooked
 
 def test_CodePack_DataModels_RoomBooked___init__():
-    assert CodePack_DataModels_RoomBooked.__init__(CodePack_DataModels_RoomBooked(0, 0, datetime.date(1, 1, 1), datetime.date(1, 1, 1), CodePack_DataModels_RoomBooked=Booking()), 0, 0, datetime.date(1, 1, 1), datetime.date(1, 1, 1), CodePack_DataModels_RoomBooked=Booking()) == None
-
+    assert CodePack_DataModels_RoomBooked.__init__(CodePack_DataModels_RoomBooked(0, 0, _ch_datetime.date(1, 1, 1), _ch_datetime.date(1, 1, 1), CodePack_DataModels_RoomBooked=Booking()), 0, 0, _ch_datetime.date(1, 1, 1), _ch_datetime.date(1, 1, 1), CodePack_DataModels_RoomBooked=Booking()) == None
 from python_code import CodePack_DataModels_RoomType
 
 def test_CodePack_DataModels_RoomType___init__():
     assert CodePack_DataModels_RoomType.__init__(CodePack_DataModels_RoomType('', 0, 0.0, ''), '', 0, 0.0, '') == None
-
 from python_code import CodePack_DataModels_ServiceType
 
 def test_CodePack_DataModels_ServiceType___init__():
     assert CodePack_DataModels_ServiceType.__init__(CodePack_DataModels_ServiceType('', '', 0.0), '', '', 0.0) == None
-
 from python_code import CodePack_DataModels_StaffMember
 
 def test_CodePack_DataModels_StaffMember___init__():
     assert CodePack_DataModels_StaffMember.__init__(CodePack_DataModels_StaffMember('', '', '', '', 0, ''), '', '', '', '', 0, '') == None
-
 from python_code import CodePack_DataModels_StaffRole
 
 def test_CodePack_DataModels_StaffRole___init__():
     assert CodePack_DataModels_StaffRole.__init__(CodePack_DataModels_StaffRole('', False, False, False, False), '', False, False, False, False) == None
-
 from python_code import CodePack_IBookings
 
 def test_CodePack_IBookings___init__():
@@ -4422,7 +3477,6 @@ def test_CodePack_IBookings_cancelBooking():
 
 def test_CodePack_IBookings_getPaymentForBooking():
     assert CodePack_IBookings.getPaymentForBooking(CodePack_IBookings(), '') == None
-
 from python_code import CodePack_ICheckIn
 
 def test_CodePack_ICheckIn___init__():
@@ -4433,7 +3487,6 @@ def test_CodePack_ICheckIn_validateBooking():
 
 def test_CodePack_ICheckIn_assignGuestToBooking():
     assert CodePack_ICheckIn.assignGuestToBooking(CodePack_ICheckIn(), '', '') == None
-
 from python_code import CodePack_IManagement
 
 def test_CodePack_IManagement___init__():
@@ -4474,7 +3527,6 @@ def test_CodePack_IManagement_updateRoom():
 
 def test_CodePack_IManagement_updateRoomType():
     assert CodePack_IManagement.updateRoomType(CodePack_IManagement(), '') == None
-
 from python_code import CodePack_IReceptionOperations_rename_required
 
 def test_CodePack_IReceptionOperations_rename_required___init__():
@@ -4488,7 +3540,6 @@ def test_CodePack_IReceptionOperations_rename_required_generateReceipt():
 
 def test_CodePack_IReceptionOperations_rename_required_generateBill():
     assert CodePack_IReceptionOperations_rename_required.generateBill(CodePack_IReceptionOperations_rename_required(), '') == None
-
 from python_code import CodePack_IStaffAdmin
 
 def test_CodePack_IStaffAdmin___init__():
@@ -4520,7 +3571,6 @@ def test_CodePack_IStaffAdmin_registerStaffAccount():
 
 def test_CodePack_IStaffAdmin_addStaffRole():
     assert CodePack_IStaffAdmin.addStaffRole(CodePack_IStaffAdmin(), '', '', '', '', '') == None
-
 from python_code import CodePack_IStaffAuthentication
 
 def test_CodePack_IStaffAuthentication___init__():
@@ -4531,7 +3581,6 @@ def test_CodePack_IStaffAuthentication_getRoleForStaff():
 
 def test_CodePack_IStaffAuthentication_login():
     assert CodePack_IStaffAuthentication.login(CodePack_IStaffAuthentication(), '', '') == None
-
 from python_code import CodePack_IUserAccount
 
 def test_CodePack_IUserAccount___init__():
@@ -4557,12 +3606,10 @@ def test_CodePack_IUserAccount_login():
 
 def test_CodePack_IUserAccount_registerCustomer():
     assert CodePack_IUserAccount.registerCustomer(CodePack_IUserAccount(), '', '', '', '', '', '') == None
-
 from python_code import CodePack_Shared_ContactData
 
 def test_CodePack_Shared_ContactData___init__():
     assert CodePack_Shared_ContactData.__init__(CodePack_Shared_ContactData('', '', 0), '\x00', '', 0) == None
-
 from python_code import CodePack_StaffGUI
 from python_code import ManagementHandler
 from python_code import ReceptionHandler
@@ -4572,7 +3619,6 @@ def test_CodePack_StaffGUI___init__():
 
 def test_CodePack_StaffGUI_startUI():
     assert CodePack_StaffGUI.startUI(CodePack_StaffGUI(CodePack_StaffGUI=ManagementHandler(), CodePack_StaffGUI2=ReceptionHandler())) == None
-
 from python_code import CodePack_UserGUI
 from python_code import CustomerHandler
 

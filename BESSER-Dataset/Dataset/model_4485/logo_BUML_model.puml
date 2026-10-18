@@ -1,4 +1,8 @@
 @startuml
+' model: kmLogo
+' project: sampleModel
+' owner: User
+' description: New project
 enum ArithmeticOperator {
   div
   minus
@@ -82,15 +86,15 @@ Primitive <|-- kmLogo_Left
 Primitive <|-- kmLogo_PenDown
 Primitive <|-- kmLogo_PenUp
 Primitive <|-- kmLogo_Right
-kmLogo_Expression "0..1" --* "1..1" kmLogo_Left : angle6
-kmLogo_Expression "0..1" --* "1..1" kmLogo_Right : angle8
-kmLogo_Expression "0..1" --* "1..1" kmLogo_VarDecl : expression20
-kmLogo_Instruction "0..9999" --* "1..1" kmLogo_LogoProgram : instructions1
-kmLogo_ArithmeticExpression "1..1" *-- "1..1" kmLogo_Expression : left10
-kmLogo_Expression "1..1" --* "1..1" kmLogo_RelationalExpression : left15
-kmLogo_ArithmeticExpression "1..1" *-- "1..1" kmLogo_Expression : right12
-kmLogo_Expression "1..1" --* "1..1" kmLogo_RelationalExpression : right17
-kmLogo_Back "1..1" *-- "1..1" kmLogo_Expression : steps3
-kmLogo_Expression "1..1" --* "1..1" kmLogo_Forward : steps4
-kmLogo_LogoProgram "1..1" *-- "0..9999" kmLogo_VarDecl : variables0
+kmLogo_Expression "kmLogo_Left 0..1" --* "kmLogo_Expression7 1..1" kmLogo_Left : angle6
+kmLogo_Expression "kmLogo_Right 0..1" --* "kmLogo_Expression9 1..1" kmLogo_Right : angle8
+kmLogo_Expression "kmLogo_VarDecl21 0..1" --* "kmLogo_Expression22 1..1" kmLogo_VarDecl : expression20
+kmLogo_Instruction "kmLogo_LogoProgram2 0..9999" --* "kmLogo_Instruction 1..1" kmLogo_LogoProgram : instructions1
+kmLogo_ArithmeticExpression "kmLogo_Expression11 1..1" *-- "kmLogo_ArithmeticExpression 1..1" kmLogo_Expression : left10
+kmLogo_Expression "kmLogo_RelationalExpression 1..1" --* "kmLogo_Expression16 1..1" kmLogo_RelationalExpression : left15
+kmLogo_ArithmeticExpression "kmLogo_Expression14 1..1" *-- "kmLogo_ArithmeticExpression13 1..1" kmLogo_Expression : right12
+kmLogo_Expression "kmLogo_RelationalExpression18 1..1" --* "kmLogo_Expression19 1..1" kmLogo_RelationalExpression : right17
+kmLogo_Back "kmLogo_Expression 1..1" *-- "kmLogo_Back 1..1" kmLogo_Expression : steps3
+kmLogo_Expression "kmLogo_Forward 1..1" --* "kmLogo_Expression5 1..1" kmLogo_Forward : steps4
+kmLogo_LogoProgram "kmLogo_VarDecl 1..1" *-- "kmLogo_LogoProgram 0..9999" kmLogo_VarDecl : variables0
 @enduml

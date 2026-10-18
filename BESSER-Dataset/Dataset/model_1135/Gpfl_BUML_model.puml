@@ -1,4 +1,8 @@
 @startuml
+' model: gpfl
+' project: sampleModel
+' owner: User
+' description: New project
 class GExpression {
 }
 class gpfl_AcceptCmd {
@@ -109,45 +113,45 @@ GExpression <|-- gpfl_SetCmd
 GExpression <|-- gpfl_StpCmd
 GExpression <|-- gpfl_StringLit
 GExpression <|-- gpfl_Variable
-gpfl_AutomataDef "0..9999" --* "1..1" gpfl_Program : automatas0
-gpfl_AutomataDef "0..1" -- "1..1" gpfl_AutomatonCmd : automaton45
-gpfl_AutomatonCmd "0..1" -- "1..1" gpfl_StpCmd : automaton47
-gpfl_GExpression "0..9999" --* "1..1" gpfl_StpCmd : errors52
-gpfl_GExpression "0..1" --* "1..1" gpfl_StpCmd : event49
-gpfl_CondStmt "1..1" *-- "0..1" gpfl_GExpression : exp21
-gpfl_GExpression "0..1" --* "1..1" gpfl_IterStmt : exp26
-gpfl_AlarmCmd "1..1" *-- "0..1" gpfl_GExpression : exp41
-gpfl_GExpression "0..1" --* "1..1" gpfl_SetCmd : exp43
-gpfl_GExpression "0..1" --* "1..1" gpfl_GExpression : expression7
-gpfl_Field "0..9999" --* "1..1" gpfl_SendCmd : fields38
-gpfl_AutomataDef "1..1" -- "0..1" gpfl_State : init11
-gpfl_GExpression "0..9999" --* "1..1" gpfl_Program : initStmts1
-gpfl_CmdAnd "1..1" *-- "0..1" gpfl_GExpression : left55
-gpfl_CmdEq "1..1" *-- "0..1" gpfl_GExpression : left60
-gpfl_CmdNEq "1..1" *-- "0..1" gpfl_GExpression : left65
-gpfl_CmdGECompare "1..1" *-- "0..1" gpfl_GExpression : left70
-gpfl_CmdLECompare "1..1" *-- "0..1" gpfl_GExpression : left75
-gpfl_CmdGCompare "1..1" *-- "0..1" gpfl_GExpression : left80
-gpfl_CmdLCompare "1..1" *-- "0..1" gpfl_GExpression : left85
-gpfl_CmdAdd "1..1" *-- "0..1" gpfl_GExpression : left90
-gpfl_CmdSub "1..1" *-- "0..1" gpfl_GExpression : left95
-gpfl_GExpression "0..1" --* "1..1" gpfl_InterruptStmt : periodic31
-gpfl_GExpression "0..1" --* "1..1" gpfl_SendCmd : port36
-gpfl_CmdAnd "1..1" *-- "0..1" gpfl_GExpression : right57
-gpfl_CmdEq "1..1" *-- "0..1" gpfl_GExpression : right62
-gpfl_CmdNEq "1..1" *-- "0..1" gpfl_GExpression : right67
-gpfl_CmdGECompare "1..1" *-- "0..1" gpfl_GExpression : right72
-gpfl_CmdLECompare "1..1" *-- "0..1" gpfl_GExpression : right77
-gpfl_CmdGCompare "1..1" *-- "0..1" gpfl_GExpression : right82
-gpfl_CmdLCompare "1..1" *-- "0..1" gpfl_GExpression : right87
-gpfl_CmdAdd "1..1" *-- "0..1" gpfl_GExpression : right92
-gpfl_CmdSub "1..1" *-- "0..1" gpfl_GExpression : right97
-gpfl_AutomataDef "1..1" *-- "0..9999" gpfl_State : states13
-gpfl_CondStmt "1..1" *-- "0..9999" gpfl_GExpression : stmts23
-gpfl_GExpression "0..9999" --* "1..1" gpfl_IterStmt : stmts28
-gpfl_GExpression "0..9999" --* "1..1" gpfl_Program : stmts3
-gpfl_GExpression "0..9999" --* "1..1" gpfl_InterruptStmt : stmts33
-gpfl_State "0..1" -- "1..1" gpfl_Transition : target18
-gpfl_State "1..1" *-- "0..9999" gpfl_Transition : transitions16
-gpfl_Field "1..1" *-- "0..1" gpfl_GExpression : value9
+gpfl_AutomataDef "gpfl_Program 0..9999" --* "gpfl_AutomataDef 1..1" gpfl_Program : automatas0
+gpfl_AutomataDef "gpfl_AutomatonCmd 0..1" -- "gpfl_AutomataDef46 1..1" gpfl_AutomatonCmd : automaton45
+gpfl_AutomatonCmd "gpfl_StpCmd 0..1" -- "gpfl_AutomatonCmd48 1..1" gpfl_StpCmd : automaton47
+gpfl_GExpression "gpfl_StpCmd53 0..9999" --* "gpfl_GExpression54 1..1" gpfl_StpCmd : errors52
+gpfl_GExpression "gpfl_StpCmd50 0..1" --* "gpfl_GExpression51 1..1" gpfl_StpCmd : event49
+gpfl_CondStmt "gpfl_GExpression22 1..1" *-- "gpfl_CondStmt 0..1" gpfl_GExpression : exp21
+gpfl_GExpression "gpfl_IterStmt 0..1" --* "gpfl_GExpression27 1..1" gpfl_IterStmt : exp26
+gpfl_AlarmCmd "gpfl_GExpression42 1..1" *-- "gpfl_AlarmCmd 0..1" gpfl_GExpression : exp41
+gpfl_GExpression "gpfl_SetCmd 0..1" --* "gpfl_GExpression44 1..1" gpfl_SetCmd : exp43
+gpfl_GExpression "gpfl_GExpression6 0..1" --* "gpfl_GExpression8 1..1" gpfl_GExpression : expression7
+gpfl_Field "gpfl_SendCmd39 0..9999" --* "gpfl_Field40 1..1" gpfl_SendCmd : fields38
+gpfl_AutomataDef "gpfl_State 1..1" -- "gpfl_AutomataDef12 0..1" gpfl_State : init11
+gpfl_GExpression "gpfl_Program2 0..9999" --* "gpfl_GExpression 1..1" gpfl_Program : initStmts1
+gpfl_CmdAnd "gpfl_GExpression56 1..1" *-- "gpfl_CmdAnd 0..1" gpfl_GExpression : left55
+gpfl_CmdEq "gpfl_GExpression61 1..1" *-- "gpfl_CmdEq 0..1" gpfl_GExpression : left60
+gpfl_CmdNEq "gpfl_GExpression66 1..1" *-- "gpfl_CmdNEq 0..1" gpfl_GExpression : left65
+gpfl_CmdGECompare "gpfl_GExpression71 1..1" *-- "gpfl_CmdGECompare 0..1" gpfl_GExpression : left70
+gpfl_CmdLECompare "gpfl_GExpression76 1..1" *-- "gpfl_CmdLECompare 0..1" gpfl_GExpression : left75
+gpfl_CmdGCompare "gpfl_GExpression81 1..1" *-- "gpfl_CmdGCompare 0..1" gpfl_GExpression : left80
+gpfl_CmdLCompare "gpfl_GExpression86 1..1" *-- "gpfl_CmdLCompare 0..1" gpfl_GExpression : left85
+gpfl_CmdAdd "gpfl_GExpression91 1..1" *-- "gpfl_CmdAdd 0..1" gpfl_GExpression : left90
+gpfl_CmdSub "gpfl_GExpression96 1..1" *-- "gpfl_CmdSub 0..1" gpfl_GExpression : left95
+gpfl_GExpression "gpfl_InterruptStmt 0..1" --* "gpfl_GExpression32 1..1" gpfl_InterruptStmt : periodic31
+gpfl_GExpression "gpfl_SendCmd 0..1" --* "gpfl_GExpression37 1..1" gpfl_SendCmd : port36
+gpfl_CmdAnd "gpfl_GExpression59 1..1" *-- "gpfl_CmdAnd58 0..1" gpfl_GExpression : right57
+gpfl_CmdEq "gpfl_GExpression64 1..1" *-- "gpfl_CmdEq63 0..1" gpfl_GExpression : right62
+gpfl_CmdNEq "gpfl_GExpression69 1..1" *-- "gpfl_CmdNEq68 0..1" gpfl_GExpression : right67
+gpfl_CmdGECompare "gpfl_GExpression74 1..1" *-- "gpfl_CmdGECompare73 0..1" gpfl_GExpression : right72
+gpfl_CmdLECompare "gpfl_GExpression79 1..1" *-- "gpfl_CmdLECompare78 0..1" gpfl_GExpression : right77
+gpfl_CmdGCompare "gpfl_GExpression84 1..1" *-- "gpfl_CmdGCompare83 0..1" gpfl_GExpression : right82
+gpfl_CmdLCompare "gpfl_GExpression89 1..1" *-- "gpfl_CmdLCompare88 0..1" gpfl_GExpression : right87
+gpfl_CmdAdd "gpfl_GExpression94 1..1" *-- "gpfl_CmdAdd93 0..1" gpfl_GExpression : right92
+gpfl_CmdSub "gpfl_GExpression99 1..1" *-- "gpfl_CmdSub98 0..1" gpfl_GExpression : right97
+gpfl_AutomataDef "gpfl_State15 1..1" *-- "gpfl_AutomataDef14 0..9999" gpfl_State : states13
+gpfl_CondStmt "gpfl_GExpression25 1..1" *-- "gpfl_CondStmt24 0..9999" gpfl_GExpression : stmts23
+gpfl_GExpression "gpfl_IterStmt29 0..9999" --* "gpfl_GExpression30 1..1" gpfl_IterStmt : stmts28
+gpfl_GExpression "gpfl_Program4 0..9999" --* "gpfl_GExpression5 1..1" gpfl_Program : stmts3
+gpfl_GExpression "gpfl_InterruptStmt34 0..9999" --* "gpfl_GExpression35 1..1" gpfl_InterruptStmt : stmts33
+gpfl_State "gpfl_Transition19 0..1" -- "gpfl_State20 1..1" gpfl_Transition : target18
+gpfl_State "gpfl_Transition 1..1" *-- "gpfl_State17 0..9999" gpfl_Transition : transitions16
+gpfl_Field "gpfl_GExpression10 1..1" *-- "gpfl_Field 0..1" gpfl_GExpression : value9
 @enduml

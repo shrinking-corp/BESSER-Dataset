@@ -1,4 +1,8 @@
 @startuml
+' model: d0ed3e28_ae24_4dc3_bcf7_bd98e2a96ce6
+' project: sampleModel
+' owner: User
+' description: New project
 class Cart_Checkout {
   + CheckoutID : int
   + CustomerID : str
@@ -95,18 +99,18 @@ class Shopping_Cart_ShoppingCart {
   + creationDate : date
   + id : int
 }
-Cart_Checkout "1..1" -- "1..9999" Customer_Payment1 : Checkout_Payment
-Customer_Customer "0..1" -- "1..1" Shopping_Cart_ShoppingCart : Customer_ShoppingCart
-Customer_Account "0..1" -- "0..1" GUI_Screen : GUI_Screen_Account
-GUI_Screen "0..1" -- "0..1" Product_Item : GUI_Screen_Item
-Cart_ShoppingCart "0..1" -- "0..1" GUI_Screen : GUI_Screen_ShoppingCart
-Cart_ShoppingCart "0..1" -- "1..9999" Product_Item : Item_ShoppingCart
-Product_Item "1..1" -- "1..9999" Product_Item_Specification : Item_Specification_Item
-Product_Item "1..1" -- "1..9999" Product_Item_Type : Item_Type_Item
-Customer_Payment "1..9999" -- "1..1" Shopping_Cart_Checkout : Payment_Checkout
-Customer_Customer "0..1" -- "0..1" Customer_Payment : Payment_Customer
-Customer_Customer1 "1..9999" -- "0..1" Customer_Payment1 : Payment_Customer1
-Shopping_Cart_Checkout "1..9999" -- "1..1" Shopping_Cart_ShoppingCart : ShoppingCart_Checkout
-Cart_Checkout "1..9999" -- "1..1" Cart_ShoppingCart : ShoppingCart_Checkout1
-Cart_ShoppingCart "1..1" -- "0..1" Customer_Customer1 : ShoppingCart_Customer
+Cart_Checkout "Checkout_Payment_115 1..1" -- "Checkout_Payment_014 1..9999" Customer_Payment1 : Checkout_Payment
+Customer_Customer "Customer_ShoppingCart_13 0..1" -- "Customer_ShoppingCart_02 1..1" Shopping_Cart_ShoppingCart : Customer_ShoppingCart
+Customer_Account "GUI_Screen_Account_022 0..1" -- "GUI_Screen_Account_123 0..1" GUI_Screen : GUI_Screen_Account
+GUI_Screen "GUI_Screen_Item_127 0..1" -- "GUI_Screen_Item_026 0..1" Product_Item : GUI_Screen_Item
+Cart_ShoppingCart "GUI_Screen_ShoppingCart_024 0..1" -- "GUI_Screen_ShoppingCart_125 0..1" GUI_Screen : GUI_Screen_ShoppingCart
+Cart_ShoppingCart "Item_ShoppingCart_020 0..1" -- "Item_ShoppingCart_121 1..9999" Product_Item : Item_ShoppingCart
+Product_Item "Item_Specification_Item_016 1..1" -- "Item_Specification_Item_117 1..9999" Product_Item_Specification : Item_Specification_Item
+Product_Item "Item_Type_Item_018 1..1" -- "Item_Type_Item_119 1..9999" Product_Item_Type : Item_Type_Item
+Customer_Payment "Payment_Checkout_15 1..9999" -- "Payment_Checkout_04 1..1" Shopping_Cart_Checkout : Payment_Checkout
+Customer_Customer "Payment_Customer_00 0..1" -- "Payment_Customer_11 0..1" Customer_Payment : Payment_Customer
+Customer_Customer1 "Payment_Customer_08 1..9999" -- "Payment_Customer_19 0..1" Customer_Payment1 : Payment_Customer1
+Shopping_Cart_Checkout "ShoppingCart_Checkout_06 1..9999" -- "ShoppingCart_Checkout_17 1..1" Shopping_Cart_ShoppingCart : ShoppingCart_Checkout
+Cart_Checkout "ShoppingCart_Checkout_010 1..9999" -- "ShoppingCart_Checkout_111 1..1" Cart_ShoppingCart : ShoppingCart_Checkout1
+Cart_ShoppingCart "ShoppingCart_Customer_113 1..1" -- "ShoppingCart_Customer_012 0..1" Customer_Customer1 : ShoppingCart_Customer
 @enduml

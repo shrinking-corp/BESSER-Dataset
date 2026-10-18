@@ -1,4 +1,8 @@
 @startuml
+' model: fsmcore
+' project: sampleModel
+' owner: User
+' description: New project
 class NamedElement {
 }
 class fsmcore_Constraint {
@@ -20,13 +24,13 @@ class fsmcore_Trigger {
 NamedElement <|-- fsmcore_State
 NamedElement <|-- fsmcore_StateMachine
 NamedElement <|-- fsmcore_Transition
-fsmcore_Program "0..1" --* "1..1" fsmcore_State : doAction3
-fsmcore_Constraint "0..1" --* "1..1" fsmcore_Transition : guard8
-fsmcore_State "1..1" -- "0..9999" fsmcore_Transition : incoming5
-fsmcore_State "1..1" -- "0..9999" fsmcore_Transition : outgoing6
-fsmcore_State "1..1" -- "1..1" fsmcore_Transition : source13
-fsmcore_State "0..9999" --* "1..1" fsmcore_StateMachine : states0
-fsmcore_State "1..1" -- "1..1" fsmcore_Transition : target12
-fsmcore_StateMachine "1..1" *-- "0..9999" fsmcore_Transition : transitions1
-fsmcore_Transition "1..1" *-- "0..1" fsmcore_Trigger : trigger10
+fsmcore_Program "fsmcore_State4 0..1" --* "fsmcore_Program 1..1" fsmcore_State : doAction3
+fsmcore_Constraint "fsmcore_Transition9 0..1" --* "fsmcore_Constraint 1..1" fsmcore_Transition : guard8
+fsmcore_State "Transition 1..1" -- "target 0..9999" fsmcore_Transition : incoming5
+fsmcore_State "Transition7 1..1" -- "source 0..9999" fsmcore_Transition : outgoing6
+fsmcore_State "outgoing 1..1" -- "State14 1..1" fsmcore_Transition : source13
+fsmcore_State "fsmcore_StateMachine 0..9999" --* "fsmcore_State 1..1" fsmcore_StateMachine : states0
+fsmcore_State "incoming 1..1" -- "State 1..1" fsmcore_Transition : target12
+fsmcore_StateMachine "fsmcore_Transition 1..1" *-- "fsmcore_StateMachine2 0..9999" fsmcore_Transition : transitions1
+fsmcore_Transition "fsmcore_Trigger 1..1" *-- "fsmcore_Transition11 0..1" fsmcore_Trigger : trigger10
 @enduml

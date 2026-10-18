@@ -1,4 +1,8 @@
 @startuml
+' model: d5dfa406_1735_41a2_8bfe_68cdf2f8ea29
+' project: sampleModel
+' owner: User
+' description: New project
 abstract class AcceleratorCard {
 }
 class CPU {
@@ -39,15 +43,15 @@ class Vendor2Adapter {
 }
 class Vendor2Sound {
 }
-AcceleratorCard "0..1" -- "0..1" CPU : AcceleratorCard_CPU
-Cache "0..1" -- "1..1" RAM : Cache_RAM
-Card "0..9999" -- "0..9999" ExtensionBoard : ExtensionBoard_Card
-Card "0..3" -- "0..9999" Machine : Machine_Card
-Machine "0..9999" -- "0..9999" Memory_Interface : Machine_Memory
-Machine "0..9999" -- "0..9999" Processor : Machine_Processor
-Memory_Interface "0..9999" -- "0..9999" Processor : Processor_Memory
-Processor "0..9999" -- "0..9999" Program : Processor_Program
-Instruction "0..9999" -- "0..9999" Program : Program_Instruction
-Vendor1Adapter "0..9999" -- "0..9999" Vendor1Sound : Vendor1Adapter_Vendor1Sound
-Vendor2Adapter "0..9999" -- "0..9999" Vendor2Sound : Vendor2Adapter_Vendor2Sound
+AcceleratorCard "acceleratorCard21 0..1" -- "decoratedCPU20 0..1" CPU : AcceleratorCard_CPU
+Cache "cache11 0..1" -- "ramProxy10 1..1" RAM : Cache_RAM
+Card "cards13 0..9999" -- "extensionBoard12 0..9999" ExtensionBoard : ExtensionBoard_Card
+Card "cards19 0..3" -- "machine18 0..9999" Machine : Machine_Card
+Machine "machine0 0..9999" -- "memory1 0..9999" Memory_Interface : Machine_Memory
+Machine "machine6 0..9999" -- "processor7 0..9999" Processor : Machine_Processor
+Memory_Interface "memory3 0..9999" -- "processor2 0..9999" Processor : Processor_Memory
+Processor "processor8 0..9999" -- "program9 0..9999" Program : Processor_Program
+Instruction "instructions5 0..9999" -- "program4 0..9999" Program : Program_Instruction
+Vendor1Adapter "vendor1Adapter14 0..9999" -- "vendor1Sound15 0..9999" Vendor1Sound : Vendor1Adapter_Vendor1Sound
+Vendor2Adapter "vendor2Adapter16 0..9999" -- "vendor2Sound17 0..9999" Vendor2Sound : Vendor2Adapter_Vendor2Sound
 @enduml

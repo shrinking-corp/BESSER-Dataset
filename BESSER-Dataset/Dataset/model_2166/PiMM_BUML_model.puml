@@ -1,4 +1,8 @@
 @startuml
+' model: pimm
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractActor {
 }
 class AbstractVertex {
@@ -193,30 +197,30 @@ PiMMVisitable <|-- pimm_Refinement
 Port <|-- pimm_ConfigInputPort
 Port <|-- pimm_DataPort
 Refinement <|-- pimm_HRefinement
-pimm_ConfigInputPort "0..9999" --* "1..1" pimm_Parameterizable : configInputPorts0
-pimm_AbstractActor "1..1" *-- "0..9999" pimm_ConfigOutputPort : configOutputPorts4
-pimm_AbstractActor "1..1" *-- "0..9999" pimm_DataInputPort : dataInputPorts1
-pimm_AbstractActor "1..1" *-- "0..9999" pimm_DataOutputPort : dataOutputPorts2
-pimm_Delay "0..1" --* "1..1" pimm_Fifo : delay21
-pimm_Dependency "0..9999" --* "1..1" pimm_PiGraph : dependencies12
-pimm_Expression "1..1" --* "1..1" pimm_Parameter : expression27
-pimm_Delay "1..1" *-- "1..1" pimm_Expression : expression33
-pimm_DataPort "1..1" *-- "1..1" pimm_Expression : expression42
-pimm_Fifo "0..9999" --* "1..1" pimm_PiGraph : fifos8
-pimm_ConfigInputPort "1..1" -- "1..1" pimm_Dependency : getter30
-pimm_InterfaceActor "1..1" -- "1..1" pimm_Port : graphPort23
-pimm_ConfigInputPort "1..1" -- "1..1" pimm_Parameter : graphPort24
-pimm_ConfigInputPort "1..1" -- "0..1" pimm_Dependency : incomingDependency18
-pimm_DataInputPort "1..1" -- "0..1" pimm_Fifo : incomingFifo15
-pimm_FunctionPrototype "0..1" --* "1..1" pimm_HRefinement : initPrototype37
-pimm_FunctionPrototype "1..1" --* "1..1" pimm_HRefinement : loopPrototype36
-pimm_Dependency "0..9999" -- "1..1" pimm_ISetter : outgoingDependencies31
-pimm_DataOutputPort "1..1" -- "0..1" pimm_Fifo : outgoingFifo16
-pimm_Parameter "0..9999" --* "1..1" pimm_PiGraph : parameters10
-pimm_FunctionParameter "0..9999" --* "1..1" pimm_FunctionPrototype : parameters40
-pimm_Actor "1..1" *-- "1..1" pimm_Refinement : refinement14
-pimm_Dependency "1..1" -- "1..1" pimm_ISetter : setter29
-pimm_DataOutputPort "1..1" -- "1..1" pimm_Fifo : sourcePort19
-pimm_DataInputPort "1..1" -- "1..1" pimm_Fifo : targetPort20
-pimm_AbstractActor "0..9999" --* "1..1" pimm_PiGraph : vertices6
+pimm_ConfigInputPort "pimm_Parameterizable 0..9999" --* "pimm_ConfigInputPort 1..1" pimm_Parameterizable : configInputPorts0
+pimm_AbstractActor "pimm_ConfigOutputPort 1..1" *-- "pimm_AbstractActor5 0..9999" pimm_ConfigOutputPort : configOutputPorts4
+pimm_AbstractActor "pimm_DataInputPort 1..1" *-- "pimm_AbstractActor 0..9999" pimm_DataInputPort : dataInputPorts1
+pimm_AbstractActor "pimm_DataOutputPort 1..1" *-- "pimm_AbstractActor3 0..9999" pimm_DataOutputPort : dataOutputPorts2
+pimm_Delay "pimm_Fifo22 0..1" --* "pimm_Delay 1..1" pimm_Fifo : delay21
+pimm_Dependency "pimm_PiGraph13 0..9999" --* "pimm_Dependency 1..1" pimm_PiGraph : dependencies12
+pimm_Expression "pimm_Parameter28 1..1" --* "pimm_Expression 1..1" pimm_Parameter : expression27
+pimm_Delay "pimm_Expression35 1..1" *-- "pimm_Delay34 1..1" pimm_Expression : expression33
+pimm_DataPort "pimm_Expression43 1..1" *-- "pimm_DataPort 1..1" pimm_Expression : expression42
+pimm_Fifo "pimm_PiGraph9 0..9999" --* "pimm_Fifo 1..1" pimm_PiGraph : fifos8
+pimm_ConfigInputPort "incomingDependency 1..1" -- "ConfigInputPort 1..1" pimm_Dependency : getter30
+pimm_InterfaceActor "pimm_Port 1..1" -- "pimm_InterfaceActor 1..1" pimm_Port : graphPort23
+pimm_ConfigInputPort "pimm_Parameter25 1..1" -- "pimm_ConfigInputPort26 1..1" pimm_Parameter : graphPort24
+pimm_ConfigInputPort "Dependency 1..1" -- "getter 0..1" pimm_Dependency : incomingDependency18
+pimm_DataInputPort "Fifo 1..1" -- "targetPort 0..1" pimm_Fifo : incomingFifo15
+pimm_FunctionPrototype "pimm_HRefinement38 0..1" --* "pimm_FunctionPrototype39 1..1" pimm_HRefinement : initPrototype37
+pimm_FunctionPrototype "pimm_HRefinement 1..1" --* "pimm_FunctionPrototype 1..1" pimm_HRefinement : loopPrototype36
+pimm_Dependency "setter 0..9999" -- "Dependency32 1..1" pimm_ISetter : outgoingDependencies31
+pimm_DataOutputPort "Fifo17 1..1" -- "sourcePort 0..1" pimm_Fifo : outgoingFifo16
+pimm_Parameter "pimm_PiGraph11 0..9999" --* "pimm_Parameter 1..1" pimm_PiGraph : parameters10
+pimm_FunctionParameter "pimm_FunctionPrototype41 0..9999" --* "pimm_FunctionParameter 1..1" pimm_FunctionPrototype : parameters40
+pimm_Actor "pimm_Refinement 1..1" *-- "pimm_Actor 1..1" pimm_Refinement : refinement14
+pimm_Dependency "ISetter 1..1" -- "outgoingDependencies 1..1" pimm_ISetter : setter29
+pimm_DataOutputPort "outgoingFifo 1..1" -- "DataOutputPort 1..1" pimm_Fifo : sourcePort19
+pimm_DataInputPort "incomingFifo 1..1" -- "DataInputPort 1..1" pimm_Fifo : targetPort20
+pimm_AbstractActor "pimm_PiGraph 0..9999" --* "pimm_AbstractActor7 1..1" pimm_PiGraph : vertices6
 @enduml

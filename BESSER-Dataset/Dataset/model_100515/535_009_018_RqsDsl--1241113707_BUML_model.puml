@@ -1,4 +1,8 @@
 @startuml
+' model: rqsDsl
+' project: sampleModel
+' owner: User
+' description: New project
 class rqsDsl_EObject {
 }
 class rqsDsl_Model {
@@ -23,6 +27,6 @@ class rqsDsl_TAnnotation {
   + text : str
   + type : str
 }
-rqsDsl_EObject "0..9999" --* "1..1" rqsDsl_Model : annotations1
-rqsDsl_Model "1..1" *-- "0..9999" rqsDsl_Requirement : requirements0
+rqsDsl_EObject "rqsDsl_Model2 0..9999" --* "rqsDsl_EObject 1..1" rqsDsl_Model : annotations1
+rqsDsl_Model "rqsDsl_Requirement 1..1" *-- "rqsDsl_Model 0..9999" rqsDsl_Requirement : requirements0
 @enduml

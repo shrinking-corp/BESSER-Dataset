@@ -3243,9 +3243,9 @@ def test_assoc_device13_stub_double():
     partner = wsmodel3_IoTNode()
     setattr(partner, 'wsmodel3_IoTNode14', None)
     _safe_set(owner, 'wsmodel3_Device', partner)
-    assert getattr(partner, 'wsmodel3_IoTNode14') == owner
+    assert owner in getattr(partner, 'wsmodel3_IoTNode14')
     _safe_set(owner, 'wsmodel3_Device', None)
-    assert getattr(partner, 'wsmodel3_IoTNode14') is None
+    assert owner not in getattr(partner, 'wsmodel3_IoTNode14')
 
 
 def test_assoc_devicedata24_stub_double():
@@ -3273,9 +3273,9 @@ def test_assoc_externalapi87_stub_double():
     partner = wsmodel3_OutputOrchestrator()
     setattr(partner, 'wsmodel3_OutputOrchestrator88', None)
     _safe_set(owner, 'wsmodel3_ExternalAPI89', partner)
-    assert getattr(partner, 'wsmodel3_OutputOrchestrator88') == owner
+    assert owner in getattr(partner, 'wsmodel3_OutputOrchestrator88')
     _safe_set(owner, 'wsmodel3_ExternalAPI89', None)
-    assert getattr(partner, 'wsmodel3_OutputOrchestrator88') is None
+    assert owner not in getattr(partner, 'wsmodel3_OutputOrchestrator88')
 
 
 def test_assoc_inputbridge79_stub_double():
@@ -3303,9 +3303,9 @@ def test_assoc_inputorchestrator43_stub_double():
     partner = wsmodel3_OutputBridge()
     setattr(partner, 'wsmodel3_OutputBridge', None)
     _safe_set(owner, 'wsmodel3_InputOrchestrator', partner)
-    assert getattr(partner, 'wsmodel3_OutputBridge') == owner
+    assert owner in getattr(partner, 'wsmodel3_OutputBridge')
     _safe_set(owner, 'wsmodel3_InputOrchestrator', None)
-    assert getattr(partner, 'wsmodel3_OutputBridge') is None
+    assert owner not in getattr(partner, 'wsmodel3_OutputBridge')
 
 
 def test_assoc_inputorchestrator76_stub_double():
@@ -3318,9 +3318,9 @@ def test_assoc_inputorchestrator76_stub_double():
     partner = wsmodel3_OutputOrchestrator()
     setattr(partner, 'wsmodel3_OutputOrchestrator77', None)
     _safe_set(owner, 'wsmodel3_InputOrchestrator78', partner)
-    assert getattr(partner, 'wsmodel3_OutputOrchestrator77') == owner
+    assert owner in getattr(partner, 'wsmodel3_OutputOrchestrator77')
     _safe_set(owner, 'wsmodel3_InputOrchestrator78', None)
-    assert getattr(partner, 'wsmodel3_OutputOrchestrator77') is None
+    assert owner not in getattr(partner, 'wsmodel3_OutputOrchestrator77')
 
 
 def test_assoc_integrationpattern7_stub_double():
@@ -3363,9 +3363,9 @@ def test_assoc_orchestrator50_stub_double():
     partner = wsmodel3_IntegrationPattern()
     setattr(partner, 'wsmodel3_IntegrationPattern51', None)
     _safe_set(owner, 'wsmodel3_Orchestrator', partner)
-    assert getattr(partner, 'wsmodel3_IntegrationPattern51') == owner
+    assert owner in getattr(partner, 'wsmodel3_IntegrationPattern51')
     _safe_set(owner, 'wsmodel3_Orchestrator', None)
-    assert getattr(partner, 'wsmodel3_IntegrationPattern51') is None
+    assert owner not in getattr(partner, 'wsmodel3_IntegrationPattern51')
 
 
 def test_assoc_outputorchestrator60_stub_double():
@@ -3408,9 +3408,9 @@ def test_assoc_rest15_stub_double():
     partner = wsmodel3_WebService()
     setattr(partner, 'wsmodel3_WebService16', None)
     _safe_set(owner, 'wsmodel3_REST', partner)
-    assert getattr(partner, 'wsmodel3_WebService16') == owner
+    assert owner in getattr(partner, 'wsmodel3_WebService16')
     _safe_set(owner, 'wsmodel3_REST', None)
-    assert getattr(partner, 'wsmodel3_WebService16') is None
+    assert owner not in getattr(partner, 'wsmodel3_WebService16')
 
 
 def test_assoc_rest84_stub_double():
@@ -3423,9 +3423,9 @@ def test_assoc_rest84_stub_double():
     partner = wsmodel3_OutputOrchestrator()
     setattr(partner, 'wsmodel3_OutputOrchestrator85', None)
     _safe_set(owner, 'wsmodel3_REST86', partner)
-    assert getattr(partner, 'wsmodel3_OutputOrchestrator85') == owner
+    assert owner in getattr(partner, 'wsmodel3_OutputOrchestrator85')
     _safe_set(owner, 'wsmodel3_REST86', None)
-    assert getattr(partner, 'wsmodel3_OutputOrchestrator85') is None
+    assert owner not in getattr(partner, 'wsmodel3_OutputOrchestrator85')
 
 
 def test_assoc_sensor37_stub_double():
@@ -3475,171 +3475,29 @@ def test_assoc_webservice0_stub_double():
 
 
 
-from enum import Enum
 from python_code import ActuatorType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ActuatorType.Led, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ActuatorType.LCD, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ActuatorType.LCD, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ActuatorType.LCD, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ActuatorType.Led, 'LCD') == ActuatorType.LCD
-
-from enum import Enum
 from python_code import CommunicationType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(CommunicationType.Serial, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(CommunicationType.Serial, 0, '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(CommunicationType.Serial, '', '', '') == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(CommunicationType.WiFi, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(CommunicationType.WiFi, 'WiFi') == CommunicationType.WiFi
-
-from enum import Enum
 from python_code import ControllerType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ControllerType.ESP8266, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ControllerType.ESP8266, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ControllerType.ESP8266, '', '', 0) == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ControllerType.ESP8266, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ControllerType.ESP8266, 'ESP8266') == ControllerType.ESP8266
-
-from enum import Enum
 from python_code import DBType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(DBType.MySQL, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(DBType.MySQL, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(DBType.MySQL, '', '', 0) == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(DBType.MySQL, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(DBType.MySQL, 'MySQL') == DBType.MySQL
-
-from enum import Enum
 from python_code import MessageBrokerType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(MessageBrokerType.MQTT, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(MessageBrokerType.MQTT, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(MessageBrokerType.MQTT, '', '', 0) == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(MessageBrokerType.MQTT, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(MessageBrokerType.MQTT, 'MQTT') == MessageBrokerType.MQTT
-
-from enum import Enum
 from python_code import PortType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(PortType.Analog, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(PortType.Analog, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(PortType.Digital, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(PortType.Analog, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(PortType.Analog, 'Analog') == PortType.Analog
-
-from enum import Enum
 from python_code import SensorType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(SensorType.Button, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(SensorType.Light, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(SensorType.CO2, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(SensorType.CO2, '')
-
-def test_Enum___new___2():
-    assert Enum.__new__(SensorType.CO2, 'CO2') == SensorType.CO2
-
 from python_code import wsmodel3_DBServer
 from python_code import wsmodel3_WebService
 
 def test_wsmodel3_DBServer___init__():
     assert wsmodel3_DBServer.__init__(wsmodel3_DBServer('', '', '', '', 0, wsmodel3_DBServer=wsmodel3_WebService()), '', '', '', '', 0, wsmodel3_DBServer=wsmodel3_WebService()) == None
-
 from python_code import wsmodel3_Data
 
 def test_wsmodel3_Data___init__():
     assert wsmodel3_Data.__init__(wsmodel3_Data('', '', '', '', '', ''), '', '', '', '', '\x00', '') == None
-
 from python_code import wsmodel3_InputPort
 from python_code import wsmodel3_OutputBridge
 from python_code import wsmodel3_Sensor

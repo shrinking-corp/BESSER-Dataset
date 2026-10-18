@@ -1,4 +1,8 @@
 @startuml
+' model: movies
+' project: sampleModel
+' owner: User
+' description: New project
 class CriticsReview {
 }
 enum GenreTypes {
@@ -40,9 +44,9 @@ class movies_Place {
   + name : str
 }
 CriticsReview <|-- movies_CustomerReview
-movies_Copy "0..9999" --* "1..1" movies_Movie : copies0
-movies_Movie "0..9999" --* "1..1" movies_MoviesDB : movies3
-movies_Copy "1..1" -- "0..1" movies_Place : place7
-movies_MoviesDB "1..1" *-- "0..9999" movies_Place : places5
-movies_CriticsReview "0..9999" --* "1..1" movies_Movie : review1
+movies_Copy "movies_Movie 0..9999" --* "movies_Copy 1..1" movies_Movie : copies0
+movies_Movie "movies_MoviesDB 0..9999" --* "movies_Movie4 1..1" movies_MoviesDB : movies3
+movies_Copy "movies_Place9 1..1" -- "movies_Copy8 0..1" movies_Place : place7
+movies_MoviesDB "movies_Place 1..1" *-- "movies_MoviesDB6 0..9999" movies_Place : places5
+movies_CriticsReview "movies_Movie2 0..9999" --* "movies_CriticsReview 1..1" movies_Movie : review1
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: PrimitiveTypes
+' project: sampleModel
+' owner: User
+' description: New project
 class Cell {
 }
 class ColOrRowElement {
@@ -84,19 +88,19 @@ ValueType <|-- Excel_DateTimeTypeValue
 ValueType <|-- Excel_ErrorValue
 ValueType <|-- Excel_NumberValue
 ValueType <|-- Excel_StringValue
-Data "0..1" --* "1..1" Excel_Cell : c_data16
-Excel_Cell "1..1" -- "1..1" Row : c_row14
-Excel_Column "1..1" -- "1..1" Table : c_table9
-Cell "1..1" -- "1..1" Excel_Data : d_cell18
-Cell "0..9999" --* "1..1" Excel_Row : r_cells13
-Excel_Row "1..1" -- "1..1" Table : r_table11
-Column "0..9999" --* "1..1" Excel_Table : t_cols7
-Excel_Table "1..1" *-- "0..9999" Row : t_rows8
-Excel_Table "1..1" -- "1..1" Worksheet : t_worksheet5
-DateTimeType "1..1" --* "1..1" Excel_DateTimeTypeValue : value1
-Excel_Data "1..1" *-- "1..1" ValueType : value20
-Data "1..1" -- "1..1" Excel_ValueType : vt_data0
-Excel_Workbook "1..1" *-- "0..9999" Worksheet : wb_worksheets2
-Excel_Worksheet "1..1" *-- "0..1" Table : ws_table4
-Excel_Worksheet "1..1" -- "1..1" Workbook : ws_workbook3
+Data "d_cell 0..1" --* "Data17 1..1" Excel_Cell : c_data16
+Excel_Cell "Row15 1..1" -- "r_cells 1..1" Row : c_row14
+Excel_Column "Table10 1..1" -- "t_cols 1..1" Table : c_table9
+Cell "c_data 1..1" -- "Cell19 1..1" Excel_Data : d_cell18
+Cell "c_row 0..9999" --* "Cell 1..1" Excel_Row : r_cells13
+Excel_Row "Table12 1..1" -- "t_rows 1..1" Table : r_table11
+Column "c_table 0..9999" --* "Column 1..1" Excel_Table : t_cols7
+Excel_Table "Row 1..1" *-- "r_table 0..9999" Row : t_rows8
+Excel_Table "Worksheet6 1..1" -- "ws_table 1..1" Worksheet : t_worksheet5
+DateTimeType "Excel_DateTimeTypeValue 1..1" --* "DateTimeType 1..1" Excel_DateTimeTypeValue : value1
+Excel_Data "ValueType 1..1" *-- "vt_data 1..1" ValueType : value20
+Data "value 1..1" -- "Data 1..1" Excel_ValueType : vt_data0
+Excel_Workbook "Worksheet 1..1" *-- "ws_workbook 0..9999" Worksheet : wb_worksheets2
+Excel_Worksheet "Table 1..1" *-- "t_worksheet 0..1" Table : ws_table4
+Excel_Worksheet "Workbook 1..1" -- "wb_worksheets 1..1" Workbook : ws_workbook3
 @enduml

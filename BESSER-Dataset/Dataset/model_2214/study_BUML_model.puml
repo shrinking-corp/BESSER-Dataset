@@ -1,4 +1,8 @@
 @startuml
+' model: study
+' project: sampleModel
+' owner: User
+' description: New project
 enum GradeEnum {
   A
   B
@@ -41,26 +45,26 @@ class study_StudyProgramme {
 class study_University {
   + name : str
 }
-study_Specialization "1..9999" --* "1..1" study_StudyProgramme : allSpecializations6
-study_Specialization "1..9999" -- "1..1" study_StudyProgramme : baseSpecializations7
-study_Course "1..1" -- "1..1" study_CourseRelationship : course36
-study_Course "0..9999" --* "1..1" study_University : courses1
-study_Course "1..9999" -- "1..1" study_ElectiveCourseList : courses22
-study_CourseRelationship "0..9999" --* "1..1" study_IndividualStudyPlan : courses31
-study_IndividualStudyPlan "1..1" -- "1..1" study_Semester : currentSemester29
-study_ElectiveCourseList "0..1" --* "1..1" study_Semester : electiveCourses17
-study_Specialization "0..9999" -- "1..1" study_Specialization : furtherSpecializations12
-study_Course "0..9999" -- "1..1" study_Semester : mandatoryCourses16
-study_ElectiveCourseList "1..1" -- "1..1" study_Semester : semester20
-study_Semester "2..9999" --* "1..1" study_Specialization : semesters10
-study_Semester "1..1" -- "1..1" study_Specialization : specialization14
-study_IndividualStudyPlan "1..1" -- "1..1" study_Student : student27
-study_Student "0..9999" --* "1..1" study_University : students3
-study_IndividualStudyPlan "1..1" --* "1..1" study_Student : studyPlan26
-study_CourseRelationship "1..1" -- "1..1" study_IndividualStudyPlan : studyPlan33
-study_Specialization "1..1" -- "1..1" study_StudyProgramme : studyProgramme8
-study_StudyProgramme "0..9999" --* "1..1" study_University : studyProgrammes0
-study_Course "1..1" -- "1..1" study_University : university18
-study_Student "1..1" -- "1..1" study_University : university24
-study_StudyProgramme "1..1" -- "1..1" study_University : university5
+study_Specialization "studyProgramme 1..9999" --* "Specialization 1..1" study_StudyProgramme : allSpecializations6
+study_Specialization "study_StudyProgramme 1..9999" -- "study_Specialization 1..1" study_StudyProgramme : baseSpecializations7
+study_Course "study_CourseRelationship 1..1" -- "study_Course37 1..1" study_CourseRelationship : course36
+study_Course "university2 0..9999" --* "Course 1..1" study_University : courses1
+study_Course "study_ElectiveCourseList 1..9999" -- "study_Course23 1..1" study_ElectiveCourseList : courses22
+study_CourseRelationship "studyPlan32 0..9999" --* "CourseRelationship 1..1" study_IndividualStudyPlan : courses31
+study_IndividualStudyPlan "study_Semester30 1..1" -- "study_IndividualStudyPlan 1..1" study_Semester : currentSemester29
+study_ElectiveCourseList "semester 0..1" --* "ElectiveCourseList 1..1" study_Semester : electiveCourses17
+study_Specialization "study_Specialization11 0..9999" -- "study_Specialization13 1..1" study_Specialization : furtherSpecializations12
+study_Course "study_Semester 0..9999" -- "study_Course 1..1" study_Semester : mandatoryCourses16
+study_ElectiveCourseList "Semester21 1..1" -- "electiveCourses 1..1" study_Semester : semester20
+study_Semester "specialization 2..9999" --* "Semester 1..1" study_Specialization : semesters10
+study_Semester "Specialization15 1..1" -- "semesters 1..1" study_Specialization : specialization14
+study_IndividualStudyPlan "Student28 1..1" -- "studyPlan 1..1" study_Student : student27
+study_Student "university4 0..9999" --* "Student 1..1" study_University : students3
+study_IndividualStudyPlan "student 1..1" --* "IndividualStudyPlan 1..1" study_Student : studyPlan26
+study_CourseRelationship "IndividualStudyPlan35 1..1" -- "courses34 1..1" study_IndividualStudyPlan : studyPlan33
+study_Specialization "StudyProgramme9 1..1" -- "allSpecializations 1..1" study_StudyProgramme : studyProgramme8
+study_StudyProgramme "university 0..9999" --* "StudyProgramme 1..1" study_University : studyProgrammes0
+study_Course "University19 1..1" -- "courses 1..1" study_University : university18
+study_Student "University25 1..1" -- "students 1..1" study_University : university24
+study_StudyProgramme "University 1..1" -- "studyProgrammes 1..1" study_University : university5
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: model
+' project: sampleModel
+' owner: User
+' description: New project
 class BooleanOperation {
 }
 class ComparisonOperator {
@@ -65,17 +69,17 @@ Condition <|-- model_Comparison
 Condition <|-- model_Existence
 Existence <|-- model_Exists
 Existence <|-- model_NotExists
-model_BooleanOperation "0..1" --* "1..1" model_Condition : booleanoperation20
-model_Column "1..9999" --* "1..1" model_Select : column0
-model_Column "1..1" *-- "0..1" model_ColumnAlias : columnalias7
-model_Comparison "1..1" *-- "1..1" model_ComparisonOperator : comparisonoperator23
-model_Condition "1..1" --* "1..1" model_Where : condition13
-model_BooleanOperation "1..1" *-- "1..1" model_Condition : condition15
-model_From "1..1" --* "1..1" model_Select : from_1
-model_Select "1..1" --* "1..1" model_Union : select17
-model_Existence "1..1" *-- "1..1" model_Select : select24
-model_From "1..1" *-- "1..9999" model_Table : table9
-model_Table "1..1" *-- "0..1" model_TableAlias : tablealias11
-model_Select "1..1" *-- "0..1" model_Union : union5
-model_Select "1..1" *-- "0..1" model_Where : where3
+model_BooleanOperation "model_Condition21 0..1" --* "model_BooleanOperation22 1..1" model_Condition : booleanoperation20
+model_Column "model_Select 1..9999" --* "model_Column 1..1" model_Select : column0
+model_Column "model_ColumnAlias 1..1" *-- "model_Column8 0..1" model_ColumnAlias : columnalias7
+model_Comparison "model_ComparisonOperator 1..1" *-- "model_Comparison 1..1" model_ComparisonOperator : comparisonoperator23
+model_Condition "model_Where14 1..1" --* "model_Condition 1..1" model_Where : condition13
+model_BooleanOperation "model_Condition16 1..1" *-- "model_BooleanOperation 1..1" model_Condition : condition15
+model_From "model_Select2 1..1" --* "model_From 1..1" model_Select : from_1
+model_Select "model_Union18 1..1" --* "model_Select19 1..1" model_Union : select17
+model_Existence "model_Select25 1..1" *-- "model_Existence 1..1" model_Select : select24
+model_From "model_Table 1..1" *-- "model_From10 1..9999" model_Table : table9
+model_Table "model_TableAlias 1..1" *-- "model_Table12 0..1" model_TableAlias : tablealias11
+model_Select "model_Union 1..1" *-- "model_Select6 0..1" model_Union : union5
+model_Select "model_Where 1..1" *-- "model_Select4 0..1" model_Where : where3
 @enduml

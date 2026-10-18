@@ -1,4 +1,8 @@
 @startuml
+' model: dSL
+' project: sampleModel
+' owner: User
+' description: New project
 enum ActionEnum {
   BACKWARD
   FORWARD
@@ -144,18 +148,18 @@ RotateMovementAction <|-- dSL_RotatePoints
 RotatePoints <|-- dSL_LeftRotatePoint
 RotatePoints <|-- dSL_MiddleRotatePoint
 RotatePoints <|-- dSL_RightRotatePoint
-dSL_Actions "0..9999" --* "1..1" dSL_Behavior : actionlist11
-dSL_BehaviorName "0..9999" --* "1..1" dSL_Mission : behaviorlist3
-dSL_EndCondition "0..1" --* "1..1" dSL_Mission : endcondition5
-dSL_EndCondition "1..1" *-- "0..9999" dSL_EndWhen : endwhenlist7
-dSL_Expression "0..1" --* "1..1" dSL_ExpressionBracket : exp16
-dSL_ANDexpression "1..1" *-- "0..1" dSL_Expression : left18
-dSL_Expression "0..1" --* "1..1" dSL_ORexpression : left23
-dSL_LeftMovementAction "1..1" *-- "0..1" dSL_MovementAction : leftmove13
-dSL_MarsRoverExpedition "1..1" *-- "0..9999" dSL_Mission : missionlist0
-dSL_ANDexpression "1..1" *-- "0..1" dSL_Expression : right20
-dSL_Expression "0..1" --* "1..1" dSL_ORexpression : right25
-dSL_MovementAction "0..1" --* "1..1" dSL_RightMovementAction : rightmove14
-dSL_Behavior "1..1" *-- "0..1" dSL_Expression : sensorExpression9
-dSL_Behavior "0..9999" --* "1..1" dSL_MarsRoverExpedition : tasklist1
+dSL_Actions "dSL_Behavior12 0..9999" --* "dSL_Actions 1..1" dSL_Behavior : actionlist11
+dSL_BehaviorName "dSL_Mission4 0..9999" --* "dSL_BehaviorName 1..1" dSL_Mission : behaviorlist3
+dSL_EndCondition "dSL_Mission6 0..1" --* "dSL_EndCondition 1..1" dSL_Mission : endcondition5
+dSL_EndCondition "dSL_EndWhen 1..1" *-- "dSL_EndCondition8 0..9999" dSL_EndWhen : endwhenlist7
+dSL_Expression "dSL_ExpressionBracket 0..1" --* "dSL_Expression17 1..1" dSL_ExpressionBracket : exp16
+dSL_ANDexpression "dSL_Expression19 1..1" *-- "dSL_ANDexpression 0..1" dSL_Expression : left18
+dSL_Expression "dSL_ORexpression 0..1" --* "dSL_Expression24 1..1" dSL_ORexpression : left23
+dSL_LeftMovementAction "dSL_MovementAction 1..1" *-- "dSL_LeftMovementAction 0..1" dSL_MovementAction : leftmove13
+dSL_MarsRoverExpedition "dSL_Mission 1..1" *-- "dSL_MarsRoverExpedition 0..9999" dSL_Mission : missionlist0
+dSL_ANDexpression "dSL_Expression22 1..1" *-- "dSL_ANDexpression21 0..1" dSL_Expression : right20
+dSL_Expression "dSL_ORexpression26 0..1" --* "dSL_Expression27 1..1" dSL_ORexpression : right25
+dSL_MovementAction "dSL_RightMovementAction 0..1" --* "dSL_MovementAction15 1..1" dSL_RightMovementAction : rightmove14
+dSL_Behavior "dSL_Expression 1..1" *-- "dSL_Behavior10 0..1" dSL_Expression : sensorExpression9
+dSL_Behavior "dSL_MarsRoverExpedition2 0..9999" --* "dSL_Behavior 1..1" dSL_MarsRoverExpedition : tasklist1
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: statemachine
+' project: sampleModel
+' owner: User
+' description: New project
 class Command {
 }
 class Expression {
@@ -36,14 +40,14 @@ Command <|-- statemachine_PrintCommand
 Command <|-- statemachine_SetCommand
 Expression <|-- statemachine_StatePropertyExpression
 Expression <|-- statemachine_VerbatimExpression
-statemachine_Command "0..9999" --* "1..1" statemachine_State : actions3
-statemachine_ExecuteCommand "1..1" *-- "0..9999" statemachine_Expression : arguments15
-statemachine_Expression "0..1" --* "1..1" statemachine_Transition : event11
-statemachine_State "0..1" -- "1..1" statemachine_Transition : sourceState5
-statemachine_State "0..1" -- "1..1" statemachine_StatePropertyExpression : state19
-statemachine_State "0..9999" --* "1..1" statemachine_Statemachine : states0
-statemachine_State "0..1" -- "1..1" statemachine_Transition : targetState8
-statemachine_Statemachine "1..1" *-- "0..9999" statemachine_Transition : transitions1
-statemachine_Expression "0..1" --* "1..1" statemachine_SetCommand : value13
-statemachine_Expression "0..1" --* "1..1" statemachine_PrintCommand : value17
+statemachine_Command "statemachine_State4 0..9999" --* "statemachine_Command 1..1" statemachine_State : actions3
+statemachine_ExecuteCommand "statemachine_Expression16 1..1" *-- "statemachine_ExecuteCommand 0..9999" statemachine_Expression : arguments15
+statemachine_Expression "statemachine_Transition12 0..1" --* "statemachine_Expression 1..1" statemachine_Transition : event11
+statemachine_State "statemachine_Transition6 0..1" -- "statemachine_State7 1..1" statemachine_Transition : sourceState5
+statemachine_State "statemachine_StatePropertyExpression 0..1" -- "statemachine_State20 1..1" statemachine_StatePropertyExpression : state19
+statemachine_State "statemachine_Statemachine 0..9999" --* "statemachine_State 1..1" statemachine_Statemachine : states0
+statemachine_State "statemachine_Transition9 0..1" -- "statemachine_State10 1..1" statemachine_Transition : targetState8
+statemachine_Statemachine "statemachine_Transition 1..1" *-- "statemachine_Statemachine2 0..9999" statemachine_Transition : transitions1
+statemachine_Expression "statemachine_SetCommand 0..1" --* "statemachine_Expression14 1..1" statemachine_SetCommand : value13
+statemachine_Expression "statemachine_PrintCommand 0..1" --* "statemachine_Expression18 1..1" statemachine_PrintCommand : value17
 @enduml

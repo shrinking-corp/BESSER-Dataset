@@ -6592,30 +6592,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=diagram_filter_FilterDescription_strategy)
-@settings(max_examples=30)
-def test_hyp_diagram_filter_filterdescription_isvisible_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isVisible(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isVisible).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isVisible' in diagram_filter_FilterDescription is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isVisible' in diagram_filter_FilterDescription did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isVisible' in diagram_filter_FilterDescription is not implemented or raised an error")
 
 
 
@@ -6692,30 +6668,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=diagram_description_AbstractNodeMapping_strategy)
-@settings(max_examples=30)
-def test_hyp_diagram_description_abstractnodemapping_finddnodefromeobject_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.findDNodeFromEObject(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.findDNodeFromEObject).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'findDNodeFromEObject' in diagram_description_AbstractNodeMapping is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'findDNodeFromEObject' in diagram_description_AbstractNodeMapping did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'findDNodeFromEObject' in diagram_description_AbstractNodeMapping is not implemented or raised an error")
 
 
 
@@ -7026,28 +6978,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=diagram_description_DiagramDescription_strategy)
-@settings(max_examples=30)
-def test_hyp_diagram_description_diagramdescription_creatediagram_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.createDiagram()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.createDiagram).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'createDiagram' in diagram_description_DiagramDescription is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'createDiagram' in diagram_description_DiagramDescription did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'createDiagram' in diagram_description_DiagramDescription is not implemented or raised an error")
 
 
 
@@ -7138,30 +7068,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=diagram_EndLabelStyle_strategy)
-@settings(max_examples=30)
-def test_hyp_diagram_endlabelstyle_setdescription_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.setDescription(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.setDescription).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'setDescription' in diagram_EndLabelStyle is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'setDescription' in diagram_EndLabelStyle did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'setDescription' in diagram_EndLabelStyle is not implemented or raised an error")
 
 
 import warnings
@@ -7170,30 +7076,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=diagram_CenterLabelStyle_strategy)
-@settings(max_examples=30)
-def test_hyp_diagram_centerlabelstyle_setdescription_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.setDescription(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.setDescription).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'setDescription' in diagram_CenterLabelStyle is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'setDescription' in diagram_CenterLabelStyle did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'setDescription' in diagram_CenterLabelStyle is not implemented or raised an error")
 
 
 import warnings
@@ -7202,30 +7084,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=diagram_BeginLabelStyle_strategy)
-@settings(max_examples=30)
-def test_hyp_diagram_beginlabelstyle_setdescription_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.setDescription(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.setDescription).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'setDescription' in diagram_BeginLabelStyle is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'setDescription' in diagram_BeginLabelStyle did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'setDescription' in diagram_BeginLabelStyle is not implemented or raised an error")
 
 
 
@@ -17101,9 +16959,9 @@ def test_assoc_incomingEdges106_stub_double():
     partner = diagram_EdgeTarget()
     setattr(partner, 'targetNode', None)
     _safe_set(owner, 'DEdge107', partner)
-    assert getattr(partner, 'targetNode') == owner
+    assert owner in getattr(partner, 'targetNode')
     _safe_set(owner, 'DEdge107', None)
-    assert getattr(partner, 'targetNode') is None
+    assert owner not in getattr(partner, 'targetNode')
 
 
 def test_assoc_init135_stub_double():
@@ -17536,9 +17394,9 @@ def test_assoc_outgoingEdges105_stub_double():
     partner = diagram_EdgeTarget()
     setattr(partner, 'sourceNode', None)
     _safe_set(owner, 'DEdge', partner)
-    assert getattr(partner, 'sourceNode') == owner
+    assert owner in getattr(partner, 'sourceNode')
     _safe_set(owner, 'DEdge', None)
-    assert getattr(partner, 'sourceNode') is None
+    assert owner not in getattr(partner, 'sourceNode')
 
 
 def test_assoc_ownedStyle67_stub_double():
@@ -18233,402 +18091,42 @@ def test_assoc_viewVariable367_stub_double():
 
 
 
-from enum import Enum
 from python_code import AlignmentKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(AlignmentKind.SQUARE, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(AlignmentKind.SQUARE, 0, '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(AlignmentKind.SQUARE, '', '', '') == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(AlignmentKind.SQUARE, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(AlignmentKind.SQUARE, 'SQUARE') == AlignmentKind.SQUARE
-
-from enum import Enum
 from python_code import ArrangeConstraint
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ArrangeConstraint.KEEP_RATIO, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ArrangeConstraint.KEEP_RATIO, 0, '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ArrangeConstraint.KEEP_RATIO, '', '', '') == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ArrangeConstraint.KEEP_SIZE, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ArrangeConstraint.KEEP_SIZE, 'KEEP_SIZE') == ArrangeConstraint.KEEP_SIZE
-
-from enum import Enum
 from python_code import BackgroundStyle
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(BackgroundStyle.GradientTopToBottom, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(BackgroundStyle.GradientLeftToRight, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(BackgroundStyle.Liquid, 0, '\x00', '') == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(BackgroundStyle.Liquid, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(BackgroundStyle.Liquid, 'Liquid') == BackgroundStyle.Liquid
-
-from enum import Enum
 from python_code import BundledImageShape
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(BundledImageShape.dot, '', 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(BundledImageShape.ring, 0, '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(BundledImageShape.dot, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(BundledImageShape.dot, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(BundledImageShape.dot, 'dot') == BundledImageShape.dot
-
-from enum import Enum
 from python_code import CenteringStyle
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(CenteringStyle.Both, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(CenteringStyle.Both, '', 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(CenteringStyle.Both, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(CenteringStyle.Both, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(CenteringStyle.Both, 'Both') == CenteringStyle.Both
-
-from enum import Enum
 from python_code import ContainerLayout
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ContainerLayout.List, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ContainerLayout.List, '', 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ContainerLayout.List, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ContainerLayout.List, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ContainerLayout.List, 'List') == ContainerLayout.List
-
-from enum import Enum
 from python_code import ContainerShape
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ContainerShape.parallelogram, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ContainerShape.parallelogram, '', '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ContainerShape.parallelogram, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ContainerShape.parallelogram, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ContainerShape.parallelogram, 'parallelogram') == ContainerShape.parallelogram
-
-from enum import Enum
 from python_code import EdgeArrows
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(EdgeArrows.InputArrow, 0, '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(EdgeArrows.Diamond, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(EdgeArrows.Diamond, '', '', '') == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(EdgeArrows.InputArrow, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(EdgeArrows.Diamond, 'InputArrow') == EdgeArrows.InputArrow
-
-from enum import Enum
 from python_code import EdgeRouting
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(EdgeRouting.tree, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(EdgeRouting.tree, 0, '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(EdgeRouting.tree, '', '', '') == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(EdgeRouting.tree, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(EdgeRouting.tree, 'tree') == EdgeRouting.tree
-
-from enum import Enum
 from python_code import FilterKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(FilterKind.HIDE, '', 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(FilterKind.HIDE, '', 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(FilterKind.HIDE, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(FilterKind.HIDE, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(FilterKind.HIDE, 'HIDE') == FilterKind.HIDE
-
-from enum import Enum
 from python_code import FoldingStyle
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(FoldingStyle.NONE, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(FoldingStyle.NONE, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(FoldingStyle.NONE, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(FoldingStyle.NONE, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(FoldingStyle.NONE, 'NONE') == FoldingStyle.NONE
-
-from enum import Enum
 from python_code import LabelPosition
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(LabelPosition.node, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(LabelPosition.node, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(LabelPosition.node, '', '', 0) == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(LabelPosition.node, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(LabelPosition.node, 'node') == LabelPosition.node
-
-from enum import Enum
 from python_code import LayoutDirection
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(LayoutDirection.BottomToTop, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(LayoutDirection.TopToBottom, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(LayoutDirection.TopToBottom, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(LayoutDirection.BottomToTop, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(LayoutDirection.BottomToTop, 'BottomToTop') == LayoutDirection.BottomToTop
-
-from enum import Enum
 from python_code import LayoutOptionTarget
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(LayoutOptionTarget.NODE, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(LayoutOptionTarget.EDGE, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(LayoutOptionTarget.EDGE, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(LayoutOptionTarget.EDGE, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(LayoutOptionTarget.EDGE, 'EDGE') == LayoutOptionTarget.EDGE
-
-from enum import Enum
 from python_code import LineStyle
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(LineStyle.dot, 0, '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(LineStyle.dot, '', '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(LineStyle.dot, '', 0, '') == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(LineStyle.dot, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(LineStyle.dot, 'dot') == LineStyle.dot
-
-from enum import Enum
 from python_code import ReconnectionKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ReconnectionKind.RECONNECT_BOTH, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ReconnectionKind.RECONNECT_BOTH, 0, '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ReconnectionKind.RECONNECT_BOTH, '', '', '') == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ReconnectionKind.RECONNECT_BOTH, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ReconnectionKind.RECONNECT_BOTH, 'RECONNECT_BOTH') == ReconnectionKind.RECONNECT_BOTH
-
-from enum import Enum
 from python_code import ResizeKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ResizeKind.NSEW, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ResizeKind.NSEW, '', 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ResizeKind.NSEW, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ResizeKind.NSEW, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ResizeKind.NSEW, 'NSEW') == ResizeKind.NSEW
-
-from enum import Enum
 from python_code import Side
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(Side.EAST, 0, '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(Side.EAST, '', '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(Side.EAST, '', 0, '') == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(Side.EAST, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(Side.EAST, 'EAST') == Side.EAST
-
 from python_code import diagram_AbsoluteBoundsFilter
 
 def test_diagram_AbsoluteBoundsFilter___init__():

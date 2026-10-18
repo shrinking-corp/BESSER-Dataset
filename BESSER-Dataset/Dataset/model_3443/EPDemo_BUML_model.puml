@@ -1,4 +1,8 @@
 @startuml
+' model: epdemo
+' project: sampleModel
+' owner: User
+' description: New project
 class epdemo_Clazz {
   + Id : str
   + Name : str
@@ -15,9 +19,9 @@ class epdemo_Teacher {
   + Id : str
   + Name : str
 }
-epdemo_Clazz "0..9999" --* "1..1" epdemo_School : Clazzes0
-epdemo_School "1..1" *-- "0..9999" epdemo_Student : students1
-epdemo_Clazz "1..1" *-- "0..9999" epdemo_Student : students8
-epdemo_School "1..1" *-- "0..9999" epdemo_Teacher : teachers3
-epdemo_Clazz "1..1" *-- "0..9999" epdemo_Teacher : teachers5
+epdemo_Clazz "epdemo_School 0..9999" --* "epdemo_Clazz 1..1" epdemo_School : Clazzes0
+epdemo_School "epdemo_Student 1..1" *-- "epdemo_School2 0..9999" epdemo_Student : students1
+epdemo_Clazz "epdemo_Student10 1..1" *-- "epdemo_Clazz9 0..9999" epdemo_Student : students8
+epdemo_School "epdemo_Teacher 1..1" *-- "epdemo_School4 0..9999" epdemo_Teacher : teachers3
+epdemo_Clazz "epdemo_Teacher7 1..1" *-- "epdemo_Clazz6 0..9999" epdemo_Teacher : teachers5
 @enduml

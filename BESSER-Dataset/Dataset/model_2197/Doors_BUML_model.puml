@@ -1,4 +1,8 @@
 @startuml
+' model: model
+' project: sampleModel
+' owner: User
+' description: New project
 class DoorsObject {
 }
 class DoorsTreeNode {
@@ -50,9 +54,9 @@ DoorsObject <|-- model_DoorsTableRow
 DoorsTreeNode <|-- model_DoorsFolder
 DoorsTreeNode <|-- model_DoorsModule
 DoorsTreeNode <|-- model_DoorsObject
-model_AttributeMap "0..9999" --* "1..1" model_DoorsTreeNode : attributes7
-model_DoorsTreeNode "1..1" *-- "0..9999" model_DoorsTreeNode : children3
-model_DoorsLink "0..9999" --* "1..1" model_DoorsObject : outgoingLinks0
-model_DoorsTreeNode "1..1" -- "0..1" model_DoorsTreeNode : parent5
-model_DoorsLink "1..1" -- "0..1" model_DoorsObject : source1
+model_AttributeMap "model_DoorsTreeNode 0..9999" --* "model_AttributeMap 1..1" model_DoorsTreeNode : attributes7
+model_DoorsTreeNode "DoorsTreeNode 1..1" *-- "parent 0..9999" model_DoorsTreeNode : children3
+model_DoorsLink "source 0..9999" --* "DoorsLink 1..1" model_DoorsObject : outgoingLinks0
+model_DoorsTreeNode "DoorsTreeNode6 1..1" -- "children 0..1" model_DoorsTreeNode : parent5
+model_DoorsLink "DoorsObject 1..1" -- "outgoingLinks 0..1" model_DoorsObject : source1
 @enduml

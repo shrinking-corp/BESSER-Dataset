@@ -1,4 +1,8 @@
 @startuml
+' model: bibtex
+' project: sampleModel
+' owner: User
+' description: New project
 class AuthoredEntry {
 }
 class DatedEntry {
@@ -48,6 +52,6 @@ Entries <|-- bibtex_DatedEntry
 Entries <|-- bibtex_MonthEntry
 MonthEntry <|-- bibtex_Article
 MonthEntry <|-- bibtex_Book
-bibtex_Bibtex "1..1" *-- "0..9999" bibtex_Entries : entries0
-bibtex_Author "1..1" *-- "1..9999" bibtex_AuthoredEntry : has1
+bibtex_Bibtex "bibtex_Entries 1..1" *-- "bibtex_Bibtex 0..9999" bibtex_Entries : entries0
+bibtex_Author "bibtex_AuthoredEntry 1..1" *-- "bibtex_Author 1..9999" bibtex_AuthoredEntry : has1
 @enduml

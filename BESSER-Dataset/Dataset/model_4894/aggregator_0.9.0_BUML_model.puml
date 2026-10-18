@@ -1,4 +1,8 @@
 @startuml
+' model: aggregator
+' project: sampleModel
+' owner: User
+' description: New project
 enum AggregationType {
   Continuous
   Integration
@@ -543,85 +547,85 @@ p2_IRequiredCapability <|-- aggregator_p2view_RequiredCapabilityWrapper
 p2_InstallableUnit <|-- aggregator_p2_InstallableUnitFragment
 p2view_IUDetails <|-- aggregator_p2view_IUPresentationWithDetails
 p2view_IUPresentation <|-- aggregator_p2view_IUPresentationWithDetails
-aggregator_Aggregator "1..1" -- "1..1" aggregator_Contact : aggregator30
-ArtifactKey "0..9999" --* "1..1" aggregator_p2_InstallableUnit : artifactList54
-aggregator_Aggregator "1..1" -- "0..1" aggregator_Contact : buildmaster3
-Bundles "0..1" -- "1..1" aggregator_p2view_Category : bundleContainer105
-Bundles "0..1" -- "1..1" aggregator_p2view_Feature : bundleContainer115
-Bundles "0..1" -- "1..1" aggregator_p2view_Product : bundleContainer123
-Bundles "0..1" -- "1..1" aggregator_p2view_InstallableUnits : bundleContainer82
-aggregator_Bundle "0..9999" --* "1..1" aggregator_MappedRepository : bundles13
-Bundle "0..9999" -- "1..1" aggregator_p2view_Bundles : bundles92
-aggregator_Category "0..9999" --* "1..1" aggregator_MappedRepository : categories17
-aggregator_CustomCategory "0..9999" -- "1..1" aggregator_Feature : categories31
-Category "0..9999" -- "1..1" aggregator_p2view_Categories : categories88
-Categories "0..1" -- "1..1" aggregator_p2view_InstallableUnits : categoryContainer77
-Categories "0..1" -- "1..1" aggregator_p2view_Category : categoryContainer97
-aggregator_Aggregator "1..1" *-- "1..9999" aggregator_Configuration : configurations0
-aggregator_Contact "0..9999" -- "1..1" aggregator_Contribution : contacts24
-aggregator_Aggregator "1..1" *-- "0..9999" aggregator_Contact : contacts5
-aggregator_Aggregator "1..1" *-- "0..9999" aggregator_Contribution : contributions1
-ICopyright "0..1" -- "1..1" aggregator_p2view_IUDetails : copyright148
-ICopyright "0..1" --* "1..1" aggregator_p2_IInstallableUnit : copyright46
-aggregator_Aggregator "1..1" *-- "0..9999" aggregator_CustomCategory : customCategories6
-Features "0..1" -- "1..1" aggregator_p2view_Feature : featureContainer113
-Features "0..1" -- "1..1" aggregator_p2view_Product : featureContainer121
-Features "0..1" -- "1..1" aggregator_p2view_InstallableUnits : featureContainer78
-Features "0..1" -- "1..1" aggregator_p2view_Category : featureContainer99
-aggregator_Feature "0..9999" --* "1..1" aggregator_MappedRepository : features15
-aggregator_CustomCategory "1..1" -- "0..9999" aggregator_Feature : features34
-Feature "0..9999" -- "1..1" aggregator_p2view_Features : features89
-Fragments "0..1" -- "1..1" aggregator_p2view_Category : fragmentContainer108
-Fragments "0..1" -- "1..1" aggregator_p2view_Feature : fragmentContainer118
-Fragments "0..1" -- "1..1" aggregator_p2view_Product : fragmentContainer126
-Fragments "0..1" -- "1..1" aggregator_p2view_InstallableUnits : fragmentContainer84
-Fragment "0..9999" -- "1..1" aggregator_p2view_Fragments : fragments93
-RequiredCapability "1..1" -- "1..1" aggregator_p2view_RequiredCapabilityWrapper : genuine154
-ProvidedCapability "1..1" -- "1..1" aggregator_p2view_ProvidedCapabilityWrapper : genuine156
-RequiredCapability "0..9999" --* "1..1" aggregator_p2_InstallableUnitFragment : hostList67
-InstallableUnit "0..1" -- "1..1" aggregator_InstallableUnitReference : installableUnit35
-InstallableUnit "0..1" -- "1..1" aggregator_p2view_IUPresentation : installableUnit95
-InstallableUnits "0..1" --* "1..1" aggregator_p2view_MetadataRepositoryStructuredView : installableUnitList71
-InstallableUnit "0..9999" --* "1..1" aggregator_p2_MetadataRepository : installableUnits48
-InstructionMap "0..9999" --* "1..1" aggregator_p2_TouchpointData : instructionMap69
-IUDetails "0..1" -- "1..1" aggregator_p2view_Category : iuDetails111
-ILicense "0..1" -- "1..1" aggregator_p2view_IUDetails : license151
-ILicense "0..1" --* "1..1" aggregator_p2_IInstallableUnit : license44
-aggregator_MapRule "0..9999" --* "1..1" aggregator_MappedRepository : mapRules19
-aggregator_Aggregator "1..1" *-- "0..9999" aggregator_MavenMapping : mavenMappings10
-aggregator_Contribution "1..1" *-- "0..9999" aggregator_MavenMapping : mavenMappings27
-RequiredCapability "0..9999" --* "1..1" aggregator_p2_InstallableUnit : metaRequiredCapabilityList59
-MetadataRepository "0..1" -- "1..1" aggregator_MetadataRepositoryReference : metadataRepository38
-MetadataRepository "1..1" --* "1..1" aggregator_p2view_MetadataRepositoryStructuredView : metadataRepository74
-Miscellaneous "0..1" -- "1..1" aggregator_p2view_InstallableUnits : miscellaneousContainer86
-OtherIU "0..9999" -- "1..1" aggregator_p2view_Miscellaneous : others94
-Products "0..1" -- "1..1" aggregator_p2view_Category : productContainer102
-Products "0..1" -- "1..1" aggregator_p2view_InstallableUnits : productContainer80
-aggregator_MappedRepository "1..1" *-- "0..9999" aggregator_Product : products12
-Product "0..9999" -- "1..1" aggregator_p2view_Products : products91
-Properties "0..1" --* "1..1" aggregator_p2view_MetadataRepositoryStructuredView : properties72
-Properties "0..1" -- "1..1" aggregator_p2view_IUDetails : propertiesContainer140
-aggregator_p2view_Properties "1..1" -- "0..9999" p2view_aggregator_Property : propertyList129
-Property "0..9999" --* "1..1" aggregator_p2_MetadataRepository : propertyMap52
-Property "0..9999" --* "1..1" aggregator_p2_InstallableUnit : propertyMap62
-ProvidedCapabilityWrapper "0..9999" -- "1..1" aggregator_p2view_ProvidedCapabilities : providedCapabilities131
-ProvidedCapabilities "0..1" -- "1..1" aggregator_p2view_IUDetails : providedCapabilitiesContainer138
-ProvidedCapability "0..9999" --* "1..1" aggregator_p2_InstallableUnit : providedCapabilityList55
-aggregator_Contribution "1..1" *-- "0..9999" aggregator_MappedRepository : repositories21
-RepositoryReference "0..9999" --* "1..1" aggregator_p2_MetadataRepository : repositoryReferences50
-RequiredCapabilityWrapper "0..9999" -- "1..1" aggregator_p2view_RequiredCapabilities : requiredCapabilities130
-RequiredCapabilities "0..1" -- "1..1" aggregator_p2view_IUDetails : requiredCapabilitiesContainer137
-RequiredCapability "0..9999" --* "1..1" aggregator_p2_InstallableUnit : requiredCapabilityList57
-aggregator_Status "1..1" -- "1..1" aggregator_StatusProvider : status40
-TouchpointData "0..9999" -- "1..1" aggregator_p2view_Touchpoints : touchpointDataList134
-TouchpointData "0..9999" --* "1..1" aggregator_p2_InstallableUnit : touchpointDataList65
-ITouchpointType "0..1" -- "1..1" aggregator_p2view_Touchpoints : touchpointType132
-ITouchpointType "0..1" --* "1..1" aggregator_p2_IInstallableUnit : touchpointType41
-Touchpoints "0..1" -- "1..1" aggregator_p2view_IUDetails : touchpointsContainer143
-IUpdateDescriptor "0..1" -- "1..1" aggregator_p2view_IUDetails : updateDescriptor145
-IUpdateDescriptor "0..1" --* "1..1" aggregator_p2_IInstallableUnit : updateDescriptor42
-aggregator_Configuration "0..9999" -- "1..1" aggregator_MappedUnit : validConfigurations32
-aggregator_Configuration "0..9999" -- "1..1" aggregator_ValidConfigurationsRule : validConfigurations36
-aggregator_Aggregator "1..1" *-- "0..9999" aggregator_MetadataRepositoryReference : validationRepositories8
-TouchpointInstruction "0..1" --* "1..1" aggregator_p2_InstructionMap : value70
+aggregator_Aggregator "contacts 1..1" -- "Aggregator 1..1" aggregator_Contact : aggregator30
+ArtifactKey "aggregator_p2_InstallableUnit 0..9999" --* "ArtifactKey 1..1" aggregator_p2_InstallableUnit : artifactList54
+aggregator_Aggregator "aggregator_Contact 1..1" -- "aggregator_Aggregator4 0..1" aggregator_Contact : buildmaster3
+Bundles "aggregator_p2view_Category106 0..1" -- "Bundles107 1..1" aggregator_p2view_Category : bundleContainer105
+Bundles "aggregator_p2view_Feature116 0..1" -- "Bundles117 1..1" aggregator_p2view_Feature : bundleContainer115
+Bundles "aggregator_p2view_Product124 0..1" -- "Bundles125 1..1" aggregator_p2view_Product : bundleContainer123
+Bundles "aggregator_p2view_InstallableUnits83 0..1" -- "Bundles 1..1" aggregator_p2view_InstallableUnits : bundleContainer82
+aggregator_Bundle "aggregator_MappedRepository14 0..9999" --* "aggregator_Bundle 1..1" aggregator_MappedRepository : bundles13
+Bundle "aggregator_p2view_Bundles 0..9999" -- "Bundle 1..1" aggregator_p2view_Bundles : bundles92
+aggregator_Category "aggregator_MappedRepository18 0..9999" --* "aggregator_Category 1..1" aggregator_MappedRepository : categories17
+aggregator_CustomCategory "features 0..9999" -- "CustomCategory 1..1" aggregator_Feature : categories31
+Category "aggregator_p2view_Categories 0..9999" -- "Category 1..1" aggregator_p2view_Categories : categories88
+Categories "aggregator_p2view_InstallableUnits 0..1" -- "Categories 1..1" aggregator_p2view_InstallableUnits : categoryContainer77
+Categories "aggregator_p2view_Category 0..1" -- "Categories98 1..1" aggregator_p2view_Category : categoryContainer97
+aggregator_Aggregator "aggregator_Configuration 1..1" *-- "aggregator_Aggregator 1..9999" aggregator_Configuration : configurations0
+aggregator_Contact "aggregator_Contribution25 0..9999" -- "aggregator_Contact26 1..1" aggregator_Contribution : contacts24
+aggregator_Aggregator "Contact 1..1" *-- "aggregator 0..9999" aggregator_Contact : contacts5
+aggregator_Aggregator "aggregator_Contribution 1..1" *-- "aggregator_Aggregator2 0..9999" aggregator_Contribution : contributions1
+ICopyright "aggregator_p2view_IUDetails149 0..1" -- "ICopyright150 1..1" aggregator_p2view_IUDetails : copyright148
+ICopyright "aggregator_p2_IInstallableUnit47 0..1" --* "ICopyright 1..1" aggregator_p2_IInstallableUnit : copyright46
+aggregator_Aggregator "aggregator_CustomCategory 1..1" *-- "aggregator_Aggregator7 0..9999" aggregator_CustomCategory : customCategories6
+Features "aggregator_p2view_Feature 0..1" -- "Features114 1..1" aggregator_p2view_Feature : featureContainer113
+Features "aggregator_p2view_Product 0..1" -- "Features122 1..1" aggregator_p2view_Product : featureContainer121
+Features "aggregator_p2view_InstallableUnits79 0..1" -- "Features 1..1" aggregator_p2view_InstallableUnits : featureContainer78
+Features "aggregator_p2view_Category100 0..1" -- "Features101 1..1" aggregator_p2view_Category : featureContainer99
+aggregator_Feature "aggregator_MappedRepository16 0..9999" --* "aggregator_Feature 1..1" aggregator_MappedRepository : features15
+aggregator_CustomCategory "Feature 1..1" -- "categories 0..9999" aggregator_Feature : features34
+Feature "aggregator_p2view_Features 0..9999" -- "Feature90 1..1" aggregator_p2view_Features : features89
+Fragments "aggregator_p2view_Category109 0..1" -- "Fragments110 1..1" aggregator_p2view_Category : fragmentContainer108
+Fragments "aggregator_p2view_Feature119 0..1" -- "Fragments120 1..1" aggregator_p2view_Feature : fragmentContainer118
+Fragments "aggregator_p2view_Product127 0..1" -- "Fragments128 1..1" aggregator_p2view_Product : fragmentContainer126
+Fragments "aggregator_p2view_InstallableUnits85 0..1" -- "Fragments 1..1" aggregator_p2view_InstallableUnits : fragmentContainer84
+Fragment "aggregator_p2view_Fragments 0..9999" -- "Fragment 1..1" aggregator_p2view_Fragments : fragments93
+RequiredCapability "aggregator_p2view_RequiredCapabilityWrapper 1..1" -- "RequiredCapability155 1..1" aggregator_p2view_RequiredCapabilityWrapper : genuine154
+ProvidedCapability "aggregator_p2view_ProvidedCapabilityWrapper 1..1" -- "ProvidedCapability157 1..1" aggregator_p2view_ProvidedCapabilityWrapper : genuine156
+RequiredCapability "aggregator_p2_InstallableUnitFragment 0..9999" --* "RequiredCapability68 1..1" aggregator_p2_InstallableUnitFragment : hostList67
+InstallableUnit "aggregator_InstallableUnitReference 0..1" -- "InstallableUnit 1..1" aggregator_InstallableUnitReference : installableUnit35
+InstallableUnit "aggregator_p2view_IUPresentation 0..1" -- "InstallableUnit96 1..1" aggregator_p2view_IUPresentation : installableUnit95
+InstallableUnits "aggregator_p2view_MetadataRepositoryStructuredView 0..1" --* "InstallableUnits 1..1" aggregator_p2view_MetadataRepositoryStructuredView : installableUnitList71
+InstallableUnit "aggregator_p2_MetadataRepository 0..9999" --* "InstallableUnit49 1..1" aggregator_p2_MetadataRepository : installableUnits48
+InstructionMap "aggregator_p2_TouchpointData 0..9999" --* "InstructionMap 1..1" aggregator_p2_TouchpointData : instructionMap69
+IUDetails "aggregator_p2view_Category112 0..1" -- "IUDetails 1..1" aggregator_p2view_Category : iuDetails111
+ILicense "aggregator_p2view_IUDetails152 0..1" -- "ILicense153 1..1" aggregator_p2view_IUDetails : license151
+ILicense "aggregator_p2_IInstallableUnit45 0..1" --* "ILicense 1..1" aggregator_p2_IInstallableUnit : license44
+aggregator_MapRule "aggregator_MappedRepository20 0..9999" --* "aggregator_MapRule 1..1" aggregator_MappedRepository : mapRules19
+aggregator_Aggregator "aggregator_MavenMapping 1..1" *-- "aggregator_Aggregator11 0..9999" aggregator_MavenMapping : mavenMappings10
+aggregator_Contribution "aggregator_MavenMapping29 1..1" *-- "aggregator_Contribution28 0..9999" aggregator_MavenMapping : mavenMappings27
+RequiredCapability "aggregator_p2_InstallableUnit60 0..9999" --* "RequiredCapability61 1..1" aggregator_p2_InstallableUnit : metaRequiredCapabilityList59
+MetadataRepository "aggregator_MetadataRepositoryReference39 0..1" -- "MetadataRepository 1..1" aggregator_MetadataRepositoryReference : metadataRepository38
+MetadataRepository "aggregator_p2view_MetadataRepositoryStructuredView75 1..1" --* "MetadataRepository76 1..1" aggregator_p2view_MetadataRepositoryStructuredView : metadataRepository74
+Miscellaneous "aggregator_p2view_InstallableUnits87 0..1" -- "Miscellaneous 1..1" aggregator_p2view_InstallableUnits : miscellaneousContainer86
+OtherIU "aggregator_p2view_Miscellaneous 0..9999" -- "OtherIU 1..1" aggregator_p2view_Miscellaneous : others94
+Products "aggregator_p2view_Category103 0..1" -- "Products104 1..1" aggregator_p2view_Category : productContainer102
+Products "aggregator_p2view_InstallableUnits81 0..1" -- "Products 1..1" aggregator_p2view_InstallableUnits : productContainer80
+aggregator_MappedRepository "aggregator_Product 1..1" *-- "aggregator_MappedRepository 0..9999" aggregator_Product : products12
+Product "aggregator_p2view_Products 0..9999" -- "Product 1..1" aggregator_p2view_Products : products91
+Properties "aggregator_p2view_MetadataRepositoryStructuredView73 0..1" --* "Properties 1..1" aggregator_p2view_MetadataRepositoryStructuredView : properties72
+Properties "aggregator_p2view_IUDetails141 0..1" -- "Properties142 1..1" aggregator_p2view_IUDetails : propertiesContainer140
+aggregator_p2view_Properties "p2view_aggregator_Property 1..1" -- "aggregator_p2view_Properties 0..9999" p2view_aggregator_Property : propertyList129
+Property "aggregator_p2_MetadataRepository53 0..9999" --* "Property 1..1" aggregator_p2_MetadataRepository : propertyMap52
+Property "aggregator_p2_InstallableUnit63 0..9999" --* "Property64 1..1" aggregator_p2_InstallableUnit : propertyMap62
+ProvidedCapabilityWrapper "aggregator_p2view_ProvidedCapabilities 0..9999" -- "ProvidedCapabilityWrapper 1..1" aggregator_p2view_ProvidedCapabilities : providedCapabilities131
+ProvidedCapabilities "aggregator_p2view_IUDetails139 0..1" -- "ProvidedCapabilities 1..1" aggregator_p2view_IUDetails : providedCapabilitiesContainer138
+ProvidedCapability "aggregator_p2_InstallableUnit56 0..9999" --* "ProvidedCapability 1..1" aggregator_p2_InstallableUnit : providedCapabilityList55
+aggregator_Contribution "aggregator_MappedRepository23 1..1" *-- "aggregator_Contribution22 0..9999" aggregator_MappedRepository : repositories21
+RepositoryReference "aggregator_p2_MetadataRepository51 0..9999" --* "RepositoryReference 1..1" aggregator_p2_MetadataRepository : repositoryReferences50
+RequiredCapabilityWrapper "aggregator_p2view_RequiredCapabilities 0..9999" -- "RequiredCapabilityWrapper 1..1" aggregator_p2view_RequiredCapabilities : requiredCapabilities130
+RequiredCapabilities "aggregator_p2view_IUDetails 0..1" -- "RequiredCapabilities 1..1" aggregator_p2view_IUDetails : requiredCapabilitiesContainer137
+RequiredCapability "aggregator_p2_InstallableUnit58 0..9999" --* "RequiredCapability 1..1" aggregator_p2_InstallableUnit : requiredCapabilityList57
+aggregator_Status "aggregator_StatusProvider 1..1" -- "aggregator_Status 1..1" aggregator_StatusProvider : status40
+TouchpointData "aggregator_p2view_Touchpoints135 0..9999" -- "TouchpointData136 1..1" aggregator_p2view_Touchpoints : touchpointDataList134
+TouchpointData "aggregator_p2_InstallableUnit66 0..9999" --* "TouchpointData 1..1" aggregator_p2_InstallableUnit : touchpointDataList65
+ITouchpointType "aggregator_p2view_Touchpoints 0..1" -- "ITouchpointType133 1..1" aggregator_p2view_Touchpoints : touchpointType132
+ITouchpointType "aggregator_p2_IInstallableUnit 0..1" --* "ITouchpointType 1..1" aggregator_p2_IInstallableUnit : touchpointType41
+Touchpoints "aggregator_p2view_IUDetails144 0..1" -- "Touchpoints 1..1" aggregator_p2view_IUDetails : touchpointsContainer143
+IUpdateDescriptor "aggregator_p2view_IUDetails146 0..1" -- "IUpdateDescriptor147 1..1" aggregator_p2view_IUDetails : updateDescriptor145
+IUpdateDescriptor "aggregator_p2_IInstallableUnit43 0..1" --* "IUpdateDescriptor 1..1" aggregator_p2_IInstallableUnit : updateDescriptor42
+aggregator_Configuration "aggregator_MappedUnit 0..9999" -- "aggregator_Configuration33 1..1" aggregator_MappedUnit : validConfigurations32
+aggregator_Configuration "aggregator_ValidConfigurationsRule 0..9999" -- "aggregator_Configuration37 1..1" aggregator_ValidConfigurationsRule : validConfigurations36
+aggregator_Aggregator "aggregator_MetadataRepositoryReference 1..1" *-- "aggregator_Aggregator9 0..9999" aggregator_MetadataRepositoryReference : validationRepositories8
+TouchpointInstruction "aggregator_p2_InstructionMap 0..1" --* "TouchpointInstruction 1..1" aggregator_p2_InstructionMap : value70
 @enduml

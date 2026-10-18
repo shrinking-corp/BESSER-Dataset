@@ -1,4 +1,8 @@
 @startuml
+' model: eShop
+' project: sampleModel
+' owner: User
+' description: New project
 class Customer {
 }
 class eShop_Customer {
@@ -26,12 +30,12 @@ class eShop_SaleLine {
   + quantity : int
 }
 Customer <|-- eShop_GoldCustomer
-eShop_Customer "0..9999" -- "1..1" eShop_Portal : customers2
-eShop_Sale "1..1" -- "0..9999" eShop_SaleLine : lines5
-eShop_Customer "1..1" -- "1..1" eShop_Portal : portal0
-eShop_Product "1..1" -- "1..1" eShop_SaleLine : product9
-eShop_Customer "1..1" -- "1..1" eShop_Sale : purchaser3
-eShop_Customer "1..1" -- "0..9999" eShop_Sale : sale1
-eShop_Sale "0..1" -- "1..1" eShop_SaleLine : sale7
-eShop_Product "1..1" -- "0..9999" eShop_SaleLine : salesLines10
+eShop_Customer "portal 0..9999" -- "Customer 1..1" eShop_Portal : customers2
+eShop_Sale "SaleLine 1..1" -- "sale6 0..9999" eShop_SaleLine : lines5
+eShop_Customer "Portal 1..1" -- "customers 1..1" eShop_Portal : portal0
+eShop_Product "salesLines 1..1" -- "Product 1..1" eShop_SaleLine : product9
+eShop_Customer "sale 1..1" -- "Customer4 1..1" eShop_Sale : purchaser3
+eShop_Customer "Sale 1..1" -- "purchaser 0..9999" eShop_Sale : sale1
+eShop_Sale "lines 0..1" -- "Sale8 1..1" eShop_SaleLine : sale7
+eShop_Product "SaleLine11 1..1" -- "product 0..9999" eShop_SaleLine : salesLines10
 @enduml

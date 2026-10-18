@@ -1,4 +1,8 @@
 @startuml
+' model: atomic
+' project: sampleModel
+' owner: User
+' description: New project
 class ANode {
 }
 class XAnnotable {
@@ -22,17 +26,17 @@ abstract class atomic_XAnnotable {
 ANode <|-- atomic_AStructured
 ANode <|-- atomic_AToken
 XAnnotable <|-- atomic_ANode
-atomic_AEdge "0..9999" --* "1..1" atomic_AGraph : edges3
-atomic_AGraph "0..1" -- "1..1" atomic_AToken : graph11
-atomic_AGraph "1..1" -- "1..1" atomic_AStructured : graph13
-atomic_AEdge "1..1" -- "1..1" atomic_AGraph : graph15
-atomic_AGraph "1..1" -- "1..1" atomic_ATargetEdge : graph25
-atomic_AToken "1..1" -- "0..1" atomic_AToken : next6
-atomic_AToken "1..1" -- "0..1" atomic_AToken : previous9
-atomic_AEdge "1..1" -- "1..1" atomic_ANode : source17
-atomic_AGraph "1..1" *-- "0..9999" atomic_AStructured : structures1
-atomic_AEdge "1..1" -- "1..1" atomic_ANode : target19
-atomic_ANode "1..1" -- "1..1" atomic_ATargetEdge : target22
-atomic_ANode "1..1" *-- "0..9999" atomic_ATargetEdge : targetedges12
-atomic_AGraph "1..1" *-- "0..9999" atomic_AToken : tokens0
+atomic_AEdge "graph4 0..9999" --* "AEdge 1..1" atomic_AGraph : edges3
+atomic_AGraph "tokens 0..1" -- "AGraph 1..1" atomic_AToken : graph11
+atomic_AGraph "structures 1..1" -- "AGraph14 1..1" atomic_AStructured : graph13
+atomic_AEdge "AGraph16 1..1" -- "edges 1..1" atomic_AGraph : graph15
+atomic_AGraph "atomic_ATargetEdge26 1..1" -- "atomic_AGraph 1..1" atomic_ATargetEdge : graph25
+atomic_AToken "AToken7 1..1" -- "previous 0..1" atomic_AToken : next6
+atomic_AToken "AToken10 1..1" -- "next 0..1" atomic_AToken : previous9
+atomic_AEdge "atomic_ANode18 1..1" -- "atomic_AEdge 1..1" atomic_ANode : source17
+atomic_AGraph "AStructured 1..1" *-- "graph2 0..9999" atomic_AStructured : structures1
+atomic_AEdge "atomic_ANode21 1..1" -- "atomic_AEdge20 1..1" atomic_ANode : target19
+atomic_ANode "atomic_ATargetEdge23 1..1" -- "atomic_ANode24 1..1" atomic_ATargetEdge : target22
+atomic_ANode "atomic_ATargetEdge 1..1" *-- "atomic_ANode 0..9999" atomic_ATargetEdge : targetedges12
+atomic_AGraph "AToken 1..1" *-- "graph 0..9999" atomic_AToken : tokens0
 @enduml

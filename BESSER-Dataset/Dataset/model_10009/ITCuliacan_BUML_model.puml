@@ -1,4 +1,8 @@
 @startuml
+' model: itculiacan
+' project: sampleModel
+' owner: User
+' description: New project
 enum Nombramiento {
   medioTiempo
   tiempoCompleto
@@ -34,25 +38,55 @@ class itculiacan_Profesor {
 }
 class itculiacan_Universidad {
 }
-itculiacan_Alumno "1..9999" -- "1..1" itculiacan_Grupo : alumnos11
-itculiacan_Alumno "1..9999" -- "1..1" itculiacan_PlanEstudio : alumnos22
-itculiacan_Alumno "1..9999" -- "1..1" itculiacan_Generacion : alumnos5
-itculiacan_Aula "1..1" -- "1..1" itculiacan_Grupo : aula6
-itculiacan_Alumno "1..1" -- "1..1" itculiacan_PlanEstudio : cursa1
-itculiacan_Alumno "1..1" -- "1..1" itculiacan_Generacion : generacion0
-itculiacan_Aula "1..1" -- "1..9999" itculiacan_Grupo : grupos14
-itculiacan_Grupo "1..9999" -- "1..1" itculiacan_Materia : grupos16
-itculiacan_Grupo "1..9999" -- "1..1" itculiacan_Profesor : grupos20
-itculiacan_Alumno "1..1" -- "1..9999" itculiacan_Grupo : grupos3
-itculiacan_Grupo "1..1" -- "1..1" itculiacan_Materia : materia7
-itculiacan_Materia "1..9999" -- "1..1" itculiacan_PlanEstudio : materias24
-itculiacan_Materia "1..1" -- "1..9999" itculiacan_PlanEstudio : planesEstudio18
-itculiacan_Grupo "1..1" -- "1..1" itculiacan_Profesor : profesor9
-itculiacan_Alumno "1..9999" --* "1..1" itculiacan_Universidad : refAlumno31
-itculiacan_Aula "1..9999" --* "1..1" itculiacan_Universidad : refAulas27
-itculiacan_Generacion "1..9999" --* "1..1" itculiacan_Universidad : refGeneracion33
-itculiacan_Grupo "1..9999" --* "1..1" itculiacan_Universidad : refGrupo37
-itculiacan_Materia "1..9999" --* "1..1" itculiacan_Universidad : refMateria35
-itculiacan_PlanEstudio "1..9999" --* "1..1" itculiacan_Universidad : refPlanEstudio29
-itculiacan_Profesor "1..9999" --* "1..1" itculiacan_Universidad : refProfesor26
+itculiacan_Alumno "grupos12 1..9999" -- "Alumno13 1..1" itculiacan_Grupo : alumnos11
+itculiacan_Alumno "cursa 1..9999" -- "Alumno23 1..1" itculiacan_PlanEstudio : alumnos22
+itculiacan_Alumno "generacion 1..9999" -- "Alumno 1..1" itculiacan_Generacion : alumnos5
+itculiacan_Aula "grupos 1..1" -- "Aula 1..1" itculiacan_Grupo : aula6
+itculiacan_Alumno "PlanEstudio 1..1" -- "alumnos2 1..1" itculiacan_PlanEstudio : cursa1
+itculiacan_Alumno "Generacion 1..1" -- "alumnos 1..1" itculiacan_Generacion : generacion0
+itculiacan_Aula "Grupo15 1..1" -- "aula 1..9999" itculiacan_Grupo : grupos14
+itculiacan_Grupo "materia 1..9999" -- "Grupo17 1..1" itculiacan_Materia : grupos16
+itculiacan_Grupo "profesor 1..9999" -- "Grupo21 1..1" itculiacan_Profesor : grupos20
+itculiacan_Alumno "Grupo 1..1" -- "alumnos4 1..9999" itculiacan_Grupo : grupos3
+itculiacan_Grupo "Materia 1..1" -- "grupos8 1..1" itculiacan_Materia : materia7
+itculiacan_Materia "planesEstudio 1..9999" -- "Materia25 1..1" itculiacan_PlanEstudio : materias24
+itculiacan_Materia "PlanEstudio19 1..1" -- "materias 1..9999" itculiacan_PlanEstudio : planesEstudio18
+itculiacan_Grupo "Profesor 1..1" -- "grupos10 1..1" itculiacan_Profesor : profesor9
+itculiacan_Alumno "itculiacan_Universidad32 1..9999" --* "itculiacan_Alumno 1..1" itculiacan_Universidad : refAlumno31
+itculiacan_Aula "itculiacan_Universidad28 1..9999" --* "itculiacan_Aula 1..1" itculiacan_Universidad : refAulas27
+itculiacan_Generacion "itculiacan_Universidad34 1..9999" --* "itculiacan_Generacion 1..1" itculiacan_Universidad : refGeneracion33
+itculiacan_Grupo "itculiacan_Universidad38 1..9999" --* "itculiacan_Grupo 1..1" itculiacan_Universidad : refGrupo37
+itculiacan_Materia "itculiacan_Universidad36 1..9999" --* "itculiacan_Materia 1..1" itculiacan_Universidad : refMateria35
+itculiacan_PlanEstudio "itculiacan_Universidad30 1..9999" --* "itculiacan_PlanEstudio 1..1" itculiacan_Universidad : refPlanEstudio29
+itculiacan_Profesor "itculiacan_Universidad 1..9999" --* "itculiacan_Profesor 1..1" itculiacan_Universidad : refProfesor26
+note top of itculiacan_Alumno
+  constraint materiasDePlanEstudio (OCL): context Alumno inv: grupos.materia->forAll(m | self.cursa.materias->includes(m))
+end note
+note top of itculiacan_Alumno
+  constraint numeroControl (OCL): context Alumno inv: numeroControl > 0
+end note
+note top of itculiacan_Aula
+  constraint clave3 (OCL): context Aula inv: clave > 0
+end note
+note top of itculiacan_Grupo
+  constraint capacidadMaximaGrupo (OCL): context Grupo inv: self.alumnos->size() <= 40
+end note
+note top of itculiacan_Grupo
+  constraint clave (OCL): context Grupo inv: clave > 0
+end note
+note top of itculiacan_Grupo
+  constraint grupoMenorACapacidadAula (OCL): context Grupo inv: alumnos->asSet()->size() <= aula.capacidad
+end note
+note top of itculiacan_Materia
+  constraint clave1 (OCL): context Materia inv: clave > 0
+end note
+note top of itculiacan_PlanEstudio
+  constraint clave2 (OCL): context PlanEstudio inv: clave > 0
+end note
+note top of itculiacan_Profesor
+  constraint clave4 (OCL): context Profesor inv: clave > 0
+end note
+note top of itculiacan_Profesor
+  constraint materiasMaximasProfesor (OCL): context Profesor inv: grupos->asSet()->size() <= numeroMaterias
+end note
 @enduml

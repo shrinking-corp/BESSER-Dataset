@@ -141,9 +141,9 @@ def test_assoc_classObjects8_stub_double():
     partner = hutn_ContainmentSlot()
     setattr(partner, 'hutn_ContainmentSlot', None)
     _safe_set(owner, 'hutn_ClassObject9', partner)
-    assert getattr(partner, 'hutn_ContainmentSlot') == owner
+    assert owner in getattr(partner, 'hutn_ContainmentSlot')
     _safe_set(owner, 'hutn_ClassObject9', None)
-    assert getattr(partner, 'hutn_ContainmentSlot') is None
+    assert owner not in getattr(partner, 'hutn_ContainmentSlot')
 
 
 def test_assoc_metamodel3_stub_double():

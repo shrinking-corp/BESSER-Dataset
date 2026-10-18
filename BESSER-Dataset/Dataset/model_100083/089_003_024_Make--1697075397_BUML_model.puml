@@ -1,4 +1,8 @@
 @startuml
+' model: PrimitiveTypes
+' project: sampleModel
+' owner: User
+' description: New project
 class Comment {
 }
 class Dependency {
@@ -38,10 +42,10 @@ Dependency <|-- Make_FileDep
 Dependency <|-- Make_RuleDep
 Element <|-- Make_Macro
 Element <|-- Make_Rule
-Comment "0..1" --* "1..1" Make_Makefile : comment0
-Dependency "0..9999" --* "1..1" Make_Rule : dependencies3
-Element "1..9999" --* "1..1" Make_Makefile : elements1
-Make_ShellLine "1..1" -- "1..1" Rule : ruleShellLine5
-Make_RuleDep "1..1" -- "1..1" Rule : ruledep6
-Make_Rule "1..1" *-- "1..9999" ShellLine : shellLines4
+Comment "Make_Makefile 0..1" --* "Comment 1..1" Make_Makefile : comment0
+Dependency "Make_Rule 0..9999" --* "Dependency 1..1" Make_Rule : dependencies3
+Element "Make_Makefile2 1..9999" --* "Element 1..1" Make_Makefile : elements1
+Make_ShellLine "Rule 1..1" -- "shellLines 1..1" Rule : ruleShellLine5
+Make_RuleDep "Rule7 1..1" -- "Make_RuleDep 1..1" Rule : ruledep6
+Make_Rule "ShellLine 1..1" *-- "ruleShellLine 1..9999" ShellLine : shellLines4
 @enduml

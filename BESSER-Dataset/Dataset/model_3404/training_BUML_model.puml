@@ -1,4 +1,8 @@
 @startuml
+' model: training
+' project: sampleModel
+' owner: User
+' description: New project
 class Person {
 }
 abstract class training_Person {
@@ -21,13 +25,13 @@ class training_TrainingOrganization {
 }
 Person <|-- training_Trainee
 Person <|-- training_Trainer
-training_Person "1..9999" -- "1..1" training_Session : Trainees2
-training_Trainer "1..9999" -- "1..1" training_Training : canBeProvidedBy11
-training_Trainer "1..1" -- "1..9999" training_Training : canProvide13
-training_Person "0..9999" --* "1..1" training_TrainingOrganization : people4
-training_Session "0..1" -- "1..1" training_Training : session12
-training_Session "0..9999" --* "1..1" training_TrainingOrganization : sessions6
-training_Session "1..1" -- "1..1" training_Trainer : trainer1
-training_Session "1..1" -- "1..1" training_Training : training0
-training_Training "0..9999" --* "1..1" training_TrainingOrganization : training9
+training_Person "training_Session3 1..9999" -- "training_Person 1..1" training_Session : Trainees2
+training_Trainer "canProvide 1..9999" -- "Trainer 1..1" training_Training : canBeProvidedBy11
+training_Trainer "Training14 1..1" -- "canBeProvidedBy 1..9999" training_Training : canProvide13
+training_Person "training_TrainingOrganization 0..9999" --* "training_Person5 1..1" training_TrainingOrganization : people4
+training_Session "training 0..1" -- "Session 1..1" training_Training : session12
+training_Session "training_TrainingOrganization7 0..9999" --* "training_Session8 1..1" training_TrainingOrganization : sessions6
+training_Session "training_Trainer 1..1" -- "training_Session 1..1" training_Trainer : trainer1
+training_Session "Training 1..1" -- "session 1..1" training_Training : training0
+training_Training "training_TrainingOrganization10 0..9999" --* "training_Training 1..1" training_TrainingOrganization : training9
 @enduml

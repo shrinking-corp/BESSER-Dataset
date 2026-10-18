@@ -1,4 +1,8 @@
 @startuml
+' model: hockeyleague
+' project: sampleModel
+' owner: User
+' description: New project
 enum DefencePositionKind {
   left_defence
   right_defence
@@ -92,14 +96,14 @@ HockeyleagueObject <|-- hockeyleague_Team
 Player <|-- hockeyleague_Defence
 Player <|-- hockeyleague_Forward
 Player <|-- hockeyleague_Goalie
-hockeyleague_Arena "0..1" --* "1..1" hockeyleague_Team : arena20
-hockeyleague_Defence "0..9999" --* "1..1" hockeyleague_Team : defencemen14
-hockeyleague_Forward "0..9999" --* "1..1" hockeyleague_Team : forwards11
-hockeyleague_Goalie "1..1" *-- "0..9999" hockeyleague_GoalieStats : goalieStats3
-hockeyleague_Goalie "0..9999" --* "1..1" hockeyleague_Team : goalies17
-hockeyleague_Defence "1..1" *-- "0..9999" hockeyleague_PlayerStats : playerStats0
-hockeyleague_Forward "1..1" *-- "0..9999" hockeyleague_PlayerStats : playerStats1
-hockeyleague_GoalieStats "1..1" -- "0..1" hockeyleague_Team : team4
-hockeyleague_PlayerStats "1..1" -- "0..1" hockeyleague_Team : team8
-hockeyleague_League "1..1" *-- "0..9999" hockeyleague_Team : teams6
+hockeyleague_Arena "hockeyleague_Team21 0..1" --* "hockeyleague_Arena 1..1" hockeyleague_Team : arena20
+hockeyleague_Defence "hockeyleague_Team15 0..9999" --* "hockeyleague_Defence16 1..1" hockeyleague_Team : defencemen14
+hockeyleague_Forward "hockeyleague_Team12 0..9999" --* "hockeyleague_Forward13 1..1" hockeyleague_Team : forwards11
+hockeyleague_Goalie "hockeyleague_GoalieStats 1..1" *-- "hockeyleague_Goalie 0..9999" hockeyleague_GoalieStats : goalieStats3
+hockeyleague_Goalie "hockeyleague_Team18 0..9999" --* "hockeyleague_Goalie19 1..1" hockeyleague_Team : goalies17
+hockeyleague_Defence "hockeyleague_PlayerStats 1..1" *-- "hockeyleague_Defence 0..9999" hockeyleague_PlayerStats : playerStats0
+hockeyleague_Forward "hockeyleague_PlayerStats2 1..1" *-- "hockeyleague_Forward 0..9999" hockeyleague_PlayerStats : playerStats1
+hockeyleague_GoalieStats "hockeyleague_Team 1..1" -- "hockeyleague_GoalieStats5 0..1" hockeyleague_Team : team4
+hockeyleague_PlayerStats "hockeyleague_Team10 1..1" -- "hockeyleague_PlayerStats9 0..1" hockeyleague_Team : team8
+hockeyleague_League "hockeyleague_Team7 1..1" *-- "hockeyleague_League 0..9999" hockeyleague_Team : teams6
 @enduml

@@ -299,9 +299,9 @@ def test_assoc_actions59_stub_double():
     partner = applauseDsl_ScreenListItemCell()
     setattr(partner, 'applauseDsl_ScreenListItemCell60', None)
     _safe_set(owner, 'applauseDsl_UIAction61', partner)
-    assert getattr(partner, 'applauseDsl_ScreenListItemCell60') == owner
+    assert owner in getattr(partner, 'applauseDsl_ScreenListItemCell60')
     _safe_set(owner, 'applauseDsl_UIAction61', None)
-    assert getattr(partner, 'applauseDsl_ScreenListItemCell60') is None
+    assert owner not in getattr(partner, 'applauseDsl_ScreenListItemCell60')
 
 
 def test_assoc_baseUrl9_stub_double():
@@ -404,9 +404,9 @@ def test_assoc_elements0_stub_double():
     partner = applauseDsl_Model()
     setattr(partner, 'applauseDsl_Model', None)
     _safe_set(owner, 'applauseDsl_NamedElement', partner)
-    assert getattr(partner, 'applauseDsl_Model') == owner
+    assert owner in getattr(partner, 'applauseDsl_Model')
     _safe_set(owner, 'applauseDsl_NamedElement', None)
-    assert getattr(partner, 'applauseDsl_Model') is None
+    assert owner not in getattr(partner, 'applauseDsl_Model')
 
 
 def test_assoc_head93_stub_double():
@@ -509,9 +509,9 @@ def test_assoc_members68_stub_double():
     partner = applauseDsl_ListItemCellDeclaration()
     setattr(partner, 'applauseDsl_ListItemCellDeclaration69', None)
     _safe_set(owner, 'applauseDsl_UIComponentMemberDeclaration', partner)
-    assert getattr(partner, 'applauseDsl_ListItemCellDeclaration69') == owner
+    assert owner in getattr(partner, 'applauseDsl_ListItemCellDeclaration69')
     _safe_set(owner, 'applauseDsl_UIComponentMemberDeclaration', None)
-    assert getattr(partner, 'applauseDsl_ListItemCellDeclaration69') is None
+    assert owner not in getattr(partner, 'applauseDsl_ListItemCellDeclaration69')
 
 
 def test_assoc_members70_stub_double():
@@ -524,9 +524,9 @@ def test_assoc_members70_stub_double():
     partner = applauseDsl_UIComponentDeclaration()
     setattr(partner, 'applauseDsl_UIComponentDeclaration', None)
     _safe_set(owner, 'applauseDsl_UIComponentMemberDeclaration71', partner)
-    assert getattr(partner, 'applauseDsl_UIComponentDeclaration') == owner
+    assert owner in getattr(partner, 'applauseDsl_UIComponentDeclaration')
     _safe_set(owner, 'applauseDsl_UIComponentMemberDeclaration71', None)
-    assert getattr(partner, 'applauseDsl_UIComponentDeclaration') is None
+    assert owner not in getattr(partner, 'applauseDsl_UIComponentDeclaration')
 
 
 def test_assoc_methods13_stub_double():
@@ -539,9 +539,9 @@ def test_assoc_methods13_stub_double():
     partner = applauseDsl_DataSource()
     setattr(partner, 'applauseDsl_DataSource14', None)
     _safe_set(owner, 'applauseDsl_DataSourceAccessMethod', partner)
-    assert getattr(partner, 'applauseDsl_DataSource14') == owner
+    assert owner in getattr(partner, 'applauseDsl_DataSource14')
     _safe_set(owner, 'applauseDsl_DataSourceAccessMethod', None)
-    assert getattr(partner, 'applauseDsl_DataSource14') is None
+    assert owner not in getattr(partner, 'applauseDsl_DataSource14')
 
 
 def test_assoc_path19_stub_double():

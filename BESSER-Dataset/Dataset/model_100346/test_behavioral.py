@@ -283,9 +283,9 @@ def test_assoc_states3_stub_double():
     partner = automaton_Automaton()
     setattr(partner, 'automaton_Automaton4', None)
     _safe_set(owner, 'automaton_State', partner)
-    assert getattr(partner, 'automaton_Automaton4') == owner
+    assert owner in getattr(partner, 'automaton_Automaton4')
     _safe_set(owner, 'automaton_State', None)
-    assert getattr(partner, 'automaton_Automaton4') is None
+    assert owner not in getattr(partner, 'automaton_Automaton4')
 
 
 def test_assoc_timedZones17_stub_double():
@@ -298,9 +298,9 @@ def test_assoc_timedZones17_stub_double():
     partner = automaton_EventToken()
     setattr(partner, 'automaton_EventToken18', None)
     _safe_set(owner, 'automaton_TimedZone19', partner)
-    assert getattr(partner, 'automaton_EventToken18') == owner
+    assert owner in getattr(partner, 'automaton_EventToken18')
     _safe_set(owner, 'automaton_TimedZone19', None)
-    assert getattr(partner, 'automaton_EventToken18') is None
+    assert owner not in getattr(partner, 'automaton_EventToken18')
 
 
 def test_assoc_timedZones8_stub_double():
@@ -313,8 +313,8 @@ def test_assoc_timedZones8_stub_double():
     partner = automaton_Automaton()
     setattr(partner, 'automaton_Automaton9', None)
     _safe_set(owner, 'automaton_TimedZone', partner)
-    assert getattr(partner, 'automaton_Automaton9') == owner
+    assert owner in getattr(partner, 'automaton_Automaton9')
     _safe_set(owner, 'automaton_TimedZone', None)
-    assert getattr(partner, 'automaton_Automaton9') is None
+    assert owner not in getattr(partner, 'automaton_Automaton9')
 
 

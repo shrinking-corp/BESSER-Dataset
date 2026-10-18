@@ -54,8 +54,8 @@ def test_assoc_yyy1_stub_double():
     partner = d_B()
     setattr(partner, 'd_B2', None)
     _safe_set(owner, 'd_Z', partner)
-    assert getattr(partner, 'd_B2') == owner
+    assert owner in getattr(partner, 'd_B2')
     _safe_set(owner, 'd_Z', None)
-    assert getattr(partner, 'd_B2') is None
+    assert owner not in getattr(partner, 'd_B2')
 
 

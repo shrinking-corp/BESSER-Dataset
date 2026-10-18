@@ -1,4 +1,8 @@
 @startuml
+' model: railway
+' project: sampleModel
+' owner: User
+' description: New project
 enum Position {
   FAILURE
   LEFT
@@ -44,17 +48,17 @@ RailwayElement <|-- railway_SwitchPosition
 RailwayElement <|-- railway_TrackElement
 TrackElement <|-- railway_Segment
 TrackElement <|-- railway_Switch
-railway_TrackElement "1..1" -- "0..9999" railway_TrackElement : connectsTo2
-railway_Route "1..1" *-- "2..9999" railway_Sensor : definedBy10
-railway_Sensor "1..1" *-- "0..9999" railway_TrackElement : elements14
-railway_Route "1..1" -- "1..1" railway_Semaphore : entry4
-railway_Route "1..1" -- "1..1" railway_Semaphore : exit7
-railway_Route "1..1" *-- "0..9999" railway_SwitchPosition : follows5
-railway_RailwayContainer "1..1" *-- "0..9999" railway_RailwayElement : invalids15
-railway_Switch "1..1" -- "0..9999" railway_SwitchPosition : positions3
-railway_Route "1..1" -- "1..1" railway_SwitchPosition : route13
-railway_RailwayContainer "1..1" *-- "0..9999" railway_Route : routes19
-railway_RailwayContainer "1..1" *-- "0..9999" railway_Semaphore : semaphores16
-railway_Sensor "0..1" -- "1..1" railway_TrackElement : sensor0
-railway_Switch "1..1" -- "1..1" railway_SwitchPosition : switch12
+railway_TrackElement "railway_TrackElement 1..1" -- "railway_TrackElement1 0..9999" railway_TrackElement : connectsTo2
+railway_Route "railway_Sensor 1..1" *-- "railway_Route11 2..9999" railway_Sensor : definedBy10
+railway_Sensor "TrackElement 1..1" *-- "sensor 0..9999" railway_TrackElement : elements14
+railway_Route "railway_Semaphore 1..1" -- "railway_Route 1..1" railway_Semaphore : entry4
+railway_Route "railway_Semaphore9 1..1" -- "railway_Route8 1..1" railway_Semaphore : exit7
+railway_Route "SwitchPosition6 1..1" *-- "route 0..9999" railway_SwitchPosition : follows5
+railway_RailwayContainer "railway_RailwayElement 1..1" *-- "railway_RailwayContainer 0..9999" railway_RailwayElement : invalids15
+railway_Switch "SwitchPosition 1..1" -- "switch 0..9999" railway_SwitchPosition : positions3
+railway_Route "follows 1..1" -- "Route 1..1" railway_SwitchPosition : route13
+railway_RailwayContainer "railway_Route21 1..1" *-- "railway_RailwayContainer20 0..9999" railway_Route : routes19
+railway_RailwayContainer "railway_Semaphore18 1..1" *-- "railway_RailwayContainer17 0..9999" railway_Semaphore : semaphores16
+railway_Sensor "elements 0..1" -- "Sensor 1..1" railway_TrackElement : sensor0
+railway_Switch "positions 1..1" -- "Switch 1..1" railway_SwitchPosition : switch12
 @enduml

@@ -254,30 +254,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=genericsGoCrazy_Car_strategy)
-@settings(max_examples=30)
-def test_hyp_genericsgocrazy_car_superfoo_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.superFoo(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.superFoo).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'superFoo' in genericsGoCrazy_Car is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'superFoo' in genericsGoCrazy_Car did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'superFoo' in genericsGoCrazy_Car is not implemented or raised an error")
 
 import warnings
 import copy
@@ -285,31 +261,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=genericsGoCrazy_Car_strategy)
-@settings(max_examples=30)
-def test_hyp_genericsgocrazy_car_enhancedfoo_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.enhancedFoo(
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.enhancedFoo).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'enhancedFoo' in genericsGoCrazy_Car is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'enhancedFoo' in genericsGoCrazy_Car did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'enhancedFoo' in genericsGoCrazy_Car is not implemented or raised an error")
 
 import warnings
 import copy
@@ -317,30 +268,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=genericsGoCrazy_Car_strategy)
-@settings(max_examples=30)
-def test_hyp_genericsgocrazy_car_foo_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.foo(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.foo).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'foo' in genericsGoCrazy_Car is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'foo' in genericsGoCrazy_Car did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'foo' in genericsGoCrazy_Car is not implemented or raised an error")
 
 
 
@@ -391,32 +318,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=genericsGoCrazy_MyClass_strategy)
-@settings(max_examples=30)
-def test_hyp_genericsgocrazy_myclass_bar_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.bar(
-            "test", 
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.bar).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'bar' in genericsGoCrazy_MyClass is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'bar' in genericsGoCrazy_MyClass did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'bar' in genericsGoCrazy_MyClass is not implemented or raised an error")
 
 
 # ----- SECTION B: test_structural_full.py (deterministic-first suite) -----
@@ -680,28 +581,8 @@ def test_assoc_previousCar1_reverse_link_reassign_clear():
 
 
 
-from enum import Enum
 from python_code import Color
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(Color.BLUE, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(Color.BLUE, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(Color.RED, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(Color.RED, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(Color.RED, 'RED') == Color.RED
-
 from python_code import genericsGoCrazy_MyClass
 
 def test_genericsGoCrazy_MyClass___init__():

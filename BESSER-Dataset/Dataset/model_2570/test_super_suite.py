@@ -114,30 +114,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=testpackage_Group_strategy)
-@settings(max_examples=30)
-def test_hyp_testpackage_group_ismember_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isMember(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isMember).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isMember' in testpackage_Group is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isMember' in testpackage_Group did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isMember' in testpackage_Group is not implemented or raised an error")
 
 
 # ----- SECTION B: test_structural_full.py (deterministic-first suite) -----

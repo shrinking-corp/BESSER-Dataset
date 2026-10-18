@@ -1,4 +1,8 @@
 @startuml
+' model: di
+' project: sampleModel
+' owner: User
+' description: New project
 class BaseElement {
 }
 class Diagram {
@@ -58,24 +62,24 @@ LabeledEdge <|-- di_BPMNEdge
 LabeledShape <|-- di_BPMNShape
 Plane <|-- di_BPMNPlane
 Style <|-- di_BPMNLabelStyle
-di_BPMNDiagram "0..9999" --* "1..1" di_DocumentRoot : bPMNDiagram4
-di_BPMNEdge "0..9999" --* "1..1" di_DocumentRoot : bPMNEdge6
-di_BPMNLabel "0..9999" --* "1..1" di_DocumentRoot : bPMNLabel8
-di_BPMNLabelStyle "0..9999" --* "1..1" di_DocumentRoot : bPMNLabelStyle10
-di_BPMNPlane "0..9999" --* "1..1" di_DocumentRoot : bPMNPlane12
-di_BPMNShape "0..9999" --* "1..1" di_DocumentRoot : bPMNShape14
-BaseElement "0..1" -- "1..1" di_BPMNEdge : bpmnElement25
-BaseElement "0..1" -- "1..1" di_BPMNPlane : bpmnElement37
-BaseElement "0..1" -- "1..1" di_BPMNShape : bpmnElement43
-di_BPMNShape "0..1" -- "1..1" di_BPMNShape : choreographyActivityShape47
-di_BPMNLabelStyle "1..1" *-- "1..1" di_Font : font35
-di_BPMNEdge "1..1" *-- "0..1" di_BPMNLabel : label22
-di_BPMNLabel "0..1" --* "1..1" di_BPMNShape : label40
-di_BPMNDiagram "1..1" *-- "0..9999" di_BPMNLabelStyle : labelStyle19
-di_BPMNLabel "1..1" -- "0..1" di_BPMNLabelStyle : labelStyle32
-di_BPMNDiagram "1..1" *-- "1..1" di_BPMNPlane : plane16
-di_BPMNEdge "1..1" -- "0..1" di_DiagramElement : sourceElement27
-di_BPMNEdge "1..1" -- "0..1" di_DiagramElement : targetElement29
-di_DocumentRoot "1..1" *-- "0..9999" di_EStringToStringMapEntry : xMLNSPrefixMap0
-di_DocumentRoot "1..1" *-- "0..9999" di_EStringToStringMapEntry : xSISchemaLocation1
+di_BPMNDiagram "di_DocumentRoot5 0..9999" --* "di_BPMNDiagram 1..1" di_DocumentRoot : bPMNDiagram4
+di_BPMNEdge "di_DocumentRoot7 0..9999" --* "di_BPMNEdge 1..1" di_DocumentRoot : bPMNEdge6
+di_BPMNLabel "di_DocumentRoot9 0..9999" --* "di_BPMNLabel 1..1" di_DocumentRoot : bPMNLabel8
+di_BPMNLabelStyle "di_DocumentRoot11 0..9999" --* "di_BPMNLabelStyle 1..1" di_DocumentRoot : bPMNLabelStyle10
+di_BPMNPlane "di_DocumentRoot13 0..9999" --* "di_BPMNPlane 1..1" di_DocumentRoot : bPMNPlane12
+di_BPMNShape "di_DocumentRoot15 0..9999" --* "di_BPMNShape 1..1" di_DocumentRoot : bPMNShape14
+BaseElement "di_BPMNEdge26 0..1" -- "BaseElement 1..1" di_BPMNEdge : bpmnElement25
+BaseElement "di_BPMNPlane38 0..1" -- "BaseElement39 1..1" di_BPMNPlane : bpmnElement37
+BaseElement "di_BPMNShape44 0..1" -- "BaseElement45 1..1" di_BPMNShape : bpmnElement43
+di_BPMNShape "di_BPMNShape46 0..1" -- "di_BPMNShape48 1..1" di_BPMNShape : choreographyActivityShape47
+di_BPMNLabelStyle "di_Font 1..1" *-- "di_BPMNLabelStyle36 1..1" di_Font : font35
+di_BPMNEdge "di_BPMNLabel24 1..1" *-- "di_BPMNEdge23 0..1" di_BPMNLabel : label22
+di_BPMNLabel "di_BPMNShape41 0..1" --* "di_BPMNLabel42 1..1" di_BPMNShape : label40
+di_BPMNDiagram "di_BPMNLabelStyle21 1..1" *-- "di_BPMNDiagram20 0..9999" di_BPMNLabelStyle : labelStyle19
+di_BPMNLabel "di_BPMNLabelStyle34 1..1" -- "di_BPMNLabel33 0..1" di_BPMNLabelStyle : labelStyle32
+di_BPMNDiagram "di_BPMNPlane18 1..1" *-- "di_BPMNDiagram17 1..1" di_BPMNPlane : plane16
+di_BPMNEdge "di_DiagramElement 1..1" -- "di_BPMNEdge28 0..1" di_DiagramElement : sourceElement27
+di_BPMNEdge "di_DiagramElement31 1..1" -- "di_BPMNEdge30 0..1" di_DiagramElement : targetElement29
+di_DocumentRoot "di_EStringToStringMapEntry 1..1" *-- "di_DocumentRoot 0..9999" di_EStringToStringMapEntry : xMLNSPrefixMap0
+di_DocumentRoot "di_EStringToStringMapEntry3 1..1" *-- "di_DocumentRoot2 0..9999" di_EStringToStringMapEntry : xSISchemaLocation1
 @enduml

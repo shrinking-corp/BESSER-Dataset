@@ -1,4 +1,8 @@
 @startuml
+' model: courses
+' project: sampleModel
+' owner: User
+' description: New project
 enum Day {
   Friday
   Monday
@@ -132,32 +136,32 @@ class courses_University {
   + StaffInscription(courses_name : str) : void
   + StudentInscription(courses_name : str) : void
 }
-courses_ContactInfo "1..1" --* "1..1" courses_CourseInstance : contactInfo15
-courses_Course "0..9999" --* "1..1" courses_University : course0
-courses_Course "0..9999" -- "1..1" courses_Person : course54
-courses_Course "1..1" -- "1..1" courses_CreditsReduction : course59
-courses_Content "1..1" --* "1..1" courses_CourseInstance : courseContent17
-courses_ContactInfo "1..1" -- "0..1" courses_Person : courseCoordinator37
-courses_Course "0..9999" -- "1..1" courses_CourseInstance : courseRecommended29
-courses_Course "0..9999" -- "1..1" courses_CourseInstance : courseRequired26
-courses_Course "0..9999" -- "1..1" courses_StudyProgram : courses50
-courses_CourseInstance "1..1" *-- "1..1" courses_Coursework : coursework20
-courses_CourseInstance "1..1" *-- "0..9999" courses_CreditsReduction : creditsReduction32
-courses_EvaluationForm "0..9999" --* "1..1" courses_ExaminationPanel : evaluationForm48
-courses_ExaminationArrangement "1..1" -- "0..9999" courses_ExaminationPanel : evaluationForms34
-courses_Content "1..1" *-- "0..1" courses_ExaminationArrangement : examArrangement12
-courses_CourseInstance "1..1" *-- "1..1" courses_ExaminationPanel : examination24
-courses_CourseHour "0..9999" --* "1..1" courses_Timetable : listCourseHour43
-courses_Course "1..1" *-- "0..9999" courses_CourseInstance : listCourseInstance8
-courses_Content "1..1" *-- "0..9999" courses_Paragraph : paragraph13
-courses_CourseHour "1..1" -- "0..9999" courses_StudyProgram : plannedFor45
-courses_Person "0..9999" --* "1..1" courses_University : staff1
-courses_ContactInfo "1..1" -- "0..9999" courses_Person : staff40
-courses_Course "1..1" -- "0..9999" courses_Person : student11
-courses_Person "0..9999" -- "1..1" courses_StudyProgram : student51
-courses_Person "0..9999" --* "1..1" courses_University : students5
-courses_Course "1..1" -- "0..9999" courses_StudyProgram : studyProgram10
-courses_StudyProgram "0..9999" --* "1..1" courses_University : studyProgram3
-courses_Person "1..1" -- "0..1" courses_StudyProgram : studyProgram56
-courses_CourseInstance "1..1" *-- "1..1" courses_Timetable : timetable22
+courses_ContactInfo "courses_CourseInstance16 1..1" --* "courses_ContactInfo 1..1" courses_CourseInstance : contactInfo15
+courses_Course "courses_University 0..9999" --* "courses_Course 1..1" courses_University : course0
+courses_Course "student 0..9999" -- "Course55 1..1" courses_Person : course54
+courses_Course "courses_CreditsReduction60 1..1" -- "courses_Course61 1..1" courses_CreditsReduction : course59
+courses_Content "courses_CourseInstance18 1..1" --* "courses_Content19 1..1" courses_CourseInstance : courseContent17
+courses_ContactInfo "courses_Person39 1..1" -- "courses_ContactInfo38 0..1" courses_Person : courseCoordinator37
+courses_Course "courses_CourseInstance30 0..9999" -- "courses_Course31 1..1" courses_CourseInstance : courseRecommended29
+courses_Course "courses_CourseInstance27 0..9999" -- "courses_Course28 1..1" courses_CourseInstance : courseRequired26
+courses_Course "studyProgram 0..9999" -- "Course 1..1" courses_StudyProgram : courses50
+courses_CourseInstance "courses_Coursework 1..1" *-- "courses_CourseInstance21 1..1" courses_Coursework : coursework20
+courses_CourseInstance "courses_CreditsReduction 1..1" *-- "courses_CourseInstance33 0..9999" courses_CreditsReduction : creditsReduction32
+courses_EvaluationForm "courses_ExaminationPanel49 0..9999" --* "courses_EvaluationForm 1..1" courses_ExaminationPanel : evaluationForm48
+courses_ExaminationArrangement "courses_ExaminationPanel36 1..1" -- "courses_ExaminationArrangement35 0..9999" courses_ExaminationPanel : evaluationForms34
+courses_Content "courses_ExaminationArrangement 1..1" *-- "courses_Content 0..1" courses_ExaminationArrangement : examArrangement12
+courses_CourseInstance "courses_ExaminationPanel 1..1" *-- "courses_CourseInstance25 1..1" courses_ExaminationPanel : examination24
+courses_CourseHour "courses_Timetable44 0..9999" --* "courses_CourseHour 1..1" courses_Timetable : listCourseHour43
+courses_Course "courses_CourseInstance 1..1" *-- "courses_Course9 0..9999" courses_CourseInstance : listCourseInstance8
+courses_Content "courses_Paragraph 1..1" *-- "courses_Content14 0..9999" courses_Paragraph : paragraph13
+courses_CourseHour "courses_StudyProgram47 1..1" -- "courses_CourseHour46 0..9999" courses_StudyProgram : plannedFor45
+courses_Person "courses_University2 0..9999" --* "courses_Person 1..1" courses_University : staff1
+courses_ContactInfo "courses_Person42 1..1" -- "courses_ContactInfo41 0..9999" courses_Person : staff40
+courses_Course "Person 1..1" -- "course 0..9999" courses_Person : student11
+courses_Person "studyProgram52 0..9999" -- "Person53 1..1" courses_StudyProgram : student51
+courses_Person "courses_University6 0..9999" --* "courses_Person7 1..1" courses_University : students5
+courses_Course "StudyProgram 1..1" -- "courses 0..9999" courses_StudyProgram : studyProgram10
+courses_StudyProgram "courses_University4 0..9999" --* "courses_StudyProgram 1..1" courses_University : studyProgram3
+courses_Person "StudyProgram58 1..1" -- "student57 0..1" courses_StudyProgram : studyProgram56
+courses_CourseInstance "courses_Timetable 1..1" *-- "courses_CourseInstance23 1..1" courses_Timetable : timetable22
 @enduml

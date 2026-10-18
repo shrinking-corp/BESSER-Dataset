@@ -1,4 +1,8 @@
 @startuml
+' model: QVTOperational
+' project: sampleModel
+' owner: User
+' description: New project
 class ConstructorBody {
 }
 enum DirectionKind {
@@ -99,24 +103,24 @@ OperationBody <|-- QVTOperational_MappingBody
 ResolveExp <|-- QVTOperational_ResolveInExp
 VarParameter <|-- QVTOperational_MappingParameter
 VarParameter <|-- QVTOperational_ModelParameter
-ModelType "0..9999" -- "1..1" QVTOperational_ModuleImport : binding21
-OperationBody "0..1" --* "1..1" QVTOperational_ImperativeOperation : body0
-ConstructorBody "1..1" --* "1..1" QVTOperational_ObjectExp : body28
-QVTOperational_ImperativeOperation "1..1" *-- "0..1" VarParameter : context1
-ImperativeOperation "0..1" -- "1..1" QVTOperational_VarParameter : ctxOwner35
-MappingOperation "0..9999" -- "1..1" QVTOperational_MappingOperation : disjunct8
-EntryOperation "0..1" -- "1..1" QVTOperational_Module : entry16
-ModelParameter "0..1" -- "1..1" QVTOperational_MappingParameter : extent15
-Module "1..1" -- "1..1" QVTOperational_ModuleImport : importedModule23
-MappingOperation "0..1" -- "1..1" QVTOperational_ResolveInExp : inMapping33
-MappingOperation "0..9999" -- "1..1" QVTOperational_MappingOperation : inherited9
-MappingOperation "0..9999" -- "1..1" QVTOperational_MappingOperation : merged12
-ModelParameter "0..9999" --* "1..1" QVTOperational_OperationalTransformation : modelParameter31
-Module "0..1" -- "1..1" QVTOperational_ModuleImport : module25
-ModuleImport "0..9999" --* "1..1" QVTOperational_Module : moduleImport17
-ImperativeOperation "0..1" -- "1..1" QVTOperational_OperationBody : operation29
-ImperativeOperation "0..1" -- "1..1" QVTOperational_ImperativeOperation : overridden3
-ImperativeOperation "0..1" -- "1..1" QVTOperational_VarParameter : resOwner37
-QVTOperational_ImperativeOperation "1..1" *-- "0..9999" VarParameter : result5
-ModelType "0..9999" -- "1..1" QVTOperational_Module : usedModelType19
+ModelType "QVTOperational_ModuleImport 0..9999" -- "ModelType22 1..1" QVTOperational_ModuleImport : binding21
+OperationBody "QVTOperational_ImperativeOperation 0..1" --* "OperationBody 1..1" QVTOperational_ImperativeOperation : body0
+ConstructorBody "QVTOperational_ObjectExp 1..1" --* "ConstructorBody 1..1" QVTOperational_ObjectExp : body28
+QVTOperational_ImperativeOperation "VarParameter 1..1" *-- "QVTOperational_ImperativeOperation2 0..1" VarParameter : context1
+ImperativeOperation "QVTOperational_VarParameter 0..1" -- "ImperativeOperation36 1..1" QVTOperational_VarParameter : ctxOwner35
+MappingOperation "QVTOperational_MappingOperation 0..9999" -- "MappingOperation 1..1" QVTOperational_MappingOperation : disjunct8
+EntryOperation "QVTOperational_Module 0..1" -- "EntryOperation 1..1" QVTOperational_Module : entry16
+ModelParameter "QVTOperational_MappingParameter 0..1" -- "ModelParameter 1..1" QVTOperational_MappingParameter : extent15
+Module "QVTOperational_ModuleImport24 1..1" -- "Module 1..1" QVTOperational_ModuleImport : importedModule23
+MappingOperation "QVTOperational_ResolveInExp 0..1" -- "MappingOperation34 1..1" QVTOperational_ResolveInExp : inMapping33
+MappingOperation "QVTOperational_MappingOperation10 0..9999" -- "MappingOperation11 1..1" QVTOperational_MappingOperation : inherited9
+MappingOperation "QVTOperational_MappingOperation13 0..9999" -- "MappingOperation14 1..1" QVTOperational_MappingOperation : merged12
+ModelParameter "QVTOperational_OperationalTransformation 0..9999" --* "ModelParameter32 1..1" QVTOperational_OperationalTransformation : modelParameter31
+Module "QVTOperational_ModuleImport26 0..1" -- "Module27 1..1" QVTOperational_ModuleImport : module25
+ModuleImport "QVTOperational_Module18 0..9999" --* "ModuleImport 1..1" QVTOperational_Module : moduleImport17
+ImperativeOperation "QVTOperational_OperationBody 0..1" -- "ImperativeOperation30 1..1" QVTOperational_OperationBody : operation29
+ImperativeOperation "QVTOperational_ImperativeOperation4 0..1" -- "ImperativeOperation 1..1" QVTOperational_ImperativeOperation : overridden3
+ImperativeOperation "QVTOperational_VarParameter38 0..1" -- "ImperativeOperation39 1..1" QVTOperational_VarParameter : resOwner37
+QVTOperational_ImperativeOperation "VarParameter7 1..1" *-- "QVTOperational_ImperativeOperation6 0..9999" VarParameter : result5
+ModelType "QVTOperational_Module20 0..9999" -- "ModelType 1..1" QVTOperational_Module : usedModelType19
 @enduml

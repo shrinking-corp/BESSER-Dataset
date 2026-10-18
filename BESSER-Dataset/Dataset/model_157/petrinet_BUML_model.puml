@@ -1,4 +1,8 @@
 @startuml
+' model: petrinet
+' project: sampleModel
+' owner: User
+' description: New project
 class Edge {
 }
 class NamedElement {
@@ -31,11 +35,11 @@ NamedElement <|-- petrinet_Edge
 NamedElement <|-- petrinet_PetriNet
 NamedElement <|-- petrinet_Place
 NamedElement <|-- petrinet_Transition
-petrinet_Edge "0..9999" --* "1..1" petrinet_PetriNet : edges3
-petrinet_Edge "0..9999" -- "1..1" petrinet_Place : edges5
-petrinet_Edge "0..9999" -- "1..1" petrinet_Transition : edges6
-petrinet_Edge "1..1" -- "0..1" petrinet_Place : place8
-petrinet_PetriNet "1..1" *-- "0..9999" petrinet_Place : places0
-petrinet_Edge "1..1" -- "0..1" petrinet_Transition : transition9
-petrinet_PetriNet "1..1" *-- "0..9999" petrinet_Transition : transitions1
+petrinet_Edge "petrinet_PetriNet4 0..9999" --* "petrinet_Edge 1..1" petrinet_PetriNet : edges3
+petrinet_Edge "place 0..9999" -- "Edge 1..1" petrinet_Place : edges5
+petrinet_Edge "transition 0..9999" -- "Edge7 1..1" petrinet_Transition : edges6
+petrinet_Edge "Place 1..1" -- "edges 0..1" petrinet_Place : place8
+petrinet_PetriNet "petrinet_Place 1..1" *-- "petrinet_PetriNet 0..9999" petrinet_Place : places0
+petrinet_Edge "Transition 1..1" -- "edges10 0..1" petrinet_Transition : transition9
+petrinet_PetriNet "petrinet_Transition 1..1" *-- "petrinet_PetriNet2 0..9999" petrinet_Transition : transitions1
 @enduml

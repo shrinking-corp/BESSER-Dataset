@@ -1,4 +1,8 @@
 @startuml
+' model: pDL1
+' project: sampleModel
+' owner: User
+' description: New project
 class ProcessElement {
 }
 enum WorkSequenceType {
@@ -24,7 +28,7 @@ class pDL1_WorkSequence {
 ProcessElement <|-- pDL1_Guidance
 ProcessElement <|-- pDL1_WorkDefinition
 ProcessElement <|-- pDL1_WorkSequence
-pDL1_WorkDefinition "0..1" -- "1..1" pDL1_WorkSequence : predecessor1
-pDL1_Process "1..1" *-- "0..9999" pDL1_ProcessElement : processElements0
-pDL1_WorkDefinition "0..1" -- "1..1" pDL1_WorkSequence : successor2
+pDL1_WorkDefinition "pDL1_WorkSequence 0..1" -- "pDL1_WorkDefinition 1..1" pDL1_WorkSequence : predecessor1
+pDL1_Process "pDL1_ProcessElement 1..1" *-- "pDL1_Process 0..9999" pDL1_ProcessElement : processElements0
+pDL1_WorkDefinition "pDL1_WorkSequence3 0..1" -- "pDL1_WorkDefinition4 1..1" pDL1_WorkSequence : successor2
 @enduml

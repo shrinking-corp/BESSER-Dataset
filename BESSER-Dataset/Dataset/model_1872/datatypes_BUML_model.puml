@@ -1,4 +1,8 @@
 @startuml
+' model: datatypes
+' project: sampleModel
+' owner: User
+' description: New project
 class ComplexType {
 }
 class DataType {
@@ -37,10 +41,10 @@ ComplexType <|-- datatypes_VectorType
 DataType <|-- datatypes_ComplexType
 DataType <|-- datatypes_SimpleType
 IDLReference <|-- datatypes_RosIDLReference
-datatypes_CustomType "1..1" *-- "1..9999" datatypes_Field : fields5
-datatypes_TypesLibrary "1..1" -- "0..9999" datatypes_TypesLibrary : includes2
-datatypes_DataType "1..1" -- "1..1" datatypes_VectorType : template4
-datatypes_DataType "1..1" -- "1..1" datatypes_Field : type6
-datatypes_DataType "0..9999" --* "1..1" datatypes_TypesLibrary : types0
-datatypes_DataType "1..1" -- "1..1" datatypes_TypesLibrary : typesLibrary3
+datatypes_CustomType "datatypes_Field 1..1" *-- "datatypes_CustomType 1..9999" datatypes_Field : fields5
+datatypes_TypesLibrary "datatypes_TypesLibrary 1..1" -- "datatypes_TypesLibrary1 0..9999" datatypes_TypesLibrary : includes2
+datatypes_DataType "datatypes_VectorType 1..1" -- "datatypes_DataType 1..1" datatypes_VectorType : template4
+datatypes_DataType "datatypes_Field7 1..1" -- "datatypes_DataType8 1..1" datatypes_Field : type6
+datatypes_DataType "typesLibrary 0..9999" --* "DataType 1..1" datatypes_TypesLibrary : types0
+datatypes_DataType "TypesLibrary 1..1" -- "types 1..1" datatypes_TypesLibrary : typesLibrary3
 @enduml

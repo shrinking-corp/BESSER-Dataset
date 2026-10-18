@@ -1,4 +1,8 @@
 @startuml
+' model: rule
+' project: sampleModel
+' owner: User
+' description: New project
 class BinaryExpression {
 }
 class IntegerExpression {
@@ -84,14 +88,14 @@ NeighborsExpression <|-- rule_Size
 NeighborsExpression <|-- rule_Sum
 UnaryExpression <|-- rule_Not
 UnaryExpression <|-- rule_UMinus
-rule_Conditional "1..1" *-- "1..1" rule_IntegerExpression : condition10
-rule_PopulationRange "0..1" --* "1..1" rule_Rule : filter1
-rule_Conditional "1..1" *-- "1..1" rule_IntegerExpression : ifFalseExpression7
-rule_Conditional "1..1" *-- "1..1" rule_IntegerExpression : ifTrueExpression5
-rule_BinaryExpression "1..1" *-- "1..1" rule_IntegerExpression : left15
-rule_NeighborsExpression "1..1" *-- "0..1" rule_PopulationRange : neighborsFilter13
-rule_IntegerExpression "1..1" --* "1..1" rule_Rule : nextVal0
-rule_BinaryExpression "1..1" *-- "1..1" rule_IntegerExpression : right17
-rule_CellularAutomata "1..1" *-- "1..9999" rule_Rule : rules20
-rule_IntegerExpression "1..1" --* "1..1" rule_UnaryExpression : target3
+rule_Conditional "rule_IntegerExpression12 1..1" *-- "rule_Conditional11 1..1" rule_IntegerExpression : condition10
+rule_PopulationRange "rule_Rule2 0..1" --* "rule_PopulationRange 1..1" rule_Rule : filter1
+rule_Conditional "rule_IntegerExpression9 1..1" *-- "rule_Conditional8 1..1" rule_IntegerExpression : ifFalseExpression7
+rule_Conditional "rule_IntegerExpression6 1..1" *-- "rule_Conditional 1..1" rule_IntegerExpression : ifTrueExpression5
+rule_BinaryExpression "rule_IntegerExpression16 1..1" *-- "rule_BinaryExpression 1..1" rule_IntegerExpression : left15
+rule_NeighborsExpression "rule_PopulationRange14 1..1" *-- "rule_NeighborsExpression 0..1" rule_PopulationRange : neighborsFilter13
+rule_IntegerExpression "rule_Rule 1..1" --* "rule_IntegerExpression 1..1" rule_Rule : nextVal0
+rule_BinaryExpression "rule_IntegerExpression19 1..1" *-- "rule_BinaryExpression18 1..1" rule_IntegerExpression : right17
+rule_CellularAutomata "rule_Rule21 1..1" *-- "rule_CellularAutomata 1..9999" rule_Rule : rules20
+rule_IntegerExpression "rule_UnaryExpression 1..1" --* "rule_IntegerExpression4 1..1" rule_UnaryExpression : target3
 @enduml

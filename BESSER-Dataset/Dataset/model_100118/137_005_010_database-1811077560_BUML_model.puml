@@ -1,4 +1,8 @@
 @startuml
+' model: database
+' project: sampleModel
+' owner: User
+' description: New project
 enum ColumnType {
   NON_STD_FIELD
   STD_FIELD
@@ -71,11 +75,11 @@ ExtensibleModel <|-- database_TableIndex
 ExtensibleModel <|-- database_TableIndexColumn
 ExtensibleModel <|-- database_TableKey
 JRESResourceInfo <|-- database_DatabaseResourceData
-database_TableColumn "0..9999" --* "1..1" database_TableResourceData : columns0
-database_TableColumn "0..9999" -- "1..1" database_TableKey : columns12
-database_TableIndex "1..1" *-- "0..9999" database_TableIndexColumn : columns7
-database_ForeignKey "0..9999" --* "1..1" database_TableKey : foreignKey9
-database_ForeignKey "0..9999" --* "1..1" database_TableColumn : foreignkey5
-database_TableIndex "0..9999" --* "1..1" database_TableResourceData : indexes1
-database_TableKey "0..9999" --* "1..1" database_TableResourceData : keys3
+database_TableColumn "database_TableResourceData 0..9999" --* "database_TableColumn 1..1" database_TableResourceData : columns0
+database_TableColumn "database_TableKey13 0..9999" -- "database_TableColumn14 1..1" database_TableKey : columns12
+database_TableIndex "database_TableIndexColumn 1..1" *-- "database_TableIndex8 0..9999" database_TableIndexColumn : columns7
+database_ForeignKey "database_TableKey10 0..9999" --* "database_ForeignKey11 1..1" database_TableKey : foreignKey9
+database_ForeignKey "database_TableColumn6 0..9999" --* "database_ForeignKey 1..1" database_TableColumn : foreignkey5
+database_TableIndex "database_TableResourceData2 0..9999" --* "database_TableIndex 1..1" database_TableResourceData : indexes1
+database_TableKey "database_TableResourceData4 0..9999" --* "database_TableKey 1..1" database_TableResourceData : keys3
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: egraphs
+' project: sampleModel
+' owner: User
+' description: New project
 class egraphs_EGraph {
 }
 class egraphs_EHyperEdge {
@@ -7,9 +11,9 @@ class egraphs_EHyperEdge {
 class egraphs_ENode {
   + element : str
 }
-egraphs_EGraph "1..1" *-- "0..9999" egraphs_ENode : contents0
-egraphs_EHyperEdge "0..9999" -- "1..1" egraphs_ENode : incoming2
-egraphs_EHyperEdge "0..9999" --* "1..1" egraphs_ENode : outgoing1
-egraphs_EHyperEdge "1..1" -- "1..1" egraphs_ENode : source4
-egraphs_EHyperEdge "1..1" -- "0..9999" egraphs_ENode : targets5
+egraphs_EGraph "egraphs_ENode 1..1" *-- "egraphs_EGraph 0..9999" egraphs_ENode : contents0
+egraphs_EHyperEdge "targets 0..9999" -- "EHyperEdge3 1..1" egraphs_ENode : incoming2
+egraphs_EHyperEdge "source 0..9999" --* "EHyperEdge 1..1" egraphs_ENode : outgoing1
+egraphs_EHyperEdge "ENode 1..1" -- "outgoing 1..1" egraphs_ENode : source4
+egraphs_EHyperEdge "ENode6 1..1" -- "incoming 0..9999" egraphs_ENode : targets5
 @enduml

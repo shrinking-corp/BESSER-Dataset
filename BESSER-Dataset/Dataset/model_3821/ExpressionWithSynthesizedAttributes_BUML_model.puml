@@ -1,4 +1,8 @@
 @startuml
+' model: expression
+' project: sampleModel
+' owner: User
+' description: New project
 class Expression {
 }
 class expression_BinaryExpression {
@@ -16,8 +20,8 @@ class expression_UnaryExpression {
 Expression <|-- expression_BinaryExpression
 Expression <|-- expression_IntegerExpression
 Expression <|-- expression_UnaryExpression
-expression_Expression "0..1" --* "1..1" expression_UnaryExpression : expression4
-expression_Expression "1..1" --* "1..1" expression_ExpressionStatement : expression6
-expression_BinaryExpression "1..1" *-- "1..1" expression_Expression : leftSide0
-expression_BinaryExpression "1..1" *-- "1..1" expression_Expression : rightSide1
+expression_Expression "expression_UnaryExpression 0..1" --* "expression_Expression5 1..1" expression_UnaryExpression : expression4
+expression_Expression "expression_ExpressionStatement 1..1" --* "expression_Expression7 1..1" expression_ExpressionStatement : expression6
+expression_BinaryExpression "expression_Expression 1..1" *-- "expression_BinaryExpression 1..1" expression_Expression : leftSide0
+expression_BinaryExpression "expression_Expression3 1..1" *-- "expression_BinaryExpression2 1..1" expression_Expression : rightSide1
 @enduml

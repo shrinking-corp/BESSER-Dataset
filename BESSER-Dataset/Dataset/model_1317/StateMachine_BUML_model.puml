@@ -1,4 +1,8 @@
 @startuml
+' model: stateMachine
+' project: sampleModel
+' owner: User
+' description: New project
 class stateMachine_Condition {
   + op : str
   + value : int
@@ -23,16 +27,16 @@ class stateMachine_Variable {
 }
 class stateMachine_Variables {
 }
-stateMachine_Condition "0..1" --* "1..1" stateMachine_Transition : condition19
-stateMachine_Event "0..1" -- "1..1" stateMachine_Transition : event16
-stateMachine_Events "0..1" --* "1..1" stateMachine_StateMachine : eventdefs1
-stateMachine_Event "0..9999" --* "1..1" stateMachine_Events : events7
-stateMachine_State "0..1" -- "1..1" stateMachine_States : start9
-stateMachine_StateMachine "1..1" *-- "0..1" stateMachine_States : statedefs3
-stateMachine_State "0..9999" --* "1..1" stateMachine_States : states11
-stateMachine_State "0..1" -- "1..1" stateMachine_Transition : target21
-stateMachine_State "1..1" *-- "0..9999" stateMachine_Transition : transitions14
-stateMachine_StateMachine "1..1" *-- "0..1" stateMachine_Variables : vardefs0
-stateMachine_Condition "1..1" -- "0..1" stateMachine_Variable : variable24
-stateMachine_Variable "0..9999" --* "1..1" stateMachine_Variables : vars5
+stateMachine_Condition "stateMachine_Transition20 0..1" --* "stateMachine_Condition 1..1" stateMachine_Transition : condition19
+stateMachine_Event "stateMachine_Transition17 0..1" -- "stateMachine_Event18 1..1" stateMachine_Transition : event16
+stateMachine_Events "stateMachine_StateMachine2 0..1" --* "stateMachine_Events 1..1" stateMachine_StateMachine : eventdefs1
+stateMachine_Event "stateMachine_Events8 0..9999" --* "stateMachine_Event 1..1" stateMachine_Events : events7
+stateMachine_State "stateMachine_States10 0..1" -- "stateMachine_State 1..1" stateMachine_States : start9
+stateMachine_StateMachine "stateMachine_States 1..1" *-- "stateMachine_StateMachine4 0..1" stateMachine_States : statedefs3
+stateMachine_State "stateMachine_States12 0..9999" --* "stateMachine_State13 1..1" stateMachine_States : states11
+stateMachine_State "stateMachine_Transition22 0..1" -- "stateMachine_State23 1..1" stateMachine_Transition : target21
+stateMachine_State "stateMachine_Transition 1..1" *-- "stateMachine_State15 0..9999" stateMachine_Transition : transitions14
+stateMachine_StateMachine "stateMachine_Variables 1..1" *-- "stateMachine_StateMachine 0..1" stateMachine_Variables : vardefs0
+stateMachine_Condition "stateMachine_Variable26 1..1" -- "stateMachine_Condition25 0..1" stateMachine_Variable : variable24
+stateMachine_Variable "stateMachine_Variables6 0..9999" --* "stateMachine_Variable 1..1" stateMachine_Variables : vars5
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: lts_pc
+' project: sampleModel
+' owner: User
+' description: New project
 class lts_pc_EObject {
 }
 class lts_pc_LTS {
@@ -13,14 +17,14 @@ class lts_pc_Transition {
   + input : str
   + output : str
 }
-lts_pc_EObject "0..9999" --* "1..1" lts_pc_Pointcut : children16
-lts_pc_LTS "1..1" -- "0..1" lts_pc_State : currentState2
-lts_pc_LTS "1..1" -- "0..9999" lts_pc_State : finalState5
-lts_pc_State "1..1" -- "0..9999" lts_pc_Transition : incomingTransition10
-lts_pc_LTS "1..1" -- "0..1" lts_pc_State : initialState1
-lts_pc_State "1..1" *-- "0..9999" lts_pc_Transition : outgoingTransition9
-lts_pc_LTS "1..1" *-- "0..9999" lts_pc_State : ownedState0
-lts_pc_LTS "0..1" -- "1..1" lts_pc_State : owningLTS8
-lts_pc_State "0..1" -- "1..1" lts_pc_Transition : source12
-lts_pc_State "0..1" -- "1..1" lts_pc_Transition : target14
+lts_pc_EObject "lts_pc_Pointcut 0..9999" --* "lts_pc_EObject 1..1" lts_pc_Pointcut : children16
+lts_pc_LTS "lts_pc_State4 1..1" -- "lts_pc_LTS3 0..1" lts_pc_State : currentState2
+lts_pc_LTS "lts_pc_State7 1..1" -- "lts_pc_LTS6 0..9999" lts_pc_State : finalState5
+lts_pc_State "Transition11 1..1" -- "target 0..9999" lts_pc_Transition : incomingTransition10
+lts_pc_LTS "lts_pc_State 1..1" -- "lts_pc_LTS 0..1" lts_pc_State : initialState1
+lts_pc_State "Transition 1..1" *-- "source 0..9999" lts_pc_Transition : outgoingTransition9
+lts_pc_LTS "State 1..1" *-- "owningLTS 0..9999" lts_pc_State : ownedState0
+lts_pc_LTS "ownedState 0..1" -- "LTS 1..1" lts_pc_State : owningLTS8
+lts_pc_State "outgoingTransition 0..1" -- "State13 1..1" lts_pc_Transition : source12
+lts_pc_State "incomingTransition 0..1" -- "State15 1..1" lts_pc_Transition : target14
 @enduml

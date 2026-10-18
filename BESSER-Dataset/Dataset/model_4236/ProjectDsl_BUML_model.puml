@@ -1,4 +1,8 @@
 @startuml
+' model: projectDsl
+' project: sampleModel
+' owner: User
+' description: New project
 class projectDsl_Company {
   + name : str
 }
@@ -21,8 +25,8 @@ enum taskType {
   development
   documentation
 }
-projectDsl_Company "1..1" *-- "0..1" projectDsl_Employees : employees0
-projectDsl_Employee "0..9999" --* "1..1" projectDsl_Employees : employees3
-projectDsl_Company "1..1" *-- "0..1" projectDsl_Project : project1
-projectDsl_Project "1..1" *-- "0..9999" projectDsl_Task : tasks5
+projectDsl_Company "projectDsl_Employees 1..1" *-- "projectDsl_Company 0..1" projectDsl_Employees : employees0
+projectDsl_Employee "projectDsl_Employees4 0..9999" --* "projectDsl_Employee 1..1" projectDsl_Employees : employees3
+projectDsl_Company "projectDsl_Project 1..1" *-- "projectDsl_Company2 0..1" projectDsl_Project : project1
+projectDsl_Project "projectDsl_Task 1..1" *-- "projectDsl_Project6 0..9999" projectDsl_Task : tasks5
 @enduml

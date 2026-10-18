@@ -1,4 +1,8 @@
 @startuml
+' model: iot
+' project: sampleModel
+' owner: User
+' description: New project
 enum BoardType {
   Arduino
   BeagleBoard
@@ -28,10 +32,10 @@ class iot_System {
 }
 HWComp <|-- iot_Actuator
 HWComp <|-- iot_Sensor
-iot_IotActivity "0..1" --* "1..1" iot_Sketch : activity10
-iot_Board "0..9999" --* "1..1" iot_System : boards3
-iot_HWComp "0..9999" --* "1..1" iot_System : components1
-iot_Board "1..1" -- "0..9999" iot_HWComp : components7
-iot_HWComp "1..1" *-- "0..9999" iot_IotOperationDef : services0
-iot_Sketch "0..1" --* "1..1" iot_System : sketch5
+iot_IotActivity "iot_Sketch11 0..1" --* "iot_IotActivity 1..1" iot_Sketch : activity10
+iot_Board "iot_System4 0..9999" --* "iot_Board 1..1" iot_System : boards3
+iot_HWComp "iot_System 0..9999" --* "iot_HWComp2 1..1" iot_System : components1
+iot_Board "iot_HWComp9 1..1" -- "iot_Board8 0..9999" iot_HWComp : components7
+iot_HWComp "iot_IotOperationDef 1..1" *-- "iot_HWComp 0..9999" iot_IotOperationDef : services0
+iot_Sketch "iot_System6 0..1" --* "iot_Sketch 1..1" iot_System : sketch5
 @enduml

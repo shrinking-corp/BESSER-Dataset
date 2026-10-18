@@ -1,4 +1,8 @@
 @startuml
+' model: cbpmni
+' project: sampleModel
+' owner: User
+' description: New project
 class FlowNodeInst {
 }
 enum FlowNodeStatusType {
@@ -38,17 +42,17 @@ class cbpmni_SplitInst {
 FlowNodeInst <|-- cbpmni_ActivityInst
 FlowNodeInst <|-- cbpmni_EventInst
 FlowNodeInst <|-- cbpmni_SplitInst
-cbpmni_Branch "0..1" -- "1..1" cbpmni_BranchInst : branchDef21
-cbpmni_BranchInst "0..9999" --* "1..1" cbpmni_SplitInst : branches20
-cbpmni_ConstraintInst "1..1" -- "1..1" cbpmni_OCLConstraint : constraintDef26
-cbpmni_ConstraintInst "1..1" -- "0..9999" cbpmni_EObject : extension23
-cbpmni_FlowNodeInst "0..9999" --* "1..1" cbpmni_ProcessInst : flowNodes3
-cbpmni_ActivityInst "1..1" -- "0..9999" cbpmni_EObject : inputs15
-cbpmni_FlowNodeInst "1..1" -- "0..1" cbpmni_FlowNodeInst : next9
-cbpmni_FlowNode "0..1" -- "1..1" cbpmni_FlowNodeInst : nodeDef6
-cbpmni_ActivityInst "1..1" -- "0..9999" cbpmni_EObject : outputs17
-cbpmni_ActivityInst "1..1" *-- "0..9999" cbpmni_ConstraintInst : postconditions12
-cbpmni_ActivityInst "1..1" *-- "0..9999" cbpmni_ConstraintInst : preconditions11
-cbpmni_ProcessInst "1..1" -- "0..1" cbpmni_ProcessModel : processDef0
-cbpmni_FlowNodeInst "0..9999" -- "1..1" cbpmni_ProcessInst : tokens1
+cbpmni_Branch "cbpmni_BranchInst22 0..1" -- "cbpmni_Branch 1..1" cbpmni_BranchInst : branchDef21
+cbpmni_BranchInst "cbpmni_SplitInst 0..9999" --* "cbpmni_BranchInst 1..1" cbpmni_SplitInst : branches20
+cbpmni_ConstraintInst "cbpmni_OCLConstraint 1..1" -- "cbpmni_ConstraintInst27 1..1" cbpmni_OCLConstraint : constraintDef26
+cbpmni_ConstraintInst "cbpmni_EObject25 1..1" -- "cbpmni_ConstraintInst24 0..9999" cbpmni_EObject : extension23
+cbpmni_FlowNodeInst "cbpmni_ProcessInst4 0..9999" --* "cbpmni_FlowNodeInst5 1..1" cbpmni_ProcessInst : flowNodes3
+cbpmni_ActivityInst "cbpmni_EObject 1..1" -- "cbpmni_ActivityInst16 0..9999" cbpmni_EObject : inputs15
+cbpmni_FlowNodeInst "cbpmni_FlowNodeInst10 1..1" -- "cbpmni_FlowNodeInst8 0..1" cbpmni_FlowNodeInst : next9
+cbpmni_FlowNode "cbpmni_FlowNodeInst7 0..1" -- "cbpmni_FlowNode 1..1" cbpmni_FlowNodeInst : nodeDef6
+cbpmni_ActivityInst "cbpmni_EObject19 1..1" -- "cbpmni_ActivityInst18 0..9999" cbpmni_EObject : outputs17
+cbpmni_ActivityInst "cbpmni_ConstraintInst14 1..1" *-- "cbpmni_ActivityInst13 0..9999" cbpmni_ConstraintInst : postconditions12
+cbpmni_ActivityInst "cbpmni_ConstraintInst 1..1" *-- "cbpmni_ActivityInst 0..9999" cbpmni_ConstraintInst : preconditions11
+cbpmni_ProcessInst "cbpmni_ProcessModel 1..1" -- "cbpmni_ProcessInst 0..1" cbpmni_ProcessModel : processDef0
+cbpmni_FlowNodeInst "cbpmni_ProcessInst2 0..9999" -- "cbpmni_FlowNodeInst 1..1" cbpmni_ProcessInst : tokens1
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: majordomo
+' project: sampleModel
+' owner: User
+' description: New project
 class Action {
 }
 class Actor {
@@ -187,35 +191,35 @@ Statement <|-- majordomo_StatementReference
 ValueExpression <|-- majordomo_ConstantValue
 ValueExpression <|-- majordomo_SensorValue
 ValueExpression <|-- majordomo_ValueReference
-majordomo_Action "1..9999" --* "1..1" majordomo_Rule : actions12
-majordomo_Action "1..9999" --* "1..1" majordomo_PreparedActionSet : actions45
-majordomo_FloatAction "1..1" -- "1..1" majordomo_FloatActor : actor14
-majordomo_BooleanAction "1..1" -- "1..1" majordomo_BooleanActor : actor15
-majordomo_Actor "0..9999" --* "1..1" majordomo_Extendable : actors6
-majordomo_PreparedValue "0..9999" --* "1..1" majordomo_Program : constants30
-majordomo_PreparedStatement "1..1" -- "1..1" majordomo_Program : ctx39
-majordomo_PreparedActionSet "1..1" -- "1..1" majordomo_Program : ctx43
-majordomo_PreparedValue "1..1" -- "1..1" majordomo_Program : ctx49
-majordomo_Extendable "1..1" -- "1..1" majordomo_Sensor : ctx8
-majordomo_Actor "1..1" -- "1..1" majordomo_Extendable : ctx9
-majordomo_House "0..1" --* "1..1" majordomo_Majordomo : house0
-majordomo_BinaryOperation "1..1" *-- "1..1" majordomo_Statement : left16
-majordomo_CompareOperation "1..1" *-- "1..1" majordomo_ValueExpression : left23
-majordomo_PreparedActionSet "0..9999" --* "1..1" majordomo_Program : preparedActionSets34
-majordomo_PreparedStatement "0..9999" --* "1..1" majordomo_Program : preparedStatements32
-majordomo_Majordomo "1..1" *-- "1..1" majordomo_Program : program3
-majordomo_PreparedStatement "1..1" -- "1..1" majordomo_StatementReference : ref29
-majordomo_ActionSetReference "1..1" -- "1..1" majordomo_PreparedActionSet : ref47
-majordomo_PreparedValue "1..1" -- "1..1" majordomo_ValueReference : ref53
-majordomo_BinaryOperation "1..1" *-- "1..1" majordomo_Statement : right18
-majordomo_CompareOperation "1..1" *-- "1..1" majordomo_ValueExpression : right24
-majordomo_Majordomo "1..1" *-- "0..9999" majordomo_Room : rooms1
-majordomo_Program "1..1" *-- "0..9999" majordomo_Rule : rules36
-majordomo_BooleanSensor "1..1" -- "1..1" majordomo_BooleanSensorStatement : sensor27
-majordomo_FloatSensor "1..1" -- "1..1" majordomo_SensorValue : sensor28
-majordomo_Extendable "1..1" *-- "0..9999" majordomo_Sensor : sensors5
-majordomo_Rule "1..1" *-- "1..1" majordomo_Statement : statement11
-majordomo_NotOperation "1..1" *-- "1..1" majordomo_Statement : statement21
-majordomo_PreparedStatement "1..1" *-- "1..1" majordomo_Statement : statement40
-majordomo_PreparedValue "1..1" *-- "1..1" majordomo_ValueExpression : value51
+majordomo_Action "majordomo_Rule13 1..9999" --* "majordomo_Action 1..1" majordomo_Rule : actions12
+majordomo_Action "majordomo_PreparedActionSet 1..9999" --* "majordomo_Action46 1..1" majordomo_PreparedActionSet : actions45
+majordomo_FloatAction "majordomo_FloatActor 1..1" -- "majordomo_FloatAction 1..1" majordomo_FloatActor : actor14
+majordomo_BooleanAction "majordomo_BooleanActor 1..1" -- "majordomo_BooleanAction 1..1" majordomo_BooleanActor : actor15
+majordomo_Actor "ctx7 0..9999" --* "Actor 1..1" majordomo_Extendable : actors6
+majordomo_PreparedValue "ctx31 0..9999" --* "PreparedValue 1..1" majordomo_Program : constants30
+majordomo_PreparedStatement "Program 1..1" -- "preparedStatements 1..1" majordomo_Program : ctx39
+majordomo_PreparedActionSet "Program44 1..1" -- "preparedActionSets 1..1" majordomo_Program : ctx43
+majordomo_PreparedValue "Program50 1..1" -- "constants 1..1" majordomo_Program : ctx49
+majordomo_Extendable "sensors 1..1" -- "Extendable 1..1" majordomo_Sensor : ctx8
+majordomo_Actor "Extendable10 1..1" -- "actors 1..1" majordomo_Extendable : ctx9
+majordomo_House "majordomo_Majordomo 0..1" --* "majordomo_House 1..1" majordomo_Majordomo : house0
+majordomo_BinaryOperation "majordomo_Statement17 1..1" *-- "majordomo_BinaryOperation 1..1" majordomo_Statement : left16
+majordomo_CompareOperation "majordomo_ValueExpression 1..1" *-- "majordomo_CompareOperation 1..1" majordomo_ValueExpression : left23
+majordomo_PreparedActionSet "ctx35 0..9999" --* "PreparedActionSet 1..1" majordomo_Program : preparedActionSets34
+majordomo_PreparedStatement "ctx33 0..9999" --* "PreparedStatement 1..1" majordomo_Program : preparedStatements32
+majordomo_Majordomo "majordomo_Program 1..1" *-- "majordomo_Majordomo4 1..1" majordomo_Program : program3
+majordomo_PreparedStatement "majordomo_StatementReference 1..1" -- "majordomo_PreparedStatement 1..1" majordomo_StatementReference : ref29
+majordomo_ActionSetReference "majordomo_PreparedActionSet48 1..1" -- "majordomo_ActionSetReference 1..1" majordomo_PreparedActionSet : ref47
+majordomo_PreparedValue "majordomo_ValueReference 1..1" -- "majordomo_PreparedValue54 1..1" majordomo_ValueReference : ref53
+majordomo_BinaryOperation "majordomo_Statement20 1..1" *-- "majordomo_BinaryOperation19 1..1" majordomo_Statement : right18
+majordomo_CompareOperation "majordomo_ValueExpression26 1..1" *-- "majordomo_CompareOperation25 1..1" majordomo_ValueExpression : right24
+majordomo_Majordomo "majordomo_Room 1..1" *-- "majordomo_Majordomo2 0..9999" majordomo_Room : rooms1
+majordomo_Program "majordomo_Rule38 1..1" *-- "majordomo_Program37 0..9999" majordomo_Rule : rules36
+majordomo_BooleanSensor "majordomo_BooleanSensorStatement 1..1" -- "majordomo_BooleanSensor 1..1" majordomo_BooleanSensorStatement : sensor27
+majordomo_FloatSensor "majordomo_SensorValue 1..1" -- "majordomo_FloatSensor 1..1" majordomo_SensorValue : sensor28
+majordomo_Extendable "Sensor 1..1" *-- "ctx 0..9999" majordomo_Sensor : sensors5
+majordomo_Rule "majordomo_Statement 1..1" *-- "majordomo_Rule 1..1" majordomo_Statement : statement11
+majordomo_NotOperation "majordomo_Statement22 1..1" *-- "majordomo_NotOperation 1..1" majordomo_Statement : statement21
+majordomo_PreparedStatement "majordomo_Statement42 1..1" *-- "majordomo_PreparedStatement41 1..1" majordomo_Statement : statement40
+majordomo_PreparedValue "majordomo_ValueExpression52 1..1" *-- "majordomo_PreparedValue 1..1" majordomo_ValueExpression : value51
 @enduml

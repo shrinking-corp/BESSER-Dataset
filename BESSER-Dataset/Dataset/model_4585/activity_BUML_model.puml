@@ -1,4 +1,8 @@
 @startuml
+' model: activity
+' project: sampleModel
+' owner: User
+' description: New project
 class Activity {
 }
 class ActivityEdge {
@@ -120,18 +124,18 @@ ObjectNode <|-- activity_Object
 ObjectNode <|-- activity_Pin
 Pin <|-- activity_InputPin
 Pin <|-- activity_OutputPin
-activity_Activity "1..1" *-- "0..9999" activity_ActivityGroup : activityGroups7
-activity_Activity "1..1" -- "0..9999" activity_ActivityPartition : activityPartion5
-activity_ActivityPartition "0..9999" --* "1..1" activity_ActivityPartition : activityPartions19
-activity_Activity "1..1" *-- "0..1" activity_ActivityParameterNode : activityparameternode3
-activity_Connector "1..1" -- "0..1" activity_Connector : connected22
-activity_Activity "1..1" *-- "0..9999" activity_ActivityEdge : edges0
-activity_ActivityNode "0..9999" --* "1..1" activity_ActivityParameterNode : inBorder9
-activity_ActivityEdge "0..9999" -- "1..1" activity_ActivityNode : incoming15
-activity_Action "1..1" *-- "0..9999" activity_InputPin : input24
-activity_Activity "1..1" *-- "0..9999" activity_ActivityNode : nodes1
-activity_ActivityEdge "0..9999" -- "1..1" activity_ActivityNode : outgoing16
-activity_Action "1..1" *-- "0..9999" activity_OutputPin : output23
-activity_ActivityEdge "1..1" -- "0..1" activity_ActivityNode : source13
-activity_ActivityEdge "1..1" -- "0..1" activity_ActivityNode : target12
+activity_Activity "activity_ActivityGroup 1..1" *-- "activity_Activity8 0..9999" activity_ActivityGroup : activityGroups7
+activity_Activity "activity_ActivityPartition 1..1" -- "activity_Activity6 0..9999" activity_ActivityPartition : activityPartion5
+activity_ActivityPartition "activity_ActivityPartition18 0..9999" --* "activity_ActivityPartition20 1..1" activity_ActivityPartition : activityPartions19
+activity_Activity "activity_ActivityParameterNode 1..1" *-- "activity_Activity4 0..1" activity_ActivityParameterNode : activityparameternode3
+activity_Connector "activity_Connector 1..1" -- "activity_Connector21 0..1" activity_Connector : connected22
+activity_Activity "activity_ActivityEdge 1..1" *-- "activity_Activity 0..9999" activity_ActivityEdge : edges0
+activity_ActivityNode "activity_ActivityParameterNode10 0..9999" --* "activity_ActivityNode11 1..1" activity_ActivityParameterNode : inBorder9
+activity_ActivityEdge "target 0..9999" -- "ActivityEdge 1..1" activity_ActivityNode : incoming15
+activity_Action "activity_InputPin 1..1" *-- "activity_Action25 0..9999" activity_InputPin : input24
+activity_Activity "activity_ActivityNode 1..1" *-- "activity_Activity2 0..9999" activity_ActivityNode : nodes1
+activity_ActivityEdge "source 0..9999" -- "ActivityEdge17 1..1" activity_ActivityNode : outgoing16
+activity_Action "activity_OutputPin 1..1" *-- "activity_Action 0..9999" activity_OutputPin : output23
+activity_ActivityEdge "ActivityNode14 1..1" -- "outgoing 0..1" activity_ActivityNode : source13
+activity_ActivityEdge "ActivityNode 1..1" -- "incoming 0..1" activity_ActivityNode : target12
 @enduml

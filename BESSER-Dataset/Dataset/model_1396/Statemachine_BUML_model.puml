@@ -1,4 +1,8 @@
 @startuml
+' model: statemachine
+' project: sampleModel
+' owner: User
+' description: New project
 class Signal {
 }
 class statemachine_Command {
@@ -25,14 +29,14 @@ class statemachine_Transition {
 }
 Signal <|-- statemachine_InputSignal
 Signal <|-- statemachine_OutputSignal
-statemachine_Command "0..9999" --* "1..1" statemachine_State : commands3
-statemachine_Condition "0..1" --* "1..1" statemachine_Transition : condition10
-statemachine_Condition "1..1" *-- "0..9999" statemachine_Event : events15
-statemachine_State "0..9999" --* "1..1" statemachine_State : nestedStates8
-statemachine_Event "1..1" -- "0..1" statemachine_Signal : signal17
-statemachine_Command "1..1" -- "0..1" statemachine_Signal : signal20
-statemachine_Signal "0..9999" --* "1..1" statemachine_Statemachine : signals0
-statemachine_State "0..1" -- "1..1" statemachine_Transition : state12
-statemachine_State "0..9999" --* "1..1" statemachine_Statemachine : states1
-statemachine_State "1..1" *-- "0..9999" statemachine_Transition : transitions5
+statemachine_Command "statemachine_State4 0..9999" --* "statemachine_Command 1..1" statemachine_State : commands3
+statemachine_Condition "statemachine_Transition11 0..1" --* "statemachine_Condition 1..1" statemachine_Transition : condition10
+statemachine_Condition "statemachine_Event 1..1" *-- "statemachine_Condition16 0..9999" statemachine_Event : events15
+statemachine_State "statemachine_State7 0..9999" --* "statemachine_State9 1..1" statemachine_State : nestedStates8
+statemachine_Event "statemachine_Signal19 1..1" -- "statemachine_Event18 0..1" statemachine_Signal : signal17
+statemachine_Command "statemachine_Signal22 1..1" -- "statemachine_Command21 0..1" statemachine_Signal : signal20
+statemachine_Signal "statemachine_Statemachine 0..9999" --* "statemachine_Signal 1..1" statemachine_Statemachine : signals0
+statemachine_State "statemachine_Transition13 0..1" -- "statemachine_State14 1..1" statemachine_Transition : state12
+statemachine_State "statemachine_Statemachine2 0..9999" --* "statemachine_State 1..1" statemachine_Statemachine : states1
+statemachine_State "statemachine_Transition 1..1" *-- "statemachine_State6 0..9999" statemachine_Transition : transitions5
 @enduml

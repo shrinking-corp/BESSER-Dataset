@@ -1,4 +1,8 @@
 @startuml
+' model: _57f9c904_78c4_4787_a7b7_65b46f1251d3
+' project: sampleModel
+' owner: User
+' description: New project
 class Account {
   + accountNum : str
   + balance : float
@@ -176,16 +180,16 @@ enum transaction_TransactionType {
 }
 class transaction_TransferTransaction {
 }
-Account2 "1..1" -- "0..9999" ExternalAccount : ExternalAccount_Account
-ExternalAccount "0..1" -- "0..9999" TransferTransaction : ExternalAccount_TransferTransaction
-loan_Loan "0..1" -- "0..1" loan_LoanApplication : LoanApplication_Loan
-loan_LoanApplication "1..1" -- "0..5" loan_LoanApplicationFile : LoanApplication_LoanApplicationFile
-transaction_PaybillsTransaction "0..9999" -- "0..1" transaction_Payee : PaybillsTransaction_Payee
-Profile "0..1" -- "0..9999" account_Account : Profile_Account
-Profile "1..1" -- "0..9999" loan_LoanApplication : Profile_LoanApplication
-Profile "0..1" -- "0..1" User : Profile_User
-account_Account "0..1" -- "0..9999" transaction_Transaction : Transaction_Account
-Account1 "0..1" -- "0..9999" Transaction1 : Transaction_Account1
-Account2 "0..1" -- "0..9999" Transaction3 : Transaction_Account2
-transaction_ExternalAccount "0..1" -- "0..9999" transaction_TransferTransaction : TransferTransaction_ExternalAccount
+Account2 "account22 1..1" -- "externalAccount23 0..9999" ExternalAccount : ExternalAccount_Account
+ExternalAccount "externalAccount21 0..1" -- "transferTransaction20 0..9999" TransferTransaction : ExternalAccount_TransferTransaction
+loan_Loan "loan12 0..1" -- "loanApplication13 0..1" loan_LoanApplication : LoanApplication_Loan
+loan_LoanApplication "loanApplication11 1..1" -- "loanApplicationFile10 0..5" loan_LoanApplicationFile : LoanApplication_LoanApplicationFile
+transaction_PaybillsTransaction "paybillsTransaction5 0..9999" -- "payee4 0..1" transaction_Payee : PaybillsTransaction_Payee
+Profile "profile9 0..1" -- "account8 0..9999" account_Account : Profile_Account
+Profile "profile15 1..1" -- "loanApplication14 0..9999" loan_LoanApplication : Profile_LoanApplication
+Profile "profile7 0..1" -- "user6 0..1" User : Profile_User
+account_Account "account0 0..1" -- "transaction1 0..9999" transaction_Transaction : Transaction_Account
+Account1 "account16 0..1" -- "transaction17 0..9999" Transaction1 : Transaction_Account1
+Account2 "account18 0..1" -- "transaction19 0..9999" Transaction3 : Transaction_Account2
+transaction_ExternalAccount "externalAccount2 0..1" -- "transferTransaction3 0..9999" transaction_TransferTransaction : TransferTransaction_ExternalAccount
 @enduml

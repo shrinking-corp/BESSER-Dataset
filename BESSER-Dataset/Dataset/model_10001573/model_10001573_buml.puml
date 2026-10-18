@@ -1,4 +1,8 @@
 @startuml
+' model: _GfFUoIxQEeq3N_Xh6gsEIQ
+' project: sampleModel
+' owner: User
+' description: New project
 class Customer {
   + DiscountSlab_list_ : PurchaseAmountSlab
   + shoppingCart : ShoppingCart
@@ -76,17 +80,17 @@ class ShoppingCart {
   + Items_list_ : Item
   + _attr : date
 }
-Customer "1..1" -- "0..9999" Order : Account_Order
-Customer "1..1" -- "0..9999" Payment : Account_Payment
-Customer "0..1" -- "0..1" CustomerHandler : CustomerHandler_Customer
-Customer "1..1" -- "1..1" PremiumCustomer : Customer_Account
-Customer "0..1" -- "0..1" Customer : Customer_Customer
-Customer "0..1" -- "0..1" PurchaseAmountSlab : Customer_PurchaseAmountSlab
-Customer "0..1" -- "0..1" ShoppingCart : Customer_ShoppingCart
-Customer "0..1" -- "0..1" ShoppingCart : Customer_ShoppingCart2
-Item "0..1" -- "0..1" Item : Item_Item
-Order "1..1" -- "0..1" Payment : Payment_Order
-PremiumDiscountSlab "1..9999" -- "0..1" PurchaseAmountSlab : PremiumDiscountSlab_PurchaseAmountSlab
-PurchaseAmountSlab "0..1" -- "1..9999" RegularDiscountSlab : RegularDiscountSlab_PurchaseAmountSlab
-Item "0..1" -- "1..9999" ShoppingCart : ShoppingCart_Item
+Customer "account5 1..1" -- "order4 0..9999" Order : Account_Order
+Customer "acc1 1..1" -- "p0 0..9999" Payment : Account_Payment
+Customer "customer17 0..1" -- "customerHandler16 0..1" CustomerHandler : CustomerHandler_Customer
+Customer "account2 1..1" -- "customer3 1..1" PremiumCustomer : Customer_Account
+Customer "customer22 0..1" -- "customer23 0..1" Customer : Customer_Customer
+Customer "customer24 0..1" -- "purchaseAmountSlab25 0..1" PurchaseAmountSlab : Customer_PurchaseAmountSlab
+Customer "customer18 0..1" -- "shoppingCart219 0..1" ShoppingCart : Customer_ShoppingCart
+Customer "customer20 0..1" -- "shoppingCart221 0..1" ShoppingCart : Customer_ShoppingCart2
+Item "item8 0..1" -- "item9 0..1" Item : Item_Item
+Order "order6 1..1" -- "payment7 0..1" Payment : Payment_Order
+PremiumDiscountSlab "premiumDiscountSlab12 1..9999" -- "purchaseAmountSlab13 0..1" PurchaseAmountSlab : PremiumDiscountSlab_PurchaseAmountSlab
+PurchaseAmountSlab "purchaseAmountSlab15 0..1" -- "regularDiscountSlab14 1..9999" RegularDiscountSlab : RegularDiscountSlab_PurchaseAmountSlab
+Item "item11 0..1" -- "shoppingCart10 1..9999" ShoppingCart : ShoppingCart_Item
 @enduml

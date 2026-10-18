@@ -1341,9 +1341,9 @@ def test_assoc_actual386_stub_double():
     partner = aadl2_ComponentPrototypeBinding()
     setattr(partner, 'aadl2_ComponentPrototypeBinding', None)
     _safe_set(owner, 'aadl2_ComponentPrototypeActual', partner)
-    assert getattr(partner, 'aadl2_ComponentPrototypeBinding') == owner
+    assert owner in getattr(partner, 'aadl2_ComponentPrototypeBinding')
     _safe_set(owner, 'aadl2_ComponentPrototypeActual', None)
-    assert getattr(partner, 'aadl2_ComponentPrototypeBinding') is None
+    assert owner not in getattr(partner, 'aadl2_ComponentPrototypeBinding')
 
 
 def test_assoc_appliesTo20_stub_double():
@@ -1461,9 +1461,9 @@ def test_assoc_classifierReference876_stub_double():
     partner = aadl2_ClassifierType()
     setattr(partner, 'aadl2_ClassifierType', None)
     _safe_set(owner, 'aadl2_MetaclassReference877', partner)
-    assert getattr(partner, 'aadl2_ClassifierType') == owner
+    assert owner in getattr(partner, 'aadl2_ClassifierType')
     _safe_set(owner, 'aadl2_MetaclassReference877', None)
-    assert getattr(partner, 'aadl2_ClassifierType') is None
+    assert owner not in getattr(partner, 'aadl2_ClassifierType')
 
 
 def test_assoc_containmentPathElement75_stub_double():
@@ -1476,9 +1476,9 @@ def test_assoc_containmentPathElement75_stub_double():
     partner = aadl2_ContainedNamedElement()
     setattr(partner, 'aadl2_ContainedNamedElement76', None)
     _safe_set(owner, 'aadl2_ContainmentPathElement77', partner)
-    assert getattr(partner, 'aadl2_ContainedNamedElement76') == owner
+    assert owner in getattr(partner, 'aadl2_ContainedNamedElement76')
     _safe_set(owner, 'aadl2_ContainmentPathElement77', None)
-    assert getattr(partner, 'aadl2_ContainedNamedElement76') is None
+    assert owner not in getattr(partner, 'aadl2_ContainedNamedElement76')
 
 
 def test_assoc_dataClassifier345_stub_double():
@@ -1656,9 +1656,9 @@ def test_assoc_featuringClassifier49_stub_double():
     partner = aadl2_ClassifierFeature()
     setattr(partner, 'classifierFeature', None)
     _safe_set(owner, 'Classifier', partner)
-    assert getattr(partner, 'classifierFeature') == owner
+    assert owner in getattr(partner, 'classifierFeature')
     _safe_set(owner, 'Classifier', None)
-    assert getattr(partner, 'classifierFeature') is None
+    assert owner not in getattr(partner, 'classifierFeature')
 
 
 def test_assoc_general50_stub_double():
@@ -1791,9 +1791,9 @@ def test_assoc_member46_stub_double():
     partner = aadl2_Namespace()
     setattr(partner, 'aadl2_Namespace47', None)
     _safe_set(owner, 'aadl2_NamedElement48', partner)
-    assert getattr(partner, 'aadl2_Namespace47') == owner
+    assert owner in getattr(partner, 'aadl2_Namespace47')
     _safe_set(owner, 'aadl2_NamedElement48', None)
-    assert getattr(partner, 'aadl2_Namespace47') is None
+    assert owner not in getattr(partner, 'aadl2_Namespace47')
 
 
 def test_assoc_namedElementReference888_stub_double():
@@ -1806,9 +1806,9 @@ def test_assoc_namedElementReference888_stub_double():
     partner = aadl2_ReferenceType()
     setattr(partner, 'aadl2_ReferenceType', None)
     _safe_set(owner, 'aadl2_MetaclassReference889', partner)
-    assert getattr(partner, 'aadl2_ReferenceType') == owner
+    assert owner in getattr(partner, 'aadl2_ReferenceType')
     _safe_set(owner, 'aadl2_MetaclassReference889', None)
-    assert getattr(partner, 'aadl2_ReferenceType') is None
+    assert owner not in getattr(partner, 'aadl2_ReferenceType')
 
 
 def test_assoc_outEnd184_stub_double():
@@ -1911,9 +1911,9 @@ def test_assoc_ownedBusAccess216_stub_double():
     partner = aadl2_FeatureGroupType()
     setattr(partner, 'aadl2_FeatureGroupType217', None)
     _safe_set(owner, 'aadl2_BusAccess', partner)
-    assert getattr(partner, 'aadl2_FeatureGroupType217') == owner
+    assert owner in getattr(partner, 'aadl2_FeatureGroupType217')
     _safe_set(owner, 'aadl2_BusAccess', None)
-    assert getattr(partner, 'aadl2_FeatureGroupType217') is None
+    assert owner not in getattr(partner, 'aadl2_FeatureGroupType217')
 
 
 def test_assoc_ownedBusAccess423_stub_double():
@@ -1926,9 +1926,9 @@ def test_assoc_ownedBusAccess423_stub_double():
     partner = aadl2_AbstractType()
     setattr(partner, 'aadl2_AbstractType', None)
     _safe_set(owner, 'aadl2_BusAccess424', partner)
-    assert getattr(partner, 'aadl2_AbstractType') == owner
+    assert owner in getattr(partner, 'aadl2_AbstractType')
     _safe_set(owner, 'aadl2_BusAccess424', None)
-    assert getattr(partner, 'aadl2_AbstractType') is None
+    assert owner not in getattr(partner, 'aadl2_AbstractType')
 
 
 def test_assoc_ownedBusAccess497_stub_double():
@@ -1941,9 +1941,9 @@ def test_assoc_ownedBusAccess497_stub_double():
     partner = aadl2_BusType()
     setattr(partner, 'aadl2_BusType', None)
     _safe_set(owner, 'aadl2_BusAccess498', partner)
-    assert getattr(partner, 'aadl2_BusType') == owner
+    assert owner in getattr(partner, 'aadl2_BusType')
     _safe_set(owner, 'aadl2_BusAccess498', None)
-    assert getattr(partner, 'aadl2_BusType') is None
+    assert owner not in getattr(partner, 'aadl2_BusType')
 
 
 def test_assoc_ownedBusAccess531_stub_double():
@@ -1956,9 +1956,9 @@ def test_assoc_ownedBusAccess531_stub_double():
     partner = aadl2_DeviceType()
     setattr(partner, 'aadl2_DeviceType532', None)
     _safe_set(owner, 'aadl2_BusAccess533', partner)
-    assert getattr(partner, 'aadl2_DeviceType532') == owner
+    assert owner in getattr(partner, 'aadl2_DeviceType532')
     _safe_set(owner, 'aadl2_BusAccess533', None)
-    assert getattr(partner, 'aadl2_DeviceType532') is None
+    assert owner not in getattr(partner, 'aadl2_DeviceType532')
 
 
 def test_assoc_ownedBusAccess548_stub_double():
@@ -1971,9 +1971,9 @@ def test_assoc_ownedBusAccess548_stub_double():
     partner = aadl2_MemoryType()
     setattr(partner, 'aadl2_MemoryType', None)
     _safe_set(owner, 'aadl2_BusAccess549', partner)
-    assert getattr(partner, 'aadl2_MemoryType') == owner
+    assert owner in getattr(partner, 'aadl2_MemoryType')
     _safe_set(owner, 'aadl2_BusAccess549', None)
-    assert getattr(partner, 'aadl2_MemoryType') is None
+    assert owner not in getattr(partner, 'aadl2_MemoryType')
 
 
 def test_assoc_ownedBusAccess599_stub_double():
@@ -1986,9 +1986,9 @@ def test_assoc_ownedBusAccess599_stub_double():
     partner = aadl2_SystemType()
     setattr(partner, 'aadl2_SystemType', None)
     _safe_set(owner, 'aadl2_BusAccess600', partner)
-    assert getattr(partner, 'aadl2_SystemType') == owner
+    assert owner in getattr(partner, 'aadl2_SystemType')
     _safe_set(owner, 'aadl2_BusAccess600', None)
-    assert getattr(partner, 'aadl2_SystemType') is None
+    assert owner not in getattr(partner, 'aadl2_SystemType')
 
 
 def test_assoc_ownedBusAccess659_stub_double():
@@ -2001,9 +2001,9 @@ def test_assoc_ownedBusAccess659_stub_double():
     partner = aadl2_ProcessorType()
     setattr(partner, 'aadl2_ProcessorType660', None)
     _safe_set(owner, 'aadl2_BusAccess661', partner)
-    assert getattr(partner, 'aadl2_ProcessorType660') == owner
+    assert owner in getattr(partner, 'aadl2_ProcessorType660')
     _safe_set(owner, 'aadl2_BusAccess661', None)
-    assert getattr(partner, 'aadl2_ProcessorType660') is None
+    assert owner not in getattr(partner, 'aadl2_ProcessorType660')
 
 
 def test_assoc_ownedBusAccess774_stub_double():
@@ -2016,9 +2016,9 @@ def test_assoc_ownedBusAccess774_stub_double():
     partner = aadl2_VirtualBusType()
     setattr(partner, 'aadl2_VirtualBusType775', None)
     _safe_set(owner, 'aadl2_BusAccess776', partner)
-    assert getattr(partner, 'aadl2_VirtualBusType775') == owner
+    assert owner in getattr(partner, 'aadl2_VirtualBusType775')
     _safe_set(owner, 'aadl2_BusAccess776', None)
-    assert getattr(partner, 'aadl2_VirtualBusType775') is None
+    assert owner not in getattr(partner, 'aadl2_VirtualBusType775')
 
 
 def test_assoc_ownedBusAccess793_stub_double():
@@ -2031,9 +2031,9 @@ def test_assoc_ownedBusAccess793_stub_double():
     partner = aadl2_VirtualProcessorType()
     setattr(partner, 'aadl2_VirtualProcessorType794', None)
     _safe_set(owner, 'aadl2_BusAccess795', partner)
-    assert getattr(partner, 'aadl2_VirtualProcessorType794') == owner
+    assert owner in getattr(partner, 'aadl2_VirtualProcessorType794')
     _safe_set(owner, 'aadl2_BusAccess795', None)
-    assert getattr(partner, 'aadl2_VirtualProcessorType794') is None
+    assert owner not in getattr(partner, 'aadl2_VirtualProcessorType794')
 
 
 def test_assoc_ownedEndToEndFlow113_stub_double():
@@ -2151,9 +2151,9 @@ def test_assoc_ownedFeatureGroup226_stub_double():
     partner = aadl2_FeatureGroupType()
     setattr(partner, 'aadl2_FeatureGroupType227', None)
     _safe_set(owner, 'aadl2_FeatureGroup228', partner)
-    assert getattr(partner, 'aadl2_FeatureGroupType227') == owner
+    assert owner in getattr(partner, 'aadl2_FeatureGroupType227')
     _safe_set(owner, 'aadl2_FeatureGroup228', None)
-    assert getattr(partner, 'aadl2_FeatureGroupType227') is None
+    assert owner not in getattr(partner, 'aadl2_FeatureGroupType227')
 
 
 def test_assoc_ownedFeatureGroupConnection125_stub_double():
@@ -2211,9 +2211,9 @@ def test_assoc_ownedMember44_stub_double():
     partner = aadl2_Namespace()
     setattr(partner, 'aadl2_Namespace', None)
     _safe_set(owner, 'aadl2_NamedElement45', partner)
-    assert getattr(partner, 'aadl2_Namespace') == owner
+    assert owner in getattr(partner, 'aadl2_Namespace')
     _safe_set(owner, 'aadl2_NamedElement45', None)
-    assert getattr(partner, 'aadl2_Namespace') is None
+    assert owner not in getattr(partner, 'aadl2_Namespace')
 
 
 def test_assoc_ownedModeBinding276_stub_double():
@@ -2301,9 +2301,9 @@ def test_assoc_ownedProperty843_stub_double():
     partner = aadl2_PropertySet()
     setattr(partner, 'aadl2_PropertySet844', None)
     _safe_set(owner, 'aadl2_Property845', partner)
-    assert getattr(partner, 'aadl2_PropertySet844') == owner
+    assert owner in getattr(partner, 'aadl2_PropertySet844')
     _safe_set(owner, 'aadl2_Property845', None)
-    assert getattr(partner, 'aadl2_PropertySet844') is None
+    assert owner not in getattr(partner, 'aadl2_PropertySet844')
 
 
 def test_assoc_ownedPropertyExpression834_stub_double():
@@ -2526,9 +2526,9 @@ def test_assoc_relatedElement59_stub_double():
     partner = aadl2_Relationship()
     setattr(partner, 'aadl2_Relationship', None)
     _safe_set(owner, 'aadl2_Element60', partner)
-    assert getattr(partner, 'aadl2_Relationship') == owner
+    assert owner in getattr(partner, 'aadl2_Relationship')
     _safe_set(owner, 'aadl2_Element60', None)
-    assert getattr(partner, 'aadl2_Relationship') is None
+    assert owner not in getattr(partner, 'aadl2_Relationship')
 
 
 def test_assoc_renamedPackage367_stub_double():
@@ -2616,9 +2616,9 @@ def test_assoc_source54_stub_double():
     partner = aadl2_DirectedRelationship()
     setattr(partner, 'aadl2_DirectedRelationship', None)
     _safe_set(owner, 'aadl2_Element55', partner)
-    assert getattr(partner, 'aadl2_DirectedRelationship') == owner
+    assert owner in getattr(partner, 'aadl2_DirectedRelationship')
     _safe_set(owner, 'aadl2_Element55', None)
-    assert getattr(partner, 'aadl2_DirectedRelationship') is None
+    assert owner not in getattr(partner, 'aadl2_DirectedRelationship')
 
 
 def test_assoc_specific52_stub_double():
@@ -2691,8 +2691,8 @@ def test_assoc_target56_stub_double():
     partner = aadl2_DirectedRelationship()
     setattr(partner, 'aadl2_DirectedRelationship57', None)
     _safe_set(owner, 'aadl2_Element58', partner)
-    assert getattr(partner, 'aadl2_DirectedRelationship57') == owner
+    assert owner in getattr(partner, 'aadl2_DirectedRelationship57')
     _safe_set(owner, 'aadl2_Element58', None)
-    assert getattr(partner, 'aadl2_DirectedRelationship57') is None
+    assert owner not in getattr(partner, 'aadl2_DirectedRelationship57')
 
 

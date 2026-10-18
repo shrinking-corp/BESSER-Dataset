@@ -1,4 +1,8 @@
 @startuml
+' model: Lims
+' project: sampleModel
+' owner: User
+' description: New project
 enum Gender {
   FEMALE
   MALE
@@ -25,19 +29,19 @@ class Lims_Sequenced {
 class Lims_Sequencer {
   + name : str
 }
-Lims_Individual "1..1" -- "0..1" Lims_Individual : Father8
-Lims_Individual "1..1" -- "0..1" Lims_Individual : Mother10
-Lims_Family "0..9999" --* "1..1" Lims_Laboratory : families2
-Lims_Family "1..1" -- "1..1" Lims_Individual : family5
-Lims_Individual "1..1" -- "1..1" Lims_Sample : individual19
-Lims_Family "1..1" *-- "0..9999" Lims_Individual : individuals0
-Lims_Family "1..1" -- "1..1" Lims_Laboratory : laboratory1
-Lims_Laboratory "1..1" -- "1..1" Lims_Sequencer : laboratory14
-Lims_Run "1..1" -- "1..1" Lims_Sequenced : run21
-Lims_Run "0..9999" --* "1..1" Lims_Sequencer : runs13
-Lims_Sample "1..1" -- "1..1" Lims_Sequenced : sample23
-Lims_Individual "1..1" *-- "0..9999" Lims_Sample : samples12
-Lims_Run "1..1" *-- "0..9999" Lims_Sequenced : sequenced16
-Lims_Run "1..1" -- "1..1" Lims_Sequencer : sequencer17
-Lims_Laboratory "1..1" *-- "0..9999" Lims_Sequencer : sequencers3
+Lims_Individual "Lims_Individual 1..1" -- "Lims_Individual7 0..1" Lims_Individual : Father8
+Lims_Individual "Lims_Individual11 1..1" -- "Lims_Individual9 0..1" Lims_Individual : Mother10
+Lims_Family "laboratory 0..9999" --* "Family 1..1" Lims_Laboratory : families2
+Lims_Family "individuals 1..1" -- "Family6 1..1" Lims_Individual : family5
+Lims_Individual "samples 1..1" -- "Individual20 1..1" Lims_Sample : individual19
+Lims_Family "Individual 1..1" *-- "family 0..9999" Lims_Individual : individuals0
+Lims_Family "Laboratory 1..1" -- "families 1..1" Lims_Laboratory : laboratory1
+Lims_Laboratory "sequencers 1..1" -- "Laboratory15 1..1" Lims_Sequencer : laboratory14
+Lims_Run "sequenced 1..1" -- "Run22 1..1" Lims_Sequenced : run21
+Lims_Run "sequencer 0..9999" --* "Run 1..1" Lims_Sequencer : runs13
+Lims_Sample "Lims_Sequenced 1..1" -- "Lims_Sample 1..1" Lims_Sequenced : sample23
+Lims_Individual "Sample 1..1" *-- "individual 0..9999" Lims_Sample : samples12
+Lims_Run "Sequenced 1..1" *-- "run 0..9999" Lims_Sequenced : sequenced16
+Lims_Run "Sequencer18 1..1" -- "runs 1..1" Lims_Sequencer : sequencer17
+Lims_Laboratory "Sequencer 1..1" *-- "laboratory4 0..9999" Lims_Sequencer : sequencers3
 @enduml

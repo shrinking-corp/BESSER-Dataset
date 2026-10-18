@@ -1,4 +1,8 @@
 @startuml
+' model: fsm
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractState {
 }
 class NamedElement {
@@ -40,17 +44,17 @@ NamedElement <|-- fsm_StateMachine
 NamedElement <|-- fsm_Transition
 Pseudostate <|-- fsm_InitialState
 State <|-- fsm_FinalState
-fsm_Block "0..1" --* "1..1" fsm_State : doAction10
-fsm_Block "0..1" --* "1..1" fsm_State : entryAction9
-fsm_Block "0..1" --* "1..1" fsm_State : exitAction13
-fsm_AbstractState "1..1" -- "0..9999" fsm_Transition : incoming4
-fsm_AbstractState "1..1" -- "0..9999" fsm_Transition : outgoing5
-fsm_AbstractState "1..1" -- "1..1" fsm_Region : ownerRegion7
-fsm_Region "1..1" -- "0..1" fsm_StateMachine : ownerStateMachine3
-fsm_Region "0..9999" --* "1..1" fsm_StateMachine : regions0
-fsm_AbstractState "1..1" -- "1..1" fsm_Transition : source20
-fsm_AbstractState "0..9999" --* "1..1" fsm_Region : subvertex1
-fsm_AbstractState "1..1" -- "1..1" fsm_Transition : target18
-fsm_Region "1..1" *-- "0..9999" fsm_Transition : transitions2
-fsm_Transition "1..1" *-- "0..1" fsm_Trigger : trigger16
+fsm_Block "fsm_State11 0..1" --* "fsm_Block12 1..1" fsm_State : doAction10
+fsm_Block "fsm_State 0..1" --* "fsm_Block 1..1" fsm_State : entryAction9
+fsm_Block "fsm_State14 0..1" --* "fsm_Block15 1..1" fsm_State : exitAction13
+fsm_AbstractState "Transition 1..1" -- "target 0..9999" fsm_Transition : incoming4
+fsm_AbstractState "Transition6 1..1" -- "source 0..9999" fsm_Transition : outgoing5
+fsm_AbstractState "Region8 1..1" -- "subvertex 1..1" fsm_Region : ownerRegion7
+fsm_Region "StateMachine 1..1" -- "regions 0..1" fsm_StateMachine : ownerStateMachine3
+fsm_Region "ownerStateMachine 0..9999" --* "Region 1..1" fsm_StateMachine : regions0
+fsm_AbstractState "outgoing 1..1" -- "AbstractState21 1..1" fsm_Transition : source20
+fsm_AbstractState "ownerRegion 0..9999" --* "AbstractState 1..1" fsm_Region : subvertex1
+fsm_AbstractState "incoming 1..1" -- "AbstractState19 1..1" fsm_Transition : target18
+fsm_Region "fsm_Transition 1..1" *-- "fsm_Region 0..9999" fsm_Transition : transitions2
+fsm_Transition "fsm_Trigger 1..1" *-- "fsm_Transition17 0..1" fsm_Trigger : trigger16
 @enduml

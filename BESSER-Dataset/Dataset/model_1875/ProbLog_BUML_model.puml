@@ -1,4 +1,8 @@
 @startuml
+' model: problog
+' project: sampleModel
+' owner: User
+' description: New project
 class Annotatable {
 }
 class Collection {
@@ -93,16 +97,16 @@ Statement <|-- problog_Comment
 Statement <|-- problog_ImportLibrary
 Statement <|-- problog_ProbLogStatement
 Statement <|-- problog_Rule
-problog_Annotatable "1..1" --* "1..1" problog_AnnotatedReferable : annotates11
-problog_Referable "0..9999" --* "1..1" problog_TermInstance : arguments17
-problog_RHS "1..1" *-- "1..9999" problog_Referable : conjunction8
-problog_Collection "1..1" *-- "0..9999" problog_Referable : contents20
-problog_LHS "1..1" --* "1..1" problog_Rule : lhs3
-problog_AnnotatedReferable "1..1" *-- "1..1" problog_ProbabilityMeasure : probabilitymeasure10
-problog_LHS "1..1" *-- "0..9999" problog_Proposition : propositions6
-problog_RHS "0..1" --* "1..1" problog_Rule : rhs4
-problog_ProbLogProgram "1..1" *-- "0..9999" problog_Statement : statements0
-problog_ProbLogStatement "1..1" *-- "1..1" problog_Referable : subject13
-problog_Term "1..1" -- "1..1" problog_TermInstance : template15
-problog_ProbLogProgram "1..1" *-- "0..9999" problog_Term : terms1
+problog_Annotatable "problog_AnnotatedReferable12 1..1" --* "problog_Annotatable 1..1" problog_AnnotatedReferable : annotates11
+problog_Referable "problog_TermInstance18 0..9999" --* "problog_Referable19 1..1" problog_TermInstance : arguments17
+problog_RHS "problog_Referable 1..1" *-- "problog_RHS9 1..9999" problog_Referable : conjunction8
+problog_Collection "problog_Referable21 1..1" *-- "problog_Collection 0..9999" problog_Referable : contents20
+problog_LHS "problog_Rule 1..1" --* "problog_LHS 1..1" problog_Rule : lhs3
+problog_AnnotatedReferable "problog_ProbabilityMeasure 1..1" *-- "problog_AnnotatedReferable 1..1" problog_ProbabilityMeasure : probabilitymeasure10
+problog_LHS "problog_Proposition 1..1" *-- "problog_LHS7 0..9999" problog_Proposition : propositions6
+problog_RHS "problog_Rule5 0..1" --* "problog_RHS 1..1" problog_Rule : rhs4
+problog_ProbLogProgram "problog_Statement 1..1" *-- "problog_ProbLogProgram 0..9999" problog_Statement : statements0
+problog_ProbLogStatement "problog_Referable14 1..1" *-- "problog_ProbLogStatement 1..1" problog_Referable : subject13
+problog_Term "problog_TermInstance 1..1" -- "problog_Term16 1..1" problog_TermInstance : template15
+problog_ProbLogProgram "problog_Term 1..1" *-- "problog_ProbLogProgram2 0..9999" problog_Term : terms1
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: study
+' project: sampleModel
+' owner: User
+' description: New project
 enum FallOrSpring {
   Fall
   Spring
@@ -31,13 +35,13 @@ class study_Specialization {
 }
 class study_StudyPlan {
 }
-study_Course "0..9999" --* "1..1" study_Department : course1
-study_CourseSlot "0..9999" --* "1..1" study_Semester : courseSlot12
-study_Course "0..9999" -- "1..1" study_CourseSlot : electiveCourses17
-study_Course "0..1" -- "1..1" study_CourseSlot : mandatoryCourse14
-study_Department "1..1" *-- "0..9999" study_Programme : programme0
-study_Semester "0..9999" --* "1..1" study_StudyPlan : semester7
-study_Semester "0..9999" --* "1..1" study_Specialization : semester9
-study_Specialization "0..9999" --* "1..1" study_StudyPlan : spesialization5
-study_Programme "1..1" *-- "0..9999" study_StudyPlan : studyPlan3
+study_Course "study_Department2 0..9999" --* "study_Course 1..1" study_Department : course1
+study_CourseSlot "study_Semester13 0..9999" --* "study_CourseSlot 1..1" study_Semester : courseSlot12
+study_Course "study_CourseSlot18 0..9999" -- "study_Course19 1..1" study_CourseSlot : electiveCourses17
+study_Course "study_CourseSlot15 0..1" -- "study_Course16 1..1" study_CourseSlot : mandatoryCourse14
+study_Department "study_Programme 1..1" *-- "study_Department 0..9999" study_Programme : programme0
+study_Semester "study_StudyPlan8 0..9999" --* "study_Semester 1..1" study_StudyPlan : semester7
+study_Semester "study_Specialization10 0..9999" --* "study_Semester11 1..1" study_Specialization : semester9
+study_Specialization "study_StudyPlan6 0..9999" --* "study_Specialization 1..1" study_StudyPlan : spesialization5
+study_Programme "study_StudyPlan 1..1" *-- "study_Programme4 0..9999" study_StudyPlan : studyPlan3
 @enduml

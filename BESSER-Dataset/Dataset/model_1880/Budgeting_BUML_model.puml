@@ -1,4 +1,8 @@
 @startuml
+' model: budgeting
+' project: sampleModel
+' owner: User
+' description: New project
 class ActualEntry {
 }
 class BudgetEntry {
@@ -77,13 +81,13 @@ Category <|-- budgeting_ExpenseCategory
 Category <|-- budgeting_IncomeCategory
 Transaction <|-- budgeting_CardTransaction
 Transaction <|-- budgeting_CashTransaction
-budgeting_ActualEntry "0..9999" --* "1..1" budgeting_Month : actualEntries7
-budgeting_BudgetEntry "0..1" -- "1..1" budgeting_BudgetFactorEntry : baseEntry15
-budgeting_BudgetEntry "0..9999" --* "1..1" budgeting_Month : budgetEntries5
-budgeting_Category "0..9999" --* "1..1" budgeting_Library : categories0
-budgeting_ActualEntry "1..1" -- "0..1" budgeting_Category : category12
-budgeting_BudgetEntry "1..1" -- "0..1" budgeting_Category : category9
-budgeting_Library "0..1" -- "1..1" budgeting_Year : library1
-budgeting_Month "0..9999" --* "1..1" budgeting_Year : months3
-budgeting_ActualTransactionEntry "1..1" *-- "0..9999" budgeting_Transaction : transactions17
+budgeting_ActualEntry "budgeting_Month8 0..9999" --* "budgeting_ActualEntry 1..1" budgeting_Month : actualEntries7
+budgeting_BudgetEntry "budgeting_BudgetFactorEntry 0..1" -- "budgeting_BudgetEntry16 1..1" budgeting_BudgetFactorEntry : baseEntry15
+budgeting_BudgetEntry "budgeting_Month6 0..9999" --* "budgeting_BudgetEntry 1..1" budgeting_Month : budgetEntries5
+budgeting_Category "budgeting_Library 0..9999" --* "budgeting_Category 1..1" budgeting_Library : categories0
+budgeting_ActualEntry "budgeting_Category14 1..1" -- "budgeting_ActualEntry13 0..1" budgeting_Category : category12
+budgeting_BudgetEntry "budgeting_Category11 1..1" -- "budgeting_BudgetEntry10 0..1" budgeting_Category : category9
+budgeting_Library "budgeting_Year 0..1" -- "budgeting_Library2 1..1" budgeting_Year : library1
+budgeting_Month "budgeting_Year4 0..9999" --* "budgeting_Month 1..1" budgeting_Year : months3
+budgeting_ActualTransactionEntry "budgeting_Transaction 1..1" *-- "budgeting_ActualTransactionEntry 0..9999" budgeting_Transaction : transactions17
 @enduml

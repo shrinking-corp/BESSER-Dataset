@@ -1,4 +1,8 @@
 @startuml
+' model: metrics
+' project: sampleModel
+' owner: User
+' description: New project
 class Base {
 }
 enum FixedMetricRetentionPeriod {
@@ -38,15 +42,15 @@ Base <|-- metrics_Metric
 Base <|-- metrics_MetricSource
 Rule <|-- metrics_MetricAggregationRule
 Rule <|-- metrics_MetricRetentionRule
-metrics_EObject "0..1" -- "1..1" metrics_MetricAggregationRule : aggregationExpression13
-metrics_MetricAggregationRules "0..1" -- "1..1" metrics_MetricSource : metricAggregationRuleSet19
-metrics_Metric "1..1" -- "0..1" metrics_MetricAggregationRules : metricAggregationRuleSet7
-metrics_Addon "1..1" *-- "0..9999" metrics_MetricAggregationRules : metricAggregationRuleSets5
-metrics_MetricAggregationRule "0..9999" --* "1..1" metrics_MetricAggregationRules : metricAggregationRules14
-metrics_Metric "1..1" -- "0..1" metrics_MetricRetentionRules : metricRetentionRuleSet10
-metrics_MetricRetentionRules "0..1" -- "1..1" metrics_MetricSource : metricRetentionRuleSet22
-metrics_Addon "1..1" *-- "0..9999" metrics_MetricRetentionRules : metricRetentionRuleSets3
-metrics_MetricRetentionRule "0..9999" --* "1..1" metrics_MetricRetentionRules : metricRetentionRules17
-metrics_Addon "1..1" *-- "0..9999" metrics_MetricSource : metricSources1
-metrics_Addon "1..1" *-- "0..9999" metrics_Metric : metrics0
+metrics_EObject "metrics_MetricAggregationRule 0..1" -- "metrics_EObject 1..1" metrics_MetricAggregationRule : aggregationExpression13
+metrics_MetricAggregationRules "metrics_MetricSource20 0..1" -- "metrics_MetricAggregationRules21 1..1" metrics_MetricSource : metricAggregationRuleSet19
+metrics_Metric "metrics_MetricAggregationRules9 1..1" -- "metrics_Metric8 0..1" metrics_MetricAggregationRules : metricAggregationRuleSet7
+metrics_Addon "metrics_MetricAggregationRules 1..1" *-- "metrics_Addon6 0..9999" metrics_MetricAggregationRules : metricAggregationRuleSets5
+metrics_MetricAggregationRule "metrics_MetricAggregationRules15 0..9999" --* "metrics_MetricAggregationRule16 1..1" metrics_MetricAggregationRules : metricAggregationRules14
+metrics_Metric "metrics_MetricRetentionRules12 1..1" -- "metrics_Metric11 0..1" metrics_MetricRetentionRules : metricRetentionRuleSet10
+metrics_MetricRetentionRules "metrics_MetricSource23 0..1" -- "metrics_MetricRetentionRules24 1..1" metrics_MetricSource : metricRetentionRuleSet22
+metrics_Addon "metrics_MetricRetentionRules 1..1" *-- "metrics_Addon4 0..9999" metrics_MetricRetentionRules : metricRetentionRuleSets3
+metrics_MetricRetentionRule "metrics_MetricRetentionRules18 0..9999" --* "metrics_MetricRetentionRule 1..1" metrics_MetricRetentionRules : metricRetentionRules17
+metrics_Addon "metrics_MetricSource 1..1" *-- "metrics_Addon2 0..9999" metrics_MetricSource : metricSources1
+metrics_Addon "metrics_Metric 1..1" *-- "metrics_Addon 0..9999" metrics_Metric : metrics0
 @enduml

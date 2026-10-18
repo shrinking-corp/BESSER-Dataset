@@ -1,4 +1,8 @@
 @startuml
+' model: workflow
+' project: sampleModel
+' owner: User
+' description: New project
 class ActivityAspect {
 }
 class Atom {
@@ -257,94 +261,94 @@ TaskAspect <|-- workflow_TaskC
 TaskAspect <|-- workflow_TaskI
 TaskAspect <|-- workflow_TaskO
 TaskC <|-- workflow_Transition
-workflow_Document "1..1" -- "1..1" workflow_DocumentType : DocumentType80
-workflow_Activity "1..1" -- "0..1" workflow_ActivityAspect : EReference014
-workflow_ActivityO "0..9999" -- "1..1" workflow_Agent : active18
-workflow_Activity "0..9999" --* "1..1" workflow_Case : activities6
-workflow_Agent "0..9999" --* "1..1" workflow_AgentContainer : agents166
-workflow_Arc "0..9999" --* "1..1" workflow_PetriNet : arcs25
-workflow_Activity "1..1" *-- "0..9999" workflow_ActivityAspect : aspects10
-workflow_Process "1..1" -- "0..9999" workflow_ProcessAspect : aspects109
-workflow_Task "1..1" -- "0..9999" workflow_TaskAspect : aspects111
-workflow_RuntimeCoreModel "1..1" *-- "0..9999" workflow_RuntimeModelAspect : aspects113
-workflow_Case "1..1" *-- "0..9999" workflow_CaseAspect : aspects5
-workflow_CoreModel "1..1" *-- "0..9999" workflow_ModelAspect : aspects99
-workflow_ActivityO "1..1" -- "0..1" workflow_Agent : assignedTo4
-workflow_ActivityC "1..1" -- "1..1" workflow_CaseC : case22
-workflow_CaseI "1..1" *-- "0..9999" workflow_String2DocumentMap : caseDocuments83
-workflow_Case "0..9999" --* "1..1" workflow_RuntimeCoreModel : cases114
-workflow_Process "1..1" -- "1..1" workflow_ProcessAspect : core87
-workflow_Task "1..1" -- "1..1" workflow_TaskAspect : core88
-workflow_Case "1..1" -- "1..1" workflow_CaseAspect : core92
-workflow_Activity "1..1" -- "1..1" workflow_ActivityAspect : core97
-workflow_CoreModel "1..1" -- "1..1" workflow_Process : coreModel107
-workflow_CoreModel "1..1" -- "1..1" workflow_RuntimeCoreModel : coreModel116
-workflow_CoreModel "0..9999" -- "1..1" workflow_ModelRegistry : coreModels57
-workflow_EnumField "1..1" -- "1..1" workflow_EnumLiteral : defaultValue153
-workflow_DocumentDescrAtom "1..1" -- "1..1" workflow_DocumentDescriptor : descriptor145
-workflow_DocumentType "1..1" -- "1..1" workflow_ProcessDocument : documentType138
-workflow_DocumentDescriptor "1..1" -- "1..1" workflow_DocumentType : documentType71
-workflow_DocumentType "0..9999" --* "1..1" workflow_DocumentTypeContainer : documentTypes174
-workflow_Document "0..9999" --* "1..1" workflow_DocumentContainer : documents176
-workflow_RuntimeGlobalAspect "1..1" -- "1..1" workflow_WorkflowEngine : engine172
-workflow_ModelRegistry "1..1" -- "1..1" workflow_WorkflowEngine : engine56
-workflow_EnumField "1..1" -- "1..1" workflow_EnumFieldValue : enumField156
-workflow_EnumField "1..1" -- "1..1" workflow_EnumFieldAtom : enumField162
-workflow_DefaultDocument "1..1" *-- "0..9999" workflow_EnumFieldValue : enumFieldValues131
-workflow_DefaultDocumentType "1..1" *-- "0..9999" workflow_EnumField : enumFields128
-workflow_EnumLiteral "1..1" -- "1..1" workflow_EnumLiteralAtom : enumLiteral164
-workflow_EnumField "1..1" *-- "1..9999" workflow_EnumLiteral : enumLiterals151
-workflow_EnumFieldValue "1..1" -- "1..1" workflow_EnumLiteral : enumValue159
-workflow_DefaultDocumentCondition "1..1" *-- "1..1" workflow_Expression : expression149
-workflow_Field "1..1" -- "1..1" workflow_FieldValue : field133
-workflow_Field "1..1" -- "1..1" workflow_FieldAtom : field147
-workflow_DefaultDocument "1..1" *-- "0..9999" workflow_FieldValue : fieldValues130
-workflow_DefaultDocumentType "1..1" *-- "0..9999" workflow_Field : fields127
-workflow_PetriNet "1..1" -- "1..1" workflow_Place : finish31
-workflow_DocumentCondition "0..9999" --* "1..1" workflow_TaskI : finish68
-workflow_TaskO "1..1" -- "1..1" workflow_TaskO : followsUpOn2
-workflow_GlobalAspect "0..9999" -- "1..1" workflow_ModelRegistry : globalAspects59
-workflow_Arc "0..9999" -- "1..1" workflow_Transition : in_35
-workflow_Arc "0..9999" -- "1..1" workflow_Place : in_45
-workflow_DocumentDescriptor "0..9999" --* "1..1" workflow_TaskI : in_62
-workflow_ActivityI "1..1" -- "0..9999" workflow_Document : in_76
-workflow_ProcessO "1..1" -- "0..9999" workflow_Role : involved125
-workflow_Agent "0..9999" -- "1..1" workflow_CaseO : involved136
-workflow_Agent "1..1" -- "1..9999" workflow_Role : mayTakeRoles19
-workflow_CoreModel "1..1" -- "1..1" workflow_ModelRegistry : modelRegistry103
-workflow_ModelRegistry "1..1" -- "1..1" workflow_WorkflowEngine : modelRegistry119
-workflow_GlobalAspect "1..1" -- "1..1" workflow_ModelRegistry : modelRegistry170
-workflow_Expression "2..2" --* "1..1" workflow_Operator : operands144
-workflow_Arc "0..9999" -- "1..1" workflow_Transition : out34
-workflow_Arc "0..9999" -- "1..1" workflow_Place : out47
-workflow_DocumentDescriptor "0..9999" --* "1..1" workflow_TaskI : out63
-workflow_ActivityI "1..1" -- "0..9999" workflow_Document : out77
-workflow_Marking "1..1" -- "1..1" workflow_PetriNet : petrinet50
-workflow_Place "1..1" -- "1..1" workflow_Token : place53
-workflow_PetriNet "1..1" *-- "0..9999" workflow_Place : places26
-workflow_CoreModel "1..1" *-- "0..1" workflow_Process : process101
-workflow_Case "1..1" -- "1..1" workflow_Process : process7
-workflow_ModelAspect "1..1" *-- "0..1" workflow_ProcessAspect : process84
-workflow_CaseAspect "1..1" -- "0..1" workflow_ProcessAspect : process90
-workflow_DocumentDescriptor "1..1" -- "1..1" workflow_ProcessDocument : processDocument73
-workflow_Information "1..1" *-- "0..9999" workflow_ProcessDocument : processDocuments61
-workflow_Role "1..9999" -- "1..1" workflow_TaskO : requiredRoles0
-workflow_Organisation "1..1" *-- "0..9999" workflow_Role : roles168
-workflow_Case "1..1" -- "1..1" workflow_RuntimeCoreModel : runtimeCoreModel9
-workflow_RuntimeCoreModel "0..9999" --* "1..1" workflow_WorkflowEngine : runtimeCoreModels121
-workflow_RuntimeGlobalAspect "0..9999" -- "1..1" workflow_WorkflowEngine : runtimeGlobalAspects123
-workflow_Arc "1..1" -- "1..1" workflow_Place : sourcePlace37
-workflow_Arc "1..1" -- "1..1" workflow_Transition : sourceTransition40
-workflow_PetriNet "1..1" -- "1..1" workflow_Place : start28
-workflow_DocumentCondition "0..9999" --* "1..1" workflow_TaskI : start66
-workflow_CaseC "1..1" *-- "1..1" workflow_State : state23
-workflow_Agent "1..1" -- "1..9999" workflow_Role : takenRoles16
-workflow_Arc "1..1" -- "1..1" workflow_Place : targetPlace38
-workflow_Arc "1..1" -- "1..1" workflow_Transition : targetTransition42
-workflow_Activity "1..1" -- "1..1" workflow_Task : task12
-workflow_ActivityAspect "1..1" -- "1..1" workflow_TaskAspect : task94
-workflow_Process "1..1" *-- "0..9999" workflow_Task : tasks104
-workflow_ProcessAspect "1..1" *-- "0..9999" workflow_TaskAspect : tasks85
-workflow_Marking "1..1" *-- "0..9999" workflow_Token : tokens49
-workflow_Document "1..1" -- "1..1" workflow_String2DocumentMap : value141
+workflow_Document "workflow_DocumentType82 1..1" -- "workflow_Document81 1..1" workflow_DocumentType : DocumentType80
+workflow_Activity "workflow_ActivityAspect 1..1" -- "workflow_Activity15 0..1" workflow_ActivityAspect : EReference014
+workflow_ActivityO "assignedTo 0..9999" -- "ActivityO 1..1" workflow_Agent : active18
+workflow_Activity "workflow_Case 0..9999" --* "workflow_Activity 1..1" workflow_Case : activities6
+workflow_Agent "workflow_AgentContainer 0..9999" --* "workflow_Agent167 1..1" workflow_AgentContainer : agents166
+workflow_Arc "workflow_PetriNet 0..9999" --* "workflow_Arc 1..1" workflow_PetriNet : arcs25
+workflow_Activity "ActivityAspect 1..1" *-- "core11 0..9999" workflow_ActivityAspect : aspects10
+workflow_Process "ProcessAspect 1..1" -- "core110 0..9999" workflow_ProcessAspect : aspects109
+workflow_Task "TaskAspect 1..1" -- "core112 0..9999" workflow_TaskAspect : aspects111
+workflow_RuntimeCoreModel "workflow_RuntimeModelAspect 1..1" *-- "workflow_RuntimeCoreModel 0..9999" workflow_RuntimeModelAspect : aspects113
+workflow_Case "CaseAspect 1..1" *-- "core 0..9999" workflow_CaseAspect : aspects5
+workflow_CoreModel "workflow_ModelAspect100 1..1" *-- "workflow_CoreModel 0..9999" workflow_ModelAspect : aspects99
+workflow_ActivityO "Agent 1..1" -- "active 0..1" workflow_Agent : assignedTo4
+workflow_ActivityC "workflow_CaseC 1..1" -- "workflow_ActivityC 1..1" workflow_CaseC : case22
+workflow_CaseI "workflow_String2DocumentMap 1..1" *-- "workflow_CaseI 0..9999" workflow_String2DocumentMap : caseDocuments83
+workflow_Case "runtimeCoreModel 0..9999" --* "Case115 1..1" workflow_RuntimeCoreModel : cases114
+workflow_Process "aspects 1..1" -- "Process 1..1" workflow_ProcessAspect : core87
+workflow_Task "aspects89 1..1" -- "Task 1..1" workflow_TaskAspect : core88
+workflow_Case "aspects93 1..1" -- "Case 1..1" workflow_CaseAspect : core92
+workflow_Activity "aspects98 1..1" -- "Activity 1..1" workflow_ActivityAspect : core97
+workflow_CoreModel "process 1..1" -- "CoreModel108 1..1" workflow_Process : coreModel107
+workflow_CoreModel "workflow_RuntimeCoreModel117 1..1" -- "workflow_CoreModel118 1..1" workflow_RuntimeCoreModel : coreModel116
+workflow_CoreModel "modelRegistry58 0..9999" -- "CoreModel 1..1" workflow_ModelRegistry : coreModels57
+workflow_EnumField "workflow_EnumLiteral155 1..1" -- "workflow_EnumField154 1..1" workflow_EnumLiteral : defaultValue153
+workflow_DocumentDescrAtom "workflow_DocumentDescriptor146 1..1" -- "workflow_DocumentDescrAtom 1..1" workflow_DocumentDescriptor : descriptor145
+workflow_DocumentType "workflow_ProcessDocument139 1..1" -- "workflow_DocumentType140 1..1" workflow_ProcessDocument : documentType138
+workflow_DocumentDescriptor "workflow_DocumentType 1..1" -- "workflow_DocumentDescriptor72 1..1" workflow_DocumentType : documentType71
+workflow_DocumentType "workflow_DocumentTypeContainer 0..9999" --* "workflow_DocumentType175 1..1" workflow_DocumentTypeContainer : documentTypes174
+workflow_Document "workflow_DocumentContainer 0..9999" --* "workflow_Document177 1..1" workflow_DocumentContainer : documents176
+workflow_RuntimeGlobalAspect "WorkflowEngine173 1..1" -- "runtimeGlobalAspects 1..1" workflow_WorkflowEngine : engine172
+workflow_ModelRegistry "WorkflowEngine 1..1" -- "modelRegistry 1..1" workflow_WorkflowEngine : engine56
+workflow_EnumField "workflow_EnumFieldValue157 1..1" -- "workflow_EnumField158 1..1" workflow_EnumFieldValue : enumField156
+workflow_EnumField "workflow_EnumFieldAtom 1..1" -- "workflow_EnumField163 1..1" workflow_EnumFieldAtom : enumField162
+workflow_DefaultDocument "workflow_EnumFieldValue 1..1" *-- "workflow_DefaultDocument132 0..9999" workflow_EnumFieldValue : enumFieldValues131
+workflow_DefaultDocumentType "workflow_EnumField 1..1" *-- "workflow_DefaultDocumentType129 0..9999" workflow_EnumField : enumFields128
+workflow_EnumLiteral "workflow_EnumLiteralAtom 1..1" -- "workflow_EnumLiteral165 1..1" workflow_EnumLiteralAtom : enumLiteral164
+workflow_EnumField "workflow_EnumLiteral 1..1" *-- "workflow_EnumField152 1..9999" workflow_EnumLiteral : enumLiterals151
+workflow_EnumFieldValue "workflow_EnumLiteral161 1..1" -- "workflow_EnumFieldValue160 1..1" workflow_EnumLiteral : enumValue159
+workflow_DefaultDocumentCondition "workflow_Expression150 1..1" *-- "workflow_DefaultDocumentCondition 1..1" workflow_Expression : expression149
+workflow_Field "workflow_FieldValue134 1..1" -- "workflow_Field135 1..1" workflow_FieldValue : field133
+workflow_Field "workflow_FieldAtom 1..1" -- "workflow_Field148 1..1" workflow_FieldAtom : field147
+workflow_DefaultDocument "workflow_FieldValue 1..1" *-- "workflow_DefaultDocument 0..9999" workflow_FieldValue : fieldValues130
+workflow_DefaultDocumentType "workflow_Field 1..1" *-- "workflow_DefaultDocumentType 0..9999" workflow_Field : fields127
+workflow_PetriNet "workflow_Place33 1..1" -- "workflow_PetriNet32 1..1" workflow_Place : finish31
+workflow_DocumentCondition "workflow_TaskI69 0..9999" --* "workflow_DocumentCondition70 1..1" workflow_TaskI : finish68
+workflow_TaskO "workflow_TaskO1 1..1" -- "workflow_TaskO3 1..1" workflow_TaskO : followsUpOn2
+workflow_GlobalAspect "modelRegistry60 0..9999" -- "GlobalAspect 1..1" workflow_ModelRegistry : globalAspects59
+workflow_Arc "targetTransition 0..9999" -- "Arc36 1..1" workflow_Transition : in_35
+workflow_Arc "targetPlace 0..9999" -- "Arc46 1..1" workflow_Place : in_45
+workflow_DocumentDescriptor "workflow_TaskI 0..9999" --* "workflow_DocumentDescriptor 1..1" workflow_TaskI : in_62
+workflow_ActivityI "workflow_Document 1..1" -- "workflow_ActivityI 0..9999" workflow_Document : in_76
+workflow_ProcessO "workflow_Role126 1..1" -- "workflow_ProcessO 0..9999" workflow_Role : involved125
+workflow_Agent "workflow_CaseO 0..9999" -- "workflow_Agent137 1..1" workflow_CaseO : involved136
+workflow_Agent "workflow_Role21 1..1" -- "workflow_Agent20 1..9999" workflow_Role : mayTakeRoles19
+workflow_CoreModel "ModelRegistry 1..1" -- "coreModels 1..1" workflow_ModelRegistry : modelRegistry103
+workflow_ModelRegistry "engine 1..1" -- "ModelRegistry120 1..1" workflow_WorkflowEngine : modelRegistry119
+workflow_GlobalAspect "ModelRegistry171 1..1" -- "globalAspects 1..1" workflow_ModelRegistry : modelRegistry170
+workflow_Expression "workflow_Operator 2..2" --* "workflow_Expression 1..1" workflow_Operator : operands144
+workflow_Arc "sourceTransition 0..9999" -- "Arc 1..1" workflow_Transition : out34
+workflow_Arc "sourcePlace 0..9999" -- "Arc48 1..1" workflow_Place : out47
+workflow_DocumentDescriptor "workflow_TaskI64 0..9999" --* "workflow_DocumentDescriptor65 1..1" workflow_TaskI : out63
+workflow_ActivityI "workflow_Document79 1..1" -- "workflow_ActivityI78 0..9999" workflow_Document : out77
+workflow_Marking "workflow_PetriNet52 1..1" -- "workflow_Marking51 1..1" workflow_PetriNet : petrinet50
+workflow_Place "workflow_Token54 1..1" -- "workflow_Place55 1..1" workflow_Token : place53
+workflow_PetriNet "workflow_Place 1..1" *-- "workflow_PetriNet27 0..9999" workflow_Place : places26
+workflow_CoreModel "Process102 1..1" *-- "coreModel 0..1" workflow_Process : process101
+workflow_Case "workflow_Process 1..1" -- "workflow_Case8 1..1" workflow_Process : process7
+workflow_ModelAspect "workflow_ProcessAspect 1..1" *-- "workflow_ModelAspect 0..1" workflow_ProcessAspect : process84
+workflow_CaseAspect "workflow_ProcessAspect91 1..1" -- "workflow_CaseAspect 0..1" workflow_ProcessAspect : process90
+workflow_DocumentDescriptor "workflow_ProcessDocument75 1..1" -- "workflow_DocumentDescriptor74 1..1" workflow_ProcessDocument : processDocument73
+workflow_Information "workflow_ProcessDocument 1..1" *-- "workflow_Information 0..9999" workflow_ProcessDocument : processDocuments61
+workflow_Role "workflow_TaskO 1..9999" -- "workflow_Role 1..1" workflow_TaskO : requiredRoles0
+workflow_Organisation "workflow_Role169 1..1" *-- "workflow_Organisation 0..9999" workflow_Role : roles168
+workflow_Case "RuntimeCoreModel 1..1" -- "cases 1..1" workflow_RuntimeCoreModel : runtimeCoreModel9
+workflow_RuntimeCoreModel "workflow_WorkflowEngine 0..9999" --* "workflow_RuntimeCoreModel122 1..1" workflow_WorkflowEngine : runtimeCoreModels121
+workflow_RuntimeGlobalAspect "engine124 0..9999" -- "RuntimeGlobalAspect 1..1" workflow_WorkflowEngine : runtimeGlobalAspects123
+workflow_Arc "Place 1..1" -- "out 1..1" workflow_Place : sourcePlace37
+workflow_Arc "Transition 1..1" -- "out41 1..1" workflow_Transition : sourceTransition40
+workflow_PetriNet "workflow_Place30 1..1" -- "workflow_PetriNet29 1..1" workflow_Place : start28
+workflow_DocumentCondition "workflow_TaskI67 0..9999" --* "workflow_DocumentCondition 1..1" workflow_TaskI : start66
+workflow_CaseC "workflow_State 1..1" *-- "workflow_CaseC24 1..1" workflow_State : state23
+workflow_Agent "workflow_Role17 1..1" -- "workflow_Agent 1..9999" workflow_Role : takenRoles16
+workflow_Arc "Place39 1..1" -- "in_ 1..1" workflow_Place : targetPlace38
+workflow_Arc "Transition44 1..1" -- "in_43 1..1" workflow_Transition : targetTransition42
+workflow_Activity "workflow_Task 1..1" -- "workflow_Activity13 1..1" workflow_Task : task12
+workflow_ActivityAspect "workflow_TaskAspect96 1..1" -- "workflow_ActivityAspect95 1..1" workflow_TaskAspect : task94
+workflow_Process "workflow_Task106 1..1" *-- "workflow_Process105 0..9999" workflow_Task : tasks104
+workflow_ProcessAspect "workflow_TaskAspect 1..1" *-- "workflow_ProcessAspect86 0..9999" workflow_TaskAspect : tasks85
+workflow_Marking "workflow_Token 1..1" *-- "workflow_Marking 0..9999" workflow_Token : tokens49
+workflow_Document "workflow_String2DocumentMap142 1..1" -- "workflow_Document143 1..1" workflow_String2DocumentMap : value141
 @enduml

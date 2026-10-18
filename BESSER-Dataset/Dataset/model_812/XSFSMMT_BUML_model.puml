@@ -1,4 +1,8 @@
 @startuml
+' model: fsm
+' project: sampleModel
+' owner: User
+' description: New project
 class NamedElement {
 }
 class fsm_Buffer {
@@ -34,17 +38,17 @@ NamedElement <|-- fsm_FSMSystem
 NamedElement <|-- fsm_State
 NamedElement <|-- fsm_StateMachine
 NamedElement <|-- fsm_Transition
-fsm_State "0..1" -- "1..1" fsm_StateMachine : currentState4
-fsm_State "1..1" -- "0..9999" fsm_Transition : incomingTransitions9
-fsm_State "1..1" -- "1..1" fsm_StateMachine : initialState1
-fsm_Buffer "1..1" -- "0..9999" fsm_StateMachine : inputs19
-fsm_State "1..1" -- "0..9999" fsm_Transition : outgoingTransitions8
-fsm_Buffer "1..1" -- "0..9999" fsm_StateMachine : outputs22
-fsm_Buffer "0..9999" --* "1..1" fsm_FSMSystem : ownedBuffer17
-fsm_FSMSystem "1..1" *-- "0..9999" fsm_StateMachine : ownedStateMachines15
-fsm_State "0..9999" --* "1..1" fsm_StateMachine : ownedStates0
-fsm_StateMachine "1..1" *-- "0..9999" fsm_Transition : ownedTransitions2
-fsm_State "1..1" -- "1..1" fsm_StateMachine : owningFSM7
-fsm_State "1..1" -- "1..1" fsm_Transition : source11
-fsm_State "1..1" -- "1..1" fsm_Transition : target13
+fsm_State "fsm_StateMachine5 0..1" -- "fsm_State6 1..1" fsm_StateMachine : currentState4
+fsm_State "Transition10 1..1" -- "target 0..9999" fsm_Transition : incomingTransitions9
+fsm_State "fsm_StateMachine 1..1" -- "fsm_State 1..1" fsm_StateMachine : initialState1
+fsm_Buffer "fsm_StateMachine21 1..1" -- "fsm_Buffer20 0..9999" fsm_StateMachine : inputs19
+fsm_State "Transition 1..1" -- "source 0..9999" fsm_Transition : outgoingTransitions8
+fsm_Buffer "fsm_StateMachine24 1..1" -- "fsm_Buffer23 0..9999" fsm_StateMachine : outputs22
+fsm_Buffer "fsm_FSMSystem18 0..9999" --* "fsm_Buffer 1..1" fsm_FSMSystem : ownedBuffer17
+fsm_FSMSystem "fsm_StateMachine16 1..1" *-- "fsm_FSMSystem 0..9999" fsm_StateMachine : ownedStateMachines15
+fsm_State "owningFSM 0..9999" --* "State 1..1" fsm_StateMachine : ownedStates0
+fsm_StateMachine "fsm_Transition 1..1" *-- "fsm_StateMachine3 0..9999" fsm_Transition : ownedTransitions2
+fsm_State "StateMachine 1..1" -- "ownedStates 1..1" fsm_StateMachine : owningFSM7
+fsm_State "outgoingTransitions 1..1" -- "State12 1..1" fsm_Transition : source11
+fsm_State "incomingTransitions 1..1" -- "State14 1..1" fsm_Transition : target13
 @enduml

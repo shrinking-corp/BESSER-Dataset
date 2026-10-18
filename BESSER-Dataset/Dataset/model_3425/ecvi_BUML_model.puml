@@ -1,4 +1,8 @@
 @startuml
+' model: ecvi
+' project: sampleModel
+' owner: User
+' description: New project
 enum DocType {
   Other
   PDFCVI
@@ -253,32 +257,32 @@ class ecvi_Veterinarian {
   + licenseNumber : str
   + nationalAccreditationNumber : str
 }
-ecvi_Accession "1..9999" --* "1..1" ecvi_Accessions : accession1
-ecvi_Accessions "0..1" --* "1..1" ecvi_Ecvi : accessions32
-ecvi_Address "0..1" --* "1..1" ecvi_Laboratory : address42
-ecvi_Address "1..1" --* "1..1" ecvi_Premises : address47
-ecvi_Address "0..1" --* "1..1" ecvi_Veterinarian : address60
-ecvi_Address "0..1" --* "1..1" ecvi_Contact : address7
-ecvi_Animal "0..9999" --* "1..1" ecvi_Ecvi : animal35
-ecvi_Animal "1..1" *-- "1..6" ecvi_AnimalTag : animalTag4
-ecvi_Attachement "0..9999" --* "1..1" ecvi_Ecvi : attachment40
-ecvi_Contact "0..1" --* "1..1" ecvi_Ecvi : consignee29
-ecvi_Contact "0..1" --* "1..1" ecvi_Ecvi : consignor26
-ecvi_Ecvi "1..1" *-- "1..1" ecvi_Premises : destination23
-ecvi_DocumentRoot "1..1" *-- "0..9999" ecvi_Ecvi : eCVI15
-ecvi_Address "1..1" *-- "0..1" ecvi_GeoPoint : geoPoint3
-ecvi_Ecvi "1..1" *-- "0..9999" ecvi_GroupLot : groupLot38
-ecvi_Accession "1..1" *-- "1..1" ecvi_Laboratory : laboratory0
-ecvi_Ecvi "1..1" *-- "1..1" ecvi_MovementPurposes : movementPurposes19
-ecvi_Ecvi "1..1" *-- "1..1" ecvi_Premises : origin21
-ecvi_Person "1..9999" --* "1..1" ecvi_Premises : person52
-ecvi_Person "1..1" --* "1..1" ecvi_Veterinarian : person57
-ecvi_Contact "1..1" *-- "1..9999" ecvi_Person : person9
-ecvi_Person "1..1" *-- "0..9999" ecvi_PhoneNum : phone45
-ecvi_Premises "1..1" *-- "0..9999" ecvi_ProgramStatus : programStatus50
-ecvi_ResultValue "1..9999" --* "1..1" ecvi_Test : result55
-ecvi_Animal "1..1" *-- "0..9999" ecvi_Test : test5
-ecvi_Ecvi "1..1" *-- "1..1" ecvi_Veterinarian : veterinarian17
-ecvi_DocumentRoot "1..1" *-- "0..9999" ecvi_EStringToStringMapEntry : xMLNSPrefixMap11
-ecvi_DocumentRoot "1..1" *-- "0..9999" ecvi_EStringToStringMapEntry : xSISchemaLocation12
+ecvi_Accession "ecvi_Accessions 1..9999" --* "ecvi_Accession2 1..1" ecvi_Accessions : accession1
+ecvi_Accessions "ecvi_Ecvi33 0..1" --* "ecvi_Accessions34 1..1" ecvi_Ecvi : accessions32
+ecvi_Address "ecvi_Laboratory43 0..1" --* "ecvi_Address44 1..1" ecvi_Laboratory : address42
+ecvi_Address "ecvi_Premises48 1..1" --* "ecvi_Address49 1..1" ecvi_Premises : address47
+ecvi_Address "ecvi_Veterinarian61 0..1" --* "ecvi_Address62 1..1" ecvi_Veterinarian : address60
+ecvi_Address "ecvi_Contact 0..1" --* "ecvi_Address8 1..1" ecvi_Contact : address7
+ecvi_Animal "ecvi_Ecvi36 0..9999" --* "ecvi_Animal37 1..1" ecvi_Ecvi : animal35
+ecvi_Animal "ecvi_AnimalTag 1..1" *-- "ecvi_Animal 1..6" ecvi_AnimalTag : animalTag4
+ecvi_Attachement "ecvi_Ecvi41 0..9999" --* "ecvi_Attachement 1..1" ecvi_Ecvi : attachment40
+ecvi_Contact "ecvi_Ecvi30 0..1" --* "ecvi_Contact31 1..1" ecvi_Ecvi : consignee29
+ecvi_Contact "ecvi_Ecvi27 0..1" --* "ecvi_Contact28 1..1" ecvi_Ecvi : consignor26
+ecvi_Ecvi "ecvi_Premises25 1..1" *-- "ecvi_Ecvi24 1..1" ecvi_Premises : destination23
+ecvi_DocumentRoot "ecvi_Ecvi 1..1" *-- "ecvi_DocumentRoot16 0..9999" ecvi_Ecvi : eCVI15
+ecvi_Address "ecvi_GeoPoint 1..1" *-- "ecvi_Address 0..1" ecvi_GeoPoint : geoPoint3
+ecvi_Ecvi "ecvi_GroupLot 1..1" *-- "ecvi_Ecvi39 0..9999" ecvi_GroupLot : groupLot38
+ecvi_Accession "ecvi_Laboratory 1..1" *-- "ecvi_Accession 1..1" ecvi_Laboratory : laboratory0
+ecvi_Ecvi "ecvi_MovementPurposes 1..1" *-- "ecvi_Ecvi20 1..1" ecvi_MovementPurposes : movementPurposes19
+ecvi_Ecvi "ecvi_Premises 1..1" *-- "ecvi_Ecvi22 1..1" ecvi_Premises : origin21
+ecvi_Person "ecvi_Premises53 1..9999" --* "ecvi_Person54 1..1" ecvi_Premises : person52
+ecvi_Person "ecvi_Veterinarian58 1..1" --* "ecvi_Person59 1..1" ecvi_Veterinarian : person57
+ecvi_Contact "ecvi_Person 1..1" *-- "ecvi_Contact10 1..9999" ecvi_Person : person9
+ecvi_Person "ecvi_PhoneNum 1..1" *-- "ecvi_Person46 0..9999" ecvi_PhoneNum : phone45
+ecvi_Premises "ecvi_ProgramStatus 1..1" *-- "ecvi_Premises51 0..9999" ecvi_ProgramStatus : programStatus50
+ecvi_ResultValue "ecvi_Test56 1..9999" --* "ecvi_ResultValue 1..1" ecvi_Test : result55
+ecvi_Animal "ecvi_Test 1..1" *-- "ecvi_Animal6 0..9999" ecvi_Test : test5
+ecvi_Ecvi "ecvi_Veterinarian 1..1" *-- "ecvi_Ecvi18 1..1" ecvi_Veterinarian : veterinarian17
+ecvi_DocumentRoot "ecvi_EStringToStringMapEntry 1..1" *-- "ecvi_DocumentRoot 0..9999" ecvi_EStringToStringMapEntry : xMLNSPrefixMap11
+ecvi_DocumentRoot "ecvi_EStringToStringMapEntry14 1..1" *-- "ecvi_DocumentRoot13 0..9999" ecvi_EStringToStringMapEntry : xSISchemaLocation12
 @enduml

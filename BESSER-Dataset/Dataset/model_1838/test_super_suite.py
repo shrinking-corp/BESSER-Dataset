@@ -10816,9 +10816,9 @@ def test_assoc_algorithm34_stub_double():
     partner = mMDSL_Method()
     setattr(partner, 'mMDSL_Method35', None)
     _safe_set(owner, 'mMDSL_Algorithm', partner)
-    assert getattr(partner, 'mMDSL_Method35') == owner
+    assert owner in getattr(partner, 'mMDSL_Method35')
     _safe_set(owner, 'mMDSL_Algorithm', None)
-    assert getattr(partner, 'mMDSL_Method35') is None
+    assert owner not in getattr(partner, 'mMDSL_Method35')
 
 
 def test_assoc_attribute276_stub_double():
@@ -10846,9 +10846,9 @@ def test_assoc_attribute42_stub_double():
     partner = mMDSL_Metamodel()
     setattr(partner, 'mMDSL_Metamodel43', None)
     _safe_set(owner, 'mMDSL_Attribute', partner)
-    assert getattr(partner, 'mMDSL_Metamodel43') == owner
+    assert owner in getattr(partner, 'mMDSL_Metamodel43')
     _safe_set(owner, 'mMDSL_Attribute', None)
-    assert getattr(partner, 'mMDSL_Metamodel43') is None
+    assert owner not in getattr(partner, 'mMDSL_Metamodel43')
 
 
 def test_assoc_attributeget476_stub_double():
@@ -10906,9 +10906,9 @@ def test_assoc_breakcontinue252_stub_double():
     partner = mMDSL_WhileLoop()
     setattr(partner, 'mMDSL_WhileLoop253', None)
     _safe_set(owner, 'mMDSL_BreakContinue', partner)
-    assert getattr(partner, 'mMDSL_WhileLoop253') == owner
+    assert owner in getattr(partner, 'mMDSL_WhileLoop253')
     _safe_set(owner, 'mMDSL_BreakContinue', None)
-    assert getattr(partner, 'mMDSL_WhileLoop253') is None
+    assert owner not in getattr(partner, 'mMDSL_WhileLoop253')
 
 
 def test_assoc_circle134_stub_double():
@@ -10951,9 +10951,9 @@ def test_assoc_class_38_stub_double():
     partner = mMDSL_Metamodel()
     setattr(partner, 'mMDSL_Metamodel39', None)
     _safe_set(owner, 'mMDSL_Class', partner)
-    assert getattr(partner, 'mMDSL_Metamodel39') == owner
+    assert owner in getattr(partner, 'mMDSL_Metamodel39')
     _safe_set(owner, 'mMDSL_Class', None)
-    assert getattr(partner, 'mMDSL_Metamodel39') is None
+    assert owner not in getattr(partner, 'mMDSL_Metamodel39')
 
 
 def test_assoc_classinstancecreate417_stub_double():
@@ -11146,9 +11146,9 @@ def test_assoc_embedcode9_stub_double():
     partner = mMDSL_Root()
     setattr(partner, 'mMDSL_Root10', None)
     _safe_set(owner, 'mMDSL_EmbedCode', partner)
-    assert getattr(partner, 'mMDSL_Root10') == owner
+    assert owner in getattr(partner, 'mMDSL_Root10')
     _safe_set(owner, 'mMDSL_EmbedCode', None)
-    assert getattr(partner, 'mMDSL_Root10') is None
+    assert owner not in getattr(partner, 'mMDSL_Root10')
 
 
 def test_assoc_embedcodetype5_stub_double():
@@ -11161,9 +11161,9 @@ def test_assoc_embedcodetype5_stub_double():
     partner = mMDSL_Root()
     setattr(partner, 'mMDSL_Root6', None)
     _safe_set(owner, 'mMDSL_EmbedCodeType', partner)
-    assert getattr(partner, 'mMDSL_Root6') == owner
+    assert owner in getattr(partner, 'mMDSL_Root6')
     _safe_set(owner, 'mMDSL_EmbedCodeType', None)
-    assert getattr(partner, 'mMDSL_Root6') is None
+    assert owner not in getattr(partner, 'mMDSL_Root6')
 
 
 def test_assoc_embeddedcode291_stub_double():
@@ -11191,9 +11191,9 @@ def test_assoc_embedplatformtype3_stub_double():
     partner = mMDSL_Root()
     setattr(partner, 'mMDSL_Root4', None)
     _safe_set(owner, 'mMDSL_EmbedPlatformType', partner)
-    assert getattr(partner, 'mMDSL_Root4') == owner
+    assert owner in getattr(partner, 'mMDSL_Root4')
     _safe_set(owner, 'mMDSL_EmbedPlatformType', None)
-    assert getattr(partner, 'mMDSL_Root4') is None
+    assert owner not in getattr(partner, 'mMDSL_Root4')
 
 
 def test_assoc_enumeration24_stub_double():
@@ -11206,9 +11206,9 @@ def test_assoc_enumeration24_stub_double():
     partner = mMDSL_Method()
     setattr(partner, 'mMDSL_Method25', None)
     _safe_set(owner, 'mMDSL_Enumeration', partner)
-    assert getattr(partner, 'mMDSL_Method25') == owner
+    assert owner in getattr(partner, 'mMDSL_Method25')
     _safe_set(owner, 'mMDSL_Enumeration', None)
-    assert getattr(partner, 'mMDSL_Method25') is None
+    assert owner not in getattr(partner, 'mMDSL_Method25')
 
 
 def test_assoc_enumtype93_stub_double():
@@ -11251,9 +11251,9 @@ def test_assoc_event36_stub_double():
     partner = mMDSL_Method()
     setattr(partner, 'mMDSL_Method37', None)
     _safe_set(owner, 'mMDSL_Event', partner)
-    assert getattr(partner, 'mMDSL_Method37') == owner
+    assert owner in getattr(partner, 'mMDSL_Method37')
     _safe_set(owner, 'mMDSL_Event', None)
-    assert getattr(partner, 'mMDSL_Method37') is None
+    assert owner not in getattr(partner, 'mMDSL_Method37')
 
 
 def test_assoc_expr299_stub_double():
@@ -11401,9 +11401,9 @@ def test_assoc_includelibrary7_stub_double():
     partner = mMDSL_Root()
     setattr(partner, 'mMDSL_Root8', None)
     _safe_set(owner, 'mMDSL_IncludeLibrary', partner)
-    assert getattr(partner, 'mMDSL_Root8') == owner
+    assert owner in getattr(partner, 'mMDSL_Root8')
     _safe_set(owner, 'mMDSL_IncludeLibrary', None)
-    assert getattr(partner, 'mMDSL_Root8') is None
+    assert owner not in getattr(partner, 'mMDSL_Root8')
 
 
 def test_assoc_includelibrarytype1_stub_double():
@@ -11416,9 +11416,9 @@ def test_assoc_includelibrarytype1_stub_double():
     partner = mMDSL_Root()
     setattr(partner, 'mMDSL_Root2', None)
     _safe_set(owner, 'mMDSL_IncludeLibraryType', partner)
-    assert getattr(partner, 'mMDSL_Root2') == owner
+    assert owner in getattr(partner, 'mMDSL_Root2')
     _safe_set(owner, 'mMDSL_IncludeLibraryType', None)
-    assert getattr(partner, 'mMDSL_Root2') is None
+    assert owner not in getattr(partner, 'mMDSL_Root2')
 
 
 def test_assoc_infobox355_stub_double():
@@ -11686,9 +11686,9 @@ def test_assoc_modeltype44_stub_double():
     partner = mMDSL_Metamodel()
     setattr(partner, 'mMDSL_Metamodel45', None)
     _safe_set(owner, 'mMDSL_ModelType', partner)
-    assert getattr(partner, 'mMDSL_Metamodel45') == owner
+    assert owner in getattr(partner, 'mMDSL_Metamodel45')
     _safe_set(owner, 'mMDSL_ModelType', None)
-    assert getattr(partner, 'mMDSL_Metamodel45') is None
+    assert owner not in getattr(partner, 'mMDSL_Metamodel45')
 
 
 def test_assoc_modeltypename87_stub_double():
@@ -11881,9 +11881,9 @@ def test_assoc_parameters183_stub_double():
     partner = mMDSL_MoveTo()
     setattr(partner, 'mMDSL_MoveTo184', None)
     _safe_set(owner, 'mMDSL_PathParametersMLT', partner)
-    assert getattr(partner, 'mMDSL_MoveTo184') == owner
+    assert owner in getattr(partner, 'mMDSL_MoveTo184')
     _safe_set(owner, 'mMDSL_PathParametersMLT', None)
-    assert getattr(partner, 'mMDSL_MoveTo184') is None
+    assert owner not in getattr(partner, 'mMDSL_MoveTo184')
 
 
 def test_assoc_parameters185_stub_double():
@@ -11896,9 +11896,9 @@ def test_assoc_parameters185_stub_double():
     partner = mMDSL_LineTo()
     setattr(partner, 'mMDSL_LineTo186', None)
     _safe_set(owner, 'mMDSL_PathParametersMLT187', partner)
-    assert getattr(partner, 'mMDSL_LineTo186') == owner
+    assert owner in getattr(partner, 'mMDSL_LineTo186')
     _safe_set(owner, 'mMDSL_PathParametersMLT187', None)
-    assert getattr(partner, 'mMDSL_LineTo186') is None
+    assert owner not in getattr(partner, 'mMDSL_LineTo186')
 
 
 def test_assoc_parameters188_stub_double():
@@ -11911,9 +11911,9 @@ def test_assoc_parameters188_stub_double():
     partner = mMDSL_HorizontalLineTo()
     setattr(partner, 'mMDSL_HorizontalLineTo189', None)
     _safe_set(owner, 'mMDSL_PathParametersHV', partner)
-    assert getattr(partner, 'mMDSL_HorizontalLineTo189') == owner
+    assert owner in getattr(partner, 'mMDSL_HorizontalLineTo189')
     _safe_set(owner, 'mMDSL_PathParametersHV', None)
-    assert getattr(partner, 'mMDSL_HorizontalLineTo189') is None
+    assert owner not in getattr(partner, 'mMDSL_HorizontalLineTo189')
 
 
 def test_assoc_parameters190_stub_double():
@@ -11926,9 +11926,9 @@ def test_assoc_parameters190_stub_double():
     partner = mMDSL_VerticalLineTo()
     setattr(partner, 'mMDSL_VerticalLineTo191', None)
     _safe_set(owner, 'mMDSL_PathParametersHV192', partner)
-    assert getattr(partner, 'mMDSL_VerticalLineTo191') == owner
+    assert owner in getattr(partner, 'mMDSL_VerticalLineTo191')
     _safe_set(owner, 'mMDSL_PathParametersHV192', None)
-    assert getattr(partner, 'mMDSL_VerticalLineTo191') is None
+    assert owner not in getattr(partner, 'mMDSL_VerticalLineTo191')
 
 
 def test_assoc_parameters193_stub_double():
@@ -11941,9 +11941,9 @@ def test_assoc_parameters193_stub_double():
     partner = mMDSL_CurveTo()
     setattr(partner, 'mMDSL_CurveTo194', None)
     _safe_set(owner, 'mMDSL_PathParametersC', partner)
-    assert getattr(partner, 'mMDSL_CurveTo194') == owner
+    assert owner in getattr(partner, 'mMDSL_CurveTo194')
     _safe_set(owner, 'mMDSL_PathParametersC', None)
-    assert getattr(partner, 'mMDSL_CurveTo194') is None
+    assert owner not in getattr(partner, 'mMDSL_CurveTo194')
 
 
 def test_assoc_parameters195_stub_double():
@@ -11956,9 +11956,9 @@ def test_assoc_parameters195_stub_double():
     partner = mMDSL_SmoothCurveTo()
     setattr(partner, 'mMDSL_SmoothCurveTo196', None)
     _safe_set(owner, 'mMDSL_PathParametersS', partner)
-    assert getattr(partner, 'mMDSL_SmoothCurveTo196') == owner
+    assert owner in getattr(partner, 'mMDSL_SmoothCurveTo196')
     _safe_set(owner, 'mMDSL_PathParametersS', None)
-    assert getattr(partner, 'mMDSL_SmoothCurveTo196') is None
+    assert owner not in getattr(partner, 'mMDSL_SmoothCurveTo196')
 
 
 def test_assoc_parameters197_stub_double():
@@ -11971,9 +11971,9 @@ def test_assoc_parameters197_stub_double():
     partner = mMDSL_QuadraticBezierCurve()
     setattr(partner, 'mMDSL_QuadraticBezierCurve198', None)
     _safe_set(owner, 'mMDSL_PathParametersQ', partner)
-    assert getattr(partner, 'mMDSL_QuadraticBezierCurve198') == owner
+    assert owner in getattr(partner, 'mMDSL_QuadraticBezierCurve198')
     _safe_set(owner, 'mMDSL_PathParametersQ', None)
-    assert getattr(partner, 'mMDSL_QuadraticBezierCurve198') is None
+    assert owner not in getattr(partner, 'mMDSL_QuadraticBezierCurve198')
 
 
 def test_assoc_parameters199_stub_double():
@@ -11986,9 +11986,9 @@ def test_assoc_parameters199_stub_double():
     partner = mMDSL_SmoothQuadraticBezierCurveTo()
     setattr(partner, 'mMDSL_SmoothQuadraticBezierCurveTo200', None)
     _safe_set(owner, 'mMDSL_PathParametersMLT201', partner)
-    assert getattr(partner, 'mMDSL_SmoothQuadraticBezierCurveTo200') == owner
+    assert owner in getattr(partner, 'mMDSL_SmoothQuadraticBezierCurveTo200')
     _safe_set(owner, 'mMDSL_PathParametersMLT201', None)
-    assert getattr(partner, 'mMDSL_SmoothQuadraticBezierCurveTo200') is None
+    assert owner not in getattr(partner, 'mMDSL_SmoothQuadraticBezierCurveTo200')
 
 
 def test_assoc_parameters202_stub_double():
@@ -12001,9 +12001,9 @@ def test_assoc_parameters202_stub_double():
     partner = mMDSL_EllipticalArc()
     setattr(partner, 'mMDSL_EllipticalArc203', None)
     _safe_set(owner, 'mMDSL_PathParametersA', partner)
-    assert getattr(partner, 'mMDSL_EllipticalArc203') == owner
+    assert owner in getattr(partner, 'mMDSL_EllipticalArc203')
     _safe_set(owner, 'mMDSL_PathParametersA', None)
-    assert getattr(partner, 'mMDSL_EllipticalArc203') is None
+    assert owner not in getattr(partner, 'mMDSL_EllipticalArc203')
 
 
 def test_assoc_pathdata159_stub_double():
@@ -12016,9 +12016,9 @@ def test_assoc_pathdata159_stub_double():
     partner = mMDSL_Path()
     setattr(partner, 'mMDSL_Path160', None)
     _safe_set(owner, 'mMDSL_PathData', partner)
-    assert getattr(partner, 'mMDSL_Path160') == owner
+    assert owner in getattr(partner, 'mMDSL_Path160')
     _safe_set(owner, 'mMDSL_PathData', None)
-    assert getattr(partner, 'mMDSL_Path160') is None
+    assert owner not in getattr(partner, 'mMDSL_Path160')
 
 
 def test_assoc_points154_stub_double():
@@ -12031,9 +12031,9 @@ def test_assoc_points154_stub_double():
     partner = mMDSL_Polyline()
     setattr(partner, 'mMDSL_Polyline155', None)
     _safe_set(owner, 'mMDSL_Points', partner)
-    assert getattr(partner, 'mMDSL_Polyline155') == owner
+    assert owner in getattr(partner, 'mMDSL_Polyline155')
     _safe_set(owner, 'mMDSL_Points', None)
-    assert getattr(partner, 'mMDSL_Polyline155') is None
+    assert owner not in getattr(partner, 'mMDSL_Polyline155')
 
 
 def test_assoc_points156_stub_double():
@@ -12046,9 +12046,9 @@ def test_assoc_points156_stub_double():
     partner = mMDSL_Polygon()
     setattr(partner, 'mMDSL_Polygon157', None)
     _safe_set(owner, 'mMDSL_Points158', partner)
-    assert getattr(partner, 'mMDSL_Polygon157') == owner
+    assert owner in getattr(partner, 'mMDSL_Polygon157')
     _safe_set(owner, 'mMDSL_Points158', None)
-    assert getattr(partner, 'mMDSL_Polygon157') is None
+    assert owner not in getattr(partner, 'mMDSL_Polygon157')
 
 
 def test_assoc_quadraticbeziercurve177_stub_double():
@@ -12121,9 +12121,9 @@ def test_assoc_relation40_stub_double():
     partner = mMDSL_Metamodel()
     setattr(partner, 'mMDSL_Metamodel41', None)
     _safe_set(owner, 'mMDSL_Relation', partner)
-    assert getattr(partner, 'mMDSL_Metamodel41') == owner
+    assert owner in getattr(partner, 'mMDSL_Metamodel41')
     _safe_set(owner, 'mMDSL_Relation', None)
-    assert getattr(partner, 'mMDSL_Metamodel41') is None
+    assert owner not in getattr(partner, 'mMDSL_Metamodel41')
 
 
 def test_assoc_relationinstancecreate442_stub_double():
@@ -12256,9 +12256,9 @@ def test_assoc_symbolclass28_stub_double():
     partner = mMDSL_Method()
     setattr(partner, 'mMDSL_Method29', None)
     _safe_set(owner, 'mMDSL_SymbolClass', partner)
-    assert getattr(partner, 'mMDSL_Method29') == owner
+    assert owner in getattr(partner, 'mMDSL_Method29')
     _safe_set(owner, 'mMDSL_SymbolClass', None)
-    assert getattr(partner, 'mMDSL_Method29') is None
+    assert owner not in getattr(partner, 'mMDSL_Method29')
 
 
 def test_assoc_symbolclass282_stub_double():
@@ -12301,9 +12301,9 @@ def test_assoc_symbolrelation30_stub_double():
     partner = mMDSL_Method()
     setattr(partner, 'mMDSL_Method31', None)
     _safe_set(owner, 'mMDSL_SymbolRelation', partner)
-    assert getattr(partner, 'mMDSL_Method31') == owner
+    assert owner in getattr(partner, 'mMDSL_Method31')
     _safe_set(owner, 'mMDSL_SymbolRelation', None)
-    assert getattr(partner, 'mMDSL_Method31') is None
+    assert owner not in getattr(partner, 'mMDSL_Method31')
 
 
 def test_assoc_symbolstyle148_stub_double():
@@ -12331,9 +12331,9 @@ def test_assoc_symbolstyle26_stub_double():
     partner = mMDSL_Method()
     setattr(partner, 'mMDSL_Method27', None)
     _safe_set(owner, 'mMDSL_SymbolStyle', partner)
-    assert getattr(partner, 'mMDSL_Method27') == owner
+    assert owner in getattr(partner, 'mMDSL_Method27')
     _safe_set(owner, 'mMDSL_SymbolStyle', None)
-    assert getattr(partner, 'mMDSL_Method27') is None
+    assert owner not in getattr(partner, 'mMDSL_Method27')
 
 
 def test_assoc_symbolstyle288_stub_double():
@@ -12458,346 +12458,158 @@ def test_assoc_warningbox359_stub_double():
 
 
 
-from enum import Enum
 from python_code import AccessType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(AccessType.write, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(AccessType.write, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(AccessType.write, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(AccessType.read, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(AccessType.read, 'read') == AccessType.read
-
-from enum import Enum
 from python_code import AttrGetParams
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(AttrGetParams.name, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(AttrGetParams.type, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(AttrGetParams.type, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(AttrGetParams.name, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(AttrGetParams.name, 'name') == AttrGetParams.name
-
-from enum import Enum
 from python_code import AttrSetParams
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(AttrSetParams.value, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(AttrSetParams.value, '', '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(AttrSetParams.value, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(AttrSetParams.value, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(AttrSetParams.value, 'value') == AttrSetParams.value
-
-from enum import Enum
 from python_code import ButtonType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ButtonType.ok, 0, '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ButtonType.ok, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ButtonType.ok, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ButtonType.ok, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ButtonType.ok, 'ok') == ButtonType.ok
-
-from enum import Enum
 from python_code import Color
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(Color.azure, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(Color.aqua, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(Color.aqua, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(Color.beige, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(Color.aqua, 'aqua') == Color.aqua
-
-from enum import Enum
 from python_code import EventName
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(EventName.createmodel, 0, '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(EventName.deletemodel, '', 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(EventName.createmodel, '', '', 0) == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(EventName.beforecreaterelationinstance, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(EventName.deletemodel, 'deletemodel') == EventName.deletemodel
-
-from enum import Enum
 from python_code import Font
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(Font.couriernew, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(Font.arial, '', 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(Font.georgia, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(Font.arial, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(Font.arial, 'arial') == Font.arial
-
-from enum import Enum
 from python_code import SimpleType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(SimpleType.Double, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(SimpleType.String, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(SimpleType.String, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(SimpleType.Int, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(SimpleType.Int, 'Int') == SimpleType.Int
-
 from python_code import mMDSL_AttributeGet
 from python_code import mMDSL_AttributeOperation
 
 def test_mMDSL_AttributeGet___init__():
     assert mMDSL_AttributeGet.__init__(mMDSL_AttributeGet('', mMDSL_AttributeGet=mMDSL_AttributeOperation()), '', mMDSL_AttributeGet=mMDSL_AttributeOperation()) == None
-
 from python_code import mMDSL_Circle
 from python_code import mMDSL_SVGCommand
 
 def test_mMDSL_Circle___init__():
     assert mMDSL_Circle.__init__(mMDSL_Circle('', '', '\x00\x00', mMDSL_Circle=mMDSL_SVGCommand()), '', '', '', mMDSL_Circle=mMDSL_SVGCommand()) == None
-
 from python_code import mMDSL_DirCreate
 from python_code import mMDSL_DirOperation
 
 def test_mMDSL_DirCreate___init__():
     assert mMDSL_DirCreate.__init__(mMDSL_DirCreate('', mMDSL_DirCreate=mMDSL_DirOperation()), '', mMDSL_DirCreate=mMDSL_DirOperation()) == None
-
 from python_code import mMDSL_DirDelete
 from python_code import mMDSL_DirOperation
 
 def test_mMDSL_DirDelete___init__():
     assert mMDSL_DirDelete.__init__(mMDSL_DirDelete('', mMDSL_DirDelete=mMDSL_DirOperation()), '', mMDSL_DirDelete=mMDSL_DirOperation()) == None
-
 from python_code import mMDSL_DirList
 from python_code import mMDSL_DirOperation
 
 def test_mMDSL_DirList___init__():
     assert mMDSL_DirList.__init__(mMDSL_DirList('', mMDSL_DirList=mMDSL_DirOperation()), '', mMDSL_DirList=mMDSL_DirOperation()) == None
-
 from python_code import mMDSL_DirOperation
 from python_code import mMDSL_DirSetWorking
 
 def test_mMDSL_DirSetWorking___init__():
     assert mMDSL_DirSetWorking.__init__(mMDSL_DirSetWorking('', mMDSL_DirSetWorking=mMDSL_DirOperation()), '', mMDSL_DirSetWorking=mMDSL_DirOperation()) == None
-
 from python_code import mMDSL_EditBox
 from python_code import mMDSL_SimpleUI
 
 def test_mMDSL_EditBox___init__():
     assert mMDSL_EditBox.__init__(mMDSL_EditBox('', '', '\x00\x00', mMDSL_EditBox=mMDSL_SimpleUI()), '', '', '', mMDSL_EditBox=mMDSL_SimpleUI()) == None
-
 from python_code import mMDSL_Ellipse
 from python_code import mMDSL_SVGCommand
 
 def test_mMDSL_Ellipse___init__():
     assert mMDSL_Ellipse.__init__(mMDSL_Ellipse('\x00\x00', '', '', '', mMDSL_Ellipse=mMDSL_SVGCommand()), '', '', '', '', mMDSL_Ellipse=mMDSL_SVGCommand()) == None
-
 from python_code import mMDSL_EnumType
 from python_code import mMDSL_Enumeration
 from python_code import mMDSL_Method
 
 def test_mMDSL_Enumeration___init__():
     assert mMDSL_Enumeration.__init__(mMDSL_Enumeration('', '\x00', mMDSL_Enumeration=mMDSL_Method(), mMDSL_Enumeration97=mMDSL_EnumType()), '\x00\x00', '', mMDSL_Enumeration=mMDSL_Method(), mMDSL_Enumeration97=mMDSL_EnumType()) == None
-
 from python_code import mMDSL_ErrorBox
 from python_code import mMDSL_SimpleUI
 
 def test_mMDSL_ErrorBox___init__():
     assert mMDSL_ErrorBox.__init__(mMDSL_ErrorBox('', '', '\x00\x00', mMDSL_ErrorBox=mMDSL_SimpleUI()), '', '', '', mMDSL_ErrorBox=mMDSL_SimpleUI()) == None
-
 from python_code import mMDSL_FileCopy
 from python_code import mMDSL_FileOperation
 
 def test_mMDSL_FileCopy___init__():
     assert mMDSL_FileCopy.__init__(mMDSL_FileCopy('', '\x00', mMDSL_FileCopy=mMDSL_FileOperation()), '\x00\x00', '', mMDSL_FileCopy=mMDSL_FileOperation()) == None
-
 from python_code import mMDSL_FileCreate
 from python_code import mMDSL_FileOperation
 
 def test_mMDSL_FileCreate___init__():
     assert mMDSL_FileCreate.__init__(mMDSL_FileCreate('', mMDSL_FileCreate=mMDSL_FileOperation()), '', mMDSL_FileCreate=mMDSL_FileOperation()) == None
-
 from python_code import mMDSL_FileDelete
 from python_code import mMDSL_FileOperation
 
 def test_mMDSL_FileDelete___init__():
     assert mMDSL_FileDelete.__init__(mMDSL_FileDelete('', mMDSL_FileDelete=mMDSL_FileOperation()), '', mMDSL_FileDelete=mMDSL_FileOperation()) == None
-
 from python_code import mMDSL_FileOperation
 from python_code import mMDSL_FileRead
 
 def test_mMDSL_FileRead___init__():
     assert mMDSL_FileRead.__init__(mMDSL_FileRead('', mMDSL_FileRead=mMDSL_FileOperation()), '', mMDSL_FileRead=mMDSL_FileOperation()) == None
-
 from python_code import mMDSL_FileOperation
 from python_code import mMDSL_FileWrite
 
 def test_mMDSL_FileWrite___init__():
     assert mMDSL_FileWrite.__init__(mMDSL_FileWrite('', '', '\x00\x00', mMDSL_FileWrite=mMDSL_FileOperation()), '', '', '', mMDSL_FileWrite=mMDSL_FileOperation()) == None
-
 from python_code import mMDSL_ForLoop
 from python_code import mMDSL_LoopStatement
 
 def test_mMDSL_ForLoop___init__():
     assert mMDSL_ForLoop.__init__(mMDSL_ForLoop(0, 0, 0, mMDSL_ForLoop=mMDSL_LoopStatement(), mMDSL_ForLoop255=set(), mMDSL_ForLoop258=set()), 0, 0, 0, mMDSL_ForLoop=mMDSL_LoopStatement(), mMDSL_ForLoop255=set(), mMDSL_ForLoop258=set()) == None
-
 from python_code import mMDSL_InfoBox
 from python_code import mMDSL_SimpleUI
 
 def test_mMDSL_InfoBox___init__():
     assert mMDSL_InfoBox.__init__(mMDSL_InfoBox('', '\x00', mMDSL_InfoBox=mMDSL_SimpleUI()), '\x00\x00', '', mMDSL_InfoBox=mMDSL_SimpleUI()) == None
-
 from python_code import mMDSL_ContextItem
 from python_code import mMDSL_InsertContextItem
 from python_code import mMDSL_RemoveContextItem
 
 def test_mMDSL_InsertContextItem___init__():
     assert mMDSL_InsertContextItem.__init__(mMDSL_InsertContextItem('', '\x00', mMDSL_InsertContextItem=mMDSL_ContextItem(), mMDSL_InsertContextItem382=mMDSL_RemoveContextItem()), '\x00\x00', '', mMDSL_InsertContextItem=mMDSL_ContextItem(), mMDSL_InsertContextItem382=mMDSL_RemoveContextItem()) == None
-
 from python_code import mMDSL_InsertMenuItem
 from python_code import mMDSL_MenuItem
 from python_code import mMDSL_RemoveMenuItem
 
 def test_mMDSL_InsertMenuItem___init__():
     assert mMDSL_InsertMenuItem.__init__(mMDSL_InsertMenuItem('', '\x00', mMDSL_InsertMenuItem=mMDSL_MenuItem(), mMDSL_InsertMenuItem375=mMDSL_RemoveMenuItem()), '\x00\x00', '', mMDSL_InsertMenuItem=mMDSL_MenuItem(), mMDSL_InsertMenuItem375=mMDSL_RemoveMenuItem()) == None
-
 from python_code import mMDSL_Line
 from python_code import mMDSL_SVGCommand
 
 def test_mMDSL_Line___init__():
     assert mMDSL_Line.__init__(mMDSL_Line('\x00\x00', '', '', '', mMDSL_Line=mMDSL_SVGCommand()), '', '', '', '', mMDSL_Line=mMDSL_SVGCommand()) == None
-
 from python_code import mMDSL_MethodName
 from python_code import mMDSL_Root
 
 def test_mMDSL_MethodName___init__():
     assert mMDSL_MethodName.__init__(mMDSL_MethodName('', mMDSL_MethodName=mMDSL_Root()), '', mMDSL_MethodName=mMDSL_Root()) == None
-
 from python_code import mMDSL_OperatorAdd
 
 def test_mMDSL_OperatorAdd___init__():
     assert mMDSL_OperatorAdd.__init__(mMDSL_OperatorAdd('', '\x00'), '\x00\x00', '') == None
-
 from python_code import mMDSL_OperatorAnd
 
 def test_mMDSL_OperatorAnd___init__():
     assert mMDSL_OperatorAnd.__init__(mMDSL_OperatorAnd(''), '') == None
-
 from python_code import mMDSL_OperatorCompare
 
 def test_mMDSL_OperatorCompare___init__():
     assert mMDSL_OperatorCompare.__init__(mMDSL_OperatorCompare('\x00\x00', '', '', ''), '', '', '', '') == None
-
 from python_code import mMDSL_OperatorEqual
 
 def test_mMDSL_OperatorEqual___init__():
     assert mMDSL_OperatorEqual.__init__(mMDSL_OperatorEqual('', '\x00'), '\x00\x00', '') == None
-
 from python_code import mMDSL_OperatorMultiply
 
 def test_mMDSL_OperatorMultiply___init__():
     assert mMDSL_OperatorMultiply.__init__(mMDSL_OperatorMultiply('', '', '\x00\x00'), '', '', '') == None
-
 from python_code import mMDSL_OperatorOr
 
 def test_mMDSL_OperatorOr___init__():
     assert mMDSL_OperatorOr.__init__(mMDSL_OperatorOr(''), '') == None
-
 from python_code import mMDSL_OperatorUnary
 
 def test_mMDSL_OperatorUnary___init__():
     assert mMDSL_OperatorUnary.__init__(mMDSL_OperatorUnary(''), '') == None
-
 from python_code import mMDSL_CurveTo
 from python_code import mMDSL_EllipticalArc
 from python_code import mMDSL_HorizontalLineTo
@@ -12812,26 +12624,22 @@ from python_code import mMDSL_VerticalLineTo
 
 def test_mMDSL_PathData___init__():
     assert mMDSL_PathData.__init__(mMDSL_PathData('', mMDSL_PathData=mMDSL_Path(), mMDSL_PathData166=mMDSL_MoveTo(), mMDSL_PathData168=mMDSL_LineTo(), mMDSL_PathData170=mMDSL_HorizontalLineTo(), mMDSL_PathData172=mMDSL_VerticalLineTo(), mMDSL_PathData174=mMDSL_CurveTo(), mMDSL_PathData176=mMDSL_SmoothCurveTo(), mMDSL_PathData178=mMDSL_QuadraticBezierCurve(), mMDSL_PathData180=mMDSL_SmoothQuadraticBezierCurveTo(), mMDSL_PathData182=mMDSL_EllipticalArc()), '', mMDSL_PathData=mMDSL_Path(), mMDSL_PathData166=mMDSL_MoveTo(), mMDSL_PathData168=mMDSL_LineTo(), mMDSL_PathData170=mMDSL_HorizontalLineTo(), mMDSL_PathData172=mMDSL_VerticalLineTo(), mMDSL_PathData174=mMDSL_CurveTo(), mMDSL_PathData176=mMDSL_SmoothCurveTo(), mMDSL_PathData178=mMDSL_QuadraticBezierCurve(), mMDSL_PathData180=mMDSL_SmoothQuadraticBezierCurveTo(), mMDSL_PathData182=mMDSL_EllipticalArc()) == None
-
 from python_code import mMDSL_EllipticalArc
 from python_code import mMDSL_PathParametersA
 
 def test_mMDSL_PathParametersA___init__():
     assert mMDSL_PathParametersA.__init__(mMDSL_PathParametersA('', '', '', '', '', '', '', mMDSL_PathParametersA=mMDSL_EllipticalArc()), '', '\x00', '', '', '', '', '', mMDSL_PathParametersA=mMDSL_EllipticalArc()) == None
-
 from python_code import mMDSL_CurveTo
 from python_code import mMDSL_PathParametersC
 
 def test_mMDSL_PathParametersC___init__():
     assert mMDSL_PathParametersC.__init__(mMDSL_PathParametersC('', '', '', '', '', '', mMDSL_PathParametersC=mMDSL_CurveTo()), '', '', '', '', '\x00', '', mMDSL_PathParametersC=mMDSL_CurveTo()) == None
-
 from python_code import mMDSL_HorizontalLineTo
 from python_code import mMDSL_PathParametersHV
 from python_code import mMDSL_VerticalLineTo
 
 def test_mMDSL_PathParametersHV___init__():
     assert mMDSL_PathParametersHV.__init__(mMDSL_PathParametersHV('', mMDSL_PathParametersHV=mMDSL_HorizontalLineTo(), mMDSL_PathParametersHV192=mMDSL_VerticalLineTo()), '', mMDSL_PathParametersHV=mMDSL_HorizontalLineTo(), mMDSL_PathParametersHV192=mMDSL_VerticalLineTo()) == None
-
 from python_code import mMDSL_LineTo
 from python_code import mMDSL_MoveTo
 from python_code import mMDSL_PathParametersMLT
@@ -12839,38 +12647,32 @@ from python_code import mMDSL_SmoothQuadraticBezierCurveTo
 
 def test_mMDSL_PathParametersMLT___init__():
     assert mMDSL_PathParametersMLT.__init__(mMDSL_PathParametersMLT('', '\x00', mMDSL_PathParametersMLT=mMDSL_MoveTo(), mMDSL_PathParametersMLT187=mMDSL_LineTo(), mMDSL_PathParametersMLT201=mMDSL_SmoothQuadraticBezierCurveTo()), '\x00\x00', '', mMDSL_PathParametersMLT=mMDSL_MoveTo(), mMDSL_PathParametersMLT187=mMDSL_LineTo(), mMDSL_PathParametersMLT201=mMDSL_SmoothQuadraticBezierCurveTo()) == None
-
 from python_code import mMDSL_PathParametersQ
 from python_code import mMDSL_QuadraticBezierCurve
 
 def test_mMDSL_PathParametersQ___init__():
     assert mMDSL_PathParametersQ.__init__(mMDSL_PathParametersQ('\x00\x00', '', '', '', mMDSL_PathParametersQ=mMDSL_QuadraticBezierCurve()), '', '', '', '', mMDSL_PathParametersQ=mMDSL_QuadraticBezierCurve()) == None
-
 from python_code import mMDSL_PathParametersS
 from python_code import mMDSL_SmoothCurveTo
 
 def test_mMDSL_PathParametersS___init__():
     assert mMDSL_PathParametersS.__init__(mMDSL_PathParametersS('\x00\x00', '', '', '', mMDSL_PathParametersS=mMDSL_SmoothCurveTo()), '', '', '', '', mMDSL_PathParametersS=mMDSL_SmoothCurveTo()) == None
-
 from python_code import mMDSL_Points
 from python_code import mMDSL_Polygon
 from python_code import mMDSL_Polyline
 
 def test_mMDSL_Points___init__():
     assert mMDSL_Points.__init__(mMDSL_Points('', '\x00', mMDSL_Points=mMDSL_Polyline(), mMDSL_Points158=mMDSL_Polygon()), '\x00\x00', '', mMDSL_Points=mMDSL_Polyline(), mMDSL_Points158=mMDSL_Polygon()) == None
-
 from python_code import mMDSL_Rectangle
 from python_code import mMDSL_SVGCommand
 
 def test_mMDSL_Rectangle___init__():
     assert mMDSL_Rectangle.__init__(mMDSL_Rectangle('\x00\x00', '', '', '', mMDSL_Rectangle=mMDSL_SVGCommand()), '', '', '', '', mMDSL_Rectangle=mMDSL_SVGCommand()) == None
-
 from python_code import mMDSL_SimpleUI
 from python_code import mMDSL_ViewBox
 
 def test_mMDSL_ViewBox___init__():
     assert mMDSL_ViewBox.__init__(mMDSL_ViewBox('', '\x00', mMDSL_ViewBox=mMDSL_SimpleUI()), '\x00\x00', '', mMDSL_ViewBox=mMDSL_SimpleUI()) == None
-
 from python_code import mMDSL_SimpleUI
 from python_code import mMDSL_WarningBox
 

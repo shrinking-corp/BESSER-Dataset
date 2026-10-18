@@ -1,4 +1,8 @@
 @startuml
+' model: lib
+' project: sampleModel
+' owner: User
+' description: New project
 enum BookCategory {
   Biography
   GeneralFiction
@@ -19,8 +23,8 @@ class lib_Library {
 class lib_Writer {
   + name : str
 }
-lib_Book "1..1" -- "1..1" lib_Writer : author3
-lib_Book "0..9999" --* "1..1" lib_Library : books1
-lib_LibSys "1..1" *-- "0..1" lib_Library : library6
-lib_Library "1..1" *-- "0..9999" lib_Writer : writers0
+lib_Book "lib_Writer5 1..1" -- "lib_Book4 1..1" lib_Writer : author3
+lib_Book "lib_Library2 0..9999" --* "lib_Book 1..1" lib_Library : books1
+lib_LibSys "lib_Library7 1..1" *-- "lib_LibSys 0..1" lib_Library : library6
+lib_Library "lib_Writer 1..1" *-- "lib_Library 0..9999" lib_Writer : writers0
 @enduml

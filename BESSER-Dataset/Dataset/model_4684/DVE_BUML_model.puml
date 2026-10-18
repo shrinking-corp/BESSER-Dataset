@@ -1,4 +1,8 @@
 @startuml
+' model: DVE
+' project: sampleModel
+' owner: User
+' description: New project
 class Assignment {
 }
 enum BinaryOperator {
@@ -207,40 +211,40 @@ model_PrefixedReference <|-- DVE_model_ProcessStateReference
 model_PrefixedReference <|-- DVE_model_ProcessVariableReference
 model_StateReference <|-- DVE_model_ProcessStateReference
 model_VariableReference <|-- DVE_model_ProcessVariableReference
-DVE_model_Process "1..1" *-- "0..9999" StateReference : accepting18
-DVE_model_IndexedExpression "1..1" *-- "1..1" Expression : base64
-DVE_model_TypedChannelDeclaration "1..1" *-- "1..1" Expression : bufferSize13
-ChannelReference "1..1" --* "1..1" DVE_model_Synchronization : channel40
-DVE_model_Process "1..1" *-- "0..9999" StateReference : commited20
-DVE_model_CompositeDeclaration "1..1" *-- "0..9999" NamedDeclaration : declarations0
-Assignment "0..9999" --* "1..1" DVE_model_Transition : effect38
-DVE_model_ArrayType "1..1" *-- "1..1" Type : elementType3
-DVE_model_Transition "1..1" *-- "1..1" StateReference : from_28
-DVE_model_Transition "1..1" *-- "1..1" Expression : guard33
-DVE_model_IndexedExpression "1..1" *-- "1..1" Expression : index66
-DVE_model_Process "1..1" *-- "1..1" StateReference : initial23
-DVE_model_VariableDeclaration "1..1" *-- "1..1" Expression : initial8
-DVE_model_Assignment "1..1" *-- "1..1" Expression : lhs47
-DVE_model_UnaryExpression "1..1" *-- "1..1" Expression : operand52
-DVE_model_BinaryExpression "1..1" *-- "2..2" Expression : operands54
-DVE_model_PrefixedReference "1..1" *-- "1..1" ProcessReference : prefix62
-DVE_model_System "1..1" -- "0..9999" Process : processes1
-DVE_model_System "1..1" *-- "1..1" SystemProperties : properties2
-DVE_model_SystemProperties "1..1" *-- "1..1" ProcessReference : property45
-DVE_model_VariableReference "1..1" -- "1..1" VariableDeclaration : ref56
-ChannelDeclaration "1..1" -- "1..1" DVE_model_ChannelReference : ref57
-DVE_model_ProcessReference "1..1" -- "1..1" Process : ref58
-DVE_model_StateReference "1..1" -- "1..1" State : ref60
-DVE_model_Assignment "1..1" *-- "1..1" Expression : rhs49
-DVE_model_ArrayType "1..1" *-- "1..1" Expression : size4
-DVE_model_Process "1..1" *-- "0..9999" State : states17
-DVE_model_Transition "1..1" *-- "1..1" Synchronization : sync36
-DVE_model_Process "1..1" -- "1..1" System : system16
-DVE_model_SystemProperties "1..1" *-- "1..1" SystemType : systemType44
-DVE_model_Transition "1..1" *-- "1..1" StateReference : to30
-DVE_model_Process "1..1" *-- "0..9999" Transition : transitions26
-DVE_model_VariableDeclaration "1..1" *-- "1..1" Type : type6
-DVE_model_TypedChannelDeclaration "1..1" *-- "0..9999" Type : types11
-DVE_model_Synchronization "1..1" *-- "0..1" Expression : value41
-DVE_model_ArrayLiteral "1..1" *-- "0..9999" Expression : values69
+DVE_model_Process "StateReference 1..1" *-- "DVE_model_Process19 0..9999" StateReference : accepting18
+DVE_model_IndexedExpression "Expression65 1..1" *-- "DVE_model_IndexedExpression 1..1" Expression : base64
+DVE_model_TypedChannelDeclaration "Expression15 1..1" *-- "DVE_model_TypedChannelDeclaration14 1..1" Expression : bufferSize13
+ChannelReference "DVE_model_Synchronization 1..1" --* "ChannelReference 1..1" DVE_model_Synchronization : channel40
+DVE_model_Process "StateReference22 1..1" *-- "DVE_model_Process21 0..9999" StateReference : commited20
+DVE_model_CompositeDeclaration "NamedDeclaration 1..1" *-- "DVE_model_CompositeDeclaration 0..9999" NamedDeclaration : declarations0
+Assignment "DVE_model_Transition39 0..9999" --* "Assignment 1..1" DVE_model_Transition : effect38
+DVE_model_ArrayType "Type 1..1" *-- "DVE_model_ArrayType 1..1" Type : elementType3
+DVE_model_Transition "StateReference29 1..1" *-- "DVE_model_Transition 1..1" StateReference : from_28
+DVE_model_Transition "Expression35 1..1" *-- "DVE_model_Transition34 1..1" Expression : guard33
+DVE_model_IndexedExpression "Expression68 1..1" *-- "DVE_model_IndexedExpression67 1..1" Expression : index66
+DVE_model_Process "StateReference25 1..1" *-- "DVE_model_Process24 1..1" StateReference : initial23
+DVE_model_VariableDeclaration "Expression10 1..1" *-- "DVE_model_VariableDeclaration9 1..1" Expression : initial8
+DVE_model_Assignment "Expression48 1..1" *-- "DVE_model_Assignment 1..1" Expression : lhs47
+DVE_model_UnaryExpression "Expression53 1..1" *-- "DVE_model_UnaryExpression 1..1" Expression : operand52
+DVE_model_BinaryExpression "Expression55 1..1" *-- "DVE_model_BinaryExpression 2..2" Expression : operands54
+DVE_model_PrefixedReference "ProcessReference63 1..1" *-- "DVE_model_PrefixedReference 1..1" ProcessReference : prefix62
+DVE_model_System "Process 1..1" -- "system 0..9999" Process : processes1
+DVE_model_System "SystemProperties 1..1" *-- "DVE_model_System 1..1" SystemProperties : properties2
+DVE_model_SystemProperties "ProcessReference 1..1" *-- "DVE_model_SystemProperties46 1..1" ProcessReference : property45
+DVE_model_VariableReference "VariableDeclaration 1..1" -- "DVE_model_VariableReference 1..1" VariableDeclaration : ref56
+ChannelDeclaration "DVE_model_ChannelReference 1..1" -- "ChannelDeclaration 1..1" DVE_model_ChannelReference : ref57
+DVE_model_ProcessReference "Process59 1..1" -- "DVE_model_ProcessReference 1..1" Process : ref58
+DVE_model_StateReference "State61 1..1" -- "DVE_model_StateReference 1..1" State : ref60
+DVE_model_Assignment "Expression51 1..1" *-- "DVE_model_Assignment50 1..1" Expression : rhs49
+DVE_model_ArrayType "Expression 1..1" *-- "DVE_model_ArrayType5 1..1" Expression : size4
+DVE_model_Process "State 1..1" *-- "DVE_model_Process 0..9999" State : states17
+DVE_model_Transition "Synchronization 1..1" *-- "DVE_model_Transition37 1..1" Synchronization : sync36
+DVE_model_Process "System 1..1" -- "processes 1..1" System : system16
+DVE_model_SystemProperties "SystemType 1..1" *-- "DVE_model_SystemProperties 1..1" SystemType : systemType44
+DVE_model_Transition "StateReference32 1..1" *-- "DVE_model_Transition31 1..1" StateReference : to30
+DVE_model_Process "Transition 1..1" *-- "DVE_model_Process27 0..9999" Transition : transitions26
+DVE_model_VariableDeclaration "Type7 1..1" *-- "DVE_model_VariableDeclaration 1..1" Type : type6
+DVE_model_TypedChannelDeclaration "Type12 1..1" *-- "DVE_model_TypedChannelDeclaration 0..9999" Type : types11
+DVE_model_Synchronization "Expression43 1..1" *-- "DVE_model_Synchronization42 0..1" Expression : value41
+DVE_model_ArrayLiteral "Expression70 1..1" *-- "DVE_model_ArrayLiteral 0..9999" Expression : values69
 @enduml

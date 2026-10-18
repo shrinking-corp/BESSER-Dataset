@@ -1,4 +1,8 @@
 @startuml
+' model: smartHome
+' project: sampleModel
+' owner: User
+' description: New project
 enum DurationUnit {
   MINUTE
   SECOND
@@ -36,13 +40,13 @@ class smartHome_SensorValue {
 }
 class smartHome_SmartHome {
 }
-smartHome_Condition "1..9999" --* "1..1" smartHome_Rule : conditions10
-smartHome_Duration "1..1" --* "1..1" smartHome_Rule : duration14
-smartHome_Event "1..1" --* "1..1" smartHome_Rule : event12
-smartHome_Location "1..9999" --* "1..1" smartHome_SmartHome : locations3
-smartHome_Rule "1..9999" --* "1..1" smartHome_SmartHome : rules8
-smartHome_Condition "1..1" -- "1..1" smartHome_Sensor : sensor16
-smartHome_Sensor "1..1" -- "1..1" smartHome_SensorType : sensorType0
-smartHome_SensorType "1..9999" --* "1..1" smartHome_SmartHome : sensorTypes5
-smartHome_Location "1..1" *-- "0..9999" smartHome_Sensor : sensors1
+smartHome_Condition "smartHome_Rule11 1..9999" --* "smartHome_Condition 1..1" smartHome_Rule : conditions10
+smartHome_Duration "smartHome_Rule15 1..1" --* "smartHome_Duration 1..1" smartHome_Rule : duration14
+smartHome_Event "smartHome_Rule13 1..1" --* "smartHome_Event 1..1" smartHome_Rule : event12
+smartHome_Location "smartHome_SmartHome 1..9999" --* "smartHome_Location4 1..1" smartHome_SmartHome : locations3
+smartHome_Rule "smartHome_SmartHome9 1..9999" --* "smartHome_Rule 1..1" smartHome_SmartHome : rules8
+smartHome_Condition "smartHome_Sensor18 1..1" -- "smartHome_Condition17 1..1" smartHome_Sensor : sensor16
+smartHome_Sensor "smartHome_SensorType 1..1" -- "smartHome_Sensor 1..1" smartHome_SensorType : sensorType0
+smartHome_SensorType "smartHome_SmartHome6 1..9999" --* "smartHome_SensorType7 1..1" smartHome_SmartHome : sensorTypes5
+smartHome_Location "smartHome_Sensor2 1..1" *-- "smartHome_Location 0..9999" smartHome_Sensor : sensors1
 @enduml

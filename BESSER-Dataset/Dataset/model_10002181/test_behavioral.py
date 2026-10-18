@@ -1192,9 +1192,9 @@ def test_assoc_Component_waiter_stub_double():
     partner = kitchen_worker()
     setattr(partner, 'component139', None)
     _safe_set(owner, 'waiter138', {partner})
-    assert getattr(partner, 'component139') == owner
+    assert owner in getattr(partner, 'component139')
     _safe_set(owner, 'waiter138', set())
-    assert getattr(partner, 'component139') is None
+    assert owner not in getattr(partner, 'component139')
 
 
 def test_assoc_Csutomer_catering_stub_double():
@@ -1237,9 +1237,9 @@ def test_assoc_Payment_bank_account_stub_double():
     partner = bank_account()
     setattr(partner, 'payment67', None)
     _safe_set(owner, 'bank_account66', partner)
-    assert getattr(partner, 'payment67') == owner
+    assert owner in getattr(partner, 'payment67')
     _safe_set(owner, 'bank_account66', None)
-    assert getattr(partner, 'payment67') is None
+    assert owner not in getattr(partner, 'payment67')
 
 
 def test_assoc_System_bank_account_stub_double():
@@ -1312,9 +1312,9 @@ def test_assoc_chef_planning_stub_double():
     partner = chef2()
     setattr(partner, 'planning150', None)
     _safe_set(owner, 'chef151', partner)
-    assert getattr(partner, 'planning150') == owner
+    assert owner in getattr(partner, 'planning150')
     _safe_set(owner, 'chef151', None)
-    assert getattr(partner, 'planning150') is None
+    assert owner not in getattr(partner, 'planning150')
 
 
 def test_assoc_menu_catering_stub_double():
@@ -1357,9 +1357,9 @@ def test_assoc_order_shopping_cart2_stub_double():
     partner = shopping_cart()
     setattr(partner, 'order159', None)
     _safe_set(owner, 'shopping_cart158', {partner})
-    assert getattr(partner, 'order159') == owner
+    assert owner in getattr(partner, 'order159')
     _safe_set(owner, 'shopping_cart158', set())
-    assert getattr(partner, 'order159') is None
+    assert owner not in getattr(partner, 'order159')
 
 
 def test_assoc_planning_chef_stub_double():
@@ -1387,9 +1387,9 @@ def test_assoc_shopping_cart_payment_stub_double():
     partner = shopping_cart()
     setattr(partner, 'payment132', None)
     _safe_set(owner, 'shopping_cart133', {partner})
-    assert getattr(partner, 'payment132') == owner
+    assert owner in getattr(partner, 'payment132')
     _safe_set(owner, 'shopping_cart133', set())
-    assert getattr(partner, 'payment132') is None
+    assert owner not in getattr(partner, 'payment132')
 
 
 def test_assoc_shopping_cart_payment2_stub_double():
@@ -1432,8 +1432,8 @@ def test_assoc_weekly_planning_of_dishes__by_waiter_waiter2_stub_double():
     partner = kitchen_worker()
     setattr(partner, 'weekly_planning_of_dishes__by_waiter147', None)
     _safe_set(owner, 'waiter146', {partner})
-    assert getattr(partner, 'weekly_planning_of_dishes__by_waiter147') == owner
+    assert owner in getattr(partner, 'weekly_planning_of_dishes__by_waiter147')
     _safe_set(owner, 'waiter146', set())
-    assert getattr(partner, 'weekly_planning_of_dishes__by_waiter147') is None
+    assert owner not in getattr(partner, 'weekly_planning_of_dishes__by_waiter147')
 
 

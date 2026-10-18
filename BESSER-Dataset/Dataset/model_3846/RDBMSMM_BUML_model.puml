@@ -1,4 +1,8 @@
 @startuml
+' model: RDBMSMM
+' project: sampleModel
+' owner: User
+' description: New project
 class RDBMSMM_Column {
   + name : str
   + type : str
@@ -10,10 +14,10 @@ class RDBMSMM_RDBMSModel {
 class RDBMSMM_Table {
   + name : str
 }
-RDBMSMM_Column "1..9999" --* "1..1" RDBMSMM_Table : cols0
-RDBMSMM_Column "1..9999" -- "1..1" RDBMSMM_FKey : cols9
-RDBMSMM_FKey "0..9999" --* "1..1" RDBMSMM_Table : fkeys4
-RDBMSMM_Column "1..9999" -- "1..1" RDBMSMM_Table : pkey1
-RDBMSMM_FKey "1..1" -- "1..1" RDBMSMM_Table : references6
-RDBMSMM_RDBMSModel "1..1" *-- "1..9999" RDBMSMM_Table : table12
+RDBMSMM_Column "RDBMSMM_Table 1..9999" --* "RDBMSMM_Column 1..1" RDBMSMM_Table : cols0
+RDBMSMM_Column "RDBMSMM_FKey10 1..9999" -- "RDBMSMM_Column11 1..1" RDBMSMM_FKey : cols9
+RDBMSMM_FKey "RDBMSMM_Table5 0..9999" --* "RDBMSMM_FKey 1..1" RDBMSMM_Table : fkeys4
+RDBMSMM_Column "RDBMSMM_Table2 1..9999" -- "RDBMSMM_Column3 1..1" RDBMSMM_Table : pkey1
+RDBMSMM_FKey "RDBMSMM_Table8 1..1" -- "RDBMSMM_FKey7 1..1" RDBMSMM_Table : references6
+RDBMSMM_RDBMSModel "RDBMSMM_Table13 1..1" *-- "RDBMSMM_RDBMSModel 1..9999" RDBMSMM_Table : table12
 @enduml

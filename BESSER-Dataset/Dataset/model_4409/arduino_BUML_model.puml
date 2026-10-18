@@ -1,4 +1,8 @@
 @startuml
+' model: arduino
+' project: sampleModel
+' owner: User
+' description: New project
 class ArduinoAnalogModule {
 }
 class ArduinoDigitalModule {
@@ -280,31 +284,31 @@ Variable <|-- arduino_BooleanVariable
 Variable <|-- arduino_IntegerVariable
 VariableRef <|-- arduino_BooleanVariableRef
 VariableRef <|-- arduino_IntegerVariableRef
-arduino_AnalogPin "0..9999" --* "1..1" arduino_ArduinoBoard : analogPins39
-arduino_Block "1..1" --* "1..1" arduino_Control : block12
-arduino_Block "0..1" --* "1..1" arduino_Sketch : block5
-arduino_Board "0..1" -- "1..1" arduino_Sketch : board6
-arduino_Board "0..9999" --* "1..1" arduino_Project : boards8
-arduino_BooleanExpression "1..1" --* "1..1" arduino_While : condition16
-arduino_BooleanExpression "1..1" --* "1..1" arduino_If : condition22
-arduino_BluetoothTransceiver "1..1" -- "0..9999" arduino_BluetoothTransceiver : connectedTransceiver44
-arduino_ArduinoBoard "1..1" *-- "0..9999" arduino_DigitalPin : digitalPins37
-arduino_Block "0..1" --* "1..1" arduino_If : elseBlock24
-arduino_Block "1..1" *-- "0..9999" arduino_Instruction : instructions35
-arduino_BinaryExpression "1..1" *-- "1..1" arduino_Expression : left17
-arduino_ArduinoDigitalModule "0..1" --* "1..1" arduino_DigitalPin : module1
-arduino_Module "1..1" -- "1..1" arduino_ModuleInstruction : module11
-arduino_Module "1..1" -- "1..1" arduino_ModuleGet : module14
-arduino_AnalogPin "1..1" *-- "0..1" arduino_ArduinoAnalogModule : module2
-arduino_Assignment "1..1" *-- "1..1" arduino_Expression : operand27
-arduino_Expression "1..1" --* "1..1" arduino_UnaryExpression : operand29
-arduino_Pin "0..1" -- "1..1" arduino_WaitFor : pin34
-arduino_Board "1..1" -- "1..1" arduino_Project : project0
-arduino_Project "1..1" -- "1..1" arduino_Sketch : project3
-arduino_BinaryExpression "1..1" *-- "0..1" arduino_Expression : right18
-arduino_Project "1..1" *-- "0..9999" arduino_Sketch : sketches9
-arduino_Variable "1..1" -- "1..1" arduino_VariableAssignment : variable21
-arduino_Variable "1..1" --* "1..1" arduino_VariableDeclaration : variable31
-arduino_IntegerVariable "1..1" -- "1..1" arduino_IntegerVariableRef : variable33
-arduino_BooleanVariable "1..1" -- "1..1" arduino_BooleanVariableRef : variable42
+arduino_AnalogPin "arduino_ArduinoBoard40 0..9999" --* "arduino_AnalogPin41 1..1" arduino_ArduinoBoard : analogPins39
+arduino_Block "arduino_Control 1..1" --* "arduino_Block13 1..1" arduino_Control : block12
+arduino_Block "arduino_Sketch 0..1" --* "arduino_Block 1..1" arduino_Sketch : block5
+arduino_Board "arduino_Sketch7 0..1" -- "arduino_Board 1..1" arduino_Sketch : board6
+arduino_Board "project 0..9999" --* "Board 1..1" arduino_Project : boards8
+arduino_BooleanExpression "arduino_While 1..1" --* "arduino_BooleanExpression 1..1" arduino_While : condition16
+arduino_BooleanExpression "arduino_If 1..1" --* "arduino_BooleanExpression23 1..1" arduino_If : condition22
+arduino_BluetoothTransceiver "arduino_BluetoothTransceiver 1..1" -- "arduino_BluetoothTransceiver43 0..9999" arduino_BluetoothTransceiver : connectedTransceiver44
+arduino_ArduinoBoard "arduino_DigitalPin38 1..1" *-- "arduino_ArduinoBoard 0..9999" arduino_DigitalPin : digitalPins37
+arduino_Block "arduino_If25 0..1" --* "arduino_Block26 1..1" arduino_If : elseBlock24
+arduino_Block "arduino_Instruction 1..1" *-- "arduino_Block36 0..9999" arduino_Instruction : instructions35
+arduino_BinaryExpression "arduino_Expression 1..1" *-- "arduino_BinaryExpression 1..1" arduino_Expression : left17
+arduino_ArduinoDigitalModule "arduino_DigitalPin 0..1" --* "arduino_ArduinoDigitalModule 1..1" arduino_DigitalPin : module1
+arduino_Module "arduino_ModuleInstruction 1..1" -- "arduino_Module 1..1" arduino_ModuleInstruction : module11
+arduino_Module "arduino_ModuleGet 1..1" -- "arduino_Module15 1..1" arduino_ModuleGet : module14
+arduino_AnalogPin "arduino_ArduinoAnalogModule 1..1" *-- "arduino_AnalogPin 0..1" arduino_ArduinoAnalogModule : module2
+arduino_Assignment "arduino_Expression28 1..1" *-- "arduino_Assignment 1..1" arduino_Expression : operand27
+arduino_Expression "arduino_UnaryExpression 1..1" --* "arduino_Expression30 1..1" arduino_UnaryExpression : operand29
+arduino_Pin "arduino_WaitFor 0..1" -- "arduino_Pin 1..1" arduino_WaitFor : pin34
+arduino_Board "Project 1..1" -- "boards 1..1" arduino_Project : project0
+arduino_Project "sketches 1..1" -- "Project4 1..1" arduino_Sketch : project3
+arduino_BinaryExpression "arduino_Expression20 1..1" *-- "arduino_BinaryExpression19 0..1" arduino_Expression : right18
+arduino_Project "Sketch 1..1" *-- "project10 0..9999" arduino_Sketch : sketches9
+arduino_Variable "arduino_VariableAssignment 1..1" -- "arduino_Variable 1..1" arduino_VariableAssignment : variable21
+arduino_Variable "arduino_VariableDeclaration 1..1" --* "arduino_Variable32 1..1" arduino_VariableDeclaration : variable31
+arduino_IntegerVariable "arduino_IntegerVariableRef 1..1" -- "arduino_IntegerVariable 1..1" arduino_IntegerVariableRef : variable33
+arduino_BooleanVariable "arduino_BooleanVariableRef 1..1" -- "arduino_BooleanVariable 1..1" arduino_BooleanVariableRef : variable42
 @enduml

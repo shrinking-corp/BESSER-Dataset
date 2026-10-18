@@ -1,4 +1,8 @@
 @startuml
+' model: stateMachine
+' project: sampleModel
+' owner: User
+' description: New project
 class IDElement {
 }
 enum StateKind {
@@ -22,13 +26,13 @@ IDElement <|-- stateMachine_Event
 IDElement <|-- stateMachine_State
 IDElement <|-- stateMachine_StateMachine
 IDElement <|-- stateMachine_Transition
-stateMachine_Event "0..9999" -- "1..1" stateMachine_Transition : effect14
-stateMachine_Event "0..9999" --* "1..1" stateMachine_StateMachine : events3
-stateMachine_State "1..1" -- "0..9999" stateMachine_Transition : incoming6
-stateMachine_State "1..1" -- "0..9999" stateMachine_Transition : outgoing5
-stateMachine_State "1..1" -- "1..1" stateMachine_Transition : source8
-stateMachine_State "0..9999" --* "1..1" stateMachine_StateMachine : states0
-stateMachine_State "1..1" -- "1..1" stateMachine_Transition : target9
-stateMachine_StateMachine "1..1" *-- "0..9999" stateMachine_Transition : transitions1
-stateMachine_Event "0..9999" -- "1..1" stateMachine_Transition : trigger11
+stateMachine_Event "stateMachine_Transition15 0..9999" -- "stateMachine_Event16 1..1" stateMachine_Transition : effect14
+stateMachine_Event "stateMachine_StateMachine4 0..9999" --* "stateMachine_Event 1..1" stateMachine_StateMachine : events3
+stateMachine_State "Transition7 1..1" -- "target 0..9999" stateMachine_Transition : incoming6
+stateMachine_State "Transition 1..1" -- "source 0..9999" stateMachine_Transition : outgoing5
+stateMachine_State "outgoing 1..1" -- "State 1..1" stateMachine_Transition : source8
+stateMachine_State "stateMachine_StateMachine 0..9999" --* "stateMachine_State 1..1" stateMachine_StateMachine : states0
+stateMachine_State "incoming 1..1" -- "State10 1..1" stateMachine_Transition : target9
+stateMachine_StateMachine "stateMachine_Transition 1..1" *-- "stateMachine_StateMachine2 0..9999" stateMachine_Transition : transitions1
+stateMachine_Event "stateMachine_Transition12 0..9999" -- "stateMachine_Event13 1..1" stateMachine_Transition : trigger11
 @enduml

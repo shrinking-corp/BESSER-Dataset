@@ -1,4 +1,8 @@
 @startuml
+' model: _595cd0f7_97b4_495f_b3f0_d86908b20321
+' project: sampleModel
+' owner: User
+' description: New project
 class Attendance {
   + Date : str
   + ID : str
@@ -29,10 +33,10 @@ class Student {
   + Password : str
   + Username : str
 }
-Attendance "1..1" -- "1..1" Database : Attendance_Database
-Attendance "1..1" -- "1..1" Faculty : Faculty_Attendance
-Faculty "0..1" -- "1..1" Login : Faculty_Login
-Login "1..1" -- "1..1" Student : Student_Login
-Attendance "1..1" -- "1..1" Student : User_Login
-Monitor "0..9999" -- "1..1" Student : User_Message
+Attendance "Attendance_Database_19 1..1" -- "Attendance_Database_08 1..1" Database : Attendance_Database
+Attendance "Faculty_Attendance_06 1..1" -- "Faculty_Attendance_17 1..1" Faculty : Faculty_Attendance
+Faculty "Faculty_Login_15 0..1" -- "Faculty_Login_04 1..1" Login : Faculty_Login
+Login "Student_Login_010 1..1" -- "Student_Login_111 1..1" Student : Student_Login
+Attendance "login0 1..1" -- "user1 1..1" Student : User_Login
+Monitor "message2 0..9999" -- "user3 1..1" Student : User_Message
 @enduml

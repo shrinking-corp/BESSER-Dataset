@@ -1,4 +1,8 @@
 @startuml
+' model: NexaCRM
+' project: sampleModel
+' owner: User
+' description: New project
 class Company {
   + address : str
   + city : str
@@ -150,23 +154,23 @@ enum UserRole {
   SALES_MANAGER
   SALES_REP
 }
-Company "0..9999" -- "1..1" User : company_created_by
-Company "0..9999" -- "0..9999" Tag : company_tag
-Company "0..1" -- "0..9999" Contact : contact_company
-Contact "0..9999" -- "1..1" User : contact_created_by
-Contact "0..9999" -- "0..9999" Tag : contact_tag
-Contact "1..1" -- "0..9999" GeneratedEmail : email_contact
-EmailTemplate "0..1" -- "0..9999" GeneratedEmail : email_template_link
-GeneratedEmail "0..9999" -- "1..1" User : email_user
-Contact "1..1" -- "0..9999" EnrichmentLog : enrichment_contact
-Contact "1..1" --* "0..9999" Interaction : interaction_contact
-Interaction "0..9999" -- "1..1" User : interaction_user
-Company "0..1" -- "0..9999" Opportunity : opportunity_company
-Contact "1..9999" -- "0..9999" Opportunity : opportunity_contact
-Opportunity "0..9999" -- "1..1" User : opportunity_owner
-Contact "1..1" --* "0..9999" ScoreHistory : score_contact
-Contact "0..1" -- "0..9999" Task : task_contact
-Opportunity "0..1" -- "0..9999" Task : task_opportunity
-Task "0..9999" -- "1..1" User : task_user
-EmailTemplate "0..9999" -- "1..1" User : template_user
+Company "created_companies 0..9999" -- "created_by 1..1" User : company_created_by
+Company "tagged_companies 0..9999" -- "tags 0..9999" Tag : company_tag
+Company "company 0..1" -- "contacts 0..9999" Contact : contact_company
+Contact "created_contacts 0..9999" -- "created_by 1..1" User : contact_created_by
+Contact "tagged_contacts 0..9999" -- "tags 0..9999" Tag : contact_tag
+Contact "contact 1..1" -- "generated_emails 0..9999" GeneratedEmail : email_contact
+EmailTemplate "template 0..1" -- "generated_emails 0..9999" GeneratedEmail : email_template_link
+GeneratedEmail "generated_emails 0..9999" -- "created_by 1..1" User : email_user
+Contact "contact 1..1" -- "enrichment_logs 0..9999" EnrichmentLog : enrichment_contact
+Contact "contact 1..1" --* "interactions 0..9999" Interaction : interaction_contact
+Interaction "interactions 0..9999" -- "performed_by 1..1" User : interaction_user
+Company "company 0..1" -- "opportunities 0..9999" Opportunity : opportunity_company
+Contact "contacts 1..9999" -- "opportunities 0..9999" Opportunity : opportunity_contact
+Opportunity "owned_opportunities 0..9999" -- "owner 1..1" User : opportunity_owner
+Contact "contact 1..1" --* "score_history 0..9999" ScoreHistory : score_contact
+Contact "contact 0..1" -- "tasks 0..9999" Task : task_contact
+Opportunity "opportunity 0..1" -- "tasks 0..9999" Task : task_opportunity
+Task "tasks 0..9999" -- "assigned_to 1..1" User : task_user
+EmailTemplate "email_templates 0..9999" -- "created_by 1..1" User : template_user
 @enduml

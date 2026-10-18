@@ -1,4 +1,8 @@
 @startuml
+' model: shop
+' project: sampleModel
+' owner: User
+' description: New project
 class Payment {
 }
 enum PaymentType {
@@ -59,17 +63,17 @@ Person <|-- shop_Employee
 Valuable <|-- shop_BankOperation
 Valuable <|-- shop_Payment
 Valuable <|-- shop_Sale
-shop_AccountBook "1..1" --* "1..1" shop_Shop : accountBook5
-shop_AccountBook "1..1" *-- "0..9999" shop_BankOperation : bankOperations15
-shop_Customer "1..1" -- "1..1" shop_Sale : customer7
-shop_Customer "0..9999" --* "1..1" shop_Shop : customers0
-shop_Employee "0..9999" --* "1..1" shop_Shop : employees3
-shop_Employee "1..9999" -- "1..1" shop_Sale : employees8
-shop_Payment "0..9999" --* "1..1" shop_Sale : payments10
-shop_AccountBook "1..1" -- "0..9999" shop_Payment : payments17
-shop_Payment "1..1" -- "0..1" shop_Sale : sale13
-shop_Sale "0..9999" --* "1..1" shop_Shop : sales1
-shop_Employee "1..1" -- "0..9999" shop_Sale : sales11
-shop_Customer "1..1" -- "0..9999" shop_Sale : sales6
-shop_AccountBook "1..1" -- "1..1" shop_Shop : shop16
+shop_AccountBook "shop 1..1" --* "AccountBook 1..1" shop_Shop : accountBook5
+shop_AccountBook "shop_BankOperation 1..1" *-- "shop_AccountBook 0..9999" shop_BankOperation : bankOperations15
+shop_Customer "sales 1..1" -- "Customer 1..1" shop_Sale : customer7
+shop_Customer "shop_Shop 0..9999" --* "shop_Customer 1..1" shop_Shop : customers0
+shop_Employee "shop_Shop4 0..9999" --* "shop_Employee 1..1" shop_Shop : employees3
+shop_Employee "sales9 1..9999" -- "Employee 1..1" shop_Sale : employees8
+shop_Payment "sale 0..9999" --* "Payment 1..1" shop_Sale : payments10
+shop_AccountBook "shop_Payment 1..1" -- "shop_AccountBook18 0..9999" shop_Payment : payments17
+shop_Payment "Sale14 1..1" -- "payments 0..1" shop_Sale : sale13
+shop_Sale "shop_Shop2 0..9999" --* "shop_Sale 1..1" shop_Shop : sales1
+shop_Employee "Sale12 1..1" -- "employees 0..9999" shop_Sale : sales11
+shop_Customer "Sale 1..1" -- "customer 0..9999" shop_Sale : sales6
+shop_AccountBook "Shop 1..1" -- "accountBook 1..1" shop_Shop : shop16
 @enduml

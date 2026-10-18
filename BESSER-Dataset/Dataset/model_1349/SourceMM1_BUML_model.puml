@@ -1,4 +1,8 @@
 @startuml
+' model: source
+' project: sampleModel
+' owner: User
+' description: New project
 class SElement {
 }
 class Y {
@@ -34,13 +38,13 @@ SElement <|-- source_Y
 SElement <|-- source_Z
 Y <|-- source_Y1
 Y <|-- source_Y2
-source_EObject "0..1" -- "1..1" source_SElement : ast7
-source_SRoot "1..1" *-- "0..9999" source_X : ownedX6
-source_X "1..1" *-- "0..9999" source_Y : ownsY0
-source_Y "1..1" *-- "0..1" source_Z : ownsZ1
-source_PathElementCS "1..9999" --* "1..1" source_PathNameCS : path8
-source_PathElementCS "1..1" -- "1..1" source_PathNameCS : pathName9
-source_PathNameCS "0..1" --* "1..1" source_Z : refers5
-source_X "0..1" -- "1..1" source_Y : toX2
-source_Y "0..1" -- "1..1" source_Z : toY3
+source_EObject "source_SElement 0..1" -- "source_EObject 1..1" source_SElement : ast7
+source_SRoot "source_X 1..1" *-- "source_SRoot 0..9999" source_X : ownedX6
+source_X "Y 1..1" *-- "toX 0..9999" source_Y : ownsY0
+source_Y "Z 1..1" *-- "toY 0..1" source_Z : ownsZ1
+source_PathElementCS "pathName 1..9999" --* "PathElementCS 1..1" source_PathNameCS : path8
+source_PathElementCS "PathNameCS 1..1" -- "path 1..1" source_PathNameCS : pathName9
+source_PathNameCS "source_Z 0..1" --* "source_PathNameCS 1..1" source_Z : refers5
+source_X "ownsY 0..1" -- "X 1..1" source_Y : toX2
+source_Y "ownsZ 0..1" -- "Y4 1..1" source_Z : toY3
 @enduml

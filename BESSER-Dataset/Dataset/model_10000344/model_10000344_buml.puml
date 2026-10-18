@@ -1,4 +1,8 @@
 @startuml
+' model: _2b96ca54_5207_4e6a_9b99_d90ed61f195a
+' project: sampleModel
+' owner: User
+' description: New project
 class Cuenta {
   + billingAddress : str
   + closed : date
@@ -39,14 +43,14 @@ class Vendedor {
 class Venta {
   + creationDate : date
 }
-Cuenta "1..1" -- "0..9999" Orden : Account_Order
-Cuenta "1..1" -- "0..9999" Pago : Account_Payment
-Cuenta "1..1" -- "1..1" Venta : Account_ShoppingCart
-Cuenta "1..1" -- "1..1" Vendedor : Customer_Account
-ItemOrden "1..9999" -- "0..1" Orden : Order_LineItem
-Orden "1..1" -- "0..1" Pago : Payment_Order
-ItemOrden "0..9999" -- "1..1" Licor : Product_LineItem
-ItemOrden "1..1" -- "1..1" Venta : ShoppingCart_LineItem
-Login "1..1" -- "1..1" Vendedor : WebUser_Customer
-Login "1..1" -- "0..1" Venta : WebUser_ShoppingCart
+Cuenta "Cuenta17 1..1" -- "Orden16 0..9999" Orden : Account_Order
+Cuenta "acc1 1..1" -- "p0 0..9999" Pago : Account_Payment
+Cuenta "Cuenta9 1..1" -- "cart8 1..1" Venta : Account_ShoppingCart
+Cuenta "Cuenta6 1..1" -- "Vendedor7 1..1" Vendedor : Customer_Account
+ItemOrden "items14 1..9999" -- "order15 0..1" Orden : Order_LineItem
+Orden "Orden18 1..1" -- "payment19 0..1" Pago : Payment_Order
+ItemOrden "lineItems12 0..9999" -- "Producto13 1..1" Licor : Product_LineItem
+ItemOrden "items10 1..1" -- "sc11 1..1" Venta : ShoppingCart_LineItem
+Login "UsuarioWeb5 1..1" -- "Vendedor4 1..1" Vendedor : WebUser_Customer
+Login "UsuarioWeb3 1..1" -- "Venta2 0..1" Venta : WebUser_ShoppingCart
 @enduml

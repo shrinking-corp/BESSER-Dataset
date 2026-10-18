@@ -92,8 +92,8 @@ def test_assoc_JObject_JMember_stub_double():
     partner = JObject()
     setattr(partner, 'JObject_JMember_00', None)
     _safe_set(owner, 'JObject_JMember_11', partner)
-    assert getattr(partner, 'JObject_JMember_00') == owner
+    assert owner in getattr(partner, 'JObject_JMember_00')
     _safe_set(owner, 'JObject_JMember_11', None)
-    assert getattr(partner, 'JObject_JMember_00') is None
+    assert owner not in getattr(partner, 'JObject_JMember_00')
 
 

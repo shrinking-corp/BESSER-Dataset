@@ -1,4 +1,8 @@
 @startuml
+' model: Class_Diagram
+' project: skillset_match
+' owner: User
+' description: New project
 class Review {
   + comments : str
   + rating : int
@@ -72,11 +76,11 @@ enum UserSkillLevel {
   NOVICE
   PROFICIENT
 }
-SkillRequest "0..9999" <-- "1..1" User : creates
-Session "0..9999" <-- "1..1" SkillMatch : has
-SkillMatch "0..1" <-- "0..9999" SkillRequest : leads_to
-Skill "1..1" <-- "0..9999" UserSkill : refers_to
-Review "0..1" <-- "1..1" Session : review
-User "1..1" --> "1..9999" UserSkill : teaches
-Skill "1..1" -- "0..9999" SkillRequest : wants
+SkillRequest "skillrequest 0..9999" -- "user_1 1..1 {not navigable}" User : creates
+Session "session 0..9999" -- "skillmatch_1 1..1 {not navigable}" SkillMatch : has
+SkillMatch "skillmatch_2 0..1" -- "skillrequest_1 0..9999 {not navigable}" SkillRequest : leads_to
+Skill "skill 1..1" -- "userskill_1 0..9999 {not navigable}" UserSkill : refers_to
+Review "review 0..1" -- "session_1 1..1 {not navigable}" Session : review
+User "user 1..1 {not navigable}" -- "userskill 1..9999" UserSkill : teaches
+Skill "skill_1 1..1" -- "skillrequest_2 0..9999" SkillRequest : wants
 @enduml

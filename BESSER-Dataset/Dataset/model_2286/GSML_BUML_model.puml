@@ -1,4 +1,8 @@
 @startuml
+' model: gsml
+' project: sampleModel
+' owner: User
+' description: New project
 enum MinRequirementType {
   Absolute
   Relative
@@ -31,15 +35,15 @@ class gsml_TaskGroup {
 }
 Task <|-- gsml_ConcreteTask
 Task <|-- gsml_TaskGroup
-gsml_Task "0..9999" --* "1..1" gsml_TaskGroup : contains9
-gsml_Course "0..9999" --* "1..1" gsml_GradingSystem : courses15
-gsml_Grade "1..1" --* "1..1" gsml_GradingScheme : fallback12
-gsml_Grade "0..9999" --* "1..1" gsml_GradingScheme : grades10
-gsml_Course "1..1" *-- "1..1" gsml_GradingScheme : gradingScheme6
-gsml_Course "1..1" *-- "0..9999" gsml_Grading : gradings0
-gsml_Grading "1..1" -- "1..1" gsml_GradingScheme : gradingscheme17
-gsml_Course "1..1" -- "1..1" gsml_GradingScheme : gradingscheme3
-gsml_Course "1..1" -- "0..9999" gsml_GradingScheme : gradingschemes1
-gsml_Grading "1..1" *-- "1..9999" gsml_Task : has23
-gsml_Grading "1..1" *-- "0..9999" gsml_Task : tasks20
+gsml_Task "gsml_TaskGroup 0..9999" --* "gsml_Task 1..1" gsml_TaskGroup : contains9
+gsml_Course "gsml_GradingSystem 0..9999" --* "gsml_Course16 1..1" gsml_GradingSystem : courses15
+gsml_Grade "gsml_GradingScheme13 1..1" --* "gsml_Grade14 1..1" gsml_GradingScheme : fallback12
+gsml_Grade "gsml_GradingScheme11 0..9999" --* "gsml_Grade 1..1" gsml_GradingScheme : grades10
+gsml_Course "gsml_GradingScheme8 1..1" *-- "gsml_Course7 1..1" gsml_GradingScheme : gradingScheme6
+gsml_Course "gsml_Grading 1..1" *-- "gsml_Course 0..9999" gsml_Grading : gradings0
+gsml_Grading "gsml_GradingScheme19 1..1" -- "gsml_Grading18 1..1" gsml_GradingScheme : gradingscheme17
+gsml_Course "gsml_GradingScheme5 1..1" -- "gsml_Course4 1..1" gsml_GradingScheme : gradingscheme3
+gsml_Course "gsml_GradingScheme 1..1" -- "gsml_Course2 0..9999" gsml_GradingScheme : gradingschemes1
+gsml_Grading "gsml_Task25 1..1" *-- "gsml_Grading24 1..9999" gsml_Task : has23
+gsml_Grading "gsml_Task22 1..1" *-- "gsml_Grading21 0..9999" gsml_Task : tasks20
 @enduml

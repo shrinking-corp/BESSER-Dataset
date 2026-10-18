@@ -1,4 +1,8 @@
 @startuml
+' model: base
+' project: sampleModel
+' owner: User
+' description: New project
 class AnnotationAttribute {
 }
 class Literal {
@@ -62,10 +66,10 @@ Literal <|-- base_NumberLiteral
 Literal <|-- base_StringLiteral
 NumberLiteral <|-- base_IntLiteral
 NumberLiteral <|-- base_RealLiteral
-base_Annotation "1..1" *-- "0..9999" base_KeyValue : attributes1
-base_AnnotationAttribute "0..9999" --* "1..1" base_AnnotationType : attributes7
-base_AnnotationType "1..1" *-- "0..1" base_Documentation : docu5
-base_Literal "0..9999" --* "1..1" base_LiteralArray : literals9
-base_Annotation "1..1" -- "0..1" base_AnnotationType : type0
-base_KeyValue "1..1" *-- "0..1" base_Literal : value3
+base_Annotation "base_KeyValue 1..1" *-- "base_Annotation2 0..9999" base_KeyValue : attributes1
+base_AnnotationAttribute "base_AnnotationType8 0..9999" --* "base_AnnotationAttribute 1..1" base_AnnotationType : attributes7
+base_AnnotationType "base_Documentation 1..1" *-- "base_AnnotationType6 0..1" base_Documentation : docu5
+base_Literal "base_LiteralArray 0..9999" --* "base_Literal10 1..1" base_LiteralArray : literals9
+base_Annotation "base_AnnotationType 1..1" -- "base_Annotation 0..1" base_AnnotationType : type0
+base_KeyValue "base_Literal 1..1" *-- "base_KeyValue4 0..1" base_Literal : value3
 @enduml

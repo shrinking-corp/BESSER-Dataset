@@ -1,4 +1,8 @@
 @startuml
+' model: petrinetmodel
+' project: sampleModel
+' owner: User
+' description: New project
 class Edge {
 }
 class petrinetmodel_Edge {
@@ -30,11 +34,11 @@ class petrinetmodel_Transition {
 }
 Edge <|-- petrinetmodel_EdgeToPlace
 Edge <|-- petrinetmodel_EdgeToTransaction
-petrinetmodel_EdgeToPlace "1..1" -- "1..1" petrinetmodel_Place : in_10
-petrinetmodel_EdgeToTransaction "1..1" -- "1..1" petrinetmodel_Transition : in_13
-petrinetmodel_Place "0..9999" -- "1..1" petrinetmodel_Transition : inputPlaces5
-petrinetmodel_EdgeToPlace "1..9999" --* "1..1" petrinetmodel_Transition : out3
-petrinetmodel_EdgeToTransaction "0..9999" --* "1..1" petrinetmodel_Place : out8
-petrinetmodel_Petrinet "1..1" *-- "0..9999" petrinetmodel_Place : places1
-petrinetmodel_Petrinet "1..1" *-- "0..9999" petrinetmodel_Transition : transitions0
+petrinetmodel_EdgeToPlace "petrinetmodel_Place12 1..1" -- "petrinetmodel_EdgeToPlace11 1..1" petrinetmodel_Place : in_10
+petrinetmodel_EdgeToTransaction "petrinetmodel_Transition15 1..1" -- "petrinetmodel_EdgeToTransaction14 1..1" petrinetmodel_Transition : in_13
+petrinetmodel_Place "petrinetmodel_Transition6 0..9999" -- "petrinetmodel_Place7 1..1" petrinetmodel_Transition : inputPlaces5
+petrinetmodel_EdgeToPlace "petrinetmodel_Transition4 1..9999" --* "petrinetmodel_EdgeToPlace 1..1" petrinetmodel_Transition : out3
+petrinetmodel_EdgeToTransaction "petrinetmodel_Place9 0..9999" --* "petrinetmodel_EdgeToTransaction 1..1" petrinetmodel_Place : out8
+petrinetmodel_Petrinet "petrinetmodel_Place 1..1" *-- "petrinetmodel_Petrinet2 0..9999" petrinetmodel_Place : places1
+petrinetmodel_Petrinet "petrinetmodel_Transition 1..1" *-- "petrinetmodel_Petrinet 0..9999" petrinetmodel_Transition : transitions0
 @enduml

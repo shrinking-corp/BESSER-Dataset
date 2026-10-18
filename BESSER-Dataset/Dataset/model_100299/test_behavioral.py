@@ -107,8 +107,8 @@ def test_assoc_tokens3_stub_double():
     partner = petrinet_Place()
     setattr(partner, 'petrinet_Place4', None)
     _safe_set(owner, 'petrinet_Token', partner)
-    assert getattr(partner, 'petrinet_Place4') == owner
+    assert owner in getattr(partner, 'petrinet_Place4')
     _safe_set(owner, 'petrinet_Token', None)
-    assert getattr(partner, 'petrinet_Place4') is None
+    assert owner not in getattr(partner, 'petrinet_Place4')
 
 

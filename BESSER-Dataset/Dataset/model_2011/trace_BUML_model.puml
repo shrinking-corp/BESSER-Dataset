@@ -1,4 +1,8 @@
 @startuml
+' model: trace
+' project: sampleModel
+' owner: User
+' description: New project
 enum LogLevel {
   CONFIG
   FINE
@@ -19,6 +23,6 @@ class trace_Log {
 }
 class trace_Trace {
 }
-trace_Exception "0..9999" --* "1..1" trace_Log : exceptions1
-trace_Log "0..9999" --* "1..1" trace_Trace : logs0
+trace_Exception "trace_Log2 0..9999" --* "trace_Exception 1..1" trace_Log : exceptions1
+trace_Log "trace_Trace 0..9999" --* "trace_Log 1..1" trace_Trace : logs0
 @enduml

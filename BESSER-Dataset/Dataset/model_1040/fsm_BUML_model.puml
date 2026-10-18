@@ -1,4 +1,8 @@
 @startuml
+' model: fsm
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractState {
 }
 class Expression {
@@ -111,35 +115,35 @@ Statement <|-- fsm_VarDecl
 Trigger <|-- fsm_AndTrigger
 Trigger <|-- fsm_NotTrigger
 Trigger <|-- fsm_OrTrigger
-fsm_Block "0..1" --* "1..1" fsm_Loop : body39
-fsm_Block "0..1" --* "1..1" fsm_Conditional : body43
-fsm_Constraint "1..1" *-- "0..1" fsm_Context : context34
-fsm_Block "0..1" --* "1..1" fsm_State : doActivity9
-fsm_Statement "0..9999" --* "1..1" fsm_Transition : effect18
-fsm_Expression "1..1" --* "1..1" fsm_VarDecl : expr48
-fsm_Assignation "1..1" *-- "1..1" fsm_Expression : expr50
-fsm_Constraint "1..1" --* "1..1" fsm_Transition : guard20
-fsm_Expression "1..1" --* "1..1" fsm_Loop : guard41
-fsm_Conditional "1..1" *-- "1..1" fsm_Expression : guard45
-fsm_AbstractState "1..1" -- "0..9999" fsm_Transition : incoming5
-fsm_AndTrigger "1..1" -- "1..1" fsm_Trigger : left24
-fsm_OrTrigger "1..1" -- "1..1" fsm_Trigger : left29
-fsm_Expression "1..1" --* "1..1" fsm_RelationalExpression : left52
-fsm_ArithmeticExpression "1..1" *-- "1..1" fsm_Expression : left57
-fsm_AbstractState "1..1" -- "0..9999" fsm_Transition : outgoing6
-fsm_Region "0..9999" --* "1..1" fsm_State : ownedRegions10
-fsm_AbstractState "1..1" -- "1..1" fsm_Region : region8
-fsm_Region "0..9999" --* "1..1" fsm_StateMachine : regions0
-fsm_AndTrigger "1..1" -- "1..1" fsm_Trigger : right26
-fsm_OrTrigger "1..1" -- "1..1" fsm_Trigger : right31
-fsm_Expression "1..1" --* "1..1" fsm_RelationalExpression : right54
-fsm_ArithmeticExpression "1..1" *-- "1..1" fsm_Expression : right59
-fsm_AbstractState "1..1" -- "1..1" fsm_Transition : source16
-fsm_Region "1..1" -- "0..1" fsm_State : stateMachine4
-fsm_Block "1..1" *-- "0..9999" fsm_Statement : statements36
-fsm_AbstractState "0..9999" --* "1..1" fsm_Region : subvertex1
-fsm_AbstractState "1..1" -- "1..1" fsm_Transition : target14
-fsm_Region "1..1" *-- "0..9999" fsm_Transition : transitions2
-fsm_Transition "1..1" *-- "0..1" fsm_Trigger : trigger12
-fsm_NotTrigger "1..1" -- "1..1" fsm_Trigger : trigger22
+fsm_Block "fsm_Loop 0..1" --* "fsm_Block40 1..1" fsm_Loop : body39
+fsm_Block "fsm_Conditional 0..1" --* "fsm_Block44 1..1" fsm_Conditional : body43
+fsm_Constraint "fsm_Context 1..1" *-- "fsm_Constraint35 0..1" fsm_Context : context34
+fsm_Block "fsm_State 0..1" --* "fsm_Block 1..1" fsm_State : doActivity9
+fsm_Statement "fsm_Transition19 0..9999" --* "fsm_Statement 1..1" fsm_Transition : effect18
+fsm_Expression "fsm_VarDecl 1..1" --* "fsm_Expression49 1..1" fsm_VarDecl : expr48
+fsm_Assignation "fsm_Expression51 1..1" *-- "fsm_Assignation 1..1" fsm_Expression : expr50
+fsm_Constraint "fsm_Transition21 1..1" --* "fsm_Constraint 1..1" fsm_Transition : guard20
+fsm_Expression "fsm_Loop42 1..1" --* "fsm_Expression 1..1" fsm_Loop : guard41
+fsm_Conditional "fsm_Expression47 1..1" *-- "fsm_Conditional46 1..1" fsm_Expression : guard45
+fsm_AbstractState "Transition 1..1" -- "target 0..9999" fsm_Transition : incoming5
+fsm_AndTrigger "fsm_Trigger25 1..1" -- "fsm_AndTrigger 1..1" fsm_Trigger : left24
+fsm_OrTrigger "fsm_Trigger30 1..1" -- "fsm_OrTrigger 1..1" fsm_Trigger : left29
+fsm_Expression "fsm_RelationalExpression 1..1" --* "fsm_Expression53 1..1" fsm_RelationalExpression : left52
+fsm_ArithmeticExpression "fsm_Expression58 1..1" *-- "fsm_ArithmeticExpression 1..1" fsm_Expression : left57
+fsm_AbstractState "Transition7 1..1" -- "source 0..9999" fsm_Transition : outgoing6
+fsm_Region "stateMachine 0..9999" --* "Region11 1..1" fsm_State : ownedRegions10
+fsm_AbstractState "Region 1..1" -- "subvertex 1..1" fsm_Region : region8
+fsm_Region "fsm_StateMachine 0..9999" --* "fsm_Region 1..1" fsm_StateMachine : regions0
+fsm_AndTrigger "fsm_Trigger28 1..1" -- "fsm_AndTrigger27 1..1" fsm_Trigger : right26
+fsm_OrTrigger "fsm_Trigger33 1..1" -- "fsm_OrTrigger32 1..1" fsm_Trigger : right31
+fsm_Expression "fsm_RelationalExpression55 1..1" --* "fsm_Expression56 1..1" fsm_RelationalExpression : right54
+fsm_ArithmeticExpression "fsm_Expression61 1..1" *-- "fsm_ArithmeticExpression60 1..1" fsm_Expression : right59
+fsm_AbstractState "outgoing 1..1" -- "AbstractState17 1..1" fsm_Transition : source16
+fsm_Region "State 1..1" -- "ownedRegions 0..1" fsm_State : stateMachine4
+fsm_Block "fsm_Statement38 1..1" *-- "fsm_Block37 0..9999" fsm_Statement : statements36
+fsm_AbstractState "region 0..9999" --* "AbstractState 1..1" fsm_Region : subvertex1
+fsm_AbstractState "incoming 1..1" -- "AbstractState15 1..1" fsm_Transition : target14
+fsm_Region "fsm_Transition 1..1" *-- "fsm_Region3 0..9999" fsm_Transition : transitions2
+fsm_Transition "fsm_Trigger 1..1" *-- "fsm_Transition13 0..1" fsm_Trigger : trigger12
+fsm_NotTrigger "fsm_Trigger23 1..1" -- "fsm_NotTrigger 1..1" fsm_Trigger : trigger22
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: grudi
+' project: sampleModel
+' owner: User
+' description: New project
 enum Gender {
   female
   male
@@ -36,7 +40,7 @@ class grudi_TeamLine {
   + kind : str
   + versionNumber : str
 }
-grudi_Team "1..1" -- "0..9999" grudi_TeamLine : lines0
-grudi_PersonInfo "0..1" -- "1..1" grudi_TeamLine : person2
-grudi_Team "0..1" -- "1..1" grudi_TeamLine : team1
+grudi_Team "TeamLine 1..1" -- "team 0..9999" grudi_TeamLine : lines0
+grudi_PersonInfo "grudi_TeamLine 0..1" -- "grudi_PersonInfo 1..1" grudi_TeamLine : person2
+grudi_Team "lines 0..1" -- "Team 1..1" grudi_TeamLine : team1
 @enduml

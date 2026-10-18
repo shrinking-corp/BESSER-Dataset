@@ -1,4 +1,8 @@
 @startuml
+' model: library
+' project: sampleModel
+' owner: User
+' description: New project
 enum BookCategory {
   Biography
   Mystery
@@ -32,22 +36,22 @@ class library_Review {
 class library_Writer {
   + name : str
 }
-library_Book "1..1" -- "1..1" library_Writer : author10
-library_Book "1..1" -- "1..1" library_Review : book17
-library_Book "1..1" -- "1..1" library_Opinion : book21
-library_Book "0..9999" --* "1..1" library_Library : books1
-library_Book "0..9999" -- "1..1" library_Writer : books4
-library_Book "0..2" --* "1..1" library_Writer : brochures5
-library_Book "1..1" *-- "0..9999" library_Chapter : chapters12
-library_Community "0..9999" --* "1..1" library_Library : communities3
-library_Community "0..1" -- "1..1" library_CommunityRole : community27
-library_Community "1..1" -- "0..1" library_Library : library26
-library_Book "1..1" -- "0..2" library_Opinion : opinions14
-library_Opinion "0..2" --* "1..1" library_Writer : opinions8
-library_CommunityRole "1..1" -- "0..9999" library_Writer : participants29
-library_CommunityRole "0..9999" -- "1..1" library_Writer : participates9
-library_Book "1..1" *-- "0..9999" library_Review : reviews11
-library_Community "1..1" *-- "1..9999" library_CommunityRole : roles24
-library_Opinion "1..1" -- "1..1" library_Writer : writer19
-library_Library "1..1" *-- "0..9999" library_Writer : writers0
+library_Book "Writer 1..1" -- "books 1..1" library_Writer : author10
+library_Book "reviews 1..1" -- "Book18 1..1" library_Review : book17
+library_Book "opinions22 1..1" -- "Book23 1..1" library_Opinion : book21
+library_Book "library_Library2 0..9999" --* "library_Book 1..1" library_Library : books1
+library_Book "author 0..9999" -- "Book 1..1" library_Writer : books4
+library_Book "library_Writer6 0..2" --* "library_Book7 1..1" library_Writer : brochures5
+library_Book "library_Chapter 1..1" *-- "library_Book13 0..9999" library_Chapter : chapters12
+library_Community "library 0..9999" --* "Community 1..1" library_Library : communities3
+library_Community "roles 0..1" -- "Community28 1..1" library_CommunityRole : community27
+library_Community "Library 1..1" -- "communities 0..1" library_Library : library26
+library_Book "Opinion16 1..1" -- "book15 0..2" library_Opinion : opinions14
+library_Opinion "writer 0..2" --* "Opinion 1..1" library_Writer : opinions8
+library_CommunityRole "Writer30 1..1" -- "participates 0..9999" library_Writer : participants29
+library_CommunityRole "participants 0..9999" -- "CommunityRole 1..1" library_Writer : participates9
+library_Book "Review 1..1" *-- "book 0..9999" library_Review : reviews11
+library_Community "CommunityRole25 1..1" *-- "community 1..9999" library_CommunityRole : roles24
+library_Opinion "Writer20 1..1" -- "opinions 1..1" library_Writer : writer19
+library_Library "library_Writer 1..1" *-- "library_Library 0..9999" library_Writer : writers0
 @enduml

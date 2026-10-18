@@ -1,4 +1,8 @@
 @startuml
+' model: e2
+' project: sampleModel
+' owner: User
+' description: New project
 class e2_AssignmentSubmission {
   + Assessment : int
   + Comments : str
@@ -33,19 +37,19 @@ class e2_Person {
 class e2_University {
   + Name : str
 }
-e2_AssignmentSubmission "1..1" -- "1..1" e2_Person : AssesedBy26
-e2_Assingnment "0..9999" --* "1..1" e2_Course : Assingments7
-e2_Lecture "1..1" *-- "1..9999" e2_LectureContent : Content0
-e2_Course "0..9999" --* "1..1" e2_University : Courses31
-e2_Group "1..1" -- "2..3" e2_Person : GroupMember17
-e2_Assingnment "0..9999" --* "1..1" e2_LectureContent : LectureAssignment34
-e2_Course "1..1" -- "1..9999" e2_Person : Lecturerer4
-e2_Course "1..1" *-- "0..9999" e2_Lecture : Lectures9
-e2_Person "0..9999" --* "1..1" e2_University : Persons29
-e2_Course "1..1" *-- "0..9999" e2_Group : StudentGroups12
-e2_Course "1..1" -- "0..9999" e2_Person : Students2
-e2_AssignmentSubmission "0..9999" --* "1..1" e2_Person : Submitted1
-e2_AssignmentSubmission "0..9999" --* "1..1" e2_Group : Submitted20
-e2_Course "1..1" -- "0..9999" e2_Person : TeachingAssistant14
-e2_AssignmentSubmission "1..1" -- "1..1" e2_Assingnment : assignment23
+e2_AssignmentSubmission "e2_Person28 1..1" -- "e2_AssignmentSubmission27 1..1" e2_Person : AssesedBy26
+e2_Assingnment "e2_Course8 0..9999" --* "e2_Assingnment 1..1" e2_Course : Assingments7
+e2_Lecture "e2_LectureContent 1..1" *-- "e2_Lecture 1..9999" e2_LectureContent : Content0
+e2_Course "e2_University32 0..9999" --* "e2_Course33 1..1" e2_University : Courses31
+e2_Group "e2_Person19 1..1" -- "e2_Group18 2..3" e2_Person : GroupMember17
+e2_Assingnment "e2_LectureContent35 0..9999" --* "e2_Assingnment36 1..1" e2_LectureContent : LectureAssignment34
+e2_Course "e2_Person6 1..1" -- "e2_Course5 1..9999" e2_Person : Lecturerer4
+e2_Course "e2_Lecture11 1..1" *-- "e2_Course10 0..9999" e2_Lecture : Lectures9
+e2_Person "e2_University 0..9999" --* "e2_Person30 1..1" e2_University : Persons29
+e2_Course "e2_Group 1..1" *-- "e2_Course13 0..9999" e2_Group : StudentGroups12
+e2_Course "e2_Person3 1..1" -- "e2_Course 0..9999" e2_Person : Students2
+e2_AssignmentSubmission "e2_Person 0..9999" --* "e2_AssignmentSubmission 1..1" e2_Person : Submitted1
+e2_AssignmentSubmission "e2_Group21 0..9999" --* "e2_AssignmentSubmission22 1..1" e2_Group : Submitted20
+e2_Course "e2_Person16 1..1" -- "e2_Course15 0..9999" e2_Person : TeachingAssistant14
+e2_AssignmentSubmission "e2_Assingnment25 1..1" -- "e2_AssignmentSubmission24 1..1" e2_Assingnment : assignment23
 @enduml

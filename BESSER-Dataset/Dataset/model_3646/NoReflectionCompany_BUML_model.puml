@@ -1,4 +1,8 @@
 @startuml
+' model: noreflectioncompany
+' project: sampleModel
+' owner: User
+' description: New project
 enum CompanySizeKind {
   large
   medium
@@ -16,10 +20,10 @@ class noreflectioncompany_Employee {
   + noManagerImpliesDirectReports(noreflectioncompany_context : str, noreflectioncompany_diagnostics : str) : bool
   + reportsTo(noreflectioncompany_manager : str) : bool
 }
-noreflectioncompany_Employee "0..9999" -- "1..1" noreflectioncompany_Employee : allReports8
-noreflectioncompany_Company "1..1" -- "1..1" noreflectioncompany_Employee : company3
-noreflectioncompany_Employee "0..9999" -- "1..1" noreflectioncompany_Employee : directReports5
-noreflectioncompany_Company "1..1" *-- "0..9999" noreflectioncompany_Employee : employees0
-noreflectioncompany_Employee "1..1" -- "0..1" noreflectioncompany_Employee : manager2
-noreflectioncompany_Employee "0..9999" -- "1..1" noreflectioncompany_Employee : reportingChain11
+noreflectioncompany_Employee "noreflectioncompany_Employee7 0..9999" -- "noreflectioncompany_Employee9 1..1" noreflectioncompany_Employee : allReports8
+noreflectioncompany_Company "employees 1..1" -- "Company 1..1" noreflectioncompany_Employee : company3
+noreflectioncompany_Employee "noreflectioncompany_Employee4 0..9999" -- "noreflectioncompany_Employee6 1..1" noreflectioncompany_Employee : directReports5
+noreflectioncompany_Company "Employee 1..1" *-- "company 0..9999" noreflectioncompany_Employee : employees0
+noreflectioncompany_Employee "noreflectioncompany_Employee 1..1" -- "noreflectioncompany_Employee1 0..1" noreflectioncompany_Employee : manager2
+noreflectioncompany_Employee "noreflectioncompany_Employee10 0..9999" -- "noreflectioncompany_Employee12 1..1" noreflectioncompany_Employee : reportingChain11
 @enduml

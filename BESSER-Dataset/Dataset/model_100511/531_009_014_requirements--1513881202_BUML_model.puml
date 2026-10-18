@@ -1,4 +1,8 @@
 @startuml
+' model: requirements
+' project: sampleModel
+' owner: User
+' description: New project
 class AnnotableElement {
 }
 enum AnnotationStatus {
@@ -96,20 +100,20 @@ ModelElement <|-- requirements_BasicElement
 ModelElement <|-- requirements_PrivilegeGroup
 Organization <|-- requirements_Process
 Organization <|-- requirements_RequirementsDefinition
-requirements_AnnotableElement "1..1" *-- "0..9999" requirements_Annotation : annotation30
-requirements_Attribute "0..9999" --* "1..1" requirements_Entity : attributes2
-requirements_ModelElement "0..9999" --* "1..1" requirements_Organization : childElements9
-requirements_BasicElement "1..1" -- "1..1" requirements_Privilege : element18
-requirements_Entity "1..1" -- "1..1" requirements_PrivilegeGroup : entryPoint19
-requirements_Agent "1..1" -- "0..9999" requirements_Goal : isResponsible10
-requirements_Goal "0..9999" -- "1..1" requirements_GoalStep : nextGoals25
-requirements_Entity "1..1" -- "0..1" requirements_Entity : parent1
-requirements_Goal "1..1" *-- "0..9999" requirements_PrivilegeGroup : privilegeGroup14
-requirements_Privilege "0..9999" --* "1..1" requirements_PrivilegeGroup : privileges22
-requirements_GoalStep "1..1" -- "0..1" requirements_Process : process28
-requirements_Agent "0..9999" -- "1..1" requirements_Goal : responsible13
-requirements_Entity "1..1" -- "1..1" requirements_RelationShip : source4
-requirements_Goal "1..1" *-- "0..9999" requirements_GoalStep : step16
-requirements_Goal "1..1" *-- "0..9999" requirements_Goal : subgoals12
-requirements_Entity "1..1" -- "1..1" requirements_RelationShip : target6
+requirements_AnnotableElement "requirements_Annotation 1..1" *-- "requirements_AnnotableElement 0..9999" requirements_Annotation : annotation30
+requirements_Attribute "requirements_Entity3 0..9999" --* "requirements_Attribute 1..1" requirements_Entity : attributes2
+requirements_ModelElement "requirements_Organization 0..9999" --* "requirements_ModelElement 1..1" requirements_Organization : childElements9
+requirements_BasicElement "requirements_Privilege 1..1" -- "requirements_BasicElement 1..1" requirements_Privilege : element18
+requirements_Entity "requirements_PrivilegeGroup20 1..1" -- "requirements_Entity21 1..1" requirements_PrivilegeGroup : entryPoint19
+requirements_Agent "Goal 1..1" -- "responsible 0..9999" requirements_Goal : isResponsible10
+requirements_Goal "requirements_GoalStep26 0..9999" -- "requirements_Goal27 1..1" requirements_GoalStep : nextGoals25
+requirements_Entity "requirements_Entity 1..1" -- "requirements_Entity0 0..1" requirements_Entity : parent1
+requirements_Goal "requirements_PrivilegeGroup 1..1" *-- "requirements_Goal15 0..9999" requirements_PrivilegeGroup : privilegeGroup14
+requirements_Privilege "requirements_PrivilegeGroup23 0..9999" --* "requirements_Privilege24 1..1" requirements_PrivilegeGroup : privileges22
+requirements_GoalStep "requirements_Process 1..1" -- "requirements_GoalStep29 0..1" requirements_Process : process28
+requirements_Agent "isResponsible 0..9999" -- "Agent 1..1" requirements_Goal : responsible13
+requirements_Entity "requirements_RelationShip 1..1" -- "requirements_Entity5 1..1" requirements_RelationShip : source4
+requirements_Goal "requirements_GoalStep 1..1" *-- "requirements_Goal17 0..9999" requirements_GoalStep : step16
+requirements_Goal "requirements_Goal 1..1" *-- "requirements_Goal11 0..9999" requirements_Goal : subgoals12
+requirements_Entity "requirements_RelationShip7 1..1" -- "requirements_Entity8 1..1" requirements_RelationShip : target6
 @enduml

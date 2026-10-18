@@ -1,4 +1,8 @@
 @startuml
+' model: fM
+' project: sampleModel
+' owner: User
+' description: New project
 class Child {
 }
 class Formula {
@@ -35,12 +39,12 @@ Child <|-- fM_Leaf
 Child <|-- fM_Node
 Formula <|-- fM_RuleElement
 Formula <|-- fM_Var
-fM_Child "0..9999" --* "1..1" fM_Node : children5
-fM_Constraints "0..1" --* "1..1" fM_FeatureModel : constraints1
-fM_FeatureDiagram "0..1" --* "1..1" fM_FeatureModel : diagram0
-fM_Formula "0..9999" --* "1..1" fM_Rule : elements9
-fM_RuleElement "1..1" *-- "0..1" fM_Var : left_side11
-fM_RuleElement "1..1" *-- "0..1" fM_Var : right_side12
-fM_Child "0..1" --* "1..1" fM_FeatureDiagram : root3
-fM_Constraints "1..1" *-- "0..9999" fM_Rule : rules7
+fM_Child "fM_Node 0..9999" --* "fM_Child6 1..1" fM_Node : children5
+fM_Constraints "fM_FeatureModel2 0..1" --* "fM_Constraints 1..1" fM_FeatureModel : constraints1
+fM_FeatureDiagram "fM_FeatureModel 0..1" --* "fM_FeatureDiagram 1..1" fM_FeatureModel : diagram0
+fM_Formula "fM_Rule10 0..9999" --* "fM_Formula 1..1" fM_Rule : elements9
+fM_RuleElement "fM_Var 1..1" *-- "fM_RuleElement 0..1" fM_Var : left_side11
+fM_RuleElement "fM_Var14 1..1" *-- "fM_RuleElement13 0..1" fM_Var : right_side12
+fM_Child "fM_FeatureDiagram4 0..1" --* "fM_Child 1..1" fM_FeatureDiagram : root3
+fM_Constraints "fM_Rule 1..1" *-- "fM_Constraints8 0..9999" fM_Rule : rules7
 @enduml

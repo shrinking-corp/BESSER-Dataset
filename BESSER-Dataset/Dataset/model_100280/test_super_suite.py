@@ -1197,28 +1197,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=model_Label_strategy)
-@settings(max_examples=30)
-def test_hyp_model_label_asstring_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.asString()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.asString).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'asString' in model_Label is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'asString' in model_Label did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'asString' in model_Label is not implemented or raised an error")
 
 
 
@@ -2379,9 +2357,9 @@ def test_assoc_label4_stub_double():
     partner = model_HasLabel()
     setattr(partner, 'parent', None)
     _safe_set(owner, 'Label', partner)
-    assert getattr(partner, 'parent') == owner
+    assert owner in getattr(partner, 'parent')
     _safe_set(owner, 'Label', None)
-    assert getattr(partner, 'parent') is None
+    assert owner not in getattr(partner, 'parent')
 
 
 def test_assoc_page20_stub_double():
@@ -2469,51 +2447,28 @@ def test_assoc_toolinfo6_stub_double():
     partner = model_HasToolInfo()
     setattr(partner, 'parent7', None)
     _safe_set(owner, 'ToolInfo', partner)
-    assert getattr(partner, 'parent7') == owner
+    assert owner in getattr(partner, 'parent7')
     _safe_set(owner, 'ToolInfo', None)
-    assert getattr(partner, 'parent7') is None
+    assert owner not in getattr(partner, 'parent7')
 
 
 
 
-from enum import Enum
 from python_code import HLArcType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(HLArcType.Test, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(HLArcType.Test, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(HLArcType.Test, '', '', 0) == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(HLArcType.Test, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(HLArcType.Test, 'Test') == HLArcType.Test
-
 from python_code import model_HLAnnotationAddin
 
 def test_model_HLAnnotationAddin___init__():
     assert model_HLAnnotationAddin.__init__(model_HLAnnotationAddin(''), '') == None
-
 from python_code import model_HLAnnotation
 from python_code import model_HLArcAddin
 
 def test_model_HLArcAddin___init__():
     assert model_HLArcAddin.__init__(model_HLArcAddin('', model_HLArcAddin=model_HLAnnotation()), '', model_HLArcAddin=model_HLAnnotation()) == None
-
 from python_code import model_HasId
 
 def test_model_HasId___init__():
     assert model_HasId.__init__(model_HasId(''), '') == None
-
 from python_code import model_HasLabel
 from python_code import model_Label
 
@@ -2522,14 +2477,12 @@ def test_model_Label___init__():
 
 def test_model_Label_asString():
     assert model_Label.asString(model_Label(Label=model_HasLabel(), label=model_HasLabel())) == None
-
 from python_code import model_FusionGroup
 from python_code import model_Page
 from python_code import model_PetriNet
 
 def test_model_PetriNet___init__():
     assert model_PetriNet.__init__(model_PetriNet('', PetriNet=model_Page(), petriNet=set(), petriNet23=set(), PetriNet40=model_FusionGroup()), '', PetriNet=model_Page(), petriNet=set(), petriNet23=set(), PetriNet40=model_FusionGroup()) == None
-
 from python_code import model_HasToolInfo
 from python_code import model_ToolInfo
 

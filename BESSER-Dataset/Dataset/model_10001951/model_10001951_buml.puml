@@ -1,4 +1,8 @@
 @startuml
+' model: _fMJ0YG3dEeqhRdvvYtDJdw
+' project: sampleModel
+' owner: User
+' description: New project
 class Brindar_Consultorias_external {
 }
 class Clasificar_producto_external {
@@ -64,20 +68,20 @@ class dependencia {
   + nombre : str
   + responsable : str
 }
-Brindar_Consultorias_external "0..1" -- "0..1" Cliente_Actor : Cliente_Brindar_Consultorias
-Dependencias_Actor "0..1" -- "0..1" Entregar_productos_external : Dependencias_Entregar_productos
-Dependencias_Actor "0..1" -- "0..1" Recibir_ordenes_de_suministros_external : Dependencias_Recibir_ordenes_de_suministros
-Proveedores_Actor "0..1" -- "0..1" Recibir_productos_o_pedidos_external : Proveedores_Recibir_productos_o_pedidos
-Proveedores_Actor "0..1" -- "0..1" Registrar_proveedores_external : Proveedores_Registrar_proveedores
-Contabilidad_y_tesoreria_Actor "0..1" -- "0..1" Recibir_productos_o_pedidos_external : Recibir_productos_o_pedidos_Actor
-Clasificar_producto_external "0..1" -- "0..1" Responsable_inventario_Actor : Responsable_inventario_Clasificar_roducto
-Responsable_inventario_Actor "0..1" -- "0..1" Revisi_n_de_factura_external : Responsable_inventario_Revisi_n_de_factura
-Elementos "1..9999" -- "0..9999" OrdenesPedidos : conforma
-Factura "0..9999" -- "1..1" Proveedor : elabora
-OrdenesPedidos "0..9999" -- "1..1" Proveedor : es_enviado
-Elementos "1..9999" -- "0..9999" Factura : factura
-OrdenesPedidos "0..1" -- "1..9999" SolicitudSuministros : genera
-Pedidos "0..9999" -- "1..1" Proveedor : provee
-SolicitudSuministros "1..9999" -- "1..1" dependencia : realiza
-Elementos "1..9999" -- "0..9999" SolicitudSuministros : relaciona
+Brindar_Consultorias_external "brindar_Consultorias1 0..1" -- "cliente0 0..1" Cliente_Actor : Cliente_Brindar_Consultorias
+Dependencias_Actor "dependencias10 0..1" -- "entregar_productos11 0..1" Entregar_productos_external : Dependencias_Entregar_productos
+Dependencias_Actor "dependencias8 0..1" -- "recibir_ordenes_de_suministros9 0..1" Recibir_ordenes_de_suministros_external : Dependencias_Recibir_ordenes_de_suministros
+Proveedores_Actor "proveedores6 0..1" -- "recibir_productos_o_pedidos7 0..1" Recibir_productos_o_pedidos_external : Proveedores_Recibir_productos_o_pedidos
+Proveedores_Actor "proveedores4 0..1" -- "registrar_proveedores5 0..1" Registrar_proveedores_external : Proveedores_Registrar_proveedores
+Contabilidad_y_tesoreria_Actor "actor3 0..1" -- "recibir_productos_o_pedidos2 0..1" Recibir_productos_o_pedidos_external : Recibir_productos_o_pedidos_Actor
+Clasificar_producto_external "clasificar_roducto13 0..1" -- "responsable_inventario12 0..1" Responsable_inventario_Actor : Responsable_inventario_Clasificar_roducto
+Responsable_inventario_Actor "responsable_inventario14 0..1" -- "revisi_n_de_factura15 0..1" Revisi_n_de_factura_external : Responsable_inventario_Revisi_n_de_factura
+Elementos "elementos20 1..9999" -- "ordenesPedidos21 0..9999" OrdenesPedidos : conforma
+Factura "factura29 0..9999" -- "proveedor28 1..1" Proveedor : elabora
+OrdenesPedidos "ordenesPedidos16 0..9999" -- "proveedor17 1..1" Proveedor : es_enviado
+Elementos "elementos30 1..9999" -- "factura31 0..9999" Factura : factura
+OrdenesPedidos "ordenesPedidos24 0..1" -- "solicitudSuministros25 1..9999" SolicitudSuministros : genera
+Pedidos "pedidos19 0..9999" -- "proveedor18 1..1" Proveedor : provee
+SolicitudSuministros "solicitudSuministros26 1..9999" -- "dependencia27 1..1" dependencia : realiza
+Elementos "elementos22 1..9999" -- "solicitudSuministros23 0..9999" SolicitudSuministros : relaciona
 @enduml

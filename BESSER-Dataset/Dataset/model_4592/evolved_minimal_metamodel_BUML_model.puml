@@ -1,4 +1,8 @@
 @startuml
+' model: minuml2
+' project: sampleModel
+' owner: User
+' description: New project
 class ActivityEdge {
 }
 class ActivityNode {
@@ -51,16 +55,16 @@ ModelElement <|-- minuml2_Activity
 ModelElement <|-- minuml2_ActivityEdge
 ModelElement <|-- minuml2_ActivityNode
 ModelElement <|-- minuml2_ActivityPartition
-minuml2_Activity "1..1" *-- "0..9999" minuml2_ActivityEdge : edge2
-minuml2_ActivityEdge "0..9999" -- "1..1" minuml2_ActivityPartition : edges10
-minuml2_Activity "1..1" *-- "0..9999" minuml2_ActivityPartition : group4
-minuml2_ActivityEdge "1..1" *-- "1..1" minuml2_OpaqueExpression : guard19
-minuml2_ActivityEdge "0..9999" -- "1..1" minuml2_ActivityNode : incoming14
-minuml2_Activity "1..1" *-- "0..9999" minuml2_ActivityNode : node1
-minuml2_ActivityNode "0..9999" -- "1..1" minuml2_ActivityPartition : nodes7
-minuml2_ActivityEdge "0..9999" -- "1..1" minuml2_ActivityNode : outgoing13
-minuml2_ActivityPartition "0..1" -- "1..1" minuml2_ModelElement : partition0
-minuml2_ActivityEdge "1..1" -- "1..1" minuml2_ActivityNode : source16
-minuml2_ActivityEdge "1..1" -- "1..1" minuml2_ActivityNode : target17
-minuml2_ModelElement "1..1" --* "1..1" minuml2_ObjectFlow : type21
+minuml2_Activity "minuml2_ActivityEdge 1..1" *-- "minuml2_Activity3 0..9999" minuml2_ActivityEdge : edge2
+minuml2_ActivityEdge "minuml2_ActivityPartition11 0..9999" -- "minuml2_ActivityEdge12 1..1" minuml2_ActivityPartition : edges10
+minuml2_Activity "minuml2_ActivityPartition6 1..1" *-- "minuml2_Activity5 0..9999" minuml2_ActivityPartition : group4
+minuml2_ActivityEdge "minuml2_OpaqueExpression 1..1" *-- "minuml2_ActivityEdge20 1..1" minuml2_OpaqueExpression : guard19
+minuml2_ActivityEdge "target 0..9999" -- "ActivityEdge15 1..1" minuml2_ActivityNode : incoming14
+minuml2_Activity "minuml2_ActivityNode 1..1" *-- "minuml2_Activity 0..9999" minuml2_ActivityNode : node1
+minuml2_ActivityNode "minuml2_ActivityPartition8 0..9999" -- "minuml2_ActivityNode9 1..1" minuml2_ActivityPartition : nodes7
+minuml2_ActivityEdge "source 0..9999" -- "ActivityEdge 1..1" minuml2_ActivityNode : outgoing13
+minuml2_ActivityPartition "minuml2_ModelElement 0..1" -- "minuml2_ActivityPartition 1..1" minuml2_ModelElement : partition0
+minuml2_ActivityEdge "ActivityNode 1..1" -- "outgoing 1..1" minuml2_ActivityNode : source16
+minuml2_ActivityEdge "ActivityNode18 1..1" -- "incoming 1..1" minuml2_ActivityNode : target17
+minuml2_ModelElement "minuml2_ObjectFlow 1..1" --* "minuml2_ModelElement22 1..1" minuml2_ObjectFlow : type21
 @enduml

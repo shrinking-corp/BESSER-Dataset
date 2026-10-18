@@ -1,4 +1,8 @@
 @startuml
+' model: basic
+' project: sampleModel
+' owner: User
+' description: New project
 class Alias {
 }
 enum LibrarySourceType {
@@ -74,9 +78,9 @@ Alias <|-- basic_Plugin
 Alias <|-- basic_Widget
 TypeItem <|-- basic_Alias
 TypeItem <|-- basic_Event
-basic_Alias "0..9999" --* "1..1" basic_File : aliases1
-basic_ExtJSProject "1..1" *-- "0..9999" basic_File : files0
-basic_File "0..9999" --* "1..1" basic_LibrarySource : files5
-basic_Event "1..1" *-- "0..9999" basic_Parameter : parameters3
-basic_Library "1..1" *-- "0..9999" basic_LibrarySource : sources4
+basic_Alias "basic_File2 0..9999" --* "basic_Alias 1..1" basic_File : aliases1
+basic_ExtJSProject "basic_File 1..1" *-- "basic_ExtJSProject 0..9999" basic_File : files0
+basic_File "basic_LibrarySource6 0..9999" --* "basic_File7 1..1" basic_LibrarySource : files5
+basic_Event "basic_Parameter 1..1" *-- "basic_Event 0..9999" basic_Parameter : parameters3
+basic_Library "basic_LibrarySource 1..1" *-- "basic_Library 0..9999" basic_LibrarySource : sources4
 @enduml

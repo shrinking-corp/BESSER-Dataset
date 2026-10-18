@@ -1,4 +1,8 @@
 @startuml
+' model: PrimitiveTypes
+' project: sampleModel
+' owner: User
+' description: New project
 class Bug {
 }
 enum BugStatusType {
@@ -49,11 +53,11 @@ class SoftwareQualityControl_DateType {
   + year : str
 }
 ControlType <|-- SoftwareQualityControl_BugTracking
-BugTracking "1..1" -- "1..1" SoftwareQualityControl_Bug : b_bugTracking7
-Bug "0..9999" --* "1..1" SoftwareQualityControl_BugTracking : bugs6
-ControlsSequence "1..1" -- "1..1" SoftwareQualityControl_Control : c_controlsSequence1
-Control "0..9999" --* "1..1" SoftwareQualityControl_ControlsSequence : controls0
-Control "1..1" -- "1..1" SoftwareQualityControl_ControlType : ct_control4
-DateType "1..1" --* "1..1" SoftwareQualityControl_Control : date2
-ControlType "1..1" --* "1..1" SoftwareQualityControl_Control : type3
+BugTracking "bugs 1..1" -- "BugTracking 1..1" SoftwareQualityControl_Bug : b_bugTracking7
+Bug "b_bugTracking 0..9999" --* "Bug 1..1" SoftwareQualityControl_BugTracking : bugs6
+ControlsSequence "controls 1..1" -- "ControlsSequence 1..1" SoftwareQualityControl_Control : c_controlsSequence1
+Control "c_controlsSequence 0..9999" --* "Control 1..1" SoftwareQualityControl_ControlsSequence : controls0
+Control "type 1..1" -- "Control5 1..1" SoftwareQualityControl_ControlType : ct_control4
+DateType "SoftwareQualityControl_Control 1..1" --* "DateType 1..1" SoftwareQualityControl_Control : date2
+ControlType "ct_control 1..1" --* "ControlType 1..1" SoftwareQualityControl_Control : type3
 @enduml

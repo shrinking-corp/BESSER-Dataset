@@ -1,4 +1,8 @@
 @startuml
+' model: web_service
+' project: sampleModel
+' owner: User
+' description: New project
 class DataRecogniser {
 }
 class FunctionProvider {
@@ -28,8 +32,8 @@ class web_service_Service {
 DataRecogniser <|-- web_service_GenericDataRecogniser
 FunctionProvider <|-- web_service_GenericFunctionProvider
 MessageFormatter <|-- web_service_GenericMessageFormatter
-web_service_Endpoint "1..1" --* "1..1" web_service_Service : endpoint0
-web_service_Endpoint "1..1" *-- "1..9999" web_service_MessageFormatter : formatters1
-web_service_Endpoint "1..1" *-- "1..9999" web_service_FunctionProvider : functions3
-web_service_DataRecogniser "0..9999" --* "1..1" web_service_Endpoint : recognisers5
+web_service_Endpoint "web_service_Service 1..1" --* "web_service_Endpoint 1..1" web_service_Service : endpoint0
+web_service_Endpoint "web_service_MessageFormatter 1..1" *-- "web_service_Endpoint2 1..9999" web_service_MessageFormatter : formatters1
+web_service_Endpoint "web_service_FunctionProvider 1..1" *-- "web_service_Endpoint4 1..9999" web_service_FunctionProvider : functions3
+web_service_DataRecogniser "web_service_Endpoint6 0..9999" --* "web_service_DataRecogniser 1..1" web_service_Endpoint : recognisers5
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: events
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractMultiplicity {
 }
 class ComplexEventOperator {
@@ -60,13 +64,13 @@ ComplexEventOperator <|-- events_NEG
 ComplexEventOperator <|-- events_OR
 EventPattern <|-- events_AtomicEventPattern
 EventPattern <|-- events_ComplexEventPattern
-events_Automaton "0..1" -- "1..1" events_EventPattern : automaton2
-events_ComplexEventPattern "1..1" *-- "0..9999" events_EventPatternReference : containedEventPatterns6
-events_EventModel "0..1" -- "1..1" events_EventPattern : eventModel1
-events_EventPattern "1..1" --* "1..1" events_EventPatternReference : eventPattern8
-events_EventModel "1..1" *-- "0..9999" events_EventPattern : eventPatterns0
-events_AbstractMultiplicity "1..1" --* "1..1" events_EventPatternReference : multiplicity11
-events_ComplexEventOperator "1..1" --* "1..1" events_ComplexEventPattern : operator3
-events_Event "1..1" -- "0..1" events_EventSource : source13
-events_ComplexEventPattern "1..1" *-- "0..1" events_Timewindow : timewindow4
+events_Automaton "events_EventPattern 0..1" -- "events_Automaton 1..1" events_EventPattern : automaton2
+events_ComplexEventPattern "events_EventPatternReference 1..1" *-- "events_ComplexEventPattern7 0..9999" events_EventPatternReference : containedEventPatterns6
+events_EventModel "eventPatterns 0..1" -- "EventModel 1..1" events_EventPattern : eventModel1
+events_EventPattern "events_EventPatternReference9 1..1" --* "events_EventPattern10 1..1" events_EventPatternReference : eventPattern8
+events_EventModel "EventPattern 1..1" *-- "eventModel 0..9999" events_EventPattern : eventPatterns0
+events_AbstractMultiplicity "events_EventPatternReference12 1..1" --* "events_AbstractMultiplicity 1..1" events_EventPatternReference : multiplicity11
+events_ComplexEventOperator "events_ComplexEventPattern 1..1" --* "events_ComplexEventOperator 1..1" events_ComplexEventPattern : operator3
+events_Event "events_EventSource 1..1" -- "events_Event 0..1" events_EventSource : source13
+events_ComplexEventPattern "events_Timewindow 1..1" *-- "events_ComplexEventPattern5 0..1" events_Timewindow : timewindow4
 @enduml

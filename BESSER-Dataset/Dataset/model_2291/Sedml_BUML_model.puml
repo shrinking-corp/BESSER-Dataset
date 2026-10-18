@@ -1,4 +1,8 @@
 @startuml
+' model: sedml
+' project: sampleModel
+' owner: User
+' description: New project
 class sedml_algorithm {
   + kisaoID : str
 }
@@ -60,23 +64,23 @@ class sedml_variable {
   + symbol : str
   + target : str
 }
-sedml_algorithm "1..1" --* "1..1" sedml_uniformTimeCourse : algorithm19
-sedml_curve "0..9999" --* "1..1" sedml_listOfCurves : curve29
-sedml_dataGenerator "0..9999" --* "1..1" sedml_listOfDataGenerators : dataGenerator15
-sedml_listOfCurves "1..1" -- "1..1" sedml_plot2D : listOfCurves27
-sedml_listOfDataGenerators "1..1" --* "1..1" sedml_sedML : listOfDataGenerators5
-sedml_listOfModels "1..1" --* "1..1" sedml_sedML : listOfModels1
-sedml_listOfOutputs "1..1" --* "1..1" sedml_sedML : listOfOutputs7
-sedml_listOfSimulations "1..1" --* "1..1" sedml_sedML : listOfSimulations0
-sedml_listOfTasks "1..1" --* "1..1" sedml_sedML : listOfTasks3
-sedml_dataGenerator "1..1" *-- "0..1" sedml_listOfVariables : listOfVariables31
-sedml_dataGenerator "1..1" *-- "1..1" sedml_math : math33
-sedml_listOfModels "1..1" *-- "0..9999" sedml_model : model11
-sedml_model "1..1" -- "1..1" sedml_task : modelReference21
-sedml_listOfOutputs "1..1" *-- "0..9999" sedml_plot2D : plot2D17
-sedml_task "1..1" -- "1..1" sedml_uniformTimeCourse : simulationReference24
-sedml_listOfTasks "1..1" *-- "0..9999" sedml_task : task13
-sedml_task "1..1" -- "1..1" sedml_variable : taskReference37
-sedml_listOfSimulations "1..1" *-- "0..9999" sedml_uniformTimeCourse : uniformTimeCourse9
-sedml_listOfVariables "1..1" *-- "0..9999" sedml_variable : variable35
+sedml_algorithm "sedml_uniformTimeCourse20 1..1" --* "sedml_algorithm 1..1" sedml_uniformTimeCourse : algorithm19
+sedml_curve "sedml_listOfCurves30 0..9999" --* "sedml_curve 1..1" sedml_listOfCurves : curve29
+sedml_dataGenerator "sedml_listOfDataGenerators16 0..9999" --* "sedml_dataGenerator 1..1" sedml_listOfDataGenerators : dataGenerator15
+sedml_listOfCurves "sedml_plot2D28 1..1" -- "sedml_listOfCurves 1..1" sedml_plot2D : listOfCurves27
+sedml_listOfDataGenerators "sedml_sedML6 1..1" --* "sedml_listOfDataGenerators 1..1" sedml_sedML : listOfDataGenerators5
+sedml_listOfModels "sedml_sedML2 1..1" --* "sedml_listOfModels 1..1" sedml_sedML : listOfModels1
+sedml_listOfOutputs "sedml_sedML8 1..1" --* "sedml_listOfOutputs 1..1" sedml_sedML : listOfOutputs7
+sedml_listOfSimulations "sedml_sedML 1..1" --* "sedml_listOfSimulations 1..1" sedml_sedML : listOfSimulations0
+sedml_listOfTasks "sedml_sedML4 1..1" --* "sedml_listOfTasks 1..1" sedml_sedML : listOfTasks3
+sedml_dataGenerator "sedml_listOfVariables 1..1" *-- "sedml_dataGenerator32 0..1" sedml_listOfVariables : listOfVariables31
+sedml_dataGenerator "sedml_math 1..1" *-- "sedml_dataGenerator34 1..1" sedml_math : math33
+sedml_listOfModels "sedml_model 1..1" *-- "sedml_listOfModels12 0..9999" sedml_model : model11
+sedml_model "sedml_task22 1..1" -- "sedml_model23 1..1" sedml_task : modelReference21
+sedml_listOfOutputs "sedml_plot2D 1..1" *-- "sedml_listOfOutputs18 0..9999" sedml_plot2D : plot2D17
+sedml_task "sedml_uniformTimeCourse26 1..1" -- "sedml_task25 1..1" sedml_uniformTimeCourse : simulationReference24
+sedml_listOfTasks "sedml_task 1..1" *-- "sedml_listOfTasks14 0..9999" sedml_task : task13
+sedml_task "sedml_variable38 1..1" -- "sedml_task39 1..1" sedml_variable : taskReference37
+sedml_listOfSimulations "sedml_uniformTimeCourse 1..1" *-- "sedml_listOfSimulations10 0..9999" sedml_uniformTimeCourse : uniformTimeCourse9
+sedml_listOfVariables "sedml_variable 1..1" *-- "sedml_listOfVariables36 0..9999" sedml_variable : variable35
 @enduml

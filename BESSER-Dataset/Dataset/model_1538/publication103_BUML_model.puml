@@ -1,4 +1,8 @@
 @startuml
+' model: publication103
+' project: sampleModel
+' owner: User
+' description: New project
 class Counted {
 }
 class Labelled {
@@ -51,21 +55,21 @@ Named <|-- publication103_Paragraph
 Named <|-- publication103_Position
 Named <|-- publication103_PublicationStructure
 Named <|-- publication103_ReviewNote
-publication103_Paper "1..1" -- "0..9999" publication103_Researcher : authors11
-publication103_Paper "0..1" -- "1..1" publication103_Paper : citedBy13
-publication103_Collaboration "1..1" -- "0..1" publication103_Paper : col_paper34
-publication103_Collaboration "0..9999" --* "1..1" publication103_Researcher : collaborations8
-publication103_Paper "0..9999" --* "1..1" publication103_PublicationStructure : papers25
-publication103_Paragraph "0..1" -- "1..1" publication103_Write : paragraph17
-publication103_Paper "1..1" *-- "0..9999" publication103_Paragraph : paragraphs10
-publication103_Position "0..1" -- "1..1" publication103_Position : parent32
-publication103_Position "0..9999" --* "1..1" publication103_PublicationStructure : positions28
-publication103_Paper "0..9999" -- "1..1" publication103_Researcher : res_papers3
-publication103_Position "0..1" -- "1..1" publication103_Researcher : res_position6
-publication103_PublicationStructure "1..1" *-- "0..9999" publication103_Researcher : researchers23
-publication103_Review "1..1" -- "0..1" publication103_ReviewNote : reviewNote20
-publication103_Researcher "1..1" *-- "0..9999" publication103_Review : reviews1
-publication103_Paragraph "1..1" *-- "0..9999" publication103_ReviewNote : reviews15
-publication103_Researcher "1..1" *-- "0..9999" publication103_Skill : skills4
-publication103_Researcher "1..1" *-- "0..9999" publication103_Write : writes0
+publication103_Paper "Researcher 1..1" -- "res_papers 0..9999" publication103_Researcher : authors11
+publication103_Paper "publication103_Paper12 0..1" -- "publication103_Paper14 1..1" publication103_Paper : citedBy13
+publication103_Collaboration "publication103_Paper36 1..1" -- "publication103_Collaboration35 0..1" publication103_Paper : col_paper34
+publication103_Collaboration "publication103_Researcher9 0..9999" --* "publication103_Collaboration 1..1" publication103_Researcher : collaborations8
+publication103_Paper "publication103_PublicationStructure26 0..9999" --* "publication103_Paper27 1..1" publication103_PublicationStructure : papers25
+publication103_Paragraph "publication103_Write18 0..1" -- "publication103_Paragraph19 1..1" publication103_Write : paragraph17
+publication103_Paper "publication103_Paragraph 1..1" *-- "publication103_Paper 0..9999" publication103_Paragraph : paragraphs10
+publication103_Position "publication103_Position31 0..1" -- "publication103_Position33 1..1" publication103_Position : parent32
+publication103_Position "publication103_PublicationStructure29 0..9999" --* "publication103_Position30 1..1" publication103_PublicationStructure : positions28
+publication103_Paper "authors 0..9999" -- "Paper 1..1" publication103_Researcher : res_papers3
+publication103_Position "publication103_Researcher7 0..1" -- "publication103_Position 1..1" publication103_Researcher : res_position6
+publication103_PublicationStructure "publication103_Researcher24 1..1" *-- "publication103_PublicationStructure 0..9999" publication103_Researcher : researchers23
+publication103_Review "publication103_ReviewNote22 1..1" -- "publication103_Review21 0..1" publication103_ReviewNote : reviewNote20
+publication103_Researcher "publication103_Review 1..1" *-- "publication103_Researcher2 0..9999" publication103_Review : reviews1
+publication103_Paragraph "publication103_ReviewNote 1..1" *-- "publication103_Paragraph16 0..9999" publication103_ReviewNote : reviews15
+publication103_Researcher "publication103_Skill 1..1" *-- "publication103_Researcher5 0..9999" publication103_Skill : skills4
+publication103_Researcher "publication103_Write 1..1" *-- "publication103_Researcher 0..9999" publication103_Write : writes0
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: sm3
+' project: sampleModel
+' owner: User
+' description: New project
 class sm3_State {
   + name : str
 }
@@ -7,12 +11,12 @@ class sm3_StateMachine {
 class sm3_Transition {
   + event : str
 }
-sm3_StateMachine "1..1" *-- "0..9999" sm3_Transition : edges2
-sm3_State "1..1" -- "0..9999" sm3_Transition : incoming6
-sm3_State "1..1" -- "1..1" sm3_StateMachine : initialState0
-sm3_State "1..1" -- "0..9999" sm3_Transition : outgoing5
-sm3_State "1..1" -- "0..1" sm3_StateMachine : sm4
-sm3_State "1..1" -- "1..1" sm3_Transition : src8
-sm3_State "0..9999" -- "1..1" sm3_StateMachine : states1
-sm3_State "1..1" -- "1..1" sm3_Transition : tgt10
+sm3_StateMachine "sm3_Transition 1..1" *-- "sm3_StateMachine3 0..9999" sm3_Transition : edges2
+sm3_State "Transition7 1..1" -- "tgt 0..9999" sm3_Transition : incoming6
+sm3_State "sm3_StateMachine 1..1" -- "sm3_State 1..1" sm3_StateMachine : initialState0
+sm3_State "Transition 1..1" -- "src 0..9999" sm3_Transition : outgoing5
+sm3_State "StateMachine 1..1" -- "states 0..1" sm3_StateMachine : sm4
+sm3_State "outgoing 1..1" -- "State9 1..1" sm3_Transition : src8
+sm3_State "sm 0..9999" -- "State 1..1" sm3_StateMachine : states1
+sm3_State "incoming 1..1" -- "State11 1..1" sm3_Transition : tgt10
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: statemachine
+' project: sampleModel
+' owner: User
+' description: New project
 enum ActionKind {
   ENTRY
   EXIT
@@ -80,15 +84,15 @@ NumberValue <|-- statemachine_LongValue
 Value <|-- statemachine_Call
 Value <|-- statemachine_ConstantValue
 Value <|-- statemachine_GetParameter
-statemachine_GAbstractAction "0..9999" --* "1..1" statemachine_GAbstractState : actions0
-statemachine_Call "1..1" --* "1..1" statemachine_CallAction : call20
-statemachine_Transition "1..1" *-- "0..1" statemachine_Value : delay8
-statemachine_GAbstractState "0..1" -- "1..1" statemachine_Transition : from_1
-statemachine_Transition "1..1" *-- "0..1" statemachine_Value : guard6
-statemachine_GStatemachine "1..1" *-- "0..9999" statemachine_Parameter : parameter19
-statemachine_GetParameter "1..1" -- "1..1" statemachine_Parameter : parameter21
-statemachine_Transition "1..1" *-- "0..9999" statemachine_Value : signals11
-statemachine_GAbstractState "1..9999" --* "1..1" statemachine_GCompositeState : states14
-statemachine_GAbstractState "0..1" -- "1..1" statemachine_Transition : to3
-statemachine_GCompositeState "1..1" *-- "0..9999" statemachine_Transition : transitions16
+statemachine_GAbstractAction "statemachine_GAbstractState 0..9999" --* "statemachine_GAbstractAction 1..1" statemachine_GAbstractState : actions0
+statemachine_Call "statemachine_CallAction 1..1" --* "statemachine_Call 1..1" statemachine_CallAction : call20
+statemachine_Transition "statemachine_Value10 1..1" *-- "statemachine_Transition9 0..1" statemachine_Value : delay8
+statemachine_GAbstractState "statemachine_Transition 0..1" -- "statemachine_GAbstractState2 1..1" statemachine_Transition : from_1
+statemachine_Transition "statemachine_Value 1..1" *-- "statemachine_Transition7 0..1" statemachine_Value : guard6
+statemachine_GStatemachine "statemachine_Parameter 1..1" *-- "statemachine_GStatemachine 0..9999" statemachine_Parameter : parameter19
+statemachine_GetParameter "statemachine_Parameter22 1..1" -- "statemachine_GetParameter 1..1" statemachine_Parameter : parameter21
+statemachine_Transition "statemachine_Value13 1..1" *-- "statemachine_Transition12 0..9999" statemachine_Value : signals11
+statemachine_GAbstractState "statemachine_GCompositeState 1..9999" --* "statemachine_GAbstractState15 1..1" statemachine_GCompositeState : states14
+statemachine_GAbstractState "statemachine_Transition4 0..1" -- "statemachine_GAbstractState5 1..1" statemachine_Transition : to3
+statemachine_GCompositeState "statemachine_Transition18 1..1" *-- "statemachine_GCompositeState17 0..9999" statemachine_Transition : transitions16
 @enduml

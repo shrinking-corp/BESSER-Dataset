@@ -1,4 +1,8 @@
 @startuml
+' model: fm
+' project: sampleModel
+' owner: User
+' description: New project
 enum AttributeType {
   BOOLEAN
   DOUBLE
@@ -49,18 +53,18 @@ class fm_Group {
   + upper : int
   + xor : bool
 }
-fm_Attribute "0..9999" --* "1..1" fm_Feature : attributes12
-fm_Constraint "0..9999" --* "1..1" fm_FeatureModel : constraints4
-fm_Attribute "1..1" -- "1..1" fm_Feature : feature25
-fm_Feature "1..1" -- "0..1" fm_FeatureModel : featureModel18
-fm_Constraint "1..1" -- "0..1" fm_FeatureModel : featureModel27
-fm_Feature "1..1" *-- "0..9999" fm_Feature : features14
-fm_Feature "0..9999" --* "1..1" fm_Group : features23
-fm_Feature "1..1" *-- "0..9999" fm_Group : groups16
-fm_Feature "0..9999" --* "1..1" fm_FeatureModel : orphans1
-fm_Feature "1..1" -- "1..1" fm_Group : parent21
-fm_EObject "0..1" -- "1..1" fm_Feature : parent6
-fm_Feature "1..1" -- "0..1" fm_Feature : parentFeature9
-fm_Feature "1..1" -- "0..1" fm_Group : parentGroup10
-fm_Feature "1..1" --* "1..1" fm_FeatureModel : root0
+fm_Attribute "feature 0..9999" --* "Attribute 1..1" fm_Feature : attributes12
+fm_Constraint "fm_FeatureModel5 0..9999" --* "fm_Constraint 1..1" fm_FeatureModel : constraints4
+fm_Attribute "Feature26 1..1" -- "attributes 1..1" fm_Feature : feature25
+fm_Feature "fm_FeatureModel20 1..1" -- "fm_Feature19 0..1" fm_FeatureModel : featureModel18
+fm_Constraint "fm_FeatureModel29 1..1" -- "fm_Constraint28 0..1" fm_FeatureModel : featureModel27
+fm_Feature "Feature15 1..1" *-- "parentFeature 0..9999" fm_Feature : features14
+fm_Feature "parentGroup 0..9999" --* "Feature24 1..1" fm_Group : features23
+fm_Feature "Group17 1..1" *-- "parent 0..9999" fm_Group : groups16
+fm_Feature "fm_FeatureModel2 0..9999" --* "fm_Feature3 1..1" fm_FeatureModel : orphans1
+fm_Feature "groups 1..1" -- "Feature22 1..1" fm_Group : parent21
+fm_EObject "fm_Feature7 0..1" -- "fm_EObject 1..1" fm_Feature : parent6
+fm_Feature "Feature 1..1" -- "features 0..1" fm_Feature : parentFeature9
+fm_Feature "Group 1..1" -- "features11 0..1" fm_Group : parentGroup10
+fm_Feature "fm_FeatureModel 1..1" --* "fm_Feature 1..1" fm_FeatureModel : root0
 @enduml

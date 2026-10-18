@@ -1,4 +1,8 @@
 @startuml
+' model: nosql
+' project: sampleModel
+' owner: User
+' description: New project
 enum CollectionTypeType {
   list
   set
@@ -68,10 +72,10 @@ DataStructureType <|-- nosql_CollectionType
 DataStructureType <|-- nosql_MapType
 Type <|-- nosql_DataStructureType
 Type <|-- nosql_PrimitiveType
-nosql_ColumnFamily "0..9999" --* "1..1" nosql_KeySpace : columnFamilies0
-nosql_Column "1..9999" --* "1..1" nosql_ColumnFamily : columns4
-nosql_ColumnFamily "1..1" -- "1..1" nosql_KeySpace : keyspace1
-nosql_Column "1..9999" -- "1..1" nosql_DynamicColumnFamily : partitionKey11
-nosql_Column "1..9999" -- "1..1" nosql_ColumnFamily : primaryKey6
-nosql_Column "1..1" *-- "1..1" nosql_Type : type9
+nosql_ColumnFamily "nosql_KeySpace 0..9999" --* "nosql_ColumnFamily 1..1" nosql_KeySpace : columnFamilies0
+nosql_Column "nosql_ColumnFamily5 1..9999" --* "nosql_Column 1..1" nosql_ColumnFamily : columns4
+nosql_ColumnFamily "nosql_KeySpace3 1..1" -- "nosql_ColumnFamily2 1..1" nosql_KeySpace : keyspace1
+nosql_Column "nosql_DynamicColumnFamily 1..9999" -- "nosql_Column12 1..1" nosql_DynamicColumnFamily : partitionKey11
+nosql_Column "nosql_ColumnFamily7 1..9999" -- "nosql_Column8 1..1" nosql_ColumnFamily : primaryKey6
+nosql_Column "nosql_Type 1..1" *-- "nosql_Column10 1..1" nosql_Type : type9
 @enduml

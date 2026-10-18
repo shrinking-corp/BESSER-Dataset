@@ -1,4 +1,8 @@
 @startuml
+' model: library
+' project: sampleModel
+' owner: User
+' description: New project
 class library_Book {
 }
 class library_Library {
@@ -8,7 +12,7 @@ class library_Person {
 }
 class library_Writer {
 }
-library_Book "0..9999" --* "1..1" library_Library : books1
-library_Library "1..1" -- "0..9999" library_Person : employees3
-library_Library "1..1" *-- "0..9999" library_Writer : writers0
+library_Book "library_Library2 0..9999" --* "library_Book 1..1" library_Library : books1
+library_Library "hr.ecorePerson 1..1" -- "library 0..9999" library_Person : employees3
+library_Library "library_Writer 1..1" *-- "library_Library 0..9999" library_Writer : writers0
 @enduml

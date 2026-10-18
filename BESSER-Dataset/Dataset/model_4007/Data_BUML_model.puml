@@ -1,4 +1,8 @@
 @startuml
+' model: Data
+' project: sampleModel
+' owner: User
+' description: New project
 class Data_Attribute {
   + name : str
   + visibility : str
@@ -12,7 +16,7 @@ class Data_Type {
   + isReference : bool
   + name : str
 }
-Data_Attribute "0..9999" --* "1..1" Data_Class : attributes1
-Data_Class "0..9999" --* "1..1" Data_Model : classes0
-Data_Attribute "1..1" *-- "0..1" Data_Type : type3
+Data_Attribute "Data_Class2 0..9999" --* "Data_Attribute 1..1" Data_Class : attributes1
+Data_Class "Data_Model 0..9999" --* "Data_Class 1..1" Data_Model : classes0
+Data_Attribute "Data_Type 1..1" *-- "Data_Attribute4 0..1" Data_Type : type3
 @enduml

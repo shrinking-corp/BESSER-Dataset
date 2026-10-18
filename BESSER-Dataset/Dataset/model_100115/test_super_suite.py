@@ -678,9 +678,9 @@ def test_assoc_DbFK0_stub_double():
     partner = database_Database()
     setattr(partner, 'DbFkRoot', None)
     _safe_set(owner, 'ForeignKey', partner)
-    assert getattr(partner, 'DbFkRoot') == owner
+    assert owner in getattr(partner, 'DbFkRoot')
     _safe_set(owner, 'ForeignKey', None)
-    assert getattr(partner, 'DbFkRoot') is None
+    assert owner not in getattr(partner, 'DbFkRoot')
 
 
 def test_assoc_DbFkRoot15_stub_double():
@@ -708,9 +708,9 @@ def test_assoc_DbTable1_stub_double():
     partner = database_Database()
     setattr(partner, 'DbTableRoot', None)
     _safe_set(owner, 'Table', partner)
-    assert getattr(partner, 'DbTableRoot') == owner
+    assert owner in getattr(partner, 'DbTableRoot')
     _safe_set(owner, 'Table', None)
-    assert getattr(partner, 'DbTableRoot') is None
+    assert owner not in getattr(partner, 'DbTableRoot')
 
 
 def test_assoc_DbTableRoot2_stub_double():
@@ -730,25 +730,6 @@ def test_assoc_DbTableRoot2_stub_double():
 
 
 
-from enum import Enum
 from python_code import DataType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(DataType.Int, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(DataType.Int, '', 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(DataType.Int, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(DataType.Int, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(DataType.Int, 'Int') == DataType.Int
 

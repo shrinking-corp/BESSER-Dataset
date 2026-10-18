@@ -1,4 +1,8 @@
 @startuml
+' model: library3Simplified
+' project: sampleModel
+' owner: User
+' description: New project
 class library3Simplified_Book {
   + author : str
   + isbn : str
@@ -14,8 +18,8 @@ class library3Simplified_Customer {
 }
 class library3Simplified_Library {
 }
-library3Simplified_Book "1..1" *-- "0..1" library3Simplified_BookInfo : bookInfo0
-library3Simplified_Book "0..9999" --* "1..1" library3Simplified_Library : books3
-library3Simplified_Book "1..1" -- "1..1" library3Simplified_Customer : borrowedBookId1
-library3Simplified_Customer "0..9999" --* "1..1" library3Simplified_Library : customers5
+library3Simplified_Book "library3Simplified_BookInfo 1..1" *-- "library3Simplified_Book 0..1" library3Simplified_BookInfo : bookInfo0
+library3Simplified_Book "library3Simplified_Library 0..9999" --* "library3Simplified_Book4 1..1" library3Simplified_Library : books3
+library3Simplified_Book "library3Simplified_Customer 1..1" -- "library3Simplified_Book2 1..1" library3Simplified_Customer : borrowedBookId1
+library3Simplified_Customer "library3Simplified_Library6 0..9999" --* "library3Simplified_Customer7 1..1" library3Simplified_Library : customers5
 @enduml

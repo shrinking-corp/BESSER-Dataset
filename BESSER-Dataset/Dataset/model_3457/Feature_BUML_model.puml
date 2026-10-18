@@ -1,4 +1,8 @@
 @startuml
+' model: feature
+' project: sampleModel
+' owner: User
+' description: New project
 class HyFeatureAttribute {
 }
 enum HyFeatureTypeEnum {
@@ -79,30 +83,30 @@ HyTemporalElement <|-- feature_HyFeature
 HyTemporalElement <|-- feature_HyFeatureAttribute
 HyTemporalElement <|-- feature_HyGroup
 HyTemporalElement <|-- feature_HyVersion
-feature_HyFeature "1..1" *-- "0..9999" feature_HyFeatureAttribute : attributes11
-feature_HyFeatureChild "1..1" -- "1..1" feature_HyGroup : childGroup47
-feature_HyFeatureChild "1..9999" -- "1..1" feature_HyGroup : childOf18
-feature_HyGroup "1..1" -- "1..1" feature_HyGroupComposition : compositionOf40
-feature_HyContextModel "0..9999" -- "1..1" feature_HyFeatureModel : contexts6
-feature_HyEnumAttribute "1..1" -- "1..1" feature_HyEnumLiteral : default33
-feature_HyEnum "1..1" -- "1..1" feature_HyEnumAttribute : enumType31
-feature_HyEnum "0..9999" --* "1..1" feature_HyFeatureModel : enums4
-feature_HyFeature "1..1" -- "1..1" feature_HyVersion : feature23
-feature_HyFeature "1..1" -- "1..1" feature_HyFeatureAttribute : feature35
-feature_HyFeature "1..1" -- "1..1" feature_HyRootFeature : feature37
-feature_HyFeature "1..1" -- "1..1" feature_HyFeatureModel : featureModel14
-feature_HyFeatureModel "1..1" -- "1..1" feature_HyGroup : featureModel21
-feature_HyFeature "0..9999" --* "1..1" feature_HyFeatureModel : features1
-feature_HyFeature "1..9999" -- "1..1" feature_HyGroupComposition : features42
-feature_HyFeature "1..1" -- "0..9999" feature_HyGroupComposition : groupMembership9
-feature_HyFeatureModel "1..1" *-- "0..9999" feature_HyGroup : groups2
-feature_HyFeature "1..1" -- "1..1" feature_HyFeatureChild : parent44
-feature_HyFeature "1..1" *-- "0..9999" feature_HyFeatureChild : parentOf10
-feature_HyGroup "1..1" *-- "1..9999" feature_HyGroupComposition : parentOf16
-feature_HyFeatureModel "1..1" *-- "1..9999" feature_HyRootFeature : rootFeature0
-feature_HyVersion "1..1" -- "0..1" feature_HyVersion : supersededVersion29
-feature_HyVersion "1..1" -- "0..9999" feature_HyVersion : supersedingVersions26
-feature_HyFeature "1..1" *-- "1..9999" feature_HyFeatureType : types13
-feature_HyGroup "1..1" *-- "1..9999" feature_HyGroupType : types20
-feature_HyFeature "1..1" *-- "0..9999" feature_HyVersion : versions8
+feature_HyFeature "HyFeatureAttribute 1..1" *-- "feature12 0..9999" feature_HyFeatureAttribute : attributes11
+feature_HyFeatureChild "HyGroup48 1..1" -- "childOf 1..1" feature_HyGroup : childGroup47
+feature_HyFeatureChild "childGroup 1..9999" -- "HyFeatureChild19 1..1" feature_HyGroup : childOf18
+feature_HyGroup "parentOf 1..1" -- "HyGroup41 1..1" feature_HyGroupComposition : compositionOf40
+feature_HyContextModel "feature_HyFeatureModel7 0..9999" -- "feature_HyContextModel 1..1" feature_HyFeatureModel : contexts6
+feature_HyEnumAttribute "feature_HyEnumLiteral 1..1" -- "feature_HyEnumAttribute34 1..1" feature_HyEnumLiteral : default33
+feature_HyEnum "feature_HyEnumAttribute 1..1" -- "feature_HyEnum32 1..1" feature_HyEnumAttribute : enumType31
+feature_HyEnum "feature_HyFeatureModel5 0..9999" --* "feature_HyEnum 1..1" feature_HyFeatureModel : enums4
+feature_HyFeature "versions 1..1" -- "HyFeature24 1..1" feature_HyVersion : feature23
+feature_HyFeature "attributes 1..1" -- "HyFeature36 1..1" feature_HyFeatureAttribute : feature35
+feature_HyFeature "feature_HyRootFeature38 1..1" -- "feature_HyFeature39 1..1" feature_HyRootFeature : feature37
+feature_HyFeature "HyFeatureModel 1..1" -- "features15 1..1" feature_HyFeatureModel : featureModel14
+feature_HyFeatureModel "groups 1..1" -- "HyFeatureModel22 1..1" feature_HyGroup : featureModel21
+feature_HyFeature "featureModel 0..9999" --* "HyFeature 1..1" feature_HyFeatureModel : features1
+feature_HyFeature "groupMembership 1..9999" -- "HyFeature43 1..1" feature_HyGroupComposition : features42
+feature_HyFeature "HyGroupComposition 1..1" -- "features 0..9999" feature_HyGroupComposition : groupMembership9
+feature_HyFeatureModel "HyGroup 1..1" *-- "featureModel3 0..9999" feature_HyGroup : groups2
+feature_HyFeature "parentOf45 1..1" -- "HyFeature46 1..1" feature_HyFeatureChild : parent44
+feature_HyFeature "HyFeatureChild 1..1" *-- "parent 0..9999" feature_HyFeatureChild : parentOf10
+feature_HyGroup "HyGroupComposition17 1..1" *-- "compositionOf 1..9999" feature_HyGroupComposition : parentOf16
+feature_HyFeatureModel "feature_HyRootFeature 1..1" *-- "feature_HyFeatureModel 1..9999" feature_HyRootFeature : rootFeature0
+feature_HyVersion "HyVersion30 1..1" -- "supersedingVersions 0..1" feature_HyVersion : supersededVersion29
+feature_HyVersion "HyVersion27 1..1" -- "supersededVersion 0..9999" feature_HyVersion : supersedingVersions26
+feature_HyFeature "feature_HyFeatureType 1..1" *-- "feature_HyFeature 1..9999" feature_HyFeatureType : types13
+feature_HyGroup "feature_HyGroupType 1..1" *-- "feature_HyGroup 1..9999" feature_HyGroupType : types20
+feature_HyFeature "HyVersion 1..1" *-- "feature 0..9999" feature_HyVersion : versions8
 @enduml

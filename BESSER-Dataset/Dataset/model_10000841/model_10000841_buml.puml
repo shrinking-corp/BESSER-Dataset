@@ -1,4 +1,8 @@
 @startuml
+' model: _674dfb1b_b5ca_4e09_9ca5_9b9118e204e3
+' project: sampleModel
+' owner: User
+' description: New project
 class Alert {
   + AlertID : int
 }
@@ -41,15 +45,15 @@ class SolarPanel {
 class User_Home_Owner {
   + UserID : int
 }
-Door "0..1" -- "1..9999" HomeAppliances : HomeAppliances_Door
-HomeAppliances "1..9999" -- "0..1" Light : HomeAppliances_Light
-Fans "0..1" -- "1..9999" HomeAppliances : HomeTheatre_Speakers
-HomeAppliances "1..9999" -- "1..1" IoT_based_Smart_Resort_System : HomeTheatre_System
-Alert "0..1" -- "0..1" Home_Security_System : Home_Security_System_Alert
-Home_Security_System "1..1" -- "1..1" IoT_based_Smart_Resort_System : IoT_based_Smart_Resort_System_Home_Security_System
-IoT_based_Smart_Resort_System "1..1" -- "1..9999" SolarPanel : IoT_based_Smart_Resort_System_SolarPanel
-Gardening "1..9999" -- "1..1" IoT_based_Smart_Resort_System : MicroPhone_System
-Alert "1..1" -- "1..1" Security_Guard_Police : Security_Guard_Police_Alert
-IoT_based_Smart_Resort_System "1..1" -- "1..9999" Sensor : Sensor_System
-Alert "1..1" -- "1..1" User_Home_Owner : User_Home_Owner_Alert
+Door "HomeAppliances_Door_012 0..1" -- "HomeAppliances_Door_113 1..9999" HomeAppliances : HomeAppliances_Door
+HomeAppliances "HomeAppliances_Light_111 1..9999" -- "HomeAppliances_Light_010 0..1" Light : HomeAppliances_Light
+Fans "speakers0 0..1" -- "homeTheatre1 1..9999" HomeAppliances : HomeTheatre_Speakers
+HomeAppliances "homeTheatre9 1..9999" -- "system8 1..1" IoT_based_Smart_Resort_System : HomeTheatre_System
+Alert "alert4 0..1" -- "home_Security_System5 0..1" Home_Security_System : Home_Security_System_Alert
+Home_Security_System "IoT_based_Smart_Resort_System_Home_Security_System_020 1..1" -- "IoT_based_Smart_Resort_System_Home_Security_System_121 1..1" IoT_based_Smart_Resort_System : IoT_based_Smart_Resort_System_Home_Security_System
+IoT_based_Smart_Resort_System "IoT_based_Smart_Resort_System_SolarPanel_119 1..1" -- "IoT_based_Smart_Resort_System_SolarPanel_018 1..9999" SolarPanel : IoT_based_Smart_Resort_System_SolarPanel
+Gardening "microPhone3 1..9999" -- "system2 1..1" IoT_based_Smart_Resort_System : MicroPhone_System
+Alert "Security_Guard_Police_Alert_016 1..1" -- "Security_Guard_Police_Alert_117 1..1" Security_Guard_Police : Security_Guard_Police_Alert
+IoT_based_Smart_Resort_System "system6 1..1" -- "sensor7 1..9999" Sensor : Sensor_System
+Alert "User_Home_Owner_Alert_014 1..1" -- "User_Home_Owner_Alert_115 1..1" User_Home_Owner : User_Home_Owner_Alert
 @enduml

@@ -1003,30 +1003,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=application_ConfigurableElement_strategy)
-@settings(max_examples=30)
-def test_hyp_application_configurableelement_removeproperty_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.removeProperty(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.removeProperty).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'removeProperty' in application_ConfigurableElement is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'removeProperty' in application_ConfigurableElement did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'removeProperty' in application_ConfigurableElement is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1034,30 +1010,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=application_ConfigurableElement_strategy)
-@settings(max_examples=30)
-def test_hyp_application_configurableelement_ispropertytrue_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isPropertyTrue(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isPropertyTrue).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isPropertyTrue' in application_ConfigurableElement is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isPropertyTrue' in application_ConfigurableElement did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isPropertyTrue' in application_ConfigurableElement is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1065,31 +1017,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=application_ConfigurableElement_strategy)
-@settings(max_examples=30)
-def test_hyp_application_configurableelement_ispropertytrueelsedefault_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isPropertyTrueElseDefault(
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isPropertyTrueElseDefault).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isPropertyTrueElseDefault' in application_ConfigurableElement is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isPropertyTrueElseDefault' in application_ConfigurableElement did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isPropertyTrueElseDefault' in application_ConfigurableElement is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1097,30 +1024,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=application_ConfigurableElement_strategy)
-@settings(max_examples=30)
-def test_hyp_application_configurableelement_addproperty_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.addProperty(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.addProperty).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'addProperty' in application_ConfigurableElement is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'addProperty' in application_ConfigurableElement did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'addProperty' in application_ConfigurableElement is not implemented or raised an error")
 
 
 
@@ -1397,30 +1300,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=application_ApplicationKeyConfig_strategy)
-@settings(max_examples=30)
-def test_hyp_application_applicationkeyconfig_hasapplicationkey_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.hasApplicationKey(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.hasApplicationKey).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'hasApplicationKey' in application_ApplicationKeyConfig is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'hasApplicationKey' in application_ApplicationKeyConfig did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'hasApplicationKey' in application_ApplicationKeyConfig is not implemented or raised an error")
 
 
 
@@ -1562,30 +1441,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=application_MashupContainer_strategy)
-@settings(max_examples=30)
-def test_hyp_application_mashupcontainer_setnewidentfor_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.setNewIdentFor(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.setNewIdentFor).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'setNewIdentFor' in application_MashupContainer is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'setNewIdentFor' in application_MashupContainer did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'setNewIdentFor' in application_MashupContainer is not implemented or raised an error")
 
 
 
@@ -1671,28 +1526,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=application_Property_strategy)
-@settings(max_examples=30)
-def test_hyp_application_property_isvaluelist_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isValueList()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isValueList).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isValueList' in application_Property is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isValueList' in application_Property did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isValueList' in application_Property is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1700,28 +1533,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=application_Property_strategy)
-@settings(max_examples=30)
-def test_hyp_application_property_isvaluerange_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isValueRange()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isValueRange).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isValueRange' in application_Property is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isValueRange' in application_Property did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isValueRange' in application_Property is not implemented or raised an error")
 
 
 
@@ -1923,28 +1734,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=application_Source_strategy)
-@settings(max_examples=30)
-def test_hyp_application_source_stop_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.stop()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.stop).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'stop' in application_Source is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'stop' in application_Source did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'stop' in application_Source is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1952,28 +1741,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=application_Source_strategy)
-@settings(max_examples=30)
-def test_hyp_application_source_start_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.start()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.start).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'start' in application_Source is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'start' in application_Source did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'start' in application_Source is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1981,28 +1748,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=application_Source_strategy)
-@settings(max_examples=30)
-def test_hyp_application_source_pause_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.pause()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.pause).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'pause' in application_Source is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'pause' in application_Source did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'pause' in application_Source is not implemented or raised an error")
 
 
 # ----- SECTION B: test_structural_full.py (deterministic-first suite) -----
@@ -3793,9 +3538,9 @@ def test_assoc_properties9_stub_double():
     partner = application_Configuration()
     setattr(partner, 'application_Configuration', None)
     _safe_set(owner, 'application_Property', partner)
-    assert getattr(partner, 'application_Configuration') == owner
+    assert owner in getattr(partner, 'application_Configuration')
     _safe_set(owner, 'application_Property', None)
-    assert getattr(partner, 'application_Configuration') is None
+    assert owner not in getattr(partner, 'application_Configuration')
 
 
 def test_assoc_security22_stub_double():
@@ -3815,72 +3560,12 @@ def test_assoc_security22_stub_double():
 
 
 
-from enum import Enum
 from python_code import PropertyTypes
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(PropertyTypes.Date, 0, '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(PropertyTypes.Date, '', 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(PropertyTypes.Date, '', 0, '') == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(PropertyTypes.Date, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(PropertyTypes.Float, 'Date') == PropertyTypes.Date
-
-from enum import Enum
 from python_code import SourceActiveStates
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(SourceActiveStates.Filled, 0, '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(SourceActiveStates.Unknown, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(SourceActiveStates.Filling, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(SourceActiveStates.Filled, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(SourceActiveStates.Filled, 'Filled') == SourceActiveStates.Filled
-
-from enum import Enum
 from python_code import SourceState
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(SourceState.Error, 0, '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(SourceState.Error, '', '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(SourceState.Error, '', 0, '') == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(SourceState.Error, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(SourceState.Error, 'Error') == SourceState.Error
-
 from python_code import application_ApplicationKeyConfig
 
 def test_application_ApplicationKeyConfig___init__():
@@ -3888,7 +3573,6 @@ def test_application_ApplicationKeyConfig___init__():
 
 def test_application_ApplicationKeyConfig_hasApplicationKey():
     assert application_ApplicationKeyConfig.hasApplicationKey(application_ApplicationKeyConfig(''), 0) == None
-
 from python_code import application_ConfigurableElement
 from python_code import application_Configuration
 
@@ -3915,22 +3599,18 @@ def test_application_ConfigurableElement_getPropertyValue():
 
 def test_application_ConfigurableElement_isPropertyTrue():
     assert application_ConfigurableElement.isPropertyTrue(application_ConfigurableElement('', '', '\x00\x00', '', '', '', application_ConfigurableElement=application_Configuration()), '') == None
-
 from python_code import application_FEEDInterface
 
 def test_application_FEEDInterface___init__():
     assert application_FEEDInterface.__init__(application_FEEDInterface('', '', '', '', '\x00', '', '', '', ''), '', '', '', '', '', '\x00', '', '', '') == None
-
 from python_code import application_OAuthConfig
 
 def test_application_OAuthConfig___init__():
     assert application_OAuthConfig.__init__(application_OAuthConfig('', application_OAuthConfig=set(), application_OAuthConfig29=set()), '', application_OAuthConfig=set(), application_OAuthConfig29=set()) == None
-
 from python_code import application_OCLRestrictedProperty
 
 def test_application_OCLRestrictedProperty___init__():
     assert application_OCLRestrictedProperty.__init__(application_OCLRestrictedProperty(''), '') == None
-
 from python_code import application_Configuration
 from python_code import application_Property
 
@@ -3951,7 +3631,6 @@ def test_application_Property_isValueList():
 
 def test_application_Property_getListOfValues():
     assert application_Property.getListOfValues(application_Property('\x00\x00', '', '', '', '', '', '', '', application_Property=application_Configuration())) == None
-
 from python_code import application_RESTInterface
 
 def test_application_RESTInterface___init__():

@@ -1,4 +1,8 @@
 @startuml
+' model: database
+' project: sampleModel
+' owner: User
+' description: New project
 enum DataType {
   Date
   Float
@@ -18,14 +22,14 @@ class database_ForeignKey {
 class database_Table {
   + Name : str
 }
-database_Column "1..1" -- "1..1" database_Table : ColumnTable4
-database_Database "1..1" *-- "0..9999" database_ForeignKey : DbFK0
-database_Database "1..1" -- "1..1" database_ForeignKey : DbFkRoot15
-database_Database "1..1" *-- "0..9999" database_Table : DbTable1
-database_Database "1..1" -- "1..1" database_Table : DbTableRoot2
-database_Column "1..9999" -- "1..1" database_ForeignKey : SourceColumn10
-database_ForeignKey "1..1" -- "1..1" database_Table : SourceTable6
-database_Column "1..9999" --* "1..1" database_Table : TableColumn3
-database_Column "1..9999" -- "1..1" database_ForeignKey : TargetColumn12
-database_ForeignKey "1..1" -- "1..1" database_Table : TargetTable7
+database_Column "Table5 1..1" -- "TableColumn 1..1" database_Table : ColumnTable4
+database_Database "ForeignKey 1..1" *-- "DbFkRoot 0..9999" database_ForeignKey : DbFK0
+database_Database "DbFK 1..1" -- "Database16 1..1" database_ForeignKey : DbFkRoot15
+database_Database "Table 1..1" *-- "DbTableRoot 0..9999" database_Table : DbTable1
+database_Database "DbTable 1..1" -- "Database 1..1" database_Table : DbTableRoot2
+database_Column "database_ForeignKey11 1..9999" -- "database_Column 1..1" database_ForeignKey : SourceColumn10
+database_ForeignKey "database_Table 1..1" -- "database_ForeignKey 1..1" database_Table : SourceTable6
+database_Column "ColumnTable 1..9999" --* "Column 1..1" database_Table : TableColumn3
+database_Column "database_ForeignKey13 1..9999" -- "database_Column14 1..1" database_ForeignKey : TargetColumn12
+database_ForeignKey "database_Table9 1..1" -- "database_ForeignKey8 1..1" database_Table : TargetTable7
 @enduml

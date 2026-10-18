@@ -1,4 +1,8 @@
 @startuml
+' model: dsl
+' project: sampleModel
+' owner: User
+' description: New project
 enum Actions {
   BEEP
   DRIVETOEDGE
@@ -87,10 +91,10 @@ enum timeUnit {
 SensorType <|-- dsl_ColorSensor
 SensorType <|-- dsl_TouchSensor
 SensorType <|-- dsl_UltrasonicSensor
-dsl_Ignorables "0..1" --* "1..1" dsl_Task : ignoreBehavior3
-dsl_ColorSensor "1..1" *-- "0..1" dsl_ColorValue : key7
-dsl_ColorSensor "1..1" *-- "0..9999" dsl_ColorValue : keys8
-dsl_SensorType "0..1" --* "1..1" dsl_Task : sensor1
-dsl_Mission "1..1" *-- "0..9999" dsl_Task : tasks0
-dsl_Task "1..1" *-- "0..1" dsl_timeUnitValue : timeunit5
+dsl_Ignorables "dsl_Task4 0..1" --* "dsl_Ignorables 1..1" dsl_Task : ignoreBehavior3
+dsl_ColorSensor "dsl_ColorValue 1..1" *-- "dsl_ColorSensor 0..1" dsl_ColorValue : key7
+dsl_ColorSensor "dsl_ColorValue10 1..1" *-- "dsl_ColorSensor9 0..9999" dsl_ColorValue : keys8
+dsl_SensorType "dsl_Task2 0..1" --* "dsl_SensorType 1..1" dsl_Task : sensor1
+dsl_Mission "dsl_Task 1..1" *-- "dsl_Mission 0..9999" dsl_Task : tasks0
+dsl_Task "dsl_timeUnitValue 1..1" *-- "dsl_Task6 0..1" dsl_timeUnitValue : timeunit5
 @enduml

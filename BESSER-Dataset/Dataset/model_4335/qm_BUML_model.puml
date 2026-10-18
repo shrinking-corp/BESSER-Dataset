@@ -1,4 +1,8 @@
 @startuml
+' model: qm
+' project: sampleModel
+' owner: User
+' description: New project
 class AnnotatedElement {
 }
 class CharacterizingElement {
@@ -269,69 +273,69 @@ Result <|-- qm_MeasurementResult
 TaggedElement <|-- qm_AnnotatedElement
 TextAggregation <|-- qm_QIESLAggregation
 TextEvaluation <|-- qm_QIESLEvaluation
-qm_AnnotatedElement "1..1" *-- "0..9999" qm_AnnotationBase : advancedAnnotations20
-qm_AnnotatedElement "1..1" *-- "0..9999" qm_Annotation : annotations19
-qm_CharacterizingElement "1..1" -- "0..1" qm_Entity : characterizes43
-qm_Entity "1..1" -- "1..1" qm_Specialization : child37
-qm_Decomposition "1..1" -- "1..1" qm_Entity : child41
-qm_Factor "1..1" -- "1..1" qm_FactorRefinement : child63
-qm_Measure "1..1" -- "1..1" qm_Measurement : child69
-qm_Measure "1..1" -- "1..1" qm_MeasureRefinement : child72
-qm_Measure "1..1" -- "1..1" qm_MeasurementMethod : determines88
-qm_Entity "0..9999" --* "1..1" qm_QualityModel : entities0
-qm_Evaluation "1..1" -- "1..1" qm_Factor : evaluates59
-qm_EvaluationResult "0..9999" --* "1..1" qm_QualityModelResult : evaluationResults107
-qm_MeasureRankingEvaluationResult "0..9999" --* "1..1" qm_MultiMeasureEvaluationResult : evaluationResults120
-qm_Evaluation "0..9999" --* "1..1" qm_QualityModel : evaluations3
-qm_Factor "1..1" -- "1..1" qm_FactorRanking : factor95
-qm_Factor "0..9999" --* "1..1" qm_QualityModel : factors1
-qm_FindingMessage "0..9999" --* "1..1" qm_FindingsMeasurementResult : findingMessages113
-qm_Function "1..1" --* "1..1" qm_MeasureEvaluation : function103
-qm_Factor "1..1" *-- "0..9999" qm_Impact : influences45
-qm_Factor "1..1" -- "0..9999" qm_Factor : influencesDirect47
-qm_Entity "1..1" *-- "0..9999" qm_Specialization : isA25
-qm_Entity "1..1" -- "0..9999" qm_Entity : isADirect27
-qm_Measure "1..1" -- "1..1" qm_MeasureEvaluation : measure99
-qm_MeasurementMethod "0..9999" --* "1..1" qm_QualityModel : measurementMethods7
-qm_MeasurementResult "0..9999" --* "1..1" qm_QualityModelResult : measurementResults106
-qm_Measure "0..9999" --* "1..1" qm_QualityModel : measures5
-qm_Measure "1..1" *-- "0..9999" qm_Measurement : measures75
-qm_Factor "0..9999" -- "1..1" qm_Measure : measuresDirect77
-qm_MeasureEvaluation "1..1" -- "0..1" qm_NormalizationMeasure : normlizationMeasure101
-qm_QualityModelElement "1..1" -- "0..9999" qm_Source : originatesFrom17
-qm_Entity "1..1" -- "1..1" qm_Specialization : parent35
-qm_Decomposition "1..1" -- "1..1" qm_Entity : parent39
-qm_Factor "1..1" -- "1..1" qm_FactorRefinement : parent65
-qm_Factor "1..1" -- "1..1" qm_Measurement : parent67
-qm_Measure "1..1" -- "1..1" qm_MeasureRefinement : parent71
-qm_Decomposition "0..1" --* "1..1" qm_Entity : partOf28
-qm_Entity "0..1" -- "1..1" qm_Entity : partOfDirect31
-qm_QualityModel "1..1" -- "1..1" qm_Source : qualityModel18
-qm_QualityModel "1..1" -- "1..1" qm_Tag : qualityModel22
-qm_Entity "1..1" -- "1..1" qm_QualityModel : qualityModel33
-qm_Factor "1..1" -- "1..1" qm_QualityModel : qualityModel53
-qm_Evaluation "1..1" -- "1..1" qm_QualityModel : qualityModel61
-qm_Measure "1..1" -- "1..1" qm_QualityModel : qualityModel80
-qm_MeasurementMethod "1..1" -- "1..1" qm_QualityModel : qualityModel90
-qm_QualityModel "1..1" -- "1..1" qm_Tool : qualityModel93
-qm_MeasureRanking "1..9999" --* "1..1" qm_WeightedSumMultiMeasureEvaluation : rankings105
-qm_FactorRanking "1..9999" --* "1..1" qm_WeightedSumFactorAggregation : rankings97
-qm_Factor "1..1" *-- "0..9999" qm_FactorRefinement : refines48
-qm_Measure "1..1" *-- "0..9999" qm_MeasureRefinement : refines83
-qm_Factor "0..9999" -- "1..1" qm_Factor : refinesDirect51
-qm_Measure "0..9999" -- "1..1" qm_Measure : refinesDirect86
-qm_QualityModel "1..1" -- "0..9999" qm_QualityModel : requires16
-qm_MeasurementMethod "1..1" -- "1..1" qm_MeasurementResult : resultsFrom109
-qm_Evaluation "1..1" -- "1..1" qm_EvaluationResult : resultsFrom117
-qm_MeasureRanking "1..1" -- "1..1" qm_MeasureRankingEvaluationResult : resultsFrom124
-qm_Factor "1..1" -- "1..1" qm_Impact : source55
-qm_QualityModel "1..1" *-- "0..9999" qm_Source : sources13
-qm_Tag "0..9999" -- "1..1" qm_TaggedElement : taggedBy24
-qm_QualityModel "1..1" *-- "0..9999" qm_Tag : tags11
-qm_Factor "1..1" -- "1..1" qm_Impact : target57
-qm_Tool "1..1" -- "1..1" qm_ToolBasedInstrument : tool92
-qm_QualityModel "1..1" *-- "0..9999" qm_Tool : tools9
-qm_DoubleInterval "1..1" --* "1..1" qm_NumberMeasurementResult : value112
-qm_DoubleInterval "1..1" --* "1..1" qm_EvaluationResult : value114
-qm_DoubleInterval "1..1" --* "1..1" qm_MeasureRankingEvaluationResult : value121
+qm_AnnotatedElement "qm_AnnotationBase 1..1" *-- "qm_AnnotatedElement21 0..9999" qm_AnnotationBase : advancedAnnotations20
+qm_AnnotatedElement "qm_Annotation 1..1" *-- "qm_AnnotatedElement 0..9999" qm_Annotation : annotations19
+qm_CharacterizingElement "qm_Entity44 1..1" -- "qm_CharacterizingElement 0..1" qm_Entity : characterizes43
+qm_Entity "isA 1..1" -- "Entity38 1..1" qm_Specialization : child37
+qm_Decomposition "Entity42 1..1" -- "partOf 1..1" qm_Entity : child41
+qm_Factor "refines 1..1" -- "Factor64 1..1" qm_FactorRefinement : child63
+qm_Measure "measures 1..1" -- "Measure70 1..1" qm_Measurement : child69
+qm_Measure "refines73 1..1" -- "Measure74 1..1" qm_MeasureRefinement : child72
+qm_Measure "qm_MeasurementMethod 1..1" -- "qm_Measure89 1..1" qm_MeasurementMethod : determines88
+qm_Entity "qualityModel 0..9999" --* "Entity 1..1" qm_QualityModel : entities0
+qm_Evaluation "qm_Factor60 1..1" -- "qm_Evaluation 1..1" qm_Factor : evaluates59
+qm_EvaluationResult "qm_QualityModelResult108 0..9999" --* "qm_EvaluationResult 1..1" qm_QualityModelResult : evaluationResults107
+qm_MeasureRankingEvaluationResult "qm_MultiMeasureEvaluationResult 0..9999" --* "qm_MeasureRankingEvaluationResult 1..1" qm_MultiMeasureEvaluationResult : evaluationResults120
+qm_Evaluation "qualityModel4 0..9999" --* "Evaluation 1..1" qm_QualityModel : evaluations3
+qm_Factor "qm_FactorRanking 1..1" -- "qm_Factor96 1..1" qm_FactorRanking : factor95
+qm_Factor "qualityModel2 0..9999" --* "Factor 1..1" qm_QualityModel : factors1
+qm_FindingMessage "qm_FindingsMeasurementResult 0..9999" --* "qm_FindingMessage 1..1" qm_FindingsMeasurementResult : findingMessages113
+qm_Function "qm_MeasureEvaluation104 1..1" --* "qm_Function 1..1" qm_MeasureEvaluation : function103
+qm_Factor "Impact 1..1" *-- "source 0..9999" qm_Impact : influences45
+qm_Factor "qm_Factor 1..1" -- "qm_Factor46 0..9999" qm_Factor : influencesDirect47
+qm_Entity "Specialization 1..1" *-- "child 0..9999" qm_Specialization : isA25
+qm_Entity "qm_Entity 1..1" -- "qm_Entity26 0..9999" qm_Entity : isADirect27
+qm_Measure "qm_MeasureEvaluation 1..1" -- "qm_Measure100 1..1" qm_MeasureEvaluation : measure99
+qm_MeasurementMethod "qualityModel8 0..9999" --* "MeasurementMethod 1..1" qm_QualityModel : measurementMethods7
+qm_MeasurementResult "qm_QualityModelResult 0..9999" --* "qm_MeasurementResult 1..1" qm_QualityModelResult : measurementResults106
+qm_Measure "qualityModel6 0..9999" --* "Measure 1..1" qm_QualityModel : measures5
+qm_Measure "Measurement 1..1" *-- "child76 0..9999" qm_Measurement : measures75
+qm_Factor "qm_Measure78 0..9999" -- "qm_Factor79 1..1" qm_Measure : measuresDirect77
+qm_MeasureEvaluation "qm_NormalizationMeasure 1..1" -- "qm_MeasureEvaluation102 0..1" qm_NormalizationMeasure : normlizationMeasure101
+qm_QualityModelElement "qm_Source 1..1" -- "qm_QualityModelElement 0..9999" qm_Source : originatesFrom17
+qm_Entity "qm_Specialization 1..1" -- "qm_Entity36 1..1" qm_Specialization : parent35
+qm_Decomposition "qm_Entity40 1..1" -- "qm_Decomposition 1..1" qm_Entity : parent39
+qm_Factor "qm_FactorRefinement 1..1" -- "qm_Factor66 1..1" qm_FactorRefinement : parent65
+qm_Factor "qm_Measurement 1..1" -- "qm_Factor68 1..1" qm_Measurement : parent67
+qm_Measure "qm_MeasureRefinement 1..1" -- "qm_Measure 1..1" qm_MeasureRefinement : parent71
+qm_Decomposition "child29 0..1" --* "Decomposition 1..1" qm_Entity : partOf28
+qm_Entity "qm_Entity30 0..1" -- "qm_Entity32 1..1" qm_Entity : partOfDirect31
+qm_QualityModel "sources 1..1" -- "QualityModel 1..1" qm_Source : qualityModel18
+qm_QualityModel "tags 1..1" -- "QualityModel23 1..1" qm_Tag : qualityModel22
+qm_Entity "QualityModel34 1..1" -- "entities 1..1" qm_QualityModel : qualityModel33
+qm_Factor "QualityModel54 1..1" -- "factors 1..1" qm_QualityModel : qualityModel53
+qm_Evaluation "QualityModel62 1..1" -- "evaluations 1..1" qm_QualityModel : qualityModel61
+qm_Measure "QualityModel82 1..1" -- "measures81 1..1" qm_QualityModel : qualityModel80
+qm_MeasurementMethod "QualityModel91 1..1" -- "measurementMethods 1..1" qm_QualityModel : qualityModel90
+qm_QualityModel "tools 1..1" -- "QualityModel94 1..1" qm_Tool : qualityModel93
+qm_MeasureRanking "qm_WeightedSumMultiMeasureEvaluation 1..9999" --* "qm_MeasureRanking 1..1" qm_WeightedSumMultiMeasureEvaluation : rankings105
+qm_FactorRanking "qm_WeightedSumFactorAggregation 1..9999" --* "qm_FactorRanking98 1..1" qm_WeightedSumFactorAggregation : rankings97
+qm_Factor "FactorRefinement 1..1" *-- "child49 0..9999" qm_FactorRefinement : refines48
+qm_Measure "MeasureRefinement 1..1" *-- "child84 0..9999" qm_MeasureRefinement : refines83
+qm_Factor "qm_Factor50 0..9999" -- "qm_Factor52 1..1" qm_Factor : refinesDirect51
+qm_Measure "qm_Measure85 0..9999" -- "qm_Measure87 1..1" qm_Measure : refinesDirect86
+qm_QualityModel "qm_QualityModel 1..1" -- "qm_QualityModel15 0..9999" qm_QualityModel : requires16
+qm_MeasurementMethod "qm_MeasurementResult110 1..1" -- "qm_MeasurementMethod111 1..1" qm_MeasurementResult : resultsFrom109
+qm_Evaluation "qm_EvaluationResult118 1..1" -- "qm_Evaluation119 1..1" qm_EvaluationResult : resultsFrom117
+qm_MeasureRanking "qm_MeasureRankingEvaluationResult125 1..1" -- "qm_MeasureRanking126 1..1" qm_MeasureRankingEvaluationResult : resultsFrom124
+qm_Factor "influences 1..1" -- "Factor56 1..1" qm_Impact : source55
+qm_QualityModel "Source 1..1" *-- "qualityModel14 0..9999" qm_Source : sources13
+qm_Tag "qm_TaggedElement 0..9999" -- "qm_Tag 1..1" qm_TaggedElement : taggedBy24
+qm_QualityModel "Tag 1..1" *-- "qualityModel12 0..9999" qm_Tag : tags11
+qm_Factor "qm_Impact 1..1" -- "qm_Factor58 1..1" qm_Impact : target57
+qm_Tool "qm_ToolBasedInstrument 1..1" -- "qm_Tool 1..1" qm_ToolBasedInstrument : tool92
+qm_QualityModel "Tool 1..1" *-- "qualityModel10 0..9999" qm_Tool : tools9
+qm_DoubleInterval "qm_NumberMeasurementResult 1..1" --* "qm_DoubleInterval 1..1" qm_NumberMeasurementResult : value112
+qm_DoubleInterval "qm_EvaluationResult115 1..1" --* "qm_DoubleInterval116 1..1" qm_EvaluationResult : value114
+qm_DoubleInterval "qm_MeasureRankingEvaluationResult122 1..1" --* "qm_DoubleInterval123 1..1" qm_MeasureRankingEvaluationResult : value121
 @enduml

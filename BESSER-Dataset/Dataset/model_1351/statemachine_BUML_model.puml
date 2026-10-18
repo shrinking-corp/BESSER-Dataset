@@ -1,4 +1,8 @@
 @startuml
+' model: statemachine
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractState {
 }
 class FiringElement {
@@ -27,11 +31,11 @@ AbstractState <|-- statemachine_InitialState
 AbstractState <|-- statemachine_State
 FiringElement <|-- statemachine_StateAction
 FiringElement <|-- statemachine_Transition
-statemachine_State "1..1" *-- "0..9999" statemachine_StateAction : internalActions6
-statemachine_AbstractState "1..1" -- "1..1" statemachine_Transition : source7
-statemachine_AbstractState "0..9999" --* "1..1" statemachine_StateMachine : states0
-statemachine_AbstractState "1..1" -- "1..1" statemachine_Transition : target8
-statemachine_StateMachine "1..1" *-- "0..9999" statemachine_Transition : transitions1
-statemachine_AbstractState "1..1" -- "0..9999" statemachine_Transition : transitionsAsSource3
-statemachine_AbstractState "1..1" -- "0..9999" statemachine_Transition : transitionsAsTarget4
+statemachine_State "statemachine_StateAction 1..1" *-- "statemachine_State 0..9999" statemachine_StateAction : internalActions6
+statemachine_AbstractState "transitionsAsSource 1..1" -- "AbstractState 1..1" statemachine_Transition : source7
+statemachine_AbstractState "statemachine_StateMachine 0..9999" --* "statemachine_AbstractState 1..1" statemachine_StateMachine : states0
+statemachine_AbstractState "transitionsAsTarget 1..1" -- "AbstractState9 1..1" statemachine_Transition : target8
+statemachine_StateMachine "statemachine_Transition 1..1" *-- "statemachine_StateMachine2 0..9999" statemachine_Transition : transitions1
+statemachine_AbstractState "Transition 1..1" -- "source 0..9999" statemachine_Transition : transitionsAsSource3
+statemachine_AbstractState "Transition5 1..1" -- "target 0..9999" statemachine_Transition : transitionsAsTarget4
 @enduml

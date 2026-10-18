@@ -1,4 +1,8 @@
 @startuml
+' model: company
+' project: sampleModel
+' owner: User
+' description: New project
 class company_Company {
   + name : str
 }
@@ -8,6 +12,6 @@ class company_Department {
 class company_Employee {
   + name : str
 }
-company_Company "1..1" *-- "0..9999" company_Department : department0
-company_Department "1..1" *-- "0..9999" company_Employee : employees1
+company_Company "company_Department 1..1" *-- "company_Company 0..9999" company_Department : department0
+company_Department "company_Employee 1..1" *-- "company_Department2 0..9999" company_Employee : employees1
 @enduml

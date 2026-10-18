@@ -1,4 +1,8 @@
 @startuml
+' model: library
+' project: sampleModel
+' owner: User
+' description: New project
 enum BookCategory {
   Biography
   IT
@@ -21,9 +25,9 @@ class library_Person {
 class library_Writer {
 }
 Person <|-- library_Writer
-library_Book "1..1" -- "1..1" library_Writer : author0
-library_Book "0..9999" --* "1..1" library_Library : books2
-library_Book "0..9999" -- "1..1" library_Writer : books5
-library_Library "1..1" -- "0..9999" library_Person : employees4
-library_Library "1..1" *-- "0..9999" library_Writer : writers1
+library_Book "Writer 1..1" -- "books 1..1" library_Writer : author0
+library_Book "library_Library3 0..9999" --* "library_Book 1..1" library_Library : books2
+library_Book "author 0..9999" -- "Book 1..1" library_Writer : books5
+library_Library "hr.ecorePerson 1..1" -- "Library 0..9999" library_Person : employees4
+library_Library "library_Writer 1..1" *-- "library_Library 0..9999" library_Writer : writers1
 @enduml

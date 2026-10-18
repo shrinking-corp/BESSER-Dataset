@@ -1,4 +1,8 @@
 @startuml
+' model: mindmap
+' project: sampleModel
+' owner: User
+' description: New project
 class Topic {
 }
 class mindmap_CentralTopic {
@@ -17,8 +21,8 @@ abstract class mindmap_Topic {
 Topic <|-- mindmap_CentralTopic
 Topic <|-- mindmap_MainTopic
 Topic <|-- mindmap_SubTopic
-mindmap_CentralTopic "1..1" *-- "0..9999" mindmap_MainTopic : maintopics1
-mindmap_SubTopic "0..9999" --* "1..1" mindmap_SubTopic : subsubtopics6
-mindmap_MainTopic "1..1" *-- "0..9999" mindmap_SubTopic : subtopics3
-mindmap_CentralTopic "1..1" --* "1..1" mindmap_MindMap : topic0
+mindmap_CentralTopic "mindmap_MainTopic 1..1" *-- "mindmap_CentralTopic2 0..9999" mindmap_MainTopic : maintopics1
+mindmap_SubTopic "mindmap_SubTopic5 0..9999" --* "mindmap_SubTopic7 1..1" mindmap_SubTopic : subsubtopics6
+mindmap_MainTopic "mindmap_SubTopic 1..1" *-- "mindmap_MainTopic4 0..9999" mindmap_SubTopic : subtopics3
+mindmap_CentralTopic "mindmap_MindMap 1..1" --* "mindmap_CentralTopic 1..1" mindmap_MindMap : topic0
 @enduml

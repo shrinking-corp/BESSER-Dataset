@@ -1,4 +1,8 @@
 @startuml
+' model: dot
+' project: sampleModel
+' owner: User
+' description: New project
 class AttributedItem {
 }
 class Identifiable {
@@ -52,10 +56,10 @@ Statement <|-- dot_Edge
 Statement <|-- dot_Graph
 Statement <|-- dot_Node
 Statement <|-- dot_Settings
-dot_AttributedItem "1..1" *-- "0..9999" dot_StringToStringMapEntry : attributes6
-dot_InnerNode "0..9999" --* "1..1" dot_RecordNode : innerNodes1
-dot_InnerNode "1..1" -- "1..1" dot_RecordNode : recordNode7
-dot_Edge "1..1" -- "1..1" dot_Node : source2
-dot_Graph "1..1" *-- "0..9999" dot_Statement : statements0
-dot_Edge "1..1" -- "1..1" dot_Node : target3
+dot_AttributedItem "dot_StringToStringMapEntry 1..1" *-- "dot_AttributedItem 0..9999" dot_StringToStringMapEntry : attributes6
+dot_InnerNode "recordNode 0..9999" --* "InnerNode 1..1" dot_RecordNode : innerNodes1
+dot_InnerNode "RecordNode 1..1" -- "innerNodes 1..1" dot_RecordNode : recordNode7
+dot_Edge "dot_Node 1..1" -- "dot_Edge 1..1" dot_Node : source2
+dot_Graph "dot_Statement 1..1" *-- "dot_Graph 0..9999" dot_Statement : statements0
+dot_Edge "dot_Node5 1..1" -- "dot_Edge4 1..1" dot_Node : target3
 @enduml

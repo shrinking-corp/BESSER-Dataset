@@ -418,9 +418,9 @@ def test_assoc_books8_stub_double():
     partner = model_Library()
     setattr(partner, 'model_Library', None)
     _safe_set(owner, 'model_Book', partner)
-    assert getattr(partner, 'model_Library') == owner
+    assert owner in getattr(partner, 'model_Library')
     _safe_set(owner, 'model_Book', None)
-    assert getattr(partner, 'model_Library') is None
+    assert owner not in getattr(partner, 'model_Library')
 
 
 def test_assoc_latestBook11_stub_double():

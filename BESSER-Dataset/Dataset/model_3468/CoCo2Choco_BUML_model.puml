@@ -1,4 +1,8 @@
 @startuml
+' model: coCoMM
+' project: sampleModel
+' owner: User
+' description: New project
 enum AggregationOp {
   add
   max
@@ -149,36 +153,36 @@ ConfigurationConstraint <|-- coCoMM_HardLimitCC
 ConfigurationConstraint <|-- coCoMM_OptimizationCC
 ConfigurationConstraint <|-- coCoMM_SelectionStateCC
 SolutionConstraint <|-- coCoMM_OptimizationSC
-coCoMM_AttributeType "1..1" -- "1..1" coCoMM_FeatureAttribute : attrType13
-coCoMM_AggregationFunction "1..1" -- "1..1" coCoMM_AttributeType : attrType70
-coCoMM_AttributeType "1..1" -- "1..1" coCoMM_OptimizationSC : attrType73
-coCoMM_AttributeType "0..9999" --* "1..1" coCoMM_CoCo : attributeTypes25
-coCoMM_Feature "1..9999" --* "1..1" coCoMM_TreeConstraint : children10
-coCoMM_CoCo "1..1" *-- "0..9999" coCoMM_CrossModelConstraint : cmConstraints19
-coCoMM_CoCo "1..1" *-- "0..9999" coCoMM_ConfigurationConstraint : configConstraints23
-coCoMM_ConfigurationConstraint "0..9999" -- "1..1" coCoMM_Project : configConstraints44
-coCoMM_Config "0..9999" --* "1..1" coCoMM_Project : configs50
-coCoMM_CrossTreeConstraint "0..9999" --* "1..1" coCoMM_FeatureModel : ctConstraints1
-coCoMM_CTConstraintExpression "1..9999" --* "1..1" coCoMM_CrossTreeConstraint : expressions15
-coCoMM_CMConstraintExpression "1..9999" --* "1..1" coCoMM_CrossModelConstraint : expressions32
-coCoMM_HardLimitCC "1..1" *-- "1..2" coCoMM_HardLimitCCExpression : expressions39
-coCoMM_CTConstraintExpression "0..9999" --* "1..1" coCoMM_CTConstraintExpression : expressions62
-coCoMM_CMConstraintExpression "0..9999" --* "1..1" coCoMM_CMConstraintExpression : expressions68
-coCoMM_Feature "0..1" -- "1..1" coCoMM_SelectionStateCC : feature36
-coCoMM_Feature "1..1" *-- "0..9999" coCoMM_FeatureAttribute : featureAttributes8
-coCoMM_FeatureModel "0..1" -- "1..1" coCoMM_SelectionStateCC : featureModel34
-coCoMM_Feature "1..1" -- "1..1" coCoMM_FeatureModel : featureModel5
-coCoMM_CoCo "1..1" *-- "0..9999" coCoMM_FeatureModel : featureModels17
-coCoMM_Config "1..1" -- "0..9999" coCoMM_Feature : features55
-coCoMM_CTConstraintExpression "1..1" -- "0..9999" coCoMM_Feature : features58
-coCoMM_CMConstraintExpression "1..1" -- "0..9999" coCoMM_Feature : features64
-coCoMM_AggregationFunction "1..1" -- "1..1" coCoMM_HardLimitCC : function40
-coCoMM_AggregationFunction "1..1" -- "1..1" coCoMM_OptimizationCC : funtion42
-coCoMM_CoCo "1..1" *-- "0..9999" coCoMM_Project : project28
-coCoMM_Feature "1..1" --* "1..1" coCoMM_FeatureModel : root0
-coCoMM_CoCo "1..1" *-- "0..9999" coCoMM_SolutionConstraint : solutionConstraints21
-coCoMM_Project "1..1" -- "0..9999" coCoMM_SolutionConstraint : solutionConstraints47
-coCoMM_Config "1..1" -- "0..1" coCoMM_Stakeholder : stakeholder52
-coCoMM_CoCo "1..1" *-- "0..9999" coCoMM_Stakeholder : stakeholders30
-coCoMM_Feature "1..1" *-- "0..9999" coCoMM_TreeConstraint : treeConstraints3
+coCoMM_AttributeType "coCoMM_FeatureAttribute14 1..1" -- "coCoMM_AttributeType 1..1" coCoMM_FeatureAttribute : attrType13
+coCoMM_AggregationFunction "coCoMM_AttributeType72 1..1" -- "coCoMM_AggregationFunction71 1..1" coCoMM_AttributeType : attrType70
+coCoMM_AttributeType "coCoMM_OptimizationSC 1..1" -- "coCoMM_AttributeType74 1..1" coCoMM_OptimizationSC : attrType73
+coCoMM_AttributeType "coCoMM_CoCo26 0..9999" --* "coCoMM_AttributeType27 1..1" coCoMM_CoCo : attributeTypes25
+coCoMM_Feature "coCoMM_TreeConstraint11 1..9999" --* "coCoMM_Feature12 1..1" coCoMM_TreeConstraint : children10
+coCoMM_CoCo "coCoMM_CrossModelConstraint 1..1" *-- "coCoMM_CoCo20 0..9999" coCoMM_CrossModelConstraint : cmConstraints19
+coCoMM_CoCo "coCoMM_ConfigurationConstraint 1..1" *-- "coCoMM_CoCo24 0..9999" coCoMM_ConfigurationConstraint : configConstraints23
+coCoMM_ConfigurationConstraint "coCoMM_Project45 0..9999" -- "coCoMM_ConfigurationConstraint46 1..1" coCoMM_Project : configConstraints44
+coCoMM_Config "coCoMM_Project51 0..9999" --* "coCoMM_Config 1..1" coCoMM_Project : configs50
+coCoMM_CrossTreeConstraint "coCoMM_FeatureModel2 0..9999" --* "coCoMM_CrossTreeConstraint 1..1" coCoMM_FeatureModel : ctConstraints1
+coCoMM_CTConstraintExpression "coCoMM_CrossTreeConstraint16 1..9999" --* "coCoMM_CTConstraintExpression 1..1" coCoMM_CrossTreeConstraint : expressions15
+coCoMM_CMConstraintExpression "coCoMM_CrossModelConstraint33 1..9999" --* "coCoMM_CMConstraintExpression 1..1" coCoMM_CrossModelConstraint : expressions32
+coCoMM_HardLimitCC "coCoMM_HardLimitCCExpression 1..1" *-- "coCoMM_HardLimitCC 1..2" coCoMM_HardLimitCCExpression : expressions39
+coCoMM_CTConstraintExpression "coCoMM_CTConstraintExpression61 0..9999" --* "coCoMM_CTConstraintExpression63 1..1" coCoMM_CTConstraintExpression : expressions62
+coCoMM_CMConstraintExpression "coCoMM_CMConstraintExpression67 0..9999" --* "coCoMM_CMConstraintExpression69 1..1" coCoMM_CMConstraintExpression : expressions68
+coCoMM_Feature "coCoMM_SelectionStateCC37 0..1" -- "coCoMM_Feature38 1..1" coCoMM_SelectionStateCC : feature36
+coCoMM_Feature "coCoMM_FeatureAttribute 1..1" *-- "coCoMM_Feature9 0..9999" coCoMM_FeatureAttribute : featureAttributes8
+coCoMM_FeatureModel "coCoMM_SelectionStateCC 0..1" -- "coCoMM_FeatureModel35 1..1" coCoMM_SelectionStateCC : featureModel34
+coCoMM_Feature "coCoMM_FeatureModel7 1..1" -- "coCoMM_Feature6 1..1" coCoMM_FeatureModel : featureModel5
+coCoMM_CoCo "coCoMM_FeatureModel18 1..1" *-- "coCoMM_CoCo 0..9999" coCoMM_FeatureModel : featureModels17
+coCoMM_Config "coCoMM_Feature57 1..1" -- "coCoMM_Config56 0..9999" coCoMM_Feature : features55
+coCoMM_CTConstraintExpression "coCoMM_Feature60 1..1" -- "coCoMM_CTConstraintExpression59 0..9999" coCoMM_Feature : features58
+coCoMM_CMConstraintExpression "coCoMM_Feature66 1..1" -- "coCoMM_CMConstraintExpression65 0..9999" coCoMM_Feature : features64
+coCoMM_AggregationFunction "coCoMM_HardLimitCC41 1..1" -- "coCoMM_AggregationFunction 1..1" coCoMM_HardLimitCC : function40
+coCoMM_AggregationFunction "coCoMM_OptimizationCC 1..1" -- "coCoMM_AggregationFunction43 1..1" coCoMM_OptimizationCC : funtion42
+coCoMM_CoCo "coCoMM_Project 1..1" *-- "coCoMM_CoCo29 0..9999" coCoMM_Project : project28
+coCoMM_Feature "coCoMM_FeatureModel 1..1" --* "coCoMM_Feature 1..1" coCoMM_FeatureModel : root0
+coCoMM_CoCo "coCoMM_SolutionConstraint 1..1" *-- "coCoMM_CoCo22 0..9999" coCoMM_SolutionConstraint : solutionConstraints21
+coCoMM_Project "coCoMM_SolutionConstraint49 1..1" -- "coCoMM_Project48 0..9999" coCoMM_SolutionConstraint : solutionConstraints47
+coCoMM_Config "coCoMM_Stakeholder54 1..1" -- "coCoMM_Config53 0..1" coCoMM_Stakeholder : stakeholder52
+coCoMM_CoCo "coCoMM_Stakeholder 1..1" *-- "coCoMM_CoCo31 0..9999" coCoMM_Stakeholder : stakeholders30
+coCoMM_Feature "coCoMM_TreeConstraint 1..1" *-- "coCoMM_Feature4 0..9999" coCoMM_TreeConstraint : treeConstraints3
 @enduml

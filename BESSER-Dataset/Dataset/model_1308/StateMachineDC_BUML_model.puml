@@ -1,4 +1,8 @@
 @startuml
+' model: SimplStateMachineDC
+' project: sampleModel
+' owner: User
+' description: New project
 class PseudoState {
 }
 class SimplStateMachineDC_CompositeState {
@@ -25,12 +29,12 @@ class State {
 PseudoState <|-- SimplStateMachineDC_InitialState
 State <|-- SimplStateMachineDC_CompositeState
 State <|-- SimplStateMachineDC_PseudoState
-SimplStateMachineDC_CompositeState "0..1" -- "1..1" SimplStateMachineDC_State : container3
-SimplStateMachineDC_CompositeState "1..1" -- "1..1" SimplStateMachineDC_InitialState : initialState5
-SimplStateMachineDC_PseudoState "1..1" -- "0..1" SimplStateMachineDC_State : referencedState6
-SimplStateMachineDC_State "1..1" -- "1..1" SimplStateMachineDC_Transition : source8
-SimplStateMachineDC_State "0..9999" --* "1..1" SimplStateMachineDC_StateMachine : states1
-SimplStateMachineDC_CompositeState "1..1" *-- "1..9999" SimplStateMachineDC_State : states4
-SimplStateMachineDC_State "1..1" -- "1..1" SimplStateMachineDC_Transition : target11
-SimplStateMachineDC_StateMachine "1..1" *-- "1..9999" SimplStateMachineDC_Transition : transitions0
+SimplStateMachineDC_CompositeState "states 0..1" -- "CompositeState 1..1" SimplStateMachineDC_State : container3
+SimplStateMachineDC_CompositeState "SimplStateMachineDC_InitialState 1..1" -- "SimplStateMachineDC_CompositeState 1..1" SimplStateMachineDC_InitialState : initialState5
+SimplStateMachineDC_PseudoState "SimplStateMachineDC_State7 1..1" -- "SimplStateMachineDC_PseudoState 0..1" SimplStateMachineDC_State : referencedState6
+SimplStateMachineDC_State "SimplStateMachineDC_Transition9 1..1" -- "SimplStateMachineDC_State10 1..1" SimplStateMachineDC_Transition : source8
+SimplStateMachineDC_State "SimplStateMachineDC_StateMachine2 0..9999" --* "SimplStateMachineDC_State 1..1" SimplStateMachineDC_StateMachine : states1
+SimplStateMachineDC_CompositeState "State 1..1" *-- "container 1..9999" SimplStateMachineDC_State : states4
+SimplStateMachineDC_State "SimplStateMachineDC_Transition12 1..1" -- "SimplStateMachineDC_State13 1..1" SimplStateMachineDC_Transition : target11
+SimplStateMachineDC_StateMachine "SimplStateMachineDC_Transition 1..1" *-- "SimplStateMachineDC_StateMachine 1..9999" SimplStateMachineDC_Transition : transitions0
 @enduml

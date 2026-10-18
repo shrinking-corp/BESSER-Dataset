@@ -1,4 +1,8 @@
 @startuml
+' model: rel2rel
+' project: sampleModel
+' owner: User
+' description: New project
 class NamedElement {
 }
 class Thing {
@@ -16,9 +20,9 @@ class rel2rel_World {
 }
 NamedElement <|-- rel2rel_Thing
 Thing <|-- rel2rel_RelatedTo
-rel2rel_RelatedTo "1..1" -- "0..1" rel2rel_Thing : fromThing2
-rel2rel_RelatedTo "0..9999" --* "1..1" rel2rel_Thing : relations1
-rel2rel_Thing "0..9999" --* "1..1" rel2rel_World : things0
-rel2rel_RelatedTo "0..1" -- "1..1" rel2rel_RelatedTo : toRelation6
-rel2rel_RelatedTo "1..1" -- "0..1" rel2rel_Thing : toThing3
+rel2rel_RelatedTo "Thing 1..1" -- "relations 0..1" rel2rel_Thing : fromThing2
+rel2rel_RelatedTo "fromThing 0..9999" --* "RelatedTo 1..1" rel2rel_Thing : relations1
+rel2rel_Thing "rel2rel_World 0..9999" --* "rel2rel_Thing 1..1" rel2rel_World : things0
+rel2rel_RelatedTo "rel2rel_RelatedTo5 0..1" -- "rel2rel_RelatedTo7 1..1" rel2rel_RelatedTo : toRelation6
+rel2rel_RelatedTo "rel2rel_Thing4 1..1" -- "rel2rel_RelatedTo 0..1" rel2rel_Thing : toThing3
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: fsm
+' project: sampleModel
+' owner: User
+' description: New project
 class NamedElement {
 }
 class Pseudostate {
@@ -46,13 +50,13 @@ State <|-- fsm_FinalState
 State <|-- fsm_InitialState
 State <|-- fsm_Pseudostate
 Transition <|-- fsm_TimedTransition
-fsm_State "1..1" -- "0..9999" fsm_Transition : incoming5
-fsm_State "1..1" -- "0..9999" fsm_Transition : outgoing3
-fsm_State "1..1" -- "1..1" fsm_Transition : source10
-fsm_StateMachine "1..1" -- "1..1" fsm_Transition : stateMachine13
-fsm_State "1..1" -- "0..1" fsm_StateMachine : stateMachine7
-fsm_State "0..9999" --* "1..1" fsm_StateMachine : states0
-fsm_State "1..1" -- "1..1" fsm_Transition : target8
-fsm_StateMachine "1..1" *-- "0..9999" fsm_Transition : transitions1
-fsm_Transition "1..1" *-- "0..1" fsm_Trigger : trigger12
+fsm_State "Transition6 1..1" -- "target 0..9999" fsm_Transition : incoming5
+fsm_State "Transition4 1..1" -- "source 0..9999" fsm_Transition : outgoing3
+fsm_State "outgoing 1..1" -- "State11 1..1" fsm_Transition : source10
+fsm_StateMachine "transitions 1..1" -- "StateMachine14 1..1" fsm_Transition : stateMachine13
+fsm_State "StateMachine 1..1" -- "states 0..1" fsm_StateMachine : stateMachine7
+fsm_State "stateMachine 0..9999" --* "State 1..1" fsm_StateMachine : states0
+fsm_State "incoming 1..1" -- "State9 1..1" fsm_Transition : target8
+fsm_StateMachine "Transition 1..1" *-- "stateMachine2 0..9999" fsm_Transition : transitions1
+fsm_Transition "fsm_Trigger 1..1" *-- "fsm_Transition 0..1" fsm_Trigger : trigger12
 @enduml

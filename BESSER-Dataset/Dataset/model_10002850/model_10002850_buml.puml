@@ -1,4 +1,8 @@
 @startuml
+' model: e2b5dc7b_3046_4945_a5b8_404cb943ac14
+' project: sampleModel
+' owner: User
+' description: New project
 class Deleted {
 }
 class Doctor_Actor {
@@ -19,12 +23,12 @@ class View_Patient_Mental_Info_UseCase {
 }
 class message {
 }
-Doctor_Actor "0..1" -- "0..1" Update_Patient_Mental_Info_UseCase : Doctor_Update_Patient_Mental_Info
-Doctor_Actor "0..1" -- "0..1" View_Patient_Clinical_info_UseCase : Doctor_View_Patient_Clinical_info
-Doctor_Actor "0..1" -- "0..1" View_Patient_Mental_Info_UseCase : Doctor_View_Patient_Mental_Info
-From_Author "1..9999" -- "1..9999" message : From_message
-Inbox "0..1" -- "0..9999" message : Inbox_message
-Sent "0..1" -- "0..9999" message : Sent_message
-Deleted "0..1" -- "0..9999" message : message_Deleted
-To_Author "1..9999" -- "1..9999" message : message_To
+Doctor_Actor "doctor3 0..1" -- "update_Patient_Mental_Info2 0..1" Update_Patient_Mental_Info_UseCase : Doctor_Update_Patient_Mental_Info
+Doctor_Actor "doctor1 0..1" -- "view_Patient_Clinical_info0 0..1" View_Patient_Clinical_info_UseCase : Doctor_View_Patient_Clinical_info
+Doctor_Actor "doctor5 0..1" -- "view_Patient_Mental_Info4 0..1" View_Patient_Mental_Info_UseCase : Doctor_View_Patient_Mental_Info
+From_Author "Came_from15 1..9999" -- "From_message_014 1..9999" message : From_message
+Inbox "Inbox_message_17 0..1" -- "is_in6 0..9999" message : Inbox_message
+Sent "sent9 0..1" -- "message8 0..9999" message : Sent_message
+Deleted "deleted10 0..1" -- "message11 0..9999" message : message_Deleted
+To_Author "Sent_to12 1..9999" -- "message13 1..9999" message : message_To
 @enduml

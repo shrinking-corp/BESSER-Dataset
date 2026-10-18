@@ -1,4 +1,8 @@
 @startuml
+' model: SimpleTree
+' project: sampleModel
+' owner: User
+' description: New project
 class SimpleTree_Attribute {
   + value : str
 }
@@ -27,13 +31,13 @@ TreeElement <|-- SimpleTree_Attribute
 TreeElement <|-- SimpleTree_File
 TreeElement <|-- SimpleTree_Folder
 TreeElement <|-- SimpleTree_Text
-SimpleTree_Attribute "0..9999" --* "1..1" SimpleTree_Node : attribute11
-SimpleTree_Node "1..1" *-- "0..9999" SimpleTree_Text : children10
-SimpleTree_File "0..9999" --* "1..1" SimpleTree_Folder : file9
-SimpleTree_File "1..1" -- "1..1" SimpleTree_Folder : folder1
-SimpleTree_Attribute "1..1" -- "1..1" SimpleTree_Node : node0
-SimpleTree_Folder "1..1" -- "1..1" SimpleTree_Folder : parentFolder7
-SimpleTree_Node "1..1" -- "1..1" SimpleTree_Text : parentNode12
-SimpleTree_File "1..1" *-- "1..1" SimpleTree_TreeElement : rootNode2
-SimpleTree_Folder "1..1" *-- "0..9999" SimpleTree_Folder : subFolder4
+SimpleTree_Attribute "node 0..9999" --* "Attribute 1..1" SimpleTree_Node : attribute11
+SimpleTree_Node "Text 1..1" *-- "parentNode 0..9999" SimpleTree_Text : children10
+SimpleTree_File "folder 0..9999" --* "File 1..1" SimpleTree_Folder : file9
+SimpleTree_File "Folder 1..1" -- "file 1..1" SimpleTree_Folder : folder1
+SimpleTree_Attribute "Node 1..1" -- "attribute 1..1" SimpleTree_Node : node0
+SimpleTree_Folder "Folder8 1..1" -- "subFolder 1..1" SimpleTree_Folder : parentFolder7
+SimpleTree_Node "children 1..1" -- "Node13 1..1" SimpleTree_Text : parentNode12
+SimpleTree_File "SimpleTree_TreeElement 1..1" *-- "SimpleTree_File 1..1" SimpleTree_TreeElement : rootNode2
+SimpleTree_Folder "Folder5 1..1" *-- "parentFolder 0..9999" SimpleTree_Folder : subFolder4
 @enduml

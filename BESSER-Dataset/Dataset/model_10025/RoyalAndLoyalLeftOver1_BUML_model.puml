@@ -1,4 +1,8 @@
 @startuml
+' model: RoyalAndLoyal
+' project: sampleModel
+' owner: User
+' description: New project
 class RoyalAndLoyal_Container_RandL {
 }
 class RoyalAndLoyal_Customer {
@@ -17,21 +21,42 @@ class RoyalAndLoyal_Service {
 }
 class RoyalAndLoyal_ServiceLevel {
 }
-RoyalAndLoyal_Service "0..9999" -- "1..1" RoyalAndLoyal_ServiceLevel : availableServices5
-RoyalAndLoyal_Customer "1..1" -- "0..9999" RoyalAndLoyal_CustomerCard : cards21
-RoyalAndLoyal_ProgramPartner "1..1" -- "0..9999" RoyalAndLoyal_Service : deliveredServices27
-RoyalAndLoyal_LoyaltyProgram "1..1" -- "1..9999" RoyalAndLoyal_ServiceLevel : levels1
-RoyalAndLoyal_CustomerCard "1..1" *-- "0..1" RoyalAndLoyal_ServiceLevel : myLevel22
-RoyalAndLoyal_Customer "0..1" -- "1..1" RoyalAndLoyal_CustomerCard : owner25
-RoyalAndLoyal_Customer "0..9999" -- "1..1" RoyalAndLoyal_LoyaltyProgram : participants2
-RoyalAndLoyal_LoyaltyProgram "1..1" -- "1..9999" RoyalAndLoyal_ProgramPartner : partners0
-RoyalAndLoyal_LoyaltyProgram "0..1" -- "1..1" RoyalAndLoyal_ServiceLevel : program4
-RoyalAndLoyal_Customer "1..1" -- "0..9999" RoyalAndLoyal_LoyaltyProgram : programs19
-RoyalAndLoyal_LoyaltyProgram "1..9999" -- "1..1" RoyalAndLoyal_ProgramPartner : programs30
-RoyalAndLoyal_Container_RandL "1..1" *-- "0..9999" RoyalAndLoyal_Customer : ref_RandL_Customer6
-RoyalAndLoyal_Container_RandL "1..1" *-- "0..9999" RoyalAndLoyal_CustomerCard : ref_RandL_CustomerCard7
-RoyalAndLoyal_Container_RandL "1..1" *-- "0..9999" RoyalAndLoyal_LoyaltyProgram : ref_RandL_LoyaltyProgram12
-RoyalAndLoyal_Container_RandL "1..1" *-- "0..9999" RoyalAndLoyal_ProgramPartner : ref_RandL_ProgramPartner17
-RoyalAndLoyal_Container_RandL "1..1" *-- "0..9999" RoyalAndLoyal_Service : ref_RandL_Service9
-RoyalAndLoyal_Container_RandL "1..1" *-- "0..9999" RoyalAndLoyal_ServiceLevel : ref_RandL_ServiceLevel14
+RoyalAndLoyal_Service "RoyalAndLoyal_ServiceLevel 0..9999" -- "RoyalAndLoyal_Service 1..1" RoyalAndLoyal_ServiceLevel : availableServices5
+RoyalAndLoyal_Customer "CustomerCard 1..1" -- "owner 0..9999" RoyalAndLoyal_CustomerCard : cards21
+RoyalAndLoyal_ProgramPartner "RoyalAndLoyal_Service29 1..1" -- "RoyalAndLoyal_ProgramPartner28 0..9999" RoyalAndLoyal_Service : deliveredServices27
+RoyalAndLoyal_LoyaltyProgram "ServiceLevel 1..1" -- "program 1..9999" RoyalAndLoyal_ServiceLevel : levels1
+RoyalAndLoyal_CustomerCard "RoyalAndLoyal_ServiceLevel24 1..1" *-- "RoyalAndLoyal_CustomerCard23 0..1" RoyalAndLoyal_ServiceLevel : myLevel22
+RoyalAndLoyal_Customer "cards 0..1" -- "Customer26 1..1" RoyalAndLoyal_CustomerCard : owner25
+RoyalAndLoyal_Customer "programs3 0..9999" -- "Customer 1..1" RoyalAndLoyal_LoyaltyProgram : participants2
+RoyalAndLoyal_LoyaltyProgram "ProgramPartner 1..1" -- "programs 1..9999" RoyalAndLoyal_ProgramPartner : partners0
+RoyalAndLoyal_LoyaltyProgram "levels 0..1" -- "LoyaltyProgram 1..1" RoyalAndLoyal_ServiceLevel : program4
+RoyalAndLoyal_Customer "LoyaltyProgram20 1..1" -- "participants 0..9999" RoyalAndLoyal_LoyaltyProgram : programs19
+RoyalAndLoyal_LoyaltyProgram "partners 1..9999" -- "LoyaltyProgram31 1..1" RoyalAndLoyal_ProgramPartner : programs30
+RoyalAndLoyal_Container_RandL "RoyalAndLoyal_Customer 1..1" *-- "RoyalAndLoyal_Container_RandL 0..9999" RoyalAndLoyal_Customer : ref_RandL_Customer6
+RoyalAndLoyal_Container_RandL "RoyalAndLoyal_CustomerCard 1..1" *-- "RoyalAndLoyal_Container_RandL8 0..9999" RoyalAndLoyal_CustomerCard : ref_RandL_CustomerCard7
+RoyalAndLoyal_Container_RandL "RoyalAndLoyal_LoyaltyProgram 1..1" *-- "RoyalAndLoyal_Container_RandL13 0..9999" RoyalAndLoyal_LoyaltyProgram : ref_RandL_LoyaltyProgram12
+RoyalAndLoyal_Container_RandL "RoyalAndLoyal_ProgramPartner 1..1" *-- "RoyalAndLoyal_Container_RandL18 0..9999" RoyalAndLoyal_ProgramPartner : ref_RandL_ProgramPartner17
+RoyalAndLoyal_Container_RandL "RoyalAndLoyal_Service11 1..1" *-- "RoyalAndLoyal_Container_RandL10 0..9999" RoyalAndLoyal_Service : ref_RandL_Service9
+RoyalAndLoyal_Container_RandL "RoyalAndLoyal_ServiceLevel16 1..1" *-- "RoyalAndLoyal_Container_RandL15 0..9999" RoyalAndLoyal_ServiceLevel : ref_RandL_ServiceLevel14
+note top of RoyalAndLoyal_Customer
+  constraint invariant_Customer1 (OCL): context Customer inv: (self.cards->select( i_CustomerCard : CustomerCard | i_CustomerCard.valid = true )->size()) > 1
+end note
+note top of RoyalAndLoyal_Customer
+  constraint invariant_Customer10 (OCL): context Customer inv: self.programs->collect( i_LoyaltyProgram : LoyaltyProgram | i_LoyaltyProgram.partners )->collectNested( i_ProgramPartner : ProgramPartner | i_ProgramPartner.deliveredServices )->isEmpty()
+end note
+note top of RoyalAndLoyal_Customer
+  constraint invariant_sizesAgree (OCL): context Customer inv: self.programs->size() = self.cards->select( i_CustomerCard : CustomerCard | i_CustomerCard.valid = true )->size()
+end note
+note top of RoyalAndLoyal_CustomerCard
+  constraint invariant_CustomerCard3 (OCL): context CustomerCard inv: self.owner.programs->size() > 0
+end note
+note top of RoyalAndLoyal_ProgramPartner
+  constraint invariant_ProgramPartner1 (OCL): context ProgramPartner inv: self.programs->collect( i_LoyaltyProgram : LoyaltyProgram | i_LoyaltyProgram.partners )->select( p : ProgramPartner | p <> self )->isEmpty()
+end note
+note top of RoyalAndLoyal_ProgramPartner
+  constraint invariant_nrOfParticipants (OCL): context ProgramPartner inv: self.numberOfCustomers = self.programs->collect( i_LoyaltyProgram : LoyaltyProgram | i_LoyaltyProgram.participants )->size()
+end note
+note top of RoyalAndLoyal_ServiceLevel
+  constraint invariant_ServiceLevel1 (OCL): context ServiceLevel inv: self.program.partners->isEmpty()
+end note
 @enduml

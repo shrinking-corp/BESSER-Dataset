@@ -1,4 +1,8 @@
 @startuml
+' model: cvlmodel
+' project: sampleModel
+' owner: User
+' description: New project
 enum PrimitiveTypeEnum {
   Boolean
   Integer
@@ -74,19 +78,19 @@ VSpecResolution <|-- cvlmodel_ChoiceResolution
 VSpecResolution <|-- cvlmodel_VClassifierResolution
 VSpecResolution <|-- cvlmodel_VariableResolution
 VariationPoint <|-- cvlmodel_ObjectExistence
-cvlmodel_VSpec "1..1" -- "1..1" cvlmodel_VariationPoint : binding14
-cvlmodel_VSpec "0..9999" -- "1..1" cvlmodel_VSpec : children5
-cvlmodel_Multiplicity "1..1" -- "0..9999" cvlmodel_VSpec : children7
-cvlmodel_Multiplicity "0..1" --* "1..1" cvlmodel_VSpec : groupMultiplicity0
-cvlmodel_Multiplicity "0..1" --* "1..1" cvlmodel_VClassifier : instanceMultiplicity10
-cvlmodel_VSpec "0..1" -- "1..1" cvlmodel_VSpec : parent2
-cvlmodel_StringToMOFRefMap "0..9999" --* "1..1" cvlmodel_VariationPoint : references16
-cvlmodel_ResolutionModel "1..1" *-- "0..9999" cvlmodel_VSpecResolution : resolutions25
-cvlmodel_VSpec "1..1" -- "1..1" cvlmodel_VSpecResolution : resolvedVSpec12
-cvlmodel_ResolutionModel "1..1" -- "1..1" cvlmodel_VSpecTree : resolvedVSpec27
-cvlmodel_VSpec "0..1" -- "1..1" cvlmodel_VSpecTree : root22
-cvlmodel_MOFRef "1..1" --* "1..1" cvlmodel_StringToMOFRefMap : value18
-cvlmodel_CVLModel "1..1" *-- "0..9999" cvlmodel_VariationPoint : variationPoints32
-cvlmodel_CVLModel "1..1" *-- "1..1" cvlmodel_VSpecTree : vspecTree30
-cvlmodel_VSpec "0..9999" --* "1..1" cvlmodel_VSpecTree : vspecs20
+cvlmodel_VSpec "cvlmodel_VariationPoint 1..1" -- "cvlmodel_VSpec15 1..1" cvlmodel_VariationPoint : binding14
+cvlmodel_VSpec "cvlmodel_VSpec4 0..9999" -- "cvlmodel_VSpec6 1..1" cvlmodel_VSpec : children5
+cvlmodel_Multiplicity "cvlmodel_VSpec9 1..1" -- "cvlmodel_Multiplicity8 0..9999" cvlmodel_VSpec : children7
+cvlmodel_Multiplicity "cvlmodel_VSpec 0..1" --* "cvlmodel_Multiplicity 1..1" cvlmodel_VSpec : groupMultiplicity0
+cvlmodel_Multiplicity "cvlmodel_VClassifier 0..1" --* "cvlmodel_Multiplicity11 1..1" cvlmodel_VClassifier : instanceMultiplicity10
+cvlmodel_VSpec "cvlmodel_VSpec1 0..1" -- "cvlmodel_VSpec3 1..1" cvlmodel_VSpec : parent2
+cvlmodel_StringToMOFRefMap "cvlmodel_VariationPoint17 0..9999" --* "cvlmodel_StringToMOFRefMap 1..1" cvlmodel_VariationPoint : references16
+cvlmodel_ResolutionModel "cvlmodel_VSpecResolution26 1..1" *-- "cvlmodel_ResolutionModel 0..9999" cvlmodel_VSpecResolution : resolutions25
+cvlmodel_VSpec "cvlmodel_VSpecResolution 1..1" -- "cvlmodel_VSpec13 1..1" cvlmodel_VSpecResolution : resolvedVSpec12
+cvlmodel_ResolutionModel "cvlmodel_VSpecTree29 1..1" -- "cvlmodel_ResolutionModel28 1..1" cvlmodel_VSpecTree : resolvedVSpec27
+cvlmodel_VSpec "cvlmodel_VSpecTree23 0..1" -- "cvlmodel_VSpec24 1..1" cvlmodel_VSpecTree : root22
+cvlmodel_MOFRef "cvlmodel_StringToMOFRefMap19 1..1" --* "cvlmodel_MOFRef 1..1" cvlmodel_StringToMOFRefMap : value18
+cvlmodel_CVLModel "cvlmodel_VariationPoint34 1..1" *-- "cvlmodel_CVLModel33 0..9999" cvlmodel_VariationPoint : variationPoints32
+cvlmodel_CVLModel "cvlmodel_VSpecTree31 1..1" *-- "cvlmodel_CVLModel 1..1" cvlmodel_VSpecTree : vspecTree30
+cvlmodel_VSpec "cvlmodel_VSpecTree 0..9999" --* "cvlmodel_VSpec21 1..1" cvlmodel_VSpecTree : vspecs20
 @enduml

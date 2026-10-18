@@ -173,9 +173,9 @@ def test_assoc_label4_stub_double():
     partner = model_HasLabel()
     setattr(partner, 'parent', None)
     _safe_set(owner, 'Label', partner)
-    assert getattr(partner, 'parent') == owner
+    assert owner in getattr(partner, 'parent')
     _safe_set(owner, 'Label', None)
-    assert getattr(partner, 'parent') is None
+    assert owner not in getattr(partner, 'parent')
 
 
 def test_assoc_page20_stub_double():
@@ -263,8 +263,8 @@ def test_assoc_toolinfo6_stub_double():
     partner = model_HasToolInfo()
     setattr(partner, 'parent7', None)
     _safe_set(owner, 'ToolInfo', partner)
-    assert getattr(partner, 'parent7') == owner
+    assert owner in getattr(partner, 'parent7')
     _safe_set(owner, 'ToolInfo', None)
-    assert getattr(partner, 'parent7') is None
+    assert owner not in getattr(partner, 'parent7')
 
 

@@ -1,4 +1,8 @@
 @startuml
+' model: missionsDSL
+' project: sampleModel
+' owner: User
+' description: New project
 enum Color {
   BLACK
   BLUE
@@ -62,12 +66,12 @@ class missionsDSL_Value {
   + color : str
   + integer : int
 }
-missionsDSL_Action "0..9999" --* "1..1" missionsDSL_Mission : actionsAfterSetOfConditions6
-missionsDSL_Mission "0..9999" --* "1..1" missionsDSL_Robot : availableMissions1
-missionsDSL_Condition "0..9999" --* "1..1" missionsDSL_Mission : cond4
-missionsDSL_Action "0..1" --* "1..1" missionsDSL_Condition : ifConditionTrue12
-missionsDSL_Mission "0..9999" -- "1..1" missionsDSL_NewMissions : missions15
-missionsDSL_Mission "1..1" *-- "0..1" missionsDSL_NewMissions : newMission8
-missionsDSL_Mission "0..9999" -- "1..1" missionsDSL_Robot : startMissions0
-missionsDSL_Condition "1..1" *-- "0..1" missionsDSL_Value : value10
+missionsDSL_Action "missionsDSL_Mission7 0..9999" --* "missionsDSL_Action 1..1" missionsDSL_Mission : actionsAfterSetOfConditions6
+missionsDSL_Mission "missionsDSL_Robot2 0..9999" --* "missionsDSL_Mission3 1..1" missionsDSL_Robot : availableMissions1
+missionsDSL_Condition "missionsDSL_Mission5 0..9999" --* "missionsDSL_Condition 1..1" missionsDSL_Mission : cond4
+missionsDSL_Action "missionsDSL_Condition13 0..1" --* "missionsDSL_Action14 1..1" missionsDSL_Condition : ifConditionTrue12
+missionsDSL_Mission "missionsDSL_NewMissions16 0..9999" -- "missionsDSL_Mission17 1..1" missionsDSL_NewMissions : missions15
+missionsDSL_Mission "missionsDSL_NewMissions 1..1" *-- "missionsDSL_Mission9 0..1" missionsDSL_NewMissions : newMission8
+missionsDSL_Mission "missionsDSL_Robot 0..9999" -- "missionsDSL_Mission 1..1" missionsDSL_Robot : startMissions0
+missionsDSL_Condition "missionsDSL_Value 1..1" *-- "missionsDSL_Condition11 0..1" missionsDSL_Value : value10
 @enduml

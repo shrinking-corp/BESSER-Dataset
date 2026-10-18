@@ -1,4 +1,8 @@
 @startuml
+' model: feature
+' project: sampleModel
+' owner: User
+' description: New project
 class AtomicExpression {
 }
 enum AttributeComparisonOperator {
@@ -108,21 +112,21 @@ Identifiable <|-- feature_Feature
 Identifiable <|-- feature_Group
 UnaryExpression <|-- feature_NestedExpression
 UnaryExpression <|-- feature_NotExpression
-feature_AttributeComparisonExpression "1..1" *-- "1..1" feature_AttributeOperand : attribute126
-feature_AttributeComparisonExpression "1..1" *-- "1..1" feature_AttributeOperand : attribute227
-feature_Attribute "1..1" -- "1..1" feature_AttributeReference : attribute30
-feature_Attribute "0..9999" --* "1..1" feature_Feature : attributes5
-feature_Feature "1..9999" --* "1..1" feature_Group : childFeatures8
-feature_Constraint "0..9999" --* "1..1" feature_FeatureModel : constraints3
-feature_Attribute "1..1" -- "1..1" feature_Domain : domain12
-feature_Domain "0..9999" --* "1..1" feature_FeatureModel : domains1
-feature_Constraint "1..1" *-- "1..1" feature_Expression : expression15
-feature_Attribute "1..1" -- "1..1" feature_Feature : feature11
-feature_Feature "1..1" -- "1..1" feature_FeatureReference : feature24
-feature_Feature "1..1" *-- "0..9999" feature_Group : groups6
-feature_ContinuousDomain "1..1" *-- "1..9999" feature_Interval : intervals14
-feature_BinaryExpression "1..1" *-- "1..1" feature_Expression : operand119
-feature_Expression "1..1" --* "1..1" feature_UnaryExpression : operand17
-feature_BinaryExpression "1..1" *-- "1..1" feature_Expression : operand221
-feature_Feature "1..1" --* "1..1" feature_FeatureModel : root0
+feature_AttributeComparisonExpression "feature_AttributeOperand 1..1" *-- "feature_AttributeComparisonExpression 1..1" feature_AttributeOperand : attribute126
+feature_AttributeComparisonExpression "feature_AttributeOperand29 1..1" *-- "feature_AttributeComparisonExpression28 1..1" feature_AttributeOperand : attribute227
+feature_Attribute "feature_AttributeReference 1..1" -- "feature_Attribute31 1..1" feature_AttributeReference : attribute30
+feature_Attribute "feature 0..9999" --* "Attribute 1..1" feature_Feature : attributes5
+feature_Feature "feature_Group9 1..9999" --* "feature_Feature10 1..1" feature_Group : childFeatures8
+feature_Constraint "feature_FeatureModel4 0..9999" --* "feature_Constraint 1..1" feature_FeatureModel : constraints3
+feature_Attribute "feature_Domain13 1..1" -- "feature_Attribute 1..1" feature_Domain : domain12
+feature_Domain "feature_FeatureModel2 0..9999" --* "feature_Domain 1..1" feature_FeatureModel : domains1
+feature_Constraint "feature_Expression 1..1" *-- "feature_Constraint16 1..1" feature_Expression : expression15
+feature_Attribute "Feature 1..1" -- "attributes 1..1" feature_Feature : feature11
+feature_Feature "feature_FeatureReference 1..1" -- "feature_Feature25 1..1" feature_FeatureReference : feature24
+feature_Feature "feature_Group 1..1" *-- "feature_Feature7 0..9999" feature_Group : groups6
+feature_ContinuousDomain "feature_Interval 1..1" *-- "feature_ContinuousDomain 1..9999" feature_Interval : intervals14
+feature_BinaryExpression "feature_Expression20 1..1" *-- "feature_BinaryExpression 1..1" feature_Expression : operand119
+feature_Expression "feature_UnaryExpression 1..1" --* "feature_Expression18 1..1" feature_UnaryExpression : operand17
+feature_BinaryExpression "feature_Expression23 1..1" *-- "feature_BinaryExpression22 1..1" feature_Expression : operand221
+feature_Feature "feature_FeatureModel 1..1" --* "feature_Feature 1..1" feature_FeatureModel : root0
 @enduml

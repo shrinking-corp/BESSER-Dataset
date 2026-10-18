@@ -1,4 +1,8 @@
 @startuml
+' model: CoachBusWithEDataType
+' project: sampleModel
+' owner: User
+' description: New project
 class CoachBusWithEDataType_Employee {
   + baseSalary : float
 }
@@ -10,4 +14,7 @@ class Employee {
 }
 Employee <|-- CoachBusWithEDataType_Manager
 Employee <|-- CoachBusWithEDataType_SecurityGuard
+note top of CoachBusWithEDataType_Employee
+  constraint BaseSalaryConstraint (OCL): context Employee inv: self.baseSalary >=(0)
+end note
 @enduml

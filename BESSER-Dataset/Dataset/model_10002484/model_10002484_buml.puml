@@ -1,4 +1,8 @@
 @startuml
+' model: b8ce60fe_470e_42e2_b893_fa925435240d
+' project: sampleModel
+' owner: User
+' description: New project
 class ADMIN {
   + id : str
   + password : str
@@ -30,13 +34,13 @@ class view_cumiliative_attendance_external {
 }
 class view_subject_wise_attendance_external {
 }
-ADMIN "1..1" -- "1..9999" FACULTY : FACULTY_ADMIN
-FACULTY "1..9999" -- "1..9999" STUDENT : FACULTY_STUDENT
-ADMIN "1..1" -- "1..9999" PARENT : PARENT_ADMIN
-ADMIN "1..1" -- "1..9999" STUDENT : STUDENT_ADMIN
-admin_Actor "0..1" -- "0..1" login_external : admin_login
-admin_Actor "0..1" -- "0..1" modify_list_of_students_external : admin_modify_list_of_students
-login_external "0..1" -- "0..1" student_Actor : student_login
-student_Actor "0..1" -- "0..1" view_cumiliative_attendance_external : student_view_cumiliative_attendance
-student_Actor "0..1" -- "0..1" view_subject_wise_attendance_external : student_view_subject_wise_attendance
+ADMIN "aDMIN12 1..1" -- "fACULTY13 1..9999" FACULTY : FACULTY_ADMIN
+FACULTY "fACULTY11 1..9999" -- "sTUDENT10 1..9999" STUDENT : FACULTY_STUDENT
+ADMIN "aDMIN16 1..1" -- "pARENT17 1..9999" PARENT : PARENT_ADMIN
+ADMIN "aDMIN14 1..1" -- "sTUDENT15 1..9999" STUDENT : STUDENT_ADMIN
+admin_Actor "admin7 0..1" -- "login6 0..1" login_external : admin_login
+admin_Actor "admin9 0..1" -- "modify_list_of_students8 0..1" modify_list_of_students_external : admin_modify_list_of_students
+login_external "login4 0..1" -- "student5 0..1" student_Actor : student_login
+student_Actor "student3 0..1" -- "view_cumiliative_attendance2 0..1" view_cumiliative_attendance_external : student_view_cumiliative_attendance
+student_Actor "student1 0..1" -- "view_subject_wise_attendance0 0..1" view_subject_wise_attendance_external : student_view_subject_wise_attendance
 @enduml

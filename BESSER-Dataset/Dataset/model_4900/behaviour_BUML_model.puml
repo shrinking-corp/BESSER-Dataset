@@ -1,4 +1,8 @@
 @startuml
+' model: behaviour
+' project: sampleModel
+' owner: User
+' description: New project
 class ArithmeticOperation {
 }
 class BinaryExpression {
@@ -76,22 +80,22 @@ Statement <|-- behaviour_ExceptionStatement
 Statement <|-- behaviour_LoopStatement
 Statement <|-- behaviour_ReturnStatement
 Statement <|-- behaviour_TryCatchStatement
-behaviour_CallFunctionStatement "1..1" *-- "0..9999" behaviour_Expression : arguments24
-behaviour_Expression "0..9999" --* "1..1" behaviour_FunctionCall : arguments33
-behaviour_AssignmentStatement "1..1" *-- "1..1" behaviour_Expression : assignExpression18
-behaviour_Statement "0..9999" --* "1..1" behaviour_TryCatchStatement : catchStatements28
-behaviour_CondionalStatement "1..1" *-- "0..9999" behaviour_Statement : elseStatements8
-behaviour_Behaviour "1..1" -- "1..1" behaviour_Function : entryFunction1
-behaviour_Function "1..1" *-- "0..9999" behaviour_Statement : functionBody4
-behaviour_Behaviour "1..1" *-- "1..9999" behaviour_Function : functions0
-behaviour_CondionalStatement "1..1" *-- "1..1" behaviour_Expression : ifExpression11
-behaviour_CondionalStatement "1..1" *-- "0..9999" behaviour_Statement : ifStatements6
-behaviour_DeclarationStatement "1..1" *-- "0..1" behaviour_Expression : initialExpression20
-behaviour_BinaryExpression "1..1" *-- "1..1" behaviour_Expression : leftSideExpression35
-behaviour_LoopStatement "1..1" *-- "0..9999" behaviour_Statement : loopBodyStatements15
-behaviour_Expression "1..1" --* "1..1" behaviour_LoopStatement : loopExpression13
-behaviour_Expression "1..1" --* "1..1" behaviour_ReturnStatement : returnExpression22
-behaviour_BinaryExpression "1..1" *-- "1..1" behaviour_Expression : rightSideExpression37
-behaviour_ExceptionStatement "1..1" *-- "1..1" behaviour_Expression : throwsExpression31
-behaviour_Statement "0..9999" --* "1..1" behaviour_TryCatchStatement : tryStatements26
+behaviour_CallFunctionStatement "behaviour_Expression25 1..1" *-- "behaviour_CallFunctionStatement 0..9999" behaviour_Expression : arguments24
+behaviour_Expression "behaviour_FunctionCall 0..9999" --* "behaviour_Expression34 1..1" behaviour_FunctionCall : arguments33
+behaviour_AssignmentStatement "behaviour_Expression19 1..1" *-- "behaviour_AssignmentStatement 1..1" behaviour_Expression : assignExpression18
+behaviour_Statement "behaviour_TryCatchStatement29 0..9999" --* "behaviour_Statement30 1..1" behaviour_TryCatchStatement : catchStatements28
+behaviour_CondionalStatement "behaviour_Statement10 1..1" *-- "behaviour_CondionalStatement9 0..9999" behaviour_Statement : elseStatements8
+behaviour_Behaviour "behaviour_Function3 1..1" -- "behaviour_Behaviour2 1..1" behaviour_Function : entryFunction1
+behaviour_Function "behaviour_Statement 1..1" *-- "behaviour_Function5 0..9999" behaviour_Statement : functionBody4
+behaviour_Behaviour "behaviour_Function 1..1" *-- "behaviour_Behaviour 1..9999" behaviour_Function : functions0
+behaviour_CondionalStatement "behaviour_Expression 1..1" *-- "behaviour_CondionalStatement12 1..1" behaviour_Expression : ifExpression11
+behaviour_CondionalStatement "behaviour_Statement7 1..1" *-- "behaviour_CondionalStatement 0..9999" behaviour_Statement : ifStatements6
+behaviour_DeclarationStatement "behaviour_Expression21 1..1" *-- "behaviour_DeclarationStatement 0..1" behaviour_Expression : initialExpression20
+behaviour_BinaryExpression "behaviour_Expression36 1..1" *-- "behaviour_BinaryExpression 1..1" behaviour_Expression : leftSideExpression35
+behaviour_LoopStatement "behaviour_Statement17 1..1" *-- "behaviour_LoopStatement16 0..9999" behaviour_Statement : loopBodyStatements15
+behaviour_Expression "behaviour_LoopStatement 1..1" --* "behaviour_Expression14 1..1" behaviour_LoopStatement : loopExpression13
+behaviour_Expression "behaviour_ReturnStatement 1..1" --* "behaviour_Expression23 1..1" behaviour_ReturnStatement : returnExpression22
+behaviour_BinaryExpression "behaviour_Expression39 1..1" *-- "behaviour_BinaryExpression38 1..1" behaviour_Expression : rightSideExpression37
+behaviour_ExceptionStatement "behaviour_Expression32 1..1" *-- "behaviour_ExceptionStatement 1..1" behaviour_Expression : throwsExpression31
+behaviour_Statement "behaviour_TryCatchStatement 0..9999" --* "behaviour_Statement27 1..1" behaviour_TryCatchStatement : tryStatements26
 @enduml

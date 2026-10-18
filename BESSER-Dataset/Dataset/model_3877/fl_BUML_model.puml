@@ -1,4 +1,8 @@
 @startuml
+' model: fl
+' project: sampleModel
+' owner: User
+' description: New project
 class Expr {
 }
 enum Ops {
@@ -38,16 +42,16 @@ Expr <|-- fl_Argument
 Expr <|-- fl_Binary
 Expr <|-- fl_IfThenElse
 Expr <|-- fl_Literal
-fl_Apply "1..1" *-- "1..9999" fl_Expr : arg0
-fl_Expr "1..1" --* "1..1" fl_IfThenElse : elseExpr22
-fl_DocumentRoot "1..1" *-- "0..9999" fl_Expr : fragment10
-fl_Function "1..9999" --* "1..1" fl_ProgramType : function25
-fl_Expr "1..1" --* "1..1" fl_IfThenElse : ifExpr17
-fl_Binary "1..1" *-- "1..1" fl_Expr : left1
-fl_DocumentRoot "1..1" *-- "0..9999" fl_ProgramType : program13
-fl_Expr "1..1" --* "1..1" fl_Function : rhs15
-fl_Binary "1..1" *-- "1..1" fl_Expr : right3
-fl_Expr "1..1" --* "1..1" fl_IfThenElse : thenExpr19
-fl_DocumentRoot "1..1" *-- "0..9999" fl_EStringToStringMapEntry : xMLNSPrefixMap6
-fl_DocumentRoot "1..1" *-- "0..9999" fl_EStringToStringMapEntry : xSISchemaLocation7
+fl_Apply "fl_Expr 1..1" *-- "fl_Apply 1..9999" fl_Expr : arg0
+fl_Expr "fl_IfThenElse23 1..1" --* "fl_Expr24 1..1" fl_IfThenElse : elseExpr22
+fl_DocumentRoot "fl_Expr12 1..1" *-- "fl_DocumentRoot11 0..9999" fl_Expr : fragment10
+fl_Function "fl_ProgramType26 1..9999" --* "fl_Function27 1..1" fl_ProgramType : function25
+fl_Expr "fl_IfThenElse 1..1" --* "fl_Expr18 1..1" fl_IfThenElse : ifExpr17
+fl_Binary "fl_Expr2 1..1" *-- "fl_Binary 1..1" fl_Expr : left1
+fl_DocumentRoot "fl_ProgramType 1..1" *-- "fl_DocumentRoot14 0..9999" fl_ProgramType : program13
+fl_Expr "fl_Function 1..1" --* "fl_Expr16 1..1" fl_Function : rhs15
+fl_Binary "fl_Expr5 1..1" *-- "fl_Binary4 1..1" fl_Expr : right3
+fl_Expr "fl_IfThenElse20 1..1" --* "fl_Expr21 1..1" fl_IfThenElse : thenExpr19
+fl_DocumentRoot "fl_EStringToStringMapEntry 1..1" *-- "fl_DocumentRoot 0..9999" fl_EStringToStringMapEntry : xMLNSPrefixMap6
+fl_DocumentRoot "fl_EStringToStringMapEntry9 1..1" *-- "fl_DocumentRoot8 0..9999" fl_EStringToStringMapEntry : xSISchemaLocation7
 @enduml

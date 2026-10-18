@@ -1,4 +1,8 @@
 @startuml
+' model: configDsl
+' project: sampleModel
+' owner: User
+' description: New project
 class configDsl_Config {
   + appName : str
   + mainClass : str
@@ -10,6 +14,6 @@ class configDsl_Generator {
   + genClass : str
   + name : str
 }
-configDsl_Config "1..1" *-- "0..9999" configDsl_Generator : generators1
-configDsl_Config "1..1" -- "0..9999" configDsl_Generator : selectors0
+configDsl_Config "configDsl_Generator3 1..1" *-- "configDsl_Config2 0..9999" configDsl_Generator : generators1
+configDsl_Config "configDsl_Generator 1..1" -- "configDsl_Config 0..9999" configDsl_Generator : selectors0
 @enduml

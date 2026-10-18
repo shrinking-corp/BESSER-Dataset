@@ -1,4 +1,8 @@
 @startuml
+' model: tables
+' project: sampleModel
+' owner: User
+' description: New project
 enum Type {
   bool
   datetime
@@ -19,12 +23,12 @@ class tables_ForeignKey {
 class tables_Table {
   + name : str
 }
-tables_Column "1..1" -- "1..1" tables_ForeignKey : column9
-tables_Column "0..9999" --* "1..1" tables_Table : columns1
-tables_Database "1..1" -- "1..1" tables_Table : database2
-tables_Column "1..1" *-- "0..1" tables_ForeignKey : foreign_key6
-tables_Column "0..1" -- "1..1" tables_Table : primary_key3
-tables_Column "1..1" -- "1..1" tables_Table : table4
-tables_Database "1..1" *-- "0..9999" tables_Table : tables0
-tables_ForeignKey "1..1" -- "1..1" tables_Table : target7
+tables_Column "foreign_key 1..1" -- "Column10 1..1" tables_ForeignKey : column9
+tables_Column "table 0..9999" --* "Column 1..1" tables_Table : columns1
+tables_Database "tables 1..1" -- "Database 1..1" tables_Table : database2
+tables_Column "ForeignKey 1..1" *-- "column 0..1" tables_ForeignKey : foreign_key6
+tables_Column "tables_Table 0..1" -- "tables_Column 1..1" tables_Table : primary_key3
+tables_Column "Table5 1..1" -- "columns 1..1" tables_Table : table4
+tables_Database "Table 1..1" *-- "database 0..9999" tables_Table : tables0
+tables_ForeignKey "tables_Table8 1..1" -- "tables_ForeignKey 1..1" tables_Table : target7
 @enduml

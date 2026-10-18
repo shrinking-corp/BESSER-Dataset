@@ -1,4 +1,8 @@
 @startuml
+' model: webGui
+' project: sampleModel
+' owner: User
+' description: New project
 class Expression {
 }
 class PageElement {
@@ -66,26 +70,26 @@ Type <|-- webGui_DataType
 Type <|-- webGui_Entity
 Value <|-- webGui_DomainPath
 Value <|-- webGui_NumberLiteral
-webGui_Page "1..1" *-- "0..9999" webGui_PageElement : contents16
-webGui_DomainModel "0..1" --* "1..1" webGui_Model : domain0
-webGui_Entity "0..1" -- "1..1" webGui_Page : entity13
-webGui_Expression "0..1" --* "1..1" webGui_Feature : expression9
-webGui_DomainPath "1..1" -- "0..1" webGui_Feature : feature19
-webGui_DomainPathTail "1..1" -- "0..1" webGui_Feature : feature24
-webGui_Entity "1..1" *-- "0..9999" webGui_Feature : features5
-webGui_Add "1..1" *-- "0..1" webGui_Expression : left30
-webGui_Expression "0..1" --* "1..1" webGui_Subtract : left35
-webGui_Multiply "1..1" *-- "0..1" webGui_Value : left40
-webGui_Divide "1..1" *-- "0..1" webGui_Value : left44
-webGui_Page "0..9999" --* "1..1" webGui_WebModel : pages11
-webGui_DisplayElement "1..1" *-- "0..1" webGui_DomainPath : reference18
-webGui_Add "1..1" *-- "0..1" webGui_Expression : right32
-webGui_Expression "0..1" --* "1..1" webGui_Subtract : right37
-webGui_Multiply "1..1" *-- "0..1" webGui_Value : right41
-webGui_Divide "1..1" *-- "0..1" webGui_Value : right46
-webGui_DomainPath "1..1" *-- "0..1" webGui_DomainPathTail : tail22
-webGui_DomainPathTail "0..1" --* "1..1" webGui_DomainPathTail : tail28
-webGui_Feature "1..1" -- "0..1" webGui_Type : type6
-webGui_DomainModel "1..1" *-- "0..9999" webGui_Type : types3
-webGui_Model "1..1" *-- "0..1" webGui_WebModel : web1
+webGui_Page "webGui_PageElement 1..1" *-- "webGui_Page17 0..9999" webGui_PageElement : contents16
+webGui_DomainModel "webGui_Model 0..1" --* "webGui_DomainModel 1..1" webGui_Model : domain0
+webGui_Entity "webGui_Page14 0..1" -- "webGui_Entity15 1..1" webGui_Page : entity13
+webGui_Expression "webGui_Feature10 0..1" --* "webGui_Expression 1..1" webGui_Feature : expression9
+webGui_DomainPath "webGui_Feature21 1..1" -- "webGui_DomainPath20 0..1" webGui_Feature : feature19
+webGui_DomainPathTail "webGui_Feature26 1..1" -- "webGui_DomainPathTail25 0..1" webGui_Feature : feature24
+webGui_Entity "webGui_Feature 1..1" *-- "webGui_Entity 0..9999" webGui_Feature : features5
+webGui_Add "webGui_Expression31 1..1" *-- "webGui_Add 0..1" webGui_Expression : left30
+webGui_Expression "webGui_Subtract 0..1" --* "webGui_Expression36 1..1" webGui_Subtract : left35
+webGui_Multiply "webGui_Value 1..1" *-- "webGui_Multiply 0..1" webGui_Value : left40
+webGui_Divide "webGui_Value45 1..1" *-- "webGui_Divide 0..1" webGui_Value : left44
+webGui_Page "webGui_WebModel12 0..9999" --* "webGui_Page 1..1" webGui_WebModel : pages11
+webGui_DisplayElement "webGui_DomainPath 1..1" *-- "webGui_DisplayElement 0..1" webGui_DomainPath : reference18
+webGui_Add "webGui_Expression34 1..1" *-- "webGui_Add33 0..1" webGui_Expression : right32
+webGui_Expression "webGui_Subtract38 0..1" --* "webGui_Expression39 1..1" webGui_Subtract : right37
+webGui_Multiply "webGui_Value43 1..1" *-- "webGui_Multiply42 0..1" webGui_Value : right41
+webGui_Divide "webGui_Value48 1..1" *-- "webGui_Divide47 0..1" webGui_Value : right46
+webGui_DomainPath "webGui_DomainPathTail 1..1" *-- "webGui_DomainPath23 0..1" webGui_DomainPathTail : tail22
+webGui_DomainPathTail "webGui_DomainPathTail27 0..1" --* "webGui_DomainPathTail29 1..1" webGui_DomainPathTail : tail28
+webGui_Feature "webGui_Type8 1..1" -- "webGui_Feature7 0..1" webGui_Type : type6
+webGui_DomainModel "webGui_Type 1..1" *-- "webGui_DomainModel4 0..9999" webGui_Type : types3
+webGui_Model "webGui_WebModel 1..1" *-- "webGui_Model2 0..1" webGui_WebModel : web1
 @enduml

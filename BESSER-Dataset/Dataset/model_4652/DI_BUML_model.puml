@@ -1,4 +1,8 @@
 @startuml
+' model: di
+' project: sampleModel
+' owner: User
+' description: New project
 class DiagramElement {
 }
 class Shape {
@@ -45,17 +49,17 @@ abstract class di_Style {
 DiagramElement <|-- di_Edge
 DiagramElement <|-- di_Shape
 Shape <|-- di_Diagram
-di_Bounds "0..1" --* "1..1" di_Shape : bounds18
-di_Fill "0..1" -- "1..1" di_Style : fill19
-di_Color "0..1" --* "1..1" di_Style : fillColor21
-di_Color "0..1" --* "1..1" di_Style : fontColor26
-di_DiagramElement "1..1" *-- "0..1" di_Style : localStyle5
-di_DiagramElement "1..1" -- "0..9999" di_EObject : modelElement9
-di_DiagramElement "1..1" -- "0..9999" di_DiagramElement : ownedElement3
-di_DiagramElement "1..1" -- "0..1" di_DiagramElement : owningElement1
-di_DiagramElement "1..1" -- "0..1" di_Style : sharedStyle6
-di_DiagramElement "1..1" -- "1..1" di_Edge : source11
-di_Color "0..1" --* "1..1" di_Style : strokeColor23
-di_DiagramElement "1..1" -- "1..1" di_Edge : target13
-di_Edge "1..1" *-- "0..9999" di_Point : waypoint16
+di_Bounds "di_Shape 0..1" --* "di_Bounds 1..1" di_Shape : bounds18
+di_Fill "di_Style20 0..1" -- "di_Fill 1..1" di_Style : fill19
+di_Color "di_Style22 0..1" --* "di_Color 1..1" di_Style : fillColor21
+di_Color "di_Style27 0..1" --* "di_Color28 1..1" di_Style : fontColor26
+di_DiagramElement "di_Style 1..1" *-- "di_DiagramElement 0..1" di_Style : localStyle5
+di_DiagramElement "di_EObject 1..1" -- "di_DiagramElement10 0..9999" di_EObject : modelElement9
+di_DiagramElement "DiagramElement4 1..1" -- "owningElement 0..9999" di_DiagramElement : ownedElement3
+di_DiagramElement "DiagramElement 1..1" -- "ownedElement 0..1" di_DiagramElement : owningElement1
+di_DiagramElement "di_Style8 1..1" -- "di_DiagramElement7 0..1" di_Style : sharedStyle6
+di_DiagramElement "di_Edge 1..1" -- "di_DiagramElement12 1..1" di_Edge : source11
+di_Color "di_Style24 0..1" --* "di_Color25 1..1" di_Style : strokeColor23
+di_DiagramElement "di_Edge14 1..1" -- "di_DiagramElement15 1..1" di_Edge : target13
+di_Edge "di_Point 1..1" *-- "di_Edge17 0..9999" di_Point : waypoint16
 @enduml

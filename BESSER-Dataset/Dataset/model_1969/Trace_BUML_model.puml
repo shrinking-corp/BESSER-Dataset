@@ -1,4 +1,8 @@
 @startuml
+' model: trace
+' project: sampleModel
+' owner: User
+' description: New project
 class TraceItem {
 }
 class trace_EObject {
@@ -20,11 +24,11 @@ class trace_TraceList {
 }
 TraceItem <|-- trace_M2CTraceItem
 TraceItem <|-- trace_M2MTraceItem
-trace_EObject "1..9999" -- "1..1" trace_TraceItem : from_5
-trace_TraceBySource "1..1" -- "0..9999" trace_TraceItem : items10
-trace_TraceItem "0..9999" --* "1..1" trace_TraceList : items3
-trace_Trace "1..1" *-- "0..1" trace_TraceList : list0
-trace_EObject "0..1" -- "1..1" trace_TraceBySource : source7
-trace_EObject "1..9999" -- "1..1" trace_M2MTraceItem : to13
-trace_Trace "1..1" *-- "0..9999" trace_TraceBySource : traceBySource1
+trace_EObject "trace_TraceItem6 1..9999" -- "trace_EObject 1..1" trace_TraceItem : from_5
+trace_TraceBySource "trace_TraceItem12 1..1" -- "trace_TraceBySource11 0..9999" trace_TraceItem : items10
+trace_TraceItem "trace_TraceList4 0..9999" --* "trace_TraceItem 1..1" trace_TraceList : items3
+trace_Trace "trace_TraceList 1..1" *-- "trace_Trace 0..1" trace_TraceList : list0
+trace_EObject "trace_TraceBySource8 0..1" -- "trace_EObject9 1..1" trace_TraceBySource : source7
+trace_EObject "trace_M2MTraceItem 1..9999" -- "trace_EObject14 1..1" trace_M2MTraceItem : to13
+trace_Trace "trace_TraceBySource 1..1" *-- "trace_Trace2 0..9999" trace_TraceBySource : traceBySource1
 @enduml

@@ -1635,28 +1635,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=basecs_ParameterCS_strategy)
-@settings(max_examples=30)
-def test_hyp_basecs_parametercs_ast_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.ast()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.ast).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'ast' in basecs_ParameterCS is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'ast' in basecs_ParameterCS did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'ast' in basecs_ParameterCS is not implemented or raised an error")
 
 
 
@@ -1782,28 +1760,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=basecs_StructuralFeatureCS_strategy)
-@settings(max_examples=30)
-def test_hyp_basecs_structuralfeaturecs_ast_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.ast()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.ast).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'ast' in basecs_StructuralFeatureCS is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'ast' in basecs_StructuralFeatureCS did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'ast' in basecs_StructuralFeatureCS is not implemented or raised an error")
 
 
 import warnings
@@ -1812,28 +1768,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=basecs_OperationCS_strategy)
-@settings(max_examples=30)
-def test_hyp_basecs_operationcs_ast_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.ast()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.ast).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'ast' in basecs_OperationCS is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'ast' in basecs_OperationCS did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'ast' in basecs_OperationCS is not implemented or raised an error")
 
 
 
@@ -1870,28 +1804,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=basecs_PackageCS_strategy)
-@settings(max_examples=30)
-def test_hyp_basecs_packagecs_ast_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.ast()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.ast).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'ast' in basecs_PackageCS is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'ast' in basecs_PackageCS did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'ast' in basecs_PackageCS is not implemented or raised an error")
 
 
 
@@ -1901,28 +1813,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=basecs_EnumerationCS_strategy)
-@settings(max_examples=30)
-def test_hyp_basecs_enumerationcs_ast_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.ast()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.ast).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'ast' in basecs_EnumerationCS is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'ast' in basecs_EnumerationCS did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'ast' in basecs_EnumerationCS is not implemented or raised an error")
 
 
 
@@ -1946,28 +1836,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=basecs_EnumerationLiteralCS_strategy)
-@settings(max_examples=30)
-def test_hyp_basecs_enumerationliteralcs_ast_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.ast()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.ast).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'ast' in basecs_EnumerationLiteralCS is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'ast' in basecs_EnumerationLiteralCS did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'ast' in basecs_EnumerationLiteralCS is not implemented or raised an error")
 
 
 
@@ -2001,28 +1869,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=basecs_ClassifierCS_strategy)
-@settings(max_examples=30)
-def test_hyp_basecs_classifiercs_ast_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.ast()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.ast).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'ast' in basecs_ClassifierCS is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'ast' in basecs_ClassifierCS did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'ast' in basecs_ClassifierCS is not implemented or raised an error")
 
 
 
@@ -4497,9 +4343,9 @@ def test_assoc_literals17_stub_double():
     partner = basecs_DataTypeCS()
     setattr(partner, 'basecs_DataTypeCS', None)
     _safe_set(owner, 'basecs_EnumerationLiteralCS', partner)
-    assert getattr(partner, 'basecs_DataTypeCS') == owner
+    assert owner in getattr(partner, 'basecs_DataTypeCS')
     _safe_set(owner, 'basecs_EnumerationLiteralCS', None)
-    assert getattr(partner, 'basecs_DataTypeCS') is None
+    assert owner not in getattr(partner, 'basecs_DataTypeCS')
 
 
 def test_assoc_multiplicity106_stub_double():
@@ -4557,9 +4403,9 @@ def test_assoc_ownedContent0_stub_double():
     partner = basecs_AnnotationCS()
     setattr(partner, 'basecs_AnnotationCS', None)
     _safe_set(owner, 'basecs_ModelElementCS', partner)
-    assert getattr(partner, 'basecs_AnnotationCS') == owner
+    assert owner in getattr(partner, 'basecs_AnnotationCS')
     _safe_set(owner, 'basecs_ModelElementCS', None)
-    assert getattr(partner, 'basecs_AnnotationCS') is None
+    assert owner not in getattr(partner, 'basecs_AnnotationCS')
 
 
 def test_assoc_ownedContextType25_stub_double():
@@ -4587,9 +4433,9 @@ def test_assoc_ownedDetail3_stub_double():
     partner = basecs_AnnotationElementCS()
     setattr(partner, 'basecs_AnnotationElementCS', None)
     _safe_set(owner, 'basecs_DetailCS', partner)
-    assert getattr(partner, 'basecs_AnnotationElementCS') == owner
+    assert owner in getattr(partner, 'basecs_AnnotationElementCS')
     _safe_set(owner, 'basecs_DetailCS', None)
-    assert getattr(partner, 'basecs_AnnotationElementCS') is None
+    assert owner not in getattr(partner, 'basecs_AnnotationElementCS')
 
 
 def test_assoc_ownedException46_stub_double():
@@ -4617,9 +4463,9 @@ def test_assoc_ownedImport80_stub_double():
     partner = basecs_RootCS()
     setattr(partner, 'basecs_RootCS', None)
     _safe_set(owner, 'basecs_ImportCS81', partner)
-    assert getattr(partner, 'basecs_RootCS') == owner
+    assert owner in getattr(partner, 'basecs_RootCS')
     _safe_set(owner, 'basecs_ImportCS81', None)
-    assert getattr(partner, 'basecs_RootCS') is None
+    assert owner not in getattr(partner, 'basecs_RootCS')
 
 
 def test_assoc_ownedNestedPackage59_stub_double():
@@ -4632,9 +4478,9 @@ def test_assoc_ownedNestedPackage59_stub_double():
     partner = basecs_PackageOwnerCS()
     setattr(partner, 'basecs_PackageOwnerCS', None)
     _safe_set(owner, 'basecs_PackageCS', partner)
-    assert getattr(partner, 'basecs_PackageOwnerCS') == owner
+    assert owner in getattr(partner, 'basecs_PackageOwnerCS')
     _safe_set(owner, 'basecs_PackageCS', None)
-    assert getattr(partner, 'basecs_PackageOwnerCS') is None
+    assert owner not in getattr(partner, 'basecs_PackageOwnerCS')
 
 
 def test_assoc_ownedOperation5_stub_double():
@@ -4647,9 +4493,9 @@ def test_assoc_ownedOperation5_stub_double():
     partner = basecs_ClassCS()
     setattr(partner, 'owningClass', None)
     _safe_set(owner, 'OperationCS', partner)
-    assert getattr(partner, 'owningClass') == owner
+    assert owner in getattr(partner, 'owningClass')
     _safe_set(owner, 'OperationCS', None)
-    assert getattr(partner, 'owningClass') is None
+    assert owner not in getattr(partner, 'owningClass')
 
 
 def test_assoc_ownedParameterType27_stub_double():
@@ -4692,9 +4538,9 @@ def test_assoc_ownedProperty6_stub_double():
     partner = basecs_ClassCS()
     setattr(partner, 'owner', None)
     _safe_set(owner, 'StructuralFeatureCS', partner)
-    assert getattr(partner, 'owner') == owner
+    assert owner in getattr(partner, 'owner')
     _safe_set(owner, 'StructuralFeatureCS', None)
-    assert getattr(partner, 'owner') is None
+    assert owner not in getattr(partner, 'owner')
 
 
 def test_assoc_ownedResultType30_stub_double():
@@ -4819,39 +4665,17 @@ def test_assoc_pathName62_stub_double():
 
 
 
-from enum import Enum
 from python_code import IteratorKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(IteratorKind.Parameter, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(IteratorKind.Parameter, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(IteratorKind.Parameter, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(IteratorKind.Iterator, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(IteratorKind.Iterator, 'Iterator') == IteratorKind.Iterator
-
 from python_code import basecs_AnnotationElementCS
 from python_code import basecs_DetailCS
 
 def test_basecs_DetailCS___init__():
     assert basecs_DetailCS.__init__(basecs_DetailCS('', basecs_DetailCS=basecs_AnnotationElementCS()), '', basecs_DetailCS=basecs_AnnotationElementCS()) == None
-
 from python_code import basecs_DocumentationCS
 
 def test_basecs_DocumentationCS___init__():
     assert basecs_DocumentationCS.__init__(basecs_DocumentationCS(''), '') == None
-
 from python_code import basecs_EnumerationCS
 
 def test_basecs_EnumerationCS___init__():
@@ -4859,24 +4683,20 @@ def test_basecs_EnumerationCS___init__():
 
 def test_basecs_EnumerationCS_ast():
     assert basecs_EnumerationCS.ast(basecs_EnumerationCS(basecs_EnumerationCS=set())) == None
-
 from python_code import basecs_LambdaTypeCS
 from python_code import basecs_TypedRefCS
 
 def test_basecs_LambdaTypeCS___init__():
     assert basecs_LambdaTypeCS.__init__(basecs_LambdaTypeCS('', basecs_LambdaTypeCS=basecs_TypedRefCS(), basecs_LambdaTypeCS28=set(), basecs_LambdaTypeCS31=basecs_TypedRefCS()), '', basecs_LambdaTypeCS=basecs_TypedRefCS(), basecs_LambdaTypeCS28=set(), basecs_LambdaTypeCS31=basecs_TypedRefCS()) == None
-
 from python_code import basecs_AnnotationCS
 from python_code import basecs_ModelElementCS
 
 def test_basecs_ModelElementCS___init__():
     assert basecs_ModelElementCS.__init__(basecs_ModelElementCS('\x00\x00', '', basecs_ModelElementCS=basecs_AnnotationCS(), basecs_ModelElementCS36=set()), '', '', basecs_ModelElementCS=basecs_AnnotationCS(), basecs_ModelElementCS36=set()) == None
-
 from python_code import basecs_MultiplicityBoundsCS
 
 def test_basecs_MultiplicityBoundsCS___init__():
     assert basecs_MultiplicityBoundsCS.__init__(basecs_MultiplicityBoundsCS(0, '\x00'), 0, '\x00') == None
-
 from python_code import basecs_MultiplicityCS
 from python_code import basecs_TypedRefCS
 
@@ -4888,32 +4708,26 @@ def test_basecs_MultiplicityCS_getUpper():
 
 def test_basecs_MultiplicityCS_getLower():
     assert basecs_MultiplicityCS.getLower(basecs_MultiplicityCS(basecs_MultiplicityCS=basecs_TypedRefCS())) == None
-
 from python_code import basecs_MultiplicityStringCS
 
 def test_basecs_MultiplicityStringCS___init__():
     assert basecs_MultiplicityStringCS.__init__(basecs_MultiplicityStringCS(''), '') == None
-
 from python_code import basecs_NamedElementCS
 
 def test_basecs_NamedElementCS___init__():
     assert basecs_NamedElementCS.__init__(basecs_NamedElementCS(''), '') == None
-
 from python_code import basecs_PathElementWithURICS
 
 def test_basecs_PathElementWithURICS___init__():
     assert basecs_PathElementWithURICS.__init__(basecs_PathElementWithURICS(''), '') == None
-
 from python_code import basecs_PrimitiveTypeRefCS
 
 def test_basecs_PrimitiveTypeRefCS___init__():
     assert basecs_PrimitiveTypeRefCS.__init__(basecs_PrimitiveTypeRefCS(''), '') == None
-
 from python_code import basecs_TupleTypeCS
 
 def test_basecs_TupleTypeCS___init__():
     assert basecs_TupleTypeCS.__init__(basecs_TupleTypeCS('', basecs_TupleTypeCS=set()), '', basecs_TupleTypeCS=set()) == None
-
 from python_code import basecs_TypedElementCS
 from python_code import basecs_TypedRefCS
 

@@ -1,4 +1,8 @@
 @startuml
+' model: gfsm
+' project: sampleModel
+' owner: User
+' description: New project
 class BooleanBinaryExpression {
 }
 class BooleanCompareExpression {
@@ -79,26 +83,26 @@ IntOperation <|-- gfsm_IntBlock
 IntOperation <|-- gfsm_IntVarAssign
 State <|-- gfsm_FinalState
 State <|-- gfsm_InitialState
-gfsm_BooleanBinaryExpression "1..1" *-- "1..1" gfsm_BooleanExpression : boolExpression133
-gfsm_BooleanBinaryExpression "1..1" *-- "1..1" gfsm_BooleanExpression : boolExpression235
-gfsm_FSM "1..1" -- "0..1" gfsm_State : currentState20
-gfsm_IntBinaryExpression "1..1" *-- "1..1" gfsm_IntExpression : expression123
-gfsm_BooleanCompareExpression "1..1" *-- "1..1" gfsm_IntExpression : expression138
-gfsm_IntBinaryExpression "1..1" *-- "1..1" gfsm_IntExpression : expression224
-gfsm_BooleanCompareExpression "1..1" *-- "1..1" gfsm_IntExpression : expression240
-gfsm_IntExpression "1..1" --* "1..1" gfsm_IntNeg : expression27
-gfsm_IntExpression "1..1" --* "1..1" gfsm_IntVarAssign : expression29
-gfsm_State "1..1" -- "1..1" gfsm_Transition : from_2
-gfsm_FSM "1..1" -- "1..1" gfsm_Transition : fsm1
-gfsm_FSM "1..1" -- "1..1" gfsm_State : fsm9
-gfsm_BooleanExpression "1..1" --* "1..1" gfsm_Transition : guard0
-gfsm_IntOperation "1..1" --* "1..1" gfsm_State : inExpression5
-gfsm_State "1..1" -- "0..9999" gfsm_Transition : incommingtransitions12
-gfsm_FSM "1..1" -- "1..1" gfsm_InitialState : initialstate19
-gfsm_IntBlock "1..1" *-- "0..9999" gfsm_IntVarAssign : operations31
-gfsm_IntOperation "1..1" --* "1..1" gfsm_State : outExpression6
-gfsm_State "1..1" -- "0..9999" gfsm_Transition : outgoingtransitions11
-gfsm_FSM "1..1" *-- "0..9999" gfsm_State : states14
-gfsm_State "1..1" -- "1..1" gfsm_Transition : to3
-gfsm_FSM "1..1" *-- "0..9999" gfsm_Transition : transitions16
+gfsm_BooleanBinaryExpression "gfsm_BooleanExpression34 1..1" *-- "gfsm_BooleanBinaryExpression 1..1" gfsm_BooleanExpression : boolExpression133
+gfsm_BooleanBinaryExpression "gfsm_BooleanExpression37 1..1" *-- "gfsm_BooleanBinaryExpression36 1..1" gfsm_BooleanExpression : boolExpression235
+gfsm_FSM "gfsm_State22 1..1" -- "gfsm_FSM21 0..1" gfsm_State : currentState20
+gfsm_IntBinaryExpression "gfsm_IntExpression 1..1" *-- "gfsm_IntBinaryExpression 1..1" gfsm_IntExpression : expression123
+gfsm_BooleanCompareExpression "gfsm_IntExpression39 1..1" *-- "gfsm_BooleanCompareExpression 1..1" gfsm_IntExpression : expression138
+gfsm_IntBinaryExpression "gfsm_IntExpression26 1..1" *-- "gfsm_IntBinaryExpression25 1..1" gfsm_IntExpression : expression224
+gfsm_BooleanCompareExpression "gfsm_IntExpression42 1..1" *-- "gfsm_BooleanCompareExpression41 1..1" gfsm_IntExpression : expression240
+gfsm_IntExpression "gfsm_IntNeg 1..1" --* "gfsm_IntExpression28 1..1" gfsm_IntNeg : expression27
+gfsm_IntExpression "gfsm_IntVarAssign 1..1" --* "gfsm_IntExpression30 1..1" gfsm_IntVarAssign : expression29
+gfsm_State "outgoingtransitions 1..1" -- "State 1..1" gfsm_Transition : from_2
+gfsm_FSM "transitions 1..1" -- "FSM 1..1" gfsm_Transition : fsm1
+gfsm_FSM "states 1..1" -- "FSM10 1..1" gfsm_State : fsm9
+gfsm_BooleanExpression "gfsm_Transition 1..1" --* "gfsm_BooleanExpression 1..1" gfsm_Transition : guard0
+gfsm_IntOperation "gfsm_State 1..1" --* "gfsm_IntOperation 1..1" gfsm_State : inExpression5
+gfsm_State "Transition13 1..1" -- "to 0..9999" gfsm_Transition : incommingtransitions12
+gfsm_FSM "gfsm_InitialState 1..1" -- "gfsm_FSM 1..1" gfsm_InitialState : initialstate19
+gfsm_IntBlock "gfsm_IntVarAssign32 1..1" *-- "gfsm_IntBlock 0..9999" gfsm_IntVarAssign : operations31
+gfsm_IntOperation "gfsm_State7 1..1" --* "gfsm_IntOperation8 1..1" gfsm_State : outExpression6
+gfsm_State "Transition 1..1" -- "from_ 0..9999" gfsm_Transition : outgoingtransitions11
+gfsm_FSM "State15 1..1" *-- "fsm 0..9999" gfsm_State : states14
+gfsm_State "incommingtransitions 1..1" -- "State4 1..1" gfsm_Transition : to3
+gfsm_FSM "Transition18 1..1" *-- "fsm17 0..9999" gfsm_Transition : transitions16
 @enduml

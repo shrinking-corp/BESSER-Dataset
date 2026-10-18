@@ -1,4 +1,8 @@
 @startuml
+' model: myDsl
+' project: sampleModel
+' owner: User
+' description: New project
 class TreeConstraint {
 }
 class myDsl_CrossTreeConstraint {
@@ -31,16 +35,16 @@ class myDsl_TreeConstraint {
 TreeConstraint <|-- myDsl_MandatoryTreeConstraint
 TreeConstraint <|-- myDsl_OptionalTreeConstraint
 TreeConstraint <|-- myDsl_OrAlternativeTreeConstraint
-myDsl_FM "1..1" *-- "0..9999" myDsl_FeatureAttribute : attributes3
-myDsl_CrossTreeConstraint "0..9999" --* "1..1" myDsl_FM : crossTreeConstraints5
-myDsl_CrossTreeConstraint "1..1" -- "0..1" myDsl_Feature : feature118
-myDsl_Feature "0..1" -- "1..1" myDsl_MandatoryTreeConstraint : feature12
-myDsl_Feature "0..1" -- "1..1" myDsl_OptionalTreeConstraint : feature14
-myDsl_CrossTreeConstraint "1..1" -- "0..1" myDsl_Feature : feature221
-myDsl_Feature "0..1" -- "1..1" myDsl_FeatureAttribute : feature24
-myDsl_FM "1..1" *-- "0..9999" myDsl_Feature : features0
-myDsl_Feature "0..9999" -- "1..1" myDsl_OrAlternativeTreeConstraint : features16
-myDsl_Feature "0..1" -- "1..1" myDsl_ParentChildConstraint : parent7
-myDsl_FM "1..1" *-- "0..9999" myDsl_ParentChildConstraint : relationships1
-myDsl_ParentChildConstraint "1..1" *-- "0..9999" myDsl_TreeConstraint : treeConstraints10
+myDsl_FM "myDsl_FeatureAttribute 1..1" *-- "myDsl_FM4 0..9999" myDsl_FeatureAttribute : attributes3
+myDsl_CrossTreeConstraint "myDsl_FM6 0..9999" --* "myDsl_CrossTreeConstraint 1..1" myDsl_FM : crossTreeConstraints5
+myDsl_CrossTreeConstraint "myDsl_Feature20 1..1" -- "myDsl_CrossTreeConstraint19 0..1" myDsl_Feature : feature118
+myDsl_Feature "myDsl_MandatoryTreeConstraint 0..1" -- "myDsl_Feature13 1..1" myDsl_MandatoryTreeConstraint : feature12
+myDsl_Feature "myDsl_OptionalTreeConstraint 0..1" -- "myDsl_Feature15 1..1" myDsl_OptionalTreeConstraint : feature14
+myDsl_CrossTreeConstraint "myDsl_Feature23 1..1" -- "myDsl_CrossTreeConstraint22 0..1" myDsl_Feature : feature221
+myDsl_Feature "myDsl_FeatureAttribute25 0..1" -- "myDsl_Feature26 1..1" myDsl_FeatureAttribute : feature24
+myDsl_FM "myDsl_Feature 1..1" *-- "myDsl_FM 0..9999" myDsl_Feature : features0
+myDsl_Feature "myDsl_OrAlternativeTreeConstraint 0..9999" -- "myDsl_Feature17 1..1" myDsl_OrAlternativeTreeConstraint : features16
+myDsl_Feature "myDsl_ParentChildConstraint8 0..1" -- "myDsl_Feature9 1..1" myDsl_ParentChildConstraint : parent7
+myDsl_FM "myDsl_ParentChildConstraint 1..1" *-- "myDsl_FM2 0..9999" myDsl_ParentChildConstraint : relationships1
+myDsl_ParentChildConstraint "myDsl_TreeConstraint 1..1" *-- "myDsl_ParentChildConstraint11 0..9999" myDsl_TreeConstraint : treeConstraints10
 @enduml

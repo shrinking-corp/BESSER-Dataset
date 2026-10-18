@@ -3297,31 +3297,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=gast_annotations_Comment_strategy)
-@settings(max_examples=30)
-def test_hyp_gast_annotations_comment_ocltodo_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.OCLtodo(
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.OCLtodo).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'OCLtodo' in gast_annotations_Comment is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'OCLtodo' in gast_annotations_Comment did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'OCLtodo' in gast_annotations_Comment is not implemented or raised an error")
 
 
 
@@ -3367,31 +3342,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=gast_core_Position_strategy)
-@settings(max_examples=30)
-def test_hyp_gast_core_position_eitherassemblyfileorsourcefileset_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.EitherAssemblyFileOrSourceFileSet(
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.EitherAssemblyFileOrSourceFileSet).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'EitherAssemblyFileOrSourceFileSet' in gast_core_Position is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'EitherAssemblyFileOrSourceFileSet' in gast_core_Position did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'EitherAssemblyFileOrSourceFileSet' in gast_core_Position is not implemented or raised an error")
 
 
 
@@ -3549,31 +3499,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=gast_core_Identifier_strategy)
-@settings(max_examples=30)
-def test_hyp_gast_core_identifier_idhastobeunique_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.idHasToBeUnique(
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.idHasToBeUnique).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'idHasToBeUnique' in gast_core_Identifier is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'idHasToBeUnique' in gast_core_Identifier did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'idHasToBeUnique' in gast_core_Identifier is not implemented or raised an error")
 
 
 

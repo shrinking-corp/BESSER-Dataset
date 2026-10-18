@@ -1,4 +1,8 @@
 @startuml
+' model: stateChart
+' project: sampleModel
+' owner: User
+' description: New project
 enum PseudoStateType {
   Choice
   DeepHistory
@@ -53,10 +57,10 @@ State <|-- stateChart_FinalState
 State <|-- stateChart_SimpleState
 Vertex <|-- stateChart_PseudoState
 Vertex <|-- stateChart_State
-stateChart_CompositeState "1..1" *-- "0..9999" stateChart_Region : element11
-stateChart_Region "1..1" --* "1..1" stateChart_StateMachine : mainRegion9
-stateChart_Transient "1..1" -- "1..1" stateChart_Vertex : source3
-stateChart_Transient "1..1" -- "1..1" stateChart_Vertex : target6
-stateChart_Region "1..1" *-- "0..9999" stateChart_Transient : transient0
-stateChart_Region "1..1" *-- "0..9999" stateChart_Vertex : vertex1
+stateChart_CompositeState "stateChart_Region12 1..1" *-- "stateChart_CompositeState 0..9999" stateChart_Region : element11
+stateChart_Region "stateChart_StateMachine 1..1" --* "stateChart_Region10 1..1" stateChart_StateMachine : mainRegion9
+stateChart_Transient "stateChart_Vertex5 1..1" -- "stateChart_Transient4 1..1" stateChart_Vertex : source3
+stateChart_Transient "stateChart_Vertex8 1..1" -- "stateChart_Transient7 1..1" stateChart_Vertex : target6
+stateChart_Region "stateChart_Transient 1..1" *-- "stateChart_Region 0..9999" stateChart_Transient : transient0
+stateChart_Region "stateChart_Vertex 1..1" *-- "stateChart_Region2 0..9999" stateChart_Vertex : vertex1
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: trace
+' project: sampleModel
+' owner: User
+' description: New project
 class TraceElement {
 }
 class trace_EObject {
@@ -33,24 +37,24 @@ class trace_TracedRule {
 }
 TraceElement <|-- trace_SourceElement
 TraceElement <|-- trace_TargetElement
-trace_SourceElement "1..1" -- "0..1" trace_TraceLinkSet : defaultFor21
-trace_SourceElementList "1..1" -- "0..1" trace_TraceLinkSet : defaultFor31
-trace_SourceElementList "0..9999" --* "1..1" trace_TraceLinkSet : defaultSourceElementLists2
-trace_SourceElement "0..9999" -- "1..1" trace_TraceLinkSet : defaultSourceElements1
-trace_TraceLinkSet "0..1" -- "1..1" trace_TracedRule : linkSet5
-trace_TraceLink "0..9999" --* "1..1" trace_TracedRule : links4
-trace_SourceElement "1..1" -- "0..9999" trace_TargetElement : mapsTo19
-trace_SourceElement "0..9999" -- "1..1" trace_TargetElement : mapsTo27
-trace_EObject "0..1" -- "1..1" trace_TraceElement : object16
-trace_TraceLink "1..1" -- "0..1" trace_TracedRule : rule14
-trace_TraceLinkSet "1..1" *-- "0..9999" trace_TracedRule : rules0
-trace_SourceElement "0..9999" --* "1..1" trace_TraceLink : sourceElements11
-trace_SourceElement "2..9999" -- "1..1" trace_SourceElementList : sourceElements30
-trace_SourceElement "1..1" -- "0..1" trace_TraceLink : sourceOf17
-trace_TargetElement "0..9999" --* "1..1" trace_TraceLink : targetElements13
-trace_TargetElement "1..1" -- "0..1" trace_TraceLink : targetOf25
-trace_SourceElement "1..1" -- "0..1" trace_TracedRule : uniqueFor23
-trace_SourceElementList "1..1" -- "0..1" trace_TracedRule : uniqueFor33
-trace_SourceElementList "0..9999" --* "1..1" trace_TracedRule : uniqueSourceElementLists8
-trace_SourceElement "0..9999" -- "1..1" trace_TracedRule : uniqueSourceElements6
+trace_SourceElement "TraceLinkSet22 1..1" -- "defaultSourceElements 0..1" trace_TraceLinkSet : defaultFor21
+trace_SourceElementList "TraceLinkSet32 1..1" -- "defaultSourceElementLists 0..1" trace_TraceLinkSet : defaultFor31
+trace_SourceElementList "defaultFor3 0..9999" --* "SourceElementList 1..1" trace_TraceLinkSet : defaultSourceElementLists2
+trace_SourceElement "defaultFor 0..9999" -- "SourceElement 1..1" trace_TraceLinkSet : defaultSourceElements1
+trace_TraceLinkSet "rules 0..1" -- "TraceLinkSet 1..1" trace_TracedRule : linkSet5
+trace_TraceLink "rule 0..9999" --* "TraceLink 1..1" trace_TracedRule : links4
+trace_SourceElement "TargetElement20 1..1" -- "mapsTo 0..9999" trace_TargetElement : mapsTo19
+trace_SourceElement "mapsTo28 0..9999" -- "SourceElement29 1..1" trace_TargetElement : mapsTo27
+trace_EObject "trace_TraceElement 0..1" -- "trace_EObject 1..1" trace_TraceElement : object16
+trace_TraceLink "TracedRule15 1..1" -- "links 0..1" trace_TracedRule : rule14
+trace_TraceLinkSet "TracedRule 1..1" *-- "linkSet 0..9999" trace_TracedRule : rules0
+trace_SourceElement "sourceOf 0..9999" --* "SourceElement12 1..1" trace_TraceLink : sourceElements11
+trace_SourceElement "trace_SourceElementList 2..9999" -- "trace_SourceElement 1..1" trace_SourceElementList : sourceElements30
+trace_SourceElement "TraceLink18 1..1" -- "sourceElements 0..1" trace_TraceLink : sourceOf17
+trace_TargetElement "targetOf 0..9999" --* "TargetElement 1..1" trace_TraceLink : targetElements13
+trace_TargetElement "TraceLink26 1..1" -- "targetElements 0..1" trace_TraceLink : targetOf25
+trace_SourceElement "TracedRule24 1..1" -- "uniqueSourceElements 0..1" trace_TracedRule : uniqueFor23
+trace_SourceElementList "TracedRule34 1..1" -- "uniqueSourceElementLists 0..1" trace_TracedRule : uniqueFor33
+trace_SourceElementList "uniqueFor9 0..9999" --* "SourceElementList10 1..1" trace_TracedRule : uniqueSourceElementLists8
+trace_SourceElement "uniqueFor 0..9999" -- "SourceElement7 1..1" trace_TracedRule : uniqueSourceElements6
 @enduml

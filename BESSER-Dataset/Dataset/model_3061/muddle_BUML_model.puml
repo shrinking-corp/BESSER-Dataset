@@ -1,4 +1,8 @@
 @startuml
+' model: muddle
+' project: sampleModel
+' owner: User
+' description: New project
 class MuddleElementType {
 }
 class PrimitiveType {
@@ -53,23 +57,23 @@ PrimitiveType <|-- muddle_RealType
 PrimitiveType <|-- muddle_StringType
 Type <|-- muddle_MuddleElementType
 Type <|-- muddle_PrimitiveType
-muddle_Muddle "1..1" *-- "0..9999" muddle_MuddleElement : elements1
-muddle_Feature "0..1" -- "1..1" muddle_Slot : feature6
-muddle_Feature "0..9999" --* "1..1" muddle_MuddleElementType : features18
-muddle_MuddleElement "0..9999" -- "1..1" muddle_MuddleElementType : instances16
-muddle_Muddle "0..1" -- "1..1" muddle_MuddleElement : muddle4
-muddle_MuddleElement "0..1" -- "1..1" muddle_Slot : owningElement7
-muddle_Feature "1..1" -- "0..1" muddle_MuddleElementType : owningType12
-muddle_Feature "0..1" --* "1..1" muddle_LinkElementType : roleInSourceFeature31
-muddle_Feature "0..1" --* "1..1" muddle_LinkElementType : roleInTargetFeature34
-muddle_Feature "1..1" -- "0..9999" muddle_Slot : slots14
-muddle_MuddleElement "1..1" *-- "0..9999" muddle_Slot : slots2
-muddle_Feature "0..1" -- "1..1" muddle_LinkElementType : sourceFeature26
-muddle_MuddleElement "1..1" *-- "0..1" muddle_MuddleElementStyle : style5
-muddle_MuddleElementType "1..1" -- "0..9999" muddle_MuddleElementType : subTypes24
-muddle_MuddleElementType "1..1" -- "0..9999" muddle_MuddleElementType : superTypes21
-muddle_Feature "0..1" -- "1..1" muddle_LinkElementType : targetFeature28
-muddle_Feature "1..1" -- "0..1" muddle_Type : type10
-muddle_MuddleElement "1..1" -- "0..1" muddle_MuddleElementType : type3
-muddle_Muddle "1..1" *-- "0..9999" muddle_Type : types0
+muddle_Muddle "MuddleElement 1..1" *-- "muddle 0..9999" muddle_MuddleElement : elements1
+muddle_Feature "slots 0..1" -- "Feature 1..1" muddle_Slot : feature6
+muddle_Feature "owningType 0..9999" --* "Feature19 1..1" muddle_MuddleElementType : features18
+muddle_MuddleElement "type 0..9999" -- "MuddleElement17 1..1" muddle_MuddleElementType : instances16
+muddle_Muddle "elements 0..1" -- "Muddle 1..1" muddle_MuddleElement : muddle4
+muddle_MuddleElement "slots8 0..1" -- "MuddleElement9 1..1" muddle_Slot : owningElement7
+muddle_Feature "MuddleElementType13 1..1" -- "features 0..1" muddle_MuddleElementType : owningType12
+muddle_Feature "muddle_LinkElementType32 0..1" --* "muddle_Feature33 1..1" muddle_LinkElementType : roleInSourceFeature31
+muddle_Feature "muddle_LinkElementType35 0..1" --* "muddle_Feature36 1..1" muddle_LinkElementType : roleInTargetFeature34
+muddle_Feature "Slot15 1..1" -- "feature 0..9999" muddle_Slot : slots14
+muddle_MuddleElement "Slot 1..1" *-- "owningElement 0..9999" muddle_Slot : slots2
+muddle_Feature "muddle_LinkElementType 0..1" -- "muddle_Feature27 1..1" muddle_LinkElementType : sourceFeature26
+muddle_MuddleElement "muddle_MuddleElementStyle 1..1" *-- "muddle_MuddleElement 0..1" muddle_MuddleElementStyle : style5
+muddle_MuddleElementType "MuddleElementType25 1..1" -- "superTypes 0..9999" muddle_MuddleElementType : subTypes24
+muddle_MuddleElementType "MuddleElementType22 1..1" -- "subTypes 0..9999" muddle_MuddleElementType : superTypes21
+muddle_Feature "muddle_LinkElementType29 0..1" -- "muddle_Feature30 1..1" muddle_LinkElementType : targetFeature28
+muddle_Feature "muddle_Type11 1..1" -- "muddle_Feature 0..1" muddle_Type : type10
+muddle_MuddleElement "MuddleElementType 1..1" -- "instances 0..1" muddle_MuddleElementType : type3
+muddle_Muddle "muddle_Type 1..1" *-- "muddle_Muddle 0..9999" muddle_Type : types0
 @enduml

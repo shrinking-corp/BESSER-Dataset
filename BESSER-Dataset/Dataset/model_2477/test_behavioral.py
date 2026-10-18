@@ -176,9 +176,9 @@ def test_assoc_comparedTraces31_stub_double():
     partner = traceability_TraceDiffs()
     setattr(partner, 'traceability_TraceDiffs', None)
     _safe_set(owner, 'traceability_Traces32', partner)
-    assert getattr(partner, 'traceability_TraceDiffs') == owner
+    assert owner in getattr(partner, 'traceability_TraceDiffs')
     _safe_set(owner, 'traceability_Traces32', None)
-    assert getattr(partner, 'traceability_TraceDiffs') is None
+    assert owner not in getattr(partner, 'traceability_TraceDiffs')
 
 
 def test_assoc_contents33_stub_double():

@@ -117,9 +117,9 @@ def test_assoc_assoc__RwqMk5UFEeqqGZh46IEtXQ_stub_double():
     partner = Admin()
     setattr(partner, 'assoc_115', None)
     _safe_set(owner, 'assoc_014', partner)
-    assert getattr(partner, 'assoc_115') == owner
+    assert owner in getattr(partner, 'assoc_115')
     _safe_set(owner, 'assoc_014', None)
-    assert getattr(partner, 'assoc_115') is None
+    assert owner not in getattr(partner, 'assoc_115')
 
 
 def test_assoc_assoc__RwqMpJUFEeqqGZh46IEtXQ_stub_double():

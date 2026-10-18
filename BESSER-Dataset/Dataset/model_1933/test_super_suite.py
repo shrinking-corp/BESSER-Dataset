@@ -23079,9 +23079,9 @@ def test_assoc_attributes304_stub_double():
     partner = domain_Type()
     setattr(partner, 'parent305', None)
     _safe_set(owner, 'Attribute', partner)
-    assert getattr(partner, 'parent305') == owner
+    assert owner in getattr(partner, 'parent305')
     _safe_set(owner, 'Attribute', None)
-    assert getattr(partner, 'parent305') is None
+    assert owner not in getattr(partner, 'parent305')
 
 
 def test_assoc_baseCanvas382_stub_double():
@@ -23109,9 +23109,9 @@ def test_assoc_children399_stub_double():
     partner = domain_ChildrenHolder()
     setattr(partner, 'domain_ChildrenHolder', None)
     _safe_set(owner, 'domain_Uielement', partner)
-    assert getattr(partner, 'domain_ChildrenHolder') == owner
+    assert owner in getattr(partner, 'domain_ChildrenHolder')
     _safe_set(owner, 'domain_Uielement', None)
-    assert getattr(partner, 'domain_ChildrenHolder') is None
+    assert owner not in getattr(partner, 'domain_ChildrenHolder')
 
 
 def test_assoc_classifier415_stub_double():
@@ -23139,9 +23139,9 @@ def test_assoc_classifiers6_stub_double():
     partner = domain_Categorized()
     setattr(partner, 'domain_Categorized', None)
     _safe_set(owner, 'domain_Classifier', partner)
-    assert getattr(partner, 'domain_Categorized') == owner
+    assert owner in getattr(partner, 'domain_Categorized')
     _safe_set(owner, 'domain_Classifier', None)
-    assert getattr(partner, 'domain_Categorized') is None
+    assert owner not in getattr(partner, 'domain_Categorized')
 
 
 def test_assoc_defaultSearch521_stub_double():
@@ -23184,9 +23184,9 @@ def test_assoc_grants9_stub_double():
     partner = domain_Secured()
     setattr(partner, 'domain_Secured', None)
     _safe_set(owner, 'domain_GrantAccess', partner)
-    assert getattr(partner, 'domain_Secured') == owner
+    assert owner in getattr(partner, 'domain_Secured')
     _safe_set(owner, 'domain_GrantAccess', None)
-    assert getattr(partner, 'domain_Secured') is None
+    assert owner not in getattr(partner, 'domain_Secured')
 
 
 def test_assoc_image464_stub_double():
@@ -23229,9 +23229,9 @@ def test_assoc_mappers216_stub_double():
     partner = domain_UsingMappers()
     setattr(partner, 'domain_UsingMappers', None)
     _safe_set(owner, 'domain_ApplicationMapper', partner)
-    assert getattr(partner, 'domain_UsingMappers') == owner
+    assert owner in getattr(partner, 'domain_UsingMappers')
     _safe_set(owner, 'domain_ApplicationMapper', None)
-    assert getattr(partner, 'domain_UsingMappers') is None
+    assert owner not in getattr(partner, 'domain_UsingMappers')
 
 
 def test_assoc_menu591_stub_double():
@@ -23274,9 +23274,9 @@ def test_assoc_operations306_stub_double():
     partner = domain_Type()
     setattr(partner, 'parent307', None)
     _safe_set(owner, 'Operation', partner)
-    assert getattr(partner, 'parent307') == owner
+    assert owner in getattr(partner, 'parent307')
     _safe_set(owner, 'Operation', None)
-    assert getattr(partner, 'parent307') is None
+    assert owner not in getattr(partner, 'parent307')
 
 
 def test_assoc_optionCastDataControl452_stub_double():
@@ -23319,9 +23319,9 @@ def test_assoc_parameters409_stub_double():
     partner = domain_ContextParameters()
     setattr(partner, 'domain_ContextParameters', None)
     _safe_set(owner, 'domain_ContextParameter410', partner)
-    assert getattr(partner, 'domain_ContextParameters') == owner
+    assert owner in getattr(partner, 'domain_ContextParameters')
     _safe_set(owner, 'domain_ContextParameter410', None)
-    assert getattr(partner, 'domain_ContextParameters') is None
+    assert owner not in getattr(partner, 'domain_ContextParameters')
 
 
 def test_assoc_parent308_stub_double():
@@ -23424,9 +23424,9 @@ def test_assoc_refreshAreas599_stub_double():
     partner = domain_MenuItem()
     setattr(partner, 'domain_MenuItem600', None)
     _safe_set(owner, 'domain_AreaRef601', partner)
-    assert getattr(partner, 'domain_MenuItem600') == owner
+    assert owner in getattr(partner, 'domain_MenuItem600')
     _safe_set(owner, 'domain_AreaRef601', None)
-    assert getattr(partner, 'domain_MenuItem600') is None
+    assert owner not in getattr(partner, 'domain_MenuItem600')
 
 
 def test_assoc_required421_stub_double():
@@ -23574,9 +23574,9 @@ def test_assoc_typePointers480_stub_double():
     partner = domain_ProxiesList()
     setattr(partner, 'domain_ProxiesList', None)
     _safe_set(owner, 'domain_TypePointer481', partner)
-    assert getattr(partner, 'domain_ProxiesList') == owner
+    assert owner in getattr(partner, 'domain_ProxiesList')
     _safe_set(owner, 'domain_TypePointer481', None)
-    assert getattr(partner, 'domain_ProxiesList') is None
+    assert owner not in getattr(partner, 'domain_ProxiesList')
 
 
 def test_assoc_values318_stub_double():
@@ -23589,197 +23589,83 @@ def test_assoc_values318_stub_double():
     partner = domain_Enumarator()
     setattr(partner, 'parent319', None)
     _safe_set(owner, 'EnumAttribute', partner)
-    assert getattr(partner, 'parent319') == owner
+    assert owner in getattr(partner, 'parent319')
     _safe_set(owner, 'EnumAttribute', None)
-    assert getattr(partner, 'parent319') is None
+    assert owner not in getattr(partner, 'parent319')
 
 
 
 
-from enum import Enum
 from python_code import Comparator
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(Comparator.EQ, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(Comparator.LEQ, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(Comparator.GEQ, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(Comparator.GT, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(Comparator.LT, 'EQ') == Comparator.EQ
-
-from enum import Enum
 from python_code import Order
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(Order.DESC, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(Order.DESC, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(Order.ASC, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(Order.ASC, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(Order.ASC, 'ASC') == Order.ASC
-
-from enum import Enum
 from python_code import Orientation
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(Orientation.Left, 0, '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(Orientation.Top, '', '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(Orientation.Left, '', 0, '') == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(Orientation.Top, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(Orientation.Top, 'Top') == Orientation.Top
-
-from enum import Enum
 from python_code import PlatformLayers
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(PlatformLayers.UILayer, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(PlatformLayers.UILayer, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(PlatformLayers.UILayer, '', '', 0) == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(PlatformLayers.UILayer, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(PlatformLayers.UILayer, 'UILayer') == PlatformLayers.UILayer
-
-from enum import Enum
 from python_code import RelationType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(RelationType.One2One, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(RelationType.One2One, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(RelationType.One2One, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(RelationType.One2One, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(RelationType.One2One, 'One2One') == RelationType.One2One
-
 from python_code import domain_Button
 
 def test_domain_Button___init__():
     assert domain_Button.__init__(domain_Button(''), '') == None
-
 from python_code import domain_DefaultCavas
 
 def test_domain_DefaultCavas___init__():
     assert domain_DefaultCavas.__init__(domain_DefaultCavas(True), False) == None
-
 from python_code import domain_Context
 from python_code import domain_DropDownSelection
 from python_code import domain_Selection
 
 def test_domain_DropDownSelection___init__():
     assert domain_DropDownSelection.__init__(domain_DropDownSelection('', domain_DropDownSelection=domain_Selection(), domain_DropDownSelection458=domain_Context()), '', domain_DropDownSelection=domain_Selection(), domain_DropDownSelection458=domain_Context()) == None
-
 from python_code import domain_EnumAttribute
 from python_code import domain_Enumarator
 
 def test_domain_EnumAttribute___init__():
     assert domain_EnumAttribute.__init__(domain_EnumAttribute('', '', '\x00\x00', EnumAttribute=domain_Enumarator(), values=domain_Enumarator()), '', '', '', EnumAttribute=domain_Enumarator(), values=domain_Enumarator()) == None
-
 from python_code import domain_Formatable
 
 def test_domain_Formatable___init__():
     assert domain_Formatable.__init__(domain_Formatable(''), '') == None
-
 from python_code import domain_HTMLLayerHolder
 
 def test_domain_HTMLLayerHolder___init__():
     assert domain_HTMLLayerHolder.__init__(domain_HTMLLayerHolder(0), 0) == None
-
 from python_code import domain_JavaComponent
 
 def test_domain_JavaComponent___init__():
     assert domain_JavaComponent.__init__(domain_JavaComponent('\x00\x00', '', '', ''), '', '', '', '') == None
-
 from python_code import domain_JavaMapper
 
 def test_domain_JavaMapper___init__():
     assert domain_JavaMapper.__init__(domain_JavaMapper('', '', '', '', '', '', ''), '', '\x00', '', '', '', '', '') == None
-
 from python_code import domain_JavaScriptMapper
 
 def test_domain_JavaScriptMapper___init__():
     assert domain_JavaScriptMapper.__init__(domain_JavaScriptMapper(''), '') == None
-
 from python_code import domain_Menu
 
 def test_domain_Menu___init__():
     assert domain_Menu.__init__(domain_Menu(''), '') == None
-
 from python_code import domain_Orderable
 
 def test_domain_Orderable___init__():
     assert domain_Orderable.__init__(domain_Orderable(0), 0) == None
-
 from python_code import domain_PopupCanvas
 
 def test_domain_PopupCanvas___init__():
     assert domain_PopupCanvas.__init__(domain_PopupCanvas(True), False) == None
-
 from python_code import domain_EObject
 from python_code import domain_RoleMapper
 
 def test_domain_RoleMapper___init__():
     assert domain_RoleMapper.__init__(domain_RoleMapper('', '', '\x00\x00', domain_RoleMapper=domain_EObject()), '', '', '', domain_RoleMapper=domain_EObject()) == None
-
 from python_code import domain_Table
 
 def test_domain_Table___init__():
     assert domain_Table.__init__(domain_Table('', 0, domain_Table=set()), '', 0, domain_Table=set()) == None
-
 from python_code import domain_Context
 from python_code import domain_Tree
 

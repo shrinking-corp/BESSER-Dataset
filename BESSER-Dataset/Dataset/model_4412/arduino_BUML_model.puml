@@ -1,4 +1,8 @@
 @startuml
+' model: arduino
+' project: sampleModel
+' owner: User
+' description: New project
 class BooleanOperator {
 }
 class Control {
@@ -184,37 +188,37 @@ Value <|-- arduino_Constant
 Value <|-- arduino_MathOperator
 Value <|-- arduino_Status
 Value <|-- arduino_Variable
-arduino_AnalogPin "0..9999" --* "1..1" arduino_Platform : analogPins7
-arduino_BooleanOperator "1..1" -- "1..1" arduino_While : condition44
-arduino_BooleanOperator "1..1" -- "1..1" arduino_If : condition54
-arduino_Connector "0..9999" --* "1..1" arduino_Hardware : connectors3
-arduino_Parameter "1..1" -- "0..1" arduino_ParameterDefinition : definition61
-arduino_Function "1..1" -- "1..1" arduino_FunctionCall : definition63
-arduino_ParameterCall "1..1" -- "0..1" arduino_ParameterDefinition : definition68
-arduino_DigitalPin "0..9999" --* "1..1" arduino_Platform : digitalPins5
-arduino_Function "0..9999" --* "1..1" arduino_Sketch : functions13
-arduino_Hardware "0..1" --* "1..1" arduino_Project : hardware15
-arduino_Hardware "1..1" -- "1..1" arduino_Sketch : hardware9
-arduino_Instruction "0..9999" --* "1..1" arduino_Sketch : instructions11
-arduino_Control "1..1" *-- "0..9999" arduino_Instruction : instructions36
-arduino_Function "1..1" *-- "0..9999" arduino_Instruction : instructions58
-arduino_MathOperator "1..1" -- "1..1" arduino_Value : left45
-arduino_Level "1..1" -- "1..1" arduino_Value : level33
-arduino_Module "1..1" -- "1..1" arduino_ModuleInstruction : module34
-arduino_Connector "1..1" -- "0..1" arduino_Module : module40
-arduino_Hardware "1..1" -- "0..9999" arduino_Module : modules1
-arduino_Module "0..9999" --* "1..1" arduino_Project : modules20
-arduino_Instruction "0..1" -- "1..1" arduino_Instruction : next30
-arduino_Function "1..1" *-- "0..9999" arduino_ParameterDefinition : paramDefs56
-arduino_FunctionCall "1..1" -- "0..9999" arduino_Parameter : parameters65
-arduino_Connector "1..1" -- "0..1" arduino_Pin : pin38
-arduino_Platform "0..9999" --* "1..1" arduino_Project : platform23
-arduino_Hardware "1..1" -- "1..9999" arduino_Platform : platforms0
-arduino_Instruction "0..1" -- "1..1" arduino_Instruction : previous27
-arduino_MathOperator "1..1" -- "0..1" arduino_Value : right47
-arduino_Sensor "0..1" -- "1..1" arduino_Status : sensor32
-arduino_Project "1..1" *-- "0..1" arduino_Sketch : sketch17
-arduino_Sensor "1..1" -- "0..9999" arduino_Status : status43
-arduino_Set "1..1" -- "1..1" arduino_Value : value51
-arduino_Set "1..1" -- "1..1" arduino_Variable : variable50
+arduino_AnalogPin "arduino_Platform8 0..9999" --* "arduino_AnalogPin 1..1" arduino_Platform : analogPins7
+arduino_BooleanOperator "arduino_While 1..1" -- "arduino_BooleanOperator 1..1" arduino_While : condition44
+arduino_BooleanOperator "arduino_If 1..1" -- "arduino_BooleanOperator55 1..1" arduino_If : condition54
+arduino_Connector "arduino_Hardware4 0..9999" --* "arduino_Connector 1..1" arduino_Hardware : connectors3
+arduino_Parameter "arduino_ParameterDefinition62 1..1" -- "arduino_Parameter 0..1" arduino_ParameterDefinition : definition61
+arduino_Function "arduino_FunctionCall 1..1" -- "arduino_Function64 1..1" arduino_FunctionCall : definition63
+arduino_ParameterCall "arduino_ParameterDefinition69 1..1" -- "arduino_ParameterCall 0..1" arduino_ParameterDefinition : definition68
+arduino_DigitalPin "arduino_Platform6 0..9999" --* "arduino_DigitalPin 1..1" arduino_Platform : digitalPins5
+arduino_Function "arduino_Sketch14 0..9999" --* "arduino_Function 1..1" arduino_Sketch : functions13
+arduino_Hardware "arduino_Project 0..1" --* "arduino_Hardware16 1..1" arduino_Project : hardware15
+arduino_Hardware "arduino_Sketch 1..1" -- "arduino_Hardware10 1..1" arduino_Sketch : hardware9
+arduino_Instruction "arduino_Sketch12 0..9999" --* "arduino_Instruction 1..1" arduino_Sketch : instructions11
+arduino_Control "arduino_Instruction37 1..1" *-- "arduino_Control 0..9999" arduino_Instruction : instructions36
+arduino_Function "arduino_Instruction60 1..1" *-- "arduino_Function59 0..9999" arduino_Instruction : instructions58
+arduino_MathOperator "arduino_Value46 1..1" -- "arduino_MathOperator 1..1" arduino_Value : left45
+arduino_Level "arduino_Value 1..1" -- "arduino_Level 1..1" arduino_Value : level33
+arduino_Module "arduino_ModuleInstruction 1..1" -- "arduino_Module35 1..1" arduino_ModuleInstruction : module34
+arduino_Connector "arduino_Module42 1..1" -- "arduino_Connector41 0..1" arduino_Module : module40
+arduino_Hardware "arduino_Module 1..1" -- "arduino_Hardware2 0..9999" arduino_Module : modules1
+arduino_Module "arduino_Project21 0..9999" --* "arduino_Module22 1..1" arduino_Project : modules20
+arduino_Instruction "arduino_Instruction29 0..1" -- "arduino_Instruction31 1..1" arduino_Instruction : next30
+arduino_Function "arduino_ParameterDefinition 1..1" *-- "arduino_Function57 0..9999" arduino_ParameterDefinition : paramDefs56
+arduino_FunctionCall "arduino_Parameter67 1..1" -- "arduino_FunctionCall66 0..9999" arduino_Parameter : parameters65
+arduino_Connector "arduino_Pin 1..1" -- "arduino_Connector39 0..1" arduino_Pin : pin38
+arduino_Platform "arduino_Project24 0..9999" --* "arduino_Platform25 1..1" arduino_Project : platform23
+arduino_Hardware "arduino_Platform 1..1" -- "arduino_Hardware 1..9999" arduino_Platform : platforms0
+arduino_Instruction "arduino_Instruction26 0..1" -- "arduino_Instruction28 1..1" arduino_Instruction : previous27
+arduino_MathOperator "arduino_Value49 1..1" -- "arduino_MathOperator48 0..1" arduino_Value : right47
+arduino_Sensor "status 0..1" -- "Sensor 1..1" arduino_Status : sensor32
+arduino_Project "arduino_Sketch19 1..1" *-- "arduino_Project18 0..1" arduino_Sketch : sketch17
+arduino_Sensor "Status 1..1" -- "sensor 0..9999" arduino_Status : status43
+arduino_Set "arduino_Value53 1..1" -- "arduino_Set52 1..1" arduino_Value : value51
+arduino_Set "arduino_Variable 1..1" -- "arduino_Set 1..1" arduino_Variable : variable50
 @enduml

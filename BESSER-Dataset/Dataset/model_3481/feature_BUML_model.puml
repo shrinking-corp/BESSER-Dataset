@@ -1,4 +1,8 @@
 @startuml
+' model: feature
+' project: sampleModel
+' owner: User
+' description: New project
 class AttributeOperand {
 }
 class Constraint {
@@ -86,20 +90,20 @@ Identifiable <|-- feature_Constraint
 Identifiable <|-- feature_Domain
 Identifiable <|-- feature_Feature
 Identifiable <|-- feature_Group
-feature_Attribute "1..1" -- "1..1" feature_AttributeReference : attribute20
-feature_Attribute "0..9999" --* "1..1" feature_Feature : attributes5
-feature_Feature "1..9999" --* "1..1" feature_Group : childFeatures8
-feature_Constraint "0..9999" --* "1..1" feature_FeatureModel : constraints3
-feature_Attribute "1..1" -- "1..1" feature_Domain : domain12
-feature_Domain "0..9999" --* "1..1" feature_FeatureModel : domains1
-feature_Attribute "1..1" -- "1..1" feature_Feature : feature11
-feature_AttributeReference "1..1" -- "1..1" feature_Feature : feature22
-feature_Feature "1..1" *-- "0..9999" feature_Group : groups6
-feature_Interval "1..9999" --* "1..1" feature_NumericalDomain : intervals15
-feature_AttributeConstraint "1..1" *-- "1..1" feature_AttributeOperand : leftOperand16
-feature_Feature "1..1" -- "1..1" feature_FeatureConstraint : leftOperand25
-feature_AttributeConstraint "1..1" *-- "1..1" feature_AttributeOperand : rightOperand17
-feature_Feature "1..1" -- "1..1" feature_FeatureConstraint : rightOperand27
-feature_Feature "1..1" --* "1..1" feature_FeatureModel : root0
-feature_DiscreteDomain "1..1" *-- "1..9999" feature_DomainValue : values14
+feature_Attribute "feature_AttributeReference 1..1" -- "feature_Attribute21 1..1" feature_AttributeReference : attribute20
+feature_Attribute "feature 0..9999" --* "Attribute 1..1" feature_Feature : attributes5
+feature_Feature "feature_Group9 1..9999" --* "feature_Feature10 1..1" feature_Group : childFeatures8
+feature_Constraint "feature_FeatureModel4 0..9999" --* "feature_Constraint 1..1" feature_FeatureModel : constraints3
+feature_Attribute "feature_Domain13 1..1" -- "feature_Attribute 1..1" feature_Domain : domain12
+feature_Domain "feature_FeatureModel2 0..9999" --* "feature_Domain 1..1" feature_FeatureModel : domains1
+feature_Attribute "Feature 1..1" -- "attributes 1..1" feature_Feature : feature11
+feature_AttributeReference "feature_Feature24 1..1" -- "feature_AttributeReference23 1..1" feature_Feature : feature22
+feature_Feature "feature_Group 1..1" *-- "feature_Feature7 0..9999" feature_Group : groups6
+feature_Interval "feature_NumericalDomain 1..9999" --* "feature_Interval 1..1" feature_NumericalDomain : intervals15
+feature_AttributeConstraint "feature_AttributeOperand 1..1" *-- "feature_AttributeConstraint 1..1" feature_AttributeOperand : leftOperand16
+feature_Feature "feature_FeatureConstraint 1..1" -- "feature_Feature26 1..1" feature_FeatureConstraint : leftOperand25
+feature_AttributeConstraint "feature_AttributeOperand19 1..1" *-- "feature_AttributeConstraint18 1..1" feature_AttributeOperand : rightOperand17
+feature_Feature "feature_FeatureConstraint28 1..1" -- "feature_Feature29 1..1" feature_FeatureConstraint : rightOperand27
+feature_Feature "feature_FeatureModel 1..1" --* "feature_Feature 1..1" feature_FeatureModel : root0
+feature_DiscreteDomain "feature_DomainValue 1..1" *-- "feature_DiscreteDomain 1..9999" feature_DomainValue : values14
 @enduml

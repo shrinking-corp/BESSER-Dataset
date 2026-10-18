@@ -1,4 +1,8 @@
 @startuml
+' model: Wires
+' project: sampleModel
+' owner: User
+' description: New project
 class ActualParameter {
 }
 class AtomicModelTransformation {
@@ -127,24 +131,24 @@ WiresElement <|-- Wires_DataFlow
 WiresElement <|-- Wires_DecisionNode
 WiresElement <|-- Wires_Library
 WiresSpecification <|-- Wires_CompositeTransformationType
-Wires_DecisionNode "0..1" -- "1..1" Wires_Transformation : controlNode3
-Wires_WiresElement "0..9999" --* "1..1" Wires_WiresSpecification : els27
-Wires_DecisionNode "1..1" -- "0..9999" Wires_Transformation : falseBranch9
-Wires_InputActualParameter "0..9999" --* "1..1" Wires_Transformation : inParams0
-Wires_DecisionNode "1..1" *-- "1..9999" Wires_InputActualParameter : inParams12
-Wires_InputFormalParameter "0..9999" --* "1..1" Wires_TransformationType : inParams21
-Wires_ConnectableElement "1..1" -- "0..9999" Wires_DataFlow : incoming24
-Wires_LibraryRef "0..9999" --* "1..1" Wires_TransformationType : libraries19
-Wires_Library "1..1" *-- "0..9999" Wires_LibraryRef : libraries30
-Wires_Library "1..1" -- "1..1" Wires_LibraryRef : library28
-Wires_OutputActualParameter "0..9999" --* "1..1" Wires_Transformation : outParams1
-Wires_OutputFormalParameter "0..9999" --* "1..1" Wires_TransformationType : outParams18
-Wires_ConnectableElement "1..1" -- "0..9999" Wires_DataFlow : outgoing25
-Wires_ConnectableElement "1..1" -- "1..1" Wires_DataFlow : src16
-Wires_ConnectableElement "1..1" -- "1..1" Wires_DataFlow : target15
-Wires_DecisionNode "1..1" -- "0..9999" Wires_Transformation : trueBranch6
-Wires_Type "0..1" -- "1..1" Wires_TypedElement : type5
-Wires_DataType "1..1" -- "1..1" Wires_FormalParameter : typeEl23
-Wires_GenericTransformation "1..1" *-- "1..1" Wires_TypeParameter : typeParam33
-Wires_GenericQuery "1..1" *-- "1..1" Wires_TypeParameter : typeParam34
+Wires_DecisionNode "Wires_Transformation4 0..1" -- "Wires_DecisionNode 1..1" Wires_Transformation : controlNode3
+Wires_WiresElement "Wires_WiresSpecification 0..9999" --* "Wires_WiresElement 1..1" Wires_WiresSpecification : els27
+Wires_DecisionNode "Wires_Transformation11 1..1" -- "Wires_DecisionNode10 0..9999" Wires_Transformation : falseBranch9
+Wires_InputActualParameter "Wires_Transformation 0..9999" --* "Wires_InputActualParameter 1..1" Wires_Transformation : inParams0
+Wires_DecisionNode "Wires_InputActualParameter14 1..1" *-- "Wires_DecisionNode13 1..9999" Wires_InputActualParameter : inParams12
+Wires_InputFormalParameter "Wires_TransformationType22 0..9999" --* "Wires_InputFormalParameter 1..1" Wires_TransformationType : inParams21
+Wires_ConnectableElement "DataFlow 1..1" -- "target 0..9999" Wires_DataFlow : incoming24
+Wires_LibraryRef "Wires_TransformationType20 0..9999" --* "Wires_LibraryRef 1..1" Wires_TransformationType : libraries19
+Wires_Library "Wires_LibraryRef32 1..1" *-- "Wires_Library31 0..9999" Wires_LibraryRef : libraries30
+Wires_Library "Wires_LibraryRef29 1..1" -- "Wires_Library 1..1" Wires_LibraryRef : library28
+Wires_OutputActualParameter "Wires_Transformation2 0..9999" --* "Wires_OutputActualParameter 1..1" Wires_Transformation : outParams1
+Wires_OutputFormalParameter "Wires_TransformationType 0..9999" --* "Wires_OutputFormalParameter 1..1" Wires_TransformationType : outParams18
+Wires_ConnectableElement "DataFlow26 1..1" -- "src 0..9999" Wires_DataFlow : outgoing25
+Wires_ConnectableElement "outgoing 1..1" -- "ConnectableElement17 1..1" Wires_DataFlow : src16
+Wires_ConnectableElement "incoming 1..1" -- "ConnectableElement 1..1" Wires_DataFlow : target15
+Wires_DecisionNode "Wires_Transformation8 1..1" -- "Wires_DecisionNode7 0..9999" Wires_Transformation : trueBranch6
+Wires_Type "Wires_TypedElement 0..1" -- "Wires_Type 1..1" Wires_TypedElement : type5
+Wires_DataType "Wires_FormalParameter 1..1" -- "Wires_DataType 1..1" Wires_FormalParameter : typeEl23
+Wires_GenericTransformation "Wires_TypeParameter 1..1" *-- "Wires_GenericTransformation 1..1" Wires_TypeParameter : typeParam33
+Wires_GenericQuery "Wires_TypeParameter35 1..1" *-- "Wires_GenericQuery 1..1" Wires_TypeParameter : typeParam34
 @enduml

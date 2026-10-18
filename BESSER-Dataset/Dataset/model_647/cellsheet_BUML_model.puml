@@ -1,4 +1,8 @@
 @startuml
+' model: cellsheet
+' project: sampleModel
+' owner: User
+' description: New project
 class Ast {
 }
 class Cell {
@@ -195,23 +199,23 @@ PrefixOperator <|-- cellsheet_Negation
 PrefixOperator <|-- cellsheet_Plus
 Ref <|-- cellsheet_RelativeRange
 Ref <|-- cellsheet_RelativeRef
-cellsheet_Ast "0..9999" --* "1..1" cellsheet_Cell : asts16
-cellsheet_Book "0..1" -- "1..1" cellsheet_CellFormat : book28
-cellsheet_Book "0..1" -- "1..1" cellsheet_Sheet : book8
-cellsheet_Book "0..9999" --* "1..1" cellsheet_Workspace : books1
-cellsheet_Ast "1..1" -- "0..1" cellsheet_Cell : cell23
-cellsheet_Book "1..1" *-- "0..9999" cellsheet_CellFormat : cellFormats5
-cellsheet_Cell "0..9999" --* "1..1" cellsheet_Row : cells13
-cellsheet_Ast "0..9999" --* "1..1" cellsheet_Ast : children21
-cellsheet_Ast "1..1" *-- "0..1" cellsheet_AstEval : result26
-cellsheet_Ast "0..1" -- "1..1" cellsheet_Cell : root17
-cellsheet_Cell "1..1" -- "0..1" cellsheet_Row : row14
-cellsheet_Row "0..9999" --* "1..1" cellsheet_Sheet : rows10
-cellsheet_Row "1..1" -- "0..1" cellsheet_Sheet : sheet11
-cellsheet_Book "1..1" *-- "0..9999" cellsheet_Sheet : sheets6
-cellsheet_Ast "1..1" -- "0..1" cellsheet_Token : token25
-cellsheet_EStringToTokenEntry "0..9999" --* "1..1" cellsheet_Workspace : tokens2
-cellsheet_Ast "0..9999" -- "1..1" cellsheet_Token : usedBy18
-cellsheet_EStringToTokenEntry "1..1" -- "0..1" cellsheet_Token : value0
-cellsheet_Book "1..1" -- "0..1" cellsheet_Workspace : workspace4
+cellsheet_Ast "cell 0..9999" --* "Ast 1..1" cellsheet_Cell : asts16
+cellsheet_Book "cellFormats 0..1" -- "Book29 1..1" cellsheet_CellFormat : book28
+cellsheet_Book "sheets 0..1" -- "Book9 1..1" cellsheet_Sheet : book8
+cellsheet_Book "workspace 0..9999" --* "Book 1..1" cellsheet_Workspace : books1
+cellsheet_Ast "Cell24 1..1" -- "asts 0..1" cellsheet_Cell : cell23
+cellsheet_Book "CellFormat 1..1" *-- "book 0..9999" cellsheet_CellFormat : cellFormats5
+cellsheet_Cell "row 0..9999" --* "Cell 1..1" cellsheet_Row : cells13
+cellsheet_Ast "cellsheet_Ast20 0..9999" --* "cellsheet_Ast22 1..1" cellsheet_Ast : children21
+cellsheet_Ast "cellsheet_AstEval 1..1" *-- "cellsheet_Ast27 0..1" cellsheet_AstEval : result26
+cellsheet_Ast "cellsheet_Cell 0..1" -- "cellsheet_Ast 1..1" cellsheet_Cell : root17
+cellsheet_Cell "Row15 1..1" -- "cells 0..1" cellsheet_Row : row14
+cellsheet_Row "sheet 0..9999" --* "Row 1..1" cellsheet_Sheet : rows10
+cellsheet_Row "Sheet12 1..1" -- "rows 0..1" cellsheet_Sheet : sheet11
+cellsheet_Book "Sheet 1..1" *-- "book7 0..9999" cellsheet_Sheet : sheets6
+cellsheet_Ast "Token 1..1" -- "usedBy 0..1" cellsheet_Token : token25
+cellsheet_EStringToTokenEntry "cellsheet_Workspace 0..9999" --* "cellsheet_EStringToTokenEntry3 1..1" cellsheet_Workspace : tokens2
+cellsheet_Ast "token 0..9999" -- "Ast19 1..1" cellsheet_Token : usedBy18
+cellsheet_EStringToTokenEntry "cellsheet_Token 1..1" -- "cellsheet_EStringToTokenEntry 0..1" cellsheet_Token : value0
+cellsheet_Book "Workspace 1..1" -- "books 0..1" cellsheet_Workspace : workspace4
 @enduml

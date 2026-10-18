@@ -1,4 +1,8 @@
 @startuml
+' model: ImperativeOCL
+' project: sampleModel
+' owner: User
+' description: New project
 class AltExp {
 }
 class CatchExp {
@@ -102,9 +106,9 @@ ImperativeExpression <|-- ImperativeOCL_VariableInitExp
 ImperativeExpression <|-- ImperativeOCL_WhileExp
 ImperativeLoopExp <|-- ImperativeOCL_ForExp
 ImperativeLoopExp <|-- ImperativeOCL_ImperativeIterateExp
-AltExp "0..9999" --* "1..1" ImperativeOCL_SwitchExp : alternativePart3
-CatchExp "0..9999" --* "1..1" ImperativeOCL_TryExp : exceptClause4
-ImperativeOCL_AssertExp "1..1" *-- "0..1" LogExp : log0
-DictLiteralPart "0..9999" --* "1..1" ImperativeOCL_DictLiteralExp : part1
-ImperativeOCL_OrderedTupleLiteralExp "1..1" *-- "0..9999" OrderedTupleLiteralPart : part2
+AltExp "ImperativeOCL_SwitchExp 0..9999" --* "AltExp 1..1" ImperativeOCL_SwitchExp : alternativePart3
+CatchExp "ImperativeOCL_TryExp 0..9999" --* "CatchExp 1..1" ImperativeOCL_TryExp : exceptClause4
+ImperativeOCL_AssertExp "LogExp 1..1" *-- "ImperativeOCL_AssertExp 0..1" LogExp : log0
+DictLiteralPart "ImperativeOCL_DictLiteralExp 0..9999" --* "DictLiteralPart 1..1" ImperativeOCL_DictLiteralExp : part1
+ImperativeOCL_OrderedTupleLiteralExp "OrderedTupleLiteralPart 1..1" *-- "ImperativeOCL_OrderedTupleLiteralExp 0..9999" OrderedTupleLiteralPart : part2
 @enduml

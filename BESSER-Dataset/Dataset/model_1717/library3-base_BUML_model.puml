@@ -1,4 +1,8 @@
 @startuml
+' model: library3
+' project: sampleModel
+' owner: User
+' description: New project
 class library3_BookInfoType {
   + any : str
 }
@@ -21,10 +25,10 @@ class library3_EStringToStringMapEntry {
 }
 class library3_LibraryType {
 }
-library3_BookType "0..9999" --* "1..1" library3_LibraryType : book7
-library3_BookInfoType "0..1" --* "1..1" library3_BookType : bookInfo0
-library3_CustomerType "0..9999" --* "1..1" library3_LibraryType : customer10
-library3_DocumentRoot "1..1" *-- "0..9999" library3_LibraryType : library5
-library3_DocumentRoot "1..1" *-- "0..9999" library3_EStringToStringMapEntry : xMLNSPrefixMap1
-library3_DocumentRoot "1..1" *-- "0..9999" library3_EStringToStringMapEntry : xSISchemaLocation2
+library3_BookType "library3_LibraryType8 0..9999" --* "library3_BookType9 1..1" library3_LibraryType : book7
+library3_BookInfoType "library3_BookType 0..1" --* "library3_BookInfoType 1..1" library3_BookType : bookInfo0
+library3_CustomerType "library3_LibraryType11 0..9999" --* "library3_CustomerType 1..1" library3_LibraryType : customer10
+library3_DocumentRoot "library3_LibraryType 1..1" *-- "library3_DocumentRoot6 0..9999" library3_LibraryType : library5
+library3_DocumentRoot "library3_EStringToStringMapEntry 1..1" *-- "library3_DocumentRoot 0..9999" library3_EStringToStringMapEntry : xMLNSPrefixMap1
+library3_DocumentRoot "library3_EStringToStringMapEntry4 1..1" *-- "library3_DocumentRoot3 0..9999" library3_EStringToStringMapEntry : xSISchemaLocation2
 @enduml

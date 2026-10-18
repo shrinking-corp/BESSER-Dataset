@@ -1,4 +1,8 @@
 @startuml
+' model: ingest
+' project: sampleModel
+' owner: User
+' description: New project
 class SqoopHiveImport {
 }
 class SqoopImport {
@@ -34,10 +38,10 @@ class ingest_SqoopImport {
 }
 SqoopHiveImport <|-- ingest_SqoopHiveIncrementalImport
 SqoopImport <|-- ingest_SqoopHiveImport
-ingest_DbColumn "1..1" -- "1..1" ingest_SqoopHiveIncrementalImport : checkColumn7
-ingest_DbColumn "0..9999" --* "1..1" ingest_DbTable : columns1
-ingest_Catalogue "1..1" *-- "0..9999" ingest_Database : databases9
-ingest_Database "1..1" *-- "0..9999" ingest_DbSchema : schemas0
-ingest_DbTable "1..1" *-- "0..9999" ingest_SqoopImport : sqoopImports2
-ingest_DbSchema "1..1" *-- "0..9999" ingest_DbTable : tables4
+ingest_DbColumn "ingest_SqoopHiveIncrementalImport 1..1" -- "ingest_DbColumn8 1..1" ingest_SqoopHiveIncrementalImport : checkColumn7
+ingest_DbColumn "ingest_DbTable 0..9999" --* "ingest_DbColumn 1..1" ingest_DbTable : columns1
+ingest_Catalogue "ingest_Database10 1..1" *-- "ingest_Catalogue 0..9999" ingest_Database : databases9
+ingest_Database "ingest_DbSchema 1..1" *-- "ingest_Database 0..9999" ingest_DbSchema : schemas0
+ingest_DbTable "ingest_SqoopImport 1..1" *-- "ingest_DbTable3 0..9999" ingest_SqoopImport : sqoopImports2
+ingest_DbSchema "ingest_DbTable6 1..1" *-- "ingest_DbSchema5 0..9999" ingest_DbTable : tables4
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: education
+' project: sampleModel
+' owner: User
+' description: New project
 class education_Course {
   + name : str
 }
@@ -10,10 +14,10 @@ class education_School {
 class education_Student {
   + name : str
 }
-education_Course "0..9999" -- "1..1" education_School : courses1
-education_Course "0..9999" -- "1..1" education_Student : courses6
-education_Course "1..1" -- "1..1" education_School : school12
-education_School "1..9999" -- "1..1" education_Student : schools3
-education_School "1..1" -- "0..9999" education_Student : students0
-education_Course "1..1" -- "0..9999" education_Student : students9
+education_Course "education_School2 0..9999" -- "education_Course 1..1" education_School : courses1
+education_Course "education_Student7 0..9999" -- "education_Course8 1..1" education_Student : courses6
+education_Course "education_School14 1..1" -- "education_Course13 1..1" education_School : school12
+education_School "education_Student4 1..9999" -- "education_School5 1..1" education_Student : schools3
+education_School "education_Student 1..1" -- "education_School 0..9999" education_Student : students0
+education_Course "education_Student11 1..1" -- "education_Course10 0..9999" education_Student : students9
 @enduml

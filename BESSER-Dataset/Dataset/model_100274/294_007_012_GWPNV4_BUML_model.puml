@@ -1,4 +1,8 @@
 @startuml
+' model: PrimitiveTypes
+' project: sampleModel
+' owner: User
+' description: New project
 class Arc {
 }
 class Net {
@@ -26,16 +30,16 @@ class Transition {
 }
 Arc <|-- PetriNet_PTArc
 Arc <|-- PetriNet_TPArc
-PetriNet_PTArc "1..1" -- "1..1" Transition : dst14
-PetriNet_TPArc "1..1" -- "1..1" Place : dst21
-PetriNet_Place "1..1" -- "0..9999" TPArc : in_2
-PTArc "1..9999" -- "1..1" PetriNet_Transition : in_5
-Net "1..1" -- "1..1" PetriNet_Place : net0
-Net "1..1" -- "1..1" PetriNet_Transition : net3
-PTArc "0..9999" -- "1..1" PetriNet_Place : out1
-PetriNet_Transition "1..1" -- "1..9999" TPArc : out8
-PetriNet_Net "1..1" *-- "1..9999" Place : place11
-PetriNet_PTArc "1..1" -- "1..1" Place : src16
-PetriNet_TPArc "1..1" -- "1..1" Transition : src18
-PetriNet_Net "1..1" *-- "1..9999" Transition : transition12
+PetriNet_PTArc "Transition15 1..1" -- "in_ 1..1" Transition : dst14
+PetriNet_TPArc "Place23 1..1" -- "in_22 1..1" Place : dst21
+PetriNet_Place "TPArc 1..1" -- "dst 0..9999" TPArc : in_2
+PTArc "dst6 1..9999" -- "PTArc7 1..1" PetriNet_Transition : in_5
+Net "place 1..1" -- "Net 1..1" PetriNet_Place : net0
+Net "transition 1..1" -- "Net4 1..1" PetriNet_Transition : net3
+PTArc "src 0..9999" -- "PTArc 1..1" PetriNet_Place : out1
+PetriNet_Transition "TPArc10 1..1" -- "src9 1..9999" TPArc : out8
+PetriNet_Net "Place 1..1" *-- "net 1..9999" Place : place11
+PetriNet_PTArc "Place17 1..1" -- "out 1..1" Place : src16
+PetriNet_TPArc "Transition20 1..1" -- "out19 1..1" Transition : src18
+PetriNet_Net "Transition 1..1" *-- "net13 1..9999" Transition : transition12
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: kmLogo
+' project: sampleModel
+' owner: User
+' description: New project
 class BinaryExp {
 }
 class ControlStructure {
@@ -73,21 +77,21 @@ Instruction <|-- kmLogo_Block
 Instruction <|-- kmLogo_ControlStructure
 Instruction <|-- kmLogo_Expression
 Instruction <|-- kmLogo_MethodeDeclaration
-kmLogo_Block "1..1" --* "1..1" kmLogo_For : block15
-kmLogo_Block "1..1" --* "1..1" kmLogo_While : block17
-kmLogo_ControlStructure "1..1" *-- "0..1" kmLogo_Expression : condition13
-kmLogo_Block "0..1" --* "1..1" kmLogo_If : elsePart10
-kmLogo_Expression "0..9999" --* "1..1" kmLogo_MethodeCall : expression1
-kmLogo_Instruction "0..9999" --* "1..1" kmLogo_Main : instruction23
-kmLogo_Instruction "0..9999" --* "1..1" kmLogo_MethodeDeclaration : instruction26
-kmLogo_Block "1..1" *-- "0..9999" kmLogo_Instruction : instructions7
-kmLogo_BinaryExp "1..1" *-- "1..1" kmLogo_Expression : lhs2
-kmLogo_JavaProgram "1..1" *-- "0..1" kmLogo_Main : main20
-kmLogo_JavaProgram "1..1" *-- "0..9999" kmLogo_MethodeDeclaration : methodeDeclaration21
-kmLogo_MethodeCall "0..9999" -- "1..1" kmLogo_MethodeDeclaration : methodecall32
-kmLogo_MethodeCall "1..1" -- "1..1" kmLogo_MethodeDeclaration : methodedeclaration0
-kmLogo_Parameter "1..1" -- "1..1" kmLogo_ParameterCall : parameter19
-kmLogo_MethodeDeclaration "1..1" *-- "0..9999" kmLogo_Parameter : parameter29
-kmLogo_BinaryExp "1..1" *-- "1..1" kmLogo_Expression : rhs4
-kmLogo_Block "1..1" --* "1..1" kmLogo_If : thenPart8
+kmLogo_Block "kmLogo_For 1..1" --* "kmLogo_Block16 1..1" kmLogo_For : block15
+kmLogo_Block "kmLogo_While 1..1" --* "kmLogo_Block18 1..1" kmLogo_While : block17
+kmLogo_ControlStructure "kmLogo_Expression14 1..1" *-- "kmLogo_ControlStructure 0..1" kmLogo_Expression : condition13
+kmLogo_Block "kmLogo_If11 0..1" --* "kmLogo_Block12 1..1" kmLogo_If : elsePart10
+kmLogo_Expression "kmLogo_MethodeCall 0..9999" --* "kmLogo_Expression 1..1" kmLogo_MethodeCall : expression1
+kmLogo_Instruction "kmLogo_Main24 0..9999" --* "kmLogo_Instruction25 1..1" kmLogo_Main : instruction23
+kmLogo_Instruction "kmLogo_MethodeDeclaration27 0..9999" --* "kmLogo_Instruction28 1..1" kmLogo_MethodeDeclaration : instruction26
+kmLogo_Block "kmLogo_Instruction 1..1" *-- "kmLogo_Block 0..9999" kmLogo_Instruction : instructions7
+kmLogo_BinaryExp "kmLogo_Expression3 1..1" *-- "kmLogo_BinaryExp 1..1" kmLogo_Expression : lhs2
+kmLogo_JavaProgram "kmLogo_Main 1..1" *-- "kmLogo_JavaProgram 0..1" kmLogo_Main : main20
+kmLogo_JavaProgram "kmLogo_MethodeDeclaration 1..1" *-- "kmLogo_JavaProgram22 0..9999" kmLogo_MethodeDeclaration : methodeDeclaration21
+kmLogo_MethodeCall "methodedeclaration 0..9999" -- "MethodeCall 1..1" kmLogo_MethodeDeclaration : methodecall32
+kmLogo_MethodeCall "MethodeDeclaration 1..1" -- "methodecall 1..1" kmLogo_MethodeDeclaration : methodedeclaration0
+kmLogo_Parameter "kmLogo_ParameterCall 1..1" -- "kmLogo_Parameter 1..1" kmLogo_ParameterCall : parameter19
+kmLogo_MethodeDeclaration "kmLogo_Parameter31 1..1" *-- "kmLogo_MethodeDeclaration30 0..9999" kmLogo_Parameter : parameter29
+kmLogo_BinaryExp "kmLogo_Expression6 1..1" *-- "kmLogo_BinaryExp5 1..1" kmLogo_Expression : rhs4
+kmLogo_Block "kmLogo_If 1..1" --* "kmLogo_Block9 1..1" kmLogo_If : thenPart8
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: class
+' project: sampleModel
+' owner: User
+' description: New project
 class Classifier {
 }
 class NamedElt {
@@ -22,9 +26,9 @@ Classifier <|-- class_Class
 Classifier <|-- class_DataType
 NamedElt <|-- class_Attribute
 NamedElt <|-- class_Classifier
-class_Attribute "0..9999" --* "1..1" class_Class : attr2
-class_ClassModel "1..1" *-- "0..9999" class_NamedElt : elems5
-class_Attribute "1..1" -- "1..1" class_Class : owner3
-class_Class "1..1" -- "0..9999" class_Class : super1
-class_Attribute "1..1" -- "1..1" class_Classifier : type4
+class_Attribute "owner 0..9999" --* "Attribute 1..1" class_Class : attr2
+class_ClassModel "class_NamedElt 1..1" *-- "class_ClassModel 0..9999" class_NamedElt : elems5
+class_Attribute "Class 1..1" -- "attr 1..1" class_Class : owner3
+class_Class "class_Class 1..1" -- "class_Class0 0..9999" class_Class : super1
+class_Attribute "class_Classifier 1..1" -- "class_Attribute 1..1" class_Classifier : type4
 @enduml

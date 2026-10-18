@@ -1,4 +1,8 @@
 @startuml
+' model: markov
+' project: sampleModel
+' owner: User
+' description: New project
 class Entity {
 }
 enum StateType {
@@ -26,9 +30,9 @@ class markov_Transition {
 Entity <|-- markov_MarkovChain
 Entity <|-- markov_State
 Entity <|-- markov_Transition
-markov_State "1..1" -- "1..1" markov_Transition : fromState1
-markov_Label "0..9999" --* "1..1" markov_State : labels0
-markov_MarkovChain "1..1" *-- "0..9999" markov_State : states6
-markov_State "1..1" -- "1..1" markov_Transition : toState3
-markov_MarkovChain "1..1" *-- "0..9999" markov_Transition : transitions8
+markov_State "markov_Transition 1..1" -- "markov_State2 1..1" markov_Transition : fromState1
+markov_Label "markov_State 0..9999" --* "markov_Label 1..1" markov_State : labels0
+markov_MarkovChain "markov_State7 1..1" *-- "markov_MarkovChain 0..9999" markov_State : states6
+markov_State "markov_Transition4 1..1" -- "markov_State5 1..1" markov_Transition : toState3
+markov_MarkovChain "markov_Transition10 1..1" *-- "markov_MarkovChain9 0..9999" markov_Transition : transitions8
 @enduml

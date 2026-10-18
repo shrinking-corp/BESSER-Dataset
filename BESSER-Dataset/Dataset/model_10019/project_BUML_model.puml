@@ -1,4 +1,8 @@
 @startuml
+' model: project
+' project: sampleModel
+' owner: User
+' description: New project
 class Organization {
 }
 class Person {
@@ -26,12 +30,24 @@ Person <|-- project_Adult
 Person <|-- project_Child
 Person <|-- project_Student
 Person <|-- project_Teenager
-project_Enrollment "0..9999" -- "1..1" project_Integer : enrollments0
-project_Enrollment "1..9999" -- "1..1" project_Student : enrollments2
-project_Enrollment "1..9999" -- "1..1" project_University : enrollments5
-project_Enrollment "1..1" -- "1..1" project_Integer : id12
-project_Enrollment "1..1" -- "1..1" project_Student : student9
-project_Student "1..9999" -- "1..1" project_University : students4
-project_Student "1..1" -- "1..9999" project_University : universities1
-project_Enrollment "1..1" -- "1..1" project_University : university7
+project_Enrollment "id 0..9999" -- "Enrollment 1..1" project_Integer : enrollments0
+project_Enrollment "student 1..9999" -- "Enrollment3 1..1" project_Student : enrollments2
+project_Enrollment "university 1..9999" -- "Enrollment6 1..1" project_University : enrollments5
+project_Enrollment "Integer 1..1" -- "enrollments13 1..1" project_Integer : id12
+project_Enrollment "Student11 1..1" -- "enrollments10 1..1" project_Student : student9
+project_Student "universities 1..9999" -- "Student 1..1" project_University : students4
+project_Student "University 1..1" -- "students 1..9999" project_University : universities1
+project_Enrollment "University8 1..1" -- "enrollments 1..1" project_University : university7
+note top of project_Student
+  constraint adult_three_enrolllment (OCL): context Student inv: Adult.allInstances()->notEmpty() andChild.allInstances()->isEmpty() andTeenager.allInstances()->isEmpty() and(self.oclIsKindOf(Adult) implies self.universities->size() = 3)
+end note
+note top of project_University
+  constraint enrollments_has_unique_id (OCL): context University inv: self.enrollments->isUnique(x: Enrollment | x.id)
+end note
+note top of project_University
+  constraint no_child_university (OCL): context University inv: self.students->forAll( x:Student | not x.oclIsKindOf(Child) )
+end note
+note top of project_University
+  constraint one_enrollment_per_student (OCL): context University inv: self.enrollments->collect(x | x.student)->asSet()->forAll(s: Student | s.enrollments->intersection(self.enrollments)->size()=1)
+end note
 @enduml

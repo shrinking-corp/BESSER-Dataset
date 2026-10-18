@@ -1,4 +1,8 @@
 @startuml
+' model: Biblioteca
+' project: sampleModel
+' owner: User
+' description: New project
 class Biblioteca_Autor {
   + fechaDeNacimiento : date
   + nacionalidad : str
@@ -55,14 +59,14 @@ enum Genero {
   Narrativo
   Terror
 }
-Biblioteca_Autor "1..1" -- "1..1" Biblioteca_Libro : autor5
-Biblioteca_Autor "0..9999" --* "1..1" Biblioteca_Biblioteca : autores1
-Biblioteca_Ejemplar "1..1" -- "1..1" Biblioteca_Prestamo : ejemplar8
-Biblioteca_Biblioteca "1..1" *-- "0..9999" Biblioteca_Libro : libros0
-Biblioteca_Multa "0..9999" -- "1..1" Biblioteca_Socio : multas15
-Biblioteca_Autor "1..1" -- "1..9999" Biblioteca_Libro : obras12
-Biblioteca_Multa "1..1" -- "1..1" Biblioteca_Prestamo : prestamo20
-Biblioteca_Prestamo "0..3" -- "1..1" Biblioteca_Socio : prestamos17
-Biblioteca_Prestamo "1..1" -- "1..1" Biblioteca_Socio : socio9
-Biblioteca_Biblioteca "1..1" *-- "0..9999" Biblioteca_Socio : socios3
+Biblioteca_Autor "Biblioteca_Libro6 1..1" -- "Biblioteca_Autor7 1..1" Biblioteca_Libro : autor5
+Biblioteca_Autor "Biblioteca_Biblioteca2 0..9999" --* "Biblioteca_Autor 1..1" Biblioteca_Biblioteca : autores1
+Biblioteca_Ejemplar "Biblioteca_Prestamo 1..1" -- "Biblioteca_Ejemplar 1..1" Biblioteca_Prestamo : ejemplar8
+Biblioteca_Biblioteca "Biblioteca_Libro 1..1" *-- "Biblioteca_Biblioteca 0..9999" Biblioteca_Libro : libros0
+Biblioteca_Multa "Biblioteca_Socio16 0..9999" -- "Biblioteca_Multa 1..1" Biblioteca_Socio : multas15
+Biblioteca_Autor "Biblioteca_Libro14 1..1" -- "Biblioteca_Autor13 1..9999" Biblioteca_Libro : obras12
+Biblioteca_Multa "Biblioteca_Prestamo22 1..1" -- "Biblioteca_Multa21 1..1" Biblioteca_Prestamo : prestamo20
+Biblioteca_Prestamo "Biblioteca_Socio18 0..3" -- "Biblioteca_Prestamo19 1..1" Biblioteca_Socio : prestamos17
+Biblioteca_Prestamo "Biblioteca_Socio11 1..1" -- "Biblioteca_Prestamo10 1..1" Biblioteca_Socio : socio9
+Biblioteca_Biblioteca "Biblioteca_Socio 1..1" *-- "Biblioteca_Biblioteca4 0..9999" Biblioteca_Socio : socios3
 @enduml

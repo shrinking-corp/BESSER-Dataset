@@ -1,4 +1,8 @@
 @startuml
+' model: sqlDSL
+' project: sampleModel
+' owner: User
+' description: New project
 class SArtifact {
 }
 enum SDBEngine {
@@ -85,13 +89,13 @@ SInlinedSQLType <|-- sqlDSL_SDecimal
 SInlinedSQLType <|-- sqlDSL_SString
 STableMember <|-- sqlDSL_SColumn
 STableMember <|-- sqlDSL_SJoinColumn
-sqlDSL_SArtifact "0..9999" --* "1..1" sqlDSL_SModel : artifact1
-sqlDSL_STable "1..1" *-- "0..9999" sqlDSL_STableMember : columns5
-sqlDSL_SColumn "1..1" -- "0..1" sqlDSL_SExtDeclaredSQLType : extType9
-sqlDSL_SColumn "1..1" *-- "0..1" sqlDSL_SInlinedSQLType : inlinedType10
-sqlDSL_SEnum "1..1" *-- "0..9999" sqlDSL_SEnumLiteral : literals14
-sqlDSL_SColumnProps "0..1" --* "1..1" sqlDSL_STableMember : props7
-sqlDSL_SJoinColumn "1..1" -- "0..1" sqlDSL_STable : referencedType12
-sqlDSL_SModel "1..1" *-- "0..1" sqlDSL_SSettings : settings0
-sqlDSL_SSettings "0..1" --* "1..1" sqlDSL_STable : settings3
+sqlDSL_SArtifact "sqlDSL_SModel2 0..9999" --* "sqlDSL_SArtifact 1..1" sqlDSL_SModel : artifact1
+sqlDSL_STable "sqlDSL_STableMember 1..1" *-- "sqlDSL_STable6 0..9999" sqlDSL_STableMember : columns5
+sqlDSL_SColumn "sqlDSL_SExtDeclaredSQLType 1..1" -- "sqlDSL_SColumn 0..1" sqlDSL_SExtDeclaredSQLType : extType9
+sqlDSL_SColumn "sqlDSL_SInlinedSQLType 1..1" *-- "sqlDSL_SColumn11 0..1" sqlDSL_SInlinedSQLType : inlinedType10
+sqlDSL_SEnum "sqlDSL_SEnumLiteral 1..1" *-- "sqlDSL_SEnum 0..9999" sqlDSL_SEnumLiteral : literals14
+sqlDSL_SColumnProps "sqlDSL_STableMember8 0..1" --* "sqlDSL_SColumnProps 1..1" sqlDSL_STableMember : props7
+sqlDSL_SJoinColumn "sqlDSL_STable13 1..1" -- "sqlDSL_SJoinColumn 0..1" sqlDSL_STable : referencedType12
+sqlDSL_SModel "sqlDSL_SSettings 1..1" *-- "sqlDSL_SModel 0..1" sqlDSL_SSettings : settings0
+sqlDSL_SSettings "sqlDSL_STable 0..1" --* "sqlDSL_SSettings4 1..1" sqlDSL_STable : settings3
 @enduml

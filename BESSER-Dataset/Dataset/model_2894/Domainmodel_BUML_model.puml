@@ -1,4 +1,8 @@
 @startuml
+' model: domainmodel
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractElement {
 }
 class Feature {
@@ -56,13 +60,13 @@ StructuralFeature <|-- domainmodel_Attribute
 StructuralFeature <|-- domainmodel_Reference
 Type <|-- domainmodel_DataType
 Type <|-- domainmodel_Entity
-domainmodel_AbstractElement "0..9999" --* "1..1" domainmodel_DomainModel : elements0
-domainmodel_AbstractElement "0..9999" --* "1..1" domainmodel_PackageDeclaration : elements1
-domainmodel_Entity "1..1" *-- "0..9999" domainmodel_Feature : features5
-domainmodel_Reference "1..1" -- "0..1" domainmodel_Reference : opposite10
-domainmodel_Operation "1..1" *-- "0..9999" domainmodel_Parameter : params11
-domainmodel_Type "0..1" -- "1..1" domainmodel_TypeRef : referenced15
-domainmodel_Entity "1..1" -- "0..1" domainmodel_Entity : superType4
-domainmodel_Parameter "1..1" *-- "0..1" domainmodel_TypeRef : type12
-domainmodel_Feature "1..1" *-- "0..1" domainmodel_TypeRef : type7
+domainmodel_AbstractElement "domainmodel_DomainModel 0..9999" --* "domainmodel_AbstractElement 1..1" domainmodel_DomainModel : elements0
+domainmodel_AbstractElement "domainmodel_PackageDeclaration 0..9999" --* "domainmodel_AbstractElement2 1..1" domainmodel_PackageDeclaration : elements1
+domainmodel_Entity "domainmodel_Feature 1..1" *-- "domainmodel_Entity6 0..9999" domainmodel_Feature : features5
+domainmodel_Reference "domainmodel_Reference 1..1" -- "domainmodel_Reference9 0..1" domainmodel_Reference : opposite10
+domainmodel_Operation "domainmodel_Parameter 1..1" *-- "domainmodel_Operation 0..9999" domainmodel_Parameter : params11
+domainmodel_Type "domainmodel_TypeRef16 0..1" -- "domainmodel_Type 1..1" domainmodel_TypeRef : referenced15
+domainmodel_Entity "domainmodel_Entity 1..1" -- "domainmodel_Entity3 0..1" domainmodel_Entity : superType4
+domainmodel_Parameter "domainmodel_TypeRef14 1..1" *-- "domainmodel_Parameter13 0..1" domainmodel_TypeRef : type12
+domainmodel_Feature "domainmodel_TypeRef 1..1" *-- "domainmodel_Feature8 0..1" domainmodel_TypeRef : type7
 @enduml

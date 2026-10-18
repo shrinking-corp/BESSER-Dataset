@@ -1,4 +1,8 @@
 @startuml
+' model: faultTree
+' project: sampleModel
+' owner: User
+' description: New project
 class Event {
 }
 enum GateType {
@@ -49,26 +53,26 @@ Event <|-- faultTree_IntermediateEvent
 Event <|-- faultTree_PrimaryEvent
 Transfer <|-- faultTree_TransferIn
 Transfer <|-- faultTree_TransferOut
-faultTree_IntermediateEvent "1..1" -- "0..1" faultTree_IntermediateEvent : bottomEvent29
-faultTree_Gate "0..1" -- "1..1" faultTree_IntermediateEvent : bottomGate23
-faultTree_ConditioningEvent "0..9999" --* "1..1" faultTree_FaultTree : conditioningEvents6
-faultTree_IntermediateEvent "0..1" -- "1..1" faultTree_TransferIn : event36
-faultTree_IntermediateEvent "0..1" -- "1..1" faultTree_TransferOut : event40
-faultTree_Event "0..9999" -- "1..1" faultTree_FaultTree : events1
-faultTree_FaultTree "1..1" -- "1..1" faultTree_Gate : faultTree17
-faultTree_Event "1..1" -- "1..1" faultTree_FaultTree : faultTree20
-faultTree_FaultTree "1..1" -- "1..1" faultTree_TransferIn : faultTree38
-faultTree_FaultTree "1..1" -- "1..1" faultTree_TransferOut : faultTree42
-faultTree_FaultTree "1..1" *-- "0..9999" faultTree_Gate : gates0
-faultTree_Event "0..9999" -- "1..1" faultTree_Gate : inputs15
-faultTree_FaultTree "1..1" *-- "0..9999" faultTree_IntermediateEvent : intermediateEvents2
-faultTree_Gate "1..1" -- "0..1" faultTree_IntermediateEvent : output16
-faultTree_FaultTree "1..1" *-- "0..9999" faultTree_PrimaryEvent : primaryEvents4
-faultTree_FaultTree "1..1" -- "0..1" faultTree_IntermediateEvent : topEvent12
-faultTree_IntermediateEvent "1..1" -- "0..1" faultTree_IntermediateEvent : topEvent26
-faultTree_Event "1..1" -- "0..9999" faultTree_Gate : topGates18
-faultTree_IntermediateEvent "1..1" -- "0..1" faultTree_TransferIn : transferIn31
-faultTree_FaultTree "1..1" *-- "0..9999" faultTree_TransferIn : transferIns10
-faultTree_IntermediateEvent "1..1" -- "0..1" faultTree_TransferOut : transferOut33
-faultTree_FaultTree "1..1" *-- "0..1" faultTree_TransferOut : transferOut8
+faultTree_IntermediateEvent "IntermediateEvent30 1..1" -- "topEvent 0..1" faultTree_IntermediateEvent : bottomEvent29
+faultTree_Gate "output 0..1" -- "Gate24 1..1" faultTree_IntermediateEvent : bottomGate23
+faultTree_ConditioningEvent "faultTree_FaultTree7 0..9999" --* "faultTree_ConditioningEvent 1..1" faultTree_FaultTree : conditioningEvents6
+faultTree_IntermediateEvent "transferIn 0..1" -- "IntermediateEvent37 1..1" faultTree_TransferIn : event36
+faultTree_IntermediateEvent "transferOut 0..1" -- "IntermediateEvent41 1..1" faultTree_TransferOut : event40
+faultTree_Event "faultTree_FaultTree 0..9999" -- "faultTree_Event 1..1" faultTree_FaultTree : events1
+faultTree_FaultTree "gates 1..1" -- "FaultTree 1..1" faultTree_Gate : faultTree17
+faultTree_Event "faultTree_FaultTree22 1..1" -- "faultTree_Event21 1..1" faultTree_FaultTree : faultTree20
+faultTree_FaultTree "transferIns 1..1" -- "FaultTree39 1..1" faultTree_TransferIn : faultTree38
+faultTree_FaultTree "transferOut43 1..1" -- "FaultTree44 1..1" faultTree_TransferOut : faultTree42
+faultTree_FaultTree "Gate 1..1" *-- "faultTree 0..9999" faultTree_Gate : gates0
+faultTree_Event "topGates 0..9999" -- "Event 1..1" faultTree_Gate : inputs15
+faultTree_FaultTree "faultTree_IntermediateEvent 1..1" *-- "faultTree_FaultTree3 0..9999" faultTree_IntermediateEvent : intermediateEvents2
+faultTree_Gate "IntermediateEvent 1..1" -- "bottomGate 0..1" faultTree_IntermediateEvent : output16
+faultTree_FaultTree "faultTree_PrimaryEvent 1..1" *-- "faultTree_FaultTree5 0..9999" faultTree_PrimaryEvent : primaryEvents4
+faultTree_FaultTree "faultTree_IntermediateEvent14 1..1" -- "faultTree_FaultTree13 0..1" faultTree_IntermediateEvent : topEvent12
+faultTree_IntermediateEvent "IntermediateEvent27 1..1" -- "bottomEvent 0..1" faultTree_IntermediateEvent : topEvent26
+faultTree_Event "Gate19 1..1" -- "inputs 0..9999" faultTree_Gate : topGates18
+faultTree_IntermediateEvent "TransferIn32 1..1" -- "event 0..1" faultTree_TransferIn : transferIn31
+faultTree_FaultTree "TransferIn 1..1" *-- "faultTree11 0..9999" faultTree_TransferIn : transferIns10
+faultTree_IntermediateEvent "TransferOut35 1..1" -- "event34 0..1" faultTree_TransferOut : transferOut33
+faultTree_FaultTree "TransferOut 1..1" *-- "faultTree9 0..1" faultTree_TransferOut : transferOut8
 @enduml

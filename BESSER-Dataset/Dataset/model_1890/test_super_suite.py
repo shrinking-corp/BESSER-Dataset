@@ -938,33 +938,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=Classes_mdsdAdmin_Admin_strategy)
-@settings(max_examples=30)
-def test_hyp_classes_mdsdadmin_admin_createstaff_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.createStaff(
-            "test", 
-            "test", 
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.createStaff).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'createStaff' in Classes_mdsdAdmin_Admin is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'createStaff' in Classes_mdsdAdmin_Admin did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'createStaff' in Classes_mdsdAdmin_Admin is not implemented or raised an error")
 
 import warnings
 import copy
@@ -972,32 +945,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=Classes_mdsdAdmin_Admin_strategy)
-@settings(max_examples=30)
-def test_hyp_classes_mdsdadmin_admin_modifystaff_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.modifyStaff(
-            "test", 
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.modifyStaff).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'modifyStaff' in Classes_mdsdAdmin_Admin is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'modifyStaff' in Classes_mdsdAdmin_Admin did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'modifyStaff' in Classes_mdsdAdmin_Admin is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1005,32 +952,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=Classes_mdsdAdmin_Admin_strategy)
-@settings(max_examples=30)
-def test_hyp_classes_mdsdadmin_admin_addroom_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.addRoom(
-            "test", 
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.addRoom).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'addRoom' in Classes_mdsdAdmin_Admin is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'addRoom' in Classes_mdsdAdmin_Admin did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'addRoom' in Classes_mdsdAdmin_Admin is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1038,30 +959,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=Classes_mdsdAdmin_Admin_strategy)
-@settings(max_examples=30)
-def test_hyp_classes_mdsdadmin_admin_removeroom_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.removeRoom(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.removeRoom).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'removeRoom' in Classes_mdsdAdmin_Admin is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'removeRoom' in Classes_mdsdAdmin_Admin did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'removeRoom' in Classes_mdsdAdmin_Admin is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1069,30 +966,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=Classes_mdsdAdmin_Admin_strategy)
-@settings(max_examples=30)
-def test_hyp_classes_mdsdadmin_admin_removestaff_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.removeStaff(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.removeStaff).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'removeStaff' in Classes_mdsdAdmin_Admin is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'removeStaff' in Classes_mdsdAdmin_Admin did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'removeStaff' in Classes_mdsdAdmin_Admin is not implemented or raised an error")
 
 
 
@@ -1143,30 +1016,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=Classes_mdsdAccount_BookingToAccount_strategy)
-@settings(max_examples=30)
-def test_hyp_classes_mdsdaccount_bookingtoaccount_isuserloggedin_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isUserLoggedIn(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isUserLoggedIn).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isUserLoggedIn' in Classes_mdsdAccount_BookingToAccount is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isUserLoggedIn' in Classes_mdsdAccount_BookingToAccount did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isUserLoggedIn' in Classes_mdsdAccount_BookingToAccount is not implemented or raised an error")
 
 
 
@@ -1314,31 +1163,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=Classes_mdsdBooking_StaffBooking_strategy)
-@settings(max_examples=30)
-def test_hyp_classes_mdsdbooking_staffbooking_addnewservice_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.addNewService(
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.addNewService).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'addNewService' in Classes_mdsdBooking_StaffBooking is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'addNewService' in Classes_mdsdBooking_StaffBooking did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'addNewService' in Classes_mdsdBooking_StaffBooking is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1346,32 +1170,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=Classes_mdsdBooking_StaffBooking_strategy)
-@settings(max_examples=30)
-def test_hyp_classes_mdsdbooking_staffbooking_checkout_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.checkOut(
-            "test", 
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.checkOut).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'checkOut' in Classes_mdsdBooking_StaffBooking is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'checkOut' in Classes_mdsdBooking_StaffBooking did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'checkOut' in Classes_mdsdBooking_StaffBooking is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1379,31 +1177,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=Classes_mdsdBooking_StaffBooking_strategy)
-@settings(max_examples=30)
-def test_hyp_classes_mdsdbooking_staffbooking_checkin_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.checkIn(
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.checkIn).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'checkIn' in Classes_mdsdBooking_StaffBooking is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'checkIn' in Classes_mdsdBooking_StaffBooking did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'checkIn' in Classes_mdsdBooking_StaffBooking is not implemented or raised an error")
 
 
 
@@ -1458,30 +1231,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=Classes_mdsdAdmin_AdminController_strategy)
-@settings(max_examples=30)
-def test_hyp_classes_mdsdadmin_admincontroller_isloggedin_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isLoggedIn(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isLoggedIn).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isLoggedIn' in Classes_mdsdAdmin_AdminController is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isLoggedIn' in Classes_mdsdAdmin_AdminController did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isLoggedIn' in Classes_mdsdAdmin_AdminController is not implemented or raised an error")
 
 
 
@@ -1514,32 +1263,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=Classes_mdsdBilling_BookingToBill_strategy)
-@settings(max_examples=30)
-def test_hyp_classes_mdsdbilling_bookingtobill_addtransaction_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.addTransaction(
-            "test", 
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.addTransaction).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'addTransaction' in Classes_mdsdBilling_BookingToBill is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'addTransaction' in Classes_mdsdBilling_BookingToBill did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'addTransaction' in Classes_mdsdBilling_BookingToBill is not implemented or raised an error")
 
 
 import warnings
@@ -1548,126 +1271,12 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=Classes_mdsdBilling_StaffBilling_strategy)
-@settings(max_examples=30)
-def test_hyp_classes_mdsdbilling_staffbilling_printreceipt_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.printReceipt(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.printReceipt).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'printReceipt' in Classes_mdsdBilling_StaffBilling is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'printReceipt' in Classes_mdsdBilling_StaffBilling did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'printReceipt' in Classes_mdsdBilling_StaffBilling is not implemented or raised an error")
 
 import warnings
 import copy
 import inspect
 import ast
 from hypothesis import given, settings
-
-@given(instance=Classes_mdsdBilling_StaffBilling_strategy)
-@settings(max_examples=30)
-def test_hyp_classes_mdsdbilling_staffbilling_ispaid_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isPaid(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isPaid).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isPaid' in Classes_mdsdBilling_StaffBilling is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isPaid' in Classes_mdsdBilling_StaffBilling did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isPaid' in Classes_mdsdBilling_StaffBilling is not implemented or raised an error")
-
-import warnings
-import copy
-import inspect
-import ast
-from hypothesis import given, settings
-
-@given(instance=Classes_mdsdBilling_StaffBilling_strategy)
-@settings(max_examples=30)
-def test_hyp_classes_mdsdbilling_staffbilling_modifybill_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.modifyBill(
-            "test", 
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.modifyBill).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'modifyBill' in Classes_mdsdBilling_StaffBilling is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'modifyBill' in Classes_mdsdBilling_StaffBilling did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'modifyBill' in Classes_mdsdBilling_StaffBilling is not implemented or raised an error")
-
-import warnings
-import copy
-import inspect
-import ast
-from hypothesis import given, settings
-
-@given(instance=Classes_mdsdBilling_StaffBilling_strategy)
-@settings(max_examples=30)
-def test_hyp_classes_mdsdbilling_staffbilling_giverefund_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.giveRefund(
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.giveRefund).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'giveRefund' in Classes_mdsdBilling_StaffBilling is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'giveRefund' in Classes_mdsdBilling_StaffBilling did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'giveRefund' in Classes_mdsdBilling_StaffBilling is not implemented or raised an error")
 
 
 import warnings
@@ -1676,30 +1285,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=Classes_mdsdBooking_UserBooking_strategy)
-@settings(max_examples=30)
-def test_hyp_classes_mdsdbooking_userbooking_cancelbooking_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.cancelBooking(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.cancelBooking).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'cancelBooking' in Classes_mdsdBooking_UserBooking is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'cancelBooking' in Classes_mdsdBooking_UserBooking did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'cancelBooking' in Classes_mdsdBooking_UserBooking is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1707,34 +1292,7 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=Classes_mdsdBooking_UserBooking_strategy)
-@settings(max_examples=30)
-def test_hyp_classes_mdsdbooking_userbooking_entercustomerinfo_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.enterCustomerInfo(
-            "test", 
-            "test", 
-            "test", 
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.enterCustomerInfo).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'enterCustomerInfo' in Classes_mdsdBooking_UserBooking is empty"
 
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'enterCustomerInfo' in Classes_mdsdBooking_UserBooking did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'enterCustomerInfo' in Classes_mdsdBooking_UserBooking is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1742,33 +1300,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=Classes_mdsdBooking_UserBooking_strategy)
-@settings(max_examples=30)
-def test_hyp_classes_mdsdbooking_userbooking_enterdatesofstay_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.enterDatesOfStay(
-            "test", 
-            "test", 
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.enterDatesOfStay).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'enterDatesOfStay' in Classes_mdsdBooking_UserBooking is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'enterDatesOfStay' in Classes_mdsdBooking_UserBooking did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'enterDatesOfStay' in Classes_mdsdBooking_UserBooking is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1776,31 +1307,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=Classes_mdsdBooking_UserBooking_strategy)
-@settings(max_examples=30)
-def test_hyp_classes_mdsdbooking_userbooking_enterservice_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.enterService(
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.enterService).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'enterService' in Classes_mdsdBooking_UserBooking is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'enterService' in Classes_mdsdBooking_UserBooking did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'enterService' in Classes_mdsdBooking_UserBooking is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1808,34 +1314,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=Classes_mdsdBooking_UserBooking_strategy)
-@settings(max_examples=30)
-def test_hyp_classes_mdsdbooking_userbooking_entermealinfo_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.enterMealInfo(
-            "test", 
-            "test", 
-            "test", 
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.enterMealInfo).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'enterMealInfo' in Classes_mdsdBooking_UserBooking is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'enterMealInfo' in Classes_mdsdBooking_UserBooking did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'enterMealInfo' in Classes_mdsdBooking_UserBooking is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1843,30 +1321,20 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=Classes_mdsdBooking_UserBooking_strategy)
-@settings(max_examples=30)
-def test_hyp_classes_mdsdbooking_userbooking_modifybooking_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.modifyBooking(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.modifyBooking).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'modifyBooking' in Classes_mdsdBooking_UserBooking is empty"
 
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'modifyBooking' in Classes_mdsdBooking_UserBooking did not change state; check implementation")
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
 
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'modifyBooking' in Classes_mdsdBooking_UserBooking is not implemented or raised an error")
+
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
+
 
 
 
@@ -1919,32 +1387,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=Classes_mdsdAccount_CustomerAccount_strategy)
-@settings(max_examples=30)
-def test_hyp_classes_mdsdaccount_customeraccount_removepet_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.removePet(
-            "test", 
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.removePet).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'removePet' in Classes_mdsdAccount_CustomerAccount is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'removePet' in Classes_mdsdAccount_CustomerAccount did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'removePet' in Classes_mdsdAccount_CustomerAccount is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1952,31 +1394,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=Classes_mdsdAccount_CustomerAccount_strategy)
-@settings(max_examples=30)
-def test_hyp_classes_mdsdaccount_customeraccount_login_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.login(
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.login).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'login' in Classes_mdsdAccount_CustomerAccount is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'login' in Classes_mdsdAccount_CustomerAccount did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'login' in Classes_mdsdAccount_CustomerAccount is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1984,30 +1401,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=Classes_mdsdAccount_CustomerAccount_strategy)
-@settings(max_examples=30)
-def test_hyp_classes_mdsdaccount_customeraccount_logout_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.logout(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.logout).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'logout' in Classes_mdsdAccount_CustomerAccount is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'logout' in Classes_mdsdAccount_CustomerAccount did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'logout' in Classes_mdsdAccount_CustomerAccount is not implemented or raised an error")
 
 import warnings
 import copy
@@ -2015,32 +1408,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=Classes_mdsdAccount_CustomerAccount_strategy)
-@settings(max_examples=30)
-def test_hyp_classes_mdsdaccount_customeraccount_addpet_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.addPet(
-            "test", 
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.addPet).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'addPet' in Classes_mdsdAccount_CustomerAccount is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'addPet' in Classes_mdsdAccount_CustomerAccount did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'addPet' in Classes_mdsdAccount_CustomerAccount is not implemented or raised an error")
 
 import warnings
 import copy
@@ -2048,32 +1415,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=Classes_mdsdAccount_CustomerAccount_strategy)
-@settings(max_examples=30)
-def test_hyp_classes_mdsdaccount_customeraccount_createaccount_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.createAccount(
-            "test", 
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.createAccount).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'createAccount' in Classes_mdsdAccount_CustomerAccount is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'createAccount' in Classes_mdsdAccount_CustomerAccount did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'createAccount' in Classes_mdsdAccount_CustomerAccount is not implemented or raised an error")
 
 
 
@@ -2099,31 +1440,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=Classes_mdsdAdmin_Staff_strategy)
-@settings(max_examples=30)
-def test_hyp_classes_mdsdadmin_staff_stafflogin_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.staffLogin(
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.staffLogin).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'staffLogin' in Classes_mdsdAdmin_Staff is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'staffLogin' in Classes_mdsdAdmin_Staff did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'staffLogin' in Classes_mdsdAdmin_Staff is not implemented or raised an error")
 
 import warnings
 import copy
@@ -2131,30 +1447,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=Classes_mdsdAdmin_Staff_strategy)
-@settings(max_examples=30)
-def test_hyp_classes_mdsdadmin_staff_stafflogout_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.staffLogout(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.staffLogout).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'staffLogout' in Classes_mdsdAdmin_Staff is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'staffLogout' in Classes_mdsdAdmin_Staff did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'staffLogout' in Classes_mdsdAdmin_Staff is not implemented or raised an error")
 
 import warnings
 import copy
@@ -2162,31 +1454,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=Classes_mdsdAdmin_Staff_strategy)
-@settings(max_examples=30)
-def test_hyp_classes_mdsdadmin_staff_changeroomstatus_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.changeRoomStatus(
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.changeRoomStatus).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'changeRoomStatus' in Classes_mdsdAdmin_Staff is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'changeRoomStatus' in Classes_mdsdAdmin_Staff did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'changeRoomStatus' in Classes_mdsdAdmin_Staff is not implemented or raised an error")
 
 
 # ----- SECTION B: test_structural_full.py (deterministic-first suite) -----
@@ -3230,11 +2497,11 @@ def test_assoc_transactions1_stub_double():
 
 
 
+import datetime as _ch_datetime
 from python_code import Classes_mdsdAccount_Account
 
 def test_Classes_mdsdAccount_Account___init__():
     assert Classes_mdsdAccount_Account.__init__(Classes_mdsdAccount_Account('', '', '', '', False, Classes_mdsdAccount_Account=set()), '', '', '', '\x00', False, Classes_mdsdAccount_Account=set()) == None
-
 from python_code import Classes_mdsdAccount_BookingToAccount
 
 def test_Classes_mdsdAccount_BookingToAccount___init__():
@@ -3245,7 +2512,6 @@ def test_Classes_mdsdAccount_BookingToAccount_getAccount():
 
 def test_Classes_mdsdAccount_BookingToAccount_isUserLoggedIn():
     assert Classes_mdsdAccount_BookingToAccount.isUserLoggedIn(Classes_mdsdAccount_BookingToAccount(), '') == None
-
 from python_code import Classes_mdsdAccount_CustomerAccount
 
 def test_Classes_mdsdAccount_CustomerAccount___init__():
@@ -3265,12 +2531,10 @@ def test_Classes_mdsdAccount_CustomerAccount_addPet():
 
 def test_Classes_mdsdAccount_CustomerAccount_login():
     assert Classes_mdsdAccount_CustomerAccount.login(Classes_mdsdAccount_CustomerAccount(), '', '') == None
-
 from python_code import Classes_mdsdAccount_Pet
 
 def test_Classes_mdsdAccount_Pet___init__():
     assert Classes_mdsdAccount_Pet.__init__(Classes_mdsdAccount_Pet('', '\x00'), '\x00\x00', '') == None
-
 from python_code import Classes_mdsdAdmin_Admin
 
 def test_Classes_mdsdAdmin_Admin___init__():
@@ -3290,7 +2554,6 @@ def test_Classes_mdsdAdmin_Admin_removeStaff():
 
 def test_Classes_mdsdAdmin_Admin_modifyStaff():
     assert Classes_mdsdAdmin_Admin.modifyStaff(Classes_mdsdAdmin_Admin(), '', '', '') == None
-
 from python_code import Classes_mdsdAdmin_AdminController
 
 def test_Classes_mdsdAdmin_AdminController___init__():
@@ -3298,7 +2561,6 @@ def test_Classes_mdsdAdmin_AdminController___init__():
 
 def test_Classes_mdsdAdmin_AdminController_isLoggedIn():
     assert Classes_mdsdAdmin_AdminController.isLoggedIn(Classes_mdsdAdmin_AdminController(Classes_mdsdAdmin_AdminController=set(), Classes_mdsdAdmin_AdminController11=set()), 0) == None
-
 from python_code import Classes_mdsdAdmin_BookingToAdmin
 
 def test_Classes_mdsdAdmin_BookingToAdmin___init__():
@@ -3306,17 +2568,14 @@ def test_Classes_mdsdAdmin_BookingToAdmin___init__():
 
 def test_Classes_mdsdAdmin_BookingToAdmin_getPetTypes():
     assert Classes_mdsdAdmin_BookingToAdmin.getPetTypes(Classes_mdsdAdmin_BookingToAdmin()) == None
-
 from python_code import Classes_mdsdAdmin_HotelStaff
 
 def test_Classes_mdsdAdmin_HotelStaff___init__():
     assert Classes_mdsdAdmin_HotelStaff.__init__(Classes_mdsdAdmin_HotelStaff('', 0, '', False, ''), '', 0, '', False, '') == None
-
 from python_code import Classes_mdsdAdmin_Room
 
 def test_Classes_mdsdAdmin_Room___init__():
     assert Classes_mdsdAdmin_Room.__init__(Classes_mdsdAdmin_Room('', '', 0), '\x00', '', 0) == None
-
 from python_code import Classes_mdsdAdmin_Staff
 
 def test_Classes_mdsdAdmin_Staff___init__():
@@ -3330,7 +2589,6 @@ def test_Classes_mdsdAdmin_Staff_staffLogout():
 
 def test_Classes_mdsdAdmin_Staff_changeRoomStatus():
     assert Classes_mdsdAdmin_Staff.changeRoomStatus(Classes_mdsdAdmin_Staff(), '', '') == None
-
 from python_code import Classes_mdsdBilling_Bill
 
 def test_Classes_mdsdBilling_Bill___init__():
@@ -3338,7 +2596,6 @@ def test_Classes_mdsdBilling_Bill___init__():
 
 def test_Classes_mdsdBilling_Bill_getTotalAmount():
     assert Classes_mdsdBilling_Bill.getTotalAmount(Classes_mdsdBilling_Bill(False, '\x00', Classes_mdsdBilling_Bill=set())) == None
-
 from python_code import Classes_mdsdBilling_BookingToBill
 
 def test_Classes_mdsdBilling_BookingToBill___init__():
@@ -3346,7 +2603,6 @@ def test_Classes_mdsdBilling_BookingToBill___init__():
 
 def test_Classes_mdsdBilling_BookingToBill_addTransaction():
     assert Classes_mdsdBilling_BookingToBill.addTransaction(Classes_mdsdBilling_BookingToBill(), '', '', '') == None
-
 from python_code import Classes_mdsdBilling_StaffBilling
 
 def test_Classes_mdsdBilling_StaffBilling___init__():
@@ -3363,18 +2619,15 @@ def test_Classes_mdsdBilling_StaffBilling_isPaid():
 
 def test_Classes_mdsdBilling_StaffBilling_giveRefund():
     assert Classes_mdsdBilling_StaffBilling.giveRefund(Classes_mdsdBilling_StaffBilling(), '', '') == None
-
 from python_code import Classes_mdsdBilling_Transaction
 
 def test_Classes_mdsdBilling_Transaction___init__():
     assert Classes_mdsdBilling_Transaction.__init__(Classes_mdsdBilling_Transaction('\x00', 0.0), '', 0.0) == None
-
 from python_code import Classes_mdsdBooking_Booking
 from python_code import Meal
 
 def test_Classes_mdsdBooking_Booking___init__():
-    assert Classes_mdsdBooking_Booking.__init__(Classes_mdsdBooking_Booking(0, datetime.date(1, 1, 1), datetime.date(1, 1, 2), '', '', '', '', '', False, False, Classes_mdsdBooking_Booking8=Meal(), Classes_mdsdBooking_Booking=set()), 0, datetime.date(1, 1, 1), datetime.date(1, 1, 1), '\x00', '', '', '', '', False, False, Classes_mdsdBooking_Booking8=Meal(), Classes_mdsdBooking_Booking=set()) == None
-
+    assert Classes_mdsdBooking_Booking.__init__(Classes_mdsdBooking_Booking(0, _ch_datetime.date(1, 1, 1), _ch_datetime.date(1, 1, 2), '', '', '', '', '', False, False, Classes_mdsdBooking_Booking8=Meal(), Classes_mdsdBooking_Booking=set()), 0, _ch_datetime.date(1, 1, 1), _ch_datetime.date(1, 1, 1), '\x00', '', '', '', '', False, False, Classes_mdsdBooking_Booking8=Meal(), Classes_mdsdBooking_Booking=set()) == None
 from python_code import Classes_mdsdBooking_BookingController
 
 def test_Classes_mdsdBooking_BookingController___init__():
@@ -3382,17 +2635,14 @@ def test_Classes_mdsdBooking_BookingController___init__():
 
 def test_Classes_mdsdBooking_BookingController_getBookingList():
     assert Classes_mdsdBooking_BookingController.getBookingList(Classes_mdsdBooking_BookingController(Classes_mdsdBooking_BookingController=set(), Classes_mdsdBooking_BookingController4=set()), 0) == None
-
 from python_code import Classes_mdsdBooking_Meal
 
 def test_Classes_mdsdBooking_Meal___init__():
     assert Classes_mdsdBooking_Meal.__init__(Classes_mdsdBooking_Meal('', '\x00', 0.0, 0.0), '', '', 0.0, 0.0) == None
-
 from python_code import Classes_mdsdBooking_Service
 
 def test_Classes_mdsdBooking_Service___init__():
     assert Classes_mdsdBooking_Service.__init__(Classes_mdsdBooking_Service('\x00', 0.0), '', 0.0) == None
-
 from python_code import Classes_mdsdBooking_StaffBooking
 
 def test_Classes_mdsdBooking_StaffBooking___init__():
@@ -3406,7 +2656,6 @@ def test_Classes_mdsdBooking_StaffBooking_checkOut():
 
 def test_Classes_mdsdBooking_StaffBooking_addNewService():
     assert Classes_mdsdBooking_StaffBooking.addNewService(Classes_mdsdBooking_StaffBooking(), '', '') == None
-
 from python_code import Classes_mdsdBooking_UserBooking
 
 def test_Classes_mdsdBooking_UserBooking___init__():

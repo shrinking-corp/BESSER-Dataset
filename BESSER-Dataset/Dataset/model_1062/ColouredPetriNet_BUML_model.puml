@@ -1,4 +1,8 @@
 @startuml
+' model: PetriNet
+' project: sampleModel
+' owner: User
+' description: New project
 class Arc {
 }
 class IdentifiableElement {
@@ -35,15 +39,15 @@ Arc <|-- PetriNet_TransToPlaceArc
 IdentifiableElement <|-- PetriNet_PetriNet
 IdentifiableElement <|-- PetriNet_Place
 IdentifiableElement <|-- PetriNet_Transition
-PetriNet_Arc "0..9999" --* "1..1" PetriNet_PetriNet : arcs3
-PetriNet_PrimitiveAttribute "0..9999" --* "1..1" PetriNet_Type : components7
-PetriNet_PetriNet "1..1" *-- "0..9999" PetriNet_Place : places0
-PetriNet_Place "1..1" -- "1..1" PetriNet_PlaceToTransArc : source14
-PetriNet_TransToPlaceArc "1..1" -- "1..1" PetriNet_Transition : source19
-PetriNet_PlaceToTransArc "1..1" -- "1..1" PetriNet_Transition : target16
-PetriNet_Place "1..1" -- "1..1" PetriNet_TransToPlaceArc : target21
-PetriNet_Place "1..1" *-- "0..9999" PetriNet_Token : tokens9
-PetriNet_PetriNet "1..1" *-- "0..9999" PetriNet_Transition : transitions1
-PetriNet_Place "1..1" -- "1..1" PetriNet_Type : type11
-PetriNet_PetriNet "1..1" *-- "0..9999" PetriNet_Type : types5
+PetriNet_Arc "PetriNet_PetriNet4 0..9999" --* "PetriNet_Arc 1..1" PetriNet_PetriNet : arcs3
+PetriNet_PrimitiveAttribute "PetriNet_Type8 0..9999" --* "PetriNet_PrimitiveAttribute 1..1" PetriNet_Type : components7
+PetriNet_PetriNet "PetriNet_Place 1..1" *-- "PetriNet_PetriNet 0..9999" PetriNet_Place : places0
+PetriNet_Place "PetriNet_PlaceToTransArc 1..1" -- "PetriNet_Place15 1..1" PetriNet_PlaceToTransArc : source14
+PetriNet_TransToPlaceArc "PetriNet_Transition20 1..1" -- "PetriNet_TransToPlaceArc 1..1" PetriNet_Transition : source19
+PetriNet_PlaceToTransArc "PetriNet_Transition18 1..1" -- "PetriNet_PlaceToTransArc17 1..1" PetriNet_Transition : target16
+PetriNet_Place "PetriNet_TransToPlaceArc22 1..1" -- "PetriNet_Place23 1..1" PetriNet_TransToPlaceArc : target21
+PetriNet_Place "PetriNet_Token 1..1" *-- "PetriNet_Place10 0..9999" PetriNet_Token : tokens9
+PetriNet_PetriNet "PetriNet_Transition 1..1" *-- "PetriNet_PetriNet2 0..9999" PetriNet_Transition : transitions1
+PetriNet_Place "PetriNet_Type13 1..1" -- "PetriNet_Place12 1..1" PetriNet_Type : type11
+PetriNet_PetriNet "PetriNet_Type 1..1" *-- "PetriNet_PetriNet6 0..9999" PetriNet_Type : types5
 @enduml

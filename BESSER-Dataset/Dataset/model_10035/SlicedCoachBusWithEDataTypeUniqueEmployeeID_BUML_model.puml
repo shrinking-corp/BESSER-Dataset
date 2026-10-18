@@ -1,4 +1,8 @@
 @startuml
+' model: CoachBusWithEDataType
+' project: sampleModel
+' owner: User
+' description: New project
 class CoachBusWithEDataType_Employee {
   + id : int
 }
@@ -10,4 +14,7 @@ class Employee {
 }
 Employee <|-- CoachBusWithEDataType_Manager
 Employee <|-- CoachBusWithEDataType_SecurityGuard
+note top of CoachBusWithEDataType_Employee
+  constraint UniqueEmployeeID (OCL): context Employee inv: CoachBusWithEDataType_Employee.allInstances()->isUnique(e : Employee | e.id)
+end note
 @enduml

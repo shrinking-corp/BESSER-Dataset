@@ -1,4 +1,8 @@
 @startuml
+' model: library
+' project: sampleModel
+' owner: User
+' description: New project
 class Command {
 }
 class Search {
@@ -66,8 +70,8 @@ Command <|-- library_Show
 Command <|-- library_ShowUserAccount
 Search <|-- library_ByAuthor
 Search <|-- library_ByYear
-library_AddAuthor "1..1" *-- "0..1" library_Author : author1
-library_Author "0..1" --* "1..1" library_ByAuthor : author2
-library_Add "1..1" *-- "0..9999" library_Author : authors4
-library_Command "0..9999" --* "1..1" library_Model : commands0
+library_AddAuthor "library_Author 1..1" *-- "library_AddAuthor 0..1" library_Author : author1
+library_Author "library_ByAuthor 0..1" --* "library_Author3 1..1" library_ByAuthor : author2
+library_Add "library_Author5 1..1" *-- "library_Add 0..9999" library_Author : authors4
+library_Command "library_Model 0..9999" --* "library_Command 1..1" library_Model : commands0
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: _euwzAEhoEeqonN_RS9oRzw
+' project: sampleModel
+' owner: User
+' description: New project
 class Activity {
   + ActivityID : int
   + ActivitySubType : int
@@ -67,14 +71,14 @@ enum String {
 }
 class Usuario_Interface {
 }
-AuthenticationService "0..1" -- "0..1" AuthenticationService : AuthenticationService_AuthenticationService
-ChatService "0..1" -- "0..1" Room_Interface : ChatService_Room
-ChatService "0..1" -- "0..1" SpeechRecognitionService : ChatService_SpeechRecognitionService
-ChatService "1..1" -- "1..1" Mensaje_Interface : Mensaje_ChatService
-Mensaje_Interface "0..1" -- "0..1" SpeechRecognitionService : Mensaje_SpeechRecognitionService
-RoomService "0..1" -- "0..1" Room_Interface : Room_RoomService
-AuthenticationService "0..1" -- "0..1" Usuario_Interface : Usuario_AuthenticationService
-Mensaje_Interface "1..1" -- "1..9999" Usuario_Interface : Usuario_Mensaje
-Role "0..9999" -- "1..1" Usuario_Interface : Usuario_Role
-Room_Interface "0..9999" -- "0..9999" Usuario_Interface : Usuario_Room
+AuthenticationService "authenticationService18 0..1" -- "authenticationService19 0..1" AuthenticationService : AuthenticationService_AuthenticationService
+ChatService "chatService9 0..1" -- "room8 0..1" Room_Interface : ChatService_Room
+ChatService "chatService15 0..1" -- "speechRecognitionService14 0..1" SpeechRecognitionService : ChatService_SpeechRecognitionService
+ChatService "chatService6 1..1" -- "mensaje7 1..1" Mensaje_Interface : Mensaje_ChatService
+Mensaje_Interface "mensaje13 0..1" -- "speechRecognitionService12 0..1" SpeechRecognitionService : Mensaje_SpeechRecognitionService
+RoomService "roomService10 0..1" -- "room11 0..1" Room_Interface : Room_RoomService
+AuthenticationService "authenticationService16 0..1" -- "usuario17 0..1" Usuario_Interface : Usuario_AuthenticationService
+Mensaje_Interface "mensaje0 1..1" -- "usuario1 1..9999" Usuario_Interface : Usuario_Mensaje
+Role "role4 0..9999" -- "usuario5 1..1" Usuario_Interface : Usuario_Role
+Room_Interface "room2 0..9999" -- "usuario3 0..9999" Usuario_Interface : Usuario_Room
 @enduml

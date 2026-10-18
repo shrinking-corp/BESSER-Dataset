@@ -5322,9 +5322,9 @@ def test_assoc_abstractMethod75_stub_double():
     partner = myDsl_AbstractClass()
     setattr(partner, 'myDsl_AbstractClass76', None)
     _safe_set(owner, 'myDsl_AbstractMethod', partner)
-    assert getattr(partner, 'myDsl_AbstractClass76') == owner
+    assert owner in getattr(partner, 'myDsl_AbstractClass76')
     _safe_set(owner, 'myDsl_AbstractMethod', None)
-    assert getattr(partner, 'myDsl_AbstractClass76') is None
+    assert owner not in getattr(partner, 'myDsl_AbstractClass76')
 
 
 def test_assoc_annotation73_stub_double():
@@ -5367,9 +5367,9 @@ def test_assoc_attribute70_stub_double():
     partner = myDsl_AbstractClass()
     setattr(partner, 'myDsl_AbstractClass', None)
     _safe_set(owner, 'myDsl_Attribute', partner)
-    assert getattr(partner, 'myDsl_AbstractClass') == owner
+    assert owner in getattr(partner, 'myDsl_AbstractClass')
     _safe_set(owner, 'myDsl_Attribute', None)
-    assert getattr(partner, 'myDsl_AbstractClass') is None
+    assert owner not in getattr(partner, 'myDsl_AbstractClass')
 
 
 def test_assoc_attribute77_stub_double():
@@ -5382,9 +5382,9 @@ def test_assoc_attribute77_stub_double():
     partner = myDsl_GenericClass()
     setattr(partner, 'myDsl_GenericClass', None)
     _safe_set(owner, 'myDsl_Attribute78', partner)
-    assert getattr(partner, 'myDsl_GenericClass') == owner
+    assert owner in getattr(partner, 'myDsl_GenericClass')
     _safe_set(owner, 'myDsl_Attribute78', None)
-    assert getattr(partner, 'myDsl_GenericClass') is None
+    assert owner not in getattr(partner, 'myDsl_GenericClass')
 
 
 def test_assoc_attribute96_stub_double():
@@ -5397,9 +5397,9 @@ def test_assoc_attribute96_stub_double():
     partner = myDsl_NativeClass()
     setattr(partner, 'myDsl_NativeClass', None)
     _safe_set(owner, 'myDsl_Attribute97', partner)
-    assert getattr(partner, 'myDsl_NativeClass') == owner
+    assert owner in getattr(partner, 'myDsl_NativeClass')
     _safe_set(owner, 'myDsl_Attribute97', None)
-    assert getattr(partner, 'myDsl_NativeClass') is None
+    assert owner not in getattr(partner, 'myDsl_NativeClass')
 
 
 def test_assoc_componentes44_stub_double():
@@ -5412,9 +5412,9 @@ def test_assoc_componentes44_stub_double():
     partner = myDsl_Architecture()
     setattr(partner, 'myDsl_Architecture45', None)
     _safe_set(owner, 'myDsl_Component', partner)
-    assert getattr(partner, 'myDsl_Architecture45') == owner
+    assert owner in getattr(partner, 'myDsl_Architecture45')
     _safe_set(owner, 'myDsl_Component', None)
-    assert getattr(partner, 'myDsl_Architecture45') is None
+    assert owner not in getattr(partner, 'myDsl_Architecture45')
 
 
 def test_assoc_dir125_stub_double():
@@ -5487,9 +5487,9 @@ def test_assoc_jeeproject60_stub_double():
     partner = myDsl_JavaApp()
     setattr(partner, 'myDsl_JavaApp61', None)
     _safe_set(owner, 'myDsl_JeeProject', partner)
-    assert getattr(partner, 'myDsl_JavaApp61') == owner
+    assert owner in getattr(partner, 'myDsl_JavaApp61')
     _safe_set(owner, 'myDsl_JeeProject', None)
-    assert getattr(partner, 'myDsl_JavaApp61') is None
+    assert owner not in getattr(partner, 'myDsl_JavaApp61')
 
 
 def test_assoc_methodClass71_stub_double():
@@ -5502,9 +5502,9 @@ def test_assoc_methodClass71_stub_double():
     partner = myDsl_AbstractClass()
     setattr(partner, 'myDsl_AbstractClass72', None)
     _safe_set(owner, 'myDsl_MethodBack', partner)
-    assert getattr(partner, 'myDsl_AbstractClass72') == owner
+    assert owner in getattr(partner, 'myDsl_AbstractClass72')
     _safe_set(owner, 'myDsl_MethodBack', None)
-    assert getattr(partner, 'myDsl_AbstractClass72') is None
+    assert owner not in getattr(partner, 'myDsl_AbstractClass72')
 
 
 def test_assoc_methodClass79_stub_double():
@@ -5517,9 +5517,9 @@ def test_assoc_methodClass79_stub_double():
     partner = myDsl_GenericClass()
     setattr(partner, 'myDsl_GenericClass80', None)
     _safe_set(owner, 'myDsl_MethodBack81', partner)
-    assert getattr(partner, 'myDsl_GenericClass80') == owner
+    assert owner in getattr(partner, 'myDsl_GenericClass80')
     _safe_set(owner, 'myDsl_MethodBack81', None)
-    assert getattr(partner, 'myDsl_GenericClass80') is None
+    assert owner not in getattr(partner, 'myDsl_GenericClass80')
 
 
 def test_assoc_methodClass98_stub_double():
@@ -5532,9 +5532,9 @@ def test_assoc_methodClass98_stub_double():
     partner = myDsl_NativeClass()
     setattr(partner, 'myDsl_NativeClass99', None)
     _safe_set(owner, 'myDsl_MethodBack100', partner)
-    assert getattr(partner, 'myDsl_NativeClass99') == owner
+    assert owner in getattr(partner, 'myDsl_NativeClass99')
     _safe_set(owner, 'myDsl_MethodBack100', None)
-    assert getattr(partner, 'myDsl_NativeClass99') is None
+    assert owner not in getattr(partner, 'myDsl_NativeClass99')
 
 
 def test_assoc_mod127_stub_double():
@@ -5562,9 +5562,9 @@ def test_assoc_modules7_stub_double():
     partner = myDsl_Domain()
     setattr(partner, 'myDsl_Domain8', None)
     _safe_set(owner, 'myDsl_Module', partner)
-    assert getattr(partner, 'myDsl_Domain8') == owner
+    assert owner in getattr(partner, 'myDsl_Domain8')
     _safe_set(owner, 'myDsl_Module', None)
-    assert getattr(partner, 'myDsl_Domain8') is None
+    assert owner not in getattr(partner, 'myDsl_Domain8')
 
 
 def test_assoc_name19_stub_double():
@@ -5622,9 +5622,9 @@ def test_assoc_operateson35_stub_double():
     partner = myDsl_Operateson()
     setattr(partner, 'myDsl_Operateson36', None)
     _safe_set(owner, 'myDsl_EntityName37', partner)
-    assert getattr(partner, 'myDsl_Operateson36') == owner
+    assert owner in getattr(partner, 'myDsl_Operateson36')
     _safe_set(owner, 'myDsl_EntityName37', None)
-    assert getattr(partner, 'myDsl_Operateson36') is None
+    assert owner not in getattr(partner, 'myDsl_Operateson36')
 
 
 def test_assoc_properties21_stub_double():
@@ -5637,9 +5637,9 @@ def test_assoc_properties21_stub_double():
     partner = myDsl_GeneralEntity()
     setattr(partner, 'myDsl_GeneralEntity22', None)
     _safe_set(owner, 'myDsl_Property', partner)
-    assert getattr(partner, 'myDsl_GeneralEntity22') == owner
+    assert owner in getattr(partner, 'myDsl_GeneralEntity22')
     _safe_set(owner, 'myDsl_Property', None)
-    assert getattr(partner, 'myDsl_GeneralEntity22') is None
+    assert owner not in getattr(partner, 'myDsl_GeneralEntity22')
 
 
 def test_assoc_properties28_stub_double():
@@ -5652,9 +5652,9 @@ def test_assoc_properties28_stub_double():
     partner = myDsl_SpecialEntity()
     setattr(partner, 'myDsl_SpecialEntity29', None)
     _safe_set(owner, 'myDsl_Property30', partner)
-    assert getattr(partner, 'myDsl_SpecialEntity29') == owner
+    assert owner in getattr(partner, 'myDsl_SpecialEntity29')
     _safe_set(owner, 'myDsl_Property30', None)
-    assert getattr(partner, 'myDsl_SpecialEntity29') is None
+    assert owner not in getattr(partner, 'myDsl_SpecialEntity29')
 
 
 def test_assoc_relationArch46_stub_double():
@@ -5667,9 +5667,9 @@ def test_assoc_relationArch46_stub_double():
     partner = myDsl_Architecture()
     setattr(partner, 'myDsl_Architecture47', None)
     _safe_set(owner, 'myDsl_RelationArch', partner)
-    assert getattr(partner, 'myDsl_Architecture47') == owner
+    assert owner in getattr(partner, 'myDsl_Architecture47')
     _safe_set(owner, 'myDsl_RelationArch', None)
-    assert getattr(partner, 'myDsl_Architecture47') is None
+    assert owner not in getattr(partner, 'myDsl_Architecture47')
 
 
 def test_assoc_route145_stub_double():
@@ -5697,9 +5697,9 @@ def test_assoc_source38_stub_double():
     partner = myDsl_RelationDom()
     setattr(partner, 'myDsl_RelationDom39', None)
     _safe_set(owner, 'myDsl_EntityName40', partner)
-    assert getattr(partner, 'myDsl_RelationDom39') == owner
+    assert owner in getattr(partner, 'myDsl_RelationDom39')
     _safe_set(owner, 'myDsl_EntityName40', None)
-    assert getattr(partner, 'myDsl_RelationDom39') is None
+    assert owner not in getattr(partner, 'myDsl_RelationDom39')
 
 
 def test_assoc_target41_stub_double():
@@ -5712,9 +5712,9 @@ def test_assoc_target41_stub_double():
     partner = myDsl_RelationDom()
     setattr(partner, 'myDsl_RelationDom42', None)
     _safe_set(owner, 'myDsl_EntityName43', partner)
-    assert getattr(partner, 'myDsl_RelationDom42') == owner
+    assert owner in getattr(partner, 'myDsl_RelationDom42')
     _safe_set(owner, 'myDsl_EntityName43', None)
-    assert getattr(partner, 'myDsl_RelationDom42') is None
+    assert owner not in getattr(partner, 'myDsl_RelationDom42')
 
 
 def test_assoc_transactions31_stub_double():
@@ -5727,9 +5727,9 @@ def test_assoc_transactions31_stub_double():
     partner = myDsl_SpecialEntity()
     setattr(partner, 'myDsl_SpecialEntity32', None)
     _safe_set(owner, 'myDsl_Transaction', partner)
-    assert getattr(partner, 'myDsl_SpecialEntity32') == owner
+    assert owner in getattr(partner, 'myDsl_SpecialEntity32')
     _safe_set(owner, 'myDsl_Transaction', None)
-    assert getattr(partner, 'myDsl_SpecialEntity32') is None
+    assert owner not in getattr(partner, 'myDsl_SpecialEntity32')
 
 
 def test_assoc_type142_stub_double():
@@ -5802,9 +5802,9 @@ def test_assoc_types5_stub_double():
     partner = myDsl_Domain()
     setattr(partner, 'myDsl_Domain6', None)
     _safe_set(owner, 'myDsl_Type', partner)
-    assert getattr(partner, 'myDsl_Domain6') == owner
+    assert owner in getattr(partner, 'myDsl_Domain6')
     _safe_set(owner, 'myDsl_Type', None)
-    assert getattr(partner, 'myDsl_Domain6') is None
+    assert owner not in getattr(partner, 'myDsl_Domain6')
 
 
 
@@ -5814,13 +5814,11 @@ from python_code import myDsl_JeeProject
 
 def test_myDsl_JeeProject___init__():
     assert myDsl_JeeProject.__init__(myDsl_JeeProject('', myDsl_JeeProject63=set(), myDsl_JeeProject=myDsl_JavaApp()), '', myDsl_JeeProject63=set(), myDsl_JeeProject=myDsl_JavaApp()) == None
-
 from python_code import myDsl_Domain
 from python_code import myDsl_Module
 
 def test_myDsl_Module___init__():
     assert myDsl_Module.__init__(myDsl_Module('', myDsl_Module=myDsl_Domain(), myDsl_Module12=set()), '', myDsl_Module=myDsl_Domain(), myDsl_Module12=set()) == None
-
 from python_code import myDsl_Architecture
 from python_code import myDsl_RelationArch
 

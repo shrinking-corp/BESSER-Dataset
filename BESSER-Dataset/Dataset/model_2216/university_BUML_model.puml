@@ -1,4 +1,8 @@
 @startuml
+' model: university
+' project: sampleModel
+' owner: User
+' description: New project
 enum SemesterTime {
   Fall
   Spring
@@ -39,23 +43,23 @@ class university_Specializations {
 class university_University {
   + name : str
 }
-university_CourseInstances "0..9999" -- "1..1" university_Slot : avaliableCourses19
-university_CourseInstances "1..1" -- "1..1" university_Courses : course6
-university_Courses "0..9999" --* "1..1" university_University : courses28
-university_ProgrammeInstances "0..9999" --* "1..1" university_Programmes : instances0
-university_CourseInstances "0..9999" --* "1..1" university_Courses : instances5
-university_ProgrammeInstances "1..1" -- "1..1" university_Programmes : programme1
-university_ProgrammeInstances "1..1" -- "1..1" university_Specializations : programmeInstance23
-university_ProgrammeInstances "0..1" -- "1..1" university_ProgrammeSemesters : programmeInstance9
-university_ProgrammeSemesters "1..1" -- "1..1" university_Slot : programmeSemester17
-university_ProgrammeSemesters "0..9999" --* "1..1" university_Specializations : programmeSemester25
-university_ProgrammeInstances "1..1" *-- "1..9999" university_ProgrammeSemesters : programmeSemesters2
-university_ProgrammeSemesters "0..9999" -- "1..1" university_Semesters : programmeSemesters21
-university_Programmes "0..9999" --* "1..1" university_University : programmes27
-university_ProgrammeSemesters "1..1" -- "1..1" university_Semesters : semester12
-university_CourseInstances "1..1" -- "1..1" university_Semesters : semester8
-university_Semesters "0..9999" --* "1..1" university_University : semesters30
-university_ProgrammeSemesters "1..1" *-- "0..9999" university_Slot : slots11
-university_ProgrammeSemesters "1..1" -- "0..1" university_Specializations : specialization14
-university_ProgrammeInstances "1..1" *-- "0..9999" university_Specializations : specializations3
+university_CourseInstances "university_Slot 0..9999" -- "university_CourseInstances20 1..1" university_Slot : avaliableCourses19
+university_CourseInstances "Courses 1..1" -- "instances7 1..1" university_Courses : course6
+university_Courses "university_University29 0..9999" --* "university_Courses 1..1" university_University : courses28
+university_ProgrammeInstances "programme 0..9999" --* "ProgrammeInstances 1..1" university_Programmes : instances0
+university_CourseInstances "course 0..9999" --* "CourseInstances 1..1" university_Courses : instances5
+university_ProgrammeInstances "Programmes 1..1" -- "instances 1..1" university_Programmes : programme1
+university_ProgrammeInstances "specializations 1..1" -- "ProgrammeInstances24 1..1" university_Specializations : programmeInstance23
+university_ProgrammeInstances "programmeSemesters 0..1" -- "ProgrammeInstances10 1..1" university_ProgrammeSemesters : programmeInstance9
+university_ProgrammeSemesters "slots 1..1" -- "ProgrammeSemesters18 1..1" university_Slot : programmeSemester17
+university_ProgrammeSemesters "specialization 0..9999" --* "ProgrammeSemesters26 1..1" university_Specializations : programmeSemester25
+university_ProgrammeInstances "ProgrammeSemesters 1..1" *-- "programmeInstance 1..9999" university_ProgrammeSemesters : programmeSemesters2
+university_ProgrammeSemesters "semester 0..9999" -- "ProgrammeSemesters22 1..1" university_Semesters : programmeSemesters21
+university_Programmes "university_University 0..9999" --* "university_Programmes 1..1" university_University : programmes27
+university_ProgrammeSemesters "Semesters 1..1" -- "programmeSemesters13 1..1" university_Semesters : semester12
+university_CourseInstances "university_Semesters 1..1" -- "university_CourseInstances 1..1" university_Semesters : semester8
+university_Semesters "university_University31 0..9999" --* "university_Semesters32 1..1" university_University : semesters30
+university_ProgrammeSemesters "Slot 1..1" *-- "programmeSemester 0..9999" university_Slot : slots11
+university_ProgrammeSemesters "Specializations16 1..1" -- "programmeSemester15 0..1" university_Specializations : specialization14
+university_ProgrammeInstances "Specializations 1..1" *-- "programmeInstance4 0..9999" university_Specializations : specializations3
 @enduml

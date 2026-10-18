@@ -1,4 +1,8 @@
 @startuml
+' model: _74vroGdMEeiTTuxWefFgMg
+' project: sampleModel
+' owner: User
+' description: New project
 class Appointment {
   + Doctor : str
   + Patient : str
@@ -50,18 +54,18 @@ class Receptionist {
   + CNIC : str
   + name : str
 }
-Appointment "0..9999" -- "1..1" Assistant : Assistant_Appointment
-Assistant "1..1" -- "1..1" Doctor : Doctor_Assistant
-Doctor "1..1" -- "1..9999" Patients : Doctor_Patients
-Doctor "0..9999" -- "0..9999" Prescription : Doctor_Prescription
-BloodBank "1..1" -- "1..1" Hospital : Hospital_BloodBank
-Doctor "0..9999" -- "1..1" Hospital : Hospital_Doctor
-Appointment "1..1" -- "1..1" Patients : Patients_Appointment
-Assistant "1..1" -- "0..9999" Patients : Patients_Assistant
-Hospital "1..1" -- "0..9999" Patients : Patients_Hospital
-Patients "0..9999" -- "1..1" Receptionist : Patients_Receptionist
-Appointment "0..9999" -- "1..1" Receptionist : Receptionist_Appointment
-Billing_Report "0..9999" -- "1..1" Receptionist : Receptionist_Billing_Report
-DoctorDatabase "1..1" -- "1..1" Receptionist : Receptionist_DoctorDatabase
-PatientProfile "0..9999" -- "1..1" Receptionist : Receptionist_PatientProfile
+Appointment "Assistant_Appointment_016 0..9999" -- "check_details17 1..1" Assistant : Assistant_Appointment
+Assistant "forward_patient_history22 1..1" -- "Doctor_Assistant_123 1..1" Doctor : Doctor_Assistant
+Doctor "Checks_up3 1..1" -- "Doctor_Patients_02 1..9999" Patients : Doctor_Patients
+Doctor "writes19 0..9999" -- "Doctor_Prescription_018 0..9999" Prescription : Doctor_Prescription
+BloodBank "has24 1..1" -- "Hospital_BloodBank_125 1..1" Hospital : Hospital_BloodBank
+Doctor "has0 0..9999" -- "Hospital_Doctor_11 1..1" Hospital : Hospital_Doctor
+Appointment "Patients_Appointment_010 1..1" -- "requests11 1..1" Patients : Patients_Appointment
+Assistant "record_history20 1..1" -- "Patients_Assistant_121 0..9999" Patients : Patients_Assistant
+Hospital "Visit6 1..1" -- "Patients_Hospital_17 0..9999" Patients : Patients_Hospital
+Patients "Patients_Receptionist_15 0..9999" -- "calls_query4 1..1" Receptionist : Patients_Receptionist
+Appointment "give8 0..9999" -- "Receptionist_Appointment_19 1..1" Receptionist : Receptionist_Appointment
+Billing_Report "generate26 0..9999" -- "Receptionist_Billing_Report_127 1..1" Receptionist : Receptionist_Billing_Report
+DoctorDatabase "Receptionist_DoctorDatabase_012 1..1" -- "check13 1..1" Receptionist : Receptionist_DoctorDatabase
+PatientProfile "create_update14 0..9999" -- "Receptionist_PatientProfile_115 1..1" Receptionist : Receptionist_PatientProfile
 @enduml

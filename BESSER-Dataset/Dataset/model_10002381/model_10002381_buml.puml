@@ -1,4 +1,8 @@
 @startuml
+' model: ad4fe914_7a09_4448_81c9_c6cad8275774
+' project: sampleModel
+' owner: User
+' description: New project
 class Booking {
   + booking_id : int
   + contact_no : int
@@ -19,7 +23,7 @@ class Table {
   + numSeats : int
   + table_id : str
 }
-CustomerUI "0..9999" -- "1..1" ReservationManagementSystem : CustomerUI_ReservationManagementSystem
-Booking "0..9999" -- "1..1" ReservationManagementSystem : ReservationManagementSystem_Booking
-Booking "1..1" -- "1..9999" Table : Table_Booking
+CustomerUI "interacts1 0..9999" -- "CustomerUI_ReservationManagementSystem_00 1..1" ReservationManagementSystem : CustomerUI_ReservationManagementSystem
+Booking "booking2 0..9999" -- "ReservationManagementSystem_Booking_13 1..1" ReservationManagementSystem : ReservationManagementSystem_Booking
+Booking "Table_Booking_04 1..1" -- "reservedBy5 1..9999" Table : Table_Booking
 @enduml

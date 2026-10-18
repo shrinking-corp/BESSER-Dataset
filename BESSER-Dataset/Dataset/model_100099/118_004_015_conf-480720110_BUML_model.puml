@@ -1,4 +1,8 @@
 @startuml
+' model: conf
+' project: sampleModel
+' owner: User
+' description: New project
 class Person {
 }
 class conf_Admin {
@@ -36,25 +40,25 @@ class conf_SteeringComitee {
 class conf_System {
 }
 Person <|-- conf_Researcher
-conf_Admin "0..1" --* "1..1" conf_System : admin0
-conf_Chapter "0..9999" --* "1..1" conf_Publication : chapters30
-conf_Conference "0..9999" --* "1..1" conf_System : conferences3
-conf_Contribution "0..1" -- "1..1" conf_Session : contributions12
-conf_Evaluation "1..1" -- "0..1" conf_Publication : evPubli44
-conf_Evaluation "0..1" -- "1..1" conf_Researcher : evaluations24
-conf_Laboratory "0..9999" --* "1..1" conf_System : laboratories1
-conf_Location "0..1" -- "1..1" conf_Session : location7
-conf_Admin "1..1" *-- "0..9999" conf_Location : locations14
-conf_Person "0..1" -- "1..1" conf_ProgramComitee : pcPerson38
-conf_ProgramComitee "0..1" -- "1..1" conf_Session : progcomit8
-conf_Contribution "1..1" -- "0..1" conf_Publication : publication41
-conf_Laboratory "1..1" *-- "0..9999" conf_Publication : publications22
-conf_Laboratory "1..1" *-- "0..9999" conf_Researcher : researchers20
-conf_Researcher "1..1" -- "0..1" conf_RevisionNote : reviews28
-conf_RevisionProcess "0..1" --* "1..1" conf_System : revisionProcess5
-conf_Chapter "1..1" *-- "0..9999" conf_RevisionNote : revisonNotes33
-conf_Person "0..1" -- "1..1" conf_SteeringComitee : scPerson36
-conf_Conference "1..1" *-- "0..9999" conf_Session : sessions17
-conf_Session "1..1" -- "0..1" conf_SteeringComitee : steercomit10
-conf_Chapter "0..1" -- "1..1" conf_Researcher : writes26
+conf_Admin "conf_System 0..1" --* "conf_Admin 1..1" conf_System : admin0
+conf_Chapter "conf_Publication31 0..9999" --* "conf_Chapter32 1..1" conf_Publication : chapters30
+conf_Conference "conf_System4 0..9999" --* "conf_Conference 1..1" conf_System : conferences3
+conf_Contribution "conf_Session13 0..1" -- "conf_Contribution 1..1" conf_Session : contributions12
+conf_Evaluation "conf_Publication46 1..1" -- "conf_Evaluation45 0..1" conf_Publication : evPubli44
+conf_Evaluation "conf_Researcher25 0..1" -- "conf_Evaluation 1..1" conf_Researcher : evaluations24
+conf_Laboratory "conf_System2 0..9999" --* "conf_Laboratory 1..1" conf_System : laboratories1
+conf_Location "conf_Session 0..1" -- "conf_Location 1..1" conf_Session : location7
+conf_Admin "conf_Location16 1..1" *-- "conf_Admin15 0..9999" conf_Location : locations14
+conf_Person "conf_ProgramComitee39 0..1" -- "conf_Person40 1..1" conf_ProgramComitee : pcPerson38
+conf_ProgramComitee "conf_Session9 0..1" -- "conf_ProgramComitee 1..1" conf_Session : progcomit8
+conf_Contribution "conf_Publication43 1..1" -- "conf_Contribution42 0..1" conf_Publication : publication41
+conf_Laboratory "conf_Publication 1..1" *-- "conf_Laboratory23 0..9999" conf_Publication : publications22
+conf_Laboratory "conf_Researcher 1..1" *-- "conf_Laboratory21 0..9999" conf_Researcher : researchers20
+conf_Researcher "conf_RevisionNote 1..1" -- "conf_Researcher29 0..1" conf_RevisionNote : reviews28
+conf_RevisionProcess "conf_System6 0..1" --* "conf_RevisionProcess 1..1" conf_System : revisionProcess5
+conf_Chapter "conf_RevisionNote35 1..1" *-- "conf_Chapter34 0..9999" conf_RevisionNote : revisonNotes33
+conf_Person "conf_SteeringComitee37 0..1" -- "conf_Person 1..1" conf_SteeringComitee : scPerson36
+conf_Conference "conf_Session19 1..1" *-- "conf_Conference18 0..9999" conf_Session : sessions17
+conf_Session "conf_SteeringComitee 1..1" -- "conf_Session11 0..1" conf_SteeringComitee : steercomit10
+conf_Chapter "conf_Researcher27 0..1" -- "conf_Chapter 1..1" conf_Researcher : writes26
 @enduml

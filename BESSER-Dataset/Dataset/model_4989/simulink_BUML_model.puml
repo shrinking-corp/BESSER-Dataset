@@ -1,4 +1,8 @@
 @startuml
+' model: simulink
+' project: sampleModel
+' owner: User
+' description: New project
 class Block {
 }
 class BusSpecification {
@@ -153,36 +157,36 @@ VirtualBlock <|-- simulink_From
 VirtualBlock <|-- simulink_Goto
 VirtualBlock <|-- simulink_GotoTagVisibility
 VirtualBlock <|-- simulink_PortBlock
-simulink_BusSelector "1..1" -- "0..1" simulink_BusSpecification : busCreator23
-simulink_InPort "1..1" -- "0..1" simulink_SingleConnection : connection19
-simulink_Connection "0..1" --* "1..1" simulink_OutPort : connection20
-simulink_MultiConnection "1..1" *-- "0..9999" simulink_SingleConnection : connections28
-simulink_Block "0..1" -- "1..1" simulink_Port : container17
-simulink_Block "0..9999" --* "1..1" simulink_SimulinkModel : contains26
-simulink_SimulinkElement "0..1" -- "1..1" simulink_SimulinkReference : element35
-simulink_Block "1..1" -- "0..1" simulink_Enable : enabler5
-simulink_From "0..9999" -- "1..1" simulink_Goto : fromBlocks24
-simulink_Connection "1..1" -- "0..1" simulink_OutPort : from_21
-simulink_From "1..1" -- "0..1" simulink_Goto : gotoBlock25
-simulink_Goto "0..1" -- "1..1" simulink_GotoTagVisibility : gotoBlock37
-simulink_Block "1..1" -- "0..9999" simulink_InPort : inports7
-simulink_BusSignalMapping "1..1" -- "0..1" simulink_OutPort : mappingFrom47
-simulink_BusSignalMapping "1..1" -- "0..1" simulink_OutPort : mappingTo49
-simulink_BusSelector "1..1" *-- "0..9999" simulink_BusSignalMapping : mappings22
-simulink_IdentifierReference "0..1" --* "1..1" simulink_ModelReference : modelRef43
-simulink_Block "1..1" -- "0..9999" simulink_OutPort : outports9
-simulink_Block "1..1" -- "0..1" simulink_SubSystem : parent11
-simulink_MultiConnection "0..1" -- "1..1" simulink_SingleConnection : parent30
-simulink_Port "0..1" -- "1..1" simulink_PortBlock : port33
-simulink_Port "1..1" -- "0..1" simulink_PortBlock : portBlock18
-simulink_Block "1..1" *-- "0..9999" simulink_Port : ports2
-simulink_Block "1..1" *-- "0..9999" simulink_Property : properties1
-simulink_ModelReference "1..1" -- "0..1" simulink_SimulinkModel : referencedModel41
-simulink_BusSelector "0..1" -- "1..1" simulink_BusSignalMapping : selector46
-simulink_IdentifierReference "0..1" --* "1..1" simulink_SimulinkElement : simulinkRef0
-simulink_Block "0..1" -- "1..1" simulink_Block : sourceBlock13
-simulink_Block "1..1" *-- "0..1" simulink_LibraryLinkReference : sourceBlockRef15
-simulink_Block "0..9999" --* "1..1" simulink_SubSystem : subBlocks38
-simulink_InPort "0..1" -- "1..1" simulink_SingleConnection : to31
-simulink_Block "1..1" -- "0..1" simulink_Trigger : trigger3
+simulink_BusSelector "simulink_BusSpecification 1..1" -- "simulink_BusSelector 0..1" simulink_BusSpecification : busCreator23
+simulink_InPort "SingleConnection 1..1" -- "to 0..1" simulink_SingleConnection : connection19
+simulink_Connection "from_ 0..1" --* "Connection 1..1" simulink_OutPort : connection20
+simulink_MultiConnection "SingleConnection29 1..1" *-- "parent 0..9999" simulink_SingleConnection : connections28
+simulink_Block "ports 0..1" -- "Block 1..1" simulink_Port : container17
+simulink_Block "simulink_SimulinkModel 0..9999" --* "simulink_Block27 1..1" simulink_SimulinkModel : contains26
+simulink_SimulinkElement "simulink_SimulinkReference 0..1" -- "simulink_SimulinkElement36 1..1" simulink_SimulinkReference : element35
+simulink_Block "simulink_Enable 1..1" -- "simulink_Block6 0..1" simulink_Enable : enabler5
+simulink_From "gotoBlock 0..9999" -- "From 1..1" simulink_Goto : fromBlocks24
+simulink_Connection "OutPort 1..1" -- "connection 0..1" simulink_OutPort : from_21
+simulink_From "Goto 1..1" -- "fromBlocks 0..1" simulink_Goto : gotoBlock25
+simulink_Goto "simulink_GotoTagVisibility 0..1" -- "simulink_Goto 1..1" simulink_GotoTagVisibility : gotoBlock37
+simulink_Block "simulink_InPort 1..1" -- "simulink_Block8 0..9999" simulink_InPort : inports7
+simulink_BusSignalMapping "simulink_OutPort48 1..1" -- "simulink_BusSignalMapping 0..1" simulink_OutPort : mappingFrom47
+simulink_BusSignalMapping "simulink_OutPort51 1..1" -- "simulink_BusSignalMapping50 0..1" simulink_OutPort : mappingTo49
+simulink_BusSelector "BusSignalMapping 1..1" *-- "selector 0..9999" simulink_BusSignalMapping : mappings22
+simulink_IdentifierReference "simulink_ModelReference44 0..1" --* "simulink_IdentifierReference45 1..1" simulink_ModelReference : modelRef43
+simulink_Block "simulink_OutPort 1..1" -- "simulink_Block10 0..9999" simulink_OutPort : outports9
+simulink_Block "SubSystem 1..1" -- "subBlocks 0..1" simulink_SubSystem : parent11
+simulink_MultiConnection "connections 0..1" -- "MultiConnection 1..1" simulink_SingleConnection : parent30
+simulink_Port "portBlock 0..1" -- "Port34 1..1" simulink_PortBlock : port33
+simulink_Port "PortBlock 1..1" -- "port 0..1" simulink_PortBlock : portBlock18
+simulink_Block "Port 1..1" *-- "container 0..9999" simulink_Port : ports2
+simulink_Block "simulink_Property 1..1" *-- "simulink_Block 0..9999" simulink_Property : properties1
+simulink_ModelReference "simulink_SimulinkModel42 1..1" -- "simulink_ModelReference 0..1" simulink_SimulinkModel : referencedModel41
+simulink_BusSelector "mappings 0..1" -- "BusSelector 1..1" simulink_BusSignalMapping : selector46
+simulink_IdentifierReference "simulink_SimulinkElement 0..1" --* "simulink_IdentifierReference 1..1" simulink_SimulinkElement : simulinkRef0
+simulink_Block "simulink_Block12 0..1" -- "simulink_Block14 1..1" simulink_Block : sourceBlock13
+simulink_Block "simulink_LibraryLinkReference 1..1" *-- "simulink_Block16 0..1" simulink_LibraryLinkReference : sourceBlockRef15
+simulink_Block "parent39 0..9999" --* "Block40 1..1" simulink_SubSystem : subBlocks38
+simulink_InPort "connection32 0..1" -- "InPort 1..1" simulink_SingleConnection : to31
+simulink_Block "simulink_Trigger 1..1" -- "simulink_Block4 0..1" simulink_Trigger : trigger3
 @enduml

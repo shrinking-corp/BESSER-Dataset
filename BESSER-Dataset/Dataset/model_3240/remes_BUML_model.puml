@@ -1,4 +1,8 @@
 @startuml
+' model: remes
+' project: sampleModel
+' owner: User
+' description: New project
 class ActionRoot {
 }
 class ControlPath {
@@ -106,42 +110,42 @@ Point <|-- remes_WritePoint
 Referable <|-- remes_Constant
 Referable <|-- remes_Resource
 Referable <|-- remes_Variable
-remes_CompositeEntryPoint "1..1" -- "0..1" remes_CompositeMode : composite33
-remes_CompositeExitPoint "1..1" -- "0..1" remes_CompositeMode : composite35
-remes_CompositeEntryPoint "1..1" --* "1..1" remes_CompositeMode : compositeEntryPoint14
-remes_CompositeExitPoint "1..1" --* "1..1" remes_CompositeMode : compositeExitPoint15
-remes_CompositeMode "1..1" *-- "0..9999" remes_ConditionalConnector : conditionalConnectors10
-remes_Edge "1..1" -- "1..1" remes_ExitPoint : connectFrom39
-remes_InitEdge "1..1" -- "1..1" remes_InitPoint : connectFrom45
-remes_ExitPoint "1..1" -- "1..1" remes_WriteEdge : connectFrom59
-remes_Edge "1..1" -- "1..1" remes_EntryPoint : connectTo41
-remes_EntryPoint "1..1" -- "1..1" remes_InitEdge : connectTo47
-remes_WriteEdge "1..1" -- "1..1" remes_WritePoint : connectTo57
-remes_Constant "0..9999" --* "1..1" remes_Mode : constants7
-remes_CompositeMode "1..1" -- "1..1" remes_InitPoint : container24
-remes_ControlPath "0..1" -- "1..1" remes_EntryPoint : container27
-remes_ControlPath "0..1" -- "1..1" remes_ExitPoint : container31
-remes_CompositeMode "1..1" -- "1..1" remes_WritePoint : container60
-remes_Edge "0..9999" -- "1..1" remes_EntryPoint : entryEdges26
-remes_ControlPath "1..1" *-- "1..1" remes_EntryPoint : entryPoint1
-remes_Edge "0..9999" --* "1..1" remes_ExitPoint : exitEdges28
-remes_ControlPath "1..1" *-- "1..1" remes_ExitPoint : exitPoint2
-remes_InitEdge "0..1" --* "1..1" remes_InitPoint : initEdge23
-remes_CompositeMode "1..1" *-- "1..1" remes_InitPoint : initPoint12
-remes_Mode "0..9999" --* "1..1" remes_RemesDiagram : modes0
-remes_CompositeMode "0..1" -- "1..1" remes_SubMode : parent19
-remes_CompositeMode "0..1" -- "1..1" remes_ConditionalConnector : parent21
-ActionRoot "0..1" --* "1..1" remes_Edge : parsedActionBody43
-LogicalRoot "0..1" --* "1..1" remes_Edge : parsedActionGuard37
-ResourceRoot "0..1" --* "1..1" remes_Resource : parsedExpression54
-ActionRoot "0..1" --* "1..1" remes_InitEdge : parsedInitialization48
-LogicalRoot "0..1" --* "1..1" remes_SubMode : parsedInvariant20
-remes_Mode "1..1" *-- "0..9999" remes_Resource : resources5
-remes_Mode "1..1" -- "1..1" remes_Variable : scope51
-remes_Mode "1..1" -- "1..1" remes_Resource : scope52
-remes_Constant "1..1" -- "1..1" remes_Mode : scope55
-remes_CompositeMode "1..1" *-- "1..9999" remes_SubMode : subModes9
-remes_Mode "1..1" *-- "0..9999" remes_Variable : variables4
-remes_WriteEdge "0..9999" --* "1..1" remes_WritePoint : writeEdges62
-remes_CompositeMode "1..1" *-- "1..1" remes_WritePoint : writePoint17
+remes_CompositeEntryPoint "CompositeMode34 1..1" -- "compositeEntryPoint 0..1" remes_CompositeMode : composite33
+remes_CompositeExitPoint "CompositeMode36 1..1" -- "compositeExitPoint 0..1" remes_CompositeMode : composite35
+remes_CompositeEntryPoint "composite 1..1" --* "CompositeEntryPoint 1..1" remes_CompositeMode : compositeEntryPoint14
+remes_CompositeExitPoint "composite16 1..1" --* "CompositeExitPoint 1..1" remes_CompositeMode : compositeExitPoint15
+remes_CompositeMode "ConditionalConnector 1..1" *-- "parent11 0..9999" remes_ConditionalConnector : conditionalConnectors10
+remes_Edge "ExitPoint40 1..1" -- "exitEdges 1..1" remes_ExitPoint : connectFrom39
+remes_InitEdge "InitPoint46 1..1" -- "initEdge 1..1" remes_InitPoint : connectFrom45
+remes_ExitPoint "remes_WriteEdge 1..1" -- "remes_ExitPoint 1..1" remes_WriteEdge : connectFrom59
+remes_Edge "EntryPoint42 1..1" -- "entryEdges 1..1" remes_EntryPoint : connectTo41
+remes_EntryPoint "remes_InitEdge 1..1" -- "remes_EntryPoint 1..1" remes_InitEdge : connectTo47
+remes_WriteEdge "WritePoint58 1..1" -- "writeEdges 1..1" remes_WritePoint : connectTo57
+remes_Constant "scope8 0..9999" --* "Constant 1..1" remes_Mode : constants7
+remes_CompositeMode "initPoint 1..1" -- "CompositeMode25 1..1" remes_InitPoint : container24
+remes_ControlPath "entryPoint 0..1" -- "ControlPath 1..1" remes_EntryPoint : container27
+remes_ControlPath "exitPoint 0..1" -- "ControlPath32 1..1" remes_ExitPoint : container31
+remes_CompositeMode "writePoint 1..1" -- "CompositeMode61 1..1" remes_WritePoint : container60
+remes_Edge "connectTo 0..9999" -- "Edge 1..1" remes_EntryPoint : entryEdges26
+remes_ControlPath "EntryPoint 1..1" *-- "container 1..1" remes_EntryPoint : entryPoint1
+remes_Edge "connectFrom29 0..9999" --* "Edge30 1..1" remes_ExitPoint : exitEdges28
+remes_ControlPath "ExitPoint 1..1" *-- "container3 1..1" remes_ExitPoint : exitPoint2
+remes_InitEdge "connectFrom 0..1" --* "InitEdge 1..1" remes_InitPoint : initEdge23
+remes_CompositeMode "InitPoint 1..1" *-- "container13 1..1" remes_InitPoint : initPoint12
+remes_Mode "remes_RemesDiagram 0..9999" --* "remes_Mode 1..1" remes_RemesDiagram : modes0
+remes_CompositeMode "subModes 0..1" -- "CompositeMode 1..1" remes_SubMode : parent19
+remes_CompositeMode "conditionalConnectors 0..1" -- "CompositeMode22 1..1" remes_ConditionalConnector : parent21
+ActionRoot "remes_Edge44 0..1" --* "ActionRoot 1..1" remes_Edge : parsedActionBody43
+LogicalRoot "remes_Edge 0..1" --* "LogicalRoot38 1..1" remes_Edge : parsedActionGuard37
+ResourceRoot "remes_Resource 0..1" --* "ResourceRoot 1..1" remes_Resource : parsedExpression54
+ActionRoot "remes_InitEdge49 0..1" --* "ActionRoot50 1..1" remes_InitEdge : parsedInitialization48
+LogicalRoot "remes_SubMode 0..1" --* "LogicalRoot 1..1" remes_SubMode : parsedInvariant20
+remes_Mode "Resource 1..1" *-- "scope6 0..9999" remes_Resource : resources5
+remes_Mode "variables 1..1" -- "Mode 1..1" remes_Variable : scope51
+remes_Mode "resources 1..1" -- "Mode53 1..1" remes_Resource : scope52
+remes_Constant "Mode56 1..1" -- "constants 1..1" remes_Mode : scope55
+remes_CompositeMode "SubMode 1..1" *-- "parent 1..9999" remes_SubMode : subModes9
+remes_Mode "Variable 1..1" *-- "scope 0..9999" remes_Variable : variables4
+remes_WriteEdge "connectTo63 0..9999" --* "WriteEdge 1..1" remes_WritePoint : writeEdges62
+remes_CompositeMode "WritePoint 1..1" *-- "container18 1..1" remes_WritePoint : writePoint17
 @enduml

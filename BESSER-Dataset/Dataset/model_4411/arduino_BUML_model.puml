@@ -1,4 +1,8 @@
 @startuml
+' model: arduino
+' project: sampleModel
+' owner: User
+' description: New project
 class Assignment {
 }
 enum BinaryBooleanOperatorKind {
@@ -238,34 +242,34 @@ UnaryExpression <|-- arduino_UnaryIntegerExpression
 Utilities <|-- arduino_Delay
 Variable <|-- arduino_BooleanVariable
 Variable <|-- arduino_IntegerVariable
-arduino_AnalogPin "0..9999" --* "1..1" arduino_Platform : analogPins7
-arduino_Expression "1..1" --* "1..1" arduino_While : condition44
-arduino_Expression "1..1" --* "1..1" arduino_If : condition51
-arduino_Connector "0..9999" --* "1..1" arduino_Hardware : connectors3
-arduino_Instruction "0..1" -- "1..1" arduino_Instruction : dependency31
-arduino_DigitalPin "0..9999" --* "1..1" arduino_Platform : digitalPins5
-arduino_Hardware "0..1" --* "1..1" arduino_Project : hardware13
-arduino_Hardware "1..1" -- "1..1" arduino_Sketch : hardware9
-arduino_Instruction "0..9999" --* "1..1" arduino_Sketch : instructions11
-arduino_Control "1..1" *-- "0..9999" arduino_Instruction : instructions35
-arduino_BinaryExpression "1..1" *-- "1..1" arduino_Expression : left45
-arduino_Module "1..1" -- "1..1" arduino_ModuleInstruction : module33
-arduino_Connector "1..1" -- "0..1" arduino_Module : module39
-arduino_Module "1..1" -- "1..1" arduino_ModuleGet : module42
-arduino_Hardware "1..1" -- "0..9999" arduino_Module : modules1
-arduino_Module "0..9999" --* "1..1" arduino_Project : modules15
-arduino_Instruction "0..1" -- "1..1" arduino_Instruction : next28
-arduino_Assignment "1..1" *-- "1..1" arduino_Expression : operand53
-arduino_Expression "1..1" --* "1..1" arduino_UnaryExpression : operand55
-arduino_Connector "1..1" -- "0..1" arduino_Pin : pin37
-arduino_Platform "0..9999" --* "1..1" arduino_Project : platform18
-arduino_Hardware "1..1" -- "1..9999" arduino_Platform : platforms0
-arduino_Instruction "0..1" -- "1..1" arduino_Instruction : previous25
-arduino_BinaryExpression "1..1" *-- "0..1" arduino_Expression : right47
-arduino_Project "1..1" *-- "0..9999" arduino_Sketch : sketchs21
-arduino_Synchro "1..1" -- "0..9999" arduino_Synchro : synchro62
-arduino_Synchro "1..1" -- "0..9999" arduino_Synchro : synchroeOpposite64
-arduino_Variable "1..1" -- "1..1" arduino_VariableAssignment : variable50
-arduino_Variable "1..1" --* "1..1" arduino_VariableDeclaration : variable57
-arduino_Variable "1..1" -- "1..1" arduino_VariableRef : variable59
+arduino_AnalogPin "arduino_Platform8 0..9999" --* "arduino_AnalogPin 1..1" arduino_Platform : analogPins7
+arduino_Expression "arduino_While 1..1" --* "arduino_Expression 1..1" arduino_While : condition44
+arduino_Expression "arduino_If 1..1" --* "arduino_Expression52 1..1" arduino_If : condition51
+arduino_Connector "arduino_Hardware4 0..9999" --* "arduino_Connector 1..1" arduino_Hardware : connectors3
+arduino_Instruction "arduino_Instruction30 0..1" -- "arduino_Instruction32 1..1" arduino_Instruction : dependency31
+arduino_DigitalPin "arduino_Platform6 0..9999" --* "arduino_DigitalPin 1..1" arduino_Platform : digitalPins5
+arduino_Hardware "arduino_Project 0..1" --* "arduino_Hardware14 1..1" arduino_Project : hardware13
+arduino_Hardware "arduino_Sketch 1..1" -- "arduino_Hardware10 1..1" arduino_Sketch : hardware9
+arduino_Instruction "arduino_Sketch12 0..9999" --* "arduino_Instruction 1..1" arduino_Sketch : instructions11
+arduino_Control "arduino_Instruction36 1..1" *-- "arduino_Control 0..9999" arduino_Instruction : instructions35
+arduino_BinaryExpression "arduino_Expression46 1..1" *-- "arduino_BinaryExpression 1..1" arduino_Expression : left45
+arduino_Module "arduino_ModuleInstruction 1..1" -- "arduino_Module34 1..1" arduino_ModuleInstruction : module33
+arduino_Connector "arduino_Module41 1..1" -- "arduino_Connector40 0..1" arduino_Module : module39
+arduino_Module "arduino_ModuleGet 1..1" -- "arduino_Module43 1..1" arduino_ModuleGet : module42
+arduino_Hardware "arduino_Module 1..1" -- "arduino_Hardware2 0..9999" arduino_Module : modules1
+arduino_Module "arduino_Project16 0..9999" --* "arduino_Module17 1..1" arduino_Project : modules15
+arduino_Instruction "arduino_Instruction27 0..1" -- "arduino_Instruction29 1..1" arduino_Instruction : next28
+arduino_Assignment "arduino_Expression54 1..1" *-- "arduino_Assignment 1..1" arduino_Expression : operand53
+arduino_Expression "arduino_UnaryExpression 1..1" --* "arduino_Expression56 1..1" arduino_UnaryExpression : operand55
+arduino_Connector "arduino_Pin 1..1" -- "arduino_Connector38 0..1" arduino_Pin : pin37
+arduino_Platform "arduino_Project19 0..9999" --* "arduino_Platform20 1..1" arduino_Project : platform18
+arduino_Hardware "arduino_Platform 1..1" -- "arduino_Hardware 1..9999" arduino_Platform : platforms0
+arduino_Instruction "arduino_Instruction24 0..1" -- "arduino_Instruction26 1..1" arduino_Instruction : previous25
+arduino_BinaryExpression "arduino_Expression49 1..1" *-- "arduino_BinaryExpression48 0..1" arduino_Expression : right47
+arduino_Project "arduino_Sketch23 1..1" *-- "arduino_Project22 0..9999" arduino_Sketch : sketchs21
+arduino_Synchro "Synchro 1..1" -- "synchroeOpposite 0..9999" arduino_Synchro : synchro62
+arduino_Synchro "Synchro65 1..1" -- "synchro 0..9999" arduino_Synchro : synchroeOpposite64
+arduino_Variable "arduino_VariableAssignment 1..1" -- "arduino_Variable 1..1" arduino_VariableAssignment : variable50
+arduino_Variable "arduino_VariableDeclaration 1..1" --* "arduino_Variable58 1..1" arduino_VariableDeclaration : variable57
+arduino_Variable "arduino_VariableRef 1..1" -- "arduino_Variable60 1..1" arduino_VariableRef : variable59
 @enduml

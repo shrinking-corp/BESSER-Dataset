@@ -1,4 +1,8 @@
 @startuml
+' model: ptnetLoLA
+' project: sampleModel
+' owner: User
+' description: New project
 class Arc {
 }
 class ArcToPlace {
@@ -73,17 +77,17 @@ Node <|-- ptnetLoLA_Transition
 Place <|-- ptnetLoLA_PlaceExt
 PlaceReference <|-- ptnetLoLA_RefMarkedPlace
 Transition <|-- ptnetLoLA_TransitionExt
-ptnetLoLA_Annotation "0..1" --* "1..1" ptnetLoLA_Node : annotation12
-ptnetLoLA_Annotation "0..1" --* "1..1" ptnetLoLA_PtNet : annotation5
-ptnetLoLA_Arc "0..9999" --* "1..1" ptnetLoLA_PtNet : arcs7
-ptnetLoLA_Marking "0..1" --* "1..1" ptnetLoLA_PtNet : finalMarking9
-ptnetLoLA_Arc "0..9999" -- "1..1" ptnetLoLA_Node : incoming14
-ptnetLoLA_Marking "1..1" --* "1..1" ptnetLoLA_PtNet : initialMarking3
-ptnetLoLA_Arc "0..9999" -- "1..1" ptnetLoLA_Node : outgoing15
-ptnetLoLA_Place "1..1" -- "1..1" ptnetLoLA_PlaceReference : place19
-ptnetLoLA_Place "0..9999" --* "1..1" ptnetLoLA_PtNet : places0
-ptnetLoLA_Marking "1..1" *-- "0..9999" ptnetLoLA_RefMarkedPlace : places17
-ptnetLoLA_Arc "1..1" -- "1..1" ptnetLoLA_Node : source21
-ptnetLoLA_Arc "1..1" -- "1..1" ptnetLoLA_Node : target22
-ptnetLoLA_PtNet "1..1" *-- "0..9999" ptnetLoLA_Transition : transitions1
+ptnetLoLA_Annotation "ptnetLoLA_Node 0..1" --* "ptnetLoLA_Annotation13 1..1" ptnetLoLA_Node : annotation12
+ptnetLoLA_Annotation "ptnetLoLA_PtNet6 0..1" --* "ptnetLoLA_Annotation 1..1" ptnetLoLA_PtNet : annotation5
+ptnetLoLA_Arc "ptnetLoLA_PtNet8 0..9999" --* "ptnetLoLA_Arc 1..1" ptnetLoLA_PtNet : arcs7
+ptnetLoLA_Marking "ptnetLoLA_PtNet10 0..1" --* "ptnetLoLA_Marking11 1..1" ptnetLoLA_PtNet : finalMarking9
+ptnetLoLA_Arc "target 0..9999" -- "Arc 1..1" ptnetLoLA_Node : incoming14
+ptnetLoLA_Marking "ptnetLoLA_PtNet4 1..1" --* "ptnetLoLA_Marking 1..1" ptnetLoLA_PtNet : initialMarking3
+ptnetLoLA_Arc "source 0..9999" -- "Arc16 1..1" ptnetLoLA_Node : outgoing15
+ptnetLoLA_Place "ptnetLoLA_PlaceReference 1..1" -- "ptnetLoLA_Place20 1..1" ptnetLoLA_PlaceReference : place19
+ptnetLoLA_Place "ptnetLoLA_PtNet 0..9999" --* "ptnetLoLA_Place 1..1" ptnetLoLA_PtNet : places0
+ptnetLoLA_Marking "ptnetLoLA_RefMarkedPlace 1..1" *-- "ptnetLoLA_Marking18 0..9999" ptnetLoLA_RefMarkedPlace : places17
+ptnetLoLA_Arc "Node 1..1" -- "outgoing 1..1" ptnetLoLA_Node : source21
+ptnetLoLA_Arc "Node23 1..1" -- "incoming 1..1" ptnetLoLA_Node : target22
+ptnetLoLA_PtNet "ptnetLoLA_Transition 1..1" *-- "ptnetLoLA_PtNet2 0..9999" ptnetLoLA_Transition : transitions1
 @enduml

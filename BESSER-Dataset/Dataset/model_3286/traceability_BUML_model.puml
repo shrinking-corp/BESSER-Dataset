@@ -1,4 +1,8 @@
 @startuml
+' model: traceability
+' project: sampleModel
+' owner: User
+' description: New project
 class traceability_EDFD {
 }
 class traceability_EDFDGraphTrace {
@@ -13,13 +17,13 @@ class traceability_Identifiable {
 }
 class traceability_NamedEntity {
 }
-traceability_EDFDGraphTrace "1..1" -- "0..9999" traceability_NamedEntity : edfdElements10
-traceability_EDFDGraphTrace "0..9999" --* "1..1" traceability_EDFDToGraph : edfdGraphTraces0
-traceability_EDFD "0..1" -- "1..1" traceability_EDFDToGraph : edfds1
-traceability_GraphEndToEndTrace "1..1" -- "0..9999" traceability_Identifiable : endtoendGraphElements14
-traceability_EDFDToGraph "1..1" -- "0..1" traceability_Graph : endtoendgraph5
-traceability_EDFDGraphTrace "1..1" -- "0..9999" traceability_Identifiable : graphElements12
-traceability_GraphEndToEndTrace "1..1" -- "0..9999" traceability_Identifiable : graphElements17
-traceability_EDFDToGraph "1..1" *-- "0..9999" traceability_GraphEndToEndTrace : graphEndToEndTrace8
-traceability_EDFDToGraph "1..1" -- "0..1" traceability_Graph : graphs3
+traceability_EDFDGraphTrace "traceability_NamedEntity 1..1" -- "traceability_EDFDGraphTrace11 0..9999" traceability_NamedEntity : edfdElements10
+traceability_EDFDGraphTrace "traceability_EDFDToGraph 0..9999" --* "traceability_EDFDGraphTrace 1..1" traceability_EDFDToGraph : edfdGraphTraces0
+traceability_EDFD "traceability_EDFDToGraph2 0..1" -- "traceability_EDFD 1..1" traceability_EDFDToGraph : edfds1
+traceability_GraphEndToEndTrace "traceability_Identifiable16 1..1" -- "traceability_GraphEndToEndTrace15 0..9999" traceability_Identifiable : endtoendGraphElements14
+traceability_EDFDToGraph "traceability_Graph7 1..1" -- "traceability_EDFDToGraph6 0..1" traceability_Graph : endtoendgraph5
+traceability_EDFDGraphTrace "traceability_Identifiable 1..1" -- "traceability_EDFDGraphTrace13 0..9999" traceability_Identifiable : graphElements12
+traceability_GraphEndToEndTrace "traceability_Identifiable19 1..1" -- "traceability_GraphEndToEndTrace18 0..9999" traceability_Identifiable : graphElements17
+traceability_EDFDToGraph "traceability_GraphEndToEndTrace 1..1" *-- "traceability_EDFDToGraph9 0..9999" traceability_GraphEndToEndTrace : graphEndToEndTrace8
+traceability_EDFDToGraph "traceability_Graph 1..1" -- "traceability_EDFDToGraph4 0..1" traceability_Graph : graphs3
 @enduml

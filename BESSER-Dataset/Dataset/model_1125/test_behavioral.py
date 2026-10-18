@@ -1830,9 +1830,9 @@ def test_assoc_actions177_stub_double():
     partner = cjsidl_actionList()
     setattr(partner, 'cjsidl_actionList178', None)
     _safe_set(owner, 'cjsidl_action', partner)
-    assert getattr(partner, 'cjsidl_actionList178') == owner
+    assert owner in getattr(partner, 'cjsidl_actionList178')
     _safe_set(owner, 'cjsidl_action', None)
-    assert getattr(partner, 'cjsidl_actionList178') is None
+    assert owner not in getattr(partner, 'cjsidl_actionList178')
 
 
 def test_assoc_actions179_stub_double():
@@ -1845,9 +1845,9 @@ def test_assoc_actions179_stub_double():
     partner = cjsidl_sendActionList()
     setattr(partner, 'cjsidl_sendActionList180', None)
     _safe_set(owner, 'cjsidl_action181', partner)
-    assert getattr(partner, 'cjsidl_sendActionList180') == owner
+    assert owner in getattr(partner, 'cjsidl_sendActionList180')
     _safe_set(owner, 'cjsidl_action181', None)
-    assert getattr(partner, 'cjsidl_sendActionList180') is None
+    assert owner not in getattr(partner, 'cjsidl_sendActionList180')
 
 
 def test_assoc_arrayDef193_stub_double():
@@ -1875,9 +1875,9 @@ def test_assoc_arrayDef423_stub_double():
     partner = cjsidl_recordDef()
     setattr(partner, 'cjsidl_recordDef424', None)
     _safe_set(owner, 'cjsidl_arrayDef425', partner)
-    assert getattr(partner, 'cjsidl_recordDef424') == owner
+    assert owner in getattr(partner, 'cjsidl_recordDef424')
     _safe_set(owner, 'cjsidl_arrayDef425', None)
-    assert getattr(partner, 'cjsidl_recordDef424') is None
+    assert owner not in getattr(partner, 'cjsidl_recordDef424')
 
 
 def test_assoc_bitfieldDef207_stub_double():
@@ -1905,9 +1905,9 @@ def test_assoc_bitfieldDef432_stub_double():
     partner = cjsidl_recordDef()
     setattr(partner, 'cjsidl_recordDef433', None)
     _safe_set(owner, 'cjsidl_bitfieldDef434', partner)
-    assert getattr(partner, 'cjsidl_recordDef433') == owner
+    assert owner in getattr(partner, 'cjsidl_recordDef433')
     _safe_set(owner, 'cjsidl_bitfieldDef434', None)
-    assert getattr(partner, 'cjsidl_recordDef433') is None
+    assert owner not in getattr(partner, 'cjsidl_recordDef433')
 
 
 def test_assoc_body229_stub_double():
@@ -2055,9 +2055,9 @@ def test_assoc_fieldDef426_stub_double():
     partner = cjsidl_recordDef()
     setattr(partner, 'cjsidl_recordDef427', None)
     _safe_set(owner, 'cjsidl_fixedFieldDef428', partner)
-    assert getattr(partner, 'cjsidl_recordDef427') == owner
+    assert owner in getattr(partner, 'cjsidl_recordDef427')
     _safe_set(owner, 'cjsidl_fixedFieldDef428', None)
-    assert getattr(partner, 'cjsidl_recordDef427') is None
+    assert owner not in getattr(partner, 'cjsidl_recordDef427')
 
 
 def test_assoc_fixedFieldDef203_stub_double():
@@ -2100,9 +2100,9 @@ def test_assoc_fixedLengthStringDef435_stub_double():
     partner = cjsidl_recordDef()
     setattr(partner, 'cjsidl_recordDef436', None)
     _safe_set(owner, 'cjsidl_fixedLenString437', partner)
-    assert getattr(partner, 'cjsidl_recordDef436') == owner
+    assert owner in getattr(partner, 'cjsidl_recordDef436')
     _safe_set(owner, 'cjsidl_fixedLenString437', None)
-    assert getattr(partner, 'cjsidl_recordDef436') is None
+    assert owner not in getattr(partner, 'cjsidl_recordDef436')
 
 
 def test_assoc_footer232_stub_double():
@@ -2355,9 +2355,9 @@ def test_assoc_messageDefs45_stub_double():
     partner = cjsidl_messages()
     setattr(partner, 'cjsidl_messages46', None)
     _safe_set(owner, 'cjsidl_messageDef', partner)
-    assert getattr(partner, 'cjsidl_messages46') == owner
+    assert owner in getattr(partner, 'cjsidl_messages46')
     _safe_set(owner, 'cjsidl_messageDef', None)
-    assert getattr(partner, 'cjsidl_messages46') is None
+    assert owner not in getattr(partner, 'cjsidl_messages46')
 
 
 def test_assoc_minCountScoped385_stub_double():
@@ -2415,9 +2415,9 @@ def test_assoc_params115_stub_double():
     partner = cjsidl_transParams()
     setattr(partner, 'cjsidl_transParams', None)
     _safe_set(owner, 'cjsidl_transParam', partner)
-    assert getattr(partner, 'cjsidl_transParams') == owner
+    assert owner in getattr(partner, 'cjsidl_transParams')
     _safe_set(owner, 'cjsidl_transParam', None)
-    assert getattr(partner, 'cjsidl_transParams') is None
+    assert owner not in getattr(partner, 'cjsidl_transParams')
 
 
 def test_assoc_params124_stub_double():
@@ -2505,9 +2505,9 @@ def test_assoc_refClient16_stub_double():
     partner = cjsidl_references()
     setattr(partner, 'cjsidl_references17', None)
     _safe_set(owner, 'cjsidl_refAttr18', partner)
-    assert getattr(partner, 'cjsidl_references17') == owner
+    assert owner in getattr(partner, 'cjsidl_references17')
     _safe_set(owner, 'cjsidl_refAttr18', None)
-    assert getattr(partner, 'cjsidl_references17') is None
+    assert owner not in getattr(partner, 'cjsidl_references17')
 
 
 def test_assoc_refInherit14_stub_double():
@@ -2640,9 +2640,9 @@ def test_assoc_scopedRef450_stub_double():
     partner = cjsidl_recordDef()
     setattr(partner, 'cjsidl_recordDef451', None)
     _safe_set(owner, 'cjsidl_scopedTypeId452', partner)
-    assert getattr(partner, 'cjsidl_recordDef451') == owner
+    assert owner in getattr(partner, 'cjsidl_recordDef451')
     _safe_set(owner, 'cjsidl_scopedTypeId452', None)
-    assert getattr(partner, 'cjsidl_recordDef451') is None
+    assert owner not in getattr(partner, 'cjsidl_recordDef451')
 
 
 def test_assoc_scopedRefs49_stub_double():
@@ -2655,9 +2655,9 @@ def test_assoc_scopedRefs49_stub_double():
     partner = cjsidl_messages()
     setattr(partner, 'cjsidl_messages50', None)
     _safe_set(owner, 'cjsidl_messageScopedRef', partner)
-    assert getattr(partner, 'cjsidl_messages50') == owner
+    assert owner in getattr(partner, 'cjsidl_messages50')
     _safe_set(owner, 'cjsidl_messageScopedRef', None)
-    assert getattr(partner, 'cjsidl_messages50') is None
+    assert owner not in getattr(partner, 'cjsidl_messages50')
 
 
 def test_assoc_scopedTag330_stub_double():
@@ -2895,9 +2895,9 @@ def test_assoc_typeReference447_stub_double():
     partner = cjsidl_recordDef()
     setattr(partner, 'cjsidl_recordDef448', None)
     _safe_set(owner, 'cjsidl_typeReference449', partner)
-    assert getattr(partner, 'cjsidl_recordDef448') == owner
+    assert owner in getattr(partner, 'cjsidl_recordDef448')
     _safe_set(owner, 'cjsidl_typeReference449', None)
-    assert getattr(partner, 'cjsidl_recordDef448') is None
+    assert owner not in getattr(partner, 'cjsidl_recordDef448')
 
 
 def test_assoc_typeRefs47_stub_double():
@@ -2910,9 +2910,9 @@ def test_assoc_typeRefs47_stub_double():
     partner = cjsidl_messages()
     setattr(partner, 'cjsidl_messages48', None)
     _safe_set(owner, 'cjsidl_messageRef', partner)
-    assert getattr(partner, 'cjsidl_messages48') == owner
+    assert owner in getattr(partner, 'cjsidl_messages48')
     _safe_set(owner, 'cjsidl_messageRef', None)
-    assert getattr(partner, 'cjsidl_messages48') is None
+    assert owner not in getattr(partner, 'cjsidl_messages48')
 
 
 def test_assoc_typeScoped284_stub_double():
@@ -3075,9 +3075,9 @@ def test_assoc_varFormatField444_stub_double():
     partner = cjsidl_recordDef()
     setattr(partner, 'cjsidl_recordDef445', None)
     _safe_set(owner, 'cjsidl_varFormatField446', partner)
-    assert getattr(partner, 'cjsidl_recordDef445') == owner
+    assert owner in getattr(partner, 'cjsidl_recordDef445')
     _safe_set(owner, 'cjsidl_varFormatField446', None)
-    assert getattr(partner, 'cjsidl_recordDef445') is None
+    assert owner not in getattr(partner, 'cjsidl_recordDef445')
 
 
 def test_assoc_varLenField213_stub_double():
@@ -3120,9 +3120,9 @@ def test_assoc_variableFieldDef429_stub_double():
     partner = cjsidl_recordDef()
     setattr(partner, 'cjsidl_recordDef430', None)
     _safe_set(owner, 'cjsidl_varField431', partner)
-    assert getattr(partner, 'cjsidl_recordDef430') == owner
+    assert owner in getattr(partner, 'cjsidl_recordDef430')
     _safe_set(owner, 'cjsidl_varField431', None)
-    assert getattr(partner, 'cjsidl_recordDef430') is None
+    assert owner not in getattr(partner, 'cjsidl_recordDef430')
 
 
 def test_assoc_variableLengthFieldDef441_stub_double():
@@ -3135,9 +3135,9 @@ def test_assoc_variableLengthFieldDef441_stub_double():
     partner = cjsidl_recordDef()
     setattr(partner, 'cjsidl_recordDef442', None)
     _safe_set(owner, 'cjsidl_varLenField443', partner)
-    assert getattr(partner, 'cjsidl_recordDef442') == owner
+    assert owner in getattr(partner, 'cjsidl_recordDef442')
     _safe_set(owner, 'cjsidl_varLenField443', None)
-    assert getattr(partner, 'cjsidl_recordDef442') is None
+    assert owner not in getattr(partner, 'cjsidl_recordDef442')
 
 
 def test_assoc_variableLengthStringDef438_stub_double():
@@ -3150,9 +3150,9 @@ def test_assoc_variableLengthStringDef438_stub_double():
     partner = cjsidl_recordDef()
     setattr(partner, 'cjsidl_recordDef439', None)
     _safe_set(owner, 'cjsidl_varLenString440', partner)
-    assert getattr(partner, 'cjsidl_recordDef439') == owner
+    assert owner in getattr(partner, 'cjsidl_recordDef439')
     _safe_set(owner, 'cjsidl_varLenString440', None)
-    assert getattr(partner, 'cjsidl_recordDef439') is None
+    assert owner not in getattr(partner, 'cjsidl_recordDef439')
 
 
 def test_assoc_variantDef199_stub_double():

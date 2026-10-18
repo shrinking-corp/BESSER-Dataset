@@ -1,4 +1,8 @@
 @startuml
+' model: scmodel
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractState {
 }
 enum LanguageTypes {
@@ -91,9 +95,9 @@ AbstractState <|-- scmodel_PseudoState
 AbstractState <|-- scmodel_State
 State <|-- scmodel_FinalState
 State <|-- scmodel_History
-scmodel_AbstractState "0..9999" --* "1..1" scmodel_CompositeState : children9
-scmodel_AbstractState "1..1" -- "1..1" scmodel_Transition : from_3
-scmodel_AbstractState "0..9999" --* "1..1" scmodel_StateMachine : states0
-scmodel_AbstractState "1..1" -- "1..1" scmodel_Transition : to6
-scmodel_StateMachine "1..1" *-- "0..9999" scmodel_Transition : transitions1
+scmodel_AbstractState "scmodel_CompositeState 0..9999" --* "scmodel_AbstractState10 1..1" scmodel_CompositeState : children9
+scmodel_AbstractState "scmodel_Transition4 1..1" -- "scmodel_AbstractState5 1..1" scmodel_Transition : from_3
+scmodel_AbstractState "scmodel_StateMachine 0..9999" --* "scmodel_AbstractState 1..1" scmodel_StateMachine : states0
+scmodel_AbstractState "scmodel_Transition7 1..1" -- "scmodel_AbstractState8 1..1" scmodel_Transition : to6
+scmodel_StateMachine "scmodel_Transition 1..1" *-- "scmodel_StateMachine2 0..9999" scmodel_Transition : transitions1
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: SBCS
+' project: sampleModel
+' owner: User
+' description: New project
 enum Mode {
   Dameged
   Degraded
@@ -56,19 +60,43 @@ Transition <|-- SBCS_PumpController_ClosePump
 Transition <|-- SBCS_PumpController_OpenPump
 Transition <|-- SBCS_SteamBoiler_OpenValve
 Transition <|-- SBCS_WaterLevelMeaurementDevice_getLevel
-SBCS_Snapshot "1..1" -- "1..1" SBCS_Transition : AfterTrans18
-SBCS_Snapshot "1..1" -- "1..1" SBCS_Transition : AfterTrans25
-SBCS_ControlProgram "0..1" -- "1..1" SBCS_ControlProgram_Start : CPPost23
-SBCS_PumpControler "0..1" -- "1..1" SBCS_PumpController_ClosePump : PCPost30
-SBCS_PumpControler "0..1" -- "1..1" SBCS_PumpController_OpenPump : PCPost5
-SBCS_PumpControler "0..1" -- "1..1" SBCS_PumpController_ClosePump : PCPre28
-SBCS_PumpControler "0..1" -- "1..1" SBCS_PumpController_OpenPump : PCPre4
-SBCS_Pump "1..1" -- "1..1" SBCS_PumpControler : PumpControlerPump12
-SBCS_SteamBoiler "0..1" -- "1..1" SBCS_SteamBoiler_OpenValve : SBPost1
-SBCS_SteamBoiler "0..1" -- "1..1" SBCS_SteamBoiler_OpenValve : SBPre0
-SBCS_Snapshot "1..1" -- "1..1" SBCS_SteamBoiler : SnapshotSteamBoiler8
-SBCS_ControlProgram "1..1" -- "1..1" SBCS_SteamBoiler : SteamBoilerControlProgram10
-SBCS_Snapshot "1..1" -- "1..1" SBCS_WaterLevelMeasurementDevice : WLMDSnapshot15
-SBCS_SteamBoiler "1..1" -- "1..1" SBCS_WaterLevelMeasurementDevice : WLMDSteamBoiler20
-SBCS_WaterLevelMeasurementDevice "0..1" -- "1..1" SBCS_WaterLevelMeaurementDevice_getLevel : wlmdPost14
+SBCS_Snapshot "SBCS_Transition 1..1" -- "SBCS_Snapshot19 1..1" SBCS_Transition : AfterTrans18
+SBCS_Snapshot "SBCS_Transition26 1..1" -- "SBCS_Snapshot27 1..1" SBCS_Transition : AfterTrans25
+SBCS_ControlProgram "SBCS_ControlProgram_Start 0..1" -- "SBCS_ControlProgram24 1..1" SBCS_ControlProgram_Start : CPPost23
+SBCS_PumpControler "SBCS_PumpController_ClosePump31 0..1" -- "SBCS_PumpControler32 1..1" SBCS_PumpController_ClosePump : PCPost30
+SBCS_PumpControler "SBCS_PumpController_OpenPump6 0..1" -- "SBCS_PumpControler7 1..1" SBCS_PumpController_OpenPump : PCPost5
+SBCS_PumpControler "SBCS_PumpController_ClosePump 0..1" -- "SBCS_PumpControler29 1..1" SBCS_PumpController_ClosePump : PCPre28
+SBCS_PumpControler "SBCS_PumpController_OpenPump 0..1" -- "SBCS_PumpControler 1..1" SBCS_PumpController_OpenPump : PCPre4
+SBCS_Pump "SBCS_PumpControler13 1..1" -- "SBCS_Pump 1..1" SBCS_PumpControler : PumpControlerPump12
+SBCS_SteamBoiler "SBCS_SteamBoiler_OpenValve2 0..1" -- "SBCS_SteamBoiler3 1..1" SBCS_SteamBoiler_OpenValve : SBPost1
+SBCS_SteamBoiler "SBCS_SteamBoiler_OpenValve 0..1" -- "SBCS_SteamBoiler 1..1" SBCS_SteamBoiler_OpenValve : SBPre0
+SBCS_Snapshot "SBCS_SteamBoiler9 1..1" -- "SBCS_Snapshot 1..1" SBCS_SteamBoiler : SnapshotSteamBoiler8
+SBCS_ControlProgram "SBCS_SteamBoiler11 1..1" -- "SBCS_ControlProgram 1..1" SBCS_SteamBoiler : SteamBoilerControlProgram10
+SBCS_Snapshot "SBCS_WaterLevelMeasurementDevice17 1..1" -- "SBCS_Snapshot16 1..1" SBCS_WaterLevelMeasurementDevice : WLMDSnapshot15
+SBCS_SteamBoiler "SBCS_WaterLevelMeasurementDevice21 1..1" -- "SBCS_SteamBoiler22 1..1" SBCS_WaterLevelMeasurementDevice : WLMDSteamBoiler20
+SBCS_WaterLevelMeasurementDevice "SBCS_WaterLevelMeaurementDevice_getLevel 0..1" -- "SBCS_WaterLevelMeasurementDevice 1..1" SBCS_WaterLevelMeaurementDevice_getLevel : wlmdPost14
+note top of SBCS_ControlProgram_Start
+  constraint Start (OCL): context ControlProgram_Start inv: CPPost.mode = Mode_Normal
+end note
+note top of SBCS_PumpController_ClosePump
+  constraint ClosePump (OCL): context PumpController_ClosePump inv: PCPre.PumpControlerPump.mode = State_On implies PCPost.PumpControlerPump.mode = State_Off
+end note
+note top of SBCS_PumpController_OpenPump
+  constraint OpenPump (OCL): context PumpController_OpenPump inv: PCPre.PumpControlerPump.mode = State_Off implies PCPost.PumpControlerPump.mode = State_On
+end note
+note top of SBCS_SteamBoiler_OpenValve
+  constraint OpenValve (OCL): context SteamBoiler_OpenValve inv: SBPre.valveOpen = ValveState_Closed implies SBPost.valveOpen = ValveState_Open
+end note
+note top of SBCS_SteamBoiler_OpenValve
+  constraint SB (OCL): context SteamBoiler inv: self.valveOpen=ValveState_Open implies self.SteamBoilerControlProgram.mode=Mode_Initialization
+end note
+note top of SBCS_SteamBoiler_OpenValve
+  constraint TP4 (OCL): context SteamBoiler inv: let CS:Snapshot = self.SnapshotSteamBoiler in let FS: Set(Snapshot)= CS.getPost()in self.valveOpen = ValveState_Open implies FS->exists(s:Snapshot | s.WLMDSnapshot.waterLevel <= maximalNormal)
+end note
+note top of SBCS_WaterLevelMeasurementDevice
+  constraint WMD (OCL): context WaterLevelMeasurementDevice inv: self.waterLevel < self.WLMDSteamBoiler.capacity
+end note
+note top of SBCS_WaterLevelMeaurementDevice_getLevel
+  constraint getLevel (OCL): context WaterLevelMeaurementDevice_getLevel inv: wlmdPost.waterLevel = ret
+end note
 @enduml

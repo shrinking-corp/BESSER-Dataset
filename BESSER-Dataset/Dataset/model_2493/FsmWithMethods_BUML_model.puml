@@ -1,4 +1,8 @@
 @startuml
+' model: fsmWithMethods
+' project: sampleModel
+' owner: User
+' description: New project
 class FExpression {
 }
 class Referentiable {
@@ -27,13 +31,13 @@ FExpression <|-- fsmWithMethods_MethodCall
 FExpression <|-- fsmWithMethods_State
 FExpression <|-- fsmWithMethods_Transition
 Referentiable <|-- fsmWithMethods_FExpression
-fsmWithMethods_FExpression "0..1" -- "1..1" fsmWithMethods_Transition : event12
-fsmWithMethods_FExpression "0..9999" --* "1..1" fsmWithMethods_Fsm : expressions1
-fsmWithMethods_FExpression "0..9999" --* "1..1" fsmWithMethods_Method : expressions5
-fsmWithMethods_FExpression "0..1" -- "1..1" fsmWithMethods_Transition : from_14
-fsmWithMethods_Method "0..1" -- "1..1" fsmWithMethods_MethodCall : method8
-fsmWithMethods_MethodCall "1..1" *-- "0..9999" fsmWithMethods_Referentiable : params10
-fsmWithMethods_FExpression "0..9999" --* "1..1" fsmWithMethods_Method : params3
-fsmWithMethods_Fsm "1..1" -- "0..1" fsmWithMethods_State : state0
-fsmWithMethods_FExpression "0..1" -- "1..1" fsmWithMethods_Transition : to17
+fsmWithMethods_FExpression "fsmWithMethods_Transition 0..1" -- "fsmWithMethods_FExpression13 1..1" fsmWithMethods_Transition : event12
+fsmWithMethods_FExpression "fsmWithMethods_Fsm2 0..9999" --* "fsmWithMethods_FExpression 1..1" fsmWithMethods_Fsm : expressions1
+fsmWithMethods_FExpression "fsmWithMethods_Method6 0..9999" --* "fsmWithMethods_FExpression7 1..1" fsmWithMethods_Method : expressions5
+fsmWithMethods_FExpression "fsmWithMethods_Transition15 0..1" -- "fsmWithMethods_FExpression16 1..1" fsmWithMethods_Transition : from_14
+fsmWithMethods_Method "fsmWithMethods_MethodCall 0..1" -- "fsmWithMethods_Method9 1..1" fsmWithMethods_MethodCall : method8
+fsmWithMethods_MethodCall "fsmWithMethods_Referentiable 1..1" *-- "fsmWithMethods_MethodCall11 0..9999" fsmWithMethods_Referentiable : params10
+fsmWithMethods_FExpression "fsmWithMethods_Method 0..9999" --* "fsmWithMethods_FExpression4 1..1" fsmWithMethods_Method : params3
+fsmWithMethods_Fsm "fsmWithMethods_State 1..1" -- "fsmWithMethods_Fsm 0..1" fsmWithMethods_State : state0
+fsmWithMethods_FExpression "fsmWithMethods_Transition18 0..1" -- "fsmWithMethods_FExpression19 1..1" fsmWithMethods_Transition : to17
 @enduml

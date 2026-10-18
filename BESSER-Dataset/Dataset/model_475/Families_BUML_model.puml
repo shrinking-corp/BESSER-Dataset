@@ -1,16 +1,20 @@
 @startuml
+' model: Families
+' project: sampleModel
+' owner: User
+' description: New project
 class Families_Family {
   + lastName : str
 }
 class Families_Member {
   + firstName : str
 }
-Families_Family "1..1" *-- "0..9999" Families_Member : daughters5
-Families_Family "0..1" -- "1..1" Families_Member : familyDaughter10
-Families_Family "0..1" -- "1..1" Families_Member : familyFather7
-Families_Family "0..1" -- "1..1" Families_Member : familyMother12
-Families_Family "0..1" -- "1..1" Families_Member : familySon8
-Families_Family "1..1" *-- "0..1" Families_Member : father0
-Families_Family "1..1" *-- "0..1" Families_Member : mother1
-Families_Family "1..1" *-- "0..9999" Families_Member : sons3
+Families_Family "Member6 1..1" *-- "familyDaughter 0..9999" Families_Member : daughters5
+Families_Family "daughters 0..1" -- "Family11 1..1" Families_Member : familyDaughter10
+Families_Family "father 0..1" -- "Family 1..1" Families_Member : familyFather7
+Families_Family "mother 0..1" -- "Family13 1..1" Families_Member : familyMother12
+Families_Family "sons 0..1" -- "Family9 1..1" Families_Member : familySon8
+Families_Family "Member 1..1" *-- "familyFather 0..1" Families_Member : father0
+Families_Family "Member2 1..1" *-- "familyMother 0..1" Families_Member : mother1
+Families_Family "Member4 1..1" *-- "familySon 0..9999" Families_Member : sons3
 @enduml

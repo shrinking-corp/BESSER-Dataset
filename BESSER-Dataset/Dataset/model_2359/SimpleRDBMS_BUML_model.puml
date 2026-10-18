@@ -1,4 +1,8 @@
 @startuml
+' model: SimpleRDBMS
+' project: sampleModel
+' owner: User
+' description: New project
 class RdbmsModelElement {
 }
 class SimpleRDBMS_RdbmsColumn {
@@ -22,18 +26,18 @@ RdbmsModelElement <|-- SimpleRDBMS_RdbmsForeignKey
 RdbmsModelElement <|-- SimpleRDBMS_RdbmsKey
 RdbmsModelElement <|-- SimpleRDBMS_RdbmsSchema
 RdbmsModelElement <|-- SimpleRDBMS_RdbmsTable
-SimpleRDBMS_RdbmsColumn "0..9999" -- "1..1" SimpleRDBMS_RdbmsKey : rdbmsColumn11
-SimpleRDBMS_RdbmsColumn "0..9999" --* "1..1" SimpleRDBMS_RdbmsTable : rdbmsColumn20
-SimpleRDBMS_RdbmsColumn "0..9999" -- "1..1" SimpleRDBMS_RdbmsForeignKey : rdbmsColumn9
-SimpleRDBMS_RdbmsForeignKey "0..9999" --* "1..1" SimpleRDBMS_RdbmsTable : rdbmsForeignKey22
-SimpleRDBMS_RdbmsColumn "1..1" -- "0..9999" SimpleRDBMS_RdbmsForeignKey : rdbmsForeignKey3
-SimpleRDBMS_RdbmsColumn "1..1" -- "0..9999" SimpleRDBMS_RdbmsKey : rdbmsKey1
-SimpleRDBMS_RdbmsKey "0..9999" --* "1..1" SimpleRDBMS_RdbmsTable : rdbmsKey25
-SimpleRDBMS_RdbmsColumn "1..1" -- "1..1" SimpleRDBMS_RdbmsTable : rdbmsOwner0
-SimpleRDBMS_RdbmsKey "1..1" -- "1..1" SimpleRDBMS_RdbmsTable : rdbmsOwner15
-SimpleRDBMS_RdbmsForeignKey "1..1" -- "1..1" SimpleRDBMS_RdbmsTable : rdbmsOwner5
-SimpleRDBMS_RdbmsForeignKey "1..1" -- "1..1" SimpleRDBMS_RdbmsKey : rdbmsRefersTo7
-SimpleRDBMS_RdbmsForeignKey "0..9999" -- "1..1" SimpleRDBMS_RdbmsKey : rdbmsRefersToOpposite13
-SimpleRDBMS_RdbmsSchema "1..1" -- "1..1" SimpleRDBMS_RdbmsTable : rdbmsSchema28
-SimpleRDBMS_RdbmsSchema "1..1" *-- "0..9999" SimpleRDBMS_RdbmsTable : rdbmsTable18
+SimpleRDBMS_RdbmsColumn "rdbmsKey 0..9999" -- "RdbmsColumn12 1..1" SimpleRDBMS_RdbmsKey : rdbmsColumn11
+SimpleRDBMS_RdbmsColumn "rdbmsOwner 0..9999" --* "RdbmsColumn21 1..1" SimpleRDBMS_RdbmsTable : rdbmsColumn20
+SimpleRDBMS_RdbmsColumn "rdbmsForeignKey10 0..9999" -- "RdbmsColumn 1..1" SimpleRDBMS_RdbmsForeignKey : rdbmsColumn9
+SimpleRDBMS_RdbmsForeignKey "rdbmsOwner23 0..9999" --* "RdbmsForeignKey24 1..1" SimpleRDBMS_RdbmsTable : rdbmsForeignKey22
+SimpleRDBMS_RdbmsColumn "RdbmsForeignKey 1..1" -- "rdbmsColumn4 0..9999" SimpleRDBMS_RdbmsForeignKey : rdbmsForeignKey3
+SimpleRDBMS_RdbmsColumn "RdbmsKey 1..1" -- "rdbmsColumn2 0..9999" SimpleRDBMS_RdbmsKey : rdbmsKey1
+SimpleRDBMS_RdbmsKey "rdbmsOwner26 0..9999" --* "RdbmsKey27 1..1" SimpleRDBMS_RdbmsTable : rdbmsKey25
+SimpleRDBMS_RdbmsColumn "RdbmsTable 1..1" -- "rdbmsColumn 1..1" SimpleRDBMS_RdbmsTable : rdbmsOwner0
+SimpleRDBMS_RdbmsKey "RdbmsTable17 1..1" -- "rdbmsKey16 1..1" SimpleRDBMS_RdbmsTable : rdbmsOwner15
+SimpleRDBMS_RdbmsForeignKey "RdbmsTable6 1..1" -- "rdbmsForeignKey 1..1" SimpleRDBMS_RdbmsTable : rdbmsOwner5
+SimpleRDBMS_RdbmsForeignKey "RdbmsKey8 1..1" -- "rdbmsRefersToOpposite 1..1" SimpleRDBMS_RdbmsKey : rdbmsRefersTo7
+SimpleRDBMS_RdbmsForeignKey "rdbmsRefersTo 0..9999" -- "RdbmsForeignKey14 1..1" SimpleRDBMS_RdbmsKey : rdbmsRefersToOpposite13
+SimpleRDBMS_RdbmsSchema "rdbmsTable 1..1" -- "RdbmsSchema 1..1" SimpleRDBMS_RdbmsTable : rdbmsSchema28
+SimpleRDBMS_RdbmsSchema "RdbmsTable19 1..1" *-- "rdbmsSchema 0..9999" SimpleRDBMS_RdbmsTable : rdbmsTable18
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: hibernate
+' project: sampleModel
+' owner: User
+' description: New project
 enum DataTypes {
   Boolean
   Double
@@ -45,9 +49,9 @@ NamedElement <|-- hibernate_Entity
 NamedElement <|-- hibernate_Feature
 NamedElement <|-- hibernate_Module
 NamedElement <|-- hibernate_Package
-hibernate_Entity "0..9999" --* "1..1" hibernate_Package : entities1
-hibernate_Entity "1..1" *-- "0..9999" hibernate_Feature : features3
-hibernate_Module "1..1" *-- "0..9999" hibernate_Package : packages0
-hibernate_Entity "1..1" -- "1..1" hibernate_Reference : reference8
-hibernate_Entity "0..1" -- "1..1" hibernate_Entity : superEntity6
+hibernate_Entity "hibernate_Package2 0..9999" --* "hibernate_Entity 1..1" hibernate_Package : entities1
+hibernate_Entity "hibernate_Feature 1..1" *-- "hibernate_Entity4 0..9999" hibernate_Feature : features3
+hibernate_Module "hibernate_Package 1..1" *-- "hibernate_Module 0..9999" hibernate_Package : packages0
+hibernate_Entity "hibernate_Reference 1..1" -- "hibernate_Entity9 1..1" hibernate_Reference : reference8
+hibernate_Entity "hibernate_Entity5 0..1" -- "hibernate_Entity7 1..1" hibernate_Entity : superEntity6
 @enduml

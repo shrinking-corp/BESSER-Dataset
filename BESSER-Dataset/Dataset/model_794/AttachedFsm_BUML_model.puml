@@ -1,4 +1,8 @@
 @startuml
+' model: ecore
+' project: sampleModel
+' owner: User
+' description: New project
 class FSM {
 }
 class ecore_EClass {
@@ -15,14 +19,14 @@ class ecore_Transition {
   + output : str
 }
 FSM <|-- ecore_EClass
-ecore_FSM "1..1" -- "1..9999" ecore_State : finalState2
-ecore_State "1..1" -- "0..9999" ecore_Transition : incomingTransition7
-ecore_FSM "1..1" -- "1..1" ecore_State : initialState1
-ecore_EClass "0..9999" -- "1..1" ecore_State : myClasses9
-ecore_ENamedElement "1..1" *-- "1..9999" ecore_FSM : myFSMs15
-ecore_State "1..1" *-- "0..9999" ecore_Transition : outgoingTransition6
-ecore_FSM "1..1" *-- "0..9999" ecore_State : ownedState0
-ecore_FSM "1..1" -- "1..1" ecore_State : owningFSM5
-ecore_State "1..1" -- "1..1" ecore_Transition : source11
-ecore_State "1..1" -- "1..1" ecore_Transition : target13
+ecore_FSM "ecore_State4 1..1" -- "ecore_FSM3 1..9999" ecore_State : finalState2
+ecore_State "Transition8 1..1" -- "target 0..9999" ecore_Transition : incomingTransition7
+ecore_FSM "ecore_State 1..1" -- "ecore_FSM 1..1" ecore_State : initialState1
+ecore_EClass "ecore_State10 0..9999" -- "ecore_EClass 1..1" ecore_State : myClasses9
+ecore_ENamedElement "ecore_FSM16 1..1" *-- "ecore_ENamedElement 1..9999" ecore_FSM : myFSMs15
+ecore_State "Transition 1..1" *-- "source 0..9999" ecore_Transition : outgoingTransition6
+ecore_FSM "State 1..1" *-- "owningFSM 0..9999" ecore_State : ownedState0
+ecore_FSM "ownedState 1..1" -- "FSM 1..1" ecore_State : owningFSM5
+ecore_State "outgoingTransition 1..1" -- "State12 1..1" ecore_Transition : source11
+ecore_State "incomingTransition 1..1" -- "State14 1..1" ecore_Transition : target13
 @enduml

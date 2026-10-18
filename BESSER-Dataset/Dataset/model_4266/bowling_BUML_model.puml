@@ -1,4 +1,8 @@
 @startuml
+' model: bowling
+' project: sampleModel
+' owner: User
+' description: New project
 enum TournamentType {
   Amateur
   Pro
@@ -20,9 +24,9 @@ class bowling_Player {
 class bowling_Tournament {
   + type : str
 }
-bowling_Game "0..2" --* "1..1" bowling_Matchup : Game2
-bowling_Matchup "0..9999" --* "1..1" bowling_Tournament : Matchup1
-bowling_Game "1..1" -- "0..1" bowling_Matchup : Matchup3
-bowling_Game "1..1" -- "0..1" bowling_Player : player6
-bowling_League "1..1" *-- "0..9999" bowling_Player : players0
+bowling_Game "Matchup 0..2" --* "Game 1..1" bowling_Matchup : Game2
+bowling_Matchup "bowling_Tournament 0..9999" --* "bowling_Matchup 1..1" bowling_Tournament : Matchup1
+bowling_Game "Matchup5 1..1" -- "Game4 0..1" bowling_Matchup : Matchup3
+bowling_Game "bowling_Player7 1..1" -- "bowling_Game 0..1" bowling_Player : player6
+bowling_League "bowling_Player 1..1" *-- "bowling_League 0..9999" bowling_Player : players0
 @enduml

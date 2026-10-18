@@ -1,4 +1,8 @@
 @startuml
+' model: fenix
+' project: sampleModel
+' owner: User
+' description: New project
 class fenix_Capacity {
   + exam : int
   + normal : int
@@ -25,13 +29,13 @@ class fenix_Shift {
 }
 class fenix_scheduleOfCourse {
 }
-fenix_Capacity "0..1" -- "1..1" fenix_CourseLoad : capacity11
-fenix_CourseLoad "1..9999" -- "1..1" fenix_scheduleOfCourse : courseLoads15
-fenix_LessonPeriod "1..9999" -- "1..1" fenix_scheduleOfCourse : lessonPeriods13
-fenix_LessonPeriod "1..9999" -- "1..1" fenix_Shift : lessons1
-fenix_Occupation "1..1" -- "1..1" fenix_Shift : occupation0
-fenix_CourseLoad "1..1" -- "1..1" fenix_LessonPeriod : room5
-fenix_CourseLoad "1..9999" -- "1..1" fenix_Shift : rooms3
-fenix_Shift "1..9999" -- "1..1" fenix_scheduleOfCourse : shifts18
-fenix_CourseLoad "1..1" -- "1..1" fenix_CourseLoad : topLevelSpace9
+fenix_Capacity "fenix_CourseLoad12 0..1" -- "fenix_Capacity 1..1" fenix_CourseLoad : capacity11
+fenix_CourseLoad "fenix_scheduleOfCourse16 1..9999" -- "fenix_CourseLoad17 1..1" fenix_scheduleOfCourse : courseLoads15
+fenix_LessonPeriod "fenix_scheduleOfCourse 1..9999" -- "fenix_LessonPeriod14 1..1" fenix_scheduleOfCourse : lessonPeriods13
+fenix_LessonPeriod "fenix_Shift2 1..9999" -- "fenix_LessonPeriod 1..1" fenix_Shift : lessons1
+fenix_Occupation "fenix_Shift 1..1" -- "fenix_Occupation 1..1" fenix_Shift : occupation0
+fenix_CourseLoad "fenix_LessonPeriod6 1..1" -- "fenix_CourseLoad7 1..1" fenix_LessonPeriod : room5
+fenix_CourseLoad "fenix_Shift4 1..9999" -- "fenix_CourseLoad 1..1" fenix_Shift : rooms3
+fenix_Shift "fenix_scheduleOfCourse19 1..9999" -- "fenix_Shift20 1..1" fenix_scheduleOfCourse : shifts18
+fenix_CourseLoad "fenix_CourseLoad10 1..1" -- "fenix_CourseLoad8 1..1" fenix_CourseLoad : topLevelSpace9
 @enduml

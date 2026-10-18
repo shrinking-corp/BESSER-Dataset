@@ -1,4 +1,8 @@
 @startuml
+' model: model
+' project: sampleModel
+' owner: User
+' description: New project
 class Administrator {
 }
 class AutoConfirmedUser {
@@ -105,14 +109,14 @@ Node <|-- model_User
 RegisteredUser <|-- model_AutoConfirmedUser
 Role <|-- model_UnregisteredUser
 UnregisteredUser <|-- model_RegisteredUser
-model_Revision "1..1" -- "1..1" model_User : author12
-model_Content "1..1" -- "1..1" model_Revision : currentRevision3
-model_Content "1..1" -- "1..1" model_Discussion : discussionPage1
-model_User "0..9999" -- "1..1" model_WikiProject : member16
-model_Media "1..1" -- "0..9999" model_MetaData : meta9
-model_Content "1..1" -- "1..9999" model_Revision : revisions0
-model_Role "0..1" -- "1..1" model_User : role11
-model_RegisteredUser "1..1" -- "0..1" model_Talk : talkPage15
-model_Article "1..9999" -- "1..1" model_Media : usage8
-model_Content "1..1" -- "1..1" model_VersionHistory : versionHistoryPage6
+model_Revision "model_User14 1..1" -- "model_Revision13 1..1" model_User : author12
+model_Content "model_Revision5 1..1" -- "model_Content4 1..1" model_Revision : currentRevision3
+model_Content "model_Discussion 1..1" -- "model_Content2 1..1" model_Discussion : discussionPage1
+model_User "model_WikiProject 0..9999" -- "model_User17 1..1" model_WikiProject : member16
+model_Media "model_MetaData 1..1" -- "model_Media10 0..9999" model_MetaData : meta9
+model_Content "model_Revision 1..1" -- "model_Content 1..9999" model_Revision : revisions0
+model_Role "model_User 0..1" -- "model_Role 1..1" model_User : role11
+model_RegisteredUser "model_Talk 1..1" -- "model_RegisteredUser 0..1" model_Talk : talkPage15
+model_Article "model_Media 1..9999" -- "model_Article 1..1" model_Media : usage8
+model_Content "model_VersionHistory 1..1" -- "model_Content7 1..1" model_VersionHistory : versionHistoryPage6
 @enduml

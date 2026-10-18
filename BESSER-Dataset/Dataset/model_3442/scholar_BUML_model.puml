@@ -1,4 +1,8 @@
 @startuml
+' model: scholar
+' project: sampleModel
+' owner: User
+' description: New project
 class Named {
 }
 class scholar_Discipline {
@@ -23,12 +27,12 @@ Named <|-- scholar_Exam
 Named <|-- scholar_Lecture
 Named <|-- scholar_Student
 Named <|-- scholar_Teacher
-scholar_Discipline "0..1" -- "1..1" scholar_Lecture : discipline2
-scholar_Discipline "0..9999" --* "1..1" scholar_ScholarManagement : disciplines9
-scholar_Exam "0..9999" --* "1..1" scholar_Student : exams0
-scholar_Exam "1..1" -- "0..1" scholar_Lecture : lecture4
-scholar_Lecture "1..1" -- "0..1" scholar_Teacher : lecture_teacher1
-scholar_Lecture "0..9999" --* "1..1" scholar_ScholarManagement : lectures12
-scholar_ScholarManagement "1..1" *-- "0..9999" scholar_Student : students7
-scholar_ScholarManagement "1..1" *-- "0..9999" scholar_Teacher : teachers15
+scholar_Discipline "scholar_Lecture3 0..1" -- "scholar_Discipline 1..1" scholar_Lecture : discipline2
+scholar_Discipline "scholar_ScholarManagement10 0..9999" --* "scholar_Discipline11 1..1" scholar_ScholarManagement : disciplines9
+scholar_Exam "scholar_Student 0..9999" --* "scholar_Exam 1..1" scholar_Student : exams0
+scholar_Exam "scholar_Lecture6 1..1" -- "scholar_Exam5 0..1" scholar_Lecture : lecture4
+scholar_Lecture "scholar_Teacher 1..1" -- "scholar_Lecture 0..1" scholar_Teacher : lecture_teacher1
+scholar_Lecture "scholar_ScholarManagement13 0..9999" --* "scholar_Lecture14 1..1" scholar_ScholarManagement : lectures12
+scholar_ScholarManagement "scholar_Student8 1..1" *-- "scholar_ScholarManagement 0..9999" scholar_Student : students7
+scholar_ScholarManagement "scholar_Teacher17 1..1" *-- "scholar_ScholarManagement16 0..9999" scholar_Teacher : teachers15
 @enduml

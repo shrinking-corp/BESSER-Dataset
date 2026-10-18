@@ -1,4 +1,8 @@
 @startuml
+' model: micro
+' project: sampleModel
+' owner: User
+' description: New project
 class Attribute {
 }
 enum AttributePrimitiveValue {
@@ -92,33 +96,33 @@ NamedElement <|-- micro_Service
 NamedElement <|-- micro_Step
 Service <|-- micro_AggregateService
 Service <|-- micro_ViewService
-micro_Data "1..1" --* "1..1" micro_Saga : Data46
-micro_Model "0..1" -- "1..1" micro_PrimitiveTypeAttribute : ModelToView51
-micro_Operation "1..1" *-- "0..1" micro_Saga : Saga20
-micro_Saga "1..1" *-- "1..9999" micro_Step : Steps43
-micro_AggregateService "0..1" -- "1..1" micro_Operation : aggregateService25
-micro_AggregateService "0..1" -- "1..1" micro_ModelEvent : aggregateService6
-micro_API "1..1" --* "1..1" micro_AggregateService : api10
-micro_API "0..1" -- "1..1" micro_Command : api33
-micro_API "0..1" -- "1..1" micro_Event : api34
-micro_API "0..1" -- "1..1" micro_Info : api39
-micro_Attribute "1..9999" --* "1..1" micro_Model : attributes3
-micro_API "1..1" *-- "1..9999" micro_Command : commands28
-micro_Command "1..9999" -- "1..1" micro_Step : commands41
-micro_Info "1..1" -- "0..1" micro_Model : dto36
-micro_API "1..1" *-- "1..9999" micro_Event : events27
-micro_AggregateService "1..1" -- "0..9999" micro_ModelEvent : handleModelEvents11
-micro_API "1..1" *-- "1..9999" micro_Info : infos30
-micro_Model "1..1" -- "1..1" micro_Operation : model22
-micro_Model "1..1" -- "1..1" micro_ModelEvent : model4
-micro_Attribute "1..1" -- "0..1" micro_Model : model48
-micro_AggregateService "1..1" *-- "1..9999" micro_ModelEvent : modelEvents7
-micro_MicroserviceArchitecture "1..1" *-- "0..9999" micro_Model : models1
-micro_AggregateService "1..1" -- "1..9999" micro_Model : models14
-micro_AggregateService "1..1" *-- "1..9999" micro_Operation : operation8
-micro_Event "0..1" -- "1..1" micro_Operation : publish19
-micro_AggregateService "0..9999" -- "1..1" micro_ViewService : replicateServices17
-micro_Command "1..1" -- "0..1" micro_Info : replyInfo32
-micro_MicroserviceArchitecture "1..1" *-- "0..9999" micro_Service : services0
-micro_Model "1..1" -- "1..1" micro_ReferenceAttribute : type49
+micro_Data "micro_Saga47 1..1" --* "micro_Data 1..1" micro_Saga : Data46
+micro_Model "micro_PrimitiveTypeAttribute 0..1" -- "micro_Model52 1..1" micro_PrimitiveTypeAttribute : ModelToView51
+micro_Operation "micro_Saga 1..1" *-- "micro_Operation21 0..1" micro_Saga : Saga20
+micro_Saga "micro_Step45 1..1" *-- "micro_Saga44 1..9999" micro_Step : Steps43
+micro_AggregateService "operation 0..1" -- "AggregateService26 1..1" micro_Operation : aggregateService25
+micro_AggregateService "modelEvents 0..1" -- "AggregateService 1..1" micro_ModelEvent : aggregateService6
+micro_API "micro_AggregateService 1..1" --* "micro_API 1..1" micro_AggregateService : api10
+micro_API "commands 0..1" -- "API 1..1" micro_Command : api33
+micro_API "events 0..1" -- "API35 1..1" micro_Event : api34
+micro_API "infos 0..1" -- "API40 1..1" micro_Info : api39
+micro_Attribute "model 1..9999" --* "Attribute 1..1" micro_Model : attributes3
+micro_API "Command 1..1" *-- "api29 1..9999" micro_Command : commands28
+micro_Command "micro_Step 1..9999" -- "micro_Command42 1..1" micro_Step : commands41
+micro_Info "micro_Model38 1..1" -- "micro_Info37 0..1" micro_Model : dto36
+micro_API "Event 1..1" *-- "api 1..9999" micro_Event : events27
+micro_AggregateService "micro_ModelEvent13 1..1" -- "micro_AggregateService12 0..9999" micro_ModelEvent : handleModelEvents11
+micro_API "Info 1..1" *-- "api31 1..9999" micro_Info : infos30
+micro_Model "micro_Operation23 1..1" -- "micro_Model24 1..1" micro_Operation : model22
+micro_Model "micro_ModelEvent 1..1" -- "micro_Model5 1..1" micro_ModelEvent : model4
+micro_Attribute "Model 1..1" -- "attributes 0..1" micro_Model : model48
+micro_AggregateService "ModelEvent 1..1" *-- "aggregateService 1..9999" micro_ModelEvent : modelEvents7
+micro_MicroserviceArchitecture "micro_Model 1..1" *-- "micro_MicroserviceArchitecture2 0..9999" micro_Model : models1
+micro_AggregateService "micro_Model16 1..1" -- "micro_AggregateService15 1..9999" micro_Model : models14
+micro_AggregateService "Operation 1..1" *-- "aggregateService9 1..9999" micro_Operation : operation8
+micro_Event "micro_Operation 0..1" -- "micro_Event 1..1" micro_Operation : publish19
+micro_AggregateService "micro_ViewService 0..9999" -- "micro_AggregateService18 1..1" micro_ViewService : replicateServices17
+micro_Command "micro_Info 1..1" -- "micro_Command 0..1" micro_Info : replyInfo32
+micro_MicroserviceArchitecture "micro_Service 1..1" *-- "micro_MicroserviceArchitecture 0..9999" micro_Service : services0
+micro_Model "micro_ReferenceAttribute 1..1" -- "micro_Model50 1..1" micro_ReferenceAttribute : type49
 @enduml

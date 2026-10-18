@@ -1,4 +1,8 @@
 @startuml
+' model: Example
+' project: sampleModel
+' owner: User
+' description: New project
 class Dog {
 }
 class Example_Cat {
@@ -37,11 +41,11 @@ Member <|-- Example_Parent
 Member <|-- Example_Son
 Pet <|-- Example_Cat
 Pet <|-- Example_Dog
-Example_Daughter "0..9999" --* "1..1" Example_Family : daughters3
-Example_Family "1..1" -- "1..1" Example_Parent : family6
-Example_Family "1..1" -- "1..1" Example_Son : family7
-Example_Daughter "1..1" -- "1..1" Example_Family : family9
-Example_Family "1..1" *-- "0..2" Example_Parent : parents0
-Example_Family "1..1" *-- "0..9999" Example_Pet : pets5
-Example_Family "1..1" *-- "0..9999" Example_Son : sons1
+Example_Daughter "family4 0..9999" --* "Daughter 1..1" Example_Family : daughters3
+Example_Family "parents 1..1" -- "Family 1..1" Example_Parent : family6
+Example_Family "sons 1..1" -- "Family8 1..1" Example_Son : family7
+Example_Daughter "Family10 1..1" -- "daughters 1..1" Example_Family : family9
+Example_Family "Parent 1..1" *-- "family 0..2" Example_Parent : parents0
+Example_Family "Example_Pet 1..1" *-- "Example_Family 0..9999" Example_Pet : pets5
+Example_Family "Son 1..1" *-- "family2 0..9999" Example_Son : sons1
 @enduml

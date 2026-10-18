@@ -1,4 +1,8 @@
 @startuml
+' model: entities
+' project: sampleModel
+' owner: User
+' description: New project
 class PackagedType {
 }
 class Type {
@@ -30,11 +34,11 @@ PackagedType <|-- entities_Package
 PackagedType <|-- entities_Type
 Type <|-- entities_Entity
 Type <|-- entities_SimpleType
-entities_Model "1..1" *-- "0..9999" entities_Package : elements0
-entities_Entity "1..1" -- "0..1" entities_Entity : extends6
-entities_JAVAID "0..1" --* "1..1" entities_TypeDef : mappedType1
-entities_Entity "1..1" -- "0..1" entities_Package : package10
-entities_Package "1..1" *-- "0..9999" entities_PackagedType : properties2
-entities_Entity "1..1" *-- "0..9999" entities_Property : properties7
-entities_Property "1..1" -- "0..1" entities_Type : type4
+entities_Model "entities_Package 1..1" *-- "entities_Model 0..9999" entities_Package : elements0
+entities_Entity "entities_Entity 1..1" -- "entities_Entity5 0..1" entities_Entity : extends6
+entities_JAVAID "entities_TypeDef 0..1" --* "entities_JAVAID 1..1" entities_TypeDef : mappedType1
+entities_Entity "entities_Package12 1..1" -- "entities_Entity11 0..1" entities_Package : package10
+entities_Package "entities_PackagedType 1..1" *-- "entities_Package3 0..9999" entities_PackagedType : properties2
+entities_Entity "entities_Property9 1..1" *-- "entities_Entity8 0..9999" entities_Property : properties7
+entities_Property "entities_Type 1..1" -- "entities_Property 0..1" entities_Type : type4
 @enduml

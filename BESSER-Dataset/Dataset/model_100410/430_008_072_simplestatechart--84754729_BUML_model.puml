@@ -1,4 +1,8 @@
 @startuml
+' model: simplestatechart
+' project: sampleModel
+' owner: User
+' description: New project
 class NamedElement {
 }
 class Thing {
@@ -29,13 +33,13 @@ NamedElement <|-- simplestatechart_State
 NamedElement <|-- simplestatechart_Thing
 NamedElement <|-- simplestatechart_Transition
 Thing <|-- simplestatechart_Variable
-simplestatechart_RelatedTo "1..1" -- "0..1" simplestatechart_Thing : fromThing1
-simplestatechart_State "0..1" -- "1..1" simplestatechart_State : parentstate11
-simplestatechart_RelatedTo "0..9999" --* "1..1" simplestatechart_Thing : relations0
-simplestatechart_State "0..1" -- "1..1" simplestatechart_Transition : source3
-simplestatechart_State "0..9999" --* "1..1" simplestatechart_State : substates8
-simplestatechart_State "0..1" -- "1..1" simplestatechart_Transition : target4
-simplestatechart_RelatedTo "1..1" -- "0..1" simplestatechart_Thing : toThing2
-simplestatechart_State "1..1" *-- "0..9999" simplestatechart_Transition : transitions15
-simplestatechart_State "1..1" *-- "0..9999" simplestatechart_Variable : variables13
+simplestatechart_RelatedTo "Thing 1..1" -- "relations 0..1" simplestatechart_Thing : fromThing1
+simplestatechart_State "simplestatechart_State10 0..1" -- "simplestatechart_State12 1..1" simplestatechart_State : parentstate11
+simplestatechart_RelatedTo "fromThing 0..9999" --* "RelatedTo 1..1" simplestatechart_Thing : relations0
+simplestatechart_State "simplestatechart_Transition 0..1" -- "simplestatechart_State 1..1" simplestatechart_Transition : source3
+simplestatechart_State "simplestatechart_State7 0..9999" --* "simplestatechart_State9 1..1" simplestatechart_State : substates8
+simplestatechart_State "simplestatechart_Transition5 0..1" -- "simplestatechart_State6 1..1" simplestatechart_Transition : target4
+simplestatechart_RelatedTo "simplestatechart_Thing 1..1" -- "simplestatechart_RelatedTo 0..1" simplestatechart_Thing : toThing2
+simplestatechart_State "simplestatechart_Transition17 1..1" *-- "simplestatechart_State16 0..9999" simplestatechart_Transition : transitions15
+simplestatechart_State "simplestatechart_Variable 1..1" *-- "simplestatechart_State14 0..9999" simplestatechart_Variable : variables13
 @enduml

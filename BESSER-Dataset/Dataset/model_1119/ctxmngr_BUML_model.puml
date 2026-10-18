@@ -1,4 +1,8 @@
 @startuml
+' model: ctxmngr
+' project: sampleModel
+' owner: User
+' description: New project
 class NamedElement {
 }
 class ctxmngr_ContextManager {
@@ -39,27 +43,27 @@ NamedElement <|-- ctxmngr_ContextParameter
 NamedElement <|-- ctxmngr_CtxState
 NamedElement <|-- ctxmngr_CtxTransition
 NamedElement <|-- ctxmngr_RemoteFiringDependency
-ctxmngr_ContextManager "1..1" -- "0..9999" ctxmngr_Manager : combinedManager7
-ctxmngr_ContextParameter "0..9999" -- "1..1" ctxmngr_CtxState : contextParameters18
-ctxmngr_ContextManager "1..1" *-- "0..9999" ctxmngr_ContextParameter : contextParameters5
-ctxmngr_ContextManager "1..1" -- "0..9999" ctxmngr_CtxState : finalState2
-ctxmngr_ManagerTransition "1..9999" -- "1..1" ctxmngr_RemoteFiringDependency : fired35
-ctxmngr_ManagerTransition "1..9999" -- "1..1" ctxmngr_RemoteFiringDependency : firing37
-ctxmngr_CtxState "1..1" -- "0..9999" ctxmngr_CtxTransition : incomingTransition16
-ctxmngr_ContextManager "1..1" -- "1..1" ctxmngr_CtxState : initialState1
-ctxmngr_CtxState "1..1" -- "0..9999" ctxmngr_ManagerState : managerStates20
-ctxmngr_CtxTransition "1..1" -- "0..9999" ctxmngr_ManagerTransition : managerTransition28
-ctxmngr_ContextParameter "1..1" *-- "0..9999" ctxmngr_OpaqueExpression : opaqueExpressions31
-ctxmngr_CtxState "1..1" -- "0..9999" ctxmngr_CtxTransition : outgoingTransition14
-ctxmngr_ContextManager "1..1" *-- "0..9999" ctxmngr_CtxState : ownedState0
-ctxmngr_ContextManager "1..1" *-- "0..9999" ctxmngr_CtxTransition : ownedTransition11
-ctxmngr_ContextManager "1..1" -- "1..1" ctxmngr_CtxState : owningManager13
-ctxmngr_ContextManager "1..1" -- "1..1" ctxmngr_CtxTransition : owningManager22
-ctxmngr_ContextManager "1..1" -- "1..1" ctxmngr_ContextParameter : owningManager32
-ctxmngr_ContextManager "1..1" -- "1..1" ctxmngr_RemoteFiringDependency : owningManager40
-ctxmngr_ContextManager "1..1" *-- "0..9999" ctxmngr_RemoteFiringDependency : remoteFirings9
-ctxmngr_CtxTransition "1..9999" -- "1..1" ctxmngr_RemoteFiringDependency : represents42
-ctxmngr_CtxState "1..1" -- "1..1" ctxmngr_CtxTransition : source24
-ctxmngr_ContextParameter "1..1" -- "0..9999" ctxmngr_CtxState : state29
-ctxmngr_CtxState "1..1" -- "1..1" ctxmngr_CtxTransition : target26
+ctxmngr_ContextManager "ctxmngr_Manager 1..1" -- "ctxmngr_ContextManager8 0..9999" ctxmngr_Manager : combinedManager7
+ctxmngr_ContextParameter "state 0..9999" -- "ContextParameter19 1..1" ctxmngr_CtxState : contextParameters18
+ctxmngr_ContextManager "ContextParameter 1..1" *-- "owningManager6 0..9999" ctxmngr_ContextParameter : contextParameters5
+ctxmngr_ContextManager "ctxmngr_CtxState4 1..1" -- "ctxmngr_ContextManager3 0..9999" ctxmngr_CtxState : finalState2
+ctxmngr_ManagerTransition "ctxmngr_RemoteFiringDependency 1..9999" -- "ctxmngr_ManagerTransition36 1..1" ctxmngr_RemoteFiringDependency : fired35
+ctxmngr_ManagerTransition "ctxmngr_RemoteFiringDependency38 1..9999" -- "ctxmngr_ManagerTransition39 1..1" ctxmngr_RemoteFiringDependency : firing37
+ctxmngr_CtxState "CtxTransition17 1..1" -- "target 0..9999" ctxmngr_CtxTransition : incomingTransition16
+ctxmngr_ContextManager "ctxmngr_CtxState 1..1" -- "ctxmngr_ContextManager 1..1" ctxmngr_CtxState : initialState1
+ctxmngr_CtxState "ctxmngr_ManagerState 1..1" -- "ctxmngr_CtxState21 0..9999" ctxmngr_ManagerState : managerStates20
+ctxmngr_CtxTransition "ctxmngr_ManagerTransition 1..1" -- "ctxmngr_CtxTransition 0..9999" ctxmngr_ManagerTransition : managerTransition28
+ctxmngr_ContextParameter "ctxmngr_OpaqueExpression 1..1" *-- "ctxmngr_ContextParameter 0..9999" ctxmngr_OpaqueExpression : opaqueExpressions31
+ctxmngr_CtxState "CtxTransition15 1..1" -- "source 0..9999" ctxmngr_CtxTransition : outgoingTransition14
+ctxmngr_ContextManager "CtxState 1..1" *-- "owningManager 0..9999" ctxmngr_CtxState : ownedState0
+ctxmngr_ContextManager "CtxTransition 1..1" *-- "owningManager12 0..9999" ctxmngr_CtxTransition : ownedTransition11
+ctxmngr_ContextManager "ownedState 1..1" -- "ContextManager 1..1" ctxmngr_CtxState : owningManager13
+ctxmngr_ContextManager "ownedTransition 1..1" -- "ContextManager23 1..1" ctxmngr_CtxTransition : owningManager22
+ctxmngr_ContextManager "contextParameters33 1..1" -- "ContextManager34 1..1" ctxmngr_ContextParameter : owningManager32
+ctxmngr_ContextManager "remoteFirings 1..1" -- "ContextManager41 1..1" ctxmngr_RemoteFiringDependency : owningManager40
+ctxmngr_ContextManager "RemoteFiringDependency 1..1" *-- "owningManager10 0..9999" ctxmngr_RemoteFiringDependency : remoteFirings9
+ctxmngr_CtxTransition "ctxmngr_RemoteFiringDependency43 1..9999" -- "ctxmngr_CtxTransition44 1..1" ctxmngr_RemoteFiringDependency : represents42
+ctxmngr_CtxState "outgoingTransition 1..1" -- "CtxState25 1..1" ctxmngr_CtxTransition : source24
+ctxmngr_ContextParameter "CtxState30 1..1" -- "contextParameters 0..9999" ctxmngr_CtxState : state29
+ctxmngr_CtxState "incomingTransition 1..1" -- "CtxState27 1..1" ctxmngr_CtxTransition : target26
 @enduml

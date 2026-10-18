@@ -1,4 +1,8 @@
 @startuml
+' model: adfg
+' project: sampleModel
+' owner: User
+' description: New project
 class Actor {
 }
 class Connection {
@@ -72,26 +76,26 @@ Connection <|-- adfg_Channel
 Connection <|-- adfg_LossyChannel
 Port <|-- adfg_InputPort
 Port <|-- adfg_OutputPort
-adfg_Application "1..1" *-- "0..9999" adfg_GraphConnection : GraphConnections1
-adfg_AffineRelation "0..9999" -- "1..1" adfg_PeriodicActor : affineRelationSource36
-adfg_AffineRelation "0..9999" -- "1..1" adfg_PeriodicActor : affineRelationTarget39
-adfg_AffineRelation "0..9999" --* "1..1" adfg_Graph : affineRelations6
-adfg_Connection "0..1" -- "1..1" adfg_InputPort : connection32
-adfg_Connection "0..1" -- "1..1" adfg_OutputPort : connection34
-adfg_Connection "0..9999" --* "1..1" adfg_Graph : connections8
-adfg_Application "1..1" *-- "0..9999" adfg_Graph : graphs0
-adfg_Actor "0..9999" --* "1..1" adfg_Graph : nodes4
-adfg_Application "1..1" -- "1..1" adfg_GraphConnection : owner14
-adfg_Actor "1..1" -- "1..1" adfg_Graph : owner16
-adfg_AffineRelation "1..1" -- "1..1" adfg_Graph : owner23
-adfg_Connection "1..1" -- "1..1" adfg_Graph : owner28
-adfg_Application "1..1" -- "1..1" adfg_Graph : owner3
-adfg_Actor "1..1" -- "1..1" adfg_Port : owner30
-adfg_Actor "1..1" *-- "0..9999" adfg_Port : ports18
-adfg_Graph "1..1" -- "1..1" adfg_GraphConnection : source10
-adfg_AffineRelation "1..1" -- "1..1" adfg_PeriodicActor : source20
-adfg_Connection "1..1" -- "1..1" adfg_OutputPort : source25
-adfg_Graph "1..1" -- "1..1" adfg_GraphConnection : target11
-adfg_AffineRelation "1..1" -- "1..1" adfg_PeriodicActor : target21
-adfg_Connection "1..1" -- "1..1" adfg_InputPort : target26
+adfg_Application "GraphConnection 1..1" *-- "owner2 0..9999" adfg_GraphConnection : GraphConnections1
+adfg_AffineRelation "source37 0..9999" -- "AffineRelation38 1..1" adfg_PeriodicActor : affineRelationSource36
+adfg_AffineRelation "target40 0..9999" -- "AffineRelation41 1..1" adfg_PeriodicActor : affineRelationTarget39
+adfg_AffineRelation "owner7 0..9999" --* "AffineRelation 1..1" adfg_Graph : affineRelations6
+adfg_Connection "target 0..1" -- "Connection33 1..1" adfg_InputPort : connection32
+adfg_Connection "source 0..1" -- "Connection35 1..1" adfg_OutputPort : connection34
+adfg_Connection "owner9 0..9999" --* "Connection 1..1" adfg_Graph : connections8
+adfg_Application "Graph 1..1" *-- "owner 0..9999" adfg_Graph : graphs0
+adfg_Actor "owner5 0..9999" --* "Actor 1..1" adfg_Graph : nodes4
+adfg_Application "GraphConnections 1..1" -- "Application15 1..1" adfg_GraphConnection : owner14
+adfg_Actor "Graph17 1..1" -- "nodes 1..1" adfg_Graph : owner16
+adfg_AffineRelation "Graph24 1..1" -- "affineRelations 1..1" adfg_Graph : owner23
+adfg_Connection "Graph29 1..1" -- "connections 1..1" adfg_Graph : owner28
+adfg_Application "graphs 1..1" -- "Application 1..1" adfg_Graph : owner3
+adfg_Actor "ports 1..1" -- "Actor31 1..1" adfg_Port : owner30
+adfg_Actor "Port 1..1" *-- "owner19 0..9999" adfg_Port : ports18
+adfg_Graph "adfg_GraphConnection 1..1" -- "adfg_Graph 1..1" adfg_GraphConnection : source10
+adfg_AffineRelation "PeriodicActor 1..1" -- "affineRelationSource 1..1" adfg_PeriodicActor : source20
+adfg_Connection "OutputPort 1..1" -- "connection 1..1" adfg_OutputPort : source25
+adfg_Graph "adfg_GraphConnection12 1..1" -- "adfg_Graph13 1..1" adfg_GraphConnection : target11
+adfg_AffineRelation "PeriodicActor22 1..1" -- "affineRelationTarget 1..1" adfg_PeriodicActor : target21
+adfg_Connection "InputPort 1..1" -- "connection27 1..1" adfg_InputPort : target26
 @enduml

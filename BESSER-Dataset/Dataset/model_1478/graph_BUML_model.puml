@@ -1,4 +1,8 @@
 @startuml
+' model: graph
+' project: sampleModel
+' owner: User
+' description: New project
 class HasName {
 }
 class graph_Edge {
@@ -14,12 +18,12 @@ class graph_SubNode {
 }
 HasName <|-- graph_Node
 HasName <|-- graph_SubNode
-graph_Edge "1..1" -- "1..1" graph_Node : destinationNode4
-graph_Edge "0..9999" --* "1..1" graph_Root : edges7
-graph_Edge "0..1" -- "1..1" graph_Node : incomingEdge1
-graph_Node "0..1" -- "1..1" graph_SubNode : masterNode10
-graph_Node "0..9999" --* "1..1" graph_Root : nodes8
-graph_Edge "0..1" -- "1..1" graph_Node : outgoingEdge0
-graph_Edge "1..1" -- "1..1" graph_Node : sourceNode5
-graph_Node "1..1" *-- "0..9999" graph_SubNode : subNodes3
+graph_Edge "Node 1..1" -- "incomingEdge 1..1" graph_Node : destinationNode4
+graph_Edge "graph_Root 0..9999" --* "graph_Edge 1..1" graph_Root : edges7
+graph_Edge "destinationNode 0..1" -- "Edge2 1..1" graph_Node : incomingEdge1
+graph_Node "subNodes 0..1" -- "Node11 1..1" graph_SubNode : masterNode10
+graph_Node "graph_Root9 0..9999" --* "graph_Node 1..1" graph_Root : nodes8
+graph_Edge "sourceNode 0..1" -- "Edge 1..1" graph_Node : outgoingEdge0
+graph_Edge "Node6 1..1" -- "outgoingEdge 1..1" graph_Node : sourceNode5
+graph_Node "SubNode 1..1" *-- "masterNode 0..9999" graph_SubNode : subNodes3
 @enduml

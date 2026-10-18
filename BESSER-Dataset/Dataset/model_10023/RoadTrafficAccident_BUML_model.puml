@@ -1,4 +1,8 @@
 @startuml
+' model: EA_Model
+' project: sampleModel
+' owner: User
+' description: New project
 class EA_Model_CrashedVehicle {
 }
 class EA_Model_DeceasedPerson {
@@ -52,16 +56,28 @@ Traveler <|-- EA_Model_Passenger
 Traveler <|-- EA_Model_Victim
 TravelingVehicle <|-- EA_Model_CrashedVehicle
 Vehicle <|-- EA_Model_TravelingVehicle
-EA_Model_CrashedVehicle "1..1" -- "1..1" EA_Model_RoadTrafficAccident : accident0
-EA_Model_RoadTrafficAccident "1..1" -- "1..1" EA_Model_Victim : accident18
-EA_Model_CrashedVehicle "1..9999" -- "1..1" EA_Model_RoadwayWithAccident : crashedvehicle9
-EA_Model_RoadTrafficAccident "1..9999" -- "1..1" EA_Model_RoadwayWithAccident : roadtrafficaccident7
-EA_Model_CrashedVehicle "1..1" -- "1..1" EA_Model_RoadwayWithAccident : roadwaywithaccident1
-EA_Model_RoadTrafficAccident "1..1" -- "1..1" EA_Model_RoadwayWithAccident : roadwaywithaccident5
-EA_Model_Travel "1..1" -- "1..1" EA_Model_Traveler : travel15
-EA_Model_Travel "1..1" -- "1..1" EA_Model_TravelingVehicle : travel16
-EA_Model_Travel "1..1" -- "1..9999" EA_Model_Traveler : travelers12
-EA_Model_Travel "1..1" -- "1..1" EA_Model_TravelingVehicle : vehicle13
-EA_Model_CrashedVehicle "1..9999" -- "1..1" EA_Model_RoadTrafficAccident : vehicles2
-EA_Model_RoadTrafficAccident "1..1" -- "1..9999" EA_Model_Victim : victims3
+EA_Model_CrashedVehicle "RoadTrafficAccident 1..1" -- "vehicles 1..1" EA_Model_RoadTrafficAccident : accident0
+EA_Model_RoadTrafficAccident "victims 1..1" -- "RoadTrafficAccident19 1..1" EA_Model_Victim : accident18
+EA_Model_CrashedVehicle "roadwaywithaccident10 1..9999" -- "CrashedVehicle11 1..1" EA_Model_RoadwayWithAccident : crashedvehicle9
+EA_Model_RoadTrafficAccident "roadwaywithaccident 1..9999" -- "RoadTrafficAccident8 1..1" EA_Model_RoadwayWithAccident : roadtrafficaccident7
+EA_Model_CrashedVehicle "RoadwayWithAccident 1..1" -- "crashedvehicle 1..1" EA_Model_RoadwayWithAccident : roadwaywithaccident1
+EA_Model_RoadTrafficAccident "RoadwayWithAccident6 1..1" -- "roadtrafficaccident 1..1" EA_Model_RoadwayWithAccident : roadwaywithaccident5
+EA_Model_Travel "travelers 1..1" -- "Travel 1..1" EA_Model_Traveler : travel15
+EA_Model_Travel "vehicle 1..1" -- "Travel17 1..1" EA_Model_TravelingVehicle : travel16
+EA_Model_Travel "Traveler 1..1" -- "travel 1..9999" EA_Model_Traveler : travelers12
+EA_Model_Travel "TravelingVehicle 1..1" -- "travel14 1..1" EA_Model_TravelingVehicle : vehicle13
+EA_Model_CrashedVehicle "accident 1..9999" -- "CrashedVehicle 1..1" EA_Model_RoadTrafficAccident : vehicles2
+EA_Model_RoadTrafficAccident "Victim 1..1" -- "accident4 1..9999" EA_Model_Victim : victims3
+note top of EA_Model_CrashedVehicle
+  constraint travelers_are_victims_in_accident (OCL): context CrashedVehicle inv: self.travel.travelers->forAll(t|t.oclIsKindOf(Victim) andt.oclAsType(Victim).accident = self.accident)
+end note
+note top of EA_Model_RearEndCollision
+  constraint Unnamed (OCL): context RearEndCollision inv: self.vehicles->size()=2
+end note
+note top of EA_Model_RoadTrafficAccident
+  constraint one_vehicle (OCL): context RoadTrafficAccident inv: self.vehicles->size()=1
+end note
+note top of EA_Model_TravelingVehicle
+  constraint Unnamed1 (OCL): context TravelingVehicle inv: self.travel.travelers->one(v|v.oclIsKindOf(Driver))
+end note
 @enduml

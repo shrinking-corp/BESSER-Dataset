@@ -1,4 +1,8 @@
 @startuml
+' model: di
+' project: sampleModel
+' owner: User
+' description: New project
 class View {
 }
 class di_Bendpoint {
@@ -34,16 +38,16 @@ abstract class di_View {
 View <|-- di_Connector
 View <|-- di_Diagram
 View <|-- di_Node
-di_Bendpoint "0..9999" --* "1..1" di_Connector : bendpoint0
-di_Bendpoint "0..9999" --* "1..1" di_DocumentRoot : bendpoint7
-di_Node "0..9999" --* "1..1" di_View : child25
-di_Connector "0..9999" --* "1..1" di_Diagram : connector1
-di_Connector "0..9999" --* "1..1" di_DocumentRoot : connector10
-di_Diagram "0..9999" --* "1..1" di_DocumentRoot : diagram15
-di_DocumentRoot "1..1" *-- "0..9999" di_Node : node18
-di_DocumentRoot "1..1" *-- "0..9999" di_Style : style20
-di_Style "0..9999" --* "1..1" di_View : style22
-di_DocumentRoot "1..1" *-- "0..9999" di_View : view13
-di_DocumentRoot "1..1" *-- "0..9999" di_EStringToStringMapEntry : xMLNSPrefixMap3
-di_DocumentRoot "1..1" *-- "0..9999" di_EStringToStringMapEntry : xSISchemaLocation4
+di_Bendpoint "di_Connector 0..9999" --* "di_Bendpoint 1..1" di_Connector : bendpoint0
+di_Bendpoint "di_DocumentRoot8 0..9999" --* "di_Bendpoint9 1..1" di_DocumentRoot : bendpoint7
+di_Node "di_View26 0..9999" --* "di_Node27 1..1" di_View : child25
+di_Connector "di_Diagram 0..9999" --* "di_Connector2 1..1" di_Diagram : connector1
+di_Connector "di_DocumentRoot11 0..9999" --* "di_Connector12 1..1" di_DocumentRoot : connector10
+di_Diagram "di_DocumentRoot16 0..9999" --* "di_Diagram17 1..1" di_DocumentRoot : diagram15
+di_DocumentRoot "di_Node 1..1" *-- "di_DocumentRoot19 0..9999" di_Node : node18
+di_DocumentRoot "di_Style 1..1" *-- "di_DocumentRoot21 0..9999" di_Style : style20
+di_Style "di_View23 0..9999" --* "di_Style24 1..1" di_View : style22
+di_DocumentRoot "di_View 1..1" *-- "di_DocumentRoot14 0..9999" di_View : view13
+di_DocumentRoot "di_EStringToStringMapEntry 1..1" *-- "di_DocumentRoot 0..9999" di_EStringToStringMapEntry : xMLNSPrefixMap3
+di_DocumentRoot "di_EStringToStringMapEntry6 1..1" *-- "di_DocumentRoot5 0..9999" di_EStringToStringMapEntry : xSISchemaLocation4
 @enduml

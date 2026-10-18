@@ -1,4 +1,8 @@
 @startuml
+' model: _52339322_f246_45ff_8344_0fa2e942aec4
+' project: sampleModel
+' owner: User
+' description: New project
 class Books {
   + ISBN_no : str
   + author_name : str
@@ -61,14 +65,14 @@ class admin {
 class lecturer {
   + module : str
 }
-Books "0..9999" -- "0..9999" Borrowed : Books_Borrowed
-Books "0..9999" -- "0..9999" Reserved : Books_Reserved
-Borrowed "0..9999" -- "0..9999" Member : Borrowed_Member
-Fine "0..9999" -- "1..1" Member : Fine_Member
-Books "0..9999" -- "0..9999" Librarian : Librarian_Books
-Fine "0..9999" -- "0..9999" Librarian : Librarian_Fine
-Librarian "0..9999" -- "0..9999" Member : Member_Librarian
-Staff "0..1" -- "0..1" admin : Registar_Staff2
-Member "0..9999" -- "0..9999" Reserved : Reserved_Member
-Staff "0..1" -- "0..1" lecturer : Staff_Professor2
+Books "books1 0..9999" -- "borrowed0 0..9999" Borrowed : Books_Borrowed
+Books "books5 0..9999" -- "reserved4 0..9999" Reserved : Books_Reserved
+Borrowed "borrowed3 0..9999" -- "member2 0..9999" Member : Borrowed_Member
+Fine "fine13 0..9999" -- "member12 1..1" Member : Fine_Member
+Books "books8 0..9999" -- "librarian9 0..9999" Librarian : Librarian_Books
+Fine "fine10 0..9999" -- "librarian11 0..9999" Librarian : Librarian_Fine
+Librarian "librarian14 0..9999" -- "member15 0..9999" Member : Member_Librarian
+Staff "staff16 0..1" -- "registar17 0..1" admin : Registar_Staff2
+Member "member6 0..9999" -- "reserved7 0..9999" Reserved : Reserved_Member
+Staff "staff19 0..1" -- "professor18 0..1" lecturer : Staff_Professor2
 @enduml

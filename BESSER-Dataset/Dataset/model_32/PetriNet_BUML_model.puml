@@ -1,4 +1,8 @@
 @startuml
+' model: petrinet
+' project: sampleModel
+' owner: User
+' description: New project
 class Arc {
 }
 class Named {
@@ -24,10 +28,10 @@ Arc <|-- petrinet_InArc
 Arc <|-- petrinet_OutArc
 Named <|-- petrinet_Place
 Named <|-- petrinet_Transition
-petrinet_InArc "1..9999" --* "1..1" petrinet_Transition : inArc3
-petrinet_OutArc "1..9999" --* "1..1" petrinet_Transition : outArc5
-petrinet_PetriNet "1..1" *-- "0..9999" petrinet_Place : places0
-petrinet_OutArc "1..1" -- "1..1" petrinet_Place : sourcePlace10
-petrinet_InArc "1..1" -- "1..1" petrinet_Place : targetPlace7
-petrinet_PetriNet "1..1" *-- "0..9999" petrinet_Transition : transitions1
+petrinet_InArc "petrinet_Transition4 1..9999" --* "petrinet_InArc 1..1" petrinet_Transition : inArc3
+petrinet_OutArc "petrinet_Transition6 1..9999" --* "petrinet_OutArc 1..1" petrinet_Transition : outArc5
+petrinet_PetriNet "petrinet_Place 1..1" *-- "petrinet_PetriNet 0..9999" petrinet_Place : places0
+petrinet_OutArc "petrinet_Place12 1..1" -- "petrinet_OutArc11 1..1" petrinet_Place : sourcePlace10
+petrinet_InArc "petrinet_Place9 1..1" -- "petrinet_InArc8 1..1" petrinet_Place : targetPlace7
+petrinet_PetriNet "petrinet_Transition 1..1" *-- "petrinet_PetriNet2 0..9999" petrinet_Transition : transitions1
 @enduml

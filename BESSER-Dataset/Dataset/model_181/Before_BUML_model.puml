@@ -1,4 +1,8 @@
 @startuml
+' model: lit_petriNets
+' project: sampleModel
+' owner: User
+' description: New project
 class Arc {
 }
 abstract class lit_petriNets_Arc {
@@ -17,18 +21,18 @@ class lit_petriNets_Transition {
 }
 Arc <|-- lit_petriNets_PTArc
 Arc <|-- lit_petriNets_TPArc
-lit_petriNets_Arc "0..9999" --* "1..1" lit_petriNets_Net : arcs3
-lit_petriNets_PTArc "1..1" -- "1..1" lit_petriNets_Transition : dst20
-lit_petriNets_Place "1..1" -- "1..1" lit_petriNets_TPArc : dst25
-lit_petriNets_Place "1..1" -- "0..9999" lit_petriNets_TPArc : in_5
-lit_petriNets_PTArc "1..9999" -- "1..1" lit_petriNets_Transition : in_9
-lit_petriNets_Arc "1..1" -- "1..1" lit_petriNets_Net : net15
-lit_petriNets_Net "1..1" -- "1..1" lit_petriNets_Place : net4
-lit_petriNets_Net "1..1" -- "1..1" lit_petriNets_Transition : net7
-lit_petriNets_TPArc "1..9999" -- "1..1" lit_petriNets_Transition : out12
-lit_petriNets_PTArc "0..9999" -- "1..1" lit_petriNets_Place : out6
-lit_petriNets_Net "1..1" *-- "0..9999" lit_petriNets_Place : places0
-lit_petriNets_PTArc "1..1" -- "1..1" lit_petriNets_Place : src18
-lit_petriNets_TPArc "1..1" -- "1..1" lit_petriNets_Transition : src22
-lit_petriNets_Net "1..1" *-- "0..9999" lit_petriNets_Transition : transitions1
+lit_petriNets_Arc "lit_petriNets_Net 0..9999" --* "lit_petriNets_Arc 1..1" lit_petriNets_Net : arcs3
+lit_petriNets_PTArc "Transition21 1..1" -- "in_ 1..1" lit_petriNets_Transition : dst20
+lit_petriNets_Place "in_26 1..1" -- "Place27 1..1" lit_petriNets_TPArc : dst25
+lit_petriNets_Place "TPArc 1..1" -- "dst 0..9999" lit_petriNets_TPArc : in_5
+lit_petriNets_PTArc "dst10 1..9999" -- "PTArc11 1..1" lit_petriNets_Transition : in_9
+lit_petriNets_Arc "lit_petriNets_Net17 1..1" -- "lit_petriNets_Arc16 1..1" lit_petriNets_Net : net15
+lit_petriNets_Net "places 1..1" -- "Net 1..1" lit_petriNets_Place : net4
+lit_petriNets_Net "transitions 1..1" -- "Net8 1..1" lit_petriNets_Transition : net7
+lit_petriNets_TPArc "src13 1..9999" -- "TPArc14 1..1" lit_petriNets_Transition : out12
+lit_petriNets_PTArc "src 0..9999" -- "PTArc 1..1" lit_petriNets_Place : out6
+lit_petriNets_Net "Place 1..1" *-- "net 0..9999" lit_petriNets_Place : places0
+lit_petriNets_PTArc "Place19 1..1" -- "out 1..1" lit_petriNets_Place : src18
+lit_petriNets_TPArc "Transition24 1..1" -- "out23 1..1" lit_petriNets_Transition : src22
+lit_petriNets_Net "Transition 1..1" *-- "net2 0..9999" lit_petriNets_Transition : transitions1
 @enduml

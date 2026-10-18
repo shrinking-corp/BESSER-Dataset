@@ -1,4 +1,8 @@
 @startuml
+' model: CodePack
+' project: sampleModel
+' owner: User
+' description: New project
 class Backend_CodePack_BankComponent {
 }
 class Booking {
@@ -227,25 +231,25 @@ IStaffAdmin <|-- CodePack_IManagement
 IStaffAuthentication <|-- CodePack_IManagement
 IStaffAuthentication <|-- CodePack_IReceptionOperations_rename_required
 IUserAccount <|-- CodePack_Backend_CustomerHandler
-CodePack_DataBank "1..1" -- "1..9999" Guest : GuestList20
-Backend_CodePack_BankComponent "1..1" -- "1..1" CodePack_Backend_CustomerHandler : bankComponent35
-Backend_CodePack_BankComponent "1..1" -- "1..1" CodePack_Backend_ReceptionHandler : bankComponent36
-Booking "1..1" -- "1..1" CodePack_DataModels_RoomBooked : booking26
-Booking "1..9999" -- "1..1" CodePack_DataBank : bookingList6
-CheckInHandler "0..1" -- "1..1" CodePack_CheckInMachine : checkInHandler4
-CodePack_UserGUI "1..1" -- "0..1" CustomerHandler : customerHandler3
-CodePack_DataBank "1..1" -- "1..9999" Customer : customerList8
-CodePack_DataBank "1..1" -- "1..9999" ExtraService : extraServiceList16
-CodePack_StaffGUI "1..1" -- "0..1" ManagementHandler : managementHandler0
-CodePack_DataBank "1..1" -- "1..9999" PaymentData : paymentDataList12
-CodePack_StaffGUI "1..1" -- "0..1" ReceptionHandler : receptionHandler1
-CodePack_DataModels_Booking "1..1" -- "1..1" Room : room33
-CodePack_DataBank "1..1" -- "1..9999" RoomBooked : roomBookedList14
-CodePack_DataBank "1..1" -- "1..9999" Room : roomList5
-CodePack_DataBank "1..1" -- "1..9999" RoomType : roomTypeList10
-CodePack_DataModels_Bill "1..1" -- "1..9999" Room : rooms_booked28
-CodePack_DataBank "1..1" -- "1..9999" ServiceType : serviceTypeList18
-CodePack_DataModels_Bill "1..1" -- "1..9999" ExtraService : services_ordered30
-CodePack_DataBank "1..1" -- "1..9999" StaffMember : staffMemberList24
-CodePack_DataBank "1..1" -- "1..9999" StaffRole : staffRoleList22
+CodePack_DataBank "Guest 1..1" -- "CodePack_DataBank21 1..9999" Guest : GuestList20
+Backend_CodePack_BankComponent "CodePack_Backend_CustomerHandler 1..1" -- "Backend_CodePack_BankComponent 1..1" CodePack_Backend_CustomerHandler : bankComponent35
+Backend_CodePack_BankComponent "CodePack_Backend_ReceptionHandler 1..1" -- "Backend_CodePack_BankComponent37 1..1" CodePack_Backend_ReceptionHandler : bankComponent36
+Booking "CodePack_DataModels_RoomBooked 1..1" -- "Booking27 1..1" CodePack_DataModels_RoomBooked : booking26
+Booking "CodePack_DataBank7 1..9999" -- "Booking 1..1" CodePack_DataBank : bookingList6
+CheckInHandler "CodePack_CheckInMachine 0..1" -- "CheckInHandler 1..1" CodePack_CheckInMachine : checkInHandler4
+CodePack_UserGUI "CustomerHandler 1..1" -- "CodePack_UserGUI 0..1" CustomerHandler : customerHandler3
+CodePack_DataBank "Customer 1..1" -- "CodePack_DataBank9 1..9999" Customer : customerList8
+CodePack_DataBank "ExtraService 1..1" -- "CodePack_DataBank17 1..9999" ExtraService : extraServiceList16
+CodePack_StaffGUI "ManagementHandler 1..1" -- "CodePack_StaffGUI 0..1" ManagementHandler : managementHandler0
+CodePack_DataBank "PaymentData 1..1" -- "CodePack_DataBank13 1..9999" PaymentData : paymentDataList12
+CodePack_StaffGUI "ReceptionHandler 1..1" -- "CodePack_StaffGUI2 0..1" ReceptionHandler : receptionHandler1
+CodePack_DataModels_Booking "Room34 1..1" -- "CodePack_DataModels_Booking 1..1" Room : room33
+CodePack_DataBank "RoomBooked 1..1" -- "CodePack_DataBank15 1..9999" RoomBooked : roomBookedList14
+CodePack_DataBank "Room 1..1" -- "CodePack_DataBank 1..9999" Room : roomList5
+CodePack_DataBank "RoomType 1..1" -- "CodePack_DataBank11 1..9999" RoomType : roomTypeList10
+CodePack_DataModels_Bill "Room29 1..1" -- "CodePack_DataModels_Bill 1..9999" Room : rooms_booked28
+CodePack_DataBank "ServiceType 1..1" -- "CodePack_DataBank19 1..9999" ServiceType : serviceTypeList18
+CodePack_DataModels_Bill "ExtraService32 1..1" -- "CodePack_DataModels_Bill31 1..9999" ExtraService : services_ordered30
+CodePack_DataBank "StaffMember 1..1" -- "CodePack_DataBank25 1..9999" StaffMember : staffMemberList24
+CodePack_DataBank "StaffRole 1..1" -- "CodePack_DataBank23 1..9999" StaffRole : staffRoleList22
 @enduml

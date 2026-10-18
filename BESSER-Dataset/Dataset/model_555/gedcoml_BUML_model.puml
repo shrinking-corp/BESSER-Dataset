@@ -1,4 +1,8 @@
 @startuml
+' model: gedcoml
+' project: sampleModel
+' owner: User
+' description: New project
 class Address {
 }
 class Person {
@@ -69,20 +73,20 @@ Person <|-- gedcoml_BekanntePerson
 Person <|-- gedcoml_UnbekanntePerson
 Source <|-- gedcoml_Others
 Source <|-- gedcoml_PersonRef
-gedcoml_Address "0..9999" --* "1..1" gedcoml_Person : addresses34
-gedcoml_Author "1..1" --* "1..1" gedcoml_Projectdescription : author1
-gedcoml_BekanntePerson "1..1" -- "1..1" gedcoml_Person : biologicalFatherIs9
-gedcoml_BekanntePerson "1..1" -- "1..1" gedcoml_Person : biologicalMotherIs12
-gedcoml_BekanntePerson "1..1" -- "0..9999" gedcoml_Person : biologicalParentOf7
-gedcoml_Family "1..1" -- "1..1" gedcoml_FamilyImport : importedResource23
-gedcoml_FamilyImport "0..9999" --* "1..1" gedcoml_Projectdescription : imports0
-gedcoml_Family "1..1" *-- "0..9999" gedcoml_FamilyImport : imports4
-gedcoml_BekanntePerson "1..1" *-- "0..9999" gedcoml_Married : marriedWith15
-gedcoml_Author "1..1" -- "0..1" gedcoml_BekanntePerson : memberId29
-gedcoml_Family "1..1" *-- "1..9999" gedcoml_Person : members3
-gedcoml_BekanntePerson "1..1" *-- "0..9999" gedcoml_Note : notes17
-gedcoml_Married "1..1" -- "1..1" gedcoml_Person : partner26
-gedcoml_BekanntePerson "1..1" -- "1..1" gedcoml_PersonRef : personID32
-gedcoml_FamilyBook "1..1" *-- "0..1" gedcoml_Projectdescription : project21
-gedcoml_BekanntePerson "1..1" *-- "1..9999" gedcoml_Source : sources19
+gedcoml_Address "gedcoml_Person35 0..9999" --* "gedcoml_Address 1..1" gedcoml_Person : addresses34
+gedcoml_Author "gedcoml_Projectdescription2 1..1" --* "gedcoml_Author 1..1" gedcoml_Projectdescription : author1
+gedcoml_BekanntePerson "gedcoml_Person11 1..1" -- "gedcoml_BekanntePerson10 1..1" gedcoml_Person : biologicalFatherIs9
+gedcoml_BekanntePerson "gedcoml_Person14 1..1" -- "gedcoml_BekanntePerson13 1..1" gedcoml_Person : biologicalMotherIs12
+gedcoml_BekanntePerson "gedcoml_Person8 1..1" -- "gedcoml_BekanntePerson 0..9999" gedcoml_Person : biologicalParentOf7
+gedcoml_Family "gedcoml_FamilyImport24 1..1" -- "gedcoml_Family25 1..1" gedcoml_FamilyImport : importedResource23
+gedcoml_FamilyImport "gedcoml_Projectdescription 0..9999" --* "gedcoml_FamilyImport 1..1" gedcoml_Projectdescription : imports0
+gedcoml_Family "gedcoml_FamilyImport6 1..1" *-- "gedcoml_Family5 0..9999" gedcoml_FamilyImport : imports4
+gedcoml_BekanntePerson "gedcoml_Married 1..1" *-- "gedcoml_BekanntePerson16 0..9999" gedcoml_Married : marriedWith15
+gedcoml_Author "gedcoml_BekanntePerson31 1..1" -- "gedcoml_Author30 0..1" gedcoml_BekanntePerson : memberId29
+gedcoml_Family "gedcoml_Person 1..1" *-- "gedcoml_Family 1..9999" gedcoml_Person : members3
+gedcoml_BekanntePerson "gedcoml_Note 1..1" *-- "gedcoml_BekanntePerson18 0..9999" gedcoml_Note : notes17
+gedcoml_Married "gedcoml_Person28 1..1" -- "gedcoml_Married27 1..1" gedcoml_Person : partner26
+gedcoml_BekanntePerson "gedcoml_PersonRef 1..1" -- "gedcoml_BekanntePerson33 1..1" gedcoml_PersonRef : personID32
+gedcoml_FamilyBook "gedcoml_Projectdescription22 1..1" *-- "gedcoml_FamilyBook 0..1" gedcoml_Projectdescription : project21
+gedcoml_BekanntePerson "gedcoml_Source 1..1" *-- "gedcoml_BekanntePerson20 1..9999" gedcoml_Source : sources19
 @enduml

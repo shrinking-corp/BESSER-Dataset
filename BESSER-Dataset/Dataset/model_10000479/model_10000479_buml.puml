@@ -1,4 +1,8 @@
 @startuml
+' model: _3b084a68_1319_4b0e_8628_297d48eb06e5
+' project: sampleModel
+' owner: User
+' description: New project
 class Admin {
 }
 class Curso {
@@ -28,12 +32,12 @@ class Usuario {
   + Last_Name : str
   + Password : str
 }
-Curso "1..9999" -- "1..9999" Student : Course_Student
-Admin "0..1" -- "0..1" Database : Database_Admin
-Database "0..1" -- "0..1" Login : Login_Database
-Database "0..1" -- "0..1" Student : Student_Database
-Curso "1..9999" -- "0..1" Profesor : Teacher_Course
-Database "1..1" -- "0..9999" Profesor : Teacher_Database
-Database "0..1" -- "1..1" Usuario : User_Database
-Login "1..1" -- "0..9999" Usuario : User_Login
+Curso "course1 1..9999" -- "takes_course0 1..9999" Student : Course_Student
+Admin "admin6 0..1" -- "Database_Admin_17 0..1" Database : Database_Admin
+Database "verify_account4 0..1" -- "login5 0..1" Login : Login_Database
+Database "database8 0..1" -- "Student_Database_19 0..1" Student : Student_Database
+Curso "Teaches10 1..9999" -- "teacher11 0..1" Profesor : Teacher_Course
+Database "upload_to_database14 1..1" -- "teacher15 0..9999" Profesor : Teacher_Database
+Database "has_user2 0..1" -- "User_Database_13 1..1" Usuario : User_Database
+Login "login12 1..1" -- "user13 0..9999" Usuario : User_Login
 @enduml

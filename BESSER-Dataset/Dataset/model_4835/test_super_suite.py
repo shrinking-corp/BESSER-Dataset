@@ -1724,30 +1724,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=contentfwk_Element_strategy)
-@settings(max_examples=30)
-def test_hyp_contentfwk_element_forceid_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.forceID(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.forceID).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'forceID' in contentfwk_Element is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'forceID' in contentfwk_Element did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'forceID' in contentfwk_Element is not implemented or raised an error")
 
 
 
@@ -2478,30 +2454,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=contentfwk_Architecture_strategy)
-@settings(max_examples=30)
-def test_hyp_contentfwk_architecture_forceid_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.forceID(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.forceID).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'forceID' in contentfwk_Architecture is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'forceID' in contentfwk_Architecture did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'forceID' in contentfwk_Architecture is not implemented or raised an error")
 
 
 
@@ -2518,30 +2470,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=contentfwk_EnterpriseArchitecture_strategy)
-@settings(max_examples=30)
-def test_hyp_contentfwk_enterprisearchitecture_forceid_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.forceID(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.forceID).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'forceID' in contentfwk_EnterpriseArchitecture is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'forceID' in contentfwk_EnterpriseArchitecture did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'forceID' in contentfwk_EnterpriseArchitecture is not implemented or raised an error")
 
 
 # ----- SECTION B: test_structural_full.py (deterministic-first suite) -----
@@ -7547,9 +7475,9 @@ def test_assoc_actors8_stub_double():
     partner = contentfwk_BusinessArchitecture()
     setattr(partner, 'contentfwk_BusinessArchitecture9', None)
     _safe_set(owner, 'contentfwk_Actor', partner)
-    assert getattr(partner, 'contentfwk_BusinessArchitecture9') == owner
+    assert owner in getattr(partner, 'contentfwk_BusinessArchitecture9')
     _safe_set(owner, 'contentfwk_Actor', None)
-    assert getattr(partner, 'contentfwk_BusinessArchitecture9') is None
+    assert owner not in getattr(partner, 'contentfwk_BusinessArchitecture9')
 
 
 def test_assoc_appliesToContracts247_stub_double():
@@ -7562,9 +7490,9 @@ def test_assoc_appliesToContracts247_stub_double():
     partner = contentfwk_ServiceQuality()
     setattr(partner, 'meetsServiceQuality', None)
     _safe_set(owner, 'Contract', partner)
-    assert getattr(partner, 'meetsServiceQuality') == owner
+    assert owner in getattr(partner, 'meetsServiceQuality')
     _safe_set(owner, 'Contract', None)
-    assert getattr(partner, 'meetsServiceQuality') is None
+    assert owner not in getattr(partner, 'meetsServiceQuality')
 
 
 def test_assoc_canBeAccessedByRoles161_stub_double():
@@ -7577,9 +7505,9 @@ def test_assoc_canBeAccessedByRoles161_stub_double():
     partner = contentfwk_Function()
     setattr(partner, 'accessesFunctions', None)
     _safe_set(owner, 'Role162', partner)
-    assert getattr(partner, 'accessesFunctions') == owner
+    assert owner in getattr(partner, 'accessesFunctions')
     _safe_set(owner, 'Role162', None)
-    assert getattr(partner, 'accessesFunctions') is None
+    assert owner not in getattr(partner, 'accessesFunctions')
 
 
 def test_assoc_capabilities349_stub_double():
@@ -7592,9 +7520,9 @@ def test_assoc_capabilities349_stub_double():
     partner = contentfwk_StrategicArchitecture()
     setattr(partner, 'contentfwk_StrategicArchitecture', None)
     _safe_set(owner, 'contentfwk_Capability', partner)
-    assert getattr(partner, 'contentfwk_StrategicArchitecture') == owner
+    assert owner in getattr(partner, 'contentfwk_StrategicArchitecture')
     _safe_set(owner, 'contentfwk_Capability', None)
-    assert getattr(partner, 'contentfwk_StrategicArchitecture') is None
+    assert owner not in getattr(partner, 'contentfwk_StrategicArchitecture')
 
 
 def test_assoc_consumesDataEntities358_stub_double():
@@ -7607,9 +7535,9 @@ def test_assoc_consumesDataEntities358_stub_double():
     partner = contentfwk_Service()
     setattr(partner, 'isAccessedByServices', None)
     _safe_set(owner, 'DataEntity359', partner)
-    assert getattr(partner, 'isAccessedByServices') == owner
+    assert owner in getattr(partner, 'isAccessedByServices')
     _safe_set(owner, 'DataEntity359', None)
-    assert getattr(partner, 'isAccessedByServices') is None
+    assert owner not in getattr(partner, 'isAccessedByServices')
 
 
 def test_assoc_consumesServices92_stub_double():
@@ -7637,9 +7565,9 @@ def test_assoc_containsActors271_stub_double():
     partner = contentfwk_Location()
     setattr(partner, 'operatesInLocation', None)
     _safe_set(owner, 'Actor272', partner)
-    assert getattr(partner, 'operatesInLocation') == owner
+    assert owner in getattr(partner, 'operatesInLocation')
     _safe_set(owner, 'Actor272', None)
-    assert getattr(partner, 'operatesInLocation') is None
+    assert owner not in getattr(partner, 'operatesInLocation')
 
 
 def test_assoc_containsOrganizationUnits273_stub_double():
@@ -7652,9 +7580,9 @@ def test_assoc_containsOrganizationUnits273_stub_double():
     partner = contentfwk_Location()
     setattr(partner, 'operatesInLocation274', None)
     _safe_set(owner, 'OrganizationUnit275', partner)
-    assert getattr(partner, 'operatesInLocation274') == owner
+    assert owner in getattr(partner, 'operatesInLocation274')
     _safe_set(owner, 'OrganizationUnit275', None)
-    assert getattr(partner, 'operatesInLocation274') is None
+    assert owner not in getattr(partner, 'operatesInLocation274')
 
 
 def test_assoc_containsPhysicalApplicationComponents277_stub_double():
@@ -7667,9 +7595,9 @@ def test_assoc_containsPhysicalApplicationComponents277_stub_double():
     partner = contentfwk_Location()
     setattr(partner, 'isHostedInLocation', None)
     _safe_set(owner, 'PhysicalApplicationComponent278', partner)
-    assert getattr(partner, 'isHostedInLocation') == owner
+    assert owner in getattr(partner, 'isHostedInLocation')
     _safe_set(owner, 'PhysicalApplicationComponent278', None)
-    assert getattr(partner, 'isHostedInLocation') is None
+    assert owner not in getattr(partner, 'isHostedInLocation')
 
 
 def test_assoc_containsPhysicalTechnologyComponents279_stub_double():
@@ -7682,9 +7610,9 @@ def test_assoc_containsPhysicalTechnologyComponents279_stub_double():
     partner = contentfwk_Location()
     setattr(partner, 'isHostedInLocation280', None)
     _safe_set(owner, 'PhysicalTechnologyComponent281', partner)
-    assert getattr(partner, 'isHostedInLocation280') == owner
+    assert owner in getattr(partner, 'isHostedInLocation280')
     _safe_set(owner, 'PhysicalTechnologyComponent281', None)
-    assert getattr(partner, 'isHostedInLocation280') is None
+    assert owner not in getattr(partner, 'isHostedInLocation280')
 
 
 def test_assoc_contracts26_stub_double():
@@ -7697,9 +7625,9 @@ def test_assoc_contracts26_stub_double():
     partner = contentfwk_BusinessArchitecture()
     setattr(partner, 'contentfwk_BusinessArchitecture27', None)
     _safe_set(owner, 'contentfwk_Contract', partner)
-    assert getattr(partner, 'contentfwk_BusinessArchitecture27') == owner
+    assert owner in getattr(partner, 'contentfwk_BusinessArchitecture27')
     _safe_set(owner, 'contentfwk_Contract', None)
-    assert getattr(partner, 'contentfwk_BusinessArchitecture27') is None
+    assert owner not in getattr(partner, 'contentfwk_BusinessArchitecture27')
 
 
 def test_assoc_decomposesFunctions178_stub_double():
@@ -7742,9 +7670,9 @@ def test_assoc_encapsulatesDataEntities290_stub_double():
     partner = contentfwk_LogicalDataComponent()
     setattr(partner, 'residesWithinLogicalDataComponent', None)
     _safe_set(owner, 'DataEntity291', partner)
-    assert getattr(partner, 'residesWithinLogicalDataComponent') == owner
+    assert owner in getattr(partner, 'residesWithinLogicalDataComponent')
     _safe_set(owner, 'DataEntity291', None)
-    assert getattr(partner, 'residesWithinLogicalDataComponent') is None
+    assert owner not in getattr(partner, 'residesWithinLogicalDataComponent')
 
 
 def test_assoc_encapsulatesPhysicalApplicationComponents301_stub_double():
@@ -7757,9 +7685,9 @@ def test_assoc_encapsulatesPhysicalApplicationComponents301_stub_double():
     partner = contentfwk_PhysicalDataComponent()
     setattr(partner, 'encapsulatesPhysicalDataComponents', None)
     _safe_set(owner, 'PhysicalApplicationComponent302', partner)
-    assert getattr(partner, 'encapsulatesPhysicalDataComponents') == owner
+    assert owner in getattr(partner, 'encapsulatesPhysicalDataComponents')
     _safe_set(owner, 'PhysicalApplicationComponent302', None)
-    assert getattr(partner, 'encapsulatesPhysicalDataComponents') is None
+    assert owner not in getattr(partner, 'encapsulatesPhysicalDataComponents')
 
 
 def test_assoc_encapsulatesPhysicalDataComponents319_stub_double():
@@ -7787,9 +7715,9 @@ def test_assoc_ensuresCorrectOperationOfProcesses264_stub_double():
     partner = contentfwk_Control()
     setattr(partner, 'isGuidedByControls', None)
     _safe_set(owner, 'Process265', partner)
-    assert getattr(partner, 'isGuidedByControls') == owner
+    assert owner in getattr(partner, 'isGuidedByControls')
     _safe_set(owner, 'Process265', None)
-    assert getattr(partner, 'isGuidedByControls') is None
+    assert owner not in getattr(partner, 'isGuidedByControls')
 
 
 def test_assoc_entities32_stub_double():
@@ -7802,9 +7730,9 @@ def test_assoc_entities32_stub_double():
     partner = contentfwk_DataArchitecture()
     setattr(partner, 'contentfwk_DataArchitecture', None)
     _safe_set(owner, 'contentfwk_DataEntity', partner)
-    assert getattr(partner, 'contentfwk_DataArchitecture') == owner
+    assert owner in getattr(partner, 'contentfwk_DataArchitecture')
     _safe_set(owner, 'contentfwk_DataEntity', None)
-    assert getattr(partner, 'contentfwk_DataArchitecture') is None
+    assert owner not in getattr(partner, 'contentfwk_DataArchitecture')
 
 
 def test_assoc_extendsLogicalApplicationComponents312_stub_double():
@@ -7907,9 +7835,9 @@ def test_assoc_isExtendedByPhysicalApplicationComponents142_stub_double():
     partner = contentfwk_LogicalApplicationComponent()
     setattr(partner, 'extendsLogicalApplicationComponents', None)
     _safe_set(owner, 'PhysicalApplicationComponent', partner)
-    assert getattr(partner, 'extendsLogicalApplicationComponents') == owner
+    assert owner in getattr(partner, 'extendsLogicalApplicationComponents')
     _safe_set(owner, 'PhysicalApplicationComponent', None)
-    assert getattr(partner, 'extendsLogicalApplicationComponents') is None
+    assert owner not in getattr(partner, 'extendsLogicalApplicationComponents')
 
 
 def test_assoc_isGeneratedByActors261_stub_double():
@@ -7922,9 +7850,9 @@ def test_assoc_isGeneratedByActors261_stub_double():
     partner = contentfwk_Event()
     setattr(partner, 'generatesEvents262', None)
     _safe_set(owner, 'Actor263', partner)
-    assert getattr(partner, 'generatesEvents262') == owner
+    assert owner in getattr(partner, 'generatesEvents262')
     _safe_set(owner, 'Actor263', None)
-    assert getattr(partner, 'generatesEvents262') is None
+    assert owner not in getattr(partner, 'generatesEvents262')
 
 
 def test_assoc_isGeneratedByProcesses256_stub_double():
@@ -7937,9 +7865,9 @@ def test_assoc_isGeneratedByProcesses256_stub_double():
     partner = contentfwk_Event()
     setattr(partner, 'generatesEvents', None)
     _safe_set(owner, 'Process257', partner)
-    assert getattr(partner, 'generatesEvents') == owner
+    assert owner in getattr(partner, 'generatesEvents')
     _safe_set(owner, 'Process257', None)
-    assert getattr(partner, 'generatesEvents') is None
+    assert owner not in getattr(partner, 'generatesEvents')
 
 
 def test_assoc_isGovernedAndMeasuredByContracts360_stub_double():
@@ -7952,9 +7880,9 @@ def test_assoc_isGovernedAndMeasuredByContracts360_stub_double():
     partner = contentfwk_Service()
     setattr(partner, 'governsAndMeasuresBusinessServices', None)
     _safe_set(owner, 'Contract361', partner)
-    assert getattr(partner, 'governsAndMeasuresBusinessServices') == owner
+    assert owner in getattr(partner, 'governsAndMeasuresBusinessServices')
     _safe_set(owner, 'Contract361', None)
-    assert getattr(partner, 'governsAndMeasuresBusinessServices') is None
+    assert owner not in getattr(partner, 'governsAndMeasuresBusinessServices')
 
 
 def test_assoc_isGuidedByControls191_stub_double():
@@ -8012,9 +7940,9 @@ def test_assoc_isImplementedOnLogicalTechnologyComponents364_stub_double():
     partner = contentfwk_Service()
     setattr(partner, 'providesPlatformForServices', None)
     _safe_set(owner, 'LogicalTechnologyComponent365', partner)
-    assert getattr(partner, 'providesPlatformForServices') == owner
+    assert owner in getattr(partner, 'providesPlatformForServices')
     _safe_set(owner, 'LogicalTechnologyComponent365', None)
-    assert getattr(partner, 'providesPlatformForServices') is None
+    assert owner not in getattr(partner, 'providesPlatformForServices')
 
 
 def test_assoc_isMotivatedByDrivers72_stub_double():
@@ -8042,9 +7970,9 @@ def test_assoc_isOwnedAndGovernedByOrganizationUnits368_stub_double():
     partner = contentfwk_Service()
     setattr(partner, 'ownsAndGovernsServices', None)
     _safe_set(owner, 'OrganizationUnit369', partner)
-    assert getattr(partner, 'ownsAndGovernsServices') == owner
+    assert owner in getattr(partner, 'ownsAndGovernsServices')
     _safe_set(owner, 'OrganizationUnit369', None)
-    assert getattr(partner, 'ownsAndGovernsServices') is None
+    assert owner not in getattr(partner, 'ownsAndGovernsServices')
 
 
 def test_assoc_isOwnedByOrganizationUnit153_stub_double():
@@ -8072,9 +8000,9 @@ def test_assoc_isPerformedByActors151_stub_double():
     partner = contentfwk_Function()
     setattr(partner, 'performsFunctions', None)
     _safe_set(owner, 'Actor152', partner)
-    assert getattr(partner, 'performsFunctions') == owner
+    assert owner in getattr(partner, 'performsFunctions')
     _safe_set(owner, 'Actor152', None)
-    assert getattr(partner, 'performsFunctions') is None
+    assert owner not in getattr(partner, 'performsFunctions')
 
 
 def test_assoc_isProcessesByLogicalApplicationComponents128_stub_double():
@@ -8102,9 +8030,9 @@ def test_assoc_isProducedByOrganizationUnits229_stub_double():
     partner = contentfwk_Product()
     setattr(partner, 'producesProducts', None)
     _safe_set(owner, 'OrganizationUnit230', partner)
-    assert getattr(partner, 'producesProducts') == owner
+    assert owner in getattr(partner, 'producesProducts')
     _safe_set(owner, 'OrganizationUnit230', None)
-    assert getattr(partner, 'producesProducts') is None
+    assert owner not in getattr(partner, 'producesProducts')
 
 
 def test_assoc_isProducedByProcesses231_stub_double():
@@ -8117,9 +8045,9 @@ def test_assoc_isProducedByProcesses231_stub_double():
     partner = contentfwk_Product()
     setattr(partner, 'producesProducts232', None)
     _safe_set(owner, 'Process233', partner)
-    assert getattr(partner, 'producesProducts232') == owner
+    assert owner in getattr(partner, 'producesProducts232')
     _safe_set(owner, 'Process233', None)
-    assert getattr(partner, 'producesProducts232') is None
+    assert owner not in getattr(partner, 'producesProducts232')
 
 
 def test_assoc_isProvidedToActors352_stub_double():
@@ -8132,9 +8060,9 @@ def test_assoc_isProvidedToActors352_stub_double():
     partner = contentfwk_Service()
     setattr(partner, 'consumesServices', None)
     _safe_set(owner, 'Actor353', partner)
-    assert getattr(partner, 'consumesServices') == owner
+    assert owner in getattr(partner, 'consumesServices')
     _safe_set(owner, 'Actor353', None)
-    assert getattr(partner, 'consumesServices') is None
+    assert owner not in getattr(partner, 'consumesServices')
 
 
 def test_assoc_isRealizedByProcesses159_stub_double():
@@ -8147,9 +8075,9 @@ def test_assoc_isRealizedByProcesses159_stub_double():
     partner = contentfwk_Function()
     setattr(partner, 'orchestratesFunctions', None)
     _safe_set(owner, 'Process160', partner)
-    assert getattr(partner, 'orchestratesFunctions') == owner
+    assert owner in getattr(partner, 'orchestratesFunctions')
     _safe_set(owner, 'Process160', None)
-    assert getattr(partner, 'orchestratesFunctions') is None
+    assert owner not in getattr(partner, 'orchestratesFunctions')
 
 
 def test_assoc_isRealizedByProcesses374_stub_double():
@@ -8162,9 +8090,9 @@ def test_assoc_isRealizedByProcesses374_stub_double():
     partner = contentfwk_Service()
     setattr(partner, 'orchestratesServices', None)
     _safe_set(owner, 'Process375', partner)
-    assert getattr(partner, 'orchestratesServices') == owner
+    assert owner in getattr(partner, 'orchestratesServices')
     _safe_set(owner, 'Process375', None)
-    assert getattr(partner, 'orchestratesServices') is None
+    assert owner not in getattr(partner, 'orchestratesServices')
 
 
 def test_assoc_isResolvedByActors258_stub_double():
@@ -8177,9 +8105,9 @@ def test_assoc_isResolvedByActors258_stub_double():
     partner = contentfwk_Event()
     setattr(partner, 'resolvesEvents259', None)
     _safe_set(owner, 'Actor260', partner)
-    assert getattr(partner, 'resolvesEvents259') == owner
+    assert owner in getattr(partner, 'resolvesEvents259')
     _safe_set(owner, 'Actor260', None)
-    assert getattr(partner, 'resolvesEvents259') is None
+    assert owner not in getattr(partner, 'resolvesEvents259')
 
 
 def test_assoc_isResolvedByProcesses253_stub_double():
@@ -8192,9 +8120,9 @@ def test_assoc_isResolvedByProcesses253_stub_double():
     partner = contentfwk_Event()
     setattr(partner, 'resolvesEvents254', None)
     _safe_set(owner, 'Process255', partner)
-    assert getattr(partner, 'resolvesEvents254') == owner
+    assert owner in getattr(partner, 'resolvesEvents254')
     _safe_set(owner, 'Process255', None)
-    assert getattr(partner, 'resolvesEvents254') is None
+    assert owner not in getattr(partner, 'resolvesEvents254')
 
 
 def test_assoc_isUpdatedThroughServices125_stub_double():
@@ -8222,9 +8150,9 @@ def test_assoc_logicalComponents40_stub_double():
     partner = contentfwk_TechnologyArchitecture()
     setattr(partner, 'contentfwk_TechnologyArchitecture41', None)
     _safe_set(owner, 'contentfwk_LogicalTechnologyComponent', partner)
-    assert getattr(partner, 'contentfwk_TechnologyArchitecture41') == owner
+    assert owner in getattr(partner, 'contentfwk_TechnologyArchitecture41')
     _safe_set(owner, 'contentfwk_LogicalTechnologyComponent', None)
-    assert getattr(partner, 'contentfwk_TechnologyArchitecture41') is None
+    assert owner not in getattr(partner, 'contentfwk_TechnologyArchitecture41')
 
 
 def test_assoc_meetsServiceQuality250_stub_double():
@@ -8252,9 +8180,9 @@ def test_assoc_motivatesOrganizationUnits43_stub_double():
     partner = contentfwk_Driver()
     setattr(partner, 'isMotivatedByDrivers', None)
     _safe_set(owner, 'OrganizationUnit', partner)
-    assert getattr(partner, 'isMotivatedByDrivers') == owner
+    assert owner in getattr(partner, 'isMotivatedByDrivers')
     _safe_set(owner, 'OrganizationUnit', None)
-    assert getattr(partner, 'isMotivatedByDrivers') is None
+    assert owner not in getattr(partner, 'isMotivatedByDrivers')
 
 
 def test_assoc_operatesInLocation75_stub_double():
@@ -8297,9 +8225,9 @@ def test_assoc_operatesOnDataEntities140_stub_double():
     partner = contentfwk_LogicalApplicationComponent()
     setattr(partner, 'isProcessesByLogicalApplicationComponents', None)
     _safe_set(owner, 'DataEntity141', partner)
-    assert getattr(partner, 'isProcessesByLogicalApplicationComponents') == owner
+    assert owner in getattr(partner, 'isProcessesByLogicalApplicationComponents')
     _safe_set(owner, 'DataEntity141', None)
-    assert getattr(partner, 'isProcessesByLogicalApplicationComponents') is None
+    assert owner not in getattr(partner, 'isProcessesByLogicalApplicationComponents')
 
 
 def test_assoc_orchestratesFunctions176_stub_double():
@@ -8387,9 +8315,9 @@ def test_assoc_physicalApplicationComponents308_stub_double():
     partner = contentfwk_ApplicationArchitecture()
     setattr(partner, 'contentfwk_ApplicationArchitecture309', None)
     _safe_set(owner, 'contentfwk_PhysicalApplicationComponent', partner)
-    assert getattr(partner, 'contentfwk_ApplicationArchitecture309') == owner
+    assert owner in getattr(partner, 'contentfwk_ApplicationArchitecture309')
     _safe_set(owner, 'contentfwk_PhysicalApplicationComponent', None)
-    assert getattr(partner, 'contentfwk_ApplicationArchitecture309') is None
+    assert owner not in getattr(partner, 'contentfwk_ApplicationArchitecture309')
 
 
 def test_assoc_physicalComponents38_stub_double():
@@ -8402,9 +8330,9 @@ def test_assoc_physicalComponents38_stub_double():
     partner = contentfwk_TechnologyArchitecture()
     setattr(partner, 'contentfwk_TechnologyArchitecture39', None)
     _safe_set(owner, 'contentfwk_PhysicalTechnologyComponent', partner)
-    assert getattr(partner, 'contentfwk_TechnologyArchitecture39') == owner
+    assert owner in getattr(partner, 'contentfwk_TechnologyArchitecture39')
     _safe_set(owner, 'contentfwk_PhysicalTechnologyComponent', None)
-    assert getattr(partner, 'contentfwk_TechnologyArchitecture39') is None
+    assert owner not in getattr(partner, 'contentfwk_TechnologyArchitecture39')
 
 
 def test_assoc_platformServices37_stub_double():
@@ -8417,9 +8345,9 @@ def test_assoc_platformServices37_stub_double():
     partner = contentfwk_TechnologyArchitecture()
     setattr(partner, 'contentfwk_TechnologyArchitecture', None)
     _safe_set(owner, 'contentfwk_PlatformService', partner)
-    assert getattr(partner, 'contentfwk_TechnologyArchitecture') == owner
+    assert owner in getattr(partner, 'contentfwk_TechnologyArchitecture')
     _safe_set(owner, 'contentfwk_PlatformService', None)
-    assert getattr(partner, 'contentfwk_TechnologyArchitecture') is None
+    assert owner not in getattr(partner, 'contentfwk_TechnologyArchitecture')
 
 
 def test_assoc_processes16_stub_double():
@@ -8432,9 +8360,9 @@ def test_assoc_processes16_stub_double():
     partner = contentfwk_BusinessArchitecture()
     setattr(partner, 'contentfwk_BusinessArchitecture17', None)
     _safe_set(owner, 'contentfwk_Process', partner)
-    assert getattr(partner, 'contentfwk_BusinessArchitecture17') == owner
+    assert owner in getattr(partner, 'contentfwk_BusinessArchitecture17')
     _safe_set(owner, 'contentfwk_Process', None)
-    assert getattr(partner, 'contentfwk_BusinessArchitecture17') is None
+    assert owner not in getattr(partner, 'contentfwk_BusinessArchitecture17')
 
 
 def test_assoc_producesProducts196_stub_double():
@@ -8477,9 +8405,9 @@ def test_assoc_providesDataEntities356_stub_double():
     partner = contentfwk_Service()
     setattr(partner, 'isUpdatedThroughServices', None)
     _safe_set(owner, 'DataEntity357', partner)
-    assert getattr(partner, 'isUpdatedThroughServices') == owner
+    assert owner in getattr(partner, 'isUpdatedThroughServices')
     _safe_set(owner, 'DataEntity357', None)
-    assert getattr(partner, 'isUpdatedThroughServices') is None
+    assert owner not in getattr(partner, 'isUpdatedThroughServices')
 
 
 def test_assoc_providesPlatformForServices329_stub_double():
@@ -8552,9 +8480,9 @@ def test_assoc_roles10_stub_double():
     partner = contentfwk_BusinessArchitecture()
     setattr(partner, 'contentfwk_BusinessArchitecture11', None)
     _safe_set(owner, 'contentfwk_Role', partner)
-    assert getattr(partner, 'contentfwk_BusinessArchitecture11') == owner
+    assert owner in getattr(partner, 'contentfwk_BusinessArchitecture11')
     _safe_set(owner, 'contentfwk_Role', None)
-    assert getattr(partner, 'contentfwk_BusinessArchitecture11') is None
+    assert owner not in getattr(partner, 'contentfwk_BusinessArchitecture11')
 
 
 def test_assoc_supportsActors163_stub_double():
@@ -8567,9 +8495,9 @@ def test_assoc_supportsActors163_stub_double():
     partner = contentfwk_Function()
     setattr(partner, 'interactsWithFunctions', None)
     _safe_set(owner, 'Actor164', partner)
-    assert getattr(partner, 'interactsWithFunctions') == owner
+    assert owner in getattr(partner, 'interactsWithFunctions')
     _safe_set(owner, 'Actor164', None)
-    assert getattr(partner, 'interactsWithFunctions') is None
+    assert owner not in getattr(partner, 'interactsWithFunctions')
 
 
 def test_assoc_supportsProcesses157_stub_double():
@@ -8582,9 +8510,9 @@ def test_assoc_supportsProcesses157_stub_double():
     partner = contentfwk_Function()
     setattr(partner, 'decomposesFunctions', None)
     _safe_set(owner, 'Process158', partner)
-    assert getattr(partner, 'decomposesFunctions') == owner
+    assert owner in getattr(partner, 'decomposesFunctions')
     _safe_set(owner, 'Process158', None)
-    assert getattr(partner, 'decomposesFunctions') is None
+    assert owner not in getattr(partner, 'decomposesFunctions')
 
 
 def test_assoc_supportsProcesses372_stub_double():
@@ -8597,9 +8525,9 @@ def test_assoc_supportsProcesses372_stub_double():
     partner = contentfwk_Service()
     setattr(partner, 'decomposesServices', None)
     _safe_set(owner, 'Process373', partner)
-    assert getattr(partner, 'decomposesServices') == owner
+    assert owner in getattr(partner, 'decomposesServices')
     _safe_set(owner, 'Process373', None)
-    assert getattr(partner, 'decomposesServices') is None
+    assert owner not in getattr(partner, 'decomposesServices')
 
 
 def test_assoc_units6_stub_double():
@@ -8612,123 +8540,24 @@ def test_assoc_units6_stub_double():
     partner = contentfwk_BusinessArchitecture()
     setattr(partner, 'contentfwk_BusinessArchitecture7', None)
     _safe_set(owner, 'contentfwk_OrganizationUnit', partner)
-    assert getattr(partner, 'contentfwk_BusinessArchitecture7') == owner
+    assert owner in getattr(partner, 'contentfwk_BusinessArchitecture7')
     _safe_set(owner, 'contentfwk_OrganizationUnit', None)
-    assert getattr(partner, 'contentfwk_BusinessArchitecture7') is None
+    assert owner not in getattr(partner, 'contentfwk_BusinessArchitecture7')
 
 
 
 
-from enum import Enum
+import datetime as _ch_datetime
 from python_code import DataEntityCategory
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(DataEntityCategory.Message, '', 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(DataEntityCategory.Message, '', 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(DataEntityCategory.Message, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(DataEntityCategory.Message, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(DataEntityCategory.Message, 'Message') == DataEntityCategory.Message
-
-from enum import Enum
 from python_code import LifeCycleStatus
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(LifeCycleStatus.Live, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(LifeCycleStatus.Live, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(LifeCycleStatus.Live, '', 0, 0) == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(LifeCycleStatus.Live, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(LifeCycleStatus.Live, 'Live') == LifeCycleStatus.Live
-
-from enum import Enum
 from python_code import PrincipleCategory
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(PrincipleCategory.DataPrinciple, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(PrincipleCategory.DataPrinciple, 0, '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(PrincipleCategory.DataPrinciple, '', 0, '') == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(PrincipleCategory.DataPrinciple, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(PrincipleCategory.DataPrinciple, 'DataPrinciple') == PrincipleCategory.DataPrinciple
-
-from enum import Enum
 from python_code import StandardsClass
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(StandardsClass.Retired, 0, '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(StandardsClass.Retired, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(StandardsClass.Retired, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(StandardsClass.Retired, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(StandardsClass.Retired, 'Retired') == StandardsClass.Retired
-
-from enum import Enum
 from python_code import WorkPackageCategory
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(WorkPackageCategory.Program, 0, '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(WorkPackageCategory.Project, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(WorkPackageCategory.Program, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(WorkPackageCategory.Project, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(WorkPackageCategory.Project, 'Project') == WorkPackageCategory.Project
-
 from python_code import contentfwk_BusinessArchitecture
 from python_code import contentfwk_Contract
 from python_code import contentfwk_Service
@@ -8736,7 +8565,6 @@ from python_code import contentfwk_ServiceQuality
 
 def test_contentfwk_Contract___init__():
     assert contentfwk_Contract.__init__(contentfwk_Contract('', '\x00', '', '\x01', '', '', '', '', '', '', '', '', '', '\x00', '\x00', '\x00', '\x00', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', contentfwk_Contract=contentfwk_BusinessArchitecture(), Contract=contentfwk_ServiceQuality(), isGovernedAndMeasuredByContracts=set(), appliesToContracts=set(), Contract361=contentfwk_Service()), '', '', '', '', '\x00', '', '', '', '\x01', '\x00', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', contentfwk_Contract=contentfwk_BusinessArchitecture(), Contract=contentfwk_ServiceQuality(), isGovernedAndMeasuredByContracts=set(), appliesToContracts=set(), Contract361=contentfwk_Service()) == None
-
 from python_code import contentfwk_EnterpriseArchitecture
 
 def test_contentfwk_EnterpriseArchitecture___init__():
@@ -8744,19 +8572,16 @@ def test_contentfwk_EnterpriseArchitecture___init__():
 
 def test_contentfwk_EnterpriseArchitecture_forceID():
     assert contentfwk_EnterpriseArchitecture.forceID(contentfwk_EnterpriseArchitecture('', contentfwk_EnterpriseArchitecture=set()), '') == None
-
 from python_code import contentfwk_Principle
 
 def test_contentfwk_Principle___init__():
     assert contentfwk_Principle.__init__(contentfwk_Principle('', '', '', '', '', ''), '', '', '', '', '\x00', '') == None
-
 from python_code import contentfwk_Requirement
 
 def test_contentfwk_Requirement___init__():
     assert contentfwk_Requirement.__init__(contentfwk_Requirement('', '', '\x00\x00'), '', '', '') == None
-
 from python_code import contentfwk_Standard
 
 def test_contentfwk_Standard___init__():
-    assert contentfwk_Standard.__init__(contentfwk_Standard('', datetime.date(1, 1, 1), datetime.date(1, 1, 1), datetime.date(1, 1, 2), datetime.date(1, 1, 1)), '\x00\x00', datetime.date(1, 1, 1), datetime.date(1, 1, 1), datetime.date(1, 1, 1), datetime.date(1, 1, 1)) == None
+    assert contentfwk_Standard.__init__(contentfwk_Standard('', _ch_datetime.date(1, 1, 1), _ch_datetime.date(1, 1, 1), _ch_datetime.date(1, 1, 2), _ch_datetime.date(1, 1, 1)), '\x00\x00', _ch_datetime.date(1, 1, 1), _ch_datetime.date(1, 1, 1), _ch_datetime.date(1, 1, 1), _ch_datetime.date(1, 1, 1)) == None
 

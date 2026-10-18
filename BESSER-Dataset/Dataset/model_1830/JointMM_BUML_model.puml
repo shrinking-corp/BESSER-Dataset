@@ -1,4 +1,8 @@
 @startuml
+' model: jointPackage
+' project: sampleModel
+' owner: User
+' description: New project
 class SrcAuthor {
 }
 class SrcAuthoredEntry {
@@ -142,14 +146,14 @@ TrgSection <|-- jointPackage_TrgSect1
 TrgSection <|-- jointPackage_TrgSect2
 TrgTitledElement <|-- jointPackage_TrgArticle
 TrgTitledElement <|-- jointPackage_TrgSection
-TrgArticle "1..9999" --* "1..1" jointPackage_TrgBook : articles6
-SrcAuthor "1..9999" --* "1..1" jointPackage_SrcAuthoredEntry : authors4
-TrgBook "1..9999" --* "1..1" jointPackage_TrgDocBook : books5
-SrcBibTeXEntry "0..9999" --* "1..1" jointPackage_SrcBibTeXFile : entries3
-TrgPara "1..9999" --* "1..1" jointPackage_TrgSection : paras8
-TrgSection "1..1" -- "1..1" jointPackage_TrgPara : section10
-TrgSect1 "1..9999" --* "1..1" jointPackage_TrgArticle : sections_17
-TrgSect2 "1..9999" --* "1..1" jointPackage_TrgSect1 : sections_29
-SrcMasterThesis "1..1" --* "1..1" jointPackage_JointMM : sourceRoot0
-TrgDocBook "1..1" --* "1..1" jointPackage_JointMM : targetRoot1
+TrgArticle "jointPackage_TrgBook 1..9999" --* "TrgArticle 1..1" jointPackage_TrgBook : articles6
+SrcAuthor "jointPackage_SrcAuthoredEntry 1..9999" --* "SrcAuthor 1..1" jointPackage_SrcAuthoredEntry : authors4
+TrgBook "jointPackage_TrgDocBook 1..9999" --* "TrgBook 1..1" jointPackage_TrgDocBook : books5
+SrcBibTeXEntry "jointPackage_SrcBibTeXFile 0..9999" --* "SrcBibTeXEntry 1..1" jointPackage_SrcBibTeXFile : entries3
+TrgPara "section 1..9999" --* "TrgPara 1..1" jointPackage_TrgSection : paras8
+TrgSection "paras 1..1" -- "TrgSection 1..1" jointPackage_TrgPara : section10
+TrgSect1 "jointPackage_TrgArticle 1..9999" --* "TrgSect1 1..1" jointPackage_TrgArticle : sections_17
+TrgSect2 "jointPackage_TrgSect1 1..9999" --* "TrgSect2 1..1" jointPackage_TrgSect1 : sections_29
+SrcMasterThesis "jointPackage_JointMM 1..1" --* "SrcMasterThesis 1..1" jointPackage_JointMM : sourceRoot0
+TrgDocBook "jointPackage_JointMM2 1..1" --* "TrgDocBook 1..1" jointPackage_JointMM : targetRoot1
 @enduml

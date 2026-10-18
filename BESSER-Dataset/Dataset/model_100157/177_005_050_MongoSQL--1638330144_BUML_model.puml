@@ -1,4 +1,8 @@
 @startuml
+' model: query
+' project: sampleModel
+' owner: User
+' description: New project
 class ArrayExpression {
 }
 enum ArrayOperator {
@@ -111,10 +115,10 @@ ExpressionWhereEntry <|-- query_SingleExpressionWhereEntry
 WhereEntry <|-- query_AndWhereEntry
 WhereEntry <|-- query_ExpressionWhereEntry
 WhereEntry <|-- query_OrWhereEntry
-query_Database "0..1" --* "1..1" query_Model : db0
-query_OrWhereEntry "1..1" *-- "0..9999" query_WhereEntry : entries5
-query_AndWhereEntry "1..1" *-- "0..9999" query_WhereEntry : entries7
-query_Expression "0..1" --* "1..1" query_SingleExpressionWhereEntry : rhs3
-query_ArrayExpression "0..1" --* "1..1" query_MultiExpressionWhereEntry : rhs4
-query_Model "1..1" *-- "0..1" query_WhereEntry : whereEntry1
+query_Database "query_Model 0..1" --* "query_Database 1..1" query_Model : db0
+query_OrWhereEntry "query_WhereEntry6 1..1" *-- "query_OrWhereEntry 0..9999" query_WhereEntry : entries5
+query_AndWhereEntry "query_WhereEntry8 1..1" *-- "query_AndWhereEntry 0..9999" query_WhereEntry : entries7
+query_Expression "query_SingleExpressionWhereEntry 0..1" --* "query_Expression 1..1" query_SingleExpressionWhereEntry : rhs3
+query_ArrayExpression "query_MultiExpressionWhereEntry 0..1" --* "query_ArrayExpression 1..1" query_MultiExpressionWhereEntry : rhs4
+query_Model "query_WhereEntry 1..1" *-- "query_Model2 0..1" query_WhereEntry : whereEntry1
 @enduml

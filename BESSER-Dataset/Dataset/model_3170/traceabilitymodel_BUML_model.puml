@@ -1,4 +1,8 @@
 @startuml
+' model: traceabilitymodel
+' project: sampleModel
+' owner: User
+' description: New project
 class traceabilitymodel_Block {
   + ID : str
   + endColumn : str
@@ -39,13 +43,13 @@ class traceabilitymodel_TraceableSegment {
   + startLine : str
   + startPos : str
 }
-traceabilitymodel_Block "0..9999" --* "1..1" traceabilitymodel_File : blocks17
-traceabilitymodel_File "0..9999" --* "1..1" traceabilitymodel_TraceModel : files9
-traceabilitymodel_MetaModel "0..1" -- "1..1" traceabilitymodel_ModelElementRef : metaModel0
-traceabilitymodel_MetaModel "0..9999" --* "1..1" traceabilitymodel_TraceModel : metaModels14
-traceabilitymodel_ModelElementRef "0..9999" --* "1..1" traceabilitymodel_TraceModel : modelElementRefs11
-traceabilitymodel_ModelElementRef "1..1" -- "1..1" traceabilitymodel_Trace : originatinElement2
-traceabilitymodel_Trace "1..1" -- "1..1" traceabilitymodel_TraceableSegment : segment1
-traceabilitymodel_Trace "0..9999" --* "1..1" traceabilitymodel_TraceModel : trace7
-traceabilitymodel_Block "1..1" *-- "1..9999" traceabilitymodel_TraceableSegment : traceablesegment5
+traceabilitymodel_Block "traceabilitymodel_File18 0..9999" --* "traceabilitymodel_Block19 1..1" traceabilitymodel_File : blocks17
+traceabilitymodel_File "traceabilitymodel_TraceModel10 0..9999" --* "traceabilitymodel_File 1..1" traceabilitymodel_TraceModel : files9
+traceabilitymodel_MetaModel "traceabilitymodel_ModelElementRef 0..1" -- "traceabilitymodel_MetaModel 1..1" traceabilitymodel_ModelElementRef : metaModel0
+traceabilitymodel_MetaModel "traceabilitymodel_TraceModel15 0..9999" --* "traceabilitymodel_MetaModel16 1..1" traceabilitymodel_TraceModel : metaModels14
+traceabilitymodel_ModelElementRef "traceabilitymodel_TraceModel12 0..9999" --* "traceabilitymodel_ModelElementRef13 1..1" traceabilitymodel_TraceModel : modelElementRefs11
+traceabilitymodel_ModelElementRef "traceabilitymodel_Trace3 1..1" -- "traceabilitymodel_ModelElementRef4 1..1" traceabilitymodel_Trace : originatinElement2
+traceabilitymodel_Trace "traceabilitymodel_TraceableSegment 1..1" -- "traceabilitymodel_Trace 1..1" traceabilitymodel_TraceableSegment : segment1
+traceabilitymodel_Trace "traceabilitymodel_TraceModel 0..9999" --* "traceabilitymodel_Trace8 1..1" traceabilitymodel_TraceModel : trace7
+traceabilitymodel_Block "traceabilitymodel_TraceableSegment6 1..1" *-- "traceabilitymodel_Block 1..9999" traceabilitymodel_TraceableSegment : traceablesegment5
 @enduml

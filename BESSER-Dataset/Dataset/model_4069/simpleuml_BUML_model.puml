@@ -1,4 +1,8 @@
 @startuml
+' model: simpleuml
+' project: sampleModel
+' owner: User
+' description: New project
 class Classifier {
 }
 enum Ignore {
@@ -28,11 +32,11 @@ Classifier <|-- simpleuml_UMLClass
 ModelElement <|-- simpleuml_Association
 ModelElement <|-- simpleuml_Attribute
 ModelElement <|-- simpleuml_Classifier
-simpleuml_Attribute "0..9999" --* "1..1" simpleuml_UMLClass : attribute2
-simpleuml_ModelElement "0..9999" --* "1..1" simpleuml_UMLPackage : contents10
-simpleuml_Attribute "1..1" -- "1..1" simpleuml_UMLClass : owner9
-simpleuml_UMLClass "1..1" -- "0..9999" simpleuml_UMLClass : parents1
-simpleuml_Association "1..1" -- "1..1" simpleuml_UMLClass : source3
-simpleuml_Association "1..1" -- "1..1" simpleuml_UMLClass : target5
-simpleuml_Attribute "1..1" -- "1..1" simpleuml_Classifier : type8
+simpleuml_Attribute "owner 0..9999" --* "Attribute 1..1" simpleuml_UMLClass : attribute2
+simpleuml_ModelElement "simpleuml_UMLPackage 0..9999" --* "simpleuml_ModelElement 1..1" simpleuml_UMLPackage : contents10
+simpleuml_Attribute "UMLClass 1..1" -- "attribute 1..1" simpleuml_UMLClass : owner9
+simpleuml_UMLClass "simpleuml_UMLClass 1..1" -- "simpleuml_UMLClass0 0..9999" simpleuml_UMLClass : parents1
+simpleuml_Association "simpleuml_UMLClass4 1..1" -- "simpleuml_Association 1..1" simpleuml_UMLClass : source3
+simpleuml_Association "simpleuml_UMLClass7 1..1" -- "simpleuml_Association6 1..1" simpleuml_UMLClass : target5
+simpleuml_Attribute "simpleuml_Classifier 1..1" -- "simpleuml_Attribute 1..1" simpleuml_Classifier : type8
 @enduml

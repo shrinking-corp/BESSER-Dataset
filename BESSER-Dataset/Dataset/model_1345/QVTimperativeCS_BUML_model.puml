@@ -1,4 +1,8 @@
 @startuml
+' model: qvtimperativecs
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractMappingCS {
 }
 class DomainCS {
@@ -57,21 +61,21 @@ MappingStatementCS <|-- qvtimperativecs_MappingSequenceCS
 ModelElementCS <|-- qvtimperativecs_MappingStatementCS
 PredicateOrAssignmentCS <|-- qvtimperativecs_ImperativePredicateOrAssignmentCS
 RootPackageCS <|-- qvtimperativecs_TopLevelCS
-qvtimperativecs_ImperativeDomainCS "1..1" *-- "0..9999" qvtimperativecs_PathNameCS : checkedProperties0
-qvtimperativecs_ImperativeDomainCS "1..1" *-- "0..9999" qvtimperativecs_PathNameCS : enforcedProperties1
-qvtimperativecs_MappingCallBindingCS "0..9999" --* "1..1" qvtimperativecs_MappingCallCS : ownedBindings12
-qvtimperativecs_ExpCS "1..1" --* "1..1" qvtimperativecs_MappingLoopCS : ownedInExpression18
-qvtimperativecs_MappingLoopCS "1..1" *-- "1..1" qvtimperativecs_VariableCS : ownedIterator17
-qvtimperativecs_MappingLoopCS "1..1" *-- "1..1" qvtimperativecs_MappingSequenceCS : ownedMappingSequence21
-qvtimperativecs_MappingCS "1..1" *-- "0..1" qvtimperativecs_MappingSequenceCS : ownedMappingSequence4
-qvtimperativecs_MappingSequenceCS "1..1" *-- "1..9999" qvtimperativecs_MappingStatementCS : ownedMappingStatements24
-qvtimperativecs_MappingCS "0..9999" --* "1..1" qvtimperativecs_TopLevelCS : ownedMappings29
-qvtimperativecs_MappingCallCS "1..1" *-- "0..1" qvtimperativecs_PathNameCS : ownedPathName13
-qvtimperativecs_QueryCS "0..9999" --* "1..1" qvtimperativecs_TopLevelCS : ownedQueries27
-qvtimperativecs_TopLevelCS "1..1" *-- "0..9999" qvtimperativecs_TransformationCS : ownedTransformations26
-qvtimperativecs_MappingCS "1..1" *-- "0..9999" qvtimperativecs_PathNameCS : ownedUsesPathNames5
-qvtimperativecs_ExpCS "1..1" --* "1..1" qvtimperativecs_MappingCallBindingCS : ownedValue8
-qvtimperativecs_MappingCallBindingCS "1..1" -- "0..1" qvtimperativecs_MappingCallCS : owningMappingCall9
-qvtimperativecs_Mapping "0..1" -- "1..1" qvtimperativecs_MappingCallCS : referredMapping15
-qvtimperativecs_MappingCallBindingCS "1..1" -- "1..1" qvtimperativecs_Variable : referredVariable10
+qvtimperativecs_ImperativeDomainCS "qvtimperativecs_PathNameCS 1..1" *-- "qvtimperativecs_ImperativeDomainCS 0..9999" qvtimperativecs_PathNameCS : checkedProperties0
+qvtimperativecs_ImperativeDomainCS "qvtimperativecs_PathNameCS3 1..1" *-- "qvtimperativecs_ImperativeDomainCS2 0..9999" qvtimperativecs_PathNameCS : enforcedProperties1
+qvtimperativecs_MappingCallBindingCS "owningMappingCall 0..9999" --* "MappingCallBindingCS 1..1" qvtimperativecs_MappingCallCS : ownedBindings12
+qvtimperativecs_ExpCS "qvtimperativecs_MappingLoopCS19 1..1" --* "qvtimperativecs_ExpCS20 1..1" qvtimperativecs_MappingLoopCS : ownedInExpression18
+qvtimperativecs_MappingLoopCS "qvtimperativecs_VariableCS 1..1" *-- "qvtimperativecs_MappingLoopCS 1..1" qvtimperativecs_VariableCS : ownedIterator17
+qvtimperativecs_MappingLoopCS "qvtimperativecs_MappingSequenceCS23 1..1" *-- "qvtimperativecs_MappingLoopCS22 1..1" qvtimperativecs_MappingSequenceCS : ownedMappingSequence21
+qvtimperativecs_MappingCS "qvtimperativecs_MappingSequenceCS 1..1" *-- "qvtimperativecs_MappingCS 0..1" qvtimperativecs_MappingSequenceCS : ownedMappingSequence4
+qvtimperativecs_MappingSequenceCS "qvtimperativecs_MappingStatementCS 1..1" *-- "qvtimperativecs_MappingSequenceCS25 1..9999" qvtimperativecs_MappingStatementCS : ownedMappingStatements24
+qvtimperativecs_MappingCS "qvtimperativecs_TopLevelCS30 0..9999" --* "qvtimperativecs_MappingCS31 1..1" qvtimperativecs_TopLevelCS : ownedMappings29
+qvtimperativecs_MappingCallCS "qvtimperativecs_PathNameCS14 1..1" *-- "qvtimperativecs_MappingCallCS 0..1" qvtimperativecs_PathNameCS : ownedPathName13
+qvtimperativecs_QueryCS "qvtimperativecs_TopLevelCS28 0..9999" --* "qvtimperativecs_QueryCS 1..1" qvtimperativecs_TopLevelCS : ownedQueries27
+qvtimperativecs_TopLevelCS "qvtimperativecs_TransformationCS 1..1" *-- "qvtimperativecs_TopLevelCS 0..9999" qvtimperativecs_TransformationCS : ownedTransformations26
+qvtimperativecs_MappingCS "qvtimperativecs_PathNameCS7 1..1" *-- "qvtimperativecs_MappingCS6 0..9999" qvtimperativecs_PathNameCS : ownedUsesPathNames5
+qvtimperativecs_ExpCS "qvtimperativecs_MappingCallBindingCS 1..1" --* "qvtimperativecs_ExpCS 1..1" qvtimperativecs_MappingCallBindingCS : ownedValue8
+qvtimperativecs_MappingCallBindingCS "MappingCallCS 1..1" -- "ownedBindings 0..1" qvtimperativecs_MappingCallCS : owningMappingCall9
+qvtimperativecs_Mapping "qvtimperativecs_MappingCallCS16 0..1" -- "qvtimperativecs_Mapping 1..1" qvtimperativecs_MappingCallCS : referredMapping15
+qvtimperativecs_MappingCallBindingCS "qvtimperativecs_Variable 1..1" -- "qvtimperativecs_MappingCallBindingCS11 1..1" qvtimperativecs_Variable : referredVariable10
 @enduml

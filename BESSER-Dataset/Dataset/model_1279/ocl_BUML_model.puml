@@ -1,4 +1,8 @@
 @startuml
+' model: ocl
+' project: sampleModel
+' owner: User
+' description: New project
 class EAssociationEnd {
 }
 class EAttribute {
@@ -192,34 +196,34 @@ EOclExpression <|-- ocl_exp_EVariableExp
 EPrimitiveType <|-- ocl_exp_EBooleanLiteralExp
 EPrimitiveType <|-- ocl_exp_ENumericLiteralExp
 EPrimitiveType <|-- ocl_exp_EStringLiteralExp
-ECallExp "0..1" -- "1..1" ocl_exp_EOclExpression : appliedElement21
-EOclExpression "0..9999" --* "1..1" ocl_exp_EOperationCallExp : argument37
-EAttribute "0..9999" --* "1..1" ocl_dm_EEntity : attributes1
-EIterateExp "0..1" -- "1..1" ocl_exp_EVariable : baseExp14
-EOclExpression "1..1" --* "1..1" ocl_exp_ELoopExp : body8
-EEntity "0..9999" --* "1..1" ocl_dm_EDataModel : classes4
-EOclExpression "1..1" --* "1..1" ocl_exp_EIfExp : condition41
-EClassifier "1..1" -- "1..1" ocl_type_ECollectionType : elementType46
-EOclExpression "1..1" --* "1..1" ocl_exp_EIfExp : elseExpression43
-EIfExp "0..1" -- "1..1" ocl_exp_EOclExpression : elseOwner27
-EAssociationEnd "0..9999" --* "1..1" ocl_dm_EEntity : ends0
-EIfExp "0..1" -- "1..1" ocl_exp_EOclExpression : ifOwner25
-EOclExpression "0..1" --* "1..1" ocl_exp_EVariable : initExpression15
-EVariable "0..1" -- "1..1" ocl_exp_EOclExpression : initializedElement22
-EVariable "0..9999" --* "1..1" ocl_exp_ELoopExp : iterator9
-ELoopExp "0..1" -- "1..1" ocl_exp_EOclExpression : loopBodyOwner19
-ELoopExp "0..1" -- "1..1" ocl_exp_EVariable : loopExp13
-EOperationCallExp "0..1" -- "1..1" ocl_exp_EOclExpression : parentCall29
-ENavigationCallExp "0..1" -- "1..1" ocl_exp_EOclExpression : parentNav30
-EOclExpression "0..9999" --* "1..1" ocl_exp_ENavigationCallExp : qualifier35
-EAssociationEnd "1..1" -- "1..1" ocl_exp_EAssociationClassCallExp : referredAssociationEnds11
-EAttribute "1..1" -- "1..1" ocl_exp_EPropertyCallExp : referredProperty17
-ESignal "0..1" -- "1..1" ocl_type_EMessageType : referredSignal45
-EClassifier "1..1" -- "1..1" ocl_exp_ETypeExp : referredType7
-EVariable "0..1" -- "1..1" ocl_exp_EVariableExp : referredVariable6
-EVariable "0..1" --* "1..1" ocl_exp_EIterateExp : result31
-EOclExpression "0..1" --* "1..1" ocl_exp_ECallExp : source33
-EEntity "1..1" -- "1..1" ocl_dm_EAssociationEnd : target3
-EOclExpression "1..1" --* "1..1" ocl_exp_EIfExp : thenExpression39
-EIfExp "0..1" -- "1..1" ocl_exp_EOclExpression : thenOwner24
+ECallExp "source 0..1" -- "ECallExp 1..1" ocl_exp_EOclExpression : appliedElement21
+EOclExpression "parentCall 0..9999" --* "EOclExpression38 1..1" ocl_exp_EOperationCallExp : argument37
+EAttribute "ocl_dm_EEntity2 0..9999" --* "EAttribute 1..1" ocl_dm_EEntity : attributes1
+EIterateExp "result 0..1" -- "EIterateExp 1..1" ocl_exp_EVariable : baseExp14
+EOclExpression "loopBodyOwner 1..1" --* "EOclExpression 1..1" ocl_exp_ELoopExp : body8
+EEntity "ocl_dm_EDataModel 0..9999" --* "EEntity5 1..1" ocl_dm_EDataModel : classes4
+EOclExpression "ifOwner 1..1" --* "EOclExpression42 1..1" ocl_exp_EIfExp : condition41
+EClassifier "ocl_type_ECollectionType 1..1" -- "EClassifier47 1..1" ocl_type_ECollectionType : elementType46
+EOclExpression "elseOwner 1..1" --* "EOclExpression44 1..1" ocl_exp_EIfExp : elseExpression43
+EIfExp "elseExpression 0..1" -- "EIfExp28 1..1" ocl_exp_EOclExpression : elseOwner27
+EAssociationEnd "ocl_dm_EEntity 0..9999" --* "EAssociationEnd 1..1" ocl_dm_EEntity : ends0
+EIfExp "condition 0..1" -- "EIfExp26 1..1" ocl_exp_EOclExpression : ifOwner25
+EOclExpression "initializedElement 0..1" --* "EOclExpression16 1..1" ocl_exp_EVariable : initExpression15
+EVariable "initExpression 0..1" -- "EVariable23 1..1" ocl_exp_EOclExpression : initializedElement22
+EVariable "loopExp 0..9999" --* "EVariable10 1..1" ocl_exp_ELoopExp : iterator9
+ELoopExp "body 0..1" -- "ELoopExp20 1..1" ocl_exp_EOclExpression : loopBodyOwner19
+ELoopExp "iterator 0..1" -- "ELoopExp 1..1" ocl_exp_EVariable : loopExp13
+EOperationCallExp "argument 0..1" -- "EOperationCallExp 1..1" ocl_exp_EOclExpression : parentCall29
+ENavigationCallExp "qualifier 0..1" -- "ENavigationCallExp 1..1" ocl_exp_EOclExpression : parentNav30
+EOclExpression "parentNav 0..9999" --* "EOclExpression36 1..1" ocl_exp_ENavigationCallExp : qualifier35
+EAssociationEnd "ocl_exp_EAssociationClassCallExp 1..1" -- "EAssociationEnd12 1..1" ocl_exp_EAssociationClassCallExp : referredAssociationEnds11
+EAttribute "ocl_exp_EPropertyCallExp 1..1" -- "EAttribute18 1..1" ocl_exp_EPropertyCallExp : referredProperty17
+ESignal "ocl_type_EMessageType 0..1" -- "ESignal 1..1" ocl_type_EMessageType : referredSignal45
+EClassifier "ocl_exp_ETypeExp 1..1" -- "EClassifier 1..1" ocl_exp_ETypeExp : referredType7
+EVariable "ocl_exp_EVariableExp 0..1" -- "EVariable 1..1" ocl_exp_EVariableExp : referredVariable6
+EVariable "baseExp 0..1" --* "EVariable32 1..1" ocl_exp_EIterateExp : result31
+EOclExpression "appliedElement 0..1" --* "EOclExpression34 1..1" ocl_exp_ECallExp : source33
+EEntity "ocl_dm_EAssociationEnd 1..1" -- "EEntity 1..1" ocl_dm_EAssociationEnd : target3
+EOclExpression "thenOwner 1..1" --* "EOclExpression40 1..1" ocl_exp_EIfExp : thenExpression39
+EIfExp "thenExpression 0..1" -- "EIfExp 1..1" ocl_exp_EOclExpression : thenOwner24
 @enduml

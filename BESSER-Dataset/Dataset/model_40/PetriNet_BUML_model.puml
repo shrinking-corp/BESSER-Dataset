@@ -1,4 +1,8 @@
 @startuml
+' model: petrinet
+' project: sampleModel
+' owner: User
+' description: New project
 enum ArcKind {
   normal
   read_arc
@@ -24,12 +28,12 @@ class petrinet_Transition {
 }
 Node <|-- petrinet_Place
 Node <|-- petrinet_Transition
-petrinet_Arc "0..9999" --* "1..1" petrinet_PetriNet : arcs1
-petrinet_Arc "0..9999" -- "1..1" petrinet_Node : incomings6
-petrinet_Arc "1..1" -- "1..1" petrinet_PetriNet : net12
-petrinet_Node "1..1" -- "1..1" petrinet_PetriNet : net3
-petrinet_Node "0..9999" --* "1..1" petrinet_PetriNet : nodes0
-petrinet_Arc "0..9999" -- "1..1" petrinet_Node : outgoings4
-petrinet_Arc "1..1" -- "1..1" petrinet_Node : source10
-petrinet_Arc "1..1" -- "1..1" petrinet_Node : target8
+petrinet_Arc "net2 0..9999" --* "Arc 1..1" petrinet_PetriNet : arcs1
+petrinet_Arc "target 0..9999" -- "Arc7 1..1" petrinet_Node : incomings6
+petrinet_Arc "PetriNet13 1..1" -- "arcs 1..1" petrinet_PetriNet : net12
+petrinet_Node "PetriNet 1..1" -- "nodes 1..1" petrinet_PetriNet : net3
+petrinet_Node "net 0..9999" --* "Node 1..1" petrinet_PetriNet : nodes0
+petrinet_Arc "source 0..9999" -- "Arc5 1..1" petrinet_Node : outgoings4
+petrinet_Arc "Node11 1..1" -- "outgoings 1..1" petrinet_Node : source10
+petrinet_Arc "Node9 1..1" -- "incomings 1..1" petrinet_Node : target8
 @enduml

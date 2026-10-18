@@ -410,30 +410,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=fsmcore_Statement_strategy)
-@settings(max_examples=30)
-def test_hyp_fsmcore_statement_eval_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.eval(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.eval).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'eval' in fsmcore_Statement is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'eval' in fsmcore_Statement did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'eval' in fsmcore_Statement is not implemented or raised an error")
 
 
 
@@ -451,30 +427,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=fsmcore_Constraint_strategy)
-@settings(max_examples=30)
-def test_hyp_fsmcore_constraint_evalconstraint_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.evalConstraint(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.evalConstraint).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'evalConstraint' in fsmcore_Constraint is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'evalConstraint' in fsmcore_Constraint did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'evalConstraint' in fsmcore_Constraint is not implemented or raised an error")
 
 
 
@@ -501,30 +453,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=fsmcore_Program_strategy)
-@settings(max_examples=30)
-def test_hyp_fsmcore_program_eval_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.eval(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.eval).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'eval' in fsmcore_Program is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'eval' in fsmcore_Program did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'eval' in fsmcore_Program is not implemented or raised an error")
 
 
 
@@ -1087,28 +1015,8 @@ def test_assoc_trigger15_stub_double():
 
 
 
-from enum import Enum
 from python_code import PseudostateKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(PseudostateKind.initial, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(PseudostateKind.initial, '', '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(PseudostateKind.initial, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(PseudostateKind.initial, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(PseudostateKind.initial, 'initial') == PseudostateKind.initial
-
 from python_code import fsmcore_Constraint
 from python_code import fsmcore_Transition
 
@@ -1117,12 +1025,10 @@ def test_fsmcore_Constraint___init__():
 
 def test_fsmcore_Constraint_evalConstraint():
     assert fsmcore_Constraint.evalConstraint(fsmcore_Constraint(fsmcore_Constraint=fsmcore_Transition()), '') == None
-
 from python_code import fsmcore_NamedElement
 
 def test_fsmcore_NamedElement___init__():
     assert fsmcore_NamedElement.__init__(fsmcore_NamedElement(''), '') == None
-
 from python_code import fsmcore_Program
 from python_code import fsmcore_State
 
@@ -1131,12 +1037,10 @@ def test_fsmcore_Program___init__():
 
 def test_fsmcore_Program_eval():
     assert fsmcore_Program.eval(fsmcore_Program(fsmcore_Program=fsmcore_State(), fsmcore_Program11=fsmcore_State(), fsmcore_Program14=fsmcore_State(), fsmcore_Program24=set()), 0) == None
-
 from python_code import fsmcore_Pseudostate
 
 def test_fsmcore_Pseudostate___init__():
     assert fsmcore_Pseudostate.__init__(fsmcore_Pseudostate(''), '') == None
-
 from python_code import fsmcore_Transition
 from python_code import fsmcore_Trigger
 

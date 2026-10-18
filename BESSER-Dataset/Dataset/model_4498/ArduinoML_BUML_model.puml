@@ -1,4 +1,8 @@
 @startuml
+' model: ArduinoCard
+' project: sampleModel
+' owner: User
+' description: New project
 class ArduinoCard_Actuator {
 }
 abstract class ArduinoCard_Block {
@@ -33,14 +37,14 @@ Block <|-- ArduinoCard_Actuator
 Block <|-- ArduinoCard_Sensor
 BlockInteraction <|-- ArduinoCard_Command
 BlockInteraction <|-- ArduinoCard_Condition
-ArduinoCard_Actuator "1..1" -- "1..1" ArduinoCard_Command : Actuator10
-ArduinoCard_BlockInteraction "1..9999" --* "1..1" ArduinoCard_Card : BlockInteractions17
-ArduinoCard_Block "1..9999" --* "1..1" ArduinoCard_Card : Blocks19
-ArduinoCard_Command "1..9999" -- "1..1" ArduinoCard_State : Command1
-ArduinoCard_Condition "1..9999" -- "1..1" ArduinoCard_Transition : Condition7
-ArduinoCard_Condition "1..1" -- "1..1" ArduinoCard_Sensor : Sensor3
-ArduinoCard_Card "1..1" *-- "1..9999" ArduinoCard_State : States12
-ArduinoCard_State "1..1" -- "1..9999" ArduinoCard_Transition : Transitions0
-ArduinoCard_Card "1..1" *-- "1..9999" ArduinoCard_Transition : Transitions14
-ArduinoCard_State "1..1" -- "1..1" ArduinoCard_Transition : nextState4
+ArduinoCard_Actuator "ArduinoCard_Command11 1..1" -- "ArduinoCard_Actuator 1..1" ArduinoCard_Command : Actuator10
+ArduinoCard_BlockInteraction "ArduinoCard_Card18 1..9999" --* "ArduinoCard_BlockInteraction 1..1" ArduinoCard_Card : BlockInteractions17
+ArduinoCard_Block "ArduinoCard_Card20 1..9999" --* "ArduinoCard_Block 1..1" ArduinoCard_Card : Blocks19
+ArduinoCard_Command "ArduinoCard_State2 1..9999" -- "ArduinoCard_Command 1..1" ArduinoCard_State : Command1
+ArduinoCard_Condition "ArduinoCard_Transition8 1..9999" -- "ArduinoCard_Condition9 1..1" ArduinoCard_Transition : Condition7
+ArduinoCard_Condition "ArduinoCard_Sensor 1..1" -- "ArduinoCard_Condition 1..1" ArduinoCard_Sensor : Sensor3
+ArduinoCard_Card "ArduinoCard_State13 1..1" *-- "ArduinoCard_Card 1..9999" ArduinoCard_State : States12
+ArduinoCard_State "ArduinoCard_Transition 1..1" -- "ArduinoCard_State 1..9999" ArduinoCard_Transition : Transitions0
+ArduinoCard_Card "ArduinoCard_Transition16 1..1" *-- "ArduinoCard_Card15 1..9999" ArduinoCard_Transition : Transitions14
+ArduinoCard_State "ArduinoCard_Transition5 1..1" -- "ArduinoCard_State6 1..1" ArduinoCard_Transition : nextState4
 @enduml

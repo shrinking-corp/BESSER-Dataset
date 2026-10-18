@@ -1,4 +1,8 @@
 @startuml
+' model: purchaseOrder
+' project: sampleModel
+' owner: User
+' description: New project
 class purchaseOrder_Item {
   + USPrice : int
   + comment : str
@@ -19,7 +23,7 @@ class purchaseOrder_USAddress {
   + street : str
   + zip : int
 }
-purchaseOrder_PurchaseOrder "1..1" *-- "1..1" purchaseOrder_USAddress : billTo1
-purchaseOrder_Item "0..9999" --* "1..1" purchaseOrder_PurchaseOrder : items4
-purchaseOrder_PurchaseOrder "1..1" *-- "1..1" purchaseOrder_USAddress : shipTo0
+purchaseOrder_PurchaseOrder "purchaseOrder_USAddress3 1..1" *-- "purchaseOrder_PurchaseOrder2 1..1" purchaseOrder_USAddress : billTo1
+purchaseOrder_Item "purchaseOrder_PurchaseOrder5 0..9999" --* "purchaseOrder_Item 1..1" purchaseOrder_PurchaseOrder : items4
+purchaseOrder_PurchaseOrder "purchaseOrder_USAddress 1..1" *-- "purchaseOrder_PurchaseOrder 1..1" purchaseOrder_USAddress : shipTo0
 @enduml

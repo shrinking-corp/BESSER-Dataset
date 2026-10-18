@@ -150,9 +150,9 @@ def test_assoc_contents30_stub_double():
     partner = SimplStateMachine_Operation()
     setattr(partner, 'SimplStateMachine_Operation31', None)
     _safe_set(owner, 'SimplStateMachine_Assignment', partner)
-    assert getattr(partner, 'SimplStateMachine_Operation31') == owner
+    assert owner in getattr(partner, 'SimplStateMachine_Operation31')
     _safe_set(owner, 'SimplStateMachine_Assignment', None)
-    assert getattr(partner, 'SimplStateMachine_Operation31') is None
+    assert owner not in getattr(partner, 'SimplStateMachine_Operation31')
 
 
 def test_assoc_event18_stub_double():
@@ -180,9 +180,9 @@ def test_assoc_events1_stub_double():
     partner = SimplStateMachine_StateMachine()
     setattr(partner, 'SimplStateMachine_StateMachine2', None)
     _safe_set(owner, 'SimplStateMachine_Event', partner)
-    assert getattr(partner, 'SimplStateMachine_StateMachine2') == owner
+    assert owner in getattr(partner, 'SimplStateMachine_StateMachine2')
     _safe_set(owner, 'SimplStateMachine_Event', None)
-    assert getattr(partner, 'SimplStateMachine_StateMachine2') is None
+    assert owner not in getattr(partner, 'SimplStateMachine_StateMachine2')
 
 
 def test_assoc_expression32_stub_double():
@@ -345,8 +345,8 @@ def test_assoc_variables3_stub_double():
     partner = SimplStateMachine_StateMachine()
     setattr(partner, 'SimplStateMachine_StateMachine4', None)
     _safe_set(owner, 'SimplStateMachine_Variable', partner)
-    assert getattr(partner, 'SimplStateMachine_StateMachine4') == owner
+    assert owner in getattr(partner, 'SimplStateMachine_StateMachine4')
     _safe_set(owner, 'SimplStateMachine_Variable', None)
-    assert getattr(partner, 'SimplStateMachine_StateMachine4') is None
+    assert owner not in getattr(partner, 'SimplStateMachine_StateMachine4')
 
 

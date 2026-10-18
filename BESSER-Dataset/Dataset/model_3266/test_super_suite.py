@@ -7241,28 +7241,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=aadl2_BehavioredImplementation_strategy)
-@settings(max_examples=30)
-def test_hyp_aadl2_behavioredimplementation_subprogramcalls_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.subprogramCalls()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.subprogramCalls).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'subprogramCalls' in aadl2_BehavioredImplementation is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'subprogramCalls' in aadl2_BehavioredImplementation did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'subprogramCalls' in aadl2_BehavioredImplementation is not implemented or raised an error")
 
 
 
@@ -18061,9 +18039,9 @@ def test_assoc_actual386_stub_double():
     partner = aadl2_ComponentPrototypeBinding()
     setattr(partner, 'aadl2_ComponentPrototypeBinding', None)
     _safe_set(owner, 'aadl2_ComponentPrototypeActual', partner)
-    assert getattr(partner, 'aadl2_ComponentPrototypeBinding') == owner
+    assert owner in getattr(partner, 'aadl2_ComponentPrototypeBinding')
     _safe_set(owner, 'aadl2_ComponentPrototypeActual', None)
-    assert getattr(partner, 'aadl2_ComponentPrototypeBinding') is None
+    assert owner not in getattr(partner, 'aadl2_ComponentPrototypeBinding')
 
 
 def test_assoc_appliesTo20_stub_double():
@@ -18181,9 +18159,9 @@ def test_assoc_classifierReference876_stub_double():
     partner = aadl2_ClassifierType()
     setattr(partner, 'aadl2_ClassifierType', None)
     _safe_set(owner, 'aadl2_MetaclassReference877', partner)
-    assert getattr(partner, 'aadl2_ClassifierType') == owner
+    assert owner in getattr(partner, 'aadl2_ClassifierType')
     _safe_set(owner, 'aadl2_MetaclassReference877', None)
-    assert getattr(partner, 'aadl2_ClassifierType') is None
+    assert owner not in getattr(partner, 'aadl2_ClassifierType')
 
 
 def test_assoc_containmentPathElement75_stub_double():
@@ -18196,9 +18174,9 @@ def test_assoc_containmentPathElement75_stub_double():
     partner = aadl2_ContainedNamedElement()
     setattr(partner, 'aadl2_ContainedNamedElement76', None)
     _safe_set(owner, 'aadl2_ContainmentPathElement77', partner)
-    assert getattr(partner, 'aadl2_ContainedNamedElement76') == owner
+    assert owner in getattr(partner, 'aadl2_ContainedNamedElement76')
     _safe_set(owner, 'aadl2_ContainmentPathElement77', None)
-    assert getattr(partner, 'aadl2_ContainedNamedElement76') is None
+    assert owner not in getattr(partner, 'aadl2_ContainedNamedElement76')
 
 
 def test_assoc_dataClassifier345_stub_double():
@@ -18376,9 +18354,9 @@ def test_assoc_featuringClassifier49_stub_double():
     partner = aadl2_ClassifierFeature()
     setattr(partner, 'classifierFeature', None)
     _safe_set(owner, 'Classifier', partner)
-    assert getattr(partner, 'classifierFeature') == owner
+    assert owner in getattr(partner, 'classifierFeature')
     _safe_set(owner, 'Classifier', None)
-    assert getattr(partner, 'classifierFeature') is None
+    assert owner not in getattr(partner, 'classifierFeature')
 
 
 def test_assoc_general50_stub_double():
@@ -18511,9 +18489,9 @@ def test_assoc_member46_stub_double():
     partner = aadl2_Namespace()
     setattr(partner, 'aadl2_Namespace47', None)
     _safe_set(owner, 'aadl2_NamedElement48', partner)
-    assert getattr(partner, 'aadl2_Namespace47') == owner
+    assert owner in getattr(partner, 'aadl2_Namespace47')
     _safe_set(owner, 'aadl2_NamedElement48', None)
-    assert getattr(partner, 'aadl2_Namespace47') is None
+    assert owner not in getattr(partner, 'aadl2_Namespace47')
 
 
 def test_assoc_namedElementReference888_stub_double():
@@ -18526,9 +18504,9 @@ def test_assoc_namedElementReference888_stub_double():
     partner = aadl2_ReferenceType()
     setattr(partner, 'aadl2_ReferenceType', None)
     _safe_set(owner, 'aadl2_MetaclassReference889', partner)
-    assert getattr(partner, 'aadl2_ReferenceType') == owner
+    assert owner in getattr(partner, 'aadl2_ReferenceType')
     _safe_set(owner, 'aadl2_MetaclassReference889', None)
-    assert getattr(partner, 'aadl2_ReferenceType') is None
+    assert owner not in getattr(partner, 'aadl2_ReferenceType')
 
 
 def test_assoc_outEnd184_stub_double():
@@ -18631,9 +18609,9 @@ def test_assoc_ownedBusAccess216_stub_double():
     partner = aadl2_FeatureGroupType()
     setattr(partner, 'aadl2_FeatureGroupType217', None)
     _safe_set(owner, 'aadl2_BusAccess', partner)
-    assert getattr(partner, 'aadl2_FeatureGroupType217') == owner
+    assert owner in getattr(partner, 'aadl2_FeatureGroupType217')
     _safe_set(owner, 'aadl2_BusAccess', None)
-    assert getattr(partner, 'aadl2_FeatureGroupType217') is None
+    assert owner not in getattr(partner, 'aadl2_FeatureGroupType217')
 
 
 def test_assoc_ownedBusAccess423_stub_double():
@@ -18646,9 +18624,9 @@ def test_assoc_ownedBusAccess423_stub_double():
     partner = aadl2_AbstractType()
     setattr(partner, 'aadl2_AbstractType', None)
     _safe_set(owner, 'aadl2_BusAccess424', partner)
-    assert getattr(partner, 'aadl2_AbstractType') == owner
+    assert owner in getattr(partner, 'aadl2_AbstractType')
     _safe_set(owner, 'aadl2_BusAccess424', None)
-    assert getattr(partner, 'aadl2_AbstractType') is None
+    assert owner not in getattr(partner, 'aadl2_AbstractType')
 
 
 def test_assoc_ownedBusAccess497_stub_double():
@@ -18661,9 +18639,9 @@ def test_assoc_ownedBusAccess497_stub_double():
     partner = aadl2_BusType()
     setattr(partner, 'aadl2_BusType', None)
     _safe_set(owner, 'aadl2_BusAccess498', partner)
-    assert getattr(partner, 'aadl2_BusType') == owner
+    assert owner in getattr(partner, 'aadl2_BusType')
     _safe_set(owner, 'aadl2_BusAccess498', None)
-    assert getattr(partner, 'aadl2_BusType') is None
+    assert owner not in getattr(partner, 'aadl2_BusType')
 
 
 def test_assoc_ownedBusAccess531_stub_double():
@@ -18676,9 +18654,9 @@ def test_assoc_ownedBusAccess531_stub_double():
     partner = aadl2_DeviceType()
     setattr(partner, 'aadl2_DeviceType532', None)
     _safe_set(owner, 'aadl2_BusAccess533', partner)
-    assert getattr(partner, 'aadl2_DeviceType532') == owner
+    assert owner in getattr(partner, 'aadl2_DeviceType532')
     _safe_set(owner, 'aadl2_BusAccess533', None)
-    assert getattr(partner, 'aadl2_DeviceType532') is None
+    assert owner not in getattr(partner, 'aadl2_DeviceType532')
 
 
 def test_assoc_ownedBusAccess548_stub_double():
@@ -18691,9 +18669,9 @@ def test_assoc_ownedBusAccess548_stub_double():
     partner = aadl2_MemoryType()
     setattr(partner, 'aadl2_MemoryType', None)
     _safe_set(owner, 'aadl2_BusAccess549', partner)
-    assert getattr(partner, 'aadl2_MemoryType') == owner
+    assert owner in getattr(partner, 'aadl2_MemoryType')
     _safe_set(owner, 'aadl2_BusAccess549', None)
-    assert getattr(partner, 'aadl2_MemoryType') is None
+    assert owner not in getattr(partner, 'aadl2_MemoryType')
 
 
 def test_assoc_ownedBusAccess599_stub_double():
@@ -18706,9 +18684,9 @@ def test_assoc_ownedBusAccess599_stub_double():
     partner = aadl2_SystemType()
     setattr(partner, 'aadl2_SystemType', None)
     _safe_set(owner, 'aadl2_BusAccess600', partner)
-    assert getattr(partner, 'aadl2_SystemType') == owner
+    assert owner in getattr(partner, 'aadl2_SystemType')
     _safe_set(owner, 'aadl2_BusAccess600', None)
-    assert getattr(partner, 'aadl2_SystemType') is None
+    assert owner not in getattr(partner, 'aadl2_SystemType')
 
 
 def test_assoc_ownedBusAccess659_stub_double():
@@ -18721,9 +18699,9 @@ def test_assoc_ownedBusAccess659_stub_double():
     partner = aadl2_ProcessorType()
     setattr(partner, 'aadl2_ProcessorType660', None)
     _safe_set(owner, 'aadl2_BusAccess661', partner)
-    assert getattr(partner, 'aadl2_ProcessorType660') == owner
+    assert owner in getattr(partner, 'aadl2_ProcessorType660')
     _safe_set(owner, 'aadl2_BusAccess661', None)
-    assert getattr(partner, 'aadl2_ProcessorType660') is None
+    assert owner not in getattr(partner, 'aadl2_ProcessorType660')
 
 
 def test_assoc_ownedBusAccess774_stub_double():
@@ -18736,9 +18714,9 @@ def test_assoc_ownedBusAccess774_stub_double():
     partner = aadl2_VirtualBusType()
     setattr(partner, 'aadl2_VirtualBusType775', None)
     _safe_set(owner, 'aadl2_BusAccess776', partner)
-    assert getattr(partner, 'aadl2_VirtualBusType775') == owner
+    assert owner in getattr(partner, 'aadl2_VirtualBusType775')
     _safe_set(owner, 'aadl2_BusAccess776', None)
-    assert getattr(partner, 'aadl2_VirtualBusType775') is None
+    assert owner not in getattr(partner, 'aadl2_VirtualBusType775')
 
 
 def test_assoc_ownedBusAccess793_stub_double():
@@ -18751,9 +18729,9 @@ def test_assoc_ownedBusAccess793_stub_double():
     partner = aadl2_VirtualProcessorType()
     setattr(partner, 'aadl2_VirtualProcessorType794', None)
     _safe_set(owner, 'aadl2_BusAccess795', partner)
-    assert getattr(partner, 'aadl2_VirtualProcessorType794') == owner
+    assert owner in getattr(partner, 'aadl2_VirtualProcessorType794')
     _safe_set(owner, 'aadl2_BusAccess795', None)
-    assert getattr(partner, 'aadl2_VirtualProcessorType794') is None
+    assert owner not in getattr(partner, 'aadl2_VirtualProcessorType794')
 
 
 def test_assoc_ownedEndToEndFlow113_stub_double():
@@ -18871,9 +18849,9 @@ def test_assoc_ownedFeatureGroup226_stub_double():
     partner = aadl2_FeatureGroupType()
     setattr(partner, 'aadl2_FeatureGroupType227', None)
     _safe_set(owner, 'aadl2_FeatureGroup228', partner)
-    assert getattr(partner, 'aadl2_FeatureGroupType227') == owner
+    assert owner in getattr(partner, 'aadl2_FeatureGroupType227')
     _safe_set(owner, 'aadl2_FeatureGroup228', None)
-    assert getattr(partner, 'aadl2_FeatureGroupType227') is None
+    assert owner not in getattr(partner, 'aadl2_FeatureGroupType227')
 
 
 def test_assoc_ownedFeatureGroupConnection125_stub_double():
@@ -18931,9 +18909,9 @@ def test_assoc_ownedMember44_stub_double():
     partner = aadl2_Namespace()
     setattr(partner, 'aadl2_Namespace', None)
     _safe_set(owner, 'aadl2_NamedElement45', partner)
-    assert getattr(partner, 'aadl2_Namespace') == owner
+    assert owner in getattr(partner, 'aadl2_Namespace')
     _safe_set(owner, 'aadl2_NamedElement45', None)
-    assert getattr(partner, 'aadl2_Namespace') is None
+    assert owner not in getattr(partner, 'aadl2_Namespace')
 
 
 def test_assoc_ownedModeBinding276_stub_double():
@@ -19021,9 +18999,9 @@ def test_assoc_ownedProperty843_stub_double():
     partner = aadl2_PropertySet()
     setattr(partner, 'aadl2_PropertySet844', None)
     _safe_set(owner, 'aadl2_Property845', partner)
-    assert getattr(partner, 'aadl2_PropertySet844') == owner
+    assert owner in getattr(partner, 'aadl2_PropertySet844')
     _safe_set(owner, 'aadl2_Property845', None)
-    assert getattr(partner, 'aadl2_PropertySet844') is None
+    assert owner not in getattr(partner, 'aadl2_PropertySet844')
 
 
 def test_assoc_ownedPropertyExpression834_stub_double():
@@ -19246,9 +19224,9 @@ def test_assoc_relatedElement59_stub_double():
     partner = aadl2_Relationship()
     setattr(partner, 'aadl2_Relationship', None)
     _safe_set(owner, 'aadl2_Element60', partner)
-    assert getattr(partner, 'aadl2_Relationship') == owner
+    assert owner in getattr(partner, 'aadl2_Relationship')
     _safe_set(owner, 'aadl2_Element60', None)
-    assert getattr(partner, 'aadl2_Relationship') is None
+    assert owner not in getattr(partner, 'aadl2_Relationship')
 
 
 def test_assoc_renamedPackage367_stub_double():
@@ -19336,9 +19314,9 @@ def test_assoc_source54_stub_double():
     partner = aadl2_DirectedRelationship()
     setattr(partner, 'aadl2_DirectedRelationship', None)
     _safe_set(owner, 'aadl2_Element55', partner)
-    assert getattr(partner, 'aadl2_DirectedRelationship') == owner
+    assert owner in getattr(partner, 'aadl2_DirectedRelationship')
     _safe_set(owner, 'aadl2_Element55', None)
-    assert getattr(partner, 'aadl2_DirectedRelationship') is None
+    assert owner not in getattr(partner, 'aadl2_DirectedRelationship')
 
 
 def test_assoc_specific52_stub_double():
@@ -19411,179 +19389,37 @@ def test_assoc_target56_stub_double():
     partner = aadl2_DirectedRelationship()
     setattr(partner, 'aadl2_DirectedRelationship57', None)
     _safe_set(owner, 'aadl2_Element58', partner)
-    assert getattr(partner, 'aadl2_DirectedRelationship57') == owner
+    assert owner in getattr(partner, 'aadl2_DirectedRelationship57')
     _safe_set(owner, 'aadl2_Element58', None)
-    assert getattr(partner, 'aadl2_DirectedRelationship57') is None
+    assert owner not in getattr(partner, 'aadl2_DirectedRelationship57')
 
 
 
 
-from enum import Enum
 from python_code import AccessCategory
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(AccessCategory.bus, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(AccessCategory.data, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(AccessCategory.data, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(AccessCategory.bus, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(AccessCategory.bus, 'bus') == AccessCategory.bus
-
-from enum import Enum
 from python_code import AccessType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(AccessType.requires, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(AccessType.requires, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(AccessType.provides, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(AccessType.requires, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(AccessType.requires, 'requires') == AccessType.requires
-
-from enum import Enum
 from python_code import ComponentCategory
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ComponentCategory.memory, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ComponentCategory.bus, '', 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ComponentCategory.data, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ComponentCategory.bus, '')
-
-def test_Enum___new___2():
-    assert Enum.__new__(ComponentCategory.bus, 'bus') == ComponentCategory.bus
-
-from enum import Enum
 from python_code import DirectionType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(DirectionType.in_, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(DirectionType.in_, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(DirectionType.in_, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(DirectionType.in_, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(DirectionType.in_, 'in_') == DirectionType.in_
-
-from enum import Enum
 from python_code import FlowKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(FlowKind.sink, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(FlowKind.sink, 0, '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(FlowKind.sink, '', '', '') == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(FlowKind.sink, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(FlowKind.sink, 'sink') == FlowKind.sink
-
-from enum import Enum
 from python_code import OperationKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(OperationKind.or_, '', 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(OperationKind.or_, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(OperationKind.or_, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(OperationKind.or_, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(OperationKind.or_, 'or_') == OperationKind.or_
-
-from enum import Enum
 from python_code import PortCategory
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(PortCategory.data, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(PortCategory.data, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(PortCategory.data, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(PortCategory.data, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(PortCategory.data, 'data') == PortCategory.data
-
 from python_code import aadl2_Access
 
 def test_aadl2_Access___init__():
     assert aadl2_Access.__init__(aadl2_Access('', '\x00'), '\x00\x00', '') == None
-
 from python_code import aadl2_ArrayDimension
 from python_code import aadl2_ArraySize
 from python_code import aadl2_ArraySizeProperty
 
 def test_aadl2_ArraySize___init__():
     assert aadl2_ArraySize.__init__(aadl2_ArraySize('', aadl2_ArraySize91=aadl2_ArraySizeProperty(), aadl2_ArraySize=aadl2_ArrayDimension()), '', aadl2_ArraySize91=aadl2_ArraySizeProperty(), aadl2_ArraySize=aadl2_ArrayDimension()) == None
-
 from python_code import aadl2_BehavioredImplementation
 
 def test_aadl2_BehavioredImplementation___init__():
@@ -19591,12 +19427,10 @@ def test_aadl2_BehavioredImplementation___init__():
 
 def test_aadl2_BehavioredImplementation_subprogramCalls():
     assert aadl2_BehavioredImplementation.subprogramCalls(aadl2_BehavioredImplementation(aadl2_BehavioredImplementation421=set(), aadl2_BehavioredImplementation=set())) == None
-
 from python_code import aadl2_BooleanLiteral
 
 def test_aadl2_BooleanLiteral___init__():
     assert aadl2_BooleanLiteral.__init__(aadl2_BooleanLiteral(''), '') == None
-
 from python_code import aadl2_AbstractType
 from python_code import aadl2_BusAccess
 from python_code import aadl2_BusFeatureClassifier
@@ -19611,41 +19445,34 @@ from python_code import aadl2_VirtualProcessorType
 
 def test_aadl2_BusAccess___init__():
     assert aadl2_BusAccess.__init__(aadl2_BusAccess('', aadl2_BusAccess=aadl2_FeatureGroupType(), aadl2_BusAccess242=aadl2_BusFeatureClassifier(), aadl2_BusAccess424=aadl2_AbstractType(), aadl2_BusAccess498=aadl2_BusType(), aadl2_BusAccess533=aadl2_DeviceType(), aadl2_BusAccess549=aadl2_MemoryType(), aadl2_BusAccess600=aadl2_SystemType(), aadl2_BusAccess661=aadl2_ProcessorType(), aadl2_BusAccess776=aadl2_VirtualBusType(), aadl2_BusAccess795=aadl2_VirtualProcessorType()), '', aadl2_BusAccess=aadl2_FeatureGroupType(), aadl2_BusAccess242=aadl2_BusFeatureClassifier(), aadl2_BusAccess424=aadl2_AbstractType(), aadl2_BusAccess498=aadl2_BusType(), aadl2_BusAccess533=aadl2_DeviceType(), aadl2_BusAccess549=aadl2_MemoryType(), aadl2_BusAccess600=aadl2_SystemType(), aadl2_BusAccess661=aadl2_ProcessorType(), aadl2_BusAccess776=aadl2_VirtualBusType(), aadl2_BusAccess795=aadl2_VirtualProcessorType()) == None
-
 from python_code import aadl2_ComponentPrototypeActual
 from python_code import aadl2_ComponentPrototypeBinding
 from python_code import aadl2_SubcomponentType
 
 def test_aadl2_ComponentPrototypeActual___init__():
     assert aadl2_ComponentPrototypeActual.__init__(aadl2_ComponentPrototypeActual('', aadl2_ComponentPrototypeActual388=set(), aadl2_ComponentPrototypeActual391=aadl2_SubcomponentType(), aadl2_ComponentPrototypeActual=aadl2_ComponentPrototypeBinding()), '', aadl2_ComponentPrototypeActual388=set(), aadl2_ComponentPrototypeActual391=aadl2_SubcomponentType(), aadl2_ComponentPrototypeActual=aadl2_ComponentPrototypeBinding()) == None
-
 from python_code import aadl2_ComputedValue
 
 def test_aadl2_ComputedValue___init__():
     assert aadl2_ComputedValue.__init__(aadl2_ComputedValue(''), '') == None
-
 from python_code import aadl2_AnnexLibrary
 from python_code import aadl2_DefaultAnnexLibrary
 
 def test_aadl2_DefaultAnnexLibrary___init__():
     assert aadl2_DefaultAnnexLibrary.__init__(aadl2_DefaultAnnexLibrary('', aadl2_DefaultAnnexLibrary=aadl2_AnnexLibrary()), '', aadl2_DefaultAnnexLibrary=aadl2_AnnexLibrary()) == None
-
 from python_code import aadl2_AnnexSubclause
 from python_code import aadl2_DefaultAnnexSubclause
 
 def test_aadl2_DefaultAnnexSubclause___init__():
     assert aadl2_DefaultAnnexSubclause.__init__(aadl2_DefaultAnnexSubclause('', aadl2_DefaultAnnexSubclause=aadl2_AnnexSubclause()), '', aadl2_DefaultAnnexSubclause=aadl2_AnnexSubclause()) == None
-
 from python_code import aadl2_DirectedFeature
 
 def test_aadl2_DirectedFeature___init__():
     assert aadl2_DirectedFeature.__init__(aadl2_DirectedFeature('', '', '\x00\x00'), '', '', '') == None
-
 from python_code import aadl2_IntegerLiteral
 
 def test_aadl2_IntegerLiteral___init__():
     assert aadl2_IntegerLiteral.__init__(aadl2_IntegerLiteral('', '\x00'), '\x00\x00', '') == None
-
 from python_code import aadl2_ModalPath
 
 def test_aadl2_ModalPath___init__():
@@ -19659,7 +19486,6 @@ def test_aadl2_ModalPath_getInModeTransitions():
 
 def test_aadl2_ModalPath_getInModes():
     assert aadl2_ModalPath.getInModes(aadl2_ModalPath(aadl2_ModalPath=set())) == None
-
 from python_code import aadl2_Operation
 
 def test_aadl2_Operation___init__():

@@ -1,4 +1,8 @@
 @startuml
+' model: SimplStateMachine
+' project: sampleModel
+' owner: User
+' description: New project
 class CompositeState {
 }
 class Data {
@@ -79,23 +83,23 @@ ExpressionElement <|-- SimplStateMachine_VariableReference
 State <|-- SimplStateMachine_CompositeState
 Variable <|-- SimplStateMachine_BooleanVariable
 Variable <|-- SimplStateMachine_IntegerVariable
-SimplStateMachine_CompositeState "0..1" -- "1..1" SimplStateMachine_State : container5
-SimplStateMachine_Assignment "0..9999" --* "1..1" SimplStateMachine_Operation : contents30
-SimplStateMachine_Event "1..1" -- "1..1" SimplStateMachine_Transition : event18
-SimplStateMachine_Event "1..9999" --* "1..1" SimplStateMachine_StateMachine : events1
-SimplStateMachine_Assignment "1..1" *-- "1..1" SimplStateMachine_ExpressionElement : expression32
-SimplStateMachine_Expression "0..1" --* "1..1" SimplStateMachine_Transition : guard21
-SimplStateMachine_CompositeState "1..1" *-- "1..1" SimplStateMachine_InitialState : initialState8
-SimplStateMachine_Expression "1..1" *-- "1..1" SimplStateMachine_ExpressionElement : left23
-SimplStateMachine_Operation "0..1" --* "1..1" SimplStateMachine_State : operation6
-SimplStateMachine_InitialState "1..1" -- "1..1" SimplStateMachine_State : referencedState9
-SimplStateMachine_Expression "1..1" *-- "1..1" SimplStateMachine_ExpressionElement : right25
-SimplStateMachine_State "1..1" -- "1..1" SimplStateMachine_Transition : source12
-SimplStateMachine_CompositeState "1..1" *-- "1..9999" SimplStateMachine_State : states7
-SimplStateMachine_State "1..1" -- "1..1" SimplStateMachine_Transition : target15
-SimplStateMachine_StateMachine "1..1" *-- "1..9999" SimplStateMachine_Transition : transitions0
-SimplStateMachine_Data "0..1" --* "1..1" SimplStateMachine_Variable : value28
-SimplStateMachine_Assignment "1..1" -- "1..1" SimplStateMachine_Variable : variable35
-SimplStateMachine_Variable "1..1" -- "1..1" SimplStateMachine_VariableReference : variable38
-SimplStateMachine_StateMachine "1..1" *-- "0..9999" SimplStateMachine_Variable : variables3
+SimplStateMachine_CompositeState "states 0..1" -- "CompositeState 1..1" SimplStateMachine_State : container5
+SimplStateMachine_Assignment "SimplStateMachine_Operation31 0..9999" --* "SimplStateMachine_Assignment 1..1" SimplStateMachine_Operation : contents30
+SimplStateMachine_Event "SimplStateMachine_Transition19 1..1" -- "SimplStateMachine_Event20 1..1" SimplStateMachine_Transition : event18
+SimplStateMachine_Event "SimplStateMachine_StateMachine2 1..9999" --* "SimplStateMachine_Event 1..1" SimplStateMachine_StateMachine : events1
+SimplStateMachine_Assignment "SimplStateMachine_ExpressionElement34 1..1" *-- "SimplStateMachine_Assignment33 1..1" SimplStateMachine_ExpressionElement : expression32
+SimplStateMachine_Expression "SimplStateMachine_Transition22 0..1" --* "SimplStateMachine_Expression 1..1" SimplStateMachine_Transition : guard21
+SimplStateMachine_CompositeState "SimplStateMachine_InitialState 1..1" *-- "SimplStateMachine_CompositeState 1..1" SimplStateMachine_InitialState : initialState8
+SimplStateMachine_Expression "SimplStateMachine_ExpressionElement 1..1" *-- "SimplStateMachine_Expression24 1..1" SimplStateMachine_ExpressionElement : left23
+SimplStateMachine_Operation "SimplStateMachine_State 0..1" --* "SimplStateMachine_Operation 1..1" SimplStateMachine_State : operation6
+SimplStateMachine_InitialState "SimplStateMachine_State11 1..1" -- "SimplStateMachine_InitialState10 1..1" SimplStateMachine_State : referencedState9
+SimplStateMachine_Expression "SimplStateMachine_ExpressionElement27 1..1" *-- "SimplStateMachine_Expression26 1..1" SimplStateMachine_ExpressionElement : right25
+SimplStateMachine_State "SimplStateMachine_Transition13 1..1" -- "SimplStateMachine_State14 1..1" SimplStateMachine_Transition : source12
+SimplStateMachine_CompositeState "State 1..1" *-- "container 1..9999" SimplStateMachine_State : states7
+SimplStateMachine_State "SimplStateMachine_Transition16 1..1" -- "SimplStateMachine_State17 1..1" SimplStateMachine_Transition : target15
+SimplStateMachine_StateMachine "SimplStateMachine_Transition 1..1" *-- "SimplStateMachine_StateMachine 1..9999" SimplStateMachine_Transition : transitions0
+SimplStateMachine_Data "SimplStateMachine_Variable29 0..1" --* "SimplStateMachine_Data 1..1" SimplStateMachine_Variable : value28
+SimplStateMachine_Assignment "SimplStateMachine_Variable37 1..1" -- "SimplStateMachine_Assignment36 1..1" SimplStateMachine_Variable : variable35
+SimplStateMachine_Variable "SimplStateMachine_VariableReference 1..1" -- "SimplStateMachine_Variable39 1..1" SimplStateMachine_VariableReference : variable38
+SimplStateMachine_StateMachine "SimplStateMachine_Variable 1..1" *-- "SimplStateMachine_StateMachine4 0..9999" SimplStateMachine_Variable : variables3
 @enduml

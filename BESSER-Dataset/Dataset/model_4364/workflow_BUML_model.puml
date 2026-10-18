@@ -1,4 +1,8 @@
 @startuml
+' model: workflow
+' project: sampleModel
+' owner: User
+' description: New project
 enum AccessModifiers {
   default
   private
@@ -157,23 +161,23 @@ Statement <|-- workflow_While
 Statement <|-- workflow_Write
 UnaryExpression <|-- workflow_Not
 UnaryExpression <|-- workflow_UMinus
-workflow_Block "0..1" --* "1..1" workflow_If : Alternative6
-workflow_Expression "0..9999" --* "1..1" workflow_ProcedureCall : Argument31
-workflow_Block "1..1" --* "1..1" workflow_While : Body11
-workflow_Block "1..1" --* "1..1" workflow_ProcedureDeclaration : Body26
-workflow_Block "1..1" --* "1..1" workflow_If : Body3
-workflow_Expression "1..1" --* "1..1" workflow_If : Condition2
-workflow_Expression "1..1" --* "1..1" workflow_While : Condition9
-workflow_Expression "0..1" --* "1..1" workflow_ProcedureReturn : Expression18
-workflow_Variable "1..1" --* "1..1" workflow_VariableAssignment : LValue14
-workflow_BinaryExpression "1..1" *-- "1..1" workflow_Expression : Operand135
-workflow_BinaryExpression "1..1" *-- "1..1" workflow_Expression : Operand237
-workflow_Expression "1..1" --* "1..1" workflow_UnaryExpression : Operand33
-workflow_ParameterDeclaration "0..9999" --* "1..1" workflow_ProcedureDeclaration : Parameter29
-workflow_Expression "1..1" --* "1..1" workflow_VariableAssignment : RValue15
-workflow_Block "1..1" *-- "0..9999" workflow_Statement : Statement1
-workflow_ProcedureDeclaration "1..1" *-- "0..9999" workflow_VariableDeclaration : Variables24
-workflow_CompilationUnit "1..1" *-- "0..9999" workflow_ProcedureDeclaration : declarations0
-workflow_Read "1..1" *-- "1..1" workflow_Variable : rVar22
-workflow_Variable "1..1" --* "1..1" workflow_Write : wVar20
+workflow_Block "workflow_If7 0..1" --* "workflow_Block8 1..1" workflow_If : Alternative6
+workflow_Expression "workflow_ProcedureCall 0..9999" --* "workflow_Expression32 1..1" workflow_ProcedureCall : Argument31
+workflow_Block "workflow_While12 1..1" --* "workflow_Block13 1..1" workflow_While : Body11
+workflow_Block "workflow_ProcedureDeclaration27 1..1" --* "workflow_Block28 1..1" workflow_ProcedureDeclaration : Body26
+workflow_Block "workflow_If4 1..1" --* "workflow_Block5 1..1" workflow_If : Body3
+workflow_Expression "workflow_If 1..1" --* "workflow_Expression 1..1" workflow_If : Condition2
+workflow_Expression "workflow_While 1..1" --* "workflow_Expression10 1..1" workflow_While : Condition9
+workflow_Expression "workflow_ProcedureReturn 0..1" --* "workflow_Expression19 1..1" workflow_ProcedureReturn : Expression18
+workflow_Variable "workflow_VariableAssignment 1..1" --* "workflow_Variable 1..1" workflow_VariableAssignment : LValue14
+workflow_BinaryExpression "workflow_Expression36 1..1" *-- "workflow_BinaryExpression 1..1" workflow_Expression : Operand135
+workflow_BinaryExpression "workflow_Expression39 1..1" *-- "workflow_BinaryExpression38 1..1" workflow_Expression : Operand237
+workflow_Expression "workflow_UnaryExpression 1..1" --* "workflow_Expression34 1..1" workflow_UnaryExpression : Operand33
+workflow_ParameterDeclaration "workflow_ProcedureDeclaration30 0..9999" --* "workflow_ParameterDeclaration 1..1" workflow_ProcedureDeclaration : Parameter29
+workflow_Expression "workflow_VariableAssignment16 1..1" --* "workflow_Expression17 1..1" workflow_VariableAssignment : RValue15
+workflow_Block "workflow_Statement 1..1" *-- "workflow_Block 0..9999" workflow_Statement : Statement1
+workflow_ProcedureDeclaration "workflow_VariableDeclaration 1..1" *-- "workflow_ProcedureDeclaration25 0..9999" workflow_VariableDeclaration : Variables24
+workflow_CompilationUnit "workflow_ProcedureDeclaration 1..1" *-- "workflow_CompilationUnit 0..9999" workflow_ProcedureDeclaration : declarations0
+workflow_Read "workflow_Variable23 1..1" *-- "workflow_Read 1..1" workflow_Variable : rVar22
+workflow_Variable "workflow_Write 1..1" --* "workflow_Variable21 1..1" workflow_Write : wVar20
 @enduml

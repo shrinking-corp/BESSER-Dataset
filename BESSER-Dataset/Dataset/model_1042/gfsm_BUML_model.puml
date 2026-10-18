@@ -1,4 +1,8 @@
 @startuml
+' model: gfsm
+' project: sampleModel
+' owner: User
+' description: New project
 class State {
 }
 class gfsm_FinalState {
@@ -18,13 +22,13 @@ class gfsm_Transition {
 }
 State <|-- gfsm_FinalState
 State <|-- gfsm_InitialState
-gfsm_Guard "0..1" --* "1..1" gfsm_Transition : guard14
-gfsm_State "1..1" -- "0..9999" gfsm_Transition : incoming4
-gfsm_State "1..1" -- "0..9999" gfsm_Transition : outgoing6
-gfsm_Machine "1..1" -- "1..1" gfsm_State : owning3
-gfsm_Machine "1..1" -- "1..1" gfsm_Transition : owning8
-gfsm_State "1..1" -- "1..1" gfsm_Transition : source12
-gfsm_Machine "1..1" *-- "0..9999" gfsm_State : states1
-gfsm_State "1..1" -- "1..1" gfsm_Transition : target10
-gfsm_Machine "1..1" *-- "0..9999" gfsm_Transition : transitions0
+gfsm_Guard "gfsm_Transition 0..1" --* "gfsm_Guard 1..1" gfsm_Transition : guard14
+gfsm_State "Transition5 1..1" -- "target 0..9999" gfsm_Transition : incoming4
+gfsm_State "Transition7 1..1" -- "source 0..9999" gfsm_Transition : outgoing6
+gfsm_Machine "states 1..1" -- "Machine 1..1" gfsm_State : owning3
+gfsm_Machine "transitions 1..1" -- "Machine9 1..1" gfsm_Transition : owning8
+gfsm_State "outgoing 1..1" -- "State13 1..1" gfsm_Transition : source12
+gfsm_Machine "State 1..1" *-- "owning2 0..9999" gfsm_State : states1
+gfsm_State "incoming 1..1" -- "State11 1..1" gfsm_Transition : target10
+gfsm_Machine "Transition 1..1" *-- "owning 0..9999" gfsm_Transition : transitions0
 @enduml

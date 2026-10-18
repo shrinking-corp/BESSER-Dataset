@@ -1,4 +1,8 @@
 @startuml
+' model: Relational
+' project: sampleModel
+' owner: User
+' description: New project
 class Named {
 }
 class Relational_Column {
@@ -16,11 +20,11 @@ Named <|-- Relational_Column
 Named <|-- Relational_Database
 Named <|-- Relational_Table
 Named <|-- Relational_Type
-Relational_Column "0..9999" --* "1..1" Relational_Table : col0
-Relational_Column "0..9999" -- "1..1" Relational_Table : key1
-Relational_Column "1..1" -- "0..1" Relational_Table : keyOf4
-Relational_Column "1..1" -- "1..1" Relational_Table : owner3
-Relational_Database "1..1" *-- "0..9999" Relational_Table : tables7
-Relational_Column "1..1" -- "1..1" Relational_Type : type6
-Relational_Database "1..1" *-- "0..9999" Relational_Type : types8
+Relational_Column "owner 0..9999" --* "Column 1..1" Relational_Table : col0
+Relational_Column "keyOf 0..9999" -- "Column2 1..1" Relational_Table : key1
+Relational_Column "Table5 1..1" -- "key 0..1" Relational_Table : keyOf4
+Relational_Column "Table 1..1" -- "col 1..1" Relational_Table : owner3
+Relational_Database "Relational_Table 1..1" *-- "Relational_Database 0..9999" Relational_Table : tables7
+Relational_Column "Relational_Type 1..1" -- "Relational_Column 1..1" Relational_Type : type6
+Relational_Database "Relational_Type10 1..1" *-- "Relational_Database9 0..9999" Relational_Type : types8
 @enduml

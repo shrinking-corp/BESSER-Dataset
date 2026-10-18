@@ -1,4 +1,8 @@
 @startuml
+' model: a084aca1_4f29_432c_a981_b9c2055a2da3
+' project: sampleModel
+' owner: User
+' description: New project
 class NO_Queue_mobile_application__Account {
   + Closed : str
   + ID : str
@@ -45,12 +49,12 @@ class NO_Queue_mobile_application__Product {
 class NO_Queue_mobile_application__Shopping_Cart {
   + created : str
 }
-NO_Queue_mobile_application__Account "1..1" -- "0..9999" NO_Queue_mobile_application__Order : Account_Order
-NO_Queue_mobile_application__Account "1..1" -- "1..1" NO_Queue_mobile_application__Customer : Customer_Account
-NO_Queue_mobile_application__Line_item "0..9999" -- "1..1" NO_Queue_mobile_application__Product : Line_item_Product
-NO_Queue_mobile_application__Line_item "0..9999" -- "1..1" NO_Queue_mobile_application__Order : Order_Line_item
-NO_Queue_mobile_application__Account "1..1" -- "1..9999" NO_Queue_mobile_application__Payment : Payment_Account
-NO_Queue_mobile_application__Line_item "0..9999" -- "1..1" NO_Queue_mobile_application__Shopping_Cart : Shopping_Cart_Line_item
-NO_Queue_mobile_application__App_User "0..1" -- "1..1" NO_Queue_mobile_application__Customer : Web_User_Customer
-NO_Queue_mobile_application__App_User "1..1" -- "0..1" NO_Queue_mobile_application__Shopping_Cart : Web_User_Shopping_Cart
+NO_Queue_mobile_application__Account "account9 1..1" -- "order8 0..9999" NO_Queue_mobile_application__Order : Account_Order
+NO_Queue_mobile_application__Account "account2 1..1" -- "customer3 1..1" NO_Queue_mobile_application__Customer : Customer_Account
+NO_Queue_mobile_application__Line_item "line_item15 0..9999" -- "product14 1..1" NO_Queue_mobile_application__Product : Line_item_Product
+NO_Queue_mobile_application__Line_item "line_item12 0..9999" -- "_order__unique_13 1..1" NO_Queue_mobile_application__Order : Order_Line_item
+NO_Queue_mobile_application__Account "account4 1..1" -- "payment5 1..9999" NO_Queue_mobile_application__Payment : Payment_Account
+NO_Queue_mobile_application__Line_item "ordered__unique10 0..9999" -- "shopping_Cart11 1..1" NO_Queue_mobile_application__Shopping_Cart : Shopping_Cart_Line_item
+NO_Queue_mobile_application__App_User "web_User1 0..1" -- "customer0 1..1" NO_Queue_mobile_application__Customer : Web_User_Customer
+NO_Queue_mobile_application__App_User "web_User7 1..1" -- "shopping_Cart6 0..1" NO_Queue_mobile_application__Shopping_Cart : Web_User_Shopping_Cart
 @enduml

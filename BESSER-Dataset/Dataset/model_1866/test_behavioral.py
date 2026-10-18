@@ -255,9 +255,9 @@ def test_assoc_calls22_stub_double():
     partner = statesml_RegularState()
     setattr(partner, 'statesml_RegularState', None)
     _safe_set(owner, 'statesml_Function', partner)
-    assert getattr(partner, 'statesml_RegularState') == owner
+    assert owner in getattr(partner, 'statesml_RegularState')
     _safe_set(owner, 'statesml_Function', None)
-    assert getattr(partner, 'statesml_RegularState') is None
+    assert owner not in getattr(partner, 'statesml_RegularState')
 
 
 def test_assoc_edges3_stub_double():
@@ -270,9 +270,9 @@ def test_assoc_edges3_stub_double():
     partner = statesml_StatesMLModel()
     setattr(partner, 'statesml_StatesMLModel4', None)
     _safe_set(owner, 'statesml_Edge', partner)
-    assert getattr(partner, 'statesml_StatesMLModel4') == owner
+    assert owner in getattr(partner, 'statesml_StatesMLModel4')
     _safe_set(owner, 'statesml_Edge', None)
-    assert getattr(partner, 'statesml_StatesMLModel4') is None
+    assert owner not in getattr(partner, 'statesml_StatesMLModel4')
 
 
 def test_assoc_inputParams29_stub_double():
@@ -300,9 +300,9 @@ def test_assoc_node7_stub_double():
     partner = statesml_Transition()
     setattr(partner, 'transition', None)
     _safe_set(owner, 'Node', partner)
-    assert getattr(partner, 'transition') == owner
+    assert owner in getattr(partner, 'transition')
     _safe_set(owner, 'Node', None)
-    assert getattr(partner, 'transition') is None
+    assert owner not in getattr(partner, 'transition')
 
 
 def test_assoc_nodes0_stub_double():
@@ -315,9 +315,9 @@ def test_assoc_nodes0_stub_double():
     partner = statesml_StatesMLModel()
     setattr(partner, 'statesml_StatesMLModel', None)
     _safe_set(owner, 'statesml_Node', partner)
-    assert getattr(partner, 'statesml_StatesMLModel') == owner
+    assert owner in getattr(partner, 'statesml_StatesMLModel')
     _safe_set(owner, 'statesml_Node', None)
-    assert getattr(partner, 'statesml_StatesMLModel') is None
+    assert owner not in getattr(partner, 'statesml_StatesMLModel')
 
 
 def test_assoc_outputParams31_stub_double():
@@ -345,9 +345,9 @@ def test_assoc_systemunits1_stub_double():
     partner = statesml_StatesMLModel()
     setattr(partner, 'statesml_StatesMLModel2', None)
     _safe_set(owner, 'statesml_SystemUnit', partner)
-    assert getattr(partner, 'statesml_StatesMLModel2') == owner
+    assert owner in getattr(partner, 'statesml_StatesMLModel2')
     _safe_set(owner, 'statesml_SystemUnit', None)
-    assert getattr(partner, 'statesml_StatesMLModel2') is None
+    assert owner not in getattr(partner, 'statesml_StatesMLModel2')
 
 
 def test_assoc_transition9_stub_double():
@@ -375,8 +375,8 @@ def test_assoc_trigger8_stub_double():
     partner = statesml_Transition()
     setattr(partner, 'statesml_Transition', None)
     _safe_set(owner, 'statesml_Trigger', partner)
-    assert getattr(partner, 'statesml_Transition') == owner
+    assert owner in getattr(partner, 'statesml_Transition')
     _safe_set(owner, 'statesml_Trigger', None)
-    assert getattr(partner, 'statesml_Transition') is None
+    assert owner not in getattr(partner, 'statesml_Transition')
 
 

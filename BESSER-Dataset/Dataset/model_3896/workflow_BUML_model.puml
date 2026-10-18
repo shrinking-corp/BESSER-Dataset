@@ -1,4 +1,8 @@
 @startuml
+' model: workflow
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractTask {
 }
 class IsInitSetter {
@@ -88,13 +92,13 @@ TypedElement <|-- workflow_Input
 TypedElement <|-- workflow_Output
 TypedElement <|-- workflow_Setter
 TypedElement <|-- workflow_TaskOutput
-workflow_BaseTask "1..1" --* "1..1" workflow_Workflow : baseTask10
-workflow_AbstractTask "0..9999" --* "1..1" workflow_BaseTask : children3
-workflow_LibraryFunction "0..9999" --* "1..1" workflow_Workflow : functions12
-workflow_AbstractTask "1..1" *-- "0..9999" workflow_TaskInput : inputs0
-workflow_Input "0..9999" --* "1..1" workflow_LibraryFunction : inputs6
-workflow_LibraryFunction "1..1" -- "1..1" workflow_LibraryTask : libraryfunction8
-workflow_AbstractTask "1..1" *-- "0..9999" workflow_TaskOutput : outputs1
-workflow_LibraryFunction "1..1" *-- "0..9999" workflow_Output : outputs5
-workflow_Connection "1..1" -- "0..1" workflow_TaskOutput : taskoutput15
+workflow_BaseTask "workflow_Workflow 1..1" --* "workflow_BaseTask11 1..1" workflow_Workflow : baseTask10
+workflow_AbstractTask "workflow_BaseTask 0..9999" --* "workflow_AbstractTask4 1..1" workflow_BaseTask : children3
+workflow_LibraryFunction "workflow_Workflow13 0..9999" --* "workflow_LibraryFunction14 1..1" workflow_Workflow : functions12
+workflow_AbstractTask "workflow_TaskInput 1..1" *-- "workflow_AbstractTask 0..9999" workflow_TaskInput : inputs0
+workflow_Input "workflow_LibraryFunction7 0..9999" --* "workflow_Input 1..1" workflow_LibraryFunction : inputs6
+workflow_LibraryFunction "workflow_LibraryTask 1..1" -- "workflow_LibraryFunction9 1..1" workflow_LibraryTask : libraryfunction8
+workflow_AbstractTask "workflow_TaskOutput 1..1" *-- "workflow_AbstractTask2 0..9999" workflow_TaskOutput : outputs1
+workflow_LibraryFunction "workflow_Output 1..1" *-- "workflow_LibraryFunction 0..9999" workflow_Output : outputs5
+workflow_Connection "workflow_TaskOutput16 1..1" -- "workflow_Connection 0..1" workflow_TaskOutput : taskoutput15
 @enduml

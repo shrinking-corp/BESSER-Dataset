@@ -1,4 +1,8 @@
 @startuml
+' model: trace
+' project: sampleModel
+' owner: User
+' description: New project
 class A_a_State {
 }
 class A_doAEntryEventOccurrence {
@@ -73,38 +77,38 @@ EventOccurrence <|-- trace_Events_A_doAEntryEventOccurrence
 EventOccurrence <|-- trace_Events_A_doAExitEventOccurrence
 EventOccurrence <|-- trace_Events_C_doCEntryEventOccurrence
 EventOccurrence <|-- trace_Events_C_doCExitEventOccurrence
-A_doAEntryEventOccurrence "0..9999" --* "1..1" trace_Events_Events : A_doAEntryEventOccurrence_Trace16
-A_doAExitEventOccurrence "0..9999" --* "1..1" trace_Events_Events : A_doAExitEventOccurrence_Trace17
-C_doCEntryEventOccurrence "0..9999" --* "1..1" trace_Events_Events : C_doCEntryEventOccurrence_Trace19
-C_doCExitEventOccurrence "0..9999" --* "1..1" trace_Events_Events : C_doCExitEventOccurrence_Trace21
-A_a_State "0..9999" --* "1..1" trace_model2_TracedA : aTrace58
-A_a_State "0..9999" -- "1..1" trace_GlobalState : a_a_States11
-B_b_State "0..9999" --* "1..1" trace_model2Configuration_TracedB : bTrace52
-B_b_State "0..9999" -- "1..1" trace_GlobalState : b_b_States8
-States_trace_F "0..1" -- "1..1" trace_States_C_c_State : c37
-C_c_State "0..9999" --* "1..1" trace_model2Configuration_TracedC : cTrace54
-C_c_State "0..9999" -- "1..1" trace_GlobalState : c_c_States9
-A_doAEntryEventOccurrence "0..1" -- "1..1" trace_Events_A_doAExitEventOccurrence : correspondingEntryEvent26
-C_doCEntryEventOccurrence "0..1" -- "1..1" trace_Events_C_doCExitEventOccurrence : correspondingEntryEvent32
-Events "1..1" --* "1..1" trace_Trace : events1
-EventOccurrence "0..9999" -- "1..1" trace_GlobalState : eventsTriggeredDuringState7
-States_trace_GlobalState "1..9999" -- "1..1" trace_States_B_b_State : globalStates35
-States_trace_GlobalState "1..9999" -- "1..1" trace_States_C_c_State : globalStates39
-States_trace_GlobalState "1..9999" -- "1..1" trace_States_A_a_State : globalStates42
-trace_GlobalState "0..9999" --* "1..1" trace_Trace : globalTrace0
-model2Configuration_TracedB "0..9999" --* "1..1" trace_Traced_TracedObjects : model2Configuration_tracedBs44
-model2Configuration_TracedC "0..9999" --* "1..1" trace_Traced_TracedObjects : model2Configuration_tracedCs46
-model2_TracedA "0..9999" --* "1..1" trace_Traced_TracedObjects : model2_tracedAs49
-model2_trace_A "0..1" -- "1..1" trace_model2_TracedA : originalObject57
-model2Configuration_TracedC "1..1" -- "1..1" trace_Events_A_doAEntryEventOccurrence : paramAParam24
-model2Configuration_TracedB "1..1" -- "1..1" trace_Events_C_doCEntryEventOccurrence : paramCParam30
-model2Configuration_TracedB "1..1" -- "1..1" trace_States_B_b_State : parent34
-model2Configuration_TracedC "1..1" -- "1..1" trace_States_C_c_State : parent38
-model2_TracedA "1..1" -- "1..1" trace_States_A_a_State : parent41
-trace_F "0..9999" --* "1..1" trace_StaticObjectsPools : pool_Fs13
-Events_trace_GlobalState "1..1" -- "1..1" trace_Events_EventOccurrence : stateDuringWhichTriggered15
-trace_StaticObjectsPools "1..1" --* "1..1" trace_Trace : staticObjectsPools5
-model2_TracedA "0..1" -- "1..1" trace_Events_A_doAEntryEventOccurrence : thisParam23
-model2Configuration_TracedC "0..1" -- "1..1" trace_Events_C_doCEntryEventOccurrence : thisParam28
-TracedObjects "1..1" --* "1..1" trace_Trace : tracedObjects3
+A_doAEntryEventOccurrence "trace_Events_Events 0..9999" --* "A_doAEntryEventOccurrence 1..1" trace_Events_Events : A_doAEntryEventOccurrence_Trace16
+A_doAExitEventOccurrence "trace_Events_Events18 0..9999" --* "A_doAExitEventOccurrence 1..1" trace_Events_Events : A_doAExitEventOccurrence_Trace17
+C_doCEntryEventOccurrence "trace_Events_Events20 0..9999" --* "C_doCEntryEventOccurrence 1..1" trace_Events_Events : C_doCEntryEventOccurrence_Trace19
+C_doCExitEventOccurrence "trace_Events_Events22 0..9999" --* "C_doCExitEventOccurrence 1..1" trace_Events_Events : C_doCExitEventOccurrence_Trace21
+A_a_State "parent59 0..9999" --* "A_a_State60 1..1" trace_model2_TracedA : aTrace58
+A_a_State "globalStates12 0..9999" -- "A_a_State 1..1" trace_GlobalState : a_a_States11
+B_b_State "parent 0..9999" --* "B_b_State53 1..1" trace_model2Configuration_TracedB : bTrace52
+B_b_State "globalStates 0..9999" -- "B_b_State 1..1" trace_GlobalState : b_b_States8
+States_trace_F "trace_States_C_c_State 0..1" -- "States_trace_F 1..1" trace_States_C_c_State : c37
+C_c_State "parent55 0..9999" --* "C_c_State56 1..1" trace_model2Configuration_TracedC : cTrace54
+C_c_State "globalStates10 0..9999" -- "C_c_State 1..1" trace_GlobalState : c_c_States9
+A_doAEntryEventOccurrence "trace_Events_A_doAExitEventOccurrence 0..1" -- "A_doAEntryEventOccurrence27 1..1" trace_Events_A_doAExitEventOccurrence : correspondingEntryEvent26
+C_doCEntryEventOccurrence "trace_Events_C_doCExitEventOccurrence 0..1" -- "C_doCEntryEventOccurrence33 1..1" trace_Events_C_doCExitEventOccurrence : correspondingEntryEvent32
+Events "trace_Trace2 1..1" --* "Events 1..1" trace_Trace : events1
+EventOccurrence "stateDuringWhichTriggered 0..9999" -- "EventOccurrence 1..1" trace_GlobalState : eventsTriggeredDuringState7
+States_trace_GlobalState "b_b_States 1..9999" -- "GlobalState36 1..1" trace_States_B_b_State : globalStates35
+States_trace_GlobalState "c_c_States 1..9999" -- "GlobalState40 1..1" trace_States_C_c_State : globalStates39
+States_trace_GlobalState "a_a_States 1..9999" -- "GlobalState43 1..1" trace_States_A_a_State : globalStates42
+trace_GlobalState "trace_Trace 0..9999" --* "trace_GlobalState 1..1" trace_Trace : globalTrace0
+model2Configuration_TracedB "trace_Traced_TracedObjects 0..9999" --* "model2Configuration_TracedB45 1..1" trace_Traced_TracedObjects : model2Configuration_tracedBs44
+model2Configuration_TracedC "trace_Traced_TracedObjects47 0..9999" --* "model2Configuration_TracedC48 1..1" trace_Traced_TracedObjects : model2Configuration_tracedCs46
+model2_TracedA "trace_Traced_TracedObjects50 0..9999" --* "model2_TracedA51 1..1" trace_Traced_TracedObjects : model2_tracedAs49
+model2_trace_A "trace_model2_TracedA 0..1" -- "model2_trace_A 1..1" trace_model2_TracedA : originalObject57
+model2Configuration_TracedC "trace_Events_A_doAEntryEventOccurrence25 1..1" -- "model2Configuration_TracedC 1..1" trace_Events_A_doAEntryEventOccurrence : paramAParam24
+model2Configuration_TracedB "trace_Events_C_doCEntryEventOccurrence31 1..1" -- "model2Configuration_TracedB 1..1" trace_Events_C_doCEntryEventOccurrence : paramCParam30
+model2Configuration_TracedB "bTrace 1..1" -- "TracedB 1..1" trace_States_B_b_State : parent34
+model2Configuration_TracedC "cTrace 1..1" -- "TracedC 1..1" trace_States_C_c_State : parent38
+model2_TracedA "aTrace 1..1" -- "TracedA 1..1" trace_States_A_a_State : parent41
+trace_F "trace_StaticObjectsPools14 0..9999" --* "trace_F 1..1" trace_StaticObjectsPools : pool_Fs13
+Events_trace_GlobalState "eventsTriggeredDuringState 1..1" -- "GlobalState 1..1" trace_Events_EventOccurrence : stateDuringWhichTriggered15
+trace_StaticObjectsPools "trace_Trace6 1..1" --* "trace_StaticObjectsPools 1..1" trace_Trace : staticObjectsPools5
+model2_TracedA "trace_Events_A_doAEntryEventOccurrence 0..1" -- "model2_TracedA 1..1" trace_Events_A_doAEntryEventOccurrence : thisParam23
+model2Configuration_TracedC "trace_Events_C_doCEntryEventOccurrence 0..1" -- "model2Configuration_TracedC29 1..1" trace_Events_C_doCEntryEventOccurrence : thisParam28
+TracedObjects "trace_Trace4 1..1" --* "TracedObjects 1..1" trace_Trace : tracedObjects3
 @enduml

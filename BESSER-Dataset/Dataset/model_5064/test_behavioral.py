@@ -771,9 +771,9 @@ def test_assoc_activity4_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot5', None)
     _safe_set(owner, 'bpmn2_Activity', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot5') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot5')
     _safe_set(owner, 'bpmn2_Activity', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot5') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot5')
 
 
 def test_assoc_adHocSubProcess6_stub_double():
@@ -786,9 +786,9 @@ def test_assoc_adHocSubProcess6_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot7', None)
     _safe_set(owner, 'bpmn2_AdHocSubProcess', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot7') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot7')
     _safe_set(owner, 'bpmn2_AdHocSubProcess', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot7') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot7')
 
 
 def test_assoc_artifacts404_stub_double():
@@ -846,9 +846,9 @@ def test_assoc_association14_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot15', None)
     _safe_set(owner, 'bpmn2_Association', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot15') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot15')
     _safe_set(owner, 'bpmn2_Association', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot15') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot15')
 
 
 def test_assoc_auditing782_stub_double():
@@ -876,9 +876,9 @@ def test_assoc_baseElement18_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot19', None)
     _safe_set(owner, 'bpmn2_BaseElement', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot19') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot19')
     _safe_set(owner, 'bpmn2_BaseElement', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot19') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot19')
 
 
 def test_assoc_baseElementWithMixedContent20_stub_double():
@@ -891,9 +891,9 @@ def test_assoc_baseElementWithMixedContent20_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot21', None)
     _safe_set(owner, 'bpmn2_BaseElement22', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot21') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot21')
     _safe_set(owner, 'bpmn2_BaseElement22', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot21') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot21')
 
 
 def test_assoc_boundaryEvent23_stub_double():
@@ -906,9 +906,9 @@ def test_assoc_boundaryEvent23_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot24', None)
     _safe_set(owner, 'bpmn2_BoundaryEvent', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot24') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot24')
     _safe_set(owner, 'bpmn2_BoundaryEvent', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot24') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot24')
 
 
 def test_assoc_businessRuleTask25_stub_double():
@@ -921,9 +921,9 @@ def test_assoc_businessRuleTask25_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot26', None)
     _safe_set(owner, 'bpmn2_BusinessRuleTask', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot26') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot26')
     _safe_set(owner, 'bpmn2_BusinessRuleTask', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot26') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot26')
 
 
 def test_assoc_calledCollaborationRef353_stub_double():
@@ -951,9 +951,9 @@ def test_assoc_catchEvent43_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot44', None)
     _safe_set(owner, 'bpmn2_CatchEvent', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot44') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot44')
     _safe_set(owner, 'bpmn2_CatchEvent', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot44') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot44')
 
 
 def test_assoc_categorizedFlowElements383_stub_double():
@@ -981,9 +981,9 @@ def test_assoc_categoryValue380_stub_double():
     partner = bpmn2_Category()
     setattr(partner, 'bpmn2_Category381', None)
     _safe_set(owner, 'bpmn2_CategoryValue382', partner)
-    assert getattr(partner, 'bpmn2_Category381') == owner
+    assert owner in getattr(partner, 'bpmn2_Category381')
     _safe_set(owner, 'bpmn2_CategoryValue382', None)
-    assert getattr(partner, 'bpmn2_Category381') is None
+    assert owner not in getattr(partner, 'bpmn2_Category381')
 
 
 def test_assoc_categoryValue47_stub_double():
@@ -996,9 +996,9 @@ def test_assoc_categoryValue47_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot48', None)
     _safe_set(owner, 'bpmn2_CategoryValue', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot48') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot48')
     _safe_set(owner, 'bpmn2_CategoryValue', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot48') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot48')
 
 
 def test_assoc_categoryValueRef571_stub_double():
@@ -1011,9 +1011,9 @@ def test_assoc_categoryValueRef571_stub_double():
     partner = bpmn2_FlowElement()
     setattr(partner, 'bpmn2_FlowElement572', None)
     _safe_set(owner, 'bpmn2_CategoryValue573', partner)
-    assert getattr(partner, 'bpmn2_FlowElement572') == owner
+    assert owner in getattr(partner, 'bpmn2_FlowElement572')
     _safe_set(owner, 'bpmn2_CategoryValue573', None)
-    assert getattr(partner, 'bpmn2_FlowElement572') is None
+    assert owner not in getattr(partner, 'bpmn2_FlowElement572')
 
 
 def test_assoc_categoryValueRef595_stub_double():
@@ -1041,9 +1041,9 @@ def test_assoc_choreographyActivity53_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot54', None)
     _safe_set(owner, 'bpmn2_ChoreographyActivity', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot54') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot54')
     _safe_set(owner, 'bpmn2_ChoreographyActivity', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot54') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot54')
 
 
 def test_assoc_choreographyRef422_stub_double():
@@ -1071,9 +1071,9 @@ def test_assoc_collaboration51_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot52', None)
     _safe_set(owner, 'bpmn2_Collaboration', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot52') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot52')
     _safe_set(owner, 'bpmn2_Collaboration', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot52') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot52')
 
 
 def test_assoc_compensateEventDefinition57_stub_double():
@@ -1086,9 +1086,9 @@ def test_assoc_compensateEventDefinition57_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot58', None)
     _safe_set(owner, 'bpmn2_CompensateEventDefinition', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot58') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot58')
     _safe_set(owner, 'bpmn2_CompensateEventDefinition', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot58') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot58')
 
 
 def test_assoc_competency314_stub_double():
@@ -1281,9 +1281,9 @@ def test_assoc_dataInput83_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot84', None)
     _safe_set(owner, 'bpmn2_DataInput', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot84') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot84')
     _safe_set(owner, 'bpmn2_DataInput', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot84') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot84')
 
 
 def test_assoc_dataInputAssociations283_stub_double():
@@ -1311,9 +1311,9 @@ def test_assoc_dataInputRefs622_stub_double():
     partner = bpmn2_InputSet()
     setattr(partner, 'inputSetRefs', None)
     _safe_set(owner, 'DataInput', partner)
-    assert getattr(partner, 'inputSetRefs') == owner
+    assert owner in getattr(partner, 'inputSetRefs')
     _safe_set(owner, 'DataInput', None)
-    assert getattr(partner, 'inputSetRefs') is None
+    assert owner not in getattr(partner, 'inputSetRefs')
 
 
 def test_assoc_dataInputs610_stub_double():
@@ -1326,9 +1326,9 @@ def test_assoc_dataInputs610_stub_double():
     partner = bpmn2_InputOutputSpecification()
     setattr(partner, 'bpmn2_InputOutputSpecification611', None)
     _safe_set(owner, 'bpmn2_DataInput612', partner)
-    assert getattr(partner, 'bpmn2_InputOutputSpecification611') == owner
+    assert owner in getattr(partner, 'bpmn2_InputOutputSpecification611')
     _safe_set(owner, 'bpmn2_DataInput612', None)
-    assert getattr(partner, 'bpmn2_InputOutputSpecification611') is None
+    assert owner not in getattr(partner, 'bpmn2_InputOutputSpecification611')
 
 
 def test_assoc_dataInputs881_stub_double():
@@ -1341,9 +1341,9 @@ def test_assoc_dataInputs881_stub_double():
     partner = bpmn2_ThrowEvent()
     setattr(partner, 'bpmn2_ThrowEvent882', None)
     _safe_set(owner, 'bpmn2_DataInput883', partner)
-    assert getattr(partner, 'bpmn2_ThrowEvent882') == owner
+    assert owner in getattr(partner, 'bpmn2_ThrowEvent882')
     _safe_set(owner, 'bpmn2_DataInput883', None)
-    assert getattr(partner, 'bpmn2_ThrowEvent882') is None
+    assert owner not in getattr(partner, 'bpmn2_ThrowEvent882')
 
 
 def test_assoc_dataObject87_stub_double():
@@ -1356,9 +1356,9 @@ def test_assoc_dataObject87_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot88', None)
     _safe_set(owner, 'bpmn2_DataObject', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot88') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot88')
     _safe_set(owner, 'bpmn2_DataObject', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot88') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot88')
 
 
 def test_assoc_dataObjectRef510_stub_double():
@@ -1386,9 +1386,9 @@ def test_assoc_dataOutput91_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot92', None)
     _safe_set(owner, 'bpmn2_DataOutput', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot92') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot92')
     _safe_set(owner, 'bpmn2_DataOutput', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot92') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot92')
 
 
 def test_assoc_dataOutputAssociation368_stub_double():
@@ -1431,9 +1431,9 @@ def test_assoc_dataOutputRefs750_stub_double():
     partner = bpmn2_OutputSet()
     setattr(partner, 'outputSetRefs', None)
     _safe_set(owner, 'DataOutput', partner)
-    assert getattr(partner, 'outputSetRefs') == owner
+    assert owner in getattr(partner, 'outputSetRefs')
     _safe_set(owner, 'DataOutput', None)
-    assert getattr(partner, 'outputSetRefs') is None
+    assert owner not in getattr(partner, 'outputSetRefs')
 
 
 def test_assoc_dataOutputs613_stub_double():
@@ -1446,9 +1446,9 @@ def test_assoc_dataOutputs613_stub_double():
     partner = bpmn2_InputOutputSpecification()
     setattr(partner, 'bpmn2_InputOutputSpecification614', None)
     _safe_set(owner, 'bpmn2_DataOutput615', partner)
-    assert getattr(partner, 'bpmn2_InputOutputSpecification614') == owner
+    assert owner in getattr(partner, 'bpmn2_InputOutputSpecification614')
     _safe_set(owner, 'bpmn2_DataOutput615', None)
-    assert getattr(partner, 'bpmn2_InputOutputSpecification614') is None
+    assert owner not in getattr(partner, 'bpmn2_InputOutputSpecification614')
 
 
 def test_assoc_dataPath475_stub_double():
@@ -1476,9 +1476,9 @@ def test_assoc_dataStore97_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot98', None)
     _safe_set(owner, 'bpmn2_DataStore', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot98') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot98')
     _safe_set(owner, 'bpmn2_DataStore', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot98') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot98')
 
 
 def test_assoc_dataStoreRef520_stub_double():
@@ -1551,9 +1551,9 @@ def test_assoc_definitions101_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot102', None)
     _safe_set(owner, 'bpmn2_Definitions', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot102') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot102')
     _safe_set(owner, 'bpmn2_Definitions', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot102') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot102')
 
 
 def test_assoc_diagrams532_stub_double():
@@ -1581,9 +1581,9 @@ def test_assoc_documentation103_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot104', None)
     _safe_set(owner, 'bpmn2_Documentation', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot104') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot104')
     _safe_set(owner, 'bpmn2_Documentation', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot104') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot104')
 
 
 def test_assoc_error109_stub_double():
@@ -1596,9 +1596,9 @@ def test_assoc_error109_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot110', None)
     _safe_set(owner, 'bpmn2_Error', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot110') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot110')
     _safe_set(owner, 'bpmn2_Error', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot110') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot110')
 
 
 def test_assoc_errorRef540_stub_double():
@@ -1626,9 +1626,9 @@ def test_assoc_errorRefs744_stub_double():
     partner = bpmn2_Operation()
     setattr(partner, 'bpmn2_Operation745', None)
     _safe_set(owner, 'bpmn2_Error746', partner)
-    assert getattr(partner, 'bpmn2_Operation745') == owner
+    assert owner in getattr(partner, 'bpmn2_Operation745')
     _safe_set(owner, 'bpmn2_Error746', None)
-    assert getattr(partner, 'bpmn2_Operation745') is None
+    assert owner not in getattr(partner, 'bpmn2_Operation745')
 
 
 def test_assoc_escalation113_stub_double():
@@ -1641,9 +1641,9 @@ def test_assoc_escalation113_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot114', None)
     _safe_set(owner, 'bpmn2_Escalation', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot114') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot114')
     _safe_set(owner, 'bpmn2_Escalation', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot114') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot114')
 
 
 def test_assoc_escalationRef546_stub_double():
@@ -1671,9 +1671,9 @@ def test_assoc_eventBasedGateway119_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot120', None)
     _safe_set(owner, 'bpmn2_EventBasedGateway', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot120') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot120')
     _safe_set(owner, 'bpmn2_EventBasedGateway', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot120') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot120')
 
 
 def test_assoc_eventDefinitionRefs377_stub_double():
@@ -1716,9 +1716,9 @@ def test_assoc_extension125_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot126', None)
     _safe_set(owner, 'bpmn2_Extension', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot126') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot126')
     _safe_set(owner, 'bpmn2_Extension', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot126') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot126')
 
 
 def test_assoc_extensionElements127_stub_double():
@@ -1731,9 +1731,9 @@ def test_assoc_extensionElements127_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot128', None)
     _safe_set(owner, 'bpmn2_ExtensionAttributeValue', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot128') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot128')
     _safe_set(owner, 'bpmn2_ExtensionAttributeValue', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot128') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot128')
 
 
 def test_assoc_formalExpression131_stub_double():
@@ -1746,9 +1746,9 @@ def test_assoc_formalExpression131_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot132', None)
     _safe_set(owner, 'bpmn2_FormalExpression', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot132') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot132')
     _safe_set(owner, 'bpmn2_FormalExpression', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot132') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot132')
 
 
 def test_assoc_gateway133_stub_double():
@@ -1761,9 +1761,9 @@ def test_assoc_gateway133_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot134', None)
     _safe_set(owner, 'bpmn2_Gateway', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot134') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot134')
     _safe_set(owner, 'bpmn2_Gateway', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot134') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot134')
 
 
 def test_assoc_globalBusinessRuleTask135_stub_double():
@@ -1776,9 +1776,9 @@ def test_assoc_globalBusinessRuleTask135_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot136', None)
     _safe_set(owner, 'bpmn2_GlobalBusinessRuleTask', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot136') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot136')
     _safe_set(owner, 'bpmn2_GlobalBusinessRuleTask', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot136') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot136')
 
 
 def test_assoc_globalScriptTask143_stub_double():
@@ -1791,9 +1791,9 @@ def test_assoc_globalScriptTask143_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot144', None)
     _safe_set(owner, 'bpmn2_GlobalScriptTask', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot144') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot144')
     _safe_set(owner, 'bpmn2_GlobalScriptTask', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot144') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot144')
 
 
 def test_assoc_globalUserTask147_stub_double():
@@ -1806,9 +1806,9 @@ def test_assoc_globalUserTask147_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot148', None)
     _safe_set(owner, 'bpmn2_GlobalUserTask', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot148') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot148')
     _safe_set(owner, 'bpmn2_GlobalUserTask', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot148') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot148')
 
 
 def test_assoc_import_159_stub_double():
@@ -1821,9 +1821,9 @@ def test_assoc_import_159_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot160', None)
     _safe_set(owner, 'bpmn2_Import', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot160') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot160')
     _safe_set(owner, 'bpmn2_Import', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot160') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot160')
 
 
 def test_assoc_incoming579_stub_double():
@@ -1836,9 +1836,9 @@ def test_assoc_incoming579_stub_double():
     partner = bpmn2_FlowNode()
     setattr(partner, 'targetRef', None)
     _safe_set(owner, 'SequenceFlow', partner)
-    assert getattr(partner, 'targetRef') == owner
+    assert owner in getattr(partner, 'targetRef')
     _safe_set(owner, 'SequenceFlow', None)
-    assert getattr(partner, 'targetRef') is None
+    assert owner not in getattr(partner, 'targetRef')
 
 
 def test_assoc_initiatingParticipantRef392_stub_double():
@@ -2016,9 +2016,9 @@ def test_assoc_itemDefinition175_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot176', None)
     _safe_set(owner, 'bpmn2_ItemDefinition', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot176') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot176')
     _safe_set(owner, 'bpmn2_ItemDefinition', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot176') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot176')
 
 
 def test_assoc_itemRef687_stub_double():
@@ -2226,9 +2226,9 @@ def test_assoc_multiInstanceLoopCharacteristics197_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot198', None)
     _safe_set(owner, 'bpmn2_MultiInstanceLoopCharacteristics', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot198') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot198')
     _safe_set(owner, 'bpmn2_MultiInstanceLoopCharacteristics', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot198') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot198')
 
 
 def test_assoc_noneBehaviorEventRef732_stub_double():
@@ -2316,9 +2316,9 @@ def test_assoc_optionalInputRefs623_stub_double():
     partner = bpmn2_InputSet()
     setattr(partner, 'inputSetWithOptional', None)
     _safe_set(owner, 'DataInput624', partner)
-    assert getattr(partner, 'inputSetWithOptional') == owner
+    assert owner in getattr(partner, 'inputSetWithOptional')
     _safe_set(owner, 'DataInput624', None)
-    assert getattr(partner, 'inputSetWithOptional') is None
+    assert owner not in getattr(partner, 'inputSetWithOptional')
 
 
 def test_assoc_optionalOutputRefs751_stub_double():
@@ -2331,9 +2331,9 @@ def test_assoc_optionalOutputRefs751_stub_double():
     partner = bpmn2_OutputSet()
     setattr(partner, 'outputSetWithOptional', None)
     _safe_set(owner, 'DataOutput752', partner)
-    assert getattr(partner, 'outputSetWithOptional') == owner
+    assert owner in getattr(partner, 'outputSetWithOptional')
     _safe_set(owner, 'DataOutput752', None)
-    assert getattr(partner, 'outputSetWithOptional') is None
+    assert owner not in getattr(partner, 'outputSetWithOptional')
 
 
 def test_assoc_outgoing581_stub_double():
@@ -2346,9 +2346,9 @@ def test_assoc_outgoing581_stub_double():
     partner = bpmn2_FlowNode()
     setattr(partner, 'sourceRef', None)
     _safe_set(owner, 'SequenceFlow582', partner)
-    assert getattr(partner, 'sourceRef') == owner
+    assert owner in getattr(partner, 'sourceRef')
     _safe_set(owner, 'SequenceFlow582', None)
-    assert getattr(partner, 'sourceRef') is None
+    assert owner not in getattr(partner, 'sourceRef')
 
 
 def test_assoc_outputSet371_stub_double():
@@ -2451,9 +2451,9 @@ def test_assoc_participantMultiplicity209_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot210', None)
     _safe_set(owner, 'bpmn2_ParticipantMultiplicity', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot210') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot210')
     _safe_set(owner, 'bpmn2_ParticipantMultiplicity', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot210') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot210')
 
 
 def test_assoc_participantMultiplicity764_stub_double():
@@ -2511,9 +2511,9 @@ def test_assoc_partitionElement654_stub_double():
     partner = bpmn2_Lane()
     setattr(partner, 'bpmn2_Lane655', None)
     _safe_set(owner, 'bpmn2_BaseElement656', partner)
-    assert getattr(partner, 'bpmn2_Lane655') == owner
+    assert owner in getattr(partner, 'bpmn2_Lane655')
     _safe_set(owner, 'bpmn2_BaseElement656', None)
-    assert getattr(partner, 'bpmn2_Lane655') is None
+    assert owner not in getattr(partner, 'bpmn2_Lane655')
 
 
 def test_assoc_partitionElementRef661_stub_double():
@@ -2541,9 +2541,9 @@ def test_assoc_process217_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot218', None)
     _safe_set(owner, 'bpmn2_Process', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot218') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot218')
     _safe_set(owner, 'bpmn2_Process', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot218') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot218')
 
 
 def test_assoc_processRef767_stub_double():
@@ -2601,9 +2601,9 @@ def test_assoc_receiveTask221_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot222', None)
     _safe_set(owner, 'bpmn2_ReceiveTask', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot222') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot222')
     _safe_set(owner, 'bpmn2_ReceiveTask', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot222') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot222')
 
 
 def test_assoc_referencesDocument509_stub_double():
@@ -2646,9 +2646,9 @@ def test_assoc_relationship223_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot224', None)
     _safe_set(owner, 'bpmn2_Relationship', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot224') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot224')
     _safe_set(owner, 'bpmn2_Relationship', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot224') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot224')
 
 
 def test_assoc_renderings592_stub_double():
@@ -2706,9 +2706,9 @@ def test_assoc_resourceParameter231_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot232', None)
     _safe_set(owner, 'bpmn2_ResourceParameter', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot232') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot232')
     _safe_set(owner, 'bpmn2_ResourceParameter', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot232') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot232')
 
 
 def test_assoc_resourceParameters818_stub_double():
@@ -2721,9 +2721,9 @@ def test_assoc_resourceParameters818_stub_double():
     partner = bpmn2_Resource()
     setattr(partner, 'bpmn2_Resource819', None)
     _safe_set(owner, 'bpmn2_ResourceParameter820', partner)
-    assert getattr(partner, 'bpmn2_Resource819') == owner
+    assert owner in getattr(partner, 'bpmn2_Resource819')
     _safe_set(owner, 'bpmn2_ResourceParameter820', None)
-    assert getattr(partner, 'bpmn2_Resource819') is None
+    assert owner not in getattr(partner, 'bpmn2_Resource819')
 
 
 def test_assoc_resources289_stub_double():
@@ -2781,9 +2781,9 @@ def test_assoc_scriptTask237_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot238', None)
     _safe_set(owner, 'bpmn2_ScriptTask', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot238') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot238')
     _safe_set(owner, 'bpmn2_ScriptTask', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot238') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot238')
 
 
 def test_assoc_sendTask239_stub_double():
@@ -2796,9 +2796,9 @@ def test_assoc_sendTask239_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot240', None)
     _safe_set(owner, 'bpmn2_SendTask', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot240') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot240')
     _safe_set(owner, 'bpmn2_SendTask', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot240') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot240')
 
 
 def test_assoc_sequenceFlow241_stub_double():
@@ -2811,9 +2811,9 @@ def test_assoc_sequenceFlow241_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot242', None)
     _safe_set(owner, 'bpmn2_SequenceFlow', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot242') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot242')
     _safe_set(owner, 'bpmn2_SequenceFlow', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot242') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot242')
 
 
 def test_assoc_serviceTask243_stub_double():
@@ -2826,9 +2826,9 @@ def test_assoc_serviceTask243_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot244', None)
     _safe_set(owner, 'bpmn2_ServiceTask', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot244') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot244')
     _safe_set(owner, 'bpmn2_ServiceTask', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot244') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot244')
 
 
 def test_assoc_sourceRef851_stub_double():
@@ -2871,9 +2871,9 @@ def test_assoc_standardLoopCharacteristics249_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot250', None)
     _safe_set(owner, 'bpmn2_StandardLoopCharacteristics', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot250') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot250')
     _safe_set(owner, 'bpmn2_StandardLoopCharacteristics', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot250') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot250')
 
 
 def test_assoc_startEvent251_stub_double():
@@ -2886,9 +2886,9 @@ def test_assoc_startEvent251_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot252', None)
     _safe_set(owner, 'bpmn2_StartEvent', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot252') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot252')
     _safe_set(owner, 'bpmn2_StartEvent', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot252') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot252')
 
 
 def test_assoc_structureRef651_stub_double():
@@ -2931,9 +2931,9 @@ def test_assoc_subProcess257_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot258', None)
     _safe_set(owner, 'bpmn2_SubProcess', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot258') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot258')
     _safe_set(owner, 'bpmn2_SubProcess', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot258') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot258')
 
 
 def test_assoc_targetRef853_stub_double():
@@ -2976,9 +2976,9 @@ def test_assoc_textAnnotation266_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot267', None)
     _safe_set(owner, 'bpmn2_TextAnnotation', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot267') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot267')
     _safe_set(owner, 'bpmn2_TextAnnotation', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot267') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot267')
 
 
 def test_assoc_transaction272_stub_double():
@@ -2991,9 +2991,9 @@ def test_assoc_transaction272_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot273', None)
     _safe_set(owner, 'bpmn2_Transaction', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot273') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot273')
     _safe_set(owner, 'bpmn2_Transaction', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot273') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot273')
 
 
 def test_assoc_transformation498_stub_double():
@@ -3036,9 +3036,9 @@ def test_assoc_userTask274_stub_double():
     partner = bpmn2_DocumentRoot()
     setattr(partner, 'bpmn2_DocumentRoot275', None)
     _safe_set(owner, 'bpmn2_UserTask', partner)
-    assert getattr(partner, 'bpmn2_DocumentRoot275') == owner
+    assert owner in getattr(partner, 'bpmn2_DocumentRoot275')
     _safe_set(owner, 'bpmn2_UserTask', None)
-    assert getattr(partner, 'bpmn2_DocumentRoot275') is None
+    assert owner not in getattr(partner, 'bpmn2_DocumentRoot275')
 
 
 def test_assoc_valueRef559_stub_double():
@@ -3066,9 +3066,9 @@ def test_assoc_whileExecutingInputRefs625_stub_double():
     partner = bpmn2_InputSet()
     setattr(partner, 'inputSetWithWhileExecuting', None)
     _safe_set(owner, 'DataInput626', partner)
-    assert getattr(partner, 'inputSetWithWhileExecuting') == owner
+    assert owner in getattr(partner, 'inputSetWithWhileExecuting')
     _safe_set(owner, 'DataInput626', None)
-    assert getattr(partner, 'inputSetWithWhileExecuting') is None
+    assert owner not in getattr(partner, 'inputSetWithWhileExecuting')
 
 
 def test_assoc_whileExecutingOutputRefs753_stub_double():
@@ -3081,8 +3081,8 @@ def test_assoc_whileExecutingOutputRefs753_stub_double():
     partner = bpmn2_OutputSet()
     setattr(partner, 'outputSetWithWhileExecuting', None)
     _safe_set(owner, 'DataOutput754', partner)
-    assert getattr(partner, 'outputSetWithWhileExecuting') == owner
+    assert owner in getattr(partner, 'outputSetWithWhileExecuting')
     _safe_set(owner, 'DataOutput754', None)
-    assert getattr(partner, 'outputSetWithWhileExecuting') is None
+    assert owner not in getattr(partner, 'outputSetWithWhileExecuting')
 
 

@@ -1,4 +1,8 @@
 @startuml
+' model: fml
+' project: sampleModel
+' owner: User
+' description: New project
 class DisplayElement {
 }
 class InputElement {
@@ -63,13 +67,13 @@ InputElement <|-- fml_SelectField
 InputElement <|-- fml_TextInput
 PageElement <|-- fml_DisplayElement
 PageElement <|-- fml_InputElement
-fml_Page "1..1" *-- "0..9999" fml_PageElement : consists4
-fml_List "1..1" *-- "1..9999" fml_ListItem : consists7
-fml_SelectField "1..1" *-- "1..9999" fml_SelectionItem : consists8
-fml_SelectField "0..1" -- "1..1" fml_SelectionItem : contained11
-fml_Page "0..1" -- "1..1" fml_PageElement : contained5
-fml_PageElement "0..9999" -- "1..1" fml_SelectionItem : displayElementVisible13
-fml_Form "1..1" *-- "1..9999" fml_Page : organized0
-fml_Page "0..1" -- "1..1" fml_Page : predecessor2
-fml_PageElement "1..1" -- "0..9999" fml_SelectionItem : visibleIfSelected6
+fml_Page "PageElement 1..1" *-- "contained 0..9999" fml_PageElement : consists4
+fml_List "fml_ListItem 1..1" *-- "fml_List 1..9999" fml_ListItem : consists7
+fml_SelectField "SelectionItem10 1..1" *-- "contained9 1..9999" fml_SelectionItem : consists8
+fml_SelectField "consists12 0..1" -- "SelectField 1..1" fml_SelectionItem : contained11
+fml_Page "consists 0..1" -- "Page 1..1" fml_PageElement : contained5
+fml_PageElement "visibleIfSelected 0..9999" -- "PageElement14 1..1" fml_SelectionItem : displayElementVisible13
+fml_Form "fml_Page 1..1" *-- "fml_Form 1..9999" fml_Page : organized0
+fml_Page "fml_Page1 0..1" -- "fml_Page3 1..1" fml_Page : predecessor2
+fml_PageElement "SelectionItem 1..1" -- "displayElementVisible 0..9999" fml_SelectionItem : visibleIfSelected6
 @enduml

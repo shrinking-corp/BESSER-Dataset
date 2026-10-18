@@ -1,4 +1,8 @@
 @startuml
+' model: entityDsl
+' project: sampleModel
+' owner: User
+' description: New project
 class Type {
 }
 class entityDsl_Entity {
@@ -16,8 +20,8 @@ class entityDsl_Type {
 }
 Type <|-- entityDsl_Entity
 Type <|-- entityDsl_SimpleType
-entityDsl_Model "1..1" *-- "0..9999" entityDsl_Type : elements0
-entityDsl_Entity "1..1" -- "0..1" entityDsl_Entity : extends2
-entityDsl_Entity "1..1" *-- "0..9999" entityDsl_Property : properties3
-entityDsl_Property "1..1" -- "0..1" entityDsl_Type : type5
+entityDsl_Model "entityDsl_Type 1..1" *-- "entityDsl_Model 0..9999" entityDsl_Type : elements0
+entityDsl_Entity "entityDsl_Entity 1..1" -- "entityDsl_Entity1 0..1" entityDsl_Entity : extends2
+entityDsl_Entity "entityDsl_Property 1..1" *-- "entityDsl_Entity4 0..9999" entityDsl_Property : properties3
+entityDsl_Property "entityDsl_Type7 1..1" -- "entityDsl_Property6 0..1" entityDsl_Type : type5
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: dbmap
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstaceDBInOutTable {
 }
 class AbstractDBDataMapTable {
@@ -40,9 +44,9 @@ AbstaceDBInOutTable <|-- dbmap_OutputTable
 AbstractDBDataMapTable <|-- dbmap_AbstaceDBInOutTable
 AbstractDBDataMapTable <|-- dbmap_VarTable
 AbstractExternalData <|-- dbmap_DBMapData
-dbmap_AbstractDBDataMapTable "1..1" *-- "0..9999" dbmap_DBMapperTableEntry : DBMapperTableEntries5
-dbmap_FilterEntry "0..9999" --* "1..1" dbmap_OutputTable : FilterEntries6
-dbmap_DBMapData "1..1" *-- "0..9999" dbmap_InputTable : InputTables1
-dbmap_DBMapData "1..1" *-- "0..9999" dbmap_OutputTable : OutputTables3
-dbmap_DBMapData "1..1" *-- "0..9999" dbmap_VarTable : VarTables0
+dbmap_AbstractDBDataMapTable "dbmap_DBMapperTableEntry 1..1" *-- "dbmap_AbstractDBDataMapTable 0..9999" dbmap_DBMapperTableEntry : DBMapperTableEntries5
+dbmap_FilterEntry "dbmap_OutputTable7 0..9999" --* "dbmap_FilterEntry 1..1" dbmap_OutputTable : FilterEntries6
+dbmap_DBMapData "dbmap_InputTable 1..1" *-- "dbmap_DBMapData2 0..9999" dbmap_InputTable : InputTables1
+dbmap_DBMapData "dbmap_OutputTable 1..1" *-- "dbmap_DBMapData4 0..9999" dbmap_OutputTable : OutputTables3
+dbmap_DBMapData "dbmap_VarTable 1..1" *-- "dbmap_DBMapData 0..9999" dbmap_VarTable : VarTables0
 @enduml

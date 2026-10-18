@@ -1,4 +1,8 @@
 @startuml
+' model: CompleteDSLPckg
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractState {
 }
 enum ArithmeticOperator {
@@ -130,34 +134,34 @@ Statement <|-- CompleteDSLPckg_Wait
 Trigger <|-- CompleteDSLPckg_AndTrigger
 Trigger <|-- CompleteDSLPckg_NotTrigger
 Trigger <|-- CompleteDSLPckg_OrTrigger
-CompleteDSLPckg_Conditional "1..1" *-- "0..9999" CompleteDSLPckg_Statement : body12
-CompleteDSLPckg_Loop "1..1" *-- "0..9999" CompleteDSLPckg_Statement : body17
-CompleteDSLPckg_Conditional "1..1" *-- "1..1" CompleteDSLPckg_Expression : condition10
-CompleteDSLPckg_Block "0..1" --* "1..1" CompleteDSLPckg_State : doAction46
-CompleteDSLPckg_Block "0..1" --* "1..1" CompleteDSLPckg_State : entryAction44
-CompleteDSLPckg_Block "0..1" --* "1..1" CompleteDSLPckg_State : exitAction49
-CompleteDSLPckg_Expression "1..1" --* "1..1" CompleteDSLPckg_VarDecl : expr20
-CompleteDSLPckg_Assignation "1..1" *-- "1..1" CompleteDSLPckg_Expression : expression24
-CompleteDSLPckg_Expression "1..1" --* "1..1" CompleteDSLPckg_Loop : guard15
-CompleteDSLPckg_AbstractState "1..1" -- "0..9999" CompleteDSLPckg_Transition : incoming35
-CompleteDSLPckg_ArithmeticExpression "1..1" *-- "1..1" CompleteDSLPckg_Expression : left0
-CompleteDSLPckg_Expression "1..1" --* "1..1" CompleteDSLPckg_RelationalExpression : left4
-CompleteDSLPckg_AndTrigger "1..1" *-- "1..1" CompleteDSLPckg_Trigger : left62
-CompleteDSLPckg_OrTrigger "1..1" *-- "1..1" CompleteDSLPckg_Trigger : left67
-CompleteDSLPckg_AbstractState "1..1" -- "0..9999" CompleteDSLPckg_Transition : outgoing38
-CompleteDSLPckg_AbstractState "1..1" -- "1..1" CompleteDSLPckg_Region : ownerRegion41
-CompleteDSLPckg_Region "1..1" -- "0..1" CompleteDSLPckg_StateMachine : ownerStateMachine32
-CompleteDSLPckg_Region "0..9999" --* "1..1" CompleteDSLPckg_StateMachine : regions27
-CompleteDSLPckg_ArithmeticExpression "1..1" *-- "1..1" CompleteDSLPckg_Expression : right1
-CompleteDSLPckg_Expression "1..1" --* "1..1" CompleteDSLPckg_RelationalExpression : right6
-CompleteDSLPckg_AndTrigger "1..1" *-- "1..1" CompleteDSLPckg_Trigger : right64
-CompleteDSLPckg_OrTrigger "1..1" *-- "1..1" CompleteDSLPckg_Trigger : right69
-CompleteDSLPckg_AbstractState "1..1" -- "1..1" CompleteDSLPckg_Transition : source57
-CompleteDSLPckg_Block "1..1" *-- "0..9999" CompleteDSLPckg_Statement : statements9
-CompleteDSLPckg_AbstractState "0..9999" --* "1..1" CompleteDSLPckg_Region : subvertex28
-CompleteDSLPckg_AbstractState "1..1" -- "1..1" CompleteDSLPckg_Transition : target54
-CompleteDSLPckg_Region "1..1" *-- "0..9999" CompleteDSLPckg_Transition : transitions30
-CompleteDSLPckg_Transition "1..1" *-- "0..1" CompleteDSLPckg_Trigger : trigger52
-CompleteDSLPckg_NotTrigger "1..1" *-- "1..1" CompleteDSLPckg_Trigger : trigger60
-CompleteDSLPckg_Assignation "1..1" -- "1..1" CompleteDSLPckg_VarDecl : varRef22
+CompleteDSLPckg_Conditional "CompleteDSLPckg_Statement14 1..1" *-- "CompleteDSLPckg_Conditional13 0..9999" CompleteDSLPckg_Statement : body12
+CompleteDSLPckg_Loop "CompleteDSLPckg_Statement19 1..1" *-- "CompleteDSLPckg_Loop18 0..9999" CompleteDSLPckg_Statement : body17
+CompleteDSLPckg_Conditional "CompleteDSLPckg_Expression11 1..1" *-- "CompleteDSLPckg_Conditional 1..1" CompleteDSLPckg_Expression : condition10
+CompleteDSLPckg_Block "CompleteDSLPckg_State47 0..1" --* "CompleteDSLPckg_Block48 1..1" CompleteDSLPckg_State : doAction46
+CompleteDSLPckg_Block "CompleteDSLPckg_State 0..1" --* "CompleteDSLPckg_Block45 1..1" CompleteDSLPckg_State : entryAction44
+CompleteDSLPckg_Block "CompleteDSLPckg_State50 0..1" --* "CompleteDSLPckg_Block51 1..1" CompleteDSLPckg_State : exitAction49
+CompleteDSLPckg_Expression "CompleteDSLPckg_VarDecl 1..1" --* "CompleteDSLPckg_Expression21 1..1" CompleteDSLPckg_VarDecl : expr20
+CompleteDSLPckg_Assignation "CompleteDSLPckg_Expression26 1..1" *-- "CompleteDSLPckg_Assignation25 1..1" CompleteDSLPckg_Expression : expression24
+CompleteDSLPckg_Expression "CompleteDSLPckg_Loop 1..1" --* "CompleteDSLPckg_Expression16 1..1" CompleteDSLPckg_Loop : guard15
+CompleteDSLPckg_AbstractState "CompleteDSLPckg_Transition37 1..1" -- "CompleteDSLPckg_AbstractState36 0..9999" CompleteDSLPckg_Transition : incoming35
+CompleteDSLPckg_ArithmeticExpression "CompleteDSLPckg_Expression 1..1" *-- "CompleteDSLPckg_ArithmeticExpression 1..1" CompleteDSLPckg_Expression : left0
+CompleteDSLPckg_Expression "CompleteDSLPckg_RelationalExpression 1..1" --* "CompleteDSLPckg_Expression5 1..1" CompleteDSLPckg_RelationalExpression : left4
+CompleteDSLPckg_AndTrigger "CompleteDSLPckg_Trigger63 1..1" *-- "CompleteDSLPckg_AndTrigger 1..1" CompleteDSLPckg_Trigger : left62
+CompleteDSLPckg_OrTrigger "CompleteDSLPckg_Trigger68 1..1" *-- "CompleteDSLPckg_OrTrigger 1..1" CompleteDSLPckg_Trigger : left67
+CompleteDSLPckg_AbstractState "CompleteDSLPckg_Transition40 1..1" -- "CompleteDSLPckg_AbstractState39 0..9999" CompleteDSLPckg_Transition : outgoing38
+CompleteDSLPckg_AbstractState "CompleteDSLPckg_Region43 1..1" -- "CompleteDSLPckg_AbstractState42 1..1" CompleteDSLPckg_Region : ownerRegion41
+CompleteDSLPckg_Region "CompleteDSLPckg_StateMachine34 1..1" -- "CompleteDSLPckg_Region33 0..1" CompleteDSLPckg_StateMachine : ownerStateMachine32
+CompleteDSLPckg_Region "CompleteDSLPckg_StateMachine 0..9999" --* "CompleteDSLPckg_Region 1..1" CompleteDSLPckg_StateMachine : regions27
+CompleteDSLPckg_ArithmeticExpression "CompleteDSLPckg_Expression3 1..1" *-- "CompleteDSLPckg_ArithmeticExpression2 1..1" CompleteDSLPckg_Expression : right1
+CompleteDSLPckg_Expression "CompleteDSLPckg_RelationalExpression7 1..1" --* "CompleteDSLPckg_Expression8 1..1" CompleteDSLPckg_RelationalExpression : right6
+CompleteDSLPckg_AndTrigger "CompleteDSLPckg_Trigger66 1..1" *-- "CompleteDSLPckg_AndTrigger65 1..1" CompleteDSLPckg_Trigger : right64
+CompleteDSLPckg_OrTrigger "CompleteDSLPckg_Trigger71 1..1" *-- "CompleteDSLPckg_OrTrigger70 1..1" CompleteDSLPckg_Trigger : right69
+CompleteDSLPckg_AbstractState "CompleteDSLPckg_Transition58 1..1" -- "CompleteDSLPckg_AbstractState59 1..1" CompleteDSLPckg_Transition : source57
+CompleteDSLPckg_Block "CompleteDSLPckg_Statement 1..1" *-- "CompleteDSLPckg_Block 0..9999" CompleteDSLPckg_Statement : statements9
+CompleteDSLPckg_AbstractState "CompleteDSLPckg_Region29 0..9999" --* "CompleteDSLPckg_AbstractState 1..1" CompleteDSLPckg_Region : subvertex28
+CompleteDSLPckg_AbstractState "CompleteDSLPckg_Transition55 1..1" -- "CompleteDSLPckg_AbstractState56 1..1" CompleteDSLPckg_Transition : target54
+CompleteDSLPckg_Region "CompleteDSLPckg_Transition 1..1" *-- "CompleteDSLPckg_Region31 0..9999" CompleteDSLPckg_Transition : transitions30
+CompleteDSLPckg_Transition "CompleteDSLPckg_Trigger 1..1" *-- "CompleteDSLPckg_Transition53 0..1" CompleteDSLPckg_Trigger : trigger52
+CompleteDSLPckg_NotTrigger "CompleteDSLPckg_Trigger61 1..1" *-- "CompleteDSLPckg_NotTrigger 1..1" CompleteDSLPckg_Trigger : trigger60
+CompleteDSLPckg_Assignation "CompleteDSLPckg_VarDecl23 1..1" -- "CompleteDSLPckg_Assignation 1..1" CompleteDSLPckg_VarDecl : varRef22
 @enduml

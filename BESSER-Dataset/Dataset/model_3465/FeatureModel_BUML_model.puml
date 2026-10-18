@@ -1,4 +1,8 @@
 @startuml
+' model: featureModel
+' project: sampleModel
+' owner: User
+' description: New project
 class Constraint {
 }
 class Group {
@@ -29,11 +33,11 @@ class featureModel_Proposition {
 Constraint <|-- featureModel_ExcludeConstraint
 Constraint <|-- featureModel_ImplyConstraint
 Group <|-- featureModel_Feature
-featureModel_Feature "1..1" *-- "0..9999" featureModel_Group : children5
-featureModel_Constraints "0..9999" --* "1..1" featureModel_FeatureModel : constraints1
-featureModel_Constraint "0..9999" --* "1..1" featureModel_Constraints : constraints7
-featureModel_PropFormula "1..1" *-- "0..9999" featureModel_Proposition : firstProp9
-featureModel_FeatureModel "1..1" *-- "0..9999" featureModel_PropFormula : propFormula3
-featureModel_PropFormula "1..1" *-- "0..9999" featureModel_Proposition : rest11
-featureModel_Feature "0..9999" --* "1..1" featureModel_FeatureModel : rootFeature0
+featureModel_Feature "featureModel_Group 1..1" *-- "featureModel_Feature6 0..9999" featureModel_Group : children5
+featureModel_Constraints "featureModel_FeatureModel2 0..9999" --* "featureModel_Constraints 1..1" featureModel_FeatureModel : constraints1
+featureModel_Constraint "featureModel_Constraints8 0..9999" --* "featureModel_Constraint 1..1" featureModel_Constraints : constraints7
+featureModel_PropFormula "featureModel_Proposition 1..1" *-- "featureModel_PropFormula10 0..9999" featureModel_Proposition : firstProp9
+featureModel_FeatureModel "featureModel_PropFormula 1..1" *-- "featureModel_FeatureModel4 0..9999" featureModel_PropFormula : propFormula3
+featureModel_PropFormula "featureModel_Proposition13 1..1" *-- "featureModel_PropFormula12 0..9999" featureModel_Proposition : rest11
+featureModel_Feature "featureModel_FeatureModel 0..9999" --* "featureModel_Feature 1..1" featureModel_FeatureModel : rootFeature0
 @enduml

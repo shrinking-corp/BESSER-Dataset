@@ -1,4 +1,8 @@
 @startuml
+' model: di
+' project: sampleModel
+' owner: User
+' description: New project
 class DiagramElement {
 }
 class Edge {
@@ -44,19 +48,19 @@ Node <|-- di_Label
 Node <|-- di_Plane
 Node <|-- di_Shape
 Shape <|-- di_LabeledShape
-di_Bounds "1..1" --* "1..1" di_Shape : bounds20
-di_Bounds "0..1" --* "1..1" di_Label : bounds22
-di_DiagramElement "1..1" -- "0..1" di_EObject : modelElement6
-di_DiagramElement "1..1" -- "0..9999" di_DiagramElement : ownedElement4
-di_Label "0..9999" -- "1..1" di_LabeledEdge : ownedLabel21
-di_Label "0..9999" -- "1..1" di_LabeledShape : ownedLabel25
-di_Diagram "1..1" -- "0..9999" di_Style : ownedStyle9
-di_Diagram "0..1" -- "1..1" di_DiagramElement : owningDiagram0
-di_DiagramElement "1..1" -- "0..1" di_DiagramElement : owningElement2
-di_DiagramElement "0..9999" --* "1..1" di_Plane : planeElement27
-di_Diagram "1..1" -- "1..1" di_DiagramElement : rootElement11
-di_DiagramElement "0..1" -- "1..1" di_Edge : source13
-di_DiagramElement "1..1" -- "0..1" di_Style : style7
-di_DiagramElement "0..1" -- "1..1" di_Edge : target15
-di_Edge "1..1" *-- "2..9999" di_Point : waypoint18
+di_Bounds "di_Shape 1..1" --* "di_Bounds 1..1" di_Shape : bounds20
+di_Bounds "di_Label23 0..1" --* "di_Bounds24 1..1" di_Label : bounds22
+di_DiagramElement "di_EObject 1..1" -- "di_DiagramElement 0..1" di_EObject : modelElement6
+di_DiagramElement "DiagramElement5 1..1" -- "owningElement 0..9999" di_DiagramElement : ownedElement4
+di_Label "di_LabeledEdge 0..9999" -- "di_Label 1..1" di_LabeledEdge : ownedLabel21
+di_Label "di_LabeledShape 0..9999" -- "di_Label26 1..1" di_LabeledShape : ownedLabel25
+di_Diagram "di_Style10 1..1" -- "di_Diagram 0..9999" di_Style : ownedStyle9
+di_Diagram "rootElement 0..1" -- "Diagram 1..1" di_DiagramElement : owningDiagram0
+di_DiagramElement "DiagramElement 1..1" -- "ownedElement 0..1" di_DiagramElement : owningElement2
+di_DiagramElement "di_Plane 0..9999" --* "di_DiagramElement28 1..1" di_Plane : planeElement27
+di_Diagram "DiagramElement12 1..1" -- "owningDiagram 1..1" di_DiagramElement : rootElement11
+di_DiagramElement "di_Edge 0..1" -- "di_DiagramElement14 1..1" di_Edge : source13
+di_DiagramElement "di_Style 1..1" -- "di_DiagramElement8 0..1" di_Style : style7
+di_DiagramElement "di_Edge16 0..1" -- "di_DiagramElement17 1..1" di_Edge : target15
+di_Edge "di_Point 1..1" *-- "di_Edge19 2..9999" di_Point : waypoint18
 @enduml

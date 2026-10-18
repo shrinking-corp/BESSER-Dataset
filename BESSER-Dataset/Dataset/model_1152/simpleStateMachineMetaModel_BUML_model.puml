@@ -1,4 +1,8 @@
 @startuml
+' model: simpleStateMachineMetaModel
+' project: sampleModel
+' owner: User
+' description: New project
 class simpleStateMachineMetaModel_SimpleStateMachine {
   + Name : str
 }
@@ -8,13 +12,13 @@ class simpleStateMachineMetaModel_State {
 class simpleStateMachineMetaModel_Transition {
   + Name : str
 }
-simpleStateMachineMetaModel_State "1..1" -- "0..9999" simpleStateMachineMetaModel_Transition : Incoming14
-simpleStateMachineMetaModel_SimpleStateMachine "1..1" -- "0..1" simpleStateMachineMetaModel_State : InitialState3
-simpleStateMachineMetaModel_State "1..1" -- "0..9999" simpleStateMachineMetaModel_Transition : Outgoing12
-simpleStateMachineMetaModel_SimpleStateMachine "1..1" -- "1..1" simpleStateMachineMetaModel_State : SimpleStateMachine10
-simpleStateMachineMetaModel_SimpleStateMachine "1..1" -- "1..1" simpleStateMachineMetaModel_Transition : SimpleStateMachine4
-simpleStateMachineMetaModel_State "1..1" -- "1..1" simpleStateMachineMetaModel_Transition : Source6
-simpleStateMachineMetaModel_SimpleStateMachine "1..1" *-- "0..9999" simpleStateMachineMetaModel_State : States0
-simpleStateMachineMetaModel_State "1..1" -- "1..1" simpleStateMachineMetaModel_Transition : Target8
-simpleStateMachineMetaModel_SimpleStateMachine "1..1" *-- "0..9999" simpleStateMachineMetaModel_Transition : Transitions1
+simpleStateMachineMetaModel_State "Transition15 1..1" -- "Target 0..9999" simpleStateMachineMetaModel_Transition : Incoming14
+simpleStateMachineMetaModel_SimpleStateMachine "simpleStateMachineMetaModel_State 1..1" -- "simpleStateMachineMetaModel_SimpleStateMachine 0..1" simpleStateMachineMetaModel_State : InitialState3
+simpleStateMachineMetaModel_State "Transition13 1..1" -- "Source 0..9999" simpleStateMachineMetaModel_Transition : Outgoing12
+simpleStateMachineMetaModel_SimpleStateMachine "States 1..1" -- "SimpleStateMachine11 1..1" simpleStateMachineMetaModel_State : SimpleStateMachine10
+simpleStateMachineMetaModel_SimpleStateMachine "Transitions 1..1" -- "SimpleStateMachine5 1..1" simpleStateMachineMetaModel_Transition : SimpleStateMachine4
+simpleStateMachineMetaModel_State "Outgoing 1..1" -- "State7 1..1" simpleStateMachineMetaModel_Transition : Source6
+simpleStateMachineMetaModel_SimpleStateMachine "State 1..1" *-- "SimpleStateMachine 0..9999" simpleStateMachineMetaModel_State : States0
+simpleStateMachineMetaModel_State "Incoming 1..1" -- "State9 1..1" simpleStateMachineMetaModel_Transition : Target8
+simpleStateMachineMetaModel_SimpleStateMachine "Transition 1..1" *-- "SimpleStateMachine2 0..9999" simpleStateMachineMetaModel_Transition : Transitions1
 @enduml

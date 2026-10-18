@@ -1,4 +1,8 @@
 @startuml
+' model: arduino
+' project: sampleModel
+' owner: User
+' description: New project
 enum DigitalPinNumber {
   D0
   D1
@@ -50,13 +54,13 @@ Function <|-- arduino_Read
 Function <|-- arduino_Write
 Instruction <|-- arduino_Function
 Pin <|-- arduino_DigitalPin
-arduino_DigitalPin "0..1" -- "1..1" arduino_Write : digitalpin10
-arduino_DigitalPin "0..1" -- "1..1" arduino_Read : digitalpin11
-arduino_DigitalPin "0..9999" --* "1..1" arduino_Setup : digitalpin13
-arduino_Instruction "0..9999" --* "1..1" arduino_Loop : instruction16
-arduino_Instruction "0..9999" --* "1..1" arduino_Sketch : instruction5
-arduino_Loop "0..1" --* "1..1" arduino_Sketch : loop3
-arduino_Instruction "0..1" -- "1..1" arduino_Instruction : next8
-arduino_Setup "0..1" --* "1..1" arduino_Sketch : setup1
-arduino_Project "1..1" *-- "0..1" arduino_Sketch : sketch0
+arduino_DigitalPin "arduino_Write 0..1" -- "arduino_DigitalPin 1..1" arduino_Write : digitalpin10
+arduino_DigitalPin "arduino_Read 0..1" -- "arduino_DigitalPin12 1..1" arduino_Read : digitalpin11
+arduino_DigitalPin "arduino_Setup14 0..9999" --* "arduino_DigitalPin15 1..1" arduino_Setup : digitalpin13
+arduino_Instruction "arduino_Loop17 0..9999" --* "arduino_Instruction18 1..1" arduino_Loop : instruction16
+arduino_Instruction "arduino_Sketch6 0..9999" --* "arduino_Instruction 1..1" arduino_Sketch : instruction5
+arduino_Loop "arduino_Sketch4 0..1" --* "arduino_Loop 1..1" arduino_Sketch : loop3
+arduino_Instruction "arduino_Instruction7 0..1" -- "arduino_Instruction9 1..1" arduino_Instruction : next8
+arduino_Setup "arduino_Sketch2 0..1" --* "arduino_Setup 1..1" arduino_Sketch : setup1
+arduino_Project "arduino_Sketch 1..1" *-- "arduino_Project 0..1" arduino_Sketch : sketch0
 @enduml

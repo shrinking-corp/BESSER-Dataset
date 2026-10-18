@@ -1,4 +1,8 @@
 @startuml
+' model: epo2
+' project: sampleModel
+' owner: User
+' description: New project
 class Address {
 }
 class GlobalLocation {
@@ -47,15 +51,15 @@ class epo2_USAddress {
 Address <|-- epo2_GlobalAddress
 Address <|-- epo2_USAddress
 GlobalLocation <|-- epo2_GlobalAddress
-epo2_Address "1..1" --* "1..1" epo2_PurchaseOrder : billTo14
-epo2_Customer "1..1" -- "1..1" epo2_PurchaseOrder : customer9
-epo2_Customer "0..9999" --* "1..1" epo2_Supplier : customers7
-epo2_Item "0..9999" --* "1..1" epo2_PurchaseOrder : items13
-epo2_Item "1..1" -- "1..1" epo2_PurchaseOrder : order20
-epo2_PurchaseOrder "0..9999" --* "1..1" epo2_Supplier : orders0
-epo2_Customer "1..1" -- "0..9999" epo2_PurchaseOrder : orders19
-epo2_PurchaseOrder "0..9999" -- "1..1" epo2_Supplier : pendingOrders1
-epo2_PurchaseOrder "0..1" -- "1..1" epo2_PurchaseOrder : previousOrder11
-epo2_Address "1..1" --* "1..1" epo2_PurchaseOrder : shipTo16
-epo2_PurchaseOrder "0..9999" -- "1..1" epo2_Supplier : shippedOrders4
+epo2_Address "epo2_PurchaseOrder15 1..1" --* "epo2_Address 1..1" epo2_PurchaseOrder : billTo14
+epo2_Customer "orders 1..1" -- "Customer 1..1" epo2_PurchaseOrder : customer9
+epo2_Customer "epo2_Supplier8 0..9999" --* "epo2_Customer 1..1" epo2_Supplier : customers7
+epo2_Item "order 0..9999" --* "Item 1..1" epo2_PurchaseOrder : items13
+epo2_Item "PurchaseOrder21 1..1" -- "items 1..1" epo2_PurchaseOrder : order20
+epo2_PurchaseOrder "epo2_Supplier 0..9999" --* "epo2_PurchaseOrder 1..1" epo2_Supplier : orders0
+epo2_Customer "PurchaseOrder 1..1" -- "customer 0..9999" epo2_PurchaseOrder : orders19
+epo2_PurchaseOrder "epo2_Supplier2 0..9999" -- "epo2_PurchaseOrder3 1..1" epo2_Supplier : pendingOrders1
+epo2_PurchaseOrder "epo2_PurchaseOrder10 0..1" -- "epo2_PurchaseOrder12 1..1" epo2_PurchaseOrder : previousOrder11
+epo2_Address "epo2_PurchaseOrder17 1..1" --* "epo2_Address18 1..1" epo2_PurchaseOrder : shipTo16
+epo2_PurchaseOrder "epo2_Supplier5 0..9999" -- "epo2_PurchaseOrder6 1..1" epo2_Supplier : shippedOrders4
 @enduml

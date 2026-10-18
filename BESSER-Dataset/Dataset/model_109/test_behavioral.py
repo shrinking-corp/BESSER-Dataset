@@ -705,9 +705,9 @@ def test_assoc_allType17_stub_double():
     partner = JDTAST_ICompilationUnit()
     setattr(partner, 'JDTAST_ICompilationUnit18', None)
     _safe_set(owner, 'JDTAST_IType', partner)
-    assert getattr(partner, 'JDTAST_ICompilationUnit18') == owner
+    assert owner in getattr(partner, 'JDTAST_ICompilationUnit18')
     _safe_set(owner, 'JDTAST_IType', None)
-    assert getattr(partner, 'JDTAST_ICompilationUnit18') is None
+    assert owner not in getattr(partner, 'JDTAST_ICompilationUnit18')
 
 
 def test_assoc_arguments133_stub_double():
@@ -720,9 +720,9 @@ def test_assoc_arguments133_stub_double():
     partner = JDTAST_EnumConstantDeclaration()
     setattr(partner, 'JDTAST_EnumConstantDeclaration', None)
     _safe_set(owner, 'JDTAST_Expression134', partner)
-    assert getattr(partner, 'JDTAST_EnumConstantDeclaration') == owner
+    assert owner in getattr(partner, 'JDTAST_EnumConstantDeclaration')
     _safe_set(owner, 'JDTAST_Expression134', None)
-    assert getattr(partner, 'JDTAST_EnumConstantDeclaration') is None
+    assert owner not in getattr(partner, 'JDTAST_EnumConstantDeclaration')
 
 
 def test_assoc_arguments210_stub_double():
@@ -735,9 +735,9 @@ def test_assoc_arguments210_stub_double():
     partner = JDTAST_ClassInstanceCreation()
     setattr(partner, 'JDTAST_ClassInstanceCreation', None)
     _safe_set(owner, 'JDTAST_Expression211', partner)
-    assert getattr(partner, 'JDTAST_ClassInstanceCreation') == owner
+    assert owner in getattr(partner, 'JDTAST_ClassInstanceCreation')
     _safe_set(owner, 'JDTAST_Expression211', None)
-    assert getattr(partner, 'JDTAST_ClassInstanceCreation') is None
+    assert owner not in getattr(partner, 'JDTAST_ClassInstanceCreation')
 
 
 def test_assoc_arguments250_stub_double():
@@ -750,9 +750,9 @@ def test_assoc_arguments250_stub_double():
     partner = JDTAST_MethodInvocation()
     setattr(partner, 'JDTAST_MethodInvocation', None)
     _safe_set(owner, 'JDTAST_Expression251', partner)
-    assert getattr(partner, 'JDTAST_MethodInvocation') == owner
+    assert owner in getattr(partner, 'JDTAST_MethodInvocation')
     _safe_set(owner, 'JDTAST_Expression251', None)
-    assert getattr(partner, 'JDTAST_MethodInvocation') is None
+    assert owner not in getattr(partner, 'JDTAST_MethodInvocation')
 
 
 def test_assoc_arguments275_stub_double():
@@ -765,9 +765,9 @@ def test_assoc_arguments275_stub_double():
     partner = JDTAST_SuperMethodInvocation()
     setattr(partner, 'JDTAST_SuperMethodInvocation', None)
     _safe_set(owner, 'JDTAST_Expression276', partner)
-    assert getattr(partner, 'JDTAST_SuperMethodInvocation') == owner
+    assert owner in getattr(partner, 'JDTAST_SuperMethodInvocation')
     _safe_set(owner, 'JDTAST_Expression276', None)
-    assert getattr(partner, 'JDTAST_SuperMethodInvocation') is None
+    assert owner not in getattr(partner, 'JDTAST_SuperMethodInvocation')
 
 
 def test_assoc_arguments307_stub_double():
@@ -780,9 +780,9 @@ def test_assoc_arguments307_stub_double():
     partner = JDTAST_ConstructorInvocation()
     setattr(partner, 'JDTAST_ConstructorInvocation', None)
     _safe_set(owner, 'JDTAST_Expression308', partner)
-    assert getattr(partner, 'JDTAST_ConstructorInvocation') == owner
+    assert owner in getattr(partner, 'JDTAST_ConstructorInvocation')
     _safe_set(owner, 'JDTAST_Expression308', None)
-    assert getattr(partner, 'JDTAST_ConstructorInvocation') is None
+    assert owner not in getattr(partner, 'JDTAST_ConstructorInvocation')
 
 
 def test_assoc_arguments355_stub_double():
@@ -795,9 +795,9 @@ def test_assoc_arguments355_stub_double():
     partner = JDTAST_SuperConstructorInvocation()
     setattr(partner, 'JDTAST_SuperConstructorInvocation', None)
     _safe_set(owner, 'JDTAST_Expression356', partner)
-    assert getattr(partner, 'JDTAST_SuperConstructorInvocation') == owner
+    assert owner in getattr(partner, 'JDTAST_SuperConstructorInvocation')
     _safe_set(owner, 'JDTAST_Expression356', None)
-    assert getattr(partner, 'JDTAST_SuperConstructorInvocation') is None
+    assert owner not in getattr(partner, 'JDTAST_SuperConstructorInvocation')
 
 
 def test_assoc_array186_stub_double():
@@ -945,9 +945,9 @@ def test_assoc_dimensions191_stub_double():
     partner = JDTAST_ArrayCreation()
     setattr(partner, 'JDTAST_ArrayCreation', None)
     _safe_set(owner, 'JDTAST_Expression192', partner)
-    assert getattr(partner, 'JDTAST_ArrayCreation') == owner
+    assert owner in getattr(partner, 'JDTAST_ArrayCreation')
     _safe_set(owner, 'JDTAST_Expression192', None)
-    assert getattr(partner, 'JDTAST_ArrayCreation') is None
+    assert owner not in getattr(partner, 'JDTAST_ArrayCreation')
 
 
 def test_assoc_elementType403_stub_double():
@@ -1275,9 +1275,9 @@ def test_assoc_expressions197_stub_double():
     partner = JDTAST_ArrayInitializer()
     setattr(partner, 'JDTAST_ArrayInitializer198', None)
     _safe_set(owner, 'JDTAST_Expression199', partner)
-    assert getattr(partner, 'JDTAST_ArrayInitializer198') == owner
+    assert owner in getattr(partner, 'JDTAST_ArrayInitializer198')
     _safe_set(owner, 'JDTAST_Expression199', None)
-    assert getattr(partner, 'JDTAST_ArrayInitializer198') is None
+    assert owner not in getattr(partner, 'JDTAST_ArrayInitializer198')
 
 
 def test_assoc_fragments107_stub_double():
@@ -1305,9 +1305,9 @@ def test_assoc_imports19_stub_double():
     partner = JDTAST_ICompilationUnit()
     setattr(partner, 'JDTAST_ICompilationUnit20', None)
     _safe_set(owner, 'JDTAST_IImportDeclaration', partner)
-    assert getattr(partner, 'JDTAST_ICompilationUnit20') == owner
+    assert owner in getattr(partner, 'JDTAST_ICompilationUnit20')
     _safe_set(owner, 'JDTAST_IImportDeclaration', None)
-    assert getattr(partner, 'JDTAST_ICompilationUnit20') is None
+    assert owner not in getattr(partner, 'JDTAST_ICompilationUnit20')
 
 
 def test_assoc_imports67_stub_double():
@@ -1320,9 +1320,9 @@ def test_assoc_imports67_stub_double():
     partner = JDTAST_CompilationUnit()
     setattr(partner, 'JDTAST_CompilationUnit68', None)
     _safe_set(owner, 'JDTAST_ImportDeclaration', partner)
-    assert getattr(partner, 'JDTAST_CompilationUnit68') == owner
+    assert owner in getattr(partner, 'JDTAST_CompilationUnit68')
     _safe_set(owner, 'JDTAST_ImportDeclaration', None)
-    assert getattr(partner, 'JDTAST_CompilationUnit68') is None
+    assert owner not in getattr(partner, 'JDTAST_CompilationUnit68')
 
 
 def test_assoc_index188_stub_double():
@@ -1350,9 +1350,9 @@ def test_assoc_initializers334_stub_double():
     partner = JDTAST_ForStatement()
     setattr(partner, 'JDTAST_ForStatement335', None)
     _safe_set(owner, 'JDTAST_Expression336', partner)
-    assert getattr(partner, 'JDTAST_ForStatement335') == owner
+    assert owner in getattr(partner, 'JDTAST_ForStatement335')
     _safe_set(owner, 'JDTAST_Expression336', None)
-    assert getattr(partner, 'JDTAST_ForStatement335') is None
+    assert owner not in getattr(partner, 'JDTAST_ForStatement335')
 
 
 def test_assoc_initializers38_stub_double():
@@ -1740,9 +1740,9 @@ def test_assoc_packageFragments12_stub_double():
     partner = JDTAST_IPackageFragmentRoot()
     setattr(partner, 'packageFragmentRoot', None)
     _safe_set(owner, 'IPackageFragment', partner)
-    assert getattr(partner, 'packageFragmentRoot') == owner
+    assert owner in getattr(partner, 'packageFragmentRoot')
     _safe_set(owner, 'IPackageFragment', None)
-    assert getattr(partner, 'packageFragmentRoot') is None
+    assert owner not in getattr(partner, 'packageFragmentRoot')
 
 
 def test_assoc_parameter324_stub_double():
@@ -1770,9 +1770,9 @@ def test_assoc_parameters89_stub_double():
     partner = JDTAST_MethodRef()
     setattr(partner, 'JDTAST_MethodRef90', None)
     _safe_set(owner, 'JDTAST_MethodRefParameter', partner)
-    assert getattr(partner, 'JDTAST_MethodRef90') == owner
+    assert owner in getattr(partner, 'JDTAST_MethodRef90')
     _safe_set(owner, 'JDTAST_MethodRefParameter', None)
-    assert getattr(partner, 'JDTAST_MethodRef90') is None
+    assert owner not in getattr(partner, 'JDTAST_MethodRef90')
 
 
 def test_assoc_qualifier272_stub_double():
@@ -1920,9 +1920,9 @@ def test_assoc_tags180_stub_double():
     partner = JDTAST_Javadoc()
     setattr(partner, 'JDTAST_Javadoc181', None)
     _safe_set(owner, 'JDTAST_TagElement182', partner)
-    assert getattr(partner, 'JDTAST_Javadoc181') == owner
+    assert owner in getattr(partner, 'JDTAST_Javadoc181')
     _safe_set(owner, 'JDTAST_TagElement182', None)
-    assert getattr(partner, 'JDTAST_Javadoc181') is None
+    assert owner not in getattr(partner, 'JDTAST_Javadoc181')
 
 
 def test_assoc_thenExpression229_stub_double():
@@ -2040,9 +2040,9 @@ def test_assoc_types21_stub_double():
     partner = JDTAST_ICompilationUnit()
     setattr(partner, 'JDTAST_ICompilationUnit22', None)
     _safe_set(owner, 'JDTAST_IType23', partner)
-    assert getattr(partner, 'JDTAST_ICompilationUnit22') == owner
+    assert owner in getattr(partner, 'JDTAST_ICompilationUnit22')
     _safe_set(owner, 'JDTAST_IType23', None)
-    assert getattr(partner, 'JDTAST_ICompilationUnit22') is None
+    assert owner not in getattr(partner, 'JDTAST_ICompilationUnit22')
 
 
 def test_assoc_types69_stub_double():
@@ -2055,9 +2055,9 @@ def test_assoc_types69_stub_double():
     partner = JDTAST_CompilationUnit()
     setattr(partner, 'JDTAST_CompilationUnit70', None)
     _safe_set(owner, 'JDTAST_AbstractTypeDeclaration', partner)
-    assert getattr(partner, 'JDTAST_CompilationUnit70') == owner
+    assert owner in getattr(partner, 'JDTAST_CompilationUnit70')
     _safe_set(owner, 'JDTAST_AbstractTypeDeclaration', None)
-    assert getattr(partner, 'JDTAST_CompilationUnit70') is None
+    assert owner not in getattr(partner, 'JDTAST_CompilationUnit70')
 
 
 def test_assoc_updaters337_stub_double():
@@ -2070,9 +2070,9 @@ def test_assoc_updaters337_stub_double():
     partner = JDTAST_ForStatement()
     setattr(partner, 'JDTAST_ForStatement338', None)
     _safe_set(owner, 'JDTAST_Expression339', partner)
-    assert getattr(partner, 'JDTAST_ForStatement338') == owner
+    assert owner in getattr(partner, 'JDTAST_ForStatement338')
     _safe_set(owner, 'JDTAST_Expression339', None)
-    assert getattr(partner, 'JDTAST_ForStatement338') is None
+    assert owner not in getattr(partner, 'JDTAST_ForStatement338')
 
 
 def test_assoc_value433_stub_double():

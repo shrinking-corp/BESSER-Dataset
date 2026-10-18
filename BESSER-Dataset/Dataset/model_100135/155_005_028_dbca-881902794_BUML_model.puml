@@ -1,4 +1,8 @@
 @startuml
+' model: dbca
+' project: sampleModel
+' owner: User
+' description: New project
 class Attribute {
 }
 class ClientElement {
@@ -158,23 +162,23 @@ Service <|-- dbca_CustomService
 Service <|-- dbca_EntityService
 Service <|-- dbca_OperationService
 Service <|-- dbca_QueryService
-dbca_Application "1..1" *-- "0..9999" dbca_Client : clients3
-dbca_Application "1..1" *-- "0..1" dbca_Database : database0
-dbca_Server "1..1" *-- "0..9999" dbca_ServerElement : elements25
-dbca_Client "1..1" *-- "0..9999" dbca_ClientElement : elements32
-dbca_Database "1..1" *-- "0..9999" dbca_DatabaseElement : elements5
-dbca_Entity "1..1" -- "1..1" dbca_EntityParameter : entity21
-dbca_Entity "1..1" -- "1..1" dbca_EntityService : entity27
-dbca_Entity "1..1" -- "1..1" dbca_EntityForm : entity34
-dbca_Operation "1..1" -- "1..1" dbca_OperationService : operation30
-dbca_DataParameter "0..9999" --* "1..1" dbca_Function : parameters23
-dbca_Operation "1..1" *-- "0..9999" dbca_Parameter : parameters24
-dbca_Entity "1..1" *-- "1..9999" dbca_PrimaryProperty : primaries7
-dbca_Property "0..9999" --* "1..1" dbca_Relationship : properties18
-dbca_Entity "1..1" *-- "0..9999" dbca_Property : properties8
-dbca_Query "1..1" -- "1..1" dbca_QueryService : query29
-dbca_Entity "1..1" *-- "0..9999" dbca_Relationship : relationships10
-dbca_Application "1..1" *-- "0..1" dbca_Server : server1
-dbca_Entity "0..1" -- "1..1" dbca_Entity : super13
-dbca_Entity "1..1" -- "1..1" dbca_Relationship : target15
+dbca_Application "dbca_Client 1..1" *-- "dbca_Application4 0..9999" dbca_Client : clients3
+dbca_Application "dbca_Database 1..1" *-- "dbca_Application 0..1" dbca_Database : database0
+dbca_Server "dbca_ServerElement 1..1" *-- "dbca_Server26 0..9999" dbca_ServerElement : elements25
+dbca_Client "dbca_ClientElement 1..1" *-- "dbca_Client33 0..9999" dbca_ClientElement : elements32
+dbca_Database "dbca_DatabaseElement 1..1" *-- "dbca_Database6 0..9999" dbca_DatabaseElement : elements5
+dbca_Entity "dbca_EntityParameter 1..1" -- "dbca_Entity22 1..1" dbca_EntityParameter : entity21
+dbca_Entity "dbca_EntityService 1..1" -- "dbca_Entity28 1..1" dbca_EntityService : entity27
+dbca_Entity "dbca_EntityForm 1..1" -- "dbca_Entity35 1..1" dbca_EntityForm : entity34
+dbca_Operation "dbca_OperationService 1..1" -- "dbca_Operation31 1..1" dbca_OperationService : operation30
+dbca_DataParameter "dbca_Function 0..9999" --* "dbca_DataParameter 1..1" dbca_Function : parameters23
+dbca_Operation "dbca_Parameter 1..1" *-- "dbca_Operation 0..9999" dbca_Parameter : parameters24
+dbca_Entity "dbca_PrimaryProperty 1..1" *-- "dbca_Entity 1..9999" dbca_PrimaryProperty : primaries7
+dbca_Property "dbca_Relationship19 0..9999" --* "dbca_Property20 1..1" dbca_Relationship : properties18
+dbca_Entity "dbca_Property 1..1" *-- "dbca_Entity9 0..9999" dbca_Property : properties8
+dbca_Query "dbca_QueryService 1..1" -- "dbca_Query 1..1" dbca_QueryService : query29
+dbca_Entity "dbca_Relationship 1..1" *-- "dbca_Entity11 0..9999" dbca_Relationship : relationships10
+dbca_Application "dbca_Server 1..1" *-- "dbca_Application2 0..1" dbca_Server : server1
+dbca_Entity "dbca_Entity12 0..1" -- "dbca_Entity14 1..1" dbca_Entity : super13
+dbca_Entity "dbca_Relationship16 1..1" -- "dbca_Entity17 1..1" dbca_Relationship : target15
 @enduml

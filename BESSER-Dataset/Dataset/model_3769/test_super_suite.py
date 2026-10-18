@@ -185,30 +185,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=d_X_strategy)
-@settings(max_examples=30)
-def test_hyp_d_x_baz_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.baz(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.baz).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'baz' in d_X is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'baz' in d_X did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'baz' in d_X is not implemented or raised an error")
 
 
 
@@ -426,9 +402,9 @@ def test_assoc_yyy1_stub_double():
     partner = d_B()
     setattr(partner, 'd_B2', None)
     _safe_set(owner, 'd_Z', partner)
-    assert getattr(partner, 'd_B2') == owner
+    assert owner in getattr(partner, 'd_B2')
     _safe_set(owner, 'd_Z', None)
-    assert getattr(partner, 'd_B2') is None
+    assert owner not in getattr(partner, 'd_B2')
 
 
 
@@ -440,12 +416,10 @@ def test_d_X___init__():
 
 def test_d_X_baz():
     assert d_X.baz(d_X(), '') == None
-
 from python_code import d_Y
 
 def test_d_Y___init__():
     assert d_Y.__init__(d_Y(''), '') == None
-
 from python_code import d_B
 from python_code import d_Z
 

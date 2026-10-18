@@ -473,9 +473,9 @@ def test_assoc_diagramLinks58_stub_double():
     partner = notation_MultiDiagramLinkStyle()
     setattr(partner, 'notation_MultiDiagramLinkStyle', None)
     _safe_set(owner, 'notation_Diagram59', partner)
-    assert getattr(partner, 'notation_MultiDiagramLinkStyle') == owner
+    assert owner in getattr(partner, 'notation_MultiDiagramLinkStyle')
     _safe_set(owner, 'notation_Diagram59', None)
-    assert getattr(partner, 'notation_MultiDiagramLinkStyle') is None
+    assert owner not in getattr(partner, 'notation_MultiDiagramLinkStyle')
 
 
 def test_assoc_element18_stub_double():
@@ -518,9 +518,9 @@ def test_assoc_horizontalGuides32_stub_double():
     partner = notation_GuideStyle()
     setattr(partner, 'notation_GuideStyle', None)
     _safe_set(owner, 'notation_Guide', partner)
-    assert getattr(partner, 'notation_GuideStyle') == owner
+    assert owner in getattr(partner, 'notation_GuideStyle')
     _safe_set(owner, 'notation_Guide', None)
-    assert getattr(partner, 'notation_GuideStyle') is None
+    assert owner not in getattr(partner, 'notation_GuideStyle')
 
 
 def test_assoc_imageBuffer44_stub_double():
@@ -638,8 +638,8 @@ def test_assoc_verticalGuides33_stub_double():
     partner = notation_GuideStyle()
     setattr(partner, 'notation_GuideStyle34', None)
     _safe_set(owner, 'notation_Guide35', partner)
-    assert getattr(partner, 'notation_GuideStyle34') == owner
+    assert owner in getattr(partner, 'notation_GuideStyle34')
     _safe_set(owner, 'notation_Guide35', None)
-    assert getattr(partner, 'notation_GuideStyle34') is None
+    assert owner not in getattr(partner, 'notation_GuideStyle34')
 
 

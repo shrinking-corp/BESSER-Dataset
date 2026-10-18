@@ -1,4 +1,8 @@
 @startuml
+' model: DML
+' project: sampleModel
+' owner: User
+' description: New project
 class DML_Column {
   + columnName : str
 }
@@ -12,9 +16,9 @@ class DML_Registry {
 class DML_Value {
   + value : str
 }
-DML_Column "1..1" -- "1..1" DML_Value : column7
-DML_Column "0..9999" --* "1..1" DML_InsertInto : columns3
-DML_InsertInto "0..9999" --* "1..1" DML_InsertsStatements : insertsInto0
-DML_InsertInto "1..1" *-- "1..1" DML_Registry : registry1
-DML_Registry "1..1" *-- "0..9999" DML_Value : registryValues5
+DML_Column "DML_Value8 1..1" -- "DML_Column9 1..1" DML_Value : column7
+DML_Column "DML_InsertInto4 0..9999" --* "DML_Column 1..1" DML_InsertInto : columns3
+DML_InsertInto "DML_InsertsStatements 0..9999" --* "DML_InsertInto 1..1" DML_InsertsStatements : insertsInto0
+DML_InsertInto "DML_Registry 1..1" *-- "DML_InsertInto2 1..1" DML_Registry : registry1
+DML_Registry "DML_Value 1..1" *-- "DML_Registry6 0..9999" DML_Value : registryValues5
 @enduml

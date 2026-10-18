@@ -1,4 +1,8 @@
 @startuml
+' model: PrimitiveTypes
+' project: sampleModel
+' owner: User
+' description: New project
 class Article {
 }
 class Book {
@@ -35,9 +39,9 @@ Section <|-- DocBook_Sect1
 Section <|-- DocBook_Sect2
 TitledElement <|-- DocBook_Article
 TitledElement <|-- DocBook_Section
-Article "1..9999" --* "1..1" DocBook_Book : articles1
-Book "1..9999" --* "1..1" DocBook_DocBook : books0
-DocBook_Section "1..1" *-- "1..9999" Para : paras3
-DocBook_Article "1..1" *-- "1..9999" Sect1 : sections_12
-DocBook_Sect1 "1..1" *-- "0..9999" Sect2 : sections_24
+Article "DocBook_Book 1..9999" --* "Article 1..1" DocBook_Book : articles1
+Book "DocBook_DocBook 1..9999" --* "Book 1..1" DocBook_DocBook : books0
+DocBook_Section "Para 1..1" *-- "DocBook_Section 1..9999" Para : paras3
+DocBook_Article "Sect1 1..1" *-- "DocBook_Article 1..9999" Sect1 : sections_12
+DocBook_Sect1 "Sect2 1..1" *-- "DocBook_Sect1 0..9999" Sect2 : sections_24
 @enduml

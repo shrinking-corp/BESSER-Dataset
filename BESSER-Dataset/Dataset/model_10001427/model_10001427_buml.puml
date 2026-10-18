@@ -1,4 +1,8 @@
 @startuml
+' model: _5sV_IOacEemBQOlXnGuUXA
+' project: sampleModel
+' owner: User
+' description: New project
 class Login {
   + UserId : str
   + login_status : str
@@ -61,11 +65,11 @@ class shippinginfo {
   + shipping_id : str
   + shipping_type : str
 }
-ShoppingCart "1..1" -- "0..1" cartitem : ShoppingCart_cartitem
-ShoppingCart "0..1" -- "1..1" User : ShoppingCart_coustomer
-cartitem "0..1" -- "0..1" product : cartitem_product
-User "1..1" -- "1..9999" order : coustomer_order
-Payment "0..1" -- "0..1" order : order_Payment
-order "1..1" -- "1..1" orderDetail : order_orderDetail
-order "1..1" -- "1..1" shippinginfo : order_shippinginfo
+ShoppingCart "ShoppingCart_cartitem_13 1..1" -- "ShoppingCart_cartitem_02 0..1" cartitem : ShoppingCart_cartitem
+ShoppingCart "ShoppingCart_coustomer_11 0..1" -- "ShoppingCart_coustomer_00 1..1" User : ShoppingCart_coustomer
+cartitem "cartitem13 0..1" -- "product212 0..1" product : cartitem_product
+User "coustomer_order_15 1..1" -- "coustomer_order_04 1..9999" order : coustomer_order
+Payment "payment10 0..1" -- "order11 0..1" order : order_Payment
+order "order_orderDetail_17 1..1" -- "order_orderDetail_06 1..1" orderDetail : order_orderDetail
+order "order_shippinginfo_19 1..1" -- "order_shippinginfo_08 1..1" shippinginfo : order_shippinginfo
 @enduml

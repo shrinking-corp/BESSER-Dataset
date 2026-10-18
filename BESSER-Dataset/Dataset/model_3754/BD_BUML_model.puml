@@ -1,4 +1,8 @@
 @startuml
+' model: BD
+' project: sampleModel
+' owner: User
+' description: New project
 class BD_Columna {
   + nombre : str
   + tipo : str
@@ -15,6 +19,6 @@ enum TipoPrimitivo {
   Integer
   String
 }
-BD_Columna "0..9999" --* "1..1" BD_Tabla : columnas1
-BD_EsquemaBD "1..1" *-- "0..9999" BD_Tabla : tablas0
+BD_Columna "BD_Tabla2 0..9999" --* "BD_Columna 1..1" BD_Tabla : columnas1
+BD_EsquemaBD "BD_Tabla 1..1" *-- "BD_EsquemaBD 0..9999" BD_Tabla : tablas0
 @enduml

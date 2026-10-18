@@ -1,4 +1,8 @@
 @startuml
+' model: simpleRDBMS
+' project: sampleModel
+' owner: User
+' description: New project
 class NamedElement {
 }
 class simpleRDBMS_Column {
@@ -21,12 +25,12 @@ NamedElement <|-- simpleRDBMS_ForeignKey
 NamedElement <|-- simpleRDBMS_Key
 NamedElement <|-- simpleRDBMS_Schema
 NamedElement <|-- simpleRDBMS_Table
-simpleRDBMS_Column "0..1" -- "1..1" simpleRDBMS_Key : column15
-simpleRDBMS_Column "1..1" -- "1..1" simpleRDBMS_ForeignKey : column7
-simpleRDBMS_Column "0..9999" --* "1..1" simpleRDBMS_Table : columns1
-simpleRDBMS_ForeignKey "0..9999" --* "1..1" simpleRDBMS_Table : foreignKeys3
-simpleRDBMS_Key "0..1" --* "1..1" simpleRDBMS_Table : key5
-simpleRDBMS_ForeignKey "1..1" -- "1..1" simpleRDBMS_Key : referTo10
-simpleRDBMS_RDBMSModel "1..1" *-- "0..9999" simpleRDBMS_Schema : schemas13
-simpleRDBMS_Schema "1..1" *-- "0..9999" simpleRDBMS_Table : tables0
+simpleRDBMS_Column "simpleRDBMS_Key16 0..1" -- "simpleRDBMS_Column17 1..1" simpleRDBMS_Key : column15
+simpleRDBMS_Column "simpleRDBMS_ForeignKey8 1..1" -- "simpleRDBMS_Column9 1..1" simpleRDBMS_ForeignKey : column7
+simpleRDBMS_Column "simpleRDBMS_Table2 0..9999" --* "simpleRDBMS_Column 1..1" simpleRDBMS_Table : columns1
+simpleRDBMS_ForeignKey "simpleRDBMS_Table4 0..9999" --* "simpleRDBMS_ForeignKey 1..1" simpleRDBMS_Table : foreignKeys3
+simpleRDBMS_Key "simpleRDBMS_Table6 0..1" --* "simpleRDBMS_Key 1..1" simpleRDBMS_Table : key5
+simpleRDBMS_ForeignKey "simpleRDBMS_Key12 1..1" -- "simpleRDBMS_ForeignKey11 1..1" simpleRDBMS_Key : referTo10
+simpleRDBMS_RDBMSModel "simpleRDBMS_Schema14 1..1" *-- "simpleRDBMS_RDBMSModel 0..9999" simpleRDBMS_Schema : schemas13
+simpleRDBMS_Schema "simpleRDBMS_Table 1..1" *-- "simpleRDBMS_Schema 0..9999" simpleRDBMS_Table : tables0
 @enduml

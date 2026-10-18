@@ -1,4 +1,8 @@
 @startuml
+' model: devs
+' project: sampleModel
+' owner: User
+' description: New project
 class Event {
 }
 class Transition {
@@ -31,22 +35,22 @@ Event <|-- devs_InputEvent
 Event <|-- devs_OutputEvent
 Transition <|-- devs_ExternalTransition
 Transition <|-- devs_InternalTransition
-devs_AtomicModel "1..1" -- "1..1" devs_State : atomicModel14
-devs_AtomicModel "1..1" -- "1..1" devs_Event : atomicModel15
-devs_AtomicModel "1..1" -- "1..1" devs_Transition : atomicModel24
-devs_AtomicModel "1..1" -- "1..1" devs_OutputFunction : atomicModel30
-devs_AtomicModel "1..1" *-- "0..9999" devs_Event : event1
-devs_ExternalTransition "0..9999" -- "1..1" devs_InputEvent : externalTransition17
-devs_State "1..1" -- "0..9999" devs_Transition : in_7
-devs_ExternalTransition "1..1" -- "1..1" devs_InputEvent : inputEvent26
-devs_State "1..1" -- "0..9999" devs_Transition : out9
-devs_OutputFunction "1..1" -- "1..1" devs_State : outF11
-devs_OutputEvent "1..1" -- "1..1" devs_OutputFunction : outputEvent29
-devs_OutputEvent "1..1" -- "0..9999" devs_OutputFunction : outputFunction18
-devs_AtomicModel "1..1" *-- "0..9999" devs_OutputFunction : outputFunction5
-devs_State "1..1" -- "1..1" devs_Transition : source20
-devs_OutputFunction "1..1" -- "1..1" devs_State : source27
-devs_AtomicModel "1..1" *-- "1..9999" devs_State : state0
-devs_State "1..1" -- "1..1" devs_Transition : target22
-devs_AtomicModel "1..1" *-- "0..9999" devs_Transition : transition3
+devs_AtomicModel "state 1..1" -- "AtomicModel 1..1" devs_State : atomicModel14
+devs_AtomicModel "event 1..1" -- "AtomicModel16 1..1" devs_Event : atomicModel15
+devs_AtomicModel "transition 1..1" -- "AtomicModel25 1..1" devs_Transition : atomicModel24
+devs_AtomicModel "outputFunction31 1..1" -- "AtomicModel32 1..1" devs_OutputFunction : atomicModel30
+devs_AtomicModel "Event 1..1" *-- "atomicModel2 0..9999" devs_Event : event1
+devs_ExternalTransition "inputEvent 0..9999" -- "ExternalTransition 1..1" devs_InputEvent : externalTransition17
+devs_State "Transition8 1..1" -- "target 0..9999" devs_Transition : in_7
+devs_ExternalTransition "InputEvent 1..1" -- "externalTransition 1..1" devs_InputEvent : inputEvent26
+devs_State "Transition10 1..1" -- "source 0..9999" devs_Transition : out9
+devs_OutputFunction "source12 1..1" -- "OutputFunction13 1..1" devs_State : outF11
+devs_OutputEvent "outputFunction 1..1" -- "OutputEvent 1..1" devs_OutputFunction : outputEvent29
+devs_OutputEvent "OutputFunction19 1..1" -- "outputEvent 0..9999" devs_OutputFunction : outputFunction18
+devs_AtomicModel "OutputFunction 1..1" *-- "atomicModel6 0..9999" devs_OutputFunction : outputFunction5
+devs_State "out 1..1" -- "State21 1..1" devs_Transition : source20
+devs_OutputFunction "State28 1..1" -- "outF 1..1" devs_State : source27
+devs_AtomicModel "State 1..1" *-- "atomicModel 1..9999" devs_State : state0
+devs_State "in_ 1..1" -- "State23 1..1" devs_Transition : target22
+devs_AtomicModel "Transition 1..1" *-- "atomicModel4 0..9999" devs_Transition : transition3
 @enduml

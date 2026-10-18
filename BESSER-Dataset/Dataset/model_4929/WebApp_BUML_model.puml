@@ -1,4 +1,8 @@
 @startuml
+' model: webapp
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractView {
 }
 class FormWidget {
@@ -95,28 +99,28 @@ Widget <|-- webapp_ImagesBlock
 Widget <|-- webapp_Table
 Widget <|-- webapp_Text
 Widget <|-- webapp_Video
-webapp_Application "1..1" -- "1..1" webapp_Model : application12
-webapp_Application "1..1" -- "1..1" webapp_Collection : application20
-webapp_Application "1..1" -- "1..1" webapp_Router : application23
-webapp_AbstractView "1..1" -- "1..1" webapp_Application : application30
-webapp_Attribute "0..9999" --* "1..1" webapp_Model : attributes7
-webapp_Collection "1..1" -- "1..1" webapp_ModelView : collection32
-webapp_Application "1..1" *-- "0..9999" webapp_Collection : collections1
-webapp_Form "1..1" -- "1..1" webapp_FormWidget : form40
-webapp_Form "1..1" *-- "1..9999" webapp_FormWidget : formWidgets39
-webapp_Router "1..1" *-- "1..9999" webapp_RouterMapping : mappings22
-webapp_Collection "1..1" -- "1..1" webapp_Model : model18
-webapp_Application "1..1" *-- "0..9999" webapp_Model : models5
-webapp_Model "1..1" *-- "0..9999" webapp_Operation : operations10
-webapp_AbstractView "1..1" -- "0..9999" webapp_Operation : operations27
-webapp_Operation "1..1" *-- "0..9999" webapp_Parameter : parameters16
-webapp_Model "1..1" *-- "0..9999" webapp_Reference : references8
-webapp_Application "1..1" *-- "1..1" webapp_Router : router0
-webapp_Section "1..1" -- "1..1" webapp_Widget : section37
-webapp_Section "1..9999" --* "1..1" webapp_StaticView : sections34
-webapp_Model "1..1" -- "1..1" webapp_Reference : type13
-webapp_AbstractView "1..1" -- "1..1" webapp_RouterMapping : view25
-webapp_Section "1..1" -- "1..1" webapp_StaticView : view36
-webapp_AbstractView "0..9999" --* "1..1" webapp_Application : views3
-webapp_Section "1..1" *-- "1..9999" webapp_Widget : widgets35
+webapp_Application "models 1..1" -- "Application 1..1" webapp_Model : application12
+webapp_Application "collections 1..1" -- "Application21 1..1" webapp_Collection : application20
+webapp_Application "router 1..1" -- "Application24 1..1" webapp_Router : application23
+webapp_AbstractView "Application31 1..1" -- "views 1..1" webapp_Application : application30
+webapp_Attribute "webapp_Model 0..9999" --* "webapp_Attribute 1..1" webapp_Model : attributes7
+webapp_Collection "webapp_ModelView 1..1" -- "webapp_Collection33 1..1" webapp_ModelView : collection32
+webapp_Application "Collection 1..1" *-- "application2 0..9999" webapp_Collection : collections1
+webapp_Form "formWidgets 1..1" -- "Form 1..1" webapp_FormWidget : form40
+webapp_Form "FormWidget 1..1" *-- "form 1..9999" webapp_FormWidget : formWidgets39
+webapp_Router "webapp_RouterMapping 1..1" *-- "webapp_Router 1..9999" webapp_RouterMapping : mappings22
+webapp_Collection "webapp_Model19 1..1" -- "webapp_Collection 1..1" webapp_Model : model18
+webapp_Application "Model 1..1" *-- "application6 0..9999" webapp_Model : models5
+webapp_Model "webapp_Operation 1..1" *-- "webapp_Model11 0..9999" webapp_Operation : operations10
+webapp_AbstractView "webapp_Operation29 1..1" -- "webapp_AbstractView28 0..9999" webapp_Operation : operations27
+webapp_Operation "webapp_Parameter 1..1" *-- "webapp_Operation17 0..9999" webapp_Parameter : parameters16
+webapp_Model "webapp_Reference 1..1" *-- "webapp_Model9 0..9999" webapp_Reference : references8
+webapp_Application "Router 1..1" *-- "application 1..1" webapp_Router : router0
+webapp_Section "widgets 1..1" -- "Section38 1..1" webapp_Widget : section37
+webapp_Section "view 1..9999" --* "Section 1..1" webapp_StaticView : sections34
+webapp_Model "webapp_Reference14 1..1" -- "webapp_Model15 1..1" webapp_Reference : type13
+webapp_AbstractView "webapp_RouterMapping26 1..1" -- "webapp_AbstractView 1..1" webapp_RouterMapping : view25
+webapp_Section "StaticView 1..1" -- "sections 1..1" webapp_StaticView : view36
+webapp_AbstractView "application4 0..9999" --* "AbstractView 1..1" webapp_Application : views3
+webapp_Section "Widget 1..1" *-- "section 1..9999" webapp_Widget : widgets35
 @enduml

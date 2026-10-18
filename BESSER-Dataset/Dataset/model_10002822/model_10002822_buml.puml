@@ -1,4 +1,8 @@
 @startuml
+' model: deed1332_5343_4b02_aab8_7f2e36a85b45
+' project: sampleModel
+' owner: User
+' description: New project
 class Customer {
   + Address : str
   + Cellphone : str
@@ -37,14 +41,14 @@ class Restaurant {
 class RestaurantController {
   + Restaurant : Restaurant
 }
-Food "1..1" -- "0..9999" FoodItem : FoodItem_Food
-Food "1..9999" -- "0..9999" FoodPackage : FoodPackage_Food
-FoodItem "0..9999" -- "0..9999" MenuItem : MenuItem_FoodItem
-FoodPackage "0..9999" -- "0..9999" MenuItem : MenuItem_FoodPackage
-Order "1..1" -- "0..9999" OrderController : OrderController_Order
-Customer "1..1" -- "0..9999" Order : Order_Customer
-MenuItem "1..9999" -- "0..9999" Order : Order_MenuItem
-Order "0..9999" -- "1..1" Restaurant : Order_Restaurant
-Restaurant "1..9999" -- "0..9999" RestaurantController : RestaurantManager_Restaurant
-MenuItem "1..9999" -- "0..9999" Restaurant : Restaurant_MenuItem
+Food "FoodItem_Food_04 1..1" -- "FoodItem_Food_15 0..9999" FoodItem : FoodItem_Food
+Food "FoodPackage_Food_06 1..9999" -- "FoodPackage_Food_17 0..9999" FoodPackage : FoodPackage_Food
+FoodItem "MenuItem_FoodItem_00 0..9999" -- "MenuItem_FoodItem_11 0..9999" MenuItem : MenuItem_FoodItem
+FoodPackage "MenuItem_FoodPackage_02 0..9999" -- "MenuItem_FoodPackage_13 0..9999" MenuItem : MenuItem_FoodPackage
+Order "OrderController_Order_018 1..1" -- "OrderController_Order_119 0..9999" OrderController : OrderController_Order
+Customer "Order_Customer_014 1..1" -- "Order_Customer_115 0..9999" Order : Order_Customer
+MenuItem "Order_MenuItem_010 1..9999" -- "Order_MenuItem_111 0..9999" Order : Order_MenuItem
+Order "Order_Restaurant_113 0..9999" -- "Order_Restaurant_012 1..1" Restaurant : Order_Restaurant
+Restaurant "RestaurantManager_Restaurant_016 1..9999" -- "RestaurantManager_Restaurant_117 0..9999" RestaurantController : RestaurantManager_Restaurant
+MenuItem "Restaurant_MenuItem_08 1..9999" -- "Restaurant_MenuItem_19 0..9999" Restaurant : Restaurant_MenuItem
 @enduml

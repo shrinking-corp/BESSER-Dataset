@@ -1,4 +1,8 @@
 @startuml
+' model: MySM
+' project: sampleModel
+' owner: User
+' description: New project
 class MySM_Action {
   + name : str
 }
@@ -43,13 +47,13 @@ State <|-- MySM_ComplexSate
 Transition <|-- MySM_LabeledTransition
 Vertex <|-- MySM_Pseudostate
 Vertex <|-- MySM_State
-MySM_Action "1..1" -- "1..1" MySM_LabeledTransition : action16
-MySM_Action "1..9999" --* "1..1" MySM_Statemachine : actions1
-MySM_Pseudostate "1..1" --* "1..1" MySM_Region : initial4
-MySM_Transition "1..9999" -- "1..1" MySM_Vertex : outgoings6
-MySM_ComplexSate "1..1" *-- "1..9999" MySM_Region : region8
-MySM_Transition "1..1" -- "1..1" MySM_Vertex : source10
-MySM_Region "1..1" *-- "1..9999" MySM_State : states3
-MySM_Transition "1..1" -- "1..1" MySM_Vertex : target13
-MySM_Statemachine "1..1" *-- "1..9999" MySM_Transition : transitions0
+MySM_Action "MySM_LabeledTransition 1..1" -- "MySM_Action17 1..1" MySM_LabeledTransition : action16
+MySM_Action "MySM_Statemachine2 1..9999" --* "MySM_Action 1..1" MySM_Statemachine : actions1
+MySM_Pseudostate "MySM_Region5 1..1" --* "MySM_Pseudostate 1..1" MySM_Region : initial4
+MySM_Transition "MySM_Vertex 1..9999" -- "MySM_Transition7 1..1" MySM_Vertex : outgoings6
+MySM_ComplexSate "MySM_Region9 1..1" *-- "MySM_ComplexSate 1..9999" MySM_Region : region8
+MySM_Transition "MySM_Vertex12 1..1" -- "MySM_Transition11 1..1" MySM_Vertex : source10
+MySM_Region "MySM_State 1..1" *-- "MySM_Region 1..9999" MySM_State : states3
+MySM_Transition "MySM_Vertex15 1..1" -- "MySM_Transition14 1..1" MySM_Vertex : target13
+MySM_Statemachine "MySM_Transition 1..1" *-- "MySM_Statemachine 1..9999" MySM_Transition : transitions0
 @enduml

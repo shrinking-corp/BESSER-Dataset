@@ -1,4 +1,8 @@
 @startuml
+' model: _2b53ee4f_be26_4119_8378_1472ac99ed12
+' project: sampleModel
+' owner: User
+' description: New project
 class Coach {
   + capacity : int
   + coachType : str
@@ -54,14 +58,14 @@ class TrainStats {
   + tempAvg : str
   + trainService : str
 }
-Commutator "1..1" -- "1..1" TrainBuilder_Interface : Commutator_TrainBuilder
-Commutator "1..1" -- "1..9999" TrainBuilder_Interface : Commutator_TrainBuilder2
-InterCity "1..1" -- "1..1" TrainBuilder_Interface : InterCity_TrainBuilder
-InterCity "1..1" -- "1..9999" TrainBuilder_Interface : InterCity_TrainBuilder2
-ServiceTypeFactory "1..1" -- "1..9999" ServiceType_Interface : ServiceTypeFactory_ServiceType
-Route "1..1" -- "1..1" Service : Service_Route
-Service "1..1" -- "1..9999" ServiceTypeFactory : Service_ServiceTypeFactory
-Sleeper "1..1" -- "1..1" TrainBuilder_Interface : Sleeper_TrainBuilder
-Sleeper "1..1" -- "1..9999" TrainBuilder_Interface : Sleeper_TrainBuilder2
-Service "1..1" -- "1..1" TrainStats : TrainStats_Service
+Commutator "commutator9 1..1" -- "trainBuilder8 1..1" TrainBuilder_Interface : Commutator_TrainBuilder
+Commutator "commutator19 1..1" -- "trainBuilder18 1..9999" TrainBuilder_Interface : Commutator_TrainBuilder2
+InterCity "interCity7 1..1" -- "trainBuilder6 1..1" TrainBuilder_Interface : InterCity_TrainBuilder
+InterCity "interCity15 1..1" -- "trainBuilder14 1..9999" TrainBuilder_Interface : InterCity_TrainBuilder2
+ServiceTypeFactory "serviceTypeFactory3 1..1" -- "serviceType2 1..9999" ServiceType_Interface : ServiceTypeFactory_ServiceType
+Route "route10 1..1" -- "service11 1..1" Service : Service_Route
+Service "service1 1..1" -- "serviceTypeFactory0 1..9999" ServiceTypeFactory : Service_ServiceTypeFactory
+Sleeper "sleeper5 1..1" -- "trainBuilder4 1..1" TrainBuilder_Interface : Sleeper_TrainBuilder
+Sleeper "sleeper17 1..1" -- "trainBuilder16 1..9999" TrainBuilder_Interface : Sleeper_TrainBuilder2
+Service "service12 1..1" -- "trainStats13 1..1" TrainStats : TrainStats_Service
 @enduml

@@ -1884,9 +1884,9 @@ def test_assoc_books8_stub_double():
     partner = model_Library()
     setattr(partner, 'model_Library', None)
     _safe_set(owner, 'model_Book', partner)
-    assert getattr(partner, 'model_Library') == owner
+    assert owner in getattr(partner, 'model_Library')
     _safe_set(owner, 'model_Book', None)
-    assert getattr(partner, 'model_Library') is None
+    assert owner not in getattr(partner, 'model_Library')
 
 
 def test_assoc_latestBook11_stub_double():
@@ -1921,8 +1921,9 @@ def test_assoc_location9_stub_double():
 
 
 
+import datetime as _ch_datetime
 from python_code import model_ETypes
 
 def test_model_ETypes___init__():
-    assert model_ETypes.__init__(model_ETypes('', '', False, '', '', '', datetime.date(1, 1, 1), 0.0, 0.0, 0, '', '', '', ''), '', '', True, '', '', '', datetime.date(1, 1, 1), 0.0, 0.0, 0, '', '', '', '') == None
+    assert model_ETypes.__init__(model_ETypes('', '', False, '', '', '', _ch_datetime.date(1, 1, 1), 0.0, 0.0, 0, '', '', '', ''), '', '', True, '', '', '', _ch_datetime.date(1, 1, 1), 0.0, 0.0, 0, '', '', '', '') == None
 

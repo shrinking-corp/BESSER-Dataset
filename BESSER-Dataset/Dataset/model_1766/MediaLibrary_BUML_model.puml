@@ -1,4 +1,8 @@
 @startuml
+' model: MediaLibrary
+' project: sampleModel
+' owner: User
+' description: New project
 class Artifact {
 }
 class Device {
@@ -77,15 +81,15 @@ NamedElement <|-- MediaLibrary_Device
 NamedElement <|-- MediaLibrary_Library
 NamedElement <|-- MediaLibrary_MediaCollection
 NamedElement <|-- MediaLibrary_MediaSource
-MediaLibrary_Device "1..1" -- "0..9999" MediaLibrary_MediaCollection : collections13
-MediaLibrary_Library "1..1" *-- "0..9999" MediaLibrary_MediaCollection : collections5
-MediaLibrary_Artifact "0..9999" -- "1..1" MediaLibrary_MediaSource : contents16
-MediaLibrary_Device "1..9999" --* "1..1" MediaLibrary_Ecosystem : devices1
-MediaLibrary_Device "1..1" -- "1..1" MediaLibrary_MediaCollection : host9
-MediaLibrary_Device "1..1" -- "0..9999" MediaLibrary_MediaCollection : hostOf12
-MediaLibrary_Ecosystem "1..1" *-- "1..9999" MediaLibrary_Library : libraries0
-MediaLibrary_Ecosystem "1..1" *-- "1..9999" MediaLibrary_MediaSource : mediaSources3
-MediaLibrary_Artifact "1..9999" --* "1..1" MediaLibrary_MediaCollection : members7
-MediaLibrary_Artifact "1..1" -- "1..1" MediaLibrary_MediaSource : origin15
-MediaLibrary_Device "1..9999" -- "1..1" MediaLibrary_MediaCollection : syncedDevices10
+MediaLibrary_Device "MediaCollection14 1..1" -- "syncedDevices 0..9999" MediaLibrary_MediaCollection : collections13
+MediaLibrary_Library "MediaLibrary_MediaCollection 1..1" *-- "MediaLibrary_Library6 0..9999" MediaLibrary_MediaCollection : collections5
+MediaLibrary_Artifact "origin 0..9999" -- "Artifact 1..1" MediaLibrary_MediaSource : contents16
+MediaLibrary_Device "MediaLibrary_Ecosystem2 1..9999" --* "MediaLibrary_Device 1..1" MediaLibrary_Ecosystem : devices1
+MediaLibrary_Device "hostOf 1..1" -- "Device 1..1" MediaLibrary_MediaCollection : host9
+MediaLibrary_Device "MediaCollection 1..1" -- "host 0..9999" MediaLibrary_MediaCollection : hostOf12
+MediaLibrary_Ecosystem "MediaLibrary_Library 1..1" *-- "MediaLibrary_Ecosystem 1..9999" MediaLibrary_Library : libraries0
+MediaLibrary_Ecosystem "MediaLibrary_MediaSource 1..1" *-- "MediaLibrary_Ecosystem4 1..9999" MediaLibrary_MediaSource : mediaSources3
+MediaLibrary_Artifact "MediaLibrary_MediaCollection8 1..9999" --* "MediaLibrary_Artifact 1..1" MediaLibrary_MediaCollection : members7
+MediaLibrary_Artifact "MediaSource 1..1" -- "contents 1..1" MediaLibrary_MediaSource : origin15
+MediaLibrary_Device "collections 1..9999" -- "Device11 1..1" MediaLibrary_MediaCollection : syncedDevices10
 @enduml

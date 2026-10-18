@@ -1,4 +1,8 @@
 @startuml
+' model: _LYCGQEakEeqonN_RS9oRzw
+' project: sampleModel
+' owner: User
+' description: New project
 class _LoginCredential {
   + _loginid : str
   + _password : str
@@ -44,12 +48,12 @@ class _User {
 class _UserType {
   + _userrole : str
 }
-_Product "0..9999" -- "1..1" _ProductType : ProductType_Product
-_ProductRating "1..1" -- "0..9999" _User : Ratings_Customer
-_LoginCredential "1..1" -- "1..1" _User : WebUser_Customer
-_OrderDetail "1..1" -- "1..1" _User : _Customer__OrderDetails
-_PaymentInfo "1..9999" -- "1..1" _User : _Customer__PaymentInfo
-_Product "1..1" -- "0..9999" _ProductRating : _ProductRating__Product
-_OrderDetail "0..9999" -- "0..9999" _Product : _Product__OrderDetails
-_User "0..9999" -- "1..1" _UserType : _UserType__Customer
+_Product "_has_products4 0..9999" -- "_type_of5 1..1" _ProductType : ProductType_Product
+_ProductRating "_rates3 1..1" -- "_rated_by2 0..9999" _User : Ratings_Customer
+_LoginCredential "_logs_in_with1 1..1" -- "_for0 1..1" _User : WebUser_Customer
+_OrderDetail "_orders10 1..1" -- "_ordered_by11 1..1" _User : _Customer__OrderDetails
+_PaymentInfo "_has6 1..9999" -- "_belongs_to7 1..1" _User : _Customer__PaymentInfo
+_Product "_is_for14 1..1" -- "_has_rating15 0..9999" _ProductRating : _ProductRating__Product
+_OrderDetail "_is_in8 0..9999" -- "_contains9 0..9999" _Product : _Product__OrderDetails
+_User "_has12 0..9999" -- "_belongs_to13 1..1" _UserType : _UserType__Customer
 @enduml

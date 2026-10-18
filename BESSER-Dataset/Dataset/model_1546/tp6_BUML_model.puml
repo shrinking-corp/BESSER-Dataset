@@ -1,4 +1,8 @@
 @startuml
+' model: tp6
+' project: sampleModel
+' owner: User
+' description: New project
 enum Role {
   Autheur
   Correcteur
@@ -40,21 +44,21 @@ class tp6_Researcher {
 class tp6_Skill {
   + description : str
 }
-tp6_Keyword "0..9999" --* "1..1" tp6_KnowledgeManager : allKeywords34
-tp6_Paper "1..1" -- "0..9999" tp6_Researcher : authors7
-tp6_Paper "1..1" -- "0..1" tp6_Paper : citedBy9
-tp6_Collaboration "1..1" -- "0..1" tp6_Paper : col_paper26
-tp6_Collaboration "0..9999" --* "1..1" tp6_Researcher : collaborations4
-tp6_Keyword "1..1" -- "0..9999" tp6_Paper : kPapers29
-tp6_Keyword "0..1" -- "1..1" tp6_PaperKeywords : keyword31
-tp6_Paper "1..1" *-- "0..9999" tp6_PaperKeywords : keywords11
-tp6_KnowledgeManager "0..1" --* "1..1" tp6_PublicationStructure : knowledgeMan21
-tp6_Paper "0..9999" --* "1..1" tp6_PublicationStructure : papers15
-tp6_Paper "1..1" *-- "0..9999" tp6_Paragraph : paragraphs6
-tp6_Position "0..1" -- "1..1" tp6_Position : parent24
-tp6_Position "0..9999" --* "1..1" tp6_PublicationStructure : positions18
-tp6_Paper "0..9999" -- "1..1" tp6_Researcher : res_papers0
-tp6_Position "0..1" -- "1..1" tp6_Researcher : res_position2
-tp6_PublicationStructure "1..1" *-- "0..9999" tp6_Researcher : researchers13
-tp6_Researcher "1..1" *-- "0..9999" tp6_Skill : skills1
+tp6_Keyword "tp6_KnowledgeManager35 0..9999" --* "tp6_Keyword36 1..1" tp6_KnowledgeManager : allKeywords34
+tp6_Paper "Researcher 1..1" -- "res_papers 0..9999" tp6_Researcher : authors7
+tp6_Paper "tp6_Paper10 1..1" -- "tp6_Paper8 0..1" tp6_Paper : citedBy9
+tp6_Collaboration "tp6_Paper28 1..1" -- "tp6_Collaboration27 0..1" tp6_Paper : col_paper26
+tp6_Collaboration "tp6_Researcher5 0..9999" --* "tp6_Collaboration 1..1" tp6_Researcher : collaborations4
+tp6_Keyword "tp6_Paper30 1..1" -- "tp6_Keyword 0..9999" tp6_Paper : kPapers29
+tp6_Keyword "tp6_PaperKeywords32 0..1" -- "tp6_Keyword33 1..1" tp6_PaperKeywords : keyword31
+tp6_Paper "tp6_PaperKeywords 1..1" *-- "tp6_Paper12 0..9999" tp6_PaperKeywords : keywords11
+tp6_KnowledgeManager "tp6_PublicationStructure22 0..1" --* "tp6_KnowledgeManager 1..1" tp6_PublicationStructure : knowledgeMan21
+tp6_Paper "tp6_PublicationStructure16 0..9999" --* "tp6_Paper17 1..1" tp6_PublicationStructure : papers15
+tp6_Paper "tp6_Paragraph 1..1" *-- "tp6_Paper 0..9999" tp6_Paragraph : paragraphs6
+tp6_Position "tp6_Position23 0..1" -- "tp6_Position25 1..1" tp6_Position : parent24
+tp6_Position "tp6_PublicationStructure19 0..9999" --* "tp6_Position20 1..1" tp6_PublicationStructure : positions18
+tp6_Paper "authors 0..9999" -- "Paper 1..1" tp6_Researcher : res_papers0
+tp6_Position "tp6_Researcher3 0..1" -- "tp6_Position 1..1" tp6_Researcher : res_position2
+tp6_PublicationStructure "tp6_Researcher14 1..1" *-- "tp6_PublicationStructure 0..9999" tp6_Researcher : researchers13
+tp6_Researcher "tp6_Skill 1..1" *-- "tp6_Researcher 0..9999" tp6_Skill : skills1
 @enduml

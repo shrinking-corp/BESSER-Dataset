@@ -1,4 +1,8 @@
 @startuml
+' model: titan
+' project: sampleModel
+' owner: User
+' description: New project
 class DataType {
 }
 enum DataTypes {
@@ -49,11 +53,11 @@ Feature <|-- titan_DataType
 Feature <|-- titan_Reference
 Reference <|-- titan_MultiReference
 Reference <|-- titan_SingleReference
-titan_Entity "0..9999" --* "1..1" titan_Package : entities1
-titan_Entity "1..1" *-- "0..9999" titan_Feature : features6
-titan_MultiReference "0..1" -- "1..1" titan_Reference : opposite10
-titan_DataType "1..1" -- "0..1" titan_MultiDataType : opposite12
-titan_Module "1..1" *-- "0..9999" titan_Package : packages0
-titan_Entity "0..1" -- "1..1" titan_Reference : reference8
-titan_Entity "0..1" -- "1..1" titan_Entity : superEntity4
+titan_Entity "titan_Package2 0..9999" --* "titan_Entity 1..1" titan_Package : entities1
+titan_Entity "titan_Feature 1..1" *-- "titan_Entity7 0..9999" titan_Feature : features6
+titan_MultiReference "titan_Reference11 0..1" -- "titan_MultiReference 1..1" titan_Reference : opposite10
+titan_DataType "titan_MultiDataType 1..1" -- "titan_DataType 0..1" titan_MultiDataType : opposite12
+titan_Module "titan_Package 1..1" *-- "titan_Module 0..9999" titan_Package : packages0
+titan_Entity "titan_Reference 0..1" -- "titan_Entity9 1..1" titan_Reference : reference8
+titan_Entity "titan_Entity3 0..1" -- "titan_Entity5 1..1" titan_Entity : superEntity4
 @enduml

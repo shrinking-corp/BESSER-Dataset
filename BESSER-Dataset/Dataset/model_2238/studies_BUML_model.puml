@@ -1,4 +1,8 @@
 @startuml
+' model: studies
+' project: sampleModel
+' owner: User
+' description: New project
 enum SemesterCode {
   Autumn
   Spring
@@ -32,16 +36,16 @@ class studies_StudyYear {
 class studies_University {
   + name : str
 }
-studies_Semester "0..1" --* "1..1" studies_StudyYear : autumnSemester13
-studies_Course "1..1" -- "1..1" studies_CourseInstance : course4
-studies_CourseInstance "1..1" -- "1..1" studies_StudyCourse : courseInstance16
-studies_Course "1..1" *-- "0..9999" studies_CourseInstance : courseInstances3
-studies_Course "0..9999" --* "1..1" studies_University : courses0
-studies_CourseInstance "1..9999" -- "1..1" studies_Semester : courses17
-studies_StudyYear "1..1" *-- "0..9999" studies_StudyYear : nextYear9
-studies_Semester "0..1" --* "1..1" studies_StudyYear : springSemester11
-studies_StudyInstance "1..1" *-- "1..1" studies_StudyYear : startYear7
-studies_Study "0..9999" --* "1..1" studies_University : studies1
-studies_Study "1..1" -- "1..1" studies_StudyInstance : study6
-studies_Study "1..1" *-- "0..9999" studies_StudyInstance : studyInstances5
+studies_Semester "studies_StudyYear14 0..1" --* "studies_Semester15 1..1" studies_StudyYear : autumnSemester13
+studies_Course "courseInstances 1..1" -- "Course 1..1" studies_CourseInstance : course4
+studies_CourseInstance "studies_StudyCourse 1..1" -- "studies_CourseInstance 1..1" studies_StudyCourse : courseInstance16
+studies_Course "CourseInstance 1..1" *-- "course 0..9999" studies_CourseInstance : courseInstances3
+studies_Course "studies_University 0..9999" --* "studies_Course 1..1" studies_University : courses0
+studies_CourseInstance "studies_Semester18 1..9999" -- "studies_CourseInstance19 1..1" studies_Semester : courses17
+studies_StudyYear "studies_StudyYear10 1..1" *-- "studies_StudyYear8 0..9999" studies_StudyYear : nextYear9
+studies_Semester "studies_StudyYear12 0..1" --* "studies_Semester 1..1" studies_StudyYear : springSemester11
+studies_StudyInstance "studies_StudyYear 1..1" *-- "studies_StudyInstance 1..1" studies_StudyYear : startYear7
+studies_Study "studies_University2 0..9999" --* "studies_Study 1..1" studies_University : studies1
+studies_Study "studyInstances 1..1" -- "Study 1..1" studies_StudyInstance : study6
+studies_Study "StudyInstance 1..1" *-- "study 0..9999" studies_StudyInstance : studyInstances5
 @enduml

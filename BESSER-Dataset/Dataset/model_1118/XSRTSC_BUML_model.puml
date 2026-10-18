@@ -1,4 +1,8 @@
 @startuml
+' model: rtsc
+' project: sampleModel
+' owner: User
+' description: New project
 class Behavior {
 }
 class BehavioralElement {
@@ -109,46 +113,46 @@ NamedElement <|-- rtsc_State
 NamedElement <|-- rtsc_Transition
 NamedElement <|-- rtsc_Variable
 Vertex <|-- rtsc_State
-rtsc_Realtimestatechart "1..1" -- "0..9999" rtsc_Transition : activeTransitions9
-rtsc_Message "0..9999" -- "1..1" rtsc_MessageBuffer : allMessages53
-rtsc_Behavior "0..1" -- "1..1" rtsc_BehavioralElement : behavior1
-rtsc_Behavior "0..1" -- "1..1" rtsc_Port : behaviour47
-rtsc_Behavior "1..1" *-- "0..1" rtsc_BehavioralElement : behaviouralElement0
-rtsc_Clock "1..1" -- "1..1" rtsc_ClockConstraint : clock41
-rtsc_Clock "1..1" -- "1..1" rtsc_ClockResetEvent : clock76
-rtsc_ClockConstraint "0..9999" --* "1..1" rtsc_Transition : clockConstraints30
-rtsc_Clock "0..9999" --* "1..1" rtsc_Realtimestatechart : clocks7
-rtsc_Connector "0..1" -- "1..1" rtsc_Port : connector49
-rtsc_Connector "1..1" --* "1..1" rtsc_CoordinationProtocol : connector59
-rtsc_Connector "1..1" -- "2..2" rtsc_Port : endpoints55
-rtsc_Event "0..9999" --* "1..1" rtsc_State : entryEvents19
-rtsc_Event "0..9999" --* "1..1" rtsc_Transition : events36
-rtsc_Event "0..9999" --* "1..1" rtsc_State : exitEvents21
-rtsc_Guard "0..9999" --* "1..1" rtsc_Transition : guards28
-rtsc_MessageBuffer "0..1" --* "1..1" rtsc_Port : incomingBuffer48
-rtsc_State "1..1" -- "0..9999" rtsc_Transition : incomingTransitions15
-rtsc_Realtimestatechart "1..1" -- "1..1" rtsc_State : initialState4
-rtsc_MessageEvent "1..1" -- "1..1" rtsc_MessageType : messageType74
-rtsc_MessageTypeRepository "1..1" --* "1..1" rtsc_System : messageTypeRepo69
-rtsc_MessageType "0..9999" --* "1..1" rtsc_MessageTypeRepository : messageTypes71
-rtsc_State "1..1" -- "0..9999" rtsc_Transition : outgoingTransitions17
-rtsc_Realtimestatechart "1..1" -- "1..1" rtsc_State : owningRTSC14
-rtsc_MessageBuffer "1..1" -- "1..1" rtsc_Port : port50
-rtsc_CoordinationProtocol "1..1" -- "2..2" rtsc_Port : ports57
-rtsc_CoordinationProtocol "0..9999" --* "1..1" rtsc_System : protocol66
-rtsc_State "1..1" -- "1..1" rtsc_Transition : source24
-rtsc_Realtimestatechart "1..1" -- "1..1" rtsc_Transition : statechart32
-rtsc_Realtimestatechart "0..1" -- "1..1" rtsc_Variable : statechart43
-rtsc_Clock "1..1" -- "1..1" rtsc_Realtimestatechart : statechart45
-rtsc_Realtimestatechart "0..9999" --* "1..1" rtsc_System : statecharts64
-rtsc_Realtimestatechart "1..1" *-- "0..9999" rtsc_State : states3
-rtsc_Realtimestatechart "0..9999" --* "1..1" rtsc_State : subStatecharts11
-rtsc_State "1..1" -- "1..1" rtsc_Transition : target26
-rtsc_Realtimestatechart "1..1" *-- "0..9999" rtsc_Transition : transitions2
-rtsc_MessageType "0..9999" -- "1..1" rtsc_Transition : triggerMessage34
-rtsc_Message "1..1" -- "1..1" rtsc_MessageType : type61
-rtsc_MessageBuffer "1..1" -- "1..9999" rtsc_MessageType : types51
-rtsc_Guard "1..1" -- "0..1" rtsc_Variable : variable39
-rtsc_Variable "1..1" -- "1..1" rtsc_VariableAssignmentEvent : variable78
-rtsc_Realtimestatechart "1..1" *-- "0..9999" rtsc_Variable : variables5
+rtsc_Realtimestatechart "rtsc_Transition 1..1" -- "rtsc_Realtimestatechart10 0..9999" rtsc_Transition : activeTransitions9
+rtsc_Message "rtsc_MessageBuffer54 0..9999" -- "rtsc_Message 1..1" rtsc_MessageBuffer : allMessages53
+rtsc_Behavior "behaviouralElement 0..1" -- "Behavior 1..1" rtsc_BehavioralElement : behavior1
+rtsc_Behavior "rtsc_Port 0..1" -- "rtsc_Behavior 1..1" rtsc_Port : behaviour47
+rtsc_Behavior "BehavioralElement 1..1" *-- "behavior 0..1" rtsc_BehavioralElement : behaviouralElement0
+rtsc_Clock "rtsc_ClockConstraint42 1..1" -- "rtsc_Clock 1..1" rtsc_ClockConstraint : clock41
+rtsc_Clock "rtsc_ClockResetEvent 1..1" -- "rtsc_Clock77 1..1" rtsc_ClockResetEvent : clock76
+rtsc_ClockConstraint "rtsc_Transition31 0..9999" --* "rtsc_ClockConstraint 1..1" rtsc_Transition : clockConstraints30
+rtsc_Clock "statechart8 0..9999" --* "Clock 1..1" rtsc_Realtimestatechart : clocks7
+rtsc_Connector "endpoints 0..1" -- "Connector 1..1" rtsc_Port : connector49
+rtsc_Connector "rtsc_CoordinationProtocol60 1..1" --* "rtsc_Connector 1..1" rtsc_CoordinationProtocol : connector59
+rtsc_Connector "Port56 1..1" -- "connector 2..2" rtsc_Port : endpoints55
+rtsc_Event "rtsc_State20 0..9999" --* "rtsc_Event 1..1" rtsc_State : entryEvents19
+rtsc_Event "rtsc_Transition37 0..9999" --* "rtsc_Event38 1..1" rtsc_Transition : events36
+rtsc_Event "rtsc_State22 0..9999" --* "rtsc_Event23 1..1" rtsc_State : exitEvents21
+rtsc_Guard "rtsc_Transition29 0..9999" --* "rtsc_Guard 1..1" rtsc_Transition : guards28
+rtsc_MessageBuffer "port 0..1" --* "MessageBuffer 1..1" rtsc_Port : incomingBuffer48
+rtsc_State "Transition16 1..1" -- "target 0..9999" rtsc_Transition : incomingTransitions15
+rtsc_Realtimestatechart "rtsc_State 1..1" -- "rtsc_Realtimestatechart 1..1" rtsc_State : initialState4
+rtsc_MessageEvent "rtsc_MessageType75 1..1" -- "rtsc_MessageEvent 1..1" rtsc_MessageType : messageType74
+rtsc_MessageTypeRepository "rtsc_System70 1..1" --* "rtsc_MessageTypeRepository 1..1" rtsc_System : messageTypeRepo69
+rtsc_MessageType "rtsc_MessageTypeRepository72 0..9999" --* "rtsc_MessageType73 1..1" rtsc_MessageTypeRepository : messageTypes71
+rtsc_State "Transition18 1..1" -- "source 0..9999" rtsc_Transition : outgoingTransitions17
+rtsc_Realtimestatechart "states 1..1" -- "Realtimestatechart 1..1" rtsc_State : owningRTSC14
+rtsc_MessageBuffer "Port 1..1" -- "incomingBuffer 1..1" rtsc_Port : port50
+rtsc_CoordinationProtocol "rtsc_Port58 1..1" -- "rtsc_CoordinationProtocol 2..2" rtsc_Port : ports57
+rtsc_CoordinationProtocol "rtsc_System67 0..9999" --* "rtsc_CoordinationProtocol68 1..1" rtsc_System : protocol66
+rtsc_State "outgoingTransitions 1..1" -- "State25 1..1" rtsc_Transition : source24
+rtsc_Realtimestatechart "transitions 1..1" -- "Realtimestatechart33 1..1" rtsc_Transition : statechart32
+rtsc_Realtimestatechart "variables 0..1" -- "Realtimestatechart44 1..1" rtsc_Variable : statechart43
+rtsc_Clock "Realtimestatechart46 1..1" -- "clocks 1..1" rtsc_Realtimestatechart : statechart45
+rtsc_Realtimestatechart "rtsc_System 0..9999" --* "rtsc_Realtimestatechart65 1..1" rtsc_System : statecharts64
+rtsc_Realtimestatechart "State 1..1" *-- "owningRTSC 0..9999" rtsc_State : states3
+rtsc_Realtimestatechart "rtsc_State12 0..9999" --* "rtsc_Realtimestatechart13 1..1" rtsc_State : subStatecharts11
+rtsc_State "incomingTransitions 1..1" -- "State27 1..1" rtsc_Transition : target26
+rtsc_Realtimestatechart "Transition 1..1" *-- "statechart 0..9999" rtsc_Transition : transitions2
+rtsc_MessageType "rtsc_Transition35 0..9999" -- "rtsc_MessageType 1..1" rtsc_Transition : triggerMessage34
+rtsc_Message "rtsc_MessageType63 1..1" -- "rtsc_Message62 1..1" rtsc_MessageType : type61
+rtsc_MessageBuffer "rtsc_MessageType52 1..1" -- "rtsc_MessageBuffer 1..9999" rtsc_MessageType : types51
+rtsc_Guard "rtsc_Variable 1..1" -- "rtsc_Guard40 0..1" rtsc_Variable : variable39
+rtsc_Variable "rtsc_VariableAssignmentEvent 1..1" -- "rtsc_Variable79 1..1" rtsc_VariableAssignmentEvent : variable78
+rtsc_Realtimestatechart "Variable 1..1" *-- "statechart6 0..9999" rtsc_Variable : variables5
 @enduml

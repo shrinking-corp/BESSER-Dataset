@@ -1,4 +1,8 @@
 @startuml
+' model: petrinet
+' project: sampleModel
+' owner: User
+' description: New project
 class Arc {
 }
 class petrinet_Arc {
@@ -19,12 +23,12 @@ class petrinet_Transition {
 }
 Arc <|-- petrinet_PTArc
 Arc <|-- petrinet_TPArc
-petrinet_TPArc "0..9999" --* "1..1" petrinet_Transition : outgoing3
-petrinet_PTArc "0..9999" --* "1..1" petrinet_Place : outgoing4
-petrinet_PetriNet "1..1" *-- "0..9999" petrinet_Place : places0
-petrinet_TPArc "1..1" -- "1..1" petrinet_Transition : source11
-petrinet_PTArc "1..1" -- "1..1" petrinet_Place : source8
-petrinet_PTArc "1..1" -- "1..1" petrinet_Transition : target6
-petrinet_Place "1..1" -- "1..1" petrinet_TPArc : target9
-petrinet_PetriNet "1..1" *-- "0..9999" petrinet_Transition : transitions1
+petrinet_TPArc "source 0..9999" --* "TPArc 1..1" petrinet_Transition : outgoing3
+petrinet_PTArc "source5 0..9999" --* "PTArc 1..1" petrinet_Place : outgoing4
+petrinet_PetriNet "petrinet_Place 1..1" *-- "petrinet_PetriNet 0..9999" petrinet_Place : places0
+petrinet_TPArc "Transition 1..1" -- "outgoing12 1..1" petrinet_Transition : source11
+petrinet_PTArc "Place 1..1" -- "outgoing 1..1" petrinet_Place : source8
+petrinet_PTArc "petrinet_Transition7 1..1" -- "petrinet_PTArc 1..1" petrinet_Transition : target6
+petrinet_Place "petrinet_TPArc 1..1" -- "petrinet_Place10 1..1" petrinet_TPArc : target9
+petrinet_PetriNet "petrinet_Transition 1..1" *-- "petrinet_PetriNet2 0..9999" petrinet_Transition : transitions1
 @enduml

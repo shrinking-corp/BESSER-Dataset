@@ -1,4 +1,8 @@
 @startuml
+' model: mydsl
+' project: sampleModel
+' owner: User
+' description: New project
 class mydsl_Edge {
   + label : str
   + parsed_source : str
@@ -12,9 +16,9 @@ class mydsl_Node {
   + isInvisible : bool
   + name : str
 }
-mydsl_Edge "0..9999" --* "1..1" mydsl_Graph : edges0
-mydsl_Graph "1..1" *-- "0..9999" mydsl_Node : nodes1
-mydsl_Edge "1..1" -- "0..1" mydsl_Node : source9
-mydsl_Graph "0..9999" --* "1..1" mydsl_Graph : subgraphs4
-mydsl_Edge "1..1" -- "0..1" mydsl_Node : target6
+mydsl_Edge "mydsl_Graph 0..9999" --* "mydsl_Edge 1..1" mydsl_Graph : edges0
+mydsl_Graph "mydsl_Node 1..1" *-- "mydsl_Graph2 0..9999" mydsl_Node : nodes1
+mydsl_Edge "mydsl_Node11 1..1" -- "mydsl_Edge10 0..1" mydsl_Node : source9
+mydsl_Graph "mydsl_Graph3 0..9999" --* "mydsl_Graph5 1..1" mydsl_Graph : subgraphs4
+mydsl_Edge "mydsl_Node8 1..1" -- "mydsl_Edge7 0..1" mydsl_Node : target6
 @enduml

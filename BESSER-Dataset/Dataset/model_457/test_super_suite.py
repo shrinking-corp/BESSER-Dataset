@@ -17268,9 +17268,9 @@ def test_assoc_classifier66_stub_double():
     partner = CompleteDSLPckg_InstanceSpecification()
     setattr(partner, 'CompleteDSLPckg_InstanceSpecification67', None)
     _safe_set(owner, 'CompleteDSLPckg_Classifier', partner)
-    assert getattr(partner, 'CompleteDSLPckg_InstanceSpecification67') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_InstanceSpecification67')
     _safe_set(owner, 'CompleteDSLPckg_Classifier', None)
-    assert getattr(partner, 'CompleteDSLPckg_InstanceSpecification67') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_InstanceSpecification67')
 
 
 def test_assoc_classifierBehavior224_stub_double():
@@ -17313,9 +17313,9 @@ def test_assoc_client195_stub_double():
     partner = CompleteDSLPckg_Dependency()
     setattr(partner, 'clientDependency', None)
     _safe_set(owner, 'NamedElement196', partner)
-    assert getattr(partner, 'clientDependency') == owner
+    assert owner in getattr(partner, 'clientDependency')
     _safe_set(owner, 'NamedElement196', None)
-    assert getattr(partner, 'clientDependency') is None
+    assert owner not in getattr(partner, 'clientDependency')
 
 
 def test_assoc_clientDependency7_stub_double():
@@ -17373,9 +17373,9 @@ def test_assoc_configuration387_stub_double():
     partner = CompleteDSLPckg_Deployment()
     setattr(partner, 'CompleteDSLPckg_Deployment388', None)
     _safe_set(owner, 'CompleteDSLPckg_DeploymentSpecification', partner)
-    assert getattr(partner, 'CompleteDSLPckg_Deployment388') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_Deployment388')
     _safe_set(owner, 'CompleteDSLPckg_DeploymentSpecification', None)
-    assert getattr(partner, 'CompleteDSLPckg_Deployment388') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_Deployment388')
 
 
 def test_assoc_connection636_stub_double():
@@ -17703,9 +17703,9 @@ def test_assoc_elementImport12_stub_double():
     partner = CompleteDSLPckg_Namespace()
     setattr(partner, 'importingNamespace', None)
     _safe_set(owner, 'ElementImport', partner)
-    assert getattr(partner, 'importingNamespace') == owner
+    assert owner in getattr(partner, 'importingNamespace')
     _safe_set(owner, 'ElementImport', None)
-    assert getattr(partner, 'importingNamespace') is None
+    assert owner not in getattr(partner, 'importingNamespace')
 
 
 def test_assoc_end311_stub_double():
@@ -17763,9 +17763,9 @@ def test_assoc_exceptionType869_stub_double():
     partner = CompleteDSLPckg_ExceptionHandler()
     setattr(partner, 'CompleteDSLPckg_ExceptionHandler870', None)
     _safe_set(owner, 'CompleteDSLPckg_Classifier871', partner)
-    assert getattr(partner, 'CompleteDSLPckg_ExceptionHandler870') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_ExceptionHandler870')
     _safe_set(owner, 'CompleteDSLPckg_Classifier871', None)
-    assert getattr(partner, 'CompleteDSLPckg_ExceptionHandler870') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_ExceptionHandler870')
 
 
 def test_assoc_group682_stub_double():
@@ -17898,9 +17898,9 @@ def test_assoc_incoming598_stub_double():
     partner = CompleteDSLPckg_Vertex()
     setattr(partner, 'CompleteDSLPckg_Vertex599', None)
     _safe_set(owner, 'CompleteDSLPckg_Transition600', partner)
-    assert getattr(partner, 'CompleteDSLPckg_Vertex599') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_Vertex599')
     _safe_set(owner, 'CompleteDSLPckg_Transition600', None)
-    assert getattr(partner, 'CompleteDSLPckg_Vertex599') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_Vertex599')
 
 
 def test_assoc_inputElement872_stub_double():
@@ -18078,9 +18078,9 @@ def test_assoc_member9_stub_double():
     partner = CompleteDSLPckg_Namespace()
     setattr(partner, 'CompleteDSLPckg_Namespace10', None)
     _safe_set(owner, 'CompleteDSLPckg_NamedElement', partner)
-    assert getattr(partner, 'CompleteDSLPckg_Namespace10') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_Namespace10')
     _safe_set(owner, 'CompleteDSLPckg_NamedElement', None)
-    assert getattr(partner, 'CompleteDSLPckg_Namespace10') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_Namespace10')
 
 
 def test_assoc_mergedPackage193_stub_double():
@@ -18123,9 +18123,9 @@ def test_assoc_message961_stub_double():
     partner = CompleteDSLPckg_ConsiderIgnoreFragment()
     setattr(partner, 'CompleteDSLPckg_ConsiderIgnoreFragment', None)
     _safe_set(owner, 'CompleteDSLPckg_NamedElement962', partner)
-    assert getattr(partner, 'CompleteDSLPckg_ConsiderIgnoreFragment') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_ConsiderIgnoreFragment')
     _safe_set(owner, 'CompleteDSLPckg_NamedElement962', None)
-    assert getattr(partner, 'CompleteDSLPckg_ConsiderIgnoreFragment') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_ConsiderIgnoreFragment')
 
 
 def test_assoc_namespace6_stub_double():
@@ -18153,9 +18153,9 @@ def test_assoc_nestedClassifier167_stub_double():
     partner = CompleteDSLPckg_Class()
     setattr(partner, 'CompleteDSLPckg_Class', None)
     _safe_set(owner, 'CompleteDSLPckg_Classifier168', partner)
-    assert getattr(partner, 'CompleteDSLPckg_Class') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_Class')
     _safe_set(owner, 'CompleteDSLPckg_Classifier168', None)
-    assert getattr(partner, 'CompleteDSLPckg_Class') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_Class')
 
 
 def test_assoc_nestedClassifier205_stub_double():
@@ -18303,9 +18303,9 @@ def test_assoc_outgoing595_stub_double():
     partner = CompleteDSLPckg_Vertex()
     setattr(partner, 'CompleteDSLPckg_Vertex596', None)
     _safe_set(owner, 'CompleteDSLPckg_Transition597', partner)
-    assert getattr(partner, 'CompleteDSLPckg_Vertex596') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_Vertex596')
     _safe_set(owner, 'CompleteDSLPckg_Transition597', None)
-    assert getattr(partner, 'CompleteDSLPckg_Vertex596') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_Vertex596')
 
 
 def test_assoc_outputElement873_stub_double():
@@ -18348,9 +18348,9 @@ def test_assoc_ownedAttribute173_stub_double():
     partner = CompleteDSLPckg_Class()
     setattr(partner, 'class_174', None)
     _safe_set(owner, 'Property175', partner)
-    assert getattr(partner, 'class_174') == owner
+    assert owner in getattr(partner, 'class_174')
     _safe_set(owner, 'Property175', None)
-    assert getattr(partner, 'class_174') is None
+    assert owner not in getattr(partner, 'class_174')
 
 
 def test_assoc_ownedAttribute184_stub_double():
@@ -18363,9 +18363,9 @@ def test_assoc_ownedAttribute184_stub_double():
     partner = CompleteDSLPckg_DataType()
     setattr(partner, 'dataType', None)
     _safe_set(owner, 'Property185', partner)
-    assert getattr(partner, 'dataType') == owner
+    assert owner in getattr(partner, 'dataType')
     _safe_set(owner, 'Property185', None)
-    assert getattr(partner, 'dataType') is None
+    assert owner not in getattr(partner, 'dataType')
 
 
 def test_assoc_ownedAttribute210_stub_double():
@@ -18378,9 +18378,9 @@ def test_assoc_ownedAttribute210_stub_double():
     partner = CompleteDSLPckg_Interface()
     setattr(partner, 'interface', None)
     _safe_set(owner, 'Property211', partner)
-    assert getattr(partner, 'interface') == owner
+    assert owner in getattr(partner, 'interface')
     _safe_set(owner, 'Property211', None)
-    assert getattr(partner, 'interface') is None
+    assert owner not in getattr(partner, 'interface')
 
 
 def test_assoc_ownedAttribute249_stub_double():
@@ -18393,9 +18393,9 @@ def test_assoc_ownedAttribute249_stub_double():
     partner = CompleteDSLPckg_Signal()
     setattr(partner, 'CompleteDSLPckg_Signal', None)
     _safe_set(owner, 'CompleteDSLPckg_Property250', partner)
-    assert getattr(partner, 'CompleteDSLPckg_Signal') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_Signal')
     _safe_set(owner, 'CompleteDSLPckg_Property250', None)
-    assert getattr(partner, 'CompleteDSLPckg_Signal') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_Signal')
 
 
 def test_assoc_ownedBehavior222_stub_double():
@@ -18408,9 +18408,9 @@ def test_assoc_ownedBehavior222_stub_double():
     partner = CompleteDSLPckg_BehavioredClassifier()
     setattr(partner, 'CompleteDSLPckg_BehavioredClassifier', None)
     _safe_set(owner, 'CompleteDSLPckg_Behavior223', partner)
-    assert getattr(partner, 'CompleteDSLPckg_BehavioredClassifier') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_BehavioredClassifier')
     _safe_set(owner, 'CompleteDSLPckg_Behavior223', None)
-    assert getattr(partner, 'CompleteDSLPckg_BehavioredClassifier') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_BehavioredClassifier')
 
 
 def test_assoc_ownedComment0_stub_double():
@@ -18423,9 +18423,9 @@ def test_assoc_ownedComment0_stub_double():
     partner = CompleteDSLPckg_Element()
     setattr(partner, 'owningElement', None)
     _safe_set(owner, 'Comment', partner)
-    assert getattr(partner, 'owningElement') == owner
+    assert owner in getattr(partner, 'owningElement')
     _safe_set(owner, 'Comment', None)
-    assert getattr(partner, 'owningElement') is None
+    assert owner not in getattr(partner, 'owningElement')
 
 
 def test_assoc_ownedConnector332_stub_double():
@@ -18438,9 +18438,9 @@ def test_assoc_ownedConnector332_stub_double():
     partner = CompleteDSLPckg_StructuredClassifier()
     setattr(partner, 'CompleteDSLPckg_StructuredClassifier', None)
     _safe_set(owner, 'CompleteDSLPckg_Connector333', partner)
-    assert getattr(partner, 'CompleteDSLPckg_StructuredClassifier') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_StructuredClassifier')
     _safe_set(owner, 'CompleteDSLPckg_Connector333', None)
-    assert getattr(partner, 'CompleteDSLPckg_StructuredClassifier') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_StructuredClassifier')
 
 
 def test_assoc_ownedFormalParam142_stub_double():
@@ -18468,9 +18468,9 @@ def test_assoc_ownedMember11_stub_double():
     partner = CompleteDSLPckg_Namespace()
     setattr(partner, 'namespace', None)
     _safe_set(owner, 'NamedElement', partner)
-    assert getattr(partner, 'namespace') == owner
+    assert owner in getattr(partner, 'namespace')
     _safe_set(owner, 'NamedElement', None)
-    assert getattr(partner, 'namespace') is None
+    assert owner not in getattr(partner, 'namespace')
 
 
 def test_assoc_ownedOperation169_stub_double():
@@ -18483,9 +18483,9 @@ def test_assoc_ownedOperation169_stub_double():
     partner = CompleteDSLPckg_Class()
     setattr(partner, 'class_', None)
     _safe_set(owner, 'Operation', partner)
-    assert getattr(partner, 'class_') == owner
+    assert owner in getattr(partner, 'class_')
     _safe_set(owner, 'Operation', None)
-    assert getattr(partner, 'class_') is None
+    assert owner not in getattr(partner, 'class_')
 
 
 def test_assoc_ownedOperation186_stub_double():
@@ -18498,9 +18498,9 @@ def test_assoc_ownedOperation186_stub_double():
     partner = CompleteDSLPckg_DataType()
     setattr(partner, 'dataType187', None)
     _safe_set(owner, 'Operation188', partner)
-    assert getattr(partner, 'dataType187') == owner
+    assert owner in getattr(partner, 'dataType187')
     _safe_set(owner, 'Operation188', None)
-    assert getattr(partner, 'dataType187') is None
+    assert owner not in getattr(partner, 'dataType187')
 
 
 def test_assoc_ownedOperation212_stub_double():
@@ -18513,9 +18513,9 @@ def test_assoc_ownedOperation212_stub_double():
     partner = CompleteDSLPckg_Interface()
     setattr(partner, 'interface213', None)
     _safe_set(owner, 'Operation214', partner)
-    assert getattr(partner, 'interface213') == owner
+    assert owner in getattr(partner, 'interface213')
     _safe_set(owner, 'Operation214', None)
-    assert getattr(partner, 'interface213') is None
+    assert owner not in getattr(partner, 'interface213')
 
 
 def test_assoc_ownedParameter137_stub_double():
@@ -18528,9 +18528,9 @@ def test_assoc_ownedParameter137_stub_double():
     partner = CompleteDSLPckg_BehavioralFeature()
     setattr(partner, 'CompleteDSLPckg_BehavioralFeature', None)
     _safe_set(owner, 'CompleteDSLPckg_Parameter138', partner)
-    assert getattr(partner, 'CompleteDSLPckg_BehavioralFeature') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_BehavioralFeature')
     _safe_set(owner, 'CompleteDSLPckg_Parameter138', None)
-    assert getattr(partner, 'CompleteDSLPckg_BehavioralFeature') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_BehavioralFeature')
 
 
 def test_assoc_ownedPort351_stub_double():
@@ -18543,9 +18543,9 @@ def test_assoc_ownedPort351_stub_double():
     partner = CompleteDSLPckg_EncapsulatedClassifier()
     setattr(partner, 'CompleteDSLPckg_EncapsulatedClassifier', None)
     _safe_set(owner, 'CompleteDSLPckg_Port352', partner)
-    assert getattr(partner, 'CompleteDSLPckg_EncapsulatedClassifier') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_EncapsulatedClassifier')
     _safe_set(owner, 'CompleteDSLPckg_Port352', None)
-    assert getattr(partner, 'CompleteDSLPckg_EncapsulatedClassifier') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_EncapsulatedClassifier')
 
 
 def test_assoc_ownedType31_stub_double():
@@ -18633,9 +18633,9 @@ def test_assoc_packageImport13_stub_double():
     partner = CompleteDSLPckg_Namespace()
     setattr(partner, 'importingNamespace14', None)
     _safe_set(owner, 'PackageImport', partner)
-    assert getattr(partner, 'importingNamespace14') == owner
+    assert owner in getattr(partner, 'importingNamespace14')
     _safe_set(owner, 'PackageImport', None)
-    assert getattr(partner, 'importingNamespace14') is None
+    assert owner not in getattr(partner, 'importingNamespace14')
 
 
 def test_assoc_packageMerge32_stub_double():
@@ -18708,9 +18708,9 @@ def test_assoc_parameter787_stub_double():
     partner = CompleteDSLPckg_ParameterSet()
     setattr(partner, 'CompleteDSLPckg_ParameterSet', None)
     _safe_set(owner, 'CompleteDSLPckg_Parameter788', partner)
-    assert getattr(partner, 'CompleteDSLPckg_ParameterSet') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_ParameterSet')
     _safe_set(owner, 'CompleteDSLPckg_Parameter788', None)
-    assert getattr(partner, 'CompleteDSLPckg_ParameterSet') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_ParameterSet')
 
 
 def test_assoc_part340_stub_double():
@@ -18723,9 +18723,9 @@ def test_assoc_part340_stub_double():
     partner = CompleteDSLPckg_StructuredClassifier()
     setattr(partner, 'CompleteDSLPckg_StructuredClassifier341', None)
     _safe_set(owner, 'CompleteDSLPckg_Property342', partner)
-    assert getattr(partner, 'CompleteDSLPckg_StructuredClassifier341') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_StructuredClassifier341')
     _safe_set(owner, 'CompleteDSLPckg_Property342', None)
-    assert getattr(partner, 'CompleteDSLPckg_StructuredClassifier341') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_StructuredClassifier341')
 
 
 def test_assoc_partWithPort318_stub_double():
@@ -18903,9 +18903,9 @@ def test_assoc_realizingClassifier308_stub_double():
     partner = CompleteDSLPckg_ComponentRealization()
     setattr(partner, 'CompleteDSLPckg_ComponentRealization309', None)
     _safe_set(owner, 'CompleteDSLPckg_Classifier310', partner)
-    assert getattr(partner, 'CompleteDSLPckg_ComponentRealization309') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_ComponentRealization309')
     _safe_set(owner, 'CompleteDSLPckg_Classifier310', None)
-    assert getattr(partner, 'CompleteDSLPckg_ComponentRealization309') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_ComponentRealization309')
 
 
 def test_assoc_receiveEvent933_stub_double():
@@ -18948,9 +18948,9 @@ def test_assoc_referred678_stub_double():
     partner = CompleteDSLPckg_ProtocolTransition()
     setattr(partner, 'CompleteDSLPckg_ProtocolTransition679', None)
     _safe_set(owner, 'CompleteDSLPckg_Operation680', partner)
-    assert getattr(partner, 'CompleteDSLPckg_ProtocolTransition679') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_ProtocolTransition679')
     _safe_set(owner, 'CompleteDSLPckg_Operation680', None)
-    assert getattr(partner, 'CompleteDSLPckg_ProtocolTransition679') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_ProtocolTransition679')
 
 
 def test_assoc_region645_stub_double():
@@ -19308,9 +19308,9 @@ def test_assoc_structuredOwnedAttribute337_stub_double():
     partner = CompleteDSLPckg_StructuredClassifier()
     setattr(partner, 'CompleteDSLPckg_StructuredClassifier338', None)
     _safe_set(owner, 'CompleteDSLPckg_Property339', partner)
-    assert getattr(partner, 'CompleteDSLPckg_StructuredClassifier338') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_StructuredClassifier338')
     _safe_set(owner, 'CompleteDSLPckg_Property339', None)
-    assert getattr(partner, 'CompleteDSLPckg_StructuredClassifier338') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_StructuredClassifier338')
 
 
 def test_assoc_subject983_stub_double():
@@ -19323,9 +19323,9 @@ def test_assoc_subject983_stub_double():
     partner = CompleteDSLPckg_UseCase()
     setattr(partner, 'CompleteDSLPckg_UseCase', None)
     _safe_set(owner, 'CompleteDSLPckg_Classifier984', partner)
-    assert getattr(partner, 'CompleteDSLPckg_UseCase') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_UseCase')
     _safe_set(owner, 'CompleteDSLPckg_Classifier984', None)
-    assert getattr(partner, 'CompleteDSLPckg_UseCase') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_UseCase')
 
 
 def test_assoc_submachine642_stub_double():
@@ -19353,9 +19353,9 @@ def test_assoc_submachineState577_stub_double():
     partner = CompleteDSLPckg_StateMachine()
     setattr(partner, 'CompleteDSLPckg_StateMachine578', None)
     _safe_set(owner, 'CompleteDSLPckg_State', partner)
-    assert getattr(partner, 'CompleteDSLPckg_StateMachine578') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_StateMachine578')
     _safe_set(owner, 'CompleteDSLPckg_State', None)
-    assert getattr(partner, 'CompleteDSLPckg_StateMachine578') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_StateMachine578')
 
 
 def test_assoc_substitutingClassifier201_stub_double():
@@ -19398,9 +19398,9 @@ def test_assoc_supplier197_stub_double():
     partner = CompleteDSLPckg_Dependency()
     setattr(partner, 'CompleteDSLPckg_Dependency', None)
     _safe_set(owner, 'CompleteDSLPckg_NamedElement198', partner)
-    assert getattr(partner, 'CompleteDSLPckg_Dependency') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_Dependency')
     _safe_set(owner, 'CompleteDSLPckg_NamedElement198', None)
-    assert getattr(partner, 'CompleteDSLPckg_Dependency') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_Dependency')
 
 
 def test_assoc_target607_stub_double():
@@ -19473,9 +19473,9 @@ def test_assoc_transition587_stub_double():
     partner = CompleteDSLPckg_Region()
     setattr(partner, 'CompleteDSLPckg_Region588', None)
     _safe_set(owner, 'CompleteDSLPckg_Transition', partner)
-    assert getattr(partner, 'CompleteDSLPckg_Region588') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_Region588')
     _safe_set(owner, 'CompleteDSLPckg_Transition', None)
-    assert getattr(partner, 'CompleteDSLPckg_Region588') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_Region588')
 
 
 def test_assoc_trigger502_stub_double():
@@ -19615,241 +19615,120 @@ def test_assoc_when261_stub_double():
 
 
 
-from enum import Enum
 from python_code import AggregationKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(AggregationKind.none, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(AggregationKind.none, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(AggregationKind.none, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(AggregationKind.none, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(AggregationKind.none, 'none') == AggregationKind.none
-
-from enum import Enum
 from python_code import CallConcurrencyFeature
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(CallConcurrencyFeature.concurrent, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(CallConcurrencyFeature.sequential, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(CallConcurrencyFeature.sequential, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(CallConcurrencyFeature.guarded, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(CallConcurrencyFeature.guarded, 'guarded') == CallConcurrencyFeature.guarded
-
 from python_code import CompleteDSLPckg_AcceptEventAction
 
 def test_CompleteDSLPckg_AcceptEventAction___init__():
     assert CompleteDSLPckg_AcceptEventAction.__init__(CompleteDSLPckg_AcceptEventAction(False, CompleteDSLPckg_AcceptEventAction=set(), CompleteDSLPckg_AcceptEventAction503=set()), False, CompleteDSLPckg_AcceptEventAction=set(), CompleteDSLPckg_AcceptEventAction503=set()) == None
-
 from python_code import CompleteDSLPckg_CallAction
 
 def test_CompleteDSLPckg_CallAction___init__():
     assert CompleteDSLPckg_CallAction.__init__(CompleteDSLPckg_CallAction(False, CompleteDSLPckg_CallAction=set()), False, CompleteDSLPckg_CallAction=set()) == None
-
 from python_code import CompleteDSLPckg_CombinedFragment
 from python_code import CompleteDSLPckg_InteractionOperand
 
 def test_CompleteDSLPckg_CombinedFragment___init__():
     assert CompleteDSLPckg_CombinedFragment.__init__(CompleteDSLPckg_CombinedFragment('', CompleteDSLPckg_CombinedFragment=CompleteDSLPckg_InteractionOperand(), CompleteDSLPckg_CombinedFragment959=set()), '', CompleteDSLPckg_CombinedFragment=CompleteDSLPckg_InteractionOperand(), CompleteDSLPckg_CombinedFragment959=set()) == None
-
 from python_code import CompleteDSLPckg_Comment
 from python_code import CompleteDSLPckg_Element
 
 def test_CompleteDSLPckg_Comment___init__():
     assert CompleteDSLPckg_Comment.__init__(CompleteDSLPckg_Comment('', ownedComment=CompleteDSLPckg_Element(), CompleteDSLPckg_Comment=set(), Comment=CompleteDSLPckg_Element()), '', ownedComment=CompleteDSLPckg_Element(), CompleteDSLPckg_Comment=set(), Comment=CompleteDSLPckg_Element()) == None
-
 from python_code import CompleteDSLPckg_Component
 from python_code import CompleteDSLPckg_ComponentRealization
 
 def test_CompleteDSLPckg_Component___init__():
     assert CompleteDSLPckg_Component.__init__(CompleteDSLPckg_Component(False, CompleteDSLPckg_Component=set(), CompleteDSLPckg_Component298=set(), CompleteDSLPckg_Component301=set(), CompleteDSLPckg_Component303=set(), CompleteDSLPckg_Component307=CompleteDSLPckg_ComponentRealization()), False, CompleteDSLPckg_Component=set(), CompleteDSLPckg_Component298=set(), CompleteDSLPckg_Component301=set(), CompleteDSLPckg_Component303=set(), CompleteDSLPckg_Component307=CompleteDSLPckg_ComponentRealization()) == None
-
 from python_code import CompleteDSLPckg_ConditionalNode
 
 def test_CompleteDSLPckg_ConditionalNode___init__():
     assert CompleteDSLPckg_ConditionalNode.__init__(CompleteDSLPckg_ConditionalNode(False, False, CompleteDSLPckg_ConditionalNode=set(), CompleteDSLPckg_ConditionalNode842=set(), CompleteDSLPckg_ConditionalNode845=set(), CompleteDSLPckg_ConditionalNode848=set()), False, False, CompleteDSLPckg_ConditionalNode=set(), CompleteDSLPckg_ConditionalNode842=set(), CompleteDSLPckg_ConditionalNode845=set(), CompleteDSLPckg_ConditionalNode848=set()) == None
-
 from python_code import CompleteDSLPckg_Continuation
 
 def test_CompleteDSLPckg_Continuation___init__():
     assert CompleteDSLPckg_Continuation.__init__(CompleteDSLPckg_Continuation(True), False) == None
-
 from python_code import CompleteDSLPckg_Deployment
 from python_code import CompleteDSLPckg_DeploymentSpecification
 
 def test_CompleteDSLPckg_DeploymentSpecification___init__():
     assert CompleteDSLPckg_DeploymentSpecification.__init__(CompleteDSLPckg_DeploymentSpecification('', '\x00', CompleteDSLPckg_DeploymentSpecification=CompleteDSLPckg_Deployment(), CompleteDSLPckg_DeploymentSpecification390=CompleteDSLPckg_Deployment()), '\x00\x00', '', CompleteDSLPckg_DeploymentSpecification=CompleteDSLPckg_Deployment(), CompleteDSLPckg_DeploymentSpecification390=CompleteDSLPckg_Deployment()) == None
-
 from python_code import CompleteDSLPckg_DurationConstraint
 from python_code import CompleteDSLPckg_DurationInterval
 
 def test_CompleteDSLPckg_DurationConstraint___init__():
     assert CompleteDSLPckg_DurationConstraint.__init__(CompleteDSLPckg_DurationConstraint(True, CompleteDSLPckg_DurationConstraint=CompleteDSLPckg_DurationInterval()), False, CompleteDSLPckg_DurationConstraint=CompleteDSLPckg_DurationInterval()) == None
-
 from python_code import CompleteDSLPckg_ElementImport
 from python_code import CompleteDSLPckg_Namespace
 from python_code import CompleteDSLPckg_PackageableElement
 
 def test_CompleteDSLPckg_ElementImport___init__():
     assert CompleteDSLPckg_ElementImport.__init__(CompleteDSLPckg_ElementImport('', '\x00', CompleteDSLPckg_ElementImport=CompleteDSLPckg_PackageableElement(), elementImport=CompleteDSLPckg_Namespace(), ElementImport=CompleteDSLPckg_Namespace()), '\x00\x00', '', CompleteDSLPckg_ElementImport=CompleteDSLPckg_PackageableElement(), elementImport=CompleteDSLPckg_Namespace(), ElementImport=CompleteDSLPckg_Namespace()) == None
-
 from python_code import CompleteDSLPckg_ExpansionNode
 from python_code import CompleteDSLPckg_ExpansionRegion
 
 def test_CompleteDSLPckg_ExpansionRegion___init__():
     assert CompleteDSLPckg_ExpansionRegion.__init__(CompleteDSLPckg_ExpansionRegion('', CompleteDSLPckg_ExpansionRegion878=CompleteDSLPckg_ExpansionNode(), CompleteDSLPckg_ExpansionRegion881=CompleteDSLPckg_ExpansionNode(), CompleteDSLPckg_ExpansionRegion=set(), CompleteDSLPckg_ExpansionRegion874=set()), '', CompleteDSLPckg_ExpansionRegion878=CompleteDSLPckg_ExpansionNode(), CompleteDSLPckg_ExpansionRegion881=CompleteDSLPckg_ExpansionNode(), CompleteDSLPckg_ExpansionRegion=set(), CompleteDSLPckg_ExpansionRegion874=set()) == None
-
 from python_code import CompleteDSLPckg_Expression
 from python_code import CompleteDSLPckg_ValueSpecification
 
 def test_CompleteDSLPckg_Expression___init__():
     assert CompleteDSLPckg_Expression.__init__(CompleteDSLPckg_Expression('', CompleteDSLPckg_Expression=CompleteDSLPckg_ValueSpecification()), '', CompleteDSLPckg_Expression=CompleteDSLPckg_ValueSpecification()) == None
-
 from python_code import CompleteDSLPckg_JoinNode
 from python_code import CompleteDSLPckg_ValueSpecification
 
 def test_CompleteDSLPckg_JoinNode___init__():
     assert CompleteDSLPckg_JoinNode.__init__(CompleteDSLPckg_JoinNode(True, CompleteDSLPckg_JoinNode=CompleteDSLPckg_ValueSpecification()), False, CompleteDSLPckg_JoinNode=CompleteDSLPckg_ValueSpecification()) == None
-
 from python_code import CompleteDSLPckg_InputPin
 from python_code import CompleteDSLPckg_LinkEndCreationData
 
 def test_CompleteDSLPckg_LinkEndCreationData___init__():
     assert CompleteDSLPckg_LinkEndCreationData.__init__(CompleteDSLPckg_LinkEndCreationData(True, CompleteDSLPckg_LinkEndCreationData=CompleteDSLPckg_InputPin()), False, CompleteDSLPckg_LinkEndCreationData=CompleteDSLPckg_InputPin()) == None
-
 from python_code import CompleteDSLPckg_InputPin
 from python_code import CompleteDSLPckg_LinkEndDestructionData
 
 def test_CompleteDSLPckg_LinkEndDestructionData___init__():
     assert CompleteDSLPckg_LinkEndDestructionData.__init__(CompleteDSLPckg_LinkEndDestructionData(True, CompleteDSLPckg_LinkEndDestructionData=CompleteDSLPckg_InputPin()), False, CompleteDSLPckg_LinkEndDestructionData=CompleteDSLPckg_InputPin()) == None
-
 from python_code import CompleteDSLPckg_LoopNode
 from python_code import CompleteDSLPckg_OutputPin
 
 def test_CompleteDSLPckg_LoopNode___init__():
     assert CompleteDSLPckg_LoopNode.__init__(CompleteDSLPckg_LoopNode(False, CompleteDSLPckg_LoopNode=set(), CompleteDSLPckg_LoopNode820=set(), CompleteDSLPckg_LoopNode823=set(), CompleteDSLPckg_LoopNode826=CompleteDSLPckg_OutputPin(), CompleteDSLPckg_LoopNode829=set(), CompleteDSLPckg_LoopNode832=set(), CompleteDSLPckg_LoopNode835=set(), CompleteDSLPckg_LoopNode838=set()), False, CompleteDSLPckg_LoopNode=set(), CompleteDSLPckg_LoopNode820=set(), CompleteDSLPckg_LoopNode823=set(), CompleteDSLPckg_LoopNode826=CompleteDSLPckg_OutputPin(), CompleteDSLPckg_LoopNode829=set(), CompleteDSLPckg_LoopNode832=set(), CompleteDSLPckg_LoopNode835=set(), CompleteDSLPckg_LoopNode838=set()) == None
-
 from python_code import CompleteDSLPckg_MultiplicityElement
 from python_code import CompleteDSLPckg_ValueSpecification
 
 def test_CompleteDSLPckg_MultiplicityElement___init__():
     assert CompleteDSLPckg_MultiplicityElement.__init__(CompleteDSLPckg_MultiplicityElement(False, False, 0, 0, MultiplicityElement=CompleteDSLPckg_ValueSpecification(), MultiplicityElement48=CompleteDSLPckg_ValueSpecification(), owningUpper=CompleteDSLPckg_ValueSpecification(), owningLower=CompleteDSLPckg_ValueSpecification()), False, False, 0, 0, MultiplicityElement=CompleteDSLPckg_ValueSpecification(), MultiplicityElement48=CompleteDSLPckg_ValueSpecification(), owningUpper=CompleteDSLPckg_ValueSpecification(), owningLower=CompleteDSLPckg_ValueSpecification()) == None
-
 from python_code import CompleteDSLPckg_OpaqueAction
 
 def test_CompleteDSLPckg_OpaqueAction___init__():
     assert CompleteDSLPckg_OpaqueAction.__init__(CompleteDSLPckg_OpaqueAction('', '', CompleteDSLPckg_OpaqueAction=set(), CompleteDSLPckg_OpaqueAction401=set()), '', '', CompleteDSLPckg_OpaqueAction=set(), CompleteDSLPckg_OpaqueAction401=set()) == None
-
 from python_code import CompleteDSLPckg_OpaqueBehavior
 
 def test_CompleteDSLPckg_OpaqueBehavior___init__():
     assert CompleteDSLPckg_OpaqueBehavior.__init__(CompleteDSLPckg_OpaqueBehavior('', '\x00'), '\x00\x00', '') == None
-
 from python_code import CompleteDSLPckg_Slot
 from python_code import CompleteDSLPckg_StructuralFeature
 from python_code import CompleteDSLPckg_StructuralFeatureAction
 
 def test_CompleteDSLPckg_StructuralFeature___init__():
     assert CompleteDSLPckg_StructuralFeature.__init__(CompleteDSLPckg_StructuralFeature(True, CompleteDSLPckg_StructuralFeature=CompleteDSLPckg_Slot(), CompleteDSLPckg_StructuralFeature449=CompleteDSLPckg_StructuralFeatureAction()), False, CompleteDSLPckg_StructuralFeature=CompleteDSLPckg_Slot(), CompleteDSLPckg_StructuralFeature449=CompleteDSLPckg_StructuralFeatureAction()) == None
-
 from python_code import CompleteDSLPckg_TimeConstraint
 from python_code import CompleteDSLPckg_TimeInterval
 
 def test_CompleteDSLPckg_TimeConstraint___init__():
     assert CompleteDSLPckg_TimeConstraint.__init__(CompleteDSLPckg_TimeConstraint(True, CompleteDSLPckg_TimeConstraint=CompleteDSLPckg_TimeInterval()), False, CompleteDSLPckg_TimeConstraint=CompleteDSLPckg_TimeInterval()) == None
-
 from python_code import CompleteDSLPckg_TimeEvent
 from python_code import CompleteDSLPckg_TimeExpression
 
 def test_CompleteDSLPckg_TimeEvent___init__():
     assert CompleteDSLPckg_TimeEvent.__init__(CompleteDSLPckg_TimeEvent(True, CompleteDSLPckg_TimeEvent=CompleteDSLPckg_TimeExpression()), False, CompleteDSLPckg_TimeEvent=CompleteDSLPckg_TimeExpression()) == None
-
-from enum import Enum
 from python_code import ConnectorKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ConnectorKind.assembly, '', 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ConnectorKind.assembly, '', 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ConnectorKind.assembly, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ConnectorKind.assembly, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ConnectorKind.assembly, 'assembly') == ConnectorKind.assembly
-
-from enum import Enum
 from python_code import ExpansionKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ExpansionKind.stream, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ExpansionKind.stream, 0, '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ExpansionKind.stream, '', '', '') == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ExpansionKind.stream, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ExpansionKind.stream, 'stream') == ExpansionKind.stream
-
-from enum import Enum
 from python_code import InteractionOperandKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(InteractionOperandKind.seq, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(InteractionOperandKind.seq, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(InteractionOperandKind.alt, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(InteractionOperandKind.opt, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(InteractionOperandKind.alt, 'alt') == InteractionOperandKind.alt
 

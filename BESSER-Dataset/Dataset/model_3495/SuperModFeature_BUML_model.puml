@@ -1,4 +1,8 @@
 @startuml
+' model: feature
+' project: sampleModel
+' owner: User
+' description: New project
 class FeatureDependency {
 }
 class FeatureGroup {
@@ -65,39 +69,39 @@ HybridElement <|-- feature_RootRelationship
 UUIDElement <|-- feature_Feature
 UUIDElement <|-- feature_FeatureDependency
 UUIDElement <|-- feature_FeatureGroup
-feature_Feature "0..9999" -- "1..1" feature_Feature : allChildFeatures20
-feature_ChildRelationship "1..1" -- "0..1" feature_Feature : child48
-feature_ChildRelationship "0..9999" --* "1..1" feature_Feature : children5
-feature_FeatureDependency "1..1" *-- "0..1" feature_Invariant : dependencyInvariant33
-feature_DefaultBinding "0..1" --* "1..1" feature_Elimination : eliminationDefault60
-feature_Elimination "1..1" *-- "0..1" feature_Invariant : eliminationInvariant58
-feature_Elimination "0..2" --* "1..1" feature_Feature : eliminations15
-feature_DisplayName "1..1" -- "0..1" feature_Feature : feature22
-feature_Feature "0..1" -- "1..1" feature_RootRelationship : feature44
-feature_Feature "0..1" -- "1..1" feature_Mandatory : feature54
-feature_Elimination "1..1" -- "0..1" feature_Feature : feature56
-feature_Feature "1..1" -- "0..1" feature_FeatureModel : featureModel2
-feature_Feature "1..1" *-- "0..1" feature_Option : featureOption3
-feature_Feature "0..9999" --* "1..1" feature_FeatureModel : features1
-feature_FeatureGroup "0..1" -- "1..1" feature_GroupMembership : group31
-feature_FeatureGroup "1..1" *-- "0..1" feature_Invariant : groupInvariant26
-feature_Feature "1..1" -- "0..9999" feature_GroupMembership : groupedBy9
-feature_Feature "0..1" -- "1..1" feature_GroupMembership : groupedFeature29
-feature_FeatureGroup "1..1" *-- "0..9999" feature_GroupMembership : groupedFeatures24
-feature_Feature "1..1" *-- "0..9999" feature_FeatureGroup : groups8
-feature_Feature "1..1" -- "0..9999" feature_FeatureDependency : incomingDependencies10
-feature_Feature "1..1" -- "0..9999" feature_RootRelationship : incomingRoots17
-feature_Feature "1..1" *-- "0..1" feature_Mandatory : mandatory13
-feature_DisplayName "0..9999" --* "1..1" feature_Feature : names4
-feature_Feature "1..1" *-- "0..9999" feature_FeatureDependency : outgoingDependencies11
-feature_ChildRelationship "1..1" -- "0..1" feature_Feature : parent46
-feature_Feature "0..1" -- "1..1" feature_FeatureGroup : parentFeature27
-feature_ChildRelationship "1..1" *-- "0..1" feature_Invariant : parentInvariant50
-feature_ChildRelationship "1..1" *-- "0..1" feature_Preference : parentPreference52
-feature_ChildRelationship "0..9999" -- "1..1" feature_Feature : parents6
-feature_DefaultBinding "0..1" --* "1..1" feature_RootRelationship : rootDefault42
-feature_Invariant "0..1" --* "1..1" feature_RootRelationship : rootInvariant39
-feature_FeatureModel "1..1" *-- "0..9999" feature_RootRelationship : roots0
-feature_Feature "0..1" -- "1..1" feature_FeatureDependency : sourceFeature35
-feature_Feature "0..1" -- "1..1" feature_FeatureDependency : targetFeature37
+feature_Feature "feature_Feature19 0..9999" -- "feature_Feature21 1..1" feature_Feature : allChildFeatures20
+feature_ChildRelationship "Feature49 1..1" -- "parents 0..1" feature_Feature : child48
+feature_ChildRelationship "parent 0..9999" --* "ChildRelationship 1..1" feature_Feature : children5
+feature_FeatureDependency "feature_Invariant34 1..1" *-- "feature_FeatureDependency 0..1" feature_Invariant : dependencyInvariant33
+feature_DefaultBinding "feature_Elimination61 0..1" --* "feature_DefaultBinding62 1..1" feature_Elimination : eliminationDefault60
+feature_Elimination "feature_Invariant59 1..1" *-- "feature_Elimination 0..1" feature_Invariant : eliminationInvariant58
+feature_Elimination "feature16 0..2" --* "Elimination 1..1" feature_Feature : eliminations15
+feature_DisplayName "Feature23 1..1" -- "names 0..1" feature_Feature : feature22
+feature_Feature "incomingRoots 0..1" -- "Feature45 1..1" feature_RootRelationship : feature44
+feature_Feature "mandatory 0..1" -- "Feature55 1..1" feature_Mandatory : feature54
+feature_Elimination "Feature57 1..1" -- "eliminations 0..1" feature_Feature : feature56
+feature_Feature "FeatureModel 1..1" -- "features 0..1" feature_FeatureModel : featureModel2
+feature_Feature "feature_Option 1..1" *-- "feature_Feature 0..1" feature_Option : featureOption3
+feature_Feature "featureModel 0..9999" --* "Feature 1..1" feature_FeatureModel : features1
+feature_FeatureGroup "groupedFeatures 0..1" -- "FeatureGroup32 1..1" feature_GroupMembership : group31
+feature_FeatureGroup "feature_Invariant 1..1" *-- "feature_FeatureGroup 0..1" feature_Invariant : groupInvariant26
+feature_Feature "GroupMembership 1..1" -- "groupedFeature 0..9999" feature_GroupMembership : groupedBy9
+feature_Feature "groupedBy 0..1" -- "Feature30 1..1" feature_GroupMembership : groupedFeature29
+feature_FeatureGroup "GroupMembership25 1..1" *-- "group 0..9999" feature_GroupMembership : groupedFeatures24
+feature_Feature "FeatureGroup 1..1" *-- "parentFeature 0..9999" feature_FeatureGroup : groups8
+feature_Feature "FeatureDependency 1..1" -- "targetFeature 0..9999" feature_FeatureDependency : incomingDependencies10
+feature_Feature "RootRelationship 1..1" -- "feature18 0..9999" feature_RootRelationship : incomingRoots17
+feature_Feature "Mandatory 1..1" *-- "feature14 0..1" feature_Mandatory : mandatory13
+feature_DisplayName "feature 0..9999" --* "DisplayName 1..1" feature_Feature : names4
+feature_Feature "FeatureDependency12 1..1" *-- "sourceFeature 0..9999" feature_FeatureDependency : outgoingDependencies11
+feature_ChildRelationship "Feature47 1..1" -- "children 0..1" feature_Feature : parent46
+feature_Feature "groups 0..1" -- "Feature28 1..1" feature_FeatureGroup : parentFeature27
+feature_ChildRelationship "feature_Invariant51 1..1" *-- "feature_ChildRelationship 0..1" feature_Invariant : parentInvariant50
+feature_ChildRelationship "feature_Preference 1..1" *-- "feature_ChildRelationship53 0..1" feature_Preference : parentPreference52
+feature_ChildRelationship "child 0..9999" -- "ChildRelationship7 1..1" feature_Feature : parents6
+feature_DefaultBinding "feature_RootRelationship43 0..1" --* "feature_DefaultBinding 1..1" feature_RootRelationship : rootDefault42
+feature_Invariant "feature_RootRelationship40 0..1" --* "feature_Invariant41 1..1" feature_RootRelationship : rootInvariant39
+feature_FeatureModel "feature_RootRelationship 1..1" *-- "feature_FeatureModel 0..9999" feature_RootRelationship : roots0
+feature_Feature "outgoingDependencies 0..1" -- "Feature36 1..1" feature_FeatureDependency : sourceFeature35
+feature_Feature "incomingDependencies 0..1" -- "Feature38 1..1" feature_FeatureDependency : targetFeature37
 @enduml

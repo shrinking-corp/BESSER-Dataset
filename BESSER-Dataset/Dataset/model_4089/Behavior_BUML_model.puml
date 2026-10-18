@@ -1,4 +1,8 @@
 @startuml
+' model: Behavior
+' project: sampleModel
+' owner: User
+' description: New project
 class Behavior_Component {
 }
 class Behavior_Event {
@@ -19,14 +23,14 @@ NamedElement <|-- Behavior_Event
 NamedElement <|-- Behavior_State
 NamedElement <|-- Behavior_System
 NamedElement <|-- Behavior_Transition
-Behavior_Component "0..9999" --* "1..1" Behavior_System : components0
-Behavior_Component "1..1" -- "0..1" Behavior_State : currentState7
-Behavior_Event "0..9999" --* "1..1" Behavior_System : events1
-Behavior_State "0..1" -- "1..1" Behavior_Transition : fromState10
-Behavior_Event "0..1" -- "1..1" Behavior_Transition : generatedEvent22
-Behavior_State "0..9999" -- "1..1" Behavior_Transition : guardStates16
-Behavior_Component "1..1" *-- "0..9999" Behavior_State : states3
-Behavior_State "0..1" -- "1..1" Behavior_Transition : toState13
-Behavior_Component "1..1" *-- "0..9999" Behavior_Transition : transitions5
-Behavior_Event "0..1" -- "1..1" Behavior_Transition : triggeringEvent19
+Behavior_Component "Behavior_System 0..9999" --* "Behavior_Component 1..1" Behavior_System : components0
+Behavior_Component "Behavior_State9 1..1" -- "Behavior_Component8 0..1" Behavior_State : currentState7
+Behavior_Event "Behavior_System2 0..9999" --* "Behavior_Event 1..1" Behavior_System : events1
+Behavior_State "Behavior_Transition11 0..1" -- "Behavior_State12 1..1" Behavior_Transition : fromState10
+Behavior_Event "Behavior_Transition23 0..1" -- "Behavior_Event24 1..1" Behavior_Transition : generatedEvent22
+Behavior_State "Behavior_Transition17 0..9999" -- "Behavior_State18 1..1" Behavior_Transition : guardStates16
+Behavior_Component "Behavior_State 1..1" *-- "Behavior_Component4 0..9999" Behavior_State : states3
+Behavior_State "Behavior_Transition14 0..1" -- "Behavior_State15 1..1" Behavior_Transition : toState13
+Behavior_Component "Behavior_Transition 1..1" *-- "Behavior_Component6 0..9999" Behavior_Transition : transitions5
+Behavior_Event "Behavior_Transition20 0..1" -- "Behavior_Event21 1..1" Behavior_Transition : triggeringEvent19
 @enduml

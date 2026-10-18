@@ -1,4 +1,8 @@
 @startuml
+' model: GraphOperations
+' project: sampleModel
+' owner: User
+' description: New project
 enum EdgeState {
   ACTIVE
   INACTIVE
@@ -51,14 +55,14 @@ class GraphOperations_Triangle {
 }
 Element <|-- GraphOperations_Edge
 Element <|-- GraphOperations_Node
-GraphOperations_Edge "0..9999" --* "1..1" GraphOperations_Graph : edges1
-GraphOperations_Graph "1..1" -- "1..1" GraphOperations_Node : graph3
-GraphOperations_Edge "1..1" -- "1..1" GraphOperations_Graph : graph8
-GraphOperations_Edge "0..9999" -- "1..1" GraphOperations_Node : incomingEdges4
-GraphOperations_Edge "0..1" -- "1..1" GraphOperations_Triangle : longEdge14
-GraphOperations_Graph "1..1" *-- "0..9999" GraphOperations_Node : nodes0
-GraphOperations_Edge "0..9999" -- "1..1" GraphOperations_Node : outgoingEdges6
-GraphOperations_Edge "0..9999" -- "1..1" GraphOperations_Triangle : shortEdges15
-GraphOperations_Edge "1..1" -- "1..1" GraphOperations_Node : source10
-GraphOperations_Edge "1..1" -- "1..1" GraphOperations_Node : target12
+GraphOperations_Edge "graph2 0..9999" --* "Edge 1..1" GraphOperations_Graph : edges1
+GraphOperations_Graph "nodes 1..1" -- "Graph 1..1" GraphOperations_Node : graph3
+GraphOperations_Edge "Graph9 1..1" -- "edges 1..1" GraphOperations_Graph : graph8
+GraphOperations_Edge "target 0..9999" -- "Edge5 1..1" GraphOperations_Node : incomingEdges4
+GraphOperations_Edge "GraphOperations_Triangle 0..1" -- "GraphOperations_Edge 1..1" GraphOperations_Triangle : longEdge14
+GraphOperations_Graph "Node 1..1" *-- "graph 0..9999" GraphOperations_Node : nodes0
+GraphOperations_Edge "source 0..9999" -- "Edge7 1..1" GraphOperations_Node : outgoingEdges6
+GraphOperations_Edge "GraphOperations_Triangle16 0..9999" -- "GraphOperations_Edge17 1..1" GraphOperations_Triangle : shortEdges15
+GraphOperations_Edge "Node11 1..1" -- "outgoingEdges 1..1" GraphOperations_Node : source10
+GraphOperations_Edge "Node13 1..1" -- "incomingEdges 1..1" GraphOperations_Node : target12
 @enduml

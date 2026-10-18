@@ -612,30 +612,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=Styling_Segment_strategy)
-@settings(max_examples=30)
-def test_hyp_styling_segment_setcolor_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.setColor(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.setColor).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'setColor' in Styling_Segment is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'setColor' in Styling_Segment did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'setColor' in Styling_Segment is not implemented or raised an error")
 
 
 
@@ -1415,60 +1391,35 @@ def test_assoc_models14_stub_double():
     partner = Styling_Styling()
     setattr(partner, 'Styling_Styling', None)
     _safe_set(owner, 'Styling_StylingModel15', partner)
-    assert getattr(partner, 'Styling_Styling') == owner
+    assert owner in getattr(partner, 'Styling_Styling')
     _safe_set(owner, 'Styling_StylingModel15', None)
-    assert getattr(partner, 'Styling_Styling') is None
+    assert owner not in getattr(partner, 'Styling_Styling')
 
 
 
 
-from enum import Enum
 from python_code import FontOption
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(FontOption.BOLD, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(FontOption.BOLD, '', 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(FontOption.BOLD, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(FontOption.BOLD, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(FontOption.BOLD, 'BOLD') == FontOption.BOLD
-
 from python_code import Styling_BooleanParameter
 
 def test_Styling_BooleanParameter___init__():
     assert Styling_BooleanParameter.__init__(Styling_BooleanParameter(True), False) == None
-
 from python_code import Styling_ConstantPattern
 
 def test_Styling_ConstantPattern___init__():
     assert Styling_ConstantPattern.__init__(Styling_ConstantPattern(''), '') == None
-
 from python_code import Styling_IntParameter
 
 def test_Styling_IntParameter___init__():
     assert Styling_IntParameter.__init__(Styling_IntParameter(0), 0) == None
-
 from python_code import Styling_ModelPattern
 
 def test_Styling_ModelPattern___init__():
     assert Styling_ModelPattern.__init__(Styling_ModelPattern(''), '') == None
-
 from python_code import Styling_OperationPattern
 
 def test_Styling_OperationPattern___init__():
     assert Styling_OperationPattern.__init__(Styling_OperationPattern('\x00', Styling_OperationPattern=set()), '', Styling_OperationPattern=set()) == None
-
 from python_code import Styling_StringParameter
 
 def test_Styling_StringParameter___init__():

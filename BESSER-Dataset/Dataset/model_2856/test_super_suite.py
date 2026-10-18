@@ -4884,9 +4884,9 @@ def test_assoc_actions16_stub_double():
     partner = ir_Actor()
     setattr(partner, 'ir_Actor', None)
     _safe_set(owner, 'ir_Action', partner)
-    assert getattr(partner, 'ir_Actor') == owner
+    assert owner in getattr(partner, 'ir_Actor')
     _safe_set(owner, 'ir_Action', None)
-    assert getattr(partner, 'ir_Actor') is None
+    assert owner not in getattr(partner, 'ir_Actor')
 
 
 def test_assoc_actor46_stub_double():
@@ -4929,9 +4929,9 @@ def test_assoc_actualParameters41_stub_double():
     partner = ir_ActorInstance()
     setattr(partner, 'ir_ActorInstance42', None)
     _safe_set(owner, 'ir_TaggedExpression', partner)
-    assert getattr(partner, 'ir_ActorInstance42') == owner
+    assert owner in getattr(partner, 'ir_ActorInstance42')
     _safe_set(owner, 'ir_TaggedExpression', None)
-    assert getattr(partner, 'ir_ActorInstance42') is None
+    assert owner not in getattr(partner, 'ir_ActorInstance42')
 
 
 def test_assoc_attributes94_stub_double():
@@ -4944,9 +4944,9 @@ def test_assoc_attributes94_stub_double():
     partner = ir_Connection()
     setattr(partner, 'ir_Connection95', None)
     _safe_set(owner, 'ir_TaggedExpression96', partner)
-    assert getattr(partner, 'ir_Connection95') == owner
+    assert owner in getattr(partner, 'ir_Connection95')
     _safe_set(owner, 'ir_TaggedExpression96', None)
-    assert getattr(partner, 'ir_Connection95') is None
+    assert owner not in getattr(partner, 'ir_Connection95')
 
 
 def test_assoc_connections43_stub_double():
@@ -5019,9 +5019,9 @@ def test_assoc_declarations0_stub_double():
     partner = ir_Scope()
     setattr(partner, 'ir_Scope', None)
     _safe_set(owner, 'ir_Declaration', partner)
-    assert getattr(partner, 'ir_Scope') == owner
+    assert owner in getattr(partner, 'ir_Scope')
     _safe_set(owner, 'ir_Declaration', None)
-    assert getattr(partner, 'ir_Scope') is None
+    assert owner not in getattr(partner, 'ir_Scope')
 
 
 def test_assoc_expression54_stub_double():
@@ -5094,9 +5094,9 @@ def test_assoc_initializers17_stub_double():
     partner = ir_Actor()
     setattr(partner, 'ir_Actor18', None)
     _safe_set(owner, 'ir_Action19', partner)
-    assert getattr(partner, 'ir_Actor18') == owner
+    assert owner in getattr(partner, 'ir_Actor18')
     _safe_set(owner, 'ir_Action19', None)
-    assert getattr(partner, 'ir_Actor18') is None
+    assert owner not in getattr(partner, 'ir_Actor18')
 
 
 def test_assoc_inputPorts9_stub_double():
@@ -5109,9 +5109,9 @@ def test_assoc_inputPorts9_stub_double():
     partner = ir_AbstractActor()
     setattr(partner, 'ir_AbstractActor10', None)
     _safe_set(owner, 'ir_Port', partner)
-    assert getattr(partner, 'ir_AbstractActor10') == owner
+    assert owner in getattr(partner, 'ir_AbstractActor10')
     _safe_set(owner, 'ir_Port', None)
-    assert getattr(partner, 'ir_AbstractActor10') is None
+    assert owner not in getattr(partner, 'ir_AbstractActor10')
 
 
 def test_assoc_inputs29_stub_double():
@@ -5139,9 +5139,9 @@ def test_assoc_inputs36_stub_double():
     partner = ir_ActorInstance()
     setattr(partner, 'ir_ActorInstance37', None)
     _safe_set(owner, 'ir_PortInstance', partner)
-    assert getattr(partner, 'ir_ActorInstance37') == owner
+    assert owner in getattr(partner, 'ir_ActorInstance37')
     _safe_set(owner, 'ir_PortInstance', None)
-    assert getattr(partner, 'ir_ActorInstance37') is None
+    assert owner not in getattr(partner, 'ir_ActorInstance37')
 
 
 def test_assoc_member117_stub_double():
@@ -5154,9 +5154,9 @@ def test_assoc_member117_stub_double():
     partner = ir_VariableReference()
     setattr(partner, 'ir_VariableReference118', None)
     _safe_set(owner, 'ir_Member119', partner)
-    assert getattr(partner, 'ir_VariableReference118') == owner
+    assert owner in getattr(partner, 'ir_VariableReference118')
     _safe_set(owner, 'ir_Member119', None)
-    assert getattr(partner, 'ir_VariableReference118') is None
+    assert owner not in getattr(partner, 'ir_VariableReference118')
 
 
 def test_assoc_member62_stub_double():
@@ -5169,9 +5169,9 @@ def test_assoc_member62_stub_double():
     partner = ir_VariableExpression()
     setattr(partner, 'ir_VariableExpression63', None)
     _safe_set(owner, 'ir_Member', partner)
-    assert getattr(partner, 'ir_VariableExpression63') == owner
+    assert owner in getattr(partner, 'ir_VariableExpression63')
     _safe_set(owner, 'ir_Member', None)
-    assert getattr(partner, 'ir_VariableExpression63') is None
+    assert owner not in getattr(partner, 'ir_VariableExpression63')
 
 
 def test_assoc_members223_stub_double():
@@ -5184,9 +5184,9 @@ def test_assoc_members223_stub_double():
     partner = ir_TypeRecord()
     setattr(partner, 'ir_TypeRecord', None)
     _safe_set(owner, 'ir_Variable224', partner)
-    assert getattr(partner, 'ir_TypeRecord') == owner
+    assert owner in getattr(partner, 'ir_TypeRecord')
     _safe_set(owner, 'ir_Variable224', None)
-    assert getattr(partner, 'ir_TypeRecord') is None
+    assert owner not in getattr(partner, 'ir_TypeRecord')
 
 
 def test_assoc_operand177_stub_double():
@@ -5244,9 +5244,9 @@ def test_assoc_outputPorts11_stub_double():
     partner = ir_AbstractActor()
     setattr(partner, 'ir_AbstractActor12', None)
     _safe_set(owner, 'ir_Port13', partner)
-    assert getattr(partner, 'ir_AbstractActor12') == owner
+    assert owner in getattr(partner, 'ir_AbstractActor12')
     _safe_set(owner, 'ir_Port13', None)
-    assert getattr(partner, 'ir_AbstractActor12') is None
+    assert owner not in getattr(partner, 'ir_AbstractActor12')
 
 
 def test_assoc_outputs195_stub_double():
@@ -5259,9 +5259,9 @@ def test_assoc_outputs195_stub_double():
     partner = ir_ProcExpression()
     setattr(partner, 'ir_ProcExpression196', None)
     _safe_set(owner, 'ir_Variable197', partner)
-    assert getattr(partner, 'ir_ProcExpression196') == owner
+    assert owner in getattr(partner, 'ir_ProcExpression196')
     _safe_set(owner, 'ir_Variable197', None)
-    assert getattr(partner, 'ir_ProcExpression196') is None
+    assert owner not in getattr(partner, 'ir_ProcExpression196')
 
 
 def test_assoc_outputs27_stub_double():
@@ -5289,9 +5289,9 @@ def test_assoc_outputs38_stub_double():
     partner = ir_ActorInstance()
     setattr(partner, 'ir_ActorInstance39', None)
     _safe_set(owner, 'ir_PortInstance40', partner)
-    assert getattr(partner, 'ir_ActorInstance39') == owner
+    assert owner in getattr(partner, 'ir_ActorInstance39')
     _safe_set(owner, 'ir_PortInstance40', None)
-    assert getattr(partner, 'ir_ActorInstance39') is None
+    assert owner not in getattr(partner, 'ir_ActorInstance39')
 
 
 def test_assoc_parameters14_stub_double():
@@ -5304,9 +5304,9 @@ def test_assoc_parameters14_stub_double():
     partner = ir_AbstractActor()
     setattr(partner, 'ir_AbstractActor15', None)
     _safe_set(owner, 'ir_Variable', partner)
-    assert getattr(partner, 'ir_AbstractActor15') == owner
+    assert owner in getattr(partner, 'ir_AbstractActor15')
     _safe_set(owner, 'ir_Variable', None)
-    assert getattr(partner, 'ir_AbstractActor15') is None
+    assert owner not in getattr(partner, 'ir_AbstractActor15')
 
 
 def test_assoc_parameters188_stub_double():
@@ -5319,9 +5319,9 @@ def test_assoc_parameters188_stub_double():
     partner = ir_LambdaExpression()
     setattr(partner, 'ir_LambdaExpression', None)
     _safe_set(owner, 'ir_Variable189', partner)
-    assert getattr(partner, 'ir_LambdaExpression') == owner
+    assert owner in getattr(partner, 'ir_LambdaExpression')
     _safe_set(owner, 'ir_Variable189', None)
-    assert getattr(partner, 'ir_LambdaExpression') is None
+    assert owner not in getattr(partner, 'ir_LambdaExpression')
 
 
 def test_assoc_parameters193_stub_double():
@@ -5334,9 +5334,9 @@ def test_assoc_parameters193_stub_double():
     partner = ir_ProcExpression()
     setattr(partner, 'ir_ProcExpression', None)
     _safe_set(owner, 'ir_Variable194', partner)
-    assert getattr(partner, 'ir_ProcExpression') == owner
+    assert owner in getattr(partner, 'ir_ProcExpression')
     _safe_set(owner, 'ir_Variable194', None)
-    assert getattr(partner, 'ir_ProcExpression') is None
+    assert owner not in getattr(partner, 'ir_ProcExpression')
 
 
 def test_assoc_parameters238_stub_double():
@@ -5349,9 +5349,9 @@ def test_assoc_parameters238_stub_double():
     partner = ir_TypeConstructor()
     setattr(partner, 'ir_TypeConstructor239', None)
     _safe_set(owner, 'ir_Variable240', partner)
-    assert getattr(partner, 'ir_TypeConstructor239') == owner
+    assert owner in getattr(partner, 'ir_TypeConstructor239')
     _safe_set(owner, 'ir_Variable240', None)
-    assert getattr(partner, 'ir_TypeConstructor239') is None
+    assert owner not in getattr(partner, 'ir_TypeConstructor239')
 
 
 def test_assoc_parameters89_stub_double():
@@ -5379,9 +5379,9 @@ def test_assoc_peeks209_stub_double():
     partner = ir_Guard()
     setattr(partner, 'ir_Guard210', None)
     _safe_set(owner, 'ir_PortPeek211', partner)
-    assert getattr(partner, 'ir_Guard210') == owner
+    assert owner in getattr(partner, 'ir_Guard210')
     _safe_set(owner, 'ir_PortPeek211', None)
-    assert getattr(partner, 'ir_Guard210') is None
+    assert owner not in getattr(partner, 'ir_Guard210')
 
 
 def test_assoc_port158_stub_double():
@@ -5646,22 +5646,18 @@ from python_code import ir_Expression
 
 def test_ir_BinaryExpression___init__():
     assert ir_BinaryExpression.__init__(ir_BinaryExpression('', ir_BinaryExpression=ir_Expression(), ir_BinaryExpression80=ir_Expression()), '', ir_BinaryExpression=ir_Expression(), ir_BinaryExpression80=ir_Expression()) == None
-
 from python_code import ir_BooleanLiteral
 
 def test_ir_BooleanLiteral___init__():
     assert ir_BooleanLiteral.__init__(ir_BooleanLiteral(True), False) == None
-
 from python_code import ir_FloatLiteral
 
 def test_ir_FloatLiteral___init__():
     assert ir_FloatLiteral.__init__(ir_FloatLiteral(0.0), 0.0) == None
-
 from python_code import ir_IntegerLiteral
 
 def test_ir_IntegerLiteral___init__():
     assert ir_IntegerLiteral.__init__(ir_IntegerLiteral(''), '') == None
-
 from python_code import ir_Member
 from python_code import ir_Type
 from python_code import ir_VariableExpression
@@ -5669,17 +5665,14 @@ from python_code import ir_VariableReference
 
 def test_ir_Member___init__():
     assert ir_Member.__init__(ir_Member('', ir_Member119=ir_VariableReference(), ir_Member72=set(), ir_Member75=ir_Type(), ir_Member=ir_VariableExpression()), '', ir_Member119=ir_VariableReference(), ir_Member72=set(), ir_Member75=ir_Type(), ir_Member=ir_VariableExpression()) == None
-
 from python_code import ir_Namespace
 
 def test_ir_Namespace___init__():
     assert ir_Namespace.__init__(ir_Namespace('', ir_Namespace=set()), '', ir_Namespace=set()) == None
-
 from python_code import ir_Node
 
 def test_ir_Node___init__():
     assert ir_Node.__init__(ir_Node('', ir_Node=set()), '', ir_Node=set()) == None
-
 from python_code import ir_AbstractActor
 from python_code import ir_FromSource
 from python_code import ir_Port
@@ -5689,7 +5682,6 @@ from python_code import ir_Type
 
 def test_ir_Port___init__():
     assert ir_Port.__init__(ir_Port('', ir_Port=ir_AbstractActor(), ir_Port13=ir_AbstractActor(), ir_Port106=ir_FromSource(), ir_Port34=ir_Type(), ir_Port111=ir_ToSink(), ir_Port159=ir_PortAccess()), '', ir_Port=ir_AbstractActor(), ir_Port13=ir_AbstractActor(), ir_Port106=ir_FromSource(), ir_Port34=ir_Type(), ir_Port111=ir_ToSink(), ir_Port159=ir_PortAccess()) == None
-
 from python_code import ir_ActorInstance
 from python_code import ir_FromSource
 from python_code import ir_Point2PointConnection
@@ -5698,36 +5690,30 @@ from python_code import ir_ToSink
 
 def test_ir_PortInstance___init__():
     assert ir_PortInstance.__init__(ir_PortInstance('', ir_PortInstance40=ir_ActorInstance(), ir_PortInstance44=set(), ir_PortInstance47=ir_ActorInstance(), ir_PortInstance108=ir_ToSink(), ir_PortInstance=ir_ActorInstance(), ir_PortInstance98=ir_Point2PointConnection(), ir_PortInstance101=ir_Point2PointConnection(), ir_PortInstance103=ir_FromSource()), '', ir_PortInstance40=ir_ActorInstance(), ir_PortInstance44=set(), ir_PortInstance47=ir_ActorInstance(), ir_PortInstance108=ir_ToSink(), ir_PortInstance=ir_ActorInstance(), ir_PortInstance98=ir_Point2PointConnection(), ir_PortInstance101=ir_Point2PointConnection(), ir_PortInstance103=ir_FromSource()) == None
-
 from python_code import ir_Guard
 from python_code import ir_PortPeek
 from python_code import ir_VariableReference
 
 def test_ir_PortPeek___init__():
     assert ir_PortPeek.__init__(ir_PortPeek(0, ir_PortPeek211=ir_Guard(), ir_PortPeek=ir_VariableReference()), 0, ir_PortPeek211=ir_Guard(), ir_PortPeek=ir_VariableReference()) == None
-
 from python_code import ir_StringLiteral
 
 def test_ir_StringLiteral___init__():
     assert ir_StringLiteral.__init__(ir_StringLiteral(''), '') == None
-
 from python_code import ir_AbstractActor
 from python_code import ir_TypeActor
 
 def test_ir_TypeActor___init__():
     assert ir_TypeActor.__init__(ir_TypeActor('', '\x00', ir_TypeActor=ir_AbstractActor()), '\x00\x00', '', ir_TypeActor=ir_AbstractActor()) == None
-
 from python_code import ir_TypeDeclarationImport
 
 def test_ir_TypeDeclarationImport___init__():
     assert ir_TypeDeclarationImport.__init__(ir_TypeDeclarationImport(''), '') == None
-
 from python_code import ir_Expression
 from python_code import ir_UnaryExpression
 
 def test_ir_UnaryExpression___init__():
     assert ir_UnaryExpression.__init__(ir_UnaryExpression('', ir_UnaryExpression=ir_Expression()), '', ir_UnaryExpression=ir_Expression()) == None
-
 from python_code import ir_AbstractActor
 from python_code import ir_Expression
 from python_code import ir_LambdaExpression
@@ -5740,7 +5726,6 @@ from python_code import ir_VariableReference
 
 def test_ir_Variable___init__():
     assert ir_Variable.__init__(ir_Variable(False, False, ir_Variable=ir_AbstractActor(), ir_Variable113=ir_VariableReference(), ir_Variable189=ir_LambdaExpression(), ir_Variable183=ir_Expression(), ir_Variable186=ir_Type(), ir_Variable194=ir_ProcExpression(), ir_Variable197=ir_ProcExpression(), ir_Variable224=ir_TypeRecord(), ir_Variable240=ir_TypeConstructor()), False, False, ir_Variable=ir_AbstractActor(), ir_Variable113=ir_VariableReference(), ir_Variable189=ir_LambdaExpression(), ir_Variable183=ir_Expression(), ir_Variable186=ir_Type(), ir_Variable194=ir_ProcExpression(), ir_Variable197=ir_ProcExpression(), ir_Variable224=ir_TypeRecord(), ir_Variable240=ir_TypeConstructor()) == None
-
 from python_code import ir_VariableImport
 
 def test_ir_VariableImport___init__():

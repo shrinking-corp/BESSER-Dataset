@@ -88,9 +88,9 @@ def test_assoc_alternativePart54_stub_double():
     partner = imperativeoclcs_SwitchExpCS()
     setattr(partner, 'imperativeoclcs_SwitchExpCS', None)
     _safe_set(owner, 'imperativeoclcs_SwitchAltCS55', partner)
-    assert getattr(partner, 'imperativeoclcs_SwitchExpCS') == owner
+    assert owner in getattr(partner, 'imperativeoclcs_SwitchExpCS')
     _safe_set(owner, 'imperativeoclcs_SwitchAltCS55', None)
-    assert getattr(partner, 'imperativeoclcs_SwitchExpCS') is None
+    assert owner not in getattr(partner, 'imperativeoclcs_SwitchExpCS')
 
 
 def test_assoc_assertion0_stub_double():

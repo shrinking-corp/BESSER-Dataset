@@ -1,4 +1,8 @@
 @startuml
+' model: gradingsystem
+' project: sampleModel
+' owner: User
+' description: New project
 enum MinRequirementsType {
   Absolute
   Percentage
@@ -33,12 +37,12 @@ class gradingsystem_TaskGroup {
 }
 Task <|-- gradingsystem_ConcreteTask
 Task <|-- gradingsystem_TaskGroup
-gradingsystem_Task "1..9999" --* "1..1" gradingsystem_TaskGroup : contains4
-gradingsystem_Course "0..9999" --* "1..1" gradingsystem_GradingSystem : courses0
-gradingsystem_Grade "1..9999" --* "1..1" gradingsystem_GradingScheme : grades6
-gradingsystem_Grading "1..1" *-- "1..1" gradingsystem_GradingScheme : gradingScheme13
-gradingsystem_Course "1..1" *-- "0..9999" gradingsystem_Grading : gradings1
-gradingsystem_MinRequirement "0..1" --* "1..1" gradingsystem_Task : minRequirement3
-gradingsystem_Grade "1..1" -- "1..1" gradingsystem_GradingScheme : minRequirementNotFulfilledGrade7
-gradingsystem_Grading "1..1" *-- "1..9999" gradingsystem_Task : tasks10
+gradingsystem_Task "gradingsystem_TaskGroup 1..9999" --* "gradingsystem_Task5 1..1" gradingsystem_TaskGroup : contains4
+gradingsystem_Course "gradingsystem_GradingSystem 0..9999" --* "gradingsystem_Course 1..1" gradingsystem_GradingSystem : courses0
+gradingsystem_Grade "gradingsystem_GradingScheme 1..9999" --* "gradingsystem_Grade 1..1" gradingsystem_GradingScheme : grades6
+gradingsystem_Grading "gradingsystem_GradingScheme15 1..1" *-- "gradingsystem_Grading14 1..1" gradingsystem_GradingScheme : gradingScheme13
+gradingsystem_Course "gradingsystem_Grading 1..1" *-- "gradingsystem_Course2 0..9999" gradingsystem_Grading : gradings1
+gradingsystem_MinRequirement "gradingsystem_Task 0..1" --* "gradingsystem_MinRequirement 1..1" gradingsystem_Task : minRequirement3
+gradingsystem_Grade "gradingsystem_GradingScheme8 1..1" -- "gradingsystem_Grade9 1..1" gradingsystem_GradingScheme : minRequirementNotFulfilledGrade7
+gradingsystem_Grading "gradingsystem_Task12 1..1" *-- "gradingsystem_Grading11 1..9999" gradingsystem_Task : tasks10
 @enduml

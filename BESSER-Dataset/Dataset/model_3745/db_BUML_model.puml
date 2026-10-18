@@ -1,4 +1,8 @@
 @startuml
+' model: db
+' project: sampleModel
+' owner: User
+' description: New project
 class DBResource {
 }
 enum QueryType {
@@ -196,25 +200,25 @@ ServerResource <|-- db_config_Saflet
 ServerResource <|-- db_config_SafletProject
 ServerResource <|-- db_config_TelephonySubsystem
 ServerResource <|-- db_config_User
-db_DBConnection "0..1" -- "1..1" db_Query : connection5
-db_DBConnection "0..9999" --* "1..1" db_DBDriver : connections2
-config_User "0..1" -- "1..1" db_config_ServerResource : createdBy15
-db_DBConnection "1..1" -- "0..1" db_DBDriver : driver0
-db_DBDriver "1..1" -- "0..1" db_SafiDriverManager : driverManager3
-db_DBDriver "0..9999" --* "1..1" db_SafiDriverManager : drivers11
-config_Entitlement "0..9999" -- "1..1" db_config_Role : entitlements24
-config_User "0..1" -- "1..1" db_config_ServerResource : modifiedBy16
-db_Query "1..1" *-- "0..9999" db_QueryParameter : parameters4
-config_SafletProject "0..1" -- "1..1" db_config_Saflet : project26
-config_SafletProject "0..1" -- "1..1" db_config_Prompt : project30
-config_Prompt "0..9999" --* "1..1" db_config_SafletProject : prompts28
-db_DBConnection "1..1" *-- "0..9999" db_Query : queries1
-db_Query "0..1" -- "1..1" db_SafiResultSet : query13
-db_Query "0..1" -- "1..1" db_QueryParameter : query9
-db_Query "1..1" *-- "0..9999" db_SafiResultSet : resultSets7
-config_Role "0..9999" -- "1..1" db_config_User : roles25
-config_SafiServer "0..1" -- "1..1" db_config_TelephonySubsystem : safiServer32
-config_Saflet "0..9999" --* "1..1" db_config_SafletProject : saflets27
-config_User "0..1" --* "1..1" db_config_SafiServer : user19
-config_User "0..9999" --* "1..1" db_config_SafiServer : users21
+db_DBConnection "queries 0..1" -- "DBConnection6 1..1" db_Query : connection5
+db_DBConnection "driver 0..9999" --* "DBConnection 1..1" db_DBDriver : connections2
+config_User "db_config_ServerResource 0..1" -- "config_User 1..1" db_config_ServerResource : createdBy15
+db_DBConnection "DBDriver 1..1" -- "connections 0..1" db_DBDriver : driver0
+db_DBDriver "SafiDriverManager 1..1" -- "drivers 0..1" db_SafiDriverManager : driverManager3
+db_DBDriver "driverManager 0..9999" --* "DBDriver12 1..1" db_SafiDriverManager : drivers11
+config_Entitlement "db_config_Role 0..9999" -- "config_Entitlement 1..1" db_config_Role : entitlements24
+config_User "db_config_ServerResource17 0..1" -- "config_User18 1..1" db_config_ServerResource : modifiedBy16
+db_Query "QueryParameter 1..1" *-- "query 0..9999" db_QueryParameter : parameters4
+config_SafletProject "saflets 0..1" -- "SafletProject 1..1" db_config_Saflet : project26
+config_SafletProject "prompts 0..1" -- "SafletProject31 1..1" db_config_Prompt : project30
+config_Prompt "project29 0..9999" --* "Prompt 1..1" db_config_SafletProject : prompts28
+db_DBConnection "Query 1..1" *-- "connection 0..9999" db_Query : queries1
+db_Query "resultSets 0..1" -- "Query14 1..1" db_SafiResultSet : query13
+db_Query "parameters 0..1" -- "Query10 1..1" db_QueryParameter : query9
+db_Query "SafiResultSet 1..1" *-- "query8 0..9999" db_SafiResultSet : resultSets7
+config_Role "db_config_User 0..9999" -- "config_Role 1..1" db_config_User : roles25
+config_SafiServer "db_config_TelephonySubsystem 0..1" -- "config_SafiServer 1..1" db_config_TelephonySubsystem : safiServer32
+config_Saflet "project 0..9999" --* "Saflet 1..1" db_config_SafletProject : saflets27
+config_User "db_config_SafiServer 0..1" --* "config_User20 1..1" db_config_SafiServer : user19
+config_User "db_config_SafiServer22 0..9999" --* "config_User23 1..1" db_config_SafiServer : users21
 @enduml

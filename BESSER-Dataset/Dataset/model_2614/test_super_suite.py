@@ -181,28 +181,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=grapho_GraphOEditor_strategy)
-@settings(max_examples=30)
-def test_hyp_grapho_graphoeditor_addnode_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.addNode()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.addNode).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'addNode' in grapho_GraphOEditor is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'addNode' in grapho_GraphOEditor did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'addNode' in grapho_GraphOEditor is not implemented or raised an error")
 
 import warnings
 import copy
@@ -210,28 +188,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=grapho_GraphOEditor_strategy)
-@settings(max_examples=30)
-def test_hyp_grapho_graphoeditor_addedge_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.addEdge()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.addEdge).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'addEdge' in grapho_GraphOEditor is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'addEdge' in grapho_GraphOEditor did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'addEdge' in grapho_GraphOEditor is not implemented or raised an error")
 
 
 
@@ -624,9 +580,9 @@ def test_assoc_elements0_stub_double():
     partner = grapho_GraphO()
     setattr(partner, 'grapho_GraphO', None)
     _safe_set(owner, 'grapho_GraphElement', partner)
-    assert getattr(partner, 'grapho_GraphO') == owner
+    assert owner in getattr(partner, 'grapho_GraphO')
     _safe_set(owner, 'grapho_GraphElement', None)
-    assert getattr(partner, 'grapho_GraphO') is None
+    assert owner not in getattr(partner, 'grapho_GraphO')
 
 
 
@@ -636,7 +592,6 @@ from python_code import grapho_GraphO
 
 def test_grapho_GraphElement___init__():
     assert grapho_GraphElement.__init__(grapho_GraphElement('', grapho_GraphElement=grapho_GraphO()), '', grapho_GraphElement=grapho_GraphO()) == None
-
 from python_code import grapho_GraphOEditor
 
 def test_grapho_GraphOEditor___init__():

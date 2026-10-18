@@ -1,4 +1,8 @@
 @startuml
+' model: ConceptASE
+' project: sampleModel
+' owner: User
+' description: New project
 class ConceptASE_IndividualContainer {
 }
 class ConceptASE_Route {
@@ -45,15 +49,15 @@ Thing <|-- ConceptASE_SwitchPosition
 Thing <|-- ConceptASE_Trackelement
 Trackelement <|-- ConceptASE_Segment
 Trackelement <|-- ConceptASE_Switch
-ConceptASE_Route "1..1" -- "1..1" ConceptASE_Signal : Route_entry4
-ConceptASE_Route "1..1" -- "1..1" ConceptASE_Signal : Route_exit7
-ConceptASE_Route "1..1" -- "0..9999" ConceptASE_Sensor : Route_routeDefinition10
-ConceptASE_Route "1..1" -- "0..9999" ConceptASE_SwitchPosition : Route_switchPosition5
-ConceptASE_Sensor "1..1" -- "0..9999" ConceptASE_Trackelement : Sensor_trackElement14
-ConceptASE_Route "0..9999" -- "1..1" ConceptASE_SwitchPosition : SwitchPosition_route13
-ConceptASE_Switch "0..9999" -- "1..1" ConceptASE_SwitchPosition : SwitchPosition_switch12
-ConceptASE_Switch "1..1" -- "0..9999" ConceptASE_SwitchPosition : Switch_switchPosition3
-ConceptASE_Trackelement "1..1" -- "0..9999" ConceptASE_Trackelement : TrackElement_connectsTo2
-ConceptASE_Sensor "0..9999" -- "1..1" ConceptASE_Trackelement : TrackElement_sensor0
-ConceptASE_IndividualContainer "1..1" *-- "0..9999" ConceptASE_Thing : contains15
+ConceptASE_Route "ConceptASE_Signal 1..1" -- "ConceptASE_Route 1..1" ConceptASE_Signal : Route_entry4
+ConceptASE_Route "ConceptASE_Signal9 1..1" -- "ConceptASE_Route8 1..1" ConceptASE_Signal : Route_exit7
+ConceptASE_Route "ConceptASE_Sensor 1..1" -- "ConceptASE_Route11 0..9999" ConceptASE_Sensor : Route_routeDefinition10
+ConceptASE_Route "SwitchPosition6 1..1" -- "SwitchPosition_route 0..9999" ConceptASE_SwitchPosition : Route_switchPosition5
+ConceptASE_Sensor "Trackelement 1..1" -- "TrackElement_sensor 0..9999" ConceptASE_Trackelement : Sensor_trackElement14
+ConceptASE_Route "Route_switchPosition 0..9999" -- "Route 1..1" ConceptASE_SwitchPosition : SwitchPosition_route13
+ConceptASE_Switch "Switch_switchPosition 0..9999" -- "Switch 1..1" ConceptASE_SwitchPosition : SwitchPosition_switch12
+ConceptASE_Switch "SwitchPosition 1..1" -- "SwitchPosition_switch 0..9999" ConceptASE_SwitchPosition : Switch_switchPosition3
+ConceptASE_Trackelement "ConceptASE_Trackelement 1..1" -- "ConceptASE_Trackelement1 0..9999" ConceptASE_Trackelement : TrackElement_connectsTo2
+ConceptASE_Sensor "Sensor_trackElement 0..9999" -- "Sensor 1..1" ConceptASE_Trackelement : TrackElement_sensor0
+ConceptASE_IndividualContainer "ConceptASE_Thing 1..1" *-- "ConceptASE_IndividualContainer 0..9999" ConceptASE_Thing : contains15
 @enduml

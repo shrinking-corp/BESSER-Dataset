@@ -1,4 +1,8 @@
 @startuml
+' model: datasetload
+' project: sampleModel
+' owner: User
+' description: New project
 class DataSource {
 }
 abstract class datasetload_DataSource {
@@ -40,9 +44,9 @@ abstract class datasetload_TableRow {
   + refresh() : void
 }
 DataSource <|-- datasetload_DataSourceJdbc
-datasetload_DataSource "0..1" -- "1..1" datasetload_TableGroup : DataSource1
-datasetload_Table "1..1" -- "0..9999" datasetload_TableRow : Rows6
-datasetload_Table "0..1" -- "1..1" datasetload_TableRow : Table8
-datasetload_Table "1..1" -- "1..1" datasetload_TableGroup : TableGroup3
-datasetload_Table "0..9999" -- "1..1" datasetload_TableGroup : Tables0
+datasetload_DataSource "datasetload_TableGroup2 0..1" -- "datasetload_DataSource 1..1" datasetload_TableGroup : DataSource1
+datasetload_Table "datasetload_TableRow 1..1" -- "datasetload_Table7 0..9999" datasetload_TableRow : Rows6
+datasetload_Table "datasetload_TableRow9 0..1" -- "datasetload_Table10 1..1" datasetload_TableRow : Table8
+datasetload_Table "datasetload_TableGroup5 1..1" -- "datasetload_Table4 1..1" datasetload_TableGroup : TableGroup3
+datasetload_Table "datasetload_TableGroup 0..9999" -- "datasetload_Table 1..1" datasetload_TableGroup : Tables0
 @enduml

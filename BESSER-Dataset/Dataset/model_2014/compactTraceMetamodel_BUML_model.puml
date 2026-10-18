@@ -1,4 +1,8 @@
 @startuml
+' model: trace
+' project: sampleModel
+' owner: User
+' description: New project
 class LiteralValue {
 }
 class ObjectState {
@@ -106,42 +110,42 @@ TransientObject <|-- trace_DynamicTransientObject
 TransientObject <|-- trace_StaticTransientObject
 Value <|-- trace_LiteralValue
 Value <|-- trace_RefValue
-trace_State "0..1" -- "1..1" trace_State : basestate30
-trace_NormalStep "1..1" *-- "0..9999" trace_Step : children34
-trace_RepeatingStep "1..1" *-- "0..9999" trace_RepeatingStep : children61
-trace_State "1..1" -- "0..9999" trace_TransientObject : deletedobjects26
-trace_EStructuralFeature "0..9999" -- "1..1" trace_TransientObjectState : estructuralfeature76
-trace_State "1..1" -- "0..9999" trace_TransientObject : newobjects23
-trace_ObjectState "1..1" -- "1..1" trace_TransientObjectState : objectstate73
-trace_ObjectState "0..9999" --* "1..1" trace_Trace : objectstate9
-trace_CompositeObjectState "1..1" -- "0..9999" trace_ObjectState : objectstates78
-trace_EObject "0..1" -- "1..1" trace_StaticTransientObject : originalObject80
-trace_EObject "0..9999" -- "1..1" trace_RefValue : originalobject22
-trace_ParameterValue "0..9999" --* "1..1" trace_Trace : parameterValues15
-trace_ParameterList "0..9999" --* "1..1" trace_Trace : parameterlist17
-trace_ParameterList "0..1" -- "1..1" trace_Step : parameterlist39
-trace_CompositParameterList "1..1" -- "0..9999" trace_ParameterList : parameterlist83
-trace_ParameterList "0..9999" -- "1..1" trace_PatternOccurrenceStepData : parameterlists55
-trace_ParameterList "1..1" -- "0..9999" trace_ParameterValue : parametervalue85
-trace_NormalStep "0..1" -- "1..1" trace_Step : parent38
-trace_RepeatingStep "1..1" -- "0..1" trace_RepeatingStep : parent64
-trace_PatternOcurrence "1..1" -- "1..1" trace_StepPattern : pattern42
-trace_RepeatingStep "0..9999" --* "1..1" trace_Trace : repeatingstep11
-trace_RepeatingStep "0..9999" -- "1..1" trace_StepPattern : repeatingstep46
-trace_State "0..9999" --* "1..1" trace_Trace : state0
-trace_State "0..1" -- "1..1" trace_Step : state35
-trace_PatternOccurrenceStepData "1..1" -- "0..9999" trace_State : states49
-trace_Step "0..9999" --* "1..1" trace_Trace : step13
-trace_PatternOccurrenceStepData "1..1" -- "0..1" trace_RepeatingStep : step52
-trace_PatternOccurrenceStepData "0..9999" --* "1..1" trace_PatternOcurrence : stepdata44
-trace_StepPattern "0..9999" --* "1..1" trace_Trace : steppattern5
-trace_StepType "0..9999" --* "1..1" trace_Trace : steptype3
-trace_StepSpec "1..1" -- "1..1" trace_StepType : steptype58
-trace_State "1..1" *-- "0..9999" trace_TransientObjectState : transientObjectsStates32
-trace_Trace "1..1" *-- "0..9999" trace_TransientObject : transientobject1
-trace_TransientObject "1..1" -- "1..1" trace_TransientObjectState : transientobject70
-trace_DynamicTransientObject "1..1" -- "0..1" trace_EClass : type82
-trace_ObjectState "1..1" -- "0..9999" trace_Value : value19
-trace_Trace "1..1" *-- "0..9999" trace_Value : value7
-trace_ParameterValue "1..1" -- "0..9999" trace_Value : values67
+trace_State "trace_State29 0..1" -- "trace_State31 1..1" trace_State : basestate30
+trace_NormalStep "Step 1..1" *-- "parent 0..9999" trace_Step : children34
+trace_RepeatingStep "RepeatingStep 1..1" *-- "parent62 0..9999" trace_RepeatingStep : children61
+trace_State "trace_TransientObject28 1..1" -- "trace_State27 0..9999" trace_TransientObject : deletedobjects26
+trace_EStructuralFeature "trace_TransientObjectState77 0..9999" -- "trace_EStructuralFeature 1..1" trace_TransientObjectState : estructuralfeature76
+trace_State "trace_TransientObject25 1..1" -- "trace_State24 0..9999" trace_TransientObject : newobjects23
+trace_ObjectState "trace_TransientObjectState74 1..1" -- "trace_ObjectState75 1..1" trace_TransientObjectState : objectstate73
+trace_ObjectState "trace_Trace10 0..9999" --* "trace_ObjectState 1..1" trace_Trace : objectstate9
+trace_CompositeObjectState "trace_ObjectState79 1..1" -- "trace_CompositeObjectState 0..9999" trace_ObjectState : objectstates78
+trace_EObject "trace_StaticTransientObject 0..1" -- "trace_EObject81 1..1" trace_StaticTransientObject : originalObject80
+trace_EObject "trace_RefValue 0..9999" -- "trace_EObject 1..1" trace_RefValue : originalobject22
+trace_ParameterValue "trace_Trace16 0..9999" --* "trace_ParameterValue 1..1" trace_Trace : parameterValues15
+trace_ParameterList "trace_Trace18 0..9999" --* "trace_ParameterList 1..1" trace_Trace : parameterlist17
+trace_ParameterList "trace_Step40 0..1" -- "trace_ParameterList41 1..1" trace_Step : parameterlist39
+trace_CompositParameterList "trace_ParameterList84 1..1" -- "trace_CompositParameterList 0..9999" trace_ParameterList : parameterlist83
+trace_ParameterList "trace_PatternOccurrenceStepData56 0..9999" -- "trace_ParameterList57 1..1" trace_PatternOccurrenceStepData : parameterlists55
+trace_ParameterList "trace_ParameterValue87 1..1" -- "trace_ParameterList86 0..9999" trace_ParameterValue : parametervalue85
+trace_NormalStep "children 0..1" -- "NormalStep 1..1" trace_Step : parent38
+trace_RepeatingStep "RepeatingStep66 1..1" -- "children65 0..1" trace_RepeatingStep : parent64
+trace_PatternOcurrence "trace_StepPattern43 1..1" -- "trace_PatternOcurrence 1..1" trace_StepPattern : pattern42
+trace_RepeatingStep "trace_Trace12 0..9999" --* "trace_RepeatingStep 1..1" trace_Trace : repeatingstep11
+trace_RepeatingStep "trace_StepPattern47 0..9999" -- "trace_RepeatingStep48 1..1" trace_StepPattern : repeatingstep46
+trace_State "trace_Trace 0..9999" --* "trace_State 1..1" trace_Trace : state0
+trace_State "trace_Step36 0..1" -- "trace_State37 1..1" trace_Step : state35
+trace_PatternOccurrenceStepData "trace_State51 1..1" -- "trace_PatternOccurrenceStepData50 0..9999" trace_State : states49
+trace_Step "trace_Trace14 0..9999" --* "trace_Step 1..1" trace_Trace : step13
+trace_PatternOccurrenceStepData "trace_RepeatingStep54 1..1" -- "trace_PatternOccurrenceStepData53 0..1" trace_RepeatingStep : step52
+trace_PatternOccurrenceStepData "trace_PatternOcurrence45 0..9999" --* "trace_PatternOccurrenceStepData 1..1" trace_PatternOcurrence : stepdata44
+trace_StepPattern "trace_Trace6 0..9999" --* "trace_StepPattern 1..1" trace_Trace : steppattern5
+trace_StepType "trace_Trace4 0..9999" --* "trace_StepType 1..1" trace_Trace : steptype3
+trace_StepSpec "trace_StepType59 1..1" -- "trace_StepSpec 1..1" trace_StepType : steptype58
+trace_State "trace_TransientObjectState 1..1" *-- "trace_State33 0..9999" trace_TransientObjectState : transientObjectsStates32
+trace_Trace "trace_TransientObject 1..1" *-- "trace_Trace2 0..9999" trace_TransientObject : transientobject1
+trace_TransientObject "trace_TransientObjectState71 1..1" -- "trace_TransientObject72 1..1" trace_TransientObjectState : transientobject70
+trace_DynamicTransientObject "trace_EClass 1..1" -- "trace_DynamicTransientObject 0..1" trace_EClass : type82
+trace_ObjectState "trace_Value21 1..1" -- "trace_ObjectState20 0..9999" trace_Value : value19
+trace_Trace "trace_Value 1..1" *-- "trace_Trace8 0..9999" trace_Value : value7
+trace_ParameterValue "trace_Value69 1..1" -- "trace_ParameterValue68 0..9999" trace_Value : values67
 @enduml

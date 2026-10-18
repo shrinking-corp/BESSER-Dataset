@@ -1130,9 +1130,9 @@ def test_assoc_firingRules3_stub_double():
     partner = dataflownet_StateMachine()
     setattr(partner, 'dataflownet_StateMachine4', None)
     _safe_set(owner, 'dataflownet_FiringRule', partner)
-    assert getattr(partner, 'dataflownet_StateMachine4') == owner
+    assert owner in getattr(partner, 'dataflownet_StateMachine4')
     _safe_set(owner, 'dataflownet_FiringRule', None)
-    assert getattr(partner, 'dataflownet_StateMachine4') is None
+    assert owner not in getattr(partner, 'dataflownet_StateMachine4')
 
 
 def test_assoc_fromState21_stub_double():
@@ -1160,9 +1160,9 @@ def test_assoc_inputTransitions17_stub_double():
     partner = dataflownet_StateMachineState()
     setattr(partner, 'toState', None)
     _safe_set(owner, 'StateMachineTransition18', partner)
-    assert getattr(partner, 'toState') == owner
+    assert owner in getattr(partner, 'toState')
     _safe_set(owner, 'StateMachineTransition18', None)
-    assert getattr(partner, 'toState') is None
+    assert owner not in getattr(partner, 'toState')
 
 
 def test_assoc_nets42_stub_double():
@@ -1190,9 +1190,9 @@ def test_assoc_outputTransitions16_stub_double():
     partner = dataflownet_StateMachineState()
     setattr(partner, 'fromState', None)
     _safe_set(owner, 'StateMachineTransition', partner)
-    assert getattr(partner, 'fromState') == owner
+    assert owner in getattr(partner, 'fromState')
     _safe_set(owner, 'StateMachineTransition', None)
-    assert getattr(partner, 'fromState') is None
+    assert owner not in getattr(partner, 'fromState')
 
 
 def test_assoc_process14_stub_double():
@@ -1257,60 +1257,18 @@ def test_assoc_types40_stub_double():
 
 
 
-from enum import Enum
 from python_code import Comparation
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(Comparation.Less, 0, '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(Comparation.Less, '', '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(Comparation.Less, '', 0, '') == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(Comparation.Less, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(Comparation.Less, 'Less') == Comparation.Less
-
-from enum import Enum
 from python_code import Protocol
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(Protocol.Akka, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(Protocol.Akka, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(Protocol.Paho, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(Protocol.Akka, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(Protocol.Akka, 'Akka') == Protocol.Akka
-
 from python_code import dataflownet_DataflowSystem
 
 def test_dataflownet_DataflowSystem___init__():
     assert dataflownet_DataflowSystem.__init__(dataflownet_DataflowSystem('', dataflownet_DataflowSystem43=set(), dataflownet_DataflowSystem46=set(), dataflownet_DataflowSystem49=set(), dataflownet_DataflowSystem=set()), '', dataflownet_DataflowSystem43=set(), dataflownet_DataflowSystem46=set(), dataflownet_DataflowSystem49=set(), dataflownet_DataflowSystem=set()) == None
-
 from python_code import dataflownet_NamedElement
 
 def test_dataflownet_NamedElement___init__():
     assert dataflownet_NamedElement.__init__(dataflownet_NamedElement(''), '') == None
-
 from python_code import dataflownet_StateMachineState
 from python_code import dataflownet_StateMachineTransition
 

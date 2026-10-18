@@ -1,4 +1,8 @@
 @startuml
+' model: library
+' project: sampleModel
+' owner: User
+' description: New project
 class SpecialistBookWriter {
 }
 class Writer {
@@ -25,6 +29,6 @@ class library_Writer {
 SpecialistBookWriter <|-- library_GuideSpecialistBookWriter
 Writer <|-- library_GuideBookWriter
 Writer <|-- library_SpecialistBookWriter
-library_Book "1..1" -- "1..1" library_Writer : author0
-library_Book "0..9999" --* "1..1" library_Library : books1
+library_Book "library_Writer 1..1" -- "library_Book 1..1" library_Writer : author0
+library_Book "library_Library 0..9999" --* "library_Book2 1..1" library_Library : books1
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: AI_Sandbox
+' project: skillset_match
+' owner: User
+' description: New project
 class AISystem {
   + data : str
   + licensing : LicensingType
@@ -155,23 +159,23 @@ Element <|-- Dataset
 Element <|-- Feature
 Metric <|-- Derived
 Metric <|-- Direct
-AISystem "0..9999" -- "1..9999" Dataset : AISystem_Dataset
-ConfParam "0..9999" -- "1..1" Configuration : ConfParam_Configuration
-Configuration "1..1" -- "0..9999" Evaluation : Configuration_Evaluation
-Dataset "1..1" -- "0..9999" Observation : Dataset_Observation
-Dataset "0..9999" -- "1..1" Datashape : Datashape_Dataset
-Datashape "0..9999" -- "0..9999" Feature : Datashape_Feature
-Datashape "1..1" -- "0..9999" Feature : Datashape_Feature_1
-Derived "0..9999" -- "1..9999" Metric : Derived_Metric
-Element "0..9999" -- "0..9999" Evaluation : Evaluation_Element
-Evaluation "1..1" -- "0..9999" Observation : Evaluation_Observation
-LegalRequirement "0..9999" -- "1..1" Project : LegalRequirement_Project
-Element "1..1" -- "0..9999" Measure : Measure_Element
-Measure "0..9999" -- "1..1" Metric : Measure_Metric
-Measure "0..9999" -- "1..1" Observation : Measure_Observation
-Metric "0..9999" -- "0..9999" MetricCategory : MetricCategory_Metric
-Element "0..9999" -- "0..1" Project : Project_Element
-Evaluation "0..9999" -- "1..1" Project : Project_Evaluation
-Observation "0..9999" -- "1..1" Tool : Tool_Observation
-Element "1..1" -- "0..9999" Evaluation : evaluates_eval
+AISystem "models 0..9999" -- "dataset 1..9999" Dataset : AISystem_Dataset
+ConfParam "params 0..9999" -- "conf 1..1" Configuration : ConfParam_Configuration
+Configuration "config 1..1" -- "eval 0..9999" Evaluation : Configuration_Evaluation
+Dataset "dataset 1..1" -- "observation_2 0..9999" Observation : Dataset_Observation
+Dataset "dataset_1 0..9999" -- "datashape 1..1" Datashape : Datashape_Dataset
+Datashape "date 0..9999" -- "f_date 0..9999" Feature : Datashape_Feature
+Datashape "features 1..1" -- "f_features 0..9999" Feature : Datashape_Feature_1
+Derived "derivedBy 0..9999" -- "baseMetric 1..9999" Metric : Derived_Metric
+Element "ref 0..9999" -- "eval 0..9999" Evaluation : Evaluation_Element
+Evaluation "eval 1..1" -- "observations 0..9999" Observation : Evaluation_Observation
+LegalRequirement "legal_requirements 0..9999" -- "project_1 1..1" Project : LegalRequirement_Project
+Element "measurand 1..1" -- "measure 0..9999" Measure : Measure_Element
+Measure "measures 0..9999" -- "metric 1..1" Metric : Measure_Metric
+Measure "measures 0..9999" -- "observation 1..1" Observation : Measure_Observation
+Metric "metrics 0..9999" -- "category 0..9999" MetricCategory : MetricCategory_Metric
+Element "involves 0..9999" -- "project 0..1" Project : Project_Element
+Evaluation "eval 0..9999" -- "project 1..1" Project : Project_Evaluation
+Observation "observation_1 0..9999" -- "tool 1..1" Tool : Tool_Observation
+Element "evaluates 1..1" -- "evalu 0..9999" Evaluation : evaluates_eval
 @enduml

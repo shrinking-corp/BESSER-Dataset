@@ -1,4 +1,8 @@
 @startuml
+' model: HTML
+' project: sampleModel
+' owner: User
+' description: New project
 class BBODY {
 }
 class BODYElement {
@@ -168,19 +172,19 @@ TABLEElement <|-- HTML_TABLE
 TABLEElement <|-- HTML_TD
 TABLEElement <|-- HTML_TR
 TD <|-- HTML_TH
-BBODY "1..1" --* "1..1" HTML_HTML : bbody1
-BBODY "1..1" -- "1..1" HTML_BODYElement : body14
-BODYElement "0..9999" --* "1..1" HTML_BBODY : bodyElements11
-HTMLElement "0..9999" --* "1..1" HTML_HTMLElement : children3
-HEAD "1..1" --* "1..1" HTML_HTML : head0
-HEAD "1..1" -- "1..1" HTML_HEADElement : head9
-HEADElement "0..9999" --* "1..1" HTML_HEAD : headElements6
-HTML "1..1" -- "1..1" HTML_BBODY : html12
-HTML "1..1" -- "1..1" HTML_HEAD : html7
-HTML "0..9999" --* "1..1" HTML_Website : pages21
-HTMLElement "1..1" -- "1..1" HTML_HTMLElement : parent4
-HTML_TR "1..1" -- "1..1" TABLE : table17
-HTML_TR "1..1" *-- "0..9999" TD : tds18
-HTML_TD "1..1" -- "1..1" TR : tr19
-HTML_TABLE "1..1" *-- "0..9999" TR : trs16
+BBODY "html2 1..1" --* "BBODY 1..1" HTML_HTML : bbody1
+BBODY "bodyElements 1..1" -- "BBODY15 1..1" HTML_BODYElement : body14
+BODYElement "body 0..9999" --* "BODYElement 1..1" HTML_BBODY : bodyElements11
+HTMLElement "parent 0..9999" --* "HTMLElement 1..1" HTML_HTMLElement : children3
+HEAD "html 1..1" --* "HEAD 1..1" HTML_HTML : head0
+HEAD "headElements 1..1" -- "HEAD10 1..1" HTML_HEADElement : head9
+HEADElement "head 0..9999" --* "HEADElement 1..1" HTML_HEAD : headElements6
+HTML "bbody 1..1" -- "HTML13 1..1" HTML_BBODY : html12
+HTML "head8 1..1" -- "HTML 1..1" HTML_HEAD : html7
+HTML "HTML_Website 0..9999" --* "HTML22 1..1" HTML_Website : pages21
+HTMLElement "children 1..1" -- "HTMLElement5 1..1" HTML_HTMLElement : parent4
+HTML_TR "TABLE 1..1" -- "trs 1..1" TABLE : table17
+HTML_TR "TD 1..1" *-- "tr 0..9999" TD : tds18
+HTML_TD "TR20 1..1" -- "tds 1..1" TR : tr19
+HTML_TABLE "TR 1..1" *-- "table 0..9999" TR : trs16
 @enduml

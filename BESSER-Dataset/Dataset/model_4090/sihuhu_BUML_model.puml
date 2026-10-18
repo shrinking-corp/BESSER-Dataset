@@ -1,4 +1,8 @@
 @startuml
+' model: sihuhu
+' project: sampleModel
+' owner: User
+' description: New project
 class NamedElement {
 }
 class Rail {
@@ -33,19 +37,19 @@ NamedElement <|-- sihuhu_World
 Rail <|-- sihuhu_SwitchConnection
 TrackElement <|-- sihuhu_Rail
 TrackElement <|-- sihuhu_Switch
-sihuhu_Switch "1..1" -- "0..1" sihuhu_SwitchConnection : activeConnection23
-sihuhu_Rail "1..1" *-- "1..1" sihuhu_Signal : allowedFrom10
-sihuhu_Rail "1..1" *-- "1..1" sihuhu_Signal : allowedTo8
-sihuhu_Rail "0..9999" -- "1..1" sihuhu_Switch : connectedRails20
-sihuhu_Switch "1..1" *-- "0..9999" sihuhu_SwitchConnection : connections18
-sihuhu_Rail "1..1" -- "0..1" sihuhu_TrackElement : from_13
-sihuhu_TrackElement "0..1" -- "1..1" sihuhu_Train : nextElement26
-sihuhu_Rail "0..1" -- "1..1" sihuhu_Signal : nextRail30
-sihuhu_TrackElement "0..9999" -- "1..1" sihuhu_Train : onTracks29
-sihuhu_Rail "0..9999" --* "1..1" sihuhu_Track : rails3
-sihuhu_Switch "0..9999" --* "1..1" sihuhu_Track : switches5
-sihuhu_Rail "1..1" -- "0..1" sihuhu_TrackElement : to15
-sihuhu_Track "0..9999" --* "1..1" sihuhu_World : tracks0
-sihuhu_TrackElement "1..1" -- "0..1" sihuhu_Train : train7
-sihuhu_Train "0..9999" --* "1..1" sihuhu_World : trains1
+sihuhu_Switch "sihuhu_SwitchConnection25 1..1" -- "sihuhu_Switch24 0..1" sihuhu_SwitchConnection : activeConnection23
+sihuhu_Rail "sihuhu_Signal12 1..1" *-- "sihuhu_Rail11 1..1" sihuhu_Signal : allowedFrom10
+sihuhu_Rail "sihuhu_Signal 1..1" *-- "sihuhu_Rail9 1..1" sihuhu_Signal : allowedTo8
+sihuhu_Rail "sihuhu_Switch21 0..9999" -- "sihuhu_Rail22 1..1" sihuhu_Switch : connectedRails20
+sihuhu_Switch "sihuhu_SwitchConnection 1..1" *-- "sihuhu_Switch19 0..9999" sihuhu_SwitchConnection : connections18
+sihuhu_Rail "sihuhu_TrackElement 1..1" -- "sihuhu_Rail14 0..1" sihuhu_TrackElement : from_13
+sihuhu_TrackElement "sihuhu_Train27 0..1" -- "sihuhu_TrackElement28 1..1" sihuhu_Train : nextElement26
+sihuhu_Rail "sihuhu_Signal31 0..1" -- "sihuhu_Rail32 1..1" sihuhu_Signal : nextRail30
+sihuhu_TrackElement "train 0..9999" -- "TrackElement 1..1" sihuhu_Train : onTracks29
+sihuhu_Rail "sihuhu_Track4 0..9999" --* "sihuhu_Rail 1..1" sihuhu_Track : rails3
+sihuhu_Switch "sihuhu_Track6 0..9999" --* "sihuhu_Switch 1..1" sihuhu_Track : switches5
+sihuhu_Rail "sihuhu_TrackElement17 1..1" -- "sihuhu_Rail16 0..1" sihuhu_TrackElement : to15
+sihuhu_Track "sihuhu_World 0..9999" --* "sihuhu_Track 1..1" sihuhu_World : tracks0
+sihuhu_TrackElement "Train 1..1" -- "onTracks 0..1" sihuhu_Train : train7
+sihuhu_Train "sihuhu_World2 0..9999" --* "sihuhu_Train 1..1" sihuhu_World : trains1
 @enduml

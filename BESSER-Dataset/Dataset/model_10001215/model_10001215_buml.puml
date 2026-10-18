@@ -1,4 +1,8 @@
 @startuml
+' model: _93f3dc70_8033_452f_8ecc_0d817fe0eadb
+' project: sampleModel
+' owner: User
+' description: New project
 class Customer {
   + Customer_id : int
   + name : str
@@ -70,22 +74,22 @@ class Update_Order_UseCase {
 }
 class Update_Stock_UseCase {
 }
-Customer_Actor "0..1" -- "0..1" Register_UseCase : Customer_Login
-Customer "1..1" -- "0..9999" Order : Customer_Order
-Customer1 "1..1" -- "0..9999" Order1 : Customer_Order2
-Customer_Actor "0..1" -- "0..1" Place_Order_UseCase : Customer_Place_Order
-Generate_Reports_UseCase "0..1" -- "0..1" Manager_Actor : Generate_Reports_Manager
-Item "0..9999" -- "1..1" Stock : Item_Stock
-Item1 "0..9999" -- "1..1" Stock1 : Item_Stock2
-Manage_Orders_UseCase "0..1" -- "0..1" Manager_Actor : Manage_Orders_Manager
-Manager_Actor "0..1" -- "0..1" Update_Stock_UseCase : Manage_Stock_Manager
-Manage_customer_accounts_UseCase "0..1" -- "0..1" Manager_Actor : Manage_customer_accounts_Manager
-Manager "1..1" -- "0..9999" Order : Manager_Order
-Manager "1..1" -- "0..9999" Stock : Manager_Stock
-Item "0..9999" -- "0..9999" Order : Order_Item
-Manager1 "1..1" -- "0..9999" Order1 : Order_Manager
-Customer_Actor "0..1" -- "0..1" Login_UseCase : Register_Customer
-Manager1 "1..1" -- "0..9999" Stock1 : Stock_Manager
-Customer_Actor "0..1" -- "0..1" Update_Order_UseCase : Update_Order_Customer
-Manager_Actor "0..1" -- "0..1" Update_Order_UseCase : Update_Order_Manager
+Customer_Actor "customer19 0..1" -- "login18 0..1" Register_UseCase : Customer_Login
+Customer "Customer_Order_11 1..1" -- "Customer_Order_00 0..9999" Order : Customer_Order
+Customer1 "customer27 1..1" -- "order26 0..9999" Order1 : Customer_Order2
+Customer_Actor "customer9 0..1" -- "place_Order8 0..1" Place_Order_UseCase : Customer_Place_Order
+Generate_Reports_UseCase "generate_Reports13 0..1" -- "manager12 0..1" Manager_Actor : Generate_Reports_Manager
+Item "item21 0..9999" -- "stock20 1..1" Stock : Item_Stock
+Item1 "item29 0..9999" -- "stock28 1..1" Stock1 : Item_Stock2
+Manage_Orders_UseCase "manage_Orders11 0..1" -- "manager10 0..1" Manager_Actor : Manage_Orders_Manager
+Manager_Actor "manager6 0..1" -- "manage_Stock7 0..1" Update_Stock_UseCase : Manage_Stock_Manager
+Manage_customer_accounts_UseCase "manage_customer_accounts3 0..1" -- "manager2 0..1" Manager_Actor : Manage_customer_accounts_Manager
+Manager "manager23 1..1" -- "order22 0..9999" Order : Manager_Order
+Manager "manager25 1..1" -- "stock24 0..9999" Stock : Manager_Stock
+Item "item30 0..9999" -- "order31 0..9999" Order : Order_Item
+Manager1 "manager34 1..1" -- "order35 0..9999" Order1 : Order_Manager
+Customer_Actor "customer4 0..1" -- "register5 0..1" Login_UseCase : Register_Customer
+Manager1 "manager32 1..1" -- "stock33 0..9999" Stock1 : Stock_Manager
+Customer_Actor "customer14 0..1" -- "update_Order15 0..1" Update_Order_UseCase : Update_Order_Customer
+Manager_Actor "manager16 0..1" -- "update_Order17 0..1" Update_Order_UseCase : Update_Order_Manager
 @enduml

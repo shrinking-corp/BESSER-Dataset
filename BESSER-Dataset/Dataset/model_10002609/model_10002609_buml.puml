@@ -1,4 +1,8 @@
 @startuml
+' model: c60f6c29_a7df_477c_bd8b_610ede23db37
+' project: sampleModel
+' owner: User
+' description: New project
 abstract class AcceleratorCard {
 }
 class CPU {
@@ -27,13 +31,13 @@ class RAM {
 }
 abstract class Sound {
 }
-AcceleratorCard "0..1" -- "1..1" CPU : AcceleratorCard_CPU
-Cache "0..1" -- "0..1" RAM : Cache_RAM
-Card "0..3" -- "0..9999" ExtensionBoard : ExtensionBoard_Card
-Card "0..3" -- "0..9999" Machine : Machine_Card
-Cache "0..9999" -- "0..9999" Machine : Machine_Memory
-AcceleratorCard "0..9999" -- "0..9999" Machine : Machine_Processor
-Cache "0..9999" -- "0..9999" Processor : Processor_Memory
-Processor "0..9999" -- "0..9999" Program : Processor_Program
-Instruction "0..9999" -- "0..9999" Program : Program_Instruction
+AcceleratorCard "acceleratorCard17 0..1" -- "decoratedCPU16 1..1" CPU : AcceleratorCard_CPU
+Cache "cache11 0..1" -- "ramProxy10 0..1" RAM : Cache_RAM
+Card "cards13 0..3" -- "extensionBoard12 0..9999" ExtensionBoard : ExtensionBoard_Card
+Card "cards15 0..3" -- "machine14 0..9999" Machine : Machine_Card
+Cache "memory1 0..9999" -- "machine0 0..9999" Machine : Machine_Memory
+AcceleratorCard "processor7 0..9999" -- "machine6 0..9999" Machine : Machine_Processor
+Cache "memory3 0..9999" -- "processor2 0..9999" Processor : Processor_Memory
+Processor "processor8 0..9999" -- "program9 0..9999" Program : Processor_Program
+Instruction "instructions5 0..9999" -- "program4 0..9999" Program : Program_Instruction
 @enduml

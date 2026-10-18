@@ -1,4 +1,8 @@
 @startuml
+' model: automata
+' project: sampleModel
+' owner: User
+' description: New project
 enum BooleanOperator {
   Equal
   Unequal
@@ -49,12 +53,12 @@ class automata_Variable {
 Guard <|-- automata_BooleanGuard
 Guard <|-- automata_NumberGuard
 Guard <|-- automata_StringGuard
-automata_Guard "1..1" --* "1..1" automata_Transition : guard11
-automata_Guard "1..1" -- "1..1" automata_Variable : source13
-automata_State "1..1" -- "1..1" automata_Transition : source5
-automata_Automaton "1..1" *-- "0..9999" automata_State : states0
-automata_Action "1..1" -- "1..1" automata_Variable : target16
-automata_State "1..1" -- "1..1" automata_Transition : target8
-automata_Automaton "1..1" *-- "0..9999" automata_Transition : transitions1
-automata_Automaton "1..1" *-- "0..9999" automata_Variable : variables3
+automata_Guard "automata_Transition12 1..1" --* "automata_Guard 1..1" automata_Transition : guard11
+automata_Guard "automata_Variable15 1..1" -- "automata_Guard14 1..1" automata_Variable : source13
+automata_State "automata_Transition6 1..1" -- "automata_State7 1..1" automata_Transition : source5
+automata_Automaton "automata_State 1..1" *-- "automata_Automaton 0..9999" automata_State : states0
+automata_Action "automata_Variable17 1..1" -- "automata_Action 1..1" automata_Variable : target16
+automata_State "automata_Transition9 1..1" -- "automata_State10 1..1" automata_Transition : target8
+automata_Automaton "automata_Transition 1..1" *-- "automata_Automaton2 0..9999" automata_Transition : transitions1
+automata_Automaton "automata_Variable 1..1" *-- "automata_Automaton4 0..9999" automata_Variable : variables3
 @enduml

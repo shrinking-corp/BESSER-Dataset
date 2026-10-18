@@ -1,4 +1,8 @@
 @startuml
+' model: statemachine
+' project: sampleModel
+' owner: User
+' description: New project
 class statemachine_State {
   + name : str
 }
@@ -8,10 +12,10 @@ class statemachine_Transition {
   + action : str
   + trigger : str
 }
-statemachine_State "1..1" -- "1..1" statemachine_Transition : dst7
-statemachine_State "1..1" -- "0..9999" statemachine_Transition : in_4
-statemachine_State "1..1" -- "0..9999" statemachine_Transition : out3
-statemachine_State "1..1" -- "1..1" statemachine_Transition : src6
-statemachine_State "0..9999" --* "1..1" statemachine_StateMachine : states0
-statemachine_StateMachine "1..1" *-- "0..9999" statemachine_Transition : transitions1
+statemachine_State "in_ 1..1" -- "State8 1..1" statemachine_Transition : dst7
+statemachine_State "Transition5 1..1" -- "dst 0..9999" statemachine_Transition : in_4
+statemachine_State "Transition 1..1" -- "src 0..9999" statemachine_Transition : out3
+statemachine_State "out 1..1" -- "State 1..1" statemachine_Transition : src6
+statemachine_State "statemachine_StateMachine 0..9999" --* "statemachine_State 1..1" statemachine_StateMachine : states0
+statemachine_StateMachine "statemachine_Transition 1..1" *-- "statemachine_StateMachine2 0..9999" statemachine_Transition : transitions1
 @enduml

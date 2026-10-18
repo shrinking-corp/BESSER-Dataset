@@ -1,4 +1,8 @@
 @startuml
+' model: _283c71fd_f80f_4c20_b595_b6747fa192ba
+' project: sampleModel
+' owner: User
+' description: New project
 class Account {
   + Name : str
   + closed : date
@@ -38,12 +42,12 @@ class post {
 }
 enum post_status {
 }
-Account "1..1" -- "0..9999" Post : Account_Order
-Account "1..1" -- "1..1" AddPost : Account_ShoppingCart
-Account "1..1" -- "1..1" User : Customer_Account
-LineItem "1..9999" -- "0..1" Post : Order_LineItem
-LineItem "0..9999" -- "1..1" post : Product_LineItem
-AddPost "1..1" -- "1..1" LineItem : ShoppingCart_LineItem
-User "1..1" -- "1..1" WebUser : WebUser_Customer
-AddPost "0..1" -- "1..1" WebUser : WebUser_ShoppingCart
+Account "account15 1..1" -- "order14 0..9999" Post : Account_Order
+Account "account7 1..1" -- "cart6 1..1" AddPost : Account_ShoppingCart
+Account "account4 1..1" -- "customer5 1..1" User : Customer_Account
+LineItem "additionals12 1..9999" -- "order13 0..1" Post : Order_LineItem
+LineItem "lineItems10 0..9999" -- "Post11 1..1" post : Product_LineItem
+AddPost "sc9 1..1" -- "items8 1..1" LineItem : ShoppingCart_LineItem
+User "customer2 1..1" -- "webUser3 1..1" WebUser : WebUser_Customer
+AddPost "shoppingCart0 0..1" -- "webUser1 1..1" WebUser : WebUser_ShoppingCart
 @enduml

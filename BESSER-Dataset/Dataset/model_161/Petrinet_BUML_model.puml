@@ -1,4 +1,8 @@
 @startuml
+' model: PetriNetModel
+' project: sampleModel
+' owner: User
+' description: New project
 class Node {
 }
 class PObject {
@@ -23,10 +27,10 @@ Node <|-- PetriNetModel_Place
 Node <|-- PetriNetModel_Transition
 PObject <|-- PetriNetModel_Arc
 PObject <|-- PetriNetModel_Node
-PetriNetModel_Arc "0..9999" -- "1..1" PetriNetModel_Node : in_2
-PetriNetModel_PObject "0..9999" --* "1..1" PetriNetModel_PetriNet : objects0
-PetriNetModel_Arc "0..9999" -- "1..1" PetriNetModel_Node : out1
-PetriNetModel_Arc "1..1" -- "1..1" PetriNetModel_Node : source5
-PetriNetModel_Arc "1..1" -- "1..1" PetriNetModel_Node : target6
-PetriNetModel_Place "1..1" *-- "0..9999" PetriNetModel_Token : tokens4
+PetriNetModel_Arc "target 0..9999" -- "Arc3 1..1" PetriNetModel_Node : in_2
+PetriNetModel_PObject "PetriNetModel_PetriNet 0..9999" --* "PetriNetModel_PObject 1..1" PetriNetModel_PetriNet : objects0
+PetriNetModel_Arc "source 0..9999" -- "Arc 1..1" PetriNetModel_Node : out1
+PetriNetModel_Arc "Node 1..1" -- "out 1..1" PetriNetModel_Node : source5
+PetriNetModel_Arc "Node7 1..1" -- "in_ 1..1" PetriNetModel_Node : target6
+PetriNetModel_Place "PetriNetModel_Token 1..1" *-- "PetriNetModel_Place 0..9999" PetriNetModel_Token : tokens4
 @enduml

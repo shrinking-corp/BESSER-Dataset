@@ -1,4 +1,8 @@
 @startuml
+' model: connection
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractMetadataObject {
 }
 class Connection {
@@ -661,73 +665,73 @@ record_Field <|-- connection_MetadataColumn
 relational_Table <|-- connection_relational_TdTable
 relational_View <|-- connection_relational_TdView
 softwaredeployment_DataProvider <|-- connection_Connection
-connection_SAPBWTable "0..9999" --* "1..1" connection_SAPConnection : BWDataSources21
-connection_SAPBWTable "0..9999" --* "1..1" connection_SAPConnection : BWDataStoreObjects23
-connection_SAPBWTable "0..9999" --* "1..1" connection_SAPConnection : BWInfoCubes26
-connection_SAPBWTable "0..9999" --* "1..1" connection_SAPConnection : BWInfoObjects29
-connection_SAPConnection "1..1" *-- "0..9999" connection_SAPFunctionUnit : Funtions16
-connection_SAPConnection "1..1" *-- "0..9999" connection_SAPIDocUnit : IDocs17
-connection_InputSAPFunctionParameterTable "0..1" --* "1..1" connection_SAPFunctionUnit : InputParameterTable32
-connection_MetadataTable "0..1" --* "1..1" connection_SalesforceModuleUnit : MetadataTable115
-connection_MetadataTable "0..1" --* "1..1" connection_SAPFunctionUnit : MetadataTable35
-connection_OutputSAPFunctionParameterTable "0..1" --* "1..1" connection_SAPFunctionUnit : OutputParameterTable33
-connection_SAPFunctionParameterColumn "1..1" -- "0..1" connection_SAPFunctionParameterTable : ParameterTable52
-connection_SAPFunctionUnit "1..1" *-- "0..1" connection_SAPTestInputParameterTable : TestInputParameterTable47
-connection_AdditionalConnectionProperty "0..9999" --* "1..1" connection_SAPConnection : additionalProperties19
-connection_AdditionalProperties "0..9999" --* "1..1" connection_MetadataTable : additionalProperties9
-connection_CDCConnection "0..1" -- "1..1" connection_CDCType : cdcConnection86
-connection_CDCConnection "0..1" --* "1..1" connection_DatabaseConnection : cdcConns12
-connection_CDCConnection "1..1" *-- "0..9999" connection_CDCType : cdcTypes83
-connection_SAPFunctionParameter "1..1" *-- "0..9999" connection_SAPFunctionParameter : children122
-connection_MetadataColumn "0..9999" -- "1..1" connection_MetadataTable : columns3
-connection_SAPFunctionParameterColumn "0..9999" --* "1..1" connection_SAPFunctionParameterTable : columns53
-connection_Concept "1..1" *-- "0..9999" connection_ConceptTarget : conceptTargets91
-connection_ConditionType "0..9999" --* "1..1" connection_ValidationRulesConnection : conditions112
-connection_SalesforceModuleUnit "1..1" -- "0..1" connection_SalesforceSchemaConnection : connection117
-connection_SAPConnection "0..1" -- "1..1" connection_SAPFunctionUnit : connection38
-connection_SAPConnection "0..1" -- "1..1" connection_SAPIDocUnit : connection51
-connection_Connection "0..1" -- "1..1" connection_MetadataTable : connection6
-connection_Connection "0..1" -- "1..1" connection_QueriesConnection : connection68
-connection_XmlFileConnection "0..1" -- "1..1" connection_XmlXPathLoopDescriptor : connection73
-connection_CDCConnection "1..1" -- "0..1" connection_DatabaseConnection : connection82
-connection_Connection "0..9999" --* "1..1" connection_Metadata : connections0
-connection_InputSAPFunctionParameterTable "1..1" -- "0..1" connection_SAPFunctionUnit : functionUnit54
-connection_OutputSAPFunctionParameterTable "1..1" -- "0..1" connection_SAPFunctionUnit : functionUnit55
-connection_SAPFunctionUnit "0..1" -- "1..1" connection_SAPTestInputParameterTable : functionUnit89
-connection_BRMSConnection "1..1" *-- "0..9999" connection_XMLFileNode : group106
-connection_XMLFileNode "0..9999" --* "1..1" connection_XmlFileConnection : group59
-connection_Concept "1..1" *-- "0..9999" connection_XMLFileNode : group93
-connection_InnerJoinMap "0..9999" --* "1..1" connection_ValidationRulesConnection : innerJoins113
-connection_SAPFunctionParamData "1..1" *-- "0..1" connection_SAPFunctionParameter : inputRoot123
-connection_MetadataTable "0..9999" --* "1..1" connection_SAPFunctionUnit : inputTables44
-connection_BRMSConnection "1..1" *-- "0..9999" connection_XMLFileNode : loop109
-connection_XMLFileNode "0..9999" --* "1..1" connection_XmlFileConnection : loop63
-connection_Concept "1..1" *-- "0..9999" connection_XMLFileNode : loop99
-connection_SalesforceModuleUnit "0..9999" --* "1..1" connection_SalesforceSchemaConnection : modules80
-connection_WSDLParameter "0..9999" --* "1..1" connection_WSDLSchemaConnection : outputParameter77
-connection_SAPFunctionParamData "1..1" *-- "0..1" connection_SAPFunctionParameter : outputRoot126
-connection_xml_TdXmlElementType "1..1" -- "0..1" xml_TdXmlSchema : ownedDocument131
-connection_SAPFunctionParamData "0..1" --* "1..1" connection_SAPFunctionUnit : paramData49
-connection_WSDLParameter "0..9999" --* "1..1" connection_WSDLSchemaConnection : parameterValue76
-connection_AdditionalProperties "0..9999" --* "1..1" connection_DatabaseConnection : parameters14
-connection_Connection "1..1" *-- "0..1" connection_QueriesConnection : queries1
-connection_QueriesConnection "0..1" -- "1..1" connection_Query : queries71
-connection_QueriesConnection "1..1" *-- "0..9999" connection_Query : query69
-connection_HL7Connection "1..1" *-- "0..9999" connection_HL7FileNode : root103
-connection_BRMSConnection "1..1" *-- "0..9999" connection_XMLFileNode : root104
-connection_XMLFileNode "0..9999" --* "1..1" connection_XmlFileConnection : root60
-connection_Concept "1..1" *-- "0..9999" connection_XMLFileNode : root96
-connection_Concept "0..1" -- "1..1" connection_ConceptTarget : schema102
-connection_XmlFileConnection "1..1" *-- "0..9999" connection_XmlXPathLoopDescriptor : schema57
-connection_SchemaTarget "1..1" -- "0..1" connection_XmlXPathLoopDescriptor : schema66
-connection_SchemaTarget "0..9999" --* "1..1" connection_XmlXPathLoopDescriptor : schemaTargets74
-connection_Concept "0..9999" --* "1..1" connection_MDMConnection : schemas11
-connection_relational_TdColumn "1..1" *-- "0..1" relational_TdSqlDataType : sqlDataType129
-connection_CDCType "1..1" *-- "0..9999" connection_SubscriberTable : subscribers84
-connection_MetadataColumn "1..1" -- "0..1" connection_MetadataTable : table2
-connection_MetadataTable "0..9999" --* "1..1" connection_SalesforceModuleUnit : tables118
-connection_MetadataTable "0..9999" --* "1..1" connection_SAPFunctionUnit : tables41
-connection_xml_TdXmlElementType "1..1" *-- "0..1" xml_TdXmlContent : xmlContent133
-connection_xml_TdXmlContent "1..1" *-- "0..9999" xml_TdXmlElementType : xmlElements135
-connection_xml_TdXmlElementType "1..1" -- "0..1" xml_connection_EObject : xsdElementDeclaration130
+connection_SAPBWTable "connection_SAPConnection22 0..9999" --* "connection_SAPBWTable 1..1" connection_SAPConnection : BWDataSources21
+connection_SAPBWTable "connection_SAPConnection24 0..9999" --* "connection_SAPBWTable25 1..1" connection_SAPConnection : BWDataStoreObjects23
+connection_SAPBWTable "connection_SAPConnection27 0..9999" --* "connection_SAPBWTable28 1..1" connection_SAPConnection : BWInfoCubes26
+connection_SAPBWTable "connection_SAPConnection30 0..9999" --* "connection_SAPBWTable31 1..1" connection_SAPConnection : BWInfoObjects29
+connection_SAPConnection "connection_SAPFunctionUnit 1..1" *-- "connection_SAPConnection 0..9999" connection_SAPFunctionUnit : Funtions16
+connection_SAPConnection "SAPIDocUnit 1..1" *-- "connection18 0..9999" connection_SAPIDocUnit : IDocs17
+connection_InputSAPFunctionParameterTable "functionUnit 0..1" --* "InputSAPFunctionParameterTable 1..1" connection_SAPFunctionUnit : InputParameterTable32
+connection_MetadataTable "connection_SalesforceModuleUnit 0..1" --* "connection_MetadataTable116 1..1" connection_SalesforceModuleUnit : MetadataTable115
+connection_MetadataTable "connection_SAPFunctionUnit36 0..1" --* "connection_MetadataTable37 1..1" connection_SAPFunctionUnit : MetadataTable35
+connection_OutputSAPFunctionParameterTable "functionUnit34 0..1" --* "OutputSAPFunctionParameterTable 1..1" connection_SAPFunctionUnit : OutputParameterTable33
+connection_SAPFunctionParameterColumn "SAPFunctionParameterTable 1..1" -- "columns 0..1" connection_SAPFunctionParameterTable : ParameterTable52
+connection_SAPFunctionUnit "SAPTestInputParameterTable 1..1" *-- "functionUnit48 0..1" connection_SAPTestInputParameterTable : TestInputParameterTable47
+connection_AdditionalConnectionProperty "connection_SAPConnection20 0..9999" --* "connection_AdditionalConnectionProperty 1..1" connection_SAPConnection : additionalProperties19
+connection_AdditionalProperties "connection_MetadataTable10 0..9999" --* "connection_AdditionalProperties 1..1" connection_MetadataTable : additionalProperties9
+connection_CDCConnection "connection_CDCType87 0..1" -- "connection_CDCConnection88 1..1" connection_CDCType : cdcConnection86
+connection_CDCConnection "connection13 0..1" --* "CDCConnection 1..1" connection_DatabaseConnection : cdcConns12
+connection_CDCConnection "connection_CDCType 1..1" *-- "connection_CDCConnection 0..9999" connection_CDCType : cdcTypes83
+connection_SAPFunctionParameter "connection_SAPFunctionParameter 1..1" *-- "connection_SAPFunctionParameter121 0..9999" connection_SAPFunctionParameter : children122
+connection_MetadataColumn "connection_MetadataTable4 0..9999" -- "connection_MetadataColumn5 1..1" connection_MetadataTable : columns3
+connection_SAPFunctionParameterColumn "ParameterTable 0..9999" --* "SAPFunctionParameterColumn 1..1" connection_SAPFunctionParameterTable : columns53
+connection_Concept "ConceptTarget 1..1" *-- "schema92 0..9999" connection_ConceptTarget : conceptTargets91
+connection_ConditionType "connection_ValidationRulesConnection 0..9999" --* "connection_ConditionType 1..1" connection_ValidationRulesConnection : conditions112
+connection_SalesforceModuleUnit "SalesforceSchemaConnection 1..1" -- "modules 0..1" connection_SalesforceSchemaConnection : connection117
+connection_SAPConnection "connection_SAPFunctionUnit39 0..1" -- "connection_SAPConnection40 1..1" connection_SAPFunctionUnit : connection38
+connection_SAPConnection "IDocs 0..1" -- "SAPConnection 1..1" connection_SAPIDocUnit : connection51
+connection_Connection "connection_MetadataTable7 0..1" -- "connection_Connection8 1..1" connection_MetadataTable : connection6
+connection_Connection "queries 0..1" -- "Connection 1..1" connection_QueriesConnection : connection68
+connection_XmlFileConnection "schema 0..1" -- "XmlFileConnection 1..1" connection_XmlXPathLoopDescriptor : connection73
+connection_CDCConnection "DatabaseConnection 1..1" -- "cdcConns 0..1" connection_DatabaseConnection : connection82
+connection_Connection "connection_Metadata 0..9999" --* "connection_Connection 1..1" connection_Metadata : connections0
+connection_InputSAPFunctionParameterTable "SAPFunctionUnit 1..1" -- "InputParameterTable 0..1" connection_SAPFunctionUnit : functionUnit54
+connection_OutputSAPFunctionParameterTable "SAPFunctionUnit56 1..1" -- "OutputParameterTable 0..1" connection_SAPFunctionUnit : functionUnit55
+connection_SAPFunctionUnit "TestInputParameterTable 0..1" -- "SAPFunctionUnit90 1..1" connection_SAPTestInputParameterTable : functionUnit89
+connection_BRMSConnection "connection_XMLFileNode108 1..1" *-- "connection_BRMSConnection107 0..9999" connection_XMLFileNode : group106
+connection_XMLFileNode "connection_XmlFileConnection 0..9999" --* "connection_XMLFileNode 1..1" connection_XmlFileConnection : group59
+connection_Concept "connection_XMLFileNode95 1..1" *-- "connection_Concept94 0..9999" connection_XMLFileNode : group93
+connection_InnerJoinMap "connection_ValidationRulesConnection114 0..9999" --* "connection_InnerJoinMap 1..1" connection_ValidationRulesConnection : innerJoins113
+connection_SAPFunctionParamData "connection_SAPFunctionParameter125 1..1" *-- "connection_SAPFunctionParamData124 0..1" connection_SAPFunctionParameter : inputRoot123
+connection_MetadataTable "connection_SAPFunctionUnit45 0..9999" --* "connection_MetadataTable46 1..1" connection_SAPFunctionUnit : inputTables44
+connection_BRMSConnection "connection_XMLFileNode111 1..1" *-- "connection_BRMSConnection110 0..9999" connection_XMLFileNode : loop109
+connection_XMLFileNode "connection_XmlFileConnection64 0..9999" --* "connection_XMLFileNode65 1..1" connection_XmlFileConnection : loop63
+connection_Concept "connection_XMLFileNode101 1..1" *-- "connection_Concept100 0..9999" connection_XMLFileNode : loop99
+connection_SalesforceModuleUnit "connection81 0..9999" --* "SalesforceModuleUnit 1..1" connection_SalesforceSchemaConnection : modules80
+connection_WSDLParameter "connection_WSDLSchemaConnection78 0..9999" --* "connection_WSDLParameter79 1..1" connection_WSDLSchemaConnection : outputParameter77
+connection_SAPFunctionParamData "connection_SAPFunctionParameter128 1..1" *-- "connection_SAPFunctionParamData127 0..1" connection_SAPFunctionParameter : outputRoot126
+connection_xml_TdXmlElementType "xml_TdXmlSchema 1..1" -- "connection_xml_TdXmlElementType132 0..1" xml_TdXmlSchema : ownedDocument131
+connection_SAPFunctionParamData "connection_SAPFunctionUnit50 0..1" --* "connection_SAPFunctionParamData 1..1" connection_SAPFunctionUnit : paramData49
+connection_WSDLParameter "connection_WSDLSchemaConnection 0..9999" --* "connection_WSDLParameter 1..1" connection_WSDLSchemaConnection : parameterValue76
+connection_AdditionalProperties "connection_DatabaseConnection 0..9999" --* "connection_AdditionalProperties15 1..1" connection_DatabaseConnection : parameters14
+connection_Connection "QueriesConnection 1..1" *-- "connection 0..1" connection_QueriesConnection : queries1
+connection_QueriesConnection "query 0..1" -- "QueriesConnection72 1..1" connection_Query : queries71
+connection_QueriesConnection "Query 1..1" *-- "queries70 0..9999" connection_Query : query69
+connection_HL7Connection "connection_HL7FileNode 1..1" *-- "connection_HL7Connection 0..9999" connection_HL7FileNode : root103
+connection_BRMSConnection "connection_XMLFileNode105 1..1" *-- "connection_BRMSConnection 0..9999" connection_XMLFileNode : root104
+connection_XMLFileNode "connection_XmlFileConnection61 0..9999" --* "connection_XMLFileNode62 1..1" connection_XmlFileConnection : root60
+connection_Concept "connection_XMLFileNode98 1..1" *-- "connection_Concept97 0..9999" connection_XMLFileNode : root96
+connection_Concept "conceptTargets 0..1" -- "Concept 1..1" connection_ConceptTarget : schema102
+connection_XmlFileConnection "XmlXPathLoopDescriptor 1..1" *-- "connection58 0..9999" connection_XmlXPathLoopDescriptor : schema57
+connection_SchemaTarget "XmlXPathLoopDescriptor67 1..1" -- "schemaTargets 0..1" connection_XmlXPathLoopDescriptor : schema66
+connection_SchemaTarget "schema75 0..9999" --* "SchemaTarget 1..1" connection_XmlXPathLoopDescriptor : schemaTargets74
+connection_Concept "connection_MDMConnection 0..9999" --* "connection_Concept 1..1" connection_MDMConnection : schemas11
+connection_relational_TdColumn "relational_TdSqlDataType 1..1" *-- "connection_relational_TdColumn 0..1" relational_TdSqlDataType : sqlDataType129
+connection_CDCType "connection_SubscriberTable 1..1" *-- "connection_CDCType85 0..9999" connection_SubscriberTable : subscribers84
+connection_MetadataColumn "connection_MetadataTable 1..1" -- "connection_MetadataColumn 0..1" connection_MetadataTable : table2
+connection_MetadataTable "connection_SalesforceModuleUnit119 0..9999" --* "connection_MetadataTable120 1..1" connection_SalesforceModuleUnit : tables118
+connection_MetadataTable "connection_SAPFunctionUnit42 0..9999" --* "connection_MetadataTable43 1..1" connection_SAPFunctionUnit : tables41
+connection_xml_TdXmlElementType "xml_TdXmlContent 1..1" *-- "connection_xml_TdXmlElementType134 0..1" xml_TdXmlContent : xmlContent133
+connection_xml_TdXmlContent "xml_TdXmlElementType 1..1" *-- "connection_xml_TdXmlContent 0..9999" xml_TdXmlElementType : xmlElements135
+connection_xml_TdXmlElementType "xml_connection_EObject 1..1" -- "connection_xml_TdXmlElementType 0..1" xml_connection_EObject : xsdElementDeclaration130
 @enduml

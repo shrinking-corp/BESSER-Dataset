@@ -1,4 +1,8 @@
 @startuml
+' model: studyprograms
+' project: sampleModel
+' owner: User
+' description: New project
 enum Access {
   M1A
   M2A
@@ -49,12 +53,12 @@ class studyprograms_Specialisation {
   + name : str
   + startSemester : int
 }
-studyprograms_CourseAccess "0..9999" --* "1..1" studyprograms_Semester : courseAccess9
-studyprograms_Course "0..9999" -- "1..1" studyprograms_CourseAccess : courses11
-studyprograms_Course "0..9999" --* "1..1" studyprograms_Department : courses15
-studyprograms_Department "1..1" *-- "0..9999" studyprograms_Programme : programmes13
-studyprograms_Programme "1..1" *-- "0..9999" studyprograms_Semester : semesters1
-studyprograms_Semester "0..9999" --* "1..1" studyprograms_Specialisation : semesters3
-studyprograms_Programme "1..1" *-- "0..9999" studyprograms_Specialisation : specialisations0
-studyprograms_Specialisation "0..9999" --* "1..1" studyprograms_Specialisation : specializations7
+studyprograms_CourseAccess "studyprograms_Semester10 0..9999" --* "studyprograms_CourseAccess 1..1" studyprograms_Semester : courseAccess9
+studyprograms_Course "studyprograms_CourseAccess12 0..9999" -- "studyprograms_Course 1..1" studyprograms_CourseAccess : courses11
+studyprograms_Course "studyprograms_Department16 0..9999" --* "studyprograms_Course17 1..1" studyprograms_Department : courses15
+studyprograms_Department "studyprograms_Programme14 1..1" *-- "studyprograms_Department 0..9999" studyprograms_Programme : programmes13
+studyprograms_Programme "studyprograms_Semester 1..1" *-- "studyprograms_Programme2 0..9999" studyprograms_Semester : semesters1
+studyprograms_Semester "studyprograms_Specialisation4 0..9999" --* "studyprograms_Semester5 1..1" studyprograms_Specialisation : semesters3
+studyprograms_Programme "studyprograms_Specialisation 1..1" *-- "studyprograms_Programme 0..9999" studyprograms_Specialisation : specialisations0
+studyprograms_Specialisation "studyprograms_Specialisation6 0..9999" --* "studyprograms_Specialisation8 1..1" studyprograms_Specialisation : specializations7
 @enduml

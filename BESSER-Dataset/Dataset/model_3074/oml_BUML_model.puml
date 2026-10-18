@@ -1,4 +1,8 @@
 @startuml
+' model: oml
+' project: sampleModel
+' owner: User
+' description: New project
 class AnnotatedElement {
 }
 class Class {
@@ -71,15 +75,15 @@ PackageableElement <|-- oml_Classifier
 PackageableElement <|-- oml_Package
 StructuralFeature <|-- oml_Attribute
 StructuralFeature <|-- oml_Reference
-oml_AnnotatedElement "1..1" *-- "0..9999" oml_Annotation : annotations1
-oml_Package "1..1" *-- "0..9999" oml_PackageableElement : contents2
-oml_Class "1..1" -- "0..9999" oml_Class : extendedBy6
-oml_Class "1..1" -- "0..1" oml_Class : extends4
-oml_Class "1..1" *-- "0..9999" oml_Feature : features8
-oml_Operation "0..1" -- "1..1" oml_Parameter : owner16
-oml_Class "0..1" -- "1..1" oml_Feature : owner9
-oml_Package "0..1" -- "1..1" oml_PackageableElement : package0
-oml_Operation "1..1" *-- "0..9999" oml_Parameter : parameters12
-oml_Classifier "0..1" -- "1..1" oml_Feature : type11
-oml_Classifier "0..1" -- "1..1" oml_Parameter : type14
+oml_AnnotatedElement "oml_Annotation 1..1" *-- "oml_AnnotatedElement 0..9999" oml_Annotation : annotations1
+oml_Package "PackageableElement 1..1" *-- "package 0..9999" oml_PackageableElement : contents2
+oml_Class "Class7 1..1" -- "extends 0..9999" oml_Class : extendedBy6
+oml_Class "Class 1..1" -- "extendedBy 0..1" oml_Class : extends4
+oml_Class "Feature 1..1" *-- "owner 0..9999" oml_Feature : features8
+oml_Operation "parameters 0..1" -- "Operation 1..1" oml_Parameter : owner16
+oml_Class "features 0..1" -- "Class10 1..1" oml_Feature : owner9
+oml_Package "contents 0..1" -- "Package 1..1" oml_PackageableElement : package0
+oml_Operation "Parameter 1..1" *-- "owner13 0..9999" oml_Parameter : parameters12
+oml_Classifier "oml_Feature 0..1" -- "oml_Classifier 1..1" oml_Feature : type11
+oml_Classifier "oml_Parameter 0..1" -- "oml_Classifier15 1..1" oml_Parameter : type14
 @enduml

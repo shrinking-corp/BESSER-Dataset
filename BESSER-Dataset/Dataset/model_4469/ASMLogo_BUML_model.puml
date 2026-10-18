@@ -1,4 +1,8 @@
 @startuml
+' model: logoASM
+' project: sampleModel
+' owner: User
+' description: New project
 class BinaryExp {
 }
 class ControlStructure {
@@ -96,22 +100,22 @@ Primitive <|-- logoASM_Left
 Primitive <|-- logoASM_PenDown
 Primitive <|-- logoASM_PenUp
 Primitive <|-- logoASM_Right
-logoASM_Expression "0..9999" --* "1..1" logoASM_ProcCall : actualArgs12
-logoASM_Expression "0..1" --* "1..1" logoASM_Left : angle3
-logoASM_Expression "0..1" --* "1..1" logoASM_Right : angle5
-logoASM_Parameter "0..9999" --* "1..1" logoASM_ProcDeclaration : args16
-logoASM_Block "1..1" --* "1..1" logoASM_Repeat : block29
-logoASM_Block "1..1" --* "1..1" logoASM_While : block31
-logoASM_ControlStructure "1..1" *-- "0..1" logoASM_Expression : condition27
-logoASM_ProcCall "1..1" -- "1..1" logoASM_ProcDeclaration : declaration14
-logoASM_Block "0..1" --* "1..1" logoASM_If : elsePart24
-logoASM_Instruction "0..9999" --* "1..1" logoASM_ProcDeclaration : instructions18
-logoASM_Block "1..1" *-- "0..9999" logoASM_Instruction : instructions20
-logoASM_Instruction "0..9999" --* "1..1" logoASM_LogoProgram : instructions35
-logoASM_BinaryExp "1..1" *-- "1..1" logoASM_Expression : lhs7
-logoASM_Parameter "1..1" -- "1..1" logoASM_ParameterCall : parameter33
-logoASM_BinaryExp "1..1" *-- "1..1" logoASM_Expression : rhs9
-logoASM_Back "1..1" *-- "1..1" logoASM_Expression : steps0
-logoASM_Expression "1..1" --* "1..1" logoASM_Forward : steps1
-logoASM_Block "1..1" --* "1..1" logoASM_If : thenPart22
+logoASM_Expression "logoASM_ProcCall 0..9999" --* "logoASM_Expression13 1..1" logoASM_ProcCall : actualArgs12
+logoASM_Expression "logoASM_Left 0..1" --* "logoASM_Expression4 1..1" logoASM_Left : angle3
+logoASM_Expression "logoASM_Right 0..1" --* "logoASM_Expression6 1..1" logoASM_Right : angle5
+logoASM_Parameter "logoASM_ProcDeclaration17 0..9999" --* "logoASM_Parameter 1..1" logoASM_ProcDeclaration : args16
+logoASM_Block "logoASM_Repeat 1..1" --* "logoASM_Block30 1..1" logoASM_Repeat : block29
+logoASM_Block "logoASM_While 1..1" --* "logoASM_Block32 1..1" logoASM_While : block31
+logoASM_ControlStructure "logoASM_Expression28 1..1" *-- "logoASM_ControlStructure 0..1" logoASM_Expression : condition27
+logoASM_ProcCall "logoASM_ProcDeclaration 1..1" -- "logoASM_ProcCall15 1..1" logoASM_ProcDeclaration : declaration14
+logoASM_Block "logoASM_If25 0..1" --* "logoASM_Block26 1..1" logoASM_If : elsePart24
+logoASM_Instruction "logoASM_ProcDeclaration19 0..9999" --* "logoASM_Instruction 1..1" logoASM_ProcDeclaration : instructions18
+logoASM_Block "logoASM_Instruction21 1..1" *-- "logoASM_Block 0..9999" logoASM_Instruction : instructions20
+logoASM_Instruction "logoASM_LogoProgram 0..9999" --* "logoASM_Instruction36 1..1" logoASM_LogoProgram : instructions35
+logoASM_BinaryExp "logoASM_Expression8 1..1" *-- "logoASM_BinaryExp 1..1" logoASM_Expression : lhs7
+logoASM_Parameter "logoASM_ParameterCall 1..1" -- "logoASM_Parameter34 1..1" logoASM_ParameterCall : parameter33
+logoASM_BinaryExp "logoASM_Expression11 1..1" *-- "logoASM_BinaryExp10 1..1" logoASM_Expression : rhs9
+logoASM_Back "logoASM_Expression 1..1" *-- "logoASM_Back 1..1" logoASM_Expression : steps0
+logoASM_Expression "logoASM_Forward 1..1" --* "logoASM_Expression2 1..1" logoASM_Forward : steps1
+logoASM_Block "logoASM_If 1..1" --* "logoASM_Block23 1..1" logoASM_If : thenPart22
 @enduml

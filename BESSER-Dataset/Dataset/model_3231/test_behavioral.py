@@ -625,9 +625,9 @@ def test_assoc_bounds81_stub_double():
     partner = pascal_unpacked_conformant_array_schema()
     setattr(partner, 'pascal_unpacked_conformant_array_schema82', None)
     _safe_set(owner, 'pascal_bound_specification83', partner)
-    assert getattr(partner, 'pascal_unpacked_conformant_array_schema82') == owner
+    assert owner in getattr(partner, 'pascal_unpacked_conformant_array_schema82')
     _safe_set(owner, 'pascal_bound_specification83', None)
-    assert getattr(partner, 'pascal_unpacked_conformant_array_schema82') is None
+    assert owner not in getattr(partner, 'pascal_unpacked_conformant_array_schema82')
 
 
 def test_assoc_constants279_stub_double():
@@ -640,9 +640,9 @@ def test_assoc_constants279_stub_double():
     partner = pascal_case_label_list()
     setattr(partner, 'pascal_case_label_list280', None)
     _safe_set(owner, 'pascal_constant281', partner)
-    assert getattr(partner, 'pascal_case_label_list280') == owner
+    assert owner in getattr(partner, 'pascal_case_label_list280')
     _safe_set(owner, 'pascal_constant281', None)
-    assert getattr(partner, 'pascal_case_label_list280') is None
+    assert owner not in getattr(partner, 'pascal_case_label_list280')
 
 
 def test_assoc_consts21_stub_double():
@@ -655,9 +655,9 @@ def test_assoc_consts21_stub_double():
     partner = pascal_constant_definition_part()
     setattr(partner, 'pascal_constant_definition_part22', None)
     _safe_set(owner, 'pascal_constant_definition', partner)
-    assert getattr(partner, 'pascal_constant_definition_part22') == owner
+    assert owner in getattr(partner, 'pascal_constant_definition_part22')
     _safe_set(owner, 'pascal_constant_definition', None)
-    assert getattr(partner, 'pascal_constant_definition_part22') is None
+    assert owner not in getattr(partner, 'pascal_constant_definition_part22')
 
 
 def test_assoc_enumerated212_stub_double():
@@ -775,9 +775,9 @@ def test_assoc_expressions198_stub_double():
     partner = pascal_expression_list()
     setattr(partner, 'pascal_expression_list199', None)
     _safe_set(owner, 'pascal_expression200', partner)
-    assert getattr(partner, 'pascal_expression_list199') == owner
+    assert owner in getattr(partner, 'pascal_expression_list199')
     _safe_set(owner, 'pascal_expression200', None)
-    assert getattr(partner, 'pascal_expression_list199') is None
+    assert owner not in getattr(partner, 'pascal_expression_list199')
 
 
 def test_assoc_expressions201_stub_double():
@@ -850,9 +850,9 @@ def test_assoc_functions38_stub_double():
     partner = pascal_procedure_and_function_declaration_part()
     setattr(partner, 'pascal_procedure_and_function_declaration_part39', None)
     _safe_set(owner, 'pascal_abstraction_declaration', partner)
-    assert getattr(partner, 'pascal_procedure_and_function_declaration_part39') == owner
+    assert owner in getattr(partner, 'pascal_procedure_and_function_declaration_part39')
     _safe_set(owner, 'pascal_abstraction_declaration', None)
-    assert getattr(partner, 'pascal_procedure_and_function_declaration_part39') is None
+    assert owner not in getattr(partner, 'pascal_procedure_and_function_declaration_part39')
 
 
 def test_assoc_goto100_stub_double():
@@ -970,9 +970,9 @@ def test_assoc_indexes236_stub_double():
     partner = pascal_array_type()
     setattr(partner, 'pascal_array_type237', None)
     _safe_set(owner, 'pascal_simple_type238', partner)
-    assert getattr(partner, 'pascal_array_type237') == owner
+    assert owner in getattr(partner, 'pascal_array_type237')
     _safe_set(owner, 'pascal_simple_type238', None)
-    assert getattr(partner, 'pascal_array_type237') is None
+    assert owner not in getattr(partner, 'pascal_array_type237')
 
 
 def test_assoc_label106_stub_double():
@@ -1015,9 +1015,9 @@ def test_assoc_labels19_stub_double():
     partner = pascal_label_declaration_part()
     setattr(partner, 'pascal_label_declaration_part20', None)
     _safe_set(owner, 'pascal_label', partner)
-    assert getattr(partner, 'pascal_label_declaration_part20') == owner
+    assert owner in getattr(partner, 'pascal_label_declaration_part20')
     _safe_set(owner, 'pascal_label', None)
-    assert getattr(partner, 'pascal_label_declaration_part20') is None
+    assert owner not in getattr(partner, 'pascal_label_declaration_part20')
 
 
 def test_assoc_number169_stub_double():
@@ -1120,9 +1120,9 @@ def test_assoc_procedures36_stub_double():
     partner = pascal_procedure_and_function_declaration_part()
     setattr(partner, 'pascal_procedure_and_function_declaration_part37', None)
     _safe_set(owner, 'pascal_abstraction_heading', partner)
-    assert getattr(partner, 'pascal_procedure_and_function_declaration_part37') == owner
+    assert owner in getattr(partner, 'pascal_procedure_and_function_declaration_part37')
     _safe_set(owner, 'pascal_abstraction_heading', None)
-    assert getattr(partner, 'pascal_procedure_and_function_declaration_part37') is None
+    assert owner not in getattr(partner, 'pascal_procedure_and_function_declaration_part37')
 
 
 def test_assoc_record230_stub_double():
@@ -1315,9 +1315,9 @@ def test_assoc_types25_stub_double():
     partner = pascal_type_definition_part()
     setattr(partner, 'pascal_type_definition_part26', None)
     _safe_set(owner, 'pascal_type_definition', partner)
-    assert getattr(partner, 'pascal_type_definition_part26') == owner
+    assert owner in getattr(partner, 'pascal_type_definition_part26')
     _safe_set(owner, 'pascal_type_definition', None)
-    assert getattr(partner, 'pascal_type_definition_part26') is None
+    assert owner not in getattr(partner, 'pascal_type_definition_part26')
 
 
 def test_assoc_variable102_stub_double():
@@ -1345,9 +1345,9 @@ def test_assoc_variants255_stub_double():
     partner = pascal_field_list()
     setattr(partner, 'pascal_field_list256', None)
     _safe_set(owner, 'pascal_variant_part', partner)
-    assert getattr(partner, 'pascal_field_list256') == owner
+    assert owner in getattr(partner, 'pascal_field_list256')
     _safe_set(owner, 'pascal_variant_part', None)
-    assert getattr(partner, 'pascal_field_list256') is None
+    assert owner not in getattr(partner, 'pascal_field_list256')
 
 
 def test_assoc_variants267_stub_double():

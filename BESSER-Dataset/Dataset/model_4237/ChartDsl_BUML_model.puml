@@ -1,4 +1,8 @@
 @startuml
+' model: chartDsl
+' project: sampleModel
+' owner: User
+' description: New project
 enum ProjectType {
   Development
   Regie
@@ -16,8 +20,8 @@ class chartDsl_Project {
 class chartDsl_Task {
   + name : str
 }
-chartDsl_Company "1..1" *-- "0..9999" chartDsl_Employee : employees0
-chartDsl_Company "1..1" *-- "0..9999" chartDsl_Project : projects1
-chartDsl_Employee "0..1" -- "1..1" chartDsl_Task : responsable5
-chartDsl_Project "1..1" *-- "0..9999" chartDsl_Task : tasks3
+chartDsl_Company "chartDsl_Employee 1..1" *-- "chartDsl_Company 0..9999" chartDsl_Employee : employees0
+chartDsl_Company "chartDsl_Project 1..1" *-- "chartDsl_Company2 0..9999" chartDsl_Project : projects1
+chartDsl_Employee "chartDsl_Task6 0..1" -- "chartDsl_Employee7 1..1" chartDsl_Task : responsable5
+chartDsl_Project "chartDsl_Task 1..1" *-- "chartDsl_Project4 0..9999" chartDsl_Task : tasks3
 @enduml

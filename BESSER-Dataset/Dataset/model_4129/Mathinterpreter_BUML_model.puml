@@ -1,4 +1,8 @@
 @startuml
+' model: mathinterpreter
+' project: sampleModel
+' owner: User
+' description: New project
 class DefParenthesis {
 }
 class MDExpression {
@@ -78,14 +82,14 @@ Primary <|-- mathinterpreter_DefParenthesis
 Primary <|-- mathinterpreter_Number
 Primary <|-- mathinterpreter_PMParenthesis
 Primary <|-- mathinterpreter_VariableName
-mathinterpreter_PMExpression "0..1" --* "1..1" mathinterpreter_PMParenthesis : expression18
-mathinterpreter_Function "1..1" *-- "0..1" mathinterpreter_PMExpression : expression2
-mathinterpreter_DefineExpr "1..1" *-- "0..1" mathinterpreter_PMExpression : expression5
-mathinterpreter_PMExpression "0..1" --* "1..1" mathinterpreter_Variable : expression8
-mathinterpreter_PMExpression "0..1" --* "1..1" mathinterpreter_PMExpression : left12
-mathinterpreter_MathExpression "0..9999" --* "1..1" mathinterpreter_Model : mathexpression0
-mathinterpreter_EObject "0..1" --* "1..1" mathinterpreter_PMExpression : operator14
-mathinterpreter_MDExpression "0..1" --* "1..1" mathinterpreter_PMExpression : right16
-mathinterpreter_Variable "0..1" --* "1..1" mathinterpreter_VariableDefinition : variable1
-mathinterpreter_DefineExpr "1..1" *-- "0..9999" mathinterpreter_Variable : variables3
+mathinterpreter_PMExpression "mathinterpreter_PMParenthesis 0..1" --* "mathinterpreter_PMExpression19 1..1" mathinterpreter_PMParenthesis : expression18
+mathinterpreter_Function "mathinterpreter_PMExpression 1..1" *-- "mathinterpreter_Function 0..1" mathinterpreter_PMExpression : expression2
+mathinterpreter_DefineExpr "mathinterpreter_PMExpression7 1..1" *-- "mathinterpreter_DefineExpr6 0..1" mathinterpreter_PMExpression : expression5
+mathinterpreter_PMExpression "mathinterpreter_Variable9 0..1" --* "mathinterpreter_PMExpression10 1..1" mathinterpreter_Variable : expression8
+mathinterpreter_PMExpression "mathinterpreter_PMExpression11 0..1" --* "mathinterpreter_PMExpression13 1..1" mathinterpreter_PMExpression : left12
+mathinterpreter_MathExpression "mathinterpreter_Model 0..9999" --* "mathinterpreter_MathExpression 1..1" mathinterpreter_Model : mathexpression0
+mathinterpreter_EObject "mathinterpreter_PMExpression15 0..1" --* "mathinterpreter_EObject 1..1" mathinterpreter_PMExpression : operator14
+mathinterpreter_MDExpression "mathinterpreter_PMExpression17 0..1" --* "mathinterpreter_MDExpression 1..1" mathinterpreter_PMExpression : right16
+mathinterpreter_Variable "mathinterpreter_VariableDefinition 0..1" --* "mathinterpreter_Variable 1..1" mathinterpreter_VariableDefinition : variable1
+mathinterpreter_DefineExpr "mathinterpreter_Variable4 1..1" *-- "mathinterpreter_DefineExpr 0..9999" mathinterpreter_Variable : variables3
 @enduml

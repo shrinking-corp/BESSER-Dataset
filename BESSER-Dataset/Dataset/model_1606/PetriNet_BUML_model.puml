@@ -1,4 +1,8 @@
 @startuml
+' model: pn
+' project: sampleModel
+' owner: User
+' description: New project
 class NamedElement {
 }
 class NetElement {
@@ -21,10 +25,10 @@ NamedElement <|-- pn_NetElement
 NamedElement <|-- pn_Place
 NetElement <|-- pn_Place
 NetElement <|-- pn_Transition
-pn_Net "1..1" *-- "0..9999" pn_NetElement : elements0
-pn_Net "1..1" -- "1..1" pn_NetElement : net1
-pn_Place "0..9999" -- "1..1" pn_Transition : srcP2T3
-pn_Place "1..1" -- "0..9999" pn_Transition : srcT2P6
-pn_Place "1..1" -- "0..9999" pn_Transition : trgP2T5
-pn_Place "0..9999" -- "1..1" pn_Transition : trgT2P2
+pn_Net "NetElement 1..1" *-- "net 0..9999" pn_NetElement : elements0
+pn_Net "elements 1..1" -- "Net 1..1" pn_NetElement : net1
+pn_Place "trgP2T 0..9999" -- "Place4 1..1" pn_Transition : srcP2T3
+pn_Place "Transition7 1..1" -- "trgT2P 0..9999" pn_Transition : srcT2P6
+pn_Place "Transition 1..1" -- "srcP2T 0..9999" pn_Transition : trgP2T5
+pn_Place "srcT2P 0..9999" -- "Place 1..1" pn_Transition : trgT2P2
 @enduml

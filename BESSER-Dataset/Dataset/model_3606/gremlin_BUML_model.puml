@@ -1,4 +1,8 @@
 @startuml
+' model: gremlin
+' project: sampleModel
+' owner: User
+' description: New project
 class BinaryExpression {
 }
 class Expression {
@@ -315,39 +319,39 @@ TypeDeclaration <|-- gremlin_SetDeclaration
 TypeDeclaration <|-- gremlin_SortedSetDeclaration
 UnaryExpression <|-- gremlin_NotExpression
 VariableAccess <|-- gremlin_ClosureIt
-gremlin_TypeDeclaration "0..1" --* "1..1" gremlin_VariableAccess : cast19
-gremlin_TypeDeclaration "0..1" --* "1..1" gremlin_UnionCall : cast49
-gremlin_IntersectionCall "1..1" *-- "0..1" gremlin_TypeDeclaration : cast57
-gremlin_Closure "1..1" --* "1..1" gremlin_FilterStep : closure25
-gremlin_Closure "1..1" --* "1..1" gremlin_TransformStep : closure31
-gremlin_Closure "0..1" --* "1..1" gremlin_GatherStep : closure33
-gremlin_CollectionDefinition "1..1" --* "1..1" gremlin_RetainStep : collection27
-gremlin_CollectionDefinition "1..1" --* "1..1" gremlin_ExceptStep : collection29
-gremlin_Instruction "0..1" --* "1..1" gremlin_TernaryOperator : condition67
-gremlin_Instruction "1..1" --* "1..1" gremlin_UnaryExpression : exp60
-gremlin_Instruction "1..1" --* "1..1" gremlin_TernaryOperator : ifFalse72
-gremlin_Instruction "1..1" --* "1..1" gremlin_TernaryOperator : ifTrue69
-gremlin_FillStep "1..1" *-- "1..1" gremlin_Instruction : instruction21
-gremlin_GremlinScript "1..1" *-- "0..9999" gremlin_Instruction : instructions0
-gremlin_Instruction "0..9999" --* "1..1" gremlin_MethodDeclaration : instructions1
-gremlin_Closure "1..1" *-- "0..9999" gremlin_Instruction : instructions17
-gremlin_BinaryExpression "1..1" *-- "1..1" gremlin_Instruction : left62
-gremlin_Instruction "1..1" --* "1..1" gremlin_UnionCall : leftCollection44
-gremlin_Instruction "1..1" --* "1..1" gremlin_IntersectionCall : leftCollection52
-gremlin_TraversalElement "1..1" *-- "0..1" gremlin_TraversalElement : nextElement8
-gremlin_CustomMethodCall "1..1" *-- "0..9999" gremlin_EObject : params35
-gremlin_CustomStep "1..1" *-- "0..9999" gremlin_EObject : params75
-gremlin_TraversalElement "1..1" -- "0..1" gremlin_TraversalElement : previousElement10
-gremlin_BinaryExpression "1..1" *-- "1..1" gremlin_Instruction : right64
-gremlin_Instruction "1..1" --* "1..1" gremlin_UnionCall : rightCollection46
-gremlin_Instruction "1..1" --* "1..1" gremlin_IntersectionCall : rightCollection54
-gremlin_CollectionDefinition "1..1" *-- "0..1" gremlin_TypeDeclaration : type14
-gremlin_TypeDeclaration "0..1" --* "1..1" gremlin_VariableDeclaration : type5
-gremlin_Instruction "0..1" --* "1..1" gremlin_PropertyStep : value23
-gremlin_Instruction "0..1" --* "1..1" gremlin_VariableDeclaration : value3
-gremlin_ContainsCall "1..1" *-- "1..1" gremlin_Instruction : value36
-gremlin_ContainsAllCall "1..1" *-- "1..1" gremlin_Instruction : value38
-gremlin_AddAllCall "1..1" *-- "1..1" gremlin_Instruction : value40
-gremlin_Instruction "1..1" --* "1..1" gremlin_RetainAllCall : value42
-gremlin_CollectionDefinition "1..1" *-- "0..9999" gremlin_Instruction : values12
+gremlin_TypeDeclaration "gremlin_VariableAccess 0..1" --* "gremlin_TypeDeclaration20 1..1" gremlin_VariableAccess : cast19
+gremlin_TypeDeclaration "gremlin_UnionCall50 0..1" --* "gremlin_TypeDeclaration51 1..1" gremlin_UnionCall : cast49
+gremlin_IntersectionCall "gremlin_TypeDeclaration59 1..1" *-- "gremlin_IntersectionCall58 0..1" gremlin_TypeDeclaration : cast57
+gremlin_Closure "gremlin_FilterStep 1..1" --* "gremlin_Closure26 1..1" gremlin_FilterStep : closure25
+gremlin_Closure "gremlin_TransformStep 1..1" --* "gremlin_Closure32 1..1" gremlin_TransformStep : closure31
+gremlin_Closure "gremlin_GatherStep 0..1" --* "gremlin_Closure34 1..1" gremlin_GatherStep : closure33
+gremlin_CollectionDefinition "gremlin_RetainStep 1..1" --* "gremlin_CollectionDefinition28 1..1" gremlin_RetainStep : collection27
+gremlin_CollectionDefinition "gremlin_ExceptStep 1..1" --* "gremlin_CollectionDefinition30 1..1" gremlin_ExceptStep : collection29
+gremlin_Instruction "gremlin_TernaryOperator 0..1" --* "gremlin_Instruction68 1..1" gremlin_TernaryOperator : condition67
+gremlin_Instruction "gremlin_UnaryExpression 1..1" --* "gremlin_Instruction61 1..1" gremlin_UnaryExpression : exp60
+gremlin_Instruction "gremlin_TernaryOperator73 1..1" --* "gremlin_Instruction74 1..1" gremlin_TernaryOperator : ifFalse72
+gremlin_Instruction "gremlin_TernaryOperator70 1..1" --* "gremlin_Instruction71 1..1" gremlin_TernaryOperator : ifTrue69
+gremlin_FillStep "gremlin_Instruction22 1..1" *-- "gremlin_FillStep 1..1" gremlin_Instruction : instruction21
+gremlin_GremlinScript "gremlin_Instruction 1..1" *-- "gremlin_GremlinScript 0..9999" gremlin_Instruction : instructions0
+gremlin_Instruction "gremlin_MethodDeclaration 0..9999" --* "gremlin_Instruction2 1..1" gremlin_MethodDeclaration : instructions1
+gremlin_Closure "gremlin_Instruction18 1..1" *-- "gremlin_Closure 0..9999" gremlin_Instruction : instructions17
+gremlin_BinaryExpression "gremlin_Instruction63 1..1" *-- "gremlin_BinaryExpression 1..1" gremlin_Instruction : left62
+gremlin_Instruction "gremlin_UnionCall 1..1" --* "gremlin_Instruction45 1..1" gremlin_UnionCall : leftCollection44
+gremlin_Instruction "gremlin_IntersectionCall 1..1" --* "gremlin_Instruction53 1..1" gremlin_IntersectionCall : leftCollection52
+gremlin_TraversalElement "TraversalElement 1..1" *-- "previousElement 0..1" gremlin_TraversalElement : nextElement8
+gremlin_CustomMethodCall "gremlin_EObject 1..1" *-- "gremlin_CustomMethodCall 0..9999" gremlin_EObject : params35
+gremlin_CustomStep "gremlin_EObject76 1..1" *-- "gremlin_CustomStep 0..9999" gremlin_EObject : params75
+gremlin_TraversalElement "TraversalElement11 1..1" -- "nextElement 0..1" gremlin_TraversalElement : previousElement10
+gremlin_BinaryExpression "gremlin_Instruction66 1..1" *-- "gremlin_BinaryExpression65 1..1" gremlin_Instruction : right64
+gremlin_Instruction "gremlin_UnionCall47 1..1" --* "gremlin_Instruction48 1..1" gremlin_UnionCall : rightCollection46
+gremlin_Instruction "gremlin_IntersectionCall55 1..1" --* "gremlin_Instruction56 1..1" gremlin_IntersectionCall : rightCollection54
+gremlin_CollectionDefinition "gremlin_TypeDeclaration16 1..1" *-- "gremlin_CollectionDefinition15 0..1" gremlin_TypeDeclaration : type14
+gremlin_TypeDeclaration "gremlin_VariableDeclaration6 0..1" --* "gremlin_TypeDeclaration 1..1" gremlin_VariableDeclaration : type5
+gremlin_Instruction "gremlin_PropertyStep 0..1" --* "gremlin_Instruction24 1..1" gremlin_PropertyStep : value23
+gremlin_Instruction "gremlin_VariableDeclaration 0..1" --* "gremlin_Instruction4 1..1" gremlin_VariableDeclaration : value3
+gremlin_ContainsCall "gremlin_Instruction37 1..1" *-- "gremlin_ContainsCall 1..1" gremlin_Instruction : value36
+gremlin_ContainsAllCall "gremlin_Instruction39 1..1" *-- "gremlin_ContainsAllCall 1..1" gremlin_Instruction : value38
+gremlin_AddAllCall "gremlin_Instruction41 1..1" *-- "gremlin_AddAllCall 1..1" gremlin_Instruction : value40
+gremlin_Instruction "gremlin_RetainAllCall 1..1" --* "gremlin_Instruction43 1..1" gremlin_RetainAllCall : value42
+gremlin_CollectionDefinition "gremlin_Instruction13 1..1" *-- "gremlin_CollectionDefinition 0..9999" gremlin_Instruction : values12
 @enduml

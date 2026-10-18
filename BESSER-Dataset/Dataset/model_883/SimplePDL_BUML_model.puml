@@ -1,4 +1,8 @@
 @startuml
+' model: simplepdl
+' project: sampleModel
+' owner: User
+' description: New project
 class ProcessElement {
 }
 enum WorkSequenceType {
@@ -33,14 +37,14 @@ ProcessElement <|-- simplepdl_Ressource
 ProcessElement <|-- simplepdl_RessourceSequence
 ProcessElement <|-- simplepdl_WorkDefinition
 ProcessElement <|-- simplepdl_WorkSequence
-simplepdl_Guidance "1..1" -- "0..9999" simplepdl_ProcessElement : element11
-simplepdl_WorkDefinition "1..1" -- "0..9999" simplepdl_WorkSequence : linksToPredecessors4
-simplepdl_WorkDefinition "1..1" -- "0..9999" simplepdl_WorkSequence : linksToSuccessors5
-simplepdl_WorkDefinition "1..1" -- "1..1" simplepdl_WorkSequence : predecessor8
-simplepdl_Process "1..1" -- "1..1" simplepdl_ProcessElement : process1
-simplepdl_Process "1..1" *-- "0..9999" simplepdl_ProcessElement : processElements0
-simplepdl_Ressource "1..1" -- "1..1" simplepdl_RessourceSequence : ressource13
-simplepdl_RessourceSequence "0..9999" -- "1..1" simplepdl_WorkDefinition : ressourcesequence7
-simplepdl_WorkDefinition "1..1" -- "1..1" simplepdl_WorkSequence : successor9
-simplepdl_RessourceSequence "1..1" -- "1..1" simplepdl_WorkDefinition : workdefinition14
+simplepdl_Guidance "simplepdl_ProcessElement12 1..1" -- "simplepdl_Guidance 0..9999" simplepdl_ProcessElement : element11
+simplepdl_WorkDefinition "WorkSequence 1..1" -- "successor 0..9999" simplepdl_WorkSequence : linksToPredecessors4
+simplepdl_WorkDefinition "WorkSequence6 1..1" -- "predecessor 0..9999" simplepdl_WorkSequence : linksToSuccessors5
+simplepdl_WorkDefinition "linksToSuccessors 1..1" -- "WorkDefinition 1..1" simplepdl_WorkSequence : predecessor8
+simplepdl_Process "simplepdl_ProcessElement2 1..1" -- "simplepdl_Process3 1..1" simplepdl_ProcessElement : process1
+simplepdl_Process "simplepdl_ProcessElement 1..1" *-- "simplepdl_Process 0..9999" simplepdl_ProcessElement : processElements0
+simplepdl_Ressource "simplepdl_RessourceSequence 1..1" -- "simplepdl_Ressource 1..1" simplepdl_RessourceSequence : ressource13
+simplepdl_RessourceSequence "workdefinition 0..9999" -- "RessourceSequence 1..1" simplepdl_WorkDefinition : ressourcesequence7
+simplepdl_WorkDefinition "linksToPredecessors 1..1" -- "WorkDefinition10 1..1" simplepdl_WorkSequence : successor9
+simplepdl_RessourceSequence "WorkDefinition15 1..1" -- "ressourcesequence 1..1" simplepdl_WorkDefinition : workdefinition14
 @enduml

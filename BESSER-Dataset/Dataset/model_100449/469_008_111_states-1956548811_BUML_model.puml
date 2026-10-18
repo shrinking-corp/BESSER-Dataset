@@ -1,4 +1,8 @@
 @startuml
+' model: states
+' project: sampleModel
+' owner: User
+' description: New project
 class states_ActionExecution {
 }
 class states_EObject {
@@ -14,14 +18,14 @@ class states_Trace {
 }
 class states_Transition {
 }
-states_ActionExecution "0..1" -- "1..1" states_Event : actionExecution15
-states_Event "1..1" --* "1..1" states_Transition : event13
-states_State "1..1" -- "0..1" states_Transition : incoming6
-states_EObject "0..9999" --* "1..1" states_State : objects8
-states_State "1..1" -- "0..1" states_Transition : outgoing5
-states_State "1..1" -- "1..1" states_Transition : source10
-states_State "0..9999" --* "1..1" states_StateSystem : states0
-states_State "1..1" -- "1..1" states_Transition : target11
-states_StateSystem "1..1" -- "0..1" states_Trace : trace3
-states_StateSystem "1..1" *-- "0..9999" states_Transition : transitions1
+states_ActionExecution "states_Event16 0..1" -- "states_ActionExecution 1..1" states_Event : actionExecution15
+states_Event "states_Transition14 1..1" --* "states_Event 1..1" states_Transition : event13
+states_State "Transition7 1..1" -- "target 0..1" states_Transition : incoming6
+states_EObject "states_State9 0..9999" --* "states_EObject 1..1" states_State : objects8
+states_State "Transition 1..1" -- "source 0..1" states_Transition : outgoing5
+states_State "outgoing 1..1" -- "State 1..1" states_Transition : source10
+states_State "states_StateSystem 0..9999" --* "states_State 1..1" states_StateSystem : states0
+states_State "incoming 1..1" -- "State12 1..1" states_Transition : target11
+states_StateSystem "states_Trace 1..1" -- "states_StateSystem4 0..1" states_Trace : trace3
+states_StateSystem "states_Transition 1..1" *-- "states_StateSystem2 0..9999" states_Transition : transitions1
 @enduml

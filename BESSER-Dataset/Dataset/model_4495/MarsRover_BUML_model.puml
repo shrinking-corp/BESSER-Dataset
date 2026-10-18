@@ -1,4 +1,8 @@
 @startuml
+' model: marsRover
+' project: sampleModel
+' owner: User
+' description: New project
 enum Color {
   COLOR_BLACK
   COLOR_BLUE
@@ -72,11 +76,11 @@ class marsRover_ultra {
   + distance : int
   + name : str
 }
-marsRover_after_action "0..1" --* "1..1" marsRover_detect_lakes : after_examinating5
-marsRover_after_action "0..1" --* "1..1" marsRover_detect_rocks : after_examinating6
-marsRover_after_action "1..1" *-- "0..9999" marsRover_indication : indicate8
-marsRover_Robot "1..1" *-- "0..9999" marsRover_mission : missions0
-marsRover_EObject "0..9999" --* "1..1" marsRover_avoid_obstacles : sensors3
-marsRover_EObject "0..1" --* "1..1" marsRover_mission : type1
-marsRover_EObject "0..1" --* "1..1" marsRover_indication : type10
+marsRover_after_action "marsRover_detect_lakes 0..1" --* "marsRover_after_action 1..1" marsRover_detect_lakes : after_examinating5
+marsRover_after_action "marsRover_detect_rocks 0..1" --* "marsRover_after_action7 1..1" marsRover_detect_rocks : after_examinating6
+marsRover_after_action "marsRover_indication 1..1" *-- "marsRover_after_action9 0..9999" marsRover_indication : indicate8
+marsRover_Robot "marsRover_mission 1..1" *-- "marsRover_Robot 0..9999" marsRover_mission : missions0
+marsRover_EObject "marsRover_avoid_obstacles 0..9999" --* "marsRover_EObject4 1..1" marsRover_avoid_obstacles : sensors3
+marsRover_EObject "marsRover_mission2 0..1" --* "marsRover_EObject 1..1" marsRover_mission : type1
+marsRover_EObject "marsRover_indication11 0..1" --* "marsRover_EObject12 1..1" marsRover_indication : type10
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: entitymm
+' project: sampleModel
+' owner: User
+' description: New project
 class Type {
 }
 class entitymm_Attribute {
@@ -19,8 +23,8 @@ abstract class entitymm_Type {
 }
 Type <|-- entitymm_Entity
 Type <|-- entitymm_PrimitiveType
-entitymm_Attribute "1..9999" --* "1..1" entitymm_Entity : attributes3
-entitymm_Attribute "1..1" -- "1..1" entitymm_Entity : entity1
-entitymm_Attribute "1..1" -- "1..1" entitymm_PrimitiveType : type2
-entitymm_Model "1..1" *-- "0..9999" entitymm_Type : types0
+entitymm_Attribute "entity 1..9999" --* "Attribute 1..1" entitymm_Entity : attributes3
+entitymm_Attribute "Entity 1..1" -- "attributes 1..1" entitymm_Entity : entity1
+entitymm_Attribute "entitymm_PrimitiveType 1..1" -- "entitymm_Attribute 1..1" entitymm_PrimitiveType : type2
+entitymm_Model "entitymm_Type 1..1" *-- "entitymm_Model 0..9999" entitymm_Type : types0
 @enduml

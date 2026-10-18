@@ -1,4 +1,8 @@
 @startuml
+' model: bibTeX
+' project: sampleModel
+' owner: User
+' description: New project
 class AuthorField {
 }
 class BibtexEntryTypes {
@@ -77,26 +81,26 @@ class bibTeX_YearField {
 AuthorField <|-- bibTeX_Authors
 BibtexEntryTypes <|-- bibTeX_Article
 BibtexEntryTypes <|-- bibTeX_Book
-bibTeX_BibtexEntryTypes "0..9999" --* "1..1" bibTeX_Model : BibtexEntries0
-bibTeX_AddressField "0..1" --* "1..1" bibTeX_Book : address30
-bibTeX_Article "1..1" *-- "0..1" bibTeX_AuthorField : author13
-bibTeX_Book "1..1" *-- "0..1" bibTeX_EObject : author_editor22
-bibTeX_Book "1..1" *-- "0..1" bibTeX_EditionField : edition32
-bibTeX_Book "1..1" *-- "0..1" bibTeX_IsbnField : isbn34
-bibTeX_Article "1..1" *-- "0..1" bibTeX_JournalField : journal14
-bibTeX_BibtexEntryTypes "1..1" *-- "0..1" bibTeX_CiteKey : key1
-bibTeX_BibtexEntryTypes "1..1" *-- "0..1" bibTeX_MonthField : month7
-bibTeX_Authors "1..1" *-- "0..9999" bibTeX_Fullname : names40
-bibTeX_BibtexEntryTypes "1..1" *-- "0..1" bibTeX_NoteField : note9
-bibTeX_Article "1..1" *-- "0..1" bibTeX_NumberField : number18
-bibTeX_Article "1..1" *-- "0..1" bibTeX_PagesField : pages20
-bibTeX_Book "1..1" *-- "0..1" bibTeX_PublisherField : publisher23
-bibTeX_Book "1..1" *-- "0..1" bibTeX_SeriesField : series28
-bibTeX_BibtexEntryTypes "1..1" *-- "0..1" bibTeX_TitleField : title3
-bibTeX_UnknownField "1..1" *-- "0..1" bibTeX_UnknownType : type36
-bibTeX_BibtexEntryTypes "1..1" *-- "0..9999" bibTeX_UnknownField : unknowns11
-bibTeX_UnknownField "1..1" *-- "0..1" bibTeX_UnknownValue : value38
-bibTeX_Article "1..1" *-- "0..1" bibTeX_VolumeField : volume16
-bibTeX_Book "1..1" *-- "0..1" bibTeX_EObject : volume_number25
-bibTeX_BibtexEntryTypes "1..1" *-- "0..1" bibTeX_YearField : year5
+bibTeX_BibtexEntryTypes "bibTeX_Model 0..9999" --* "bibTeX_BibtexEntryTypes 1..1" bibTeX_Model : BibtexEntries0
+bibTeX_AddressField "bibTeX_Book31 0..1" --* "bibTeX_AddressField 1..1" bibTeX_Book : address30
+bibTeX_Article "bibTeX_AuthorField 1..1" *-- "bibTeX_Article 0..1" bibTeX_AuthorField : author13
+bibTeX_Book "bibTeX_EObject 1..1" *-- "bibTeX_Book 0..1" bibTeX_EObject : author_editor22
+bibTeX_Book "bibTeX_EditionField 1..1" *-- "bibTeX_Book33 0..1" bibTeX_EditionField : edition32
+bibTeX_Book "bibTeX_IsbnField 1..1" *-- "bibTeX_Book35 0..1" bibTeX_IsbnField : isbn34
+bibTeX_Article "bibTeX_JournalField 1..1" *-- "bibTeX_Article15 0..1" bibTeX_JournalField : journal14
+bibTeX_BibtexEntryTypes "bibTeX_CiteKey 1..1" *-- "bibTeX_BibtexEntryTypes2 0..1" bibTeX_CiteKey : key1
+bibTeX_BibtexEntryTypes "bibTeX_MonthField 1..1" *-- "bibTeX_BibtexEntryTypes8 0..1" bibTeX_MonthField : month7
+bibTeX_Authors "bibTeX_Fullname 1..1" *-- "bibTeX_Authors 0..9999" bibTeX_Fullname : names40
+bibTeX_BibtexEntryTypes "bibTeX_NoteField 1..1" *-- "bibTeX_BibtexEntryTypes10 0..1" bibTeX_NoteField : note9
+bibTeX_Article "bibTeX_NumberField 1..1" *-- "bibTeX_Article19 0..1" bibTeX_NumberField : number18
+bibTeX_Article "bibTeX_PagesField 1..1" *-- "bibTeX_Article21 0..1" bibTeX_PagesField : pages20
+bibTeX_Book "bibTeX_PublisherField 1..1" *-- "bibTeX_Book24 0..1" bibTeX_PublisherField : publisher23
+bibTeX_Book "bibTeX_SeriesField 1..1" *-- "bibTeX_Book29 0..1" bibTeX_SeriesField : series28
+bibTeX_BibtexEntryTypes "bibTeX_TitleField 1..1" *-- "bibTeX_BibtexEntryTypes4 0..1" bibTeX_TitleField : title3
+bibTeX_UnknownField "bibTeX_UnknownType 1..1" *-- "bibTeX_UnknownField37 0..1" bibTeX_UnknownType : type36
+bibTeX_BibtexEntryTypes "bibTeX_UnknownField 1..1" *-- "bibTeX_BibtexEntryTypes12 0..9999" bibTeX_UnknownField : unknowns11
+bibTeX_UnknownField "bibTeX_UnknownValue 1..1" *-- "bibTeX_UnknownField39 0..1" bibTeX_UnknownValue : value38
+bibTeX_Article "bibTeX_VolumeField 1..1" *-- "bibTeX_Article17 0..1" bibTeX_VolumeField : volume16
+bibTeX_Book "bibTeX_EObject27 1..1" *-- "bibTeX_Book26 0..1" bibTeX_EObject : volume_number25
+bibTeX_BibtexEntryTypes "bibTeX_YearField 1..1" *-- "bibTeX_BibtexEntryTypes6 0..1" bibTeX_YearField : year5
 @enduml

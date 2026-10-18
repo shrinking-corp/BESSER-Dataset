@@ -1,4 +1,8 @@
 @startuml
+' model: Ant
+' project: sampleModel
+' owner: User
+' description: New project
 abstract class Ant_ArchiveTask {
 }
 class Ant_Attribut {
@@ -256,32 +260,32 @@ Set <|-- Ant_Path
 Set <|-- Ant_PatternSet
 Task <|-- Ant_NewTask
 Task <|-- Ant_PreDefinedTask
-Ant_Attribut "0..9999" --* "1..1" Ant_NewTask : attributes40
-Ant_ClassPath "0..1" --* "1..1" Ant_Java : classPath42
-Ant_ClassPath "0..1" --* "1..1" Ant_Javac : classPath47
-Ant_Project "1..1" -- "1..1" Ant_Target : default0
-Ant_Target "0..9999" -- "1..1" Ant_Target : depends11
-Ant_Excludes "0..9999" --* "1..1" Ant_FileSet : exclude19
-Ant_FileSet "0..9999" --* "1..1" Ant_Path : fileset29
-Ant_ClassPath "1..1" *-- "0..9999" Ant_FileSet : fileset34
-Ant_Copy "1..1" *-- "0..1" Ant_FileSet : fileset50
-Ant_Filter "0..9999" --* "1..1" Ant_FilterSet : filter21
-Ant_Copy "1..1" *-- "0..1" Ant_FilterSet : filterset52
-Ant_FilterSet "1..1" *-- "0..9999" Ant_FiltersFile : filtersfile22
-Ant_FormatTstamp "0..9999" --* "1..1" Ant_Tstamp : format44
-Ant_InExcludes "0..9999" --* "1..1" Ant_Javac : inExcludes45
-Ant_FileSet "1..1" *-- "0..9999" Ant_Includes : include17
-Ant_InExcludes "1..9999" --* "1..1" Ant_PatternSet : inexcludes14
-Ant_Copy "1..1" *-- "0..1" Ant_Mapper : mapper55
-Ant_Path "0..1" --* "1..1" Ant_Project : path1
-Ant_Path "0..1" --* "1..1" Ant_Path : path25
-Ant_Path "1..1" *-- "0..9999" Ant_PathElement : pathElement27
-Ant_ClassPath "1..1" *-- "0..9999" Ant_PathElement : pathElement32
-Ant_FileSet "1..1" *-- "0..9999" Ant_PatternSet : patternset15
-Ant_Project "1..1" *-- "0..9999" Ant_Property : properties3
-Ant_Target "1..1" -- "1..1" Ant_Task : target37
-Ant_Project "1..1" *-- "1..9999" Ant_Target : targets7
-Ant_NewTask "1..1" -- "1..1" Ant_TaskDef : taskName38
-Ant_Project "1..1" *-- "0..9999" Ant_TaskDef : taskdef5
-Ant_Target "1..1" *-- "0..9999" Ant_Task : tasks13
+Ant_Attribut "Ant_NewTask41 0..9999" --* "Ant_Attribut 1..1" Ant_NewTask : attributes40
+Ant_ClassPath "Ant_Java 0..1" --* "Ant_ClassPath43 1..1" Ant_Java : classPath42
+Ant_ClassPath "Ant_Javac48 0..1" --* "Ant_ClassPath49 1..1" Ant_Javac : classPath47
+Ant_Project "Ant_Target 1..1" -- "Ant_Project 1..1" Ant_Target : default0
+Ant_Target "Ant_Target10 0..9999" -- "Ant_Target12 1..1" Ant_Target : depends11
+Ant_Excludes "Ant_FileSet20 0..9999" --* "Ant_Excludes 1..1" Ant_FileSet : exclude19
+Ant_FileSet "Ant_Path30 0..9999" --* "Ant_FileSet31 1..1" Ant_Path : fileset29
+Ant_ClassPath "Ant_FileSet36 1..1" *-- "Ant_ClassPath35 0..9999" Ant_FileSet : fileset34
+Ant_Copy "Ant_FileSet51 1..1" *-- "Ant_Copy 0..1" Ant_FileSet : fileset50
+Ant_Filter "Ant_FilterSet 0..9999" --* "Ant_Filter 1..1" Ant_FilterSet : filter21
+Ant_Copy "Ant_FilterSet54 1..1" *-- "Ant_Copy53 0..1" Ant_FilterSet : filterset52
+Ant_FilterSet "Ant_FiltersFile 1..1" *-- "Ant_FilterSet23 0..9999" Ant_FiltersFile : filtersfile22
+Ant_FormatTstamp "Ant_Tstamp 0..9999" --* "Ant_FormatTstamp 1..1" Ant_Tstamp : format44
+Ant_InExcludes "Ant_Javac 0..9999" --* "Ant_InExcludes46 1..1" Ant_Javac : inExcludes45
+Ant_FileSet "Ant_Includes 1..1" *-- "Ant_FileSet18 0..9999" Ant_Includes : include17
+Ant_InExcludes "Ant_PatternSet 1..9999" --* "Ant_InExcludes 1..1" Ant_PatternSet : inexcludes14
+Ant_Copy "Ant_Mapper 1..1" *-- "Ant_Copy56 0..1" Ant_Mapper : mapper55
+Ant_Path "Ant_Project2 0..1" --* "Ant_Path 1..1" Ant_Project : path1
+Ant_Path "Ant_Path24 0..1" --* "Ant_Path26 1..1" Ant_Path : path25
+Ant_Path "Ant_PathElement 1..1" *-- "Ant_Path28 0..9999" Ant_PathElement : pathElement27
+Ant_ClassPath "Ant_PathElement33 1..1" *-- "Ant_ClassPath 0..9999" Ant_PathElement : pathElement32
+Ant_FileSet "Ant_PatternSet16 1..1" *-- "Ant_FileSet 0..9999" Ant_PatternSet : patternset15
+Ant_Project "Ant_Property 1..1" *-- "Ant_Project4 0..9999" Ant_Property : properties3
+Ant_Target "tasks 1..1" -- "Target 1..1" Ant_Task : target37
+Ant_Project "Ant_Target9 1..1" *-- "Ant_Project8 1..9999" Ant_Target : targets7
+Ant_NewTask "Ant_TaskDef39 1..1" -- "Ant_NewTask 1..1" Ant_TaskDef : taskName38
+Ant_Project "Ant_TaskDef 1..1" *-- "Ant_Project6 0..9999" Ant_TaskDef : taskdef5
+Ant_Target "Task 1..1" *-- "target 0..9999" Ant_Task : tasks13
 @enduml

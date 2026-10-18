@@ -1,4 +1,8 @@
 @startuml
+' model: minifsm
+' project: sampleModel
+' owner: User
+' description: New project
 class State {
 }
 class minifsm_FSM {
@@ -19,10 +23,10 @@ class minifsm_Transition {
 }
 State <|-- minifsm_Initial
 State <|-- minifsm_Terminal
-minifsm_FSM "1..1" -- "0..1" minifsm_State : currentState2
-minifsm_FSM "0..1" -- "1..1" minifsm_Transition : fsm10
-minifsm_State "0..1" -- "1..1" minifsm_Transition : incoming5
-minifsm_State "0..1" -- "1..1" minifsm_Transition : outgoing7
-minifsm_FSM "1..1" *-- "0..9999" minifsm_State : states0
-minifsm_FSM "1..1" *-- "0..9999" minifsm_Transition : transitions1
+minifsm_FSM "minifsm_State4 1..1" -- "minifsm_FSM3 0..1" minifsm_State : currentState2
+minifsm_FSM "transitions 0..1" -- "FSM 1..1" minifsm_Transition : fsm10
+minifsm_State "minifsm_Transition 0..1" -- "minifsm_State6 1..1" minifsm_Transition : incoming5
+minifsm_State "minifsm_Transition8 0..1" -- "minifsm_State9 1..1" minifsm_Transition : outgoing7
+minifsm_FSM "minifsm_State 1..1" *-- "minifsm_FSM 0..9999" minifsm_State : states0
+minifsm_FSM "Transition 1..1" *-- "fsm 0..9999" minifsm_Transition : transitions1
 @enduml

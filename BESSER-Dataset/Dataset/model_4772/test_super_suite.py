@@ -938,30 +938,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=model_MMultiplicity_strategy)
-@settings(max_examples=30)
-def test_hyp_model_mmultiplicity_addrange_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.addRange(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.addRange).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'addRange' in model_MMultiplicity is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'addRange' in model_MMultiplicity did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'addRange' in model_MMultiplicity is not implemented or raised an error")
 
 
 
@@ -972,30 +948,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=model_MAssociationClass_strategy)
-@settings(max_examples=30)
-def test_hyp_model_massociationclass_processwithvisitor_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.processWithVisitor(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.processWithVisitor).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'processWithVisitor' in model_MAssociationClass is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'processWithVisitor' in model_MAssociationClass did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'processWithVisitor' in model_MAssociationClass is not implemented or raised an error")
 
 
 
@@ -1045,30 +997,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=model_MModelElementEx_strategy)
-@settings(max_examples=30)
-def test_hyp_model_mmodelelementex_processwithvisitor_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.processWithVisitor(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.processWithVisitor).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'processWithVisitor' in model_MModelElementEx is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'processWithVisitor' in model_MModelElementEx did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'processWithVisitor' in model_MModelElementEx is not implemented or raised an error")
 
 
 import warnings
@@ -1077,30 +1005,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=model_MModelElement_strategy)
-@settings(max_examples=30)
-def test_hyp_model_mmodelelement_processwithvisitor_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.processWithVisitor(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.processWithVisitor).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'processWithVisitor' in model_MModelElement is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'processWithVisitor' in model_MModelElement did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'processWithVisitor' in model_MModelElement is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1108,28 +1012,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=model_MModelElement_strategy)
-@settings(max_examples=30)
-def test_hyp_model_mmodelelement_name_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.name()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.name).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'name' in model_MModelElement is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'name' in model_MModelElement did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'name' in model_MModelElement is not implemented or raised an error")
 
 
 
@@ -1146,30 +1028,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=model_MPrePostCondition_strategy)
-@settings(max_examples=30)
-def test_hyp_model_mprepostcondition_setpre_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.setPre(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.setPre).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'setPre' in model_MPrePostCondition is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'setPre' in model_MPrePostCondition did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'setPre' in model_MPrePostCondition is not implemented or raised an error")
 
 
 
@@ -1235,30 +1093,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=model_EnumType_strategy)
-@settings(max_examples=30)
-def test_hyp_model_enumtype_addliteral_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.addLiteral(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.addLiteral).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'addLiteral' in model_EnumType is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'addLiteral' in model_EnumType did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'addLiteral' in model_EnumType is not implemented or raised an error")
 
 
 
@@ -1282,30 +1116,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=model_MAssociation_strategy)
-@settings(max_examples=30)
-def test_hyp_model_massociation_processwithvisitor_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.processWithVisitor(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.processWithVisitor).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'processWithVisitor' in model_MAssociation is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'processWithVisitor' in model_MAssociation did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'processWithVisitor' in model_MAssociation is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1313,30 +1123,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=model_MAssociation_strategy)
-@settings(max_examples=30)
-def test_hyp_model_massociation_addassociationend_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.addAssociationEnd(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.addAssociationEnd).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'addAssociationEnd' in model_MAssociation is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'addAssociationEnd' in model_MAssociation did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'addAssociationEnd' in model_MAssociation is not implemented or raised an error")
 
 
 import warnings
@@ -1345,123 +1131,12 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=model_MModel_strategy)
-@settings(max_examples=30)
-def test_hyp_model_mmodel_addclassinvariant_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.addClassInvariant(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.addClassInvariant).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'addClassInvariant' in model_MModel is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'addClassInvariant' in model_MModel did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'addClassInvariant' in model_MModel is not implemented or raised an error")
 
 import warnings
 import copy
 import inspect
 import ast
 from hypothesis import given, settings
-
-@given(instance=model_MModel_strategy)
-@settings(max_examples=30)
-def test_hyp_model_mmodel_addclass_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.addClass(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.addClass).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'addClass' in model_MModel is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'addClass' in model_MModel did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'addClass' in model_MModel is not implemented or raised an error")
-
-import warnings
-import copy
-import inspect
-import ast
-from hypothesis import given, settings
-
-@given(instance=model_MModel_strategy)
-@settings(max_examples=30)
-def test_hyp_model_mmodel_processwithvisitor_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.processWithVisitor(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.processWithVisitor).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'processWithVisitor' in model_MModel is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'processWithVisitor' in model_MModel did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'processWithVisitor' in model_MModel is not implemented or raised an error")
-
-import warnings
-import copy
-import inspect
-import ast
-from hypothesis import given, settings
-
-@given(instance=model_MModel_strategy)
-@settings(max_examples=30)
-def test_hyp_model_mmodel_addprepostcondition_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.addPrePostCondition(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.addPrePostCondition).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'addPrePostCondition' in model_MModel is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'addPrePostCondition' in model_MModel did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'addPrePostCondition' in model_MModel is not implemented or raised an error")
 
 
 import warnings
@@ -1470,30 +1145,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=model_MClass_strategy)
-@settings(max_examples=30)
-def test_hyp_model_mclass_addattribute_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.addAttribute(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.addAttribute).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'addAttribute' in model_MClass is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'addAttribute' in model_MClass did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'addAttribute' in model_MClass is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1501,30 +1152,7 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=model_MClass_strategy)
-@settings(max_examples=30)
-def test_hyp_model_mclass_addassociation_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.addAssociation(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.addAssociation).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'addAssociation' in model_MClass is empty"
 
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'addAssociation' in model_MClass did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'addAssociation' in model_MClass is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1532,30 +1160,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=model_MClass_strategy)
-@settings(max_examples=30)
-def test_hyp_model_mclass_addoperation_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.addOperation(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.addOperation).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'addOperation' in model_MClass is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'addOperation' in model_MClass did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'addOperation' in model_MClass is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1563,30 +1167,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=model_MClass_strategy)
-@settings(max_examples=30)
-def test_hyp_model_mclass_addchild_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.addChild(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.addChild).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'addChild' in model_MClass is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'addChild' in model_MClass did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'addChild' in model_MClass is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1594,30 +1174,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=model_MClass_strategy)
-@settings(max_examples=30)
-def test_hyp_model_mclass_setabstract_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.setAbstract(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.setAbstract).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'setAbstract' in model_MClass is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'setAbstract' in model_MClass did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'setAbstract' in model_MClass is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1625,30 +1181,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=model_MClass_strategy)
-@settings(max_examples=30)
-def test_hyp_model_mclass_addparent_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.addParent(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.addParent).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'addParent' in model_MClass is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'addParent' in model_MClass did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'addParent' in model_MClass is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1656,30 +1188,20 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=model_MClass_strategy)
-@settings(max_examples=30)
-def test_hyp_model_mclass_processwithvisitor_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.processWithVisitor(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.processWithVisitor).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'processWithVisitor' in model_MClass is empty"
 
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'processWithVisitor' in model_MClass did not change state; check implementation")
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
 
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'processWithVisitor' in model_MClass is not implemented or raised an error")
+
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
+
 
 
 
@@ -1697,30 +1219,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=model_MOperation_strategy)
-@settings(max_examples=30)
-def test_hyp_model_moperation_addvardecl_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.addVarDecl(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.addVarDecl).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'addVarDecl' in model_MOperation is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'addVarDecl' in model_MOperation did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'addVarDecl' in model_MOperation is not implemented or raised an error")
 
 
 import warnings
@@ -1729,30 +1227,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=model_MAttribute_strategy)
-@settings(max_examples=30)
-def test_hyp_model_mattribute_processwithvisitor_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.processWithVisitor(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.processWithVisitor).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'processWithVisitor' in model_MAttribute is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'processWithVisitor' in model_MAttribute did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'processWithVisitor' in model_MAttribute is not implemented or raised an error")
 
 
 # ----- SECTION B: test_structural_full.py (deterministic-first suite) -----
@@ -3745,7 +3219,6 @@ def test_model_EnumType___init__():
 
 def test_model_EnumType_addLiteral():
     assert model_EnumType.addLiteral(model_EnumType('', ''), '') == None
-
 from python_code import model_MAssociationClass
 
 def test_model_MAssociationClass___init__():
@@ -3753,7 +3226,6 @@ def test_model_MAssociationClass___init__():
 
 def test_model_MAssociationClass_processWithVisitor():
     assert model_MAssociationClass.processWithVisitor(model_MAssociationClass(), '') == None
-
 from python_code import model_MModelElement
 
 def test_model_MModelElement___init__():
@@ -3764,7 +3236,6 @@ def test_model_MModelElement_name():
 
 def test_model_MModelElement_processWithVisitor():
     assert model_MModelElement.processWithVisitor(model_MModelElement(), '') == None
-
 from python_code import model_MModelElementEx
 
 def test_model_MModelElementEx___init__():
@@ -3772,7 +3243,6 @@ def test_model_MModelElementEx___init__():
 
 def test_model_MModelElementEx_processWithVisitor():
     assert model_MModelElementEx.processWithVisitor(model_MModelElementEx(''), 0) == None
-
 from python_code import model_TupleType
 
 def test_model_TupleType___init__():

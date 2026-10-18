@@ -1,4 +1,8 @@
 @startuml
+' model: esm
+' project: sampleModel
+' owner: User
+' description: New project
 class DModel {
 }
 enum EsmLayoutDirection {
@@ -72,15 +76,15 @@ IEsmStateModel <|-- esm_EsmEntityStateModel
 IEsmStateModel <|-- esm_EsmSubStateModel
 INavigableMemberContainer <|-- esm_EsmEntityStateModel
 IStaticReferenceTarget <|-- esm_EsmEntityStateModel
-esm_DRichText "0..1" --* "1..1" esm_IEsmState : description6
-esm_DStateEvent "0..1" -- "1..1" esm_EsmTransition : event16
-esm_DExpression "0..1" --* "1..1" esm_EsmDerivedState : expression8
-esm_DEntityType "0..1" -- "1..1" esm_EsmEntityStateModel : forType0
-esm_DState "0..1" -- "1..1" esm_EsmTransition : from_10
-esm_DExpression "0..1" --* "1..1" esm_EsmTransition : guard18
-esm_DState "0..1" -- "1..1" esm_IEsmState : state4
-esm_IEsmState "0..9999" --* "1..1" esm_IEsmStateModel : states1
-esm_EsmConcurrentState "1..1" *-- "0..9999" esm_EsmSubStateModel : subStates9
-esm_DState "0..1" -- "1..1" esm_EsmTransition : to13
-esm_EsmTransition "0..9999" --* "1..1" esm_IEsmStateModel : transitions2
+esm_DRichText "esm_IEsmState7 0..1" --* "esm_DRichText 1..1" esm_IEsmState : description6
+esm_DStateEvent "esm_EsmTransition17 0..1" -- "esm_DStateEvent 1..1" esm_EsmTransition : event16
+esm_DExpression "esm_EsmDerivedState 0..1" --* "esm_DExpression 1..1" esm_EsmDerivedState : expression8
+esm_DEntityType "esm_EsmEntityStateModel 0..1" -- "esm_DEntityType 1..1" esm_EsmEntityStateModel : forType0
+esm_DState "esm_EsmTransition11 0..1" -- "esm_DState12 1..1" esm_EsmTransition : from_10
+esm_DExpression "esm_EsmTransition19 0..1" --* "esm_DExpression20 1..1" esm_EsmTransition : guard18
+esm_DState "esm_IEsmState5 0..1" -- "esm_DState 1..1" esm_IEsmState : state4
+esm_IEsmState "esm_IEsmStateModel 0..9999" --* "esm_IEsmState 1..1" esm_IEsmStateModel : states1
+esm_EsmConcurrentState "esm_EsmSubStateModel 1..1" *-- "esm_EsmConcurrentState 0..9999" esm_EsmSubStateModel : subStates9
+esm_DState "esm_EsmTransition14 0..1" -- "esm_DState15 1..1" esm_EsmTransition : to13
+esm_EsmTransition "esm_IEsmStateModel3 0..9999" --* "esm_EsmTransition 1..1" esm_IEsmStateModel : transitions2
 @enduml

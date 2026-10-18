@@ -1,4 +1,8 @@
 @startuml
+' model: StateMachineUnnamed
+' project: sampleModel
+' owner: User
+' description: New project
 class StateMachineUnnamed_Event {
 }
 class StateMachineUnnamed_FinalState {
@@ -20,12 +24,12 @@ class StateVertex {
 StateVertex <|-- StateMachineUnnamed_FinalState
 StateVertex <|-- StateMachineUnnamed_InitialState
 StateVertex <|-- StateMachineUnnamed_SimpleState
-StateMachineUnnamed_StateVertex "1..1" -- "0..9999" StateMachineUnnamed_Transition : incoming4
-StateMachineUnnamed_StateVertex "1..1" -- "0..9999" StateMachineUnnamed_Transition : outgoing3
-StateMachineUnnamed_StateVertex "1..1" -- "1..1" StateMachineUnnamed_Transition : source9
-StateMachineUnnamed_StateMachine "1..1" *-- "0..9999" StateMachineUnnamed_StateVertex : states0
-StateMachineUnnamed_StateVertex "1..1" -- "1..1" StateMachineUnnamed_Transition : target10
-StateMachineUnnamed_StateVertex "0..9999" -- "1..1" StateMachineUnnamed_StateVertex : targets7
-StateMachineUnnamed_StateMachine "1..1" *-- "0..9999" StateMachineUnnamed_Transition : transitions1
-StateMachineUnnamed_Event "0..1" -- "1..1" StateMachineUnnamed_Transition : trigger12
+StateMachineUnnamed_StateVertex "Transition5 1..1" -- "target 0..9999" StateMachineUnnamed_Transition : incoming4
+StateMachineUnnamed_StateVertex "Transition 1..1" -- "source 0..9999" StateMachineUnnamed_Transition : outgoing3
+StateMachineUnnamed_StateVertex "outgoing 1..1" -- "StateVertex 1..1" StateMachineUnnamed_Transition : source9
+StateMachineUnnamed_StateMachine "StateMachineUnnamed_StateVertex 1..1" *-- "StateMachineUnnamed_StateMachine 0..9999" StateMachineUnnamed_StateVertex : states0
+StateMachineUnnamed_StateVertex "incoming 1..1" -- "StateVertex11 1..1" StateMachineUnnamed_Transition : target10
+StateMachineUnnamed_StateVertex "StateMachineUnnamed_StateVertex6 0..9999" -- "StateMachineUnnamed_StateVertex8 1..1" StateMachineUnnamed_StateVertex : targets7
+StateMachineUnnamed_StateMachine "StateMachineUnnamed_Transition 1..1" *-- "StateMachineUnnamed_StateMachine2 0..9999" StateMachineUnnamed_Transition : transitions1
+StateMachineUnnamed_Event "StateMachineUnnamed_Transition13 0..1" -- "StateMachineUnnamed_Event 1..1" StateMachineUnnamed_Transition : trigger12
 @enduml

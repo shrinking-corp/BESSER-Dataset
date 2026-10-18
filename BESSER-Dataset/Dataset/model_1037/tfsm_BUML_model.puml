@@ -1,4 +1,8 @@
 @startuml
+' model: tfsm
+' project: sampleModel
+' owner: User
+' description: New project
 class BinaryClockConstraint {
 }
 class ClockConstraint {
@@ -55,21 +59,21 @@ ClockConstraintOperation <|-- tfsm_BinaryClockConstraint
 ClockConstraintOperation <|-- tfsm_ClockConstraint
 State <|-- tfsm_FinalState
 State <|-- tfsm_InitialState
-tfsm_Clock "1..1" -- "1..1" tfsm_ClockConstraint : clock26
-tfsm_Clock "1..1" -- "1..1" tfsm_ClockReset : clock28
-tfsm_ClockReset "0..9999" --* "1..1" tfsm_Transition : clockresets18
-tfsm_Clock "0..9999" --* "1..1" tfsm_FSM : clocks0
-tfsm_FSM "1..1" -- "0..1" tfsm_State : currentState7
-tfsm_State "1..1" -- "1..1" tfsm_Transition : from_23
-tfsm_FSM "1..1" -- "1..1" tfsm_State : fsm12
-tfsm_State "1..1" -- "0..9999" tfsm_Transition : incommingtransitions16
-tfsm_FSM "1..1" -- "1..1" tfsm_InitialState : initialstate5
-tfsm_BinaryClockConstraint "1..1" *-- "1..1" tfsm_ClockConstraintOperation : left31
-tfsm_State "1..1" -- "0..9999" tfsm_Transition : outgoingtransitions15
-tfsm_BinaryClockConstraint "1..1" *-- "1..1" tfsm_ClockConstraintOperation : right33
-tfsm_ClockConstraintOperation "0..1" --* "1..1" tfsm_State : stateguard10
-tfsm_FSM "1..1" *-- "0..9999" tfsm_State : states1
-tfsm_State "1..1" -- "1..1" tfsm_Transition : to24
-tfsm_ClockConstraintOperation "0..1" --* "1..1" tfsm_Transition : transitionguard20
-tfsm_FSM "1..1" *-- "0..9999" tfsm_Transition : transitions3
+tfsm_Clock "tfsm_ClockConstraint 1..1" -- "tfsm_Clock27 1..1" tfsm_ClockConstraint : clock26
+tfsm_Clock "tfsm_ClockReset29 1..1" -- "tfsm_Clock30 1..1" tfsm_ClockReset : clock28
+tfsm_ClockReset "tfsm_Transition19 0..9999" --* "tfsm_ClockReset 1..1" tfsm_Transition : clockresets18
+tfsm_Clock "tfsm_FSM 0..9999" --* "tfsm_Clock 1..1" tfsm_FSM : clocks0
+tfsm_FSM "tfsm_State9 1..1" -- "tfsm_FSM8 0..1" tfsm_State : currentState7
+tfsm_State "outgoingtransitions 1..1" -- "State 1..1" tfsm_Transition : from_23
+tfsm_FSM "tfsm_State13 1..1" -- "tfsm_FSM14 1..1" tfsm_State : fsm12
+tfsm_State "Transition17 1..1" -- "to 0..9999" tfsm_Transition : incommingtransitions16
+tfsm_FSM "tfsm_InitialState 1..1" -- "tfsm_FSM6 1..1" tfsm_InitialState : initialstate5
+tfsm_BinaryClockConstraint "tfsm_ClockConstraintOperation32 1..1" *-- "tfsm_BinaryClockConstraint 1..1" tfsm_ClockConstraintOperation : left31
+tfsm_State "Transition 1..1" -- "from_ 0..9999" tfsm_Transition : outgoingtransitions15
+tfsm_BinaryClockConstraint "tfsm_ClockConstraintOperation35 1..1" *-- "tfsm_BinaryClockConstraint34 1..1" tfsm_ClockConstraintOperation : right33
+tfsm_ClockConstraintOperation "tfsm_State11 0..1" --* "tfsm_ClockConstraintOperation 1..1" tfsm_State : stateguard10
+tfsm_FSM "tfsm_State 1..1" *-- "tfsm_FSM2 0..9999" tfsm_State : states1
+tfsm_State "incommingtransitions 1..1" -- "State25 1..1" tfsm_Transition : to24
+tfsm_ClockConstraintOperation "tfsm_Transition21 0..1" --* "tfsm_ClockConstraintOperation22 1..1" tfsm_Transition : transitionguard20
+tfsm_FSM "tfsm_Transition 1..1" *-- "tfsm_FSM4 0..9999" tfsm_Transition : transitions3
 @enduml

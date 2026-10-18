@@ -1,4 +1,8 @@
 @startuml
+' model: simplepdl
+' project: sampleModel
+' owner: User
+' description: New project
 class ProcessElement {
 }
 enum WorkSequenceType {
@@ -37,16 +41,16 @@ ProcessElement <|-- simplepdl_NeedSet
 ProcessElement <|-- simplepdl_Ressource
 ProcessElement <|-- simplepdl_WorkDefinition
 ProcessElement <|-- simplepdl_WorkSequence
-simplepdl_Guidance "1..1" -- "0..9999" simplepdl_ProcessElement : element9
-simplepdl_WorkDefinition "1..1" -- "0..9999" simplepdl_WorkSequence : linksToPredecessors2
-simplepdl_WorkDefinition "1..1" -- "0..9999" simplepdl_WorkSequence : linksToSuccessors3
-simplepdl_Need "1..1" -- "1..1" simplepdl_NeedSet : needSet11
-simplepdl_NeedSet "0..9999" -- "1..1" simplepdl_WorkDefinition : needSets5
-simplepdl_Need "1..9999" -- "1..1" simplepdl_NeedSet : needs13
-simplepdl_WorkDefinition "1..1" -- "1..1" simplepdl_WorkSequence : predecessor6
-simplepdl_Process "1..1" -- "1..1" simplepdl_ProcessElement : process1
-simplepdl_Process "1..1" *-- "0..9999" simplepdl_ProcessElement : processElements0
-simplepdl_Need "1..1" -- "1..1" simplepdl_Ressource : ressource10
-simplepdl_WorkDefinition "1..1" -- "1..1" simplepdl_WorkSequence : successor7
-simplepdl_NeedSet "1..1" -- "1..1" simplepdl_WorkDefinition : wd14
+simplepdl_Guidance "simplepdl_ProcessElement 1..1" -- "simplepdl_Guidance 0..9999" simplepdl_ProcessElement : element9
+simplepdl_WorkDefinition "WorkSequence 1..1" -- "successor 0..9999" simplepdl_WorkSequence : linksToPredecessors2
+simplepdl_WorkDefinition "WorkSequence4 1..1" -- "predecessor 0..9999" simplepdl_WorkSequence : linksToSuccessors3
+simplepdl_Need "NeedSet12 1..1" -- "needs 1..1" simplepdl_NeedSet : needSet11
+simplepdl_NeedSet "wd 0..9999" -- "NeedSet 1..1" simplepdl_WorkDefinition : needSets5
+simplepdl_Need "needSet 1..9999" -- "Need 1..1" simplepdl_NeedSet : needs13
+simplepdl_WorkDefinition "linksToSuccessors 1..1" -- "WorkDefinition 1..1" simplepdl_WorkSequence : predecessor6
+simplepdl_Process "processElements 1..1" -- "Process 1..1" simplepdl_ProcessElement : process1
+simplepdl_Process "ProcessElement 1..1" *-- "process 0..9999" simplepdl_ProcessElement : processElements0
+simplepdl_Need "simplepdl_Ressource 1..1" -- "simplepdl_Need 1..1" simplepdl_Ressource : ressource10
+simplepdl_WorkDefinition "linksToPredecessors 1..1" -- "WorkDefinition8 1..1" simplepdl_WorkSequence : successor7
+simplepdl_NeedSet "WorkDefinition15 1..1" -- "needSets 1..1" simplepdl_WorkDefinition : wd14
 @enduml

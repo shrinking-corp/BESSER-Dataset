@@ -1,4 +1,8 @@
 @startuml
+' model: PetriNets
+' project: sampleModel
+' owner: User
+' description: New project
 class Node {
 }
 class Object {
@@ -23,10 +27,10 @@ Node <|-- PetriNets_Place
 Node <|-- PetriNets_Transition
 Object <|-- PetriNets_Arc
 Object <|-- PetriNets_Node
-PetriNets_Arc "0..9999" -- "1..1" PetriNets_Node : in_1
-PetriNets_Object "0..9999" --* "1..1" PetriNets_PetriNet : object0
-PetriNets_Arc "0..9999" -- "1..1" PetriNets_Node : out2
-PetriNets_Arc "1..1" -- "1..1" PetriNets_Node : source4
-PetriNets_Arc "1..1" -- "1..1" PetriNets_Node : target5
-PetriNets_Place "1..1" *-- "0..9999" PetriNets_Token : token7
+PetriNets_Arc "target 0..9999" -- "Arc 1..1" PetriNets_Node : in_1
+PetriNets_Object "PetriNets_PetriNet 0..9999" --* "PetriNets_Object 1..1" PetriNets_PetriNet : object0
+PetriNets_Arc "source 0..9999" -- "Arc3 1..1" PetriNets_Node : out2
+PetriNets_Arc "Node 1..1" -- "out 1..1" PetriNets_Node : source4
+PetriNets_Arc "Node6 1..1" -- "in_ 1..1" PetriNets_Node : target5
+PetriNets_Place "PetriNets_Token 1..1" *-- "PetriNets_Place 0..9999" PetriNets_Token : token7
 @enduml

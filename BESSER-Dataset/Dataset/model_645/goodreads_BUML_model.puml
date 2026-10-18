@@ -1,4 +1,8 @@
 @startuml
+' model: model
+' project: sampleModel
+' owner: User
+' description: New project
 class model_Book {
   + author : str
   + avgRating : int
@@ -12,11 +16,11 @@ class model_DataBase {
 class model_Person {
   + name : str
 }
-model_Book "0..9999" -- "1..1" model_BookShelf : books5
-model_Book "0..9999" --* "1..1" model_DataBase : books9
-model_Person "1..1" -- "0..9999" model_Person : friends4
-model_BookShelf "1..1" -- "1..1" model_Person : ownedBy6
-model_DataBase "1..1" *-- "0..9999" model_Person : people7
-model_Book "1..1" -- "0..9999" model_BookShelf : presentIn0
-model_BookShelf "0..9999" --* "1..1" model_Person : shelves1
+model_Book "presentIn 0..9999" -- "Book 1..1" model_BookShelf : books5
+model_Book "model_DataBase10 0..9999" --* "model_Book 1..1" model_DataBase : books9
+model_Person "model_Person 1..1" -- "model_Person3 0..9999" model_Person : friends4
+model_BookShelf "Person 1..1" -- "shelves 1..1" model_Person : ownedBy6
+model_DataBase "model_Person8 1..1" *-- "model_DataBase 0..9999" model_Person : people7
+model_Book "BookShelf 1..1" -- "books 0..9999" model_BookShelf : presentIn0
+model_BookShelf "ownedBy 0..9999" --* "BookShelf2 1..1" model_Person : shelves1
 @enduml

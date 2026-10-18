@@ -1,4 +1,8 @@
 @startuml
+' model: model
+' project: sampleModel
+' owner: User
+' description: New project
 class Expression {
 }
 class model_Conjunction {
@@ -30,15 +34,15 @@ Expression <|-- model_ForAllContextualExpression
 Expression <|-- model_Implication
 Expression <|-- model_Negation
 Expression <|-- model_PrimaryExpression
-model_Expression "0..1" --* "1..1" model_ForAllContextualExpression : expression0
-model_ExistsContextualExpression "1..1" *-- "0..1" model_Expression : expression1
-model_Expression "0..1" --* "1..1" model_Negation : expression23
-model_Disjunction "1..1" *-- "0..1" model_Expression : leftPart13
-model_Conjunction "1..1" *-- "0..1" model_Expression : leftPart18
-model_Equation "1..1" *-- "0..1" model_Expression : leftPart3
-model_Expression "0..1" --* "1..1" model_Implication : leftPart8
-model_Expression "0..1" --* "1..1" model_Implication : rightPart10
-model_Disjunction "1..1" *-- "0..1" model_Expression : rightPart15
-model_Conjunction "1..1" *-- "0..1" model_Expression : rightPart20
-model_Equation "1..1" *-- "0..1" model_Expression : rightPart5
+model_Expression "model_ForAllContextualExpression 0..1" --* "model_Expression 1..1" model_ForAllContextualExpression : expression0
+model_ExistsContextualExpression "model_Expression2 1..1" *-- "model_ExistsContextualExpression 0..1" model_Expression : expression1
+model_Expression "model_Negation 0..1" --* "model_Expression24 1..1" model_Negation : expression23
+model_Disjunction "model_Expression14 1..1" *-- "model_Disjunction 0..1" model_Expression : leftPart13
+model_Conjunction "model_Expression19 1..1" *-- "model_Conjunction 0..1" model_Expression : leftPart18
+model_Equation "model_Expression4 1..1" *-- "model_Equation 0..1" model_Expression : leftPart3
+model_Expression "model_Implication 0..1" --* "model_Expression9 1..1" model_Implication : leftPart8
+model_Expression "model_Implication11 0..1" --* "model_Expression12 1..1" model_Implication : rightPart10
+model_Disjunction "model_Expression17 1..1" *-- "model_Disjunction16 0..1" model_Expression : rightPart15
+model_Conjunction "model_Expression22 1..1" *-- "model_Conjunction21 0..1" model_Expression : rightPart20
+model_Equation "model_Expression7 1..1" *-- "model_Equation6 0..1" model_Expression : rightPart5
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: OclTest
+' project: sampleModel
+' owner: User
+' description: New project
 enum Color {
   black
   brown
@@ -36,12 +40,33 @@ class OclTest_Tree {
   + name : str
 }
 Fruit <|-- OclTest_Apple
-OclTest_Fruit "0..9999" -- "1..1" OclTest_FruitUtil : bag8
-OclTest_Fruit "0..9999" --* "1..1" OclTest_Tree : fruits14
-OclTest_Fruit "0..9999" -- "1..1" OclTest_Tree : fruitsDroppedUnder16
-OclTest_Fruit "0..9999" -- "1..1" OclTest_FruitUtil : orderedSet3
-OclTest_Fruit "1..1" -- "0..9999" OclTest_Fruit : relatedFruits1
-OclTest_Fruit "0..9999" -- "1..1" OclTest_FruitUtil : sequence11
-OclTest_Fruit "0..9999" -- "1..1" OclTest_FruitUtil : set5
-OclTest_Apple "1..1" *-- "0..1" OclTest_Stem : stem2
+OclTest_Fruit "OclTest_FruitUtil9 0..9999" -- "OclTest_Fruit10 1..1" OclTest_FruitUtil : bag8
+OclTest_Fruit "OclTest_Tree 0..9999" --* "OclTest_Fruit15 1..1" OclTest_Tree : fruits14
+OclTest_Fruit "OclTest_Tree17 0..9999" -- "OclTest_Fruit18 1..1" OclTest_Tree : fruitsDroppedUnder16
+OclTest_Fruit "OclTest_FruitUtil 0..9999" -- "OclTest_Fruit4 1..1" OclTest_FruitUtil : orderedSet3
+OclTest_Fruit "OclTest_Fruit 1..1" -- "OclTest_Fruit0 0..9999" OclTest_Fruit : relatedFruits1
+OclTest_Fruit "OclTest_FruitUtil12 0..9999" -- "OclTest_Fruit13 1..1" OclTest_FruitUtil : sequence11
+OclTest_Fruit "OclTest_FruitUtil6 0..9999" -- "OclTest_Fruit7 1..1" OclTest_FruitUtil : set5
+OclTest_Apple "OclTest_Stem 1..1" *-- "OclTest_Apple 0..1" OclTest_Stem : stem2
+note top of OclTest_Apple
+  constraint second_classifier_context (OCL): context Apple inv: label.oclIsUndefined() implies true
+end note
+note top of OclTest_Fruit
+  constraint not_black (OCL): context Fruit inv: self.color <> Color_black
+end note
+note top of OclTest_Fruit
+  constraint not_black1 (OCL): context Fruit inv: self.color <> Color_black
+end note
+note top of OclTest_Fruit
+  constraint not_foo (OCL): context Fruit inv: self.name <> 'Foo'
+end note
+note top of OclTest_Fruit
+  constraint not_foo1 (OCL): context Fruit inv: self.name <> 'Foo'
+end note
+note top of OclTest_Fruit
+  constraint not_pink (OCL): context Fruit inv: color <> Color_pink
+end note
+note top of OclTest_Fruit
+  constraint not_pink1 (OCL): context Fruit inv: color <> Color_pink
+end note
 @enduml

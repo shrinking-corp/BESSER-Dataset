@@ -1,4 +1,8 @@
 @startuml
+' model: arithmetics
+' project: sampleModel
+' owner: User
+' description: New project
 class Expression {
 }
 class arithmetics_Div {
@@ -21,13 +25,13 @@ Expression <|-- arithmetics_Minus
 Expression <|-- arithmetics_Multi
 Expression <|-- arithmetics_NumberLiteral
 Expression <|-- arithmetics_Plus
-arithmetics_Evaluation "1..1" *-- "0..1" arithmetics_Expression : expression0
-arithmetics_Expression "0..1" --* "1..1" arithmetics_Plus : left1
-arithmetics_Expression "0..1" --* "1..1" arithmetics_Multi : left11
-arithmetics_Div "1..1" *-- "0..1" arithmetics_Expression : left16
-arithmetics_Expression "0..1" --* "1..1" arithmetics_Minus : left6
-arithmetics_Expression "0..1" --* "1..1" arithmetics_Multi : right13
-arithmetics_Div "1..1" *-- "0..1" arithmetics_Expression : right18
-arithmetics_Expression "0..1" --* "1..1" arithmetics_Plus : right3
-arithmetics_Expression "0..1" --* "1..1" arithmetics_Minus : right8
+arithmetics_Evaluation "arithmetics_Expression 1..1" *-- "arithmetics_Evaluation 0..1" arithmetics_Expression : expression0
+arithmetics_Expression "arithmetics_Plus 0..1" --* "arithmetics_Expression2 1..1" arithmetics_Plus : left1
+arithmetics_Expression "arithmetics_Multi 0..1" --* "arithmetics_Expression12 1..1" arithmetics_Multi : left11
+arithmetics_Div "arithmetics_Expression17 1..1" *-- "arithmetics_Div 0..1" arithmetics_Expression : left16
+arithmetics_Expression "arithmetics_Minus 0..1" --* "arithmetics_Expression7 1..1" arithmetics_Minus : left6
+arithmetics_Expression "arithmetics_Multi14 0..1" --* "arithmetics_Expression15 1..1" arithmetics_Multi : right13
+arithmetics_Div "arithmetics_Expression20 1..1" *-- "arithmetics_Div19 0..1" arithmetics_Expression : right18
+arithmetics_Expression "arithmetics_Plus4 0..1" --* "arithmetics_Expression5 1..1" arithmetics_Plus : right3
+arithmetics_Expression "arithmetics_Minus9 0..1" --* "arithmetics_Expression10 1..1" arithmetics_Minus : right8
 @enduml

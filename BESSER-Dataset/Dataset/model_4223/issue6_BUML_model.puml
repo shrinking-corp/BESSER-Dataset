@@ -1,4 +1,8 @@
 @startuml
+' model: organization
+' project: sampleModel
+' owner: User
+' description: New project
 class ABase {
 }
 abstract class organization_ABase {
@@ -18,6 +22,6 @@ class organization_core_Cass {
 ABase <|-- organization_Company
 ABase <|-- organization_Department
 ABase <|-- organization_Employee
-organization_Company "1..1" *-- "0..9999" organization_Department : department0
-organization_Department "1..1" *-- "0..9999" organization_Employee : employees1
+organization_Company "organization_Department 1..1" *-- "organization_Company 0..9999" organization_Department : department0
+organization_Department "organization_Employee 1..1" *-- "organization_Department2 0..9999" organization_Employee : employees1
 @enduml

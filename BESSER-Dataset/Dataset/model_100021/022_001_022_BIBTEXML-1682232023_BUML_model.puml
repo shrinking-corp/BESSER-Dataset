@@ -1,4 +1,8 @@
 @startuml
+' model: PrimitiveTypes
+' project: sampleModel
+' owner: User
+' description: New project
 class Author {
 }
 class AuthoredEntry {
@@ -190,8 +194,8 @@ TitledEntry <|-- BIBTEXML_Proceedings
 TitledEntry <|-- BIBTEXML_TechReport
 TitledEntry <|-- BIBTEXML_ThesisEntry
 TitledEntry <|-- BIBTEXML_Unpublished
-Author "1..9999" --* "1..1" BIBTEXML_AuthoredEntry : authors1
-Author "0..9999" -- "1..1" BIBTEXML_Booklet : authors2
-Author "0..9999" -- "1..1" BIBTEXML_Misc : authors4
-BIBTEXML_BibtexFile "1..1" *-- "0..9999" Entry : entries0
+Author "BIBTEXML_AuthoredEntry 1..9999" --* "Author 1..1" BIBTEXML_AuthoredEntry : authors1
+Author "BIBTEXML_Booklet 0..9999" -- "Author3 1..1" BIBTEXML_Booklet : authors2
+Author "BIBTEXML_Misc 0..9999" -- "Author5 1..1" BIBTEXML_Misc : authors4
+BIBTEXML_BibtexFile "Entry 1..1" *-- "BIBTEXML_BibtexFile 0..9999" Entry : entries0
 @enduml

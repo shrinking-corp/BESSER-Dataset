@@ -1,4 +1,8 @@
 @startuml
+' model: fsm
+' project: sampleModel
+' owner: User
+' description: New project
 class State {
 }
 class fsm_FSM {
@@ -18,9 +22,9 @@ class fsm_Transition {
 }
 State <|-- fsm_Final
 State <|-- fsm_Initial
-fsm_FSM "1..1" -- "1..1" fsm_Transition : fsm7
-fsm_State "1..1" -- "1..1" fsm_Transition : incoming2
-fsm_State "1..1" -- "1..1" fsm_Transition : outgoing4
-fsm_FSM "1..1" *-- "0..9999" fsm_State : states0
-fsm_FSM "1..1" *-- "0..9999" fsm_Transition : transitions1
+fsm_FSM "transitions 1..1" -- "FSM 1..1" fsm_Transition : fsm7
+fsm_State "fsm_Transition 1..1" -- "fsm_State3 1..1" fsm_Transition : incoming2
+fsm_State "fsm_Transition5 1..1" -- "fsm_State6 1..1" fsm_Transition : outgoing4
+fsm_FSM "fsm_State 1..1" *-- "fsm_FSM 0..9999" fsm_State : states0
+fsm_FSM "Transition 1..1" *-- "fsm 0..9999" fsm_Transition : transitions1
 @enduml

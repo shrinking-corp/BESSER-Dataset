@@ -1,4 +1,8 @@
 @startuml
+' model: sQL
+' project: sampleModel
+' owner: User
+' description: New project
 enum DataType {
   BOOL
   CHAR
@@ -26,10 +30,10 @@ class sQL_foreignKey {
 class sQL_primaryKey {
   + name : str
 }
-sQL_DataBase "1..1" *-- "0..9999" sQL_Table : Tables0
-sQL_Table "1..1" *-- "0..9999" sQL_column : columns1
-sQL_Table "1..1" *-- "0..9999" sQL_foreignKey : foreignkeys5
-sQL_Table "1..1" *-- "0..1" sQL_primaryKey : primaryKey3
-sQL_column "0..1" -- "1..1" sQL_foreignKey : ref10
-sQL_Table "0..1" -- "1..1" sQL_foreignKey : reftable7
+sQL_DataBase "sQL_Table 1..1" *-- "sQL_DataBase 0..9999" sQL_Table : Tables0
+sQL_Table "sQL_column 1..1" *-- "sQL_Table2 0..9999" sQL_column : columns1
+sQL_Table "sQL_foreignKey 1..1" *-- "sQL_Table6 0..9999" sQL_foreignKey : foreignkeys5
+sQL_Table "sQL_primaryKey 1..1" *-- "sQL_Table4 0..1" sQL_primaryKey : primaryKey3
+sQL_column "sQL_foreignKey11 0..1" -- "sQL_column12 1..1" sQL_foreignKey : ref10
+sQL_Table "sQL_foreignKey8 0..1" -- "sQL_Table9 1..1" sQL_foreignKey : reftable7
 @enduml

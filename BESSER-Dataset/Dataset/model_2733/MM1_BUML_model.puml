@@ -1,4 +1,8 @@
 @startuml
+' model: testmerge
+' project: sampleModel
+' owner: User
+' description: New project
 class A {
 }
 class AA {
@@ -27,7 +31,7 @@ A <|-- testmerge_AA
 AA <|-- testmerge_AAA
 B <|-- testmerge_SubB
 SuperA <|-- testmerge_A
-testmerge_A "0..1" -- "1..1" testmerge_B : toA1
-testmerge_A "1..1" -- "0..1" testmerge_B : toB0
-testmerge_AAA "1..1" *-- "0..1" testmerge_C : toC2
+testmerge_A "toB 0..1" -- "A 1..1" testmerge_B : toA1
+testmerge_A "B 1..1" -- "toA 0..1" testmerge_B : toB0
+testmerge_AAA "testmerge_C 1..1" *-- "testmerge_AAA 0..1" testmerge_C : toC2
 @enduml

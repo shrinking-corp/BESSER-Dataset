@@ -307,9 +307,9 @@ def test_assoc_constantDecl55_stub_double():
     partner = delphi_constSection()
     setattr(partner, 'delphi_constSection', None)
     _safe_set(owner, 'delphi_constantDecl', partner)
-    assert getattr(partner, 'delphi_constSection') == owner
+    assert owner in getattr(partner, 'delphi_constSection')
     _safe_set(owner, 'delphi_constantDecl', None)
-    assert getattr(partner, 'delphi_constSection') is None
+    assert owner not in getattr(partner, 'delphi_constSection')
 
 
 def test_assoc_designator165_stub_double():
@@ -367,9 +367,9 @@ def test_assoc_directive297_stub_double():
     partner = delphi_methodList()
     setattr(partner, 'delphi_methodList298', None)
     _safe_set(owner, 'delphi_directive299', partner)
-    assert getattr(partner, 'delphi_methodList298') == owner
+    assert owner in getattr(partner, 'delphi_methodList298')
     _safe_set(owner, 'delphi_directive299', None)
-    assert getattr(partner, 'delphi_methodList298') is None
+    assert owner not in getattr(partner, 'delphi_methodList298')
 
 
 def test_assoc_doStmt260_stub_double():
@@ -382,9 +382,9 @@ def test_assoc_doStmt260_stub_double():
     partner = delphi_exceptionBlock()
     setattr(partner, 'delphi_exceptionBlock261', None)
     _safe_set(owner, 'delphi_statement262', partner)
-    assert getattr(partner, 'delphi_exceptionBlock261') == owner
+    assert owner in getattr(partner, 'delphi_exceptionBlock261')
     _safe_set(owner, 'delphi_statement262', None)
-    assert getattr(partner, 'delphi_exceptionBlock261') is None
+    assert owner not in getattr(partner, 'delphi_exceptionBlock261')
 
 
 def test_assoc_else_212_stub_double():
@@ -457,9 +457,9 @@ def test_assoc_field116_stub_double():
     partner = delphi_fieldList()
     setattr(partner, 'delphi_fieldList117', None)
     _safe_set(owner, 'delphi_fieldDecl', partner)
-    assert getattr(partner, 'delphi_fieldList117') == owner
+    assert owner in getattr(partner, 'delphi_fieldList117')
     _safe_set(owner, 'delphi_fieldDecl', None)
-    assert getattr(partner, 'delphi_fieldList117') is None
+    assert owner not in getattr(partner, 'delphi_fieldList117')
 
 
 def test_assoc_field319_stub_double():
@@ -472,9 +472,9 @@ def test_assoc_field319_stub_double():
     partner = delphi_classFieldList()
     setattr(partner, 'delphi_classFieldList320', None)
     _safe_set(owner, 'delphi_classField', partner)
-    assert getattr(partner, 'delphi_classFieldList320') == owner
+    assert owner in getattr(partner, 'delphi_classFieldList320')
     _safe_set(owner, 'delphi_classField', None)
-    assert getattr(partner, 'delphi_classFieldList320') is None
+    assert owner not in getattr(partner, 'delphi_classFieldList320')
 
 
 def test_assoc_fieldList313_stub_double():
@@ -697,9 +697,9 @@ def test_assoc_metod324_stub_double():
     partner = delphi_classMethodList()
     setattr(partner, 'delphi_classMethodList325', None)
     _safe_set(owner, 'delphi_classMethod', partner)
-    assert getattr(partner, 'delphi_classMethodList325') == owner
+    assert owner in getattr(partner, 'delphi_classMethodList325')
     _safe_set(owner, 'delphi_classMethod', None)
-    assert getattr(partner, 'delphi_classMethodList325') is None
+    assert owner not in getattr(partner, 'delphi_classMethodList325')
 
 
 def test_assoc_multOp424_stub_double():
@@ -772,9 +772,9 @@ def test_assoc_property329_stub_double():
     partner = delphi_classPropertyList()
     setattr(partner, 'delphi_classPropertyList330', None)
     _safe_set(owner, 'delphi_classProperty', partner)
-    assert getattr(partner, 'delphi_classPropertyList330') == owner
+    assert owner in getattr(partner, 'delphi_classPropertyList330')
     _safe_set(owner, 'delphi_classProperty', None)
-    assert getattr(partner, 'delphi_classPropertyList330') is None
+    assert owner not in getattr(partner, 'delphi_classPropertyList330')
 
 
 def test_assoc_relOp412_stub_double():
@@ -892,9 +892,9 @@ def test_assoc_statments201_stub_double():
     partner = delphi_stmtList()
     setattr(partner, 'delphi_stmtList', None)
     _safe_set(owner, 'delphi_statement', partner)
-    assert getattr(partner, 'delphi_stmtList') == owner
+    assert owner in getattr(partner, 'delphi_stmtList')
     _safe_set(owner, 'delphi_statement', None)
-    assert getattr(partner, 'delphi_stmtList') is None
+    assert owner not in getattr(partner, 'delphi_stmtList')
 
 
 def test_assoc_stmt224_stub_double():
@@ -997,9 +997,9 @@ def test_assoc_typeDecl66_stub_double():
     partner = delphi_typeSection()
     setattr(partner, 'delphi_typeSection', None)
     _safe_set(owner, 'delphi_typeDecl', partner)
-    assert getattr(partner, 'delphi_typeSection') == owner
+    assert owner in getattr(partner, 'delphi_typeSection')
     _safe_set(owner, 'delphi_typeDecl', None)
-    assert getattr(partner, 'delphi_typeSection') is None
+    assert owner not in getattr(partner, 'delphi_typeSection')
 
 
 def test_assoc_typeRef175_stub_double():

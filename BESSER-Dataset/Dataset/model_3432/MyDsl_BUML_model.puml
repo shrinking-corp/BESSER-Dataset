@@ -1,4 +1,8 @@
 @startuml
+' model: myDsl
+' project: sampleModel
+' owner: User
+' description: New project
 class Person {
 }
 class myDsl_Person {
@@ -16,7 +20,7 @@ class myDsl_Teacher {
 }
 Person <|-- myDsl_Student
 Person <|-- myDsl_Teacher
-myDsl_Person "0..9999" --* "1..1" myDsl_School : persons1
-myDsl_School "0..9999" --* "1..1" myDsl_SchoolModel : schools0
-myDsl_Student "1..1" -- "0..9999" myDsl_Teacher : teachers3
+myDsl_Person "myDsl_School2 0..9999" --* "myDsl_Person 1..1" myDsl_School : persons1
+myDsl_School "myDsl_SchoolModel 0..9999" --* "myDsl_School 1..1" myDsl_SchoolModel : schools0
+myDsl_Student "myDsl_Teacher 1..1" -- "myDsl_Student 0..9999" myDsl_Teacher : teachers3
 @enduml

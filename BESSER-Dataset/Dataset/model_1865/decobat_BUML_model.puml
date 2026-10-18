@@ -1,4 +1,8 @@
 @startuml
+' model: decobat
+' project: sampleModel
+' owner: User
+' description: New project
 class decobat_Customer {
   + address : str
   + city : str
@@ -95,13 +99,13 @@ class decobat_Supplier {
   + phone : str
   + zip : str
 }
-decobat_Library "1..1" *-- "0..9999" decobat_LibraryCategory : categories7
-decobat_Customer "1..1" -- "1..1" decobat_Project : customer5
-decobat_Level "1..9999" --* "1..1" decobat_Plan : levels9
-decobat_Level "1..1" -- "0..9999" decobat_Library : libraryItems11
-decobat_Library "0..9999" -- "1..1" decobat_Object : libraryItems14
-decobat_Plan "0..1" --* "1..1" decobat_Project : plans3
-decobat_Project "1..1" *-- "1..1" decobat_ProjectCategory : projectCategories1
-decobat_Project "1..1" *-- "0..9999" decobat_ProjectRevision : projectRevisions0
-decobat_Product "1..1" -- "1..1" decobat_Supplier : supplier8
+decobat_Library "decobat_LibraryCategory 1..1" *-- "decobat_Library 0..9999" decobat_LibraryCategory : categories7
+decobat_Customer "decobat_Project6 1..1" -- "decobat_Customer 1..1" decobat_Project : customer5
+decobat_Level "decobat_Plan10 1..9999" --* "decobat_Level 1..1" decobat_Plan : levels9
+decobat_Level "decobat_Library13 1..1" -- "decobat_Level12 0..9999" decobat_Library : libraryItems11
+decobat_Library "decobat_Object 0..9999" -- "decobat_Library15 1..1" decobat_Object : libraryItems14
+decobat_Plan "decobat_Project4 0..1" --* "decobat_Plan 1..1" decobat_Project : plans3
+decobat_Project "decobat_ProjectCategory 1..1" *-- "decobat_Project2 1..1" decobat_ProjectCategory : projectCategories1
+decobat_Project "decobat_ProjectRevision 1..1" *-- "decobat_Project 0..9999" decobat_ProjectRevision : projectRevisions0
+decobat_Product "decobat_Supplier 1..1" -- "decobat_Product 1..1" decobat_Supplier : supplier8
 @enduml

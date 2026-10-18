@@ -1,4 +1,8 @@
 @startuml
+' model: trace
+' project: sampleModel
+' owner: User
+' description: New project
 class Step {
 }
 class StructValue {
@@ -72,10 +76,10 @@ StructValue <|-- trace_UnionValue
 Value <|-- trace_ArrayValue
 Value <|-- trace_SimpleValue
 Value <|-- trace_StructValue
-trace_Location "1..1" --* "1..1" trace_Step : location5
-trace_Step "0..9999" --* "1..1" trace_Trace : steps8
-trace_Assignment "1..1" -- "1..1" trace_Value : value1
-trace_NameToValueMap "1..1" *-- "1..1" trace_Value : value3
-trace_ArrayValue "1..1" -- "0..9999" trace_Value : values0
-trace_NameToValueMap "0..9999" --* "1..1" trace_StructValue : values6
+trace_Location "trace_Step 1..1" --* "trace_Location 1..1" trace_Step : location5
+trace_Step "trace_Trace 0..9999" --* "trace_Step9 1..1" trace_Trace : steps8
+trace_Assignment "trace_Value2 1..1" -- "trace_Assignment 1..1" trace_Value : value1
+trace_NameToValueMap "trace_Value4 1..1" *-- "trace_NameToValueMap 1..1" trace_Value : value3
+trace_ArrayValue "trace_Value 1..1" -- "trace_ArrayValue 0..9999" trace_Value : values0
+trace_NameToValueMap "trace_StructValue 0..9999" --* "trace_NameToValueMap7 1..1" trace_StructValue : values6
 @enduml

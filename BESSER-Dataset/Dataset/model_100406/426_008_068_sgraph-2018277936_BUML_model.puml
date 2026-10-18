@@ -1,4 +1,8 @@
 @startuml
+' model: sgraph
+' project: sampleModel
+' owner: User
+' description: New project
 enum ChoiceKind {
   dynamic
   static
@@ -119,24 +123,24 @@ SpecificationElement <|-- sgraph_Statechart
 SpecificationElement <|-- sgraph_Transition
 Vertex <|-- sgraph_Pseudostate
 Vertex <|-- sgraph_RegularState
-sgraph_CompositeElement "1..1" -- "1..1" sgraph_Region : composite5
-sgraph_Declaration "0..1" -- "1..1" sgraph_ImportDeclaration : declaration32
-sgraph_Declaration "0..9999" --* "1..1" sgraph_Scope : declarations21
-sgraph_Effect "0..1" --* "1..1" sgraph_Reaction : effect17
-sgraph_Event "0..9999" -- "1..1" sgraph_Scope : events22
-sgraph_Import "0..9999" --* "1..1" sgraph_Statechart : imports10
-sgraph_Transition "0..9999" -- "1..1" sgraph_Vertex : incomingTransitions1
-sgraph_Reaction "0..9999" -- "1..1" sgraph_ReactiveElement : localReactions12
-sgraph_Transition "0..9999" --* "1..1" sgraph_Vertex : outgoingTransitions2
-sgraph_Region "1..1" -- "1..1" sgraph_Vertex : parentRegion0
-sgraph_Reaction "1..1" *-- "0..9999" sgraph_ReactionProperty : properties19
-sgraph_Reaction "0..9999" -- "1..1" sgraph_ReactiveElement : reactions11
-sgraph_CompositeElement "1..1" *-- "0..9999" sgraph_Region : regions30
-sgraph_Scope "0..9999" --* "1..1" sgraph_ScopedElement : scopes26
-sgraph_Transition "1..1" -- "1..1" sgraph_Vertex : source8
-sgraph_State "1..1" -- "0..1" sgraph_Statechart : substatechart28
-sgraph_Transition "1..1" -- "1..1" sgraph_Vertex : target6
-sgraph_Reaction "1..1" *-- "0..1" sgraph_Trigger : trigger15
-sgraph_Property "0..9999" -- "1..1" sgraph_Scope : variables24
-sgraph_Region "1..1" *-- "0..9999" sgraph_Vertex : vertices4
+sgraph_CompositeElement "regions 1..1" -- "CompositeElement 1..1" sgraph_Region : composite5
+sgraph_Declaration "sgraph_ImportDeclaration 0..1" -- "sgraph_Declaration33 1..1" sgraph_ImportDeclaration : declaration32
+sgraph_Declaration "sgraph_Scope 0..9999" --* "sgraph_Declaration 1..1" sgraph_Scope : declarations21
+sgraph_Effect "sgraph_Reaction18 0..1" --* "sgraph_Effect 1..1" sgraph_Reaction : effect17
+sgraph_Event "sgraph_Scope23 0..9999" -- "sgraph_Event 1..1" sgraph_Scope : events22
+sgraph_Import "sgraph_Statechart 0..9999" --* "sgraph_Import 1..1" sgraph_Statechart : imports10
+sgraph_Transition "target 0..9999" -- "Transition 1..1" sgraph_Vertex : incomingTransitions1
+sgraph_Reaction "sgraph_ReactiveElement13 0..9999" -- "sgraph_Reaction14 1..1" sgraph_ReactiveElement : localReactions12
+sgraph_Transition "source 0..9999" --* "Transition3 1..1" sgraph_Vertex : outgoingTransitions2
+sgraph_Region "vertices 1..1" -- "Region 1..1" sgraph_Vertex : parentRegion0
+sgraph_Reaction "sgraph_ReactionProperty 1..1" *-- "sgraph_Reaction20 0..9999" sgraph_ReactionProperty : properties19
+sgraph_Reaction "sgraph_ReactiveElement 0..9999" -- "sgraph_Reaction 1..1" sgraph_ReactiveElement : reactions11
+sgraph_CompositeElement "Region31 1..1" *-- "composite 0..9999" sgraph_Region : regions30
+sgraph_Scope "sgraph_ScopedElement 0..9999" --* "sgraph_Scope27 1..1" sgraph_ScopedElement : scopes26
+sgraph_Transition "Vertex9 1..1" -- "outgoingTransitions 1..1" sgraph_Vertex : source8
+sgraph_State "sgraph_Statechart29 1..1" -- "sgraph_State 0..1" sgraph_Statechart : substatechart28
+sgraph_Transition "Vertex7 1..1" -- "incomingTransitions 1..1" sgraph_Vertex : target6
+sgraph_Reaction "sgraph_Trigger 1..1" *-- "sgraph_Reaction16 0..1" sgraph_Trigger : trigger15
+sgraph_Property "sgraph_Scope25 0..9999" -- "sgraph_Property 1..1" sgraph_Scope : variables24
+sgraph_Region "Vertex 1..1" *-- "parentRegion 0..9999" sgraph_Vertex : vertices4
 @enduml

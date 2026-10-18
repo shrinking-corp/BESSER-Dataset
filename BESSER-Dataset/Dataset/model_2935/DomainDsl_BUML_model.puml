@@ -1,4 +1,8 @@
 @startuml
+' model: domainDsl
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractElement {
 }
 class Type {
@@ -38,10 +42,10 @@ AbstractElement <|-- domainDsl_PackageDeclaration
 AbstractElement <|-- domainDsl_Type
 Type <|-- domainDsl_DataType
 Type <|-- domainDsl_Entity
-domainDsl_AbstractElement "0..9999" --* "1..1" domainDsl_Domainmodel : elements0
-domainDsl_AbstractElement "0..9999" --* "1..1" domainDsl_PackageDeclaration : elements1
-domainDsl_Entity "1..1" *-- "0..9999" domainDsl_Feature : features5
-domainDsl_Entity "1..1" -- "0..1" domainDsl_Entity : superType4
-domainDsl_Feature "1..1" -- "0..1" domainDsl_Type : type7
-domainDsl_Feature "1..1" *-- "0..9999" domainDsl_Validator : valdiators9
+domainDsl_AbstractElement "domainDsl_Domainmodel 0..9999" --* "domainDsl_AbstractElement 1..1" domainDsl_Domainmodel : elements0
+domainDsl_AbstractElement "domainDsl_PackageDeclaration 0..9999" --* "domainDsl_AbstractElement2 1..1" domainDsl_PackageDeclaration : elements1
+domainDsl_Entity "domainDsl_Feature 1..1" *-- "domainDsl_Entity6 0..9999" domainDsl_Feature : features5
+domainDsl_Entity "domainDsl_Entity 1..1" -- "domainDsl_Entity3 0..1" domainDsl_Entity : superType4
+domainDsl_Feature "domainDsl_Type 1..1" -- "domainDsl_Feature8 0..1" domainDsl_Type : type7
+domainDsl_Feature "domainDsl_Validator 1..1" *-- "domainDsl_Feature10 0..9999" domainDsl_Validator : valdiators9
 @enduml

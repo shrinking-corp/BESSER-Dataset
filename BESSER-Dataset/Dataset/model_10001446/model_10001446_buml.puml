@@ -1,4 +1,8 @@
 @startuml
+' model: _6xWGII5HEeqwvcm2LAkYWA
+' project: sampleModel
+' owner: User
+' description: New project
 class Covoiturage_Authentification {
   + id : str
   + password : str
@@ -50,16 +54,16 @@ class Covoiturage_Voiture {
   + model : str
   + nbPlaces : int
 }
-Covoiturage_Avis "0..9999" -- "0..1" Covoiturage_Trajet : Avis_Evenement
-Covoiturage_Avis "0..9999" -- "0..1" Covoiturage_Passager : Avis_Personne
-Covoiturage_Message "0..9999" -- "1..1" Covoiturage_Passager : Passager_Message
-Covoiturage_Conducteur "1..1" -- "0..9999" Covoiturage_Trajet : Personne_Evenement
-Covoiturage_Authentification "1..1" -- "0..9999" Covoiturage_Passager : Personne_Preferences
-Covoiturage_Passager "0..9999" -- "1..1" Covoiturage_Ville : Personne_Ville
-Covoiturage_Passager "1..9999" -- "0..1" Covoiturage_Reservation : Profil_Reservation
-Covoiturage_Passager "0..9999" -- "0..9999" Covoiturage_Trajet : Trajet_Passager
-Covoiturage_Reservation "1..9999" -- "0..1" Covoiturage_Trajet : Trajet_Reservation
-Covoiturage_Trajet "1..9999" -- "1..1" Covoiturage_Ville : Ville_Trajet
-Covoiturage_Conducteur "1..1" -- "1..1" Covoiturage_Voiture : Voiture_Passager
-Covoiturage_Trajet "1..9999" -- "1..1" Covoiturage_Voiture : Voiture_Trajet
+Covoiturage_Avis "avis7 0..9999" -- "evenement6 0..1" Covoiturage_Trajet : Avis_Evenement
+Covoiturage_Avis "avis5 0..9999" -- "personne4 0..1" Covoiturage_Passager : Avis_Personne
+Covoiturage_Message "message19 0..9999" -- "passager18 1..1" Covoiturage_Passager : Passager_Message
+Covoiturage_Conducteur "participants3 1..1" -- "trajet2 0..9999" Covoiturage_Trajet : Personne_Evenement
+Covoiturage_Authentification "s_authentifi_0 1..1" -- "personne1 0..9999" Covoiturage_Passager : Personne_Preferences
+Covoiturage_Passager "personnes9 0..9999" -- "adresse8 1..1" Covoiturage_Ville : Personne_Ville
+Covoiturage_Passager "profil12 1..9999" -- "reservation13 0..1" Covoiturage_Reservation : Profil_Reservation
+Covoiturage_Passager "passager23 0..9999" -- "trajet22 0..9999" Covoiturage_Trajet : Trajet_Passager
+Covoiturage_Reservation "reservation15 1..9999" -- "trajet14 0..1" Covoiturage_Trajet : Trajet_Reservation
+Covoiturage_Trajet "trajet11 1..9999" -- "ville10 1..1" Covoiturage_Ville : Ville_Trajet
+Covoiturage_Conducteur "Profil17 1..1" -- "voiture16 1..1" Covoiturage_Voiture : Voiture_Passager
+Covoiturage_Trajet "trajet21 1..9999" -- "voiture20 1..1" Covoiturage_Voiture : Voiture_Trajet
 @enduml

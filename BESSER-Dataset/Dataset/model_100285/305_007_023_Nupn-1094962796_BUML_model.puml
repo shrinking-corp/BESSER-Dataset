@@ -1,4 +1,8 @@
 @startuml
+' model: nupn
+' project: sampleModel
+' owner: User
+' description: New project
 class nupn_EStringToStringMapEntry {
 }
 class nupn_NUPNToolspecificType {
@@ -21,9 +25,9 @@ class nupn_UnitType {
   + places : str
   + subunits : str
 }
-nupn_NUPNToolspecificType "1..1" *-- "1..1" nupn_SizeType : size1
-nupn_NUPNToolspecificType "1..1" *-- "1..1" nupn_StructureType : structure2
-nupn_StructureType "1..1" *-- "1..9999" nupn_UnitType : unit0
-nupn_EStringToStringMapEntry "0..9999" --* "1..1" nupn_NUPNToolspecificType : xMLNSPrefixMap5
-nupn_EStringToStringMapEntry "0..9999" --* "1..1" nupn_NUPNToolspecificType : xSISchemaLocation7
+nupn_NUPNToolspecificType "nupn_SizeType 1..1" *-- "nupn_NUPNToolspecificType 1..1" nupn_SizeType : size1
+nupn_NUPNToolspecificType "nupn_StructureType4 1..1" *-- "nupn_NUPNToolspecificType3 1..1" nupn_StructureType : structure2
+nupn_StructureType "nupn_UnitType 1..1" *-- "nupn_StructureType 1..9999" nupn_UnitType : unit0
+nupn_EStringToStringMapEntry "nupn_NUPNToolspecificType6 0..9999" --* "nupn_EStringToStringMapEntry 1..1" nupn_NUPNToolspecificType : xMLNSPrefixMap5
+nupn_EStringToStringMapEntry "nupn_NUPNToolspecificType8 0..9999" --* "nupn_EStringToStringMapEntry9 1..1" nupn_NUPNToolspecificType : xSISchemaLocation7
 @enduml

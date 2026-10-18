@@ -1,4 +1,8 @@
 @startuml
+' model: schemaprimerpo
+' project: sampleModel
+' owner: User
+' description: New project
 class schemaprimerpo_DocumentRoot {
   + comment : str
   + mixed : str
@@ -25,10 +29,10 @@ class schemaprimerpo_USAddress {
   + street : str
   + zip : str
 }
-schemaprimerpo_PurchaseOrder "1..1" *-- "1..1" schemaprimerpo_USAddress : billTo8
-schemaprimerpo_Item "0..9999" --* "1..1" schemaprimerpo_PurchaseOrder : items11
-schemaprimerpo_DocumentRoot "1..1" *-- "0..9999" schemaprimerpo_PurchaseOrder : order4
-schemaprimerpo_PurchaseOrder "1..1" *-- "0..1" schemaprimerpo_USAddress : shipTo6
-schemaprimerpo_DocumentRoot "1..1" *-- "0..9999" schemaprimerpo_EStringToStringMapEntry : xMLNSPrefixMap0
-schemaprimerpo_DocumentRoot "1..1" *-- "0..9999" schemaprimerpo_EStringToStringMapEntry : xSISchemaLocation1
+schemaprimerpo_PurchaseOrder "schemaprimerpo_USAddress10 1..1" *-- "schemaprimerpo_PurchaseOrder9 1..1" schemaprimerpo_USAddress : billTo8
+schemaprimerpo_Item "schemaprimerpo_PurchaseOrder12 0..9999" --* "schemaprimerpo_Item 1..1" schemaprimerpo_PurchaseOrder : items11
+schemaprimerpo_DocumentRoot "schemaprimerpo_PurchaseOrder 1..1" *-- "schemaprimerpo_DocumentRoot5 0..9999" schemaprimerpo_PurchaseOrder : order4
+schemaprimerpo_PurchaseOrder "schemaprimerpo_USAddress 1..1" *-- "schemaprimerpo_PurchaseOrder7 0..1" schemaprimerpo_USAddress : shipTo6
+schemaprimerpo_DocumentRoot "schemaprimerpo_EStringToStringMapEntry 1..1" *-- "schemaprimerpo_DocumentRoot 0..9999" schemaprimerpo_EStringToStringMapEntry : xMLNSPrefixMap0
+schemaprimerpo_DocumentRoot "schemaprimerpo_EStringToStringMapEntry3 1..1" *-- "schemaprimerpo_DocumentRoot2 0..9999" schemaprimerpo_EStringToStringMapEntry : xSISchemaLocation1
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: _6a75b6f1_22b0_4916_9555_29c99eab923c
+' project: sampleModel
+' owner: User
+' description: New project
 class Bill {
   + amount : float
   + billno : str
@@ -40,11 +44,11 @@ class Treatment {
   + patientID : int
   + procedureID : int
 }
-Department "1..1" -- "1..9999" Doctor : Doctor_Department
-Doctor "1..9999" -- "1..9999" Patient : Doctor_Patient
-Bill "1..9999" -- "1..9999" Patient : Patient_Bill
-Procedure "1..9999" -- "1..9999" Treatment : Procedure_Treatment
-Patient "0..1" -- "0..1" Treatment : Treatment_Patient
-Bill "1..9999" -- "1..9999" Receptionist : manages
-Patient "1..1" -- "1..1" Receptionist : receptions
+Department "depmt2 1..1" -- "doctor3 1..9999" Doctor : Doctor_Department
+Doctor "doctors1 1..9999" -- "patients0 1..9999" Patient : Doctor_Patient
+Bill "bill4 1..9999" -- "pat5 1..9999" Patient : Patient_Bill
+Procedure "procedure13 1..9999" -- "treatment12 1..9999" Treatment : Procedure_Treatment
+Patient "patient10 0..1" -- "treatment11 0..1" Treatment : Treatment_Patient
+Bill "sbill8 1..9999" -- "receptionist9 1..9999" Receptionist : manages
+Patient "p7 1..1" -- "receptionist6 1..1" Receptionist : receptions
 @enduml

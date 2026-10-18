@@ -1,4 +1,8 @@
 @startuml
+' model: _pxoYkLriEeedTfUoC_GfaA
+' project: sampleModel
+' owner: User
+' description: New project
 class Buch {
   + Autor : str
   + ISBN : str
@@ -41,10 +45,10 @@ class Zeitschrift {
   + Ausgabe : str
   + Jahrgang : int
 }
-Entleihungsgegenstand "1..1" -- "0..1" Exemplar : Entleihungsgegenstand_Exemplar
-Entlehnung "0..9999" -- "1..9999" Exemplar : Exemplar_Entlehnung
-Entlehnausweis "0..1" -- "1..1" Kunde : Kunde_Entlehnausweis
-Entlehnung "0..9999" -- "1..1" Kunde : Kunde_Entlehnung
-Kunde "1..1" -- "0..9999" Reservierung : Kunde_Reservierung
-Exemplar "1..9999" -- "0..9999" Reservierung : Reservierung_Exemplar
+Entleihungsgegenstand "hat11 1..1" -- "geh_rt_zu10 0..1" Exemplar : Entleihungsgegenstand_Exemplar
+Entlehnung "wird_Entlehnt0 0..9999" -- "anzahl_Exem_1 1..9999" Exemplar : Exemplar_Entlehnung
+Entlehnausweis "hat_einen4 0..1" -- "geh_rt_zu5 1..1" Kunde : Kunde_Entlehnausweis
+Entlehnung "anzahl2 0..9999" -- "geh_rt_zu3 1..1" Kunde : Kunde_Entlehnung
+Kunde "geh_rt_zu7 1..1" -- "anzahl6 0..9999" Reservierung : Kunde_Reservierung
+Exemplar "anzahl_Exem_8 1..9999" -- "wir_reserviert9 0..9999" Reservierung : Reservierung_Exemplar
 @enduml

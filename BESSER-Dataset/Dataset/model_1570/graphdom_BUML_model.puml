@@ -1,4 +1,8 @@
 @startuml
+' model: graphdom
+' project: sampleModel
+' owner: User
+' description: New project
 class graphdom_Edge {
   + guid : str
   + marked : bool
@@ -29,8 +33,8 @@ class graphdom_Node {
   + yCoord : int
   + getAdjacentNodes() : str
 }
-graphdom_Edge "0..9999" -- "1..1" graphdom_Node : connectedEdges3
-graphdom_Edge "1..1" -- "2..2" graphdom_Node : connectedNodes4
-graphdom_Edge "0..9999" --* "1..1" graphdom_Graph : edges1
-graphdom_Graph "1..1" *-- "0..9999" graphdom_Node : nodes0
+graphdom_Edge "connectedNodes 0..9999" -- "Edge 1..1" graphdom_Node : connectedEdges3
+graphdom_Edge "Node 1..1" -- "connectedEdges 2..2" graphdom_Node : connectedNodes4
+graphdom_Edge "graphdom_Graph2 0..9999" --* "graphdom_Edge 1..1" graphdom_Graph : edges1
+graphdom_Graph "graphdom_Node 1..1" *-- "graphdom_Graph 0..9999" graphdom_Node : nodes0
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: oclstdlibcs
+' project: sampleModel
+' owner: User
+' description: New project
 class AttributeCS {
 }
 class ConstraintCS {
@@ -72,10 +76,10 @@ OperationCS <|-- oclstdlibcs_LibOperationCS
 PackageCS <|-- oclstdlibcs_LibPackageCS
 RootPackageCS <|-- oclstdlibcs_LibRootPackageCS
 StructuredClassCS <|-- oclstdlibcs_LibClassCS
-oclstdlibcs_JavaClassCS "0..1" -- "1..1" oclstdlibcs_JavaImplementationCS : implementation0
-oclstdlibcs_LibClassCS "1..1" -- "0..1" oclstdlibcs_MetaclassNameCS : metaclassName1
-oclstdlibcs_LibIterationCS "1..1" *-- "0..9999" oclstdlibcs_ParameterCS : ownedAccumulators2
-oclstdlibcs_LibIterationCS "1..1" *-- "0..9999" oclstdlibcs_ParameterCS : ownedIterators3
-oclstdlibcs_LibPackageCS "1..1" *-- "0..9999" oclstdlibcs_PrecedenceCS : ownedPrecedences7
-oclstdlibcs_LibOperationCS "1..1" -- "0..1" oclstdlibcs_Precedence : precedence6
+oclstdlibcs_JavaClassCS "oclstdlibcs_JavaImplementationCS 0..1" -- "oclstdlibcs_JavaClassCS 1..1" oclstdlibcs_JavaImplementationCS : implementation0
+oclstdlibcs_LibClassCS "oclstdlibcs_MetaclassNameCS 1..1" -- "oclstdlibcs_LibClassCS 0..1" oclstdlibcs_MetaclassNameCS : metaclassName1
+oclstdlibcs_LibIterationCS "oclstdlibcs_ParameterCS 1..1" *-- "oclstdlibcs_LibIterationCS 0..9999" oclstdlibcs_ParameterCS : ownedAccumulators2
+oclstdlibcs_LibIterationCS "oclstdlibcs_ParameterCS5 1..1" *-- "oclstdlibcs_LibIterationCS4 0..9999" oclstdlibcs_ParameterCS : ownedIterators3
+oclstdlibcs_LibPackageCS "oclstdlibcs_PrecedenceCS 1..1" *-- "oclstdlibcs_LibPackageCS 0..9999" oclstdlibcs_PrecedenceCS : ownedPrecedences7
+oclstdlibcs_LibOperationCS "oclstdlibcs_Precedence 1..1" -- "oclstdlibcs_LibOperationCS 0..1" oclstdlibcs_Precedence : precedence6
 @enduml

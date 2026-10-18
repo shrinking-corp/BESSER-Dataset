@@ -1,4 +1,8 @@
 @startuml
+' model: doc
+' project: sampleModel
+' owner: User
+' description: New project
 class Author {
 }
 class BookContainer {
@@ -153,18 +157,18 @@ fragment_Content <|-- doc_map_ContentGenerator
 map_MapContainer <|-- doc_map_MapSection
 map_MapElement <|-- doc_map_ContentGenerator
 map_MapElement <|-- doc_map_MapSection
-Content "0..9999" --* "1..1" doc_fragment_Container : anyContent4
-Author "1..9999" -- "1..1" doc_fragment_Copyright : author7
-Author "0..9999" --* "1..1" doc_builder_BookBuilder : authors16
-Author "0..9999" --* "1..1" doc_book_Book : authors8
-Content "0..9999" --* "1..1" doc_book_BookContainer : content12
-Copyright "0..9999" --* "1..1" doc_book_Book : copyright10
-Copyright "0..9999" --* "1..1" doc_builder_BookBuilder : copyright18
-MapElement "0..9999" --* "1..1" doc_map_MapContainer : elements3
-ExtensionMappingEntry "0..9999" --* "1..1" doc_map_Map : extensionMappings0
-ResourceFactory "1..1" --* "1..1" doc_map_ExtensionMappingEntry : factory2
-NameRule "0..9999" --* "1..1" doc_map_Feature : fileNameRules1
-builder_PropertyEntry "0..9999" --* "1..1" doc_builder_BookBuilder : properties21
-Section "0..9999" --* "1..1" doc_fragment_Container : section5
-BookSection "0..9999" --* "1..1" doc_book_BookContainer : sections14
+Content "doc_fragment_Container 0..9999" --* "Content 1..1" doc_fragment_Container : anyContent4
+Author "doc_fragment_Copyright 1..9999" -- "Author 1..1" doc_fragment_Copyright : author7
+Author "doc_builder_BookBuilder 0..9999" --* "Author17 1..1" doc_builder_BookBuilder : authors16
+Author "doc_book_Book 0..9999" --* "Author9 1..1" doc_book_Book : authors8
+Content "doc_book_BookContainer 0..9999" --* "Content13 1..1" doc_book_BookContainer : content12
+Copyright "doc_book_Book11 0..9999" --* "Copyright 1..1" doc_book_Book : copyright10
+Copyright "doc_builder_BookBuilder19 0..9999" --* "Copyright20 1..1" doc_builder_BookBuilder : copyright18
+MapElement "doc_map_MapContainer 0..9999" --* "MapElement 1..1" doc_map_MapContainer : elements3
+ExtensionMappingEntry "doc_map_Map 0..9999" --* "ExtensionMappingEntry 1..1" doc_map_Map : extensionMappings0
+ResourceFactory "doc_map_ExtensionMappingEntry 1..1" --* "ResourceFactory 1..1" doc_map_ExtensionMappingEntry : factory2
+NameRule "doc_map_Feature 0..9999" --* "NameRule 1..1" doc_map_Feature : fileNameRules1
+builder_PropertyEntry "doc_builder_BookBuilder22 0..9999" --* "builder_PropertyEntry 1..1" doc_builder_BookBuilder : properties21
+Section "doc_fragment_Container6 0..9999" --* "Section 1..1" doc_fragment_Container : section5
+BookSection "doc_book_BookContainer15 0..9999" --* "BookSection 1..1" doc_book_BookContainer : sections14
 @enduml

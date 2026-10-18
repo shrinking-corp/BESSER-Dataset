@@ -93,8 +93,8 @@ def test_assoc_elements0_stub_double():
     partner = grapho_GraphO()
     setattr(partner, 'grapho_GraphO', None)
     _safe_set(owner, 'grapho_GraphElement', partner)
-    assert getattr(partner, 'grapho_GraphO') == owner
+    assert owner in getattr(partner, 'grapho_GraphO')
     _safe_set(owner, 'grapho_GraphElement', None)
-    assert getattr(partner, 'grapho_GraphO') is None
+    assert owner not in getattr(partner, 'grapho_GraphO')
 
 

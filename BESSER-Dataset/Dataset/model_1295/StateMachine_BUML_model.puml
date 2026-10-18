@@ -1,4 +1,8 @@
 @startuml
+' model: StateMachine
+' project: sampleModel
+' owner: User
+' description: New project
 class Behavior {
 }
 enum PseudoStateKind {
@@ -62,24 +66,24 @@ Behavior <|-- StateMachine_StateMachine
 State <|-- StateMachine_FinalState
 Vertex <|-- StateMachine_PseudoState
 Vertex <|-- StateMachine_State
-StateMachine_State "1..1" *-- "0..9999" StateMachine_Trigger : deferrableTrigger3
-StateMachine_Behavior "0..1" --* "1..1" StateMachine_State : doActivity1
-StateMachine_Behavior "0..1" --* "1..1" StateMachine_Transition : effect32
-StateMachine_Behavior "0..1" --* "1..1" StateMachine_State : entry10
-StateMachine_PseudoState "0..1" -- "1..1" StateMachine_State : entryPoint14
-StateMachine_Behavior "0..1" --* "1..1" StateMachine_State : exit7
-StateMachine_PseudoState "0..9999" -- "1..1" StateMachine_State : exitPoint16
-StateMachine_Constraint "0..1" --* "1..1" StateMachine_Transition : guard38
-StateMachine_Transition "0..9999" -- "1..1" StateMachine_Vertex : incoming20
-StateMachine_Transition "0..9999" -- "1..1" StateMachine_Vertex : outgoing19
-StateMachine_Region "0..9999" --* "1..1" StateMachine_State : region0
-StateMachine_Region "1..9999" --* "1..1" StateMachine_StateMachine : region26
-StateMachine_Transition "1..1" -- "1..1" StateMachine_Vertex : source29
-StateMachine_Constraint "0..1" --* "1..1" StateMachine_State : stateInvariant5
-StateMachine_State "1..1" -- "0..1" StateMachine_StateMachine : submachine13
-StateMachine_State "0..9999" -- "1..1" StateMachine_StateMachine : submachineState28
-StateMachine_Region "1..1" *-- "0..9999" StateMachine_Vertex : subvertex22
-StateMachine_Transition "1..1" -- "1..1" StateMachine_Vertex : target30
-StateMachine_Region "1..1" *-- "0..9999" StateMachine_Transition : transition24
-StateMachine_Transition "1..1" *-- "0..9999" StateMachine_Trigger : trigger35
+StateMachine_State "StateMachine_Trigger 1..1" *-- "StateMachine_State4 0..9999" StateMachine_Trigger : deferrableTrigger3
+StateMachine_Behavior "StateMachine_State2 0..1" --* "StateMachine_Behavior 1..1" StateMachine_State : doActivity1
+StateMachine_Behavior "StateMachine_Transition33 0..1" --* "StateMachine_Behavior34 1..1" StateMachine_Transition : effect32
+StateMachine_Behavior "StateMachine_State11 0..1" --* "StateMachine_Behavior12 1..1" StateMachine_State : entry10
+StateMachine_PseudoState "StateMachine_State15 0..1" -- "StateMachine_PseudoState 1..1" StateMachine_State : entryPoint14
+StateMachine_Behavior "StateMachine_State8 0..1" --* "StateMachine_Behavior9 1..1" StateMachine_State : exit7
+StateMachine_PseudoState "StateMachine_State17 0..9999" -- "StateMachine_PseudoState18 1..1" StateMachine_State : exitPoint16
+StateMachine_Constraint "StateMachine_Transition39 0..1" --* "StateMachine_Constraint40 1..1" StateMachine_Transition : guard38
+StateMachine_Transition "target 0..9999" -- "Transition21 1..1" StateMachine_Vertex : incoming20
+StateMachine_Transition "source 0..9999" -- "Transition 1..1" StateMachine_Vertex : outgoing19
+StateMachine_Region "StateMachine_State 0..9999" --* "StateMachine_Region 1..1" StateMachine_State : region0
+StateMachine_Region "StateMachine_StateMachine 1..9999" --* "StateMachine_Region27 1..1" StateMachine_StateMachine : region26
+StateMachine_Transition "Vertex 1..1" -- "outgoing 1..1" StateMachine_Vertex : source29
+StateMachine_Constraint "StateMachine_State6 0..1" --* "StateMachine_Constraint 1..1" StateMachine_State : stateInvariant5
+StateMachine_State "StateMachine 1..1" -- "submachineState 0..1" StateMachine_StateMachine : submachine13
+StateMachine_State "submachine 0..9999" -- "State 1..1" StateMachine_StateMachine : submachineState28
+StateMachine_Region "StateMachine_Vertex 1..1" *-- "StateMachine_Region23 0..9999" StateMachine_Vertex : subvertex22
+StateMachine_Transition "Vertex31 1..1" -- "incoming 1..1" StateMachine_Vertex : target30
+StateMachine_Region "StateMachine_Transition 1..1" *-- "StateMachine_Region25 0..9999" StateMachine_Transition : transition24
+StateMachine_Transition "StateMachine_Trigger37 1..1" *-- "StateMachine_Transition36 0..9999" StateMachine_Trigger : trigger35
 @enduml

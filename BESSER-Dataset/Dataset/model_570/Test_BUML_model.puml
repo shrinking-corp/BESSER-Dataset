@@ -1,4 +1,8 @@
 @startuml
+' model: tutorial
+' project: sampleModel
+' owner: User
+' description: New project
 class Employee {
 }
 class Library {
@@ -38,16 +42,16 @@ class tutorial_SubOrg2_sb2C {
 }
 Employee <|-- tutorial_Organization_Librarian
 Library <|-- tutorial_Organization_Ref
-Organization_tutorial_Item "0..1" -- "1..1" tutorial_Organization_Ref : RefOutsideEcore20
-SubOrg1_sb1C "1..1" -- "1..1" tutorial_Loan : book14
-tutorial_Book "0..9999" --* "1..1" tutorial_Library : books0
-tutorial_Book "0..9999" -- "1..1" tutorial_Member : books11
-tutorial_Book "1..1" -- "0..1" tutorial_Library : library4
-tutorial_Library "0..1" -- "1..1" tutorial_Member : library7
-tutorial_Library "1..1" *-- "0..9999" tutorial_Loan : loans1
-tutorial_Book "1..1" -- "0..9999" tutorial_Loan : loans5
-tutorial_Loan "0..9999" -- "1..1" tutorial_Member : loans9
-tutorial_Loan "1..1" -- "1..1" tutorial_Member : member16
-tutorial_Library "1..1" *-- "0..9999" tutorial_Member : members2
-SubOrg2_sb2C "0..1" -- "1..1" tutorial_Organization_Librarian : workOn19
+Organization_tutorial_Item "tutorial_Organization_Ref 0..1" -- "Organization_tutorial_Item 1..1" tutorial_Organization_Ref : RefOutsideEcore20
+SubOrg1_sb1C "tutorial_Loan15 1..1" -- "SubOrg1_sb1C 1..1" tutorial_Loan : book14
+tutorial_Book "library 0..9999" --* "Book 1..1" tutorial_Library : books0
+tutorial_Book "tutorial_Member12 0..9999" -- "tutorial_Book13 1..1" tutorial_Member : books11
+tutorial_Book "Library 1..1" -- "books 0..1" tutorial_Library : library4
+tutorial_Library "members 0..1" -- "Library8 1..1" tutorial_Member : library7
+tutorial_Library "tutorial_Loan 1..1" *-- "tutorial_Library 0..9999" tutorial_Loan : loans1
+tutorial_Book "tutorial_Loan6 1..1" -- "tutorial_Book 0..9999" tutorial_Loan : loans5
+tutorial_Loan "tutorial_Member 0..9999" -- "tutorial_Loan10 1..1" tutorial_Member : loans9
+tutorial_Loan "tutorial_Member18 1..1" -- "tutorial_Loan17 1..1" tutorial_Member : member16
+tutorial_Library "Member 1..1" *-- "library3 0..9999" tutorial_Member : members2
+SubOrg2_sb2C "tutorial_Organization_Librarian 0..1" -- "SubOrg2_sb2C 1..1" tutorial_Organization_Librarian : workOn19
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: fsmtest
+' project: sampleModel
+' owner: User
+' description: New project
 class fsmtest_ConditionDeclaration {
 }
 class fsmtest_FsmDefinition {
@@ -33,21 +37,21 @@ class fsmtest_StateDeclaration {
 class fsmtest_TransitionDeclaration {
   + name : str
 }
-fsmtest_FsmDefinition "0..9999" --* "1..1" fsmtest_Model : FsmDefinitions0
-fsmtest_Model "1..1" *-- "0..9999" fsmtest_RandomTest : RandomTests1
-fsmtest_ConditionDeclaration "0..9999" --* "1..1" fsmtest_StateDeclaration : condition33
-fsmtest_StateDeclaration "0..1" -- "1..1" fsmtest_TransitionDeclaration : destination13
-fsmtest_FsmDefinition "0..1" -- "1..1" fsmtest_RandomTest : fsm5
-fsmtest_LoopsDeclaration "0..1" --* "1..1" fsmtest_RandomTest : loopsDeclaration8
-fsmtest_PostconditionDeclaration "0..9999" --* "1..1" fsmtest_TransitionDeclaration : postcondition23
-fsmtest_PreconditionDeclaration "0..9999" --* "1..1" fsmtest_TransitionDeclaration : precondition21
-fsmtest_RandomTest "1..1" *-- "0..1" fsmtest_SeedDeclaration : seedDeclaration10
-fsmtest_GuardDeclaration "1..1" *-- "0..1" fsmtest_SignalDeclaration : signal12
-fsmtest_ConditionDeclaration "1..1" *-- "0..1" fsmtest_SignalDeclaration : signal25
-fsmtest_PreconditionDeclaration "1..1" *-- "0..1" fsmtest_SignalDeclaration : signal27
-fsmtest_PostconditionDeclaration "1..1" *-- "0..1" fsmtest_SignalDeclaration : signal30
-fsmtest_FsmDefinition "1..1" *-- "0..9999" fsmtest_StateDeclaration : states3
-fsmtest_StateDeclaration "1..1" *-- "0..9999" fsmtest_TransitionDeclaration : transitions36
-fsmtest_SignalDeclaration "0..1" --* "1..1" fsmtest_TransitionDeclaration : trigger15
-fsmtest_GuardDeclaration "0..9999" --* "1..1" fsmtest_TransitionDeclaration : triggers18
+fsmtest_FsmDefinition "fsmtest_Model 0..9999" --* "fsmtest_FsmDefinition 1..1" fsmtest_Model : FsmDefinitions0
+fsmtest_Model "fsmtest_RandomTest 1..1" *-- "fsmtest_Model2 0..9999" fsmtest_RandomTest : RandomTests1
+fsmtest_ConditionDeclaration "fsmtest_StateDeclaration34 0..9999" --* "fsmtest_ConditionDeclaration35 1..1" fsmtest_StateDeclaration : condition33
+fsmtest_StateDeclaration "fsmtest_TransitionDeclaration 0..1" -- "fsmtest_StateDeclaration14 1..1" fsmtest_TransitionDeclaration : destination13
+fsmtest_FsmDefinition "fsmtest_RandomTest6 0..1" -- "fsmtest_FsmDefinition7 1..1" fsmtest_RandomTest : fsm5
+fsmtest_LoopsDeclaration "fsmtest_RandomTest9 0..1" --* "fsmtest_LoopsDeclaration 1..1" fsmtest_RandomTest : loopsDeclaration8
+fsmtest_PostconditionDeclaration "fsmtest_TransitionDeclaration24 0..9999" --* "fsmtest_PostconditionDeclaration 1..1" fsmtest_TransitionDeclaration : postcondition23
+fsmtest_PreconditionDeclaration "fsmtest_TransitionDeclaration22 0..9999" --* "fsmtest_PreconditionDeclaration 1..1" fsmtest_TransitionDeclaration : precondition21
+fsmtest_RandomTest "fsmtest_SeedDeclaration 1..1" *-- "fsmtest_RandomTest11 0..1" fsmtest_SeedDeclaration : seedDeclaration10
+fsmtest_GuardDeclaration "fsmtest_SignalDeclaration 1..1" *-- "fsmtest_GuardDeclaration 0..1" fsmtest_SignalDeclaration : signal12
+fsmtest_ConditionDeclaration "fsmtest_SignalDeclaration26 1..1" *-- "fsmtest_ConditionDeclaration 0..1" fsmtest_SignalDeclaration : signal25
+fsmtest_PreconditionDeclaration "fsmtest_SignalDeclaration29 1..1" *-- "fsmtest_PreconditionDeclaration28 0..1" fsmtest_SignalDeclaration : signal27
+fsmtest_PostconditionDeclaration "fsmtest_SignalDeclaration32 1..1" *-- "fsmtest_PostconditionDeclaration31 0..1" fsmtest_SignalDeclaration : signal30
+fsmtest_FsmDefinition "fsmtest_StateDeclaration 1..1" *-- "fsmtest_FsmDefinition4 0..9999" fsmtest_StateDeclaration : states3
+fsmtest_StateDeclaration "fsmtest_TransitionDeclaration38 1..1" *-- "fsmtest_StateDeclaration37 0..9999" fsmtest_TransitionDeclaration : transitions36
+fsmtest_SignalDeclaration "fsmtest_TransitionDeclaration16 0..1" --* "fsmtest_SignalDeclaration17 1..1" fsmtest_TransitionDeclaration : trigger15
+fsmtest_GuardDeclaration "fsmtest_TransitionDeclaration19 0..9999" --* "fsmtest_GuardDeclaration20 1..1" fsmtest_TransitionDeclaration : triggers18
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: CoachBusWithEDataType
+' project: sampleModel
+' owner: User
+' description: New project
 class CoachBusWithEDataType_AdultTicket {
 }
 class CoachBusWithEDataType_ChildTicket {
@@ -32,6 +36,24 @@ Ticket <|-- CoachBusWithEDataType_AdultTicket
 Ticket <|-- CoachBusWithEDataType_ChildTicket
 Trip <|-- CoachBusWithEDataType_PrivateTrip
 Trip <|-- CoachBusWithEDataType_RegularTrip
-CoachBusWithEDataType_Passenger "1..9999" -- "1..1" CoachBusWithEDataType_Trip : passengers1
-CoachBusWithEDataType_Coach "1..1" -- "1..9999" CoachBusWithEDataType_Trip : trips0
+CoachBusWithEDataType_Passenger "CoachBusWithEDataType_Trip2 1..9999" -- "CoachBusWithEDataType_Passenger 1..1" CoachBusWithEDataType_Trip : passengers1
+CoachBusWithEDataType_Coach "CoachBusWithEDataType_Trip 1..1" -- "CoachBusWithEDataType_Coach 1..9999" CoachBusWithEDataType_Trip : trips0
+note top of CoachBusWithEDataType_Coach
+  constraint MaxCoachSize (OCL): context Coach inv: self.trips->forAll(t : Trip | t.passengers->size() <=(self.noOfSeats))
+end note
+note top of CoachBusWithEDataType_Coach
+  constraint MinCoachSize (OCL): context Coach inv: self.noOfSeats >=(10)
+end note
+note top of CoachBusWithEDataType_Passenger
+  constraint MaleOrFemale (OCL): context Passenger inv: self.sex =(CoachBusWithEDataType_Sex_male) =(self.sex =(CoachBusWithEDataType_Sex_female))
+end note
+note top of CoachBusWithEDataType_Passenger
+  constraint NonNegativeAge (OCL): context Passenger inv: self.age >=(0)
+end note
+note top of CoachBusWithEDataType_Ticket
+  constraint UniqueTicketNumber (OCL): context Ticket inv: CoachBusWithEDataType_Ticket.allInstances()->isUnique(t : Ticket | t.number)
+end note
+note top of CoachBusWithEDataType_Trip
+  constraint TripType (OCL): context Trip inv: self.type.oclIsKindOf(CoachBusWithEDataType_TType)
+end note
 @enduml

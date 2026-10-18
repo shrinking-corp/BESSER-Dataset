@@ -1,4 +1,8 @@
 @startuml
+' model: trip_model
+' project: sampleModel
+' owner: User
+' description: New project
 class Service {
 }
 class trip_model_OtherService {
@@ -24,12 +28,12 @@ class trip_model_location {
 }
 Service <|-- trip_model_OtherService
 Service <|-- trip_model_TravelService
-trip_model_Trip "1..1" -- "1..1" trip_model_location : destination10
-trip_model_TravelService "1..1" -- "1..1" trip_model_location : destination3
-trip_model_OtherService "1..1" -- "1..1" trip_model_location : location0
-trip_model_TripModel "1..1" *-- "0..9999" trip_model_location : location15
-trip_model_Service "0..9999" --* "1..1" trip_model_Trip : service6
-trip_model_TravelService "1..1" -- "1..1" trip_model_location : source1
-trip_model_Trip "1..1" -- "1..1" trip_model_location : source7
-trip_model_Trip "0..9999" --* "1..1" trip_model_TripModel : trip13
+trip_model_Trip "trip_model_location12 1..1" -- "trip_model_Trip11 1..1" trip_model_location : destination10
+trip_model_TravelService "trip_model_location5 1..1" -- "trip_model_TravelService4 1..1" trip_model_location : destination3
+trip_model_OtherService "trip_model_location 1..1" -- "trip_model_OtherService 1..1" trip_model_location : location0
+trip_model_TripModel "trip_model_location17 1..1" *-- "trip_model_TripModel16 0..9999" trip_model_location : location15
+trip_model_Service "trip_model_Trip 0..9999" --* "trip_model_Service 1..1" trip_model_Trip : service6
+trip_model_TravelService "trip_model_location2 1..1" -- "trip_model_TravelService 1..1" trip_model_location : source1
+trip_model_Trip "trip_model_location9 1..1" -- "trip_model_Trip8 1..1" trip_model_location : source7
+trip_model_Trip "trip_model_TripModel 0..9999" --* "trip_model_Trip14 1..1" trip_model_TripModel : trip13
 @enduml

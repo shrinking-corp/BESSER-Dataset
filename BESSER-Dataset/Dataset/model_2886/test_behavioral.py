@@ -131,9 +131,9 @@ def test_assoc_features1_stub_double():
     partner = metamodel_Entity()
     setattr(partner, 'metamodel_Entity', None)
     _safe_set(owner, 'metamodel_Feature', partner)
-    assert getattr(partner, 'metamodel_Entity') == owner
+    assert owner in getattr(partner, 'metamodel_Entity')
     _safe_set(owner, 'metamodel_Feature', None)
-    assert getattr(partner, 'metamodel_Entity') is None
+    assert owner not in getattr(partner, 'metamodel_Entity')
 
 
 def test_assoc_queries2_stub_double():
@@ -146,9 +146,9 @@ def test_assoc_queries2_stub_double():
     partner = metamodel_Entity()
     setattr(partner, 'metamodel_Entity3', None)
     _safe_set(owner, 'metamodel_Query', partner)
-    assert getattr(partner, 'metamodel_Entity3') == owner
+    assert owner in getattr(partner, 'metamodel_Entity3')
     _safe_set(owner, 'metamodel_Query', None)
-    assert getattr(partner, 'metamodel_Entity3') is None
+    assert owner not in getattr(partner, 'metamodel_Entity3')
 
 
 def test_assoc_types0_stub_double():
@@ -161,8 +161,8 @@ def test_assoc_types0_stub_double():
     partner = metamodel_Model()
     setattr(partner, 'metamodel_Model', None)
     _safe_set(owner, 'metamodel_Type', partner)
-    assert getattr(partner, 'metamodel_Model') == owner
+    assert owner in getattr(partner, 'metamodel_Model')
     _safe_set(owner, 'metamodel_Type', None)
-    assert getattr(partner, 'metamodel_Model') is None
+    assert owner not in getattr(partner, 'metamodel_Model')
 
 

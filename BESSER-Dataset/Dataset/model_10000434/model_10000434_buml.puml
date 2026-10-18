@@ -1,4 +1,8 @@
 @startuml
+' model: _369f8d51_0c87_47c2_8b96_fb435ee860c1
+' project: sampleModel
+' owner: User
+' description: New project
 class Admin {
   + mail : str
   + name : str
@@ -127,18 +131,18 @@ class vendor {
   + shippinginfo : str
   + username : str
 }
-Cart "0..1" -- "0..1" pembeli : Cart_Customer
-Order "0..1" -- "0..1" Orderdetail : Orderdetail_Order
-Kategori "1..1" -- "1..1" Produk : Produk_Kategori
-Orderdetail "1..1" -- "0..9999" Produk : Produk_Orderdetail
-Order "0..1" -- "0..1" Shippinginfo : Shippinginfo_Order
-admin "1..1" -- "1..1" user : admin_user
-barang "1..1" -- "1..1" kategori : barang_kategori
-order "0..1" -- "0..1" orderdetail : order_orderdetail
-order "0..9999" -- "1..1" user : order_user
-barang "0..9999" -- "1..1" orderdetail : orderdetail_barang
-pembeli1 "1..1" -- "1..1" user : pembeli_user
-User "0..1" -- "0..1" penjual : penjual_User
-role "1..1" -- "1..1" user : role_user
-user "1..1" -- "1..1" vendor : vendor_user
+Cart "cart5 0..1" -- "customer4 0..1" pembeli : Cart_Customer
+Order "order2 0..1" -- "orderdetail3 0..1" Orderdetail : Orderdetail_Order
+Kategori "kategori10 1..1" -- "produk11 1..1" Produk : Produk_Kategori
+Orderdetail "orderdetail8 1..1" -- "produk9 0..9999" Produk : Produk_Orderdetail
+Order "order0 0..1" -- "shippinginfo1 0..1" Shippinginfo : Shippinginfo_Order
+admin "admin15 1..1" -- "user14 1..1" user : admin_user
+barang "barang25 1..1" -- "kategori24 1..1" kategori : barang_kategori
+order "order23 0..1" -- "orderdetail22 0..1" orderdetail : order_orderdetail
+order "order21 0..9999" -- "user20 1..1" user : order_user
+barang "barang26 0..9999" -- "orderdetail27 1..1" orderdetail : orderdetail_barang
+pembeli1 "pembeli17 1..1" -- "user16 1..1" user : pembeli_user
+User "user6 0..1" -- "penjual7 0..1" penjual : penjual_User
+role "role13 1..1" -- "user12 1..1" user : role_user
+user "user18 1..1" -- "vendor19 1..1" vendor : vendor_user
 @enduml

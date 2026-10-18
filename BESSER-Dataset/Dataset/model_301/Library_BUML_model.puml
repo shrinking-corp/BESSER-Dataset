@@ -1,4 +1,8 @@
 @startuml
+' model: Library
+' project: sampleModel
+' owner: User
+' description: New project
 class Addressable {
 }
 class AudioVisualItem {
@@ -72,19 +76,19 @@ Lendable <|-- Library_CirculatingItem
 Person <|-- Library_Borrower
 Person <|-- Library_Employee
 Person <|-- Library_Writer
-Library_Book "1..1" -- "1..1" Library_Writer : author0
-Library_BookOnTape "1..1" -- "0..1" Library_Writer : author18
-Library_Book "0..9999" -- "1..1" Library_Writer : books15
-Library_Book "0..9999" -- "1..1" Library_Library : books8
-Library_Borrower "1..1" -- "0..9999" Library_Lendable : borrowed23
-Library_Borrower "0..9999" -- "1..1" Library_Lendable : borrowers16
-Library_Borrower "0..9999" --* "1..1" Library_Library : borrowers4
-Library_Library "1..1" *-- "0..9999" Library_Library : branches11
-Library_Person "0..9999" -- "1..1" Library_VideoCassette : cast21
-Library_Employee "0..9999" --* "1..1" Library_Library : employees2
-Library_Employee "0..1" -- "1..1" Library_Employee : manager25
-Library_Library "1..1" -- "0..1" Library_Library : parentBranch13
-Library_BookOnTape "1..1" -- "0..1" Library_Person : reader17
-Library_Item "0..9999" --* "1..1" Library_Library : stock6
-Library_Library "1..1" *-- "0..9999" Library_Writer : writers1
+Library_Book "Writer 1..1" -- "books 1..1" Library_Writer : author0
+Library_BookOnTape "Library_Writer20 1..1" -- "Library_BookOnTape19 0..1" Library_Writer : author18
+Library_Book "author 0..9999" -- "Book 1..1" Library_Writer : books15
+Library_Book "Library_Library9 0..9999" -- "Library_Book 1..1" Library_Library : books8
+Library_Borrower "Lendable 1..1" -- "borrowers 0..9999" Library_Lendable : borrowed23
+Library_Borrower "borrowed 0..9999" -- "Borrower 1..1" Library_Lendable : borrowers16
+Library_Borrower "Library_Library5 0..9999" --* "Library_Borrower 1..1" Library_Library : borrowers4
+Library_Library "Library 1..1" *-- "parentBranch 0..9999" Library_Library : branches11
+Library_Person "Library_VideoCassette 0..9999" -- "Library_Person22 1..1" Library_VideoCassette : cast21
+Library_Employee "Library_Library3 0..9999" --* "Library_Employee 1..1" Library_Library : employees2
+Library_Employee "Library_Employee24 0..1" -- "Library_Employee26 1..1" Library_Employee : manager25
+Library_Library "Library14 1..1" -- "branches 0..1" Library_Library : parentBranch13
+Library_BookOnTape "Library_Person 1..1" -- "Library_BookOnTape 0..1" Library_Person : reader17
+Library_Item "Library_Library7 0..9999" --* "Library_Item 1..1" Library_Library : stock6
+Library_Library "Library_Writer 1..1" *-- "Library_Library 0..9999" Library_Writer : writers1
 @enduml

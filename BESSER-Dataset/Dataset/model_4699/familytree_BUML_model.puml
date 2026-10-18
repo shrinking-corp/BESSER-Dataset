@@ -1,4 +1,8 @@
 @startuml
+' model: familytree
+' project: sampleModel
+' owner: User
+' description: New project
 class Person {
 }
 class familytree_FamilyTree {
@@ -18,12 +22,12 @@ class familytree_Woman {
 }
 Person <|-- familytree_Man
 Person <|-- familytree_Woman
-familytree_Person "1..1" -- "0..9999" familytree_Person : children4
-familytree_Man "1..1" -- "1..1" familytree_Wedding : husband12
-familytree_Man "0..1" -- "1..1" familytree_Woman : husband9
-familytree_Person "1..1" -- "2..2" familytree_Person : parents6
-familytree_FamilyTree "1..1" *-- "1..9999" familytree_Person : persons0
-familytree_FamilyTree "1..1" *-- "0..9999" familytree_Wedding : weddings1
-familytree_Wedding "1..1" -- "1..1" familytree_Woman : wife10
-familytree_Man "1..1" -- "0..1" familytree_Woman : wife8
+familytree_Person "Person 1..1" -- "parents 0..9999" familytree_Person : children4
+familytree_Man "familytree_Wedding13 1..1" -- "familytree_Man 1..1" familytree_Wedding : husband12
+familytree_Man "wife 0..1" -- "Man 1..1" familytree_Woman : husband9
+familytree_Person "Person7 1..1" -- "children 2..2" familytree_Person : parents6
+familytree_FamilyTree "familytree_Person 1..1" *-- "familytree_FamilyTree 1..9999" familytree_Person : persons0
+familytree_FamilyTree "familytree_Wedding 1..1" *-- "familytree_FamilyTree2 0..9999" familytree_Wedding : weddings1
+familytree_Wedding "familytree_Woman 1..1" -- "familytree_Wedding11 1..1" familytree_Woman : wife10
+familytree_Man "Woman 1..1" -- "husband 0..1" familytree_Woman : wife8
 @enduml

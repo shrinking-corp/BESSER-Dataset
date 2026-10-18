@@ -1,4 +1,8 @@
 @startuml
+' model: model
+' project: sampleModel
+' owner: User
+' description: New project
 class Annotation {
 }
 class CPNToolsTransitionAddin {
@@ -174,35 +178,35 @@ PlaceNode <|-- model_Place
 PlaceNode <|-- model_RefPlace
 TransitionNode <|-- model_RefTrans
 TransitionNode <|-- model_Transition
-model_Arc "0..9999" --* "1..1" model_Page : arc31
-model_CPNToolsTransitionAddin "1..1" -- "0..1" model_Code : code4
-model_Condition "0..1" -- "1..1" model_HLTransitionAddin : condition15
-model_FusionGroup "0..9999" -- "1..1" model_PetriNet : fusionGroups39
-model_HLAnnotation "0..1" -- "1..1" model_HLArcAddin : hlinscription10
-model_HLMarking "0..1" -- "1..1" model_HLPlaceAddin : initialMarking13
-model_Instance "0..1" -- "1..1" model_ParameterAssignment : instance34
-model_HasLabel "1..1" *-- "0..9999" model_Label : label16
-model_Monitor "0..9999" --* "1..1" model_PetriNet : monitors37
-model_HasName "1..1" -- "0..1" model_Name : name17
-model_Object "0..9999" --* "1..1" model_Page : object29
-model_Object "1..1" -- "1..1" model_Page : page25
-model_Arc "1..1" -- "1..1" model_Page : page3
-model_Page "1..9999" --* "1..1" model_PetriNet : page35
-model_Instance "1..1" *-- "0..9999" model_ParameterAssignment : parameterAssignment20
-model_HasLabel "1..1" -- "1..1" model_Label : parent21
-model_HasToolInfo "1..1" -- "1..1" model_ToolInfo : parent44
-model_Page "1..1" -- "1..1" model_PetriNet : petriNet27
-model_FusionGroup "1..1" -- "0..1" model_PetriNet : petriNet9
-model_CPNToolsTransitionAddin "1..1" -- "0..1" model_Priority : priority7
-model_Place "1..1" -- "1..1" model_RefPlace : ref42
-model_RefTrans "1..1" -- "1..1" model_TransitionNode : ref43
-model_Place "1..1" -- "0..9999" model_RefPlace : references41
-model_HLPlaceAddin "1..1" -- "0..1" model_Sort : sort12
-model_Arc "1..1" -- "1..1" model_Node : source0
-model_Arc "0..9999" -- "1..1" model_Node : sourceArc22
-model_DeclarationStructure "0..1" --* "1..1" model_HLDeclaration : structure11
-model_Arc "1..1" -- "1..1" model_Node : target1
-model_Arc "0..9999" -- "1..1" model_Node : targetArc23
-model_CPNToolsTransitionAddin "1..1" -- "0..1" model_Time : time5
-model_HasToolInfo "1..1" *-- "0..9999" model_ToolInfo : toolinfo18
+model_Arc "page32 0..9999" --* "Arc33 1..1" model_Page : arc31
+model_CPNToolsTransitionAddin "model_Code 1..1" -- "model_CPNToolsTransitionAddin 0..1" model_Code : code4
+model_Condition "model_HLTransitionAddin 0..1" -- "model_Condition 1..1" model_HLTransitionAddin : condition15
+model_FusionGroup "petriNet40 0..9999" -- "FusionGroup 1..1" model_PetriNet : fusionGroups39
+model_HLAnnotation "model_HLArcAddin 0..1" -- "model_HLAnnotation 1..1" model_HLArcAddin : hlinscription10
+model_HLMarking "model_HLPlaceAddin14 0..1" -- "model_HLMarking 1..1" model_HLPlaceAddin : initialMarking13
+model_Instance "parameterAssignment 0..1" -- "Instance 1..1" model_ParameterAssignment : instance34
+model_HasLabel "Label 1..1" *-- "parent 0..9999" model_Label : label16
+model_Monitor "petriNet38 0..9999" --* "monitors.ecoreMonitor 1..1" model_PetriNet : monitors37
+model_HasName "model_Name 1..1" -- "model_HasName 0..1" model_Name : name17
+model_Object "page30 0..9999" --* "Object 1..1" model_Page : object29
+model_Object "Page26 1..1" -- "object 1..1" model_Page : page25
+model_Arc "Page 1..1" -- "arc 1..1" model_Page : page3
+model_Page "petriNet 1..9999" --* "Page36 1..1" model_PetriNet : page35
+model_Instance "ParameterAssignment 1..1" *-- "instance 0..9999" model_ParameterAssignment : parameterAssignment20
+model_HasLabel "label 1..1" -- "HasLabel 1..1" model_Label : parent21
+model_HasToolInfo "toolinfo 1..1" -- "HasToolInfo 1..1" model_ToolInfo : parent44
+model_Page "PetriNet28 1..1" -- "page 1..1" model_PetriNet : petriNet27
+model_FusionGroup "PetriNet 1..1" -- "fusionGroups 0..1" model_PetriNet : petriNet9
+model_CPNToolsTransitionAddin "model_Priority 1..1" -- "model_CPNToolsTransitionAddin8 0..1" model_Priority : priority7
+model_Place "references 1..1" -- "Place 1..1" model_RefPlace : ref42
+model_RefTrans "model_TransitionNode 1..1" -- "model_RefTrans 1..1" model_TransitionNode : ref43
+model_Place "RefPlace 1..1" -- "ref 0..9999" model_RefPlace : references41
+model_HLPlaceAddin "model_Sort 1..1" -- "model_HLPlaceAddin 0..1" model_Sort : sort12
+model_Arc "Node 1..1" -- "sourceArc 1..1" model_Node : source0
+model_Arc "source 0..9999" -- "Arc 1..1" model_Node : sourceArc22
+model_DeclarationStructure "model_HLDeclaration 0..1" --* "model_DeclarationStructure 1..1" model_HLDeclaration : structure11
+model_Arc "Node2 1..1" -- "targetArc 1..1" model_Node : target1
+model_Arc "target 0..9999" -- "Arc24 1..1" model_Node : targetArc23
+model_CPNToolsTransitionAddin "model_Time 1..1" -- "model_CPNToolsTransitionAddin6 0..1" model_Time : time5
+model_HasToolInfo "ToolInfo 1..1" *-- "parent19 0..9999" model_ToolInfo : toolinfo18
 @enduml

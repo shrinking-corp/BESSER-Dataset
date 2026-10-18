@@ -1,4 +1,8 @@
 @startuml
+' model: behaviour
+' project: sampleModel
+' owner: User
+' description: New project
 enum ConditionKind {
   EQUALS
   GREATER_THAN
@@ -65,19 +69,19 @@ Instruction <|-- behaviour_SendMessage
 Instruction <|-- behaviour_WaitForMessage
 Instruction <|-- behaviour_While
 NamedElement <|-- behaviour_DroneBehaviour
-behaviour_Action "1..1" -- "1..1" behaviour_PerformAction : action4
-behaviour_Condition "1..1" --* "1..1" behaviour_While : condition25
-behaviour_Choice "1..1" *-- "1..1" behaviour_Condition : condition8
-behaviour_Drone "1..9999" -- "1..1" behaviour_DroneBehaviour : drones1
-behaviour_Choice "1..1" *-- "0..9999" behaviour_Instruction : falseBranch12
-behaviour_Condition "1..1" -- "1..1" behaviour_FieldObject : fieldObject15
-behaviour_FieldObject "1..1" -- "1..1" behaviour_MoveTo : fieldObject3
-behaviour_DroneBehaviour "1..1" *-- "1..9999" behaviour_Instruction : instructions0
-behaviour_Instruction "1..9999" --* "1..1" behaviour_While : instructions23
-behaviour_Instruct "1..1" *-- "1..9999" behaviour_Instruction : instructions28
-behaviour_Lift "1..1" -- "1..1" behaviour_MovableObject : target30
-behaviour_FieldObject "1..1" -- "1..1" behaviour_PerformAction : target5
-behaviour_Choice "1..1" *-- "1..9999" behaviour_Instruction : trueBranch9
-behaviour_Instruction "1..9999" --* "1..1" behaviour_WaitForMessage : whenArrived18
-behaviour_Instruction "1..9999" --* "1..1" behaviour_WaitForMessage : whenLost20
+behaviour_Action "behaviour_PerformAction 1..1" -- "behaviour_Action 1..1" behaviour_PerformAction : action4
+behaviour_Condition "behaviour_While26 1..1" --* "behaviour_Condition27 1..1" behaviour_While : condition25
+behaviour_Choice "behaviour_Condition 1..1" *-- "behaviour_Choice 1..1" behaviour_Condition : condition8
+behaviour_Drone "behaviour_DroneBehaviour2 1..9999" -- "behaviour_Drone 1..1" behaviour_DroneBehaviour : drones1
+behaviour_Choice "behaviour_Instruction14 1..1" *-- "behaviour_Choice13 0..9999" behaviour_Instruction : falseBranch12
+behaviour_Condition "behaviour_FieldObject17 1..1" -- "behaviour_Condition16 1..1" behaviour_FieldObject : fieldObject15
+behaviour_FieldObject "behaviour_MoveTo 1..1" -- "behaviour_FieldObject 1..1" behaviour_MoveTo : fieldObject3
+behaviour_DroneBehaviour "behaviour_Instruction 1..1" *-- "behaviour_DroneBehaviour 1..9999" behaviour_Instruction : instructions0
+behaviour_Instruction "behaviour_While 1..9999" --* "behaviour_Instruction24 1..1" behaviour_While : instructions23
+behaviour_Instruct "behaviour_Instruction29 1..1" *-- "behaviour_Instruct 1..9999" behaviour_Instruction : instructions28
+behaviour_Lift "behaviour_MovableObject 1..1" -- "behaviour_Lift 1..1" behaviour_MovableObject : target30
+behaviour_FieldObject "behaviour_PerformAction6 1..1" -- "behaviour_FieldObject7 1..1" behaviour_PerformAction : target5
+behaviour_Choice "behaviour_Instruction11 1..1" *-- "behaviour_Choice10 1..9999" behaviour_Instruction : trueBranch9
+behaviour_Instruction "behaviour_WaitForMessage 1..9999" --* "behaviour_Instruction19 1..1" behaviour_WaitForMessage : whenArrived18
+behaviour_Instruction "behaviour_WaitForMessage21 1..9999" --* "behaviour_Instruction22 1..1" behaviour_WaitForMessage : whenLost20
 @enduml

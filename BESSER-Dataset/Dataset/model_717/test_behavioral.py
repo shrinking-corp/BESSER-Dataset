@@ -544,9 +544,9 @@ def test_assoc_client14_stub_double():
     partner = uml_Dependency()
     setattr(partner, 'clientDependency', None)
     _safe_set(owner, 'NamedElement', partner)
-    assert getattr(partner, 'clientDependency') == owner
+    assert owner in getattr(partner, 'clientDependency')
     _safe_set(owner, 'NamedElement', None)
-    assert getattr(partner, 'clientDependency') is None
+    assert owner not in getattr(partner, 'clientDependency')
 
 
 def test_assoc_clientDependency11_stub_double():
@@ -604,9 +604,9 @@ def test_assoc_elementImport22_stub_double():
     partner = uml_Namespace()
     setattr(partner, 'importingNamespace', None)
     _safe_set(owner, 'ElementImport', partner)
-    assert getattr(partner, 'importingNamespace') == owner
+    assert owner in getattr(partner, 'importingNamespace')
     _safe_set(owner, 'ElementImport', None)
-    assert getattr(partner, 'importingNamespace') is None
+    assert owner not in getattr(partner, 'importingNamespace')
 
 
 def test_assoc_endType46_stub_double():
@@ -679,9 +679,9 @@ def test_assoc_member25_stub_double():
     partner = uml_Namespace()
     setattr(partner, 'uml_Namespace', None)
     _safe_set(owner, 'uml_NamedElement26', partner)
-    assert getattr(partner, 'uml_Namespace') == owner
+    assert owner in getattr(partner, 'uml_Namespace')
     _safe_set(owner, 'uml_NamedElement26', None)
-    assert getattr(partner, 'uml_Namespace') is None
+    assert owner not in getattr(partner, 'uml_Namespace')
 
 
 def test_assoc_namespace12_stub_double():
@@ -709,9 +709,9 @@ def test_assoc_ownedComment6_stub_double():
     partner = uml_Element()
     setattr(partner, 'uml_Element7', None)
     _safe_set(owner, 'uml_Comment8', partner)
-    assert getattr(partner, 'uml_Element7') == owner
+    assert owner in getattr(partner, 'uml_Element7')
     _safe_set(owner, 'uml_Comment8', None)
-    assert getattr(partner, 'uml_Element7') is None
+    assert owner not in getattr(partner, 'uml_Element7')
 
 
 def test_assoc_ownedMember30_stub_double():
@@ -724,9 +724,9 @@ def test_assoc_ownedMember30_stub_double():
     partner = uml_Namespace()
     setattr(partner, 'namespace', None)
     _safe_set(owner, 'NamedElement31', partner)
-    assert getattr(partner, 'namespace') == owner
+    assert owner in getattr(partner, 'namespace')
     _safe_set(owner, 'NamedElement31', None)
-    assert getattr(partner, 'namespace') is None
+    assert owner not in getattr(partner, 'namespace')
 
 
 def test_assoc_ownedType9_stub_double():
@@ -769,9 +769,9 @@ def test_assoc_packageImport23_stub_double():
     partner = uml_Namespace()
     setattr(partner, 'importingNamespace24', None)
     _safe_set(owner, 'PackageImport', partner)
-    assert getattr(partner, 'importingNamespace24') == owner
+    assert owner in getattr(partner, 'importingNamespace24')
     _safe_set(owner, 'PackageImport', None)
-    assert getattr(partner, 'importingNamespace24') is None
+    assert owner not in getattr(partner, 'importingNamespace24')
 
 
 def test_assoc_packagedElement10_stub_double():
@@ -859,8 +859,8 @@ def test_assoc_supplier13_stub_double():
     partner = uml_Dependency()
     setattr(partner, 'uml_Dependency', None)
     _safe_set(owner, 'uml_NamedElement', partner)
-    assert getattr(partner, 'uml_Dependency') == owner
+    assert owner in getattr(partner, 'uml_Dependency')
     _safe_set(owner, 'uml_NamedElement', None)
-    assert getattr(partner, 'uml_Dependency') is None
+    assert owner not in getattr(partner, 'uml_Dependency')
 
 

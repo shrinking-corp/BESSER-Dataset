@@ -1,4 +1,8 @@
 @startuml
+' model: e2
+' project: sampleModel
+' owner: User
+' description: New project
 class e2_AssignmentSubmission {
   + Comments : str
   + assessment : int
@@ -43,23 +47,23 @@ class e2_SubGoal {
 class e2_University {
   + Name : str
 }
-e2_AssignmentSubmission "1..1" -- "1..1" e2_Person : AssesedBy33
-e2_AssignmentSubmission "1..1" -- "1..1" e2_Assingnment : Assignment30
-e2_Assingnment "0..9999" --* "1..1" e2_Course : Assingments11
-e2_Lecture "1..1" *-- "1..9999" e2_LectureContent : Content0
-e2_Course "0..9999" --* "1..1" e2_University : Courses38
-e2_Group "1..1" -- "2..3" e2_Person : GroupMember24
-e2_Lecture "1..1" -- "1..9999" e2_SubGoal : LearningGoals1
-e2_Course "1..1" *-- "1..9999" e2_Goal : LearningGoals22
-e2_Assingnment "1..1" -- "1..9999" e2_SubGoal : LearningGoals4
-e2_Assingnment "0..9999" --* "1..1" e2_LectureContent : LectureAssignment41
-e2_Course "1..1" -- "1..9999" e2_Person : Lecturerer8
-e2_Course "1..1" *-- "0..9999" e2_Lecture : Lectures14
-e2_Person "0..9999" --* "1..1" e2_University : Persons36
-e2_Course "1..1" *-- "0..9999" e2_Group : StudentGroups17
-e2_Course "1..1" -- "0..9999" e2_Person : Students6
-e2_Goal "1..1" *-- "1..9999" e2_SubGoal : SubGoals44
-e2_AssignmentSubmission "0..9999" --* "1..1" e2_Group : Submitted27
-e2_AssignmentSubmission "0..9999" --* "1..1" e2_Person : Submitted3
-e2_Course "1..1" -- "0..9999" e2_Person : TeachingAssistant19
+e2_AssignmentSubmission "e2_Person35 1..1" -- "e2_AssignmentSubmission34 1..1" e2_Person : AssesedBy33
+e2_AssignmentSubmission "e2_Assingnment32 1..1" -- "e2_AssignmentSubmission31 1..1" e2_Assingnment : Assignment30
+e2_Assingnment "e2_Course12 0..9999" --* "e2_Assingnment13 1..1" e2_Course : Assingments11
+e2_Lecture "e2_LectureContent 1..1" *-- "e2_Lecture 1..9999" e2_LectureContent : Content0
+e2_Course "e2_University39 0..9999" --* "e2_Course40 1..1" e2_University : Courses38
+e2_Group "e2_Person26 1..1" -- "e2_Group25 2..3" e2_Person : GroupMember24
+e2_Lecture "e2_SubGoal 1..1" -- "e2_Lecture2 1..9999" e2_SubGoal : LearningGoals1
+e2_Course "e2_Goal 1..1" *-- "e2_Course23 1..9999" e2_Goal : LearningGoals22
+e2_Assingnment "e2_SubGoal5 1..1" -- "e2_Assingnment 1..9999" e2_SubGoal : LearningGoals4
+e2_Assingnment "e2_LectureContent42 0..9999" --* "e2_Assingnment43 1..1" e2_LectureContent : LectureAssignment41
+e2_Course "e2_Person10 1..1" -- "e2_Course9 1..9999" e2_Person : Lecturerer8
+e2_Course "e2_Lecture16 1..1" *-- "e2_Course15 0..9999" e2_Lecture : Lectures14
+e2_Person "e2_University 0..9999" --* "e2_Person37 1..1" e2_University : Persons36
+e2_Course "e2_Group 1..1" *-- "e2_Course18 0..9999" e2_Group : StudentGroups17
+e2_Course "e2_Person7 1..1" -- "e2_Course 0..9999" e2_Person : Students6
+e2_Goal "e2_SubGoal46 1..1" *-- "e2_Goal45 1..9999" e2_SubGoal : SubGoals44
+e2_AssignmentSubmission "e2_Group28 0..9999" --* "e2_AssignmentSubmission29 1..1" e2_Group : Submitted27
+e2_AssignmentSubmission "e2_Person 0..9999" --* "e2_AssignmentSubmission 1..1" e2_Person : Submitted3
+e2_Course "e2_Person21 1..1" -- "e2_Course20 0..9999" e2_Person : TeachingAssistant19
 @enduml

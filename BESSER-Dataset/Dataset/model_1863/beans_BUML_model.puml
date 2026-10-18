@@ -1,4 +1,8 @@
 @startuml
+' model: beans
+' project: sampleModel
+' owner: User
+' description: New project
 class NamedElement {
 }
 class beans_Bean {
@@ -16,8 +20,8 @@ abstract class beans_NamedElement {
 NamedElement <|-- beans_Bean
 NamedElement <|-- beans_BeanLibrary
 NamedElement <|-- beans_BeanProperty
-beans_Bean "1..1" -- "1..1" beans_BeanProperty : bean3
-beans_Bean "1..1" -- "1..1" beans_BeanLibrary : beanLibrary1
-beans_Bean "1..9999" --* "1..1" beans_BeanLibrary : beans0
-beans_Bean "1..1" *-- "1..9999" beans_BeanProperty : properties2
+beans_Bean "properties 1..1" -- "Bean4 1..1" beans_BeanProperty : bean3
+beans_Bean "BeanLibrary 1..1" -- "beans 1..1" beans_BeanLibrary : beanLibrary1
+beans_Bean "beanLibrary 1..9999" --* "Bean 1..1" beans_BeanLibrary : beans0
+beans_Bean "BeanProperty 1..1" *-- "bean 1..9999" beans_BeanProperty : properties2
 @enduml

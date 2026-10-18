@@ -1,4 +1,8 @@
 @startuml
+' model: comicBookCollection2
+' project: sampleModel
+' owner: User
+' description: New project
 class comicBookCollection2_Artist {
   + name : str
 }
@@ -20,22 +24,22 @@ class comicBookCollection2_Series {
 class comicBookCollection2_Writer {
   + name : str
 }
-comicBookCollection2_Artist "0..9999" --* "1..1" comicBookCollection2_ComicBookCollection : artists1
-comicBookCollection2_Artist "1..9999" -- "1..1" comicBookCollection2_Book : artists14
-comicBookCollection2_Book "0..9999" --* "1..1" comicBookCollection2_ComicBookCollection : books0
-comicBookCollection2_Artist "1..1" -- "0..9999" comicBookCollection2_Book : booksArtistFor21
-comicBookCollection2_Artist "1..1" -- "0..9999" comicBookCollection2_Book : booksCoverArtistFor23
-comicBookCollection2_Book "0..9999" -- "1..1" comicBookCollection2_Editor : booksEditorFor25
-comicBookCollection2_Book "0..9999" -- "1..1" comicBookCollection2_Series : booksInSeries12
-comicBookCollection2_Book "0..9999" -- "1..1" comicBookCollection2_Publisher : booksPublished11
-comicBookCollection2_Book "0..9999" -- "1..1" comicBookCollection2_Writer : booksWriterFor27
-comicBookCollection2_Artist "1..1" -- "1..1" comicBookCollection2_Book : coverArtist17
-comicBookCollection2_Book "1..1" -- "1..9999" comicBookCollection2_Editor : editors15
-comicBookCollection2_ComicBookCollection "1..1" *-- "0..9999" comicBookCollection2_Editor : editors3
-comicBookCollection2_Book "1..1" -- "1..1" comicBookCollection2_Publisher : publisher19
-comicBookCollection2_ComicBookCollection "1..1" *-- "0..9999" comicBookCollection2_Publisher : publishingCompanies7
-comicBookCollection2_ComicBookCollection "1..1" *-- "0..9999" comicBookCollection2_Series : series9
-comicBookCollection2_Book "1..1" -- "1..1" comicBookCollection2_Series : seriesPartOf20
-comicBookCollection2_Book "1..1" -- "1..9999" comicBookCollection2_Writer : writers16
-comicBookCollection2_ComicBookCollection "1..1" *-- "0..9999" comicBookCollection2_Writer : writers5
+comicBookCollection2_Artist "comicBookCollection2_ComicBookCollection2 0..9999" --* "comicBookCollection2_Artist 1..1" comicBookCollection2_ComicBookCollection : artists1
+comicBookCollection2_Artist "booksArtistFor 1..9999" -- "Artist 1..1" comicBookCollection2_Book : artists14
+comicBookCollection2_Book "comicBookCollection2_ComicBookCollection 0..9999" --* "comicBookCollection2_Book 1..1" comicBookCollection2_ComicBookCollection : books0
+comicBookCollection2_Artist "Book22 1..1" -- "artists 0..9999" comicBookCollection2_Book : booksArtistFor21
+comicBookCollection2_Artist "Book24 1..1" -- "coverArtist 0..9999" comicBookCollection2_Book : booksCoverArtistFor23
+comicBookCollection2_Book "editors 0..9999" -- "Book26 1..1" comicBookCollection2_Editor : booksEditorFor25
+comicBookCollection2_Book "seriesPartOf 0..9999" -- "Book13 1..1" comicBookCollection2_Series : booksInSeries12
+comicBookCollection2_Book "publisher 0..9999" -- "Book 1..1" comicBookCollection2_Publisher : booksPublished11
+comicBookCollection2_Book "writers 0..9999" -- "Book28 1..1" comicBookCollection2_Writer : booksWriterFor27
+comicBookCollection2_Artist "booksCoverArtistFor 1..1" -- "Artist18 1..1" comicBookCollection2_Book : coverArtist17
+comicBookCollection2_Book "Editor 1..1" -- "booksEditorFor 1..9999" comicBookCollection2_Editor : editors15
+comicBookCollection2_ComicBookCollection "comicBookCollection2_Editor 1..1" *-- "comicBookCollection2_ComicBookCollection4 0..9999" comicBookCollection2_Editor : editors3
+comicBookCollection2_Book "Publisher 1..1" -- "booksPublished 1..1" comicBookCollection2_Publisher : publisher19
+comicBookCollection2_ComicBookCollection "comicBookCollection2_Publisher 1..1" *-- "comicBookCollection2_ComicBookCollection8 0..9999" comicBookCollection2_Publisher : publishingCompanies7
+comicBookCollection2_ComicBookCollection "comicBookCollection2_Series 1..1" *-- "comicBookCollection2_ComicBookCollection10 0..9999" comicBookCollection2_Series : series9
+comicBookCollection2_Book "Series 1..1" -- "booksInSeries 1..1" comicBookCollection2_Series : seriesPartOf20
+comicBookCollection2_Book "Writer 1..1" -- "booksWriterFor 1..9999" comicBookCollection2_Writer : writers16
+comicBookCollection2_ComicBookCollection "comicBookCollection2_Writer 1..1" *-- "comicBookCollection2_ComicBookCollection6 0..9999" comicBookCollection2_Writer : writers5
 @enduml

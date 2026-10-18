@@ -1,4 +1,8 @@
 @startuml
+' model: latex
+' project: sampleModel
+' owner: User
+' description: New project
 class latex_Abstracte {
   + abstractprefix : str
   + abstracttext : str
@@ -74,28 +78,28 @@ class latex_bibitem {
   + bibprefix : str
   + bibtext : str
 }
-latex_Abstracte "1..1" *-- "0..9999" latex_General : Abscontainsgen19
-latex_Begin "0..1" --* "1..1" latex_Document : begindoc13
-latex_Bibliography "1..1" *-- "0..9999" latex_General : bibcontainsgen28
-latex_Beginbib "0..1" --* "1..1" latex_Bibliography : containbeginbib33
-latex_Bibliography "1..1" *-- "0..1" latex_Endbib : containendbib35
-latex_Abstracte "0..1" --* "1..1" latex_Document : containsabstract7
-latex_Bibliography "0..1" --* "1..1" latex_Document : containsbib11
-latex_Bibliography "1..1" *-- "0..9999" latex_bibitem : containsbibitems31
-latex_Body "0..1" --* "1..1" latex_Document : containsbody9
-latex_Commands "0..9999" --* "1..1" latex_Document : containscommands1
-latex_Body "1..1" *-- "0..9999" latex_Enumerate : containsenumerate26
-latex_Body "1..1" *-- "0..9999" latex_Figures : containsfigures24
-latex_Document "1..1" *-- "0..9999" latex_Packages : containspackages0
-latex_Body "1..1" *-- "0..9999" latex_Section : containssections22
-latex_Document "1..1" *-- "0..9999" latex_Styles : containsstyles5
-latex_Subsection "0..9999" --* "1..1" latex_Subsection : containssubsections43
-latex_Document "1..1" *-- "0..1" latex_Title : containstitle3
-latex_Section "1..1" *-- "0..9999" latex_Subsection : containsubsections40
-latex_Document "1..1" *-- "0..1" latex_End : enddoc15
-latex_Enumerate "1..1" *-- "0..9999" latex_General : enumcontainsgen51
-latex_Figures "1..1" *-- "0..9999" latex_General : figcontainsgen48
-latex_General "0..9999" --* "1..1" latex_Section : seccontainsgen37
-latex_General "0..9999" --* "1..1" latex_Subsection : subseccontainsgen45
-latex_General "0..9999" --* "1..1" latex_Title : titlecontainsgen17
+latex_Abstracte "latex_General21 1..1" *-- "latex_Abstracte20 0..9999" latex_General : Abscontainsgen19
+latex_Begin "latex_Document14 0..1" --* "latex_Begin 1..1" latex_Document : begindoc13
+latex_Bibliography "latex_General30 1..1" *-- "latex_Bibliography29 0..9999" latex_General : bibcontainsgen28
+latex_Beginbib "latex_Bibliography34 0..1" --* "latex_Beginbib 1..1" latex_Bibliography : containbeginbib33
+latex_Bibliography "latex_Endbib 1..1" *-- "latex_Bibliography36 0..1" latex_Endbib : containendbib35
+latex_Abstracte "latex_Document8 0..1" --* "latex_Abstracte 1..1" latex_Document : containsabstract7
+latex_Bibliography "latex_Document12 0..1" --* "latex_Bibliography 1..1" latex_Document : containsbib11
+latex_Bibliography "latex_bibitem 1..1" *-- "latex_Bibliography32 0..9999" latex_bibitem : containsbibitems31
+latex_Body "latex_Document10 0..1" --* "latex_Body 1..1" latex_Document : containsbody9
+latex_Commands "latex_Document2 0..9999" --* "latex_Commands 1..1" latex_Document : containscommands1
+latex_Body "latex_Enumerate 1..1" *-- "latex_Body27 0..9999" latex_Enumerate : containsenumerate26
+latex_Body "latex_Figures 1..1" *-- "latex_Body25 0..9999" latex_Figures : containsfigures24
+latex_Document "latex_Packages 1..1" *-- "latex_Document 0..9999" latex_Packages : containspackages0
+latex_Body "latex_Section 1..1" *-- "latex_Body23 0..9999" latex_Section : containssections22
+latex_Document "latex_Styles 1..1" *-- "latex_Document6 0..9999" latex_Styles : containsstyles5
+latex_Subsection "latex_Subsection42 0..9999" --* "latex_Subsection44 1..1" latex_Subsection : containssubsections43
+latex_Document "latex_Title 1..1" *-- "latex_Document4 0..1" latex_Title : containstitle3
+latex_Section "latex_Subsection 1..1" *-- "latex_Section41 0..9999" latex_Subsection : containsubsections40
+latex_Document "latex_End 1..1" *-- "latex_Document16 0..1" latex_End : enddoc15
+latex_Enumerate "latex_General53 1..1" *-- "latex_Enumerate52 0..9999" latex_General : enumcontainsgen51
+latex_Figures "latex_General50 1..1" *-- "latex_Figures49 0..9999" latex_General : figcontainsgen48
+latex_General "latex_Section38 0..9999" --* "latex_General39 1..1" latex_Section : seccontainsgen37
+latex_General "latex_Subsection46 0..9999" --* "latex_General47 1..1" latex_Subsection : subseccontainsgen45
+latex_General "latex_Title18 0..9999" --* "latex_General 1..1" latex_Title : titlecontainsgen17
 @enduml

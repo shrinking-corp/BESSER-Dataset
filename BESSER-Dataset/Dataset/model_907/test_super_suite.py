@@ -8090,9 +8090,9 @@ def test_assoc_aggregatedRole135_stub_double():
     partner = spem_CompositeRole()
     setattr(partner, 'spem_CompositeRole', None)
     _safe_set(owner, 'spem_RoleDefinition136', partner)
-    assert getattr(partner, 'spem_CompositeRole') == owner
+    assert owner in getattr(partner, 'spem_CompositeRole')
     _safe_set(owner, 'spem_RoleDefinition136', None)
-    assert getattr(partner, 'spem_CompositeRole') is None
+    assert owner not in getattr(partner, 'spem_CompositeRole')
 
 
 def test_assoc_any200_stub_double():
@@ -8165,9 +8165,9 @@ def test_assoc_connectedPort205_stub_double():
     partner = spem_WorkProductPortConnector()
     setattr(partner, 'spem_WorkProductPortConnector', None)
     _safe_set(owner, 'spem_WorkProductPort206', partner)
-    assert getattr(partner, 'spem_WorkProductPortConnector') == owner
+    assert owner in getattr(partner, 'spem_WorkProductPortConnector')
     _safe_set(owner, 'spem_WorkProductPort206', None)
-    assert getattr(partner, 'spem_WorkProductPortConnector') is None
+    assert owner not in getattr(partner, 'spem_WorkProductPortConnector')
 
 
 def test_assoc_contentReference228_stub_double():
@@ -8315,9 +8315,9 @@ def test_assoc_linkedRoleDefinition113_stub_double():
     partner = spem_Default_TaskDefinitionPerformer()
     setattr(partner, 'spem_Default_TaskDefinitionPerformer114', None)
     _safe_set(owner, 'spem_RoleDefinition115', partner)
-    assert getattr(partner, 'spem_Default_TaskDefinitionPerformer114') == owner
+    assert owner in getattr(partner, 'spem_Default_TaskDefinitionPerformer114')
     _safe_set(owner, 'spem_RoleDefinition115', None)
-    assert getattr(partner, 'spem_Default_TaskDefinitionPerformer114') is None
+    assert owner not in getattr(partner, 'spem_Default_TaskDefinitionPerformer114')
 
 
 def test_assoc_linkedRoleDefinition116_stub_double():
@@ -8330,9 +8330,9 @@ def test_assoc_linkedRoleDefinition116_stub_double():
     partner = spem_Default_ResponsibilityAssignment()
     setattr(partner, 'spem_Default_ResponsibilityAssignment', None)
     _safe_set(owner, 'spem_RoleDefinition117', partner)
-    assert getattr(partner, 'spem_Default_ResponsibilityAssignment') == owner
+    assert owner in getattr(partner, 'spem_Default_ResponsibilityAssignment')
     _safe_set(owner, 'spem_RoleDefinition117', None)
-    assert getattr(partner, 'spem_Default_ResponsibilityAssignment') is None
+    assert owner not in getattr(partner, 'spem_Default_ResponsibilityAssignment')
 
 
 def test_assoc_linkedTaskUse35_stub_double():
@@ -8375,9 +8375,9 @@ def test_assoc_managedWorkProduct77_stub_double():
     partner = spem_ToolDefinition()
     setattr(partner, 'spem_ToolDefinition', None)
     _safe_set(owner, 'spem_WorkProductDefinition78', partner)
-    assert getattr(partner, 'spem_ToolDefinition') == owner
+    assert owner in getattr(partner, 'spem_ToolDefinition')
     _safe_set(owner, 'spem_WorkProductDefinition78', None)
-    assert getattr(partner, 'spem_ToolDefinition') is None
+    assert owner not in getattr(partner, 'spem_ToolDefinition')
 
 
 def test_assoc_methodContentKind75_stub_double():
@@ -8405,9 +8405,9 @@ def test_assoc_methodPluginSelection158_stub_double():
     partner = spem_MethodConfiguration()
     setattr(partner, 'spem_MethodConfiguration159', None)
     _safe_set(owner, 'spem_MethodPlugin', partner)
-    assert getattr(partner, 'spem_MethodConfiguration159') == owner
+    assert owner in getattr(partner, 'spem_MethodConfiguration159')
     _safe_set(owner, 'spem_MethodPlugin', None)
-    assert getattr(partner, 'spem_MethodConfiguration159') is None
+    assert owner not in getattr(partner, 'spem_MethodConfiguration159')
 
 
 def test_assoc_ownedMethodContentMember121_stub_double():
@@ -8420,9 +8420,9 @@ def test_assoc_ownedMethodContentMember121_stub_double():
     partner = spem_MethodContentPackage()
     setattr(partner, 'spem_MethodContentPackage', None)
     _safe_set(owner, 'spem_MethodContentPackageableElement', partner)
-    assert getattr(partner, 'spem_MethodContentPackage') == owner
+    assert owner in getattr(partner, 'spem_MethodContentPackage')
     _safe_set(owner, 'spem_MethodContentPackageableElement', None)
-    assert getattr(partner, 'spem_MethodContentPackage') is None
+    assert owner not in getattr(partner, 'spem_MethodContentPackage')
 
 
 def test_assoc_ownedMethodContentPackage178_stub_double():
@@ -8450,9 +8450,9 @@ def test_assoc_ownedProcessMember125_stub_double():
     partner = spem_ProcessPackage()
     setattr(partner, 'spem_ProcessPackage', None)
     _safe_set(owner, 'spem_ProcessPackageableElement', partner)
-    assert getattr(partner, 'spem_ProcessPackage') == owner
+    assert owner in getattr(partner, 'spem_ProcessPackage')
     _safe_set(owner, 'spem_ProcessPackageableElement', None)
-    assert getattr(partner, 'spem_ProcessPackage') is None
+    assert owner not in getattr(partner, 'spem_ProcessPackage')
 
 
 def test_assoc_ownedProcessPackage181_stub_double():
@@ -8615,9 +8615,9 @@ def test_assoc_step83_stub_double():
     partner = spem_TaskDefinition()
     setattr(partner, 'spem_TaskDefinition84', None)
     _safe_set(owner, 'spem_Step', partner)
-    assert getattr(partner, 'spem_TaskDefinition84') == owner
+    assert owner in getattr(partner, 'spem_TaskDefinition84')
     _safe_set(owner, 'spem_Step', None)
-    assert getattr(partner, 'spem_TaskDefinition84') is None
+    assert owner not in getattr(partner, 'spem_TaskDefinition84')
 
 
 def test_assoc_subPractice225_stub_double():
@@ -8645,9 +8645,9 @@ def test_assoc_target108_stub_double():
     partner = spem_WorkProductDefinitionRelationship()
     setattr(partner, 'spem_WorkProductDefinitionRelationship109', None)
     _safe_set(owner, 'spem_WorkProductDefinition110', partner)
-    assert getattr(partner, 'spem_WorkProductDefinitionRelationship109') == owner
+    assert owner in getattr(partner, 'spem_WorkProductDefinitionRelationship109')
     _safe_set(owner, 'spem_WorkProductDefinition110', None)
-    assert getattr(partner, 'spem_WorkProductDefinitionRelationship109') is None
+    assert owner not in getattr(partner, 'spem_WorkProductDefinitionRelationship109')
 
 
 def test_assoc_task126_stub_double():
@@ -8720,9 +8720,9 @@ def test_assoc_usedPort152_stub_double():
     partner = spem_ProcessComponentUse()
     setattr(partner, 'spem_ProcessComponentUse153', None)
     _safe_set(owner, 'spem_WorkProductPort154', partner)
-    assert getattr(partner, 'spem_ProcessComponentUse153') == owner
+    assert owner in getattr(partner, 'spem_ProcessComponentUse153')
     _safe_set(owner, 'spem_WorkProductPort154', None)
-    assert getattr(partner, 'spem_ProcessComponentUse153') is None
+    assert owner not in getattr(partner, 'spem_ProcessComponentUse153')
 
 
 def test_assoc_validContext25_stub_double():
@@ -8757,226 +8757,42 @@ def test_assoc_workProduct43_stub_double():
 
 
 
-from enum import Enum
 from python_code import ActivityUseKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ActivityUseKind.na, '\x00', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ActivityUseKind.na, '', '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ActivityUseKind.na, '', '', '') == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ActivityUseKind.na, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ActivityUseKind.na, 'na') == ActivityUseKind.na
-
-from enum import Enum
 from python_code import ContractKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ContractKind.EXPRESS, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ContractKind.IMPLIED, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ContractKind.IMPLIED, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ContractKind.OTHER, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ContractKind.OTHER, 'OTHER') == ContractKind.OTHER
-
-from enum import Enum
 from python_code import EstimatingTechnique
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(EstimatingTechnique.COST, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(EstimatingTechnique.TIME, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(EstimatingTechnique.TIME, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(EstimatingTechnique.COST, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(EstimatingTechnique.TIME, 'TIME') == EstimatingTechnique.TIME
-
-from enum import Enum
 from python_code import ExpertiseLevel
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ExpertiseLevel.LOW, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ExpertiseLevel.LOW, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ExpertiseLevel.LOW, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ExpertiseLevel.LOW, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ExpertiseLevel.LOW, 'LOW') == ExpertiseLevel.LOW
-
-from enum import Enum
 from python_code import OptionalityKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(OptionalityKind.optional, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(OptionalityKind.optional, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(OptionalityKind.mandatory, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(OptionalityKind.optional, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(OptionalityKind.optional, 'optional') == OptionalityKind.optional
-
-from enum import Enum
 from python_code import ParameterDirectionKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ParameterDirectionKind.in_, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ParameterDirectionKind.in_, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ParameterDirectionKind.in_, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ParameterDirectionKind.out, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ParameterDirectionKind.out, 'in_') == ParameterDirectionKind.in_
-
-from enum import Enum
 from python_code import RiskLevel
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(RiskLevel.LOW, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(RiskLevel.LOW, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(RiskLevel.LOW, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(RiskLevel.LOW, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(RiskLevel.LOW, 'LOW') == RiskLevel.LOW
-
-from enum import Enum
 from python_code import VariabilityType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(VariabilityType.na, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(VariabilityType.na, 0, '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(VariabilityType.na, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(VariabilityType.na, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(VariabilityType.na, 'na') == VariabilityType.na
-
-from enum import Enum
 from python_code import WorkSequenceKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(WorkSequenceKind.startToStart, 0, '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(WorkSequenceKind.startToStart, '', '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(WorkSequenceKind.startToStart, '', 0, '') == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(WorkSequenceKind.startToStart, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(WorkSequenceKind.startToStart, 'startToStart') == WorkSequenceKind.startToStart
-
 from python_code import spem_MethodContentPackage
 from python_code import spem_MethodContentPackageableElement
 
 def test_spem_MethodContentPackageableElement___init__():
     assert spem_MethodContentPackageableElement.__init__(spem_MethodContentPackageableElement('', spem_MethodContentPackageableElement=spem_MethodContentPackage()), '', spem_MethodContentPackageableElement=spem_MethodContentPackage()) == None
-
 from python_code import spem_MethodContentUse
 
 def test_spem_MethodContentUse___init__():
     assert spem_MethodContentUse.__init__(spem_MethodContentUse(True), False) == None
-
 from python_code import spem_MethodLibraryPackageableElement
 
 def test_spem_MethodLibraryPackageableElement___init__():
     assert spem_MethodLibraryPackageableElement.__init__(spem_MethodLibraryPackageableElement(''), '') == None
-
 from python_code import spem_ProcessPackage
 from python_code import spem_ProcessPackageableElement
 
 def test_spem_ProcessPackageableElement___init__():
     assert spem_ProcessPackageableElement.__init__(spem_ProcessPackageableElement('', spem_ProcessPackageableElement=spem_ProcessPackage()), '', spem_ProcessPackageableElement=spem_ProcessPackage()) == None
-
 from python_code import spem_CompositeRole
 from python_code import spem_Default_ResponsibilityAssignment
 from python_code import spem_Default_TaskDefinitionPerformer
@@ -8985,29 +8801,24 @@ from python_code import spem_RoleUse
 
 def test_spem_RoleDefinition___init__():
     assert spem_RoleDefinition.__init__(spem_RoleDefinition('', spem_RoleDefinition=spem_RoleUse(), spem_RoleDefinition104=set(), spem_RoleDefinition117=spem_Default_ResponsibilityAssignment(), spem_RoleDefinition115=spem_Default_TaskDefinitionPerformer(), spem_RoleDefinition136=spem_CompositeRole()), '', spem_RoleDefinition=spem_RoleUse(), spem_RoleDefinition104=set(), spem_RoleDefinition117=spem_Default_ResponsibilityAssignment(), spem_RoleDefinition115=spem_Default_TaskDefinitionPerformer(), spem_RoleDefinition136=spem_CompositeRole()) == None
-
 from python_code import spem_WorkDefinition
 
 def test_spem_WorkDefinition___init__():
     assert spem_WorkDefinition.__init__(spem_WorkDefinition('', '', spem_WorkDefinition=set()), '', '', spem_WorkDefinition=set()) == None
-
 from python_code import spem_uma_Deliverable
 
 def test_spem_uma_Deliverable___init__():
     assert spem_uma_Deliverable.__init__(spem_uma_Deliverable('\x00\x00', '', spem_uma_Deliverable=set()), '', '', spem_uma_Deliverable=set()) == None
-
 from python_code import spem_uma_DeliveryProcess
 from python_code import spem_uma_Discipline
 from python_code import spem_uma_ProcessPlanningTemplate
 
 def test_spem_uma_DeliveryProcess___init__():
     assert spem_uma_DeliveryProcess.__init__(spem_uma_DeliveryProcess('', '', '\x00', '', '', '', spem_uma_DeliveryProcess=set(), spem_uma_DeliveryProcess214=set(), Process231=spem_uma_ProcessPlanningTemplate(), Process=spem_uma_Discipline()), '', '', '', '', '', '', spem_uma_DeliveryProcess=set(), spem_uma_DeliveryProcess214=set(), Process231=spem_uma_ProcessPlanningTemplate(), Process=spem_uma_Discipline()) == None
-
 from python_code import spem_uma_Practice
 
 def test_spem_uma_Practice___init__():
     assert spem_uma_Practice.__init__(spem_uma_Practice('', '', '', '', '', '', spem_uma_Practice=set(), spem_uma_Practice227=set(), spem_uma_Practice229=set()), '', '', '', '', '\x00', '', spem_uma_Practice=set(), spem_uma_Practice227=set(), spem_uma_Practice229=set()) == None
-
 from python_code import spem_uma_Process
 
 def test_spem_uma_Process___init__():

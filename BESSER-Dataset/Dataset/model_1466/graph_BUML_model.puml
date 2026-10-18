@@ -1,4 +1,8 @@
 @startuml
+' model: graph
+' project: sampleModel
+' owner: User
+' description: New project
 class graph_Cause {
   + name : str
   + type : str
@@ -22,18 +26,18 @@ class graph_Node {
   + unitName : str
   + unitVersion : str
 }
-graph_Cause "0..9999" --* "1..1" graph_Dependency : cause0
-graph_Cause "0..9999" --* "1..1" graph_DocumentRoot : cause10
-graph_Dependency "0..9999" --* "1..1" graph_EnvironmentGraph : dependencies24
-graph_Dependency "0..9999" -- "1..1" graph_Node : dependencies30
-graph_Dependency "0..9999" --* "1..1" graph_DocumentRoot : dependency13
-graph_Dependency "1..1" -- "0..1" graph_Node : destination1
-graph_DocumentRoot "1..1" *-- "0..9999" graph_EnvironmentGraph : environmentGraph16
-graph_Dependency "0..9999" -- "1..1" graph_Node : isRequiredBy33
-graph_DocumentRoot "1..1" *-- "0..9999" graph_Node : node18
-graph_EnvironmentGraph "1..1" *-- "1..9999" graph_Node : node21
-graph_EnvironmentGraph "1..1" -- "0..9999" graph_Node : origins27
-graph_Dependency "1..1" -- "0..1" graph_Node : source3
-graph_DocumentRoot "1..1" *-- "0..9999" graph_EStringToStringMapEntry : xMLNSPrefixMap6
-graph_DocumentRoot "1..1" *-- "0..9999" graph_EStringToStringMapEntry : xSISchemaLocation7
+graph_Cause "graph_Dependency 0..9999" --* "graph_Cause 1..1" graph_Dependency : cause0
+graph_Cause "graph_DocumentRoot11 0..9999" --* "graph_Cause12 1..1" graph_DocumentRoot : cause10
+graph_Dependency "graph_EnvironmentGraph25 0..9999" --* "graph_Dependency26 1..1" graph_EnvironmentGraph : dependencies24
+graph_Dependency "graph_Node31 0..9999" -- "graph_Dependency32 1..1" graph_Node : dependencies30
+graph_Dependency "graph_DocumentRoot14 0..9999" --* "graph_Dependency15 1..1" graph_DocumentRoot : dependency13
+graph_Dependency "graph_Node 1..1" -- "graph_Dependency2 0..1" graph_Node : destination1
+graph_DocumentRoot "graph_EnvironmentGraph 1..1" *-- "graph_DocumentRoot17 0..9999" graph_EnvironmentGraph : environmentGraph16
+graph_Dependency "graph_Node34 0..9999" -- "graph_Dependency35 1..1" graph_Node : isRequiredBy33
+graph_DocumentRoot "graph_Node20 1..1" *-- "graph_DocumentRoot19 0..9999" graph_Node : node18
+graph_EnvironmentGraph "graph_Node23 1..1" *-- "graph_EnvironmentGraph22 1..9999" graph_Node : node21
+graph_EnvironmentGraph "graph_Node29 1..1" -- "graph_EnvironmentGraph28 0..9999" graph_Node : origins27
+graph_Dependency "graph_Node5 1..1" -- "graph_Dependency4 0..1" graph_Node : source3
+graph_DocumentRoot "graph_EStringToStringMapEntry 1..1" *-- "graph_DocumentRoot 0..9999" graph_EStringToStringMapEntry : xMLNSPrefixMap6
+graph_DocumentRoot "graph_EStringToStringMapEntry9 1..1" *-- "graph_DocumentRoot8 0..9999" graph_EStringToStringMapEntry : xSISchemaLocation7
 @enduml

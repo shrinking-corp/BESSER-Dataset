@@ -1,4 +1,8 @@
 @startuml
+' model: hairDressersRegSys
+' project: sampleModel
+' owner: User
+' description: New project
 class Person {
 }
 class Service {
@@ -81,16 +85,16 @@ Person <|-- hairDressersRegSys_ServiceEmployee
 Service <|-- hairDressersRegSys_Haircuts
 Service <|-- hairDressersRegSys_Other
 Service <|-- hairDressersRegSys_Styling
-hairDressersRegSys_Appointment "1..9999" --* "1..1" hairDressersRegSys_Service : appointment0
-hairDressersRegSys_Appointment "1..9999" --* "1..1" hairDressersRegSys_Customer : appointment13
-hairDressersRegSys_Appointment "0..9999" --* "1..1" hairDressersRegSys_ServiceEmployee : appointment17
-hairDressersRegSys_Customer "0..9999" -- "1..1" hairDressersRegSys_Discounts : customer9
-hairDressersRegSys_Customer "1..1" -- "0..1" hairDressersRegSys_Discounts : discounts15
-hairDressersRegSys_Discounts "0..1" -- "1..1" hairDressersRegSys_Invoice : discounts5
-hairDressersRegSys_Appointment "1..1" *-- "1..1" hairDressersRegSys_Invoice : invoice1
-hairDressersRegSys_Discounts "1..1" -- "0..9999" hairDressersRegSys_Invoice : invoice10
-hairDressersRegSys_Invoice "1..9999" -- "1..1" hairDressersRegSys_Payment : invoice19
-hairDressersRegSys_Invoice "0..1" -- "1..1" hairDressersRegSys_Products : invoice3
-hairDressersRegSys_Invoice "1..1" -- "0..1" hairDressersRegSys_Payment : payment7
-hairDressersRegSys_Invoice "1..1" -- "0..1" hairDressersRegSys_Products : products4
+hairDressersRegSys_Appointment "hairDressersRegSys_Service 1..9999" --* "hairDressersRegSys_Appointment 1..1" hairDressersRegSys_Service : appointment0
+hairDressersRegSys_Appointment "hairDressersRegSys_Customer 1..9999" --* "hairDressersRegSys_Appointment14 1..1" hairDressersRegSys_Customer : appointment13
+hairDressersRegSys_Appointment "hairDressersRegSys_ServiceEmployee 0..9999" --* "hairDressersRegSys_Appointment18 1..1" hairDressersRegSys_ServiceEmployee : appointment17
+hairDressersRegSys_Customer "discounts 0..9999" -- "Customer 1..1" hairDressersRegSys_Discounts : customer9
+hairDressersRegSys_Customer "Discounts16 1..1" -- "customer 0..1" hairDressersRegSys_Discounts : discounts15
+hairDressersRegSys_Discounts "invoice6 0..1" -- "Discounts 1..1" hairDressersRegSys_Invoice : discounts5
+hairDressersRegSys_Appointment "hairDressersRegSys_Invoice 1..1" *-- "hairDressersRegSys_Appointment2 1..1" hairDressersRegSys_Invoice : invoice1
+hairDressersRegSys_Discounts "Invoice12 1..1" -- "discounts11 0..9999" hairDressersRegSys_Invoice : invoice10
+hairDressersRegSys_Invoice "payment 1..9999" -- "Invoice20 1..1" hairDressersRegSys_Payment : invoice19
+hairDressersRegSys_Invoice "products 0..1" -- "Invoice 1..1" hairDressersRegSys_Products : invoice3
+hairDressersRegSys_Invoice "Payment 1..1" -- "invoice8 0..1" hairDressersRegSys_Payment : payment7
+hairDressersRegSys_Invoice "Products 1..1" -- "invoice 0..1" hairDressersRegSys_Products : products4
 @enduml

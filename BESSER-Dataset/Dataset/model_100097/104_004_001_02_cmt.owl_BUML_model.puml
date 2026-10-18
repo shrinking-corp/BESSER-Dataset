@@ -1,4 +1,8 @@
 @startuml
+' model: PrimitiveTypes
+' project: sampleModel
+' owner: User
+' description: New project
 class Administrator {
 }
 class Author {
@@ -137,52 +141,52 @@ Thing <|-- cmt_Conference
 User <|-- cmt_Administrator
 User <|-- cmt_Author
 User <|-- cmt_Reviewer
-Paper "0..1" -- "1..1" cmt_Administrator : acceptPaper79
-Administrator "0..1" -- "1..1" cmt_Paper : acceptedBy47
-ProgramCommitteeMember "0..1" -- "1..1" cmt_Administrator : addProgramCommitteeMember81
-Administrator "0..1" -- "1..1" cmt_ProgramCommitteeMember : addedBy27
-Bid "0..1" -- "1..1" cmt_Reviewer : adjustBid1
-Reviewer "0..1" -- "1..1" cmt_Bid : adjustedBy9
-ExternalReviewer "0..1" -- "1..1" cmt_Reviewer : assignExternalReviewer6
-Reviewer "0..1" -- "1..1" cmt_Administrator : assignReviewer67
-Administrator "0..1" -- "1..1" cmt_Reviewer : assignedByAdministrator0
-Reviewer "1..1" -- "1..1" cmt_ExternalReviewer : assignedByReviewer29
-Reviewer "0..1" -- "1..1" cmt_Paper : assignedTo40
-Paper "0..1" -- "1..1" cmt_Co_author : co_writePaper57
-Administrator "0..1" -- "1..1" cmt_Conference : detailsEnteredBy21
-Conference "0..1" -- "1..1" cmt_Administrator : enableVirtualMeeting63
-Review "0..1" -- "1..1" cmt_ProgramCommitteeChair : endReview31
-Conference "0..1" -- "1..1" cmt_Administrator : enterConferenceDetails71
-Conference "0..1" -- "1..1" cmt_Administrator : enterReviewCriteria77
-Conference "0..1" -- "1..1" cmt_Administrator : finalizePaperAssignment59
-Administrator "0..1" -- "1..1" cmt_Conference : hardcopyMailingManifestsPrintedBy19
-Author "0..1" -- "1..1" cmt_Paper : hasAuthor46
-Paper "0..1" -- "1..1" cmt_Reviewer : hasBeenAssigned3
-Bid "0..1" -- "1..1" cmt_Paper : hasBid36
-Co_author "0..1" -- "1..1" cmt_Paper : hasCo_author35
-ConferenceMember "0..1" -- "1..1" cmt_Conference : hasConferenceMember10
-Document "0..1" -- "1..1" cmt_Person : hasConflictOfInterest7
-Decision "0..1" -- "1..1" cmt_Paper : hasDecision38
-ProgramCommitteeMember "0..1" -- "1..1" cmt_ProgramCommittee : hasProgramCommitteeMember8
-SubjectArea "0..1" -- "1..1" cmt_Paper : hasSubjectArea42
-Conference "0..1" -- "1..1" cmt_ConferenceMember : memberOfConference25
-ProgramCommittee "0..1" -- "1..1" cmt_ProgramCommitteeMember : memberOfProgramCommittee26
-Administrator "0..1" -- "1..1" cmt_Conference : paperAssignmentFinalizedBy11
-Administrator "0..1" -- "1..1" cmt_Conference : paperAssignmentToolsRunBy15
-Conference "0..1" -- "1..1" cmt_Administrator : printHardcopyMailingManifests73
-Meta_Reviewer "0..1" -- "1..1" cmt_Paper : readByMeta_Reviewer51
-Reviewer "1..1" -- "1..1" cmt_Paper : readByReviewer44
-Paper "0..1" -- "1..1" cmt_Reviewer : readPaper2
-Paper "0..1" -- "1..1" cmt_Administrator : rejectPaper69
-Administrator "0..1" -- "1..1" cmt_Paper : rejectedBy49
-Administrator "0..1" -- "1..1" cmt_Conference : reviewCriteriaEnteredBy13
-Administrator "0..1" -- "1..1" cmt_Conference : reviewerBiddingStartedBy23
-Conference "0..1" -- "1..1" cmt_Administrator : runPaperAssignmentTools61
-ProgramCommitteeMember "0..1" -- "1..1" cmt_Administrator : setMaxPapers75
-Conference "0..1" -- "1..1" cmt_Administrator : startReviewerBidding65
-Paper "0..1" -- "1..1" cmt_Author : submitPaper53
-Administrator "0..1" -- "1..1" cmt_Conference : virtualMeetingEnabledBy17
-Paper "0..1" -- "1..1" cmt_Author : writePaper55
-Review "0..1" -- "1..1" cmt_Reviewer : writeReview5
-Reviewer "0..1" -- "1..1" cmt_Review : writtenBy33
+Paper "acceptedBy 0..1" -- "Paper80 1..1" cmt_Administrator : acceptPaper79
+Administrator "acceptPaper 0..1" -- "Administrator48 1..1" cmt_Paper : acceptedBy47
+ProgramCommitteeMember "addedBy 0..1" -- "ProgramCommitteeMember82 1..1" cmt_Administrator : addProgramCommitteeMember81
+Administrator "addProgramCommitteeMember 0..1" -- "Administrator28 1..1" cmt_ProgramCommitteeMember : addedBy27
+Bid "adjustedBy 0..1" -- "Bid 1..1" cmt_Reviewer : adjustBid1
+Reviewer "adjustBid 0..1" -- "Reviewer 1..1" cmt_Bid : adjustedBy9
+ExternalReviewer "assignedByReviewer 0..1" -- "ExternalReviewer 1..1" cmt_Reviewer : assignExternalReviewer6
+Reviewer "assignedByAdministrator 0..1" -- "Reviewer68 1..1" cmt_Administrator : assignReviewer67
+Administrator "assignReviewer 0..1" -- "Administrator 1..1" cmt_Reviewer : assignedByAdministrator0
+Reviewer "assignExternalReviewer 1..1" -- "Reviewer30 1..1" cmt_ExternalReviewer : assignedByReviewer29
+Reviewer "hasBeenAssigned 0..1" -- "Reviewer41 1..1" cmt_Paper : assignedTo40
+Paper "hasCo_author 0..1" -- "Paper58 1..1" cmt_Co_author : co_writePaper57
+Administrator "enterConferenceDetails 0..1" -- "Administrator22 1..1" cmt_Conference : detailsEnteredBy21
+Conference "virtualMeetingEnabledBy 0..1" -- "Conference64 1..1" cmt_Administrator : enableVirtualMeeting63
+Review "cmt_ProgramCommitteeChair 0..1" -- "Review32 1..1" cmt_ProgramCommitteeChair : endReview31
+Conference "detailsEnteredBy 0..1" -- "Conference72 1..1" cmt_Administrator : enterConferenceDetails71
+Conference "reviewCriteriaEnteredBy 0..1" -- "Conference78 1..1" cmt_Administrator : enterReviewCriteria77
+Conference "paperAssignmentFinalizedBy 0..1" -- "Conference60 1..1" cmt_Administrator : finalizePaperAssignment59
+Administrator "printHardcopyMailingManifests 0..1" -- "Administrator20 1..1" cmt_Conference : hardcopyMailingManifestsPrintedBy19
+Author "writePaper 0..1" -- "Author 1..1" cmt_Paper : hasAuthor46
+Paper "assignedTo 0..1" -- "Paper4 1..1" cmt_Reviewer : hasBeenAssigned3
+Bid "cmt_Paper 0..1" -- "Bid37 1..1" cmt_Paper : hasBid36
+Co_author "co_writePaper 0..1" -- "Co_author 1..1" cmt_Paper : hasCo_author35
+ConferenceMember "memberOfConference 0..1" -- "ConferenceMember 1..1" cmt_Conference : hasConferenceMember10
+Document "cmt_Person 0..1" -- "Document 1..1" cmt_Person : hasConflictOfInterest7
+Decision "cmt_Paper39 0..1" -- "Decision 1..1" cmt_Paper : hasDecision38
+ProgramCommitteeMember "memberOfProgramCommittee 0..1" -- "ProgramCommitteeMember 1..1" cmt_ProgramCommittee : hasProgramCommitteeMember8
+SubjectArea "cmt_Paper43 0..1" -- "SubjectArea 1..1" cmt_Paper : hasSubjectArea42
+Conference "hasConferenceMember 0..1" -- "Conference 1..1" cmt_ConferenceMember : memberOfConference25
+ProgramCommittee "hasProgramCommitteeMember 0..1" -- "ProgramCommittee 1..1" cmt_ProgramCommitteeMember : memberOfProgramCommittee26
+Administrator "finalizePaperAssignment 0..1" -- "Administrator12 1..1" cmt_Conference : paperAssignmentFinalizedBy11
+Administrator "runPaperAssignmentTools 0..1" -- "Administrator16 1..1" cmt_Conference : paperAssignmentToolsRunBy15
+Conference "hardcopyMailingManifestsPrintedBy 0..1" -- "Conference74 1..1" cmt_Administrator : printHardcopyMailingManifests73
+Meta_Reviewer "cmt_Paper52 0..1" -- "Meta_Reviewer 1..1" cmt_Paper : readByMeta_Reviewer51
+Reviewer "readPaper 1..1" -- "Reviewer45 1..1" cmt_Paper : readByReviewer44
+Paper "readByReviewer 0..1" -- "Paper 1..1" cmt_Reviewer : readPaper2
+Paper "rejectedBy 0..1" -- "Paper70 1..1" cmt_Administrator : rejectPaper69
+Administrator "rejectPaper 0..1" -- "Administrator50 1..1" cmt_Paper : rejectedBy49
+Administrator "enterReviewCriteria 0..1" -- "Administrator14 1..1" cmt_Conference : reviewCriteriaEnteredBy13
+Administrator "startReviewerBidding 0..1" -- "Administrator24 1..1" cmt_Conference : reviewerBiddingStartedBy23
+Conference "paperAssignmentToolsRunBy 0..1" -- "Conference62 1..1" cmt_Administrator : runPaperAssignmentTools61
+ProgramCommitteeMember "cmt_Administrator 0..1" -- "ProgramCommitteeMember76 1..1" cmt_Administrator : setMaxPapers75
+Conference "reviewerBiddingStartedBy 0..1" -- "Conference66 1..1" cmt_Administrator : startReviewerBidding65
+Paper "cmt_Author 0..1" -- "Paper54 1..1" cmt_Author : submitPaper53
+Administrator "enableVirtualMeeting 0..1" -- "Administrator18 1..1" cmt_Conference : virtualMeetingEnabledBy17
+Paper "hasAuthor 0..1" -- "Paper56 1..1" cmt_Author : writePaper55
+Review "writtenBy 0..1" -- "Review 1..1" cmt_Reviewer : writeReview5
+Reviewer "writeReview 0..1" -- "Reviewer34 1..1" cmt_Review : writtenBy33
 @enduml

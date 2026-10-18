@@ -1,4 +1,8 @@
 @startuml
+' model: DirectedGraph
+' project: sampleModel
+' owner: User
+' description: New project
 class DirectedGraph_Edge {
   + label : str
   + weight : str
@@ -14,10 +18,10 @@ class GraphElement {
 }
 GraphElement <|-- DirectedGraph_Edge
 GraphElement <|-- DirectedGraph_Node
-DirectedGraph_Graph "1..1" *-- "0..9999" DirectedGraph_GraphElement : contents0
-DirectedGraph_Graph "0..1" -- "1..1" DirectedGraph_GraphElement : graph1
-DirectedGraph_Edge "0..9999" -- "1..1" DirectedGraph_Node : incoming3
-DirectedGraph_Edge "0..9999" -- "1..1" DirectedGraph_Node : outgoing2
-DirectedGraph_Edge "1..1" -- "0..1" DirectedGraph_Node : source5
-DirectedGraph_Edge "1..1" -- "0..1" DirectedGraph_Node : target6
+DirectedGraph_Graph "GraphElement 1..1" *-- "graph 0..9999" DirectedGraph_GraphElement : contents0
+DirectedGraph_Graph "contents 0..1" -- "Graph 1..1" DirectedGraph_GraphElement : graph1
+DirectedGraph_Edge "target 0..9999" -- "Edge4 1..1" DirectedGraph_Node : incoming3
+DirectedGraph_Edge "source 0..9999" -- "Edge 1..1" DirectedGraph_Node : outgoing2
+DirectedGraph_Edge "Node 1..1" -- "outgoing 0..1" DirectedGraph_Node : source5
+DirectedGraph_Edge "Node7 1..1" -- "incoming 0..1" DirectedGraph_Node : target6
 @enduml

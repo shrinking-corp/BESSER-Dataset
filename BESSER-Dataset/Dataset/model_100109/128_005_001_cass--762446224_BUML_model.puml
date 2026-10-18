@@ -1,4 +1,8 @@
 @startuml
+' model: cassandra
+' project: sampleModel
+' owner: User
+' description: New project
 class DataType {
 }
 class cassandra_AsciiType {
@@ -63,10 +67,10 @@ DataType <|-- cassandra_FloatType
 DataType <|-- cassandra_IntegerType
 DataType <|-- cassandra_UTF8Type
 DataType <|-- cassandra_UUIDType
-cassandra_ColumnFamily "1..9999" --* "1..1" cassandra_Keyspace : columnfamilies0
-cassandra_Column "1..9999" --* "1..1" cassandra_Row : columns3
-cassandra_Column "1..9999" --* "1..1" cassandra_SuperColumn : columns9
-cassandra_ColumnFamily "1..1" *-- "1..9999" cassandra_Row : rows1
-cassandra_Row "1..1" *-- "0..9999" cassandra_SuperColumn : supercolumns5
-cassandra_Column "1..1" -- "1..1" cassandra_DataType : value7
+cassandra_ColumnFamily "cassandra_Keyspace 1..9999" --* "cassandra_ColumnFamily 1..1" cassandra_Keyspace : columnfamilies0
+cassandra_Column "cassandra_Row4 1..9999" --* "cassandra_Column 1..1" cassandra_Row : columns3
+cassandra_Column "cassandra_SuperColumn10 1..9999" --* "cassandra_Column11 1..1" cassandra_SuperColumn : columns9
+cassandra_ColumnFamily "cassandra_Row 1..1" *-- "cassandra_ColumnFamily2 1..9999" cassandra_Row : rows1
+cassandra_Row "cassandra_SuperColumn 1..1" *-- "cassandra_Row6 0..9999" cassandra_SuperColumn : supercolumns5
+cassandra_Column "cassandra_DataType 1..1" -- "cassandra_Column8 1..1" cassandra_DataType : value7
 @enduml

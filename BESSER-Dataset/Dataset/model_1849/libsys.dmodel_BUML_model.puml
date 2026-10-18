@@ -1,4 +1,8 @@
 @startuml
+' model: libsys
+' project: sampleModel
+' owner: User
+' description: New project
 enum InstanceStatus {
   AcquisitionProcess
   Available
@@ -114,17 +118,17 @@ Medium <|-- libsys_Book
 Medium <|-- libsys_CD
 Medium <|-- libsys_Magazine
 Medium <|-- libsys_Video
-libsys_Instance "0..9999" -- "1..1" libsys_UserAccount : borrowedInstances6
-libsys_BorrowedEntry "0..9999" --* "1..1" libsys_Instance : borrowingList3
-libsys_Instance "0..9999" --* "1..1" libsys_Medium : instances0
-libsys_Librarian "0..9999" --* "1..1" libsys_Library : librarians18
-libsys_Library "1..1" *-- "0..9999" libsys_Medium : media16
-libsys_MediaAdministration "1..1" -- "0..9999" libsys_Medium : mediaEntries14
-libsys_Instance "1..1" *-- "0..9999" libsys_ReservationEntry : reservationList1
-libsys_Instance "0..9999" -- "1..1" libsys_UserAccount : reservationList9
-libsys_BorrowedEntry "1..1" -- "1..1" libsys_User : user23
-libsys_ReservationEntry "1..1" -- "1..1" libsys_User : user26
-libsys_User "1..1" *-- "1..1" libsys_UserAccount : userAccount5
-libsys_UserAccount "0..9999" -- "1..1" libsys_UserAdministration : userAccounts12
-libsys_Library "1..1" *-- "0..1" libsys_User : users20
+libsys_Instance "libsys_UserAccount7 0..9999" -- "libsys_Instance8 1..1" libsys_UserAccount : borrowedInstances6
+libsys_BorrowedEntry "libsys_Instance4 0..9999" --* "libsys_BorrowedEntry 1..1" libsys_Instance : borrowingList3
+libsys_Instance "libsys_Medium 0..9999" --* "libsys_Instance 1..1" libsys_Medium : instances0
+libsys_Librarian "libsys_Library19 0..9999" --* "libsys_Librarian 1..1" libsys_Library : librarians18
+libsys_Library "libsys_Medium17 1..1" *-- "libsys_Library 0..9999" libsys_Medium : media16
+libsys_MediaAdministration "libsys_Medium15 1..1" -- "libsys_MediaAdministration 0..9999" libsys_Medium : mediaEntries14
+libsys_Instance "libsys_ReservationEntry 1..1" *-- "libsys_Instance2 0..9999" libsys_ReservationEntry : reservationList1
+libsys_Instance "libsys_UserAccount10 0..9999" -- "libsys_Instance11 1..1" libsys_UserAccount : reservationList9
+libsys_BorrowedEntry "libsys_User25 1..1" -- "libsys_BorrowedEntry24 1..1" libsys_User : user23
+libsys_ReservationEntry "libsys_User28 1..1" -- "libsys_ReservationEntry27 1..1" libsys_User : user26
+libsys_User "libsys_UserAccount 1..1" *-- "libsys_User 1..1" libsys_UserAccount : userAccount5
+libsys_UserAccount "libsys_UserAdministration 0..9999" -- "libsys_UserAccount13 1..1" libsys_UserAdministration : userAccounts12
+libsys_Library "libsys_User22 1..1" *-- "libsys_Library21 0..1" libsys_User : users20
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: smarthome
+' project: sampleModel
+' owner: User
+' description: New project
 class Item {
 }
 class smarthome_Command {
@@ -33,17 +37,17 @@ Item <|-- smarthome_ContactItem
 Item <|-- smarthome_DimmerItem
 Item <|-- smarthome_NumberItem
 Item <|-- smarthome_SwitchItem
-smarthome_Command "0..9999" --* "1..1" smarthome_Item : accaptedCommands5
-smarthome_Command "1..1" -- "1..1" smarthome_CommandConnection : command16
-smarthome_CommandConnection "1..9999" --* "1..1" smarthome_EvaluatingNode : commands9
-smarthome_EvaluatingNode "1..1" *-- "1..9999" smarthome_StateChangeConnection : events7
-smarthome_EvaluatingNode "1..1" *-- "0..9999" smarthome_FilterConnection : filters11
-smarthome_CommandConnection "1..1" -- "1..1" smarthome_Item : item13
-smarthome_Item "1..1" -- "1..1" smarthome_StateChangeConnection : item22
-smarthome_FilterConnection "1..1" -- "1..1" smarthome_Item : item28
-smarthome_Item "0..9999" --* "1..1" smarthome_SmartHome : items0
-smarthome_State "1..1" -- "1..1" smarthome_StateChangeConnection : newState19
-smarthome_FilterConnection "1..1" -- "1..1" smarthome_State : requiredState25
-smarthome_EvaluatingNode "0..9999" --* "1..1" smarthome_SmartHome : rules1
-smarthome_Item "1..1" *-- "0..9999" smarthome_State : states3
+smarthome_Command "smarthome_Item6 0..9999" --* "smarthome_Command 1..1" smarthome_Item : accaptedCommands5
+smarthome_Command "smarthome_CommandConnection17 1..1" -- "smarthome_Command18 1..1" smarthome_CommandConnection : command16
+smarthome_CommandConnection "smarthome_EvaluatingNode10 1..9999" --* "smarthome_CommandConnection 1..1" smarthome_EvaluatingNode : commands9
+smarthome_EvaluatingNode "smarthome_StateChangeConnection 1..1" *-- "smarthome_EvaluatingNode8 1..9999" smarthome_StateChangeConnection : events7
+smarthome_EvaluatingNode "smarthome_FilterConnection 1..1" *-- "smarthome_EvaluatingNode12 0..9999" smarthome_FilterConnection : filters11
+smarthome_CommandConnection "smarthome_Item15 1..1" -- "smarthome_CommandConnection14 1..1" smarthome_Item : item13
+smarthome_Item "smarthome_StateChangeConnection23 1..1" -- "smarthome_Item24 1..1" smarthome_StateChangeConnection : item22
+smarthome_FilterConnection "smarthome_Item30 1..1" -- "smarthome_FilterConnection29 1..1" smarthome_Item : item28
+smarthome_Item "smarthome_SmartHome 0..9999" --* "smarthome_Item 1..1" smarthome_SmartHome : items0
+smarthome_State "smarthome_StateChangeConnection20 1..1" -- "smarthome_State21 1..1" smarthome_StateChangeConnection : newState19
+smarthome_FilterConnection "smarthome_State27 1..1" -- "smarthome_FilterConnection26 1..1" smarthome_State : requiredState25
+smarthome_EvaluatingNode "smarthome_SmartHome2 0..9999" --* "smarthome_EvaluatingNode 1..1" smarthome_SmartHome : rules1
+smarthome_Item "smarthome_State 1..1" *-- "smarthome_Item4 0..9999" smarthome_State : states3
 @enduml

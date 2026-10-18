@@ -1,4 +1,8 @@
 @startuml
+' model: ClassDiagram
+' project: sampleModel
+' owner: User
+' description: New project
 class ClassDiagram_Attribute {
   + multivalued : bool
 }
@@ -34,12 +38,12 @@ StructuralFeature <|-- ClassDiagram_Attribute
 StructuralFeature <|-- ClassDiagram_Operation
 TypedElement <|-- ClassDiagram_Parameter
 TypedElement <|-- ClassDiagram_StructuralFeature
-ClassDiagram_Class "1..1" -- "0..9999" ClassDiagram_Class : childs5
-ClassDiagram_Classifier "0..9999" --* "1..1" ClassDiagram_Model : classifiers0
-ClassDiagram_Class "1..1" *-- "0..9999" ClassDiagram_StructuralFeature : features1
-ClassDiagram_Class "1..1" -- "1..1" ClassDiagram_StructuralFeature : owner7
-ClassDiagram_Operation "1..1" -- "1..1" ClassDiagram_Parameter : paramOf12
-ClassDiagram_Operation "1..1" -- "0..9999" ClassDiagram_Parameter : params11
-ClassDiagram_Class "1..1" -- "0..9999" ClassDiagram_Class : parents3
-ClassDiagram_Classifier "0..1" -- "1..1" ClassDiagram_TypedElement : type9
+ClassDiagram_Class "Class6 1..1" -- "parents 0..9999" ClassDiagram_Class : childs5
+ClassDiagram_Classifier "ClassDiagram_Model 0..9999" --* "ClassDiagram_Classifier 1..1" ClassDiagram_Model : classifiers0
+ClassDiagram_Class "StructuralFeature 1..1" *-- "owner 0..9999" ClassDiagram_StructuralFeature : features1
+ClassDiagram_Class "features 1..1" -- "Class8 1..1" ClassDiagram_StructuralFeature : owner7
+ClassDiagram_Operation "params 1..1" -- "Operation 1..1" ClassDiagram_Parameter : paramOf12
+ClassDiagram_Operation "Parameter 1..1" -- "paramOf 0..9999" ClassDiagram_Parameter : params11
+ClassDiagram_Class "Class 1..1" -- "childs 0..9999" ClassDiagram_Class : parents3
+ClassDiagram_Classifier "ClassDiagram_TypedElement 0..1" -- "ClassDiagram_Classifier10 1..1" ClassDiagram_TypedElement : type9
 @enduml

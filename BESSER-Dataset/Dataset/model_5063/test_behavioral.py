@@ -3802,9 +3802,9 @@ def test_assoc_conversationNodes834_stub_double():
     partner = BPMN2Model_SubConversation()
     setattr(partner, 'BPMN2Model_SubConversation835', None)
     _safe_set(owner, 'BPMN2Model_ConversationNode836', partner)
-    assert getattr(partner, 'BPMN2Model_SubConversation835') == owner
+    assert owner in getattr(partner, 'BPMN2Model_SubConversation835')
     _safe_set(owner, 'BPMN2Model_ConversationNode836', None)
-    assert getattr(partner, 'BPMN2Model_SubConversation835') is None
+    assert owner not in getattr(partner, 'BPMN2Model_SubConversation835')
 
 
 def test_assoc_correlationKeyRef471_stub_double():
@@ -3967,9 +3967,9 @@ def test_assoc_dataInputs586_stub_double():
     partner = BPMN2Model_InputOutputSpecification()
     setattr(partner, 'BPMN2Model_InputOutputSpecification587', None)
     _safe_set(owner, 'BPMN2Model_DataInput588', partner)
-    assert getattr(partner, 'BPMN2Model_InputOutputSpecification587') == owner
+    assert owner in getattr(partner, 'BPMN2Model_InputOutputSpecification587')
     _safe_set(owner, 'BPMN2Model_DataInput588', None)
-    assert getattr(partner, 'BPMN2Model_InputOutputSpecification587') is None
+    assert owner not in getattr(partner, 'BPMN2Model_InputOutputSpecification587')
 
 
 def test_assoc_dataInputs840_stub_double():
@@ -3982,9 +3982,9 @@ def test_assoc_dataInputs840_stub_double():
     partner = BPMN2Model_ThrowEvent()
     setattr(partner, 'BPMN2Model_ThrowEvent841', None)
     _safe_set(owner, 'BPMN2Model_DataInput842', partner)
-    assert getattr(partner, 'BPMN2Model_ThrowEvent841') == owner
+    assert owner in getattr(partner, 'BPMN2Model_ThrowEvent841')
     _safe_set(owner, 'BPMN2Model_DataInput842', None)
-    assert getattr(partner, 'BPMN2Model_ThrowEvent841') is None
+    assert owner not in getattr(partner, 'BPMN2Model_ThrowEvent841')
 
 
 def test_assoc_dataObjectRef490_stub_double():
@@ -4072,9 +4072,9 @@ def test_assoc_dataOutputs589_stub_double():
     partner = BPMN2Model_InputOutputSpecification()
     setattr(partner, 'BPMN2Model_InputOutputSpecification590', None)
     _safe_set(owner, 'BPMN2Model_DataOutput591', partner)
-    assert getattr(partner, 'BPMN2Model_InputOutputSpecification590') == owner
+    assert owner in getattr(partner, 'BPMN2Model_InputOutputSpecification590')
     _safe_set(owner, 'BPMN2Model_DataOutput591', None)
-    assert getattr(partner, 'BPMN2Model_InputOutputSpecification590') is None
+    assert owner not in getattr(partner, 'BPMN2Model_InputOutputSpecification590')
 
 
 def test_assoc_dataPath456_stub_double():
@@ -4387,9 +4387,9 @@ def test_assoc_flowElements552_stub_double():
     partner = BPMN2Model_FlowElementsContainer()
     setattr(partner, 'BPMN2Model_FlowElementsContainer553', None)
     _safe_set(owner, 'BPMN2Model_FlowElement554', partner)
-    assert getattr(partner, 'BPMN2Model_FlowElementsContainer553') == owner
+    assert owner in getattr(partner, 'BPMN2Model_FlowElementsContainer553')
     _safe_set(owner, 'BPMN2Model_FlowElement554', None)
-    assert getattr(partner, 'BPMN2Model_FlowElementsContainer553') is None
+    assert owner not in getattr(partner, 'BPMN2Model_FlowElementsContainer553')
 
 
 def test_assoc_flowNode129_stub_double():
@@ -4582,9 +4582,9 @@ def test_assoc_incoming555_stub_double():
     partner = BPMN2Model_FlowNode()
     setattr(partner, 'targetRef', None)
     _safe_set(owner, 'SequenceFlow', partner)
-    assert getattr(partner, 'targetRef') == owner
+    assert owner in getattr(partner, 'targetRef')
     _safe_set(owner, 'SequenceFlow', None)
-    assert getattr(partner, 'targetRef') is None
+    assert owner not in getattr(partner, 'targetRef')
 
 
 def test_assoc_incomingConversationLinks606_stub_double():
@@ -4597,9 +4597,9 @@ def test_assoc_incomingConversationLinks606_stub_double():
     partner = BPMN2Model_InteractionNode()
     setattr(partner, 'BPMN2Model_InteractionNode607', None)
     _safe_set(owner, 'BPMN2Model_ConversationLink608', partner)
-    assert getattr(partner, 'BPMN2Model_InteractionNode607') == owner
+    assert owner in getattr(partner, 'BPMN2Model_InteractionNode607')
     _safe_set(owner, 'BPMN2Model_ConversationLink608', None)
-    assert getattr(partner, 'BPMN2Model_InteractionNode607') is None
+    assert owner not in getattr(partner, 'BPMN2Model_InteractionNode607')
 
 
 def test_assoc_initiatingParticipantRef562_stub_double():
@@ -4702,9 +4702,9 @@ def test_assoc_inputSets592_stub_double():
     partner = BPMN2Model_InputOutputSpecification()
     setattr(partner, 'BPMN2Model_InputOutputSpecification593', None)
     _safe_set(owner, 'BPMN2Model_InputSet594', partner)
-    assert getattr(partner, 'BPMN2Model_InputOutputSpecification593') == owner
+    assert owner in getattr(partner, 'BPMN2Model_InputOutputSpecification593')
     _safe_set(owner, 'BPMN2Model_InputSet594', None)
-    assert getattr(partner, 'BPMN2Model_InputOutputSpecification593') is None
+    assert owner not in getattr(partner, 'BPMN2Model_InputOutputSpecification593')
 
 
 def test_assoc_intermediateCatchEvent167_stub_double():
@@ -4837,9 +4837,9 @@ def test_assoc_laneSets550_stub_double():
     partner = BPMN2Model_FlowElementsContainer()
     setattr(partner, 'BPMN2Model_FlowElementsContainer', None)
     _safe_set(owner, 'BPMN2Model_LaneSet551', partner)
-    assert getattr(partner, 'BPMN2Model_FlowElementsContainer') == owner
+    assert owner in getattr(partner, 'BPMN2Model_FlowElementsContainer')
     _safe_set(owner, 'BPMN2Model_LaneSet551', None)
-    assert getattr(partner, 'BPMN2Model_FlowElementsContainer') is None
+    assert owner not in getattr(partner, 'BPMN2Model_FlowElementsContainer')
 
 
 def test_assoc_lanes556_stub_double():
@@ -4852,9 +4852,9 @@ def test_assoc_lanes556_stub_double():
     partner = BPMN2Model_FlowNode()
     setattr(partner, 'flowNodeRefs', None)
     _safe_set(owner, 'Lane', partner)
-    assert getattr(partner, 'flowNodeRefs') == owner
+    assert owner in getattr(partner, 'flowNodeRefs')
     _safe_set(owner, 'Lane', None)
-    assert getattr(partner, 'flowNodeRefs') is None
+    assert owner not in getattr(partner, 'flowNodeRefs')
 
 
 def test_assoc_loopCardinality672_stub_double():
@@ -5032,9 +5032,9 @@ def test_assoc_messageFlowRef376_stub_double():
     partner = BPMN2Model_ChoreographyTask()
     setattr(partner, 'BPMN2Model_ChoreographyTask377', None)
     _safe_set(owner, 'BPMN2Model_MessageFlow378', partner)
-    assert getattr(partner, 'BPMN2Model_ChoreographyTask377') == owner
+    assert owner in getattr(partner, 'BPMN2Model_ChoreographyTask377')
     _safe_set(owner, 'BPMN2Model_MessageFlow378', None)
-    assert getattr(partner, 'BPMN2Model_ChoreographyTask377') is None
+    assert owner not in getattr(partner, 'BPMN2Model_ChoreographyTask377')
 
 
 def test_assoc_messagePath462_stub_double():
@@ -5242,9 +5242,9 @@ def test_assoc_outgoing557_stub_double():
     partner = BPMN2Model_FlowNode()
     setattr(partner, 'sourceRef', None)
     _safe_set(owner, 'SequenceFlow558', partner)
-    assert getattr(partner, 'sourceRef') == owner
+    assert owner in getattr(partner, 'sourceRef')
     _safe_set(owner, 'SequenceFlow558', None)
-    assert getattr(partner, 'sourceRef') is None
+    assert owner not in getattr(partner, 'sourceRef')
 
 
 def test_assoc_outgoingConversationLinks609_stub_double():
@@ -5257,9 +5257,9 @@ def test_assoc_outgoingConversationLinks609_stub_double():
     partner = BPMN2Model_InteractionNode()
     setattr(partner, 'BPMN2Model_InteractionNode610', None)
     _safe_set(owner, 'BPMN2Model_ConversationLink611', partner)
-    assert getattr(partner, 'BPMN2Model_InteractionNode610') == owner
+    assert owner in getattr(partner, 'BPMN2Model_InteractionNode610')
     _safe_set(owner, 'BPMN2Model_ConversationLink611', None)
-    assert getattr(partner, 'BPMN2Model_InteractionNode610') is None
+    assert owner not in getattr(partner, 'BPMN2Model_InteractionNode610')
 
 
 def test_assoc_outputDataRef583_stub_double():
@@ -5287,9 +5287,9 @@ def test_assoc_outputSets595_stub_double():
     partner = BPMN2Model_InputOutputSpecification()
     setattr(partner, 'BPMN2Model_InputOutputSpecification596', None)
     _safe_set(owner, 'BPMN2Model_OutputSet597', partner)
-    assert getattr(partner, 'BPMN2Model_InputOutputSpecification596') == owner
+    assert owner in getattr(partner, 'BPMN2Model_InputOutputSpecification596')
     _safe_set(owner, 'BPMN2Model_OutputSet597', None)
-    assert getattr(partner, 'BPMN2Model_InputOutputSpecification596') is None
+    assert owner not in getattr(partner, 'BPMN2Model_InputOutputSpecification596')
 
 
 def test_assoc_parallelGateway203_stub_double():
@@ -5392,9 +5392,9 @@ def test_assoc_properties525_stub_double():
     partner = BPMN2Model_Event()
     setattr(partner, 'BPMN2Model_Event526', None)
     _safe_set(owner, 'BPMN2Model_Property527', partner)
-    assert getattr(partner, 'BPMN2Model_Event526') == owner
+    assert owner in getattr(partner, 'BPMN2Model_Event526')
     _safe_set(owner, 'BPMN2Model_Property527', None)
-    assert getattr(partner, 'BPMN2Model_Event526') is None
+    assert owner not in getattr(partner, 'BPMN2Model_Event526')
 
 
 def test_assoc_rendering225_stub_double():
@@ -5512,9 +5512,9 @@ def test_assoc_resources565_stub_double():
     partner = BPMN2Model_GlobalTask()
     setattr(partner, 'BPMN2Model_GlobalTask566', None)
     _safe_set(owner, 'BPMN2Model_ResourceRole567', partner)
-    assert getattr(partner, 'BPMN2Model_GlobalTask566') == owner
+    assert owner in getattr(partner, 'BPMN2Model_GlobalTask566')
     _safe_set(owner, 'BPMN2Model_ResourceRole567', None)
-    assert getattr(partner, 'BPMN2Model_GlobalTask566') is None
+    assert owner not in getattr(partner, 'BPMN2Model_GlobalTask566')
 
 
 def test_assoc_rootElement41_stub_double():

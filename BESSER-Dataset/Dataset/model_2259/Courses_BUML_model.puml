@@ -1,4 +1,8 @@
 @startuml
+' model: Courses
+' project: sampleModel
+' owner: User
+' description: New project
 class Courses_Answer {
   + id : int
   + pass_ : bool
@@ -19,8 +23,8 @@ class Courses_Person {
   + name : str
   + role : str
 }
-Courses_Answer "0..9999" --* "1..1" Courses_Assignment : answer5
-Courses_Answer "0..9999" -- "1..1" Courses_Person : assignmentDelivery3
-Courses_Assignment "0..9999" --* "1..1" Courses_Course : assignments1
-Courses_Course "1..1" *-- "0..9999" Courses_Person : members0
+Courses_Answer "Courses_Assignment6 0..9999" --* "Courses_Answer7 1..1" Courses_Assignment : answer5
+Courses_Answer "Courses_Person4 0..9999" -- "Courses_Answer 1..1" Courses_Person : assignmentDelivery3
+Courses_Assignment "Courses_Course2 0..9999" --* "Courses_Assignment 1..1" Courses_Course : assignments1
+Courses_Course "Courses_Person 1..1" *-- "Courses_Course 0..9999" Courses_Person : members0
 @enduml

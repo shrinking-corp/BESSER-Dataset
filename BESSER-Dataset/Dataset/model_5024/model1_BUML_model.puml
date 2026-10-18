@@ -1,4 +1,8 @@
 @startuml
+' model: model1
+' project: sampleModel
+' owner: User
+' description: New project
 class Address {
 }
 class Order {
@@ -55,24 +59,24 @@ Order <|-- model1_OrderAddress
 Order <|-- model1_PurchaseOrder
 Order <|-- model1_SalesOrder
 OrderDetail <|-- model1_OrderAddress
-model1_Category "0..9999" --* "1..1" model1_Company : categories0
-model1_Category "0..9999" --* "1..1" model1_Category : categories26
-model1_Customer "1..1" -- "1..1" model1_SalesOrder : customer21
-model1_Company "1..1" *-- "0..9999" model1_Customer : customers3
-model1_Product1 "0..1" -- "1..1" model1_ProductToOrder : key32
-model1_Order "1..1" -- "1..1" model1_OrderDetail : order14
-model1_Customer "1..1" *-- "0..9999" model1_ProductToOrder : orderByProduct11
-model1_Order "1..1" *-- "0..9999" model1_OrderDetail : orderDetails13
-model1_OrderDetail "0..9999" -- "1..1" model1_Product1 : orderDetails30
-model1_OrderDetail "1..1" -- "0..1" model1_Product1 : product15
-model1_Category "1..1" *-- "0..9999" model1_Product1 : products28
-model1_PurchaseOrder "0..9999" -- "1..1" model1_SalesOrder : purchaseOrders22
-model1_Company "1..1" *-- "0..9999" model1_PurchaseOrder : purchaseOrders5
-model1_PurchaseOrder "0..9999" -- "1..1" model1_Supplier : purchaseOrders9
-model1_Customer "1..1" -- "0..9999" model1_SalesOrder : salesOrders10
-model1_PurchaseOrder "1..1" -- "0..9999" model1_SalesOrder : salesOrders18
-model1_Company "1..1" *-- "0..9999" model1_SalesOrder : salesOrders7
-model1_PurchaseOrder "1..1" -- "1..1" model1_Supplier : supplier17
-model1_Company "1..1" *-- "0..9999" model1_Supplier : suppliers1
-model1_ProductToOrder "1..1" -- "0..1" model1_SalesOrder : value35
+model1_Category "model1_Company 0..9999" --* "model1_Category 1..1" model1_Company : categories0
+model1_Category "model1_Category25 0..9999" --* "model1_Category27 1..1" model1_Category : categories26
+model1_Customer "salesOrders 1..1" -- "Customer 1..1" model1_SalesOrder : customer21
+model1_Company "model1_Customer 1..1" *-- "model1_Company4 0..9999" model1_Customer : customers3
+model1_Product1 "model1_ProductToOrder33 0..1" -- "model1_Product134 1..1" model1_ProductToOrder : key32
+model1_Order "orderDetails 1..1" -- "Order 1..1" model1_OrderDetail : order14
+model1_Customer "model1_ProductToOrder 1..1" *-- "model1_Customer12 0..9999" model1_ProductToOrder : orderByProduct11
+model1_Order "OrderDetail 1..1" *-- "order 0..9999" model1_OrderDetail : orderDetails13
+model1_OrderDetail "product 0..9999" -- "OrderDetail31 1..1" model1_Product1 : orderDetails30
+model1_OrderDetail "Product1 1..1" -- "orderDetails16 0..1" model1_Product1 : product15
+model1_Category "model1_Product1 1..1" *-- "model1_Category29 0..9999" model1_Product1 : products28
+model1_PurchaseOrder "salesOrders23 0..9999" -- "PurchaseOrder24 1..1" model1_SalesOrder : purchaseOrders22
+model1_Company "model1_PurchaseOrder 1..1" *-- "model1_Company6 0..9999" model1_PurchaseOrder : purchaseOrders5
+model1_PurchaseOrder "supplier 0..9999" -- "PurchaseOrder 1..1" model1_Supplier : purchaseOrders9
+model1_Customer "SalesOrder 1..1" -- "customer 0..9999" model1_SalesOrder : salesOrders10
+model1_PurchaseOrder "SalesOrder20 1..1" -- "purchaseOrders19 0..9999" model1_SalesOrder : salesOrders18
+model1_Company "model1_SalesOrder 1..1" *-- "model1_Company8 0..9999" model1_SalesOrder : salesOrders7
+model1_PurchaseOrder "Supplier 1..1" -- "purchaseOrders 1..1" model1_Supplier : supplier17
+model1_Company "model1_Supplier 1..1" *-- "model1_Company2 0..9999" model1_Supplier : suppliers1
+model1_ProductToOrder "model1_SalesOrder37 1..1" -- "model1_ProductToOrder36 0..1" model1_SalesOrder : value35
 @enduml

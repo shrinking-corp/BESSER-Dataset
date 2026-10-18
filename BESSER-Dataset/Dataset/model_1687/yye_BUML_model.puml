@@ -1,4 +1,8 @@
 @startuml
+' model: yye
+' project: sampleModel
+' owner: User
+' description: New project
 class NamedElement {
 }
 class yye_Alias {
@@ -18,10 +22,10 @@ class yye_Relation {
 }
 NamedElement <|-- yye_Base
 NamedElement <|-- yye_Relation
-yye_Alias "0..9999" --* "1..1" yye_NamedElement : aliases2
-yye_Base "1..1" *-- "0..9999" yye_Foo : foos1
-yye_Base "0..1" -- "1..1" yye_Relation : fromThing3
-yye_Base "1..1" *-- "0..9999" yye_Relation : relations0
-yye_Relation "0..9999" --* "1..1" yye_Relation : subRelations7
-yye_Base "0..1" -- "1..1" yye_Relation : toThing4
+yye_Alias "yye_NamedElement 0..9999" --* "yye_Alias 1..1" yye_NamedElement : aliases2
+yye_Base "yye_Foo 1..1" *-- "yye_Base 0..9999" yye_Foo : foos1
+yye_Base "relations 0..1" -- "Base 1..1" yye_Relation : fromThing3
+yye_Base "Relation 1..1" *-- "fromThing 0..9999" yye_Relation : relations0
+yye_Relation "yye_Relation6 0..9999" --* "yye_Relation8 1..1" yye_Relation : subRelations7
+yye_Base "yye_Relation 0..1" -- "yye_Base5 1..1" yye_Relation : toThing4
 @enduml

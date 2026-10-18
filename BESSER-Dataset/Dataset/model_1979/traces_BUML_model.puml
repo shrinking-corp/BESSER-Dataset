@@ -1,4 +1,8 @@
 @startuml
+' model: traces
+' project: sampleModel
+' owner: User
+' description: New project
 enum ParameterType {
   source
   target
@@ -22,9 +26,9 @@ class traces_TraceElement {
 class traces_TraceRecord {
   + name : str
 }
-traces_EObject "0..1" -- "1..1" traces_TraceElement : element5
-traces_Trace "1..1" *-- "0..9999" traces_TraceElement : elements3
-traces_EObject "1..1" -- "1..1" traces_Model : modelRoot7
-traces_Model "1..9999" --* "1..1" traces_TraceRecord : models1
-traces_Trace "0..9999" --* "1..1" traces_TraceRecord : traces0
+traces_EObject "traces_TraceElement6 0..1" -- "traces_EObject 1..1" traces_TraceElement : element5
+traces_Trace "traces_TraceElement 1..1" *-- "traces_Trace4 0..9999" traces_TraceElement : elements3
+traces_EObject "traces_Model8 1..1" -- "traces_EObject9 1..1" traces_Model : modelRoot7
+traces_Model "traces_TraceRecord2 1..9999" --* "traces_Model 1..1" traces_TraceRecord : models1
+traces_Trace "traces_TraceRecord 0..9999" --* "traces_Trace 1..1" traces_TraceRecord : traces0
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: studyprogramme
+' project: sampleModel
+' owner: User
+' description: New project
 class CourseSlot {
 }
 enum ProgrammeCode {
@@ -54,19 +58,19 @@ CourseSlot <|-- studyprogramme_CompulsoryCourseSlot
 CourseSlot <|-- studyprogramme_ElectiveCourseSlot
 SemesterContainer <|-- studyprogramme_Programme
 SemesterContainer <|-- studyprogramme_Specialization
-studyprogramme_Semester "0..9999" --* "1..1" studyprogramme_University : Semesters20
-studyprogramme_Course "1..1" -- "1..1" studyprogramme_ElectiveCourseSlot : assignedCourse26
-studyprogramme_Course "0..9999" -- "1..1" studyprogramme_ElectiveCourseList : availableCourses13
-studyprogramme_Course "1..1" -- "1..1" studyprogramme_CourseSlot : course9
-studyprogramme_Course "0..9999" --* "1..1" studyprogramme_University : courses17
-studyprogramme_ElectiveCourseList "0..1" --* "1..1" studyprogramme_ElectiveCourseSlot : electiveCourseList25
-studyprogramme_ElectiveCourseList "1..1" -- "0..1" studyprogramme_ElectiveCourseSlot : electiveCourseSlot15
-studyprogramme_Specialization "1..1" -- "0..1" studyprogramme_Specialization : parrentSpecialisation6
-studyprogramme_Programme "0..1" -- "1..1" studyprogramme_Specialization : programme1
-studyprogramme_Programme "0..9999" --* "1..1" studyprogramme_University : programmes16
-studyprogramme_Semester "0..9999" --* "1..1" studyprogramme_SemesterContainer : semesters11
-studyprogramme_CourseSlot "0..9999" --* "1..1" studyprogramme_Semester : slots8
-studyprogramme_Specialization "0..9999" --* "1..1" studyprogramme_University : specialisations23
-studyprogramme_Programme "1..1" *-- "0..9999" studyprogramme_Specialization : specializations0
-studyprogramme_Specialization "1..1" *-- "0..9999" studyprogramme_Specialization : subSpecialisations3
+studyprogramme_Semester "studyprogramme_University21 0..9999" --* "studyprogramme_Semester22 1..1" studyprogramme_University : Semesters20
+studyprogramme_Course "studyprogramme_ElectiveCourseSlot 1..1" -- "studyprogramme_Course27 1..1" studyprogramme_ElectiveCourseSlot : assignedCourse26
+studyprogramme_Course "studyprogramme_ElectiveCourseList 0..9999" -- "studyprogramme_Course14 1..1" studyprogramme_ElectiveCourseList : availableCourses13
+studyprogramme_Course "studyprogramme_CourseSlot10 1..1" -- "studyprogramme_Course 1..1" studyprogramme_CourseSlot : course9
+studyprogramme_Course "studyprogramme_University18 0..9999" --* "studyprogramme_Course19 1..1" studyprogramme_University : courses17
+studyprogramme_ElectiveCourseList "electiveCourseSlot 0..1" --* "ElectiveCourseList 1..1" studyprogramme_ElectiveCourseSlot : electiveCourseList25
+studyprogramme_ElectiveCourseList "ElectiveCourseSlot 1..1" -- "electiveCourseList 0..1" studyprogramme_ElectiveCourseSlot : electiveCourseSlot15
+studyprogramme_Specialization "Specialization7 1..1" -- "subSpecialisations 0..1" studyprogramme_Specialization : parrentSpecialisation6
+studyprogramme_Programme "specializations 0..1" -- "Programme 1..1" studyprogramme_Specialization : programme1
+studyprogramme_Programme "studyprogramme_University 0..9999" --* "studyprogramme_Programme 1..1" studyprogramme_University : programmes16
+studyprogramme_Semester "studyprogramme_SemesterContainer 0..9999" --* "studyprogramme_Semester12 1..1" studyprogramme_SemesterContainer : semesters11
+studyprogramme_CourseSlot "studyprogramme_Semester 0..9999" --* "studyprogramme_CourseSlot 1..1" studyprogramme_Semester : slots8
+studyprogramme_Specialization "studyprogramme_University24 0..9999" --* "studyprogramme_Specialization 1..1" studyprogramme_University : specialisations23
+studyprogramme_Programme "Specialization 1..1" *-- "programme 0..9999" studyprogramme_Specialization : specializations0
+studyprogramme_Specialization "Specialization4 1..1" *-- "parrentSpecialisation 0..9999" studyprogramme_Specialization : subSpecialisations3
 @enduml

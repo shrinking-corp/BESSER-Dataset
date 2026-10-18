@@ -2484,9 +2484,9 @@ def test_assoc_packages1_stub_double():
     partner = useCases_UseCasesModel()
     setattr(partner, 'useCases_UseCasesModel2', None)
     _safe_set(owner, 'useCases_PackageDeclaration', partner)
-    assert getattr(partner, 'useCases_UseCasesModel2') == owner
+    assert owner in getattr(partner, 'useCases_UseCasesModel2')
     _safe_set(owner, 'useCases_PackageDeclaration', None)
-    assert getattr(partner, 'useCases_UseCasesModel2') is None
+    assert owner not in getattr(partner, 'useCases_UseCasesModel2')
 
 
 def test_assoc_pages33_stub_double():
@@ -2596,39 +2596,17 @@ def test_assoc_screen60_stub_double():
 
 
 
-from enum import Enum
 from python_code import ActorType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ActorType.SYSTEM, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ActorType.SYSTEM, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ActorType.SYSTEM, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ActorType.SYSTEM, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ActorType.SYSTEM, 'SYSTEM') == ActorType.SYSTEM
-
 from python_code import useCases_Flow
 
 def test_useCases_Flow___init__():
     assert useCases_Flow.__init__(useCases_Flow('', useCases_Flow=set()), '', useCases_Flow=set()) == None
-
 from python_code import useCases_AlternativeFlowAlternative
 from python_code import useCases_NamedFlow
 
 def test_useCases_NamedFlow___init__():
     assert useCases_NamedFlow.__init__(useCases_NamedFlow('', useCases_NamedFlow=useCases_AlternativeFlowAlternative()), '', useCases_NamedFlow=useCases_AlternativeFlowAlternative()) == None
-
 from python_code import useCases_NamespaceImport
 from python_code import useCases_PackageDeclaration
 from python_code import useCases_UseCasesModel

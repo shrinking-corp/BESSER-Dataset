@@ -1,4 +1,8 @@
 @startuml
+' model: bowling
+' project: sampleModel
+' owner: User
+' description: New project
 enum Gender {
   Female
   Male
@@ -58,22 +62,22 @@ class bowling_Tournament {
   + receivesTrophy : bool
   + type : str
 }
-bowling_Area "1..1" *-- "0..9999" bowling_Area : areas25
-bowling_Fan "1..1" *-- "0..9999" bowling_Merchandise : fanMerchandise31
-bowling_Fan "1..1" *-- "0..1" bowling_Merchandise : favouriteMerchandise33
-bowling_Fan "1..1" -- "0..1" bowling_Player : favouritePlayer29
-bowling_Game "2..2" --* "1..1" bowling_Matchup : games9
-bowling_Player "0..1" -- "1..1" bowling_PlayerToPointsMap : key13
-bowling_Referee "0..1" --* "1..1" bowling_RefereeToGamesMap : key18
-bowling_League "0..1" -- "1..1" bowling_Referee : league16
-bowling_Game "1..1" -- "1..1" bowling_Matchup : matchup10
-bowling_Matchup "0..9999" --* "1..1" bowling_Tournament : matchups1
-bowling_Game "1..1" -- "0..1" bowling_Player : player11
-bowling_PlayerToPointsMap "0..9999" --* "1..1" bowling_Tournament : playerPoints2
-bowling_League "1..1" *-- "0..9999" bowling_Player : players0
-bowling_Player "0..9999" -- "1..1" bowling_Tournament : players4
-bowling_RefereeToGamesMap "0..9999" --* "1..1" bowling_Tournament : referees7
-bowling_Area "1..1" *-- "0..9999" bowling_Tournament : tournaments26
-bowling_Game "0..1" -- "1..1" bowling_RefereeToGamesMap : value21
-bowling_Fan "1..1" -- "0..9999" bowling_Tournament : visitedTournaments36
+bowling_Area "bowling_Area 1..1" *-- "bowling_Area24 0..9999" bowling_Area : areas25
+bowling_Fan "bowling_Merchandise 1..1" *-- "bowling_Fan32 0..9999" bowling_Merchandise : fanMerchandise31
+bowling_Fan "bowling_Merchandise35 1..1" *-- "bowling_Fan34 0..1" bowling_Merchandise : favouriteMerchandise33
+bowling_Fan "bowling_Player30 1..1" -- "bowling_Fan 0..1" bowling_Player : favouritePlayer29
+bowling_Game "matchup 2..2" --* "Game 1..1" bowling_Matchup : games9
+bowling_Player "bowling_PlayerToPointsMap14 0..1" -- "bowling_Player15 1..1" bowling_PlayerToPointsMap : key13
+bowling_Referee "bowling_RefereeToGamesMap19 0..1" --* "bowling_Referee20 1..1" bowling_RefereeToGamesMap : key18
+bowling_League "bowling_Referee 0..1" -- "bowling_League17 1..1" bowling_Referee : league16
+bowling_Game "Matchup 1..1" -- "games 1..1" bowling_Matchup : matchup10
+bowling_Matchup "bowling_Tournament 0..9999" --* "bowling_Matchup 1..1" bowling_Tournament : matchups1
+bowling_Game "bowling_Player12 1..1" -- "bowling_Game 0..1" bowling_Player : player11
+bowling_PlayerToPointsMap "bowling_Tournament3 0..9999" --* "bowling_PlayerToPointsMap 1..1" bowling_Tournament : playerPoints2
+bowling_League "bowling_Player 1..1" *-- "bowling_League 0..9999" bowling_Player : players0
+bowling_Player "bowling_Tournament5 0..9999" -- "bowling_Player6 1..1" bowling_Tournament : players4
+bowling_RefereeToGamesMap "bowling_Tournament8 0..9999" --* "bowling_RefereeToGamesMap 1..1" bowling_Tournament : referees7
+bowling_Area "bowling_Tournament28 1..1" *-- "bowling_Area27 0..9999" bowling_Tournament : tournaments26
+bowling_Game "bowling_RefereeToGamesMap22 0..1" -- "bowling_Game23 1..1" bowling_RefereeToGamesMap : value21
+bowling_Fan "bowling_Tournament38 1..1" -- "bowling_Fan37 0..9999" bowling_Tournament : visitedTournaments36
 @enduml

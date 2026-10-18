@@ -1,4 +1,8 @@
 @startuml
+' model: arduino
+' project: sampleModel
+' owner: User
+' description: New project
 class Acao {
 }
 class Acoes_Condicionais {
@@ -207,14 +211,14 @@ Verde <|-- arduino_Desligar_Intermitencia
 Verde <|-- arduino_Desligar_LED_Verde
 Verde <|-- arduino_Ligar_Intermitencia
 Verde <|-- arduino_Ligar_LED_Verde
-arduino_Acao "0..1" -- "1..1" arduino_Transicoes : Acao_de_Entrada8
-arduino_Acao "0..1" -- "1..1" arduino_Transicoes : Acao_de_Saida9
-arduino_Acao "1..1" -- "0..1" arduino_Transicoes : Transicao_de_Entrada5
-arduino_Acao "1..1" -- "0..1" arduino_Transicoes : Transicao_de_Saida6
-arduino_Acao "1..1" -- "1..1" arduino_While : corpo13
-arduino_Acoes_Condicionais "1..1" -- "1..1" arduino_Condicao : tem11
-arduino_Acao "0..9999" --* "1..1" arduino_Robo : temAcoes0
-arduino_Condicao "0..9999" --* "1..1" arduino_Robo : temCondicoes3
-arduino_Robo "1..1" *-- "0..9999" arduino_Transicoes : temTransicoes1
-arduino_Acao "1..1" -- "1..1" arduino_If : then15
+arduino_Acao "Transicao_de_Saida 0..1" -- "Acao 1..1" arduino_Transicoes : Acao_de_Entrada8
+arduino_Acao "Transicao_de_Entrada 0..1" -- "Acao10 1..1" arduino_Transicoes : Acao_de_Saida9
+arduino_Acao "Transicoes 1..1" -- "Acao_de_Saida 0..1" arduino_Transicoes : Transicao_de_Entrada5
+arduino_Acao "Transicoes7 1..1" -- "Acao_de_Entrada 0..1" arduino_Transicoes : Transicao_de_Saida6
+arduino_Acao "arduino_While 1..1" -- "arduino_Acao14 1..1" arduino_While : corpo13
+arduino_Acoes_Condicionais "arduino_Condicao12 1..1" -- "arduino_Acoes_Condicionais 1..1" arduino_Condicao : tem11
+arduino_Acao "arduino_Robo 0..9999" --* "arduino_Acao 1..1" arduino_Robo : temAcoes0
+arduino_Condicao "arduino_Robo4 0..9999" --* "arduino_Condicao 1..1" arduino_Robo : temCondicoes3
+arduino_Robo "arduino_Transicoes 1..1" *-- "arduino_Robo2 0..9999" arduino_Transicoes : temTransicoes1
+arduino_Acao "arduino_If 1..1" -- "arduino_Acao16 1..1" arduino_If : then15
 @enduml

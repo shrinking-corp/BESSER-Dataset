@@ -1,4 +1,8 @@
 @startuml
+' model: entities
+' project: sampleModel
+' owner: User
+' description: New project
 class Expression {
 }
 class FieldType {
@@ -47,13 +51,13 @@ FieldType <|-- entities_BasicType
 FieldType <|-- entities_EntityType
 Statement <|-- entities_AssignmentStatement
 Statement <|-- entities_PrintStatement
-entities_AssignmentStatement "1..1" -- "0..1" entities_Field : assignee10
-entities_Entity "0..9999" --* "1..1" entities_Model : entities0
-entities_Entity "0..1" -- "1..1" entities_EntityType : entity14
-entities_Expression "0..1" --* "1..1" entities_Statement : expr8
-entities_Field "0..1" -- "1..1" entities_FieldRef : field16
-entities_Entity "1..1" *-- "0..9999" entities_Field : fields4
-entities_Entity "1..1" *-- "0..9999" entities_Statement : statements6
-entities_Entity "0..1" -- "1..1" entities_Entity : superType2
-entities_Field "1..1" *-- "0..1" entities_FieldType : type12
+entities_AssignmentStatement "entities_Field11 1..1" -- "entities_AssignmentStatement 0..1" entities_Field : assignee10
+entities_Entity "entities_Model 0..9999" --* "entities_Entity 1..1" entities_Model : entities0
+entities_Entity "entities_EntityType 0..1" -- "entities_Entity15 1..1" entities_EntityType : entity14
+entities_Expression "entities_Statement9 0..1" --* "entities_Expression 1..1" entities_Statement : expr8
+entities_Field "entities_FieldRef 0..1" -- "entities_Field17 1..1" entities_FieldRef : field16
+entities_Entity "entities_Field 1..1" *-- "entities_Entity5 0..9999" entities_Field : fields4
+entities_Entity "entities_Statement 1..1" *-- "entities_Entity7 0..9999" entities_Statement : statements6
+entities_Entity "entities_Entity1 0..1" -- "entities_Entity3 1..1" entities_Entity : superType2
+entities_Field "entities_FieldType 1..1" *-- "entities_Field13 0..1" entities_FieldType : type12
 @enduml

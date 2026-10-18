@@ -1,4 +1,8 @@
 @startuml
+' model: trip
+' project: sampleModel
+' owner: User
+' description: New project
 class NamedElement {
 }
 class Vehicle {
@@ -25,9 +29,9 @@ NamedElement <|-- trip_TripModel
 NamedElement <|-- trip_Vehicle
 Vehicle <|-- trip_Car
 Vehicle <|-- trip_Van
-trip_Person "1..1" -- "1..1" trip_Trip : driver2
-trip_NamedElement "0..9999" --* "1..1" trip_TripModel : elements5
-trip_Person "0..9999" -- "1..1" trip_Trip : passengers1
-trip_Person "1..1" -- "0..9999" trip_Trip : trips4
-trip_Trip "1..1" -- "1..1" trip_Vehicle : vehicle0
+trip_Person "trip_Trip3 1..1" -- "trip_Person 1..1" trip_Trip : driver2
+trip_NamedElement "trip_TripModel 0..9999" --* "trip_NamedElement 1..1" trip_TripModel : elements5
+trip_Person "trips 0..9999" -- "Person 1..1" trip_Trip : passengers1
+trip_Person "Trip 1..1" -- "passengers 0..9999" trip_Trip : trips4
+trip_Trip "trip_Vehicle 1..1" -- "trip_Trip 1..1" trip_Vehicle : vehicle0
 @enduml

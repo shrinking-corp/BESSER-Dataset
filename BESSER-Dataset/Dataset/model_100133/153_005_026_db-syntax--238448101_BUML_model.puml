@@ -1,4 +1,8 @@
 @startuml
+' model: syntax
+' project: sampleModel
+' owner: User
+' description: New project
 class BindingStatement {
 }
 class ConditionInfoClause {
@@ -349,30 +353,30 @@ StatementParser <|-- syntax_QueryParser
 StatementWriter <|-- syntax_DefinitionWriter
 StatementWriter <|-- syntax_QueryWriter
 dml_ExtendedQueryExpressionBody <|-- syntax_dml_ExtendedQuerySelect
-ddl_syntax_QualifiedName "0..1" --* "1..1" syntax_ddl_CreateAliasStatement : aliasName8
-syntax_BindingParseResult "1..1" -- "0..1" syntax_BindingStatement : bindingStatement0
-ConditionInfoClause "0..1" -- "1..1" syntax_dbl_GetDiagnosticsStatement : conditionInfo39
-Option "0..9999" -- "1..1" syntax_dbl_ConditionInfoClause : conditionItems32
-syntax_DefinitionParseResult "1..1" -- "0..1" syntax_DefinitionStatement : definitionStatement3
-syntax_BindingParseError "0..9999" -- "1..1" syntax_BindingParseResult : errorList1
-syntax_DefinitionParseError "0..9999" -- "1..1" syntax_DefinitionParseResult : errorList4
-ddl_syntax_TableColumnDef "1..9999" --* "1..1" syntax_ddl_CreateTableStatement : fields22
-ddl_syntax_QualifiedName "0..1" --* "1..1" syntax_ddl_CreateIndexStatement : indexName13
-IntoClause "0..1" --* "1..1" syntax_dbl_DescribeStatement : into33
-IntoClause "0..1" --* "1..1" syntax_dbl_PrepareStatement : into44
-Option "0..9999" -- "1..1" syntax_dbl_SetDescriptorStatement : items40
-MultipleRowFetchClause "0..1" --* "1..1" syntax_dbl_FetchStatement : multipleRowClause34
-syntax_NameHelper "0..1" -- "1..1" syntax_StatementWriter : nameHelper6
-ddl_syntax_QualifiedName "0..1" --* "1..1" syntax_ddl_CreateIndexStatement : onTable15
-Option "0..9999" -- "1..1" syntax_dbl_SetOptionStatement : options42
-ddl_syntax_QualifiedName "0..1" --* "1..1" syntax_ddl_RenameStatement : originalName30
-ddl_syntax_QualifiedName "0..1" --* "1..1" syntax_ddl_CallStatement : procedureName7
-SingleRowFetchClause "0..1" --* "1..1" syntax_dbl_FetchStatement : singleRowClause35
-ddl_syntax_IndexDef "0..1" --* "1..1" syntax_ddl_CreateIndexStatement : sortBy18
-ddl_syntax_QualifiedName "0..1" --* "1..1" syntax_ddl_CreateAliasStatement : tableName10
-ddl_syntax_QualifiedName "0..1" --* "1..1" syntax_ddl_CreateTableStatement : tableName20
-ddl_syntax_QualifiedName "0..1" --* "1..1" syntax_ddl_LockTableStatement : tableName28
-ddl_syntax_QualifiedName "0..1" --* "1..1" syntax_ddl_DropStatement : targetName26
-Option "0..9999" -- "1..1" syntax_dbl_GetDescriptorStatement : variables37
-ddl_syntax_QualifiedName "0..1" --* "1..1" syntax_ddl_CreateViewStatement : viewName24
+ddl_syntax_QualifiedName "syntax_ddl_CreateAliasStatement 0..1" --* "ddl_syntax_QualifiedName9 1..1" syntax_ddl_CreateAliasStatement : aliasName8
+syntax_BindingParseResult "syntax_BindingStatement 1..1" -- "syntax_BindingParseResult 0..1" syntax_BindingStatement : bindingStatement0
+ConditionInfoClause "syntax_dbl_GetDiagnosticsStatement 0..1" -- "ConditionInfoClause 1..1" syntax_dbl_GetDiagnosticsStatement : conditionInfo39
+Option "syntax_dbl_ConditionInfoClause 0..9999" -- "Option 1..1" syntax_dbl_ConditionInfoClause : conditionItems32
+syntax_DefinitionParseResult "syntax_DefinitionStatement 1..1" -- "syntax_DefinitionParseResult 0..1" syntax_DefinitionStatement : definitionStatement3
+syntax_BindingParseError "syntax_BindingParseResult2 0..9999" -- "syntax_BindingParseError 1..1" syntax_BindingParseResult : errorList1
+syntax_DefinitionParseError "syntax_DefinitionParseResult5 0..9999" -- "syntax_DefinitionParseError 1..1" syntax_DefinitionParseResult : errorList4
+ddl_syntax_TableColumnDef "syntax_ddl_CreateTableStatement23 1..9999" --* "ddl_syntax_TableColumnDef 1..1" syntax_ddl_CreateTableStatement : fields22
+ddl_syntax_QualifiedName "syntax_ddl_CreateIndexStatement 0..1" --* "ddl_syntax_QualifiedName14 1..1" syntax_ddl_CreateIndexStatement : indexName13
+IntoClause "syntax_dbl_DescribeStatement 0..1" --* "IntoClause 1..1" syntax_dbl_DescribeStatement : into33
+IntoClause "syntax_dbl_PrepareStatement 0..1" --* "IntoClause45 1..1" syntax_dbl_PrepareStatement : into44
+Option "syntax_dbl_SetDescriptorStatement 0..9999" -- "Option41 1..1" syntax_dbl_SetDescriptorStatement : items40
+MultipleRowFetchClause "syntax_dbl_FetchStatement 0..1" --* "MultipleRowFetchClause 1..1" syntax_dbl_FetchStatement : multipleRowClause34
+syntax_NameHelper "syntax_StatementWriter 0..1" -- "syntax_NameHelper 1..1" syntax_StatementWriter : nameHelper6
+ddl_syntax_QualifiedName "syntax_ddl_CreateIndexStatement16 0..1" --* "ddl_syntax_QualifiedName17 1..1" syntax_ddl_CreateIndexStatement : onTable15
+Option "syntax_dbl_SetOptionStatement 0..9999" -- "Option43 1..1" syntax_dbl_SetOptionStatement : options42
+ddl_syntax_QualifiedName "syntax_ddl_RenameStatement 0..1" --* "ddl_syntax_QualifiedName31 1..1" syntax_ddl_RenameStatement : originalName30
+ddl_syntax_QualifiedName "syntax_ddl_CallStatement 0..1" --* "ddl_syntax_QualifiedName 1..1" syntax_ddl_CallStatement : procedureName7
+SingleRowFetchClause "syntax_dbl_FetchStatement36 0..1" --* "SingleRowFetchClause 1..1" syntax_dbl_FetchStatement : singleRowClause35
+ddl_syntax_IndexDef "syntax_ddl_CreateIndexStatement19 0..1" --* "ddl_syntax_IndexDef 1..1" syntax_ddl_CreateIndexStatement : sortBy18
+ddl_syntax_QualifiedName "syntax_ddl_CreateAliasStatement11 0..1" --* "ddl_syntax_QualifiedName12 1..1" syntax_ddl_CreateAliasStatement : tableName10
+ddl_syntax_QualifiedName "syntax_ddl_CreateTableStatement 0..1" --* "ddl_syntax_QualifiedName21 1..1" syntax_ddl_CreateTableStatement : tableName20
+ddl_syntax_QualifiedName "syntax_ddl_LockTableStatement 0..1" --* "ddl_syntax_QualifiedName29 1..1" syntax_ddl_LockTableStatement : tableName28
+ddl_syntax_QualifiedName "syntax_ddl_DropStatement 0..1" --* "ddl_syntax_QualifiedName27 1..1" syntax_ddl_DropStatement : targetName26
+Option "syntax_dbl_GetDescriptorStatement 0..9999" -- "Option38 1..1" syntax_dbl_GetDescriptorStatement : variables37
+ddl_syntax_QualifiedName "syntax_ddl_CreateViewStatement 0..1" --* "ddl_syntax_QualifiedName25 1..1" syntax_ddl_CreateViewStatement : viewName24
 @enduml

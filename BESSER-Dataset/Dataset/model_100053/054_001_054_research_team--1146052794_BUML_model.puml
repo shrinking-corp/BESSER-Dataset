@@ -1,4 +1,8 @@
 @startuml
+' model: research_team
+' project: sampleModel
+' owner: User
+' description: New project
 class Publication {
 }
 class research_team_ActivityReport {
@@ -82,22 +86,22 @@ Publication <|-- research_team_InProceedings
 Publication <|-- research_team_MasterThesis
 Publication <|-- research_team_Misc
 Publication <|-- research_team_PhDThesis
-research_team_ActivityReport "0..9999" -- "1..1" research_team_Team : 0
-research_team_Paper "1..1" -- "0..9999" research_team_Publication : 21
-research_team_Paper "1..1" -- "1..9999" research_team_Person : author23
-research_team_Collaboration "1..9999" -- "1..1" research_team_Partner : collaboration27
-research_team_Collaboration "0..1" -- "1..1" research_team_OpenPosition : context20
-research_team_Person "1..9999" -- "1..1" research_team_Software : developers25
-research_team_Collaboration "0..9999" -- "1..1" research_team_Team : involvedIn8
-research_team_Publication "0..9999" -- "1..1" research_team_Team : mainReferences10
-research_team_Person "1..9999" -- "1..1" research_team_Team : members1
-research_team_OpenPosition "0..9999" -- "1..1" research_team_Team : openPosition6
-research_team_Paper "0..9999" -- "1..1" research_team_Person : paper13
-research_team_Collaboration "0..9999" -- "1..1" research_team_Person : participates14
-research_team_Paper "1..1" -- "1..1" research_team_Publication : publishedAs18
-research_team_Person "1..1" -- "0..1" research_team_Seminar : seminars12
-research_team_Person "1..1" -- "0..9999" research_team_Software : soft11
-research_team_Person "1..9999" -- "1..1" research_team_Seminar : speakers19
-research_team_Publication "1..1" -- "0..1" research_team_Team : team17
-research_team_Person "1..1" -- "1..1" research_team_Team : teamMaster3
+research_team_ActivityReport "research_team_Team 0..9999" -- "research_team_ActivityReport 1..1" research_team_Team : 0
+research_team_Paper "Publication22 1..1" -- "publishedAs 0..9999" research_team_Publication : 21
+research_team_Paper "Person24 1..1" -- "paper 1..9999" research_team_Person : author23
+research_team_Collaboration "partners 1..9999" -- "Collaboration28 1..1" research_team_Partner : collaboration27
+research_team_Collaboration "openPositions 0..1" -- "Collaboration 1..1" research_team_OpenPosition : context20
+research_team_Person "soft 1..9999" -- "Person26 1..1" research_team_Software : developers25
+research_team_Collaboration "research_team_Team9 0..9999" -- "research_team_Collaboration 1..1" research_team_Team : involvedIn8
+research_team_Publication "team 0..9999" -- "Publication 1..1" research_team_Team : mainReferences10
+research_team_Person "research_team_Team2 1..9999" -- "research_team_Person 1..1" research_team_Team : members1
+research_team_OpenPosition "research_team_Team7 0..9999" -- "research_team_OpenPosition 1..1" research_team_Team : openPosition6
+research_team_Paper "author 0..9999" -- "Paper 1..1" research_team_Person : paper13
+research_team_Collaboration "research_team_Person15 0..9999" -- "research_team_Collaboration16 1..1" research_team_Person : participates14
+research_team_Paper "research_team_Publication 1..1" -- "research_team_Paper 1..1" research_team_Publication : publishedAs18
+research_team_Person "Seminar 1..1" -- "speakers 0..1" research_team_Seminar : seminars12
+research_team_Person "Software 1..1" -- "developers 0..9999" research_team_Software : soft11
+research_team_Person "seminars 1..9999" -- "Person 1..1" research_team_Seminar : speakers19
+research_team_Publication "Team 1..1" -- "mainReferences 0..1" research_team_Team : team17
+research_team_Person "research_team_Team4 1..1" -- "research_team_Person5 1..1" research_team_Team : teamMaster3
 @enduml

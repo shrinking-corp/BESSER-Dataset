@@ -1,4 +1,8 @@
 @startuml
+' model: research15
+' project: sampleModel
+' owner: User
+' description: New project
 class Counted {
 }
 class Labelled {
@@ -76,32 +80,32 @@ Named <|-- research15_PublicationProcess
 Named <|-- research15_PublicationStructure
 Named <|-- research15_PublicationSystem
 Named <|-- research15_ReviewNote
-research15_Keyword "0..9999" --* "1..1" research15_KnowledgeManager : allkeywords51
-research15_Paper "1..1" -- "0..9999" research15_Researcher : authors13
-research15_Paper "0..1" -- "1..1" research15_Paper : citedBy17
-research15_Collaboration "1..1" -- "0..1" research15_Paper : col_paper57
-research15_Collaboration "0..9999" --* "1..1" research15_Researcher : collaborations9
-research15_Keyword "0..1" -- "1..1" research15_PaperKeyword : keyword54
-research15_Paper "1..1" *-- "0..9999" research15_PaperKeyword : keywords14
-research15_KnowledgeManager "0..1" --* "1..1" research15_PublicationStructure : knowledgeMan36
-research15_Keyword "1..1" -- "0..9999" research15_Paper : kpapers49
-research15_Paper "0..1" -- "1..1" research15_Progress : paper23
-research15_Paper "0..9999" --* "1..1" research15_PublicationStructure : papers33
-research15_Paragraph "0..1" -- "1..1" research15_Write : paragraph25
-research15_Paper "1..1" *-- "0..9999" research15_Paragraph : paragraphs11
-research15_Position "0..1" -- "1..1" research15_Position : parent47
-research15_Phase "0..9999" --* "1..1" research15_PublicationProcess : phases0
-research15_Position "0..9999" --* "1..1" research15_PublicationSystem : positions43
-research15_Progress "1..1" -- "0..1" research15_PublicationProcess : process21
-research15_PublicationProcess "0..1" --* "1..1" research15_PublicationSystem : processView38
-research15_Paper "1..1" *-- "0..9999" research15_Progress : progress12
-research15_Paper "0..9999" -- "1..1" research15_Researcher : res_papers4
-research15_Position "0..1" -- "1..1" research15_Researcher : res_position7
-research15_PublicationStructure "1..1" *-- "0..9999" research15_Researcher : researchers31
-research15_Review "1..1" -- "0..1" research15_ReviewNote : reviewNote28
-research15_Paragraph "1..1" *-- "0..9999" research15_ReviewNote : reviews19
-research15_Researcher "1..1" *-- "0..9999" research15_Review : reviews2
-research15_Researcher "1..1" *-- "0..9999" research15_Skill : skills5
-research15_PublicationStructure "0..1" --* "1..1" research15_PublicationSystem : structuralView40
-research15_Researcher "1..1" *-- "0..9999" research15_Write : writes1
+research15_Keyword "research15_KnowledgeManager52 0..9999" --* "research15_Keyword53 1..1" research15_KnowledgeManager : allkeywords51
+research15_Paper "Researcher 1..1" -- "res_papers 0..9999" research15_Researcher : authors13
+research15_Paper "research15_Paper16 0..1" -- "research15_Paper18 1..1" research15_Paper : citedBy17
+research15_Collaboration "research15_Paper59 1..1" -- "research15_Collaboration58 0..1" research15_Paper : col_paper57
+research15_Collaboration "research15_Researcher10 0..9999" --* "research15_Collaboration 1..1" research15_Researcher : collaborations9
+research15_Keyword "research15_PaperKeyword55 0..1" -- "research15_Keyword56 1..1" research15_PaperKeyword : keyword54
+research15_Paper "research15_PaperKeyword 1..1" *-- "research15_Paper15 0..9999" research15_PaperKeyword : keywords14
+research15_KnowledgeManager "research15_PublicationStructure37 0..1" --* "research15_KnowledgeManager 1..1" research15_PublicationStructure : knowledgeMan36
+research15_Keyword "research15_Paper50 1..1" -- "research15_Keyword 0..9999" research15_Paper : kpapers49
+research15_Paper "progress 0..1" -- "Paper24 1..1" research15_Progress : paper23
+research15_Paper "research15_PublicationStructure34 0..9999" --* "research15_Paper35 1..1" research15_PublicationStructure : papers33
+research15_Paragraph "research15_Write26 0..1" -- "research15_Paragraph27 1..1" research15_Write : paragraph25
+research15_Paper "research15_Paragraph 1..1" *-- "research15_Paper 0..9999" research15_Paragraph : paragraphs11
+research15_Position "research15_Position46 0..1" -- "research15_Position48 1..1" research15_Position : parent47
+research15_Phase "research15_PublicationProcess 0..9999" --* "research15_Phase 1..1" research15_PublicationProcess : phases0
+research15_Position "research15_PublicationSystem44 0..9999" --* "research15_Position45 1..1" research15_PublicationSystem : positions43
+research15_Progress "research15_PublicationProcess22 1..1" -- "research15_Progress 0..1" research15_PublicationProcess : process21
+research15_PublicationProcess "research15_PublicationSystem 0..1" --* "research15_PublicationProcess39 1..1" research15_PublicationSystem : processView38
+research15_Paper "Progress 1..1" *-- "paper 0..9999" research15_Progress : progress12
+research15_Paper "authors 0..9999" -- "Paper 1..1" research15_Researcher : res_papers4
+research15_Position "research15_Researcher8 0..1" -- "research15_Position 1..1" research15_Researcher : res_position7
+research15_PublicationStructure "research15_Researcher32 1..1" *-- "research15_PublicationStructure 0..9999" research15_Researcher : researchers31
+research15_Review "research15_ReviewNote30 1..1" -- "research15_Review29 0..1" research15_ReviewNote : reviewNote28
+research15_Paragraph "research15_ReviewNote 1..1" *-- "research15_Paragraph20 0..9999" research15_ReviewNote : reviews19
+research15_Researcher "research15_Review 1..1" *-- "research15_Researcher3 0..9999" research15_Review : reviews2
+research15_Researcher "research15_Skill 1..1" *-- "research15_Researcher6 0..9999" research15_Skill : skills5
+research15_PublicationStructure "research15_PublicationSystem41 0..1" --* "research15_PublicationStructure42 1..1" research15_PublicationSystem : structuralView40
+research15_Researcher "research15_Write 1..1" *-- "research15_Researcher 0..9999" research15_Write : writes1
 @enduml

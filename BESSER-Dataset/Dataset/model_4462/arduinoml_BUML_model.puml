@@ -1,4 +1,8 @@
 @startuml
+' model: arduinoml
+' project: sampleModel
+' owner: User
+' description: New project
 class Action {
 }
 class Actuator {
@@ -82,15 +86,15 @@ NamedElement <|-- arduinoml_Brick
 NamedElement <|-- arduinoml_State
 Sensor <|-- arduinoml_AnalogSensor
 Sensor <|-- arduinoml_BinarySensor
-arduinoml_Action "1..9999" --* "1..1" arduinoml_State : actions6
-arduinoml_Action "1..1" -- "1..1" arduinoml_Actuator : actuator10
-arduinoml_App "1..1" *-- "1..9999" arduinoml_Brick : bricks1
-arduinoml_MultipleElementCondition "1..1" --* "1..1" arduinoml_Transition : condition15
-arduinoml_Condition "1..9999" --* "1..1" arduinoml_MultipleElementCondition : conditions18
-arduinoml_App "1..1" -- "1..1" arduinoml_State : initial3
-arduinoml_State "1..1" -- "1..1" arduinoml_Transition : next12
-arduinoml_BinarySensor "1..1" -- "1..1" arduinoml_SingleElementCondition : sensor17
-arduinoml_AnalogSensor "1..1" -- "1..1" arduinoml_ValueElementCondition : sensor20
-arduinoml_App "1..1" *-- "1..9999" arduinoml_State : states0
-arduinoml_State "1..1" *-- "1..1" arduinoml_Transition : transition8
+arduinoml_Action "arduinoml_State7 1..9999" --* "arduinoml_Action 1..1" arduinoml_State : actions6
+arduinoml_Action "arduinoml_Actuator 1..1" -- "arduinoml_Action11 1..1" arduinoml_Actuator : actuator10
+arduinoml_App "arduinoml_Brick 1..1" *-- "arduinoml_App2 1..9999" arduinoml_Brick : bricks1
+arduinoml_MultipleElementCondition "arduinoml_Transition16 1..1" --* "arduinoml_MultipleElementCondition 1..1" arduinoml_Transition : condition15
+arduinoml_Condition "arduinoml_MultipleElementCondition19 1..9999" --* "arduinoml_Condition 1..1" arduinoml_MultipleElementCondition : conditions18
+arduinoml_App "arduinoml_State5 1..1" -- "arduinoml_App4 1..1" arduinoml_State : initial3
+arduinoml_State "arduinoml_Transition13 1..1" -- "arduinoml_State14 1..1" arduinoml_Transition : next12
+arduinoml_BinarySensor "arduinoml_SingleElementCondition 1..1" -- "arduinoml_BinarySensor 1..1" arduinoml_SingleElementCondition : sensor17
+arduinoml_AnalogSensor "arduinoml_ValueElementCondition 1..1" -- "arduinoml_AnalogSensor 1..1" arduinoml_ValueElementCondition : sensor20
+arduinoml_App "arduinoml_State 1..1" *-- "arduinoml_App 1..9999" arduinoml_State : states0
+arduinoml_State "arduinoml_Transition 1..1" *-- "arduinoml_State9 1..1" arduinoml_Transition : transition8
 @enduml

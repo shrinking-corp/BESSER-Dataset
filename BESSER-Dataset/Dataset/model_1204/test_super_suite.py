@@ -2009,181 +2009,12 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=ocl_query_Query_strategy)
-@settings(max_examples=30)
-def test_hyp_ocl_query_query_check_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.check(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.check).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'check' in ocl_query_Query is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'check' in ocl_query_Query did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'check' in ocl_query_Query is not implemented or raised an error")
 
 import warnings
 import copy
 import inspect
 import ast
 from hypothesis import given, settings
-
-@given(instance=ocl_query_Query_strategy)
-@settings(max_examples=30)
-def test_hyp_ocl_query_query_resulttype_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.resultType()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.resultType).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'resultType' in ocl_query_Query is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'resultType' in ocl_query_Query did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'resultType' in ocl_query_Query is not implemented or raised an error")
-
-import warnings
-import copy
-import inspect
-import ast
-from hypothesis import given, settings
-
-@given(instance=ocl_query_Query_strategy)
-@settings(max_examples=30)
-def test_hyp_ocl_query_query_evaluate_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.evaluate(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.evaluate).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'evaluate' in ocl_query_Query is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'evaluate' in ocl_query_Query did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'evaluate' in ocl_query_Query is not implemented or raised an error")
-
-import warnings
-import copy
-import inspect
-import ast
-from hypothesis import given, settings
-
-@given(instance=ocl_query_Query_strategy)
-@settings(max_examples=30)
-def test_hyp_ocl_query_query_reject_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.reject(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.reject).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'reject' in ocl_query_Query is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'reject' in ocl_query_Query did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'reject' in ocl_query_Query is not implemented or raised an error")
-
-import warnings
-import copy
-import inspect
-import ast
-from hypothesis import given, settings
-
-@given(instance=ocl_query_Query_strategy)
-@settings(max_examples=30)
-def test_hyp_ocl_query_query_querytext_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.queryText()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.queryText).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'queryText' in ocl_query_Query is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'queryText' in ocl_query_Query did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'queryText' in ocl_query_Query is not implemented or raised an error")
-
-import warnings
-import copy
-import inspect
-import ast
-from hypothesis import given, settings
-
-@given(instance=ocl_query_Query_strategy)
-@settings(max_examples=30)
-def test_hyp_ocl_query_query_select_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.select(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.select).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'select' in ocl_query_Query is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'select' in ocl_query_Query did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'select' in ocl_query_Query is not implemented or raised an error")
 
 
 import warnings
@@ -2192,30 +2023,35 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=ocl_utilities_Visitable_strategy)
-@settings(max_examples=30)
-def test_hyp_ocl_utilities_visitable_accept_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.accept(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.accept).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'accept' in ocl_utilities_Visitable is empty"
 
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'accept' in ocl_utilities_Visitable did not change state; check implementation")
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
 
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'accept' in ocl_utilities_Visitable is not implemented or raised an error")
+
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
+
+
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
+
+
+
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
+
 
 
 
@@ -4113,58 +3949,32 @@ def test_assoc_part8_stub_double():
 
 
 
-from enum import Enum
 from python_code import CollectionKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(CollectionKind.set, '', 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(CollectionKind.set, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(CollectionKind.set, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(CollectionKind.set, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(CollectionKind.set, 'set') == CollectionKind.set
-
 from python_code import ocl_expressions_BooleanLiteralExp
 
 def test_ocl_expressions_BooleanLiteralExp___init__():
     assert ocl_expressions_BooleanLiteralExp.__init__(ocl_expressions_BooleanLiteralExp(''), '') == None
-
 from python_code import ocl_expressions_CollectionLiteralExp
 
 def test_ocl_expressions_CollectionLiteralExp___init__():
     assert ocl_expressions_CollectionLiteralExp.__init__(ocl_expressions_CollectionLiteralExp('', ocl_expressions_CollectionLiteralExp=set()), '', ocl_expressions_CollectionLiteralExp=set()) == None
-
 from python_code import ocl_expressions_FeatureCallExp
 
 def test_ocl_expressions_FeatureCallExp___init__():
     assert ocl_expressions_FeatureCallExp.__init__(ocl_expressions_FeatureCallExp(True), False) == None
-
 from python_code import ocl_expressions_IntegerLiteralExp
 
 def test_ocl_expressions_IntegerLiteralExp___init__():
     assert ocl_expressions_IntegerLiteralExp.__init__(ocl_expressions_IntegerLiteralExp(''), '') == None
-
 from python_code import ocl_expressions_RealLiteralExp
 
 def test_ocl_expressions_RealLiteralExp___init__():
     assert ocl_expressions_RealLiteralExp.__init__(ocl_expressions_RealLiteralExp(''), '') == None
-
 from python_code import ocl_expressions_StringLiteralExp
 
 def test_ocl_expressions_StringLiteralExp___init__():
     assert ocl_expressions_StringLiteralExp.__init__(ocl_expressions_StringLiteralExp(''), '') == None
-
 from python_code import OCLExpression
 from python_code import ocl_query_Query
 
@@ -4188,29 +3998,24 @@ def test_ocl_query_Query_reject():
 
 def test_ocl_query_Query_check():
     assert ocl_query_Query.check(ocl_query_Query('', ocl_query_Query=OCLExpression()), '') == None
-
 from python_code import ocl_types_CollectionType
 from python_code import types_ocl_EClassifier
 
 def test_ocl_types_CollectionType___init__():
     assert ocl_types_CollectionType.__init__(ocl_types_CollectionType('', ocl_types_CollectionType=types_ocl_EClassifier()), '', ocl_types_CollectionType=types_ocl_EClassifier()) == None
-
 from python_code import OCLExpression
 from python_code import ocl_uml_Constraint
 
 def test_ocl_uml_Constraint___init__():
     assert ocl_uml_Constraint.__init__(ocl_uml_Constraint('', '', ocl_uml_Constraint=OCLExpression(), ocl_uml_Constraint71=set()), '', '', ocl_uml_Constraint=OCLExpression(), ocl_uml_Constraint71=set()) == None
-
 from python_code import ocl_utilities_ASTNode
 
 def test_ocl_utilities_ASTNode___init__():
     assert ocl_utilities_ASTNode.__init__(ocl_utilities_ASTNode(0, 0), 0, 0) == None
-
 from python_code import ocl_utilities_CallingASTNode
 
 def test_ocl_utilities_CallingASTNode___init__():
     assert ocl_utilities_CallingASTNode.__init__(ocl_utilities_CallingASTNode(0, 0), 0, 0) == None
-
 from python_code import ocl_utilities_PredefinedType
 
 def test_ocl_utilities_PredefinedType___init__():
@@ -4233,12 +4038,10 @@ def test_ocl_utilities_PredefinedType_getRelationshipTo():
 
 def test_ocl_utilities_PredefinedType_getOperationNameFor():
     assert ocl_utilities_PredefinedType.getOperationNameFor(ocl_utilities_PredefinedType(), '') == None
-
 from python_code import ocl_utilities_TypedASTNode
 
 def test_ocl_utilities_TypedASTNode___init__():
     assert ocl_utilities_TypedASTNode.__init__(ocl_utilities_TypedASTNode(0, 0), 0, 0) == None
-
 from python_code import ocl_utilities_Visitable
 
 def test_ocl_utilities_Visitable___init__():

@@ -1,4 +1,8 @@
 @startuml
+' model: statemachine
+' project: sampleModel
+' owner: User
+' description: New project
 enum PseudostateKind {
   final
   initial
@@ -42,14 +46,14 @@ State <|-- statemachine_ComplexState
 Transition <|-- statemachine_LabeledTransition
 Vertex <|-- statemachine_Pseudostate
 Vertex <|-- statemachine_State
-statemachine_Action "1..1" -- "1..1" statemachine_LabeledTransition : action19
-statemachine_Action "0..9999" --* "1..1" statemachine_Statemachine : actions12
-statemachine_Pseudostate "1..1" --* "1..1" statemachine_Region : initial17
-statemachine_Transition "0..9999" -- "1..1" statemachine_Vertex : outgoings0
-statemachine_ComplexState "1..1" *-- "0..1" statemachine_Region : region2
-statemachine_Transition "1..1" -- "1..1" statemachine_Vertex : source4
-statemachine_Region "1..1" *-- "0..9999" statemachine_State : states14
-statemachine_ComplexState "0..1" -- "1..1" statemachine_State : super1
-statemachine_Transition "1..1" -- "1..1" statemachine_Vertex : target7
-statemachine_Statemachine "1..1" *-- "0..9999" statemachine_Transition : transitions10
+statemachine_Action "statemachine_LabeledTransition 1..1" -- "statemachine_Action20 1..1" statemachine_LabeledTransition : action19
+statemachine_Action "statemachine_Statemachine13 0..9999" --* "statemachine_Action 1..1" statemachine_Statemachine : actions12
+statemachine_Pseudostate "statemachine_Region18 1..1" --* "statemachine_Pseudostate 1..1" statemachine_Region : initial17
+statemachine_Transition "statemachine_Vertex 0..9999" -- "statemachine_Transition 1..1" statemachine_Vertex : outgoings0
+statemachine_ComplexState "statemachine_Region 1..1" *-- "statemachine_ComplexState3 0..1" statemachine_Region : region2
+statemachine_Transition "statemachine_Vertex6 1..1" -- "statemachine_Transition5 1..1" statemachine_Vertex : source4
+statemachine_Region "statemachine_State16 1..1" *-- "statemachine_Region15 0..9999" statemachine_State : states14
+statemachine_ComplexState "statemachine_State 0..1" -- "statemachine_ComplexState 1..1" statemachine_State : super1
+statemachine_Transition "statemachine_Vertex9 1..1" -- "statemachine_Transition8 1..1" statemachine_Vertex : target7
+statemachine_Statemachine "statemachine_Transition11 1..1" *-- "statemachine_Statemachine 0..9999" statemachine_Transition : transitions10
 @enduml

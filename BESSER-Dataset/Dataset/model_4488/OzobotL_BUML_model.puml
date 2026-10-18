@@ -1,4 +1,8 @@
 @startuml
+' model: model
+' project: sampleModel
+' owner: User
+' description: New project
 enum Color {
   blue
   green
@@ -66,15 +70,15 @@ NamedElement <|-- model_Command
 NamedElement <|-- model_Ozobot
 NamedElement <|-- model_OzobotProgram
 NamedElement <|-- model_Transition
-model_Block "1..1" --* "1..1" model_OzobotProgram : block0
-model_Block "1..1" --* "1..1" model_Repeat : block9
-model_Block "1..1" *-- "0..9999" model_Command : commands13
-model_Command "1..1" -- "1..1" model_OzobotProgram : current1
-model_Command "0..1" -- "1..1" model_OzobotProgram : currentCommand3
-model_Command "1..1" -- "0..1" model_Transition : incoming7
-model_Command "1..1" -- "0..1" model_Transition : outgoing6
-model_Ozobot "1..1" *-- "0..9999" model_OzobotProgram : programs11
-model_Command "1..1" -- "1..1" model_Transition : source18
-model_Command "1..1" -- "1..1" model_Transition : target19
-model_Block "1..1" *-- "0..9999" model_Transition : transitions16
+model_Block "model_OzobotProgram 1..1" --* "model_Block 1..1" model_OzobotProgram : block0
+model_Block "model_Repeat 1..1" --* "model_Block10 1..1" model_Repeat : block9
+model_Block "model_Command15 1..1" *-- "model_Block14 0..9999" model_Command : commands13
+model_Command "model_OzobotProgram2 1..1" -- "model_Command 1..1" model_OzobotProgram : current1
+model_Command "model_OzobotProgram4 0..1" -- "model_Command5 1..1" model_OzobotProgram : currentCommand3
+model_Command "Transition8 1..1" -- "target 0..1" model_Transition : incoming7
+model_Command "Transition 1..1" -- "source 0..1" model_Transition : outgoing6
+model_Ozobot "model_OzobotProgram12 1..1" *-- "model_Ozobot 0..9999" model_OzobotProgram : programs11
+model_Command "outgoing 1..1" -- "Command 1..1" model_Transition : source18
+model_Command "incoming 1..1" -- "Command20 1..1" model_Transition : target19
+model_Block "model_Transition 1..1" *-- "model_Block17 0..9999" model_Transition : transitions16
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: addressbook
+' project: sampleModel
+' owner: User
+' description: New project
 class Contact {
 }
 class addressbook_AddressBook {
@@ -24,9 +28,9 @@ class addressbook_Repository {
 }
 Contact <|-- addressbook_Electronic
 Contact <|-- addressbook_Office
-addressbook_AddressBook "1..1" --* "1..1" addressbook_BookVersion : book7
-addressbook_Contact "0..9999" --* "1..1" addressbook_People : contacts0
-addressbook_AddressBook "1..1" --* "1..1" addressbook_Repository : head3
-addressbook_BookVersion "0..9999" --* "1..1" addressbook_Repository : history5
-addressbook_AddressBook "1..1" *-- "0..9999" addressbook_People : peoples1
+addressbook_AddressBook "addressbook_BookVersion8 1..1" --* "addressbook_AddressBook9 1..1" addressbook_BookVersion : book7
+addressbook_Contact "addressbook_People 0..9999" --* "addressbook_Contact 1..1" addressbook_People : contacts0
+addressbook_AddressBook "addressbook_Repository 1..1" --* "addressbook_AddressBook4 1..1" addressbook_Repository : head3
+addressbook_BookVersion "addressbook_Repository6 0..9999" --* "addressbook_BookVersion 1..1" addressbook_Repository : history5
+addressbook_AddressBook "addressbook_People2 1..1" *-- "addressbook_AddressBook 0..9999" addressbook_People : peoples1
 @enduml

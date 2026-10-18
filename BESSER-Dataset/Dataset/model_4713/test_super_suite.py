@@ -3033,28 +3033,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=NBVR_Logic_Argument_strategy)
-@settings(max_examples=30)
-def test_hyp_nbvr_logic_argument_hasnext_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.hasNext()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.hasNext).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'hasNext' in NBVR_Logic_Argument is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'hasNext' in NBVR_Logic_Argument did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'hasNext' in NBVR_Logic_Argument is not implemented or raised an error")
 
 
 
@@ -3119,28 +3097,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=NBVR_Grammar_ParseElement_strategy)
-@settings(max_examples=30)
-def test_hyp_nbvr_grammar_parseelement_issentence_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isSentence()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isSentence).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isSentence' in NBVR_Grammar_ParseElement is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isSentence' in NBVR_Grammar_ParseElement did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isSentence' in NBVR_Grammar_ParseElement is not implemented or raised an error")
 
 import warnings
 import copy
@@ -3148,28 +3104,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=NBVR_Grammar_ParseElement_strategy)
-@settings(max_examples=30)
-def test_hyp_nbvr_grammar_parseelement_isinstance_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isInstance()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isInstance).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isInstance' in NBVR_Grammar_ParseElement is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isInstance' in NBVR_Grammar_ParseElement did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isInstance' in NBVR_Grammar_ParseElement is not implemented or raised an error")
 
 import warnings
 import copy
@@ -3177,28 +3111,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=NBVR_Grammar_ParseElement_strategy)
-@settings(max_examples=30)
-def test_hyp_nbvr_grammar_parseelement_isrolephrase_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isRolePhrase()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isRolePhrase).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isRolePhrase' in NBVR_Grammar_ParseElement is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isRolePhrase' in NBVR_Grammar_ParseElement did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isRolePhrase' in NBVR_Grammar_ParseElement is not implemented or raised an error")
 
 
 
@@ -3286,28 +3198,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=NBVR_Grammar_SimpleForm_strategy)
-@settings(max_examples=30)
-def test_hyp_nbvr_grammar_simpleform_isnegated_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isNegated()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isNegated).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isNegated' in NBVR_Grammar_SimpleForm is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isNegated' in NBVR_Grammar_SimpleForm did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isNegated' in NBVR_Grammar_SimpleForm is not implemented or raised an error")
 
 
 
@@ -3419,28 +3309,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=NBVR_Vocabulary_FormulationForm_strategy)
-@settings(max_examples=30)
-def test_hyp_nbvr_vocabulary_formulationform_isstructured_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isStructured()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isStructured).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isStructured' in NBVR_Vocabulary_FormulationForm is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isStructured' in NBVR_Vocabulary_FormulationForm did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isStructured' in NBVR_Vocabulary_FormulationForm is not implemented or raised an error")
 
 
 
@@ -3476,28 +3344,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=NBVR_Vocabulary_Formulation_strategy)
-@settings(max_examples=30)
-def test_hyp_nbvr_vocabulary_formulation_isstructured_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isStructured()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isStructured).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isStructured' in NBVR_Vocabulary_Formulation is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isStructured' in NBVR_Vocabulary_Formulation did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isStructured' in NBVR_Vocabulary_Formulation is not implemented or raised an error")
 
 import warnings
 import copy
@@ -3505,30 +3351,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=NBVR_Vocabulary_Formulation_strategy)
-@settings(max_examples=30)
-def test_hyp_nbvr_vocabulary_formulation_addelement_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.addElement(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.addElement).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'addElement' in NBVR_Vocabulary_Formulation is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'addElement' in NBVR_Vocabulary_Formulation did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'addElement' in NBVR_Vocabulary_Formulation is not implemented or raised an error")
 
 
 
@@ -3539,28 +3361,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=NBVR_Vocabulary_VocabularyItem_strategy)
-@settings(max_examples=30)
-def test_hyp_nbvr_vocabulary_vocabularyitem_isprimitive_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isPrimitive()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isPrimitive).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isPrimitive' in NBVR_Vocabulary_VocabularyItem is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isPrimitive' in NBVR_Vocabulary_VocabularyItem did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isPrimitive' in NBVR_Vocabulary_VocabularyItem is not implemented or raised an error")
 
 
 
@@ -3591,28 +3391,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=NBVR_Vocabulary_VocName_strategy)
-@settings(max_examples=30)
-def test_hyp_nbvr_vocabulary_vocname_isunit_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isUnit()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isUnit).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isUnit' in NBVR_Vocabulary_VocName is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isUnit' in NBVR_Vocabulary_VocName did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isUnit' in NBVR_Vocabulary_VocName is not implemented or raised an error")
 
 
 
@@ -3668,28 +3446,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=NBVR_Grammar_Qualifier_strategy)
-@settings(max_examples=30)
-def test_hyp_nbvr_grammar_qualifier_issimple_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isSimple()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isSimple).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isSimple' in NBVR_Grammar_Qualifier is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isSimple' in NBVR_Grammar_Qualifier did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isSimple' in NBVR_Grammar_Qualifier is not implemented or raised an error")
 
 
 
@@ -3709,28 +3465,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=NBVR_Vocabulary_Word_strategy)
-@settings(max_examples=30)
-def test_hyp_nbvr_vocabulary_word_isnumber_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isNumber()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isNumber).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isNumber' in NBVR_Vocabulary_Word is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isNumber' in NBVR_Vocabulary_Word did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isNumber' in NBVR_Vocabulary_Word is not implemented or raised an error")
 
 import warnings
 import copy
@@ -3738,28 +3472,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=NBVR_Vocabulary_Word_strategy)
-@settings(max_examples=30)
-def test_hyp_nbvr_vocabulary_word_iskeyword_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isKeyword()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isKeyword).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isKeyword' in NBVR_Vocabulary_Word is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isKeyword' in NBVR_Vocabulary_Word did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isKeyword' in NBVR_Vocabulary_Word is not implemented or raised an error")
 
 import warnings
 import copy
@@ -3767,28 +3479,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=NBVR_Vocabulary_Word_strategy)
-@settings(max_examples=30)
-def test_hyp_nbvr_vocabulary_word_isis_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isIs()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isIs).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isIs' in NBVR_Vocabulary_Word is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isIs' in NBVR_Vocabulary_Word did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isIs' in NBVR_Vocabulary_Word is not implemented or raised an error")
 
 import warnings
 import copy
@@ -3796,28 +3486,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=NBVR_Vocabulary_Word_strategy)
-@settings(max_examples=30)
-def test_hyp_nbvr_vocabulary_word_istext_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isText()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isText).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isText' in NBVR_Vocabulary_Word is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isText' in NBVR_Vocabulary_Word did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isText' in NBVR_Vocabulary_Word is not implemented or raised an error")
 
 import warnings
 import copy
@@ -3825,28 +3493,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=NBVR_Vocabulary_Word_strategy)
-@settings(max_examples=30)
-def test_hyp_nbvr_vocabulary_word_isarticle_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isArticle()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isArticle).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isArticle' in NBVR_Vocabulary_Word is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isArticle' in NBVR_Vocabulary_Word did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isArticle' in NBVR_Vocabulary_Word is not implemented or raised an error")
 
 
 
@@ -3876,30 +3522,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=NBVR_Vocabulary_Verb_strategy)
-@settings(max_examples=30)
-def test_hyp_nbvr_vocabulary_verb_isperfective_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isPerfective(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isPerfective).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isPerfective' in NBVR_Vocabulary_Verb is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isPerfective' in NBVR_Vocabulary_Verb did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isPerfective' in NBVR_Vocabulary_Verb is not implemented or raised an error")
 
 import warnings
 import copy
@@ -3907,30 +3529,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=NBVR_Vocabulary_Verb_strategy)
-@settings(max_examples=30)
-def test_hyp_nbvr_vocabulary_verb_ispast_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isPast(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isPast).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isPast' in NBVR_Vocabulary_Verb is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isPast' in NBVR_Vocabulary_Verb did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isPast' in NBVR_Vocabulary_Verb is not implemented or raised an error")
 
 import warnings
 import copy
@@ -3938,30 +3536,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=NBVR_Vocabulary_Verb_strategy)
-@settings(max_examples=30)
-def test_hyp_nbvr_vocabulary_verb_isprogressive_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isProgressive(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isProgressive).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isProgressive' in NBVR_Vocabulary_Verb is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isProgressive' in NBVR_Vocabulary_Verb did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isProgressive' in NBVR_Vocabulary_Verb is not implemented or raised an error")
 
 
 
@@ -8905,160 +8479,20 @@ def test_assoc_words17_stub_double():
 
 
 
-from enum import Enum
 from python_code import Connective
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(Connective.Or, '', 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(Connective.Eqv, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(Connective.Or, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(Connective.If, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(Connective.Or, 'Or') == Connective.Or
-
-from enum import Enum
 from python_code import ElementKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ElementKind.Query, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ElementKind.Query, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ElementKind.Query, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ElementKind.Group, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ElementKind.Query, 'Noun') == ElementKind.Noun
-
-from enum import Enum
 from python_code import FormElementKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(FormElementKind.ObjectRole, '', 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(FormElementKind.ObjectRole, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(FormElementKind.ObjectRole, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(FormElementKind.ObjectRole, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(FormElementKind.ObjectRole, 'ObjectRole') == FormElementKind.ObjectRole
-
-from enum import Enum
 from python_code import GroupKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(GroupKind.All, '', 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(GroupKind.All, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(GroupKind.All, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(GroupKind.All, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(GroupKind.All, 'All') == GroupKind.All
-
-from enum import Enum
 from python_code import InstanceKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(InstanceKind.Name, '', 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(InstanceKind.Name, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(InstanceKind.Name, '', 0, 0) == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(InstanceKind.Name, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(InstanceKind.Name, 'Name') == InstanceKind.Name
-
-from enum import Enum
 from python_code import KeywordKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(KeywordKind.K_The, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(KeywordKind.K_An, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(KeywordKind.K_The, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(KeywordKind.K_The, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(KeywordKind.K_An, 'K_An') == KeywordKind.K_An
-
-from enum import Enum
 from python_code import Modality
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(Modality.None_, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(Modality.None_, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(Modality.None_, '', 0, 0) == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(Modality.None_, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(Modality.None_, 'None_') == Modality.None_
-
 from python_code import NBVR_Grammar_Dimension
 from python_code import VocUnit
 

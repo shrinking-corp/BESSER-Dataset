@@ -1,4 +1,8 @@
 @startuml
+' model: picojava
+' project: sampleModel
+' owner: User
+' description: New project
 class Access {
 }
 class BlockStmt {
@@ -87,29 +91,29 @@ Stmt <|-- picojava_WhileStmt
 TypeDecl <|-- picojava_ClassDecl
 TypeDecl <|-- picojava_PrimitiveDecl
 TypeDecl <|-- picojava_UnknownDecl
-picojava_Block "1..1" --* "1..1" picojava_Program : Block0
-picojava_Block "1..1" *-- "0..9999" picojava_BlockStmt : BlockStmt7
-picojava_Block "1..1" --* "1..1" picojava_ClassDecl : Body23
-picojava_Stmt "1..1" --* "1..1" picojava_WhileStmt : Body37
-picojava_Exp "1..1" --* "1..1" picojava_WhileStmt : Condition35
-picojava_Dot "1..1" *-- "1..1" picojava_IdUse : IdUse53
-picojava_Access "1..1" --* "1..1" picojava_Dot : ObjectReference51
-picojava_Program "1..1" *-- "0..9999" picojava_TypeDecl : PredefinedType1
-picojava_ClassDecl "1..1" *-- "0..1" picojava_IdUse : SuperclassId22
-picojava_Access "1..1" --* "1..1" picojava_VarDecl : TypeAccess29
-picojava_AssignStmt "1..1" *-- "1..1" picojava_Exp : Value33
-picojava_Access "1..1" --* "1..1" picojava_AssignStmt : Variable31
-picojava_Decl "1..1" -- "0..1" picojava_PrimitiveDecl : booleanType14
-picojava_PrimitiveDecl "0..1" -- "1..1" picojava_WhileStmt : booleanType39
-picojava_PrimitiveDecl "0..1" -- "1..1" picojava_Program : booleanType5
-picojava_BooleanLiteral "1..1" -- "0..1" picojava_PrimitiveDecl : booleanType56
-picojava_Access "1..1" -- "0..1" picojava_Decl : decl45
-picojava_Access "0..1" -- "1..1" picojava_TypeDecl : qualifier17
-picojava_Access "0..1" -- "1..1" picojava_IdUse : qualifier48
-picojava_ClassDecl "0..1" -- "1..1" picojava_ClassDecl : superClass27
-picojava_Decl "1..1" -- "0..1" picojava_TypeDecl : type11
-picojava_Exp "1..1" -- "0..1" picojava_TypeDecl : type42
-picojava_Decl "0..1" -- "1..1" picojava_TypeDecl : unknownDecl19
-picojava_Program "1..1" -- "0..1" picojava_UnknownDecl : unknownDecl3
-picojava_Block "1..1" -- "0..1" picojava_Decl : unknownDecl9
+picojava_Block "picojava_Program 1..1" --* "picojava_Block 1..1" picojava_Program : Block0
+picojava_Block "picojava_BlockStmt 1..1" *-- "picojava_Block8 0..9999" picojava_BlockStmt : BlockStmt7
+picojava_Block "picojava_ClassDecl24 1..1" --* "picojava_Block25 1..1" picojava_ClassDecl : Body23
+picojava_Stmt "picojava_WhileStmt38 1..1" --* "picojava_Stmt 1..1" picojava_WhileStmt : Body37
+picojava_Exp "picojava_WhileStmt 1..1" --* "picojava_Exp36 1..1" picojava_WhileStmt : Condition35
+picojava_Dot "picojava_IdUse55 1..1" *-- "picojava_Dot54 1..1" picojava_IdUse : IdUse53
+picojava_Access "picojava_Dot 1..1" --* "picojava_Access52 1..1" picojava_Dot : ObjectReference51
+picojava_Program "picojava_TypeDecl 1..1" *-- "picojava_Program2 0..9999" picojava_TypeDecl : PredefinedType1
+picojava_ClassDecl "picojava_IdUse 1..1" *-- "picojava_ClassDecl 0..1" picojava_IdUse : SuperclassId22
+picojava_Access "picojava_VarDecl 1..1" --* "picojava_Access30 1..1" picojava_VarDecl : TypeAccess29
+picojava_AssignStmt "picojava_Exp 1..1" *-- "picojava_AssignStmt34 1..1" picojava_Exp : Value33
+picojava_Access "picojava_AssignStmt 1..1" --* "picojava_Access32 1..1" picojava_AssignStmt : Variable31
+picojava_Decl "picojava_PrimitiveDecl16 1..1" -- "picojava_Decl15 0..1" picojava_PrimitiveDecl : booleanType14
+picojava_PrimitiveDecl "picojava_WhileStmt40 0..1" -- "picojava_PrimitiveDecl41 1..1" picojava_WhileStmt : booleanType39
+picojava_PrimitiveDecl "picojava_Program6 0..1" -- "picojava_PrimitiveDecl 1..1" picojava_Program : booleanType5
+picojava_BooleanLiteral "picojava_PrimitiveDecl57 1..1" -- "picojava_BooleanLiteral 0..1" picojava_PrimitiveDecl : booleanType56
+picojava_Access "picojava_Decl47 1..1" -- "picojava_Access46 0..1" picojava_Decl : decl45
+picojava_Access "picojava_TypeDecl18 0..1" -- "picojava_Access 1..1" picojava_TypeDecl : qualifier17
+picojava_Access "picojava_IdUse49 0..1" -- "picojava_Access50 1..1" picojava_IdUse : qualifier48
+picojava_ClassDecl "picojava_ClassDecl26 0..1" -- "picojava_ClassDecl28 1..1" picojava_ClassDecl : superClass27
+picojava_Decl "picojava_TypeDecl13 1..1" -- "picojava_Decl12 0..1" picojava_TypeDecl : type11
+picojava_Exp "picojava_TypeDecl44 1..1" -- "picojava_Exp43 0..1" picojava_TypeDecl : type42
+picojava_Decl "picojava_TypeDecl20 0..1" -- "picojava_Decl21 1..1" picojava_TypeDecl : unknownDecl19
+picojava_Program "picojava_UnknownDecl 1..1" -- "picojava_Program4 0..1" picojava_UnknownDecl : unknownDecl3
+picojava_Block "picojava_Decl 1..1" -- "picojava_Block10 0..1" picojava_Decl : unknownDecl9
 @enduml

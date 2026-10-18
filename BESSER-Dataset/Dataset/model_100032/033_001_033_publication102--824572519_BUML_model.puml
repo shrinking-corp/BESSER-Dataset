@@ -1,4 +1,8 @@
 @startuml
+' model: publication102
+' project: sampleModel
+' owner: User
+' description: New project
 class Counted {
 }
 class Labelled {
@@ -61,26 +65,26 @@ Named <|-- publication102_Paragraph
 Named <|-- publication102_Position
 Named <|-- publication102_PublicationStructure
 Named <|-- publication102_ReviewNote
-publication102_Keyword "0..9999" --* "1..1" publication102_KnowledgeManager : allkeywords40
-publication102_Paper "1..1" -- "0..9999" publication102_Researcher : authors11
-publication102_Paper "0..1" -- "1..1" publication102_Paper : citedBy15
-publication102_Collaboration "1..1" -- "0..1" publication102_Paper : col_paper46
-publication102_Collaboration "0..9999" --* "1..1" publication102_Researcher : collaborations8
-publication102_Keyword "0..1" -- "1..1" publication102_PaperKeyword : keyword43
-publication102_Paper "1..1" *-- "0..9999" publication102_PaperKeyword : keywords12
-publication102_KnowledgeManager "0..1" --* "1..1" publication102_PublicationStructure : knowledgeMan30
-publication102_Keyword "1..1" -- "0..9999" publication102_Paper : kpapers38
-publication102_Paper "0..9999" --* "1..1" publication102_PublicationStructure : papers27
-publication102_Paragraph "0..1" -- "1..1" publication102_Write : paragraph19
-publication102_Paper "1..1" *-- "0..9999" publication102_Paragraph : paragraphs10
-publication102_Position "0..1" -- "1..1" publication102_Position : parent36
-publication102_Position "0..9999" --* "1..1" publication102_PublicationStructure : positions32
-publication102_Paper "0..9999" -- "1..1" publication102_Researcher : res_papers3
-publication102_Position "0..1" -- "1..1" publication102_Researcher : res_position6
-publication102_PublicationStructure "1..1" *-- "0..9999" publication102_Researcher : researchers25
-publication102_Review "1..1" -- "0..1" publication102_ReviewNote : reviewNote22
-publication102_Researcher "1..1" *-- "0..9999" publication102_Review : reviews1
-publication102_Paragraph "1..1" *-- "0..9999" publication102_ReviewNote : reviews17
-publication102_Researcher "1..1" *-- "0..9999" publication102_Skill : skills4
-publication102_Researcher "1..1" *-- "0..9999" publication102_Write : writes0
+publication102_Keyword "publication102_KnowledgeManager41 0..9999" --* "publication102_Keyword42 1..1" publication102_KnowledgeManager : allkeywords40
+publication102_Paper "Researcher 1..1" -- "res_papers 0..9999" publication102_Researcher : authors11
+publication102_Paper "publication102_Paper14 0..1" -- "publication102_Paper16 1..1" publication102_Paper : citedBy15
+publication102_Collaboration "publication102_Paper48 1..1" -- "publication102_Collaboration47 0..1" publication102_Paper : col_paper46
+publication102_Collaboration "publication102_Researcher9 0..9999" --* "publication102_Collaboration 1..1" publication102_Researcher : collaborations8
+publication102_Keyword "publication102_PaperKeyword44 0..1" -- "publication102_Keyword45 1..1" publication102_PaperKeyword : keyword43
+publication102_Paper "publication102_PaperKeyword 1..1" *-- "publication102_Paper13 0..9999" publication102_PaperKeyword : keywords12
+publication102_KnowledgeManager "publication102_PublicationStructure31 0..1" --* "publication102_KnowledgeManager 1..1" publication102_PublicationStructure : knowledgeMan30
+publication102_Keyword "publication102_Paper39 1..1" -- "publication102_Keyword 0..9999" publication102_Paper : kpapers38
+publication102_Paper "publication102_PublicationStructure28 0..9999" --* "publication102_Paper29 1..1" publication102_PublicationStructure : papers27
+publication102_Paragraph "publication102_Write20 0..1" -- "publication102_Paragraph21 1..1" publication102_Write : paragraph19
+publication102_Paper "publication102_Paragraph 1..1" *-- "publication102_Paper 0..9999" publication102_Paragraph : paragraphs10
+publication102_Position "publication102_Position35 0..1" -- "publication102_Position37 1..1" publication102_Position : parent36
+publication102_Position "publication102_PublicationStructure33 0..9999" --* "publication102_Position34 1..1" publication102_PublicationStructure : positions32
+publication102_Paper "authors 0..9999" -- "Paper 1..1" publication102_Researcher : res_papers3
+publication102_Position "publication102_Researcher7 0..1" -- "publication102_Position 1..1" publication102_Researcher : res_position6
+publication102_PublicationStructure "publication102_Researcher26 1..1" *-- "publication102_PublicationStructure 0..9999" publication102_Researcher : researchers25
+publication102_Review "publication102_ReviewNote24 1..1" -- "publication102_Review23 0..1" publication102_ReviewNote : reviewNote22
+publication102_Researcher "publication102_Review 1..1" *-- "publication102_Researcher2 0..9999" publication102_Review : reviews1
+publication102_Paragraph "publication102_ReviewNote 1..1" *-- "publication102_Paragraph18 0..9999" publication102_ReviewNote : reviews17
+publication102_Researcher "publication102_Skill 1..1" *-- "publication102_Researcher5 0..9999" publication102_Skill : skills4
+publication102_Researcher "publication102_Write 1..1" *-- "publication102_Researcher 0..9999" publication102_Write : writes0
 @enduml

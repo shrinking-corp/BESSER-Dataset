@@ -1,4 +1,8 @@
 @startuml
+' model: roverml
+' project: sampleModel
+' owner: User
+' description: New project
 class Actuator {
 }
 enum AngleUnits {
@@ -160,27 +164,27 @@ Transition <|-- roverml_Triggered
 Triggered <|-- roverml_CompassTrigger
 Triggered <|-- roverml_DistanceSensorTrigger
 Triggered <|-- roverml_GPSTrigger
-roverml_Angle "1..1" --* "1..1" roverml_Rotate : angleUnits27
-roverml_Angle "0..1" -- "1..1" roverml_CompassTrigger : angles34
-roverml_Block "0..1" --* "1..1" roverml_Program : blocks8
-roverml_Block "1..1" *-- "0..9999" roverml_Command : commands12
-roverml_Command "0..9999" --* "1..1" roverml_Repeat : commands28
-roverml_Compass "0..1" -- "1..1" roverml_CompassTrigger : compass36
-roverml_Command "1..1" -- "0..9999" roverml_Component : components17
-roverml_Component "0..9999" --* "1..1" roverml_Rover : components3
-roverml_DistanceSensor "0..1" -- "1..1" roverml_DistanceSensorTrigger : distancesensor32
-roverml_GPS "0..1" -- "1..1" roverml_GPSTrigger : gps39
-roverml_Command "1..1" -- "0..9999" roverml_Transition : incomingTransitions15
-roverml_DistanceSensorTrigger "1..1" -- "0..1" roverml_Length : length30
-roverml_Length "1..1" --* "1..1" roverml_Move : lengthUnits25
-roverml_Command "1..1" -- "0..9999" roverml_Transition : outgoingTransitions14
-roverml_GPSTrigger "1..1" -- "0..1" roverml_Position : position38
-roverml_Program "0..9999" --* "1..1" roverml_System : programs0
-roverml_Program "1..1" -- "0..1" roverml_Rover : roverExec5
-roverml_Rover "0..9999" --* "1..1" roverml_System : rovers1
-roverml_Command "1..1" -- "1..1" roverml_Transition : source20
-roverml_Command "1..1" -- "1..1" roverml_Transition : target21
-roverml_Time "1..1" --* "1..1" roverml_Wait : timeUnit23
-roverml_Block "1..1" *-- "0..9999" roverml_Transition : transitions10
-roverml_Move "1..1" *-- "1..1" roverml_Velocity : velocityUnits24
+roverml_Angle "roverml_Rotate 1..1" --* "roverml_Angle 1..1" roverml_Rotate : angleUnits27
+roverml_Angle "roverml_CompassTrigger 0..1" -- "roverml_Angle35 1..1" roverml_CompassTrigger : angles34
+roverml_Block "roverml_Program9 0..1" --* "roverml_Block 1..1" roverml_Program : blocks8
+roverml_Block "roverml_Command 1..1" *-- "roverml_Block13 0..9999" roverml_Command : commands12
+roverml_Command "roverml_Repeat 0..9999" --* "roverml_Command29 1..1" roverml_Repeat : commands28
+roverml_Compass "roverml_CompassTrigger37 0..1" -- "roverml_Compass 1..1" roverml_CompassTrigger : compass36
+roverml_Command "roverml_Component19 1..1" -- "roverml_Command18 0..9999" roverml_Component : components17
+roverml_Component "roverml_Rover4 0..9999" --* "roverml_Component 1..1" roverml_Rover : components3
+roverml_DistanceSensor "roverml_DistanceSensorTrigger33 0..1" -- "roverml_DistanceSensor 1..1" roverml_DistanceSensorTrigger : distancesensor32
+roverml_GPS "roverml_GPSTrigger40 0..1" -- "roverml_GPS 1..1" roverml_GPSTrigger : gps39
+roverml_Command "Transition16 1..1" -- "target 0..9999" roverml_Transition : incomingTransitions15
+roverml_DistanceSensorTrigger "roverml_Length31 1..1" -- "roverml_DistanceSensorTrigger 0..1" roverml_Length : length30
+roverml_Length "roverml_Move26 1..1" --* "roverml_Length 1..1" roverml_Move : lengthUnits25
+roverml_Command "Transition 1..1" -- "source 0..9999" roverml_Transition : outgoingTransitions14
+roverml_GPSTrigger "roverml_Position 1..1" -- "roverml_GPSTrigger 0..1" roverml_Position : position38
+roverml_Program "roverml_System 0..9999" --* "roverml_Program 1..1" roverml_System : programs0
+roverml_Program "roverml_Rover7 1..1" -- "roverml_Program6 0..1" roverml_Rover : roverExec5
+roverml_Rover "roverml_System2 0..9999" --* "roverml_Rover 1..1" roverml_System : rovers1
+roverml_Command "outgoingTransitions 1..1" -- "Command 1..1" roverml_Transition : source20
+roverml_Command "incomingTransitions 1..1" -- "Command22 1..1" roverml_Transition : target21
+roverml_Time "roverml_Wait 1..1" --* "roverml_Time 1..1" roverml_Wait : timeUnit23
+roverml_Block "roverml_Transition 1..1" *-- "roverml_Block11 0..9999" roverml_Transition : transitions10
+roverml_Move "roverml_Velocity 1..1" *-- "roverml_Move 1..1" roverml_Velocity : velocityUnits24
 @enduml

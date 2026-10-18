@@ -8853,9 +8853,9 @@ def test_assoc_allType17_stub_double():
     partner = JDTAST_ICompilationUnit()
     setattr(partner, 'JDTAST_ICompilationUnit18', None)
     _safe_set(owner, 'JDTAST_IType', partner)
-    assert getattr(partner, 'JDTAST_ICompilationUnit18') == owner
+    assert owner in getattr(partner, 'JDTAST_ICompilationUnit18')
     _safe_set(owner, 'JDTAST_IType', None)
-    assert getattr(partner, 'JDTAST_ICompilationUnit18') is None
+    assert owner not in getattr(partner, 'JDTAST_ICompilationUnit18')
 
 
 def test_assoc_arguments133_stub_double():
@@ -8868,9 +8868,9 @@ def test_assoc_arguments133_stub_double():
     partner = JDTAST_EnumConstantDeclaration()
     setattr(partner, 'JDTAST_EnumConstantDeclaration', None)
     _safe_set(owner, 'JDTAST_Expression134', partner)
-    assert getattr(partner, 'JDTAST_EnumConstantDeclaration') == owner
+    assert owner in getattr(partner, 'JDTAST_EnumConstantDeclaration')
     _safe_set(owner, 'JDTAST_Expression134', None)
-    assert getattr(partner, 'JDTAST_EnumConstantDeclaration') is None
+    assert owner not in getattr(partner, 'JDTAST_EnumConstantDeclaration')
 
 
 def test_assoc_arguments210_stub_double():
@@ -8883,9 +8883,9 @@ def test_assoc_arguments210_stub_double():
     partner = JDTAST_ClassInstanceCreation()
     setattr(partner, 'JDTAST_ClassInstanceCreation', None)
     _safe_set(owner, 'JDTAST_Expression211', partner)
-    assert getattr(partner, 'JDTAST_ClassInstanceCreation') == owner
+    assert owner in getattr(partner, 'JDTAST_ClassInstanceCreation')
     _safe_set(owner, 'JDTAST_Expression211', None)
-    assert getattr(partner, 'JDTAST_ClassInstanceCreation') is None
+    assert owner not in getattr(partner, 'JDTAST_ClassInstanceCreation')
 
 
 def test_assoc_arguments250_stub_double():
@@ -8898,9 +8898,9 @@ def test_assoc_arguments250_stub_double():
     partner = JDTAST_MethodInvocation()
     setattr(partner, 'JDTAST_MethodInvocation', None)
     _safe_set(owner, 'JDTAST_Expression251', partner)
-    assert getattr(partner, 'JDTAST_MethodInvocation') == owner
+    assert owner in getattr(partner, 'JDTAST_MethodInvocation')
     _safe_set(owner, 'JDTAST_Expression251', None)
-    assert getattr(partner, 'JDTAST_MethodInvocation') is None
+    assert owner not in getattr(partner, 'JDTAST_MethodInvocation')
 
 
 def test_assoc_arguments275_stub_double():
@@ -8913,9 +8913,9 @@ def test_assoc_arguments275_stub_double():
     partner = JDTAST_SuperMethodInvocation()
     setattr(partner, 'JDTAST_SuperMethodInvocation', None)
     _safe_set(owner, 'JDTAST_Expression276', partner)
-    assert getattr(partner, 'JDTAST_SuperMethodInvocation') == owner
+    assert owner in getattr(partner, 'JDTAST_SuperMethodInvocation')
     _safe_set(owner, 'JDTAST_Expression276', None)
-    assert getattr(partner, 'JDTAST_SuperMethodInvocation') is None
+    assert owner not in getattr(partner, 'JDTAST_SuperMethodInvocation')
 
 
 def test_assoc_arguments307_stub_double():
@@ -8928,9 +8928,9 @@ def test_assoc_arguments307_stub_double():
     partner = JDTAST_ConstructorInvocation()
     setattr(partner, 'JDTAST_ConstructorInvocation', None)
     _safe_set(owner, 'JDTAST_Expression308', partner)
-    assert getattr(partner, 'JDTAST_ConstructorInvocation') == owner
+    assert owner in getattr(partner, 'JDTAST_ConstructorInvocation')
     _safe_set(owner, 'JDTAST_Expression308', None)
-    assert getattr(partner, 'JDTAST_ConstructorInvocation') is None
+    assert owner not in getattr(partner, 'JDTAST_ConstructorInvocation')
 
 
 def test_assoc_arguments355_stub_double():
@@ -8943,9 +8943,9 @@ def test_assoc_arguments355_stub_double():
     partner = JDTAST_SuperConstructorInvocation()
     setattr(partner, 'JDTAST_SuperConstructorInvocation', None)
     _safe_set(owner, 'JDTAST_Expression356', partner)
-    assert getattr(partner, 'JDTAST_SuperConstructorInvocation') == owner
+    assert owner in getattr(partner, 'JDTAST_SuperConstructorInvocation')
     _safe_set(owner, 'JDTAST_Expression356', None)
-    assert getattr(partner, 'JDTAST_SuperConstructorInvocation') is None
+    assert owner not in getattr(partner, 'JDTAST_SuperConstructorInvocation')
 
 
 def test_assoc_array186_stub_double():
@@ -9093,9 +9093,9 @@ def test_assoc_dimensions191_stub_double():
     partner = JDTAST_ArrayCreation()
     setattr(partner, 'JDTAST_ArrayCreation', None)
     _safe_set(owner, 'JDTAST_Expression192', partner)
-    assert getattr(partner, 'JDTAST_ArrayCreation') == owner
+    assert owner in getattr(partner, 'JDTAST_ArrayCreation')
     _safe_set(owner, 'JDTAST_Expression192', None)
-    assert getattr(partner, 'JDTAST_ArrayCreation') is None
+    assert owner not in getattr(partner, 'JDTAST_ArrayCreation')
 
 
 def test_assoc_elementType403_stub_double():
@@ -9423,9 +9423,9 @@ def test_assoc_expressions197_stub_double():
     partner = JDTAST_ArrayInitializer()
     setattr(partner, 'JDTAST_ArrayInitializer198', None)
     _safe_set(owner, 'JDTAST_Expression199', partner)
-    assert getattr(partner, 'JDTAST_ArrayInitializer198') == owner
+    assert owner in getattr(partner, 'JDTAST_ArrayInitializer198')
     _safe_set(owner, 'JDTAST_Expression199', None)
-    assert getattr(partner, 'JDTAST_ArrayInitializer198') is None
+    assert owner not in getattr(partner, 'JDTAST_ArrayInitializer198')
 
 
 def test_assoc_fragments107_stub_double():
@@ -9453,9 +9453,9 @@ def test_assoc_imports19_stub_double():
     partner = JDTAST_ICompilationUnit()
     setattr(partner, 'JDTAST_ICompilationUnit20', None)
     _safe_set(owner, 'JDTAST_IImportDeclaration', partner)
-    assert getattr(partner, 'JDTAST_ICompilationUnit20') == owner
+    assert owner in getattr(partner, 'JDTAST_ICompilationUnit20')
     _safe_set(owner, 'JDTAST_IImportDeclaration', None)
-    assert getattr(partner, 'JDTAST_ICompilationUnit20') is None
+    assert owner not in getattr(partner, 'JDTAST_ICompilationUnit20')
 
 
 def test_assoc_imports67_stub_double():
@@ -9468,9 +9468,9 @@ def test_assoc_imports67_stub_double():
     partner = JDTAST_CompilationUnit()
     setattr(partner, 'JDTAST_CompilationUnit68', None)
     _safe_set(owner, 'JDTAST_ImportDeclaration', partner)
-    assert getattr(partner, 'JDTAST_CompilationUnit68') == owner
+    assert owner in getattr(partner, 'JDTAST_CompilationUnit68')
     _safe_set(owner, 'JDTAST_ImportDeclaration', None)
-    assert getattr(partner, 'JDTAST_CompilationUnit68') is None
+    assert owner not in getattr(partner, 'JDTAST_CompilationUnit68')
 
 
 def test_assoc_index188_stub_double():
@@ -9498,9 +9498,9 @@ def test_assoc_initializers334_stub_double():
     partner = JDTAST_ForStatement()
     setattr(partner, 'JDTAST_ForStatement335', None)
     _safe_set(owner, 'JDTAST_Expression336', partner)
-    assert getattr(partner, 'JDTAST_ForStatement335') == owner
+    assert owner in getattr(partner, 'JDTAST_ForStatement335')
     _safe_set(owner, 'JDTAST_Expression336', None)
-    assert getattr(partner, 'JDTAST_ForStatement335') is None
+    assert owner not in getattr(partner, 'JDTAST_ForStatement335')
 
 
 def test_assoc_initializers38_stub_double():
@@ -9888,9 +9888,9 @@ def test_assoc_packageFragments12_stub_double():
     partner = JDTAST_IPackageFragmentRoot()
     setattr(partner, 'packageFragmentRoot', None)
     _safe_set(owner, 'IPackageFragment', partner)
-    assert getattr(partner, 'packageFragmentRoot') == owner
+    assert owner in getattr(partner, 'packageFragmentRoot')
     _safe_set(owner, 'IPackageFragment', None)
-    assert getattr(partner, 'packageFragmentRoot') is None
+    assert owner not in getattr(partner, 'packageFragmentRoot')
 
 
 def test_assoc_parameter324_stub_double():
@@ -9918,9 +9918,9 @@ def test_assoc_parameters89_stub_double():
     partner = JDTAST_MethodRef()
     setattr(partner, 'JDTAST_MethodRef90', None)
     _safe_set(owner, 'JDTAST_MethodRefParameter', partner)
-    assert getattr(partner, 'JDTAST_MethodRef90') == owner
+    assert owner in getattr(partner, 'JDTAST_MethodRef90')
     _safe_set(owner, 'JDTAST_MethodRefParameter', None)
-    assert getattr(partner, 'JDTAST_MethodRef90') is None
+    assert owner not in getattr(partner, 'JDTAST_MethodRef90')
 
 
 def test_assoc_qualifier272_stub_double():
@@ -10068,9 +10068,9 @@ def test_assoc_tags180_stub_double():
     partner = JDTAST_Javadoc()
     setattr(partner, 'JDTAST_Javadoc181', None)
     _safe_set(owner, 'JDTAST_TagElement182', partner)
-    assert getattr(partner, 'JDTAST_Javadoc181') == owner
+    assert owner in getattr(partner, 'JDTAST_Javadoc181')
     _safe_set(owner, 'JDTAST_TagElement182', None)
-    assert getattr(partner, 'JDTAST_Javadoc181') is None
+    assert owner not in getattr(partner, 'JDTAST_Javadoc181')
 
 
 def test_assoc_thenExpression229_stub_double():
@@ -10188,9 +10188,9 @@ def test_assoc_types21_stub_double():
     partner = JDTAST_ICompilationUnit()
     setattr(partner, 'JDTAST_ICompilationUnit22', None)
     _safe_set(owner, 'JDTAST_IType23', partner)
-    assert getattr(partner, 'JDTAST_ICompilationUnit22') == owner
+    assert owner in getattr(partner, 'JDTAST_ICompilationUnit22')
     _safe_set(owner, 'JDTAST_IType23', None)
-    assert getattr(partner, 'JDTAST_ICompilationUnit22') is None
+    assert owner not in getattr(partner, 'JDTAST_ICompilationUnit22')
 
 
 def test_assoc_types69_stub_double():
@@ -10203,9 +10203,9 @@ def test_assoc_types69_stub_double():
     partner = JDTAST_CompilationUnit()
     setattr(partner, 'JDTAST_CompilationUnit70', None)
     _safe_set(owner, 'JDTAST_AbstractTypeDeclaration', partner)
-    assert getattr(partner, 'JDTAST_CompilationUnit70') == owner
+    assert owner in getattr(partner, 'JDTAST_CompilationUnit70')
     _safe_set(owner, 'JDTAST_AbstractTypeDeclaration', None)
-    assert getattr(partner, 'JDTAST_CompilationUnit70') is None
+    assert owner not in getattr(partner, 'JDTAST_CompilationUnit70')
 
 
 def test_assoc_updaters337_stub_double():
@@ -10218,9 +10218,9 @@ def test_assoc_updaters337_stub_double():
     partner = JDTAST_ForStatement()
     setattr(partner, 'JDTAST_ForStatement338', None)
     _safe_set(owner, 'JDTAST_Expression339', partner)
-    assert getattr(partner, 'JDTAST_ForStatement338') == owner
+    assert owner in getattr(partner, 'JDTAST_ForStatement338')
     _safe_set(owner, 'JDTAST_Expression339', None)
-    assert getattr(partner, 'JDTAST_ForStatement338') is None
+    assert owner not in getattr(partner, 'JDTAST_ForStatement338')
 
 
 def test_assoc_value433_stub_double():
@@ -10255,196 +10255,82 @@ def test_assoc_value81_stub_double():
 
 
 
-from enum import Enum
 from python_code import AssignmentOperatorKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(AssignmentOperatorKind.plus_assign, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(AssignmentOperatorKind.assign, '', 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(AssignmentOperatorKind.assign, '', '', '') == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(AssignmentOperatorKind.times_assign, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(AssignmentOperatorKind.times_assign, 'assign') == AssignmentOperatorKind.assign
-
-from enum import Enum
 from python_code import InfixExpressionOperatorKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(InfixExpressionOperatorKind.times, 0, '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(InfixExpressionOperatorKind.plus, '', 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(InfixExpressionOperatorKind.less, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(InfixExpressionOperatorKind.plus, '')
-
-def test_Enum___new___2():
-    assert Enum.__new__(InfixExpressionOperatorKind.or_, 'plus') == InfixExpressionOperatorKind.plus
-
 from python_code import JDTAST_ArrayCreation
 from python_code import JDTAST_ArrayType
 from python_code import JDTAST_Type
 
 def test_JDTAST_ArrayType___init__():
     assert JDTAST_ArrayType.__init__(JDTAST_ArrayType('', JDTAST_ArrayType=JDTAST_ArrayCreation(), JDTAST_ArrayType401=JDTAST_Type(), JDTAST_ArrayType404=JDTAST_Type()), '', JDTAST_ArrayType=JDTAST_ArrayCreation(), JDTAST_ArrayType401=JDTAST_Type(), JDTAST_ArrayType404=JDTAST_Type()) == None
-
 from python_code import JDTAST_BooleanLiteral
 
 def test_JDTAST_BooleanLiteral___init__():
     assert JDTAST_BooleanLiteral.__init__(JDTAST_BooleanLiteral(''), '') == None
-
 from python_code import JDTAST_CharacterLiteral
 
 def test_JDTAST_CharacterLiteral___init__():
     assert JDTAST_CharacterLiteral.__init__(JDTAST_CharacterLiteral('', '\x00'), '\x00\x00', '') == None
-
 from python_code import JDTAST_ICompilationUnit
 from python_code import JDTAST_IImportDeclaration
 
 def test_JDTAST_IImportDeclaration___init__():
     assert JDTAST_IImportDeclaration.__init__(JDTAST_IImportDeclaration('', '\x00', JDTAST_IImportDeclaration=JDTAST_ICompilationUnit()), '\x00\x00', '', JDTAST_IImportDeclaration=JDTAST_ICompilationUnit()) == None
-
 from python_code import JDTAST_IJavaElement
 
 def test_JDTAST_IJavaElement___init__():
     assert JDTAST_IJavaElement.__init__(JDTAST_IJavaElement(''), '') == None
-
 from python_code import JDTAST_IPackageFragment
 from python_code import JDTAST_IPackageFragmentRoot
 from python_code import JDTAST_PackageDeclaration
 
 def test_JDTAST_IPackageFragment___init__():
     assert JDTAST_IPackageFragment.__init__(JDTAST_IPackageFragment('', JDTAST_IPackageFragment=set(), JDTAST_IPackageFragment16=set(), IPackageFragment=JDTAST_IPackageFragmentRoot(), packageFragments=JDTAST_IPackageFragmentRoot(), JDTAST_IPackageFragment106=JDTAST_PackageDeclaration()), '', JDTAST_IPackageFragment=set(), JDTAST_IPackageFragment16=set(), IPackageFragment=JDTAST_IPackageFragmentRoot(), packageFragments=JDTAST_IPackageFragmentRoot(), JDTAST_IPackageFragment106=JDTAST_PackageDeclaration()) == None
-
 from python_code import JDTAST_Modifier
 
 def test_JDTAST_Modifier___init__():
     assert JDTAST_Modifier.__init__(JDTAST_Modifier('', '', '', '', '', '', '', '', '', '', '\x00', ''), '', '', '', '', '', '', '', '', '', '', '', '') == None
-
 from python_code import JDTAST_NumberLiteral
 
 def test_JDTAST_NumberLiteral___init__():
     assert JDTAST_NumberLiteral.__init__(JDTAST_NumberLiteral(''), '') == None
-
 from python_code import JDTAST_PhysicalElement
 
 def test_JDTAST_PhysicalElement___init__():
     assert JDTAST_PhysicalElement.__init__(JDTAST_PhysicalElement('', '\x00'), '\x00\x00', '') == None
-
 from python_code import JDTAST_PrimitiveType
 
 def test_JDTAST_PrimitiveType___init__():
     assert JDTAST_PrimitiveType.__init__(JDTAST_PrimitiveType(''), '') == None
-
 from python_code import JDTAST_StringLiteral
 
 def test_JDTAST_StringLiteral___init__():
     assert JDTAST_StringLiteral.__init__(JDTAST_StringLiteral('', '\x00'), '\x00\x00', '') == None
-
 from python_code import JDTAST_Javadoc
 from python_code import JDTAST_TagElement
 
 def test_JDTAST_TagElement___init__():
     assert JDTAST_TagElement.__init__(JDTAST_TagElement('\x00\x00', '', JDTAST_TagElement=set(), JDTAST_TagElement182=JDTAST_Javadoc()), '', '', JDTAST_TagElement=set(), JDTAST_TagElement182=JDTAST_Javadoc()) == None
-
 from python_code import JDTAST_TextElement
 
 def test_JDTAST_TextElement___init__():
     assert JDTAST_TextElement.__init__(JDTAST_TextElement(''), '') == None
-
 from python_code import JDTAST_Type
 from python_code import JDTAST_TypeDeclaration
 
 def test_JDTAST_TypeDeclaration___init__():
     assert JDTAST_TypeDeclaration.__init__(JDTAST_TypeDeclaration('', JDTAST_TypeDeclaration=JDTAST_Type(), JDTAST_TypeDeclaration175=set(), JDTAST_TypeDeclaration178=set()), '', JDTAST_TypeDeclaration=JDTAST_Type(), JDTAST_TypeDeclaration175=set(), JDTAST_TypeDeclaration178=set()) == None
-
 from python_code import JDTAST_Type
 from python_code import JDTAST_WildcardType
 
 def test_JDTAST_WildcardType___init__():
     assert JDTAST_WildcardType.__init__(JDTAST_WildcardType('', JDTAST_WildcardType=JDTAST_Type()), '', JDTAST_WildcardType=JDTAST_Type()) == None
-
-from enum import Enum
 from python_code import Modifiers
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(Modifiers.default, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(Modifiers.enum, '', 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(Modifiers.enum, '', 0, '') == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(Modifiers.bridge, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(Modifiers.bridge, 'enum') == Modifiers.enum
-
-from enum import Enum
 from python_code import PostfixExpressionOperatorKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(PostfixExpressionOperatorKind.decrement, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(PostfixExpressionOperatorKind.decrement, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(PostfixExpressionOperatorKind.increment, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(PostfixExpressionOperatorKind.decrement, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(PostfixExpressionOperatorKind.decrement, 'decrement') == PostfixExpressionOperatorKind.decrement
-
-from enum import Enum
 from python_code import PrefixExpressionOperatorKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(PrefixExpressionOperatorKind.minus, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(PrefixExpressionOperatorKind.plus, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(PrefixExpressionOperatorKind.not_, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(PrefixExpressionOperatorKind.plus, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(PrefixExpressionOperatorKind.plus, 'not_') == PrefixExpressionOperatorKind.not_
 

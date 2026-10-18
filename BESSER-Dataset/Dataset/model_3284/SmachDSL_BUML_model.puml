@@ -1,4 +1,8 @@
 @startuml
+' model: smachDSL
+' project: sampleModel
+' owner: User
+' description: New project
 class smachDSL_ActionClient {
   + actionname : str
   + actiontype : str
@@ -23,11 +27,11 @@ class smachDSL_Test {
 class smachDSL_Transition {
   + outcome : str
 }
-smachDSL_ActionClient "0..9999" --* "1..1" smachDSL_StateMachine : actionclients1
-smachDSL_ActionState "0..9999" --* "1..1" smachDSL_StateMachine : actionsstates5
-smachDSL_ActionClient "0..1" -- "1..1" smachDSL_ActionState : clientname7
-smachDSL_ServiceClient "0..9999" --* "1..1" smachDSL_StateMachine : serviceclients3
-smachDSL_ActionState "0..1" -- "1..1" smachDSL_Transition : state12
-smachDSL_PrimitivePackage "1..1" *-- "0..9999" smachDSL_StateMachine : statemachines0
-smachDSL_ActionState "1..1" *-- "0..9999" smachDSL_Transition : transitions10
+smachDSL_ActionClient "smachDSL_StateMachine2 0..9999" --* "smachDSL_ActionClient 1..1" smachDSL_StateMachine : actionclients1
+smachDSL_ActionState "smachDSL_StateMachine6 0..9999" --* "smachDSL_ActionState 1..1" smachDSL_StateMachine : actionsstates5
+smachDSL_ActionClient "smachDSL_ActionState8 0..1" -- "smachDSL_ActionClient9 1..1" smachDSL_ActionState : clientname7
+smachDSL_ServiceClient "smachDSL_StateMachine4 0..9999" --* "smachDSL_ServiceClient 1..1" smachDSL_StateMachine : serviceclients3
+smachDSL_ActionState "smachDSL_Transition13 0..1" -- "smachDSL_ActionState14 1..1" smachDSL_Transition : state12
+smachDSL_PrimitivePackage "smachDSL_StateMachine 1..1" *-- "smachDSL_PrimitivePackage 0..9999" smachDSL_StateMachine : statemachines0
+smachDSL_ActionState "smachDSL_Transition 1..1" *-- "smachDSL_ActionState11 0..9999" smachDSL_Transition : transitions10
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: gametournament
+' project: sampleModel
+' owner: User
+' description: New project
 enum GameType {
   ACTION
   COMBAT
@@ -32,13 +36,13 @@ class gametournament_Tournament {
   + prize : int
   + startDate : date
 }
-gametournament_Gamer "4..4" -- "1..1" gametournament_Pool : classment18
-gametournament_FinalPhase "1..1" --* "1..1" gametournament_Tournament : finalPhase3
-gametournament_FinalPhase "1..1" *-- "1..16" gametournament_Gamer : finalists9
-gametournament_Game "1..1" --* "1..1" gametournament_Tournament : game0
-gametournament_Gamer "0..9999" --* "1..1" gametournament_Tournament : gamers1
-gametournament_Gamer "4..4" --* "1..1" gametournament_Pool : participants15
-gametournament_Pool "1..16" --* "1..1" gametournament_QualificationPhase : pools7
-gametournament_QualificationPhase "1..1" --* "1..1" gametournament_Tournament : qualificationPhase5
-gametournament_FinalPhase "1..1" -- "1..1" gametournament_QualificationPhase : qualificationphase12
+gametournament_Gamer "gametournament_Pool19 4..4" -- "gametournament_Gamer20 1..1" gametournament_Pool : classment18
+gametournament_FinalPhase "gametournament_Tournament4 1..1" --* "gametournament_FinalPhase 1..1" gametournament_Tournament : finalPhase3
+gametournament_FinalPhase "gametournament_Gamer11 1..1" *-- "gametournament_FinalPhase10 1..16" gametournament_Gamer : finalists9
+gametournament_Game "gametournament_Tournament 1..1" --* "gametournament_Game 1..1" gametournament_Tournament : game0
+gametournament_Gamer "gametournament_Tournament2 0..9999" --* "gametournament_Gamer 1..1" gametournament_Tournament : gamers1
+gametournament_Gamer "gametournament_Pool16 4..4" --* "gametournament_Gamer17 1..1" gametournament_Pool : participants15
+gametournament_Pool "gametournament_QualificationPhase8 1..16" --* "gametournament_Pool 1..1" gametournament_QualificationPhase : pools7
+gametournament_QualificationPhase "gametournament_Tournament6 1..1" --* "gametournament_QualificationPhase 1..1" gametournament_Tournament : qualificationPhase5
+gametournament_FinalPhase "gametournament_QualificationPhase14 1..1" -- "gametournament_FinalPhase13 1..1" gametournament_QualificationPhase : qualificationphase12
 @enduml

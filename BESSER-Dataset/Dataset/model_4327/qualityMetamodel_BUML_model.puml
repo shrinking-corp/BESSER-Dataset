@@ -1,4 +1,8 @@
 @startuml
+' model: QualityMetamodel
+' project: sampleModel
+' owner: User
+' description: New project
 class QualityMetamodel_AggregatedValue {
 }
 class QualityMetamodel_AggregatedValueMetric {
@@ -66,17 +70,17 @@ ValueType <|-- QualityMetamodel_IntegerValueType
 ValueType <|-- QualityMetamodel_RangeValueType
 ValueType <|-- QualityMetamodel_RealValueType
 ValueType <|-- QualityMetamodel_TextValueType
-QualityMetamodel_Operation "1..1" -- "1..9999" QualityMetamodel_Value : aggregatedValues18
-QualityMetamodel_AggregatedValue "1..1" *-- "1..1" QualityMetamodel_Operation : calculatedBy17
-QualityMetamodel_MetricProvider "1..1" -- "1..1" QualityMetamodel_SingleValue : measuredBy15
-QualityMetamodel_MetricProvider "0..9999" --* "1..1" QualityMetamodel_QualityModel : metricProviders0
-QualityMetamodel_QualityAttribute "0..9999" -- "1..1" QualityMetamodel_QualityAttribute : qualityAttributes11
-QualityMetamodel_QualityAttribute "0..9999" --* "1..1" QualityMetamodel_QualityModel : qualityAttributes3
-QualityMetamodel_QualityModel "1..1" *-- "0..9999" QualityMetamodel_ValueType : qualityTypes1
-QualityMetamodel_QualityModel "1..1" *-- "0..9999" QualityMetamodel_Value : qualityValues5
-QualityMetamodel_EnumerationItem "1..9999" --* "1..1" QualityMetamodel_EnumerationMetric : set21
-QualityMetamodel_Value "1..1" -- "1..1" QualityMetamodel_ValueType : type13
-QualityMetamodel_Value "1..1" -- "1..1" QualityMetamodel_ValueType : val14
-QualityMetamodel_EnumerationItem "0..1" -- "1..1" QualityMetamodel_EnumerationMetric : value22
-QualityMetamodel_QualityAttribute "1..1" -- "1..1" QualityMetamodel_Value : value7
+QualityMetamodel_Operation "QualityMetamodel_Value20 1..1" -- "QualityMetamodel_Operation19 1..9999" QualityMetamodel_Value : aggregatedValues18
+QualityMetamodel_AggregatedValue "QualityMetamodel_Operation 1..1" *-- "QualityMetamodel_AggregatedValue 1..1" QualityMetamodel_Operation : calculatedBy17
+QualityMetamodel_MetricProvider "QualityMetamodel_SingleValue 1..1" -- "QualityMetamodel_MetricProvider16 1..1" QualityMetamodel_SingleValue : measuredBy15
+QualityMetamodel_MetricProvider "QualityMetamodel_QualityModel 0..9999" --* "QualityMetamodel_MetricProvider 1..1" QualityMetamodel_QualityModel : metricProviders0
+QualityMetamodel_QualityAttribute "QualityMetamodel_QualityAttribute10 0..9999" -- "QualityMetamodel_QualityAttribute12 1..1" QualityMetamodel_QualityAttribute : qualityAttributes11
+QualityMetamodel_QualityAttribute "QualityMetamodel_QualityModel4 0..9999" --* "QualityMetamodel_QualityAttribute 1..1" QualityMetamodel_QualityModel : qualityAttributes3
+QualityMetamodel_QualityModel "QualityMetamodel_ValueType 1..1" *-- "QualityMetamodel_QualityModel2 0..9999" QualityMetamodel_ValueType : qualityTypes1
+QualityMetamodel_QualityModel "QualityMetamodel_Value 1..1" *-- "QualityMetamodel_QualityModel6 0..9999" QualityMetamodel_Value : qualityValues5
+QualityMetamodel_EnumerationItem "QualityMetamodel_EnumerationMetric 1..9999" --* "QualityMetamodel_EnumerationItem 1..1" QualityMetamodel_EnumerationMetric : set21
+QualityMetamodel_Value "ValueType 1..1" -- "val 1..1" QualityMetamodel_ValueType : type13
+QualityMetamodel_Value "type 1..1" -- "Value 1..1" QualityMetamodel_ValueType : val14
+QualityMetamodel_EnumerationItem "QualityMetamodel_EnumerationMetric23 0..1" -- "QualityMetamodel_EnumerationItem24 1..1" QualityMetamodel_EnumerationMetric : value22
+QualityMetamodel_QualityAttribute "QualityMetamodel_Value9 1..1" -- "QualityMetamodel_QualityAttribute8 1..1" QualityMetamodel_Value : value7
 @enduml

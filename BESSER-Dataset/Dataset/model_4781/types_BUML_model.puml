@@ -1,4 +1,8 @@
 @startuml
+' model: types
+' project: sampleModel
+' owner: User
+' description: New project
 class Feature {
 }
 class NamedElement {
@@ -69,19 +73,19 @@ Type <|-- types_PrimitiveType
 Type <|-- types_TypeParameter
 TypedElement <|-- types_Feature
 TypedElement <|-- types_Parameter
-types_PrimitiveType "1..1" -- "0..1" types_PrimitiveType : baseType12
-types_Type "0..1" -- "1..1" types_TypeParameter : bound17
-types_Type "1..1" *-- "0..9999" types_TypeConstraint : constraint1
-types_ArrayType "1..1" -- "0..1" types_Type : elementType21
-types_EnumerationType "1..1" *-- "0..9999" types_Enumerator : enumerator10
-types_ComplexType "1..1" *-- "0..9999" types_Feature : features13
-types_Package "1..1" *-- "0..9999" types_PackageMember : member0
-types_EnumerationType "0..1" -- "1..1" types_Enumerator : owningEnumeration16
-types_Operation "0..1" -- "1..1" types_Parameter : owningOperation4
-types_ComplexType "0..1" -- "1..1" types_Feature : owningType2
-types_ParameterizedType "1..1" *-- "0..9999" types_TypeParameter : parameter19
-types_Operation "1..1" *-- "0..9999" types_Parameter : parameters3
-types_ComplexType "1..1" -- "0..9999" types_ComplexType : superTypes15
-types_Type "0..1" -- "1..1" types_TypedElement : type5
-types_Type "0..9999" -- "1..1" types_TypedElement : typeArguments7
+types_PrimitiveType "types_PrimitiveType 1..1" -- "types_PrimitiveType11 0..1" types_PrimitiveType : baseType12
+types_Type "types_TypeParameter 0..1" -- "types_Type18 1..1" types_TypeParameter : bound17
+types_Type "types_TypeConstraint 1..1" *-- "types_Type 0..9999" types_TypeConstraint : constraint1
+types_ArrayType "types_Type22 1..1" -- "types_ArrayType 0..1" types_Type : elementType21
+types_EnumerationType "Enumerator 1..1" *-- "owningEnumeration 0..9999" types_Enumerator : enumerator10
+types_ComplexType "Feature 1..1" *-- "owningType 0..9999" types_Feature : features13
+types_Package "types_PackageMember 1..1" *-- "types_Package 0..9999" types_PackageMember : member0
+types_EnumerationType "enumerator 0..1" -- "EnumerationType 1..1" types_Enumerator : owningEnumeration16
+types_Operation "parameters 0..1" -- "Operation 1..1" types_Parameter : owningOperation4
+types_ComplexType "features 0..1" -- "ComplexType 1..1" types_Feature : owningType2
+types_ParameterizedType "types_TypeParameter20 1..1" *-- "types_ParameterizedType 0..9999" types_TypeParameter : parameter19
+types_Operation "Parameter 1..1" *-- "owningOperation 0..9999" types_Parameter : parameters3
+types_ComplexType "types_ComplexType 1..1" -- "types_ComplexType14 0..9999" types_ComplexType : superTypes15
+types_Type "types_TypedElement 0..1" -- "types_Type6 1..1" types_TypedElement : type5
+types_Type "types_TypedElement8 0..9999" -- "types_Type9 1..1" types_TypedElement : typeArguments7
 @enduml

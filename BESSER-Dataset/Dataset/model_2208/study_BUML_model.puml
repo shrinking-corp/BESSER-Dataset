@@ -1,4 +1,8 @@
 @startuml
+' model: study
+' project: sampleModel
+' owner: User
+' description: New project
 enum Season {
   FALL
   SPRING
@@ -27,17 +31,17 @@ class study_SemesterCourse {
 class study_Specialization {
   + name : str
 }
-study_Course "0..1" -- "1..1" study_SemesterCourse : course13
-study_Course "0..9999" --* "1..1" study_Department : courses19
-study_Semester "1..1" *-- "0..9999" study_SemesterCourse : courses4
-study_Course "1..1" -- "0..1" study_Department : department16
-study_Department "0..1" -- "1..1" study_Programme : department3
-study_Programme "0..1" -- "1..1" study_Specialization : programme11
-study_Programme "0..1" -- "1..1" study_Semester : programme5
-study_Department "1..1" *-- "0..9999" study_Programme : programs20
-study_Semester "0..1" -- "1..1" study_SemesterCourse : semester14
-study_Programme "1..1" *-- "0..9999" study_Semester : semesters0
-study_Semester "0..9999" --* "1..1" study_Specialization : semesters9
-study_Semester "1..1" -- "0..1" study_Specialization : specialization6
-study_Programme "1..1" *-- "0..9999" study_Specialization : specializations1
+study_Course "study_SemesterCourse 0..1" -- "study_Course 1..1" study_SemesterCourse : course13
+study_Course "department 0..9999" --* "Course 1..1" study_Department : courses19
+study_Semester "SemesterCourse 1..1" *-- "semester 0..9999" study_SemesterCourse : courses4
+study_Course "Department18 1..1" -- "courses17 0..1" study_Department : department16
+study_Department "programs 0..1" -- "Department 1..1" study_Programme : department3
+study_Programme "specializations 0..1" -- "Programme12 1..1" study_Specialization : programme11
+study_Programme "semesters 0..1" -- "Programme 1..1" study_Semester : programme5
+study_Department "Programme22 1..1" *-- "department21 0..9999" study_Programme : programs20
+study_Semester "courses 0..1" -- "Semester15 1..1" study_SemesterCourse : semester14
+study_Programme "Semester 1..1" *-- "programme 0..9999" study_Semester : semesters0
+study_Semester "specialization 0..9999" --* "Semester10 1..1" study_Specialization : semesters9
+study_Semester "Specialization8 1..1" -- "semesters7 0..1" study_Specialization : specialization6
+study_Programme "Specialization 1..1" *-- "programme2 0..9999" study_Specialization : specializations1
 @enduml

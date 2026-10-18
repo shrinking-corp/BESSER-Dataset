@@ -1,4 +1,8 @@
 @startuml
+' model: simplepdl
+' project: sampleModel
+' owner: User
+' description: New project
 class Activities {
 }
 class Parameter {
@@ -54,19 +58,19 @@ ProcessElement <|-- simplepdl_Activities
 ProcessElement <|-- simplepdl_Guidance
 ProcessElement <|-- simplepdl_Parameter
 ProcessElement <|-- simplepdl_WorkSequence
-simplepdl_Activities "1..1" -- "0..9999" simplepdl_SubWorkDefinition : children11
-simplepdl_Guidance "1..1" -- "0..9999" simplepdl_ProcessElement : element3
-simplepdl_Parameter "1..1" -- "1..1" simplepdl_ParameterSWD : internResource19
-simplepdl_Activities "1..1" -- "0..9999" simplepdl_WorkSequence : linksToPredecessors8
-simplepdl_Activities "1..1" -- "0..9999" simplepdl_WorkSequence : linksToSuccessors9
-simplepdl_ParameterSWD "0..9999" -- "1..1" simplepdl_SubWorkDefinition : needsSWD15
-simplepdl_ParameterWD "0..9999" -- "1..1" simplepdl_WorkDefinition : needsWD12
-simplepdl_Activities "1..1" -- "1..1" simplepdl_SubWorkDefinition : parent13
-simplepdl_Activities "1..1" -- "1..1" simplepdl_WorkSequence : predecessor5
-simplepdl_Process "1..1" *-- "0..9999" simplepdl_ProcessElement : processElements0
-simplepdl_ParameterWD "1..1" -- "1..1" simplepdl_Resource : resource16
-simplepdl_Process "1..1" *-- "0..9999" simplepdl_Resource : resources1
-simplepdl_ParameterSWD "1..1" -- "1..1" simplepdl_SubWorkDefinition : subWorkDefinition21
-simplepdl_Activities "1..1" -- "1..1" simplepdl_WorkSequence : successor6
-simplepdl_ParameterWD "1..1" -- "1..1" simplepdl_WorkDefinition : workDefinition18
+simplepdl_Activities "SubWorkDefinition 1..1" -- "parent 0..9999" simplepdl_SubWorkDefinition : children11
+simplepdl_Guidance "simplepdl_ProcessElement4 1..1" -- "simplepdl_Guidance 0..9999" simplepdl_ProcessElement : element3
+simplepdl_Parameter "simplepdl_ParameterSWD20 1..1" -- "simplepdl_Parameter 1..1" simplepdl_ParameterSWD : internResource19
+simplepdl_Activities "WorkSequence 1..1" -- "successor 0..9999" simplepdl_WorkSequence : linksToPredecessors8
+simplepdl_Activities "WorkSequence10 1..1" -- "predecessor 0..9999" simplepdl_WorkSequence : linksToSuccessors9
+simplepdl_ParameterSWD "simplepdl_SubWorkDefinition 0..9999" -- "simplepdl_ParameterSWD 1..1" simplepdl_SubWorkDefinition : needsSWD15
+simplepdl_ParameterWD "workDefinition 0..9999" -- "ParameterWD 1..1" simplepdl_WorkDefinition : needsWD12
+simplepdl_Activities "children 1..1" -- "Activities14 1..1" simplepdl_SubWorkDefinition : parent13
+simplepdl_Activities "linksToSuccessors 1..1" -- "Activities 1..1" simplepdl_WorkSequence : predecessor5
+simplepdl_Process "simplepdl_ProcessElement 1..1" *-- "simplepdl_Process 0..9999" simplepdl_ProcessElement : processElements0
+simplepdl_ParameterWD "simplepdl_Resource17 1..1" -- "simplepdl_ParameterWD 1..1" simplepdl_Resource : resource16
+simplepdl_Process "simplepdl_Resource 1..1" *-- "simplepdl_Process2 0..9999" simplepdl_Resource : resources1
+simplepdl_ParameterSWD "simplepdl_SubWorkDefinition23 1..1" -- "simplepdl_ParameterSWD22 1..1" simplepdl_SubWorkDefinition : subWorkDefinition21
+simplepdl_Activities "linksToPredecessors 1..1" -- "Activities7 1..1" simplepdl_WorkSequence : successor6
+simplepdl_ParameterWD "WorkDefinition 1..1" -- "needsWD 1..1" simplepdl_WorkDefinition : workDefinition18
 @enduml

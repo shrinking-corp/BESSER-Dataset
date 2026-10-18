@@ -1,4 +1,8 @@
 @startuml
+' model: petriNet
+' project: sampleModel
+' owner: User
+' description: New project
 class Arc {
 }
 class Element {
@@ -36,16 +40,16 @@ LocatedElement <|-- petriNet_NamedElement
 NamedElement <|-- petriNet_Arc
 NamedElement <|-- petriNet_Element
 NamedElement <|-- petriNet_PetriNet
-petriNet_Arc "0..9999" --* "1..1" petriNet_PetriNet : arcs1
-petriNet_Element "0..9999" --* "1..1" petriNet_PetriNet : elements0
-petriNet_Place "1..1" -- "1..1" petriNet_PlaceToTransition : from_14
-petriNet_Transition "1..1" -- "1..1" petriNet_TransitionToPlace : from_16
-petriNet_Place "1..1" -- "0..9999" petriNet_TransitionToPlace : incomingArc4
-petriNet_PlaceToTransition "1..9999" -- "1..1" petriNet_Transition : incomingArc6
-petriNet_Arc "1..1" -- "1..1" petriNet_PetriNet : net12
-petriNet_Element "1..1" -- "1..1" petriNet_PetriNet : net3
-petriNet_Place "1..1" -- "0..9999" petriNet_PlaceToTransition : outgoingArc5
-petriNet_Transition "1..1" -- "1..9999" petriNet_TransitionToPlace : outgoingArc9
-petriNet_PlaceToTransition "1..1" -- "1..1" petriNet_Transition : to15
-petriNet_Place "1..1" -- "1..1" petriNet_TransitionToPlace : to19
+petriNet_Arc "net2 0..9999" --* "Arc 1..1" petriNet_PetriNet : arcs1
+petriNet_Element "net 0..9999" --* "Element 1..1" petriNet_PetriNet : elements0
+petriNet_Place "outgoingArc 1..1" -- "Place 1..1" petriNet_PlaceToTransition : from_14
+petriNet_Transition "outgoingArc17 1..1" -- "Transition18 1..1" petriNet_TransitionToPlace : from_16
+petriNet_Place "TransitionToPlace 1..1" -- "to 0..9999" petriNet_TransitionToPlace : incomingArc4
+petriNet_PlaceToTransition "to7 1..9999" -- "PlaceToTransition8 1..1" petriNet_Transition : incomingArc6
+petriNet_Arc "PetriNet13 1..1" -- "arcs 1..1" petriNet_PetriNet : net12
+petriNet_Element "PetriNet 1..1" -- "elements 1..1" petriNet_PetriNet : net3
+petriNet_Place "PlaceToTransition 1..1" -- "from_ 0..9999" petriNet_PlaceToTransition : outgoingArc5
+petriNet_Transition "TransitionToPlace11 1..1" -- "from_10 1..9999" petriNet_TransitionToPlace : outgoingArc9
+petriNet_PlaceToTransition "Transition 1..1" -- "incomingArc 1..1" petriNet_Transition : to15
+petriNet_Place "incomingArc20 1..1" -- "Place21 1..1" petriNet_TransitionToPlace : to19
 @enduml

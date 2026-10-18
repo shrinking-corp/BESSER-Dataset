@@ -1,4 +1,8 @@
 @startuml
+' model: SimplePDLSemantics
+' project: sampleModel
+' owner: User
+' description: New project
 class Event {
 }
 enum ExecutionState {
@@ -77,17 +81,17 @@ SPDLSimEvent <|-- SimplePDLSemantics_EDMMSimplePDL_Event
 WorkDefinition <|-- SimplePDLSemantics_SDMMSimplePDL_DynamicWorkDefinition
 WorkDefinitionEvent <|-- SimplePDLSemantics_EDMMSimplePDL_FinishWD
 WorkDefinitionEvent <|-- SimplePDLSemantics_EDMMSimplePDL_StartWD
-ProcessElement "0..9999" -- "1..1" SimplePDLSemantics_DDMMSimplePDL_Guidance : element12
-SimplePDLSemantics_DDMMSimplePDL_Process "1..1" -- "0..1" WorkDefinition : from_1
-SimplePDLSemantics_DDMMSimplePDL_WorkDefinition "1..1" -- "0..9999" WorkSequence : linksToPredecessors2
-SimplePDLSemantics_DDMMSimplePDL_WorkDefinition "1..1" -- "0..9999" WorkSequence : linksToSuccessors3
-Process "1..1" -- "1..1" SimplePDLSemantics_DDMMSimplePDL_ProcessElement : parent10
-SimplePDLSemantics_DDMMSimplePDL_WorkSequence "1..1" -- "1..1" WorkDefinition : predecessor6
-Process "0..1" --* "1..1" SimplePDLSemantics_DDMMSimplePDL_WorkDefinition : process5
-ProcessElement "0..9999" --* "1..1" SimplePDLSemantics_DDMMSimplePDL_Process : processElements0
-SPDLScenario "1..1" -- "1..1" SimplePDLSemantics_TM3SimplePDL_SPDLTrace : scenario18
-SPDLSimEvent "0..9999" --* "1..1" SimplePDLSemantics_TM3SimplePDL_SPDLScenario : simEvents17
-SimplePDLSemantics_DDMMSimplePDL_WorkSequence "1..1" -- "1..1" WorkDefinition : successor8
-SPDLTrace "0..9999" -- "1..1" SimplePDLSemantics_TM3SimplePDL_SPDLScenario : traces16
-SimplePDLSemantics_EDMMSimplePDL_WorkDefinitionEvent "1..1" -- "1..1" WorkDefinition : workdefinition14
+ProcessElement "SimplePDLSemantics_DDMMSimplePDL_Guidance 0..9999" -- "ProcessElement13 1..1" SimplePDLSemantics_DDMMSimplePDL_Guidance : element12
+SimplePDLSemantics_DDMMSimplePDL_Process "WorkDefinition 1..1" -- "process 0..1" WorkDefinition : from_1
+SimplePDLSemantics_DDMMSimplePDL_WorkDefinition "WorkSequence 1..1" -- "successor 0..9999" WorkSequence : linksToPredecessors2
+SimplePDLSemantics_DDMMSimplePDL_WorkDefinition "WorkSequence4 1..1" -- "predecessor 0..9999" WorkSequence : linksToSuccessors3
+Process "processElements 1..1" -- "Process11 1..1" SimplePDLSemantics_DDMMSimplePDL_ProcessElement : parent10
+SimplePDLSemantics_DDMMSimplePDL_WorkSequence "WorkDefinition7 1..1" -- "linksToSuccessors 1..1" WorkDefinition : predecessor6
+Process "from_ 0..1" --* "Process 1..1" SimplePDLSemantics_DDMMSimplePDL_WorkDefinition : process5
+ProcessElement "parent 0..9999" --* "ProcessElement 1..1" SimplePDLSemantics_DDMMSimplePDL_Process : processElements0
+SPDLScenario "traces 1..1" -- "SPDLScenario 1..1" SimplePDLSemantics_TM3SimplePDL_SPDLTrace : scenario18
+SPDLSimEvent "SimplePDLSemantics_TM3SimplePDL_SPDLScenario 0..9999" --* "SPDLSimEvent 1..1" SimplePDLSemantics_TM3SimplePDL_SPDLScenario : simEvents17
+SimplePDLSemantics_DDMMSimplePDL_WorkSequence "WorkDefinition9 1..1" -- "linksToPredecessors 1..1" WorkDefinition : successor8
+SPDLTrace "scenario 0..9999" -- "SPDLTrace 1..1" SimplePDLSemantics_TM3SimplePDL_SPDLScenario : traces16
+SimplePDLSemantics_EDMMSimplePDL_WorkDefinitionEvent "WorkDefinition15 1..1" -- "SimplePDLSemantics_EDMMSimplePDL_WorkDefinitionEvent 1..1" WorkDefinition : workdefinition14
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: _49aa0d6e_dd03_4380_824f_f8aed9689fd8
+' project: sampleModel
+' owner: User
+' description: New project
 enum Byte {
 }
 class cpu_ArithmeticExecutableInstruction {
@@ -127,13 +131,13 @@ enum pcb_PCB_Status {
 class pcb_TaskManager {
   + processes : pcb_PCB
 }
-cpu_CPU "1..1" -- "1..1" cpu_DMAChannel : CPU_DMAChannel
-cpu_CPU "1..9999" -- "1..1" driver_Driver : Driver_CPU
-driver_Dispatcher "1..1" -- "1..1" driver_Driver : Driver_Dispatcher
-driver_Driver "0..9999" -- "1..1" driver_Loader : Driver_Loader
-driver_Driver "1..1" -- "1..1" driver_Scheduler : Driver_Scheduler
-memory_MMU "0..1" -- "1..1" memory_Memory : MMU_Memory
-memory_Memory "0..9999" -- "0..9999" memory_Word : Memory_Word
-pcb_PCB "0..9999" -- "1..1" pcb_TaskManager : PCB_TaskManager
-driver_Driver "1..1" -- "1..1" pcb_TaskManager : TaskManager_Driver
+cpu_CPU "cpu9 1..1" -- "dmaChannel8 1..1" cpu_DMAChannel : CPU_DMAChannel
+cpu_CPU "cpu10 1..9999" -- "driver11 1..1" driver_Driver : Driver_CPU
+driver_Dispatcher "dispatcher16 1..1" -- "driver17 1..1" driver_Driver : Driver_Dispatcher
+driver_Driver "driver15 0..9999" -- "loader14 1..1" driver_Loader : Driver_Loader
+driver_Driver "driver13 1..1" -- "scheduler12 1..1" driver_Scheduler : Driver_Scheduler
+memory_MMU "mmu3 0..1" -- "memory2 1..1" memory_Memory : MMU_Memory
+memory_Memory "memory1 0..9999" -- "word0 0..9999" memory_Word : Memory_Word
+pcb_PCB "pcb5 0..9999" -- "taskManager4 1..1" pcb_TaskManager : PCB_TaskManager
+driver_Driver "driver6 1..1" -- "taskManager7 1..1" pcb_TaskManager : TaskManager_Driver
 @enduml

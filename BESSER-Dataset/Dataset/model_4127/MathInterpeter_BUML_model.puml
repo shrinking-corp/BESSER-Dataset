@@ -1,4 +1,8 @@
 @startuml
+' model: mathInterpeter
+' project: sampleModel
+' owner: User
+' description: New project
 class Exp {
 }
 class Primary {
@@ -29,14 +33,14 @@ Exp <|-- mathInterpeter_Plus
 Exp <|-- mathInterpeter_Primary
 Primary <|-- mathInterpeter_Number
 Primary <|-- mathInterpeter_Parenthesis
-mathInterpeter_Exp "0..1" --* "1..1" mathInterpeter_MathExp : exp0
-mathInterpeter_Exp "0..1" --* "1..1" mathInterpeter_Parenthesis : exp1
-mathInterpeter_Exp "0..1" --* "1..1" mathInterpeter_Mult : left13
-mathInterpeter_Div "1..1" *-- "0..1" mathInterpeter_Exp : left17
-mathInterpeter_Exp "0..1" --* "1..1" mathInterpeter_Plus : left3
-mathInterpeter_Exp "0..1" --* "1..1" mathInterpeter_Minus : left8
-mathInterpeter_Exp "0..1" --* "1..1" mathInterpeter_Minus : right10
-mathInterpeter_Mult "1..1" *-- "0..1" mathInterpeter_Primary : right15
-mathInterpeter_Div "1..1" *-- "0..1" mathInterpeter_Primary : right19
-mathInterpeter_Exp "0..1" --* "1..1" mathInterpeter_Plus : right5
+mathInterpeter_Exp "mathInterpeter_MathExp 0..1" --* "mathInterpeter_Exp 1..1" mathInterpeter_MathExp : exp0
+mathInterpeter_Exp "mathInterpeter_Parenthesis 0..1" --* "mathInterpeter_Exp2 1..1" mathInterpeter_Parenthesis : exp1
+mathInterpeter_Exp "mathInterpeter_Mult 0..1" --* "mathInterpeter_Exp14 1..1" mathInterpeter_Mult : left13
+mathInterpeter_Div "mathInterpeter_Exp18 1..1" *-- "mathInterpeter_Div 0..1" mathInterpeter_Exp : left17
+mathInterpeter_Exp "mathInterpeter_Plus 0..1" --* "mathInterpeter_Exp4 1..1" mathInterpeter_Plus : left3
+mathInterpeter_Exp "mathInterpeter_Minus 0..1" --* "mathInterpeter_Exp9 1..1" mathInterpeter_Minus : left8
+mathInterpeter_Exp "mathInterpeter_Minus11 0..1" --* "mathInterpeter_Exp12 1..1" mathInterpeter_Minus : right10
+mathInterpeter_Mult "mathInterpeter_Primary 1..1" *-- "mathInterpeter_Mult16 0..1" mathInterpeter_Primary : right15
+mathInterpeter_Div "mathInterpeter_Primary21 1..1" *-- "mathInterpeter_Div20 0..1" mathInterpeter_Primary : right19
+mathInterpeter_Exp "mathInterpeter_Plus6 0..1" --* "mathInterpeter_Exp7 1..1" mathInterpeter_Plus : right5
 @enduml

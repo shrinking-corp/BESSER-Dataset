@@ -1,4 +1,8 @@
 @startuml
+' model: SQLDDL
+' project: sampleModel
+' owner: User
+' description: New project
 class Column {
 }
 class Database {
@@ -80,19 +84,19 @@ TableElement <|-- SQLDDL_Key
 Value <|-- SQLDDL_IntegerVal
 Value <|-- SQLDDL_NullVal
 Value <|-- SQLDDL_StringVal
-Column "1..9999" -- "1..1" SQLDDL_Key : columns14
-Database "1..1" -- "1..1" SQLDDL_Table : database1
-SQLDDL_Column "1..1" *-- "0..1" Value : default11
-SQLDDL_Table "1..1" *-- "0..9999" TableElement : elements3
-Key "0..9999" -- "1..1" SQLDDL_Column : keys13
-Parameter "0..9999" --* "1..1" SQLDDL_Table : parameters4
-ForeignKey "0..9999" -- "1..1" SQLDDL_Table : referencedBy2
-ForeignKey "0..9999" -- "1..1" SQLDDL_Column : referencedBy8
-Column "1..9999" -- "1..1" SQLDDL_ForeignKey : referencedColumns17
-SQLDDL_ForeignKey "1..1" -- "1..1" Table : referencedTable15
-SQLDDL_Parameter "1..1" -- "1..1" Table : table20
-SQLDDL_TableElement "1..1" -- "1..1" Table : table6
-SQLDDL_Database "1..1" *-- "0..9999" Table : tables0
-SQLDDL_Column "1..1" *-- "1..1" Type : type10
-SQLDDL_Parameter "1..1" *-- "0..1" Value : value22
+Column "keys 1..9999" -- "Column 1..1" SQLDDL_Key : columns14
+Database "tables 1..1" -- "Database 1..1" SQLDDL_Table : database1
+SQLDDL_Column "Value 1..1" *-- "SQLDDL_Column12 0..1" Value : default11
+SQLDDL_Table "TableElement 1..1" *-- "table 0..9999" TableElement : elements3
+Key "columns 0..9999" -- "Key 1..1" SQLDDL_Column : keys13
+Parameter "table5 0..9999" --* "Parameter 1..1" SQLDDL_Table : parameters4
+ForeignKey "referencedTable 0..9999" -- "ForeignKey 1..1" SQLDDL_Table : referencedBy2
+ForeignKey "referencedColumns 0..9999" -- "ForeignKey9 1..1" SQLDDL_Column : referencedBy8
+Column "referencedBy18 1..9999" -- "Column19 1..1" SQLDDL_ForeignKey : referencedColumns17
+SQLDDL_ForeignKey "Table16 1..1" -- "referencedBy 1..1" Table : referencedTable15
+SQLDDL_Parameter "Table21 1..1" -- "parameters 1..1" Table : table20
+SQLDDL_TableElement "Table7 1..1" -- "elements 1..1" Table : table6
+SQLDDL_Database "Table 1..1" *-- "database 0..9999" Table : tables0
+SQLDDL_Column "Type 1..1" *-- "SQLDDL_Column 1..1" Type : type10
+SQLDDL_Parameter "Value23 1..1" *-- "SQLDDL_Parameter 0..1" Value : value22
 @enduml

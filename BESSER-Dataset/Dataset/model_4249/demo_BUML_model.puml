@@ -1,4 +1,8 @@
 @startuml
+' model: demo_model
+' project: sampleModel
+' owner: User
+' description: New project
 class demo_model_Address {
   + city : str
   + country : str
@@ -17,7 +21,7 @@ class demo_model_Employee {
   + phone : str
   + position : str
 }
-demo_model_Address "0..1" --* "1..1" demo_model_Employee : address2
-demo_model_Company "0..1" -- "1..1" demo_model_Employee : company1
-demo_model_Company "1..1" *-- "0..9999" demo_model_Employee : employees0
+demo_model_Address "demo_model_Employee 0..1" --* "demo_model_Address 1..1" demo_model_Employee : address2
+demo_model_Company "employees 0..1" -- "Company 1..1" demo_model_Employee : company1
+demo_model_Company "Employee 1..1" *-- "company 0..9999" demo_model_Employee : employees0
 @enduml

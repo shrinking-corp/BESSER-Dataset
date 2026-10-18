@@ -1,4 +1,8 @@
 @startuml
+' model: dronesSimulation
+' project: sampleModel
+' owner: User
+' description: New project
 enum DroneState {
   CREATED
   DONE
@@ -46,19 +50,19 @@ class dronesSimulation_TaskInstance {
 }
 Observation <|-- dronesSimulation_DroneObservation
 Observation <|-- dronesSimulation_ObstacleObservation
-dronesSimulation_DroneInstance "0..1" -- "1..1" dronesSimulation_RoleInstance : allocatedDrone18
-dronesSimulation_DroneInstance "1..1" -- "0..1" dronesSimulation_RoleInstance : currentRole9
-dronesSimulation_Drone "1..1" -- "1..1" dronesSimulation_DroneObservation : drone20
-dronesSimulation_Drone "1..1" -- "1..1" dronesSimulation_DroneInstance : drone5
-dronesSimulation_DroneInstance "0..9999" --* "1..1" dronesSimulation_DronesSimulation : droneInstances3
-dronesSimulation_DroneInstance "1..1" *-- "0..9999" dronesSimulation_Observation : observations10
-dronesSimulation_Obstacle "1..1" -- "1..1" dronesSimulation_ObstacleObservation : obstacle19
-dronesSimulation_DroneObservation "1..1" *-- "1..1" dronesSimulation_Position : position22
-dronesSimulation_DroneInstance "1..1" *-- "1..1" dronesSimulation_Position : position7
-dronesSimulation_Role "0..1" -- "1..1" dronesSimulation_RoleInstance : role16
-dronesSimulation_RoleInstance "1..9999" --* "1..1" dronesSimulation_TaskInstance : roleInstances14
-dronesSimulation_DronesSimulation "1..1" -- "1..1" dronesSimulation_Scenario : scenario0
-dronesSimulation_Task "0..1" -- "1..1" dronesSimulation_TaskInstance : task12
-dronesSimulation_RoleInstance "1..1" -- "1..1" dronesSimulation_TaskInstance : taskInstance17
-dronesSimulation_DronesSimulation "1..1" *-- "0..9999" dronesSimulation_TaskInstance : taskInstances1
+dronesSimulation_DroneInstance "currentRole 0..1" -- "DroneInstance 1..1" dronesSimulation_RoleInstance : allocatedDrone18
+dronesSimulation_DroneInstance "RoleInstance 1..1" -- "allocatedDrone 0..1" dronesSimulation_RoleInstance : currentRole9
+dronesSimulation_Drone "dronesSimulation_DroneObservation 1..1" -- "dronesSimulation_Drone21 1..1" dronesSimulation_DroneObservation : drone20
+dronesSimulation_Drone "dronesSimulation_DroneInstance6 1..1" -- "dronesSimulation_Drone 1..1" dronesSimulation_DroneInstance : drone5
+dronesSimulation_DroneInstance "dronesSimulation_DronesSimulation4 0..9999" --* "dronesSimulation_DroneInstance 1..1" dronesSimulation_DronesSimulation : droneInstances3
+dronesSimulation_DroneInstance "dronesSimulation_Observation 1..1" *-- "dronesSimulation_DroneInstance11 0..9999" dronesSimulation_Observation : observations10
+dronesSimulation_Obstacle "dronesSimulation_ObstacleObservation 1..1" -- "dronesSimulation_Obstacle 1..1" dronesSimulation_ObstacleObservation : obstacle19
+dronesSimulation_DroneObservation "dronesSimulation_Position24 1..1" *-- "dronesSimulation_DroneObservation23 1..1" dronesSimulation_Position : position22
+dronesSimulation_DroneInstance "dronesSimulation_Position 1..1" *-- "dronesSimulation_DroneInstance8 1..1" dronesSimulation_Position : position7
+dronesSimulation_Role "dronesSimulation_RoleInstance 0..1" -- "dronesSimulation_Role 1..1" dronesSimulation_RoleInstance : role16
+dronesSimulation_RoleInstance "taskInstance 1..9999" --* "RoleInstance15 1..1" dronesSimulation_TaskInstance : roleInstances14
+dronesSimulation_DronesSimulation "dronesSimulation_Scenario 1..1" -- "dronesSimulation_DronesSimulation 1..1" dronesSimulation_Scenario : scenario0
+dronesSimulation_Task "dronesSimulation_TaskInstance13 0..1" -- "dronesSimulation_Task 1..1" dronesSimulation_TaskInstance : task12
+dronesSimulation_RoleInstance "TaskInstance 1..1" -- "roleInstances 1..1" dronesSimulation_TaskInstance : taskInstance17
+dronesSimulation_DronesSimulation "dronesSimulation_TaskInstance 1..1" *-- "dronesSimulation_DronesSimulation2 0..9999" dronesSimulation_TaskInstance : taskInstances1
 @enduml

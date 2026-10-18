@@ -1,4 +1,8 @@
 @startuml
+' model: metrics
+' project: sampleModel
+' owner: User
+' description: New project
 class Measurement {
 }
 class ModelElement {
@@ -20,7 +24,7 @@ class metrics_ValueMeasurement {
 Measurement <|-- metrics_ComplexMeasurement
 Measurement <|-- metrics_LinkMeasurement
 Measurement <|-- metrics_ValueMeasurement
-ModelElement "0..1" -- "1..1" metrics_LinkMeasurement : elements0
-metrics_ComplexMeasurement "1..1" *-- "0..9999" metrics_Measurement : measurements1
-metrics_Measurement "0..9999" --* "1..1" metrics_Observation : measurements2
+ModelElement "metrics_LinkMeasurement 0..1" -- "ModelElement 1..1" metrics_LinkMeasurement : elements0
+metrics_ComplexMeasurement "metrics_Measurement 1..1" *-- "metrics_ComplexMeasurement 0..9999" metrics_Measurement : measurements1
+metrics_Measurement "metrics_Observation 0..9999" --* "metrics_Measurement3 1..1" metrics_Observation : measurements2
 @enduml

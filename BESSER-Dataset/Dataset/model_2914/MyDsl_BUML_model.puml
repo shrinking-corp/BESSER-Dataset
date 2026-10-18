@@ -1,4 +1,8 @@
 @startuml
+' model: myDsl
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractElement {
 }
 class Type {
@@ -29,9 +33,9 @@ AbstractElement <|-- myDsl_PackageDeclaration
 AbstractElement <|-- myDsl_Type
 Type <|-- myDsl_DataType
 Type <|-- myDsl_Entity
-myDsl_AbstractElement "0..9999" --* "1..1" myDsl_Model : elements0
-myDsl_AbstractElement "0..9999" --* "1..1" myDsl_PackageDeclaration : elements1
-myDsl_Entity "1..1" *-- "0..9999" myDsl_Feature : features5
-myDsl_Entity "1..1" -- "0..1" myDsl_Entity : superType4
-myDsl_Feature "1..1" -- "0..1" myDsl_Type : type7
+myDsl_AbstractElement "myDsl_Model 0..9999" --* "myDsl_AbstractElement 1..1" myDsl_Model : elements0
+myDsl_AbstractElement "myDsl_PackageDeclaration 0..9999" --* "myDsl_AbstractElement2 1..1" myDsl_PackageDeclaration : elements1
+myDsl_Entity "myDsl_Feature 1..1" *-- "myDsl_Entity6 0..9999" myDsl_Feature : features5
+myDsl_Entity "myDsl_Entity 1..1" -- "myDsl_Entity3 0..1" myDsl_Entity : superType4
+myDsl_Feature "myDsl_Type 1..1" -- "myDsl_Feature8 0..1" myDsl_Type : type7
 @enduml

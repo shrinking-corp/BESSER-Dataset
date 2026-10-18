@@ -1,4 +1,8 @@
 @startuml
+' model: CompanyModel
+' project: sampleModel
+' owner: User
+' description: New project
 class CompanyModel_Company {
   + name : str
 }
@@ -13,7 +17,7 @@ class CompanyModel_Product {
   + name : str
   + productID : int
 }
-CompanyModel_Company "1..1" *-- "0..9999" CompanyModel_Department : departments0
-CompanyModel_Department "1..1" *-- "1..9999" CompanyModel_Employee : employees1
-CompanyModel_Department "1..1" *-- "1..9999" CompanyModel_Product : products3
+CompanyModel_Company "CompanyModel_Department 1..1" *-- "CompanyModel_Company 0..9999" CompanyModel_Department : departments0
+CompanyModel_Department "CompanyModel_Employee 1..1" *-- "CompanyModel_Department2 1..9999" CompanyModel_Employee : employees1
+CompanyModel_Department "CompanyModel_Product 1..1" *-- "CompanyModel_Department4 1..9999" CompanyModel_Product : products3
 @enduml

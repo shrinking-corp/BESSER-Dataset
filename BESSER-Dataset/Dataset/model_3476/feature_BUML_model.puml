@@ -1,4 +1,8 @@
 @startuml
+' model: feature
+' project: sampleModel
+' owner: User
+' description: New project
 class FeatureTreeNode {
 }
 class feature_Annotation {
@@ -30,19 +34,19 @@ class feature_Group {
 }
 FeatureTreeNode <|-- feature_Feature
 FeatureTreeNode <|-- feature_Group
-feature_Annotation "0..9999" --* "1..1" feature_Feature : annotations15
-feature_Attribute "0..9999" --* "1..1" feature_Feature : attributes11
-feature_Feature "1..9999" --* "1..1" feature_Group : childFeatures19
-feature_FeatureModel "1..1" *-- "0..9999" feature_FeatureModel : children4
-feature_Constraint "1..1" -- "1..9999" feature_Feature : constrainedFeatures21
-feature_FeatureModel "1..1" -- "0..1" feature_FeatureModel : constrainingFeatureModel9
-feature_Constraint "0..9999" --* "1..1" feature_FeatureModel : constraints0
-feature_Constraint "0..9999" -- "1..1" feature_Feature : constraints17
-feature_Attribute "1..1" -- "1..1" feature_Feature : feature23
-feature_Annotation "1..1" -- "1..1" feature_Feature : feature25
-feature_Feature "1..1" *-- "0..9999" feature_Group : groups12
-feature_FeatureModel "1..1" -- "0..1" feature_FeatureModel : parent6
-feature_Feature "1..1" -- "1..1" feature_Group : parentFeature18
-feature_Feature "1..1" -- "0..1" feature_Group : parentGroup13
-feature_Feature "0..1" --* "1..1" feature_FeatureModel : root1
+feature_Annotation "feature16 0..9999" --* "Annotation 1..1" feature_Feature : annotations15
+feature_Attribute "feature 0..9999" --* "Attribute 1..1" feature_Feature : attributes11
+feature_Feature "parentGroup 1..9999" --* "Feature20 1..1" feature_Group : childFeatures19
+feature_FeatureModel "FeatureModel 1..1" *-- "parent 0..9999" feature_FeatureModel : children4
+feature_Constraint "Feature22 1..1" -- "constraints 1..9999" feature_Feature : constrainedFeatures21
+feature_FeatureModel "feature_FeatureModel10 1..1" -- "feature_FeatureModel8 0..1" feature_FeatureModel : constrainingFeatureModel9
+feature_Constraint "feature_FeatureModel 0..9999" --* "feature_Constraint 1..1" feature_FeatureModel : constraints0
+feature_Constraint "constrainedFeatures 0..9999" -- "Constraint 1..1" feature_Feature : constraints17
+feature_Attribute "Feature24 1..1" -- "attributes 1..1" feature_Feature : feature23
+feature_Annotation "Feature26 1..1" -- "annotations 1..1" feature_Feature : feature25
+feature_Feature "Group 1..1" *-- "parentFeature 0..9999" feature_Group : groups12
+feature_FeatureModel "FeatureModel7 1..1" -- "children 0..1" feature_FeatureModel : parent6
+feature_Feature "groups 1..1" -- "Feature 1..1" feature_Group : parentFeature18
+feature_Feature "Group14 1..1" -- "childFeatures 0..1" feature_Group : parentGroup13
+feature_Feature "feature_FeatureModel2 0..1" --* "feature_Feature 1..1" feature_FeatureModel : root1
 @enduml

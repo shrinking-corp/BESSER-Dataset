@@ -1,4 +1,8 @@
 @startuml
+' model: library
+' project: sampleModel
+' owner: User
+' description: New project
 enum BookCategory {
   Biography
   MYSTERY
@@ -26,12 +30,12 @@ class library_Writer {
 class library_WriterNameMap {
   + key : str
 }
-library_Book "1..1" -- "0..1" library_Writer : author0
-library_Book "0..9999" -- "1..1" library_Writer : books11
-library_Book "0..9999" --* "1..1" library_Library : books2
-library_Book "0..9999" -- "1..1" library_Library : specialBooks4
-library_Writer "0..1" -- "1..1" library_WriterNameMap : value12
-library_Library "1..1" *-- "0..9999" library_MapOfDataTypes : writerByIDMap9
-library_Library "1..1" *-- "0..9999" library_WriterNameMap : writerByNameMap7
-library_Library "1..1" *-- "0..9999" library_Writer : writers1
+library_Book "Writer 1..1" -- "books 0..1" library_Writer : author0
+library_Book "author 0..9999" -- "Book 1..1" library_Writer : books11
+library_Book "library_Library3 0..9999" --* "library_Book 1..1" library_Library : books2
+library_Book "library_Library5 0..9999" -- "library_Book6 1..1" library_Library : specialBooks4
+library_Writer "library_WriterNameMap13 0..1" -- "library_Writer14 1..1" library_WriterNameMap : value12
+library_Library "library_MapOfDataTypes 1..1" *-- "library_Library10 0..9999" library_MapOfDataTypes : writerByIDMap9
+library_Library "library_WriterNameMap 1..1" *-- "library_Library8 0..9999" library_WriterNameMap : writerByNameMap7
+library_Library "library_Writer 1..1" *-- "library_Library 0..9999" library_Writer : writers1
 @enduml

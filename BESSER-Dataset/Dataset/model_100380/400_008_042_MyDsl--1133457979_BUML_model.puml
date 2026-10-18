@@ -1,4 +1,8 @@
 @startuml
+' model: myDsl
+' project: sampleModel
+' owner: User
+' description: New project
 class myDsl_Event {
   + name : str
   + resetEvent : bool
@@ -17,12 +21,12 @@ class myDsl_Transition {
 }
 class myDsl_XExpression {
 }
-myDsl_State "1..1" *-- "0..1" myDsl_XExpression : action7
-myDsl_Event "0..1" -- "1..1" myDsl_Transition : event11
-myDsl_Event "0..9999" --* "1..1" myDsl_Statemachine : events0
-myDsl_Service "0..9999" --* "1..1" myDsl_Statemachine : services1
-myDsl_State "0..1" -- "1..1" myDsl_Transition : state14
-myDsl_State "0..9999" --* "1..1" myDsl_Statemachine : states3
-myDsl_State "1..1" *-- "0..9999" myDsl_Transition : transitions9
-myDsl_JvmTypeReference "0..1" --* "1..1" myDsl_Service : type5
+myDsl_State "myDsl_XExpression 1..1" *-- "myDsl_State8 0..1" myDsl_XExpression : action7
+myDsl_Event "myDsl_Transition12 0..1" -- "myDsl_Event13 1..1" myDsl_Transition : event11
+myDsl_Event "myDsl_Statemachine 0..9999" --* "myDsl_Event 1..1" myDsl_Statemachine : events0
+myDsl_Service "myDsl_Statemachine2 0..9999" --* "myDsl_Service 1..1" myDsl_Statemachine : services1
+myDsl_State "myDsl_Transition15 0..1" -- "myDsl_State16 1..1" myDsl_Transition : state14
+myDsl_State "myDsl_Statemachine4 0..9999" --* "myDsl_State 1..1" myDsl_Statemachine : states3
+myDsl_State "myDsl_Transition 1..1" *-- "myDsl_State10 0..9999" myDsl_Transition : transitions9
+myDsl_JvmTypeReference "myDsl_Service6 0..1" --* "myDsl_JvmTypeReference 1..1" myDsl_Service : type5
 @enduml

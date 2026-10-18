@@ -1,4 +1,8 @@
 @startuml
+' model: fsmcore
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractState {
 }
 class NamedElement {
@@ -56,18 +60,18 @@ State <|-- fsmcore_FinalState
 Statement <|-- fsmcore_Conditional
 Statement <|-- fsmcore_Loop
 Statement <|-- fsmcore_VarDecl
-fsmcore_Program "0..1" --* "1..1" fsmcore_State : doActivity8
-fsmcore_Program "0..1" --* "1..1" fsmcore_State : entry9
-fsmcore_Program "0..1" --* "1..1" fsmcore_State : exit12
-fsmcore_Constraint "0..1" --* "1..1" fsmcore_Transition : guard21
-fsmcore_AbstractState "1..1" -- "0..9999" fsmcore_Transition : incoming4
-fsmcore_AbstractState "1..1" -- "0..9999" fsmcore_Transition : outgoing5
-fsmcore_AbstractState "1..1" -- "1..1" fsmcore_Region : ownerRegion7
-fsmcore_Region "1..9999" --* "1..1" fsmcore_StateMachine : regions0
-fsmcore_AbstractState "1..1" -- "1..1" fsmcore_Transition : source19
-fsmcore_Program "1..1" *-- "0..9999" fsmcore_Statement : statements23
-fsmcore_AbstractState "0..9999" --* "1..1" fsmcore_Region : subvertex1
-fsmcore_AbstractState "1..1" -- "1..1" fsmcore_Transition : target17
-fsmcore_Region "1..1" *-- "0..9999" fsmcore_Transition : transitions2
-fsmcore_Transition "1..1" *-- "0..1" fsmcore_Trigger : trigger15
+fsmcore_Program "fsmcore_State 0..1" --* "fsmcore_Program 1..1" fsmcore_State : doActivity8
+fsmcore_Program "fsmcore_State10 0..1" --* "fsmcore_Program11 1..1" fsmcore_State : entry9
+fsmcore_Program "fsmcore_State13 0..1" --* "fsmcore_Program14 1..1" fsmcore_State : exit12
+fsmcore_Constraint "fsmcore_Transition22 0..1" --* "fsmcore_Constraint 1..1" fsmcore_Transition : guard21
+fsmcore_AbstractState "Transition 1..1" -- "target 0..9999" fsmcore_Transition : incoming4
+fsmcore_AbstractState "Transition6 1..1" -- "source 0..9999" fsmcore_Transition : outgoing5
+fsmcore_AbstractState "Region 1..1" -- "subvertex 1..1" fsmcore_Region : ownerRegion7
+fsmcore_Region "fsmcore_StateMachine 1..9999" --* "fsmcore_Region 1..1" fsmcore_StateMachine : regions0
+fsmcore_AbstractState "outgoing 1..1" -- "AbstractState20 1..1" fsmcore_Transition : source19
+fsmcore_Program "fsmcore_Statement 1..1" *-- "fsmcore_Program24 0..9999" fsmcore_Statement : statements23
+fsmcore_AbstractState "ownerRegion 0..9999" --* "AbstractState 1..1" fsmcore_Region : subvertex1
+fsmcore_AbstractState "incoming 1..1" -- "AbstractState18 1..1" fsmcore_Transition : target17
+fsmcore_Region "fsmcore_Transition 1..1" *-- "fsmcore_Region3 0..9999" fsmcore_Transition : transitions2
+fsmcore_Transition "fsmcore_Trigger 1..1" *-- "fsmcore_Transition16 0..1" fsmcore_Trigger : trigger15
 @enduml

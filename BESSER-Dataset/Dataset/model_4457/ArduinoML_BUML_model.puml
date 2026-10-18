@@ -1,4 +1,8 @@
 @startuml
+' model: arduinoml
+' project: sampleModel
+' owner: User
+' description: New project
 class Action {
 }
 class Brick {
@@ -45,14 +49,14 @@ Brick <|-- arduinoml_Sensor
 NamedElement <|-- arduinoml_Brick
 NamedElement <|-- arduinoml_State
 NamedElement <|-- arduinoml_Transition
-arduinoml_Action "1..9999" --* "1..1" arduinoml_State : actions6
-arduinoml_Action "1..1" -- "1..9999" arduinoml_Actuator : actuators14
-arduinoml_Board "1..1" *-- "0..9999" arduinoml_State : alternatives1
-arduinoml_Board "1..1" *-- "1..9999" arduinoml_Brick : bricks4
-arduinoml_State "1..1" *-- "1..9999" arduinoml_Transition : eventCode8
-arduinoml_Board "1..1" *-- "1..1" arduinoml_State : initial0
-arduinoml_Sensor "1..9999" -- "1..1" arduinoml_Trigger : sensors16
-arduinoml_State "1..1" -- "1..1" arduinoml_Transition : source13
-arduinoml_State "1..1" -- "1..1" arduinoml_Transition : target9
-arduinoml_Transition "1..1" *-- "1..1" arduinoml_Trigger : trigger11
+arduinoml_Action "arduinoml_State7 1..9999" --* "arduinoml_Action 1..1" arduinoml_State : actions6
+arduinoml_Action "arduinoml_Actuator 1..1" -- "arduinoml_Action15 1..9999" arduinoml_Actuator : actuators14
+arduinoml_Board "arduinoml_State3 1..1" *-- "arduinoml_Board2 0..9999" arduinoml_State : alternatives1
+arduinoml_Board "arduinoml_Brick 1..1" *-- "arduinoml_Board5 1..9999" arduinoml_Brick : bricks4
+arduinoml_State "Transition 1..1" *-- "source 1..9999" arduinoml_Transition : eventCode8
+arduinoml_Board "arduinoml_State 1..1" *-- "arduinoml_Board 1..1" arduinoml_State : initial0
+arduinoml_Sensor "arduinoml_Trigger17 1..9999" -- "arduinoml_Sensor 1..1" arduinoml_Trigger : sensors16
+arduinoml_State "eventCode 1..1" -- "State 1..1" arduinoml_Transition : source13
+arduinoml_State "arduinoml_Transition 1..1" -- "arduinoml_State10 1..1" arduinoml_Transition : target9
+arduinoml_Transition "arduinoml_Trigger 1..1" *-- "arduinoml_Transition12 1..1" arduinoml_Trigger : trigger11
 @enduml

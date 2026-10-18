@@ -1,4 +1,8 @@
 @startuml
+' model: persistence
+' project: sampleModel
+' owner: User
+' description: New project
 class Association {
 }
 class Attribute {
@@ -246,48 +250,48 @@ ResourceAttribute <|-- persistence_FileAttribute
 ResourceAttribute <|-- persistence_ImageAttribute
 ViewFeature <|-- persistence_EncapsulatedFeature
 ViewFeature <|-- persistence_ViewAssociation
-persistence_Association "0..9999" -- "1..1" persistence_EntityOrView : allAssociations24
-persistence_EntityOrView "1..1" -- "0..9999" persistence_Feature : allFeatures17
-persistence_EntityAssociation "1..1" -- "1..1" persistence_ModelLabelAssociation : association47
-persistence_Association "1..1" -- "1..1" persistence_EncapsulatedAssociation : association76
-persistence_Entity "1..1" -- "0..9999" persistence_EntityAssociation : associationEnds53
-persistence_Association "0..9999" -- "1..1" persistence_EntityOrView : associations22
-persistence_Attribute "1..1" -- "1..1" persistence_ModelLabelAttribute : attribute45
-persistence_Attribute "1..1" -- "1..1" persistence_EncapsulatedAttribute : attribute74
-persistence_Attribute "0..9999" -- "1..1" persistence_EntityOrView : attributes20
-persistence_EntityOrView "1..1" -- "0..9999" persistence_Feature : containerUnique10
-persistence_DataType "1..1" -- "1..1" persistence_DataTypeAttribute : dataType57
-persistence_DataType "0..9999" --* "1..1" persistence_Persistence : dataTypes1
-persistence_Attribute "1..1" *-- "0..1" persistence_Expression : defaultValue30
-persistence_ModelLabel "0..1" -- "1..1" persistence_ModelLabelAssociation : dynamicLabel48
-persistence_Association "1..1" -- "0..9999" persistence_EncapsulatedAssociation : encapsulatedBy32
-persistence_EncapsulatedAssociation "1..1" -- "0..1" persistence_EncapsulatedAssociation : encapsulatedTarget78
-persistence_EntityOrView "0..9999" -- "1..1" persistence_View : encapsulates69
-persistence_EntityOrView "0..9999" --* "1..1" persistence_Persistence : entities3
-persistence_Entity "1..1" *-- "0..9999" persistence_EntityFeature : entityFeatures51
-persistence_EntityOrView "1..1" -- "0..9999" persistence_Feature : features14
-persistence_ModelLabel "1..1" *-- "0..9999" persistence_ModelLabelFeature : features40
-persistence_AssociationKey "1..1" -- "1..1" persistence_EntityAssociation : keyFor63
-persistence_EntityOrView "1..1" -- "0..9999" persistence_Feature : keys5
-persistence_AssociationKey "0..9999" --* "1..1" persistence_EntityAssociation : keys60
-persistence_EntityOrView "1..1" -- "1..1" persistence_ModelLabel : labelFor39
-persistence_EntityOrView "1..1" *-- "0..9999" persistence_ModelLabel : labels13
-persistence_EncapsulatedAssociation "1..1" -- "1..1" persistence_ViewAssociation : opposite84
-persistence_ModelLabel "1..1" -- "1..1" persistence_ModelLabelFeature : partOf43
-persistence_Entity "1..1" -- "1..1" persistence_EntityFeature : partOf54
-persistence_View "1..1" -- "1..1" persistence_ViewFeature : partOf73
-persistence_Persistence "1..1" *-- "0..9999" persistence_SerializationGroup : serializationGroups0
-persistence_Feature "1..1" -- "0..9999" persistence_SerializationGroup : serializationGroups27
-persistence_ModelLabel "1..1" -- "0..9999" persistence_SerializationGroup : serializationGroups41
-persistence_Attribute "0..9999" -- "1..1" persistence_EntityAttribute : slugFields55
-persistence_EncapsulatedAssociation "1..1" -- "1..1" persistence_Entity : sourceEntity79
-persistence_Association "1..1" -- "1..1" persistence_EntityOrView : sourceEntityX33
-persistence_AssociationKey "1..1" -- "1..1" persistence_EntityFeature : sourceFeature65
-persistence_Entity "1..1" -- "1..1" persistence_EntityAssociation : targetEntity61
-persistence_EncapsulatedAssociation "1..1" -- "1..1" persistence_Entity : targetEntity81
-persistence_Association "1..1" -- "1..1" persistence_EntityOrView : targetEntityX36
-persistence_AssociationKey "1..1" -- "0..1" persistence_EntityFeature : targetFeature66
-persistence_EntityOrView "1..1" -- "0..9999" persistence_Feature : unique7
-persistence_PathElement "0..9999" --* "1..1" persistence_ResourceAttribute : uploadPath59
-persistence_View "1..1" *-- "0..9999" persistence_ViewFeature : viewFeatures71
+persistence_Association "persistence_EntityOrView25 0..9999" -- "persistence_Association26 1..1" persistence_EntityOrView : allAssociations24
+persistence_EntityOrView "persistence_Feature19 1..1" -- "persistence_EntityOrView18 0..9999" persistence_Feature : allFeatures17
+persistence_EntityAssociation "persistence_ModelLabelAssociation 1..1" -- "persistence_EntityAssociation 1..1" persistence_ModelLabelAssociation : association47
+persistence_Association "encapsulatedBy 1..1" -- "Association 1..1" persistence_EncapsulatedAssociation : association76
+persistence_Entity "EntityAssociation 1..1" -- "targetEntity 0..9999" persistence_EntityAssociation : associationEnds53
+persistence_Association "persistence_EntityOrView23 0..9999" -- "persistence_Association 1..1" persistence_EntityOrView : associations22
+persistence_Attribute "persistence_ModelLabelAttribute 1..1" -- "persistence_Attribute46 1..1" persistence_ModelLabelAttribute : attribute45
+persistence_Attribute "persistence_EncapsulatedAttribute 1..1" -- "persistence_Attribute75 1..1" persistence_EncapsulatedAttribute : attribute74
+persistence_Attribute "persistence_EntityOrView21 0..9999" -- "persistence_Attribute 1..1" persistence_EntityOrView : attributes20
+persistence_EntityOrView "persistence_Feature12 1..1" -- "persistence_EntityOrView11 0..9999" persistence_Feature : containerUnique10
+persistence_DataType "persistence_DataTypeAttribute 1..1" -- "persistence_DataType58 1..1" persistence_DataTypeAttribute : dataType57
+persistence_DataType "persistence_Persistence2 0..9999" --* "persistence_DataType 1..1" persistence_Persistence : dataTypes1
+persistence_Attribute "persistence_Expression 1..1" *-- "persistence_Attribute31 0..1" persistence_Expression : defaultValue30
+persistence_ModelLabel "persistence_ModelLabelAssociation49 0..1" -- "persistence_ModelLabel50 1..1" persistence_ModelLabelAssociation : dynamicLabel48
+persistence_Association "EncapsulatedAssociation 1..1" -- "association 0..9999" persistence_EncapsulatedAssociation : encapsulatedBy32
+persistence_EncapsulatedAssociation "persistence_EncapsulatedAssociation 1..1" -- "persistence_EncapsulatedAssociation77 0..1" persistence_EncapsulatedAssociation : encapsulatedTarget78
+persistence_EntityOrView "persistence_View 0..9999" -- "persistence_EntityOrView70 1..1" persistence_View : encapsulates69
+persistence_EntityOrView "persistence_Persistence4 0..9999" --* "persistence_EntityOrView 1..1" persistence_Persistence : entities3
+persistence_Entity "EntityFeature 1..1" *-- "partOf52 0..9999" persistence_EntityFeature : entityFeatures51
+persistence_EntityOrView "persistence_Feature16 1..1" -- "persistence_EntityOrView15 0..9999" persistence_Feature : features14
+persistence_ModelLabel "ModelLabelFeature 1..1" *-- "partOf 0..9999" persistence_ModelLabelFeature : features40
+persistence_AssociationKey "EntityAssociation64 1..1" -- "keys 1..1" persistence_EntityAssociation : keyFor63
+persistence_EntityOrView "persistence_Feature 1..1" -- "persistence_EntityOrView6 0..9999" persistence_Feature : keys5
+persistence_AssociationKey "keyFor 0..9999" --* "AssociationKey 1..1" persistence_EntityAssociation : keys60
+persistence_EntityOrView "labels 1..1" -- "EntityOrView 1..1" persistence_ModelLabel : labelFor39
+persistence_EntityOrView "ModelLabel 1..1" *-- "labelFor 0..9999" persistence_ModelLabel : labels13
+persistence_EncapsulatedAssociation "persistence_ViewAssociation 1..1" -- "persistence_EncapsulatedAssociation85 1..1" persistence_ViewAssociation : opposite84
+persistence_ModelLabel "features 1..1" -- "ModelLabel44 1..1" persistence_ModelLabelFeature : partOf43
+persistence_Entity "entityFeatures 1..1" -- "Entity 1..1" persistence_EntityFeature : partOf54
+persistence_View "viewFeatures 1..1" -- "View 1..1" persistence_ViewFeature : partOf73
+persistence_Persistence "persistence_SerializationGroup 1..1" *-- "persistence_Persistence 0..9999" persistence_SerializationGroup : serializationGroups0
+persistence_Feature "persistence_SerializationGroup29 1..1" -- "persistence_Feature28 0..9999" persistence_SerializationGroup : serializationGroups27
+persistence_ModelLabel "persistence_SerializationGroup42 1..1" -- "persistence_ModelLabel 0..9999" persistence_SerializationGroup : serializationGroups41
+persistence_Attribute "persistence_EntityAttribute 0..9999" -- "persistence_Attribute56 1..1" persistence_EntityAttribute : slugFields55
+persistence_EncapsulatedAssociation "persistence_Entity 1..1" -- "persistence_EncapsulatedAssociation80 1..1" persistence_Entity : sourceEntity79
+persistence_Association "persistence_EntityOrView35 1..1" -- "persistence_Association34 1..1" persistence_EntityOrView : sourceEntityX33
+persistence_AssociationKey "persistence_EntityFeature 1..1" -- "persistence_AssociationKey 1..1" persistence_EntityFeature : sourceFeature65
+persistence_Entity "associationEnds 1..1" -- "Entity62 1..1" persistence_EntityAssociation : targetEntity61
+persistence_EncapsulatedAssociation "persistence_Entity83 1..1" -- "persistence_EncapsulatedAssociation82 1..1" persistence_Entity : targetEntity81
+persistence_Association "persistence_EntityOrView38 1..1" -- "persistence_Association37 1..1" persistence_EntityOrView : targetEntityX36
+persistence_AssociationKey "persistence_EntityFeature68 1..1" -- "persistence_AssociationKey67 0..1" persistence_EntityFeature : targetFeature66
+persistence_EntityOrView "persistence_Feature9 1..1" -- "persistence_EntityOrView8 0..9999" persistence_Feature : unique7
+persistence_PathElement "persistence_ResourceAttribute 0..9999" --* "persistence_PathElement 1..1" persistence_ResourceAttribute : uploadPath59
+persistence_View "ViewFeature 1..1" *-- "partOf72 0..9999" persistence_ViewFeature : viewFeatures71
 @enduml

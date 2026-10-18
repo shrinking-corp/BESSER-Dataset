@@ -1,4 +1,8 @@
 @startuml
+' model: cgimodel
+' project: sampleModel
+' owner: User
+' description: New project
 class BaseState {
 }
 abstract class cgimodel_BaseState {
@@ -22,12 +26,12 @@ class cgimodel_Transition {
 }
 BaseState <|-- cgimodel_OrState
 BaseState <|-- cgimodel_State
-cgimodel_Expr "0..1" --* "1..1" cgimodel_Transition : condition12
-cgimodel_Expr "0..1" --* "1..1" cgimodel_State : expr3
-cgimodel_BaseState "0..1" -- "1..1" cgimodel_Transition : source6
-cgimodel_StateModel "0..9999" --* "1..1" cgimodel_StateModels : stateModels15
-cgimodel_BaseState "0..9999" --* "1..1" cgimodel_StateModel : states0
-cgimodel_BaseState "0..9999" --* "1..1" cgimodel_OrState : states4
-cgimodel_State "0..1" -- "1..1" cgimodel_Transition : target9
-cgimodel_StateModel "1..1" *-- "0..9999" cgimodel_Transition : transitions1
+cgimodel_Expr "cgimodel_Transition13 0..1" --* "cgimodel_Expr14 1..1" cgimodel_Transition : condition12
+cgimodel_Expr "cgimodel_State 0..1" --* "cgimodel_Expr 1..1" cgimodel_State : expr3
+cgimodel_BaseState "cgimodel_Transition7 0..1" -- "cgimodel_BaseState8 1..1" cgimodel_Transition : source6
+cgimodel_StateModel "cgimodel_StateModels 0..9999" --* "cgimodel_StateModel16 1..1" cgimodel_StateModels : stateModels15
+cgimodel_BaseState "cgimodel_StateModel 0..9999" --* "cgimodel_BaseState 1..1" cgimodel_StateModel : states0
+cgimodel_BaseState "cgimodel_OrState 0..9999" --* "cgimodel_BaseState5 1..1" cgimodel_OrState : states4
+cgimodel_State "cgimodel_Transition10 0..1" -- "cgimodel_State11 1..1" cgimodel_Transition : target9
+cgimodel_StateModel "cgimodel_Transition 1..1" *-- "cgimodel_StateModel2 0..9999" cgimodel_Transition : transitions1
 @enduml

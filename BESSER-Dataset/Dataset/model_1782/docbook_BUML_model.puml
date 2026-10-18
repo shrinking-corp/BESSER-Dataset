@@ -1,4 +1,8 @@
 @startuml
+' model: docbook
+' project: sampleModel
+' owner: User
+' description: New project
 class docbook_BookType {
   + info : str
   + title : str
@@ -21,11 +25,11 @@ class docbook_Sect1Type {
   + para : str
   + title : str
 }
-docbook_BookType "0..9999" --* "1..1" docbook_DocumentRoot : book7
-docbook_BookType "1..1" *-- "1..9999" docbook_ChapterType : chapter0
-docbook_ChapterType "0..9999" --* "1..1" docbook_DocumentRoot : chapter10
-docbook_ChapterType "1..1" *-- "0..9999" docbook_Sect1Type : sect11
-docbook_DocumentRoot "1..1" *-- "0..9999" docbook_Sect1Type : sect113
-docbook_DocumentRoot "1..1" *-- "0..9999" docbook_EStringToStringMapEntry : xMLNSPrefixMap3
-docbook_DocumentRoot "1..1" *-- "0..9999" docbook_EStringToStringMapEntry : xSISchemaLocation4
+docbook_BookType "docbook_DocumentRoot8 0..9999" --* "docbook_BookType9 1..1" docbook_DocumentRoot : book7
+docbook_BookType "docbook_ChapterType 1..1" *-- "docbook_BookType 1..9999" docbook_ChapterType : chapter0
+docbook_ChapterType "docbook_DocumentRoot11 0..9999" --* "docbook_ChapterType12 1..1" docbook_DocumentRoot : chapter10
+docbook_ChapterType "docbook_Sect1Type 1..1" *-- "docbook_ChapterType2 0..9999" docbook_Sect1Type : sect11
+docbook_DocumentRoot "docbook_Sect1Type15 1..1" *-- "docbook_DocumentRoot14 0..9999" docbook_Sect1Type : sect113
+docbook_DocumentRoot "docbook_EStringToStringMapEntry 1..1" *-- "docbook_DocumentRoot 0..9999" docbook_EStringToStringMapEntry : xMLNSPrefixMap3
+docbook_DocumentRoot "docbook_EStringToStringMapEntry6 1..1" *-- "docbook_DocumentRoot5 0..9999" docbook_EStringToStringMapEntry : xSISchemaLocation4
 @enduml

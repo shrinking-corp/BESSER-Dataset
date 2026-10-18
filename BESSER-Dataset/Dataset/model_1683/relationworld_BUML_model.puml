@@ -1,4 +1,8 @@
 @startuml
+' model: relationworld
+' project: sampleModel
+' owner: User
+' description: New project
 class Arrow {
 }
 class Category {
@@ -63,14 +67,14 @@ NamedElement <|-- relationworld_ThingA
 NamedElement <|-- relationworld_ThingB
 SourceNode <|-- relationworld_ThingA
 TargetNode <|-- relationworld_ThingB
-relationworld_Arrow "1..1" -- "0..1" relationworld_TargetNode : cible12
-relationworld_Arrow "0..9999" -- "1..1" relationworld_Category : fleches16
-relationworld_RelatedTo "0..9999" --* "1..1" relationworld_World : relations8
-relationworld_Arrow "1..1" -- "0..1" relationworld_SourceNode : source11
-relationworld_Category "1..1" -- "0..9999" relationworld_SourceNode : sources14
-relationworld_Category "1..1" -- "0..9999" relationworld_TargetNode : targets19
-relationworld_RelatedTo "1..1" -- "0..1" relationworld_ThingA : thingA0
-relationworld_RelatedTo "1..1" -- "0..1" relationworld_ThingB : thingB1
-relationworld_ThingA "0..9999" --* "1..1" relationworld_World : thingsa3
-relationworld_ThingB "0..9999" --* "1..1" relationworld_World : thingsb5
+relationworld_Arrow "relationworld_TargetNode 1..1" -- "relationworld_Arrow13 0..1" relationworld_TargetNode : cible12
+relationworld_Arrow "relationworld_Category17 0..9999" -- "relationworld_Arrow18 1..1" relationworld_Category : fleches16
+relationworld_RelatedTo "relationworld_World9 0..9999" --* "relationworld_RelatedTo10 1..1" relationworld_World : relations8
+relationworld_Arrow "relationworld_SourceNode 1..1" -- "relationworld_Arrow 0..1" relationworld_SourceNode : source11
+relationworld_Category "relationworld_SourceNode15 1..1" -- "relationworld_Category 0..9999" relationworld_SourceNode : sources14
+relationworld_Category "relationworld_TargetNode21 1..1" -- "relationworld_Category20 0..9999" relationworld_TargetNode : targets19
+relationworld_RelatedTo "relationworld_ThingA 1..1" -- "relationworld_RelatedTo 0..1" relationworld_ThingA : thingA0
+relationworld_RelatedTo "relationworld_ThingB 1..1" -- "relationworld_RelatedTo2 0..1" relationworld_ThingB : thingB1
+relationworld_ThingA "relationworld_World 0..9999" --* "relationworld_ThingA4 1..1" relationworld_World : thingsa3
+relationworld_ThingB "relationworld_World6 0..9999" --* "relationworld_ThingB7 1..1" relationworld_World : thingsb5
 @enduml

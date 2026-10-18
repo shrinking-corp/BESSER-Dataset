@@ -706,9 +706,9 @@ def test_assoc_classifier85_stub_double():
     partner = ClassesProv_InstanceSpecification()
     setattr(partner, 'ClassesProv_InstanceSpecification86', None)
     _safe_set(owner, 'ClassesProv_Classifier', partner)
-    assert getattr(partner, 'ClassesProv_InstanceSpecification86') == owner
+    assert owner in getattr(partner, 'ClassesProv_InstanceSpecification86')
     _safe_set(owner, 'ClassesProv_Classifier', None)
-    assert getattr(partner, 'ClassesProv_InstanceSpecification86') is None
+    assert owner not in getattr(partner, 'ClassesProv_InstanceSpecification86')
 
 
 def test_assoc_client236_stub_double():
@@ -721,9 +721,9 @@ def test_assoc_client236_stub_double():
     partner = ClassesProv_Dependency()
     setattr(partner, 'ClassesProv_Dependency237', None)
     _safe_set(owner, 'ClassesProv_NamedElement238', partner)
-    assert getattr(partner, 'ClassesProv_Dependency237') == owner
+    assert owner in getattr(partner, 'ClassesProv_Dependency237')
     _safe_set(owner, 'ClassesProv_NamedElement238', None)
-    assert getattr(partner, 'ClassesProv_Dependency237') is None
+    assert owner not in getattr(partner, 'ClassesProv_Dependency237')
 
 
 def test_assoc_clientDependency6_stub_double():
@@ -841,9 +841,9 @@ def test_assoc_elementImport16_stub_double():
     partner = ClassesProv_Namespace()
     setattr(partner, 'ClassesProv_Namespace17', None)
     _safe_set(owner, 'ClassesProv_ElementImport', partner)
-    assert getattr(partner, 'ClassesProv_Namespace17') == owner
+    assert owner in getattr(partner, 'ClassesProv_Namespace17')
     _safe_set(owner, 'ClassesProv_ElementImport', None)
-    assert getattr(partner, 'ClassesProv_Namespace17') is None
+    assert owner not in getattr(partner, 'ClassesProv_Namespace17')
 
 
 def test_assoc_importedElement22_stub_double():
@@ -961,9 +961,9 @@ def test_assoc_member10_stub_double():
     partner = ClassesProv_Namespace()
     setattr(partner, 'ClassesProv_Namespace11', None)
     _safe_set(owner, 'ClassesProv_NamedElement12', partner)
-    assert getattr(partner, 'ClassesProv_Namespace11') == owner
+    assert owner in getattr(partner, 'ClassesProv_Namespace11')
     _safe_set(owner, 'ClassesProv_NamedElement12', None)
-    assert getattr(partner, 'ClassesProv_Namespace11') is None
+    assert owner not in getattr(partner, 'ClassesProv_Namespace11')
 
 
 def test_assoc_mergedPackage233_stub_double():
@@ -1006,9 +1006,9 @@ def test_assoc_nestedClassifier199_stub_double():
     partner = ClassesProv_Class()
     setattr(partner, 'ClassesProv_Class200', None)
     _safe_set(owner, 'ClassesProv_Classifier201', partner)
-    assert getattr(partner, 'ClassesProv_Class200') == owner
+    assert owner in getattr(partner, 'ClassesProv_Class200')
     _safe_set(owner, 'ClassesProv_Classifier201', None)
-    assert getattr(partner, 'ClassesProv_Class200') is None
+    assert owner not in getattr(partner, 'ClassesProv_Class200')
 
 
 def test_assoc_nestedClassifier249_stub_double():
@@ -1051,9 +1051,9 @@ def test_assoc_ownedAttribute208_stub_double():
     partner = ClassesProv_Class()
     setattr(partner, 'ClassesProv_Class209', None)
     _safe_set(owner, 'ClassesProv_Property210', partner)
-    assert getattr(partner, 'ClassesProv_Class209') == owner
+    assert owner in getattr(partner, 'ClassesProv_Class209')
     _safe_set(owner, 'ClassesProv_Property210', None)
-    assert getattr(partner, 'ClassesProv_Class209') is None
+    assert owner not in getattr(partner, 'ClassesProv_Class209')
 
 
 def test_assoc_ownedAttribute220_stub_double():
@@ -1066,9 +1066,9 @@ def test_assoc_ownedAttribute220_stub_double():
     partner = ClassesProv_DataType()
     setattr(partner, 'ClassesProv_DataType221', None)
     _safe_set(owner, 'ClassesProv_Property222', partner)
-    assert getattr(partner, 'ClassesProv_DataType221') == owner
+    assert owner in getattr(partner, 'ClassesProv_DataType221')
     _safe_set(owner, 'ClassesProv_Property222', None)
-    assert getattr(partner, 'ClassesProv_DataType221') is None
+    assert owner not in getattr(partner, 'ClassesProv_DataType221')
 
 
 def test_assoc_ownedAttribute255_stub_double():
@@ -1081,9 +1081,9 @@ def test_assoc_ownedAttribute255_stub_double():
     partner = ClassesProv_Interface()
     setattr(partner, 'ClassesProv_Interface256', None)
     _safe_set(owner, 'ClassesProv_Property257', partner)
-    assert getattr(partner, 'ClassesProv_Interface256') == owner
+    assert owner in getattr(partner, 'ClassesProv_Interface256')
     _safe_set(owner, 'ClassesProv_Property257', None)
-    assert getattr(partner, 'ClassesProv_Interface256') is None
+    assert owner not in getattr(partner, 'ClassesProv_Interface256')
 
 
 def test_assoc_ownedFormalParam173_stub_double():
@@ -1111,9 +1111,9 @@ def test_assoc_ownedMember13_stub_double():
     partner = ClassesProv_Namespace()
     setattr(partner, 'ClassesProv_Namespace14', None)
     _safe_set(owner, 'ClassesProv_NamedElement15', partner)
-    assert getattr(partner, 'ClassesProv_Namespace14') == owner
+    assert owner in getattr(partner, 'ClassesProv_Namespace14')
     _safe_set(owner, 'ClassesProv_NamedElement15', None)
-    assert getattr(partner, 'ClassesProv_Namespace14') is None
+    assert owner not in getattr(partner, 'ClassesProv_Namespace14')
 
 
 def test_assoc_ownedOperation202_stub_double():
@@ -1126,9 +1126,9 @@ def test_assoc_ownedOperation202_stub_double():
     partner = ClassesProv_Class()
     setattr(partner, 'ClassesProv_Class203', None)
     _safe_set(owner, 'ClassesProv_Operation204', partner)
-    assert getattr(partner, 'ClassesProv_Class203') == owner
+    assert owner in getattr(partner, 'ClassesProv_Class203')
     _safe_set(owner, 'ClassesProv_Operation204', None)
-    assert getattr(partner, 'ClassesProv_Class203') is None
+    assert owner not in getattr(partner, 'ClassesProv_Class203')
 
 
 def test_assoc_ownedOperation223_stub_double():
@@ -1141,9 +1141,9 @@ def test_assoc_ownedOperation223_stub_double():
     partner = ClassesProv_DataType()
     setattr(partner, 'ClassesProv_DataType224', None)
     _safe_set(owner, 'ClassesProv_Operation225', partner)
-    assert getattr(partner, 'ClassesProv_DataType224') == owner
+    assert owner in getattr(partner, 'ClassesProv_DataType224')
     _safe_set(owner, 'ClassesProv_Operation225', None)
-    assert getattr(partner, 'ClassesProv_DataType224') is None
+    assert owner not in getattr(partner, 'ClassesProv_DataType224')
 
 
 def test_assoc_ownedOperation258_stub_double():
@@ -1156,9 +1156,9 @@ def test_assoc_ownedOperation258_stub_double():
     partner = ClassesProv_Interface()
     setattr(partner, 'ClassesProv_Interface259', None)
     _safe_set(owner, 'ClassesProv_Operation260', partner)
-    assert getattr(partner, 'ClassesProv_Interface259') == owner
+    assert owner in getattr(partner, 'ClassesProv_Interface259')
     _safe_set(owner, 'ClassesProv_Operation260', None)
-    assert getattr(partner, 'ClassesProv_Interface259') is None
+    assert owner not in getattr(partner, 'ClassesProv_Interface259')
 
 
 def test_assoc_ownedParameter169_stub_double():
@@ -1171,9 +1171,9 @@ def test_assoc_ownedParameter169_stub_double():
     partner = ClassesProv_BehavioralFeature()
     setattr(partner, 'ClassesProv_BehavioralFeature', None)
     _safe_set(owner, 'ClassesProv_Parameter', partner)
-    assert getattr(partner, 'ClassesProv_BehavioralFeature') == owner
+    assert owner in getattr(partner, 'ClassesProv_BehavioralFeature')
     _safe_set(owner, 'ClassesProv_Parameter', None)
-    assert getattr(partner, 'ClassesProv_BehavioralFeature') is None
+    assert owner not in getattr(partner, 'ClassesProv_BehavioralFeature')
 
 
 def test_assoc_ownedType42_stub_double():
@@ -1351,9 +1351,9 @@ def test_assoc_supplier239_stub_double():
     partner = ClassesProv_Dependency()
     setattr(partner, 'ClassesProv_Dependency240', None)
     _safe_set(owner, 'ClassesProv_NamedElement241', partner)
-    assert getattr(partner, 'ClassesProv_Dependency240') == owner
+    assert owner in getattr(partner, 'ClassesProv_Dependency240')
     _safe_set(owner, 'ClassesProv_NamedElement241', None)
-    assert getattr(partner, 'ClassesProv_Dependency240') is None
+    assert owner not in getattr(partner, 'ClassesProv_Dependency240')
 
 
 def test_assoc_type179_stub_double():

@@ -1,4 +1,8 @@
 @startuml
+' model: asso
+' project: sampleModel
+' owner: User
+' description: New project
 class Expression {
 }
 class asso_Div {
@@ -33,18 +37,18 @@ Expression <|-- asso_Mult
 Expression <|-- asso_NegFloatConstant
 Expression <|-- asso_Plus
 Expression <|-- asso_VariableRef
-asso_EvalExpression "0..9999" --* "1..1" asso_Model : evaluations1
-asso_Expression "0..1" --* "1..1" asso_Variable : expression6
-asso_EvalExpression "1..1" *-- "0..1" asso_Expression : expression8
-asso_Expression "0..1" --* "1..1" asso_Plus : left13
-asso_Expression "0..1" --* "1..1" asso_Minus : left18
-asso_Expression "0..1" --* "1..1" asso_Mult : left23
-asso_Div "1..1" *-- "0..1" asso_Expression : left28
-asso_Expression "0..1" --* "1..1" asso_Plus : right15
-asso_Expression "0..1" --* "1..1" asso_Minus : right20
-asso_Expression "0..1" --* "1..1" asso_Mult : right25
-asso_Div "1..1" *-- "0..1" asso_Expression : right30
-asso_Variable "0..9999" --* "1..1" asso_Variable : subVar4
-asso_Variable "0..1" -- "1..1" asso_VariableRef : value11
-asso_Model "1..1" *-- "0..9999" asso_Variable : variables0
+asso_EvalExpression "asso_Model2 0..9999" --* "asso_EvalExpression 1..1" asso_Model : evaluations1
+asso_Expression "asso_Variable7 0..1" --* "asso_Expression 1..1" asso_Variable : expression6
+asso_EvalExpression "asso_Expression10 1..1" *-- "asso_EvalExpression9 0..1" asso_Expression : expression8
+asso_Expression "asso_Plus 0..1" --* "asso_Expression14 1..1" asso_Plus : left13
+asso_Expression "asso_Minus 0..1" --* "asso_Expression19 1..1" asso_Minus : left18
+asso_Expression "asso_Mult 0..1" --* "asso_Expression24 1..1" asso_Mult : left23
+asso_Div "asso_Expression29 1..1" *-- "asso_Div 0..1" asso_Expression : left28
+asso_Expression "asso_Plus16 0..1" --* "asso_Expression17 1..1" asso_Plus : right15
+asso_Expression "asso_Minus21 0..1" --* "asso_Expression22 1..1" asso_Minus : right20
+asso_Expression "asso_Mult26 0..1" --* "asso_Expression27 1..1" asso_Mult : right25
+asso_Div "asso_Expression32 1..1" *-- "asso_Div31 0..1" asso_Expression : right30
+asso_Variable "asso_Variable3 0..9999" --* "asso_Variable5 1..1" asso_Variable : subVar4
+asso_Variable "asso_VariableRef 0..1" -- "asso_Variable12 1..1" asso_VariableRef : value11
+asso_Model "asso_Variable 1..1" *-- "asso_Model 0..9999" asso_Variable : variables0
 @enduml

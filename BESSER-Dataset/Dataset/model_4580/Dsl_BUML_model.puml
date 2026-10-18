@@ -1,4 +1,8 @@
 @startuml
+' model: dsl
+' project: sampleModel
+' owner: User
+' description: New project
 class EJavaObject {
 }
 class Fonctionnalite {
@@ -30,9 +34,9 @@ class dsl_Robot {
 EJavaObject <|-- dsl_Object
 Fonctionnalite <|-- dsl_Action
 Fonctionnalite <|-- dsl_Capture
-dsl_Fonctionnalite "1..1" *-- "0..9999" dsl_Parametre : ListeParametres1
-dsl_IDevice "0..9999" --* "1..1" dsl_Robot : instances0
-dsl_Device "1..1" *-- "0..9999" dsl_Fonctionnalite : refFonction2
-dsl_Action "1..1" *-- "0..1" dsl_EJavaObject : return_6
-dsl_EJavaObject "0..1" --* "1..1" dsl_Parametre : type4
+dsl_Fonctionnalite "dsl_Parametre 1..1" *-- "dsl_Fonctionnalite 0..9999" dsl_Parametre : ListeParametres1
+dsl_IDevice "dsl_Robot 0..9999" --* "dsl_IDevice 1..1" dsl_Robot : instances0
+dsl_Device "dsl_Fonctionnalite3 1..1" *-- "dsl_Device 0..9999" dsl_Fonctionnalite : refFonction2
+dsl_Action "dsl_EJavaObject7 1..1" *-- "dsl_Action 0..1" dsl_EJavaObject : return_6
+dsl_EJavaObject "dsl_Parametre5 0..1" --* "dsl_EJavaObject 1..1" dsl_Parametre : type4
 @enduml

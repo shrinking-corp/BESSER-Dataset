@@ -1,4 +1,8 @@
 @startuml
+' model: iot
+' project: sampleModel
+' owner: User
+' description: New project
 class Message {
 }
 class iot_BrokerSpec {
@@ -23,7 +27,7 @@ class iot_Request {
 Message <|-- iot_Dispatch
 Message <|-- iot_Event
 Message <|-- iot_Request
-iot_IotSystemSpec "1..1" *-- "0..9999" iot_Message : message3
-iot_BrokerSpec "0..1" --* "1..1" iot_IotSystemSpec : mqttBroker1
-iot_IotSystem "1..1" *-- "0..1" iot_IotSystemSpec : spec0
+iot_IotSystemSpec "iot_Message 1..1" *-- "iot_IotSystemSpec4 0..9999" iot_Message : message3
+iot_BrokerSpec "iot_IotSystemSpec2 0..1" --* "iot_BrokerSpec 1..1" iot_IotSystemSpec : mqttBroker1
+iot_IotSystem "iot_IotSystemSpec 1..1" *-- "iot_IotSystem 0..1" iot_IotSystemSpec : spec0
 @enduml

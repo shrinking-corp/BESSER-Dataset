@@ -116,9 +116,9 @@ def test_assoc_ownedPrecedences7_stub_double():
     partner = oclstdlibcs_LibPackageCS()
     setattr(partner, 'oclstdlibcs_LibPackageCS', None)
     _safe_set(owner, 'oclstdlibcs_PrecedenceCS', partner)
-    assert getattr(partner, 'oclstdlibcs_LibPackageCS') == owner
+    assert owner in getattr(partner, 'oclstdlibcs_LibPackageCS')
     _safe_set(owner, 'oclstdlibcs_PrecedenceCS', None)
-    assert getattr(partner, 'oclstdlibcs_LibPackageCS') is None
+    assert owner not in getattr(partner, 'oclstdlibcs_LibPackageCS')
 
 
 def test_assoc_precedence6_stub_double():

@@ -1,4 +1,8 @@
 @startuml
+' model: typeslibrary
+' project: sampleModel
+' owner: User
+' description: New project
 enum NativeTypeKind {
   Enum
   Length
@@ -53,12 +57,12 @@ TypesLibrary <|-- typeslibrary_NativeTypesLibrary
 TypesLibrary <|-- typeslibrary_UserDefinedTypesLibrary
 UserDefinedType <|-- typeslibrary_ComplexNamedType
 UserDefinedType <|-- typeslibrary_SimpleNamedType
-typeslibrary_NativeType "0..1" -- "1..1" typeslibrary_NativeType : mapsTo4
-typeslibrary_NativeType "1..1" -- "1..1" typeslibrary_TypeInstance : nativeType1
-typeslibrary_NativeType "0..9999" --* "1..1" typeslibrary_NativeTypesLibrary : nativeTypes0
-typeslibrary_SimpleNamedType "1..1" -- "1..1" typeslibrary_TypeInstance : type7
-typeslibrary_UserDefinedType "1..1" -- "1..1" typeslibrary_UserDefinedTypeRef : type9
-typeslibrary_ComplexNamedType "1..1" *-- "0..9999" typeslibrary_UserDefinedType : types6
-typeslibrary_TypesLibrary "0..9999" -- "1..1" typeslibrary_TypesLibraryUser : usedLibraries13
-typeslibrary_UserDefinedType "0..9999" --* "1..1" typeslibrary_UserDefinedTypesLibrary : userDefinedTypes11
+typeslibrary_NativeType "typeslibrary_NativeType3 0..1" -- "typeslibrary_NativeType5 1..1" typeslibrary_NativeType : mapsTo4
+typeslibrary_NativeType "typeslibrary_TypeInstance 1..1" -- "typeslibrary_NativeType2 1..1" typeslibrary_TypeInstance : nativeType1
+typeslibrary_NativeType "typeslibrary_NativeTypesLibrary 0..9999" --* "typeslibrary_NativeType 1..1" typeslibrary_NativeTypesLibrary : nativeTypes0
+typeslibrary_SimpleNamedType "typeslibrary_TypeInstance8 1..1" -- "typeslibrary_SimpleNamedType 1..1" typeslibrary_TypeInstance : type7
+typeslibrary_UserDefinedType "typeslibrary_UserDefinedTypeRef 1..1" -- "typeslibrary_UserDefinedType10 1..1" typeslibrary_UserDefinedTypeRef : type9
+typeslibrary_ComplexNamedType "typeslibrary_UserDefinedType 1..1" *-- "typeslibrary_ComplexNamedType 0..9999" typeslibrary_UserDefinedType : types6
+typeslibrary_TypesLibrary "typeslibrary_TypesLibraryUser 0..9999" -- "typeslibrary_TypesLibrary 1..1" typeslibrary_TypesLibraryUser : usedLibraries13
+typeslibrary_UserDefinedType "typeslibrary_UserDefinedTypesLibrary 0..9999" --* "typeslibrary_UserDefinedType12 1..1" typeslibrary_UserDefinedTypesLibrary : userDefinedTypes11
 @enduml

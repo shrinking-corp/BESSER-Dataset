@@ -170,8 +170,8 @@ def test_assoc_families16_stub_double():
     partner = Families_FamilyRegistry()
     setattr(partner, 'Families_FamilyRegistry', None)
     _safe_set(owner, 'Families_Family17', partner)
-    assert getattr(partner, 'Families_FamilyRegistry') == owner
+    assert owner in getattr(partner, 'Families_FamilyRegistry')
     _safe_set(owner, 'Families_Family17', None)
-    assert getattr(partner, 'Families_FamilyRegistry') is None
+    assert owner not in getattr(partner, 'Families_FamilyRegistry')
 
 

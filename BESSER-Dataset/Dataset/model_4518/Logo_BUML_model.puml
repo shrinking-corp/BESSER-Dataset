@@ -1,4 +1,8 @@
 @startuml
+' model: Logo
+' project: sampleModel
+' owner: User
+' description: New project
 class Logo_Back {
 }
 class Logo_Clear {
@@ -29,9 +33,9 @@ Primitive <|-- Logo_Left
 Primitive <|-- Logo_PenDown
 Primitive <|-- Logo_PenUp
 Primitive <|-- Logo_Right
-Logo_Expression "0..1" --* "1..1" Logo_Left : angle4
-Logo_Expression "0..1" --* "1..1" Logo_Right : angle6
-Logo_LogoProgram "1..1" *-- "0..9999" Logo_Primitive : primitives0
-Logo_Back "1..1" *-- "1..1" Logo_Expression : steps1
-Logo_Expression "1..1" --* "1..1" Logo_Forward : steps2
+Logo_Expression "Logo_Left 0..1" --* "Logo_Expression5 1..1" Logo_Left : angle4
+Logo_Expression "Logo_Right 0..1" --* "Logo_Expression7 1..1" Logo_Right : angle6
+Logo_LogoProgram "Logo_Primitive 1..1" *-- "Logo_LogoProgram 0..9999" Logo_Primitive : primitives0
+Logo_Back "Logo_Expression 1..1" *-- "Logo_Back 1..1" Logo_Expression : steps1
+Logo_Expression "Logo_Forward 1..1" --* "Logo_Expression3 1..1" Logo_Forward : steps2
 @enduml

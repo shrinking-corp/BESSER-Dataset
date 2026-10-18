@@ -1,4 +1,8 @@
 @startuml
+' model: zhu
+' project: sampleModel
+' owner: User
+' description: New project
 class zhu_Region {
   + name : str
 }
@@ -25,20 +29,20 @@ class zhu_TriggersSeparated {
   + firstTrigger : str
   + followingTriggers : str
 }
-zhu_State "0..1" --* "1..1" zhu_StatesSeparated : firstState30
-zhu_Transition "0..1" --* "1..1" zhu_Transitions : firstTransition16
-zhu_State "0..9999" --* "1..1" zhu_StatesSeparated : followingStates33
-zhu_Transition "0..9999" --* "1..1" zhu_Transitions : followingTransitions18
-zhu_StateMachine "1..1" *-- "0..1" zhu_TopRegion : region0
-zhu_Region "0..9999" --* "1..1" zhu_Region : regions11
-zhu_Region "0..9999" --* "1..1" zhu_TopRegion : regions3
-zhu_State "0..1" -- "1..1" zhu_Transition : source21
-zhu_States "0..1" --* "1..1" zhu_TopRegion : states1
-zhu_States "1..1" *-- "0..1" zhu_StatesSeparated : states28
-zhu_Region "1..1" *-- "0..1" zhu_States : states7
-zhu_State "0..1" -- "1..1" zhu_Transition : target23
-zhu_Region "1..1" *-- "0..1" zhu_Transitions : transitions13
-zhu_TopRegion "1..1" *-- "0..1" zhu_Transitions : transitions5
-zhu_Transition "1..1" *-- "0..1" zhu_Triggers : triggers26
-zhu_Triggers "1..1" *-- "0..1" zhu_TriggersSeparated : triggers36
+zhu_State "zhu_StatesSeparated31 0..1" --* "zhu_State32 1..1" zhu_StatesSeparated : firstState30
+zhu_Transition "zhu_Transitions17 0..1" --* "zhu_Transition 1..1" zhu_Transitions : firstTransition16
+zhu_State "zhu_StatesSeparated34 0..9999" --* "zhu_State35 1..1" zhu_StatesSeparated : followingStates33
+zhu_Transition "zhu_Transitions19 0..9999" --* "zhu_Transition20 1..1" zhu_Transitions : followingTransitions18
+zhu_StateMachine "zhu_TopRegion 1..1" *-- "zhu_StateMachine 0..1" zhu_TopRegion : region0
+zhu_Region "zhu_Region10 0..9999" --* "zhu_Region12 1..1" zhu_Region : regions11
+zhu_Region "zhu_TopRegion4 0..9999" --* "zhu_Region 1..1" zhu_TopRegion : regions3
+zhu_State "zhu_Transition22 0..1" -- "zhu_State 1..1" zhu_Transition : source21
+zhu_States "zhu_TopRegion2 0..1" --* "zhu_States 1..1" zhu_TopRegion : states1
+zhu_States "zhu_StatesSeparated 1..1" *-- "zhu_States29 0..1" zhu_StatesSeparated : states28
+zhu_Region "zhu_States9 1..1" *-- "zhu_Region8 0..1" zhu_States : states7
+zhu_State "zhu_Transition24 0..1" -- "zhu_State25 1..1" zhu_Transition : target23
+zhu_Region "zhu_Transitions15 1..1" *-- "zhu_Region14 0..1" zhu_Transitions : transitions13
+zhu_TopRegion "zhu_Transitions 1..1" *-- "zhu_TopRegion6 0..1" zhu_Transitions : transitions5
+zhu_Transition "zhu_Triggers 1..1" *-- "zhu_Transition27 0..1" zhu_Triggers : triggers26
+zhu_Triggers "zhu_TriggersSeparated 1..1" *-- "zhu_Triggers37 0..1" zhu_TriggersSeparated : triggers36
 @enduml

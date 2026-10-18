@@ -1,4 +1,8 @@
 @startuml
+' model: model
+' project: sampleModel
+' owner: User
+' description: New project
 enum ContentType {
   HTML
   JAVASCRIPT
@@ -89,8 +93,8 @@ class model_Response {
 class model_Scenario {
   + scenarioFilePath : str
 }
-model_Config "0..1" -- "1..1" model_ConfigExpectedResultPair : config2
-model_ConfigExpectedResultPair "0..9999" -- "1..1" model_Scenario : configExpectedResultPairList1
-model_ConfigExpectedResultPair "1..1" -- "0..1" model_ExpectedResult : expectedResult5
-model_Config "1..1" -- "0..1" model_Response : response0
+model_Config "model_ConfigExpectedResultPair3 0..1" -- "model_Config4 1..1" model_ConfigExpectedResultPair : config2
+model_ConfigExpectedResultPair "model_Scenario 0..9999" -- "model_ConfigExpectedResultPair 1..1" model_Scenario : configExpectedResultPairList1
+model_ConfigExpectedResultPair "model_ExpectedResult 1..1" -- "model_ConfigExpectedResultPair6 0..1" model_ExpectedResult : expectedResult5
+model_Config "model_Response 1..1" -- "model_Config 0..1" model_Response : response0
 @enduml

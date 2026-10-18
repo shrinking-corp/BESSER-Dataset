@@ -2408,9 +2408,9 @@ def test_assoc_contributions8_stub_double():
     partner = core_COREImpactModel()
     setattr(partner, 'core_COREImpactModel9', None)
     _safe_set(owner, 'core_COREContribution', partner)
-    assert getattr(partner, 'core_COREImpactModel9') == owner
+    assert owner in getattr(partner, 'core_COREImpactModel9')
     _safe_set(owner, 'core_COREContribution', None)
-    assert getattr(partner, 'core_COREImpactModel9') is None
+    assert owner not in getattr(partner, 'core_COREImpactModel9')
 
 
 def test_assoc_customizable40_stub_double():
@@ -2423,9 +2423,9 @@ def test_assoc_customizable40_stub_double():
     partner = core_COREInterface()
     setattr(partner, 'core_COREInterface41', None)
     _safe_set(owner, 'core_COREModelElement42', partner)
-    assert getattr(partner, 'core_COREInterface41') == owner
+    assert owner in getattr(partner, 'core_COREInterface41')
     _safe_set(owner, 'core_COREModelElement42', None)
-    assert getattr(partner, 'core_COREInterface41') is None
+    assert owner not in getattr(partner, 'core_COREInterface41')
 
 
 def test_assoc_features75_stub_double():
@@ -2438,9 +2438,9 @@ def test_assoc_features75_stub_double():
     partner = core_COREFeatureModel()
     setattr(partner, 'core_COREFeatureModel76', None)
     _safe_set(owner, 'core_COREFeature77', partner)
-    assert getattr(partner, 'core_COREFeatureModel76') == owner
+    assert owner in getattr(partner, 'core_COREFeatureModel76')
     _safe_set(owner, 'core_COREFeature77', None)
-    assert getattr(partner, 'core_COREFeatureModel76') is None
+    assert owner not in getattr(partner, 'core_COREFeatureModel76')
 
 
 def test_assoc_impactModelElements5_stub_double():
@@ -2453,9 +2453,9 @@ def test_assoc_impactModelElements5_stub_double():
     partner = core_COREImpactModel()
     setattr(partner, 'core_COREImpactModel', None)
     _safe_set(owner, 'core_COREImpactNode', partner)
-    assert getattr(partner, 'core_COREImpactModel') == owner
+    assert owner in getattr(partner, 'core_COREImpactModel')
     _safe_set(owner, 'core_COREImpactNode', None)
-    assert getattr(partner, 'core_COREImpactModel') is None
+    assert owner not in getattr(partner, 'core_COREImpactModel')
 
 
 def test_assoc_impacted46_stub_double():
@@ -2468,9 +2468,9 @@ def test_assoc_impacted46_stub_double():
     partner = core_COREInterface()
     setattr(partner, 'core_COREInterface47', None)
     _safe_set(owner, 'core_COREImpactNode48', partner)
-    assert getattr(partner, 'core_COREInterface47') == owner
+    assert owner in getattr(partner, 'core_COREInterface47')
     _safe_set(owner, 'core_COREImpactNode48', None)
-    assert getattr(partner, 'core_COREInterface47') is None
+    assert owner not in getattr(partner, 'core_COREInterface47')
 
 
 def test_assoc_modelElements1_stub_double():
@@ -2483,9 +2483,9 @@ def test_assoc_modelElements1_stub_double():
     partner = core_COREModel()
     setattr(partner, 'core_COREModel2', None)
     _safe_set(owner, 'core_COREModelElement', partner)
-    assert getattr(partner, 'core_COREModel2') == owner
+    assert owner in getattr(partner, 'core_COREModel2')
     _safe_set(owner, 'core_COREModelElement', None)
-    assert getattr(partner, 'core_COREModel2') is None
+    assert owner not in getattr(partner, 'core_COREModel2')
 
 
 def test_assoc_realizedBy17_stub_double():
@@ -2513,9 +2513,9 @@ def test_assoc_realizes3_stub_double():
     partner = core_COREModel()
     setattr(partner, 'realizedBy', None)
     _safe_set(owner, 'COREFeature', partner)
-    assert getattr(partner, 'realizedBy') == owner
+    assert owner in getattr(partner, 'realizedBy')
     _safe_set(owner, 'COREFeature', None)
-    assert getattr(partner, 'realizedBy') is None
+    assert owner not in getattr(partner, 'realizedBy')
 
 
 def test_assoc_reexposed69_stub_double():
@@ -2528,9 +2528,9 @@ def test_assoc_reexposed69_stub_double():
     partner = core_COREConfiguration()
     setattr(partner, 'core_COREConfiguration70', None)
     _safe_set(owner, 'core_COREFeature71', partner)
-    assert getattr(partner, 'core_COREConfiguration70') == owner
+    assert owner in getattr(partner, 'core_COREConfiguration70')
     _safe_set(owner, 'core_COREFeature71', None)
-    assert getattr(partner, 'core_COREConfiguration70') is None
+    assert owner not in getattr(partner, 'core_COREConfiguration70')
 
 
 def test_assoc_relatedFeatures86_stub_double():
@@ -2543,9 +2543,9 @@ def test_assoc_relatedFeatures86_stub_double():
     partner = core_COREFeatureModel()
     setattr(partner, 'core_COREFeatureModel87', None)
     _safe_set(owner, 'core_CORERelativity_Opt2', partner)
-    assert getattr(partner, 'core_COREFeatureModel87') == owner
+    assert owner in getattr(partner, 'core_COREFeatureModel87')
     _safe_set(owner, 'core_CORERelativity_Opt2', None)
-    assert getattr(partner, 'core_COREFeatureModel87') is None
+    assert owner not in getattr(partner, 'core_COREFeatureModel87')
 
 
 def test_assoc_reuses19_stub_double():
@@ -2588,9 +2588,9 @@ def test_assoc_selectable37_stub_double():
     partner = core_COREInterface()
     setattr(partner, 'core_COREInterface38', None)
     _safe_set(owner, 'core_COREFeature39', partner)
-    assert getattr(partner, 'core_COREInterface38') == owner
+    assert owner in getattr(partner, 'core_COREInterface38')
     _safe_set(owner, 'core_COREFeature39', None)
-    assert getattr(partner, 'core_COREInterface38') is None
+    assert owner not in getattr(partner, 'core_COREInterface38')
 
 
 def test_assoc_selected66_stub_double():
@@ -2603,9 +2603,9 @@ def test_assoc_selected66_stub_double():
     partner = core_COREConfiguration()
     setattr(partner, 'core_COREConfiguration67', None)
     _safe_set(owner, 'core_COREFeature68', partner)
-    assert getattr(partner, 'core_COREConfiguration67') == owner
+    assert owner in getattr(partner, 'core_COREConfiguration67')
     _safe_set(owner, 'core_COREFeature68', None)
-    assert getattr(partner, 'core_COREConfiguration67') is None
+    assert owner not in getattr(partner, 'core_COREConfiguration67')
 
 
 def test_assoc_usable43_stub_double():
@@ -2618,9 +2618,9 @@ def test_assoc_usable43_stub_double():
     partner = core_COREInterface()
     setattr(partner, 'core_COREInterface44', None)
     _safe_set(owner, 'core_COREModelElement45', partner)
-    assert getattr(partner, 'core_COREInterface44') == owner
+    assert owner in getattr(partner, 'core_COREInterface44')
     _safe_set(owner, 'core_COREModelElement45', None)
-    assert getattr(partner, 'core_COREInterface44') is None
+    assert owner not in getattr(partner, 'core_COREInterface44')
 
 
 def test_assoc_value95_stub_double():
@@ -2640,84 +2640,22 @@ def test_assoc_value95_stub_double():
 
 
 
-from enum import Enum
 from python_code import COREFeatureRelationshipType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(COREFeatureRelationshipType.OR, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(COREFeatureRelationshipType.OR, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(COREFeatureRelationshipType.OR, '', 0, 0) == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(COREFeatureRelationshipType.OR, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(COREFeatureRelationshipType.OR, 'OR') == COREFeatureRelationshipType.OR
-
-from enum import Enum
 from python_code import COREPartialityType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(COREPartialityType.none, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(COREPartialityType.none, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(COREPartialityType.none, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(COREPartialityType.none, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(COREPartialityType.none, 'none') == COREPartialityType.none
-
-from enum import Enum
 from python_code import COREVisibilityType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(COREVisibilityType.concern, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(COREVisibilityType.concern, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(COREVisibilityType.public, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(COREVisibilityType.public, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(COREVisibilityType.public, 'public') == COREVisibilityType.public
-
 from python_code import core_COREInterface
 from python_code import core_COREModel
 from python_code import core_COREModelElement
 
 def test_core_COREModelElement___init__():
     assert core_COREModelElement.__init__(core_COREModelElement('', '\x00', core_COREModelElement=core_COREModel(), core_COREModelElement42=core_COREInterface(), core_COREModelElement45=core_COREInterface()), '\x00\x00', '', core_COREModelElement=core_COREModel(), core_COREModelElement42=core_COREInterface(), core_COREModelElement45=core_COREInterface()) == None
-
 from python_code import core_CORENamedElement
 
 def test_core_CORENamedElement___init__():
     assert core_CORENamedElement.__init__(core_CORENamedElement(''), '') == None
-
 from python_code import core_LayoutElement
 from python_code import core_LayoutMap
 

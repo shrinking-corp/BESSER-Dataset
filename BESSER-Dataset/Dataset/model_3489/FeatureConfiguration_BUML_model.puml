@@ -1,4 +1,8 @@
 @startuml
+' model: fc
+' project: sampleModel
+' owner: User
+' description: New project
 class AttributeValue {
 }
 class fc_Attribute {
@@ -45,14 +49,14 @@ AttributeValue <|-- fc_BooleanValue
 AttributeValue <|-- fc_DoubleValue
 AttributeValue <|-- fc_IntegerValue
 AttributeValue <|-- fc_StringValue
-fc_Attribute "1..1" -- "1..1" fc_AttributeValue : attribute19
-fc_Feature "1..1" -- "1..1" fc_Selection : feature15
-fc_FeatureConfiguration "1..1" -- "1..1" fc_Selection : featureConfiguration12
-fc_FeatureConfiguration "1..1" -- "0..1" fc_FeatureModel : featureModel0
-fc_FeatureConfiguration "1..1" *-- "1..1" fc_FeatureModel : featureModelCopy1
-fc_Selection "1..1" -- "0..1" fc_Selection : parent7
-fc_FeatureConfiguration "1..1" *-- "1..1" fc_Selection : root4
-fc_AttributeValue "1..1" -- "1..1" fc_Selection : selection17
-fc_Selection "1..1" *-- "0..9999" fc_Selection : selections10
-fc_AttributeValue "0..9999" --* "1..1" fc_Selection : values8
+fc_Attribute "fc_AttributeValue 1..1" -- "fc_Attribute 1..1" fc_AttributeValue : attribute19
+fc_Feature "fc_Selection16 1..1" -- "fc_Feature 1..1" fc_Selection : feature15
+fc_FeatureConfiguration "fc_Selection13 1..1" -- "fc_FeatureConfiguration14 1..1" fc_Selection : featureConfiguration12
+fc_FeatureConfiguration "fc_FeatureModel 1..1" -- "fc_FeatureConfiguration 0..1" fc_FeatureModel : featureModel0
+fc_FeatureConfiguration "fc_FeatureModel3 1..1" *-- "fc_FeatureConfiguration2 1..1" fc_FeatureModel : featureModelCopy1
+fc_Selection "Selection 1..1" -- "selections 0..1" fc_Selection : parent7
+fc_FeatureConfiguration "fc_Selection 1..1" *-- "fc_FeatureConfiguration5 1..1" fc_Selection : root4
+fc_AttributeValue "Selection18 1..1" -- "values 1..1" fc_Selection : selection17
+fc_Selection "Selection11 1..1" *-- "parent 0..9999" fc_Selection : selections10
+fc_AttributeValue "selection 0..9999" --* "AttributeValue 1..1" fc_Selection : values8
 @enduml

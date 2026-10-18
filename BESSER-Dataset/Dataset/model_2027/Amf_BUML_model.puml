@@ -1,4 +1,8 @@
 @startuml
+' model: amf
+' project: sampleModel
+' owner: User
+' description: New project
 enum Event {
   RECEIVE
   SEND
@@ -23,12 +27,12 @@ class amf_Statemachine {
 class amf_Transition {
   + event : str
 }
-amf_Channel "0..9999" --* "1..1" amf_Network : channel0
-amf_Channel "0..1" -- "1..1" amf_Transition : channel13
-amf_State "0..1" -- "1..1" amf_Statemachine : initialstate3
-amf_State "0..1" -- "1..1" amf_Transition : source10
-amf_State "0..9999" --* "1..1" amf_Statemachine : state5
-amf_Network "1..1" *-- "0..9999" amf_Statemachine : statemachine1
-amf_State "0..1" -- "1..1" amf_Transition : target16
-amf_Statemachine "1..1" *-- "0..9999" amf_Transition : transition8
+amf_Channel "amf_Network 0..9999" --* "amf_Channel 1..1" amf_Network : channel0
+amf_Channel "amf_Transition14 0..1" -- "amf_Channel15 1..1" amf_Transition : channel13
+amf_State "amf_Statemachine4 0..1" -- "amf_State 1..1" amf_Statemachine : initialstate3
+amf_State "amf_Transition11 0..1" -- "amf_State12 1..1" amf_Transition : source10
+amf_State "amf_Statemachine6 0..9999" --* "amf_State7 1..1" amf_Statemachine : state5
+amf_Network "amf_Statemachine 1..1" *-- "amf_Network2 0..9999" amf_Statemachine : statemachine1
+amf_State "amf_Transition17 0..1" -- "amf_State18 1..1" amf_Transition : target16
+amf_Statemachine "amf_Transition 1..1" *-- "amf_Statemachine9 0..9999" amf_Transition : transition8
 @enduml

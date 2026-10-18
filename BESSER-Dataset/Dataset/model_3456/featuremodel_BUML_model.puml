@@ -1,4 +1,8 @@
 @startuml
+' model: FeatureModel
+' project: sampleModel
+' owner: User
+' description: New project
 class Constraint {
 }
 class FeatureModel_Comment {
@@ -39,20 +43,20 @@ NamedElement <|-- FeatureModel_Constraint
 NamedElement <|-- FeatureModel_Feature
 NamedElement <|-- FeatureModel_FeatureModel
 NamedElement <|-- FeatureModel_Group
-FeatureModel_Feature "1..1" *-- "0..9999" FeatureModel_Feature : children10
-FeatureModel_Comment "0..9999" --* "1..1" FeatureModel_FeatureModel : comments0
-FeatureModel_Constraint "0..9999" --* "1..1" FeatureModel_FeatureModel : constraints1
-FeatureModel_Comment "1..1" -- "0..9999" FeatureModel_NamedElement : element7
-FeatureModel_ExcludeConstraint "0..9999" -- "1..1" FeatureModel_Feature : excludeConstraintsA16
-FeatureModel_ExcludeConstraint "0..9999" -- "1..1" FeatureModel_Feature : excludeConstraintsB17
-FeatureModel_ExcludeConstraint "1..1" -- "1..9999" FeatureModel_Feature : excludedFeatureA22
-FeatureModel_ExcludeConstraint "1..1" -- "1..9999" FeatureModel_Feature : excludedFeatureB24
-FeatureModel_Feature "1..9999" -- "1..1" FeatureModel_RequireConstraint : feature20
-FeatureModel_Feature "2..9999" -- "1..1" FeatureModel_Group : features26
-FeatureModel_Feature "1..1" -- "0..9999" FeatureModel_Group : group15
-FeatureModel_FeatureModel "1..1" *-- "0..9999" FeatureModel_Group : groups5
-FeatureModel_Feature "1..1" -- "0..9999" FeatureModel_RequireConstraint : requireConstraints13
-FeatureModel_Feature "1..1" -- "0..9999" FeatureModel_RequireConstraint : requiredConstraints12
-FeatureModel_Feature "1..9999" -- "1..1" FeatureModel_RequireConstraint : requiredFeature19
-FeatureModel_Feature "1..9999" --* "1..1" FeatureModel_FeatureModel : root3
+FeatureModel_Feature "FeatureModel_Feature11 1..1" *-- "FeatureModel_Feature9 0..9999" FeatureModel_Feature : children10
+FeatureModel_Comment "FeatureModel_FeatureModel 0..9999" --* "FeatureModel_Comment 1..1" FeatureModel_FeatureModel : comments0
+FeatureModel_Constraint "FeatureModel_FeatureModel2 0..9999" --* "FeatureModel_Constraint 1..1" FeatureModel_FeatureModel : constraints1
+FeatureModel_Comment "FeatureModel_NamedElement 1..1" -- "FeatureModel_Comment8 0..9999" FeatureModel_NamedElement : element7
+FeatureModel_ExcludeConstraint "excludedFeatureA 0..9999" -- "ExcludeConstraint 1..1" FeatureModel_Feature : excludeConstraintsA16
+FeatureModel_ExcludeConstraint "excludedFeatureB 0..9999" -- "ExcludeConstraint18 1..1" FeatureModel_Feature : excludeConstraintsB17
+FeatureModel_ExcludeConstraint "Feature23 1..1" -- "excludeConstraintsA 1..9999" FeatureModel_Feature : excludedFeatureA22
+FeatureModel_ExcludeConstraint "Feature25 1..1" -- "excludeConstraintsB 1..9999" FeatureModel_Feature : excludedFeatureB24
+FeatureModel_Feature "requireConstraints 1..9999" -- "Feature21 1..1" FeatureModel_RequireConstraint : feature20
+FeatureModel_Feature "group 2..9999" -- "Feature27 1..1" FeatureModel_Group : features26
+FeatureModel_Feature "Group 1..1" -- "features 0..9999" FeatureModel_Group : group15
+FeatureModel_FeatureModel "FeatureModel_Group 1..1" *-- "FeatureModel_FeatureModel6 0..9999" FeatureModel_Group : groups5
+FeatureModel_Feature "RequireConstraint14 1..1" -- "feature 0..9999" FeatureModel_RequireConstraint : requireConstraints13
+FeatureModel_Feature "RequireConstraint 1..1" -- "requiredFeature 0..9999" FeatureModel_RequireConstraint : requiredConstraints12
+FeatureModel_Feature "requiredConstraints 1..9999" -- "Feature 1..1" FeatureModel_RequireConstraint : requiredFeature19
+FeatureModel_Feature "FeatureModel_FeatureModel4 1..9999" --* "FeatureModel_Feature 1..1" FeatureModel_FeatureModel : root3
 @enduml

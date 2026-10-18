@@ -1,4 +1,8 @@
 @startuml
+' model: House2
+' project: sampleModel
+' owner: User
+' description: New project
 class Action {
 }
 class Actor {
@@ -86,13 +90,13 @@ NamedElement <|-- House2_Sensor
 Sensor <|-- House2_RainSensor
 Sensor <|-- House2_TemperatureSensor
 Sensor <|-- House2_TwilightSwitch
-House2_Action "0..1" --* "1..1" House2_ControlRule : action10
-House2_Action "1..1" *-- "0..1" House2_Actor : actor15
-House2_Condition "0..1" --* "1..1" House2_ControlRule : condition8
-House2_ControlRule "0..9999" --* "1..1" House2_House : controlRules1
-House2_Container "1..1" *-- "0..9999" House2_Element : elements3
-House2_Container "0..1" -- "1..1" House2_Sensor : isLocatedIn4
-House2_Actor "1..1" -- "0..1" House2_Container : isLocatedIn6
-House2_House "1..1" *-- "0..9999" House2_Room : rooms0
-House2_Condition "1..1" *-- "0..1" House2_Sensor : sensor12
+House2_Action "House2_ControlRule11 0..1" --* "House2_Action 1..1" House2_ControlRule : action10
+House2_Action "House2_Actor17 1..1" *-- "House2_Action16 0..1" House2_Actor : actor15
+House2_Condition "House2_ControlRule9 0..1" --* "House2_Condition 1..1" House2_ControlRule : condition8
+House2_ControlRule "House2_House2 0..9999" --* "House2_ControlRule 1..1" House2_House : controlRules1
+House2_Container "House2_Element 1..1" *-- "House2_Container 0..9999" House2_Element : elements3
+House2_Container "House2_Sensor 0..1" -- "House2_Container5 1..1" House2_Sensor : isLocatedIn4
+House2_Actor "House2_Container7 1..1" -- "House2_Actor 0..1" House2_Container : isLocatedIn6
+House2_House "House2_Room 1..1" *-- "House2_House 0..9999" House2_Room : rooms0
+House2_Condition "House2_Sensor14 1..1" *-- "House2_Condition13 0..1" House2_Sensor : sensor12
 @enduml

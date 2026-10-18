@@ -1057,9 +1057,9 @@ def test_assoc_eCState29_stub_double():
     partner = libraryElement_ECC()
     setattr(partner, 'libraryElement_ECC30', None)
     _safe_set(owner, 'libraryElement_ECState', partner)
-    assert getattr(partner, 'libraryElement_ECC30') == owner
+    assert owner in getattr(partner, 'libraryElement_ECC30')
     _safe_set(owner, 'libraryElement_ECState', None)
-    assert getattr(partner, 'libraryElement_ECC30') is None
+    assert owner not in getattr(partner, 'libraryElement_ECC30')
 
 
 def test_assoc_eCTransition31_stub_double():
@@ -1072,9 +1072,9 @@ def test_assoc_eCTransition31_stub_double():
     partner = libraryElement_ECC()
     setattr(partner, 'libraryElement_ECC32', None)
     _safe_set(owner, 'libraryElement_ECTransition', partner)
-    assert getattr(partner, 'libraryElement_ECC32') == owner
+    assert owner in getattr(partner, 'libraryElement_ECC32')
     _safe_set(owner, 'libraryElement_ECTransition', None)
-    assert getattr(partner, 'libraryElement_ECC32') is None
+    assert owner not in getattr(partner, 'libraryElement_ECC32')
 
 
 def test_assoc_eventInputs65_stub_double():
@@ -1222,9 +1222,9 @@ def test_assoc_internalVars7_stub_double():
     partner = libraryElement_BasicFBType()
     setattr(partner, 'libraryElement_BasicFBType8', None)
     _safe_set(owner, 'libraryElement_VarDeclaration', partner)
-    assert getattr(partner, 'libraryElement_BasicFBType8') == owner
+    assert owner in getattr(partner, 'libraryElement_BasicFBType8')
     _safe_set(owner, 'libraryElement_VarDeclaration', None)
-    assert getattr(partner, 'libraryElement_BasicFBType8') is None
+    assert owner not in getattr(partner, 'libraryElement_BasicFBType8')
 
 
 def test_assoc_links150_stub_double():
@@ -1327,9 +1327,9 @@ def test_assoc_serviceSequence165_stub_double():
     partner = libraryElement_Service()
     setattr(partner, 'libraryElement_Service166', None)
     _safe_set(owner, 'libraryElement_ServiceSequence167', partner)
-    assert getattr(partner, 'libraryElement_Service166') == owner
+    assert owner in getattr(partner, 'libraryElement_Service166')
     _safe_set(owner, 'libraryElement_ServiceSequence167', None)
-    assert getattr(partner, 'libraryElement_Service166') is None
+    assert owner not in getattr(partner, 'libraryElement_Service166')
 
 
 def test_assoc_sockets62_stub_double():
@@ -1387,9 +1387,9 @@ def test_assoc_varDeclaration153_stub_double():
     partner = libraryElement_SegmentType()
     setattr(partner, 'libraryElement_SegmentType', None)
     _safe_set(owner, 'libraryElement_VarDeclaration154', partner)
-    assert getattr(partner, 'libraryElement_SegmentType') == owner
+    assert owner in getattr(partner, 'libraryElement_SegmentType')
     _safe_set(owner, 'libraryElement_VarDeclaration154', None)
-    assert getattr(partner, 'libraryElement_SegmentType') is None
+    assert owner not in getattr(partner, 'libraryElement_SegmentType')
 
 
 def test_assoc_varDeclaration90_stub_double():
@@ -1402,9 +1402,9 @@ def test_assoc_varDeclaration90_stub_double():
     partner = libraryElement_ResourceType()
     setattr(partner, 'libraryElement_ResourceType', None)
     _safe_set(owner, 'libraryElement_VarDeclaration91', partner)
-    assert getattr(partner, 'libraryElement_ResourceType') == owner
+    assert owner in getattr(partner, 'libraryElement_ResourceType')
     _safe_set(owner, 'libraryElement_VarDeclaration91', None)
-    assert getattr(partner, 'libraryElement_ResourceType') is None
+    assert owner not in getattr(partner, 'libraryElement_ResourceType')
 
 
 def test_assoc_varDeclarations173_stub_double():
@@ -1417,9 +1417,9 @@ def test_assoc_varDeclarations173_stub_double():
     partner = libraryElement_IVarElement()
     setattr(partner, 'libraryElement_IVarElement', None)
     _safe_set(owner, 'libraryElement_VarDeclaration174', partner)
-    assert getattr(partner, 'libraryElement_IVarElement') == owner
+    assert owner in getattr(partner, 'libraryElement_IVarElement')
     _safe_set(owner, 'libraryElement_VarDeclaration174', None)
-    assert getattr(partner, 'libraryElement_IVarElement') is None
+    assert owner not in getattr(partner, 'libraryElement_IVarElement')
 
 
 def test_assoc_varInitialization124_stub_double():
@@ -1462,9 +1462,9 @@ def test_assoc_versionInfo128_stub_double():
     partner = libraryElement_LibraryElement()
     setattr(partner, 'libraryElement_LibraryElement', None)
     _safe_set(owner, 'libraryElement_VersionInfo', partner)
-    assert getattr(partner, 'libraryElement_LibraryElement') == owner
+    assert owner in getattr(partner, 'libraryElement_LibraryElement')
     _safe_set(owner, 'libraryElement_VersionInfo', None)
-    assert getattr(partner, 'libraryElement_LibraryElement') is None
+    assert owner not in getattr(partner, 'libraryElement_LibraryElement')
 
 
 def test_assoc_withs126_stub_double():

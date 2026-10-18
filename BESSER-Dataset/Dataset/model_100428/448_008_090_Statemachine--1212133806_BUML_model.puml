@@ -1,4 +1,8 @@
 @startuml
+' model: statemachine
+' project: sampleModel
+' owner: User
+' description: New project
 class Declaration {
 }
 class State {
@@ -43,14 +47,14 @@ Declaration <|-- statemachine_Transition
 State <|-- statemachine_FinalState
 State <|-- statemachine_InitialState
 State <|-- statemachine_NormalState
-statemachine_Action "1..1" -- "0..1" statemachine_Statement : actionStatement17
-statemachine_Statement "0..1" -- "1..1" statemachine_Transition : actionStatement9
-statemachine_Declaration "0..9999" --* "1..1" statemachine_StateMachine : declarations0
-statemachine_Action "0..1" --* "1..1" statemachine_NormalState : entry19
-statemachine_Expression "0..1" -- "1..1" statemachine_Transition : guardExpression7
-statemachine_StateMachine "1..1" *-- "0..9999" statemachine_StateMachineVariable : machineVariables1
-statemachine_State "0..9999" -- "1..1" statemachine_State : reachable15
-statemachine_State "0..1" -- "1..1" statemachine_Transition : source3
-statemachine_State "0..9999" -- "1..1" statemachine_State : successors12
-statemachine_State "0..1" -- "1..1" statemachine_Transition : target4
+statemachine_Action "statemachine_Statement18 1..1" -- "statemachine_Action 0..1" statemachine_Statement : actionStatement17
+statemachine_Statement "statemachine_Transition10 0..1" -- "statemachine_Statement 1..1" statemachine_Transition : actionStatement9
+statemachine_Declaration "statemachine_StateMachine 0..9999" --* "statemachine_Declaration 1..1" statemachine_StateMachine : declarations0
+statemachine_Action "statemachine_NormalState 0..1" --* "statemachine_Action20 1..1" statemachine_NormalState : entry19
+statemachine_Expression "statemachine_Transition8 0..1" -- "statemachine_Expression 1..1" statemachine_Transition : guardExpression7
+statemachine_StateMachine "statemachine_StateMachineVariable 1..1" *-- "statemachine_StateMachine2 0..9999" statemachine_StateMachineVariable : machineVariables1
+statemachine_State "statemachine_State14 0..9999" -- "statemachine_State16 1..1" statemachine_State : reachable15
+statemachine_State "statemachine_Transition 0..1" -- "statemachine_State 1..1" statemachine_Transition : source3
+statemachine_State "statemachine_State11 0..9999" -- "statemachine_State13 1..1" statemachine_State : successors12
+statemachine_State "statemachine_Transition5 0..1" -- "statemachine_State6 1..1" statemachine_Transition : target4
 @enduml

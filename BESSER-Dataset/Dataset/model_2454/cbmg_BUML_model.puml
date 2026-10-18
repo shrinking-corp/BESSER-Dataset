@@ -1,4 +1,8 @@
 @startuml
+' model: cbmg
+' project: sampleModel
+' owner: User
+' description: New project
 class cbmg_RequestParameter {
   + parameterName : str
   + parameterValue : str
@@ -19,10 +23,10 @@ class cbmg_Transition {
   + probability : float
   + thinkTime : float
 }
-cbmg_State "1..1" -- "0..9999" cbmg_Transition : incomingTransitions1
-cbmg_State "1..1" -- "0..9999" cbmg_Transition : outgoingTransitions0
-cbmg_RequestParameter "0..9999" -- "1..1" cbmg_Transition : requestParameter_transition10
-cbmg_State "1..1" -- "1..1" cbmg_Transition : sourceState4
-cbmg_State "1..1" -- "1..1" cbmg_Transition : targetState7
-cbmg_RequestParameter "1..1" -- "0..1" cbmg_Transition : transition_RequestParameter12
+cbmg_State "cbmg_Transition3 1..1" -- "cbmg_State2 0..9999" cbmg_Transition : incomingTransitions1
+cbmg_State "cbmg_Transition 1..1" -- "cbmg_State 0..9999" cbmg_Transition : outgoingTransitions0
+cbmg_RequestParameter "cbmg_Transition11 0..9999" -- "cbmg_RequestParameter 1..1" cbmg_Transition : requestParameter_transition10
+cbmg_State "cbmg_Transition5 1..1" -- "cbmg_State6 1..1" cbmg_Transition : sourceState4
+cbmg_State "cbmg_Transition8 1..1" -- "cbmg_State9 1..1" cbmg_Transition : targetState7
+cbmg_RequestParameter "cbmg_Transition14 1..1" -- "cbmg_RequestParameter13 0..1" cbmg_Transition : transition_RequestParameter12
 @enduml

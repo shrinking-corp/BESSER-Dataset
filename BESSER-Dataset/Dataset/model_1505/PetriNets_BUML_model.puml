@@ -1,4 +1,8 @@
 @startuml
+' model: PetriNet
+' project: sampleModel
+' owner: User
+' description: New project
 class NamedElement {
 }
 abstract class PetriNet_NamedElement {
@@ -12,12 +16,12 @@ class PetriNet_Transition {
 }
 NamedElement <|-- PetriNet_Place
 NamedElement <|-- PetriNet_Transition
-PetriNet_Net "1..1" -- "1..1" PetriNet_Transition : cnet12
-PetriNet_Net "1..1" -- "1..1" PetriNet_Place : cnet7
-PetriNet_Net "1..1" *-- "0..9999" PetriNet_Place : places0
-PetriNet_Place "0..9999" -- "1..1" PetriNet_Transition : postp10
-PetriNet_Place "1..1" -- "0..9999" PetriNet_Transition : postt3
-PetriNet_Place "0..9999" -- "1..1" PetriNet_Transition : prep8
-PetriNet_Place "1..1" -- "0..9999" PetriNet_Transition : pret5
-PetriNet_Net "1..1" *-- "0..9999" PetriNet_Transition : transitions1
+PetriNet_Net "transitions 1..1" -- "Net13 1..1" PetriNet_Transition : cnet12
+PetriNet_Net "places 1..1" -- "Net 1..1" PetriNet_Place : cnet7
+PetriNet_Net "Place 1..1" *-- "cnet 0..9999" PetriNet_Place : places0
+PetriNet_Place "pret 0..9999" -- "Place11 1..1" PetriNet_Transition : postp10
+PetriNet_Place "Transition4 1..1" -- "prep 0..9999" PetriNet_Transition : postt3
+PetriNet_Place "postt 0..9999" -- "Place9 1..1" PetriNet_Transition : prep8
+PetriNet_Place "Transition6 1..1" -- "postp 0..9999" PetriNet_Transition : pret5
+PetriNet_Net "Transition 1..1" *-- "cnet2 0..9999" PetriNet_Transition : transitions1
 @enduml

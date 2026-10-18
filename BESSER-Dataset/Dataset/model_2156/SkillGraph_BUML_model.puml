@@ -1,4 +1,8 @@
 @startuml
+' model: SkillGraph
+' project: sampleModel
+' owner: User
+' description: New project
 enum Category {
   action
   actuator
@@ -37,16 +41,16 @@ enum Type {
   Technical_Requirement
   Technical_Safety_Requirement
 }
-SkillGraph_Edge "0..9999" --* "1..1" SkillGraph_Node : childEdges7
-SkillGraph_Edge "1..1" -- "1..1" SkillGraph_Node : childNode20
-SkillGraph_Equation "0..9999" --* "1..1" SkillGraph_Node : equations6
-SkillGraph_Graph "1..1" -- "1..1" SkillGraph_Parameter : graph0
-SkillGraph_Node "1..1" -- "1..1" SkillGraph_Requirement : node14
-SkillGraph_Equation "1..1" -- "1..1" SkillGraph_Node : node15
-SkillGraph_Graph "1..1" *-- "0..9999" SkillGraph_Node : nodes1
-SkillGraph_Graph "1..1" *-- "0..9999" SkillGraph_Parameter : parameterList5
-SkillGraph_Edge "1..1" -- "1..1" SkillGraph_Node : parentNode17
-SkillGraph_Node "1..1" -- "0..9999" SkillGraph_Node : parentNodes10
-SkillGraph_Node "1..1" *-- "0..9999" SkillGraph_Requirement : requirements12
-SkillGraph_Graph "1..1" *-- "1..1" SkillGraph_Node : rootNode2
+SkillGraph_Edge "SkillGraph_Node8 0..9999" --* "SkillGraph_Edge 1..1" SkillGraph_Node : childEdges7
+SkillGraph_Edge "SkillGraph_Node22 1..1" -- "SkillGraph_Edge21 1..1" SkillGraph_Node : childNode20
+SkillGraph_Equation "node 0..9999" --* "Equation 1..1" SkillGraph_Node : equations6
+SkillGraph_Graph "parameterList 1..1" -- "Graph 1..1" SkillGraph_Parameter : graph0
+SkillGraph_Node "requirements 1..1" -- "Node 1..1" SkillGraph_Requirement : node14
+SkillGraph_Equation "Node16 1..1" -- "equations 1..1" SkillGraph_Node : node15
+SkillGraph_Graph "SkillGraph_Node 1..1" *-- "SkillGraph_Graph 0..9999" SkillGraph_Node : nodes1
+SkillGraph_Graph "Parameter 1..1" *-- "graph 0..9999" SkillGraph_Parameter : parameterList5
+SkillGraph_Edge "SkillGraph_Node19 1..1" -- "SkillGraph_Edge18 1..1" SkillGraph_Node : parentNode17
+SkillGraph_Node "SkillGraph_Node11 1..1" -- "SkillGraph_Node9 0..9999" SkillGraph_Node : parentNodes10
+SkillGraph_Node "Requirement 1..1" *-- "node13 0..9999" SkillGraph_Requirement : requirements12
+SkillGraph_Graph "SkillGraph_Node4 1..1" *-- "SkillGraph_Graph3 1..1" SkillGraph_Node : rootNode2
 @enduml

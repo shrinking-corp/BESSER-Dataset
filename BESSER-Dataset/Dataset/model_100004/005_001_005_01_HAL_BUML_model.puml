@@ -1,4 +1,8 @@
 @startuml
+' model: HAL
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractDepot {
 }
 class AbstractDepotType {
@@ -251,20 +255,20 @@ TheseType <|-- HAL_These
 WorkshopType <|-- HAL_Communication
 WorkshopType <|-- HAL_Conference
 WorkshopType <|-- HAL_Workshop
-AutLabType "1..1" --* "1..1" HAL_Entry : autLab3
-Auteur "1..9999" -- "1..1" HAL_AutLabType : auteurs13
-Connexion "1..1" --* "1..1" HAL_HAL : connexion0
-Entry "0..9999" --* "1..1" HAL_HAL : contents1
-AbstractDepot "1..9999" --* "1..1" HAL_DepotsType : depots19
-DepotsType "1..1" --* "1..1" HAL_ArticleRecent : fichiers7
-AbstractDepot "1..1" --* "1..1" HAL_ArticleRetro : fichiers8
-HAL_Auteur "1..1" -- "0..1" Laboratoire : lab16
-HAL_AutLabType "1..1" -- "1..9999" Laboratoire : laboratoires14
-HAL_Article "1..1" *-- "1..1" MetaArtType : metaArt6
-HAL_Notice "1..1" *-- "1..1" MetaArtNoticeType : metaArtNotice9
-AbstractMetaLab "1..1" --* "1..1" HAL_Laboratoire : metas18
-HAL_MetaArtType "1..1" *-- "0..1" ReferenceBiblioType : referenceBiblio10
-HAL_MetaArtNoticeType "1..1" *-- "1..1" ReferenceBiblioType : referenceBiblio11
-HAL_WebLink "1..1" *-- "1..1" Server : server21
-HAL_Entry "1..1" *-- "0..9999" TamponType : tampons4
+AutLabType "HAL_Entry 1..1" --* "AutLabType 1..1" HAL_Entry : autLab3
+Auteur "HAL_AutLabType 1..9999" -- "Auteur 1..1" HAL_AutLabType : auteurs13
+Connexion "HAL_HAL 1..1" --* "Connexion 1..1" HAL_HAL : connexion0
+Entry "HAL_HAL2 0..9999" --* "Entry 1..1" HAL_HAL : contents1
+AbstractDepot "HAL_DepotsType 1..9999" --* "AbstractDepot20 1..1" HAL_DepotsType : depots19
+DepotsType "HAL_ArticleRecent 1..1" --* "DepotsType 1..1" HAL_ArticleRecent : fichiers7
+AbstractDepot "HAL_ArticleRetro 1..1" --* "AbstractDepot 1..1" HAL_ArticleRetro : fichiers8
+HAL_Auteur "Laboratoire17 1..1" -- "HAL_Auteur 0..1" Laboratoire : lab16
+HAL_AutLabType "Laboratoire 1..1" -- "HAL_AutLabType15 1..9999" Laboratoire : laboratoires14
+HAL_Article "MetaArtType 1..1" *-- "HAL_Article 1..1" MetaArtType : metaArt6
+HAL_Notice "MetaArtNoticeType 1..1" *-- "HAL_Notice 1..1" MetaArtNoticeType : metaArtNotice9
+AbstractMetaLab "HAL_Laboratoire 1..1" --* "AbstractMetaLab 1..1" HAL_Laboratoire : metas18
+HAL_MetaArtType "ReferenceBiblioType 1..1" *-- "HAL_MetaArtType 0..1" ReferenceBiblioType : referenceBiblio10
+HAL_MetaArtNoticeType "ReferenceBiblioType12 1..1" *-- "HAL_MetaArtNoticeType 1..1" ReferenceBiblioType : referenceBiblio11
+HAL_WebLink "Server 1..1" *-- "HAL_WebLink 1..1" Server : server21
+HAL_Entry "TamponType 1..1" *-- "HAL_Entry5 0..9999" TamponType : tampons4
 @enduml

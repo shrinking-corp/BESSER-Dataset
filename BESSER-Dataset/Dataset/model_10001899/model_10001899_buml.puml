@@ -1,4 +1,8 @@
 @startuml
+' model: _cB5e4G3dEeqhRdvvYtDJdw
+' project: sampleModel
+' owner: User
+' description: New project
 class Brindar_consultoria_external {
 }
 class Clasificar_Producto_external {
@@ -72,19 +76,19 @@ class Solicitud_Suministros {
   + codigo : str
   + fecha : str
 }
-Brindar_consultoria_external "0..1" -- "0..1" Cliente_Actor : Cliente_Brindar_consultoria
-Dependencia_Actor "0..1" -- "0..1" Entregar_productos_external : Dependencia_Entregar_productos
-Dependencia "1..1" -- "1..9999" Solicitud_Suministros : Dependencia_Solicitud_Suministros
-Elementos "1..9999" -- "0..9999" Factura : Elementos_Factura
-Elementos "1..9999" -- "0..9999" Solicitud_Suministros : Elementos_Solicitud_Suministros
-Elementos "1..9999" -- "0..9999" Ordenes_Pedidos : Ordenes_Pedidos_Elementos
-Ordenes_Pedidos "0..9999" -- "0..1" Proveedor : Ordenes_Pedidos_Proveedor
-Factura "0..1" -- "0..1" Proveedor : Proveedor_Factura
-Pedidos "0..9999" -- "1..1" Proveedor : Proveedor_Pedidos
-Proveedores_Actor "0..1" -- "0..1" Registrar_proveedores_external : Proveedores_Registrar_proveedores
-Proveedores_Actor "0..1" -- "0..1" Recibir_productos_o_pedidos_external : Proveedores_UseCase2
-Contabilidad_y_Tesoreria_Actor "0..1" -- "0..1" Registrar_proveedores_external : Registrar_proveedores_Contabilidad_y_Tesoreria
-Clasificar_Producto_external "0..1" -- "0..1" Responsable_Inventario_Actor : Responsable_Inventario_Clasificar_Producto
-Ordenes_Pedidos "0..1" -- "1..9999" Solicitud_Suministros : Solicitud_Suministros_Ordenes_Pedidos
-Dependencia_Actor "0..1" -- "0..1" Recibir_ordenes_de_suministro_external : UseCase_Dependencia
+Brindar_consultoria_external "brindar_consultoria1 0..1" -- "cliente0 0..1" Cliente_Actor : Cliente_Brindar_consultoria
+Dependencia_Actor "dependencia10 0..1" -- "entregar_productos11 0..1" Entregar_productos_external : Dependencia_Entregar_productos
+Dependencia "dependencia24 1..1" -- "solicitud_Suministros25 1..9999" Solicitud_Suministros : Dependencia_Solicitud_Suministros
+Elementos "elementos26 1..9999" -- "factura27 0..9999" Factura : Elementos_Factura
+Elementos "elementos20 1..9999" -- "solicitud_Suministros21 0..9999" Solicitud_Suministros : Elementos_Solicitud_Suministros
+Elementos "elementos19 1..9999" -- "ordenes_Pedidos18 0..9999" Ordenes_Pedidos : Ordenes_Pedidos_Elementos
+Ordenes_Pedidos "ordenes_Pedidos14 0..9999" -- "proveedor15 0..1" Proveedor : Ordenes_Pedidos_Proveedor
+Factura "factura29 0..1" -- "proveedor28 0..1" Proveedor : Proveedor_Factura
+Pedidos "pedidos17 0..9999" -- "proveedor16 1..1" Proveedor : Proveedor_Pedidos
+Proveedores_Actor "proveedores6 0..1" -- "registrar_proveedores7 0..1" Registrar_proveedores_external : Proveedores_Registrar_proveedores
+Proveedores_Actor "proveedores8 0..1" -- "useCase29 0..1" Recibir_productos_o_pedidos_external : Proveedores_UseCase2
+Contabilidad_y_Tesoreria_Actor "contabilidad_y_Tesoreria5 0..1" -- "registrar_proveedores4 0..1" Registrar_proveedores_external : Registrar_proveedores_Contabilidad_y_Tesoreria
+Clasificar_Producto_external "clasificar_Producto13 0..1" -- "responsable_Inventario12 0..1" Responsable_Inventario_Actor : Responsable_Inventario_Clasificar_Producto
+Ordenes_Pedidos "ordenes_Pedidos23 0..1" -- "solicitud_Suministros22 1..9999" Solicitud_Suministros : Solicitud_Suministros_Ordenes_Pedidos
+Dependencia_Actor "dependencia3 0..1" -- "useCase2 0..1" Recibir_ordenes_de_suministro_external : UseCase_Dependencia
 @enduml

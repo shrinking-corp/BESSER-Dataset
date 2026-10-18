@@ -800,9 +800,9 @@ def test_assoc_products132_stub_double():
     partner = library_Vendor()
     setattr(partner, 'library_Vendor', None)
     _safe_set(owner, 'library_ProductInfo133', partner)
-    assert getattr(partner, 'library_Vendor') == owner
+    assert owner in getattr(partner, 'library_Vendor')
     _safe_set(owner, 'library_ProductInfo133', None)
-    assert getattr(partner, 'library_Vendor') is None
+    assert owner not in getattr(partner, 'library_Vendor')
 
 
 def test_assoc_protocolRefs12_stub_double():

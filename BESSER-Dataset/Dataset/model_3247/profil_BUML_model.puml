@@ -1,4 +1,8 @@
 @startuml
+' model: profile
+' project: sampleModel
+' owner: User
+' description: New project
 enum ConstraintOperation {
   Equal
   Greater
@@ -31,9 +35,9 @@ class profile_Resource {
   + name : str
   + type : str
 }
-profile_Constraint "0..9999" --* "1..1" profile_PlatformProfile : constraints1
-profile_PlatformProfile "1..1" -- "1..1" profile_Resource : platform3
-profile_Constraint "1..1" -- "1..1" profile_PlatformProfile : platform4
-profile_Constraint "1..1" -- "1..1" profile_Resource : references6
-profile_PlatformProfile "1..1" *-- "0..9999" profile_Resource : resources0
+profile_Constraint "platform2 0..9999" --* "Constraint 1..1" profile_PlatformProfile : constraints1
+profile_PlatformProfile "resources 1..1" -- "PlatformProfile 1..1" profile_Resource : platform3
+profile_Constraint "PlatformProfile5 1..1" -- "constraints 1..1" profile_PlatformProfile : platform4
+profile_Constraint "profile_Resource 1..1" -- "profile_Constraint 1..1" profile_Resource : references6
+profile_PlatformProfile "Resource 1..1" *-- "platform 0..9999" profile_Resource : resources0
 @enduml

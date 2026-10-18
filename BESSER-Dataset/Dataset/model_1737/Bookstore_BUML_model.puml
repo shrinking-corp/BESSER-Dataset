@@ -1,4 +1,8 @@
 @startuml
+' model: bookstore
+' project: sampleModel
+' owner: User
+' description: New project
 class Ent {
 }
 class bookstore_Book {
@@ -31,14 +35,14 @@ Ent <|-- bookstore_Cd
 Ent <|-- bookstore_Dvd
 Ent <|-- bookstore_Magazine
 Ent <|-- bookstore_Person
-bookstore_Dvd "1..1" -- "0..9999" bookstore_Person : actor10
-bookstore_Cd "1..1" -- "0..9999" bookstore_Person : artiesten21
-bookstore_Book "0..1" -- "1..1" bookstore_Dvd : book12
-bookstore_Ent "0..9999" --* "1..1" bookstore_Model : ent0
-bookstore_Person "1..1" -- "0..1" bookstore_Person : manWife2
-bookstore_Dvd "0..1" -- "1..1" bookstore_Dvd : sequel19
-bookstore_Book "1..1" -- "0..1" bookstore_Book : sequel4
-bookstore_Dvd "1..1" -- "0..1" bookstore_Person : writer15
-bookstore_Book "1..1" -- "0..1" bookstore_Person : writer5
-bookstore_Magazine "1..1" -- "0..1" bookstore_Person : writer8
+bookstore_Dvd "bookstore_Person11 1..1" -- "bookstore_Dvd 0..9999" bookstore_Person : actor10
+bookstore_Cd "bookstore_Person22 1..1" -- "bookstore_Cd 0..9999" bookstore_Person : artiesten21
+bookstore_Book "bookstore_Dvd13 0..1" -- "bookstore_Book14 1..1" bookstore_Dvd : book12
+bookstore_Ent "bookstore_Model 0..9999" --* "bookstore_Ent 1..1" bookstore_Model : ent0
+bookstore_Person "bookstore_Person 1..1" -- "bookstore_Person1 0..1" bookstore_Person : manWife2
+bookstore_Dvd "bookstore_Dvd18 0..1" -- "bookstore_Dvd20 1..1" bookstore_Dvd : sequel19
+bookstore_Book "bookstore_Book 1..1" -- "bookstore_Book3 0..1" bookstore_Book : sequel4
+bookstore_Dvd "bookstore_Person17 1..1" -- "bookstore_Dvd16 0..1" bookstore_Person : writer15
+bookstore_Book "bookstore_Person7 1..1" -- "bookstore_Book6 0..1" bookstore_Person : writer5
+bookstore_Magazine "bookstore_Person9 1..1" -- "bookstore_Magazine 0..1" bookstore_Person : writer8
 @enduml

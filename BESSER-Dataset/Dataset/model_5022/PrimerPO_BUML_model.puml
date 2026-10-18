@@ -1,4 +1,8 @@
 @startuml
+' model: ppo
+' project: sampleModel
+' owner: User
+' description: New project
 class ppo_Item {
   + USPrice : int
   + comment : str
@@ -20,7 +24,7 @@ class ppo_USAddress {
   + zip : int
   + hasUSState(ppo_context : str, ppo_diagnostics : str) : bool
 }
-ppo_PurchaseOrder "1..1" *-- "1..1" ppo_USAddress : billTo1
-ppo_Item "2..9999" --* "1..1" ppo_PurchaseOrder : items0
-ppo_PurchaseOrder "1..1" *-- "1..1" ppo_USAddress : shipTo3
+ppo_PurchaseOrder "ppo_USAddress 1..1" *-- "ppo_PurchaseOrder2 1..1" ppo_USAddress : billTo1
+ppo_Item "ppo_PurchaseOrder 2..9999" --* "ppo_Item 1..1" ppo_PurchaseOrder : items0
+ppo_PurchaseOrder "ppo_USAddress5 1..1" *-- "ppo_PurchaseOrder4 1..1" ppo_USAddress : shipTo3
 @enduml

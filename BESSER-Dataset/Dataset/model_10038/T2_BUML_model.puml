@@ -1,4 +1,8 @@
 @startuml
+' model: t2
+' project: sampleModel
+' owner: User
+' description: New project
 class Person {
 }
 class t2_Dad {
@@ -10,4 +14,13 @@ class t2_Son {
 }
 Person <|-- t2_Dad
 Person <|-- t2_Son
+note top of t2_Dad
+  constraint Unnamed1 (OCL): context Dad inv: self.age > 30
+end note
+note top of t2_Dad
+  constraint Unnamed2 (OCL): context Dad inv: Dad.allInstances()->forAll(d|Son.allInstances()->forAll(s|d.age > s.age))endpackage T2
+end note
+note top of t2_Person
+  constraint Unnamed (OCL): context Person inv: self.age > 0 and self.age <=99
+end note
 @enduml

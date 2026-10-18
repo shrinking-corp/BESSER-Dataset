@@ -1,4 +1,8 @@
 @startuml
+' model: crom_l1
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractRole {
 }
 class Inheritance {
@@ -79,18 +83,18 @@ Type <|-- crom_l1_RigidType
 TypedElement <|-- crom_l1_Attribute
 TypedElement <|-- crom_l1_Operation
 TypedElement <|-- crom_l1_Parameter
-crom_l1_Attribute "0..9999" --* "1..1" crom_l1_Type : attributes7
-crom_l1_Model "1..1" *-- "0..9999" crom_l1_ModelElement : elements0
-crom_l1_AbstractRole "1..1" -- "1..1" crom_l1_Fulfillment : filled10
-crom_l1_Fulfillment "1..1" -- "1..1" crom_l1_Player : filler11
-crom_l1_Relation "0..9999" -- "1..1" crom_l1_RelationTarget : incoming17
-crom_l1_Operation "0..9999" --* "1..1" crom_l1_Type : operations8
-crom_l1_Relation "0..9999" -- "1..1" crom_l1_RelationTarget : outgoing19
-crom_l1_Operation "1..1" -- "1..1" crom_l1_Type : owner4
-crom_l1_Attribute "1..1" -- "1..1" crom_l1_Type : owner5
-crom_l1_Operation "1..1" -- "0..9999" crom_l1_Parameter : params3
-crom_l1_Model "1..1" *-- "0..9999" crom_l1_Relation : relations1
-crom_l1_NaturalInheritance "1..1" -- "1..1" crom_l1_NaturalType : sub14
-crom_l1_NaturalInheritance "1..1" -- "1..1" crom_l1_NaturalType : super13
-crom_l1_Type "1..1" -- "1..1" crom_l1_TypedElement : type22
+crom_l1_Attribute "owner 0..9999" --* "Attribute 1..1" crom_l1_Type : attributes7
+crom_l1_Model "crom_l1_ModelElement 1..1" *-- "crom_l1_Model 0..9999" crom_l1_ModelElement : elements0
+crom_l1_AbstractRole "crom_l1_Fulfillment 1..1" -- "crom_l1_AbstractRole 1..1" crom_l1_Fulfillment : filled10
+crom_l1_Fulfillment "crom_l1_Player 1..1" -- "crom_l1_Fulfillment12 1..1" crom_l1_Player : filler11
+crom_l1_Relation "crom_l1_RelationTarget 0..9999" -- "crom_l1_Relation18 1..1" crom_l1_RelationTarget : incoming17
+crom_l1_Operation "owner9 0..9999" --* "Operation 1..1" crom_l1_Type : operations8
+crom_l1_Relation "crom_l1_RelationTarget20 0..9999" -- "crom_l1_Relation21 1..1" crom_l1_RelationTarget : outgoing19
+crom_l1_Operation "Type 1..1" -- "operations 1..1" crom_l1_Type : owner4
+crom_l1_Attribute "Type6 1..1" -- "attributes 1..1" crom_l1_Type : owner5
+crom_l1_Operation "crom_l1_Parameter 1..1" -- "crom_l1_Operation 0..9999" crom_l1_Parameter : params3
+crom_l1_Model "crom_l1_Relation 1..1" *-- "crom_l1_Model2 0..9999" crom_l1_Relation : relations1
+crom_l1_NaturalInheritance "crom_l1_NaturalType16 1..1" -- "crom_l1_NaturalInheritance15 1..1" crom_l1_NaturalType : sub14
+crom_l1_NaturalInheritance "crom_l1_NaturalType 1..1" -- "crom_l1_NaturalInheritance 1..1" crom_l1_NaturalType : super13
+crom_l1_Type "crom_l1_TypedElement 1..1" -- "crom_l1_Type 1..1" crom_l1_TypedElement : type22
 @enduml

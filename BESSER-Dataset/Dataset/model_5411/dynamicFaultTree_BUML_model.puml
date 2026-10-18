@@ -1,4 +1,8 @@
 @startuml
+' model: dynamicFaultTree
+' project: sampleModel
+' owner: User
+' description: New project
 class Dependency {
 }
 class Element {
@@ -50,15 +54,15 @@ Gate <|-- dynamicFaultTree_PAND
 Gate <|-- dynamicFaultTree_POR
 Gate <|-- dynamicFaultTree_Spare
 Gate <|-- dynamicFaultTree_XOR
-dynamicFaultTree_Event "0..9999" --* "1..1" dynamicFaultTree_Gate : childEvent11
-dynamicFaultTree_Gate "1..1" *-- "0..9999" dynamicFaultTree_Gate : childGate6
-dynamicFaultTree_DFT "1..1" *-- "0..9999" dynamicFaultTree_Dependency : dependencies1
-dynamicFaultTree_Dependency "0..9999" -- "1..1" dynamicFaultTree_Event : dependency15
-dynamicFaultTree_Dependency "1..1" -- "0..9999" dynamicFaultTree_Event : events16
-dynamicFaultTree_Gate "0..1" --* "1..1" dynamicFaultTree_TopLevelEvent : gate3
-dynamicFaultTree_Event "1..1" -- "0..1" dynamicFaultTree_Gate : parentGate13
-dynamicFaultTree_Gate "1..1" -- "0..1" dynamicFaultTree_Gate : parentGate9
-dynamicFaultTree_Event "0..9999" -- "1..1" dynamicFaultTree_Spare : spares18
-dynamicFaultTree_DFT "1..1" *-- "0..1" dynamicFaultTree_TopLevelEvent : topLevelEvent0
-dynamicFaultTree_Gate "1..1" -- "0..1" dynamicFaultTree_TopLevelEvent : toplevelevent4
+dynamicFaultTree_Event "parentGate12 0..9999" --* "Event 1..1" dynamicFaultTree_Gate : childEvent11
+dynamicFaultTree_Gate "Gate7 1..1" *-- "parentGate 0..9999" dynamicFaultTree_Gate : childGate6
+dynamicFaultTree_DFT "dynamicFaultTree_Dependency 1..1" *-- "dynamicFaultTree_DFT2 0..9999" dynamicFaultTree_Dependency : dependencies1
+dynamicFaultTree_Dependency "events 0..9999" -- "Dependency 1..1" dynamicFaultTree_Event : dependency15
+dynamicFaultTree_Dependency "Event17 1..1" -- "dependency 0..9999" dynamicFaultTree_Event : events16
+dynamicFaultTree_Gate "toplevelevent 0..1" --* "Gate 1..1" dynamicFaultTree_TopLevelEvent : gate3
+dynamicFaultTree_Event "Gate14 1..1" -- "childEvent 0..1" dynamicFaultTree_Gate : parentGate13
+dynamicFaultTree_Gate "Gate10 1..1" -- "childGate 0..1" dynamicFaultTree_Gate : parentGate9
+dynamicFaultTree_Event "dynamicFaultTree_Spare 0..9999" -- "dynamicFaultTree_Event 1..1" dynamicFaultTree_Spare : spares18
+dynamicFaultTree_DFT "dynamicFaultTree_TopLevelEvent 1..1" *-- "dynamicFaultTree_DFT 0..1" dynamicFaultTree_TopLevelEvent : topLevelEvent0
+dynamicFaultTree_Gate "TopLevelEvent 1..1" -- "gate 0..1" dynamicFaultTree_TopLevelEvent : toplevelevent4
 @enduml

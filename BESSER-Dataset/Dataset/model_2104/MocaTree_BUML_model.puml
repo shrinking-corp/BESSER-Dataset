@@ -1,4 +1,8 @@
 @startuml
+' model: MocaTree
+' project: sampleModel
+' owner: User
+' description: New project
 class MocaTree_Attribute {
   + value : str
 }
@@ -30,17 +34,17 @@ TreeElement <|-- MocaTree_File
 TreeElement <|-- MocaTree_Folder
 TreeElement <|-- MocaTree_Link
 TreeElement <|-- MocaTree_Text
-MocaTree_Attribute "0..9999" --* "1..1" MocaTree_Link : attribute13
-MocaTree_Attribute "0..9999" --* "1..1" MocaTree_Node : attribute18
-MocaTree_Node "1..1" *-- "0..9999" MocaTree_Text : children17
-MocaTree_File "0..9999" --* "1..1" MocaTree_Folder : file11
-MocaTree_File "0..1" -- "1..1" MocaTree_Node : file15
-MocaTree_File "1..1" -- "1..1" MocaTree_Folder : folder1
-MocaTree_Link "0..9999" --* "1..1" MocaTree_TreeElement : links21
-MocaTree_Attribute "1..1" -- "0..1" MocaTree_Node : node0
-MocaTree_Folder "1..1" -- "1..1" MocaTree_Folder : parentFolder9
-MocaTree_Node "0..1" -- "1..1" MocaTree_Text : parentNode19
-MocaTree_File "1..1" *-- "1..1" MocaTree_Node : rootNode2
-MocaTree_Folder "1..1" *-- "0..9999" MocaTree_Folder : subFolder6
-MocaTree_Link "1..1" -- "0..9999" MocaTree_TreeElement : targets12
+MocaTree_Attribute "MocaTree_Link14 0..9999" --* "MocaTree_Attribute 1..1" MocaTree_Link : attribute13
+MocaTree_Attribute "node 0..9999" --* "Attribute 1..1" MocaTree_Node : attribute18
+MocaTree_Node "Text 1..1" *-- "parentNode 0..9999" MocaTree_Text : children17
+MocaTree_File "folder 0..9999" --* "File 1..1" MocaTree_Folder : file11
+MocaTree_File "rootNode 0..1" -- "File16 1..1" MocaTree_Node : file15
+MocaTree_File "Folder 1..1" -- "file 1..1" MocaTree_Folder : folder1
+MocaTree_Link "MocaTree_TreeElement22 0..9999" --* "MocaTree_Link23 1..1" MocaTree_TreeElement : links21
+MocaTree_Attribute "Node 1..1" -- "attribute 0..1" MocaTree_Node : node0
+MocaTree_Folder "Folder10 1..1" -- "subFolder 1..1" MocaTree_Folder : parentFolder9
+MocaTree_Node "children 0..1" -- "Node20 1..1" MocaTree_Text : parentNode19
+MocaTree_File "Node4 1..1" *-- "file3 1..1" MocaTree_Node : rootNode2
+MocaTree_Folder "Folder7 1..1" *-- "parentFolder 0..9999" MocaTree_Folder : subFolder6
+MocaTree_Link "MocaTree_TreeElement 1..1" -- "MocaTree_Link 0..9999" MocaTree_TreeElement : targets12
 @enduml

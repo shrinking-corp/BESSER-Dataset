@@ -1,4 +1,8 @@
 @startuml
+' model: mini_lang
+' project: sampleModel
+' owner: User
+' description: New project
 class ComparisonExpression {
 }
 class Expression {
@@ -43,16 +47,16 @@ Statement <|-- mini_lang_AssignmentStatement
 Statement <|-- mini_lang_ExpressionStatement
 Statement <|-- mini_lang_IfStatement
 Statement <|-- mini_lang_ReturnStatement
-mini_lang_Block "0..1" --* "1..1" mini_lang_MiniLang : block0
-mini_lang_Expression "1..1" --* "1..1" mini_lang_FOLCallExpression : condition21
-mini_lang_Expression "1..1" --* "1..1" mini_lang_IfStatement : condition3
-mini_lang_Expression "1..1" --* "1..1" mini_lang_ExpressionStatement : expr12
-mini_lang_Expression "0..1" --* "1..1" mini_lang_ReturnStatement : expr14
-mini_lang_Block "1..1" --* "1..1" mini_lang_IfStatement : ifBody4
-mini_lang_ComparisonExpression "1..1" *-- "1..1" mini_lang_Expression : lhs16
-mini_lang_AssignmentStatement "1..1" *-- "1..1" mini_lang_Expression : lhs7
-mini_lang_ComparisonExpression "1..1" *-- "1..1" mini_lang_Expression : rhs18
-mini_lang_AssignmentStatement "1..1" *-- "1..1" mini_lang_Expression : rhs9
-mini_lang_Block "1..1" *-- "0..9999" mini_lang_Statement : statements1
-mini_lang_Expression "1..1" --* "1..1" mini_lang_FOLCallExpression : target23
+mini_lang_Block "mini_lang_MiniLang 0..1" --* "mini_lang_Block 1..1" mini_lang_MiniLang : block0
+mini_lang_Expression "mini_lang_FOLCallExpression 1..1" --* "mini_lang_Expression22 1..1" mini_lang_FOLCallExpression : condition21
+mini_lang_Expression "mini_lang_IfStatement 1..1" --* "mini_lang_Expression 1..1" mini_lang_IfStatement : condition3
+mini_lang_Expression "mini_lang_ExpressionStatement 1..1" --* "mini_lang_Expression13 1..1" mini_lang_ExpressionStatement : expr12
+mini_lang_Expression "mini_lang_ReturnStatement 0..1" --* "mini_lang_Expression15 1..1" mini_lang_ReturnStatement : expr14
+mini_lang_Block "mini_lang_IfStatement5 1..1" --* "mini_lang_Block6 1..1" mini_lang_IfStatement : ifBody4
+mini_lang_ComparisonExpression "mini_lang_Expression17 1..1" *-- "mini_lang_ComparisonExpression 1..1" mini_lang_Expression : lhs16
+mini_lang_AssignmentStatement "mini_lang_Expression8 1..1" *-- "mini_lang_AssignmentStatement 1..1" mini_lang_Expression : lhs7
+mini_lang_ComparisonExpression "mini_lang_Expression20 1..1" *-- "mini_lang_ComparisonExpression19 1..1" mini_lang_Expression : rhs18
+mini_lang_AssignmentStatement "mini_lang_Expression11 1..1" *-- "mini_lang_AssignmentStatement10 1..1" mini_lang_Expression : rhs9
+mini_lang_Block "mini_lang_Statement 1..1" *-- "mini_lang_Block2 0..9999" mini_lang_Statement : statements1
+mini_lang_Expression "mini_lang_FOLCallExpression24 1..1" --* "mini_lang_Expression25 1..1" mini_lang_FOLCallExpression : target23
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: school
+' project: sampleModel
+' owner: User
+' description: New project
 enum SchoolElement {
   Course
   CourseOfStudy
@@ -42,28 +46,28 @@ class school_Teacher {
 }
 class school_Where {
 }
-school_BooleanExpr "0..1" --* "1..1" school_BooleanExpr : and_36
-school_BooleanExpr "1..1" --* "1..1" school_Where : booleanexpr33
-school_Course "0..9999" -- "1..1" school_CourseOfStudy : course10
-school_Course "1..1" -- "1..1" school_CourseResult : course27
-school_Course "0..9999" --* "1..1" school_School : course3
-school_CourseOfStudy "0..9999" --* "1..1" school_School : courseofstudy1
-school_CourseOfStudy "1..1" -- "1..1" school_Student : courseofstudy21
-school_CourseOfStudy "0..9999" -- "1..1" school_Faculty : courseofstudy9
-school_Course "1..1" *-- "0..9999" school_CourseResult : courseresult19
-school_Course "0..9999" -- "1..1" school_Student : enrolledIn20
-school_Course "1..1" -- "0..9999" school_Student : enrolledStudent16
-school_Faculty "0..9999" --* "1..1" school_School : faculty0
-school_CourseOfStudy "1..1" -- "1..1" school_Faculty : faculty13
-school_BooleanExpr "0..1" --* "1..1" school_BooleanExpr : or_39
-school_Query "0..9999" --* "1..1" school_SchoolDatabase : query43
-school_School "1..1" --* "1..1" school_SchoolDatabase : school41
-school_CourseOfStudy "1..1" -- "0..9999" school_Student : student14
-school_CourseResult "1..1" -- "1..1" school_Student : student25
-school_Query "1..1" -- "0..1" school_Student : student29
-school_School "1..1" *-- "0..9999" school_Student : student5
-school_Course "1..1" -- "1..1" school_Teacher : taughtBy18
-school_School "1..1" *-- "0..9999" school_Teacher : teacher7
-school_Course "0..9999" -- "1..1" school_Teacher : teaches23
-school_Query "1..1" *-- "0..1" school_Where : where31
+school_BooleanExpr "school_BooleanExpr35 0..1" --* "school_BooleanExpr37 1..1" school_BooleanExpr : and_36
+school_BooleanExpr "school_Where34 1..1" --* "school_BooleanExpr 1..1" school_Where : booleanexpr33
+school_Course "school_CourseOfStudy11 0..9999" -- "school_Course12 1..1" school_CourseOfStudy : course10
+school_Course "courseresult 1..1" -- "Course28 1..1" school_CourseResult : course27
+school_Course "school_School4 0..9999" --* "school_Course 1..1" school_School : course3
+school_CourseOfStudy "school_School2 0..9999" --* "school_CourseOfStudy 1..1" school_School : courseofstudy1
+school_CourseOfStudy "student 1..1" -- "CourseOfStudy22 1..1" school_Student : courseofstudy21
+school_CourseOfStudy "faculty 0..9999" -- "CourseOfStudy 1..1" school_Faculty : courseofstudy9
+school_Course "CourseResult 1..1" *-- "course 0..9999" school_CourseResult : courseresult19
+school_Course "enrolledStudent 0..9999" -- "Course 1..1" school_Student : enrolledIn20
+school_Course "Student17 1..1" -- "enrolledIn 0..9999" school_Student : enrolledStudent16
+school_Faculty "school_School 0..9999" --* "school_Faculty 1..1" school_School : faculty0
+school_CourseOfStudy "Faculty 1..1" -- "courseofstudy 1..1" school_Faculty : faculty13
+school_BooleanExpr "school_BooleanExpr38 0..1" --* "school_BooleanExpr40 1..1" school_BooleanExpr : or_39
+school_Query "school_SchoolDatabase44 0..9999" --* "school_Query45 1..1" school_SchoolDatabase : query43
+school_School "school_SchoolDatabase 1..1" --* "school_School42 1..1" school_SchoolDatabase : school41
+school_CourseOfStudy "Student 1..1" -- "courseofstudy15 0..9999" school_Student : student14
+school_CourseResult "school_Student26 1..1" -- "school_CourseResult 1..1" school_Student : student25
+school_Query "school_Student30 1..1" -- "school_Query 0..1" school_Student : student29
+school_School "school_Student 1..1" *-- "school_School6 0..9999" school_Student : student5
+school_Course "Teacher 1..1" -- "teaches 1..1" school_Teacher : taughtBy18
+school_School "school_Teacher 1..1" *-- "school_School8 0..9999" school_Teacher : teacher7
+school_Course "taughtBy 0..9999" -- "Course24 1..1" school_Teacher : teaches23
+school_Query "school_Where 1..1" *-- "school_Query32 0..1" school_Where : where31
 @enduml

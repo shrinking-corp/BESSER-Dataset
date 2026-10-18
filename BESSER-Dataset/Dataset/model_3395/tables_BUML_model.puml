@@ -1,4 +1,8 @@
 @startuml
+' model: tables
+' project: sampleModel
+' owner: User
+' description: New project
 class tables_Chair {
   + order : int
 }
@@ -11,8 +15,8 @@ class tables_Table {
 class tables_Waitress {
   + name : str
 }
-tables_Chair "0..9999" --* "1..1" tables_Table : chairs0
-tables_Table "0..9999" -- "1..1" tables_Waitress : tables1
-tables_Restaurant "1..1" *-- "0..9999" tables_Table : tables5
-tables_Restaurant "1..1" *-- "0..9999" tables_Waitress : waitress3
+tables_Chair "tables_Table 0..9999" --* "tables_Chair 1..1" tables_Table : chairs0
+tables_Table "tables_Waitress 0..9999" -- "tables_Table2 1..1" tables_Waitress : tables1
+tables_Restaurant "tables_Table7 1..1" *-- "tables_Restaurant6 0..9999" tables_Table : tables5
+tables_Restaurant "tables_Waitress4 1..1" *-- "tables_Restaurant 0..9999" tables_Waitress : waitress3
 @enduml

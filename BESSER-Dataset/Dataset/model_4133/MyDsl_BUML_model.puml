@@ -1,4 +1,8 @@
 @startuml
+' model: myDsl
+' project: sampleModel
+' owner: User
+' description: New project
 class Expression {
 }
 class Instance {
@@ -44,17 +48,17 @@ Expression <|-- myDsl_Plus
 Expression <|-- myDsl_Var
 Instance <|-- myDsl_MathExp
 Instance <|-- myDsl_Method
-myDsl_Expression "0..1" --* "1..1" myDsl_Let : binding23
-myDsl_Expression "0..1" --* "1..1" myDsl_Let : body25
-myDsl_Expression "0..1" --* "1..1" myDsl_MathExp : exp2
-myDsl_Classs "1..1" *-- "0..9999" myDsl_Instance : instances0
-myDsl_Expression "0..1" --* "1..1" myDsl_Mult : left13
-myDsl_Div "1..1" *-- "0..1" myDsl_Expression : left18
-myDsl_Expression "0..1" --* "1..1" myDsl_Plus : left3
-myDsl_Expression "0..1" --* "1..1" myDsl_Minus : left8
-myDsl_Method "1..1" *-- "0..9999" myDsl_Parameter : params1
-myDsl_Expression "0..1" --* "1..1" myDsl_Minus : right10
-myDsl_Expression "0..1" --* "1..1" myDsl_Mult : right15
-myDsl_Div "1..1" *-- "0..1" myDsl_Expression : right20
-myDsl_Expression "0..1" --* "1..1" myDsl_Plus : right5
+myDsl_Expression "myDsl_Let 0..1" --* "myDsl_Expression24 1..1" myDsl_Let : binding23
+myDsl_Expression "myDsl_Let26 0..1" --* "myDsl_Expression27 1..1" myDsl_Let : body25
+myDsl_Expression "myDsl_MathExp 0..1" --* "myDsl_Expression 1..1" myDsl_MathExp : exp2
+myDsl_Classs "myDsl_Instance 1..1" *-- "myDsl_Classs 0..9999" myDsl_Instance : instances0
+myDsl_Expression "myDsl_Mult 0..1" --* "myDsl_Expression14 1..1" myDsl_Mult : left13
+myDsl_Div "myDsl_Expression19 1..1" *-- "myDsl_Div 0..1" myDsl_Expression : left18
+myDsl_Expression "myDsl_Plus 0..1" --* "myDsl_Expression4 1..1" myDsl_Plus : left3
+myDsl_Expression "myDsl_Minus 0..1" --* "myDsl_Expression9 1..1" myDsl_Minus : left8
+myDsl_Method "myDsl_Parameter 1..1" *-- "myDsl_Method 0..9999" myDsl_Parameter : params1
+myDsl_Expression "myDsl_Minus11 0..1" --* "myDsl_Expression12 1..1" myDsl_Minus : right10
+myDsl_Expression "myDsl_Mult16 0..1" --* "myDsl_Expression17 1..1" myDsl_Mult : right15
+myDsl_Div "myDsl_Expression22 1..1" *-- "myDsl_Div21 0..1" myDsl_Expression : right20
+myDsl_Expression "myDsl_Plus6 0..1" --* "myDsl_Expression7 1..1" myDsl_Plus : right5
 @enduml

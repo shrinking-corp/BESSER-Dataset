@@ -1,4 +1,8 @@
 @startuml
+' model: basic
+' project: sampleModel
+' owner: User
+' description: New project
 class TAbstractType {
 }
 class TAnnotatable {
@@ -78,62 +82,62 @@ TMember <|-- basic_TFieldDefinition
 TMember <|-- basic_TMethodDefinition
 TSignature <|-- basic_TFieldSignature
 TSignature <|-- basic_TMethodSignature
-basic_TAccess "0..9999" -- "1..1" basic_TMember : accessedBy26
-basic_TAnnotation "0..9999" -- "1..1" basic_TAnnotationType : annotations120
-basic_TClass "1..1" -- "0..9999" basic_TClass : childClasses9
-basic_TInterface "1..1" -- "0..9999" basic_TInterface : childInterfaces109
-basic_TClass "0..9999" -- "1..1" basic_TPackage : classes64
-basic_TClass "0..9999" -- "1..1" basic_TypeGraph : classes92
-basic_TAbstractType "1..1" -- "1..1" basic_TMember : definedBy25
-basic_TAbstractType "1..1" -- "0..9999" basic_TMember : defines118
-basic_TFieldDefinition "0..9999" --* "1..1" basic_TFieldSignature : definitions21
-basic_TMethodDefinition "0..9999" --* "1..1" basic_TMethodSignature : definitions51
-basic_TParameter "0..9999" --* "1..1" basic_TParameterList : entries78
-basic_TField "1..1" -- "1..1" basic_TFieldSignature : field23
-basic_TField "0..9999" --* "1..1" basic_TypeGraph : fields89
-basic_TParameter "0..1" -- "1..1" basic_TParameterList : first81
-basic_TFieldDefinition "1..1" -- "0..9999" basic_TFieldDefinition : hiddenBy19
-basic_TFieldDefinition "1..1" -- "0..1" basic_TFieldDefinition : hiding17
-basic_TClass "0..9999" -- "1..1" basic_TInterface : implementedBy103
-basic_TClass "1..1" -- "0..9999" basic_TInterface : implements11
-basic_TInterface "0..9999" -- "1..1" basic_TPackage : interfaces65
-basic_TInterface "0..9999" -- "1..1" basic_TypeGraph : interfaces95
-basic_TMethod "1..1" -- "1..1" basic_TMethodSignature : method48
-basic_TMethod "0..9999" --* "1..1" basic_TypeGraph : methods86
-basic_TParameter "1..1" -- "0..1" basic_TParameter : next72
-basic_TMethodDefinition "1..1" -- "0..9999" basic_TMethodDefinition : overloadedBy44
-basic_TMethodDefinition "1..1" -- "0..9999" basic_TMethodDefinition : overloading41
-basic_TMethodDefinition "1..1" -- "0..9999" basic_TMethodDefinition : overriddenBy38
-basic_TMethodDefinition "1..1" -- "0..1" basic_TMethodDefinition : overriding36
-basic_TAbstractType "0..9999" -- "1..1" basic_TPackage : ownedTypes67
-basic_TAbstractType "0..9999" --* "1..1" basic_TypeGraph : ownedTypes98
-basic_TAbstractType "1..1" -- "0..1" basic_TPackage : package113
-basic_TPackage "0..9999" --* "1..1" basic_TypeGraph : packages84
-basic_TMethodSignature "1..1" *-- "0..1" basic_TParameterList : paramList50
-basic_TPackage "1..1" -- "0..1" basic_TPackage : parent62
-basic_TClass "1..1" -- "0..1" basic_TClass : parentClass7
-basic_TInterface "1..1" -- "0..9999" basic_TInterface : parentInterfaces106
-basic_TAbstractType "1..1" -- "1..1" basic_TypeGraph : pg111
-basic_TField "1..1" -- "1..1" basic_TypeGraph : pg13
-basic_TMethod "1..1" -- "1..1" basic_TypeGraph : pg29
-basic_TPackage "1..1" -- "0..1" basic_TypeGraph : pg57
-basic_TParameter "1..1" -- "0..1" basic_TParameter : previous74
-basic_TAbstractType "0..1" -- "1..1" basic_TMethodDefinition : returnType46
-basic_TAbstractType "0..1" -- "1..1" basic_TMethodSignature : returnType54
-basic_TAbstractType "1..1" -- "0..9999" basic_TSignature : signature116
-basic_TFieldDefinition "1..1" -- "1..1" basic_TFieldSignature : signature14
-basic_TMethodDefinition "1..1" -- "1..1" basic_TMethodSignature : signature32
-basic_TField "1..1" *-- "0..9999" basic_TFieldSignature : signatures12
-basic_TMethod "1..1" *-- "0..9999" basic_TMethodSignature : signatures31
-basic_TPackage "1..1" *-- "0..9999" basic_TPackage : subpackage60
-basic_TAccess "0..9999" --* "1..1" basic_TMember : tAccessing27
-basic_TAnnotatable "1..1" -- "1..1" basic_TAnnotation : tAnnotated4
-basic_TAnnotatable "1..1" *-- "0..9999" basic_TAnnotation : tAnnotation3
-basic_TAnnotationType "0..9999" -- "1..1" basic_TypeGraph : tAnnotationTypes101
-basic_TAccess "1..1" -- "1..1" basic_TMember : tSource1
-basic_TAccess "1..1" -- "1..1" basic_TMember : tTarget0
-basic_TAbstractType "1..1" -- "1..1" basic_TFieldSignature : type24
-basic_TAnnotation "1..1" -- "1..1" basic_TAnnotationType : type5
-basic_TAbstractType "1..1" -- "1..1" basic_TParameter : type76
-basic_TPackage "1..1" -- "1..1" basic_TypeGraph : typeGraph69
+basic_TAccess "tTarget 0..9999" -- "TAccess 1..1" basic_TMember : accessedBy26
+basic_TAnnotation "type 0..9999" -- "TAnnotation121 1..1" basic_TAnnotationType : annotations120
+basic_TClass "TClass10 1..1" -- "parentClass 0..9999" basic_TClass : childClasses9
+basic_TInterface "TInterface110 1..1" -- "parentInterfaces 0..9999" basic_TInterface : childInterfaces109
+basic_TClass "basic_TPackage 0..9999" -- "basic_TClass 1..1" basic_TPackage : classes64
+basic_TClass "basic_TypeGraph93 0..9999" -- "basic_TClass94 1..1" basic_TypeGraph : classes92
+basic_TAbstractType "defines 1..1" -- "TAbstractType 1..1" basic_TMember : definedBy25
+basic_TAbstractType "TMember119 1..1" -- "definedBy 0..9999" basic_TMember : defines118
+basic_TFieldDefinition "signature 0..9999" --* "TFieldDefinition22 1..1" basic_TFieldSignature : definitions21
+basic_TMethodDefinition "signature52 0..9999" --* "TMethodDefinition53 1..1" basic_TMethodSignature : definitions51
+basic_TParameter "basic_TParameterList79 0..9999" --* "basic_TParameter80 1..1" basic_TParameterList : entries78
+basic_TField "signatures 1..1" -- "TField 1..1" basic_TFieldSignature : field23
+basic_TField "pg90 0..9999" --* "TField91 1..1" basic_TypeGraph : fields89
+basic_TParameter "basic_TParameterList82 0..1" -- "basic_TParameter83 1..1" basic_TParameterList : first81
+basic_TFieldDefinition "TFieldDefinition20 1..1" -- "hiding 0..9999" basic_TFieldDefinition : hiddenBy19
+basic_TFieldDefinition "TFieldDefinition 1..1" -- "hiddenBy 0..1" basic_TFieldDefinition : hiding17
+basic_TClass "implements 0..9999" -- "TClass104 1..1" basic_TInterface : implementedBy103
+basic_TClass "TInterface 1..1" -- "implementedBy 0..9999" basic_TInterface : implements11
+basic_TInterface "basic_TPackage66 0..9999" -- "basic_TInterface 1..1" basic_TPackage : interfaces65
+basic_TInterface "basic_TypeGraph96 0..9999" -- "basic_TInterface97 1..1" basic_TypeGraph : interfaces95
+basic_TMethod "signatures49 1..1" -- "TMethod 1..1" basic_TMethodSignature : method48
+basic_TMethod "pg87 0..9999" --* "TMethod88 1..1" basic_TypeGraph : methods86
+basic_TParameter "TParameter 1..1" -- "previous 0..1" basic_TParameter : next72
+basic_TMethodDefinition "TMethodDefinition45 1..1" -- "overloading 0..9999" basic_TMethodDefinition : overloadedBy44
+basic_TMethodDefinition "TMethodDefinition42 1..1" -- "overloadedBy 0..9999" basic_TMethodDefinition : overloading41
+basic_TMethodDefinition "TMethodDefinition39 1..1" -- "overriding 0..9999" basic_TMethodDefinition : overriddenBy38
+basic_TMethodDefinition "TMethodDefinition 1..1" -- "overriddenBy 0..1" basic_TMethodDefinition : overriding36
+basic_TAbstractType "package 0..9999" -- "TAbstractType68 1..1" basic_TPackage : ownedTypes67
+basic_TAbstractType "pg99 0..9999" --* "TAbstractType100 1..1" basic_TypeGraph : ownedTypes98
+basic_TAbstractType "TPackage115 1..1" -- "ownedTypes114 0..1" basic_TPackage : package113
+basic_TPackage "pg 0..9999" --* "TPackage85 1..1" basic_TypeGraph : packages84
+basic_TMethodSignature "basic_TParameterList 1..1" *-- "basic_TMethodSignature 0..1" basic_TParameterList : paramList50
+basic_TPackage "TPackage63 1..1" -- "subpackage 0..1" basic_TPackage : parent62
+basic_TClass "TClass 1..1" -- "childClasses 0..1" basic_TClass : parentClass7
+basic_TInterface "TInterface107 1..1" -- "childInterfaces 0..9999" basic_TInterface : parentInterfaces106
+basic_TAbstractType "TypeGraph112 1..1" -- "ownedTypes 1..1" basic_TypeGraph : pg111
+basic_TField "TypeGraph 1..1" -- "fields 1..1" basic_TypeGraph : pg13
+basic_TMethod "TypeGraph30 1..1" -- "methods 1..1" basic_TypeGraph : pg29
+basic_TPackage "TypeGraph58 1..1" -- "packages 0..1" basic_TypeGraph : pg57
+basic_TParameter "TParameter75 1..1" -- "next 0..1" basic_TParameter : previous74
+basic_TAbstractType "basic_TMethodDefinition 0..1" -- "basic_TAbstractType47 1..1" basic_TMethodDefinition : returnType46
+basic_TAbstractType "basic_TMethodSignature55 0..1" -- "basic_TAbstractType56 1..1" basic_TMethodSignature : returnType54
+basic_TAbstractType "basic_TSignature 1..1" -- "basic_TAbstractType117 0..9999" basic_TSignature : signature116
+basic_TFieldDefinition "TFieldSignature15 1..1" -- "definitions 1..1" basic_TFieldSignature : signature14
+basic_TMethodDefinition "TMethodSignature34 1..1" -- "definitions33 1..1" basic_TMethodSignature : signature32
+basic_TField "TFieldSignature 1..1" *-- "field 0..9999" basic_TFieldSignature : signatures12
+basic_TMethod "TMethodSignature 1..1" *-- "method 0..9999" basic_TMethodSignature : signatures31
+basic_TPackage "TPackage 1..1" *-- "parent 0..9999" basic_TPackage : subpackage60
+basic_TAccess "tSource 0..9999" --* "TAccess28 1..1" basic_TMember : tAccessing27
+basic_TAnnotatable "tAnnotation 1..1" -- "TAnnotatable 1..1" basic_TAnnotation : tAnnotated4
+basic_TAnnotatable "TAnnotation 1..1" *-- "tAnnotated 0..9999" basic_TAnnotation : tAnnotation3
+basic_TAnnotationType "basic_TypeGraph102 0..9999" -- "basic_TAnnotationType 1..1" basic_TypeGraph : tAnnotationTypes101
+basic_TAccess "TMember2 1..1" -- "tAccessing 1..1" basic_TMember : tSource1
+basic_TAccess "TMember 1..1" -- "accessedBy 1..1" basic_TMember : tTarget0
+basic_TAbstractType "basic_TFieldSignature 1..1" -- "basic_TAbstractType 1..1" basic_TFieldSignature : type24
+basic_TAnnotation "TAnnotationType 1..1" -- "annotations 1..1" basic_TAnnotationType : type5
+basic_TAbstractType "basic_TParameter 1..1" -- "basic_TAbstractType77 1..1" basic_TParameter : type76
+basic_TPackage "basic_TypeGraph 1..1" -- "basic_TPackage70 1..1" basic_TypeGraph : typeGraph69
 @enduml

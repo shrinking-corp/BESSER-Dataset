@@ -1,4 +1,8 @@
 @startuml
+' model: errors
+' project: sampleModel
+' owner: User
+' description: New project
 class Error {
 }
 class errors_CheckError {
@@ -28,10 +32,10 @@ class errors_ValueCk {
 }
 Error <|-- errors_CheckError
 Error <|-- errors_ForeignError
-errors_ColumnFk "0..9999" --* "1..1" errors_Table : columnCont5
-errors_CheckError "1..1" *-- "0..9999" errors_ColumnCk : columns7
-errors_Error "0..9999" --* "1..1" errors_Errores : errores0
-errors_ForeignError "1..1" *-- "0..1" errors_Table : tableCont1
-errors_ForeignError "1..1" *-- "0..1" errors_Table : tableRef2
-errors_ColumnCk "1..1" *-- "0..9999" errors_ValueCk : values8
+errors_ColumnFk "errors_Table6 0..9999" --* "errors_ColumnFk 1..1" errors_Table : columnCont5
+errors_CheckError "errors_ColumnCk 1..1" *-- "errors_CheckError 0..9999" errors_ColumnCk : columns7
+errors_Error "errors_Errores 0..9999" --* "errors_Error 1..1" errors_Errores : errores0
+errors_ForeignError "errors_Table 1..1" *-- "errors_ForeignError 0..1" errors_Table : tableCont1
+errors_ForeignError "errors_Table4 1..1" *-- "errors_ForeignError3 0..1" errors_Table : tableRef2
+errors_ColumnCk "errors_ValueCk 1..1" *-- "errors_ColumnCk9 0..9999" errors_ValueCk : values8
 @enduml

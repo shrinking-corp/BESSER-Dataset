@@ -1,4 +1,8 @@
 @startuml
+' model: dbrouting
+' project: sampleModel
+' owner: User
+' description: New project
 class ElementVisitor {
 }
 enum ResultSetScopeType {
@@ -32,9 +36,9 @@ class dbrouting_ResultSetRowSelector {
 }
 ElementVisitor <|-- dbrouting_Executor
 ElementVisitor <|-- dbrouting_ResultSetRowSelector
-dbrouting_DocumentRoot "1..1" *-- "0..9999" dbrouting_Executor : executor4
-dbrouting_Executor "1..1" *-- "0..1" dbrouting_ResultSet : resultSet8
-dbrouting_DocumentRoot "1..1" *-- "0..9999" dbrouting_ResultSetRowSelector : resultSetRowSelector6
-dbrouting_DocumentRoot "1..1" *-- "0..9999" dbrouting_EStringToStringMapEntry : xMLNSPrefixMap0
-dbrouting_DocumentRoot "1..1" *-- "0..9999" dbrouting_EStringToStringMapEntry : xSISchemaLocation1
+dbrouting_DocumentRoot "dbrouting_Executor 1..1" *-- "dbrouting_DocumentRoot5 0..9999" dbrouting_Executor : executor4
+dbrouting_Executor "dbrouting_ResultSet 1..1" *-- "dbrouting_Executor9 0..1" dbrouting_ResultSet : resultSet8
+dbrouting_DocumentRoot "dbrouting_ResultSetRowSelector 1..1" *-- "dbrouting_DocumentRoot7 0..9999" dbrouting_ResultSetRowSelector : resultSetRowSelector6
+dbrouting_DocumentRoot "dbrouting_EStringToStringMapEntry 1..1" *-- "dbrouting_DocumentRoot 0..9999" dbrouting_EStringToStringMapEntry : xMLNSPrefixMap0
+dbrouting_DocumentRoot "dbrouting_EStringToStringMapEntry3 1..1" *-- "dbrouting_DocumentRoot2 0..9999" dbrouting_EStringToStringMapEntry : xSISchemaLocation1
 @enduml

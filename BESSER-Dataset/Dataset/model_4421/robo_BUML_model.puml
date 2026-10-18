@@ -1,4 +1,8 @@
 @startuml
+' model: robo
+' project: sampleModel
+' owner: User
+' description: New project
 class Command {
 }
 enum ComparisonOperator {
@@ -106,21 +110,21 @@ Condition <|-- robo_condition_Comparison
 Expr <|-- robo_expression_Literal
 Expr <|-- robo_expression_Operation
 Expr <|-- robo_expression_Variable
-Command "0..9999" --* "1..1" robo_Program : commands10
-Command "0..9999" --* "1..1" robo_command_Loop : commands17
-Command "0..9999" --* "1..1" robo_command_Branch : commands22
-Condition "1..1" --* "1..1" robo_command_Loop : condition15
-Condition "1..1" --* "1..1" robo_command_Branch : condition20
-Expr "0..1" --* "1..1" robo_command_Drive : distance12
-Expr "0..1" --* "1..1" robo_expression_Operation : left27
-Expr "1..1" --* "1..1" robo_condition_Comparison : left32
-robo_Motor "1..1" --* "1..1" robo_Setup : leftMotor3
-robo_Program "0..9999" --* "1..1" robo_Robot : programms0
-Expr "1..1" --* "1..1" robo_expression_Operation : right29
-Expr "1..1" --* "1..1" robo_condition_Comparison : right34
-robo_Motor "1..1" --* "1..1" robo_Setup : rightMotor5
-robo_Sensor "0..9999" --* "1..1" robo_Setup : sensors8
-robo_Robot "1..1" *-- "1..1" robo_Setup : setup1
-Condition "0..1" --* "1..1" robo_command_Drive : until13
-Expr "1..1" --* "1..1" robo_command_Assignment : value25
+Command "robo_Program11 0..9999" --* "Command 1..1" robo_Program : commands10
+Command "robo_command_Loop18 0..9999" --* "Command19 1..1" robo_command_Loop : commands17
+Command "robo_command_Branch23 0..9999" --* "Command24 1..1" robo_command_Branch : commands22
+Condition "robo_command_Loop 1..1" --* "Condition16 1..1" robo_command_Loop : condition15
+Condition "robo_command_Branch 1..1" --* "Condition21 1..1" robo_command_Branch : condition20
+Expr "robo_command_Drive 0..1" --* "Expr 1..1" robo_command_Drive : distance12
+Expr "robo_expression_Operation 0..1" --* "Expr28 1..1" robo_expression_Operation : left27
+Expr "robo_condition_Comparison 1..1" --* "Expr33 1..1" robo_condition_Comparison : left32
+robo_Motor "robo_Setup4 1..1" --* "robo_Motor 1..1" robo_Setup : leftMotor3
+robo_Program "robo_Robot 0..9999" --* "robo_Program 1..1" robo_Robot : programms0
+Expr "robo_expression_Operation30 1..1" --* "Expr31 1..1" robo_expression_Operation : right29
+Expr "robo_condition_Comparison35 1..1" --* "Expr36 1..1" robo_condition_Comparison : right34
+robo_Motor "robo_Setup6 1..1" --* "robo_Motor7 1..1" robo_Setup : rightMotor5
+robo_Sensor "robo_Setup9 0..9999" --* "robo_Sensor 1..1" robo_Setup : sensors8
+robo_Robot "robo_Setup 1..1" *-- "robo_Robot2 1..1" robo_Setup : setup1
+Condition "robo_command_Drive14 0..1" --* "Condition 1..1" robo_command_Drive : until13
+Expr "robo_command_Assignment 1..1" --* "Expr26 1..1" robo_command_Assignment : value25
 @enduml

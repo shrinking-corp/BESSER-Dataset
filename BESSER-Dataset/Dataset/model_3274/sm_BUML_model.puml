@@ -1,4 +1,8 @@
 @startuml
+' model: sm
+' project: sampleModel
+' owner: User
+' description: New project
 class sm_State {
   + name : str
 }
@@ -9,11 +13,11 @@ class sm_Transition {
   + isCompletion : str
   + name : str
 }
-sm_StateMachine "1..1" *-- "0..9999" sm_Transition : edges7
-sm_State "0..9999" -- "1..1" sm_StateMachine : final1
-sm_State "0..1" -- "1..1" sm_StateMachine : initial0
-sm_State "0..9999" --* "1..1" sm_StateMachine : nodes4
-sm_State "1..1" -- "1..1" sm_Transition : source12
-sm_State "1..1" *-- "0..9999" sm_StateMachine : subMachines9
-sm_State "1..1" -- "1..1" sm_Transition : target15
+sm_StateMachine "sm_Transition 1..1" *-- "sm_StateMachine8 0..9999" sm_Transition : edges7
+sm_State "sm_StateMachine2 0..9999" -- "sm_State3 1..1" sm_StateMachine : final1
+sm_State "sm_StateMachine 0..1" -- "sm_State 1..1" sm_StateMachine : initial0
+sm_State "sm_StateMachine5 0..9999" --* "sm_State6 1..1" sm_StateMachine : nodes4
+sm_State "sm_Transition13 1..1" -- "sm_State14 1..1" sm_Transition : source12
+sm_State "sm_StateMachine11 1..1" *-- "sm_State10 0..9999" sm_StateMachine : subMachines9
+sm_State "sm_Transition16 1..1" -- "sm_State17 1..1" sm_Transition : target15
 @enduml

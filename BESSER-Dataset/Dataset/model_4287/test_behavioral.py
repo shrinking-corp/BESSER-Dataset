@@ -119,9 +119,9 @@ def test_assoc_defencemen14_stub_double():
     partner = hockeyleague_Team()
     setattr(partner, 'hockeyleague_Team15', None)
     _safe_set(owner, 'hockeyleague_Defence16', partner)
-    assert getattr(partner, 'hockeyleague_Team15') == owner
+    assert owner in getattr(partner, 'hockeyleague_Team15')
     _safe_set(owner, 'hockeyleague_Defence16', None)
-    assert getattr(partner, 'hockeyleague_Team15') is None
+    assert owner not in getattr(partner, 'hockeyleague_Team15')
 
 
 def test_assoc_forwards11_stub_double():
@@ -134,9 +134,9 @@ def test_assoc_forwards11_stub_double():
     partner = hockeyleague_Team()
     setattr(partner, 'hockeyleague_Team12', None)
     _safe_set(owner, 'hockeyleague_Forward13', partner)
-    assert getattr(partner, 'hockeyleague_Team12') == owner
+    assert owner in getattr(partner, 'hockeyleague_Team12')
     _safe_set(owner, 'hockeyleague_Forward13', None)
-    assert getattr(partner, 'hockeyleague_Team12') is None
+    assert owner not in getattr(partner, 'hockeyleague_Team12')
 
 
 def test_assoc_goalieStats3_stub_double():
@@ -149,9 +149,9 @@ def test_assoc_goalieStats3_stub_double():
     partner = hockeyleague_Goalie()
     setattr(partner, 'hockeyleague_Goalie', None)
     _safe_set(owner, 'hockeyleague_GoalieStats', partner)
-    assert getattr(partner, 'hockeyleague_Goalie') == owner
+    assert owner in getattr(partner, 'hockeyleague_Goalie')
     _safe_set(owner, 'hockeyleague_GoalieStats', None)
-    assert getattr(partner, 'hockeyleague_Goalie') is None
+    assert owner not in getattr(partner, 'hockeyleague_Goalie')
 
 
 def test_assoc_team4_stub_double():

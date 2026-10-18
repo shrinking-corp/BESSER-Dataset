@@ -1,4 +1,8 @@
 @startuml
+' model: stateChart
+' project: sampleModel
+' owner: User
+' description: New project
 class stateChart_Model {
   + description : str
   + metadata : str
@@ -21,14 +25,14 @@ class stateChart_Variable {
   + name : str
   + type : str
 }
-stateChart_Node "0..9999" --* "1..1" stateChart_Node : Children2
-stateChart_Node "0..1" -- "1..1" stateChart_Node : Father4
-stateChart_Node "1..1" *-- "0..9999" stateChart_Transition : child6
-stateChart_Model "1..1" *-- "0..9999" stateChart_Node : nodes11
-stateChart_Node "1..1" -- "0..1" stateChart_Transition : parent8
-stateChart_Node "0..1" -- "1..1" stateChart_Transition : source19
-stateChart_Node "0..1" -- "1..1" stateChart_Transition : target22
-stateChart_Model "1..1" *-- "0..9999" stateChart_Transition : transitions16
-stateChart_Node "1..1" -- "0..9999" stateChart_Variable : variables0
-stateChart_Model "1..1" *-- "0..9999" stateChart_Variable : variables13
+stateChart_Node "Father 0..9999" --* "Node 1..1" stateChart_Node : Children2
+stateChart_Node "Children 0..1" -- "Node5 1..1" stateChart_Node : Father4
+stateChart_Node "stateChart_Transition 1..1" *-- "stateChart_Node7 0..9999" stateChart_Transition : child6
+stateChart_Model "stateChart_Node12 1..1" *-- "stateChart_Model 0..9999" stateChart_Node : nodes11
+stateChart_Node "stateChart_Transition10 1..1" -- "stateChart_Node9 0..1" stateChart_Transition : parent8
+stateChart_Node "stateChart_Transition20 0..1" -- "stateChart_Node21 1..1" stateChart_Transition : source19
+stateChart_Node "stateChart_Transition23 0..1" -- "stateChart_Node24 1..1" stateChart_Transition : target22
+stateChart_Model "stateChart_Transition18 1..1" *-- "stateChart_Model17 0..9999" stateChart_Transition : transitions16
+stateChart_Node "stateChart_Variable 1..1" -- "stateChart_Node 0..9999" stateChart_Variable : variables0
+stateChart_Model "stateChart_Variable15 1..1" *-- "stateChart_Model14 0..9999" stateChart_Variable : variables13
 @enduml

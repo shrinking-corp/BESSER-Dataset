@@ -605,9 +605,9 @@ def test_assoc_eAnnotations107_stub_double():
     partner = ecoreDiff_EModelElement()
     setattr(partner, 'eModelElement', None)
     _safe_set(owner, 'EAnnotation', partner)
-    assert getattr(partner, 'eModelElement') == owner
+    assert owner in getattr(partner, 'eModelElement')
     _safe_set(owner, 'EAnnotation', None)
-    assert getattr(partner, 'eModelElement') is None
+    assert owner not in getattr(partner, 'eModelElement')
 
 
 def test_assoc_eClassifier71_stub_double():
@@ -665,9 +665,9 @@ def test_assoc_eExceptions78_stub_double():
     partner = ecoreDiff_EOperation()
     setattr(partner, 'ecoreDiff_EOperation79', None)
     _safe_set(owner, 'ecoreDiff_EClassifier80', partner)
-    assert getattr(partner, 'ecoreDiff_EOperation79') == owner
+    assert owner in getattr(partner, 'ecoreDiff_EOperation79')
     _safe_set(owner, 'ecoreDiff_EClassifier80', None)
-    assert getattr(partner, 'ecoreDiff_EOperation79') is None
+    assert owner not in getattr(partner, 'ecoreDiff_EOperation79')
 
 
 def test_assoc_eFactoryInstance42_stub_double():
@@ -725,9 +725,9 @@ def test_assoc_eLiterals105_stub_double():
     partner = ecoreDiff_EEnum()
     setattr(partner, 'eEnum', None)
     _safe_set(owner, 'EEnumLiteral', partner)
-    assert getattr(partner, 'eEnum') == owner
+    assert owner in getattr(partner, 'eEnum')
     _safe_set(owner, 'EEnumLiteral', None)
-    assert getattr(partner, 'eEnum') is None
+    assert owner not in getattr(partner, 'eEnum')
 
 
 def test_assoc_eModelElement1_stub_double():

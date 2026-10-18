@@ -1,4 +1,8 @@
 @startuml
+' model: traces
+' project: sampleModel
+' owner: User
+' description: New project
 class traces_SimulatorRun {
   + behaviorName : str
   + id : int
@@ -13,8 +17,8 @@ class traces_Value {
 class traces_Variable {
   + name : str
 }
-traces_SimulatorRun "1..1" -- "1..1" traces_Variable : run1
-traces_Value "0..9999" --* "1..1" traces_Variable : values2
-traces_Value "1..1" -- "1..1" traces_Variable : variable3
-traces_SimulatorRun "1..1" *-- "0..9999" traces_Variable : variables0
+traces_SimulatorRun "variables 1..1" -- "SimulatorRun 1..1" traces_Variable : run1
+traces_Value "variable 0..9999" --* "Value 1..1" traces_Variable : values2
+traces_Value "Variable4 1..1" -- "values 1..1" traces_Variable : variable3
+traces_SimulatorRun "Variable 1..1" *-- "run 0..9999" traces_Variable : variables0
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: transformationtrace
+' project: sampleModel
+' owner: User
+' description: New project
 class transformationtrace_ActivationTrace {
   + ruleName : str
 }
@@ -8,6 +12,6 @@ class transformationtrace_RuleParameterTrace {
 }
 class transformationtrace_TransformationTrace {
 }
-transformationtrace_ActivationTrace "0..9999" --* "1..1" transformationtrace_TransformationTrace : activationTraces0
-transformationtrace_ActivationTrace "1..1" *-- "0..9999" transformationtrace_RuleParameterTrace : ruleParameterTraces1
+transformationtrace_ActivationTrace "transformationtrace_TransformationTrace 0..9999" --* "transformationtrace_ActivationTrace 1..1" transformationtrace_TransformationTrace : activationTraces0
+transformationtrace_ActivationTrace "transformationtrace_RuleParameterTrace 1..1" *-- "transformationtrace_ActivationTrace2 0..9999" transformationtrace_RuleParameterTrace : ruleParameterTraces1
 @enduml

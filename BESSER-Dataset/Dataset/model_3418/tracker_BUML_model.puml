@@ -1,4 +1,8 @@
 @startuml
+' model: tracker
+' project: sampleModel
+' owner: User
+' description: New project
 class Animal {
 }
 enum BeefBreed {
@@ -344,9 +348,9 @@ Event <|-- tracker_TagAllocated
 Event <|-- tracker_TagApplied
 Event <|-- tracker_TagRetired
 Event <|-- tracker_WeighIn
-tracker_Animal "0..9999" --* "1..1" tracker_Premises : animals3
-tracker_Event "1..9999" --* "1..1" tracker_Tag : events1
-tracker_Event "1..1" -- "1..1" tracker_Tag : tag2
-tracker_Animal "1..1" *-- "1..9999" tracker_Tag : tags0
-tracker_Premises "1..1" *-- "0..9999" tracker_Tag : unAppliedTags5
+tracker_Animal "tracker_Premises 0..9999" --* "tracker_Animal4 1..1" tracker_Premises : animals3
+tracker_Event "tag 1..9999" --* "Event 1..1" tracker_Tag : events1
+tracker_Event "Tag 1..1" -- "events 1..1" tracker_Tag : tag2
+tracker_Animal "tracker_Tag 1..1" *-- "tracker_Animal 1..9999" tracker_Tag : tags0
+tracker_Premises "tracker_Tag7 1..1" *-- "tracker_Premises6 0..9999" tracker_Tag : unAppliedTags5
 @enduml

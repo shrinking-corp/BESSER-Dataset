@@ -1,4 +1,8 @@
 @startuml
+' model: metamodel
+' project: sampleModel
+' owner: User
+' description: New project
 enum ConstraintType {
   COMPOSITE_PRIMARY_KEY
   FOREIGN_KEY
@@ -55,13 +59,13 @@ class metamodel_Sequence {
 class metamodel_Table {
   + name : str
 }
-metamodel_Column "1..9999" --* "1..1" metamodel_Constraint : References9
-metamodel_Cell "0..9999" --* "1..1" metamodel_Row : cells15
-metamodel_Cell "1..1" -- "1..1" metamodel_Column : column17
-metamodel_Column "1..9999" --* "1..1" metamodel_Table : columns5
-metamodel_Column "1..1" *-- "0..9999" metamodel_Constraint : constraints12
-metamodel_Constraint "0..9999" --* "1..1" metamodel_Table : constraints3
-metamodel_Row "0..9999" -- "1..1" metamodel_Table : rows7
-metamodel_Database "1..1" *-- "0..9999" metamodel_Sequence : sequences1
-metamodel_Database "1..1" *-- "0..9999" metamodel_Table : table0
+metamodel_Column "metamodel_Constraint10 1..9999" --* "metamodel_Column11 1..1" metamodel_Constraint : References9
+metamodel_Cell "metamodel_Row16 0..9999" --* "metamodel_Cell 1..1" metamodel_Row : cells15
+metamodel_Cell "metamodel_Column19 1..1" -- "metamodel_Cell18 1..1" metamodel_Column : column17
+metamodel_Column "metamodel_Table6 1..9999" --* "metamodel_Column 1..1" metamodel_Table : columns5
+metamodel_Column "metamodel_Constraint14 1..1" *-- "metamodel_Column13 0..9999" metamodel_Constraint : constraints12
+metamodel_Constraint "metamodel_Table4 0..9999" --* "metamodel_Constraint 1..1" metamodel_Table : constraints3
+metamodel_Row "metamodel_Table8 0..9999" -- "metamodel_Row 1..1" metamodel_Table : rows7
+metamodel_Database "metamodel_Sequence 1..1" *-- "metamodel_Database2 0..9999" metamodel_Sequence : sequences1
+metamodel_Database "metamodel_Table 1..1" *-- "metamodel_Database 0..9999" metamodel_Table : table0
 @enduml

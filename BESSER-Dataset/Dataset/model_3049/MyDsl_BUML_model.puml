@@ -1,4 +1,8 @@
 @startuml
+' model: myDsl
+' project: sampleModel
+' owner: User
+' description: New project
 class Feature {
 }
 enum Type {
@@ -20,7 +24,7 @@ class myDsl_Reference {
 }
 Feature <|-- myDsl_Attribute
 Feature <|-- myDsl_Reference
-myDsl_Entity "0..9999" --* "1..1" myDsl_Model : entities0
-myDsl_Entity "1..1" *-- "0..9999" myDsl_Feature : features1
-myDsl_Entity "0..1" -- "1..1" myDsl_Reference : type3
+myDsl_Entity "myDsl_Model 0..9999" --* "myDsl_Entity 1..1" myDsl_Model : entities0
+myDsl_Entity "myDsl_Feature 1..1" *-- "myDsl_Entity2 0..9999" myDsl_Feature : features1
+myDsl_Entity "myDsl_Reference 0..1" -- "myDsl_Entity4 1..1" myDsl_Reference : type3
 @enduml

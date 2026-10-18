@@ -1,4 +1,8 @@
 @startuml
+' model: metrics
+' project: sampleModel
+' owner: User
+' description: New project
 class DataKind {
 }
 enum KindHintType {
@@ -76,13 +80,13 @@ Mapping <|-- metrics_MappingCSV
 Mapping <|-- metrics_MappingRDBMS
 Mapping <|-- metrics_MappingXLS
 MappingRecord <|-- metrics_MappingRecordXLS
-metrics_DataKind "0..9999" --* "1..1" metrics_MappingXLS : columnDataKind3
-metrics_MappingRecord "0..9999" --* "1..1" metrics_MappingStatistic : failedRecords0
-metrics_DateTimeRange "1..1" --* "1..1" metrics_MappingStatistic : mappingDuration1
-metrics_Mapping "0..1" --* "1..1" metrics_MetricSource : metricMapping8
-metrics_Metric "0..9999" -- "1..1" metrics_MetricSource : metricRefs7
-metrics_Metric "1..1" -- "0..1" metrics_MetricSource : metricSourceRef6
-metrics_MetricValueRange "1..1" *-- "0..9999" metrics_Value : metricValues12
-metrics_Metric "1..1" *-- "0..9999" metrics_Metric : metrics5
-metrics_MappingStatistic "0..9999" --* "1..1" metrics_MetricSource : statistics9
+metrics_DataKind "metrics_MappingXLS 0..9999" --* "metrics_DataKind 1..1" metrics_MappingXLS : columnDataKind3
+metrics_MappingRecord "metrics_MappingStatistic 0..9999" --* "metrics_MappingRecord 1..1" metrics_MappingStatistic : failedRecords0
+metrics_DateTimeRange "metrics_MappingStatistic2 1..1" --* "metrics_DateTimeRange 1..1" metrics_MappingStatistic : mappingDuration1
+metrics_Mapping "metrics_MetricSource 0..1" --* "metrics_Mapping 1..1" metrics_MetricSource : metricMapping8
+metrics_Metric "metricSourceRef 0..9999" -- "Metric 1..1" metrics_MetricSource : metricRefs7
+metrics_Metric "MetricSource 1..1" -- "metricRefs 0..1" metrics_MetricSource : metricSourceRef6
+metrics_MetricValueRange "metrics_Value 1..1" *-- "metrics_MetricValueRange 0..9999" metrics_Value : metricValues12
+metrics_Metric "metrics_Metric 1..1" *-- "metrics_Metric4 0..9999" metrics_Metric : metrics5
+metrics_MappingStatistic "metrics_MetricSource10 0..9999" --* "metrics_MappingStatistic11 1..1" metrics_MetricSource : statistics9
 @enduml

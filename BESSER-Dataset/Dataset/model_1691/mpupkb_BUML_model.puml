@@ -1,4 +1,8 @@
 @startuml
+' model: mpupkb
+' project: sampleModel
+' owner: User
+' description: New project
 class NamedElement {
 }
 class mpupkb_Comment {
@@ -16,8 +20,8 @@ class mpupkb_Thing {
 }
 NamedElement <|-- mpupkb_Own
 NamedElement <|-- mpupkb_Thing
-mpupkb_Comment "0..1" --* "1..1" mpupkb_NamedElement : comment2
-mpupkb_Own "0..9999" --* "1..1" mpupkb_Thing : ownershi1
-mpupkb_Own "0..1" -- "1..1" mpupkb_Thing : ownership0
-mpupkb_Own "1..1" -- "0..1" mpupkb_Thing : thing3
+mpupkb_Comment "mpupkb_NamedElement 0..1" --* "mpupkb_Comment 1..1" mpupkb_NamedElement : comment2
+mpupkb_Own "mpupkb_Thing 0..9999" --* "mpupkb_Own 1..1" mpupkb_Thing : ownershi1
+mpupkb_Own "thing 0..1" -- "Own 1..1" mpupkb_Thing : ownership0
+mpupkb_Own "Thing 1..1" -- "ownership 0..1" mpupkb_Thing : thing3
 @enduml

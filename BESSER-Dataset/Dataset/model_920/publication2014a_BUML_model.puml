@@ -1,4 +1,8 @@
 @startuml
+' model: publication2014a
+' project: sampleModel
+' owner: User
+' description: New project
 class Counted {
 }
 class Labelled {
@@ -70,27 +74,27 @@ Named <|-- publication2014a_Paragraph
 Named <|-- publication2014a_PublicationProcess
 Named <|-- publication2014a_PublicationStructure
 Named <|-- publication2014a_ReviewNote
-publication2014a_Paper "1..1" -- "0..9999" publication2014a_Researcher : authors22
-publication2014a_PublicationPhase "1..1" *-- "0..9999" publication2014a_Sequence : linksToSuccessors3
-publication2014a_PublicationPhase "1..1" -- "0..9999" publication2014a_Researcher : neededPerson5
-publication2014a_Paper "0..1" -- "1..1" publication2014a_Progress : paper28
-publication2014a_Paper "0..9999" -- "1..1" publication2014a_Researcher : papers19
-publication2014a_Paper "0..9999" --* "1..1" publication2014a_PublicationStructure : papers38
-publication2014a_Paragraph "0..1" -- "1..1" publication2014a_Write : paragraph30
-publication2014a_Paper "1..1" *-- "0..9999" publication2014a_Paragraph : paragraphs20
-publication2014a_PublicationPhase "0..9999" -- "1..1" publication2014a_Researcher : phaseParticipation15
-publication2014a_PublicationPhase "0..9999" --* "1..1" publication2014a_PublicationProcess : phases0
-publication2014a_PublicationPhase "1..1" -- "1..1" publication2014a_Sequence : predecessor12
-publication2014a_Progress "1..1" -- "0..1" publication2014a_PublicationProcess : process26
-publication2014a_PublicationProcess "0..1" --* "1..1" publication2014a_PublicationSystem : processView41
-publication2014a_Paper "1..1" *-- "0..9999" publication2014a_Progress : progress21
-publication2014a_PublicationProcess "1..1" *-- "0..9999" publication2014a_Rule : publicationRules1
-publication2014a_PublicationStructure "1..1" *-- "0..9999" publication2014a_Researcher : researchers36
-publication2014a_Review "1..1" -- "0..1" publication2014a_ReviewNote : reviewNote33
-publication2014a_Researcher "1..1" *-- "0..9999" publication2014a_Review : reviews17
-publication2014a_Paragraph "1..1" *-- "0..9999" publication2014a_ReviewNote : reviews24
-publication2014a_PublicationPhase "1..1" -- "0..9999" publication2014a_Rule : rules6
-publication2014a_PublicationStructure "0..1" --* "1..1" publication2014a_PublicationSystem : structuralView43
-publication2014a_PublicationPhase "1..1" -- "1..1" publication2014a_Sequence : successor9
-publication2014a_Researcher "1..1" *-- "0..9999" publication2014a_Write : writes16
+publication2014a_Paper "Researcher23 1..1" -- "papers 0..9999" publication2014a_Researcher : authors22
+publication2014a_PublicationPhase "publication2014a_Sequence 1..1" *-- "publication2014a_PublicationPhase4 0..9999" publication2014a_Sequence : linksToSuccessors3
+publication2014a_PublicationPhase "Researcher 1..1" -- "phaseParticipation 0..9999" publication2014a_Researcher : neededPerson5
+publication2014a_Paper "progress 0..1" -- "Paper29 1..1" publication2014a_Progress : paper28
+publication2014a_Paper "authors 0..9999" -- "Paper 1..1" publication2014a_Researcher : papers19
+publication2014a_Paper "publication2014a_PublicationStructure39 0..9999" --* "publication2014a_Paper40 1..1" publication2014a_PublicationStructure : papers38
+publication2014a_Paragraph "publication2014a_Write31 0..1" -- "publication2014a_Paragraph32 1..1" publication2014a_Write : paragraph30
+publication2014a_Paper "publication2014a_Paragraph 1..1" *-- "publication2014a_Paper 0..9999" publication2014a_Paragraph : paragraphs20
+publication2014a_PublicationPhase "neededPerson 0..9999" -- "PublicationPhase 1..1" publication2014a_Researcher : phaseParticipation15
+publication2014a_PublicationPhase "publication2014a_PublicationProcess 0..9999" --* "publication2014a_PublicationPhase 1..1" publication2014a_PublicationProcess : phases0
+publication2014a_PublicationPhase "publication2014a_Sequence13 1..1" -- "publication2014a_PublicationPhase14 1..1" publication2014a_Sequence : predecessor12
+publication2014a_Progress "publication2014a_PublicationProcess27 1..1" -- "publication2014a_Progress 0..1" publication2014a_PublicationProcess : process26
+publication2014a_PublicationProcess "publication2014a_PublicationSystem 0..1" --* "publication2014a_PublicationProcess42 1..1" publication2014a_PublicationSystem : processView41
+publication2014a_Paper "Progress 1..1" *-- "paper 0..9999" publication2014a_Progress : progress21
+publication2014a_PublicationProcess "publication2014a_Rule 1..1" *-- "publication2014a_PublicationProcess2 0..9999" publication2014a_Rule : publicationRules1
+publication2014a_PublicationStructure "publication2014a_Researcher37 1..1" *-- "publication2014a_PublicationStructure 0..9999" publication2014a_Researcher : researchers36
+publication2014a_Review "publication2014a_ReviewNote35 1..1" -- "publication2014a_Review34 0..1" publication2014a_ReviewNote : reviewNote33
+publication2014a_Researcher "publication2014a_Review 1..1" *-- "publication2014a_Researcher18 0..9999" publication2014a_Review : reviews17
+publication2014a_Paragraph "publication2014a_ReviewNote 1..1" *-- "publication2014a_Paragraph25 0..9999" publication2014a_ReviewNote : reviews24
+publication2014a_PublicationPhase "publication2014a_Rule8 1..1" -- "publication2014a_PublicationPhase7 0..9999" publication2014a_Rule : rules6
+publication2014a_PublicationStructure "publication2014a_PublicationSystem44 0..1" --* "publication2014a_PublicationStructure45 1..1" publication2014a_PublicationSystem : structuralView43
+publication2014a_PublicationPhase "publication2014a_Sequence10 1..1" -- "publication2014a_PublicationPhase11 1..1" publication2014a_Sequence : successor9
+publication2014a_Researcher "publication2014a_Write 1..1" *-- "publication2014a_Researcher 0..9999" publication2014a_Write : writes16
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: remes
+' project: sampleModel
+' owner: User
+' description: New project
 class Edge {
 }
 class FromCompositeModeEdge {
@@ -128,27 +132,27 @@ ToSubModeEdge <|-- remes_EntryConditionalSubEdge
 ToSubModeEdge <|-- remes_EntryEdge
 ToSubModeEdge <|-- remes_EntryInitEdge
 ToSubModeEdge <|-- remes_InternalEdge
-remes_CompositeMode "1..1" *-- "0..9999" remes_ConditionalConnector : conditionalConnectors5
-remes_CompositeMode "0..1" -- "1..1" remes_FromCompositeModeEdge : connectFrom12
-remes_CompositeMode "0..1" -- "1..1" remes_FromCompositeModeInitEdge : connectFrom14
-remes_ConditionalConnector "0..1" -- "1..1" remes_FromConditionalConnectorEdge : connectFrom16
-remes_FromSubModeEdge "1..1" -- "0..1" remes_SubMode : connectFrom18
-remes_CompositeMode "1..1" -- "1..1" remes_ToCompositeModeEdge : connectTo31
-remes_ConditionalConnector "1..1" -- "1..1" remes_ToConditionalConnectorEdge : connectTo34
-remes_SubMode "1..1" -- "1..1" remes_ToSubModeEdge : connectTo36
-remes_CompositeMode "1..1" *-- "1..1" remes_FromCompositeModeEdge : entryEdge2
-remes_SubMode "1..1" -- "1..9999" remes_ToSubModeEdge : entryEdges23
-remes_ConditionalConnector "1..1" -- "1..9999" remes_ToConditionalConnectorEdge : entryEdges7
-remes_CompositeMode "1..1" -- "1..9999" remes_ToCompositeModeEdge : exitEdges0
-remes_FromSubModeEdge "1..9999" --* "1..1" remes_SubMode : exitEdges25
-remes_ConditionalConnector "1..1" *-- "1..9999" remes_FromConditionalConnectorEdge : exitEdges9
-remes_CompositeMode "1..1" *-- "1..1" remes_FromCompositeModeInitEdge : initEdge1
-remes_Mode "0..9999" --* "1..1" remes_RemesDiagram : modes22
-remes_CompositeMode "0..1" -- "1..1" remes_ConditionalConnector : parent11
-remes_CompositeMode "0..1" -- "1..1" remes_SubMode : parent27
-remes_Resource "0..9999" --* "1..1" remes_SubMode : resources29
-remes_Mode "1..1" -- "1..1" remes_Variable : scope39
-remes_Resource "1..1" -- "1..1" remes_SubMode : scope40
-remes_CompositeMode "1..1" *-- "1..9999" remes_SubMode : subModes4
-remes_Mode "1..1" *-- "0..9999" remes_Variable : variables21
+remes_CompositeMode "ConditionalConnector 1..1" *-- "parent6 0..9999" remes_ConditionalConnector : conditionalConnectors5
+remes_CompositeMode "entryEdge 0..1" -- "CompositeMode13 1..1" remes_FromCompositeModeEdge : connectFrom12
+remes_CompositeMode "initEdge 0..1" -- "CompositeMode15 1..1" remes_FromCompositeModeInitEdge : connectFrom14
+remes_ConditionalConnector "exitEdges 0..1" -- "ConditionalConnector17 1..1" remes_FromConditionalConnectorEdge : connectFrom16
+remes_FromSubModeEdge "SubMode20 1..1" -- "exitEdges19 0..1" remes_SubMode : connectFrom18
+remes_CompositeMode "exitEdges32 1..1" -- "CompositeMode33 1..1" remes_ToCompositeModeEdge : connectTo31
+remes_ConditionalConnector "entryEdges 1..1" -- "ConditionalConnector35 1..1" remes_ToConditionalConnectorEdge : connectTo34
+remes_SubMode "entryEdges37 1..1" -- "SubMode38 1..1" remes_ToSubModeEdge : connectTo36
+remes_CompositeMode "FromCompositeModeEdge 1..1" *-- "connectFrom3 1..1" remes_FromCompositeModeEdge : entryEdge2
+remes_SubMode "ToSubModeEdge 1..1" -- "connectTo24 1..9999" remes_ToSubModeEdge : entryEdges23
+remes_ConditionalConnector "ToConditionalConnectorEdge 1..1" -- "connectTo8 1..9999" remes_ToConditionalConnectorEdge : entryEdges7
+remes_CompositeMode "ToCompositeModeEdge 1..1" -- "connectTo 1..9999" remes_ToCompositeModeEdge : exitEdges0
+remes_FromSubModeEdge "connectFrom26 1..9999" --* "FromSubModeEdge 1..1" remes_SubMode : exitEdges25
+remes_ConditionalConnector "FromConditionalConnectorEdge 1..1" *-- "connectFrom10 1..9999" remes_FromConditionalConnectorEdge : exitEdges9
+remes_CompositeMode "FromCompositeModeInitEdge 1..1" *-- "connectFrom 1..1" remes_FromCompositeModeInitEdge : initEdge1
+remes_Mode "remes_RemesDiagram 0..9999" --* "remes_Mode 1..1" remes_RemesDiagram : modes22
+remes_CompositeMode "conditionalConnectors 0..1" -- "CompositeMode 1..1" remes_ConditionalConnector : parent11
+remes_CompositeMode "subModes 0..1" -- "CompositeMode28 1..1" remes_SubMode : parent27
+remes_Resource "scope30 0..9999" --* "Resource 1..1" remes_SubMode : resources29
+remes_Mode "variables 1..1" -- "Mode 1..1" remes_Variable : scope39
+remes_Resource "SubMode41 1..1" -- "resources 1..1" remes_SubMode : scope40
+remes_CompositeMode "SubMode 1..1" *-- "parent 1..9999" remes_SubMode : subModes4
+remes_Mode "Variable 1..1" *-- "scope 0..9999" remes_Variable : variables21
 @enduml

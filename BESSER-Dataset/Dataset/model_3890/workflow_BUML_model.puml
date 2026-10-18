@@ -1,4 +1,8 @@
 @startuml
+' model: workflow
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractState {
 }
 class EObject {
@@ -66,15 +70,15 @@ StateContainer <|-- workflow_SubProcess
 StateContainer <|-- workflow_Workflow
 ToState <|-- workflow_End
 ToState <|-- workflow_IntermediateState
-workflow_End "1..1" --* "1..1" workflow_StateContainer : endState7
-workflow_FromState "1..1" -- "1..1" workflow_StateTransition : from_10
-workflow_StateTransition "1..9999" -- "1..1" workflow_ToState : inboundTransitions2
-workflow_FromState "1..1" -- "1..9999" workflow_StateTransition : outboundTransitions1
-workflow_Start "1..1" --* "1..1" workflow_StateContainer : startState4
-workflow_Start "1..1" -- "1..1" workflow_StateContainer : stateContainer12
-workflow_End "1..1" -- "1..1" workflow_StateContainer : stateContainer14
-workflow_IntermediateState "1..1" -- "1..1" workflow_StateContainer : stateContainer9
-workflow_IntermediateState "0..9999" --* "1..1" workflow_StateContainer : states5
-workflow_StateTransition "1..1" -- "1..1" workflow_ToState : to11
-workflow_StateTransition "0..9999" --* "1..1" workflow_Workflow : transition0
+workflow_End "stateContainer8 1..1" --* "End 1..1" workflow_StateContainer : endState7
+workflow_FromState "outboundTransitions 1..1" -- "FromState 1..1" workflow_StateTransition : from_10
+workflow_StateTransition "to 1..9999" -- "StateTransition3 1..1" workflow_ToState : inboundTransitions2
+workflow_FromState "StateTransition 1..1" -- "from_ 1..9999" workflow_StateTransition : outboundTransitions1
+workflow_Start "stateContainer 1..1" --* "Start 1..1" workflow_StateContainer : startState4
+workflow_Start "StateContainer13 1..1" -- "startState 1..1" workflow_StateContainer : stateContainer12
+workflow_End "StateContainer15 1..1" -- "endState 1..1" workflow_StateContainer : stateContainer14
+workflow_IntermediateState "StateContainer 1..1" -- "states 1..1" workflow_StateContainer : stateContainer9
+workflow_IntermediateState "stateContainer6 0..9999" --* "IntermediateState 1..1" workflow_StateContainer : states5
+workflow_StateTransition "ToState 1..1" -- "inboundTransitions 1..1" workflow_ToState : to11
+workflow_StateTransition "workflow_Workflow 0..9999" --* "workflow_StateTransition 1..1" workflow_Workflow : transition0
 @enduml

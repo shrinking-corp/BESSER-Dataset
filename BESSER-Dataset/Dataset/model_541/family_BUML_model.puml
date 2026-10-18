@@ -1,4 +1,8 @@
 @startuml
+' model: family
+' project: sampleModel
+' owner: User
+' description: New project
 class family_Daughter {
   + Age : int
   + Name : str
@@ -21,9 +25,9 @@ class family_Son {
   + Age : int
   + Name : str
 }
-family_Daughter "0..1" --* "1..1" family_Father : daughter3
-family_Family "1..1" *-- "0..9999" family_Father : father7
-family_FatherInLove "0..1" --* "1..1" family_Mother : fatherinlove5
-family_Father "1..1" *-- "0..1" family_Son : son1
-family_Father "1..1" *-- "0..1" family_Mother : wife0
+family_Daughter "family_Father4 0..1" --* "family_Daughter 1..1" family_Father : daughter3
+family_Family "family_Father8 1..1" *-- "family_Family 0..9999" family_Father : father7
+family_FatherInLove "family_Mother6 0..1" --* "family_FatherInLove 1..1" family_Mother : fatherinlove5
+family_Father "family_Son 1..1" *-- "family_Father2 0..1" family_Son : son1
+family_Father "family_Mother 1..1" *-- "family_Father 0..1" family_Mother : wife0
 @enduml

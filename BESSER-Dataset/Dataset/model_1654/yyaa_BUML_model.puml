@@ -1,4 +1,8 @@
 @startuml
+' model: yyaa
+' project: sampleModel
+' owner: User
+' description: New project
 class NamedElement {
 }
 class yyaa_Alias {
@@ -17,9 +21,9 @@ class yyaa_World {
 }
 NamedElement <|-- yyaa_RelatedTo
 NamedElement <|-- yyaa_Thing
-yyaa_Alias "0..9999" --* "1..1" yyaa_NamedElement : aliases2
-yyaa_RelatedTo "1..1" -- "0..1" yyaa_Thing : fromThing3
-yyaa_RelatedTo "0..9999" --* "1..1" yyaa_Thing : relations1
-yyaa_Thing "0..9999" --* "1..1" yyaa_World : things0
-yyaa_RelatedTo "1..1" -- "0..1" yyaa_Thing : toThing4
+yyaa_Alias "yyaa_NamedElement 0..9999" --* "yyaa_Alias 1..1" yyaa_NamedElement : aliases2
+yyaa_RelatedTo "Thing 1..1" -- "relations 0..1" yyaa_Thing : fromThing3
+yyaa_RelatedTo "fromThing 0..9999" --* "RelatedTo 1..1" yyaa_Thing : relations1
+yyaa_Thing "yyaa_World 0..9999" --* "yyaa_Thing 1..1" yyaa_World : things0
+yyaa_RelatedTo "yyaa_Thing5 1..1" -- "yyaa_RelatedTo 0..1" yyaa_Thing : toThing4
 @enduml

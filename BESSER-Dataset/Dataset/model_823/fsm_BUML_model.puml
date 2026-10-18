@@ -1,4 +1,8 @@
 @startuml
+' model: fsm
+' project: sampleModel
+' owner: User
+' description: New project
 class Action {
 }
 class Guard {
@@ -58,17 +62,17 @@ NumberGuard <|-- fsm_EqualNumberGuard
 NumberGuard <|-- fsm_GreaterThanNumberGuard
 NumberGuard <|-- fsm_LessThanNumberGuard
 Variable <|-- fsm_NumberVariable
-fsm_Action "1..1" --* "1..1" fsm_Transition : action16
-fsm_Guard "1..1" --* "1..1" fsm_Transition : guard14
-fsm_State "1..1" -- "0..9999" fsm_Transition : incomingTransitions8
-fsm_State "1..1" -- "1..1" fsm_StateMachine : initialState1
-fsm_State "1..1" -- "0..9999" fsm_Transition : outgoingTransitions7
-fsm_State "0..9999" --* "1..1" fsm_StateMachine : ownedStates0
-fsm_StateMachine "1..1" *-- "0..9999" fsm_Transition : ownedTransitions2
-fsm_State "1..1" -- "1..1" fsm_StateMachine : owningFSM6
-fsm_State "1..1" -- "1..1" fsm_Transition : source10
-fsm_NumberGuard "1..1" -- "1..1" fsm_NumberVariable : source18
-fsm_State "1..1" -- "1..1" fsm_Transition : target12
-fsm_Action "1..1" -- "1..1" fsm_NumberVariable : target19
-fsm_StateMachine "1..1" *-- "0..9999" fsm_Variable : variables4
+fsm_Action "fsm_Transition17 1..1" --* "fsm_Action 1..1" fsm_Transition : action16
+fsm_Guard "fsm_Transition15 1..1" --* "fsm_Guard 1..1" fsm_Transition : guard14
+fsm_State "Transition9 1..1" -- "target 0..9999" fsm_Transition : incomingTransitions8
+fsm_State "fsm_StateMachine 1..1" -- "fsm_State 1..1" fsm_StateMachine : initialState1
+fsm_State "Transition 1..1" -- "source 0..9999" fsm_Transition : outgoingTransitions7
+fsm_State "owningFSM 0..9999" --* "State 1..1" fsm_StateMachine : ownedStates0
+fsm_StateMachine "fsm_Transition 1..1" *-- "fsm_StateMachine3 0..9999" fsm_Transition : ownedTransitions2
+fsm_State "StateMachine 1..1" -- "ownedStates 1..1" fsm_StateMachine : owningFSM6
+fsm_State "outgoingTransitions 1..1" -- "State11 1..1" fsm_Transition : source10
+fsm_NumberGuard "fsm_NumberVariable 1..1" -- "fsm_NumberGuard 1..1" fsm_NumberVariable : source18
+fsm_State "incomingTransitions 1..1" -- "State13 1..1" fsm_Transition : target12
+fsm_Action "fsm_NumberVariable21 1..1" -- "fsm_Action20 1..1" fsm_NumberVariable : target19
+fsm_StateMachine "fsm_Variable 1..1" *-- "fsm_StateMachine5 0..9999" fsm_Variable : variables4
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: Projects
+' project: sampleModel
+' owner: User
+' description: New project
 class Project {
 }
 enum ProjectSize {
@@ -39,18 +43,18 @@ class Projects_Worker {
   + isOverloaded() : bool
 }
 Project <|-- Projects_Training
-Projects_Company "1..1" -- "1..1" Projects_Project : company6
-Projects_Company "1..1" -- "1..9999" Projects_Worker : employees1
-Projects_Company "0..1" -- "1..1" Projects_Worker : employer2
-Projects_Project "1..1" -- "0..9999" Projects_Worker : members8
-Projects_Project "1..1" -- "0..9999" Projects_Project : predecessors15
-Projects_Company "1..1" -- "0..9999" Projects_Project : projects0
-Projects_Project "0..9999" -- "1..1" Projects_Qualification : projects22
-Projects_Project "0..9999" -- "1..1" Projects_Worker : projects4
-Projects_Qualification "1..9999" -- "1..1" Projects_Worker : qualifications3
-Projects_Project "1..1" -- "1..9999" Projects_Qualification : requirements11
-Projects_Project "1..1" -- "0..9999" Projects_Project : successors18
-Projects_Qualification "1..9999" -- "1..1" Projects_Training : trained25
-Projects_Qualification "1..1" -- "0..1" Projects_Training : trainings24
-Projects_Qualification "1..1" -- "0..9999" Projects_Worker : workers20
+Projects_Company "projects 1..1" -- "Company7 1..1" Projects_Project : company6
+Projects_Company "Worker 1..1" -- "employer 1..9999" Projects_Worker : employees1
+Projects_Company "employees 0..1" -- "Company 1..1" Projects_Worker : employer2
+Projects_Project "Worker10 1..1" -- "projects9 0..9999" Projects_Worker : members8
+Projects_Project "Project16 1..1" -- "successors 0..9999" Projects_Project : predecessors15
+Projects_Company "Project 1..1" -- "company 0..9999" Projects_Project : projects0
+Projects_Project "requirements 0..9999" -- "Project23 1..1" Projects_Qualification : projects22
+Projects_Project "members 0..9999" -- "Project5 1..1" Projects_Worker : projects4
+Projects_Qualification "workers 1..9999" -- "Qualification 1..1" Projects_Worker : qualifications3
+Projects_Project "Qualification13 1..1" -- "projects12 1..9999" Projects_Qualification : requirements11
+Projects_Project "Project19 1..1" -- "predecessors 0..9999" Projects_Project : successors18
+Projects_Qualification "trainings 1..9999" -- "Qualification26 1..1" Projects_Training : trained25
+Projects_Qualification "Training 1..1" -- "trained 0..1" Projects_Training : trainings24
+Projects_Qualification "Worker21 1..1" -- "qualifications 0..9999" Projects_Worker : workers20
 @enduml

@@ -16137,9 +16137,9 @@ def test_assoc_accountShares59_stub_double():
     partner = eTJ_ChargeSet()
     setattr(partner, 'eTJ_ChargeSet', None)
     _safe_set(owner, 'eTJ_AccountShare', partner)
-    assert getattr(partner, 'eTJ_ChargeSet') == owner
+    assert owner in getattr(partner, 'eTJ_ChargeSet')
     _safe_set(owner, 'eTJ_AccountShare', None)
-    assert getattr(partner, 'eTJ_ChargeSet') is None
+    assert owner not in getattr(partner, 'eTJ_ChargeSet')
 
 
 def test_assoc_attributes13_stub_double():
@@ -16452,9 +16452,9 @@ def test_assoc_columns60_stub_double():
     partner = eTJ_Columns()
     setattr(partner, 'eTJ_Columns', None)
     _safe_set(owner, 'eTJ_Column', partner)
-    assert getattr(partner, 'eTJ_Columns') == owner
+    assert owner in getattr(partner, 'eTJ_Columns')
     _safe_set(owner, 'eTJ_Column', None)
-    assert getattr(partner, 'eTJ_Columns') is None
+    assert owner not in getattr(partner, 'eTJ_Columns')
 
 
 def test_assoc_cost38_stub_double():
@@ -16527,9 +16527,9 @@ def test_assoc_dependency62_stub_double():
     partner = eTJ_Depends()
     setattr(partner, 'eTJ_Depends', None)
     _safe_set(owner, 'eTJ_TaskDependency', partner)
-    assert getattr(partner, 'eTJ_Depends') == owner
+    assert owner in getattr(partner, 'eTJ_Depends')
     _safe_set(owner, 'eTJ_TaskDependency', None)
-    assert getattr(partner, 'eTJ_Depends') is None
+    assert owner not in getattr(partner, 'eTJ_Depends')
 
 
 def test_assoc_details139_stub_double():
@@ -16557,9 +16557,9 @@ def test_assoc_details3_stub_double():
     partner = eTJ_Leaves()
     setattr(partner, 'eTJ_Leaves', None)
     _safe_set(owner, 'eTJ_LeaveDetails', partner)
-    assert getattr(partner, 'eTJ_Leaves') == owner
+    assert owner in getattr(partner, 'eTJ_Leaves')
     _safe_set(owner, 'eTJ_LeaveDetails', None)
-    assert getattr(partner, 'eTJ_Leaves') is None
+    assert owner not in getattr(partner, 'eTJ_Leaves')
 
 
 def test_assoc_duration102_stub_double():
@@ -16842,9 +16842,9 @@ def test_assoc_extends68_stub_double():
     partner = eTJ_ExtendResource()
     setattr(partner, 'eTJ_ExtendResource', None)
     _safe_set(owner, 'eTJ_Extend', partner)
-    assert getattr(partner, 'eTJ_ExtendResource') == owner
+    assert owner in getattr(partner, 'eTJ_ExtendResource')
     _safe_set(owner, 'eTJ_Extend', None)
-    assert getattr(partner, 'eTJ_ExtendResource') is None
+    assert owner not in getattr(partner, 'eTJ_ExtendResource')
 
 
 def test_assoc_extends71_stub_double():
@@ -16857,9 +16857,9 @@ def test_assoc_extends71_stub_double():
     partner = eTJ_ExtendTask()
     setattr(partner, 'eTJ_ExtendTask', None)
     _safe_set(owner, 'eTJ_Extend72', partner)
-    assert getattr(partner, 'eTJ_ExtendTask') == owner
+    assert owner in getattr(partner, 'eTJ_ExtendTask')
     _safe_set(owner, 'eTJ_Extend72', None)
-    assert getattr(partner, 'eTJ_ExtendTask') is None
+    assert owner not in getattr(partner, 'eTJ_ExtendTask')
 
 
 def test_assoc_extension292_stub_double():
@@ -17232,9 +17232,9 @@ def test_assoc_resources155_stub_double():
     partner = eTJ_Managers()
     setattr(partner, 'eTJ_Managers', None)
     _safe_set(owner, 'eTJ_Resource156', partner)
-    assert getattr(partner, 'eTJ_Managers') == owner
+    assert owner in getattr(partner, 'eTJ_Managers')
     _safe_set(owner, 'eTJ_Resource156', None)
-    assert getattr(partner, 'eTJ_Managers') is None
+    assert owner not in getattr(partner, 'eTJ_Managers')
 
 
 def test_assoc_resources177_stub_double():
@@ -17247,9 +17247,9 @@ def test_assoc_resources177_stub_double():
     partner = eTJ_Responsible()
     setattr(partner, 'eTJ_Responsible', None)
     _safe_set(owner, 'eTJ_Resource178', partner)
-    assert getattr(partner, 'eTJ_Responsible') == owner
+    assert owner in getattr(partner, 'eTJ_Responsible')
     _safe_set(owner, 'eTJ_Resource178', None)
-    assert getattr(partner, 'eTJ_Responsible') is None
+    assert owner not in getattr(partner, 'eTJ_Responsible')
 
 
 def test_assoc_resources312_stub_double():
@@ -17262,9 +17262,9 @@ def test_assoc_resources312_stub_double():
     partner = eTJ_LimitAttribute()
     setattr(partner, 'eTJ_LimitAttribute313', None)
     _safe_set(owner, 'eTJ_Resource314', partner)
-    assert getattr(partner, 'eTJ_LimitAttribute313') == owner
+    assert owner in getattr(partner, 'eTJ_LimitAttribute313')
     _safe_set(owner, 'eTJ_Resource314', None)
-    assert getattr(partner, 'eTJ_LimitAttribute313') is None
+    assert owner not in getattr(partner, 'eTJ_LimitAttribute313')
 
 
 def test_assoc_resources34_stub_double():
@@ -17277,9 +17277,9 @@ def test_assoc_resources34_stub_double():
     partner = eTJ_Alternative()
     setattr(partner, 'eTJ_Alternative', None)
     _safe_set(owner, 'eTJ_Resource35', partner)
-    assert getattr(partner, 'eTJ_Alternative') == owner
+    assert owner in getattr(partner, 'eTJ_Alternative')
     _safe_set(owner, 'eTJ_Resource35', None)
-    assert getattr(partner, 'eTJ_Alternative') is None
+    assert owner not in getattr(partner, 'eTJ_Alternative')
 
 
 def test_assoc_revenue40_stub_double():
@@ -17382,9 +17382,9 @@ def test_assoc_scenarios190_stub_double():
     partner = eTJ_Scenarios()
     setattr(partner, 'eTJ_Scenarios', None)
     _safe_set(owner, 'eTJ_Scenario191', partner)
-    assert getattr(partner, 'eTJ_Scenarios') == owner
+    assert owner in getattr(partner, 'eTJ_Scenarios')
     _safe_set(owner, 'eTJ_Scenario191', None)
-    assert getattr(partner, 'eTJ_Scenarios') is None
+    assert owner not in getattr(partner, 'eTJ_Scenarios')
 
 
 def test_assoc_shift198_stub_double():
@@ -17539,531 +17539,52 @@ def test_assoc_task49_stub_double():
 
 
 
-from enum import Enum
 from python_code import AlertLevel
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(AlertLevel.RED, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(AlertLevel.RED, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(AlertLevel.RED, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(AlertLevel.RED, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(AlertLevel.RED, 'RED') == AlertLevel.RED
-
-from enum import Enum
 from python_code import BuildInMacro
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(BuildInMacro.now, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(BuildInMacro.now, 0, '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(BuildInMacro.now, '', '', '') == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(BuildInMacro.now, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(BuildInMacro.now, 'now') == BuildInMacro.now
-
-from enum import Enum
 from python_code import ChargeApplies
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ChargeApplies.ONEND, '', 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ChargeApplies.ONEND, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ChargeApplies.ONEND, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ChargeApplies.ONEND, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ChargeApplies.ONEND, 'ONEND') == ChargeApplies.ONEND
-
-from enum import Enum
 from python_code import ColumnId
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ColumnId.cost, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ColumnId.end, '', 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ColumnId.cost, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ColumnId.cost, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ColumnId.cost, 'cost') == ColumnId.cost
-
-from enum import Enum
 from python_code import CriterionDirection
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(CriterionDirection.UP, '', 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(CriterionDirection.UP, '', 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(CriterionDirection.UP, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(CriterionDirection.UP, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(CriterionDirection.UP, 'UP') == CriterionDirection.UP
-
-from enum import Enum
 from python_code import DependsPolicy
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(DependsPolicy.ONEND, '', 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(DependsPolicy.ONEND, '', 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(DependsPolicy.ONEND, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(DependsPolicy.ONEND, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(DependsPolicy.ONEND, 'ONEND') == DependsPolicy.ONEND
-
-from enum import Enum
 from python_code import JournalAttributeValues
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(JournalAttributeValues.NONE, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(JournalAttributeValues.NONE, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(JournalAttributeValues.ALL, '', 0, '') == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(JournalAttributeValues.ALL, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(JournalAttributeValues.ALL, 'ALL') == JournalAttributeValues.ALL
-
-from enum import Enum
 from python_code import JournalEntrySortCriterion
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(JournalEntrySortCriterion.DATE_UP, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(JournalEntrySortCriterion.ALERT_UP, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(JournalEntrySortCriterion.DATE_UP, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(JournalEntrySortCriterion.DATE_UP, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(JournalEntrySortCriterion.DATE_UP, 'DATE_UP') == JournalEntrySortCriterion.DATE_UP
-
-from enum import Enum
 from python_code import JournalModeValue
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(JournalModeValue.JOURNAL, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(JournalModeValue.JOURNAL, 0, '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(JournalModeValue.JOURNAL, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(JournalModeValue.JOURNAL, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(JournalModeValue.JOURNAL, 'JOURNAL') == JournalModeValue.JOURNAL
-
-from enum import Enum
 from python_code import Justification
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(Justification.LEFT, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(Justification.LEFT, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(Justification.LEFT, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(Justification.LEFT, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(Justification.LEFT, 'LEFT') == Justification.LEFT
-
-from enum import Enum
 from python_code import LeaveType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(LeaveType.sick, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(LeaveType.annual, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(LeaveType.annual, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(LeaveType.sick, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(LeaveType.sick, 'sick') == LeaveType.sick
-
-from enum import Enum
 from python_code import ListTypeValues
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ListTypeValues.BULLETS, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ListTypeValues.BULLETS, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ListTypeValues.BULLETS, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ListTypeValues.COMMA, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ListTypeValues.COMMA, 'COMMA') == ListTypeValues.COMMA
-
-from enum import Enum
 from python_code import LoadDisplayUnit
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(LoadDisplayUnit.DAYS, '', 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(LoadDisplayUnit.DAYS, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(LoadDisplayUnit.HOURS, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(LoadDisplayUnit.DAYS, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(LoadDisplayUnit.DAYS, 'DAYS') == LoadDisplayUnit.DAYS
-
-from enum import Enum
 from python_code import PurgeReportAttribute
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(PurgeReportAttribute.FLAGS, 0, '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(PurgeReportAttribute.FLAGS, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(PurgeReportAttribute.FLAGS, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(PurgeReportAttribute.FLAGS, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(PurgeReportAttribute.FLAGS, 'FLAGS') == PurgeReportAttribute.FLAGS
-
-from enum import Enum
 from python_code import PurgeResourceAttribute
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(PurgeResourceAttribute.FAIL, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(PurgeResourceAttribute.WARN, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(PurgeResourceAttribute.WARN, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(PurgeResourceAttribute.WARN, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(PurgeResourceAttribute.FAIL, 'WARN') == PurgeResourceAttribute.WARN
-
-from enum import Enum
 from python_code import PurgeTaskAttribute
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(PurgeTaskAttribute.WARN, '', 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(PurgeTaskAttribute.FAIL, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(PurgeTaskAttribute.WARN, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(PurgeTaskAttribute.WARN, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(PurgeTaskAttribute.WARN, 'WARN') == PurgeTaskAttribute.WARN
-
-from enum import Enum
 from python_code import ReportFormat
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ReportFormat.CSV, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ReportFormat.CSV, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ReportFormat.CSV, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ReportFormat.CSV, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ReportFormat.CSV, 'CSV') == ReportFormat.CSV
-
-from enum import Enum
 from python_code import ScaleResolution
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ScaleResolution.HOUR, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ScaleResolution.DAY, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ScaleResolution.DAY, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ScaleResolution.DAY, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ScaleResolution.DAY, 'DAY') == ScaleResolution.DAY
-
-from enum import Enum
 from python_code import SchedulingPolicy
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(SchedulingPolicy.ASAP, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(SchedulingPolicy.ASAP, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(SchedulingPolicy.ALAP, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(SchedulingPolicy.ASAP, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(SchedulingPolicy.ASAP, 'ASAP') == SchedulingPolicy.ASAP
-
-from enum import Enum
 from python_code import SelectArgument
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(SelectArgument.RANDOM, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(SelectArgument.RANDOM, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(SelectArgument.ORDER, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(SelectArgument.ORDER, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(SelectArgument.ORDER, 'ORDER') == SelectArgument.ORDER
-
-from enum import Enum
 from python_code import TimeUnit
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(TimeUnit.DAY, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(TimeUnit.YEAR, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(TimeUnit.WEEK, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(TimeUnit.DAY, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(TimeUnit.DAY, 'DAY') == TimeUnit.DAY
-
-from enum import Enum
 from python_code import Weekday
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(Weekday.SUN, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(Weekday.TUE, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(Weekday.TUE, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(Weekday.SUN, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(Weekday.SUN, 'SAT') == Weekday.SAT
-
-from enum import Enum
 from python_code import WorkQuantityUnit
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(WorkQuantityUnit.HOURS, 0, '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(WorkQuantityUnit.DAYS, 0, '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(WorkQuantityUnit.DAYS, '', 0, 0) == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(WorkQuantityUnit.DAYS, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(WorkQuantityUnit.DAYS, 'DAYS') == WorkQuantityUnit.DAYS
-
-from enum import Enum
 from python_code import YesNo
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(YesNo.NO, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(YesNo.NO, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(YesNo.YES, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(YesNo.NO, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(YesNo.NO, 'NO') == YesNo.NO
 

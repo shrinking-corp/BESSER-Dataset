@@ -1,4 +1,8 @@
 @startuml
+' model: RandL
+' project: sampleModel
+' owner: User
+' description: New project
 enum Gender {
   female
   male
@@ -95,58 +99,58 @@ class Transaction {
 }
 Transaction <|-- RandL_Burning
 Transaction <|-- RandL_Earning
-RandL_LoyaltyAccount "1..1" -- "1..1" RandL_Membership : Membership11
-RandL_Membership "0..9999" -- "1..1" RandL_ServiceLevel : Membership2
-RandL_CustomerCard "1..1" -- "1..1" RandL_Membership : Membership36
-RandL_LoyaltyAccount "1..1" -- "1..1" RandL_Transaction : account4
-RandL_LoyaltyAccount "0..1" -- "1..1" RandL_Membership : account46
-RandL_Service "0..9999" -- "1..1" RandL_ServiceLevel : availableServices1
-RandL_CustomerCard "1..1" -- "1..1" RandL_TransactionReport : card25
-RandL_CustomerCard "1..1" -- "1..1" RandL_Membership : card43
-RandL_CustomerCard "1..1" -- "1..1" RandL_Transaction : card8
-RandL_Customer "1..1" -- "0..9999" RandL_CustomerCard : cards96
-RandL_Membership "1..1" -- "1..1" RandL_ServiceLevel : currentLevel41
-RandL_Date "1..1" --* "1..1" RandL_TransactionReportLine : date101
-RandL_Date "1..1" --* "1..1" RandL_Transaction : date3
-RandL_Customer "1..1" *-- "1..1" RandL_Date : dateOfBirth91
-RandL_ProgramPartner "1..1" -- "0..9999" RandL_Service : deliveredServices15
-RandL_Date "1..1" --* "1..1" RandL_TransactionReport : from_21
-RandL_Service "1..1" -- "1..1" RandL_Transaction : generatedBy5
-RandL_CustomerCard "1..1" *-- "0..1" RandL_Date : goodThru27
-RandL_Service "1..1" -- "1..1" RandL_ServiceLevel : level89
-RandL_LoyaltyProgram "1..1" -- "1..9999" RandL_ServiceLevel : levels110
-RandL_TransactionReport "1..1" -- "0..9999" RandL_TransactionReportLine : lines24
-RandL_LoyaltyProgram "1..1" -- "0..9999" RandL_Membership : memberships115
-RandL_Customer "1..1" -- "0..9999" RandL_Membership : memberships98
-RandL_CustomerCard "1..1" *-- "0..1" RandL_ServiceLevel : myLevel33
-RandL_Customer "1..1" -- "1..1" RandL_CustomerCard : owner35
-RandL_Customer "0..9999" -- "1..1" RandL_LoyaltyProgram : participants112
-RandL_Customer "1..1" -- "1..1" RandL_Membership : participants50
-RandL_ProgramPartner "1..1" -- "1..1" RandL_Service : partner86
-RandL_LoyaltyProgram "1..1" -- "1..9999" RandL_ProgramPartner : partners108
-RandL_LoyaltyProgram "1..1" -- "1..1" RandL_ServiceLevel : program0
-RandL_LoyaltyProgram "1..9999" -- "1..1" RandL_ProgramPartner : programs17
-RandL_LoyaltyProgram "1..1" -- "1..1" RandL_Membership : programs49
-RandL_Customer "1..1" -- "0..9999" RandL_LoyaltyProgram : programs94
-RandL_Burning "0..9999" --* "1..1" RandL_Container_RandL : ref_RandL_Burning82
-RandL_Container_RandL "1..1" *-- "0..9999" RandL_Customer : ref_RandL_Customer52
-RandL_Container_RandL "1..1" *-- "0..9999" RandL_CustomerCard : ref_RandL_CustomerCard57
-RandL_Container_RandL "1..1" *-- "0..9999" RandL_Date : ref_RandL_Date54
-RandL_Container_RandL "1..1" *-- "0..9999" RandL_Earning : ref_RandL_Earning69
-RandL_Container_RandL "1..1" *-- "0..9999" RandL_LoyaltyAccount : ref_RandL_LoyaltyAccount71
-RandL_Container_RandL "1..1" *-- "0..9999" RandL_LoyaltyProgram : ref_RandL_LoyaltyProgram66
-RandL_Container_RandL "1..1" *-- "0..9999" RandL_Membership : ref_RandL_Membership60
-RandL_Container_RandL "1..1" *-- "0..9999" RandL_ProgramPartner : ref_RandL_ProgramPartner80
-RandL_Container_RandL "1..1" *-- "0..9999" RandL_Service : ref_RandL_Service63
-RandL_Container_RandL "1..1" *-- "0..9999" RandL_ServiceLevel : ref_RandL_ServiceLevel74
-RandL_Container_RandL "1..1" *-- "0..9999" RandL_TransactionReport : ref_RandL_TransactionReport77
-RandL_Container_RandL "1..1" *-- "0..9999" RandL_TransactionReportLine : ref_RandL_TransactionReportLine84
-RandL_TransactionReport "1..1" -- "1..1" RandL_TransactionReportLine : report107
-RandL_Transaction "1..1" -- "1..1" RandL_TransactionReportLine : transaction104
-RandL_LoyaltyAccount "1..1" -- "0..9999" RandL_Transaction : transactions13
-RandL_CustomerCard "1..1" -- "0..9999" RandL_Transaction : transactions38
-RandL_Service "1..1" -- "0..9999" RandL_Transaction : transactions87
-RandL_Date "1..1" --* "1..1" RandL_TransactionReport : until19
-RandL_LoyaltyAccount "1..1" -- "0..9999" RandL_Service : usedServices10
-RandL_CustomerCard "1..1" *-- "0..1" RandL_Date : validFrom30
+RandL_LoyaltyAccount "Membership12 1..1" -- "account 1..1" RandL_Membership : Membership11
+RandL_Membership "currentLevel 0..9999" -- "Membership 1..1" RandL_ServiceLevel : Membership2
+RandL_CustomerCard "Membership37 1..1" -- "card 1..1" RandL_Membership : Membership36
+RandL_LoyaltyAccount "transactions 1..1" -- "LoyaltyAccount 1..1" RandL_Transaction : account4
+RandL_LoyaltyAccount "Membership47 0..1" -- "LoyaltyAccount48 1..1" RandL_Membership : account46
+RandL_Service "level 0..9999" -- "Service 1..1" RandL_ServiceLevel : availableServices1
+RandL_CustomerCard "RandL_TransactionReport26 1..1" -- "RandL_CustomerCard 1..1" RandL_TransactionReport : card25
+RandL_CustomerCard "Membership44 1..1" -- "CustomerCard45 1..1" RandL_Membership : card43
+RandL_CustomerCard "transactions9 1..1" -- "CustomerCard 1..1" RandL_Transaction : card8
+RandL_Customer "CustomerCard97 1..1" -- "owner 0..9999" RandL_CustomerCard : cards96
+RandL_Membership "ServiceLevel 1..1" -- "Membership42 1..1" RandL_ServiceLevel : currentLevel41
+RandL_Date "RandL_TransactionReportLine102 1..1" --* "RandL_Date103 1..1" RandL_TransactionReportLine : date101
+RandL_Date "RandL_Transaction 1..1" --* "RandL_Date 1..1" RandL_Transaction : date3
+RandL_Customer "RandL_Date93 1..1" *-- "RandL_Customer92 1..1" RandL_Date : dateOfBirth91
+RandL_ProgramPartner "Service16 1..1" -- "partner 0..9999" RandL_Service : deliveredServices15
+RandL_Date "RandL_TransactionReport22 1..1" --* "RandL_Date23 1..1" RandL_TransactionReport : from_21
+RandL_Service "transactions6 1..1" -- "Service7 1..1" RandL_Transaction : generatedBy5
+RandL_CustomerCard "RandL_Date29 1..1" *-- "RandL_CustomerCard28 0..1" RandL_Date : goodThru27
+RandL_Service "ServiceLevel90 1..1" -- "availableServices 1..1" RandL_ServiceLevel : level89
+RandL_LoyaltyProgram "ServiceLevel111 1..1" -- "program 1..9999" RandL_ServiceLevel : levels110
+RandL_TransactionReport "TransactionReportLine 1..1" -- "report 0..9999" RandL_TransactionReportLine : lines24
+RandL_LoyaltyProgram "RandL_Membership117 1..1" -- "RandL_LoyaltyProgram116 0..9999" RandL_Membership : memberships115
+RandL_Customer "RandL_Membership100 1..1" -- "RandL_Customer99 0..9999" RandL_Membership : memberships98
+RandL_CustomerCard "RandL_ServiceLevel 1..1" *-- "RandL_CustomerCard34 0..1" RandL_ServiceLevel : myLevel33
+RandL_Customer "cards 1..1" -- "Customer 1..1" RandL_CustomerCard : owner35
+RandL_Customer "programs113 0..9999" -- "Customer114 1..1" RandL_LoyaltyProgram : participants112
+RandL_Customer "RandL_Membership51 1..1" -- "RandL_Customer 1..1" RandL_Membership : participants50
+RandL_ProgramPartner "deliveredServices 1..1" -- "ProgramPartner 1..1" RandL_Service : partner86
+RandL_LoyaltyProgram "ProgramPartner109 1..1" -- "programs 1..9999" RandL_ProgramPartner : partners108
+RandL_LoyaltyProgram "levels 1..1" -- "LoyaltyProgram 1..1" RandL_ServiceLevel : program0
+RandL_LoyaltyProgram "partners 1..9999" -- "LoyaltyProgram18 1..1" RandL_ProgramPartner : programs17
+RandL_LoyaltyProgram "RandL_Membership 1..1" -- "RandL_LoyaltyProgram 1..1" RandL_Membership : programs49
+RandL_Customer "LoyaltyProgram95 1..1" -- "participants 0..9999" RandL_LoyaltyProgram : programs94
+RandL_Burning "RandL_Container_RandL83 0..9999" --* "RandL_Burning 1..1" RandL_Container_RandL : ref_RandL_Burning82
+RandL_Container_RandL "RandL_Customer53 1..1" *-- "RandL_Container_RandL 0..9999" RandL_Customer : ref_RandL_Customer52
+RandL_Container_RandL "RandL_CustomerCard59 1..1" *-- "RandL_Container_RandL58 0..9999" RandL_CustomerCard : ref_RandL_CustomerCard57
+RandL_Container_RandL "RandL_Date56 1..1" *-- "RandL_Container_RandL55 0..9999" RandL_Date : ref_RandL_Date54
+RandL_Container_RandL "RandL_Earning 1..1" *-- "RandL_Container_RandL70 0..9999" RandL_Earning : ref_RandL_Earning69
+RandL_Container_RandL "RandL_LoyaltyAccount73 1..1" *-- "RandL_Container_RandL72 0..9999" RandL_LoyaltyAccount : ref_RandL_LoyaltyAccount71
+RandL_Container_RandL "RandL_LoyaltyProgram68 1..1" *-- "RandL_Container_RandL67 0..9999" RandL_LoyaltyProgram : ref_RandL_LoyaltyProgram66
+RandL_Container_RandL "RandL_Membership62 1..1" *-- "RandL_Container_RandL61 0..9999" RandL_Membership : ref_RandL_Membership60
+RandL_Container_RandL "RandL_ProgramPartner 1..1" *-- "RandL_Container_RandL81 0..9999" RandL_ProgramPartner : ref_RandL_ProgramPartner80
+RandL_Container_RandL "RandL_Service65 1..1" *-- "RandL_Container_RandL64 0..9999" RandL_Service : ref_RandL_Service63
+RandL_Container_RandL "RandL_ServiceLevel76 1..1" *-- "RandL_Container_RandL75 0..9999" RandL_ServiceLevel : ref_RandL_ServiceLevel74
+RandL_Container_RandL "RandL_TransactionReport79 1..1" *-- "RandL_Container_RandL78 0..9999" RandL_TransactionReport : ref_RandL_TransactionReport77
+RandL_Container_RandL "RandL_TransactionReportLine 1..1" *-- "RandL_Container_RandL85 0..9999" RandL_TransactionReportLine : ref_RandL_TransactionReportLine84
+RandL_TransactionReport "lines 1..1" -- "TransactionReport 1..1" RandL_TransactionReportLine : report107
+RandL_Transaction "RandL_TransactionReportLine105 1..1" -- "RandL_Transaction106 1..1" RandL_TransactionReportLine : transaction104
+RandL_LoyaltyAccount "Transaction 1..1" -- "account14 0..9999" RandL_Transaction : transactions13
+RandL_CustomerCard "Transaction40 1..1" -- "card39 0..9999" RandL_Transaction : transactions38
+RandL_Service "Transaction88 1..1" -- "generatedBy 0..9999" RandL_Transaction : transactions87
+RandL_Date "RandL_TransactionReport 1..1" --* "RandL_Date20 1..1" RandL_TransactionReport : until19
+RandL_LoyaltyAccount "RandL_Service 1..1" -- "RandL_LoyaltyAccount 0..9999" RandL_Service : usedServices10
+RandL_CustomerCard "RandL_Date32 1..1" *-- "RandL_CustomerCard31 0..1" RandL_Date : validFrom30
 @enduml

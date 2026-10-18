@@ -1,4 +1,8 @@
 @startuml
+' model: dfs
+' project: sampleModel
+' owner: User
+' description: New project
 class EdgeProcessor {
 }
 enum EdgeType {
@@ -31,15 +35,15 @@ class dfs_Node {
   + preTraversal : int
 }
 EdgeProcessor <|-- dfs_DepthFirstSearch
-dfs_EdgeProcessor "1..1" -- "0..1" dfs_EdgeProcessor : delegate1
-dfs_DFSGraph "1..1" *-- "0..9999" dfs_Edge : edges14
-dfs_DFSGraph "1..1" -- "1..1" dfs_Node : graph3
-dfs_DFSGraph "1..1" -- "1..1" dfs_Edge : graph7
-dfs_Edge "0..9999" -- "1..1" dfs_Node : incoming2
-dfs_DFSGraph "1..1" *-- "0..9999" dfs_Node : nodes16
-dfs_EObject "1..1" -- "1..1" dfs_Edge : origin10
-dfs_EObject "1..1" -- "1..1" dfs_Node : origin4
-dfs_Edge "0..9999" -- "1..1" dfs_Node : outgoing5
-dfs_Edge "1..1" -- "1..1" dfs_Node : source9
-dfs_Edge "1..1" -- "1..1" dfs_Node : target12
+dfs_EdgeProcessor "dfs_EdgeProcessor 1..1" -- "dfs_EdgeProcessor0 0..1" dfs_EdgeProcessor : delegate1
+dfs_DFSGraph "Edge15 1..1" *-- "graph 0..9999" dfs_Edge : edges14
+dfs_DFSGraph "nodes 1..1" -- "DFSGraph 1..1" dfs_Node : graph3
+dfs_DFSGraph "edges 1..1" -- "DFSGraph8 1..1" dfs_Edge : graph7
+dfs_Edge "target 0..9999" -- "Edge 1..1" dfs_Node : incoming2
+dfs_DFSGraph "Node18 1..1" *-- "graph17 0..9999" dfs_Node : nodes16
+dfs_EObject "dfs_Edge 1..1" -- "dfs_EObject11 1..1" dfs_Edge : origin10
+dfs_EObject "dfs_Node 1..1" -- "dfs_EObject 1..1" dfs_Node : origin4
+dfs_Edge "source 0..9999" -- "Edge6 1..1" dfs_Node : outgoing5
+dfs_Edge "Node 1..1" -- "outgoing 1..1" dfs_Node : source9
+dfs_Edge "Node13 1..1" -- "incoming 1..1" dfs_Node : target12
 @enduml

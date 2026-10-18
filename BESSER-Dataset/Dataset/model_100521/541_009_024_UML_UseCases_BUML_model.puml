@@ -1,4 +1,8 @@
 @startuml
+' model: PrimitiveTypes
+' project: sampleModel
+' owner: User
+' description: New project
 class BooleanExpression {
 }
 class Classifier {
@@ -52,20 +56,20 @@ Instance <|-- UseCases_UseCaseInstance
 ModelElement <|-- UseCases_ExtensionPoint
 RelationShip <|-- UseCases_Extend
 RelationShip <|-- UseCases_Include
-UseCase "1..1" -- "1..1" UseCases_Include : addition10
-UseCase "1..1" -- "1..1" UseCases_Include : base11
-UseCase "1..1" -- "1..1" UseCases_Extend : base16
-Classifier "1..9999" -- "1..1" UseCases_Instance : classifier1
-BooleanExpression "1..1" -- "1..1" UseCases_Extend : condition13
-Extend "0..9999" -- "1..1" UseCases_ExtensionPoint : extend21
-Extend "1..1" -- "1..1" UseCases_UseCase : extendBase6
-Extend "1..1" -- "1..1" UseCases_UseCase : extendExtension5
-UseCase "1..1" -- "1..1" UseCases_Extend : extension14
-ExtensionPoint "1..9999" -- "1..1" UseCases_Extend : extensionPoint18
-ExtensionPoint "0..9999" -- "1..1" UseCases_UseCase : extensionPoints9
-Include "1..1" -- "1..1" UseCases_UseCase : includeAddition2
-Include "1..1" -- "1..1" UseCases_UseCase : includeBase3
-Instance "0..9999" -- "1..1" UseCases_Classifier : instance0
-LocationReference "1..1" -- "1..1" UseCases_ExtensionPoint : location20
-UseCase "0..9999" -- "1..1" UseCases_ExtensionPoint : useCase23
+UseCase "includeAddition 1..1" -- "UseCase 1..1" UseCases_Include : addition10
+UseCase "includeBase 1..1" -- "UseCase12 1..1" UseCases_Include : base11
+UseCase "extendBase 1..1" -- "UseCase17 1..1" UseCases_Extend : base16
+Classifier "instance 1..9999" -- "Classifier 1..1" UseCases_Instance : classifier1
+BooleanExpression "UseCases_Extend 1..1" -- "BooleanExpression 1..1" UseCases_Extend : condition13
+Extend "extensionPoint 0..9999" -- "Extend22 1..1" UseCases_ExtensionPoint : extend21
+Extend "base7 1..1" -- "Extend8 1..1" UseCases_UseCase : extendBase6
+Extend "extension 1..1" -- "Extend 1..1" UseCases_UseCase : extendExtension5
+UseCase "extendExtension 1..1" -- "UseCase15 1..1" UseCases_Extend : extension14
+ExtensionPoint "extend 1..9999" -- "ExtensionPoint19 1..1" UseCases_Extend : extensionPoint18
+ExtensionPoint "useCase 0..9999" -- "ExtensionPoint 1..1" UseCases_UseCase : extensionPoints9
+Include "addition 1..1" -- "Include 1..1" UseCases_UseCase : includeAddition2
+Include "base 1..1" -- "Include4 1..1" UseCases_UseCase : includeBase3
+Instance "classifier 0..9999" -- "Instance 1..1" UseCases_Classifier : instance0
+LocationReference "UseCases_ExtensionPoint 1..1" -- "LocationReference 1..1" UseCases_ExtensionPoint : location20
+UseCase "extensionPoints 0..9999" -- "UseCase24 1..1" UseCases_ExtensionPoint : useCase23
 @enduml

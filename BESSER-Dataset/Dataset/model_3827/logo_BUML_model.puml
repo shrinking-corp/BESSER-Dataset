@@ -1,4 +1,8 @@
 @startuml
+' model: logo
+' project: sampleModel
+' owner: User
+' description: New project
 class BinaryExpression {
 }
 class Block {
@@ -151,22 +155,22 @@ UnaryExpression <|-- logo_unary_Not
 UnaryExpression <|-- logo_unary_Opposite
 Value <|-- logo_value_BoolValue
 Value <|-- logo_value_IntValue
-logo_statement_Right "1..1" *-- "1..1" statement_logo_Expression : angle1
-logo_statement_Left "1..1" *-- "1..1" statement_logo_Expression : angle2
-Block "1..1" --* "1..1" logo_control_While : block21
-Block "1..1" --* "1..1" logo_control_Repeat : block23
-logo_statement_ControlStatement "1..1" *-- "1..1" statement_logo_Expression : condition15
-ProcedureDefinition "1..1" -- "1..1" logo_statement_ProcedureCall : definition11
-Block "0..1" --* "1..1" logo_control_If : elseBlock18
-expression_logo_Expression "1..1" --* "1..1" logo_expression_UnaryExpression : expression29
-expression_logo_Expression "2..9999" --* "1..1" logo_expression_ExtendedExpression : expressions31
-Block "1..1" --* "1..1" logo_control_If : ifBlock17
-expression_logo_Expression "1..1" --* "1..1" logo_expression_BinaryExpression : leftExpression25
-logo_statement_ProcedureCall "1..1" *-- "0..9999" statement_logo_Expression : parameterValues9
-logo_statement_ProcedureDefinition "1..1" *-- "0..9999" statement_logo_Parameter : parameters6
-expression_logo_Expression "1..1" --* "1..1" logo_expression_BinaryExpression : rightExpression26
-logo_Logo "1..1" *-- "0..9999" logo_Statement : statements0
-logo_statement_Block "1..1" *-- "1..9999" statement_logo_Statement : statements13
-logo_statement_ProcedureDefinition "1..1" *-- "1..9999" statement_logo_Statement : statements7
-logo_statement_Forward "1..1" *-- "1..1" statement_logo_Expression : step4
+logo_statement_Right "statement_logo_Expression 1..1" *-- "logo_statement_Right 1..1" statement_logo_Expression : angle1
+logo_statement_Left "statement_logo_Expression3 1..1" *-- "logo_statement_Left 1..1" statement_logo_Expression : angle2
+Block "logo_control_While 1..1" --* "Block22 1..1" logo_control_While : block21
+Block "logo_control_Repeat 1..1" --* "Block24 1..1" logo_control_Repeat : block23
+logo_statement_ControlStatement "statement_logo_Expression16 1..1" *-- "logo_statement_ControlStatement 1..1" statement_logo_Expression : condition15
+ProcedureDefinition "logo_statement_ProcedureCall12 1..1" -- "ProcedureDefinition 1..1" logo_statement_ProcedureCall : definition11
+Block "logo_control_If19 0..1" --* "Block20 1..1" logo_control_If : elseBlock18
+expression_logo_Expression "logo_expression_UnaryExpression 1..1" --* "expression_logo_Expression30 1..1" logo_expression_UnaryExpression : expression29
+expression_logo_Expression "logo_expression_ExtendedExpression 2..9999" --* "expression_logo_Expression32 1..1" logo_expression_ExtendedExpression : expressions31
+Block "logo_control_If 1..1" --* "Block 1..1" logo_control_If : ifBlock17
+expression_logo_Expression "logo_expression_BinaryExpression 1..1" --* "expression_logo_Expression 1..1" logo_expression_BinaryExpression : leftExpression25
+logo_statement_ProcedureCall "statement_logo_Expression10 1..1" *-- "logo_statement_ProcedureCall 0..9999" statement_logo_Expression : parameterValues9
+logo_statement_ProcedureDefinition "statement_logo_Parameter 1..1" *-- "logo_statement_ProcedureDefinition 0..9999" statement_logo_Parameter : parameters6
+expression_logo_Expression "logo_expression_BinaryExpression27 1..1" --* "expression_logo_Expression28 1..1" logo_expression_BinaryExpression : rightExpression26
+logo_Logo "logo_Statement 1..1" *-- "logo_Logo 0..9999" logo_Statement : statements0
+logo_statement_Block "statement_logo_Statement14 1..1" *-- "logo_statement_Block 1..9999" statement_logo_Statement : statements13
+logo_statement_ProcedureDefinition "statement_logo_Statement 1..1" *-- "logo_statement_ProcedureDefinition8 1..9999" statement_logo_Statement : statements7
+logo_statement_Forward "statement_logo_Expression5 1..1" *-- "logo_statement_Forward 1..1" statement_logo_Expression : step4
 @enduml

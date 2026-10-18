@@ -1,4 +1,8 @@
 @startuml
+' model: BZ
+' project: sampleModel
+' owner: User
+' description: New project
 class BZ_BZComment {
   + commentAuthor : str
   + commentHTML : str
@@ -55,20 +59,20 @@ class BZ_BZProduct {
 class BZ_BZRepo {
   + repoURL : str
 }
-BZ_BZComment "0..9999" --* "1..1" BZ_BZIssue : comments20
-BZ_BZComponent "1..1" -- "1..1" BZ_BZIssue : component23
-BZ_BZComponent "0..9999" -- "1..1" BZ_BZRepo : components1
-BZ_BZComponent "0..9999" --* "1..1" BZ_BZProduct : components6
-BZ_BZEvent "0..9999" --* "1..1" BZ_BZIssue : events21
-BZ_BZComment "1..1" -- "1..1" BZ_BZIssue : issue29
-BZ_BZEvent "1..1" -- "1..1" BZ_BZIssue : issue31
-BZ_BZComponent "1..1" *-- "0..9999" BZ_BZIssue : issues11
-BZ_BZIssue "0..9999" -- "1..1" BZ_BZRepo : issues3
-BZ_BZIssue "0..9999" -- "1..1" BZ_BZProduct : issues8
-BZ_BZComponent "1..1" -- "1..1" BZ_BZProduct : product13
-BZ_BZIssue "1..1" -- "1..1" BZ_BZProduct : product26
-BZ_BZProduct "0..9999" --* "1..1" BZ_BZRepo : products0
-BZ_BZComponent "1..1" -- "1..1" BZ_BZRepo : repo15
-BZ_BZIssue "1..1" -- "1..1" BZ_BZRepo : repo18
-BZ_BZProduct "1..1" -- "1..1" BZ_BZRepo : repo5
+BZ_BZComment "issue 0..9999" --* "BZComment 1..1" BZ_BZIssue : comments20
+BZ_BZComponent "issues24 1..1" -- "BZComponent25 1..1" BZ_BZIssue : component23
+BZ_BZComponent "repo2 0..9999" -- "BZComponent 1..1" BZ_BZRepo : components1
+BZ_BZComponent "product 0..9999" --* "BZComponent7 1..1" BZ_BZProduct : components6
+BZ_BZEvent "issue22 0..9999" --* "BZEvent 1..1" BZ_BZIssue : events21
+BZ_BZComment "BZIssue30 1..1" -- "comments 1..1" BZ_BZIssue : issue29
+BZ_BZEvent "BZIssue32 1..1" -- "events 1..1" BZ_BZIssue : issue31
+BZ_BZComponent "BZIssue12 1..1" *-- "component 0..9999" BZ_BZIssue : issues11
+BZ_BZIssue "repo4 0..9999" -- "BZIssue 1..1" BZ_BZRepo : issues3
+BZ_BZIssue "product9 0..9999" -- "BZIssue10 1..1" BZ_BZProduct : issues8
+BZ_BZComponent "BZProduct14 1..1" -- "components 1..1" BZ_BZProduct : product13
+BZ_BZIssue "BZProduct28 1..1" -- "issues27 1..1" BZ_BZProduct : product26
+BZ_BZProduct "repo 0..9999" --* "BZProduct 1..1" BZ_BZRepo : products0
+BZ_BZComponent "BZRepo17 1..1" -- "components16 1..1" BZ_BZRepo : repo15
+BZ_BZIssue "BZRepo19 1..1" -- "issues 1..1" BZ_BZRepo : repo18
+BZ_BZProduct "BZRepo 1..1" -- "products 1..1" BZ_BZRepo : repo5
 @enduml

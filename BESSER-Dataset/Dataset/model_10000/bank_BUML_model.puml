@@ -1,4 +1,8 @@
 @startuml
+' model: bank
+' project: sampleModel
+' owner: User
+' description: New project
 enum CardType {
 }
 class bank_Account {
@@ -18,13 +22,25 @@ class bank_Client {
 class bank_Manager {
   + name : str
 }
-bank_Account "0..9999" --* "1..1" bank_Bank : accounts1
-bank_Account "0..9999" -- "1..1" bank_Client : accounts6
-bank_Account "1..1" -- "0..9999" bank_Card : cards13
-bank_Client "0..9999" -- "1..1" bank_Manager : clients10
-bank_Bank "1..1" *-- "0..9999" bank_Client : clients3
-bank_Client "1..1" -- "0..9999" bank_Manager : manager5
-bank_Bank "1..1" *-- "0..9999" bank_Manager : managers0
-bank_Account "1..1" -- "0..9999" bank_Client : owners11
-bank_Client "0..9999" -- "1..1" bank_Client : sponsorships8
+bank_Account "bank_Bank2 0..9999" --* "bank_Account 1..1" bank_Bank : accounts1
+bank_Account "owners 0..9999" -- "Account 1..1" bank_Client : accounts6
+bank_Account "bank_Card 1..1" -- "bank_Account14 0..9999" bank_Card : cards13
+bank_Client "manager 0..9999" -- "Client 1..1" bank_Manager : clients10
+bank_Bank "bank_Client 1..1" *-- "bank_Bank4 0..9999" bank_Client : clients3
+bank_Client "Manager 1..1" -- "clients 0..9999" bank_Manager : manager5
+bank_Bank "bank_Manager 1..1" *-- "bank_Bank 0..9999" bank_Manager : managers0
+bank_Account "Client12 1..1" -- "accounts 0..9999" bank_Client : owners11
+bank_Client "bank_Client7 0..9999" -- "bank_Client9 1..1" bank_Client : sponsorships8
+note top of bank_Account
+  constraint minCredit (OCL): context Account inv: Account_allInstances()->select(var| var.credit < 0)->isEmpty()
+end note
+note top of bank_Client
+  constraint maxAccounts (OCL): context Client inv: Client_allInstances()->forAll(var | var.accounts->size() <= var.capacity)
+end note
+note top of bank_Client
+  constraint minAccounts (OCL): context Client inv: self.accounts->size()> 0
+end note
+note top of bank_Client
+  constraint minManagers (OCL): context Client inv: self.manager->size()>0
+end note
 @enduml

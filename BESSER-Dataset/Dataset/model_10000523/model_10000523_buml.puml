@@ -1,4 +1,8 @@
 @startuml
+' model: _40263ea9_b9b0_4fca_a817_46b8ca09ad18
+' project: sampleModel
+' owner: User
+' description: New project
 class Admin {
   + adminname : str
   + gender : str
@@ -34,9 +38,9 @@ class User {
   + password : str
   + username : str
 }
-Admin "1..1" -- "1..1" System : Admin_System
-Flightlist "1..1" -- "1..1" System : System_Flightlist
-System "1..1" -- "1..1" Timinglist : System_Timinglist
-System "0..1" -- "0..1" User : User_System
-Ticket "1..9999" -- "1..9999" User : User_Ticket
+Admin "maintains5 1..1" -- "system4 1..1" System : Admin_System
+Flightlist "has6 1..1" -- "system7 1..1" System : System_Flightlist
+System "has9 1..1" -- "system8 1..1" Timinglist : System_Timinglist
+System "system2 0..1" -- "visits3 0..1" User : User_System
+Ticket "books0 1..9999" -- "system1 1..9999" User : User_Ticket
 @enduml

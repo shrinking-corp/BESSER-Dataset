@@ -1,4 +1,8 @@
 @startuml
+' model: _7b2c1540_0556_4a82_8fda_f789e73d6d1e
+' project: sampleModel
+' owner: User
+' description: New project
 class Appliances {
 }
 class Cart {
@@ -64,15 +68,15 @@ class User {
 }
 class WishList {
 }
-Cart "0..1" -- "0..1" ProductListHelper : Cart_ProductListHelper
-Cart "0..1" -- "1..1" Customer : Customer_Cart
-Customer "1..1" -- "0..1" Order : Customer_Order
-Customer "1..1" -- "0..1" WishList : Customer_WishList
-Order "0..1" -- "1..1" ShippingInfo : Order_ShippingInfo
-Cart "1..1" -- "0..1" Product : Product_Cart
-Order "1..1" -- "1..9999" Product : Product_Order
-Product "0..1" -- "1..1" Seller : Product_Seller
-Product "0..1" -- "1..1" WishList : Product_WishList
-Product "1..9999" -- "1..1" User : User_Product
-ProductListHelper "1..1" -- "0..1" WishList : WishList_ProductListHelper
+Cart "cart15 0..1" -- "productListHelper14 0..1" ProductListHelper : Cart_ProductListHelper
+Cart "cart10 0..1" -- "customer11 1..1" Customer : Customer_Cart
+Customer "customer1 1..1" -- "order0 0..1" Order : Customer_Order
+Customer "customer13 1..1" -- "wishList12 0..1" WishList : Customer_WishList
+Order "order3 0..1" -- "shippingInfo2 1..1" ShippingInfo : Order_ShippingInfo
+Cart "cart20 1..1" -- "product21 0..1" Product : Product_Cart
+Order "order8 1..1" -- "product9 1..9999" Product : Product_Order
+Product "product7 0..1" -- "seller6 1..1" Seller : Product_Seller
+Product "product19 0..1" -- "wishList18 1..1" WishList : Product_WishList
+Product "product4 1..9999" -- "user5 1..1" User : User_Product
+ProductListHelper "productListHelper16 1..1" -- "wishList17 0..1" WishList : WishList_ProductListHelper
 @enduml

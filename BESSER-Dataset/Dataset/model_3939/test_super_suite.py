@@ -3080,9 +3080,9 @@ def test_assoc_actions59_stub_double():
     partner = applauseDsl_ScreenListItemCell()
     setattr(partner, 'applauseDsl_ScreenListItemCell60', None)
     _safe_set(owner, 'applauseDsl_UIAction61', partner)
-    assert getattr(partner, 'applauseDsl_ScreenListItemCell60') == owner
+    assert owner in getattr(partner, 'applauseDsl_ScreenListItemCell60')
     _safe_set(owner, 'applauseDsl_UIAction61', None)
-    assert getattr(partner, 'applauseDsl_ScreenListItemCell60') is None
+    assert owner not in getattr(partner, 'applauseDsl_ScreenListItemCell60')
 
 
 def test_assoc_baseUrl9_stub_double():
@@ -3185,9 +3185,9 @@ def test_assoc_elements0_stub_double():
     partner = applauseDsl_Model()
     setattr(partner, 'applauseDsl_Model', None)
     _safe_set(owner, 'applauseDsl_NamedElement', partner)
-    assert getattr(partner, 'applauseDsl_Model') == owner
+    assert owner in getattr(partner, 'applauseDsl_Model')
     _safe_set(owner, 'applauseDsl_NamedElement', None)
-    assert getattr(partner, 'applauseDsl_Model') is None
+    assert owner not in getattr(partner, 'applauseDsl_Model')
 
 
 def test_assoc_head93_stub_double():
@@ -3290,9 +3290,9 @@ def test_assoc_members68_stub_double():
     partner = applauseDsl_ListItemCellDeclaration()
     setattr(partner, 'applauseDsl_ListItemCellDeclaration69', None)
     _safe_set(owner, 'applauseDsl_UIComponentMemberDeclaration', partner)
-    assert getattr(partner, 'applauseDsl_ListItemCellDeclaration69') == owner
+    assert owner in getattr(partner, 'applauseDsl_ListItemCellDeclaration69')
     _safe_set(owner, 'applauseDsl_UIComponentMemberDeclaration', None)
-    assert getattr(partner, 'applauseDsl_ListItemCellDeclaration69') is None
+    assert owner not in getattr(partner, 'applauseDsl_ListItemCellDeclaration69')
 
 
 def test_assoc_members70_stub_double():
@@ -3305,9 +3305,9 @@ def test_assoc_members70_stub_double():
     partner = applauseDsl_UIComponentDeclaration()
     setattr(partner, 'applauseDsl_UIComponentDeclaration', None)
     _safe_set(owner, 'applauseDsl_UIComponentMemberDeclaration71', partner)
-    assert getattr(partner, 'applauseDsl_UIComponentDeclaration') == owner
+    assert owner in getattr(partner, 'applauseDsl_UIComponentDeclaration')
     _safe_set(owner, 'applauseDsl_UIComponentMemberDeclaration71', None)
-    assert getattr(partner, 'applauseDsl_UIComponentDeclaration') is None
+    assert owner not in getattr(partner, 'applauseDsl_UIComponentDeclaration')
 
 
 def test_assoc_methods13_stub_double():
@@ -3320,9 +3320,9 @@ def test_assoc_methods13_stub_double():
     partner = applauseDsl_DataSource()
     setattr(partner, 'applauseDsl_DataSource14', None)
     _safe_set(owner, 'applauseDsl_DataSourceAccessMethod', partner)
-    assert getattr(partner, 'applauseDsl_DataSource14') == owner
+    assert owner in getattr(partner, 'applauseDsl_DataSource14')
     _safe_set(owner, 'applauseDsl_DataSourceAccessMethod', None)
-    assert getattr(partner, 'applauseDsl_DataSource14') is None
+    assert owner not in getattr(partner, 'applauseDsl_DataSource14')
 
 
 def test_assoc_path19_stub_double():
@@ -3432,140 +3432,36 @@ def test_assoc_value103_stub_double():
 
 
 
-from enum import Enum
 from python_code import ActionVerb
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ActionVerb.add, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ActionVerb.add, 0, '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ActionVerb.edit, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ActionVerb.add, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ActionVerb.add, 'add') == ActionVerb.add
-
-from enum import Enum
 from python_code import GestureKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(GestureKind.tap, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(GestureKind.tap, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(GestureKind.tap, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(GestureKind.tap, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(GestureKind.tap, 'tap') == GestureKind.tap
-
-from enum import Enum
 from python_code import RESTVerb
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(RESTVerb.PUT, 0, '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(RESTVerb.PUT, '', '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(RESTVerb.PUT, '', 0, '') == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(RESTVerb.PUT, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(RESTVerb.GET, 'PUT') == RESTVerb.PUT
-
-from enum import Enum
 from python_code import ScreenKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ScreenKind.DefaultList, '', 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ScreenKind.DefaultList, '', 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ScreenKind.DefaultList, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ScreenKind.DefaultList, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ScreenKind.DefaultList, 'DefaultList') == ScreenKind.DefaultList
-
-from enum import Enum
 from python_code import UIActionKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(UIActionKind.navigate, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(UIActionKind.navigate, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(UIActionKind.navigate, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(UIActionKind.delete, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(UIActionKind.delete, 'delete') == UIActionKind.delete
-
 from python_code import applauseDsl_AbsoluteRESTURL
 from python_code import applauseDsl_DataSource
 from python_code import applauseDsl_UrlFragment
 
 def test_applauseDsl_AbsoluteRESTURL___init__():
     assert applauseDsl_AbsoluteRESTURL.__init__(applauseDsl_AbsoluteRESTURL(0, applauseDsl_AbsoluteRESTURL=applauseDsl_DataSource(), applauseDsl_AbsoluteRESTURL32=applauseDsl_UrlFragment()), 0, applauseDsl_AbsoluteRESTURL=applauseDsl_DataSource(), applauseDsl_AbsoluteRESTURL32=applauseDsl_UrlFragment()) == None
-
 from python_code import applauseDsl_Model
 from python_code import applauseDsl_NamedElement
 
 def test_applauseDsl_NamedElement___init__():
     assert applauseDsl_NamedElement.__init__(applauseDsl_NamedElement('', applauseDsl_NamedElement=applauseDsl_Model()), '', applauseDsl_NamedElement=applauseDsl_Model()) == None
-
 from python_code import applauseDsl_StringLiteral
 
 def test_applauseDsl_StringLiteral___init__():
     assert applauseDsl_StringLiteral.__init__(applauseDsl_StringLiteral(''), '') == None
-
 from python_code import applauseDsl_DataType
 from python_code import applauseDsl_TypeMapping
 
 def test_applauseDsl_TypeMapping___init__():
     assert applauseDsl_TypeMapping.__init__(applauseDsl_TypeMapping('', applauseDsl_TypeMapping=applauseDsl_DataType()), '', applauseDsl_TypeMapping=applauseDsl_DataType()) == None
-
 from python_code import applauseDsl_ListItemCellDeclaration
 from python_code import applauseDsl_UIComponentDeclaration
 from python_code import applauseDsl_UIComponentMemberCall
@@ -3574,7 +3470,6 @@ from python_code import applauseDsl_UIComponentOrDataType
 
 def test_applauseDsl_UIComponentMemberDeclaration___init__():
     assert applauseDsl_UIComponentMemberDeclaration.__init__(applauseDsl_UIComponentMemberDeclaration('', applauseDsl_UIComponentMemberDeclaration89=applauseDsl_UIComponentMemberCall(), applauseDsl_UIComponentMemberDeclaration92=applauseDsl_UIComponentMemberCall(), applauseDsl_UIComponentMemberDeclaration=applauseDsl_ListItemCellDeclaration(), applauseDsl_UIComponentMemberDeclaration71=applauseDsl_UIComponentDeclaration(), applauseDsl_UIComponentMemberDeclaration73=applauseDsl_UIComponentOrDataType()), '', applauseDsl_UIComponentMemberDeclaration89=applauseDsl_UIComponentMemberCall(), applauseDsl_UIComponentMemberDeclaration92=applauseDsl_UIComponentMemberCall(), applauseDsl_UIComponentMemberDeclaration=applauseDsl_ListItemCellDeclaration(), applauseDsl_UIComponentMemberDeclaration71=applauseDsl_UIComponentDeclaration(), applauseDsl_UIComponentMemberDeclaration73=applauseDsl_UIComponentOrDataType()) == None
-
 from python_code import applauseDsl_UrlPathFragment
 
 def test_applauseDsl_UrlPathFragment___init__():

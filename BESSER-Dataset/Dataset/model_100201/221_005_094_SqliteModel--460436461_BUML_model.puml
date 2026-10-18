@@ -1,4 +1,8 @@
 @startuml
+' model: sqliteModel
+' project: sampleModel
+' owner: User
+' description: New project
 class ColumnConstraint {
 }
 class ColumnSource {
@@ -371,112 +375,112 @@ TableConstraint <|-- sqliteModel_UniqueTableConstraint
 TableDefinition <|-- sqliteModel_AlterTableRenameStatement
 TableDefinition <|-- sqliteModel_CreateTableStatement
 TableDefinition <|-- sqliteModel_CreateViewStatement
-sqliteModel_FunctionArg "0..1" -- "1..1" sqliteModel_FunctionArgument : arg192
-sqliteModel_Function "1..1" *-- "0..9999" sqliteModel_FunctionArg : args117
-sqliteModel_Expression "0..9999" --* "1..1" sqliteModel_Function : arguments121
-sqliteModel_CaseExpression "1..1" *-- "0..1" sqliteModel_Expression : caseExpression182
-sqliteModel_Case "0..9999" --* "1..1" sqliteModel_CaseExpression : cases184
-sqliteModel_ColumnSource "0..1" -- "1..1" sqliteModel_NewColumn : column169
-sqliteModel_ColumnSource "0..1" -- "1..1" sqliteModel_OldColumn : column171
-sqliteModel_ColumnSource "0..1" -- "1..1" sqliteModel_ColumnSourceRef : column174
-sqliteModel_AlterTableAddColumnStatement "1..1" *-- "0..1" sqliteModel_ColumnSource : columnDef59
-sqliteModel_ColumnSource "0..9999" --* "1..1" sqliteModel_CreateTableStatement : columnDefs219
-sqliteModel_ColumnDef "0..1" -- "1..1" sqliteModel_UpdateColumnExpression : columnName109
-sqliteModel_ColumnDef "0..9999" -- "1..1" sqliteModel_InsertStatement : columnNames93
-sqliteModel_ColumnDef "0..1" -- "1..1" sqliteModel_IndexedColumn : columnReference84
-sqliteModel_CreateIndexStatement "1..1" *-- "0..9999" sqliteModel_IndexedColumn : columns69
-sqliteModel_IndexedColumn "0..9999" --* "1..1" sqliteModel_UniqueTableConstraint : columns73
-sqliteModel_IndexedColumn "0..9999" --* "1..1" sqliteModel_PrimaryConstraint : columns77
-sqliteModel_ConfigBlock "0..1" --* "1..1" sqliteModel_DatabaseBlock : config1
-sqliteModel_ConflictClause "0..1" --* "1..1" sqliteModel_NotNullConstraint : conflictClause230
-sqliteModel_ConflictClause "0..1" --* "1..1" sqliteModel_UniqueConstraint : conflictClause232
-sqliteModel_ConflictClause "0..1" --* "1..1" sqliteModel_UniqueTableConstraint : conflictClause75
-sqliteModel_ConflictClause "0..1" --* "1..1" sqliteModel_PrimaryConstraint : conflictClause79
-sqliteModel_CreateTableStatement "1..1" *-- "0..9999" sqliteModel_TableConstraint : constraints221
-sqliteModel_ColumnConstraint "0..9999" --* "1..1" sqliteModel_ColumnDef : constraints228
-sqliteModel_SelectCoreExpression "0..1" --* "1..1" sqliteModel_SelectStatement : core19
-sqliteModel_DatabaseBlock "0..1" --* "1..1" sqliteModel_Model : database0
-sqliteModel_DefaultConstraint "1..1" *-- "0..1" sqliteModel_DefaultValue : defaultValue234
-sqliteModel_CaseExpression "1..1" *-- "0..1" sqliteModel_Expression : elseExpression187
-sqliteModel_Expression "0..1" --* "1..1" sqliteModel_UpdateColumnExpression : expression112
-sqliteModel_Expression "0..1" --* "1..1" sqliteModel_NestedExpression : expression178
-sqliteModel_CastExpression "1..1" *-- "0..1" sqliteModel_Expression : expression190
-sqliteModel_Expression "0..1" --* "1..1" sqliteModel_ResultColumn : expression217
-sqliteModel_CheckConstraint "1..1" *-- "0..1" sqliteModel_Expression : expression235
-sqliteModel_Expression "0..1" --* "1..1" sqliteModel_ExpressionDefaultValue : expression239
-sqliteModel_Expression "0..1" --* "1..1" sqliteModel_WhereExpressions : expression31
-sqliteModel_Expression "0..1" --* "1..1" sqliteModel_HavingExpressions : expression35
-sqliteModel_Expression "0..1" --* "1..1" sqliteModel_OrderingTerm : expression37
-sqliteModel_Expression "0..1" --* "1..1" sqliteModel_JoinStatement : expression48
-sqliteModel_CheckTableConstraint "1..1" *-- "0..1" sqliteModel_Expression : expression82
-sqliteModel_DeleteStatement "1..1" *-- "0..1" sqliteModel_Expression : expression88
-sqliteModel_Expression "0..9999" --* "1..1" sqliteModel_InsertStatement : expressions96
-sqliteModel_GroupByExpressions "0..1" --* "1..1" sqliteModel_SelectExpression : groupBy207
-sqliteModel_Expression "0..9999" --* "1..1" sqliteModel_GroupByExpressions : groupByExpressions33
-sqliteModel_HavingExpressions "0..1" --* "1..1" sqliteModel_SelectExpression : having210
-sqliteModel_CreateIndexStatement "0..1" -- "1..1" sqliteModel_DropIndexStatement : index71
-sqliteModel_DatabaseBlock "1..1" *-- "0..1" sqliteModel_InitBlock : init3
-sqliteModel_JoinSource "0..1" --* "1..1" sqliteModel_SingleSourceJoin : joinSource43
-sqliteModel_JoinSource "1..1" *-- "0..9999" sqliteModel_JoinStatement : joinStatements41
-sqliteModel_ExprConcat "1..1" *-- "0..1" sqliteModel_Expression : left124
-sqliteModel_ExprMult "1..1" *-- "0..1" sqliteModel_Expression : left129
-sqliteModel_ExprAdd "1..1" *-- "0..1" sqliteModel_Expression : left134
-sqliteModel_ExprBit "1..1" *-- "0..1" sqliteModel_Expression : left139
-sqliteModel_ExprRelate "1..1" *-- "0..1" sqliteModel_Expression : left144
-sqliteModel_ExprEqual "1..1" *-- "0..1" sqliteModel_Expression : left149
-sqliteModel_ExprAnd "1..1" *-- "0..1" sqliteModel_Expression : left154
-sqliteModel_ExprOr "1..1" *-- "0..1" sqliteModel_Expression : left159
-sqliteModel_Expression "0..1" --* "1..1" sqliteModel_NullCheckExpression : left164
-sqliteModel_SelectCore "1..1" *-- "0..1" sqliteModel_SelectCoreExpression : left194
-sqliteModel_Expression "0..1" --* "1..1" sqliteModel_SelectStatement : limit22
-sqliteModel_Expression "0..1" --* "1..1" sqliteModel_SelectStatement : limitOffset25
-sqliteModel_LiteralDefaultValue "1..1" *-- "0..1" sqliteModel_LiteralValue : literal237
-sqliteModel_Literal "1..1" *-- "0..1" sqliteModel_LiteralValue : literalValue177
-sqliteModel_DatabaseBlock "1..1" *-- "0..9999" sqliteModel_MigrationBlock : migrations5
-sqliteModel_OrderingTermList "0..1" --* "1..1" sqliteModel_SelectStatement : orderby20
-sqliteModel_OrderingTerm "0..9999" --* "1..1" sqliteModel_OrderingTermList : orderingTerms28
-sqliteModel_ColumnSource "0..9999" --* "1..1" sqliteModel_SelectList : resultColumns30
-sqliteModel_ExprConcat "1..1" *-- "0..1" sqliteModel_Expression : right126
-sqliteModel_ExprMult "1..1" *-- "0..1" sqliteModel_Expression : right131
-sqliteModel_ExprAdd "1..1" *-- "0..1" sqliteModel_Expression : right136
-sqliteModel_ExprBit "1..1" *-- "0..1" sqliteModel_Expression : right141
-sqliteModel_ExprRelate "1..1" *-- "0..1" sqliteModel_Expression : right146
-sqliteModel_ExprEqual "1..1" *-- "0..1" sqliteModel_Expression : right151
-sqliteModel_ExprAnd "1..1" *-- "0..1" sqliteModel_Expression : right156
-sqliteModel_ExprOr "1..1" *-- "0..1" sqliteModel_Expression : right161
-sqliteModel_Expression "0..1" --* "1..1" sqliteModel_NullCheckExpression : right166
-sqliteModel_SelectCore "1..1" *-- "0..1" sqliteModel_SelectCoreExpression : right196
-sqliteModel_ContentUri "1..1" *-- "0..9999" sqliteModel_ContentUriSegment : segments11
-sqliteModel_SelectStatement "0..1" --* "1..1" sqliteModel_SelectStatementExpression : select180
-sqliteModel_SelectExpression "1..1" *-- "0..1" sqliteModel_SelectList : selectList199
-sqliteModel_SelectStatement "0..1" --* "1..1" sqliteModel_SingleSourceSelectStatement : selectStatement215
-sqliteModel_CreateViewStatement "1..1" *-- "0..1" sqliteModel_SelectStatement : selectStatement223
-sqliteModel_InsertStatement "1..1" *-- "0..1" sqliteModel_SelectStatement : selectStatement99
-sqliteModel_JoinStatement "1..1" *-- "0..1" sqliteModel_SingleSource : singleSource45
-sqliteModel_ColumnSourceRef "1..1" -- "0..1" sqliteModel_SelectSource : source173
-sqliteModel_JoinSource "0..1" --* "1..1" sqliteModel_SelectExpression : source201
-sqliteModel_JoinSource "1..1" *-- "0..1" sqliteModel_SingleSource : source40
-sqliteModel_DMLStatement "0..9999" --* "1..1" sqliteModel_Function : statements118
-sqliteModel_DDLStatement "0..9999" --* "1..1" sqliteModel_MigrationBlock : statements12
-sqliteModel_CreateTriggerStatement "1..1" *-- "0..9999" sqliteModel_DMLStatement : statements55
-sqliteModel_ConfigBlock "1..1" *-- "0..9999" sqliteModel_ConfigurationStatement : statements7
-sqliteModel_DDLStatement "0..9999" --* "1..1" sqliteModel_InitBlock : statements9
-sqliteModel_TableDefinition "0..1" -- "1..1" sqliteModel_UpdateStatement : table102
-sqliteModel_AlterTableRenameStatement "1..1" -- "0..1" sqliteModel_TableDefinition : table226
-sqliteModel_CreateTriggerStatement "1..1" -- "0..1" sqliteModel_TableDefinition : table51
-sqliteModel_AlterTableAddColumnStatement "1..1" -- "0..1" sqliteModel_TableDefinition : table57
-sqliteModel_DropTableStatement "1..1" -- "0..1" sqliteModel_TableDefinition : table62
-sqliteModel_CreateIndexStatement "1..1" -- "0..1" sqliteModel_TableDefinition : table67
-sqliteModel_DeleteStatement "1..1" -- "0..1" sqliteModel_TableDefinition : table86
-sqliteModel_InsertStatement "1..1" -- "0..1" sqliteModel_TableDefinition : table91
-sqliteModel_SingleSourceTable "1..1" -- "0..1" sqliteModel_TableDefinition : tableReference213
-sqliteModel_Case "1..1" *-- "0..1" sqliteModel_Expression : thenExpression16
-sqliteModel_CreateTriggerStatement "0..1" -- "1..1" sqliteModel_DropTriggerStatement : trigger64
-sqliteModel_UpdateColumnExpression "0..9999" --* "1..1" sqliteModel_UpdateStatement : updateColumnExpressions104
-sqliteModel_ActionStatement "1..1" *-- "0..1" sqliteModel_ContentUri : uri115
-sqliteModel_CreateViewStatement "0..1" -- "1..1" sqliteModel_DropViewStatement : view66
-sqliteModel_Case "1..1" *-- "0..1" sqliteModel_Expression : whenExpression15
-sqliteModel_CreateTriggerStatement "1..1" *-- "0..1" sqliteModel_Expression : whenExpression52
-sqliteModel_SelectExpression "1..1" *-- "0..1" sqliteModel_WhereExpressions : where204
-sqliteModel_Expression "0..1" --* "1..1" sqliteModel_UpdateStatement : whereExpression106
+sqliteModel_FunctionArg "sqliteModel_FunctionArgument 0..1" -- "sqliteModel_FunctionArg193 1..1" sqliteModel_FunctionArgument : arg192
+sqliteModel_Function "sqliteModel_FunctionArg 1..1" *-- "sqliteModel_Function 0..9999" sqliteModel_FunctionArg : args117
+sqliteModel_Expression "sqliteModel_Function122 0..9999" --* "sqliteModel_Expression123 1..1" sqliteModel_Function : arguments121
+sqliteModel_CaseExpression "sqliteModel_Expression183 1..1" *-- "sqliteModel_CaseExpression 0..1" sqliteModel_Expression : caseExpression182
+sqliteModel_Case "sqliteModel_CaseExpression185 0..9999" --* "sqliteModel_Case186 1..1" sqliteModel_CaseExpression : cases184
+sqliteModel_ColumnSource "sqliteModel_NewColumn 0..1" -- "sqliteModel_ColumnSource170 1..1" sqliteModel_NewColumn : column169
+sqliteModel_ColumnSource "sqliteModel_OldColumn 0..1" -- "sqliteModel_ColumnSource172 1..1" sqliteModel_OldColumn : column171
+sqliteModel_ColumnSource "sqliteModel_ColumnSourceRef175 0..1" -- "sqliteModel_ColumnSource176 1..1" sqliteModel_ColumnSourceRef : column174
+sqliteModel_AlterTableAddColumnStatement "sqliteModel_ColumnSource61 1..1" *-- "sqliteModel_AlterTableAddColumnStatement60 0..1" sqliteModel_ColumnSource : columnDef59
+sqliteModel_ColumnSource "sqliteModel_CreateTableStatement 0..9999" --* "sqliteModel_ColumnSource220 1..1" sqliteModel_CreateTableStatement : columnDefs219
+sqliteModel_ColumnDef "sqliteModel_UpdateColumnExpression110 0..1" -- "sqliteModel_ColumnDef111 1..1" sqliteModel_UpdateColumnExpression : columnName109
+sqliteModel_ColumnDef "sqliteModel_InsertStatement94 0..9999" -- "sqliteModel_ColumnDef95 1..1" sqliteModel_InsertStatement : columnNames93
+sqliteModel_ColumnDef "sqliteModel_IndexedColumn85 0..1" -- "sqliteModel_ColumnDef 1..1" sqliteModel_IndexedColumn : columnReference84
+sqliteModel_CreateIndexStatement "sqliteModel_IndexedColumn 1..1" *-- "sqliteModel_CreateIndexStatement70 0..9999" sqliteModel_IndexedColumn : columns69
+sqliteModel_IndexedColumn "sqliteModel_UniqueTableConstraint 0..9999" --* "sqliteModel_IndexedColumn74 1..1" sqliteModel_UniqueTableConstraint : columns73
+sqliteModel_IndexedColumn "sqliteModel_PrimaryConstraint 0..9999" --* "sqliteModel_IndexedColumn78 1..1" sqliteModel_PrimaryConstraint : columns77
+sqliteModel_ConfigBlock "sqliteModel_DatabaseBlock2 0..1" --* "sqliteModel_ConfigBlock 1..1" sqliteModel_DatabaseBlock : config1
+sqliteModel_ConflictClause "sqliteModel_NotNullConstraint 0..1" --* "sqliteModel_ConflictClause231 1..1" sqliteModel_NotNullConstraint : conflictClause230
+sqliteModel_ConflictClause "sqliteModel_UniqueConstraint 0..1" --* "sqliteModel_ConflictClause233 1..1" sqliteModel_UniqueConstraint : conflictClause232
+sqliteModel_ConflictClause "sqliteModel_UniqueTableConstraint76 0..1" --* "sqliteModel_ConflictClause 1..1" sqliteModel_UniqueTableConstraint : conflictClause75
+sqliteModel_ConflictClause "sqliteModel_PrimaryConstraint80 0..1" --* "sqliteModel_ConflictClause81 1..1" sqliteModel_PrimaryConstraint : conflictClause79
+sqliteModel_CreateTableStatement "sqliteModel_TableConstraint 1..1" *-- "sqliteModel_CreateTableStatement222 0..9999" sqliteModel_TableConstraint : constraints221
+sqliteModel_ColumnConstraint "sqliteModel_ColumnDef229 0..9999" --* "sqliteModel_ColumnConstraint 1..1" sqliteModel_ColumnDef : constraints228
+sqliteModel_SelectCoreExpression "sqliteModel_SelectStatement 0..1" --* "sqliteModel_SelectCoreExpression 1..1" sqliteModel_SelectStatement : core19
+sqliteModel_DatabaseBlock "sqliteModel_Model 0..1" --* "sqliteModel_DatabaseBlock 1..1" sqliteModel_Model : database0
+sqliteModel_DefaultConstraint "sqliteModel_DefaultValue 1..1" *-- "sqliteModel_DefaultConstraint 0..1" sqliteModel_DefaultValue : defaultValue234
+sqliteModel_CaseExpression "sqliteModel_Expression189 1..1" *-- "sqliteModel_CaseExpression188 0..1" sqliteModel_Expression : elseExpression187
+sqliteModel_Expression "sqliteModel_UpdateColumnExpression113 0..1" --* "sqliteModel_Expression114 1..1" sqliteModel_UpdateColumnExpression : expression112
+sqliteModel_Expression "sqliteModel_NestedExpression 0..1" --* "sqliteModel_Expression179 1..1" sqliteModel_NestedExpression : expression178
+sqliteModel_CastExpression "sqliteModel_Expression191 1..1" *-- "sqliteModel_CastExpression 0..1" sqliteModel_Expression : expression190
+sqliteModel_Expression "sqliteModel_ResultColumn 0..1" --* "sqliteModel_Expression218 1..1" sqliteModel_ResultColumn : expression217
+sqliteModel_CheckConstraint "sqliteModel_Expression236 1..1" *-- "sqliteModel_CheckConstraint 0..1" sqliteModel_Expression : expression235
+sqliteModel_Expression "sqliteModel_ExpressionDefaultValue 0..1" --* "sqliteModel_Expression240 1..1" sqliteModel_ExpressionDefaultValue : expression239
+sqliteModel_Expression "sqliteModel_WhereExpressions 0..1" --* "sqliteModel_Expression32 1..1" sqliteModel_WhereExpressions : expression31
+sqliteModel_Expression "sqliteModel_HavingExpressions 0..1" --* "sqliteModel_Expression36 1..1" sqliteModel_HavingExpressions : expression35
+sqliteModel_Expression "sqliteModel_OrderingTerm38 0..1" --* "sqliteModel_Expression39 1..1" sqliteModel_OrderingTerm : expression37
+sqliteModel_Expression "sqliteModel_JoinStatement49 0..1" --* "sqliteModel_Expression50 1..1" sqliteModel_JoinStatement : expression48
+sqliteModel_CheckTableConstraint "sqliteModel_Expression83 1..1" *-- "sqliteModel_CheckTableConstraint 0..1" sqliteModel_Expression : expression82
+sqliteModel_DeleteStatement "sqliteModel_Expression90 1..1" *-- "sqliteModel_DeleteStatement89 0..1" sqliteModel_Expression : expression88
+sqliteModel_Expression "sqliteModel_InsertStatement97 0..9999" --* "sqliteModel_Expression98 1..1" sqliteModel_InsertStatement : expressions96
+sqliteModel_GroupByExpressions "sqliteModel_SelectExpression208 0..1" --* "sqliteModel_GroupByExpressions209 1..1" sqliteModel_SelectExpression : groupBy207
+sqliteModel_Expression "sqliteModel_GroupByExpressions 0..9999" --* "sqliteModel_Expression34 1..1" sqliteModel_GroupByExpressions : groupByExpressions33
+sqliteModel_HavingExpressions "sqliteModel_SelectExpression211 0..1" --* "sqliteModel_HavingExpressions212 1..1" sqliteModel_SelectExpression : having210
+sqliteModel_CreateIndexStatement "sqliteModel_DropIndexStatement 0..1" -- "sqliteModel_CreateIndexStatement72 1..1" sqliteModel_DropIndexStatement : index71
+sqliteModel_DatabaseBlock "sqliteModel_InitBlock 1..1" *-- "sqliteModel_DatabaseBlock4 0..1" sqliteModel_InitBlock : init3
+sqliteModel_JoinSource "sqliteModel_SingleSourceJoin 0..1" --* "sqliteModel_JoinSource44 1..1" sqliteModel_SingleSourceJoin : joinSource43
+sqliteModel_JoinSource "sqliteModel_JoinStatement 1..1" *-- "sqliteModel_JoinSource42 0..9999" sqliteModel_JoinStatement : joinStatements41
+sqliteModel_ExprConcat "sqliteModel_Expression125 1..1" *-- "sqliteModel_ExprConcat 0..1" sqliteModel_Expression : left124
+sqliteModel_ExprMult "sqliteModel_Expression130 1..1" *-- "sqliteModel_ExprMult 0..1" sqliteModel_Expression : left129
+sqliteModel_ExprAdd "sqliteModel_Expression135 1..1" *-- "sqliteModel_ExprAdd 0..1" sqliteModel_Expression : left134
+sqliteModel_ExprBit "sqliteModel_Expression140 1..1" *-- "sqliteModel_ExprBit 0..1" sqliteModel_Expression : left139
+sqliteModel_ExprRelate "sqliteModel_Expression145 1..1" *-- "sqliteModel_ExprRelate 0..1" sqliteModel_Expression : left144
+sqliteModel_ExprEqual "sqliteModel_Expression150 1..1" *-- "sqliteModel_ExprEqual 0..1" sqliteModel_Expression : left149
+sqliteModel_ExprAnd "sqliteModel_Expression155 1..1" *-- "sqliteModel_ExprAnd 0..1" sqliteModel_Expression : left154
+sqliteModel_ExprOr "sqliteModel_Expression160 1..1" *-- "sqliteModel_ExprOr 0..1" sqliteModel_Expression : left159
+sqliteModel_Expression "sqliteModel_NullCheckExpression 0..1" --* "sqliteModel_Expression165 1..1" sqliteModel_NullCheckExpression : left164
+sqliteModel_SelectCore "sqliteModel_SelectCoreExpression195 1..1" *-- "sqliteModel_SelectCore 0..1" sqliteModel_SelectCoreExpression : left194
+sqliteModel_Expression "sqliteModel_SelectStatement23 0..1" --* "sqliteModel_Expression24 1..1" sqliteModel_SelectStatement : limit22
+sqliteModel_Expression "sqliteModel_SelectStatement26 0..1" --* "sqliteModel_Expression27 1..1" sqliteModel_SelectStatement : limitOffset25
+sqliteModel_LiteralDefaultValue "sqliteModel_LiteralValue238 1..1" *-- "sqliteModel_LiteralDefaultValue 0..1" sqliteModel_LiteralValue : literal237
+sqliteModel_Literal "sqliteModel_LiteralValue 1..1" *-- "sqliteModel_Literal 0..1" sqliteModel_LiteralValue : literalValue177
+sqliteModel_DatabaseBlock "sqliteModel_MigrationBlock 1..1" *-- "sqliteModel_DatabaseBlock6 0..9999" sqliteModel_MigrationBlock : migrations5
+sqliteModel_OrderingTermList "sqliteModel_SelectStatement21 0..1" --* "sqliteModel_OrderingTermList 1..1" sqliteModel_SelectStatement : orderby20
+sqliteModel_OrderingTerm "sqliteModel_OrderingTermList29 0..9999" --* "sqliteModel_OrderingTerm 1..1" sqliteModel_OrderingTermList : orderingTerms28
+sqliteModel_ColumnSource "sqliteModel_SelectList 0..9999" --* "sqliteModel_ColumnSource 1..1" sqliteModel_SelectList : resultColumns30
+sqliteModel_ExprConcat "sqliteModel_Expression128 1..1" *-- "sqliteModel_ExprConcat127 0..1" sqliteModel_Expression : right126
+sqliteModel_ExprMult "sqliteModel_Expression133 1..1" *-- "sqliteModel_ExprMult132 0..1" sqliteModel_Expression : right131
+sqliteModel_ExprAdd "sqliteModel_Expression138 1..1" *-- "sqliteModel_ExprAdd137 0..1" sqliteModel_Expression : right136
+sqliteModel_ExprBit "sqliteModel_Expression143 1..1" *-- "sqliteModel_ExprBit142 0..1" sqliteModel_Expression : right141
+sqliteModel_ExprRelate "sqliteModel_Expression148 1..1" *-- "sqliteModel_ExprRelate147 0..1" sqliteModel_Expression : right146
+sqliteModel_ExprEqual "sqliteModel_Expression153 1..1" *-- "sqliteModel_ExprEqual152 0..1" sqliteModel_Expression : right151
+sqliteModel_ExprAnd "sqliteModel_Expression158 1..1" *-- "sqliteModel_ExprAnd157 0..1" sqliteModel_Expression : right156
+sqliteModel_ExprOr "sqliteModel_Expression163 1..1" *-- "sqliteModel_ExprOr162 0..1" sqliteModel_Expression : right161
+sqliteModel_Expression "sqliteModel_NullCheckExpression167 0..1" --* "sqliteModel_Expression168 1..1" sqliteModel_NullCheckExpression : right166
+sqliteModel_SelectCore "sqliteModel_SelectCoreExpression198 1..1" *-- "sqliteModel_SelectCore197 0..1" sqliteModel_SelectCoreExpression : right196
+sqliteModel_ContentUri "sqliteModel_ContentUriSegment 1..1" *-- "sqliteModel_ContentUri 0..9999" sqliteModel_ContentUriSegment : segments11
+sqliteModel_SelectStatement "sqliteModel_SelectStatementExpression 0..1" --* "sqliteModel_SelectStatement181 1..1" sqliteModel_SelectStatementExpression : select180
+sqliteModel_SelectExpression "sqliteModel_SelectList200 1..1" *-- "sqliteModel_SelectExpression 0..1" sqliteModel_SelectList : selectList199
+sqliteModel_SelectStatement "sqliteModel_SingleSourceSelectStatement 0..1" --* "sqliteModel_SelectStatement216 1..1" sqliteModel_SingleSourceSelectStatement : selectStatement215
+sqliteModel_CreateViewStatement "sqliteModel_SelectStatement225 1..1" *-- "sqliteModel_CreateViewStatement224 0..1" sqliteModel_SelectStatement : selectStatement223
+sqliteModel_InsertStatement "sqliteModel_SelectStatement101 1..1" *-- "sqliteModel_InsertStatement100 0..1" sqliteModel_SelectStatement : selectStatement99
+sqliteModel_JoinStatement "sqliteModel_SingleSource47 1..1" *-- "sqliteModel_JoinStatement46 0..1" sqliteModel_SingleSource : singleSource45
+sqliteModel_ColumnSourceRef "sqliteModel_SelectSource 1..1" -- "sqliteModel_ColumnSourceRef 0..1" sqliteModel_SelectSource : source173
+sqliteModel_JoinSource "sqliteModel_SelectExpression202 0..1" --* "sqliteModel_JoinSource203 1..1" sqliteModel_SelectExpression : source201
+sqliteModel_JoinSource "sqliteModel_SingleSource 1..1" *-- "sqliteModel_JoinSource 0..1" sqliteModel_SingleSource : source40
+sqliteModel_DMLStatement "sqliteModel_Function119 0..9999" --* "sqliteModel_DMLStatement120 1..1" sqliteModel_Function : statements118
+sqliteModel_DDLStatement "sqliteModel_MigrationBlock13 0..9999" --* "sqliteModel_DDLStatement14 1..1" sqliteModel_MigrationBlock : statements12
+sqliteModel_CreateTriggerStatement "sqliteModel_DMLStatement 1..1" *-- "sqliteModel_CreateTriggerStatement56 0..9999" sqliteModel_DMLStatement : statements55
+sqliteModel_ConfigBlock "sqliteModel_ConfigurationStatement 1..1" *-- "sqliteModel_ConfigBlock8 0..9999" sqliteModel_ConfigurationStatement : statements7
+sqliteModel_DDLStatement "sqliteModel_InitBlock10 0..9999" --* "sqliteModel_DDLStatement 1..1" sqliteModel_InitBlock : statements9
+sqliteModel_TableDefinition "sqliteModel_UpdateStatement 0..1" -- "sqliteModel_TableDefinition103 1..1" sqliteModel_UpdateStatement : table102
+sqliteModel_AlterTableRenameStatement "sqliteModel_TableDefinition227 1..1" -- "sqliteModel_AlterTableRenameStatement 0..1" sqliteModel_TableDefinition : table226
+sqliteModel_CreateTriggerStatement "sqliteModel_TableDefinition 1..1" -- "sqliteModel_CreateTriggerStatement 0..1" sqliteModel_TableDefinition : table51
+sqliteModel_AlterTableAddColumnStatement "sqliteModel_TableDefinition58 1..1" -- "sqliteModel_AlterTableAddColumnStatement 0..1" sqliteModel_TableDefinition : table57
+sqliteModel_DropTableStatement "sqliteModel_TableDefinition63 1..1" -- "sqliteModel_DropTableStatement 0..1" sqliteModel_TableDefinition : table62
+sqliteModel_CreateIndexStatement "sqliteModel_TableDefinition68 1..1" -- "sqliteModel_CreateIndexStatement 0..1" sqliteModel_TableDefinition : table67
+sqliteModel_DeleteStatement "sqliteModel_TableDefinition87 1..1" -- "sqliteModel_DeleteStatement 0..1" sqliteModel_TableDefinition : table86
+sqliteModel_InsertStatement "sqliteModel_TableDefinition92 1..1" -- "sqliteModel_InsertStatement 0..1" sqliteModel_TableDefinition : table91
+sqliteModel_SingleSourceTable "sqliteModel_TableDefinition214 1..1" -- "sqliteModel_SingleSourceTable 0..1" sqliteModel_TableDefinition : tableReference213
+sqliteModel_Case "sqliteModel_Expression18 1..1" *-- "sqliteModel_Case17 0..1" sqliteModel_Expression : thenExpression16
+sqliteModel_CreateTriggerStatement "sqliteModel_DropTriggerStatement 0..1" -- "sqliteModel_CreateTriggerStatement65 1..1" sqliteModel_DropTriggerStatement : trigger64
+sqliteModel_UpdateColumnExpression "sqliteModel_UpdateStatement105 0..9999" --* "sqliteModel_UpdateColumnExpression 1..1" sqliteModel_UpdateStatement : updateColumnExpressions104
+sqliteModel_ActionStatement "sqliteModel_ContentUri116 1..1" *-- "sqliteModel_ActionStatement 0..1" sqliteModel_ContentUri : uri115
+sqliteModel_CreateViewStatement "sqliteModel_DropViewStatement 0..1" -- "sqliteModel_CreateViewStatement 1..1" sqliteModel_DropViewStatement : view66
+sqliteModel_Case "sqliteModel_Expression 1..1" *-- "sqliteModel_Case 0..1" sqliteModel_Expression : whenExpression15
+sqliteModel_CreateTriggerStatement "sqliteModel_Expression54 1..1" *-- "sqliteModel_CreateTriggerStatement53 0..1" sqliteModel_Expression : whenExpression52
+sqliteModel_SelectExpression "sqliteModel_WhereExpressions206 1..1" *-- "sqliteModel_SelectExpression205 0..1" sqliteModel_WhereExpressions : where204
+sqliteModel_Expression "sqliteModel_UpdateStatement107 0..1" --* "sqliteModel_Expression108 1..1" sqliteModel_UpdateStatement : whereExpression106
 @enduml

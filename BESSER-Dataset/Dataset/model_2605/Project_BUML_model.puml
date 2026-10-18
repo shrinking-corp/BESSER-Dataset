@@ -1,4 +1,8 @@
 @startuml
+' model: project
+' project: sampleModel
+' owner: User
+' description: New project
 class project_CommitterShip {
   + end : date
   + start : date
@@ -19,13 +23,13 @@ class project_Project {
   + shortname : str
   + start : date
 }
-project_CommitterShip "0..9999" --* "1..1" project_Project : committers5
-project_CommitterShip "0..9999" -- "1..1" project_Person : committerships15
-project_Project "1..1" -- "0..1" project_Project : parent7
-project_CommitterShip "1..1" -- "0..1" project_Person : person14
-project_Foundation "1..1" *-- "0..9999" project_Person : persons1
-project_CommitterShip "1..1" -- "0..1" project_Project : project12
-project_Person "0..9999" -- "1..1" project_Project : projectleads9
-project_Foundation "1..1" *-- "0..9999" project_Project : projects0
-project_Project "1..1" *-- "0..9999" project_Project : subprojects4
+project_CommitterShip "project 0..9999" --* "CommitterShip 1..1" project_Project : committers5
+project_CommitterShip "person 0..9999" -- "CommitterShip16 1..1" project_Person : committerships15
+project_Project "Project8 1..1" -- "subprojects 0..1" project_Project : parent7
+project_CommitterShip "Person 1..1" -- "committerships 0..1" project_Person : person14
+project_Foundation "project_Person 1..1" *-- "project_Foundation2 0..9999" project_Person : persons1
+project_CommitterShip "Project13 1..1" -- "committers 0..1" project_Project : project12
+project_Person "project_Project10 0..9999" -- "project_Person11 1..1" project_Project : projectleads9
+project_Foundation "project_Project 1..1" *-- "project_Foundation 0..9999" project_Project : projects0
+project_Project "Project 1..1" *-- "parent 0..9999" project_Project : subprojects4
 @enduml

@@ -165,9 +165,9 @@ def test_assoc_names40_stub_double():
     partner = bibTeX_Authors()
     setattr(partner, 'bibTeX_Authors', None)
     _safe_set(owner, 'bibTeX_Fullname', partner)
-    assert getattr(partner, 'bibTeX_Authors') == owner
+    assert owner in getattr(partner, 'bibTeX_Authors')
     _safe_set(owner, 'bibTeX_Fullname', None)
-    assert getattr(partner, 'bibTeX_Authors') is None
+    assert owner not in getattr(partner, 'bibTeX_Authors')
 
 
 def test_assoc_note9_stub_double():

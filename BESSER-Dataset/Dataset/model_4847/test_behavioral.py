@@ -1391,9 +1391,9 @@ def test_assoc_considers4_stub_double():
     partner = sipme_BusinessRules()
     setattr(partner, 'sipme_BusinessRules', None)
     _safe_set(owner, 'sipme_EnterpriseObject', partner)
-    assert getattr(partner, 'sipme_BusinessRules') == owner
+    assert owner in getattr(partner, 'sipme_BusinessRules')
     _safe_set(owner, 'sipme_EnterpriseObject', None)
-    assert getattr(partner, 'sipme_BusinessRules') is None
+    assert owner not in getattr(partner, 'sipme_BusinessRules')
 
 
 def test_assoc_impacts5_stub_double():
@@ -1406,9 +1406,9 @@ def test_assoc_impacts5_stub_double():
     partner = sipme_BusinessRules()
     setattr(partner, 'sipme_BusinessRules6', None)
     _safe_set(owner, 'sipme_EnterpriseObject7', partner)
-    assert getattr(partner, 'sipme_BusinessRules6') == owner
+    assert owner in getattr(partner, 'sipme_BusinessRules6')
     _safe_set(owner, 'sipme_EnterpriseObject7', None)
-    assert getattr(partner, 'sipme_BusinessRules6') is None
+    assert owner not in getattr(partner, 'sipme_BusinessRules6')
 
 
 def test_assoc_induces19_stub_double():

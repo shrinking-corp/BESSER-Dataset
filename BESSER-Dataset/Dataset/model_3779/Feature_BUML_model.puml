@@ -1,4 +1,8 @@
 @startuml
+' model: feature
+' project: sampleModel
+' owner: User
+' description: New project
 class SimpleFeature {
 }
 class SimpleIdentifier {
@@ -24,10 +28,10 @@ SimpleFeature <|-- feature_AnnotatedSimpleFeature
 SimpleFeature <|-- feature_Feature
 SimpleFeature <|-- feature_FeatureSet
 SimpleIdentifier <|-- feature_SimpleFeature
-feature_AnnotatedSimpleFeature "1..1" -- "0..9999" feature_SimpleIdentifier : annotations0
-feature_FeatureSet "1..1" -- "0..9999" feature_SimpleFeature : features6
-feature_EvidenceCode "0..9999" -- "1..1" feature_Feature : supportingEvidence4
-feature_SimpleFeature "1..1" -- "0..1" feature_SimpleOntologyTerm : type7
-feature_Feature "1..1" -- "1..1" feature_SimpleOntologyTerm : unit2
-feature_Feature "1..1" -- "0..9999" feature_Value : values1
+feature_AnnotatedSimpleFeature "feature_SimpleIdentifier 1..1" -- "feature_AnnotatedSimpleFeature 0..9999" feature_SimpleIdentifier : annotations0
+feature_FeatureSet "feature_SimpleFeature 1..1" -- "feature_FeatureSet 0..9999" feature_SimpleFeature : features6
+feature_EvidenceCode "feature_Feature5 0..9999" -- "feature_EvidenceCode 1..1" feature_Feature : supportingEvidence4
+feature_SimpleFeature "feature_SimpleOntologyTerm9 1..1" -- "feature_SimpleFeature8 0..1" feature_SimpleOntologyTerm : type7
+feature_Feature "feature_SimpleOntologyTerm 1..1" -- "feature_Feature3 1..1" feature_SimpleOntologyTerm : unit2
+feature_Feature "feature_Value 1..1" -- "feature_Feature 0..9999" feature_Value : values1
 @enduml

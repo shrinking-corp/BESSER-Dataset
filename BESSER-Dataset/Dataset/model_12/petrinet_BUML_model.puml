@@ -1,4 +1,8 @@
 @startuml
+' model: petrinet
+' project: sampleModel
+' owner: User
+' description: New project
 class Arc {
 }
 class NamedElement {
@@ -25,18 +29,18 @@ Arc <|-- petrinet_PTArc
 Arc <|-- petrinet_TPArc
 NamedElement <|-- petrinet_Place
 NamedElement <|-- petrinet_Transition
-petrinet_Place "1..1" -- "0..9999" petrinet_TPArc : inArcs2
-petrinet_PTArc "0..9999" -- "1..1" petrinet_Transition : inArcs6
-petrinet_PetriNet "1..1" -- "1..1" petrinet_Place : net0
-petrinet_PetriNet "1..1" -- "1..1" petrinet_Transition : net4
-petrinet_PTArc "0..9999" --* "1..1" petrinet_Place : outArcs1
-petrinet_TPArc "0..9999" --* "1..1" petrinet_Transition : outArcs9
-petrinet_Place "1..1" -- "1..1" petrinet_Token : place25
-petrinet_PetriNet "1..1" *-- "0..9999" petrinet_Place : places12
-petrinet_PTArc "1..1" -- "1..1" petrinet_Place : source15
-petrinet_TPArc "1..1" -- "1..1" petrinet_Transition : source19
-petrinet_PTArc "1..1" -- "1..1" petrinet_Transition : target17
-petrinet_Place "1..1" -- "1..1" petrinet_TPArc : target22
-petrinet_Place "1..1" *-- "0..9999" petrinet_Token : tokens3
-petrinet_PetriNet "1..1" *-- "0..9999" petrinet_Transition : transitions13
+petrinet_Place "TPArc 1..1" -- "target 0..9999" petrinet_TPArc : inArcs2
+petrinet_PTArc "target7 0..9999" -- "PTArc8 1..1" petrinet_Transition : inArcs6
+petrinet_PetriNet "places 1..1" -- "PetriNet 1..1" petrinet_Place : net0
+petrinet_PetriNet "transitions 1..1" -- "PetriNet5 1..1" petrinet_Transition : net4
+petrinet_PTArc "source 0..9999" --* "PTArc 1..1" petrinet_Place : outArcs1
+petrinet_TPArc "source10 0..9999" --* "TPArc11 1..1" petrinet_Transition : outArcs9
+petrinet_Place "tokens 1..1" -- "Place26 1..1" petrinet_Token : place25
+petrinet_PetriNet "Place 1..1" *-- "net 0..9999" petrinet_Place : places12
+petrinet_PTArc "Place16 1..1" -- "outArcs 1..1" petrinet_Place : source15
+petrinet_TPArc "Transition21 1..1" -- "outArcs20 1..1" petrinet_Transition : source19
+petrinet_PTArc "Transition18 1..1" -- "inArcs 1..1" petrinet_Transition : target17
+petrinet_Place "inArcs23 1..1" -- "Place24 1..1" petrinet_TPArc : target22
+petrinet_Place "Token 1..1" *-- "place 0..9999" petrinet_Token : tokens3
+petrinet_PetriNet "Transition 1..1" *-- "net14 0..9999" petrinet_Transition : transitions13
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: arduinoml
+' project: sampleModel
+' owner: User
+' description: New project
 class Action {
 }
 class AnalogAction {
@@ -83,16 +87,16 @@ Condition <|-- arduinoml_DigitalCondition
 Condition <|-- arduinoml_TimeCondition
 NamedElement <|-- arduinoml_AMLState
 NamedElement <|-- arduinoml_Brick
-arduinoml_AMLState "1..1" *-- "0..9999" arduinoml_Action : actions8
-arduinoml_DigitalAction "1..1" -- "1..1" arduinoml_DigitalActuator : actuator16
-arduinoml_AnalogAction "1..1" -- "1..1" arduinoml_AnalogActuator : actuator18
-arduinoml_AMLMachine "1..1" *-- "0..9999" arduinoml_Brick : bricks0
-arduinoml_Condition "1..9999" --* "1..1" arduinoml_Transition : conditions13
-arduinoml_AMLState "1..1" -- "1..1" arduinoml_Transition : goto10
-arduinoml_DigitalCondition "1..1" -- "1..1" arduinoml_DigitalSensor : sensor15
-arduinoml_AnalogCondition "1..1" -- "1..1" arduinoml_AnalogSensor : sensor17
-arduinoml_AnalogActionSensor "1..1" -- "1..1" arduinoml_AnalogSensor : sensor19
-arduinoml_AMLMachine "1..1" -- "1..1" arduinoml_AMLState : start3
-arduinoml_AMLMachine "1..1" *-- "1..9999" arduinoml_AMLState : states1
-arduinoml_AMLState "1..1" *-- "0..9999" arduinoml_Transition : transitions6
+arduinoml_AMLState "arduinoml_Action 1..1" *-- "arduinoml_AMLState9 0..9999" arduinoml_Action : actions8
+arduinoml_DigitalAction "arduinoml_DigitalActuator 1..1" -- "arduinoml_DigitalAction 1..1" arduinoml_DigitalActuator : actuator16
+arduinoml_AnalogAction "arduinoml_AnalogActuator 1..1" -- "arduinoml_AnalogAction 1..1" arduinoml_AnalogActuator : actuator18
+arduinoml_AMLMachine "arduinoml_Brick 1..1" *-- "arduinoml_AMLMachine 0..9999" arduinoml_Brick : bricks0
+arduinoml_Condition "arduinoml_Transition14 1..9999" --* "arduinoml_Condition 1..1" arduinoml_Transition : conditions13
+arduinoml_AMLState "arduinoml_Transition11 1..1" -- "arduinoml_AMLState12 1..1" arduinoml_Transition : goto10
+arduinoml_DigitalCondition "arduinoml_DigitalSensor 1..1" -- "arduinoml_DigitalCondition 1..1" arduinoml_DigitalSensor : sensor15
+arduinoml_AnalogCondition "arduinoml_AnalogSensor 1..1" -- "arduinoml_AnalogCondition 1..1" arduinoml_AnalogSensor : sensor17
+arduinoml_AnalogActionSensor "arduinoml_AnalogSensor20 1..1" -- "arduinoml_AnalogActionSensor 1..1" arduinoml_AnalogSensor : sensor19
+arduinoml_AMLMachine "arduinoml_AMLState5 1..1" -- "arduinoml_AMLMachine4 1..1" arduinoml_AMLState : start3
+arduinoml_AMLMachine "arduinoml_AMLState 1..1" *-- "arduinoml_AMLMachine2 1..9999" arduinoml_AMLState : states1
+arduinoml_AMLState "arduinoml_Transition 1..1" *-- "arduinoml_AMLState7 0..9999" arduinoml_Transition : transitions6
 @enduml

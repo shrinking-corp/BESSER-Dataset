@@ -1,4 +1,8 @@
 @startuml
+' model: cfg
+' project: sampleModel
+' owner: User
+' description: New project
 class cfg_cfg {
 }
 class cfg_edge {
@@ -14,12 +18,12 @@ class node {
 }
 node <|-- cfg_endnode
 node <|-- cfg_startnode
-cfg_edge "1..1" -- "0..1" cfg_node : EReference010
-cfg_edge "0..1" -- "1..1" cfg_node : EReference13
-cfg_cfg "1..1" *-- "0..9999" cfg_edge : edges1
-cfg_edge "0..9999" -- "1..1" cfg_node : incoming6
-cfg_cfg "1..1" *-- "0..9999" cfg_node : nodes0
-cfg_edge "0..9999" -- "1..1" cfg_node : outgoing7
-cfg_edge "1..1" -- "1..1" cfg_node : source13
-cfg_edge "1..1" -- "1..1" cfg_node : target9
+cfg_edge "cfg_node12 1..1" -- "cfg_edge11 0..1" cfg_node : EReference010
+cfg_edge "cfg_node4 0..1" -- "cfg_edge5 1..1" cfg_node : EReference13
+cfg_cfg "cfg_edge 1..1" *-- "cfg_cfg2 0..9999" cfg_edge : edges1
+cfg_edge "target 0..9999" -- "edge 1..1" cfg_node : incoming6
+cfg_cfg "cfg_node 1..1" *-- "cfg_cfg 0..9999" cfg_node : nodes0
+cfg_edge "source 0..9999" -- "edge8 1..1" cfg_node : outgoing7
+cfg_edge "node14 1..1" -- "outgoing 1..1" cfg_node : source13
+cfg_edge "node 1..1" -- "incoming 1..1" cfg_node : target9
 @enduml

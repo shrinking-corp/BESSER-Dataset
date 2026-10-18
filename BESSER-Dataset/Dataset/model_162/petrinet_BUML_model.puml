@@ -1,4 +1,8 @@
 @startuml
+' model: petrinet
+' project: sampleModel
+' owner: User
+' description: New project
 class petrinet_Box {
   + id : int
   + name : str
@@ -13,11 +17,11 @@ class petrinet_Transition {
   + id : int
   + name : str
 }
-petrinet_Box "0..9999" -- "1..1" petrinet_Transition : box1
-petrinet_Box "0..9999" --* "1..1" petrinet_Net : box11
-petrinet_Box "1..1" -- "0..9999" petrinet_Place : place14
-petrinet_Place "0..9999" -- "1..1" petrinet_Transition : place3
-petrinet_Net "1..1" *-- "0..9999" petrinet_Place : place6
-petrinet_Place "1..1" -- "0..9999" petrinet_Transition : transition0
-petrinet_Net "1..1" *-- "0..9999" petrinet_Transition : transition8
+petrinet_Box "petrinet_Transition2 0..9999" -- "petrinet_Box 1..1" petrinet_Transition : box1
+petrinet_Box "petrinet_Net12 0..9999" --* "petrinet_Box13 1..1" petrinet_Net : box11
+petrinet_Box "petrinet_Place16 1..1" -- "petrinet_Box15 0..9999" petrinet_Place : place14
+petrinet_Place "petrinet_Transition4 0..9999" -- "petrinet_Place5 1..1" petrinet_Transition : place3
+petrinet_Net "petrinet_Place7 1..1" *-- "petrinet_Net 0..9999" petrinet_Place : place6
+petrinet_Place "petrinet_Transition 1..1" -- "petrinet_Place 0..9999" petrinet_Transition : transition0
+petrinet_Net "petrinet_Transition10 1..1" *-- "petrinet_Net9 0..9999" petrinet_Transition : transition8
 @enduml

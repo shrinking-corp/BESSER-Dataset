@@ -342,9 +342,9 @@ def test_assoc_accessors109_stub_double():
     partner = gmfgraph_FigureDescriptor()
     setattr(partner, 'owner110', None)
     _safe_set(owner, 'ChildAccess', partner)
-    assert getattr(partner, 'owner110') == owner
+    assert owner in getattr(partner, 'owner110')
     _safe_set(owner, 'ChildAccess', None)
-    assert getattr(partner, 'owner110') is None
+    assert owner not in getattr(partner, 'owner110')
 
 
 def test_assoc_borders13_stub_double():
@@ -402,9 +402,9 @@ def test_assoc_compartments5_stub_double():
     partner = gmfgraph_Canvas()
     setattr(partner, 'gmfgraph_Canvas6', None)
     _safe_set(owner, 'gmfgraph_Compartment', partner)
-    assert getattr(partner, 'gmfgraph_Canvas6') == owner
+    assert owner in getattr(partner, 'gmfgraph_Canvas6')
     _safe_set(owner, 'gmfgraph_Compartment', None)
-    assert getattr(partner, 'gmfgraph_Canvas6') is None
+    assert owner not in getattr(partner, 'gmfgraph_Canvas6')
 
 
 def test_assoc_customChildren72_stub_double():
@@ -417,9 +417,9 @@ def test_assoc_customChildren72_stub_double():
     partner = gmfgraph_CustomFigure()
     setattr(partner, 'gmfgraph_CustomFigure', None)
     _safe_set(owner, 'gmfgraph_FigureAccessor73', partner)
-    assert getattr(partner, 'gmfgraph_CustomFigure') == owner
+    assert owner in getattr(partner, 'gmfgraph_CustomFigure')
     _safe_set(owner, 'gmfgraph_FigureAccessor73', None)
-    assert getattr(partner, 'gmfgraph_CustomFigure') is None
+    assert owner not in getattr(partner, 'gmfgraph_CustomFigure')
 
 
 def test_assoc_defaultSize101_stub_double():
@@ -492,9 +492,9 @@ def test_assoc_figures0_stub_double():
     partner = gmfgraph_Canvas()
     setattr(partner, 'gmfgraph_Canvas', None)
     _safe_set(owner, 'gmfgraph_FigureGallery', partner)
-    assert getattr(partner, 'gmfgraph_Canvas') == owner
+    assert owner in getattr(partner, 'gmfgraph_Canvas')
     _safe_set(owner, 'gmfgraph_FigureGallery', None)
-    assert getattr(partner, 'gmfgraph_Canvas') is None
+    assert owner not in getattr(partner, 'gmfgraph_Canvas')
 
 
 def test_assoc_insets46_stub_double():
@@ -537,9 +537,9 @@ def test_assoc_labels7_stub_double():
     partner = gmfgraph_Canvas()
     setattr(partner, 'gmfgraph_Canvas8', None)
     _safe_set(owner, 'gmfgraph_DiagramLabel', partner)
-    assert getattr(partner, 'gmfgraph_Canvas8') == owner
+    assert owner in getattr(partner, 'gmfgraph_Canvas8')
     _safe_set(owner, 'gmfgraph_DiagramLabel', None)
-    assert getattr(partner, 'gmfgraph_Canvas8') is None
+    assert owner not in getattr(partner, 'gmfgraph_Canvas8')
 
 
 def test_assoc_layouts15_stub_double():
@@ -612,9 +612,9 @@ def test_assoc_nodes1_stub_double():
     partner = gmfgraph_Canvas()
     setattr(partner, 'gmfgraph_Canvas2', None)
     _safe_set(owner, 'gmfgraph_Node', partner)
-    assert getattr(partner, 'gmfgraph_Canvas2') == owner
+    assert owner in getattr(partner, 'gmfgraph_Canvas2')
     _safe_set(owner, 'gmfgraph_Node', None)
-    assert getattr(partner, 'gmfgraph_Canvas2') is None
+    assert owner not in getattr(partner, 'gmfgraph_Canvas2')
 
 
 def test_assoc_owner111_stub_double():
@@ -717,9 +717,9 @@ def test_assoc_template63_stub_double():
     partner = gmfgraph_Polyline()
     setattr(partner, 'gmfgraph_Polyline', None)
     _safe_set(owner, 'gmfgraph_Point64', partner)
-    assert getattr(partner, 'gmfgraph_Polyline') == owner
+    assert owner in getattr(partner, 'gmfgraph_Polyline')
     _safe_set(owner, 'gmfgraph_Point64', None)
-    assert getattr(partner, 'gmfgraph_Polyline') is None
+    assert owner not in getattr(partner, 'gmfgraph_Polyline')
 
 
 def test_assoc_topLeft96_stub_double():

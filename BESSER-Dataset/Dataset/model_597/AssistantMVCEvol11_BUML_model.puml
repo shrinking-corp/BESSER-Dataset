@@ -1,4 +1,8 @@
 @startuml
+' model: AssistantMVC
+' project: sampleModel
+' owner: User
+' description: New project
 class AssistantMVC_ArrowShape {
   + question : str
   + value : str
@@ -65,8 +69,8 @@ Observer <|-- AssistantMVC_Controller
 Observer <|-- AssistantMVC_View
 View <|-- AssistantMVC_ExamItemView
 View <|-- AssistantMVC_ExamView
-AssistantMVC_Controller "0..1" -- "1..1" AssistantMVC_View : controller5
-AssistantMVC_Controller "0..9999" --* "1..1" AssistantMVC_Exam : controllers1
-AssistantMVC_Exam "1..1" *-- "0..9999" AssistantMVC_ExamItem : examItems0
-AssistantMVC_Exam "1..1" *-- "0..9999" AssistantMVC_View : views3
+AssistantMVC_Controller "AssistantMVC_View6 0..1" -- "AssistantMVC_Controller7 1..1" AssistantMVC_View : controller5
+AssistantMVC_Controller "AssistantMVC_Exam2 0..9999" --* "AssistantMVC_Controller 1..1" AssistantMVC_Exam : controllers1
+AssistantMVC_Exam "AssistantMVC_ExamItem 1..1" *-- "AssistantMVC_Exam 0..9999" AssistantMVC_ExamItem : examItems0
+AssistantMVC_Exam "AssistantMVC_View 1..1" *-- "AssistantMVC_Exam4 0..9999" AssistantMVC_View : views3
 @enduml

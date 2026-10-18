@@ -1,4 +1,8 @@
 @startuml
+' model: statechart
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractState {
 }
 enum ActionKind {
@@ -35,12 +39,12 @@ AbstractState <|-- statechart_InitialState
 AbstractState <|-- statechart_SimpleState
 ModelElement <|-- statechart_AbstractState
 ModelElement <|-- statechart_Transition
-statechart_AbstractState "1..1" *-- "0..9999" statechart_Action : actions6
-statechart_AbstractState "1..1" -- "1..1" statechart_Transition : from_0
-statechart_AbstractState "1..1" -- "0..9999" statechart_Transition : incoming3
-statechart_AbstractState "1..1" -- "0..9999" statechart_Transition : outgoing4
-statechart_CompositeState "0..1" --* "1..1" statechart_StateMachine : state11
-statechart_AbstractState "0..9999" --* "1..1" statechart_CompositeState : states7
-statechart_AbstractState "1..1" -- "1..1" statechart_Transition : to1
-statechart_CompositeState "1..1" *-- "0..9999" statechart_Transition : transitions9
+statechart_AbstractState "statechart_Action 1..1" *-- "statechart_AbstractState 0..9999" statechart_Action : actions6
+statechart_AbstractState "outgoing 1..1" -- "AbstractState 1..1" statechart_Transition : from_0
+statechart_AbstractState "Transition 1..1" -- "to 0..9999" statechart_Transition : incoming3
+statechart_AbstractState "Transition5 1..1" -- "from_ 0..9999" statechart_Transition : outgoing4
+statechart_CompositeState "statechart_StateMachine 0..1" --* "statechart_CompositeState12 1..1" statechart_StateMachine : state11
+statechart_AbstractState "statechart_CompositeState 0..9999" --* "statechart_AbstractState8 1..1" statechart_CompositeState : states7
+statechart_AbstractState "incoming 1..1" -- "AbstractState2 1..1" statechart_Transition : to1
+statechart_CompositeState "statechart_Transition 1..1" *-- "statechart_CompositeState10 0..9999" statechart_Transition : transitions9
 @enduml

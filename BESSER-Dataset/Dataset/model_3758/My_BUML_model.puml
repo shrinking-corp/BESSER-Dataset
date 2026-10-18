@@ -1,4 +1,8 @@
 @startuml
+' model: my
+' project: sampleModel
+' owner: User
+' description: New project
 enum ColumnType {
   Char
   Date
@@ -25,9 +29,9 @@ class my_Table {
 NamedElement <|-- my_Column
 NamedElement <|-- my_Database
 NamedElement <|-- my_Table
-my_Column "0..9999" --* "1..1" my_Table : columns0
-my_Database "1..1" *-- "0..9999" my_FKRelation : fkrelations3
-my_Column "1..1" -- "1..1" my_FKRelation : source8
-my_Database "1..1" *-- "0..9999" my_Table : tables1
-my_Column "1..1" -- "1..1" my_FKRelation : target5
+my_Column "my_Table 0..9999" --* "my_Column 1..1" my_Table : columns0
+my_Database "my_FKRelation 1..1" *-- "my_Database4 0..9999" my_FKRelation : fkrelations3
+my_Column "my_FKRelation9 1..1" -- "my_Column10 1..1" my_FKRelation : source8
+my_Database "my_Table2 1..1" *-- "my_Database 0..9999" my_Table : tables1
+my_Column "my_FKRelation6 1..1" -- "my_Column7 1..1" my_FKRelation : target5
 @enduml

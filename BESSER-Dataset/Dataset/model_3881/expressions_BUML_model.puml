@@ -1,4 +1,8 @@
 @startuml
+' model: expressions
+' project: sampleModel
+' owner: User
+' description: New project
 class BinaryOperator {
 }
 class Expression {
@@ -46,13 +50,13 @@ Expression <|-- expressions_Number
 Expression <|-- expressions_ParameterAccess
 Expression <|-- expressions_UnaryOperator
 UnaryOperator <|-- expressions_Neg
-expressions_Expression "0..9999" --* "1..1" expressions_FunctionCall : arguments14
-expressions_Expression "1..1" --* "1..1" expressions_Function : body1
-expressions_Function "1..1" -- "1..1" expressions_FunctionCall : function12
-expressions_Function "0..9999" --* "1..1" expressions_Model : functions17
-expressions_Expression "1..1" --* "1..1" expressions_UnaryOperator : op10
-expressions_BinaryOperator "1..1" *-- "1..1" expressions_Expression : op15
-expressions_BinaryOperator "1..1" *-- "1..1" expressions_Expression : op27
-expressions_Parameter "1..1" -- "1..1" expressions_ParameterAccess : parameter3
-expressions_Function "1..1" *-- "0..9999" expressions_Parameter : parameters0
+expressions_Expression "expressions_FunctionCall15 0..9999" --* "expressions_Expression16 1..1" expressions_FunctionCall : arguments14
+expressions_Expression "expressions_Function2 1..1" --* "expressions_Expression 1..1" expressions_Function : body1
+expressions_Function "expressions_FunctionCall 1..1" -- "expressions_Function13 1..1" expressions_FunctionCall : function12
+expressions_Function "expressions_Model 0..9999" --* "expressions_Function18 1..1" expressions_Model : functions17
+expressions_Expression "expressions_UnaryOperator 1..1" --* "expressions_Expression11 1..1" expressions_UnaryOperator : op10
+expressions_BinaryOperator "expressions_Expression6 1..1" *-- "expressions_BinaryOperator 1..1" expressions_Expression : op15
+expressions_BinaryOperator "expressions_Expression9 1..1" *-- "expressions_BinaryOperator8 1..1" expressions_Expression : op27
+expressions_Parameter "expressions_ParameterAccess 1..1" -- "expressions_Parameter4 1..1" expressions_ParameterAccess : parameter3
+expressions_Function "expressions_Parameter 1..1" *-- "expressions_Function 0..9999" expressions_Parameter : parameters0
 @enduml

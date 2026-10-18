@@ -1,4 +1,8 @@
 @startuml
+' model: _AP_doBzTEemK4rmwmdOnYw
+' project: sampleModel
+' owner: User
+' description: New project
 class Admin {
   + password : str
   + uname : str
@@ -24,10 +28,10 @@ class user {
   + password : str
   + phone_number : int
 }
-Admin "1..1" -- "1..9999" Doctor : Admin_Doctor
-Admin "1..1" -- "1..9999" Patient : Admin_Patient
-Admin "1..1" -- "1..1" user : Admin_user
-Doctor "1..1" -- "1..9999" Patient : Doctor_Patient
-Insurance "0..1" -- "0..1" user : Insurance_user
-Doctor "0..1" -- "0..1" user : user_Doctor
+Admin "accepts5 1..1" -- "Admin_Doctor_04 1..9999" Doctor : Admin_Doctor
+Admin "accepts7 1..1" -- "Admin_Patient_06 1..9999" Patient : Admin_Patient
+Admin "send_mail9 1..1" -- "Admin_user_08 1..1" user : Admin_user
+Doctor "checks3 1..1" -- "request_to2 1..9999" Patient : Doctor_Patient
+Insurance "insurance11 0..1" -- "user10 0..1" user : Insurance_user
+Doctor "user_Doctor_00 0..1" -- "register1 0..1" user : user_Doctor
 @enduml

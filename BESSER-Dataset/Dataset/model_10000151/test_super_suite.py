@@ -550,9 +550,9 @@ def test_assoc_R_A_stub_double():
     partner = R()
     setattr(partner, 'a4', None)
     _safe_set(owner, 'r5', partner)
-    assert getattr(partner, 'a4') == owner
+    assert owner in getattr(partner, 'a4')
     _safe_set(owner, 'r5', None)
-    assert getattr(partner, 'a4') is None
+    assert owner not in getattr(partner, 'a4')
 
 
 
@@ -562,7 +562,6 @@ from python_code import R
 
 def test_A___init__():
     assert A.__init__(A('', b2=set(), r5=R()), '', b2=set(), r5=R()) == None
-
 from python_code import Y
 
 def test_Y___init__():

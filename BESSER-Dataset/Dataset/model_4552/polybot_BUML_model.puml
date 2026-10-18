@@ -1,4 +1,8 @@
 @startuml
+' model: polybot
+' project: sampleModel
+' owner: User
+' description: New project
 class Instruction {
 }
 class Move {
@@ -44,9 +48,9 @@ Move <|-- polybot_GoTo
 Move <|-- polybot_Left
 Move <|-- polybot_Reverse
 Move <|-- polybot_Right
-polybot_Bot "1..1" *-- "0..1" polybot_Point : initialPosition0
-polybot_Bot "1..1" *-- "0..9999" polybot_Instruction : instructionList1
-polybot_IfObjectDetected "1..1" *-- "0..9999" polybot_Instruction : listOfInstructions3
-polybot_IfObstacleDetected "1..1" *-- "0..9999" polybot_Instruction : listOfInstructions5
-polybot_Instruction "0..9999" --* "1..1" polybot_While : listOfInstructions7
+polybot_Bot "polybot_Point 1..1" *-- "polybot_Bot 0..1" polybot_Point : initialPosition0
+polybot_Bot "polybot_Instruction 1..1" *-- "polybot_Bot2 0..9999" polybot_Instruction : instructionList1
+polybot_IfObjectDetected "polybot_Instruction4 1..1" *-- "polybot_IfObjectDetected 0..9999" polybot_Instruction : listOfInstructions3
+polybot_IfObstacleDetected "polybot_Instruction6 1..1" *-- "polybot_IfObstacleDetected 0..9999" polybot_Instruction : listOfInstructions5
+polybot_Instruction "polybot_While 0..9999" --* "polybot_Instruction8 1..1" polybot_While : listOfInstructions7
 @enduml

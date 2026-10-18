@@ -913,9 +913,9 @@ def test_assoc_eBounds105_stub_double():
     partner = ecore_ETypeParameter()
     setattr(partner, 'ecore_ETypeParameter106', None)
     _safe_set(owner, 'ecore_EGenericType107', partner)
-    assert getattr(partner, 'ecore_ETypeParameter106') == owner
+    assert owner in getattr(partner, 'ecore_ETypeParameter106')
     _safe_set(owner, 'ecore_EGenericType107', None)
-    assert getattr(partner, 'ecore_ETypeParameter106') is None
+    assert owner not in getattr(partner, 'ecore_ETypeParameter106')
 
 
 def test_assoc_eOperation69_stub_double():

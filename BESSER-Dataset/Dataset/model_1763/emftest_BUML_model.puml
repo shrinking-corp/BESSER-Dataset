@@ -1,4 +1,8 @@
 @startuml
+' model: emftest
+' project: sampleModel
+' owner: User
+' description: New project
 class Book {
 }
 enum BookType {
@@ -23,8 +27,8 @@ class emftest_ParentBook {
 }
 Book <|-- emftest_ChildBook
 Book <|-- emftest_ParentBook
-emftest_Author "1..9999" -- "1..1" emftest_Book : authors0
-emftest_Book "0..9999" --* "1..1" emftest_BookCollection : books1
-emftest_Author "1..1" -- "0..9999" emftest_Book : books5
-emftest_BookCollection "0..9999" --* "1..1" emftest_Library : collections3
+emftest_Author "emftest_Book 1..9999" -- "emftest_Author 1..1" emftest_Book : authors0
+emftest_Book "emftest_BookCollection 0..9999" --* "emftest_Book2 1..1" emftest_BookCollection : books1
+emftest_Author "emftest_Book7 1..1" -- "emftest_Author6 0..9999" emftest_Book : books5
+emftest_BookCollection "emftest_Library 0..9999" --* "emftest_BookCollection4 1..1" emftest_Library : collections3
 @enduml

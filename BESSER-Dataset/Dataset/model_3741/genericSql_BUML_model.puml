@@ -1,4 +1,8 @@
 @startuml
+' model: genericsql
+' project: sampleModel
+' owner: User
+' description: New project
 class Constraint {
 }
 class NamedElement {
@@ -48,17 +52,17 @@ NamedElement <|-- genericsql_Field
 NamedElement <|-- genericsql_ForeignKey
 NamedElement <|-- genericsql_PrimaryKey
 NamedElement <|-- genericsql_Table
-genericsql_Constraint "1..1" -- "1..9999" genericsql_Field : constrainedFields20
-genericsql_Constraint "0..9999" --* "1..1" genericsql_Table : constraints6
-genericsql_DataBase "1..1" -- "1..1" genericsql_Table : database7
-genericsql_Field "1..9999" --* "1..1" genericsql_Table : fields4
-genericsql_Field "0..9999" -- "1..1" genericsql_ForeignKey : foreignFields11
-genericsql_ForeignKey "0..9999" --* "1..1" genericsql_Table : foreignKeys2
-genericsql_Field "1..9999" -- "1..1" genericsql_PrimaryKey : primaryFields8
-genericsql_PrimaryKey "0..1" --* "1..1" genericsql_Table : primaryKey1
-genericsql_ForeignKey "1..1" -- "1..1" genericsql_PrimaryKey : refersTo15
-genericsql_ForeignKey "1..1" -- "0..1" genericsql_Table : table13
-genericsql_Field "1..1" -- "1..1" genericsql_Table : table18
-genericsql_PrimaryKey "1..1" -- "0..1" genericsql_Table : table9
-genericsql_DataBase "1..1" *-- "1..9999" genericsql_Table : tables0
+genericsql_Constraint "genericsql_Field22 1..1" -- "genericsql_Constraint21 1..9999" genericsql_Field : constrainedFields20
+genericsql_Constraint "genericsql_Table 0..9999" --* "genericsql_Constraint 1..1" genericsql_Table : constraints6
+genericsql_DataBase "tables 1..1" -- "DataBase 1..1" genericsql_Table : database7
+genericsql_Field "table5 1..9999" --* "Field 1..1" genericsql_Table : fields4
+genericsql_Field "genericsql_ForeignKey 0..9999" -- "genericsql_Field12 1..1" genericsql_ForeignKey : foreignFields11
+genericsql_ForeignKey "table3 0..9999" --* "ForeignKey 1..1" genericsql_Table : foreignKeys2
+genericsql_Field "genericsql_PrimaryKey 1..9999" -- "genericsql_Field 1..1" genericsql_PrimaryKey : primaryFields8
+genericsql_PrimaryKey "table 0..1" --* "PrimaryKey 1..1" genericsql_Table : primaryKey1
+genericsql_ForeignKey "genericsql_PrimaryKey17 1..1" -- "genericsql_ForeignKey16 1..1" genericsql_PrimaryKey : refersTo15
+genericsql_ForeignKey "Table14 1..1" -- "foreignKeys 0..1" genericsql_Table : table13
+genericsql_Field "Table19 1..1" -- "fields 1..1" genericsql_Table : table18
+genericsql_PrimaryKey "Table10 1..1" -- "primaryKey 0..1" genericsql_Table : table9
+genericsql_DataBase "Table 1..1" *-- "database 1..9999" genericsql_Table : tables0
 @enduml

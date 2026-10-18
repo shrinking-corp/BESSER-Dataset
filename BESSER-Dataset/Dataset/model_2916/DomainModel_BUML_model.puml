@@ -1,4 +1,8 @@
 @startuml
+' model: domainModel
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractElement {
 }
 class Type {
@@ -29,9 +33,9 @@ AbstractElement <|-- domainModel_PackageDeclaration
 AbstractElement <|-- domainModel_Type
 Type <|-- domainModel_DataType
 Type <|-- domainModel_Entity
-domainModel_AbstractElement "0..9999" --* "1..1" domainModel_Model : elements0
-domainModel_AbstractElement "0..9999" --* "1..1" domainModel_PackageDeclaration : elements1
-domainModel_Entity "1..1" *-- "0..9999" domainModel_Feature : features5
-domainModel_Entity "1..1" -- "0..1" domainModel_Entity : superType4
-domainModel_Feature "1..1" -- "0..1" domainModel_Type : type7
+domainModel_AbstractElement "domainModel_Model 0..9999" --* "domainModel_AbstractElement 1..1" domainModel_Model : elements0
+domainModel_AbstractElement "domainModel_PackageDeclaration 0..9999" --* "domainModel_AbstractElement2 1..1" domainModel_PackageDeclaration : elements1
+domainModel_Entity "domainModel_Feature 1..1" *-- "domainModel_Entity6 0..9999" domainModel_Feature : features5
+domainModel_Entity "domainModel_Entity 1..1" -- "domainModel_Entity3 0..1" domainModel_Entity : superType4
+domainModel_Feature "domainModel_Type 1..1" -- "domainModel_Feature8 0..1" domainModel_Type : type7
 @enduml

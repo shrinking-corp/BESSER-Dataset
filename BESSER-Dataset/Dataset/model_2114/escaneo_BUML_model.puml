@@ -1,4 +1,8 @@
 @startuml
+' model: securityTest
+' project: sampleModel
+' owner: User
+' description: New project
 enum EAttackMethod {
   Authentication
   Authorization
@@ -44,12 +48,12 @@ class securityTest_Test {
 class securityTest_WebComponent {
   + path : str
 }
-securityTest_Attack "0..9999" -- "1..1" securityTest_Input : attacks14
-securityTest_AuthSetting "0..1" --* "1..1" securityTest_Test : authSetting5
-securityTest_TargetOfEvaluation "1..1" *-- "1..9999" securityTest_WebComponent : components7
-securityTest_Input "0..9999" --* "1..1" securityTest_WebComponent : inputs12
-securityTest_Note "0..1" --* "1..1" securityTest_Test : note3
-securityTest_Attack "1..9999" --* "1..1" securityTest_Test : possibleAttacks1
-securityTest_TargetOfEvaluation "1..1" --* "1..1" securityTest_Test : scope0
-securityTest_WebComponent "1..1" -- "0..9999" securityTest_WebComponent : targetLinks10
+securityTest_Attack "securityTest_Input15 0..9999" -- "securityTest_Attack16 1..1" securityTest_Input : attacks14
+securityTest_AuthSetting "securityTest_Test6 0..1" --* "securityTest_AuthSetting 1..1" securityTest_Test : authSetting5
+securityTest_TargetOfEvaluation "securityTest_WebComponent 1..1" *-- "securityTest_TargetOfEvaluation8 1..9999" securityTest_WebComponent : components7
+securityTest_Input "securityTest_WebComponent13 0..9999" --* "securityTest_Input 1..1" securityTest_WebComponent : inputs12
+securityTest_Note "securityTest_Test4 0..1" --* "securityTest_Note 1..1" securityTest_Test : note3
+securityTest_Attack "securityTest_Test2 1..9999" --* "securityTest_Attack 1..1" securityTest_Test : possibleAttacks1
+securityTest_TargetOfEvaluation "securityTest_Test 1..1" --* "securityTest_TargetOfEvaluation 1..1" securityTest_Test : scope0
+securityTest_WebComponent "securityTest_WebComponent11 1..1" -- "securityTest_WebComponent9 0..9999" securityTest_WebComponent : targetLinks10
 @enduml

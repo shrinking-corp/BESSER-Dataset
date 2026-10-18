@@ -1,4 +1,8 @@
 @startuml
+' model: benchmark
+' project: sampleModel
+' owner: User
+' description: New project
 class NamedElement {
 }
 class benchmark_InputData {
@@ -24,14 +28,14 @@ NamedElement <|-- benchmark_InputData
 NamedElement <|-- benchmark_Scenario
 NamedElement <|-- benchmark_TestCase
 NamedElement <|-- benchmark_Variant
-benchmark_InputData "0..9999" --* "1..1" benchmark_Scenario : inputData0
-benchmark_InputData "0..1" -- "1..1" benchmark_TestCase : inputData5
-benchmark_Property "0..9999" --* "1..1" benchmark_TimeResult : properties11
-benchmark_NamedElement "1..1" *-- "0..9999" benchmark_Property : properties9
-benchmark_TimeResult "0..9999" -- "1..1" benchmark_Variant : results14
-benchmark_TestCase "1..1" *-- "0..9999" benchmark_TimeResult : results6
-benchmark_Scenario "1..1" *-- "0..9999" benchmark_TestCase : testCases1
-benchmark_InputData "1..1" -- "0..9999" benchmark_TestCase : tests8
-benchmark_TimeResult "1..1" -- "0..1" benchmark_Variant : variant10
-benchmark_Scenario "1..1" *-- "0..9999" benchmark_Variant : variants3
+benchmark_InputData "benchmark_Scenario 0..9999" --* "benchmark_InputData 1..1" benchmark_Scenario : inputData0
+benchmark_InputData "tests 0..1" -- "InputData 1..1" benchmark_TestCase : inputData5
+benchmark_Property "benchmark_TimeResult12 0..9999" --* "benchmark_Property13 1..1" benchmark_TimeResult : properties11
+benchmark_NamedElement "benchmark_Property 1..1" *-- "benchmark_NamedElement 0..9999" benchmark_Property : properties9
+benchmark_TimeResult "variant 0..9999" -- "TimeResult 1..1" benchmark_Variant : results14
+benchmark_TestCase "benchmark_TimeResult 1..1" *-- "benchmark_TestCase7 0..9999" benchmark_TimeResult : results6
+benchmark_Scenario "benchmark_TestCase 1..1" *-- "benchmark_Scenario2 0..9999" benchmark_TestCase : testCases1
+benchmark_InputData "TestCase 1..1" -- "inputData 0..9999" benchmark_TestCase : tests8
+benchmark_TimeResult "Variant 1..1" -- "results 0..1" benchmark_Variant : variant10
+benchmark_Scenario "benchmark_Variant 1..1" *-- "benchmark_Scenario4 0..9999" benchmark_Variant : variants3
 @enduml

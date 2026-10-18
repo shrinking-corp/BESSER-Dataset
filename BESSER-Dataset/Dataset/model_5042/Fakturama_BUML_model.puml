@@ -1,4 +1,8 @@
 @startuml
+' model: model
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractCategory {
 }
 enum BillingType {
@@ -348,38 +352,38 @@ IEntity <|-- model_Voucher
 IEntity <|-- model_VoucherItem
 IEntity <|-- model_WebShop
 IEntity <|-- model_WebshopStateMapping
-model_Voucher "1..1" *-- "0..1" model_VoucherCategory : account38
-model_ItemAccountType "0..1" --* "1..1" model_VoucherItem : accountType41
-model_Document "1..1" *-- "0..1" model_IndividualDocumentInfo : additionalInfo12
-model_Address "0..1" --* "1..1" model_Contact : address2
-model_Contact "0..1" -- "1..1" model_Contact : alternateContacts4
-model_Product "1..1" -- "0..9999" model_ProductOptions : attributes53
-model_BankAccount "0..1" -- "1..1" model_Contact : bankAccount10
-model_Contact "0..1" --* "1..1" model_Document : billingContact13
-model_Product "1..1" -- "1..9999" model_ProductBlockPrice : blockPrices58
-model_Product "1..1" -- "0..1" model_ProductCategory : categories51
-model_Contact "1..1" -- "0..1" model_ContactCategory : categories6
-model_Shipping "1..1" -- "0..1" model_ShippingCategory : categories63
-model_TextCategory "0..1" -- "1..1" model_TextModule : categories65
-model_ItemAccountType "1..1" -- "0..1" model_ItemListTypeCategory : category46
-model_Payment "1..1" -- "0..1" model_VoucherCategory : category48
-model_VAT "1..1" -- "0..1" model_VATCategory : category69
-model_Contact "0..1" --* "1..1" model_Document : deliveryContact16
-model_Document "1..1" -- "0..1" model_Invoice : invoiceReference19
-model_DocumentItem "1..1" -- "0..1" model_VAT : itemVat35
-model_Document "1..1" -- "0..9999" model_DocumentItem : items21
-model_Voucher "1..1" *-- "0..9999" model_VoucherItem : items39
-model_Document "1..1" *-- "0..1" model_VAT : noVatReference23
-model_AbstractCategory "1..1" *-- "0..1" model_AbstractCategory : parent1
-model_Document "1..1" *-- "0..1" model_Payment : payment25
-model_Contact "1..1" -- "0..1" model_Payment : payment8
-model_DocumentItem "1..1" -- "0..1" model_Product : product33
-model_Role "0..9999" -- "1..1" model_User : roles67
-model_Document "1..1" *-- "0..1" model_Shipping : shipping28
-model_Shipping "1..1" -- "1..1" model_VAT : shippingVat60
-model_Document "0..1" --* "1..1" model_Document : sourceDocument31
-model_WebShop "1..1" *-- "0..9999" model_WebshopStateMapping : stateMapping71
-model_Tenant "0..1" -- "1..1" model_User : tenant66
-model_VAT "0..1" -- "1..1" model_VoucherItem : vat43
-model_Product "1..1" -- "0..1" model_VAT : vat55
+model_Voucher "model_VoucherCategory 1..1" *-- "model_Voucher 0..1" model_VoucherCategory : account38
+model_ItemAccountType "model_VoucherItem42 0..1" --* "model_ItemAccountType 1..1" model_VoucherItem : accountType41
+model_Document "model_IndividualDocumentInfo 1..1" *-- "model_Document 0..1" model_IndividualDocumentInfo : additionalInfo12
+model_Address "model_Contact 0..1" --* "model_Address 1..1" model_Contact : address2
+model_Contact "model_Contact3 0..1" -- "model_Contact5 1..1" model_Contact : alternateContacts4
+model_Product "model_ProductOptions 1..1" -- "model_Product54 0..9999" model_ProductOptions : attributes53
+model_BankAccount "model_Contact11 0..1" -- "model_BankAccount 1..1" model_Contact : bankAccount10
+model_Contact "model_Document14 0..1" --* "model_Contact15 1..1" model_Document : billingContact13
+model_Product "model_ProductBlockPrice 1..1" -- "model_Product59 1..9999" model_ProductBlockPrice : blockPrices58
+model_Product "model_ProductCategory 1..1" -- "model_Product52 0..1" model_ProductCategory : categories51
+model_Contact "model_ContactCategory 1..1" -- "model_Contact7 0..1" model_ContactCategory : categories6
+model_Shipping "model_ShippingCategory 1..1" -- "model_Shipping64 0..1" model_ShippingCategory : categories63
+model_TextCategory "model_TextModule 0..1" -- "model_TextCategory 1..1" model_TextModule : categories65
+model_ItemAccountType "model_ItemListTypeCategory 1..1" -- "model_ItemAccountType47 0..1" model_ItemListTypeCategory : category46
+model_Payment "model_VoucherCategory50 1..1" -- "model_Payment49 0..1" model_VoucherCategory : category48
+model_VAT "model_VATCategory 1..1" -- "model_VAT70 0..1" model_VATCategory : category69
+model_Contact "model_Document17 0..1" --* "model_Contact18 1..1" model_Document : deliveryContact16
+model_Document "model_Invoice 1..1" -- "model_Document20 0..1" model_Invoice : invoiceReference19
+model_DocumentItem "model_VAT37 1..1" -- "model_DocumentItem36 0..1" model_VAT : itemVat35
+model_Document "model_DocumentItem 1..1" -- "model_Document22 0..9999" model_DocumentItem : items21
+model_Voucher "model_VoucherItem 1..1" *-- "model_Voucher40 0..9999" model_VoucherItem : items39
+model_Document "model_VAT 1..1" *-- "model_Document24 0..1" model_VAT : noVatReference23
+model_AbstractCategory "model_AbstractCategory 1..1" *-- "model_AbstractCategory0 0..1" model_AbstractCategory : parent1
+model_Document "model_Payment27 1..1" *-- "model_Document26 0..1" model_Payment : payment25
+model_Contact "model_Payment 1..1" -- "model_Contact9 0..1" model_Payment : payment8
+model_DocumentItem "model_Product 1..1" -- "model_DocumentItem34 0..1" model_Product : product33
+model_Role "model_User68 0..9999" -- "model_Role 1..1" model_User : roles67
+model_Document "model_Shipping 1..1" *-- "model_Document29 0..1" model_Shipping : shipping28
+model_Shipping "model_VAT62 1..1" -- "model_Shipping61 1..1" model_VAT : shippingVat60
+model_Document "model_Document30 0..1" --* "model_Document32 1..1" model_Document : sourceDocument31
+model_WebShop "model_WebshopStateMapping 1..1" *-- "model_WebShop 0..9999" model_WebshopStateMapping : stateMapping71
+model_Tenant "model_User 0..1" -- "model_Tenant 1..1" model_User : tenant66
+model_VAT "model_VoucherItem44 0..1" -- "model_VAT45 1..1" model_VoucherItem : vat43
+model_Product "model_VAT57 1..1" -- "model_Product56 0..1" model_VAT : vat55
 @enduml

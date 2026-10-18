@@ -1,4 +1,8 @@
 @startuml
+' model: backbone
+' project: sampleModel
+' owner: User
+' description: New project
 enum CardinalityKind {
   MANY
   ONE
@@ -41,21 +45,21 @@ NamedElement <|-- backbone_Parameter
 NamedElement <|-- backbone_Reference
 NamedElement <|-- backbone_Router
 NamedElement <|-- backbone_View
-backbone_Application "1..1" -- "1..1" backbone_Model : application12
-backbone_Application "1..1" -- "1..1" backbone_Collection : application20
-backbone_Application "1..1" -- "1..1" backbone_Router : application23
-backbone_Application "1..1" -- "1..1" backbone_View : application30
-backbone_Attribute "0..9999" --* "1..1" backbone_Model : attributes7
-backbone_Application "1..1" *-- "0..9999" backbone_Collection : collections1
-backbone_Router "1..1" *-- "0..9999" backbone_RouterMapping : mappings22
-backbone_Collection "1..1" -- "0..1" backbone_Model : model18
-backbone_Application "1..1" *-- "0..9999" backbone_Model : models0
-backbone_Model "1..1" *-- "0..9999" backbone_Operation : operations10
-backbone_Operation "0..9999" -- "1..1" backbone_View : operations27
-backbone_Operation "1..1" *-- "0..9999" backbone_Parameter : parameters16
-backbone_Model "1..1" *-- "0..9999" backbone_Reference : references8
-backbone_Application "1..1" *-- "1..1" backbone_Router : router3
-backbone_Model "1..1" -- "1..1" backbone_Reference : type13
-backbone_RouterMapping "1..1" -- "1..1" backbone_View : view25
-backbone_Application "1..1" *-- "0..9999" backbone_View : views5
+backbone_Application "models 1..1" -- "Application 1..1" backbone_Model : application12
+backbone_Application "collections 1..1" -- "Application21 1..1" backbone_Collection : application20
+backbone_Application "router 1..1" -- "Application24 1..1" backbone_Router : application23
+backbone_Application "views 1..1" -- "Application31 1..1" backbone_View : application30
+backbone_Attribute "backbone_Model 0..9999" --* "backbone_Attribute 1..1" backbone_Model : attributes7
+backbone_Application "Collection 1..1" *-- "application2 0..9999" backbone_Collection : collections1
+backbone_Router "backbone_RouterMapping 1..1" *-- "backbone_Router 0..9999" backbone_RouterMapping : mappings22
+backbone_Collection "backbone_Model19 1..1" -- "backbone_Collection 0..1" backbone_Model : model18
+backbone_Application "Model 1..1" *-- "application 0..9999" backbone_Model : models0
+backbone_Model "backbone_Operation 1..1" *-- "backbone_Model11 0..9999" backbone_Operation : operations10
+backbone_Operation "backbone_View28 0..9999" -- "backbone_Operation29 1..1" backbone_View : operations27
+backbone_Operation "backbone_Parameter 1..1" *-- "backbone_Operation17 0..9999" backbone_Parameter : parameters16
+backbone_Model "backbone_Reference 1..1" *-- "backbone_Model9 0..9999" backbone_Reference : references8
+backbone_Application "Router 1..1" *-- "application4 1..1" backbone_Router : router3
+backbone_Model "backbone_Reference14 1..1" -- "backbone_Model15 1..1" backbone_Reference : type13
+backbone_RouterMapping "backbone_View 1..1" -- "backbone_RouterMapping26 1..1" backbone_View : view25
+backbone_Application "View 1..1" *-- "application6 0..9999" backbone_View : views5
 @enduml

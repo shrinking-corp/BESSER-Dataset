@@ -613,9 +613,9 @@ def test_assoc_schools0_stub_double():
     partner = school_SchoolModel()
     setattr(partner, 'school_SchoolModel', None)
     _safe_set(owner, 'school_School', partner)
-    assert getattr(partner, 'school_SchoolModel') == owner
+    assert owner in getattr(partner, 'school_SchoolModel')
     _safe_set(owner, 'school_School', None)
-    assert getattr(partner, 'school_SchoolModel') is None
+    assert owner not in getattr(partner, 'school_SchoolModel')
 
 
 def test_assoc_teachers5_stub_double():
@@ -639,7 +639,6 @@ from python_code import school_Named
 
 def test_school_Named___init__():
     assert school_Named.__init__(school_Named(''), '') == None
-
 from python_code import school_Student
 
 def test_school_Student___init__():

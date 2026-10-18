@@ -1,4 +1,8 @@
 @startuml
+' model: iotw
+' project: sampleModel
+' owner: User
+' description: New project
 enum ConnectionKind {
   STATE_FLOW
 }
@@ -186,17 +190,17 @@ StateControl <|-- iotw_Decision
 StateControl <|-- iotw_EndPoint
 StateControl <|-- iotw_StartPoint
 StateControl <|-- iotw_StateFrame
-iotw_ConnectivityControl "0..9999" --* "1..1" iotw_Mainboard : connectivities10
-iotw_Connection "0..9999" --* "1..1" iotw_StateSchema : connnections14
-iotw_StateControl "0..9999" --* "1..1" iotw_StateSchema : controls12
-iotw_IOControl "0..9999" --* "1..1" iotw_Mainboard : controls9
-iotw_DataControl "1..1" -- "0..1" iotw_DataExplorer : dataExplorer7
-iotw_DataControl "0..9999" --* "1..1" iotw_DataExplorer : datas8
-iotw_Connection "0..9999" -- "1..1" iotw_StateControl : incomings3
-iotw_IOControl "1..1" -- "0..1" iotw_Mainboard : mainboard0
-iotw_ConnectivityControl "1..1" -- "0..1" iotw_Mainboard : mainboard1
-iotw_Connection "0..9999" -- "1..1" iotw_StateControl : outgoings4
-iotw_Connection "1..1" -- "0..1" iotw_Control : source15
-iotw_Connection "1..1" -- "0..1" iotw_StateSchema : stateSchema20
-iotw_Connection "1..1" -- "0..1" iotw_Control : target17
+iotw_ConnectivityControl "mainboard11 0..9999" --* "ConnectivityControl 1..1" iotw_Mainboard : connectivities10
+iotw_Connection "stateSchema 0..9999" --* "Connection 1..1" iotw_StateSchema : connnections14
+iotw_StateControl "iotw_StateSchema 0..9999" --* "iotw_StateControl13 1..1" iotw_StateSchema : controls12
+iotw_IOControl "mainboard 0..9999" --* "IOControl 1..1" iotw_Mainboard : controls9
+iotw_DataControl "DataExplorer 1..1" -- "datas 0..1" iotw_DataExplorer : dataExplorer7
+iotw_DataControl "dataExplorer 0..9999" --* "DataControl 1..1" iotw_DataExplorer : datas8
+iotw_Connection "iotw_StateControl 0..9999" -- "iotw_Connection 1..1" iotw_StateControl : incomings3
+iotw_IOControl "Mainboard 1..1" -- "controls 0..1" iotw_Mainboard : mainboard0
+iotw_ConnectivityControl "Mainboard2 1..1" -- "connectivities 0..1" iotw_Mainboard : mainboard1
+iotw_Connection "iotw_StateControl5 0..9999" -- "iotw_Connection6 1..1" iotw_StateControl : outgoings4
+iotw_Connection "iotw_Control 1..1" -- "iotw_Connection16 0..1" iotw_Control : source15
+iotw_Connection "StateSchema 1..1" -- "connnections 0..1" iotw_StateSchema : stateSchema20
+iotw_Connection "iotw_Control19 1..1" -- "iotw_Connection18 0..1" iotw_Control : target17
 @enduml

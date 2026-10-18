@@ -1,4 +1,8 @@
 @startuml
+' model: flowchart
+' project: sampleModel
+' owner: User
+' description: New project
 class flowchart_Action {
   + isAction : bool
 }
@@ -14,12 +18,12 @@ class flowchart_Node {
 class flowchart_Transition {
   + label : str
 }
-flowchart_Action "0..1" -- "1..1" flowchart_Node : actionNode6
-flowchart_Decision "0..1" -- "1..1" flowchart_Node : decisionNode8
-flowchart_Node "1..1" -- "0..9999" flowchart_Transition : incoming3
-flowchart_Flowchart "1..1" *-- "0..9999" flowchart_Node : nodes0
-flowchart_Node "1..1" -- "0..9999" flowchart_Transition : outgoing4
-flowchart_Node "0..1" -- "1..1" flowchart_Transition : source10
-flowchart_Node "0..1" -- "1..1" flowchart_Transition : target11
-flowchart_Flowchart "1..1" *-- "0..9999" flowchart_Transition : transitions1
+flowchart_Action "flowchart_Node7 0..1" -- "flowchart_Action 1..1" flowchart_Node : actionNode6
+flowchart_Decision "flowchart_Node9 0..1" -- "flowchart_Decision 1..1" flowchart_Node : decisionNode8
+flowchart_Node "Transition 1..1" -- "target 0..9999" flowchart_Transition : incoming3
+flowchart_Flowchart "flowchart_Node 1..1" *-- "flowchart_Flowchart 0..9999" flowchart_Node : nodes0
+flowchart_Node "Transition5 1..1" -- "source 0..9999" flowchart_Transition : outgoing4
+flowchart_Node "outgoing 0..1" -- "Node 1..1" flowchart_Transition : source10
+flowchart_Node "incoming 0..1" -- "Node12 1..1" flowchart_Transition : target11
+flowchart_Flowchart "flowchart_Transition 1..1" *-- "flowchart_Flowchart2 0..9999" flowchart_Transition : transitions1
 @enduml

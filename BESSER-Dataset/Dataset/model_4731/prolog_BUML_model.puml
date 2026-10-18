@@ -1,4 +1,8 @@
 @startuml
+' model: prolog
+' project: sampleModel
+' owner: User
+' description: New project
 enum ADDITIVE_OPERATOR {
   minus
   plus
@@ -75,22 +79,22 @@ Term <|-- prolog_Predicate
 Term <|-- prolog_String
 Term <|-- prolog_Variable
 Term <|-- prolog_VariableReference
-prolog_Power "1..1" *-- "1..1" prolog_Term : base29
-prolog_Negation "1..1" *-- "1..1" prolog_Term : body34
-prolog_BracketExpression "1..1" *-- "1..1" prolog_Term : body36
-prolog_Clause "1..9999" --* "1..1" prolog_PrologProgram : clauses0
-prolog_Clause "1..1" *-- "0..1" prolog_Conjunction : conjunction3
-prolog_Power "1..1" *-- "1..1" prolog_Term : exponent31
-prolog_List "1..1" *-- "0..9999" prolog_Term : headTerms5
-prolog_Additive "1..1" *-- "1..1" prolog_Term : left19
-prolog_Multiplicative "1..1" *-- "1..1" prolog_Term : left24
-prolog_Conjunction "1..1" *-- "1..9999" prolog_Part : parts17
-prolog_Clause "1..1" *-- "1..1" prolog_Predicate : predicate1
-prolog_Additive "1..1" *-- "1..1" prolog_Term : right21
-prolog_Multiplicative "1..1" *-- "1..1" prolog_Term : right26
-prolog_List "1..1" *-- "0..1" prolog_Tail : tail6
-prolog_Assignment "1..1" *-- "1..1" prolog_Term : term14
-prolog_Predicate "1..1" *-- "0..9999" prolog_Term : terms8
-prolog_Variable "1..1" -- "1..1" prolog_VariableReference : variable11
-prolog_Assignment "1..1" *-- "1..1" prolog_VariableReference : variable12
+prolog_Power "prolog_Term30 1..1" *-- "prolog_Power 1..1" prolog_Term : base29
+prolog_Negation "prolog_Term35 1..1" *-- "prolog_Negation 1..1" prolog_Term : body34
+prolog_BracketExpression "prolog_Term37 1..1" *-- "prolog_BracketExpression 1..1" prolog_Term : body36
+prolog_Clause "prolog_PrologProgram 1..9999" --* "prolog_Clause 1..1" prolog_PrologProgram : clauses0
+prolog_Clause "prolog_Conjunction 1..1" *-- "prolog_Clause4 0..1" prolog_Conjunction : conjunction3
+prolog_Power "prolog_Term33 1..1" *-- "prolog_Power32 1..1" prolog_Term : exponent31
+prolog_List "prolog_Term 1..1" *-- "prolog_List 0..9999" prolog_Term : headTerms5
+prolog_Additive "prolog_Term20 1..1" *-- "prolog_Additive 1..1" prolog_Term : left19
+prolog_Multiplicative "prolog_Term25 1..1" *-- "prolog_Multiplicative 1..1" prolog_Term : left24
+prolog_Conjunction "prolog_Part 1..1" *-- "prolog_Conjunction18 1..9999" prolog_Part : parts17
+prolog_Clause "prolog_Predicate 1..1" *-- "prolog_Clause2 1..1" prolog_Predicate : predicate1
+prolog_Additive "prolog_Term23 1..1" *-- "prolog_Additive22 1..1" prolog_Term : right21
+prolog_Multiplicative "prolog_Term28 1..1" *-- "prolog_Multiplicative27 1..1" prolog_Term : right26
+prolog_List "prolog_Tail 1..1" *-- "prolog_List7 0..1" prolog_Tail : tail6
+prolog_Assignment "prolog_Term16 1..1" *-- "prolog_Assignment15 1..1" prolog_Term : term14
+prolog_Predicate "prolog_Term10 1..1" *-- "prolog_Predicate9 0..9999" prolog_Term : terms8
+prolog_Variable "prolog_VariableReference 1..1" -- "prolog_Variable 1..1" prolog_VariableReference : variable11
+prolog_Assignment "prolog_VariableReference13 1..1" *-- "prolog_Assignment 1..1" prolog_VariableReference : variable12
 @enduml

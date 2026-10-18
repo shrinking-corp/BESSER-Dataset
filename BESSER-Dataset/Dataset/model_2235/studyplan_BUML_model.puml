@@ -1,4 +1,8 @@
 @startuml
+' model: studyplan
+' project: sampleModel
+' owner: User
+' description: New project
 enum CourseStatus {
   ELECTIVE
   MANDATORY
@@ -30,16 +34,16 @@ class studyplan_Specialization {
 class studyplan_StudyPlan {
   + planName : str
 }
-studyplan_Course "0..1" --* "1..1" studyplan_CourseGroup : course25
-studyplan_CourseGroup "1..1" --* "1..1" studyplan_Specialization : courseGroup14
-studyplan_Course "1..1" -- "0..1" studyplan_CourseGroup : courseGroup8
-studyplan_Course "0..1" --* "1..1" studyplan_StudyPlan : courses1
-studyplan_Course "0..9999" --* "1..1" studyplan_Semester : courses5
-studyplan_FieldOfStudy "0..1" --* "1..1" studyplan_StudyPlan : program0
-studyplan_CourseGroup "1..1" *-- "0..1" studyplan_Semester : semester22
-studyplan_Semester "0..1" --* "1..1" studyplan_StudyPlan : semester3
-studyplan_FieldOfStudy "1..1" *-- "0..9999" studyplan_Semester : semesters19
-studyplan_Semester "0..9999" --* "1..1" studyplan_Specialization : semesters9
-studyplan_Specialization "0..9999" --* "1..1" studyplan_Specialization : specialization12
-studyplan_FieldOfStudy "1..1" *-- "0..1" studyplan_Specialization : specialization16
+studyplan_Course "courseGroup 0..1" --* "Course 1..1" studyplan_CourseGroup : course25
+studyplan_CourseGroup "studyplan_Specialization15 1..1" --* "studyplan_CourseGroup 1..1" studyplan_Specialization : courseGroup14
+studyplan_Course "CourseGroup 1..1" -- "course 0..1" studyplan_CourseGroup : courseGroup8
+studyplan_Course "studyplan_StudyPlan2 0..1" --* "studyplan_Course 1..1" studyplan_StudyPlan : courses1
+studyplan_Course "studyplan_Semester6 0..9999" --* "studyplan_Course7 1..1" studyplan_Semester : courses5
+studyplan_FieldOfStudy "studyplan_StudyPlan 0..1" --* "studyplan_FieldOfStudy 1..1" studyplan_StudyPlan : program0
+studyplan_CourseGroup "studyplan_Semester24 1..1" *-- "studyplan_CourseGroup23 0..1" studyplan_Semester : semester22
+studyplan_Semester "studyplan_StudyPlan4 0..1" --* "studyplan_Semester 1..1" studyplan_StudyPlan : semester3
+studyplan_FieldOfStudy "studyplan_Semester21 1..1" *-- "studyplan_FieldOfStudy20 0..9999" studyplan_Semester : semesters19
+studyplan_Semester "studyplan_Specialization 0..9999" --* "studyplan_Semester10 1..1" studyplan_Specialization : semesters9
+studyplan_Specialization "studyplan_Specialization11 0..9999" --* "studyplan_Specialization13 1..1" studyplan_Specialization : specialization12
+studyplan_FieldOfStudy "studyplan_Specialization18 1..1" *-- "studyplan_FieldOfStudy17 0..1" studyplan_Specialization : specialization16
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: mvc
+' project: sampleModel
+' owner: User
+' description: New project
 class Model {
 }
 class View {
@@ -60,17 +64,17 @@ Model <|-- mvc_DataBase
 View <|-- mvc_GraphicComponent
 View <|-- mvc_MapComponent
 View <|-- mvc_SocialComponent
-mvc_Attribute "1..9999" --* "1..1" mvc_Method : attrib13
-mvc_Attribute "0..9999" --* "1..1" mvc_DataBase : attribute16
-mvc_Controller "1..1" -- "1..1" mvc_Model : controller8
-mvc_Controller "1..1" -- "1..1" mvc_View : controller9
-mvc_Controller "1..9999" --* "1..1" mvc_MvcApplication : controllers3
-mvc_Attribute "0..1" -- "1..1" mvc_GraphicComponent : datoA18
-mvc_Attribute "0..1" -- "1..1" mvc_GraphicComponent : datoB20
-mvc_Client "1..1" *-- "1..1" mvc_Method : method14
-mvc_Controller "1..1" -- "1..1" mvc_Model : model5
-mvc_Model "1..9999" --* "1..1" mvc_MvcApplication : models1
-mvc_Position "1..1" --* "1..1" mvc_View : position11
-mvc_Controller "1..1" -- "1..1" mvc_View : view6
-mvc_MvcApplication "1..1" *-- "0..9999" mvc_View : views0
+mvc_Attribute "mvc_Method 1..9999" --* "mvc_Attribute 1..1" mvc_Method : attrib13
+mvc_Attribute "mvc_DataBase 0..9999" --* "mvc_Attribute17 1..1" mvc_DataBase : attribute16
+mvc_Controller "model 1..1" -- "Controller 1..1" mvc_Model : controller8
+mvc_Controller "view 1..1" -- "Controller10 1..1" mvc_View : controller9
+mvc_Controller "mvc_MvcApplication4 1..9999" --* "mvc_Controller 1..1" mvc_MvcApplication : controllers3
+mvc_Attribute "mvc_GraphicComponent 0..1" -- "mvc_Attribute19 1..1" mvc_GraphicComponent : datoA18
+mvc_Attribute "mvc_GraphicComponent21 0..1" -- "mvc_Attribute22 1..1" mvc_GraphicComponent : datoB20
+mvc_Client "mvc_Method15 1..1" *-- "mvc_Client 1..1" mvc_Method : method14
+mvc_Controller "Model 1..1" -- "controller 1..1" mvc_Model : model5
+mvc_Model "mvc_MvcApplication2 1..9999" --* "mvc_Model 1..1" mvc_MvcApplication : models1
+mvc_Position "mvc_View12 1..1" --* "mvc_Position 1..1" mvc_View : position11
+mvc_Controller "View 1..1" -- "controller7 1..1" mvc_View : view6
+mvc_MvcApplication "mvc_View 1..1" *-- "mvc_MvcApplication 0..9999" mvc_View : views0
 @enduml

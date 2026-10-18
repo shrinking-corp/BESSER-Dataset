@@ -1,4 +1,8 @@
 @startuml
+' model: model
+' project: sampleModel
+' owner: User
+' description: New project
 class Decorator {
 }
 class Identifiable {
@@ -40,11 +44,11 @@ Decorator <|-- model_GraphDecorator
 Decorator <|-- model_NodeDecorator
 Identifiable <|-- model_Decorator
 Identifiable <|-- model_Model
-model_EdgeDecorator "0..9999" -- "1..1" model_Model : edgeDecorators10
-model_Decorator "1..1" -- "0..1" model_Graph : graph1
-model_GraphDecorator "0..9999" -- "1..1" model_Model : graphDecorators6
-model_Graph "0..9999" -- "1..1" model_Model : graphs4
-model_Decorator "1..1" -- "0..9999" model_DynamicLabel : labelsToUpdate0
-model_Model "1..1" -- "0..9999" model_Model : models3
-model_Model "1..1" -- "0..9999" model_NodeDecorator : nodeDecorators8
+model_EdgeDecorator "model_Model11 0..9999" -- "model_EdgeDecorator 1..1" model_Model : edgeDecorators10
+model_Decorator "graph.ecoreGraph 1..1" -- "decorators 0..1" model_Graph : graph1
+model_GraphDecorator "model_Model7 0..9999" -- "model_GraphDecorator 1..1" model_Model : graphDecorators6
+model_Graph "model_Model5 0..9999" -- "model_Graph 1..1" model_Model : graphs4
+model_Decorator "graph.ecoreDynamicLabel 1..1" -- "decorator 0..9999" model_DynamicLabel : labelsToUpdate0
+model_Model "model_Model 1..1" -- "model_Model2 0..9999" model_Model : models3
+model_Model "model_NodeDecorator 1..1" -- "model_Model9 0..9999" model_NodeDecorator : nodeDecorators8
 @enduml

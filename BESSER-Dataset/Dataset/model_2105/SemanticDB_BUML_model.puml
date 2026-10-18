@@ -1,4 +1,8 @@
 @startuml
+' model: SemanticResourceDB
+' project: sampleModel
+' owner: User
+' description: New project
 class ResourceTreeNode {
 }
 class SemanticResourceDB_ResourceTreeNode {
@@ -26,8 +30,8 @@ enum TreeNodeType {
   UNKNOWN
 }
 ResourceTreeNode <|-- SemanticResourceDB_TreeRoot
-SemanticResourceDB_ResourceTreeNode "1..1" *-- "0..9999" SemanticResourceDB_ResourceTreeNode : children1
-SemanticResourceDB_ResourceTreeNode "1..1" -- "0..1" SemanticResourceDB_ResourceTreeNode : parent3
-SemanticResourceDB_SemanticDB "0..1" -- "1..1" SemanticResourceDB_TreeRoot : parentDB6
-SemanticResourceDB_SemanticDB "1..1" *-- "0..9999" SemanticResourceDB_TreeRoot : roots5
+SemanticResourceDB_ResourceTreeNode "ResourceTreeNode 1..1" *-- "parent 0..9999" SemanticResourceDB_ResourceTreeNode : children1
+SemanticResourceDB_ResourceTreeNode "ResourceTreeNode4 1..1" -- "children 0..1" SemanticResourceDB_ResourceTreeNode : parent3
+SemanticResourceDB_SemanticDB "roots 0..1" -- "SemanticDB 1..1" SemanticResourceDB_TreeRoot : parentDB6
+SemanticResourceDB_SemanticDB "TreeRoot 1..1" *-- "parentDB 0..9999" SemanticResourceDB_TreeRoot : roots5
 @enduml

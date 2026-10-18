@@ -1,4 +1,8 @@
 @startuml
+' model: PrimitiveTypes
+' project: sampleModel
+' owner: User
+' description: New project
 class AssociationStateState {
 }
 class FSM_AssociationStateState {
@@ -29,17 +33,17 @@ class Transition {
 MgaObject <|-- FSM_State
 MgaObject <|-- FSM_StateMachine
 MgaObject <|-- FSM_Transition
-AssociationStateState "1..1" -- "1..1" FSM_Transition : associationStateState1
-AssociationStateState "1..9999" -- "1..1" FSM_State : associationStateStatedst5
-AssociationStateState "1..9999" -- "1..1" FSM_State : associationStateStatesrc7
-FSM_AssociationStateState "1..1" -- "1..9999" State : dstTransition20
-FSM_StateMachine "1..1" -- "1..1" RootFolder : rootFolder9
-FSM_RootFolder "1..1" *-- "0..9999" RootFolder : rootFolders14
-FSM_AssociationStateState "1..1" -- "1..9999" State : srcTransition22
-FSM_StateMachine "1..1" *-- "0..9999" State : state10
-FSM_Transition "1..1" -- "1..1" StateMachine : stateMachine0
-FSM_RootFolder "1..1" *-- "0..9999" StateMachine : stateMachine16
-FSM_State "1..1" -- "1..1" StateMachine : stateMachine3
-FSM_StateMachine "1..1" *-- "0..9999" Transition : transition12
-FSM_AssociationStateState "1..1" -- "1..1" Transition : transition18
+AssociationStateState "transition2 1..1" -- "AssociationStateState 1..1" FSM_Transition : associationStateState1
+AssociationStateState "dstTransition 1..9999" -- "AssociationStateState6 1..1" FSM_State : associationStateStatedst5
+AssociationStateState "srcTransition 1..9999" -- "AssociationStateState8 1..1" FSM_State : associationStateStatesrc7
+FSM_AssociationStateState "State21 1..1" -- "associationStateStatedst 1..9999" State : dstTransition20
+FSM_StateMachine "RootFolder 1..1" -- "stateMachine 1..1" RootFolder : rootFolder9
+FSM_RootFolder "RootFolder15 1..1" *-- "FSM_RootFolder 0..9999" RootFolder : rootFolders14
+FSM_AssociationStateState "State23 1..1" -- "associationStateStatesrc 1..9999" State : srcTransition22
+FSM_StateMachine "State 1..1" *-- "stateMachine11 0..9999" State : state10
+FSM_Transition "StateMachine 1..1" -- "transition 1..1" StateMachine : stateMachine0
+FSM_RootFolder "StateMachine17 1..1" *-- "rootFolder 0..9999" StateMachine : stateMachine16
+FSM_State "StateMachine4 1..1" -- "state 1..1" StateMachine : stateMachine3
+FSM_StateMachine "Transition 1..1" *-- "stateMachine13 0..9999" Transition : transition12
+FSM_AssociationStateState "Transition19 1..1" -- "associationStateState 1..1" Transition : transition18
 @enduml

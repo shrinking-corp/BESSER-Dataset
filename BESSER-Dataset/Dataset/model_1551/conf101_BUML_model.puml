@@ -1,4 +1,8 @@
 @startuml
+' model: conf101
+' project: sampleModel
+' owner: User
+' description: New project
 class NamedElement {
 }
 class Person {
@@ -53,26 +57,26 @@ NamedElement <|-- conf101_Session
 NamedElement <|-- conf101_SteeringComitee
 NamedElement <|-- conf101_System
 Person <|-- conf101_Researcher
-conf101_Admin "0..1" --* "1..1" conf101_System : admin0
-conf101_Chapter "0..9999" --* "1..1" conf101_Publication : chapters33
-conf101_Conference "0..9999" --* "1..1" conf101_System : conferences3
-conf101_Contribution "0..1" -- "1..1" conf101_Session : contributions12
-conf101_Evaluation "1..1" -- "0..1" conf101_Publication : evPubli47
-conf101_Evaluation "0..1" -- "1..1" conf101_Researcher : evaluations24
-conf101_Laboratory "0..9999" --* "1..1" conf101_System : laboratories1
-conf101_Location "0..1" -- "1..1" conf101_Session : location7
-conf101_Admin "1..1" *-- "0..9999" conf101_Location : locations14
-conf101_Person "0..1" -- "1..1" conf101_ProgramComitee : pcPerson41
-conf101_ProgramComitee "0..1" -- "1..1" conf101_Session : progcomit8
-conf101_Contribution "1..1" -- "0..1" conf101_Publication : publication44
-conf101_Laboratory "1..1" *-- "0..9999" conf101_Publication : publications22
-conf101_Publication "0..9999" --* "1..1" conf101_Researcher : publications30
-conf101_Laboratory "1..1" *-- "0..9999" conf101_Researcher : researchers20
-conf101_Researcher "1..1" -- "0..1" conf101_RevisionNote : reviews28
-conf101_RevisionProcess "0..1" --* "1..1" conf101_System : revisionProcess5
-conf101_Chapter "1..1" *-- "0..9999" conf101_RevisionNote : revisonNotes36
-conf101_Person "0..1" -- "1..1" conf101_SteeringComitee : scPerson39
-conf101_Conference "1..1" *-- "0..9999" conf101_Session : sessions17
-conf101_Session "1..1" -- "0..1" conf101_SteeringComitee : steercomit10
-conf101_Chapter "0..1" -- "1..1" conf101_Researcher : writes26
+conf101_Admin "conf101_System 0..1" --* "conf101_Admin 1..1" conf101_System : admin0
+conf101_Chapter "conf101_Publication34 0..9999" --* "conf101_Chapter35 1..1" conf101_Publication : chapters33
+conf101_Conference "conf101_System4 0..9999" --* "conf101_Conference 1..1" conf101_System : conferences3
+conf101_Contribution "conf101_Session13 0..1" -- "conf101_Contribution 1..1" conf101_Session : contributions12
+conf101_Evaluation "conf101_Publication49 1..1" -- "conf101_Evaluation48 0..1" conf101_Publication : evPubli47
+conf101_Evaluation "conf101_Researcher25 0..1" -- "conf101_Evaluation 1..1" conf101_Researcher : evaluations24
+conf101_Laboratory "conf101_System2 0..9999" --* "conf101_Laboratory 1..1" conf101_System : laboratories1
+conf101_Location "conf101_Session 0..1" -- "conf101_Location 1..1" conf101_Session : location7
+conf101_Admin "conf101_Location16 1..1" *-- "conf101_Admin15 0..9999" conf101_Location : locations14
+conf101_Person "conf101_ProgramComitee42 0..1" -- "conf101_Person43 1..1" conf101_ProgramComitee : pcPerson41
+conf101_ProgramComitee "conf101_Session9 0..1" -- "conf101_ProgramComitee 1..1" conf101_Session : progcomit8
+conf101_Contribution "conf101_Publication46 1..1" -- "conf101_Contribution45 0..1" conf101_Publication : publication44
+conf101_Laboratory "conf101_Publication 1..1" *-- "conf101_Laboratory23 0..9999" conf101_Publication : publications22
+conf101_Publication "conf101_Researcher31 0..9999" --* "conf101_Publication32 1..1" conf101_Researcher : publications30
+conf101_Laboratory "conf101_Researcher 1..1" *-- "conf101_Laboratory21 0..9999" conf101_Researcher : researchers20
+conf101_Researcher "conf101_RevisionNote 1..1" -- "conf101_Researcher29 0..1" conf101_RevisionNote : reviews28
+conf101_RevisionProcess "conf101_System6 0..1" --* "conf101_RevisionProcess 1..1" conf101_System : revisionProcess5
+conf101_Chapter "conf101_RevisionNote38 1..1" *-- "conf101_Chapter37 0..9999" conf101_RevisionNote : revisonNotes36
+conf101_Person "conf101_SteeringComitee40 0..1" -- "conf101_Person 1..1" conf101_SteeringComitee : scPerson39
+conf101_Conference "conf101_Session19 1..1" *-- "conf101_Conference18 0..9999" conf101_Session : sessions17
+conf101_Session "conf101_SteeringComitee 1..1" -- "conf101_Session11 0..1" conf101_SteeringComitee : steercomit10
+conf101_Chapter "conf101_Researcher27 0..1" -- "conf101_Chapter 1..1" conf101_Researcher : writes26
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: model
+' project: sampleModel
+' owner: User
+' description: New project
 class ElementWithResources {
 }
 enum Environment {
@@ -65,21 +69,21 @@ class model_StringToServiceInstance {
 ElementWithResources <|-- model_Host
 ElementWithResources <|-- model_ServiceInstance
 Service <|-- model_ServiceInstance
-model_Cluster "1..1" *-- "0..9999" model_StringToApplication : applications1
-model_Message "1..1" -- "0..1" model_ServiceInstance : destination13
-model_Affinity "0..9999" --* "1..1" model_Service : hasAffinities3
-model_Host "0..1" -- "1..1" model_ServiceInstance : host8
-model_Cluster "1..1" *-- "0..9999" model_StringToHost : hosts0
-model_Message "0..9999" --* "1..1" model_ServiceInstance : messages7
-model_ElementWithResources "1..1" *-- "0..9999" model_StringToDoubleMap : metrics22
-model_ElementWithResources "1..1" *-- "0..9999" model_StringToDoubleMap : resourceLimit20
-model_Host "1..1" *-- "0..9999" model_StringToDoubleMap : resourceReserved18
-model_Host "1..1" *-- "0..9999" model_StringToServiceInstance : services16
-model_Application "1..1" *-- "0..9999" model_StringToService : services33
-model_Message "1..1" -- "0..1" model_ServiceInstance : source10
-model_Service "0..1" --* "1..1" model_StringToService : value25
-model_Host "0..1" --* "1..1" model_StringToHost : value27
-model_ServiceInstance "0..1" -- "1..1" model_StringToServiceInstance : value30
-model_Application "0..1" --* "1..1" model_StringToApplication : value35
-model_Affinity "1..1" -- "0..1" model_Service : with_4
+model_Cluster "model_StringToApplication 1..1" *-- "model_Cluster2 0..9999" model_StringToApplication : applications1
+model_Message "model_ServiceInstance15 1..1" -- "model_Message14 0..1" model_ServiceInstance : destination13
+model_Affinity "model_Service 0..9999" --* "model_Affinity 1..1" model_Service : hasAffinities3
+model_Host "model_ServiceInstance9 0..1" -- "model_Host 1..1" model_ServiceInstance : host8
+model_Cluster "model_StringToHost 1..1" *-- "model_Cluster 0..9999" model_StringToHost : hosts0
+model_Message "model_ServiceInstance 0..9999" --* "model_Message 1..1" model_ServiceInstance : messages7
+model_ElementWithResources "model_StringToDoubleMap24 1..1" *-- "model_ElementWithResources23 0..9999" model_StringToDoubleMap : metrics22
+model_ElementWithResources "model_StringToDoubleMap21 1..1" *-- "model_ElementWithResources 0..9999" model_StringToDoubleMap : resourceLimit20
+model_Host "model_StringToDoubleMap 1..1" *-- "model_Host19 0..9999" model_StringToDoubleMap : resourceReserved18
+model_Host "model_StringToServiceInstance 1..1" *-- "model_Host17 0..9999" model_StringToServiceInstance : services16
+model_Application "model_StringToService34 1..1" *-- "model_Application 0..9999" model_StringToService : services33
+model_Message "model_ServiceInstance12 1..1" -- "model_Message11 0..1" model_ServiceInstance : source10
+model_Service "model_StringToService 0..1" --* "model_Service26 1..1" model_StringToService : value25
+model_Host "model_StringToHost28 0..1" --* "model_Host29 1..1" model_StringToHost : value27
+model_ServiceInstance "model_StringToServiceInstance31 0..1" -- "model_ServiceInstance32 1..1" model_StringToServiceInstance : value30
+model_Application "model_StringToApplication36 0..1" --* "model_Application37 1..1" model_StringToApplication : value35
+model_Affinity "model_Service6 1..1" -- "model_Affinity5 0..1" model_Service : with_4
 @enduml

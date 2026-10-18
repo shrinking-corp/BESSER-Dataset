@@ -1,4 +1,8 @@
 @startuml
+' model: organizationchart
+' project: sampleModel
+' owner: User
+' description: New project
 enum StructureType {
   businessUnit
   department
@@ -25,19 +29,19 @@ class organizationchart_OrganizationalStructure {
   + name : str
   + type : str
 }
-organizationchart_Employee "1..1" -- "0..1" organizationchart_OrganizationalStructure : belongsTo2
-organizationchart_Employee "0..9999" --* "1..1" organizationchart_Organization : employees12
-organizationchart_Employee "0..9999" -- "1..1" organizationchart_OrganizationalStructure : employees17
-organizationchart_Employee "0..9999" -- "1..1" organizationchart_Location : employees26
-organizationchart_Employee "0..9999" -- "1..1" organizationchart_Function : isPerformedBy28
-organizationchart_Employee "1..1" -- "0..9999" organizationchart_OrganizationalStructure : leads9
-organizationchart_Employee "1..1" -- "0..1" organizationchart_Location : location3
-organizationchart_Location "0..9999" --* "1..1" organizationchart_Organization : locations15
-organizationchart_Employee "0..1" -- "1..1" organizationchart_OrganizationalStructure : manager24
-organizationchart_Employee "1..1" -- "0..1" organizationchart_Employee : manager6
-organizationchart_Employee "1..1" -- "0..9999" organizationchart_Employee : manages1
-organizationchart_Function "0..9999" --* "1..1" organizationchart_OrganizationalStructure : owns22
-organizationchart_Employee "1..1" -- "0..9999" organizationchart_Function : performs8
-organizationchart_Organization "1..1" *-- "0..9999" organizationchart_OrganizationalStructure : structures13
-organizationchart_OrganizationalStructure "0..9999" --* "1..1" organizationchart_OrganizationalStructure : subStructures20
+organizationchart_Employee "OrganizationalStructure 1..1" -- "employees 0..1" organizationchart_OrganizationalStructure : belongsTo2
+organizationchart_Employee "organizationchart_Organization 0..9999" --* "organizationchart_Employee 1..1" organizationchart_Organization : employees12
+organizationchart_Employee "belongsTo 0..9999" -- "Employee18 1..1" organizationchart_OrganizationalStructure : employees17
+organizationchart_Employee "location 0..9999" -- "Employee27 1..1" organizationchart_Location : employees26
+organizationchart_Employee "performs 0..9999" -- "Employee29 1..1" organizationchart_Function : isPerformedBy28
+organizationchart_Employee "OrganizationalStructure11 1..1" -- "manager10 0..9999" organizationchart_OrganizationalStructure : leads9
+organizationchart_Employee "Location 1..1" -- "employees4 0..1" organizationchart_Location : location3
+organizationchart_Location "organizationchart_Organization16 0..9999" --* "organizationchart_Location 1..1" organizationchart_Organization : locations15
+organizationchart_Employee "leads 0..1" -- "Employee25 1..1" organizationchart_OrganizationalStructure : manager24
+organizationchart_Employee "Employee7 1..1" -- "manages 0..1" organizationchart_Employee : manager6
+organizationchart_Employee "Employee 1..1" -- "manager 0..9999" organizationchart_Employee : manages1
+organizationchart_Function "organizationchart_OrganizationalStructure23 0..9999" --* "organizationchart_Function 1..1" organizationchart_OrganizationalStructure : owns22
+organizationchart_Employee "Function 1..1" -- "isPerformedBy 0..9999" organizationchart_Function : performs8
+organizationchart_Organization "organizationchart_OrganizationalStructure 1..1" *-- "organizationchart_Organization14 0..9999" organizationchart_OrganizationalStructure : structures13
+organizationchart_OrganizationalStructure "organizationchart_OrganizationalStructure19 0..9999" --* "organizationchart_OrganizationalStructure21 1..1" organizationchart_OrganizationalStructure : subStructures20
 @enduml

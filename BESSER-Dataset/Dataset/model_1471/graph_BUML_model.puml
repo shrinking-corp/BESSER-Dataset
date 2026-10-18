@@ -1,4 +1,8 @@
 @startuml
+' model: graph
+' project: sampleModel
+' owner: User
+' description: New project
 class graph_Cause {
   + name : str
   + type : str
@@ -19,15 +23,15 @@ class graph_EStringToStringMapEntry {
 class graph_Node {
   + id : str
 }
-graph_Cause "0..9999" --* "1..1" graph_Dependency : cause0
-graph_Dependency "0..9999" -- "1..1" graph_Node : dependency23
-graph_Dependency "0..9999" --* "1..1" graph_DependencyGraph : dependency8
-graph_DependencyGraph "0..9999" --* "1..1" graph_DocumentRoot : dependencyGraph18
-graph_Dependency "1..1" -- "0..1" graph_Node : destination1
-graph_DependencyGraph "1..1" *-- "1..9999" graph_Node : node6
-graph_DependencyGraph "1..1" -- "0..1" graph_Node : origin11
-graph_Dependency "1..1" -- "0..1" graph_Node : source3
-graph_DeploymentUnitType "1..1" --* "1..1" graph_Node : unit21
-graph_DocumentRoot "1..1" *-- "0..9999" graph_EStringToStringMapEntry : xMLNSPrefixMap14
-graph_DocumentRoot "1..1" *-- "0..9999" graph_EStringToStringMapEntry : xSISchemaLocation15
+graph_Cause "graph_Dependency 0..9999" --* "graph_Cause 1..1" graph_Dependency : cause0
+graph_Dependency "graph_Node24 0..9999" -- "graph_Dependency25 1..1" graph_Node : dependency23
+graph_Dependency "graph_DependencyGraph9 0..9999" --* "graph_Dependency10 1..1" graph_DependencyGraph : dependency8
+graph_DependencyGraph "graph_DocumentRoot19 0..9999" --* "graph_DependencyGraph20 1..1" graph_DocumentRoot : dependencyGraph18
+graph_Dependency "graph_Node 1..1" -- "graph_Dependency2 0..1" graph_Node : destination1
+graph_DependencyGraph "graph_Node7 1..1" *-- "graph_DependencyGraph 1..9999" graph_Node : node6
+graph_DependencyGraph "graph_Node13 1..1" -- "graph_DependencyGraph12 0..1" graph_Node : origin11
+graph_Dependency "graph_Node5 1..1" -- "graph_Dependency4 0..1" graph_Node : source3
+graph_DeploymentUnitType "graph_Node22 1..1" --* "graph_DeploymentUnitType 1..1" graph_Node : unit21
+graph_DocumentRoot "graph_EStringToStringMapEntry 1..1" *-- "graph_DocumentRoot 0..9999" graph_EStringToStringMapEntry : xMLNSPrefixMap14
+graph_DocumentRoot "graph_EStringToStringMapEntry17 1..1" *-- "graph_DocumentRoot16 0..9999" graph_EStringToStringMapEntry : xSISchemaLocation15
 @enduml

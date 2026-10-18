@@ -1,4 +1,8 @@
 @startuml
+' model: calculatrice
+' project: sampleModel
+' owner: User
+' description: New project
 class BoolExpr {
 }
 class Calc {
@@ -37,13 +41,13 @@ Calc <|-- calculatrice_Condition
 CalcExpr <|-- calculatrice_Number
 CalcExpr <|-- calculatrice_VarCall
 Condition <|-- calculatrice_BoolExpr
-calculatrice_BoolExpr "0..1" --* "1..1" calculatrice_Calc : b1
-calculatrice_Calc "0..9999" --* "1..1" calculatrice_Calculatrice : calculs0
-calculatrice_Calc "1..1" *-- "0..1" calculatrice_CalcExpr : e3
-calculatrice_BoolExpr "1..1" *-- "0..1" calculatrice_Calc : elseBlock14
-calculatrice_BoolExpr "0..1" --* "1..1" calculatrice_BoolExpr : left18
-calculatrice_CalcExpr "0..1" --* "1..1" calculatrice_CalcExpr : left6
-calculatrice_BoolExpr "0..1" --* "1..1" calculatrice_BoolExpr : right21
-calculatrice_CalcExpr "1..1" *-- "0..1" calculatrice_CalcExpr : right9
-calculatrice_BoolExpr "1..1" *-- "0..1" calculatrice_Calc : thenBlock11
+calculatrice_BoolExpr "calculatrice_Calc2 0..1" --* "calculatrice_BoolExpr 1..1" calculatrice_Calc : b1
+calculatrice_Calc "calculatrice_Calculatrice 0..9999" --* "calculatrice_Calc 1..1" calculatrice_Calculatrice : calculs0
+calculatrice_Calc "calculatrice_CalcExpr 1..1" *-- "calculatrice_Calc4 0..1" calculatrice_CalcExpr : e3
+calculatrice_BoolExpr "calculatrice_Calc16 1..1" *-- "calculatrice_BoolExpr15 0..1" calculatrice_Calc : elseBlock14
+calculatrice_BoolExpr "calculatrice_BoolExpr17 0..1" --* "calculatrice_BoolExpr19 1..1" calculatrice_BoolExpr : left18
+calculatrice_CalcExpr "calculatrice_CalcExpr5 0..1" --* "calculatrice_CalcExpr7 1..1" calculatrice_CalcExpr : left6
+calculatrice_BoolExpr "calculatrice_BoolExpr20 0..1" --* "calculatrice_BoolExpr22 1..1" calculatrice_BoolExpr : right21
+calculatrice_CalcExpr "calculatrice_CalcExpr10 1..1" *-- "calculatrice_CalcExpr8 0..1" calculatrice_CalcExpr : right9
+calculatrice_BoolExpr "calculatrice_Calc13 1..1" *-- "calculatrice_BoolExpr12 0..1" calculatrice_Calc : thenBlock11
 @enduml

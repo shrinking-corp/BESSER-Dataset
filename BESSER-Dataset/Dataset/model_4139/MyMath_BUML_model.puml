@@ -1,4 +1,8 @@
 @startuml
+' model: myMath
+' project: sampleModel
+' owner: User
+' description: New project
 class Expression {
 }
 class myMath_Add {
@@ -21,13 +25,13 @@ Expression <|-- myMath_Div
 Expression <|-- myMath_Mult
 Expression <|-- myMath_Num
 Expression <|-- myMath_Sub
-myMath_Expression "0..1" --* "1..1" myMath_MathExp : exp0
-myMath_Add "1..1" *-- "0..1" myMath_Expression : left1
-myMath_Expression "0..1" --* "1..1" myMath_Mult : left11
-myMath_Div "1..1" *-- "0..1" myMath_Expression : left16
-myMath_Expression "0..1" --* "1..1" myMath_Sub : left6
-myMath_Expression "0..1" --* "1..1" myMath_Mult : right13
-myMath_Div "1..1" *-- "0..1" myMath_Expression : right18
-myMath_Add "1..1" *-- "0..1" myMath_Expression : right3
-myMath_Expression "0..1" --* "1..1" myMath_Sub : right8
+myMath_Expression "myMath_MathExp 0..1" --* "myMath_Expression 1..1" myMath_MathExp : exp0
+myMath_Add "myMath_Expression2 1..1" *-- "myMath_Add 0..1" myMath_Expression : left1
+myMath_Expression "myMath_Mult 0..1" --* "myMath_Expression12 1..1" myMath_Mult : left11
+myMath_Div "myMath_Expression17 1..1" *-- "myMath_Div 0..1" myMath_Expression : left16
+myMath_Expression "myMath_Sub 0..1" --* "myMath_Expression7 1..1" myMath_Sub : left6
+myMath_Expression "myMath_Mult14 0..1" --* "myMath_Expression15 1..1" myMath_Mult : right13
+myMath_Div "myMath_Expression20 1..1" *-- "myMath_Div19 0..1" myMath_Expression : right18
+myMath_Add "myMath_Expression5 1..1" *-- "myMath_Add4 0..1" myMath_Expression : right3
+myMath_Expression "myMath_Sub9 0..1" --* "myMath_Expression10 1..1" myMath_Sub : right8
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: builderState
+' project: sampleModel
+' owner: User
+' description: New project
 class IEObjectDescription {
 }
 class IReferenceDescription {
@@ -39,8 +43,8 @@ class builderState_UserDataEntry {
 }
 IEObjectDescription <|-- builderState_EObjectDescription
 IReferenceDescription <|-- builderState_ReferenceDescription
-builderState_EClass "1..1" -- "1..1" builderState_IEObjectDescription : eClass4
-builderState_IEObjectDescription "0..9999" --* "1..1" builderState_ResourceDescription : exportedObjects0
-builderState_IReferenceDescription "0..9999" --* "1..1" builderState_ResourceDescription : referenceDescriptions1
-builderState_EObjectDescription "1..1" *-- "0..9999" builderState_UserDataEntry : userData3
+builderState_EClass "builderState_IEObjectDescription5 1..1" -- "builderState_EClass 1..1" builderState_IEObjectDescription : eClass4
+builderState_IEObjectDescription "builderState_ResourceDescription 0..9999" --* "builderState_IEObjectDescription 1..1" builderState_ResourceDescription : exportedObjects0
+builderState_IReferenceDescription "builderState_ResourceDescription2 0..9999" --* "builderState_IReferenceDescription 1..1" builderState_ResourceDescription : referenceDescriptions1
+builderState_EObjectDescription "builderState_UserDataEntry 1..1" *-- "builderState_EObjectDescription 0..9999" builderState_UserDataEntry : userData3
 @enduml

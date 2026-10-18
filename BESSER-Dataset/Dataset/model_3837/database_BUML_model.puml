@@ -1,4 +1,8 @@
 @startuml
+' model: database
+' project: sampleModel
+' owner: User
+' description: New project
 class database_Column {
   + name : str
   + type : str
@@ -12,10 +16,10 @@ class database_Table {
   + is_local : bool
   + name : str
 }
-database_Column "0..9999" --* "1..1" database_Table : cols1
-database_Column "0..9999" -- "1..1" database_ForeignKey : cols8
-database_ForeignKey "0..9999" --* "1..1" database_Table : fkeys3
-database_Column "0..9999" -- "1..1" database_Table : pkey5
-database_ForeignKey "1..1" -- "1..1" database_Table : references11
-database_Schema "1..1" *-- "0..9999" database_Table : tables0
+database_Column "database_Table2 0..9999" --* "database_Column 1..1" database_Table : cols1
+database_Column "database_ForeignKey9 0..9999" -- "database_Column10 1..1" database_ForeignKey : cols8
+database_ForeignKey "database_Table4 0..9999" --* "database_ForeignKey 1..1" database_Table : fkeys3
+database_Column "database_Table6 0..9999" -- "database_Column7 1..1" database_Table : pkey5
+database_ForeignKey "database_Table13 1..1" -- "database_ForeignKey12 1..1" database_Table : references11
+database_Schema "database_Table 1..1" *-- "database_Schema 0..9999" database_Table : tables0
 @enduml

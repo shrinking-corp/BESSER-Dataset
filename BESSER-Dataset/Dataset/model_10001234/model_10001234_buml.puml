@@ -1,4 +1,8 @@
 @startuml
+' model: _966d0b13_a007_4bc0_b905_2ec296490d8f
+' project: sampleModel
+' owner: User
+' description: New project
 class AI {
 }
 class Board {
@@ -35,16 +39,16 @@ enum PlayerType {
 }
 class Window {
 }
-Board "0..1" -- "0..1" GraphicsGenerator : Board_GraphicsGenerator
-Board "0..1" -- "0..1" Window : Board_Window
-Field "0..1" -- "0..1" GraphicsGenerator : Field_GraphicsGenerator
-Board "0..1" -- "0..1" GameEngine : GameEngine_Board
-EventHandler "0..1" -- "0..1" GameEngine : GameEngine_EventHandler
-GameEngine "0..1" -- "0..1" GameState : GameEngine_GameState
-GameState "0..1" -- "0..1" Menu : GameState_Menu
-GameState "0..1" -- "0..1" Player : GameState_Player
-GameState "1..1" -- "1..1" IOFilesManagement : IOFilesManagement_GameState
-AI "0..1" -- "0..1" Player : Player_AI
-Dice "1..1" -- "0..1" Player : Player_Dice
-GraphicsGenerator "0..1" -- "0..1" Window : Window_GraphicsGenerator
+Board "board7 0..1" -- "graphicsGenerator6 0..1" GraphicsGenerator : Board_GraphicsGenerator
+Board "board17 0..1" -- "window16 0..1" Window : Board_Window
+Field "field9 0..1" -- "graphicsGenerator8 0..1" GraphicsGenerator : Field_GraphicsGenerator
+Board "board10 0..1" -- "gameEngine11 0..1" GameEngine : GameEngine_Board
+EventHandler "eventHandler20 0..1" -- "gameEngine21 0..1" GameEngine : GameEngine_EventHandler
+GameEngine "gameEngine13 0..1" -- "gameState12 0..1" GameState : GameEngine_GameState
+GameState "gameState23 0..1" -- "menu22 0..1" Menu : GameState_Menu
+GameState "gameState15 0..1" -- "player14 0..1" Player : GameState_Player
+GameState "IOFilesManagement_GameState_00 1..1" -- "iOFilesManagement1 1..1" IOFilesManagement : IOFilesManagement_GameState
+AI "aI18 0..1" -- "player19 0..1" Player : Player_AI
+Dice "dice2 1..1" -- "player3 0..1" Player : Player_Dice
+GraphicsGenerator "graphicsGenerator4 0..1" -- "window5 0..1" Window : Window_GraphicsGenerator
 @enduml

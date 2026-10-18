@@ -1,4 +1,8 @@
 @startuml
+' model: model
+' project: sampleModel
+' owner: User
+' description: New project
 class model_Book {
   + data : str
   + tags : str
@@ -16,13 +20,13 @@ class model_MappedLibrary {
 class model_Person {
   + name : str
 }
-model_Book "1..1" -- "0..9999" model_Person : authors1
-model_Book "0..9999" -- "1..1" model_Person : books0
-model_Book "0..9999" --* "1..1" model_Library : books2
-model_Book "0..1" -- "1..1" model_Location : featuredBook8
-model_Book "0..1" -- "1..1" model_Library : latestBook5
-model_Location "0..1" --* "1..1" model_MappedLibrary : location11
-model_Library "1..1" *-- "0..1" model_Location : location3
-model_Book "0..9999" --* "1..1" model_MappedLibrary : rareBooks13
-model_Book "0..9999" --* "1..1" model_MappedLibrary : regularBooks16
+model_Book "Person 1..1" -- "books 0..9999" model_Person : authors1
+model_Book "authors 0..9999" -- "Book 1..1" model_Person : books0
+model_Book "model_Library 0..9999" --* "model_Book 1..1" model_Library : books2
+model_Book "model_Location9 0..1" -- "model_Book10 1..1" model_Location : featuredBook8
+model_Book "model_Library6 0..1" -- "model_Book7 1..1" model_Library : latestBook5
+model_Location "model_MappedLibrary 0..1" --* "model_Location12 1..1" model_MappedLibrary : location11
+model_Library "model_Location 1..1" *-- "model_Library4 0..1" model_Location : location3
+model_Book "model_MappedLibrary14 0..9999" --* "model_Book15 1..1" model_MappedLibrary : rareBooks13
+model_Book "model_MappedLibrary17 0..9999" --* "model_Book18 1..1" model_MappedLibrary : regularBooks16
 @enduml

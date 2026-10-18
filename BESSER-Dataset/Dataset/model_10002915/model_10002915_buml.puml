@@ -1,4 +1,8 @@
 @startuml
+' model: e929afc8_9183_46e3_bf5d_8902e2533abf
+' project: sampleModel
+' owner: User
+' description: New project
 class Account {
   + billingAddress : str
   + closed : date
@@ -57,18 +61,18 @@ class WebUser {
 }
 class Web_customer_Actor {
 }
-Account "1..1" -- "0..9999" Order : Account_Order
-Account "1..1" -- "0..9999" Payment : Account_Payment
-Account "1..1" -- "1..1" ShoppingCart : Account_ShoppingCart
-Account "1..1" -- "1..1" Customer : Customer_Account
-Client_register_UseCase "0..1" -- "0..1" New_customer_Actor : New_customer_Client_register
-New_customer_Actor "0..1" -- "0..1" View_items_UseCase : New_customer_View_items
-LineItem "1..9999" -- "0..1" Order : Order_LineItem
-Order "1..1" -- "0..1" Payment : Payment_Order
-LineItem "0..9999" -- "1..1" Product : Product_LineItem
-Purchase_UseCase "0..1" -- "0..1" Registered_customer_Actor : Registered_customer_Purchase
-Registered_customer_Actor "0..1" -- "0..1" View_items_UseCase : Registered_customer_View_items
-LineItem "0..9999" -- "1..1" ShoppingCart : ShoppingCart_LineItem
-Customer "1..1" -- "1..1" WebUser : WebUser_Customer
-ShoppingCart "0..1" -- "1..1" WebUser : WebUser_ShoppingCart
+Account "account17 1..1" -- "order16 0..9999" Order : Account_Order
+Account "acc1 1..1" -- "p0 0..9999" Payment : Account_Payment
+Account "account9 1..1" -- "cart8 1..1" ShoppingCart : Account_ShoppingCart
+Account "account6 1..1" -- "customer7 1..1" Customer : Customer_Account
+Client_register_UseCase "client_register22 0..1" -- "new_customer23 0..1" New_customer_Actor : New_customer_Client_register
+New_customer_Actor "new_customer21 0..1" -- "view_items20 0..1" View_items_UseCase : New_customer_View_items
+LineItem "items14 1..9999" -- "order15 0..1" Order : Order_LineItem
+Order "order18 1..1" -- "payment19 0..1" Payment : Payment_Order
+LineItem "lineItems12 0..9999" -- "product13 1..1" Product : Product_LineItem
+Purchase_UseCase "purchase26 0..1" -- "registered_customer27 0..1" Registered_customer_Actor : Registered_customer_Purchase
+Registered_customer_Actor "registered_customer25 0..1" -- "view_items24 0..1" View_items_UseCase : Registered_customer_View_items
+LineItem "items10 0..9999" -- "sc11 1..1" ShoppingCart : ShoppingCart_LineItem
+Customer "customer4 1..1" -- "webUser5 1..1" WebUser : WebUser_Customer
+ShoppingCart "shoppingCart2 0..1" -- "webUser3 1..1" WebUser : WebUser_ShoppingCart
 @enduml

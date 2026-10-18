@@ -1,4 +1,8 @@
 @startuml
+' model: pycom
+' project: sampleModel
+' owner: User
+' description: New project
 class BoardMember {
 }
 class ExpMember {
@@ -78,27 +82,27 @@ ExpMember <|-- pycom_Function
 Function <|-- pycom_ModuleFunction
 ModuleType <|-- pycom_ActuatorType
 ModuleType <|-- pycom_SensorType
-pycom_ConditionalAction "1..1" *-- "0..9999" pycom_ExpMember : ExpMembers13
-pycom_Actuator "1..1" *-- "0..9999" pycom_ModuleType : actuatorTypes16
-pycom_Board "0..1" -- "1..1" pycom_Function : board41
-pycom_Board "1..1" *-- "0..9999" pycom_BoardMember : boardMembers9
-pycom_Board "0..9999" --* "1..1" pycom_System : boards0
-pycom_Boolean "0..1" --* "1..1" pycom_LogicExp : boolVal30
-pycom_ComparisonExp "0..1" --* "1..1" pycom_LogicExp : compExp32
-pycom_Condition "0..1" --* "1..1" pycom_ConditionalAction : condition11
-pycom_Connection "0..1" --* "1..1" pycom_Server : conn3
-pycom_ConditionalAction "0..9999" --* "1..1" pycom_Server : exps5
-pycom_Function "1..1" *-- "0..1" pycom_FunctionName : functionName44
-pycom_Connection "1..1" *-- "0..1" pycom_Host : host7
-pycom_Pin "1..1" *-- "0..1" pycom_PinName : input22
-pycom_ComparisonExp "1..1" *-- "0..1" pycom_Expression : left34
-pycom_Condition "1..1" *-- "0..1" pycom_LogicExp : logicEx25
-pycom_ModuleFunction "1..1" -- "0..1" pycom_ModuleType : moduleType46
-pycom_Condition "0..1" --* "1..1" pycom_Condition : nestedCondition28
-pycom_Expression "1..1" *-- "0..1" pycom_Function : outputfunction39
-pycom_ModuleType "1..1" *-- "0..1" pycom_Pin : pins18
-pycom_Pin "1..1" *-- "0..1" pycom_PinName : power20
-pycom_ComparisonExp "1..1" *-- "0..1" pycom_Expression : right36
-pycom_ModuleType "0..9999" --* "1..1" pycom_Sensor : sensorTypes15
-pycom_Server "0..9999" --* "1..1" pycom_System : servers1
+pycom_ConditionalAction "pycom_ExpMember 1..1" *-- "pycom_ConditionalAction14 0..9999" pycom_ExpMember : ExpMembers13
+pycom_Actuator "pycom_ModuleType17 1..1" *-- "pycom_Actuator 0..9999" pycom_ModuleType : actuatorTypes16
+pycom_Board "pycom_Function42 0..1" -- "pycom_Board43 1..1" pycom_Function : board41
+pycom_Board "pycom_BoardMember 1..1" *-- "pycom_Board10 0..9999" pycom_BoardMember : boardMembers9
+pycom_Board "pycom_System 0..9999" --* "pycom_Board 1..1" pycom_System : boards0
+pycom_Boolean "pycom_LogicExp31 0..1" --* "pycom_Boolean 1..1" pycom_LogicExp : boolVal30
+pycom_ComparisonExp "pycom_LogicExp33 0..1" --* "pycom_ComparisonExp 1..1" pycom_LogicExp : compExp32
+pycom_Condition "pycom_ConditionalAction12 0..1" --* "pycom_Condition 1..1" pycom_ConditionalAction : condition11
+pycom_Connection "pycom_Server4 0..1" --* "pycom_Connection 1..1" pycom_Server : conn3
+pycom_ConditionalAction "pycom_Server6 0..9999" --* "pycom_ConditionalAction 1..1" pycom_Server : exps5
+pycom_Function "pycom_FunctionName 1..1" *-- "pycom_Function45 0..1" pycom_FunctionName : functionName44
+pycom_Connection "pycom_Host 1..1" *-- "pycom_Connection8 0..1" pycom_Host : host7
+pycom_Pin "pycom_PinName24 1..1" *-- "pycom_Pin23 0..1" pycom_PinName : input22
+pycom_ComparisonExp "pycom_Expression 1..1" *-- "pycom_ComparisonExp35 0..1" pycom_Expression : left34
+pycom_Condition "pycom_LogicExp 1..1" *-- "pycom_Condition26 0..1" pycom_LogicExp : logicEx25
+pycom_ModuleFunction "pycom_ModuleType47 1..1" -- "pycom_ModuleFunction 0..1" pycom_ModuleType : moduleType46
+pycom_Condition "pycom_Condition27 0..1" --* "pycom_Condition29 1..1" pycom_Condition : nestedCondition28
+pycom_Expression "pycom_Function 1..1" *-- "pycom_Expression40 0..1" pycom_Function : outputfunction39
+pycom_ModuleType "pycom_Pin 1..1" *-- "pycom_ModuleType19 0..1" pycom_Pin : pins18
+pycom_Pin "pycom_PinName 1..1" *-- "pycom_Pin21 0..1" pycom_PinName : power20
+pycom_ComparisonExp "pycom_Expression38 1..1" *-- "pycom_ComparisonExp37 0..1" pycom_Expression : right36
+pycom_ModuleType "pycom_Sensor 0..9999" --* "pycom_ModuleType 1..1" pycom_Sensor : sensorTypes15
+pycom_Server "pycom_System2 0..9999" --* "pycom_Server 1..1" pycom_System : servers1
 @enduml

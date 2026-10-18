@@ -1,4 +1,8 @@
 @startuml
+' model: metrics
+' project: sampleModel
+' owner: User
+' description: New project
 enum MetricKind {
   FILE
   RDMS
@@ -16,6 +20,6 @@ class metrics_MetricSource {
   + metrickind : str
   + name : str
 }
-metrics_Metric "0..9999" -- "1..1" metrics_MetricSource : metricRefs1
-metrics_MetricLibrary "1..1" *-- "0..9999" metrics_MetricSource : metricSources0
+metrics_Metric "metricSource 0..9999" -- "networks.ecoreMetric 1..1" metrics_MetricSource : metricRefs1
+metrics_MetricLibrary "metrics_MetricSource 1..1" *-- "metrics_MetricLibrary 0..9999" metrics_MetricSource : metricSources0
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: FSM
+' project: sampleModel
+' owner: User
+' description: New project
 class FSM_FSMModel {
 }
 abstract class FSM_NamedElement {
@@ -18,10 +22,10 @@ class NamedElement {
 NamedElement <|-- FSM_FSMModel
 NamedElement <|-- FSM_State
 NamedElement <|-- FSM_StateMachine
-FSM_State "1..1" -- "1..1" FSM_StateMachine : initial1
-FSM_State "1..1" -- "1..1" FSM_Transition : source9
-FSM_FSMModel "1..1" *-- "0..1" FSM_StateMachine : statemachines0
-FSM_State "0..9999" --* "1..1" FSM_StateMachine : states3
-FSM_State "1..1" -- "1..1" FSM_Transition : target7
-FSM_State "1..1" -- "0..9999" FSM_Transition : transitions6
+FSM_State "FSM_StateMachine2 1..1" -- "FSM_State 1..1" FSM_StateMachine : initial1
+FSM_State "transitions 1..1" -- "State 1..1" FSM_Transition : source9
+FSM_FSMModel "FSM_StateMachine 1..1" *-- "FSM_FSMModel 0..1" FSM_StateMachine : statemachines0
+FSM_State "FSM_StateMachine4 0..9999" --* "FSM_State5 1..1" FSM_StateMachine : states3
+FSM_State "FSM_Transition 1..1" -- "FSM_State8 1..1" FSM_Transition : target7
+FSM_State "Transition 1..1" -- "source 0..9999" FSM_Transition : transitions6
 @enduml

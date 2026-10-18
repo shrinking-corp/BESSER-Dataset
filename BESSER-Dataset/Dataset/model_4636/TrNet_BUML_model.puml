@@ -1,4 +1,8 @@
 @startuml
+' model: trnet
+' project: sampleModel
+' owner: User
+' description: New project
 class Expression {
 }
 class ExpressionOperator {
@@ -108,42 +112,42 @@ Restriction <|-- trnet_Keep
 Restriction <|-- trnet_Same
 Result <|-- trnet_AnyResult
 Result <|-- trnet_SomeResult
-trnet_AttributePattern "0..9999" --* "1..1" trnet_NodePattern : attributes14
-trnet_Different "0..9999" -- "1..1" trnet_NodePattern : differentIn15
-trnet_Different "0..9999" -- "1..1" trnet_NodePattern : differentOut17
-trnet_EdgePattern "0..9999" --* "1..1" trnet_Pattern : edges32
-trnet_AttributePattern "1..1" *-- "1..1" trnet_Expression : expression49
-trnet_FlowRule "0..9999" --* "1..1" trnet_TrNetModel : flowRules3
-trnet_EdgePattern "0..9999" -- "1..1" trnet_NodePattern : incoming5
-trnet_Pattern "1..1" -- "0..9999" trnet_Result : incommingResults37
-trnet_Keep "0..9999" -- "1..1" trnet_NodePattern : keepIn20
-trnet_Keep "0..9999" -- "1..1" trnet_NodePattern : keepOut22
-trnet_NodePattern "1..9999" --* "1..1" trnet_Pattern : nodes30
-trnet_Operand "1..9999" --* "1..1" trnet_Operator : operands39
-trnet_AttributePattern "1..1" *-- "1..1" trnet_ExpressionOperator : operator51
-trnet_Operand "1..1" -- "1..1" trnet_Operator : operator59
-trnet_Operator "1..1" -- "1..1" trnet_Result : operator62
-trnet_Operator "0..9999" --* "1..1" trnet_TrNetModel : operators1
-trnet_EdgePattern "0..9999" -- "1..1" trnet_NodePattern : outgoing6
-trnet_Operand "0..9999" -- "1..1" trnet_Pattern : outgoingOperands35
-trnet_NodePattern "1..1" -- "1..1" trnet_Pattern : pattern13
-trnet_EdgePattern "1..1" -- "1..1" trnet_Pattern : pattern28
-trnet_Operand "1..1" -- "1..1" trnet_Pattern : pattern57
-trnet_Pattern "1..1" -- "1..1" trnet_Result : pattern60
-trnet_Pattern "0..9999" --* "1..1" trnet_TrNetModel : patterns0
-trnet_Combinator "1..1" *-- "0..9999" trnet_Restriction : restrictions44
-trnet_Restriction "0..9999" --* "1..1" trnet_Union : restrictions68
-trnet_Operator "1..1" *-- "1..9999" trnet_Result : results41
-trnet_NodePattern "1..1" -- "0..9999" trnet_Same : sameIn10
-trnet_NodePattern "1..1" -- "0..9999" trnet_Same : sameOut8
-trnet_EdgePattern "1..1" -- "1..1" trnet_NodePattern : source25
-trnet_NodePattern "1..1" -- "1..1" trnet_Same : source45
-trnet_Keep "1..1" -- "1..1" trnet_NodePattern : source53
-trnet_Different "1..1" -- "1..1" trnet_NodePattern : source64
-trnet_FlowRule "1..1" -- "0..1" trnet_TrNetModel : source70
-trnet_EdgePattern "1..1" -- "1..1" trnet_NodePattern : target26
-trnet_NodePattern "1..1" -- "1..1" trnet_Same : target47
-trnet_Keep "1..1" -- "1..1" trnet_NodePattern : target55
-trnet_Different "1..1" -- "1..1" trnet_NodePattern : target66
-trnet_FlowRule "1..1" -- "1..1" trnet_TrNetModel : target73
+trnet_AttributePattern "trnet_NodePattern 0..9999" --* "trnet_AttributePattern 1..1" trnet_NodePattern : attributes14
+trnet_Different "target16 0..9999" -- "Different 1..1" trnet_NodePattern : differentIn15
+trnet_Different "source18 0..9999" -- "Different19 1..1" trnet_NodePattern : differentOut17
+trnet_EdgePattern "pattern33 0..9999" --* "EdgePattern34 1..1" trnet_Pattern : edges32
+trnet_AttributePattern "trnet_Expression 1..1" *-- "trnet_AttributePattern50 1..1" trnet_Expression : expression49
+trnet_FlowRule "trnet_TrNetModel4 0..9999" --* "trnet_FlowRule 1..1" trnet_TrNetModel : flowRules3
+trnet_EdgePattern "target 0..9999" -- "EdgePattern 1..1" trnet_NodePattern : incoming5
+trnet_Pattern "Result 1..1" -- "pattern38 0..9999" trnet_Result : incommingResults37
+trnet_Keep "target21 0..9999" -- "Keep 1..1" trnet_NodePattern : keepIn20
+trnet_Keep "source23 0..9999" -- "Keep24 1..1" trnet_NodePattern : keepOut22
+trnet_NodePattern "pattern 1..9999" --* "NodePattern31 1..1" trnet_Pattern : nodes30
+trnet_Operand "operator 1..9999" --* "Operand40 1..1" trnet_Operator : operands39
+trnet_AttributePattern "trnet_ExpressionOperator 1..1" *-- "trnet_AttributePattern52 1..1" trnet_ExpressionOperator : operator51
+trnet_Operand "Operator 1..1" -- "operands 1..1" trnet_Operator : operator59
+trnet_Operator "results 1..1" -- "Operator63 1..1" trnet_Result : operator62
+trnet_Operator "trnet_TrNetModel2 0..9999" --* "trnet_Operator 1..1" trnet_TrNetModel : operators1
+trnet_EdgePattern "source 0..9999" -- "EdgePattern7 1..1" trnet_NodePattern : outgoing6
+trnet_Operand "pattern36 0..9999" -- "Operand 1..1" trnet_Pattern : outgoingOperands35
+trnet_NodePattern "Pattern 1..1" -- "nodes 1..1" trnet_Pattern : pattern13
+trnet_EdgePattern "Pattern29 1..1" -- "edges 1..1" trnet_Pattern : pattern28
+trnet_Operand "Pattern58 1..1" -- "outgoingOperands 1..1" trnet_Pattern : pattern57
+trnet_Pattern "incommingResults 1..1" -- "Pattern61 1..1" trnet_Result : pattern60
+trnet_Pattern "trnet_TrNetModel 0..9999" --* "trnet_Pattern 1..1" trnet_TrNetModel : patterns0
+trnet_Combinator "trnet_Restriction 1..1" *-- "trnet_Combinator 0..9999" trnet_Restriction : restrictions44
+trnet_Restriction "trnet_Union 0..9999" --* "trnet_Restriction69 1..1" trnet_Union : restrictions68
+trnet_Operator "Result43 1..1" *-- "operator42 1..9999" trnet_Result : results41
+trnet_NodePattern "Same12 1..1" -- "target11 0..9999" trnet_Same : sameIn10
+trnet_NodePattern "Same 1..1" -- "source9 0..9999" trnet_Same : sameOut8
+trnet_EdgePattern "NodePattern 1..1" -- "outgoing 1..1" trnet_NodePattern : source25
+trnet_NodePattern "sameOut 1..1" -- "NodePattern46 1..1" trnet_Same : source45
+trnet_Keep "NodePattern54 1..1" -- "keepOut 1..1" trnet_NodePattern : source53
+trnet_Different "NodePattern65 1..1" -- "differentOut 1..1" trnet_NodePattern : source64
+trnet_FlowRule "trnet_TrNetModel72 1..1" -- "trnet_FlowRule71 0..1" trnet_TrNetModel : source70
+trnet_EdgePattern "NodePattern27 1..1" -- "incoming 1..1" trnet_NodePattern : target26
+trnet_NodePattern "sameIn 1..1" -- "NodePattern48 1..1" trnet_Same : target47
+trnet_Keep "NodePattern56 1..1" -- "keepIn 1..1" trnet_NodePattern : target55
+trnet_Different "NodePattern67 1..1" -- "differentIn 1..1" trnet_NodePattern : target66
+trnet_FlowRule "trnet_TrNetModel75 1..1" -- "trnet_FlowRule74 1..1" trnet_TrNetModel : target73
 @enduml

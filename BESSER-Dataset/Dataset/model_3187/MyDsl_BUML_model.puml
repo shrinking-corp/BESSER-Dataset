@@ -1,4 +1,8 @@
 @startuml
+' model: myDsl
+' project: sampleModel
+' owner: User
+' description: New project
 class BasicType {
 }
 class ElementType {
@@ -101,32 +105,32 @@ Expression <|-- myDsl_StringConstant
 Expression <|-- myDsl_VariableConstant
 Member <|-- myDsl_Entity
 Member <|-- myDsl_Verb
-myDsl_ArrayElement "0..9999" --* "1..1" myDsl_ArrayType : arrayElements10
-myDsl_Attribute "0..9999" --* "1..1" myDsl_Entity : attributes2
-myDsl_Condition "0..1" --* "1..1" myDsl_Rule : condition14
-myDsl_ElementType "0..1" --* "1..1" myDsl_ValueType : elementType6
-myDsl_Entity "0..1" -- "1..1" myDsl_EntityType : entity8
-myDsl_Condition "1..1" *-- "0..1" myDsl_Expression : expression19
-myDsl_Expression "0..1" --* "1..1" myDsl_Not : expression56
-myDsl_Entity "1..1" *-- "0..1" myDsl_IsServer : is_1
-myDsl_Expression "0..1" --* "1..1" myDsl_Or : left21
-myDsl_And "1..1" *-- "0..1" myDsl_Expression : left26
-myDsl_Equality "1..1" *-- "0..1" myDsl_Expression : left31
-myDsl_Comparison "1..1" *-- "0..1" myDsl_Expression : left36
-myDsl_Expression "0..1" --* "1..1" myDsl_Plus : left41
-myDsl_Expression "0..1" --* "1..1" myDsl_Minus : left46
-myDsl_Expression "0..1" --* "1..1" myDsl_MulOrDiv : left51
-myDsl_Member "0..9999" --* "1..1" myDsl_Model : members0
-myDsl_Expression "0..1" --* "1..1" myDsl_Or : right23
-myDsl_And "1..1" *-- "0..1" myDsl_Expression : right28
-myDsl_Equality "1..1" *-- "0..1" myDsl_Expression : right33
-myDsl_Comparison "1..1" *-- "0..1" myDsl_Expression : right38
-myDsl_Expression "0..1" --* "1..1" myDsl_Plus : right43
-myDsl_Expression "0..1" --* "1..1" myDsl_Minus : right48
-myDsl_Expression "0..1" --* "1..1" myDsl_MulOrDiv : right53
-myDsl_Rule "0..9999" --* "1..1" myDsl_Verb : rules13
-myDsl_ArrayType "0..1" --* "1..1" myDsl_Rule : url16
-myDsl_ArrayElement "1..1" *-- "0..1" myDsl_BasicType : value11
-myDsl_Attribute "1..1" *-- "0..1" myDsl_ValueType : value4
-myDsl_Attribute "0..1" -- "1..1" myDsl_VariableConstant : value58
+myDsl_ArrayElement "myDsl_ArrayType 0..9999" --* "myDsl_ArrayElement 1..1" myDsl_ArrayType : arrayElements10
+myDsl_Attribute "myDsl_Entity3 0..9999" --* "myDsl_Attribute 1..1" myDsl_Entity : attributes2
+myDsl_Condition "myDsl_Rule15 0..1" --* "myDsl_Condition 1..1" myDsl_Rule : condition14
+myDsl_ElementType "myDsl_ValueType7 0..1" --* "myDsl_ElementType 1..1" myDsl_ValueType : elementType6
+myDsl_Entity "myDsl_EntityType 0..1" -- "myDsl_Entity9 1..1" myDsl_EntityType : entity8
+myDsl_Condition "myDsl_Expression 1..1" *-- "myDsl_Condition20 0..1" myDsl_Expression : expression19
+myDsl_Expression "myDsl_Not 0..1" --* "myDsl_Expression57 1..1" myDsl_Not : expression56
+myDsl_Entity "myDsl_IsServer 1..1" *-- "myDsl_Entity 0..1" myDsl_IsServer : is_1
+myDsl_Expression "myDsl_Or 0..1" --* "myDsl_Expression22 1..1" myDsl_Or : left21
+myDsl_And "myDsl_Expression27 1..1" *-- "myDsl_And 0..1" myDsl_Expression : left26
+myDsl_Equality "myDsl_Expression32 1..1" *-- "myDsl_Equality 0..1" myDsl_Expression : left31
+myDsl_Comparison "myDsl_Expression37 1..1" *-- "myDsl_Comparison 0..1" myDsl_Expression : left36
+myDsl_Expression "myDsl_Plus 0..1" --* "myDsl_Expression42 1..1" myDsl_Plus : left41
+myDsl_Expression "myDsl_Minus 0..1" --* "myDsl_Expression47 1..1" myDsl_Minus : left46
+myDsl_Expression "myDsl_MulOrDiv 0..1" --* "myDsl_Expression52 1..1" myDsl_MulOrDiv : left51
+myDsl_Member "myDsl_Model 0..9999" --* "myDsl_Member 1..1" myDsl_Model : members0
+myDsl_Expression "myDsl_Or24 0..1" --* "myDsl_Expression25 1..1" myDsl_Or : right23
+myDsl_And "myDsl_Expression30 1..1" *-- "myDsl_And29 0..1" myDsl_Expression : right28
+myDsl_Equality "myDsl_Expression35 1..1" *-- "myDsl_Equality34 0..1" myDsl_Expression : right33
+myDsl_Comparison "myDsl_Expression40 1..1" *-- "myDsl_Comparison39 0..1" myDsl_Expression : right38
+myDsl_Expression "myDsl_Plus44 0..1" --* "myDsl_Expression45 1..1" myDsl_Plus : right43
+myDsl_Expression "myDsl_Minus49 0..1" --* "myDsl_Expression50 1..1" myDsl_Minus : right48
+myDsl_Expression "myDsl_MulOrDiv54 0..1" --* "myDsl_Expression55 1..1" myDsl_MulOrDiv : right53
+myDsl_Rule "myDsl_Verb 0..9999" --* "myDsl_Rule 1..1" myDsl_Verb : rules13
+myDsl_ArrayType "myDsl_Rule17 0..1" --* "myDsl_ArrayType18 1..1" myDsl_Rule : url16
+myDsl_ArrayElement "myDsl_BasicType 1..1" *-- "myDsl_ArrayElement12 0..1" myDsl_BasicType : value11
+myDsl_Attribute "myDsl_ValueType 1..1" *-- "myDsl_Attribute5 0..1" myDsl_ValueType : value4
+myDsl_Attribute "myDsl_VariableConstant 0..1" -- "myDsl_Attribute59 1..1" myDsl_VariableConstant : value58
 @enduml

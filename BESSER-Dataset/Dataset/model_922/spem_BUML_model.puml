@@ -1,4 +1,8 @@
 @startuml
+' model: spem
+' project: sampleModel
+' owner: User
+' description: New project
 enum WorkSequenceKind {
   finishToFinish
   finishToStart
@@ -15,12 +19,12 @@ class spem_Process {
 class spem_WorkSequence {
   + kind : str
 }
-spem_Activity "0..9999" --* "1..1" spem_Process : activities0
-spem_Activity "1..1" -- "0..9999" spem_WorkSequence : linkToPredecessor5
-spem_Activity "1..1" -- "0..9999" spem_WorkSequence : linkToSuccessor3
-spem_Activity "1..1" -- "1..1" spem_WorkSequence : predecessor10
-spem_Process "1..1" -- "1..1" spem_WorkSequence : process12
-spem_Activity "1..1" -- "1..1" spem_Process : process7
-spem_Activity "1..1" -- "1..1" spem_WorkSequence : successor8
-spem_Process "1..1" *-- "0..9999" spem_WorkSequence : workSquences1
+spem_Activity "process 0..9999" --* "Activity 1..1" spem_Process : activities0
+spem_Activity "WorkSequence6 1..1" -- "successor 0..9999" spem_WorkSequence : linkToPredecessor5
+spem_Activity "WorkSequence4 1..1" -- "predecessor 0..9999" spem_WorkSequence : linkToSuccessor3
+spem_Activity "linkToSuccessor 1..1" -- "Activity11 1..1" spem_WorkSequence : predecessor10
+spem_Process "workSquences 1..1" -- "Process13 1..1" spem_WorkSequence : process12
+spem_Activity "Process 1..1" -- "activities 1..1" spem_Process : process7
+spem_Activity "linkToPredecessor 1..1" -- "Activity9 1..1" spem_WorkSequence : successor8
+spem_Process "WorkSequence 1..1" *-- "process2 0..9999" spem_WorkSequence : workSquences1
 @enduml

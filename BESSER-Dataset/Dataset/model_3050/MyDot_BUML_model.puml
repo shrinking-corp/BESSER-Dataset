@@ -1,4 +1,8 @@
 @startuml
+' model: myDot
+' project: sampleModel
+' owner: User
+' description: New project
 enum DataType {
   int
   string
@@ -32,12 +36,12 @@ Feature <|-- myDot_Attribute
 Feature <|-- myDot_Reference
 Ref <|-- myDot_DotExpression
 Ref <|-- myDot_EntityRef
-myDot_Entity "0..9999" --* "1..1" myDot_Model : entities0
-myDot_Entity "0..1" -- "1..1" myDot_EntityRef : entity14
-myDot_Entity "1..1" *-- "0..9999" myDot_Feature : features3
-myDot_Ref "0..1" --* "1..1" myDot_Usage : ref7
-myDot_DotExpression "1..1" *-- "0..1" myDot_Ref : ref9
-myDot_DotExpression "1..1" -- "0..1" myDot_Feature : tail11
-myDot_Entity "0..1" -- "1..1" myDot_Reference : type5
-myDot_Model "1..1" *-- "0..9999" myDot_Usage : usages1
+myDot_Entity "myDot_Model 0..9999" --* "myDot_Entity 1..1" myDot_Model : entities0
+myDot_Entity "myDot_EntityRef 0..1" -- "myDot_Entity15 1..1" myDot_EntityRef : entity14
+myDot_Entity "myDot_Feature 1..1" *-- "myDot_Entity4 0..9999" myDot_Feature : features3
+myDot_Ref "myDot_Usage8 0..1" --* "myDot_Ref 1..1" myDot_Usage : ref7
+myDot_DotExpression "myDot_Ref10 1..1" *-- "myDot_DotExpression 0..1" myDot_Ref : ref9
+myDot_DotExpression "myDot_Feature13 1..1" -- "myDot_DotExpression12 0..1" myDot_Feature : tail11
+myDot_Entity "myDot_Reference 0..1" -- "myDot_Entity6 1..1" myDot_Reference : type5
+myDot_Model "myDot_Usage 1..1" *-- "myDot_Model2 0..9999" myDot_Usage : usages1
 @enduml

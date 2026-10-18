@@ -1,4 +1,8 @@
 @startuml
+' model: AssistantMVC
+' project: sampleModel
+' owner: User
+' description: New project
 abstract class AssistantMVC_Controller {
 }
 class AssistantMVC_Exam {
@@ -63,10 +67,10 @@ Observable <|-- AssistantMVC_ExamItem
 Observer <|-- AssistantMVC_View
 View <|-- AssistantMVC_ExamItemView
 View <|-- AssistantMVC_ExamView
-AssistantMVC_Controller "1..1" *-- "1..1" AssistantMVC_Observer : Observer6
-AssistantMVC_Controller "0..1" -- "1..1" AssistantMVC_View : controller9
-AssistantMVC_Controller "0..9999" --* "1..1" AssistantMVC_Exam : controllers1
-AssistantMVC_Exam "1..1" *-- "0..9999" AssistantMVC_ExamItem : examItems0
-AssistantMVC_Observable "1..1" -- "0..9999" AssistantMVC_Observer : observers5
-AssistantMVC_Exam "1..1" *-- "0..9999" AssistantMVC_View : views3
+AssistantMVC_Controller "AssistantMVC_Observer8 1..1" *-- "AssistantMVC_Controller7 1..1" AssistantMVC_Observer : Observer6
+AssistantMVC_Controller "AssistantMVC_View10 0..1" -- "AssistantMVC_Controller11 1..1" AssistantMVC_View : controller9
+AssistantMVC_Controller "AssistantMVC_Exam2 0..9999" --* "AssistantMVC_Controller 1..1" AssistantMVC_Exam : controllers1
+AssistantMVC_Exam "AssistantMVC_ExamItem 1..1" *-- "AssistantMVC_Exam 0..9999" AssistantMVC_ExamItem : examItems0
+AssistantMVC_Observable "AssistantMVC_Observer 1..1" -- "AssistantMVC_Observable 0..9999" AssistantMVC_Observer : observers5
+AssistantMVC_Exam "AssistantMVC_View 1..1" *-- "AssistantMVC_Exam4 0..9999" AssistantMVC_View : views3
 @enduml

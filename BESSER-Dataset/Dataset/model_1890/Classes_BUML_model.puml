@@ -1,4 +1,8 @@
 @startuml
+' model: Classes
+' project: sampleModel
+' owner: User
+' description: New project
 class Account {
 }
 class Bill {
@@ -161,14 +165,14 @@ mdsdBilling_CustomerBilling <|-- Classes_mdsdBilling_BillingController
 mdsdBilling_StaffBilling <|-- Classes_mdsdBilling_BillingController
 mdsdBooking_StaffBooking <|-- Classes_mdsdBooking_BookingController
 mdsdBooking_UserBooking <|-- Classes_mdsdBooking_BookingController
-Account "0..9999" --* "1..1" Classes_mdsdAccount_AccountController : accounts13
-Bill "0..9999" --* "1..1" Classes_mdsdBilling_BillingController : bills0
-Classes_mdsdBooking_Booking "1..1" -- "0..9999" Service : bookedServices5
-Booking "0..9999" --* "1..1" Classes_mdsdBooking_BookingController : bookings2
-Classes_mdsdBooking_Booking "1..1" *-- "1..1" Meal : mealInfo7
-Classes_mdsdAccount_Account "1..1" -- "0..9999" Pet : pets12
-Classes_mdsdAdmin_AdminController "1..1" *-- "0..9999" Room : rooms9
-Classes_mdsdBooking_BookingController "1..1" *-- "0..9999" Service : services3
-Classes_mdsdAdmin_AdminController "1..1" *-- "0..9999" HotelStaff : staff10
-Classes_mdsdBilling_Bill "1..1" *-- "0..9999" Transaction : transactions1
+Account "Classes_mdsdAccount_AccountController 0..9999" --* "Account 1..1" Classes_mdsdAccount_AccountController : accounts13
+Bill "Classes_mdsdBilling_BillingController 0..9999" --* "Bill 1..1" Classes_mdsdBilling_BillingController : bills0
+Classes_mdsdBooking_Booking "Service6 1..1" -- "Classes_mdsdBooking_Booking 0..9999" Service : bookedServices5
+Booking "Classes_mdsdBooking_BookingController 0..9999" --* "Booking 1..1" Classes_mdsdBooking_BookingController : bookings2
+Classes_mdsdBooking_Booking "Meal 1..1" *-- "Classes_mdsdBooking_Booking8 1..1" Meal : mealInfo7
+Classes_mdsdAccount_Account "Pet 1..1" -- "Classes_mdsdAccount_Account 0..9999" Pet : pets12
+Classes_mdsdAdmin_AdminController "Room 1..1" *-- "Classes_mdsdAdmin_AdminController 0..9999" Room : rooms9
+Classes_mdsdBooking_BookingController "Service 1..1" *-- "Classes_mdsdBooking_BookingController4 0..9999" Service : services3
+Classes_mdsdAdmin_AdminController "HotelStaff 1..1" *-- "Classes_mdsdAdmin_AdminController11 0..9999" HotelStaff : staff10
+Classes_mdsdBilling_Bill "Transaction 1..1" *-- "Classes_mdsdBilling_Bill 0..9999" Transaction : transactions1
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: amazoninformational
+' project: sampleModel
+' owner: User
+' description: New project
 class amazoninformational_Customer {
   + address : str
   + consummedCredit : float
@@ -22,15 +26,15 @@ class amazoninformational_Product {
 }
 class amazoninformational_Shipment {
 }
-amazoninformational_Customer "0..1" -- "1..1" amazoninformational_Order : customer6
-amazoninformational_Invoice "0..1" --* "1..1" amazoninformational_Order : invoice2
-amazoninformational_Order "1..1" -- "1..1" amazoninformational_Package : order10
-amazoninformational_Order "0..1" -- "1..1" amazoninformational_Shipment : order13
-amazoninformational_Invoice "1..1" -- "1..1" amazoninformational_Order : order15
-amazoninformational_Package "1..9999" -- "1..1" amazoninformational_Shipment : package11
-amazoninformational_Order "1..1" *-- "0..9999" amazoninformational_Package : packages4
-amazoninformational_Invoice "1..1" *-- "0..1" amazoninformational_Payment : payment17
-amazoninformational_Order "1..1" *-- "1..9999" amazoninformational_Product : products0
-amazoninformational_Package "1..1" -- "0..1" amazoninformational_Product : products8
-amazoninformational_Order "1..1" *-- "0..1" amazoninformational_Shipment : shipment1
+amazoninformational_Customer "amazoninformational_Order7 0..1" -- "amazoninformational_Customer 1..1" amazoninformational_Order : customer6
+amazoninformational_Invoice "order3 0..1" --* "Invoice 1..1" amazoninformational_Order : invoice2
+amazoninformational_Order "packages 1..1" -- "Order 1..1" amazoninformational_Package : order10
+amazoninformational_Order "shipment 0..1" -- "Order14 1..1" amazoninformational_Shipment : order13
+amazoninformational_Invoice "Order16 1..1" -- "invoice 1..1" amazoninformational_Order : order15
+amazoninformational_Package "amazoninformational_Shipment 1..9999" -- "amazoninformational_Package12 1..1" amazoninformational_Shipment : package11
+amazoninformational_Order "Package 1..1" *-- "order5 0..9999" amazoninformational_Package : packages4
+amazoninformational_Invoice "amazoninformational_Payment 1..1" *-- "amazoninformational_Invoice 0..1" amazoninformational_Payment : payment17
+amazoninformational_Order "amazoninformational_Product 1..1" *-- "amazoninformational_Order 1..9999" amazoninformational_Product : products0
+amazoninformational_Package "amazoninformational_Product9 1..1" -- "amazoninformational_Package 0..1" amazoninformational_Product : products8
+amazoninformational_Order "Shipment 1..1" *-- "order 0..1" amazoninformational_Shipment : shipment1
 @enduml

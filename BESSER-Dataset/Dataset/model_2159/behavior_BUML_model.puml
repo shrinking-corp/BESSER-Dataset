@@ -1,4 +1,8 @@
 @startuml
+' model: behavior
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractBehaviorModelGraph {
 }
 class AbstractUseCaseExecution {
@@ -47,14 +51,14 @@ AbstractBehaviorModelGraph <|-- behavior_BehaviorModelAbsolute
 AbstractBehaviorModelGraph <|-- behavior_BehaviorModelRelative
 AbstractUseCaseExecution <|-- behavior_ObservedUseCaseExecution
 AbstractUseCaseExecution <|-- behavior_Vertex
-behavior_BehaviorMixEntry "1..1" -- "1..1" behavior_BehaviorModelRelative : behaviorModel16
-behavior_BehaviorMix "1..1" *-- "1..9999" behavior_BehaviorMixEntry : entries15
-behavior_ObservedUseCaseExecution "0..9999" --* "1..1" behavior_Session : observedUseCaseExecutions2
-behavior_Transition "0..9999" --* "1..1" behavior_Vertex : outgoingTransitions7
-behavior_Session "0..9999" --* "1..1" behavior_SessionRepository : sessions1
-behavior_Transition "1..1" -- "1..1" behavior_Vertex : sourceVertex12
-behavior_Transition "1..1" -- "1..1" behavior_Vertex : targetVertex9
-behavior_AbstractUseCaseExecution "1..1" -- "1..1" behavior_UseCase : useCase4
-behavior_UseCase "0..9999" --* "1..1" behavior_UseCaseRepository : useCases0
-behavior_AbstractBehaviorModelGraph "1..1" *-- "0..9999" behavior_Vertex : vertices6
+behavior_BehaviorMixEntry "behavior_BehaviorModelRelative 1..1" -- "behavior_BehaviorMixEntry17 1..1" behavior_BehaviorModelRelative : behaviorModel16
+behavior_BehaviorMix "behavior_BehaviorMixEntry 1..1" *-- "behavior_BehaviorMix 1..9999" behavior_BehaviorMixEntry : entries15
+behavior_ObservedUseCaseExecution "behavior_Session3 0..9999" --* "behavior_ObservedUseCaseExecution 1..1" behavior_Session : observedUseCaseExecutions2
+behavior_Transition "behavior_Vertex8 0..9999" --* "behavior_Transition 1..1" behavior_Vertex : outgoingTransitions7
+behavior_Session "behavior_SessionRepository 0..9999" --* "behavior_Session 1..1" behavior_SessionRepository : sessions1
+behavior_Transition "behavior_Vertex14 1..1" -- "behavior_Transition13 1..1" behavior_Vertex : sourceVertex12
+behavior_Transition "behavior_Vertex11 1..1" -- "behavior_Transition10 1..1" behavior_Vertex : targetVertex9
+behavior_AbstractUseCaseExecution "behavior_UseCase5 1..1" -- "behavior_AbstractUseCaseExecution 1..1" behavior_UseCase : useCase4
+behavior_UseCase "behavior_UseCaseRepository 0..9999" --* "behavior_UseCase 1..1" behavior_UseCaseRepository : useCases0
+behavior_AbstractBehaviorModelGraph "behavior_Vertex 1..1" *-- "behavior_AbstractBehaviorModelGraph 0..9999" behavior_Vertex : vertices6
 @enduml

@@ -209,30 +209,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=compositestates_State_strategy)
-@settings(max_examples=30)
-def test_hyp_compositestates_state_evalstate_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.evalState(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.evalState).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'evalState' in compositestates_State is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'evalState' in compositestates_State did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'evalState' in compositestates_State is not implemented or raised an error")
 
 
 
@@ -262,30 +238,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=compositestates_Region_strategy)
-@settings(max_examples=30)
-def test_hyp_compositestates_region_initregion_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.initRegion(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.initRegion).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'initRegion' in compositestates_Region is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'initRegion' in compositestates_Region did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'initRegion' in compositestates_Region is not implemented or raised an error")
 
 
 # ----- SECTION B: test_structural_full.py (deterministic-first suite) -----
@@ -629,33 +581,12 @@ def test_assoc_subvertex0_stub_double():
 
 
 
-from enum import Enum
 from python_code import PseudostateKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(PseudostateKind.initial, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(PseudostateKind.initial, '', '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(PseudostateKind.initial, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(PseudostateKind.initial, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(PseudostateKind.initial, 'initial') == PseudostateKind.initial
-
 from python_code import compositestates_NamedElement
 
 def test_compositestates_NamedElement___init__():
     assert compositestates_NamedElement.__init__(compositestates_NamedElement(''), '') == None
-
 from python_code import compositestates_Pseudostate
 
 def test_compositestates_Pseudostate___init__():

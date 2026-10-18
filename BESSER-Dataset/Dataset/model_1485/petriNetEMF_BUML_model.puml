@@ -1,4 +1,8 @@
 @startuml
+' model: petriNetEMF
+' project: sampleModel
+' owner: User
+' description: New project
 class Arc {
 }
 class Identification {
@@ -25,15 +29,15 @@ Identification <|-- petriNetEMF_Arc
 Identification <|-- petriNetEMF_PetriNet
 Identification <|-- petriNetEMF_Place
 Identification <|-- petriNetEMF_Transition
-petriNetEMF_Arc "0..9999" --* "1..1" petriNetEMF_PetriNet : Arcs3
-petriNetEMF_PetriNet "1..1" *-- "0..9999" petriNetEMF_Place : Places0
-petriNetEMF_PetriNet "1..1" *-- "0..9999" petriNetEMF_Transition : Transitions1
-petriNetEMF_Place "1..1" -- "1..1" petriNetEMF_PlaceToTransitionArc : from_14
-petriNetEMF_Transition "1..1" -- "1..1" petriNetEMF_TransitionToPlaceArc : from_15
-petriNetEMF_PlaceToTransitionArc "0..9999" -- "1..1" petriNetEMF_Transition : incomingArcs10
-petriNetEMF_Place "1..1" -- "0..9999" petriNetEMF_TransitionToPlaceArc : incomingArcs6
-petriNetEMF_Place "1..1" -- "0..9999" petriNetEMF_PlaceToTransitionArc : outgoingArcs5
-petriNetEMF_Transition "1..1" -- "0..9999" petriNetEMF_TransitionToPlaceArc : outgoingArcs7
-petriNetEMF_PlaceToTransitionArc "1..1" -- "1..1" petriNetEMF_Transition : to13
-petriNetEMF_Place "1..1" -- "1..1" petriNetEMF_TransitionToPlaceArc : to18
+petriNetEMF_Arc "petriNetEMF_PetriNet4 0..9999" --* "petriNetEMF_Arc 1..1" petriNetEMF_PetriNet : Arcs3
+petriNetEMF_PetriNet "petriNetEMF_Place 1..1" *-- "petriNetEMF_PetriNet 0..9999" petriNetEMF_Place : Places0
+petriNetEMF_PetriNet "petriNetEMF_Transition 1..1" *-- "petriNetEMF_PetriNet2 0..9999" petriNetEMF_Transition : Transitions1
+petriNetEMF_Place "outgoingArcs 1..1" -- "Place 1..1" petriNetEMF_PlaceToTransitionArc : from_14
+petriNetEMF_Transition "outgoingArcs16 1..1" -- "Transition17 1..1" petriNetEMF_TransitionToPlaceArc : from_15
+petriNetEMF_PlaceToTransitionArc "to11 0..9999" -- "PlaceToTransitionArc12 1..1" petriNetEMF_Transition : incomingArcs10
+petriNetEMF_Place "TransitionToPlaceArc 1..1" -- "to 0..9999" petriNetEMF_TransitionToPlaceArc : incomingArcs6
+petriNetEMF_Place "PlaceToTransitionArc 1..1" -- "from_ 0..9999" petriNetEMF_PlaceToTransitionArc : outgoingArcs5
+petriNetEMF_Transition "TransitionToPlaceArc9 1..1" -- "from_8 0..9999" petriNetEMF_TransitionToPlaceArc : outgoingArcs7
+petriNetEMF_PlaceToTransitionArc "Transition 1..1" -- "incomingArcs 1..1" petriNetEMF_Transition : to13
+petriNetEMF_Place "incomingArcs19 1..1" -- "Place20 1..1" petriNetEMF_TransitionToPlaceArc : to18
 @enduml

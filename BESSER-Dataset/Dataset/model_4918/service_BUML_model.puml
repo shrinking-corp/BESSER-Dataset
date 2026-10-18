@@ -1,4 +1,8 @@
 @startuml
+' model: service
+' project: sampleModel
+' owner: User
+' description: New project
 class FormalParameterList {
 }
 class NamedElement {
@@ -50,16 +54,16 @@ NamedElement <|-- service_Service
 Order <|-- service_Asc
 Order <|-- service_Desc
 Variable <|-- service_ServiceFeatureReference
-service_Feature "1..1" -- "1..1" service_ServiceFeatureReference : feature16
-service_Feature "0..9999" -- "1..1" service_Selection : fields7
-service_Predicate "0..1" --* "1..1" service_Selection : filter10
-service_Association "0..9999" -- "1..1" service_Selection : joins8
-service_BusinessOperation "0..9999" --* "1..1" service_Service : operations4
-service_Order "0..9999" --* "1..1" service_Selection : ordering12
-service_Order "1..1" *-- "1..1" service_Variable : path14
-service_Selection "0..9999" --* "1..1" service_Service : selections3
-service_EntityOrView "1..1" -- "1..1" service_Service : serves1
-service_Service "0..9999" --* "1..1" service_Services : services0
-service_Selection "1..1" -- "1..1" service_Service : usedBy6
-service_BusinessOperation "1..1" -- "0..9999" service_Service : uses18
+service_Feature "service_ServiceFeatureReference 1..1" -- "service_Feature17 1..1" service_ServiceFeatureReference : feature16
+service_Feature "service_Selection 0..9999" -- "service_Feature 1..1" service_Selection : fields7
+service_Predicate "service_Selection11 0..1" --* "service_Predicate 1..1" service_Selection : filter10
+service_Association "service_Selection9 0..9999" -- "service_Association 1..1" service_Selection : joins8
+service_BusinessOperation "service_Service5 0..9999" --* "service_BusinessOperation 1..1" service_Service : operations4
+service_Order "service_Selection13 0..9999" --* "service_Order 1..1" service_Selection : ordering12
+service_Order "service_Variable 1..1" *-- "service_Order15 1..1" service_Variable : path14
+service_Selection "usedBy 0..9999" --* "Selection 1..1" service_Service : selections3
+service_EntityOrView "service_Service2 1..1" -- "service_EntityOrView 1..1" service_Service : serves1
+service_Service "service_Services 0..9999" --* "service_Service 1..1" service_Services : services0
+service_Selection "Service 1..1" -- "selections 1..1" service_Service : usedBy6
+service_BusinessOperation "service_Service20 1..1" -- "service_BusinessOperation19 0..9999" service_Service : uses18
 @enduml

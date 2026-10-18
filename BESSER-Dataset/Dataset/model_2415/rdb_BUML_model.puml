@@ -1,4 +1,8 @@
 @startuml
+' model: rdb
+' project: sampleModel
+' owner: User
+' description: New project
 class CheckConstraint {
 }
 class Column {
@@ -134,24 +138,24 @@ UniqueConstraint <|-- rdb_constraints_PrimaryKey
 ViewColumn <|-- rdb_view_ReferencedViewColumn
 ViewColumn <|-- rdb_view_ViewExpressionColumn
 datatypes_PrimitiveDataType <|-- rdb_datatypes_Domain
-CheckConstraint "0..9999" --* "1..1" rdb_Table : checks14
-ViewColumn "1..9999" --* "1..1" rdb_view_View : columns28
-rdb_Table "1..1" *-- "1..9999" rdb_TableColumn : columns5
-Domain "0..1" -- "1..1" rdb_TableColumn : domain16
-rdb_Schema "1..1" *-- "0..9999" rdb_SchemaElement : elements3
-ForeignKey "0..9999" --* "1..1" rdb_Table : foreignKeys10
-constraints_rdb_TableColumn "1..9999" -- "1..1" rdb_constraints_ColumnRefConstraint : includedColumns20
-IndexedColumn "0..9999" --* "1..1" rdb_constraints_Index : indexedColumns23
-Index "0..9999" --* "1..1" rdb_Table : indices12
-rdb_Element "1..1" -- "0..1" rdb_Element : parent1
-Domain "0..1" -- "1..1" rdb_datatypes_Domain : parentDomain26
-PrimaryKey "0..1" --* "1..1" rdb_Table : primaryKey6
-constraints_rdb_TableColumn "1..1" -- "1..1" rdb_constraints_IndexedColumn : refColumn24
-rdb_view_ReferencedViewColumn "1..1" -- "1..1" view_rdb_Column : refColumn32
-rdb_view_ViewAlias "1..1" -- "1..1" view_rdb_NamedColumnSet : referencedTableOrView31
-ViewAlias "0..9999" --* "1..1" rdb_view_View : referencedTablesAndViews29
-UniqueConstraint "1..1" -- "1..1" rdb_constraints_ForeignKey : referredUC21
-rdb_Model "1..1" *-- "0..9999" rdb_Schema : schemas2
-PrimitiveDataType "0..1" --* "1..1" rdb_TableColumn : type18
-UniqueConstraint "0..9999" --* "1..1" rdb_Table : uniqueConstraints8
+CheckConstraint "rdb_Table15 0..9999" --* "CheckConstraint 1..1" rdb_Table : checks14
+ViewColumn "rdb_view_View 1..9999" --* "ViewColumn 1..1" rdb_view_View : columns28
+rdb_Table "rdb_TableColumn 1..1" *-- "rdb_Table 1..9999" rdb_TableColumn : columns5
+Domain "rdb_TableColumn17 0..1" -- "Domain 1..1" rdb_TableColumn : domain16
+rdb_Schema "rdb_SchemaElement 1..1" *-- "rdb_Schema4 0..9999" rdb_SchemaElement : elements3
+ForeignKey "rdb_Table11 0..9999" --* "ForeignKey 1..1" rdb_Table : foreignKeys10
+constraints_rdb_TableColumn "rdb_constraints_ColumnRefConstraint 1..9999" -- "constraints_rdb_TableColumn 1..1" rdb_constraints_ColumnRefConstraint : includedColumns20
+IndexedColumn "rdb_constraints_Index 0..9999" --* "IndexedColumn 1..1" rdb_constraints_Index : indexedColumns23
+Index "rdb_Table13 0..9999" --* "Index 1..1" rdb_Table : indices12
+rdb_Element "rdb_Element 1..1" -- "rdb_Element0 0..1" rdb_Element : parent1
+Domain "rdb_datatypes_Domain 0..1" -- "Domain27 1..1" rdb_datatypes_Domain : parentDomain26
+PrimaryKey "rdb_Table7 0..1" --* "PrimaryKey 1..1" rdb_Table : primaryKey6
+constraints_rdb_TableColumn "rdb_constraints_IndexedColumn 1..1" -- "constraints_rdb_TableColumn25 1..1" rdb_constraints_IndexedColumn : refColumn24
+rdb_view_ReferencedViewColumn "view_rdb_Column 1..1" -- "rdb_view_ReferencedViewColumn 1..1" view_rdb_Column : refColumn32
+rdb_view_ViewAlias "view_rdb_NamedColumnSet 1..1" -- "rdb_view_ViewAlias 1..1" view_rdb_NamedColumnSet : referencedTableOrView31
+ViewAlias "rdb_view_View30 0..9999" --* "ViewAlias 1..1" rdb_view_View : referencedTablesAndViews29
+UniqueConstraint "rdb_constraints_ForeignKey 1..1" -- "UniqueConstraint22 1..1" rdb_constraints_ForeignKey : referredUC21
+rdb_Model "rdb_Schema 1..1" *-- "rdb_Model 0..9999" rdb_Schema : schemas2
+PrimitiveDataType "rdb_TableColumn19 0..1" --* "PrimitiveDataType 1..1" rdb_TableColumn : type18
+UniqueConstraint "rdb_Table9 0..9999" --* "UniqueConstraint 1..1" rdb_Table : uniqueConstraints8
 @enduml

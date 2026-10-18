@@ -1,4 +1,8 @@
 @startuml
+' model: adce6cef_b3d2_4a14_84ea_977e39592181
+' project: sampleModel
+' owner: User
+' description: New project
 class Admin {
   + adminId : int
   + adminName : str
@@ -44,11 +48,11 @@ class User {
   + password : str
   + userId : int
 }
-Customer "1..1" -- "0..9999" Search : Customer_Search
-Customer "0..9999" -- "1..1" Shopping_Cart : Customer_Shopping_Cart
-Admin "0..1" -- "0..1" Order : OrderBook_Admin
-BookSet "0..1" -- "0..1" Search : Search_BookSet
-Order "0..9999" -- "1..1" Shopping_Cart : Shopping_Cart_OrderBook
-Admin "0..10" -- "0..1" User : User_Admin
-Customer "0..1" -- "0..1" User : User_Customer
+Customer "searchBook7 1..1" -- "search6 0..9999" Search : Customer_Search
+Customer "addBookToCart5 0..9999" -- "Customer_Shopping_Cart_04 1..1" Shopping_Cart : Customer_Shopping_Cart
+Admin "addBook12 0..1" -- "orderBook13 0..1" Order : OrderBook_Admin
+BookSet "bookSet8 0..1" -- "search9 0..1" Search : Search_BookSet
+Order "orderBook10 0..9999" -- "orderIsUndatedToCart11 1..1" Shopping_Cart : Shopping_Cart_OrderBook
+Admin "admin2 0..10" -- "_addUserAsMember3 0..1" User : User_Admin
+Customer "customer0 0..1" -- "user1 0..1" User : User_Customer
 @enduml

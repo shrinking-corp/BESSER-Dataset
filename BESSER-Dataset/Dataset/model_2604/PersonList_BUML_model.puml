@@ -1,4 +1,8 @@
 @startuml
+' model: PersonList
+' project: sampleModel
+' owner: User
+' description: New project
 enum Gender {
   Female
   Male
@@ -16,12 +20,12 @@ class PersonList_Person {
 class PersonList_WorkPlace {
   + address : str
 }
-PersonList_LivingPlace "1..1" -- "1..1" PersonList_Person : home6
-PersonList_List "1..1" -- "1..1" PersonList_Person : list4
-PersonList_List "1..1" *-- "0..9999" PersonList_LivingPlace : lplaces2
-PersonList_List "1..1" *-- "0..9999" PersonList_Person : members0
-PersonList_LivingPlace "1..1" -- "0..9999" PersonList_Person : persons10
-PersonList_Person "0..9999" -- "1..1" PersonList_WorkPlace : persons8
-PersonList_Person "1..1" -- "1..1" PersonList_WorkPlace : works5
-PersonList_List "1..1" *-- "0..9999" PersonList_WorkPlace : wplaces1
+PersonList_LivingPlace "persons7 1..1" -- "LivingPlace 1..1" PersonList_Person : home6
+PersonList_List "members 1..1" -- "List 1..1" PersonList_Person : list4
+PersonList_List "PersonList_LivingPlace 1..1" *-- "PersonList_List3 0..9999" PersonList_LivingPlace : lplaces2
+PersonList_List "Person 1..1" *-- "list 0..9999" PersonList_Person : members0
+PersonList_LivingPlace "Person11 1..1" -- "home 0..9999" PersonList_Person : persons10
+PersonList_Person "works 0..9999" -- "Person9 1..1" PersonList_WorkPlace : persons8
+PersonList_Person "WorkPlace 1..1" -- "persons 1..1" PersonList_WorkPlace : works5
+PersonList_List "PersonList_WorkPlace 1..1" *-- "PersonList_List 0..9999" PersonList_WorkPlace : wplaces1
 @enduml

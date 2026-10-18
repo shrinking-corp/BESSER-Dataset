@@ -1,4 +1,8 @@
 @startuml
+' model: graph
+' project: sampleModel
+' owner: User
+' description: New project
 class EMapPropertyHolder {
 }
 class ElkConnectableShape {
@@ -72,24 +76,24 @@ ElkGraphElement <|-- graph_ElkShape
 ElkShape <|-- graph_ElkConnectableShape
 ElkShape <|-- graph_ElkLabel
 IPropertyHolder <|-- graph_EMapPropertyHolder
-graph_ElkBendPoint "0..9999" --* "1..1" graph_ElkEdgeSection : bendPoints25
-graph_ElkNode "1..1" *-- "0..9999" graph_ElkNode : children9
-graph_ElkEdge "0..9999" --* "1..1" graph_ElkNode : containedEdges14
-graph_ElkEdge "1..1" -- "0..1" graph_ElkNode : containingNode18
-graph_ElkConnectableShape "1..1" -- "0..9999" graph_ElkEdge : incomingEdges4
-graph_ElkEdgeSection "1..1" -- "0..9999" graph_ElkEdgeSection : incomingSections37
-graph_ElkConnectableShape "0..1" -- "1..1" graph_ElkEdgeSection : incomingShape30
-graph_ElkGraphElement "1..1" *-- "0..9999" graph_ElkLabel : labels1
-graph_ElkConnectableShape "1..1" -- "0..9999" graph_ElkEdge : outgoingEdges3
-graph_ElkEdgeSection "1..1" -- "0..9999" graph_ElkEdgeSection : outgoingSections34
-graph_ElkConnectableShape "0..1" -- "1..1" graph_ElkEdgeSection : outgoingShape28
-graph_ElkNode "1..1" -- "0..1" graph_ElkNode : parent12
-graph_ElkNode "0..1" -- "1..1" graph_ElkPort : parent16
-graph_ElkGraphElement "0..1" -- "1..1" graph_ElkLabel : parent2
-graph_ElkEdge "0..1" -- "1..1" graph_ElkEdgeSection : parent26
-graph_ElkNode "1..1" *-- "0..9999" graph_ElkPort : ports6
-graph_EMapPropertyHolder "1..1" *-- "0..9999" graph_ElkPropertyToValueMapEntry : properties0
-graph_ElkEdge "1..1" *-- "0..9999" graph_ElkEdgeSection : sections23
-graph_ElkConnectableShape "0..9999" -- "1..1" graph_ElkEdge : sources20
-graph_ElkConnectableShape "0..9999" -- "1..1" graph_ElkEdge : targets21
+graph_ElkBendPoint "graph_ElkEdgeSection 0..9999" --* "graph_ElkBendPoint 1..1" graph_ElkEdgeSection : bendPoints25
+graph_ElkNode "ElkNode 1..1" *-- "parent10 0..9999" graph_ElkNode : children9
+graph_ElkEdge "containingNode 0..9999" --* "ElkEdge15 1..1" graph_ElkNode : containedEdges14
+graph_ElkEdge "ElkNode19 1..1" -- "containedEdges 0..1" graph_ElkNode : containingNode18
+graph_ElkConnectableShape "ElkEdge5 1..1" -- "targets 0..9999" graph_ElkEdge : incomingEdges4
+graph_ElkEdgeSection "ElkEdgeSection38 1..1" -- "outgoingSections 0..9999" graph_ElkEdgeSection : incomingSections37
+graph_ElkConnectableShape "graph_ElkEdgeSection31 0..1" -- "graph_ElkConnectableShape32 1..1" graph_ElkEdgeSection : incomingShape30
+graph_ElkGraphElement "ElkLabel 1..1" *-- "parent 0..9999" graph_ElkLabel : labels1
+graph_ElkConnectableShape "ElkEdge 1..1" -- "sources 0..9999" graph_ElkEdge : outgoingEdges3
+graph_ElkEdgeSection "ElkEdgeSection35 1..1" -- "incomingSections 0..9999" graph_ElkEdgeSection : outgoingSections34
+graph_ElkConnectableShape "graph_ElkEdgeSection29 0..1" -- "graph_ElkConnectableShape 1..1" graph_ElkEdgeSection : outgoingShape28
+graph_ElkNode "ElkNode13 1..1" -- "children 0..1" graph_ElkNode : parent12
+graph_ElkNode "ports 0..1" -- "ElkNode17 1..1" graph_ElkPort : parent16
+graph_ElkGraphElement "labels 0..1" -- "ElkGraphElement 1..1" graph_ElkLabel : parent2
+graph_ElkEdge "sections 0..1" -- "ElkEdge27 1..1" graph_ElkEdgeSection : parent26
+graph_ElkNode "ElkPort 1..1" *-- "parent7 0..9999" graph_ElkPort : ports6
+graph_EMapPropertyHolder "graph_ElkPropertyToValueMapEntry 1..1" *-- "graph_EMapPropertyHolder 0..9999" graph_ElkPropertyToValueMapEntry : properties0
+graph_ElkEdge "ElkEdgeSection 1..1" *-- "parent24 0..9999" graph_ElkEdgeSection : sections23
+graph_ElkConnectableShape "outgoingEdges 0..9999" -- "ElkConnectableShape 1..1" graph_ElkEdge : sources20
+graph_ElkConnectableShape "incomingEdges 0..9999" -- "ElkConnectableShape22 1..1" graph_ElkEdge : targets21
 @enduml

@@ -9474,9 +9474,9 @@ def test_assoc_activity0_stub_double():
     partner = xpdl1_ActivitiesType()
     setattr(partner, 'xpdl1_ActivitiesType', None)
     _safe_set(owner, 'xpdl1_ActivityType', partner)
-    assert getattr(partner, 'xpdl1_ActivitiesType') == owner
+    assert owner in getattr(partner, 'xpdl1_ActivitiesType')
     _safe_set(owner, 'xpdl1_ActivityType', None)
-    assert getattr(partner, 'xpdl1_ActivitiesType') is None
+    assert owner not in getattr(partner, 'xpdl1_ActivitiesType')
 
 
 def test_assoc_activitySet1_stub_double():
@@ -9489,9 +9489,9 @@ def test_assoc_activitySet1_stub_double():
     partner = xpdl1_ActivitySetsType()
     setattr(partner, 'xpdl1_ActivitySetsType', None)
     _safe_set(owner, 'xpdl1_ActivitySetType', partner)
-    assert getattr(partner, 'xpdl1_ActivitySetsType') == owner
+    assert owner in getattr(partner, 'xpdl1_ActivitySetsType')
     _safe_set(owner, 'xpdl1_ActivitySetType', None)
-    assert getattr(partner, 'xpdl1_ActivitySetsType') is None
+    assert owner not in getattr(partner, 'xpdl1_ActivitySetsType')
 
 
 def test_assoc_activitySets104_stub_double():
@@ -9534,9 +9534,9 @@ def test_assoc_application25_stub_double():
     partner = xpdl1_ApplicationsType()
     setattr(partner, 'xpdl1_ApplicationsType', None)
     _safe_set(owner, 'xpdl1_ApplicationType', partner)
-    assert getattr(partner, 'xpdl1_ApplicationsType') == owner
+    assert owner in getattr(partner, 'xpdl1_ApplicationsType')
     _safe_set(owner, 'xpdl1_ApplicationType', None)
-    assert getattr(partner, 'xpdl1_ApplicationsType') is None
+    assert owner not in getattr(partner, 'xpdl1_ApplicationsType')
 
 
 def test_assoc_applications112_stub_double():
@@ -9699,9 +9699,9 @@ def test_assoc_dataField53_stub_double():
     partner = xpdl1_DataFieldsType()
     setattr(partner, 'xpdl1_DataFieldsType', None)
     _safe_set(owner, 'xpdl1_DataFieldType', partner)
-    assert getattr(partner, 'xpdl1_DataFieldsType') == owner
+    assert owner in getattr(partner, 'xpdl1_DataFieldsType')
     _safe_set(owner, 'xpdl1_DataFieldType', None)
-    assert getattr(partner, 'xpdl1_DataFieldsType') is None
+    assert owner not in getattr(partner, 'xpdl1_DataFieldsType')
 
 
 def test_assoc_dataFields134_stub_double():
@@ -9909,9 +9909,9 @@ def test_assoc_enumerationValue254_stub_double():
     partner = xpdl1_EnumerationTypeType()
     setattr(partner, 'xpdl1_EnumerationTypeType255', None)
     _safe_set(owner, 'xpdl1_EnumerationValueType256', partner)
-    assert getattr(partner, 'xpdl1_EnumerationTypeType255') == owner
+    assert owner in getattr(partner, 'xpdl1_EnumerationTypeType255')
     _safe_set(owner, 'xpdl1_EnumerationValueType256', None)
-    assert getattr(partner, 'xpdl1_EnumerationTypeType255') is None
+    assert owner not in getattr(partner, 'xpdl1_EnumerationTypeType255')
 
 
 def test_assoc_exceptionName88_stub_double():
@@ -9939,9 +9939,9 @@ def test_assoc_extendedAttribute257_stub_double():
     partner = xpdl1_ExtendedAttributesType()
     setattr(partner, 'xpdl1_ExtendedAttributesType258', None)
     _safe_set(owner, 'xpdl1_ExtendedAttributeType259', partner)
-    assert getattr(partner, 'xpdl1_ExtendedAttributesType258') == owner
+    assert owner in getattr(partner, 'xpdl1_ExtendedAttributesType258')
     _safe_set(owner, 'xpdl1_ExtendedAttributeType259', None)
-    assert getattr(partner, 'xpdl1_ExtendedAttributesType258') is None
+    assert owner not in getattr(partner, 'xpdl1_ExtendedAttributesType258')
 
 
 def test_assoc_extendedAttributes153_stub_double():
@@ -10119,9 +10119,9 @@ def test_assoc_externalPackage260_stub_double():
     partner = xpdl1_ExternalPackagesType()
     setattr(partner, 'xpdl1_ExternalPackagesType261', None)
     _safe_set(owner, 'xpdl1_ExternalPackageType262', partner)
-    assert getattr(partner, 'xpdl1_ExternalPackagesType261') == owner
+    assert owner in getattr(partner, 'xpdl1_ExternalPackagesType261')
     _safe_set(owner, 'xpdl1_ExternalPackageType262', None)
-    assert getattr(partner, 'xpdl1_ExternalPackagesType261') is None
+    assert owner not in getattr(partner, 'xpdl1_ExternalPackagesType261')
 
 
 def test_assoc_externalPackages158_stub_double():
@@ -10239,9 +10239,9 @@ def test_assoc_formalParameter272_stub_double():
     partner = xpdl1_FormalParametersType()
     setattr(partner, 'xpdl1_FormalParametersType273', None)
     _safe_set(owner, 'xpdl1_FormalParameterType274', partner)
-    assert getattr(partner, 'xpdl1_FormalParametersType273') == owner
+    assert owner in getattr(partner, 'xpdl1_FormalParametersType273')
     _safe_set(owner, 'xpdl1_FormalParameterType274', None)
-    assert getattr(partner, 'xpdl1_FormalParametersType273') is None
+    assert owner not in getattr(partner, 'xpdl1_FormalParametersType273')
 
 
 def test_assoc_formalParameters168_stub_double():
@@ -10434,9 +10434,9 @@ def test_assoc_participant374_stub_double():
     partner = xpdl1_ParticipantsType()
     setattr(partner, 'xpdl1_ParticipantsType375', None)
     _safe_set(owner, 'xpdl1_ParticipantType376', partner)
-    assert getattr(partner, 'xpdl1_ParticipantsType375') == owner
+    assert owner in getattr(partner, 'xpdl1_ParticipantsType375')
     _safe_set(owner, 'xpdl1_ParticipantType376', None)
-    assert getattr(partner, 'xpdl1_ParticipantsType375') is None
+    assert owner not in getattr(partner, 'xpdl1_ParticipantsType375')
 
 
 def test_assoc_participants191_stub_double():
@@ -10674,9 +10674,9 @@ def test_assoc_tool281_stub_double():
     partner = xpdl1_ImplementationType()
     setattr(partner, 'xpdl1_ImplementationType282', None)
     _safe_set(owner, 'xpdl1_ToolType283', partner)
-    assert getattr(partner, 'xpdl1_ImplementationType282') == owner
+    assert owner in getattr(partner, 'xpdl1_ImplementationType282')
     _safe_set(owner, 'xpdl1_ToolType283', None)
-    assert getattr(partner, 'xpdl1_ImplementationType282') is None
+    assert owner not in getattr(partner, 'xpdl1_ImplementationType282')
 
 
 def test_assoc_transition428_stub_double():
@@ -10689,9 +10689,9 @@ def test_assoc_transition428_stub_double():
     partner = xpdl1_TransitionsType()
     setattr(partner, 'xpdl1_TransitionsType429', None)
     _safe_set(owner, 'xpdl1_TransitionType430', partner)
-    assert getattr(partner, 'xpdl1_TransitionsType429') == owner
+    assert owner in getattr(partner, 'xpdl1_TransitionsType429')
     _safe_set(owner, 'xpdl1_TransitionType430', None)
-    assert getattr(partner, 'xpdl1_TransitionsType429') is None
+    assert owner not in getattr(partner, 'xpdl1_TransitionsType429')
 
 
 def test_assoc_transitionRef416_stub_double():
@@ -10704,9 +10704,9 @@ def test_assoc_transitionRef416_stub_double():
     partner = xpdl1_TransitionRefsType()
     setattr(partner, 'xpdl1_TransitionRefsType417', None)
     _safe_set(owner, 'xpdl1_TransitionRefType418', partner)
-    assert getattr(partner, 'xpdl1_TransitionRefsType417') == owner
+    assert owner in getattr(partner, 'xpdl1_TransitionRefsType417')
     _safe_set(owner, 'xpdl1_TransitionRefType418', None)
-    assert getattr(partner, 'xpdl1_TransitionRefsType417') is None
+    assert owner not in getattr(partner, 'xpdl1_TransitionRefsType417')
 
 
 def test_assoc_transitionRefs230_stub_double():
@@ -10839,9 +10839,9 @@ def test_assoc_typeDeclaration437_stub_double():
     partner = xpdl1_TypeDeclarationsType()
     setattr(partner, 'xpdl1_TypeDeclarationsType438', None)
     _safe_set(owner, 'xpdl1_TypeDeclarationType439', partner)
-    assert getattr(partner, 'xpdl1_TypeDeclarationsType438') == owner
+    assert owner in getattr(partner, 'xpdl1_TypeDeclarationsType438')
     _safe_set(owner, 'xpdl1_TypeDeclarationType439', None)
-    assert getattr(partner, 'xpdl1_TypeDeclarationsType438') is None
+    assert owner not in getattr(partner, 'xpdl1_TypeDeclarationsType438')
 
 
 def test_assoc_typeDeclarations242_stub_double():
@@ -10929,9 +10929,9 @@ def test_assoc_workflowProcess473_stub_double():
     partner = xpdl1_WorkflowProcessesType()
     setattr(partner, 'xpdl1_WorkflowProcessesType474', None)
     _safe_set(owner, 'xpdl1_WorkflowProcessType475', partner)
-    assert getattr(partner, 'xpdl1_WorkflowProcessesType474') == owner
+    assert owner in getattr(partner, 'xpdl1_WorkflowProcessesType474')
     _safe_set(owner, 'xpdl1_WorkflowProcessType475', None)
-    assert getattr(partner, 'xpdl1_WorkflowProcessesType474') is None
+    assert owner not in getattr(partner, 'xpdl1_WorkflowProcessesType474')
 
 
 def test_assoc_workflowProcesses249_stub_double():
@@ -10996,333 +10996,34 @@ def test_assoc_xSISchemaLocation92_stub_double():
 
 
 
-from enum import Enum
 from python_code import AccessLevelType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(AccessLevelType.PRIVATE, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(AccessLevelType.PRIVATE, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(AccessLevelType.PUBLIC, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(AccessLevelType.PUBLIC, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(AccessLevelType.PUBLIC, 'PUBLIC') == AccessLevelType.PUBLIC
-
-from enum import Enum
 from python_code import DurationUnitType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(DurationUnitType.Y, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(DurationUnitType.s, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(DurationUnitType.h, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(DurationUnitType.s, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(DurationUnitType.D, 's') == DurationUnitType.s
-
-from enum import Enum
 from python_code import ExecutionType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ExecutionType.SYNCHR, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ExecutionType.SYNCHR, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ExecutionType.ASYNCHR, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ExecutionType.SYNCHR, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ExecutionType.SYNCHR, 'SYNCHR') == ExecutionType.SYNCHR
-
-from enum import Enum
 from python_code import ExecutionType1
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ExecutionType1.SYNCHR, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ExecutionType1.SYNCHR, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ExecutionType1.ASYNCHR, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ExecutionType1.SYNCHR, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ExecutionType1.SYNCHR, 'SYNCHR') == ExecutionType1.SYNCHR
-
-from enum import Enum
 from python_code import GraphConformanceType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(GraphConformanceType.NONBLOCKED, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(GraphConformanceType.NONBLOCKED, 0, '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(GraphConformanceType.FULLBLOCKED, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(GraphConformanceType.NONBLOCKED, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(GraphConformanceType.NONBLOCKED, 'NONBLOCKED') == GraphConformanceType.NONBLOCKED
-
-from enum import Enum
 from python_code import InstantiationType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(InstantiationType.ONCE, '', 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(InstantiationType.ONCE, '', 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(InstantiationType.ONCE, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(InstantiationType.ONCE, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(InstantiationType.ONCE, 'ONCE') == InstantiationType.ONCE
-
-from enum import Enum
 from python_code import IsArrayType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(IsArrayType.FALSE, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(IsArrayType.FALSE, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(IsArrayType.TRUE, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(IsArrayType.TRUE, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(IsArrayType.TRUE, 'TRUE') == IsArrayType.TRUE
-
-from enum import Enum
 from python_code import ModeType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ModeType.IN, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ModeType.IN, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ModeType.IN, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ModeType.IN, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ModeType.IN, 'IN') == ModeType.IN
-
-from enum import Enum
 from python_code import PublicationStatusType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(PublicationStatusType.UNDERTEST, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(PublicationStatusType.UNDERTEST, 0, '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(PublicationStatusType.UNDERTEST, '', '', '') == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(PublicationStatusType.RELEASED, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(PublicationStatusType.RELEASED, 'RELEASED') == PublicationStatusType.RELEASED
-
-from enum import Enum
 from python_code import TypeType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(TypeType.XOR, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(TypeType.XOR, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(TypeType.AND, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(TypeType.XOR, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(TypeType.XOR, 'XOR') == TypeType.XOR
-
-from enum import Enum
 from python_code import TypeType1
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(TypeType1.ROLE, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(TypeType1.ROLE, 0, '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(TypeType1.ROLE, '', 0, '') == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(TypeType1.ROLE, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(TypeType1.ROLE, 'ROLE') == TypeType1.ROLE
-
-from enum import Enum
 from python_code import TypeType2
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(TypeType2.EXCEPTION, 0, '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(TypeType2.OTHERWISE, '', 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(TypeType2.OTHERWISE, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(TypeType2.CONDITION, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(TypeType2.OTHERWISE, 'OTHERWISE') == TypeType2.OTHERWISE
-
-from enum import Enum
 from python_code import TypeType3
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(TypeType3.FLOAT, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(TypeType3.FLOAT, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(TypeType3.FLOAT, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(TypeType3.FLOAT, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(TypeType3.FLOAT, 'FLOAT') == TypeType3.FLOAT
-
-from enum import Enum
 from python_code import TypeType4
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(TypeType4.XOR, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(TypeType4.XOR, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(TypeType4.AND, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(TypeType4.XOR, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(TypeType4.XOR, 'XOR') == TypeType4.XOR
-
-from enum import Enum
 from python_code import TypeType5
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(TypeType5.PROCEDURE, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(TypeType5.PROCEDURE, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(TypeType5.PROCEDURE, '', '', 0) == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(TypeType5.PROCEDURE, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(TypeType5.PROCEDURE, 'PROCEDURE') == TypeType5.PROCEDURE
 

@@ -1,4 +1,8 @@
 @startuml
+' model: ezdaap
+' project: sampleModel
+' owner: User
+' description: New project
 enum DAAP_COMM_CST {
   MAX_SIMULTATNEOUS_CONNECTIONS
   MAX_USER_CONNECTIONS_PER_SESSION
@@ -49,14 +53,14 @@ EZDaapIntelPropertyElem <|-- ezdaap_EZDaapAlbum
 EZDaapIntelPropertyElem <|-- ezdaap_EZDaapSong
 EZDaapLibraryUnit <|-- ezdaap_EZDaapElem
 EZDaapLibraryUnit <|-- ezdaap_EZDaapLibrary
-ezdaap_EZDaapAlbum "0..9999" --* "1..1" ezdaap_EZDaapITunesInstance : Albums5
-ezdaap_EZDaapArtist "0..9999" -- "1..1" ezdaap_EZDaapIntelPropertyElem : artists19
-ezdaap_EZDaapArtist "0..9999" --* "1..1" ezdaap_EZDaapITunesInstance : artists7
-ezdaap_EZDaapLibrary "1..1" *-- "0..9999" ezdaap_EZDaapLibraryUnit : elements17
-ezdaap_EZDaapITunesInstance "0..9999" --* "1..1" ezdaap_EZDaapManager : iTunes9
-ezdaap_EZDaapITunesInstance "1..1" *-- "0..9999" ezdaap_EZDaapLibrary : libraries0
-ezdaap_EZDaapITunesInstance "1..1" *-- "0..9999" ezdaap_EZDaapPlayList : palylists1
-ezdaap_EZDaapAlbum "1..1" -- "0..9999" ezdaap_EZDaapSong : songs11
-ezdaap_EZDaapPlayList "1..1" -- "0..9999" ezdaap_EZDaapSong : songs14
-ezdaap_EZDaapITunesInstance "1..1" *-- "0..9999" ezdaap_EZDaapSong : songs3
+ezdaap_EZDaapAlbum "ezdaap_EZDaapITunesInstance6 0..9999" --* "ezdaap_EZDaapAlbum 1..1" ezdaap_EZDaapITunesInstance : Albums5
+ezdaap_EZDaapArtist "ezdaap_EZDaapIntelPropertyElem 0..9999" -- "ezdaap_EZDaapArtist20 1..1" ezdaap_EZDaapIntelPropertyElem : artists19
+ezdaap_EZDaapArtist "ezdaap_EZDaapITunesInstance8 0..9999" --* "ezdaap_EZDaapArtist 1..1" ezdaap_EZDaapITunesInstance : artists7
+ezdaap_EZDaapLibrary "ezdaap_EZDaapLibraryUnit 1..1" *-- "ezdaap_EZDaapLibrary18 0..9999" ezdaap_EZDaapLibraryUnit : elements17
+ezdaap_EZDaapITunesInstance "ezdaap_EZDaapManager 0..9999" --* "ezdaap_EZDaapITunesInstance10 1..1" ezdaap_EZDaapManager : iTunes9
+ezdaap_EZDaapITunesInstance "ezdaap_EZDaapLibrary 1..1" *-- "ezdaap_EZDaapITunesInstance 0..9999" ezdaap_EZDaapLibrary : libraries0
+ezdaap_EZDaapITunesInstance "ezdaap_EZDaapPlayList 1..1" *-- "ezdaap_EZDaapITunesInstance2 0..9999" ezdaap_EZDaapPlayList : palylists1
+ezdaap_EZDaapAlbum "ezdaap_EZDaapSong13 1..1" -- "ezdaap_EZDaapAlbum12 0..9999" ezdaap_EZDaapSong : songs11
+ezdaap_EZDaapPlayList "ezdaap_EZDaapSong16 1..1" -- "ezdaap_EZDaapPlayList15 0..9999" ezdaap_EZDaapSong : songs14
+ezdaap_EZDaapITunesInstance "ezdaap_EZDaapSong 1..1" *-- "ezdaap_EZDaapITunesInstance4 0..9999" ezdaap_EZDaapSong : songs3
 @enduml

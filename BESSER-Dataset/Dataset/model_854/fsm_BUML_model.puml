@@ -1,4 +1,8 @@
 @startuml
+' model: fsm
+' project: sampleModel
+' owner: User
+' description: New project
 class NamedElement {
 }
 class Pseudostate {
@@ -64,20 +68,20 @@ State <|-- fsm_FinalState
 State <|-- fsm_InitialState
 State <|-- fsm_Pseudostate
 Transition <|-- fsm_TimedTransition
-fsm_Action "0..1" --* "1..1" fsm_Transition : action19
-fsm_Guard "0..1" --* "1..1" fsm_Transition : guard17
-fsm_State "1..1" -- "0..9999" fsm_Transition : incoming6
-fsm_State "1..1" -- "0..9999" fsm_Transition : outgoing4
-fsm_CompositeState "1..1" -- "1..1" fsm_Region : parent26
-fsm_CompositeState "0..1" -- "1..1" fsm_State : parentState9
-fsm_CompositeState "1..1" *-- "1..9999" fsm_Region : regions21
-fsm_State "1..1" -- "1..1" fsm_Transition : source12
-fsm_StateMachine "1..1" -- "1..1" fsm_Transition : stateMachine15
-fsm_State "1..1" -- "0..1" fsm_StateMachine : stateMachine8
-fsm_State "0..9999" --* "1..1" fsm_StateMachine : states0
-fsm_Region "1..1" *-- "0..9999" fsm_State : states23
-fsm_State "1..1" -- "1..1" fsm_Transition : target10
-fsm_StateMachine "1..1" *-- "0..9999" fsm_Transition : transitions1
-fsm_Transition "1..1" *-- "0..1" fsm_Trigger : trigger14
-fsm_StateMachine "1..1" *-- "0..9999" fsm_Variable : variables3
+fsm_Action "fsm_Transition20 0..1" --* "fsm_Action 1..1" fsm_Transition : action19
+fsm_Guard "fsm_Transition18 0..1" --* "fsm_Guard 1..1" fsm_Transition : guard17
+fsm_State "Transition7 1..1" -- "target 0..9999" fsm_Transition : incoming6
+fsm_State "Transition5 1..1" -- "source 0..9999" fsm_Transition : outgoing4
+fsm_CompositeState "fsm_Region27 1..1" -- "fsm_CompositeState28 1..1" fsm_Region : parent26
+fsm_CompositeState "fsm_State 0..1" -- "fsm_CompositeState 1..1" fsm_State : parentState9
+fsm_CompositeState "fsm_Region 1..1" *-- "fsm_CompositeState22 1..9999" fsm_Region : regions21
+fsm_State "outgoing 1..1" -- "State13 1..1" fsm_Transition : source12
+fsm_StateMachine "transitions 1..1" -- "StateMachine16 1..1" fsm_Transition : stateMachine15
+fsm_State "StateMachine 1..1" -- "states 0..1" fsm_StateMachine : stateMachine8
+fsm_State "stateMachine 0..9999" --* "State 1..1" fsm_StateMachine : states0
+fsm_Region "fsm_State25 1..1" *-- "fsm_Region24 0..9999" fsm_State : states23
+fsm_State "incoming 1..1" -- "State11 1..1" fsm_Transition : target10
+fsm_StateMachine "Transition 1..1" *-- "stateMachine2 0..9999" fsm_Transition : transitions1
+fsm_Transition "fsm_Trigger 1..1" *-- "fsm_Transition 0..1" fsm_Trigger : trigger14
+fsm_StateMachine "fsm_Variable 1..1" *-- "fsm_StateMachine 0..9999" fsm_Variable : variables3
 @enduml

@@ -4295,9 +4295,9 @@ def test_assoc_constants39_stub_double():
     partner = b_ConcreteConstants()
     setattr(partner, 'b_ConcreteConstants40', None)
     _safe_set(owner, 'b_Variable41', partner)
-    assert getattr(partner, 'b_ConcreteConstants40') == owner
+    assert owner in getattr(partner, 'b_ConcreteConstants40')
     _safe_set(owner, 'b_Variable41', None)
-    assert getattr(partner, 'b_ConcreteConstants40') is None
+    assert owner not in getattr(partner, 'b_ConcreteConstants40')
 
 
 def test_assoc_def_82_stub_double():
@@ -4340,9 +4340,9 @@ def test_assoc_elems91_stub_double():
     partner = b_Set()
     setattr(partner, 'b_Set92', None)
     _safe_set(owner, 'b_Variable93', partner)
-    assert getattr(partner, 'b_Set92') == owner
+    assert owner in getattr(partner, 'b_Set92')
     _safe_set(owner, 'b_Variable93', None)
-    assert getattr(partner, 'b_Set92') is None
+    assert owner not in getattr(partner, 'b_Set92')
 
 
 def test_assoc_expr80_stub_double():
@@ -4370,9 +4370,9 @@ def test_assoc_exprs32_stub_double():
     partner = b_Values()
     setattr(partner, 'b_Values33', None)
     _safe_set(owner, 'b_ValueExpr', partner)
-    assert getattr(partner, 'b_Values33') == owner
+    assert owner in getattr(partner, 'b_Values33')
     _safe_set(owner, 'b_ValueExpr', None)
-    assert getattr(partner, 'b_Values33') is None
+    assert owner not in getattr(partner, 'b_Values33')
 
 
 def test_assoc_exprs75_stub_double():
@@ -4385,9 +4385,9 @@ def test_assoc_exprs75_stub_double():
     partner = b_Definitions()
     setattr(partner, 'b_Definitions76', None)
     _safe_set(owner, 'b_Definition', partner)
-    assert getattr(partner, 'b_Definitions76') == owner
+    assert owner in getattr(partner, 'b_Definitions76')
     _safe_set(owner, 'b_Definition', None)
-    assert getattr(partner, 'b_Definitions76') is None
+    assert owner not in getattr(partner, 'b_Definitions76')
 
 
 def test_assoc_imports29_stub_double():
@@ -4400,9 +4400,9 @@ def test_assoc_imports29_stub_double():
     partner = b_Imports()
     setattr(partner, 'b_Imports30', None)
     _safe_set(owner, 'b_Abstraction31', partner)
-    assert getattr(partner, 'b_Imports30') == owner
+    assert owner in getattr(partner, 'b_Imports30')
     _safe_set(owner, 'b_Abstraction31', None)
-    assert getattr(partner, 'b_Imports30') is None
+    assert owner not in getattr(partner, 'b_Imports30')
 
 
 def test_assoc_left180_stub_double():
@@ -4475,9 +4475,9 @@ def test_assoc_operations161_stub_double():
     partner = b_LocalOperations()
     setattr(partner, 'b_LocalOperations162', None)
     _safe_set(owner, 'b_Operation163', partner)
-    assert getattr(partner, 'b_LocalOperations162') == owner
+    assert owner in getattr(partner, 'b_LocalOperations162')
     _safe_set(owner, 'b_Operation163', None)
-    assert getattr(partner, 'b_LocalOperations162') is None
+    assert owner not in getattr(partner, 'b_LocalOperations162')
 
 
 def test_assoc_operations7_stub_double():
@@ -4505,9 +4505,9 @@ def test_assoc_operations94_stub_double():
     partner = b_Operations()
     setattr(partner, 'b_Operations95', None)
     _safe_set(owner, 'b_Operation', partner)
-    assert getattr(partner, 'b_Operations95') == owner
+    assert owner in getattr(partner, 'b_Operations95')
     _safe_set(owner, 'b_Operation', None)
-    assert getattr(partner, 'b_Operations95') is None
+    assert owner not in getattr(partner, 'b_Operations95')
 
 
 def test_assoc_properties5_stub_double():
@@ -4550,9 +4550,9 @@ def test_assoc_rets148_stub_double():
     partner = b_Call()
     setattr(partner, 'b_Call', None)
     _safe_set(owner, 'b_Variable149', partner)
-    assert getattr(partner, 'b_Call') == owner
+    assert owner in getattr(partner, 'b_Call')
     _safe_set(owner, 'b_Variable149', None)
-    assert getattr(partner, 'b_Call') is None
+    assert owner not in getattr(partner, 'b_Call')
 
 
 def test_assoc_right182_stub_double():
@@ -4580,9 +4580,9 @@ def test_assoc_seens26_stub_double():
     partner = b_Sees()
     setattr(partner, 'b_Sees27', None)
     _safe_set(owner, 'b_Abstraction28', partner)
-    assert getattr(partner, 'b_Sees27') == owner
+    assert owner in getattr(partner, 'b_Sees27')
     _safe_set(owner, 'b_Abstraction28', None)
-    assert getattr(partner, 'b_Sees27') is None
+    assert owner not in getattr(partner, 'b_Sees27')
 
 
 def test_assoc_sees0_stub_double():
@@ -4760,9 +4760,9 @@ def test_assoc_variables36_stub_double():
     partner = b_ConcreteVariables()
     setattr(partner, 'b_ConcreteVariables37', None)
     _safe_set(owner, 'b_Variable38', partner)
-    assert getattr(partner, 'b_ConcreteVariables37') == owner
+    assert owner in getattr(partner, 'b_ConcreteVariables37')
     _safe_set(owner, 'b_Variable38', None)
-    assert getattr(partner, 'b_ConcreteVariables37') is None
+    assert owner not in getattr(partner, 'b_ConcreteVariables37')
 
 
 def test_assoc_vars122_stub_double():
@@ -4775,9 +4775,9 @@ def test_assoc_vars122_stub_double():
     partner = b_Var()
     setattr(partner, 'b_Var', None)
     _safe_set(owner, 'b_Variable123', partner)
-    assert getattr(partner, 'b_Var') == owner
+    assert owner in getattr(partner, 'b_Var')
     _safe_set(owner, 'b_Variable123', None)
-    assert getattr(partner, 'b_Var') is None
+    assert owner not in getattr(partner, 'b_Var')
 
 
 def test_assoc_vars218_stub_double():
@@ -4790,79 +4790,19 @@ def test_assoc_vars218_stub_double():
     partner = b_ReturnTuple()
     setattr(partner, 'b_ReturnTuple', None)
     _safe_set(owner, 'b_Variable219', partner)
-    assert getattr(partner, 'b_ReturnTuple') == owner
+    assert owner in getattr(partner, 'b_ReturnTuple')
     _safe_set(owner, 'b_Variable219', None)
-    assert getattr(partner, 'b_ReturnTuple') is None
+    assert owner not in getattr(partner, 'b_ReturnTuple')
 
 
 
 
-from enum import Enum
 from python_code import BoolLiteralEnum
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(BoolLiteralEnum.FALSE, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(BoolLiteralEnum.FALSE, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(BoolLiteralEnum.TRUE, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(BoolLiteralEnum.TRUE, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(BoolLiteralEnum.TRUE, 'TRUE') == BoolLiteralEnum.TRUE
-
-from enum import Enum
 from python_code import InequalityOp
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(InequalityOp.GREATER, 0, '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(InequalityOp.LESS, '', '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(InequalityOp.LESS, '', '', '') == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(InequalityOp.LESS, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(InequalityOp.LESS, 'LESS') == InequalityOp.LESS
-
-from enum import Enum
 from python_code import PrimitiveTypeEnum
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(PrimitiveTypeEnum.INT, '', 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(PrimitiveTypeEnum.INT, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(PrimitiveTypeEnum.INT, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(PrimitiveTypeEnum.NAT, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(PrimitiveTypeEnum.NAT, 'NAT') == PrimitiveTypeEnum.NAT
-
 from python_code import b_Abstraction
 from python_code import b_ConcreteConstants
 from python_code import b_Definitions
@@ -4873,28 +4813,23 @@ from python_code import b_Sees
 
 def test_b_Abstraction___init__():
     assert b_Abstraction.__init__(b_Abstraction('', b_Abstraction=b_Sees(), b_Abstraction2=b_ConcreteConstants(), b_Abstraction4=b_Definitions(), b_Abstraction6=b_Properties(), b_Abstraction8=b_Operations(), b_Abstraction28=b_Sees(), b_Abstraction31=b_Imports()), '', b_Abstraction=b_Sees(), b_Abstraction2=b_ConcreteConstants(), b_Abstraction4=b_Definitions(), b_Abstraction6=b_Properties(), b_Abstraction8=b_Operations(), b_Abstraction28=b_Sees(), b_Abstraction31=b_Imports()) == None
-
 from python_code import b_BoolLiteral
 
 def test_b_BoolLiteral___init__():
     assert b_BoolLiteral.__init__(b_BoolLiteral('', '\x00'), '\x00\x00', '') == None
-
 from python_code import b_ConstantExpr
 
 def test_b_ConstantExpr___init__():
     assert b_ConstantExpr.__init__(b_ConstantExpr(''), '') == None
-
 from python_code import b_InequalityExpr
 from python_code import b_LogicalExpr
 
 def test_b_InequalityExpr___init__():
     assert b_InequalityExpr.__init__(b_InequalityExpr('', b_InequalityExpr=b_LogicalExpr(), b_InequalityExpr183=b_LogicalExpr()), '', b_InequalityExpr=b_LogicalExpr(), b_InequalityExpr183=b_LogicalExpr()) == None
-
 from python_code import b_IntLiteral
 
 def test_b_IntLiteral___init__():
     assert b_IntLiteral.__init__(b_IntLiteral(0), 0) == None
-
 from python_code import b_Body
 from python_code import b_Call
 from python_code import b_LocalOperations
@@ -4904,12 +4839,10 @@ from python_code import b_SimpleCall
 
 def test_b_Operation___init__():
     assert b_Operation.__init__(b_Operation('', b_Operation152=b_Call(), b_Operation157=b_SimpleCall(), b_Operation163=b_LocalOperations(), b_Operation100=set(), b_Operation103=b_Body(), b_Operation=b_Operations(), b_Operation97=set()), '', b_Operation152=b_Call(), b_Operation157=b_SimpleCall(), b_Operation163=b_LocalOperations(), b_Operation100=set(), b_Operation103=b_Body(), b_Operation=b_Operations(), b_Operation97=set()) == None
-
 from python_code import b_PrimitiveType
 
 def test_b_PrimitiveType___init__():
     assert b_PrimitiveType.__init__(b_PrimitiveType(''), '') == None
-
 from python_code import b_StringLiteral
 
 def test_b_StringLiteral___init__():

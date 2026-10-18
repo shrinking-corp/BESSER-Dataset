@@ -1017,9 +1017,9 @@ def test_assoc_eBounds106_stub_double():
     partner = ecore_ETypeParameter()
     setattr(partner, 'ecore_ETypeParameter107', None)
     _safe_set(owner, 'ecore_EGenericType108', partner)
-    assert getattr(partner, 'ecore_ETypeParameter107') == owner
+    assert owner in getattr(partner, 'ecore_ETypeParameter107')
     _safe_set(owner, 'ecore_EGenericType108', None)
-    assert getattr(partner, 'ecore_ETypeParameter107') is None
+    assert owner not in getattr(partner, 'ecore_ETypeParameter107')
 
 
 def test_assoc_eOperation70_stub_double():
@@ -1107,9 +1107,9 @@ def test_assoc_finalState112_stub_double():
     partner = ecore_FSM()
     setattr(partner, 'ecore_FSM113', None)
     _safe_set(owner, 'ecore_State114', partner)
-    assert getattr(partner, 'ecore_FSM113') == owner
+    assert owner in getattr(partner, 'ecore_FSM113')
     _safe_set(owner, 'ecore_State114', None)
-    assert getattr(partner, 'ecore_FSM113') is None
+    assert owner not in getattr(partner, 'ecore_FSM113')
 
 
 def test_assoc_initialState110_stub_double():
@@ -1152,9 +1152,9 @@ def test_assoc_ownedState109_stub_double():
     partner = ecore_FSM()
     setattr(partner, 'owningFSM', None)
     _safe_set(owner, 'State', partner)
-    assert getattr(partner, 'owningFSM') == owner
+    assert owner in getattr(partner, 'owningFSM')
     _safe_set(owner, 'State', None)
-    assert getattr(partner, 'owningFSM') is None
+    assert owner not in getattr(partner, 'owningFSM')
 
 
 def test_assoc_owningFSM115_stub_double():

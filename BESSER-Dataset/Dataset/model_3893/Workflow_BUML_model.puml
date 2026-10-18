@@ -1,4 +1,8 @@
 @startuml
+' model: workflow
+' project: sampleModel
+' owner: User
+' description: New project
 class CompoundTask {
 }
 class OutputPort {
@@ -65,19 +69,19 @@ WorkflowNode <|-- workflow_CompoundTask
 WorkflowNode <|-- workflow_ConditionalTask
 WorkflowNode <|-- workflow_Task
 WorkflowNode <|-- workflow_TransformationTask
-workflow_Comment "0..9999" --* "1..1" workflow_Workflow : comments3
-workflow_Edge "0..9999" --* "1..1" workflow_Workflow : edges1
-workflow_Edge "0..9999" -- "1..1" workflow_InputPort : edges19
-workflow_Edge "0..9999" -- "1..1" workflow_OutputPort : edges23
-workflow_InputPort "1..9999" --* "1..1" workflow_WorkflowNode : inputs7
-workflow_InputPort "1..1" -- "1..1" workflow_WorkflowNode : node17
-workflow_OutputPort "1..1" -- "1..1" workflow_WorkflowNode : node21
-workflow_Workflow "1..1" *-- "0..9999" workflow_WorkflowNode : nodes0
-workflow_OutputPort "1..9999" --* "1..1" workflow_WorkflowNode : outputs6
-workflow_Edge "1..1" -- "1..1" workflow_OutputPort : source14
-workflow_CompoundTask "1..1" -- "1..1" workflow_Workflow : subworkflow25
-workflow_Edge "1..1" -- "1..1" workflow_InputPort : target11
-workflow_Comment "1..1" -- "1..1" workflow_Workflow : workflow26
-workflow_Workflow "1..1" -- "1..1" workflow_WorkflowNode : workflow5
-workflow_Edge "1..1" -- "1..1" workflow_Workflow : workflow9
+workflow_Comment "workflow4 0..9999" --* "Comment 1..1" workflow_Workflow : comments3
+workflow_Edge "workflow2 0..9999" --* "Edge 1..1" workflow_Workflow : edges1
+workflow_Edge "target 0..9999" -- "Edge20 1..1" workflow_InputPort : edges19
+workflow_Edge "source 0..9999" -- "Edge24 1..1" workflow_OutputPort : edges23
+workflow_InputPort "node8 1..9999" --* "InputPort 1..1" workflow_WorkflowNode : inputs7
+workflow_InputPort "WorkflowNode18 1..1" -- "inputs 1..1" workflow_WorkflowNode : node17
+workflow_OutputPort "WorkflowNode22 1..1" -- "outputs 1..1" workflow_WorkflowNode : node21
+workflow_Workflow "WorkflowNode 1..1" *-- "workflow 0..9999" workflow_WorkflowNode : nodes0
+workflow_OutputPort "node 1..9999" --* "OutputPort 1..1" workflow_WorkflowNode : outputs6
+workflow_Edge "OutputPort16 1..1" -- "edges15 1..1" workflow_OutputPort : source14
+workflow_CompoundTask "workflow_Workflow 1..1" -- "workflow_CompoundTask 1..1" workflow_Workflow : subworkflow25
+workflow_Edge "InputPort13 1..1" -- "edges12 1..1" workflow_InputPort : target11
+workflow_Comment "Workflow27 1..1" -- "comments 1..1" workflow_Workflow : workflow26
+workflow_Workflow "nodes 1..1" -- "Workflow 1..1" workflow_WorkflowNode : workflow5
+workflow_Edge "Workflow10 1..1" -- "edges 1..1" workflow_Workflow : workflow9
 @enduml

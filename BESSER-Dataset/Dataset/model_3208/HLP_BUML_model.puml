@@ -1,4 +1,8 @@
 @startuml
+' model: hlp
+' project: sampleModel
+' owner: User
+' description: New project
 class ArithmeticExpression {
 }
 class AtomicExpression {
@@ -118,32 +122,32 @@ Statement <|-- hlp_SynchronizedStatement
 UnaryExpression <|-- hlp_UnaryMinusExpression
 VariableDeclarationScope <|-- hlp_HighLevelProgram
 VariableDeclarationScope <|-- hlp_Task
-hlp_Block "1..1" --* "1..1" hlp_Loop : block36
-hlp_Block "1..1" --* "1..1" hlp_SynchronizedStatement : block52
-hlp_Block "1..1" --* "1..1" hlp_Task : block57
-hlp_Expression "1..1" --* "1..1" hlp_ForLoop : bound142
-hlp_Expression "1..1" --* "1..1" hlp_ForLoop : bound245
-hlp_Condition "1..1" --* "1..1" hlp_IfStatement : condition26
-hlp_Condition "1..1" --* "1..1" hlp_ConditionalLoop : condition38
-hlp_Block "0..1" --* "1..1" hlp_IfStatement : elseBlock23
-hlp_Expression "1..1" --* "1..1" hlp_ExpressionStatement : expression48
-hlp_Expression "1..1" --* "1..1" hlp_UnaryExpression : expression50
-hlp_Expression "0..1" --* "1..1" hlp_VariableDeclaration : initialValue4
-hlp_BinaryExpression "1..1" *-- "1..1" hlp_Expression : leftHandSide13
-hlp_Condition "1..1" *-- "1..1" hlp_Expression : leftHandSide28
-hlp_Assignment "1..1" *-- "1..1" hlp_VariableReference : leftHandSide6
-hlp_Expression "1..1" --* "1..1" hlp_ParenthesisExpression : operand18
-hlp_BinaryExpression "1..1" *-- "1..1" hlp_Expression : rightHandSide15
-hlp_Condition "1..1" *-- "1..1" hlp_Expression : rightHandSide31
-hlp_Assignment "1..1" *-- "1..1" hlp_Expression : rightHandSide7
-hlp_HighLevelProgram "1..1" *-- "0..1" hlp_ScheduleInstruction : scheduleInstruction1
-hlp_Block "1..1" *-- "0..9999" hlp_Statement : statements20
-hlp_HighLevelProgram "1..1" *-- "0..9999" hlp_Task : tasks0
-hlp_ScheduleInstruction "1..1" -- "1..9999" hlp_Task : tasks60
-hlp_Block "1..1" --* "1..1" hlp_IfStatement : thenBlock21
-hlp_Variable "1..1" -- "1..1" hlp_VariableReference : variable10
-hlp_Variable "1..1" --* "1..1" hlp_VariableDeclaration : variable3
-hlp_VariableDeclaration "0..9999" --* "1..1" hlp_VariableDeclarationScope : variableDeclarations34
-hlp_ForLoop "1..1" *-- "1..1" hlp_VariableReference : variableReference40
-hlp_SynchronizedStatement "1..1" *-- "1..9999" hlp_VariableReference : variableReferences54
+hlp_Block "hlp_Loop 1..1" --* "hlp_Block37 1..1" hlp_Loop : block36
+hlp_Block "hlp_SynchronizedStatement 1..1" --* "hlp_Block53 1..1" hlp_SynchronizedStatement : block52
+hlp_Block "hlp_Task58 1..1" --* "hlp_Block59 1..1" hlp_Task : block57
+hlp_Expression "hlp_ForLoop43 1..1" --* "hlp_Expression44 1..1" hlp_ForLoop : bound142
+hlp_Expression "hlp_ForLoop46 1..1" --* "hlp_Expression47 1..1" hlp_ForLoop : bound245
+hlp_Condition "hlp_IfStatement27 1..1" --* "hlp_Condition 1..1" hlp_IfStatement : condition26
+hlp_Condition "hlp_ConditionalLoop 1..1" --* "hlp_Condition39 1..1" hlp_ConditionalLoop : condition38
+hlp_Block "hlp_IfStatement24 0..1" --* "hlp_Block25 1..1" hlp_IfStatement : elseBlock23
+hlp_Expression "hlp_ExpressionStatement 1..1" --* "hlp_Expression49 1..1" hlp_ExpressionStatement : expression48
+hlp_Expression "hlp_UnaryExpression 1..1" --* "hlp_Expression51 1..1" hlp_UnaryExpression : expression50
+hlp_Expression "hlp_VariableDeclaration5 0..1" --* "hlp_Expression 1..1" hlp_VariableDeclaration : initialValue4
+hlp_BinaryExpression "hlp_Expression14 1..1" *-- "hlp_BinaryExpression 1..1" hlp_Expression : leftHandSide13
+hlp_Condition "hlp_Expression30 1..1" *-- "hlp_Condition29 1..1" hlp_Expression : leftHandSide28
+hlp_Assignment "hlp_VariableReference 1..1" *-- "hlp_Assignment 1..1" hlp_VariableReference : leftHandSide6
+hlp_Expression "hlp_ParenthesisExpression 1..1" --* "hlp_Expression19 1..1" hlp_ParenthesisExpression : operand18
+hlp_BinaryExpression "hlp_Expression17 1..1" *-- "hlp_BinaryExpression16 1..1" hlp_Expression : rightHandSide15
+hlp_Condition "hlp_Expression33 1..1" *-- "hlp_Condition32 1..1" hlp_Expression : rightHandSide31
+hlp_Assignment "hlp_Expression9 1..1" *-- "hlp_Assignment8 1..1" hlp_Expression : rightHandSide7
+hlp_HighLevelProgram "hlp_ScheduleInstruction 1..1" *-- "hlp_HighLevelProgram2 0..1" hlp_ScheduleInstruction : scheduleInstruction1
+hlp_Block "hlp_Statement 1..1" *-- "hlp_Block 0..9999" hlp_Statement : statements20
+hlp_HighLevelProgram "hlp_Task 1..1" *-- "hlp_HighLevelProgram 0..9999" hlp_Task : tasks0
+hlp_ScheduleInstruction "hlp_Task62 1..1" -- "hlp_ScheduleInstruction61 1..9999" hlp_Task : tasks60
+hlp_Block "hlp_IfStatement 1..1" --* "hlp_Block22 1..1" hlp_IfStatement : thenBlock21
+hlp_Variable "hlp_VariableReference11 1..1" -- "hlp_Variable12 1..1" hlp_VariableReference : variable10
+hlp_Variable "hlp_VariableDeclaration 1..1" --* "hlp_Variable 1..1" hlp_VariableDeclaration : variable3
+hlp_VariableDeclaration "hlp_VariableDeclarationScope 0..9999" --* "hlp_VariableDeclaration35 1..1" hlp_VariableDeclarationScope : variableDeclarations34
+hlp_ForLoop "hlp_VariableReference41 1..1" *-- "hlp_ForLoop 1..1" hlp_VariableReference : variableReference40
+hlp_SynchronizedStatement "hlp_VariableReference56 1..1" *-- "hlp_SynchronizedStatement55 1..9999" hlp_VariableReference : variableReferences54
 @enduml

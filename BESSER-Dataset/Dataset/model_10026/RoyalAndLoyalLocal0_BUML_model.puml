@@ -1,9 +1,16 @@
 @startuml
+' model: RoyalAndLoyal
+' project: sampleModel
+' owner: User
+' description: New project
 class RoyalAndLoyal_Container_RandL {
 }
 class RoyalAndLoyal_Customer {
   + name : str
   + updateName(RoyalAndLoyal_name : str) : void
 }
-RoyalAndLoyal_Container_RandL "1..1" *-- "0..9999" RoyalAndLoyal_Customer : ref_RandL_Customer0
+RoyalAndLoyal_Container_RandL "RoyalAndLoyal_Customer 1..1" *-- "RoyalAndLoyal_Container_RandL 0..9999" RoyalAndLoyal_Customer : ref_RandL_Customer0
+note top of RoyalAndLoyal_Customer
+  constraint invariant_UniqueName (OCL): context Customer inv: Customer.allInstances()->forAll(c1, c2 : Customer| c1.name = c2.name implies c1 = c2)
+end note
 @enduml

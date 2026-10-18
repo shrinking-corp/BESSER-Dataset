@@ -174,28 +174,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=g_X_strategy)
-@settings(max_examples=30)
-def test_hyp_g_x_foo_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.foo()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.foo).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'foo' in g_X is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'foo' in g_X did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'foo' in g_X is not implemented or raised an error")
 
 
 
@@ -231,28 +209,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=g_A_strategy)
-@settings(max_examples=30)
-def test_hyp_g_a_bar_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.bar()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.bar).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'bar' in g_A is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'bar' in g_A did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'bar' in g_A is not implemented or raised an error")
 
 
 # ----- SECTION B: test_structural_full.py (deterministic-first suite) -----
@@ -554,7 +510,6 @@ from python_code import g_C
 
 def test_g_C___init__():
     assert g_C.__init__(g_C(''), '') == None
-
 from python_code import g_X
 
 def test_g_X___init__():

@@ -1,4 +1,8 @@
 @startuml
+' model: Families
+' project: sampleModel
+' owner: User
+' description: New project
 class Families_Family {
   + address : str
   + lastName : str
@@ -72,20 +76,20 @@ uncertainty_aFamilyRegistry <|-- Families_FamilyRegistry
 uncertainty_aFamilyRegistry <|-- Families_uncertainty_uFamilyRegistry
 uncertainty_aMember <|-- Families_Member
 uncertainty_aMember <|-- Families_uncertainty_uMember
-Families_Family "1..1" *-- "0..9999" aMember : children0
-Families_uncertainty_ModelElement "1..1" -- "0..9999" ModelElement : exclude11
-Families_FamilyRegistry "1..1" *-- "0..9999" aFamily : families8
-Families_Family "1..1" *-- "0..1" aMember : father4
-Families_Member "1..1" -- "0..1" aFamily : guardian7
-Families_uncertainty_ModelElement "1..1" -- "0..9999" ModelElement : include10
-Families_Family "1..1" *-- "0..1" aMember : mother1
-Families_uncertainty_uFamily "1..1" *-- "0..9999" uncertainty_Families_Family : uleft14
-Families_uncertainty_uMember "1..1" *-- "0..9999" uncertainty_Families_Member : uleft20
-Families_uncertainty_uFamilyRegistry "1..1" *-- "0..9999" uncertainty_Families_FamilyRegistry : uleft26
-Families_uncertainty_uFamily "1..1" *-- "0..9999" uFamily : upoint18
-Families_uncertainty_uMember "1..1" *-- "0..9999" uMember : upoint24
-Families_uncertainty_uFamilyRegistry "1..1" *-- "0..9999" uFamilyRegistry : upoint30
-Families_uncertainty_uFamily "1..1" *-- "0..9999" uncertainty_Families_Family : uright15
-Families_uncertainty_uMember "1..1" *-- "0..9999" uncertainty_Families_Member : uright21
-Families_uncertainty_uFamilyRegistry "1..1" *-- "0..9999" uncertainty_Families_FamilyRegistry : uright27
+Families_Family "aMember 1..1" *-- "Families_Family 0..9999" aMember : children0
+Families_uncertainty_ModelElement "ModelElement13 1..1" -- "Families_uncertainty_ModelElement12 0..9999" ModelElement : exclude11
+Families_FamilyRegistry "aFamily9 1..1" *-- "Families_FamilyRegistry 0..9999" aFamily : families8
+Families_Family "aMember6 1..1" *-- "Families_Family5 0..1" aMember : father4
+Families_Member "aFamily 1..1" -- "Families_Member 0..1" aFamily : guardian7
+Families_uncertainty_ModelElement "ModelElement 1..1" -- "Families_uncertainty_ModelElement 0..9999" ModelElement : include10
+Families_Family "aMember3 1..1" *-- "Families_Family2 0..1" aMember : mother1
+Families_uncertainty_uFamily "uncertainty_Families_Family 1..1" *-- "Families_uncertainty_uFamily 0..9999" uncertainty_Families_Family : uleft14
+Families_uncertainty_uMember "uncertainty_Families_Member 1..1" *-- "Families_uncertainty_uMember 0..9999" uncertainty_Families_Member : uleft20
+Families_uncertainty_uFamilyRegistry "uncertainty_Families_FamilyRegistry 1..1" *-- "Families_uncertainty_uFamilyRegistry 0..9999" uncertainty_Families_FamilyRegistry : uleft26
+Families_uncertainty_uFamily "uFamily 1..1" *-- "Families_uncertainty_uFamily19 0..9999" uFamily : upoint18
+Families_uncertainty_uMember "uMember 1..1" *-- "Families_uncertainty_uMember25 0..9999" uMember : upoint24
+Families_uncertainty_uFamilyRegistry "uFamilyRegistry 1..1" *-- "Families_uncertainty_uFamilyRegistry31 0..9999" uFamilyRegistry : upoint30
+Families_uncertainty_uFamily "uncertainty_Families_Family17 1..1" *-- "Families_uncertainty_uFamily16 0..9999" uncertainty_Families_Family : uright15
+Families_uncertainty_uMember "uncertainty_Families_Member23 1..1" *-- "Families_uncertainty_uMember22 0..9999" uncertainty_Families_Member : uright21
+Families_uncertainty_uFamilyRegistry "uncertainty_Families_FamilyRegistry29 1..1" *-- "Families_uncertainty_uFamilyRegistry28 0..9999" uncertainty_Families_FamilyRegistry : uright27
 @enduml

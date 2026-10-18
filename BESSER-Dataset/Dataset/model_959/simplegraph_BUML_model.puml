@@ -1,4 +1,8 @@
 @startuml
+' model: simplegraph
+' project: sampleModel
+' owner: User
+' description: New project
 class simplegraph_Edge {
 }
 class simplegraph_Graph {
@@ -6,9 +10,9 @@ class simplegraph_Graph {
 class simplegraph_Node {
   + name : str
 }
-simplegraph_Edge "0..9999" -- "1..1" simplegraph_Node : incoming2
-simplegraph_Graph "1..1" *-- "0..9999" simplegraph_Node : nodes0
-simplegraph_Edge "0..9999" --* "1..1" simplegraph_Node : outgoing1
-simplegraph_Edge "1..1" -- "0..1" simplegraph_Node : source4
-simplegraph_Edge "1..1" -- "0..1" simplegraph_Node : target5
+simplegraph_Edge "target 0..9999" -- "Edge3 1..1" simplegraph_Node : incoming2
+simplegraph_Graph "simplegraph_Node 1..1" *-- "simplegraph_Graph 0..9999" simplegraph_Node : nodes0
+simplegraph_Edge "source 0..9999" --* "Edge 1..1" simplegraph_Node : outgoing1
+simplegraph_Edge "Node 1..1" -- "outgoing 0..1" simplegraph_Node : source4
+simplegraph_Edge "Node6 1..1" -- "incoming 0..1" simplegraph_Node : target5
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: library
+' project: sampleModel
+' owner: User
+' description: New project
 class library_Book {
   + name : str
 }
@@ -15,9 +19,9 @@ class library_Library {
 }
 class library_Text {
 }
-library_Book "0..9999" --* "1..1" library_Library : books0
-library_Book "1..1" *-- "0..9999" library_Chapter : chapters1
-library_Chapter "1..1" *-- "1..1" library_Content : content3
-library_Content "1..1" *-- "0..9999" library_Image : images7
-library_Content "1..1" *-- "0..9999" library_Text : text5
+library_Book "library_Library 0..9999" --* "library_Book 1..1" library_Library : books0
+library_Book "library_Chapter 1..1" *-- "library_Book2 0..9999" library_Chapter : chapters1
+library_Chapter "library_Content 1..1" *-- "library_Chapter4 1..1" library_Content : content3
+library_Content "library_Image 1..1" *-- "library_Content8 0..9999" library_Image : images7
+library_Content "library_Text 1..1" *-- "library_Content6 0..9999" library_Text : text5
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: tp4
+' project: sampleModel
+' owner: User
+' description: New project
 class Counted {
 }
 class Labelled {
@@ -67,26 +71,26 @@ Named <|-- tp4_PublicationProcess
 Named <|-- tp4_PublicationStructure
 Named <|-- tp4_PublicationSystem
 Named <|-- tp4_ReviewNote
-tp4_Keyword "0..9999" --* "1..1" tp4_PublicationSystem : allKeywords39
-tp4_Paper "1..1" -- "0..9999" tp4_Researcher : authors11
-tp4_Keyword "0..9999" -- "1..1" tp4_Paper : keywords12
-tp4_Paper "0..1" -- "1..1" tp4_Progress : paper18
-tp4_Paper "0..9999" --* "1..1" tp4_PublicationStructure : papers28
-tp4_Paragraph "0..1" -- "1..1" tp4_Write : paragraph20
-tp4_Paper "1..1" *-- "0..9999" tp4_Paragraph : paragraphs9
-tp4_Position "0..1" -- "1..1" tp4_Position : parent43
-tp4_Phases "0..9999" --* "1..1" tp4_PublicationProcess : phases0
-tp4_Position "0..1" -- "1..1" tp4_Researcher : position7
-tp4_Position "0..9999" --* "1..1" tp4_PublicationSystem : positions36
-tp4_Progress "1..1" -- "0..1" tp4_PublicationProcess : process16
-tp4_PublicationProcess "0..1" --* "1..1" tp4_PublicationSystem : processView31
-tp4_Paper "1..1" *-- "0..9999" tp4_Progress : progress10
-tp4_Paper "0..9999" -- "1..1" tp4_Researcher : res_papers4
-tp4_PublicationStructure "1..1" *-- "0..9999" tp4_Researcher : researchers26
-tp4_Review "1..1" -- "0..1" tp4_ReviewNote : reviewNote23
-tp4_Paragraph "1..1" *-- "0..9999" tp4_ReviewNote : reviews14
-tp4_Researcher "1..1" *-- "0..9999" tp4_Review : reviews2
-tp4_Researcher "1..1" *-- "0..9999" tp4_Skill : skills5
-tp4_PublicationStructure "0..1" --* "1..1" tp4_PublicationSystem : structuralView33
-tp4_Researcher "1..1" *-- "0..9999" tp4_Write : writes1
+tp4_Keyword "tp4_PublicationSystem40 0..9999" --* "tp4_Keyword41 1..1" tp4_PublicationSystem : allKeywords39
+tp4_Paper "Researcher 1..1" -- "res_papers 0..9999" tp4_Researcher : authors11
+tp4_Keyword "tp4_Paper13 0..9999" -- "tp4_Keyword 1..1" tp4_Paper : keywords12
+tp4_Paper "progress 0..1" -- "Paper19 1..1" tp4_Progress : paper18
+tp4_Paper "tp4_PublicationStructure29 0..9999" --* "tp4_Paper30 1..1" tp4_PublicationStructure : papers28
+tp4_Paragraph "tp4_Write21 0..1" -- "tp4_Paragraph22 1..1" tp4_Write : paragraph20
+tp4_Paper "tp4_Paragraph 1..1" *-- "tp4_Paper 0..9999" tp4_Paragraph : paragraphs9
+tp4_Position "tp4_Position42 0..1" -- "tp4_Position44 1..1" tp4_Position : parent43
+tp4_Phases "tp4_PublicationProcess 0..9999" --* "tp4_Phases 1..1" tp4_PublicationProcess : phases0
+tp4_Position "tp4_Researcher8 0..1" -- "tp4_Position 1..1" tp4_Researcher : position7
+tp4_Position "tp4_PublicationSystem37 0..9999" --* "tp4_Position38 1..1" tp4_PublicationSystem : positions36
+tp4_Progress "tp4_PublicationProcess17 1..1" -- "tp4_Progress 0..1" tp4_PublicationProcess : process16
+tp4_PublicationProcess "tp4_PublicationSystem 0..1" --* "tp4_PublicationProcess32 1..1" tp4_PublicationSystem : processView31
+tp4_Paper "Progress 1..1" *-- "paper 0..9999" tp4_Progress : progress10
+tp4_Paper "authors 0..9999" -- "Paper 1..1" tp4_Researcher : res_papers4
+tp4_PublicationStructure "tp4_Researcher27 1..1" *-- "tp4_PublicationStructure 0..9999" tp4_Researcher : researchers26
+tp4_Review "tp4_ReviewNote25 1..1" -- "tp4_Review24 0..1" tp4_ReviewNote : reviewNote23
+tp4_Paragraph "tp4_ReviewNote 1..1" *-- "tp4_Paragraph15 0..9999" tp4_ReviewNote : reviews14
+tp4_Researcher "tp4_Review 1..1" *-- "tp4_Researcher3 0..9999" tp4_Review : reviews2
+tp4_Researcher "tp4_Skill 1..1" *-- "tp4_Researcher6 0..9999" tp4_Skill : skills5
+tp4_PublicationStructure "tp4_PublicationSystem34 0..1" --* "tp4_PublicationStructure35 1..1" tp4_PublicationSystem : structuralView33
+tp4_Researcher "tp4_Write 1..1" *-- "tp4_Researcher 0..9999" tp4_Write : writes1
 @enduml

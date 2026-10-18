@@ -1,4 +1,8 @@
 @startuml
+' model: company
+' project: sampleModel
+' owner: User
+' description: New project
 class Addressable {
 }
 class Order {
@@ -45,19 +49,19 @@ Addressable <|-- company_Customer
 Addressable <|-- company_Supplier
 Order <|-- company_PurchaseOrder
 Order <|-- company_SalesOrder
-company_Category "0..9999" --* "1..1" company_Company : categories0
-company_Category "0..9999" --* "1..1" company_Category : categories18
-company_Customer "1..1" -- "1..1" company_SalesOrder : customer16
-company_Company "1..1" *-- "0..9999" company_Customer : customers3
-company_Order "1..1" -- "1..1" company_OrderDetail : order12
-company_Order "1..1" *-- "0..9999" company_OrderDetail : orderDetails11
-company_OrderDetail "0..9999" -- "1..1" company_Product : orderDetails22
-company_OrderDetail "1..1" -- "0..1" company_Product : product13
-company_Category "1..1" *-- "0..9999" company_Product : products20
-company_Company "1..1" *-- "0..9999" company_PurchaseOrder : purchaseOrders5
-company_PurchaseOrder "0..9999" -- "1..1" company_Supplier : purchaseOrders9
-company_Customer "1..1" -- "0..9999" company_SalesOrder : salesOrders10
-company_Company "1..1" *-- "0..9999" company_SalesOrder : salesOrders7
-company_PurchaseOrder "1..1" -- "1..1" company_Supplier : supplier15
-company_Company "1..1" *-- "0..9999" company_Supplier : suppliers1
+company_Category "company_Company 0..9999" --* "company_Category 1..1" company_Company : categories0
+company_Category "company_Category17 0..9999" --* "company_Category19 1..1" company_Category : categories18
+company_Customer "salesOrders 1..1" -- "Customer 1..1" company_SalesOrder : customer16
+company_Company "company_Customer 1..1" *-- "company_Company4 0..9999" company_Customer : customers3
+company_Order "orderDetails 1..1" -- "Order 1..1" company_OrderDetail : order12
+company_Order "OrderDetail 1..1" *-- "order 0..9999" company_OrderDetail : orderDetails11
+company_OrderDetail "product 0..9999" -- "OrderDetail23 1..1" company_Product : orderDetails22
+company_OrderDetail "Product 1..1" -- "orderDetails14 0..1" company_Product : product13
+company_Category "company_Product 1..1" *-- "company_Category21 0..9999" company_Product : products20
+company_Company "company_PurchaseOrder 1..1" *-- "company_Company6 0..9999" company_PurchaseOrder : purchaseOrders5
+company_PurchaseOrder "supplier 0..9999" -- "PurchaseOrder 1..1" company_Supplier : purchaseOrders9
+company_Customer "SalesOrder 1..1" -- "customer 0..9999" company_SalesOrder : salesOrders10
+company_Company "company_SalesOrder 1..1" *-- "company_Company8 0..9999" company_SalesOrder : salesOrders7
+company_PurchaseOrder "Supplier 1..1" -- "purchaseOrders 1..1" company_Supplier : supplier15
+company_Company "company_Supplier 1..1" *-- "company_Company2 0..9999" company_Supplier : suppliers1
 @enduml

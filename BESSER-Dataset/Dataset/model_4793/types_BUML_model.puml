@@ -1,4 +1,8 @@
 @startuml
+' model: types
+' project: sampleModel
+' owner: User
+' description: New project
 class CaseLabel {
 }
 class Declarator {
@@ -142,21 +146,21 @@ TemplateType <|-- types_SequenceType
 TemplateType <|-- types_WString
 Typed <|-- types_SequenceType
 TypedElement <|-- types_TypeDef
-types_Case "0..9999" --* "1..1" types_Switch : cases4
-types_Declarator "0..1" --* "1..1" types_ElementSpec : declarator14
-types_EnumType "1..1" *-- "0..9999" types_Enumeration : enumerators16
-types_ExprCaseLabel "1..1" *-- "0..1" types_Expression : expr10
-types_Expression "0..1" --* "1..1" types_FixedPtType : expr125
-types_Expression "0..1" --* "1..1" types_FixedPtType : expr227
-types_UnionForwardDcl "0..1" -- "1..1" types_UnionType : forwardDcl0
-types_StructForwardDcl "0..1" -- "1..1" types_StructType : forwardDcl18
-types_ForwardDcl "0..1" --* "1..1" types_StructType : forwardDeclaration17
-types_Switch "0..1" --* "1..1" types_UnionType : idlSwitch1
-types_UnionForwardDcl "1..1" -- "0..1" types_UnionType : implementation22
-types_StructForwardDcl "1..1" -- "0..1" types_StructType : implementation23
-types_Case "1..1" *-- "0..9999" types_CaseLabel : labels6
-types_Expression "0..1" --* "1..1" types_TemplateType : size20
-types_Case "1..1" *-- "0..1" types_ElementSpec : spec8
-types_ElementSpec "1..1" -- "0..1" types_IdlType : type11
-types_IdlType "0..1" -- "1..1" types_Switch : type2
+types_Case "types_Switch5 0..9999" --* "types_Case 1..1" types_Switch : cases4
+types_Declarator "types_ElementSpec15 0..1" --* "types_Declarator 1..1" types_ElementSpec : declarator14
+types_EnumType "types_Enumeration 1..1" *-- "types_EnumType 0..9999" types_Enumeration : enumerators16
+types_ExprCaseLabel "types_Expression 1..1" *-- "types_ExprCaseLabel 0..1" types_Expression : expr10
+types_Expression "types_FixedPtType 0..1" --* "types_Expression26 1..1" types_FixedPtType : expr125
+types_Expression "types_FixedPtType28 0..1" --* "types_Expression29 1..1" types_FixedPtType : expr227
+types_UnionForwardDcl "implementation 0..1" -- "UnionForwardDcl 1..1" types_UnionType : forwardDcl0
+types_StructForwardDcl "implementation19 0..1" -- "StructForwardDcl 1..1" types_StructType : forwardDcl18
+types_ForwardDcl "types_StructType 0..1" --* "types_ForwardDcl 1..1" types_StructType : forwardDeclaration17
+types_Switch "types_UnionType 0..1" --* "types_Switch 1..1" types_UnionType : idlSwitch1
+types_UnionForwardDcl "UnionType 1..1" -- "forwardDcl 0..1" types_UnionType : implementation22
+types_StructForwardDcl "StructType 1..1" -- "forwardDcl24 0..1" types_StructType : implementation23
+types_Case "types_CaseLabel 1..1" *-- "types_Case7 0..9999" types_CaseLabel : labels6
+types_Expression "types_TemplateType 0..1" --* "types_Expression21 1..1" types_TemplateType : size20
+types_Case "types_ElementSpec 1..1" *-- "types_Case9 0..1" types_ElementSpec : spec8
+types_ElementSpec "types_IdlType13 1..1" -- "types_ElementSpec12 0..1" types_IdlType : type11
+types_IdlType "types_Switch3 0..1" -- "types_IdlType 1..1" types_Switch : type2
 @enduml

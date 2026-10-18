@@ -1,4 +1,8 @@
 @startuml
+' model: sgraph
+' project: sampleModel
+' owner: User
+' description: New project
 enum ChoiceKind {
   dynamic
   static
@@ -116,22 +120,22 @@ SpecificationElement <|-- sgraph_Statechart
 SpecificationElement <|-- sgraph_Transition
 Vertex <|-- sgraph_Pseudostate
 Vertex <|-- sgraph_RegularState
-sgraph_CompositeElement "1..1" -- "1..1" sgraph_Region : composite5
-sgraph_Declaration "0..1" -- "1..1" sgraph_ImportDeclaration : declaration29
-sgraph_Declaration "0..9999" --* "1..1" sgraph_Scope : declarations17
-sgraph_Effect "0..1" --* "1..1" sgraph_Reaction : effect13
-sgraph_Event "0..9999" -- "1..1" sgraph_Scope : events18
-sgraph_Transition "0..9999" -- "1..1" sgraph_Vertex : incomingTransitions1
-sgraph_Reaction "0..9999" -- "1..1" sgraph_ReactiveElement : localReactions10
-sgraph_Transition "0..9999" --* "1..1" sgraph_Vertex : outgoingTransitions2
-sgraph_Region "1..1" -- "1..1" sgraph_Vertex : parentRegion0
-sgraph_Reaction "1..1" *-- "0..9999" sgraph_ReactionProperty : properties15
-sgraph_Reaction "0..9999" --* "1..1" sgraph_Scope : reactions22
-sgraph_CompositeElement "1..1" *-- "0..9999" sgraph_Region : regions27
-sgraph_Scope "0..9999" --* "1..1" sgraph_ScopedElement : scopes25
-sgraph_Transition "1..1" -- "1..1" sgraph_Vertex : source8
-sgraph_Transition "1..1" -- "1..1" sgraph_Vertex : target6
-sgraph_Reaction "1..1" *-- "0..1" sgraph_Trigger : trigger11
-sgraph_Property "0..9999" -- "1..1" sgraph_Scope : variables20
-sgraph_Region "1..1" *-- "0..9999" sgraph_Vertex : vertices4
+sgraph_CompositeElement "regions 1..1" -- "CompositeElement 1..1" sgraph_Region : composite5
+sgraph_Declaration "sgraph_ImportDeclaration 0..1" -- "sgraph_Declaration30 1..1" sgraph_ImportDeclaration : declaration29
+sgraph_Declaration "sgraph_Scope 0..9999" --* "sgraph_Declaration 1..1" sgraph_Scope : declarations17
+sgraph_Effect "sgraph_Reaction14 0..1" --* "sgraph_Effect 1..1" sgraph_Reaction : effect13
+sgraph_Event "sgraph_Scope19 0..9999" -- "sgraph_Event 1..1" sgraph_Scope : events18
+sgraph_Transition "target 0..9999" -- "Transition 1..1" sgraph_Vertex : incomingTransitions1
+sgraph_Reaction "sgraph_ReactiveElement 0..9999" -- "sgraph_Reaction 1..1" sgraph_ReactiveElement : localReactions10
+sgraph_Transition "source 0..9999" --* "Transition3 1..1" sgraph_Vertex : outgoingTransitions2
+sgraph_Region "vertices 1..1" -- "Region 1..1" sgraph_Vertex : parentRegion0
+sgraph_Reaction "sgraph_ReactionProperty 1..1" *-- "sgraph_Reaction16 0..9999" sgraph_ReactionProperty : properties15
+sgraph_Reaction "sgraph_Scope23 0..9999" --* "sgraph_Reaction24 1..1" sgraph_Scope : reactions22
+sgraph_CompositeElement "Region28 1..1" *-- "composite 0..9999" sgraph_Region : regions27
+sgraph_Scope "sgraph_ScopedElement 0..9999" --* "sgraph_Scope26 1..1" sgraph_ScopedElement : scopes25
+sgraph_Transition "Vertex9 1..1" -- "outgoingTransitions 1..1" sgraph_Vertex : source8
+sgraph_Transition "Vertex7 1..1" -- "incomingTransitions 1..1" sgraph_Vertex : target6
+sgraph_Reaction "sgraph_Trigger 1..1" *-- "sgraph_Reaction12 0..1" sgraph_Trigger : trigger11
+sgraph_Property "sgraph_Scope21 0..9999" -- "sgraph_Property 1..1" sgraph_Scope : variables20
+sgraph_Region "Vertex 1..1" *-- "parentRegion 0..9999" sgraph_Vertex : vertices4
 @enduml

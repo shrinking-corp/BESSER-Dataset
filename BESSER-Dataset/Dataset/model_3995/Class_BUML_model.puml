@@ -1,4 +1,8 @@
 @startuml
+' model: CLASS
+' project: sampleModel
+' owner: User
+' description: New project
 class CLASS_Attribute {
   + multiValued : bool
 }
@@ -23,10 +27,10 @@ Classifier <|-- CLASS_Class
 Classifier <|-- CLASS_DataType
 NamedElement <|-- CLASS_Attribute
 NamedElement <|-- CLASS_Classifier
-CLASS_Attribute "0..9999" --* "1..1" CLASS_Class : attributes3
-CLASS_NamedElement "0..9999" --* "1..1" CLASS_System : elements6
-CLASS_Attribute "1..1" -- "0..1" CLASS_Class : owner5
-CLASS_Class "1..1" -- "0..1" CLASS_Class : super2
-CLASS_NamedElement "1..1" -- "0..1" CLASS_System : system0
-CLASS_Attribute "1..1" -- "0..1" CLASS_Classifier : type4
+CLASS_Attribute "owner 0..9999" --* "Attribute 1..1" CLASS_Class : attributes3
+CLASS_NamedElement "system 0..9999" --* "NamedElement 1..1" CLASS_System : elements6
+CLASS_Attribute "Class 1..1" -- "attributes 0..1" CLASS_Class : owner5
+CLASS_Class "CLASS_Class 1..1" -- "CLASS_Class1 0..1" CLASS_Class : super2
+CLASS_NamedElement "System 1..1" -- "elements 0..1" CLASS_System : system0
+CLASS_Attribute "CLASS_Classifier 1..1" -- "CLASS_Attribute 0..1" CLASS_Classifier : type4
 @enduml

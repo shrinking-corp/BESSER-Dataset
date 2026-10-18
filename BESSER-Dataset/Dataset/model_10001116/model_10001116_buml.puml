@@ -1,4 +1,8 @@
 @startuml
+' model: _87548082_5ccd_449b_ab02_102e7e1d3499
+' project: sampleModel
+' owner: User
+' description: New project
 class Bill {
   + Amount : str
   + BillNo : str
@@ -34,11 +38,11 @@ class Staff {
   + Name : str
   + Type : str
 }
-Deparment "0..1" -- "0..1" Doctor : Doctor_Deparment
-Doctor "0..1" -- "0..1" Patient : Doctor_Patient
-Bill "0..1" -- "0..1" Patient : Patient_Bill
-Patient "0..1" -- "0..1" Receptionsit : Patient_Receptionsit
-Patient "0..1" -- "0..1" Rooms : Patient_Rooms
-Patient "0..1" -- "0..1" Staff : Patient_Staff
-Bill "0..1" -- "0..1" Receptionsit : Receptionsit_Bill
+Deparment "Belongs_To8 0..1" -- "doctor9 0..1" Doctor : Doctor_Deparment
+Doctor "doctor1 0..1" -- "Checks0 0..1" Patient : Doctor_Patient
+Bill "Pay_Bill4 0..1" -- "patient5 0..1" Patient : Patient_Bill
+Patient "patient3 0..1" -- "Give_Appointment2 0..1" Receptionsit : Patient_Receptionsit
+Patient "patient11 0..1" -- "Alloted_To10 0..1" Rooms : Patient_Rooms
+Patient "Do_Cleaning13 0..1" -- "staff12 0..1" Staff : Patient_Staff
+Bill "Generate_Bills6 0..1" -- "receptionsit7 0..1" Receptionsit : Receptionsit_Bill
 @enduml

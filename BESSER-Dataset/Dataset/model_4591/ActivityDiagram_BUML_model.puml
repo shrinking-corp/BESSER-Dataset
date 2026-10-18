@@ -1,4 +1,8 @@
 @startuml
+' model: activitydiagram
+' project: sampleModel
+' owner: User
+' description: New project
 class ADElement {
 }
 class ActivityNode {
@@ -81,10 +85,10 @@ ObjectNode <|-- activitydiagram_ActivityParameterNode
 ObjectNode <|-- activitydiagram_DataStoreNode
 ObjectNode <|-- activitydiagram_ExpansionNode
 ObjectNode <|-- activitydiagram_Pin
-activitydiagram_ADElement "1..1" -- "1..1" activitydiagram_Activity : activityDiag1
-activitydiagram_ADElement "0..9999" --* "1..1" activitydiagram_Activity : contains0
-activitydiagram_ActivityEdge "0..9999" -- "1..1" activitydiagram_ActivityNode : sedges2
-activitydiagram_ActivityEdge "1..1" -- "1..1" activitydiagram_ActivityNode : source5
-activitydiagram_ActivityEdge "1..1" -- "1..1" activitydiagram_ActivityNode : target6
-activitydiagram_ActivityEdge "0..9999" -- "1..1" activitydiagram_ActivityNode : tedges3
+activitydiagram_ADElement "Activity 1..1" -- "contains 1..1" activitydiagram_Activity : activityDiag1
+activitydiagram_ADElement "activityDiag 0..9999" --* "ADElement 1..1" activitydiagram_Activity : contains0
+activitydiagram_ActivityEdge "source 0..9999" -- "ActivityEdge 1..1" activitydiagram_ActivityNode : sedges2
+activitydiagram_ActivityEdge "ActivityNode 1..1" -- "sedges 1..1" activitydiagram_ActivityNode : source5
+activitydiagram_ActivityEdge "ActivityNode7 1..1" -- "tedges 1..1" activitydiagram_ActivityNode : target6
+activitydiagram_ActivityEdge "target 0..9999" -- "ActivityEdge4 1..1" activitydiagram_ActivityNode : tedges3
 @enduml

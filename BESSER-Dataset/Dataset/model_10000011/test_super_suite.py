@@ -580,9 +580,9 @@ def test_assoc_Home_Security_Camera_stub_double():
     partner = Home_Security()
     setattr(partner, 'camera2', None)
     _safe_set(owner, 'home_Security3', partner)
-    assert getattr(partner, 'camera2') == owner
+    assert owner in getattr(partner, 'camera2')
     _safe_set(owner, 'home_Security3', None)
-    assert getattr(partner, 'camera2') is None
+    assert owner not in getattr(partner, 'camera2')
 
 
 def test_assoc_Home_Security_Doors_stub_double():
@@ -610,9 +610,9 @@ def test_assoc_Home_Security_Event_Log_stub_double():
     partner = Home_Security()
     setattr(partner, 'event_Log4', None)
     _safe_set(owner, 'home_Security5', partner)
-    assert getattr(partner, 'event_Log4') == owner
+    assert owner in getattr(partner, 'event_Log4')
     _safe_set(owner, 'home_Security5', None)
-    assert getattr(partner, 'event_Log4') is None
+    assert owner not in getattr(partner, 'event_Log4')
 
 
 def test_assoc_Home_Security_Light_Sensor_stub_double():
@@ -625,9 +625,9 @@ def test_assoc_Home_Security_Light_Sensor_stub_double():
     partner = Home_Security()
     setattr(partner, 'light_Sensor6', None)
     _safe_set(owner, 'home_Security7', partner)
-    assert getattr(partner, 'light_Sensor6') == owner
+    assert owner in getattr(partner, 'light_Sensor6')
     _safe_set(owner, 'home_Security7', None)
-    assert getattr(partner, 'light_Sensor6') is None
+    assert owner not in getattr(partner, 'light_Sensor6')
 
 
 def test_assoc_Home_Security_Server_stub_double():
@@ -655,9 +655,9 @@ def test_assoc_Home_Security_Temperature_sensor_stub_double():
     partner = Home_Security()
     setattr(partner, 'temperature_sensor10', None)
     _safe_set(owner, 'home_Security11', partner)
-    assert getattr(partner, 'temperature_sensor10') == owner
+    assert owner in getattr(partner, 'temperature_sensor10')
     _safe_set(owner, 'home_Security11', None)
-    assert getattr(partner, 'temperature_sensor10') is None
+    assert owner not in getattr(partner, 'temperature_sensor10')
 
 
 
@@ -667,31 +667,26 @@ from python_code import Home_Security
 
 def test_Camera_sensor___init__():
     assert Camera_sensor.__init__(Camera_sensor(0, 0, home_Security3=Home_Security()), 0, 0, home_Security3=Home_Security()) == None
-
 from python_code import Event_Log
 from python_code import Home_Security
 
 def test_Event_Log___init__():
     assert Event_Log.__init__(Event_Log('', home_Security5=Home_Security()), '', home_Security5=Home_Security()) == None
-
 from python_code import Home_Security
 from python_code import Light_Sensor
 
 def test_Light_Sensor___init__():
     assert Light_Sensor.__init__(Light_Sensor('', home_Security7=Home_Security()), '', home_Security7=Home_Security()) == None
-
 from python_code import Home_Security
 from python_code import Lock_doors_sensors
 
 def test_Lock_doors_sensors___init__():
     assert Lock_doors_sensors.__init__(Lock_doors_sensors('', home_Security9=Home_Security()), '', home_Security9=Home_Security()) == None
-
 from python_code import Home_Security
 from python_code import Server
 
 def test_Server___init__():
     assert Server.__init__(Server('', home_Security1=Home_Security()), '', home_Security1=Home_Security()) == None
-
 from python_code import Home_Security
 from python_code import Temperature_sensor
 

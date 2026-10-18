@@ -1,4 +1,8 @@
 @startuml
+' model: cbpmn
+' project: sampleModel
+' owner: User
+' description: New project
 enum ActivityType {
   BUSINESSRULE
   MANUAL
@@ -89,29 +93,29 @@ FlowNode <|-- cbpmn_SplitGateway
 OCLConstraint <|-- cbpmn_DecisionCondition
 SplitGateway <|-- cbpmn_DecisionGateway
 SplitGateway <|-- cbpmn_ParallelGateway
-cbpmn_Branch "1..1" -- "1..1" cbpmn_DecisionCondition : branch21
-cbpmn_Branch "0..1" -- "1..1" cbpmn_FlowNode : branch24
-cbpmn_Branch "0..9999" --* "1..1" cbpmn_SplitGateway : branches33
-cbpmn_DecisionCondition "1..9999" --* "1..1" cbpmn_DecisionGateway : conditions19
-cbpmn_DataObjectReference "1..1" -- "1..1" cbpmn_EClass : dataObjectClass35
-cbpmn_EObject "0..9999" --* "1..1" cbpmn_ProcessInstance : dataObjects40
-cbpmn_Branch "1..1" -- "0..1" cbpmn_DecisionCondition : entryConditions16
-cbpmn_FlowNodeInstance "0..9999" --* "1..1" cbpmn_ProcessInstance : executedNodes39
-cbpmn_EObject "0..9999" -- "1..1" cbpmn_FlowNodeInstance : inputs43
-cbpmn_Activity "1..1" *-- "0..9999" cbpmn_DataObjectReference : inputs8
-cbpmn_Activity "1..1" *-- "0..9999" cbpmn_OCLConstraint : invariabilityClauses13
-cbpmn_Branch "1..1" --* "1..1" cbpmn_ProcessModel : mainBranch0
-cbpmn_FlowNode "1..1" -- "0..1" cbpmn_FlowNode : next26
-cbpmn_FlowNode "1..1" -- "1..1" cbpmn_FlowNodeInstance : nodeDef42
-cbpmn_Branch "1..1" *-- "1..9999" cbpmn_FlowNode : nodes18
-cbpmn_Activity "1..1" *-- "0..9999" cbpmn_DataObjectReference : outputs10
-cbpmn_EObject "0..9999" -- "1..1" cbpmn_FlowNodeInstance : outputs46
-cbpmn_Activity "1..1" *-- "0..9999" cbpmn_OCLConstraint : postConditions5
-cbpmn_Activity "1..1" *-- "0..9999" cbpmn_OCLConstraint : preConditions3
-cbpmn_FlowNode "1..1" -- "0..1" cbpmn_FlowNode : previous29
-cbpmn_FlowNodeInstance "1..1" -- "1..1" cbpmn_ProcessInstance : processInstance49
-cbpmn_OCLConstraint "0..9999" --* "1..1" cbpmn_ProcessModel : processInvariants1
-cbpmn_ProcessInstance "1..1" -- "1..1" cbpmn_ProcessModel : processModel37
-cbpmn_Event "1..1" -- "0..1" cbpmn_OCLConstraint : trigger31
-cbpmn_DataObject "1..1" -- "1..1" cbpmn_EClass : type50
+cbpmn_Branch "cbpmn_DecisionCondition22 1..1" -- "cbpmn_Branch23 1..1" cbpmn_DecisionCondition : branch21
+cbpmn_Branch "nodes 0..1" -- "Branch 1..1" cbpmn_FlowNode : branch24
+cbpmn_Branch "cbpmn_SplitGateway 0..9999" --* "cbpmn_Branch34 1..1" cbpmn_SplitGateway : branches33
+cbpmn_DecisionCondition "cbpmn_DecisionGateway 1..9999" --* "cbpmn_DecisionCondition20 1..1" cbpmn_DecisionGateway : conditions19
+cbpmn_DataObjectReference "cbpmn_EClass 1..1" -- "cbpmn_DataObjectReference36 1..1" cbpmn_EClass : dataObjectClass35
+cbpmn_EObject "cbpmn_ProcessInstance41 0..9999" --* "cbpmn_EObject 1..1" cbpmn_ProcessInstance : dataObjects40
+cbpmn_Branch "cbpmn_DecisionCondition 1..1" -- "cbpmn_Branch17 0..1" cbpmn_DecisionCondition : entryConditions16
+cbpmn_FlowNodeInstance "processInstance 0..9999" --* "FlowNodeInstance 1..1" cbpmn_ProcessInstance : executedNodes39
+cbpmn_EObject "cbpmn_FlowNodeInstance44 0..9999" -- "cbpmn_EObject45 1..1" cbpmn_FlowNodeInstance : inputs43
+cbpmn_Activity "cbpmn_DataObjectReference 1..1" *-- "cbpmn_Activity9 0..9999" cbpmn_DataObjectReference : inputs8
+cbpmn_Activity "cbpmn_OCLConstraint15 1..1" *-- "cbpmn_Activity14 0..9999" cbpmn_OCLConstraint : invariabilityClauses13
+cbpmn_Branch "cbpmn_ProcessModel 1..1" --* "cbpmn_Branch 1..1" cbpmn_ProcessModel : mainBranch0
+cbpmn_FlowNode "FlowNode27 1..1" -- "previous 0..1" cbpmn_FlowNode : next26
+cbpmn_FlowNode "cbpmn_FlowNodeInstance 1..1" -- "cbpmn_FlowNode 1..1" cbpmn_FlowNodeInstance : nodeDef42
+cbpmn_Branch "FlowNode 1..1" *-- "branch 1..9999" cbpmn_FlowNode : nodes18
+cbpmn_Activity "cbpmn_DataObjectReference12 1..1" *-- "cbpmn_Activity11 0..9999" cbpmn_DataObjectReference : outputs10
+cbpmn_EObject "cbpmn_FlowNodeInstance47 0..9999" -- "cbpmn_EObject48 1..1" cbpmn_FlowNodeInstance : outputs46
+cbpmn_Activity "cbpmn_OCLConstraint7 1..1" *-- "cbpmn_Activity6 0..9999" cbpmn_OCLConstraint : postConditions5
+cbpmn_Activity "cbpmn_OCLConstraint4 1..1" *-- "cbpmn_Activity 0..9999" cbpmn_OCLConstraint : preConditions3
+cbpmn_FlowNode "FlowNode30 1..1" -- "next 0..1" cbpmn_FlowNode : previous29
+cbpmn_FlowNodeInstance "ProcessInstance 1..1" -- "executedNodes 1..1" cbpmn_ProcessInstance : processInstance49
+cbpmn_OCLConstraint "cbpmn_ProcessModel2 0..9999" --* "cbpmn_OCLConstraint 1..1" cbpmn_ProcessModel : processInvariants1
+cbpmn_ProcessInstance "cbpmn_ProcessModel38 1..1" -- "cbpmn_ProcessInstance 1..1" cbpmn_ProcessModel : processModel37
+cbpmn_Event "cbpmn_OCLConstraint32 1..1" -- "cbpmn_Event 0..1" cbpmn_OCLConstraint : trigger31
+cbpmn_DataObject "cbpmn_EClass51 1..1" -- "cbpmn_DataObject 1..1" cbpmn_EClass : type50
 @enduml

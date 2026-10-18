@@ -1,4 +1,8 @@
 @startuml
+' model: LRBAC
+' project: sampleModel
+' owner: User
+' description: New project
 class LRBAC_Banker {
 }
 class LRBAC_Coder {
@@ -56,28 +60,28 @@ Operation <|-- LRBAC_Read
 Operation <|-- LRBAC_Write
 User <|-- LRBAC_Banker
 User <|-- LRBAC_Coder
-LRBAC_Location "0..9999" -- "1..1" LRBAC_Role : AssignLoc8
-LRBAC_Role "1..1" -- "0..9999" LRBAC_User : AssignUser6
-LRBAC_Role "0..9999" -- "1..1" LRBAC_User : AssignedRoles1
-LRBAC_EClass0 "0..1" --* "1..1" LRBAC_Read : EReference037
-LRBAC_EClass1 "1..1" *-- "0..1" LRBAC_Read : EReference038
-LRBAC_Location "1..1" -- "0..9999" LRBAC_Role : LocAssign15
-LRBAC_Location "1..1" -- "0..9999" LRBAC_Object : LocObj17
-LRBAC_Location "1..1" -- "0..9999" LRBAC_User : LocUser13
-LRBAC_Location "1..1" -- "1..1" LRBAC_Object : ObjLoc31
-LRBAC_Location "1..1" -- "1..1" LRBAC_Permission : ObjLocPerm29
-LRBAC_Object "1..1" -- "0..9999" LRBAC_Permission : ObjPerm33
-LRBAC_Operation "1..1" -- "0..9999" LRBAC_Permission : OperPerm35
-LRBAC_Object "1..1" -- "1..1" LRBAC_Permission : PermObj23
-LRBAC_Location "1..1" -- "0..9999" LRBAC_Permission : PermObjLoc20
-LRBAC_Operation "1..1" -- "1..1" LRBAC_Permission : PermOper22
-LRBAC_Permission "1..1" -- "1..1" LRBAC_Role : PermRole25
-LRBAC_Location "1..1" -- "0..9999" LRBAC_Permission : PermRoleLoc18
-LRBAC_Location "1..1" -- "1..1" LRBAC_Permission : RoleLocPerm27
-LRBAC_Permission "0..9999" -- "1..1" LRBAC_Role : RolePerm12
-LRBAC_Role "1..1" -- "0..9999" LRBAC_Session : RoleSess10
-LRBAC_Role "0..9999" -- "1..1" LRBAC_Session : SessRole3
-LRBAC_Session "1..1" -- "1..1" LRBAC_User : SessUser5
-LRBAC_Location "1..1" -- "1..1" LRBAC_User : UserLoc2
-LRBAC_Session "0..9999" -- "1..1" LRBAC_User : UserSess0
+LRBAC_Location "LocAssign 0..9999" -- "Location9 1..1" LRBAC_Role : AssignLoc8
+LRBAC_Role "User7 1..1" -- "AssignedRoles 0..9999" LRBAC_User : AssignUser6
+LRBAC_Role "AssignUser 0..9999" -- "Role 1..1" LRBAC_User : AssignedRoles1
+LRBAC_EClass0 "LRBAC_Read 0..1" --* "LRBAC_EClass0 1..1" LRBAC_Read : EReference037
+LRBAC_EClass1 "LRBAC_Read39 1..1" *-- "LRBAC_EClass1 0..1" LRBAC_Read : EReference038
+LRBAC_Location "Role16 1..1" -- "AssignLoc 0..9999" LRBAC_Role : LocAssign15
+LRBAC_Location "Object 1..1" -- "ObjLoc 0..9999" LRBAC_Object : LocObj17
+LRBAC_Location "User14 1..1" -- "UserLoc 0..9999" LRBAC_User : LocUser13
+LRBAC_Location "LocObj 1..1" -- "Location32 1..1" LRBAC_Object : ObjLoc31
+LRBAC_Location "PermObjLoc 1..1" -- "Location30 1..1" LRBAC_Permission : ObjLocPerm29
+LRBAC_Object "Permission34 1..1" -- "PermObj 0..9999" LRBAC_Permission : ObjPerm33
+LRBAC_Operation "Permission36 1..1" -- "PermOper 0..9999" LRBAC_Permission : OperPerm35
+LRBAC_Object "ObjPerm 1..1" -- "Object24 1..1" LRBAC_Permission : PermObj23
+LRBAC_Location "Permission21 1..1" -- "ObjLocPerm 0..9999" LRBAC_Permission : PermObjLoc20
+LRBAC_Operation "OperPerm 1..1" -- "Operation 1..1" LRBAC_Permission : PermOper22
+LRBAC_Permission "Role26 1..1" -- "RolePerm 1..1" LRBAC_Role : PermRole25
+LRBAC_Location "Permission19 1..1" -- "RoleLocPerm 0..9999" LRBAC_Permission : PermRoleLoc18
+LRBAC_Location "PermRoleLoc 1..1" -- "Location28 1..1" LRBAC_Permission : RoleLocPerm27
+LRBAC_Permission "PermRole 0..9999" -- "Permission 1..1" LRBAC_Role : RolePerm12
+LRBAC_Role "Session11 1..1" -- "SessRole 0..9999" LRBAC_Session : RoleSess10
+LRBAC_Role "RoleSess 0..9999" -- "Role4 1..1" LRBAC_Session : SessRole3
+LRBAC_Session "User 1..1" -- "UserSess 1..1" LRBAC_User : SessUser5
+LRBAC_Location "LocUser 1..1" -- "Location 1..1" LRBAC_User : UserLoc2
+LRBAC_Session "SessUser 0..9999" -- "Session 1..1" LRBAC_User : UserSess0
 @enduml

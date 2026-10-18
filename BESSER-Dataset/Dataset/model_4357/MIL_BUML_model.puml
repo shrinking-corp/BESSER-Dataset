@@ -1,4 +1,8 @@
 @startuml
+' model: mil
+' project: sampleModel
+' owner: User
+' description: New project
 class BinaryOperation {
 }
 class Comparison {
@@ -106,8 +110,8 @@ UnaryOperation <|-- mil_StoreInstruction
 UnaryOperation <|-- mil_YieldInstruction
 Value <|-- mil_ConstantInteger
 Value <|-- mil_RegisterReference
-mil_JumpMarker "1..1" -- "1..1" mil_Jumper : jumpTarget3
-mil_RegisterReference "0..1" --* "1..1" mil_StoreInstruction : registerReference2
-mil_MILModel "1..1" *-- "0..9999" mil_Statement : statements0
-mil_LoadInstruction "1..1" *-- "1..1" mil_Value : value1
+mil_JumpMarker "mil_Jumper 1..1" -- "mil_JumpMarker 1..1" mil_Jumper : jumpTarget3
+mil_RegisterReference "mil_StoreInstruction 0..1" --* "mil_RegisterReference 1..1" mil_StoreInstruction : registerReference2
+mil_MILModel "mil_Statement 1..1" *-- "mil_MILModel 0..9999" mil_Statement : statements0
+mil_LoadInstruction "mil_Value 1..1" *-- "mil_LoadInstruction 1..1" mil_Value : value1
 @enduml

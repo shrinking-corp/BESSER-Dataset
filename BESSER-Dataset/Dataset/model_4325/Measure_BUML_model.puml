@@ -1,4 +1,8 @@
 @startuml
+' model: Measure
+' project: sampleModel
+' owner: User
+' description: New project
 enum ElementKind {
   class_
   interface
@@ -42,15 +46,15 @@ enum ModelKind {
 Measure <|-- Measure_DoubleMeasure
 Measure <|-- Measure_IntegerMeasure
 Measure <|-- Measure_PercentageMeasure
-Measure_Category "1..9999" --* "1..1" Measure_RootMeasureSet : categories0
-Measure_Category "1..1" -- "1..1" Measure_Metric : category5
-Measure_MeasureSet "0..9999" --* "1..1" Measure_RootMeasureSet : measureSets1
-Measure_Measure "0..9999" --* "1..1" Measure_MeasureSet : measures7
-Measure_Measure "1..1" -- "1..1" Measure_Metric : metric16
-Measure_Category "1..1" *-- "1..9999" Measure_Metric : metrics3
-Measure_Measure "1..1" -- "1..1" Measure_MeasureSet : owner17
-Measure_MeasureSet "1..1" -- "0..1" Measure_MeasureSet : parent14
-Measure_Category "1..1" -- "1..1" Measure_RootMeasureSet : root4
-Measure_MeasureSet "1..1" -- "0..1" Measure_RootMeasureSet : root8
-Measure_MeasureSet "1..1" *-- "0..9999" Measure_MeasureSet : subsets11
+Measure_Category "root 1..9999" --* "Category 1..1" Measure_RootMeasureSet : categories0
+Measure_Category "metrics 1..1" -- "Category6 1..1" Measure_Metric : category5
+Measure_MeasureSet "root2 0..9999" --* "MeasureSet 1..1" Measure_RootMeasureSet : measureSets1
+Measure_Measure "owner 0..9999" --* "Measure 1..1" Measure_MeasureSet : measures7
+Measure_Measure "Measure_Metric 1..1" -- "Measure_Measure 1..1" Measure_Metric : metric16
+Measure_Category "Metric 1..1" *-- "category 1..9999" Measure_Metric : metrics3
+Measure_Measure "MeasureSet18 1..1" -- "measures 1..1" Measure_MeasureSet : owner17
+Measure_MeasureSet "MeasureSet15 1..1" -- "subsets 0..1" Measure_MeasureSet : parent14
+Measure_Category "RootMeasureSet 1..1" -- "categories 1..1" Measure_RootMeasureSet : root4
+Measure_MeasureSet "RootMeasureSet9 1..1" -- "measureSets 0..1" Measure_RootMeasureSet : root8
+Measure_MeasureSet "MeasureSet12 1..1" *-- "parent 0..9999" Measure_MeasureSet : subsets11
 @enduml

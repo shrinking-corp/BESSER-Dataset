@@ -1,4 +1,8 @@
 @startuml
+' model: netModel
+' project: sampleModel
+' owner: User
+' description: New project
 class BlockType {
 }
 enum BooleanValue {
@@ -153,26 +157,26 @@ Type <|-- netModel_IntrinsicType
 Type <|-- netModel_UserType
 UserTypeDeclaration <|-- netModel_ComplexTypeDeclaration
 UserTypeDeclaration <|-- netModel_EnumTypeDeclaration
-netModel_Client "1..1" *-- "0..9999" netModel_ClientBlock : blocks1
-netModel_HttpMethod "1..1" *-- "0..9999" netModel_HttpMethodBlock : blocks4
-netModel_UserType "1..1" -- "0..1" netModel_UserTypeDeclaration : declaration25
-netModel_Declaration "0..9999" --* "1..1" netModel_Model : declarations0
-netModel_Literal "0..1" --* "1..1" netModel_SimpleMemberAssignment : defaultValue12
-netModel_GenericListType "1..1" *-- "0..1" netModel_Type : elementType23
-netModel_Header "0..9999" --* "1..1" netModel_HeaderBlock : headers2
-netModel_ComplexTypeLiteral "0..1" --* "1..1" netModel_SkipMember : literal20
-netModel_ComplexTypeDeclaration "1..1" *-- "0..1" netModel_ComplexTypeLiteral : literal26
-netModel_EnumTypeDeclaration "1..1" *-- "0..1" netModel_EnumTypeLiteral : literal30
-netModel_SimpleMember "0..1" --* "1..1" netModel_SimpleMemberAssignment : member10
-netModel_EnumMember "0..9999" --* "1..1" netModel_EnumTypeLiteral : members32
-netModel_ComplexTypeLiteral "1..1" *-- "0..9999" netModel_Member : members34
-netModel_Path "1..1" *-- "0..9999" netModel_SimpleMemberAssignment : params6
-netModel_ParamsBlock "1..1" *-- "0..9999" netModel_SimpleMemberAssignment : params8
-netModel_HttpMethod "1..1" *-- "0..1" netModel_Path : path3
-netModel_ComplexTypeDeclaration "0..1" -- "1..1" netModel_ResponseBlock : superType15
-netModel_EnumTypeDeclaration "1..1" *-- "0..1" netModel_IntegerType : superType29
-netModel_BlockType "0..1" --* "1..1" netModel_BodyBlock : type14
-netModel_BlockType "0..1" --* "1..1" netModel_ResponseBlock : type16
-netModel_Type "0..1" --* "1..1" netModel_TypedMember : type19
-netModel_IntrinsicType "0..1" --* "1..1" netModel_SimpleMember : type21
+netModel_Client "netModel_ClientBlock 1..1" *-- "netModel_Client 0..9999" netModel_ClientBlock : blocks1
+netModel_HttpMethod "netModel_HttpMethodBlock 1..1" *-- "netModel_HttpMethod5 0..9999" netModel_HttpMethodBlock : blocks4
+netModel_UserType "netModel_UserTypeDeclaration 1..1" -- "netModel_UserType 0..1" netModel_UserTypeDeclaration : declaration25
+netModel_Declaration "netModel_Model 0..9999" --* "netModel_Declaration 1..1" netModel_Model : declarations0
+netModel_Literal "netModel_SimpleMemberAssignment13 0..1" --* "netModel_Literal 1..1" netModel_SimpleMemberAssignment : defaultValue12
+netModel_GenericListType "netModel_Type24 1..1" *-- "netModel_GenericListType 0..1" netModel_Type : elementType23
+netModel_Header "netModel_HeaderBlock 0..9999" --* "netModel_Header 1..1" netModel_HeaderBlock : headers2
+netModel_ComplexTypeLiteral "netModel_SkipMember 0..1" --* "netModel_ComplexTypeLiteral 1..1" netModel_SkipMember : literal20
+netModel_ComplexTypeDeclaration "netModel_ComplexTypeLiteral28 1..1" *-- "netModel_ComplexTypeDeclaration27 0..1" netModel_ComplexTypeLiteral : literal26
+netModel_EnumTypeDeclaration "netModel_EnumTypeLiteral 1..1" *-- "netModel_EnumTypeDeclaration31 0..1" netModel_EnumTypeLiteral : literal30
+netModel_SimpleMember "netModel_SimpleMemberAssignment11 0..1" --* "netModel_SimpleMember 1..1" netModel_SimpleMemberAssignment : member10
+netModel_EnumMember "netModel_EnumTypeLiteral33 0..9999" --* "netModel_EnumMember 1..1" netModel_EnumTypeLiteral : members32
+netModel_ComplexTypeLiteral "netModel_Member 1..1" *-- "netModel_ComplexTypeLiteral35 0..9999" netModel_Member : members34
+netModel_Path "netModel_SimpleMemberAssignment 1..1" *-- "netModel_Path7 0..9999" netModel_SimpleMemberAssignment : params6
+netModel_ParamsBlock "netModel_SimpleMemberAssignment9 1..1" *-- "netModel_ParamsBlock 0..9999" netModel_SimpleMemberAssignment : params8
+netModel_HttpMethod "netModel_Path 1..1" *-- "netModel_HttpMethod 0..1" netModel_Path : path3
+netModel_ComplexTypeDeclaration "netModel_ResponseBlock 0..1" -- "netModel_ComplexTypeDeclaration 1..1" netModel_ResponseBlock : superType15
+netModel_EnumTypeDeclaration "netModel_IntegerType 1..1" *-- "netModel_EnumTypeDeclaration 0..1" netModel_IntegerType : superType29
+netModel_BlockType "netModel_BodyBlock 0..1" --* "netModel_BlockType 1..1" netModel_BodyBlock : type14
+netModel_BlockType "netModel_ResponseBlock17 0..1" --* "netModel_BlockType18 1..1" netModel_ResponseBlock : type16
+netModel_Type "netModel_TypedMember 0..1" --* "netModel_Type 1..1" netModel_TypedMember : type19
+netModel_IntrinsicType "netModel_SimpleMember22 0..1" --* "netModel_IntrinsicType 1..1" netModel_SimpleMember : type21
 @enduml

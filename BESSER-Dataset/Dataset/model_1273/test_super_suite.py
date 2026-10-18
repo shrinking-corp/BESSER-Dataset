@@ -384,9 +384,9 @@ def test_assoc_member8_stub_double():
     partner = family_ecore_Family()
     setattr(partner, 'family_ecore_Family', None)
     _safe_set(owner, 'family_ecore_Person9', partner)
-    assert getattr(partner, 'family_ecore_Family') == owner
+    assert owner in getattr(partner, 'family_ecore_Family')
     _safe_set(owner, 'family_ecore_Person9', None)
-    assert getattr(partner, 'family_ecore_Family') is None
+    assert owner not in getattr(partner, 'family_ecore_Family')
 
 
 

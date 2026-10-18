@@ -1,4 +1,8 @@
 @startuml
+' model: execTraces
+' project: sampleModel
+' owner: User
+' description: New project
 class Literal {
 }
 enum StateStatus {
@@ -46,12 +50,12 @@ class execTraces_Variable {
 Literal <|-- execTraces_BoolLiteral
 Literal <|-- execTraces_IntLiteral
 Literal <|-- execTraces_RealLiteral
-execTraces_Edge "0..9999" --* "1..1" execTraces_ExecTraces : Edge1
-execTraces_ExecTraces "1..1" *-- "0..9999" execTraces_Node : Node0
-execTraces_Node "1..1" *-- "0..9999" execTraces_Variable : VarData9
-execTraces_Edge "1..1" -- "0..1" execTraces_Node : destination6
-execTraces_Edge "0..9999" -- "1..1" execTraces_Node : incomingEdges14
-execTraces_Edge "0..9999" -- "1..1" execTraces_Node : outgoingEdges11
-execTraces_Edge "1..1" -- "0..1" execTraces_Node : source3
-execTraces_Literal "0..1" --* "1..1" execTraces_Variable : value17
+execTraces_Edge "execTraces_ExecTraces2 0..9999" --* "execTraces_Edge 1..1" execTraces_ExecTraces : Edge1
+execTraces_ExecTraces "execTraces_Node 1..1" *-- "execTraces_ExecTraces 0..9999" execTraces_Node : Node0
+execTraces_Node "execTraces_Variable 1..1" *-- "execTraces_Node10 0..9999" execTraces_Variable : VarData9
+execTraces_Edge "execTraces_Node8 1..1" -- "execTraces_Edge7 0..1" execTraces_Node : destination6
+execTraces_Edge "execTraces_Node15 0..9999" -- "execTraces_Edge16 1..1" execTraces_Node : incomingEdges14
+execTraces_Edge "execTraces_Node12 0..9999" -- "execTraces_Edge13 1..1" execTraces_Node : outgoingEdges11
+execTraces_Edge "execTraces_Node5 1..1" -- "execTraces_Edge4 0..1" execTraces_Node : source3
+execTraces_Literal "execTraces_Variable18 0..1" --* "execTraces_Literal 1..1" execTraces_Variable : value17
 @enduml

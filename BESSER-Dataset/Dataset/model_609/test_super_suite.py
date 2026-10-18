@@ -3692,9 +3692,9 @@ def test_assoc_action23_stub_double():
     partner = webapp_Controller()
     setattr(partner, 'webapp_Controller24', None)
     _safe_set(owner, 'webapp_Action', partner)
-    assert getattr(partner, 'webapp_Controller24') == owner
+    assert owner in getattr(partner, 'webapp_Controller24')
     _safe_set(owner, 'webapp_Action', None)
-    assert getattr(partner, 'webapp_Controller24') is None
+    assert owner not in getattr(partner, 'webapp_Controller24')
 
 
 def test_assoc_appConfig0_stub_double():
@@ -3722,9 +3722,9 @@ def test_assoc_check43_stub_double():
     partner = webapp_Constraint()
     setattr(partner, 'webapp_Constraint44', None)
     _safe_set(owner, 'webapp_Check', partner)
-    assert getattr(partner, 'webapp_Constraint44') == owner
+    assert owner in getattr(partner, 'webapp_Constraint44')
     _safe_set(owner, 'webapp_Check', None)
-    assert getattr(partner, 'webapp_Constraint44') is None
+    assert owner not in getattr(partner, 'webapp_Constraint44')
 
 
 def test_assoc_column47_stub_double():
@@ -3737,9 +3737,9 @@ def test_assoc_column47_stub_double():
     partner = webapp_PrimaryKey()
     setattr(partner, 'webapp_PrimaryKey48', None)
     _safe_set(owner, 'webapp_Column49', partner)
-    assert getattr(partner, 'webapp_PrimaryKey48') == owner
+    assert owner in getattr(partner, 'webapp_PrimaryKey48')
     _safe_set(owner, 'webapp_Column49', None)
-    assert getattr(partner, 'webapp_PrimaryKey48') is None
+    assert owner not in getattr(partner, 'webapp_PrimaryKey48')
 
 
 def test_assoc_column63_stub_double():
@@ -3752,9 +3752,9 @@ def test_assoc_column63_stub_double():
     partner = webapp_Unique()
     setattr(partner, 'webapp_Unique64', None)
     _safe_set(owner, 'webapp_Column65', partner)
-    assert getattr(partner, 'webapp_Unique64') == owner
+    assert owner in getattr(partner, 'webapp_Unique64')
     _safe_set(owner, 'webapp_Column65', None)
-    assert getattr(partner, 'webapp_Unique64') is None
+    assert owner not in getattr(partner, 'webapp_Unique64')
 
 
 def test_assoc_constraint35_stub_double():
@@ -3872,9 +3872,9 @@ def test_assoc_navigation15_stub_double():
     partner = webapp_View()
     setattr(partner, 'webapp_View16', None)
     _safe_set(owner, 'webapp_Navigation', partner)
-    assert getattr(partner, 'webapp_View16') == owner
+    assert owner in getattr(partner, 'webapp_View16')
     _safe_set(owner, 'webapp_Navigation', None)
-    assert getattr(partner, 'webapp_View16') is None
+    assert owner not in getattr(partner, 'webapp_View16')
 
 
 def test_assoc_onDelete53_stub_double():
@@ -3917,9 +3917,9 @@ def test_assoc_page13_stub_double():
     partner = webapp_View()
     setattr(partner, 'webapp_View14', None)
     _safe_set(owner, 'webapp_Page', partner)
-    assert getattr(partner, 'webapp_View14') == owner
+    assert owner in getattr(partner, 'webapp_View14')
     _safe_set(owner, 'webapp_Page', None)
-    assert getattr(partner, 'webapp_View14') is None
+    assert owner not in getattr(partner, 'webapp_View14')
 
 
 def test_assoc_propertie29_stub_double():
@@ -3932,9 +3932,9 @@ def test_assoc_propertie29_stub_double():
     partner = webapp_Resource()
     setattr(partner, 'webapp_Resource30', None)
     _safe_set(owner, 'webapp_Properties', partner)
-    assert getattr(partner, 'webapp_Resource30') == owner
+    assert owner in getattr(partner, 'webapp_Resource30')
     _safe_set(owner, 'webapp_Properties', None)
-    assert getattr(partner, 'webapp_Resource30') is None
+    assert owner not in getattr(partner, 'webapp_Resource30')
 
 
 def test_assoc_resource11_stub_double():
@@ -3962,9 +3962,9 @@ def test_assoc_tag101_stub_double():
     partner = webapp_Td()
     setattr(partner, 'webapp_Td102', None)
     _safe_set(owner, 'webapp_Tag103', partner)
-    assert getattr(partner, 'webapp_Td102') == owner
+    assert owner in getattr(partner, 'webapp_Td102')
     _safe_set(owner, 'webapp_Tag103', None)
-    assert getattr(partner, 'webapp_Td102') is None
+    assert owner not in getattr(partner, 'webapp_Td102')
 
 
 def test_assoc_validator21_stub_double():
@@ -3977,9 +3977,9 @@ def test_assoc_validator21_stub_double():
     partner = webapp_Controller()
     setattr(partner, 'webapp_Controller22', None)
     _safe_set(owner, 'webapp_Validator', partner)
-    assert getattr(partner, 'webapp_Controller22') == owner
+    assert owner in getattr(partner, 'webapp_Controller22')
     _safe_set(owner, 'webapp_Validator', None)
-    assert getattr(partner, 'webapp_Controller22') is None
+    assert owner not in getattr(partner, 'webapp_Controller22')
 
 
 def test_assoc_view5_stub_double():
@@ -3999,139 +3999,35 @@ def test_assoc_view5_stub_double():
 
 
 
-from enum import Enum
 from python_code import Behavior
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(Behavior.RESTRICT, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(Behavior.RESTRICT, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(Behavior.CASCADE, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(Behavior.CASCADE, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(Behavior.CASCADE, 'CASCADE') == Behavior.CASCADE
-
-from enum import Enum
 from python_code import Charset
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(Charset.CP852, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(Charset.BIG5, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(Charset.ASCII, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(Charset.BIG5, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(Charset.BIG5, 'DEC8') == Charset.DEC8
-
-from enum import Enum
 from python_code import ColumnType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ColumnType.CHAR, '', 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ColumnType.REAL, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ColumnType.REAL, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ColumnType.REAL, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ColumnType.BIT, 'BIT') == ColumnType.BIT
-
-from enum import Enum
 from python_code import FormMethod
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(FormMethod.POST, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(FormMethod.POST, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(FormMethod.GET, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(FormMethod.GET, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(FormMethod.GET, 'GET') == FormMethod.GET
-
-from enum import Enum
 from python_code import InputType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(InputType.TEXT, '', 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(InputType.TEXT, '', 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(InputType.TEXT, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(InputType.TEXT, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(InputType.TEXT, 'TEXT') == InputType.TEXT
-
 from python_code import webapp_Check
 from python_code import webapp_Constraint
 
 def test_webapp_Check___init__():
     assert webapp_Check.__init__(webapp_Check('', webapp_Check=webapp_Constraint()), '', webapp_Check=webapp_Constraint()) == None
-
 from python_code import webapp_Form
 
 def test_webapp_Form___init__():
     assert webapp_Form.__init__(webapp_Form('', webapp_Form=set()), '', webapp_Form=set()) == None
-
 from python_code import webapp_ForeignKey
 from python_code import webapp_OnDelete
 
 def test_webapp_OnDelete___init__():
     assert webapp_OnDelete.__init__(webapp_OnDelete('', webapp_OnDelete=webapp_ForeignKey()), '', webapp_OnDelete=webapp_ForeignKey()) == None
-
 from python_code import webapp_ForeignKey
 from python_code import webapp_OnUpdate
 
 def test_webapp_OnUpdate___init__():
     assert webapp_OnUpdate.__init__(webapp_OnUpdate('', webapp_OnUpdate=webapp_ForeignKey()), '', webapp_OnUpdate=webapp_ForeignKey()) == None
-
 from python_code import webapp_Text
 
 def test_webapp_Text___init__():

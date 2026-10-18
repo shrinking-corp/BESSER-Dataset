@@ -1,4 +1,8 @@
 @startuml
+' model: tracker
+' project: sampleModel
+' owner: User
+' description: New project
 class Animal {
 }
 enum AnimalType {
@@ -551,19 +555,19 @@ Event <|-- tracker_TagApplied
 Event <|-- tracker_TagRetired
 Event <|-- tracker_WeighIn
 MedicalCondition <|-- tracker_Mastitis
-tracker_Animal "0..9999" --* "1..1" tracker_Premises : animals9
-tracker_Animal "0..1" -- "1..1" tracker_Animal : dam2
-tracker_EventAttribute "0..9999" --* "1..1" tracker_GenericEvent : eventAttributes22
-tracker_EventAttributeSchema "1..9999" --* "1..1" tracker_EventSchema : eventAttributes25
-tracker_EventSchema "1..1" -- "1..1" tracker_GenericEvent : eventSchema23
-tracker_EventSchema "0..9999" --* "1..1" tracker_Schema : eventSchemas27
-tracker_Event "1..9999" --* "1..1" tracker_Tag : events7
-tracker_Location "0..1" -- "1..1" tracker_Sighting : location20
-tracker_Location "0..9999" --* "1..1" tracker_Premises : locations14
-tracker_ReplacedTag "1..1" -- "1..1" tracker_Tag : oldTag18
-tracker_Premises "1..1" *-- "0..1" tracker_Schema : schema16
-tracker_Animal "0..1" -- "1..1" tracker_Animal : sire5
-tracker_Event "1..1" -- "1..1" tracker_Tag : tag8
-tracker_Animal "1..1" *-- "1..9999" tracker_Tag : tags0
-tracker_Premises "1..1" *-- "0..9999" tracker_Tag : unAppliedTags11
+tracker_Animal "tracker_Premises 0..9999" --* "tracker_Animal10 1..1" tracker_Premises : animals9
+tracker_Animal "tracker_Animal1 0..1" -- "tracker_Animal3 1..1" tracker_Animal : dam2
+tracker_EventAttribute "tracker_GenericEvent 0..9999" --* "tracker_EventAttribute 1..1" tracker_GenericEvent : eventAttributes22
+tracker_EventAttributeSchema "tracker_EventSchema26 1..9999" --* "tracker_EventAttributeSchema 1..1" tracker_EventSchema : eventAttributes25
+tracker_EventSchema "tracker_GenericEvent24 1..1" -- "tracker_EventSchema 1..1" tracker_GenericEvent : eventSchema23
+tracker_EventSchema "tracker_Schema28 0..9999" --* "tracker_EventSchema29 1..1" tracker_Schema : eventSchemas27
+tracker_Event "tag 1..9999" --* "Event 1..1" tracker_Tag : events7
+tracker_Location "tracker_Sighting 0..1" -- "tracker_Location21 1..1" tracker_Sighting : location20
+tracker_Location "tracker_Premises15 0..9999" --* "tracker_Location 1..1" tracker_Premises : locations14
+tracker_ReplacedTag "tracker_Tag19 1..1" -- "tracker_ReplacedTag 1..1" tracker_Tag : oldTag18
+tracker_Premises "tracker_Schema 1..1" *-- "tracker_Premises17 0..1" tracker_Schema : schema16
+tracker_Animal "tracker_Animal4 0..1" -- "tracker_Animal6 1..1" tracker_Animal : sire5
+tracker_Event "Tag 1..1" -- "events 1..1" tracker_Tag : tag8
+tracker_Animal "tracker_Tag 1..1" *-- "tracker_Animal 1..9999" tracker_Tag : tags0
+tracker_Premises "tracker_Tag13 1..1" *-- "tracker_Premises12 0..9999" tracker_Tag : unAppliedTags11
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: contacts
+' project: sampleModel
+' owner: User
+' description: New project
 class contacts_Address {
   + city : str
   + country : str
@@ -26,10 +30,10 @@ class contacts_PhoneNumber {
 }
 class contacts_UoD {
 }
-contacts_AddressBook "0..9999" --* "1..1" contacts_UoD : allAddressBooks11
-contacts_AddressBook "1..1" *-- "0..9999" contacts_Contact : contacts9
-contacts_Address "0..1" --* "1..1" contacts_Contact : homeAddress6
-contacts_Contact "1..1" *-- "0..1" contacts_PhoneNumber : mobile3
-contacts_Contact "1..1" *-- "0..1" contacts_PhoneNumber : phone1
-contacts_Address "0..1" --* "1..1" contacts_Contact : workAddress0
+contacts_AddressBook "contacts_UoD 0..9999" --* "contacts_AddressBook12 1..1" contacts_UoD : allAddressBooks11
+contacts_AddressBook "contacts_Contact10 1..1" *-- "contacts_AddressBook 0..9999" contacts_Contact : contacts9
+contacts_Address "contacts_Contact7 0..1" --* "contacts_Address8 1..1" contacts_Contact : homeAddress6
+contacts_Contact "contacts_PhoneNumber5 1..1" *-- "contacts_Contact4 0..1" contacts_PhoneNumber : mobile3
+contacts_Contact "contacts_PhoneNumber 1..1" *-- "contacts_Contact2 0..1" contacts_PhoneNumber : phone1
+contacts_Address "contacts_Contact 0..1" --* "contacts_Address 1..1" contacts_Contact : workAddress0
 @enduml

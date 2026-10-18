@@ -1,4 +1,8 @@
 @startuml
+' model: actions
+' project: sampleModel
+' owner: User
+' description: New project
 class Action {
 }
 class DataBag {
@@ -123,26 +127,26 @@ core_AbstractModelElement <|-- actions_TimedConditionAction
 core_ITopLevelElement <|-- actions_StandAloneAction
 core_ITopLevelElement <|-- actions_TimedConditionAction
 rules_IRealTimeConsumer <|-- actions_TimedConditionAction
-actions_ActionReference "1..1" -- "1..1" actions_StandAloneAction : action0
-actions_PreGenerationAction "1..1" --* "1..1" actions_StandAloneAction : action3
-actions_PreGenerationAction "1..1" --* "1..1" actions_TimedConditionAction : action7
-actions_PreGenerationAction "0..9999" --* "1..1" actions_PreGenerationSequence : actions11
-actions_PostGenerationAction "0..9999" --* "1..1" actions_PostGenerationSequence : actions13
-DataBag "1..1" -- "1..1" actions_RemoveBagAction : bag20
-ILogicFunction "1..1" --* "1..1" actions_TimedConditionAction : condition9
-ITimeConsumer "0..1" -- "1..1" actions_TimeAction : consumer31
-IFeature "1..1" -- "1..1" actions_ActivateFeatureAction : feature23
-IFeature "1..1" -- "1..1" actions_DeactivateFeatureAction : feature26
-IFeature "1..1" -- "1..1" actions_GetFeatureStateAction : feature34
-IArithmetricFunction "1..1" --* "1..1" actions_RemoveBagAction : index21
-IDataNodeFunction "1..1" --* "1..1" actions_SetDataAction : node16
-IDataNodeFunction "1..1" --* "1..1" actions_GetDataAction : node18
-actions_ActionReference "1..1" *-- "0..9999" actions_EObject : parameters1
-IContextVariable "0..9999" --* "1..1" actions_StandAloneAction : parameters5
-DataLeaf "1..1" -- "1..1" actions_SetPropertyAction : property28
-DataLeaf "1..1" -- "1..1" actions_GetPropertyAction : property32
-actions_Term "1..1" --* "1..1" actions_TermAction : term14
-DataElement "1..1" -- "1..1" actions_SetPropertyAction : value29
-IValueFunction "1..1" --* "1..1" actions_SetDataAction : values15
-FeatureVersion "0..1" -- "1..1" actions_ActivateFeatureAction : version24
+actions_ActionReference "actions_StandAloneAction 1..1" -- "actions_ActionReference 1..1" actions_StandAloneAction : action0
+actions_PreGenerationAction "actions_StandAloneAction4 1..1" --* "actions_PreGenerationAction 1..1" actions_StandAloneAction : action3
+actions_PreGenerationAction "actions_TimedConditionAction 1..1" --* "actions_PreGenerationAction8 1..1" actions_TimedConditionAction : action7
+actions_PreGenerationAction "actions_PreGenerationSequence 0..9999" --* "actions_PreGenerationAction12 1..1" actions_PreGenerationSequence : actions11
+actions_PostGenerationAction "actions_PostGenerationSequence 0..9999" --* "actions_PostGenerationAction 1..1" actions_PostGenerationSequence : actions13
+DataBag "actions_RemoveBagAction 1..1" -- "DataBag 1..1" actions_RemoveBagAction : bag20
+ILogicFunction "actions_TimedConditionAction10 1..1" --* "ILogicFunction 1..1" actions_TimedConditionAction : condition9
+ITimeConsumer "actions_TimeAction 0..1" -- "ITimeConsumer 1..1" actions_TimeAction : consumer31
+IFeature "actions_ActivateFeatureAction 1..1" -- "IFeature 1..1" actions_ActivateFeatureAction : feature23
+IFeature "actions_DeactivateFeatureAction 1..1" -- "IFeature27 1..1" actions_DeactivateFeatureAction : feature26
+IFeature "actions_GetFeatureStateAction 1..1" -- "IFeature35 1..1" actions_GetFeatureStateAction : feature34
+IArithmetricFunction "actions_RemoveBagAction22 1..1" --* "IArithmetricFunction 1..1" actions_RemoveBagAction : index21
+IDataNodeFunction "actions_SetDataAction17 1..1" --* "IDataNodeFunction 1..1" actions_SetDataAction : node16
+IDataNodeFunction "actions_GetDataAction 1..1" --* "IDataNodeFunction19 1..1" actions_GetDataAction : node18
+actions_ActionReference "actions_EObject 1..1" *-- "actions_ActionReference2 0..9999" actions_EObject : parameters1
+IContextVariable "actions_StandAloneAction6 0..9999" --* "IContextVariable 1..1" actions_StandAloneAction : parameters5
+DataLeaf "actions_SetPropertyAction 1..1" -- "DataLeaf 1..1" actions_SetPropertyAction : property28
+DataLeaf "actions_GetPropertyAction 1..1" -- "DataLeaf33 1..1" actions_GetPropertyAction : property32
+actions_Term "actions_TermAction 1..1" --* "actions_Term 1..1" actions_TermAction : term14
+DataElement "actions_SetPropertyAction30 1..1" -- "DataElement 1..1" actions_SetPropertyAction : value29
+IValueFunction "actions_SetDataAction 1..1" --* "IValueFunction 1..1" actions_SetDataAction : values15
+FeatureVersion "actions_ActivateFeatureAction25 0..1" -- "FeatureVersion 1..1" actions_ActivateFeatureAction : version24
 @enduml

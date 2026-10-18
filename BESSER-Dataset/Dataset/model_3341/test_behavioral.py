@@ -770,9 +770,9 @@ def test_assoc_annonFields24_stub_double():
     partner = aS3_annotationFields()
     setattr(partner, 'aS3_annotationFields25', None)
     _safe_set(owner, 'aS3_annotationField', partner)
-    assert getattr(partner, 'aS3_annotationFields25') == owner
+    assert owner in getattr(partner, 'aS3_annotationFields25')
     _safe_set(owner, 'aS3_annotationField', None)
-    assert getattr(partner, 'aS3_annotationFields25') is None
+    assert owner not in getattr(partner, 'aS3_annotationFields25')
 
 
 def test_assoc_block125_stub_double():
@@ -995,9 +995,9 @@ def test_assoc_imports19_stub_double():
     partner = aS3_Imports()
     setattr(partner, 'aS3_Imports20', None)
     _safe_set(owner, 'aS3_Import', partner)
-    assert getattr(partner, 'aS3_Imports20') == owner
+    assert owner in getattr(partner, 'aS3_Imports20')
     _safe_set(owner, 'aS3_Import', None)
-    assert getattr(partner, 'aS3_Imports20') is None
+    assert owner not in getattr(partner, 'aS3_Imports20')
 
 
 def test_assoc_lit107_stub_double():
@@ -1115,9 +1115,9 @@ def test_assoc_params260_stub_double():
     partner = aS3_parameterDeclarationList()
     setattr(partner, 'aS3_parameterDeclarationList261', None)
     _safe_set(owner, 'aS3_Parameter262', partner)
-    assert getattr(partner, 'aS3_parameterDeclarationList261') == owner
+    assert owner in getattr(partner, 'aS3_parameterDeclarationList261')
     _safe_set(owner, 'aS3_Parameter262', None)
-    assert getattr(partner, 'aS3_parameterDeclarationList261') is None
+    assert owner not in getattr(partner, 'aS3_parameterDeclarationList261')
 
 
 def test_assoc_qual133_stub_double():

@@ -559,9 +559,9 @@ def test_assoc_srcP2T3_stub_double():
     partner = pn_Transition()
     setattr(partner, 'trgP2T', None)
     _safe_set(owner, 'Place4', partner)
-    assert getattr(partner, 'trgP2T') == owner
+    assert owner in getattr(partner, 'trgP2T')
     _safe_set(owner, 'Place4', None)
-    assert getattr(partner, 'trgP2T') is None
+    assert owner not in getattr(partner, 'trgP2T')
 
 
 def test_assoc_srcT2P6_stub_double():
@@ -604,9 +604,9 @@ def test_assoc_trgT2P2_stub_double():
     partner = pn_Transition()
     setattr(partner, 'srcT2P', None)
     _safe_set(owner, 'Place', partner)
-    assert getattr(partner, 'srcT2P') == owner
+    assert owner in getattr(partner, 'srcT2P')
     _safe_set(owner, 'Place', None)
-    assert getattr(partner, 'srcT2P') is None
+    assert owner not in getattr(partner, 'srcT2P')
 
 
 
@@ -615,13 +615,11 @@ from python_code import pn_NamedElement
 
 def test_pn_NamedElement___init__():
     assert pn_NamedElement.__init__(pn_NamedElement(''), '') == None
-
 from python_code import pn_Net
 from python_code import pn_NetElement
 
 def test_pn_Net___init__():
     assert pn_Net.__init__(pn_Net('', net=set(), Net=pn_NetElement()), '', net=set(), Net=pn_NetElement()) == None
-
 from python_code import pn_Place
 from python_code import pn_Transition
 

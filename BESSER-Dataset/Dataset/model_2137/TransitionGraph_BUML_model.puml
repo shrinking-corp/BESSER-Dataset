@@ -1,4 +1,8 @@
 @startuml
+' model: transitiongraph
+' project: sampleModel
+' owner: User
+' description: New project
 class transitiongraph_State {
   + id : int
   + isFinal : bool
@@ -10,10 +14,10 @@ class transitiongraph_Transition {
 }
 class transitiongraph_TransitionGraph {
 }
-transitiongraph_State "1..1" -- "0..9999" transitiongraph_Transition : incoming4
-transitiongraph_State "1..1" -- "0..9999" transitiongraph_Transition : outgoing3
-transitiongraph_State "1..1" -- "1..1" transitiongraph_Transition : source6
-transitiongraph_State "0..9999" --* "1..1" transitiongraph_TransitionGraph : states0
-transitiongraph_State "1..1" -- "1..1" transitiongraph_Transition : target7
-transitiongraph_Transition "0..9999" --* "1..1" transitiongraph_TransitionGraph : transitions1
+transitiongraph_State "Transition5 1..1" -- "target 0..9999" transitiongraph_Transition : incoming4
+transitiongraph_State "Transition 1..1" -- "source 0..9999" transitiongraph_Transition : outgoing3
+transitiongraph_State "outgoing 1..1" -- "State 1..1" transitiongraph_Transition : source6
+transitiongraph_State "transitiongraph_TransitionGraph 0..9999" --* "transitiongraph_State 1..1" transitiongraph_TransitionGraph : states0
+transitiongraph_State "incoming 1..1" -- "State8 1..1" transitiongraph_Transition : target7
+transitiongraph_Transition "transitiongraph_TransitionGraph2 0..9999" --* "transitiongraph_Transition 1..1" transitiongraph_TransitionGraph : transitions1
 @enduml

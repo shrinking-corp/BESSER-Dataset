@@ -1,4 +1,8 @@
 @startuml
+' model: ddsm
+' project: sampleModel
+' owner: User
+' description: New project
 class CloudElement {
 }
 class Component {
@@ -193,34 +197,34 @@ PeerToPeerPlatform <|-- ddsm_KafkaCluster
 PeerToPeerPlatform <|-- ddsm_ZookeeperCluster
 Port <|-- ddsm_ProvidedPort
 Port <|-- ddsm_RequiredPort
-ddsm_Artifact "0..9999" --* "1..1" ddsm_DDSM : artifacts51
-ddsm_PeerNode "1..1" -- "1..1" ddsm_PeersQuorum : belongsToQuorum58
-ddsm_CloudElement "0..9999" --* "1..1" ddsm_DDSM : cloudelement43
-ddsm_Artifact "0..1" --* "1..1" ddsm_Resource : configure5
-ddsm_Artifact "0..1" --* "1..1" ddsm_Resource : destroy14
-ddsm_Artifact "0..1" --* "1..1" ddsm_Resource : download3
-ddsm_MasterNode "1..1" -- "1..1" ddsm_SlaveNode : hasMaster57
-ddsm_ClientNode "1..1" -- "0..1" ddsm_Crontab : hasSchedule55
-ddsm_Artifact "0..1" --* "1..1" ddsm_Resource : install17
-ddsm_Component "1..1" -- "1..1" ddsm_ProvidedPort : owner26
-ddsm_Component "1..1" -- "1..1" ddsm_ProvidedExecutionPlatform : owner29
-ddsm_DDSM "1..1" *-- "0..9999" ddsm_Property : properties45
-ddsm_CloudElement "1..1" *-- "0..9999" ddsm_Property : property1
-ddsm_Component "1..1" *-- "0..9999" ddsm_ProvidedExecutionPlatform : providedexecutionplatform21
-ddsm_ExecutionBinding "1..1" -- "1..1" ddsm_ProvidedExecutionPlatform : providedexecutionplatform39
-ddsm_Component "1..1" *-- "0..9999" ddsm_ProvidedPort : providedport20
-ddsm_ProvidedPort "1..1" -- "1..1" ddsm_Relationship : providedport32
-ddsm_ExternalComponent "1..1" -- "1..1" ddsm_Provider : provider42
-ddsm_InternalComponent "1..1" *-- "0..9999" ddsm_RequiredExecutionPlatform : requiredexecutionplatform24
-ddsm_ExecutionBinding "1..1" -- "1..1" ddsm_RequiredExecutionPlatform : requiredexecutionplatform37
-ddsm_InternalComponent "1..1" *-- "0..9999" ddsm_RequiredPort : requiredport23
-ddsm_Relationship "1..1" -- "1..1" ddsm_RequiredPort : requiredport34
-ddsm_MasterSlavePlatform "1..1" -- "1..1" ddsm_RequiredExecutionPlatform : requiresMasterVm61
-ddsm_PeerToPeerPlatform "1..1" *-- "1..9999" ddsm_RequiredExecutionPlatform : requiresPeerVm59
-ddsm_MasterSlavePlatform "1..1" -- "1..9999" ddsm_RequiredExecutionPlatform : requiresSlaveVm63
-ddsm_CloudElement "1..1" *-- "0..9999" ddsm_Resource : resource0
-ddsm_DDSM "1..1" *-- "0..9999" ddsm_Resource : resources48
-ddsm_Artifact "0..1" --* "1..1" ddsm_Resource : start8
-ddsm_Artifact "0..1" --* "1..1" ddsm_Resource : stop11
-ddsm_ClientNode "1..1" -- "1..1" ddsm_JobSubmission : submits54
+ddsm_Artifact "ddsm_DDSM52 0..9999" --* "ddsm_Artifact53 1..1" ddsm_DDSM : artifacts51
+ddsm_PeerNode "ddsm_PeersQuorum 1..1" -- "ddsm_PeerNode 1..1" ddsm_PeersQuorum : belongsToQuorum58
+ddsm_CloudElement "ddsm_DDSM 0..9999" --* "ddsm_CloudElement44 1..1" ddsm_DDSM : cloudelement43
+ddsm_Artifact "ddsm_Resource6 0..1" --* "ddsm_Artifact7 1..1" ddsm_Resource : configure5
+ddsm_Artifact "ddsm_Resource15 0..1" --* "ddsm_Artifact16 1..1" ddsm_Resource : destroy14
+ddsm_Artifact "ddsm_Resource4 0..1" --* "ddsm_Artifact 1..1" ddsm_Resource : download3
+ddsm_MasterNode "ddsm_SlaveNode 1..1" -- "ddsm_MasterNode 1..1" ddsm_SlaveNode : hasMaster57
+ddsm_ClientNode "ddsm_Crontab 1..1" -- "ddsm_ClientNode56 0..1" ddsm_Crontab : hasSchedule55
+ddsm_Artifact "ddsm_Resource18 0..1" --* "ddsm_Artifact19 1..1" ddsm_Resource : install17
+ddsm_Component "ddsm_ProvidedPort27 1..1" -- "ddsm_Component28 1..1" ddsm_ProvidedPort : owner26
+ddsm_Component "ddsm_ProvidedExecutionPlatform30 1..1" -- "ddsm_Component31 1..1" ddsm_ProvidedExecutionPlatform : owner29
+ddsm_DDSM "ddsm_Property47 1..1" *-- "ddsm_DDSM46 0..9999" ddsm_Property : properties45
+ddsm_CloudElement "ddsm_Property 1..1" *-- "ddsm_CloudElement2 0..9999" ddsm_Property : property1
+ddsm_Component "ddsm_ProvidedExecutionPlatform 1..1" *-- "ddsm_Component22 0..9999" ddsm_ProvidedExecutionPlatform : providedexecutionplatform21
+ddsm_ExecutionBinding "ddsm_ProvidedExecutionPlatform41 1..1" -- "ddsm_ExecutionBinding40 1..1" ddsm_ProvidedExecutionPlatform : providedexecutionplatform39
+ddsm_Component "ddsm_ProvidedPort 1..1" *-- "ddsm_Component 0..9999" ddsm_ProvidedPort : providedport20
+ddsm_ProvidedPort "ddsm_Relationship 1..1" -- "ddsm_ProvidedPort33 1..1" ddsm_Relationship : providedport32
+ddsm_ExternalComponent "ddsm_Provider 1..1" -- "ddsm_ExternalComponent 1..1" ddsm_Provider : provider42
+ddsm_InternalComponent "ddsm_RequiredExecutionPlatform 1..1" *-- "ddsm_InternalComponent25 0..9999" ddsm_RequiredExecutionPlatform : requiredexecutionplatform24
+ddsm_ExecutionBinding "ddsm_RequiredExecutionPlatform38 1..1" -- "ddsm_ExecutionBinding 1..1" ddsm_RequiredExecutionPlatform : requiredexecutionplatform37
+ddsm_InternalComponent "ddsm_RequiredPort 1..1" *-- "ddsm_InternalComponent 0..9999" ddsm_RequiredPort : requiredport23
+ddsm_Relationship "ddsm_RequiredPort36 1..1" -- "ddsm_Relationship35 1..1" ddsm_RequiredPort : requiredport34
+ddsm_MasterSlavePlatform "ddsm_RequiredExecutionPlatform62 1..1" -- "ddsm_MasterSlavePlatform 1..1" ddsm_RequiredExecutionPlatform : requiresMasterVm61
+ddsm_PeerToPeerPlatform "ddsm_RequiredExecutionPlatform60 1..1" *-- "ddsm_PeerToPeerPlatform 1..9999" ddsm_RequiredExecutionPlatform : requiresPeerVm59
+ddsm_MasterSlavePlatform "ddsm_RequiredExecutionPlatform65 1..1" -- "ddsm_MasterSlavePlatform64 1..9999" ddsm_RequiredExecutionPlatform : requiresSlaveVm63
+ddsm_CloudElement "ddsm_Resource 1..1" *-- "ddsm_CloudElement 0..9999" ddsm_Resource : resource0
+ddsm_DDSM "ddsm_Resource50 1..1" *-- "ddsm_DDSM49 0..9999" ddsm_Resource : resources48
+ddsm_Artifact "ddsm_Resource9 0..1" --* "ddsm_Artifact10 1..1" ddsm_Resource : start8
+ddsm_Artifact "ddsm_Resource12 0..1" --* "ddsm_Artifact13 1..1" ddsm_Resource : stop11
+ddsm_ClientNode "ddsm_JobSubmission 1..1" -- "ddsm_ClientNode 1..1" ddsm_JobSubmission : submits54
 @enduml

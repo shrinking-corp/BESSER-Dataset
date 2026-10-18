@@ -1,4 +1,8 @@
 @startuml
+' model: qualitymodel
+' project: sampleModel
+' owner: User
+' description: New project
 class Attribute {
 }
 enum AttributeAggregationOperator {
@@ -56,10 +60,10 @@ class qualitymodel_Preference {
 }
 Attribute <|-- qualitymodel_CompositeAttribute
 Attribute <|-- qualitymodel_LeafAttribute
-qualitymodel_LeafAttribute "1..1" -- "1..1" qualitymodel_Metric : attribute0
-qualitymodel_Attribute "1..1" -- "1..1" qualitymodel_HistoricalData : attribute2
-qualitymodel_Attribute "1..1" -- "1..1" qualitymodel_Preference : attribute4
-qualitymodel_Attribute "1..9999" --* "1..1" qualitymodel_CompositeAttribute : children1
-qualitymodel_ConfigurationProfile "1..1" *-- "1..9999" qualitymodel_Metric : metric8
-qualitymodel_ConfigurationProfile "1..1" *-- "0..9999" qualitymodel_Preference : preference6
+qualitymodel_LeafAttribute "qualitymodel_Metric 1..1" -- "qualitymodel_LeafAttribute 1..1" qualitymodel_Metric : attribute0
+qualitymodel_Attribute "qualitymodel_HistoricalData 1..1" -- "qualitymodel_Attribute3 1..1" qualitymodel_HistoricalData : attribute2
+qualitymodel_Attribute "qualitymodel_Preference 1..1" -- "qualitymodel_Attribute5 1..1" qualitymodel_Preference : attribute4
+qualitymodel_Attribute "qualitymodel_CompositeAttribute 1..9999" --* "qualitymodel_Attribute 1..1" qualitymodel_CompositeAttribute : children1
+qualitymodel_ConfigurationProfile "qualitymodel_Metric10 1..1" *-- "qualitymodel_ConfigurationProfile9 1..9999" qualitymodel_Metric : metric8
+qualitymodel_ConfigurationProfile "qualitymodel_Preference7 1..1" *-- "qualitymodel_ConfigurationProfile 0..9999" qualitymodel_Preference : preference6
 @enduml

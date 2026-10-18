@@ -1,4 +1,8 @@
 @startuml
+' model: BankingSystem
+' project: sampleModel
+' owner: User
+' description: New project
 class Account {
 }
 abstract class BankingSystem_Account {
@@ -54,16 +58,16 @@ class Employee {
 Account <|-- BankingSystem_Chequing
 Account <|-- BankingSystem_Saving
 Employee <|-- BankingSystem_Financial_Representative
-BankingSystem_Customer "0..9999" -- "1..1" BankingSystem_Financial_Representative : a17
-BankingSystem_Account "1..9999" --* "1..1" BankingSystem_Customer : accounts7
-BankingSystem_Bank "1..1" -- "1..1" BankingSystem_Branch : bank4
-BankingSystem_Branch "1..1" -- "1..1" BankingSystem_Employee : branch13
-BankingSystem_Branch "1..1" -- "1..1" BankingSystem_Customer : branch5
-BankingSystem_Bank "1..1" *-- "1..9999" BankingSystem_Branch : branches0
-BankingSystem_Account "1..1" -- "1..1" BankingSystem_Customer : customer11
-BankingSystem_Customer "1..1" -- "1..1" BankingSystem_Loan : customer15
-BankingSystem_Branch "1..1" *-- "1..9999" BankingSystem_Customer : customers1
-BankingSystem_Branch "1..1" *-- "1..9999" BankingSystem_Employee : employees2
-BankingSystem_Customer "1..1" *-- "0..9999" BankingSystem_Loan : loans8
-BankingSystem_Customer "1..1" -- "0..9999" BankingSystem_Financial_Representative : representative10
+BankingSystem_Customer "representative 0..9999" -- "Customer18 1..1" BankingSystem_Financial_Representative : a17
+BankingSystem_Account "customer 1..9999" --* "Account 1..1" BankingSystem_Customer : accounts7
+BankingSystem_Bank "branches 1..1" -- "Bank 1..1" BankingSystem_Branch : bank4
+BankingSystem_Branch "employees 1..1" -- "Branch14 1..1" BankingSystem_Employee : branch13
+BankingSystem_Branch "customers 1..1" -- "Branch6 1..1" BankingSystem_Customer : branch5
+BankingSystem_Bank "Branch 1..1" *-- "bank 1..9999" BankingSystem_Branch : branches0
+BankingSystem_Account "Customer12 1..1" -- "accounts 1..1" BankingSystem_Customer : customer11
+BankingSystem_Customer "loans 1..1" -- "Customer16 1..1" BankingSystem_Loan : customer15
+BankingSystem_Branch "Customer 1..1" *-- "branch 1..9999" BankingSystem_Customer : customers1
+BankingSystem_Branch "Employee 1..1" *-- "branch3 1..9999" BankingSystem_Employee : employees2
+BankingSystem_Customer "Loan 1..1" *-- "customer9 0..9999" BankingSystem_Loan : loans8
+BankingSystem_Customer "Financial_Representative 1..1" -- "a 0..9999" BankingSystem_Financial_Representative : representative10
 @enduml

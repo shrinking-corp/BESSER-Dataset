@@ -1,4 +1,8 @@
 @startuml
+' model: scheduleOfCourse
+' project: sampleModel
+' owner: User
+' description: New project
 class scheduleOfCourse_Capacity {
   + exam : int
   + normal : int
@@ -37,13 +41,13 @@ class scheduleOfCourse_TopLevelSpace {
 }
 class scheduleOfCourse_scheduleOfCourse {
 }
-scheduleOfCourse_Capacity "0..1" --* "1..1" scheduleOfCourse_Room : capacity16
-scheduleOfCourse_CourseLoad "1..9999" --* "1..1" scheduleOfCourse_scheduleOfCourse : courseLoads6
-scheduleOfCourse_LessonPeriod "1..9999" --* "1..1" scheduleOfCourse_scheduleOfCourse : lessonPeriods5
-scheduleOfCourse_Lesson "1..9999" --* "1..1" scheduleOfCourse_Shift : lessons1
-scheduleOfCourse_Occupation "1..1" --* "1..1" scheduleOfCourse_Shift : occupation0
-scheduleOfCourse_Lesson "1..1" *-- "1..1" scheduleOfCourse_Room : room11
-scheduleOfCourse_Room "1..9999" --* "1..1" scheduleOfCourse_Shift : rooms3
-scheduleOfCourse_Shift "1..9999" --* "1..1" scheduleOfCourse_scheduleOfCourse : shifts8
-scheduleOfCourse_Room "1..1" *-- "1..1" scheduleOfCourse_TopLevelSpace : topLevelSpace14
+scheduleOfCourse_Capacity "scheduleOfCourse_Room17 0..1" --* "scheduleOfCourse_Capacity 1..1" scheduleOfCourse_Room : capacity16
+scheduleOfCourse_CourseLoad "scheduleOfCourse_scheduleOfCourse7 1..9999" --* "scheduleOfCourse_CourseLoad 1..1" scheduleOfCourse_scheduleOfCourse : courseLoads6
+scheduleOfCourse_LessonPeriod "scheduleOfCourse_scheduleOfCourse 1..9999" --* "scheduleOfCourse_LessonPeriod 1..1" scheduleOfCourse_scheduleOfCourse : lessonPeriods5
+scheduleOfCourse_Lesson "scheduleOfCourse_Shift2 1..9999" --* "scheduleOfCourse_Lesson 1..1" scheduleOfCourse_Shift : lessons1
+scheduleOfCourse_Occupation "scheduleOfCourse_Shift 1..1" --* "scheduleOfCourse_Occupation 1..1" scheduleOfCourse_Shift : occupation0
+scheduleOfCourse_Lesson "scheduleOfCourse_Room13 1..1" *-- "scheduleOfCourse_Lesson12 1..1" scheduleOfCourse_Room : room11
+scheduleOfCourse_Room "scheduleOfCourse_Shift4 1..9999" --* "scheduleOfCourse_Room 1..1" scheduleOfCourse_Shift : rooms3
+scheduleOfCourse_Shift "scheduleOfCourse_scheduleOfCourse9 1..9999" --* "scheduleOfCourse_Shift10 1..1" scheduleOfCourse_scheduleOfCourse : shifts8
+scheduleOfCourse_Room "scheduleOfCourse_TopLevelSpace 1..1" *-- "scheduleOfCourse_Room15 1..1" scheduleOfCourse_TopLevelSpace : topLevelSpace14
 @enduml

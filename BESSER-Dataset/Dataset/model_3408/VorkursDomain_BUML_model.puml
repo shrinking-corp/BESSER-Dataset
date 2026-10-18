@@ -1,4 +1,8 @@
 @startuml
+' model: VorkursModel
+' project: sampleModel
+' owner: User
+' description: New project
 enum Gender {
   Female
   Male
@@ -73,11 +77,11 @@ class VorkursModel_TeachingAssistant {
 }
 Person <|-- VorkursModel_Student
 Person <|-- VorkursModel_TeachingAssistant
-VorkursModel_Address "0..1" --* "1..1" VorkursModel_Contact : address8
-VorkursModel_Contact "1..1" --* "1..1" VorkursModel_Person : contactinfo3
-VorkursModel_Notebook "0..1" --* "1..1" VorkursModel_Person : notebook4
-VorkursModel_Person "1..1" *-- "1..1" VorkursModel_Qualification : qualification6
-VorkursModel_Room "1..1" --* "1..1" VorkursModel_TeachingAssistant : room10
-VorkursModel_RegistrationSystem "1..1" *-- "0..9999" VorkursModel_Student : students0
-VorkursModel_RegistrationSystem "1..1" *-- "0..9999" VorkursModel_TeachingAssistant : teachingAssistants1
+VorkursModel_Address "VorkursModel_Contact9 0..1" --* "VorkursModel_Address 1..1" VorkursModel_Contact : address8
+VorkursModel_Contact "VorkursModel_Person 1..1" --* "VorkursModel_Contact 1..1" VorkursModel_Person : contactinfo3
+VorkursModel_Notebook "VorkursModel_Person5 0..1" --* "VorkursModel_Notebook 1..1" VorkursModel_Person : notebook4
+VorkursModel_Person "VorkursModel_Qualification 1..1" *-- "VorkursModel_Person7 1..1" VorkursModel_Qualification : qualification6
+VorkursModel_Room "VorkursModel_TeachingAssistant11 1..1" --* "VorkursModel_Room 1..1" VorkursModel_TeachingAssistant : room10
+VorkursModel_RegistrationSystem "VorkursModel_Student 1..1" *-- "VorkursModel_RegistrationSystem 0..9999" VorkursModel_Student : students0
+VorkursModel_RegistrationSystem "VorkursModel_TeachingAssistant 1..1" *-- "VorkursModel_RegistrationSystem2 0..9999" VorkursModel_TeachingAssistant : teachingAssistants1
 @enduml

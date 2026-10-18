@@ -1,4 +1,8 @@
 @startuml
+' model: FSmachine
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractConection {
 }
 class AbstractObject {
@@ -28,12 +32,12 @@ class FSmachine_TimeConnection {
 AbstractConection <|-- FSmachine_ReasonConnection
 AbstractConection <|-- FSmachine_TimeConnection
 AbstractObject <|-- FSmachine_State
-FSmachine_AbstractConection "0..1" -- "1..1" FSmachine_AbstractObject : conChild3
-FSmachine_AbstractConection "0..1" --* "1..1" FSmachine_AbstractObject : conParent5
-FSmachine_AbstractConection "0..9999" --* "1..1" FSmachine_Root : connections1
-FSmachine_AbstractConection "1..1" *-- "0..1" FSmachine_AbstractObject : next9
-FSmachine_AbstractObject "0..9999" --* "1..1" FSmachine_Root : objects0
-FSmachine_AbstractConection "1..1" -- "0..1" FSmachine_Root : par7
-FSmachine_AbstractObject "1..1" -- "0..1" FSmachine_Root : parent2
-FSmachine_AbstractConection "1..1" -- "0..1" FSmachine_AbstractObject : prev11
+FSmachine_AbstractConection "next 0..1" -- "AbstractConection4 1..1" FSmachine_AbstractObject : conChild3
+FSmachine_AbstractConection "prev 0..1" --* "AbstractConection6 1..1" FSmachine_AbstractObject : conParent5
+FSmachine_AbstractConection "par 0..9999" --* "AbstractConection 1..1" FSmachine_Root : connections1
+FSmachine_AbstractConection "AbstractObject10 1..1" *-- "conChild 0..1" FSmachine_AbstractObject : next9
+FSmachine_AbstractObject "parent 0..9999" --* "AbstractObject 1..1" FSmachine_Root : objects0
+FSmachine_AbstractConection "Root8 1..1" -- "connections 0..1" FSmachine_Root : par7
+FSmachine_AbstractObject "Root 1..1" -- "objects 0..1" FSmachine_Root : parent2
+FSmachine_AbstractConection "AbstractObject12 1..1" -- "conParent 0..1" FSmachine_AbstractObject : prev11
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: FPath
+' project: sampleModel
+' owner: User
+' description: New project
 enum Axis {
   ancestor
   ancestororself
@@ -76,12 +80,12 @@ OperatorExp <|-- FPath_BinaryOperatorExp
 OperatorExp <|-- FPath_UnaryOperatorExp
 Test <|-- FPath_NameTest
 Test <|-- FPath_WildcardTest
-FPath_Expression "0..9999" --* "1..1" FPath_FunctionCallExp : arguments0
-FPath_Expression "1..1" --* "1..1" FPath_PathExp : initialNodeSet1
-FPath_BinaryOperatorExp "1..1" *-- "1..1" FPath_Expression : left5
-FPath_Expression "1..1" --* "1..1" FPath_UnaryOperatorExp : operand10
-FPath_Expression "0..9999" --* "1..1" FPath_Step : predicates14
-FPath_BinaryOperatorExp "1..1" *-- "1..1" FPath_Expression : right7
-FPath_PathExp "1..1" *-- "1..9999" FPath_Step : steps3
-FPath_Step "1..1" *-- "1..1" FPath_Test : test12
+FPath_Expression "FPath_FunctionCallExp 0..9999" --* "FPath_Expression 1..1" FPath_FunctionCallExp : arguments0
+FPath_Expression "FPath_PathExp 1..1" --* "FPath_Expression2 1..1" FPath_PathExp : initialNodeSet1
+FPath_BinaryOperatorExp "FPath_Expression6 1..1" *-- "FPath_BinaryOperatorExp 1..1" FPath_Expression : left5
+FPath_Expression "FPath_UnaryOperatorExp 1..1" --* "FPath_Expression11 1..1" FPath_UnaryOperatorExp : operand10
+FPath_Expression "FPath_Step15 0..9999" --* "FPath_Expression16 1..1" FPath_Step : predicates14
+FPath_BinaryOperatorExp "FPath_Expression9 1..1" *-- "FPath_BinaryOperatorExp8 1..1" FPath_Expression : right7
+FPath_PathExp "FPath_Step 1..1" *-- "FPath_PathExp4 1..9999" FPath_Step : steps3
+FPath_Step "FPath_Test 1..1" *-- "FPath_Step13 1..1" FPath_Test : test12
 @enduml

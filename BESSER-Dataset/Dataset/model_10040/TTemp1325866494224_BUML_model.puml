@@ -1,4 +1,8 @@
 @startuml
+' model: Graph
+' project: sampleModel
+' owner: User
+' description: New project
 class Graph_Graph {
   + id : str
 }
@@ -34,15 +38,18 @@ class Graph_TString {
   + id : str
   + name : str
 }
-Graph_Graph "1..1" *-- "0..9999" Graph_ID1006 : id1006s0
-Graph_ID1006 "1..1" -- "0..9999" Graph_TString : outID1008s19
-Graph_Graph "1..1" *-- "0..9999" Graph_TBoolean : tBooleans1
-Graph_Graph "1..1" *-- "0..9999" Graph_TByte : tBytes5
-Graph_Graph "1..1" *-- "0..9999" Graph_TChar : tChars3
-Graph_Graph "1..1" *-- "0..9999" Graph_TDouble : tDoubles15
-Graph_Graph "1..1" *-- "0..9999" Graph_TFloat : tFloats13
-Graph_Graph "1..1" *-- "0..9999" Graph_TInt : tInts9
-Graph_Graph "1..1" *-- "0..9999" Graph_TLong : tLongs11
-Graph_Graph "1..1" *-- "0..9999" Graph_TShort : tShorts7
-Graph_Graph "1..1" *-- "0..9999" Graph_TString : tStrings17
+Graph_Graph "Graph_ID1006 1..1" *-- "Graph_Graph 0..9999" Graph_ID1006 : id1006s0
+Graph_ID1006 "Graph_TString21 1..1" -- "Graph_ID100620 0..9999" Graph_TString : outID1008s19
+Graph_Graph "Graph_TBoolean 1..1" *-- "Graph_Graph2 0..9999" Graph_TBoolean : tBooleans1
+Graph_Graph "Graph_TByte 1..1" *-- "Graph_Graph6 0..9999" Graph_TByte : tBytes5
+Graph_Graph "Graph_TChar 1..1" *-- "Graph_Graph4 0..9999" Graph_TChar : tChars3
+Graph_Graph "Graph_TDouble 1..1" *-- "Graph_Graph16 0..9999" Graph_TDouble : tDoubles15
+Graph_Graph "Graph_TFloat 1..1" *-- "Graph_Graph14 0..9999" Graph_TFloat : tFloats13
+Graph_Graph "Graph_TInt 1..1" *-- "Graph_Graph10 0..9999" Graph_TInt : tInts9
+Graph_Graph "Graph_TLong 1..1" *-- "Graph_Graph12 0..9999" Graph_TLong : tLongs11
+Graph_Graph "Graph_TShort 1..1" *-- "Graph_Graph8 0..9999" Graph_TShort : tShorts7
+Graph_Graph "Graph_TString 1..1" *-- "Graph_Graph18 0..9999" Graph_TString : tStrings17
+note top of Graph_ID1006
+  constraint maxElems (OCL): context ID1006 inv: outID1008s->size() <= 1
+end note
 @enduml

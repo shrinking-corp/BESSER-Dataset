@@ -1,4 +1,8 @@
 @startuml
+' model: filetree
+' project: sampleModel
+' owner: User
+' description: New project
 class Container {
 }
 class FileTreeElement {
@@ -34,10 +38,10 @@ Container <|-- filetree_Directory
 Container <|-- filetree_FileTree
 FileTreeElement <|-- filetree_Container
 FileTreeElement <|-- filetree_H2HFile
-filetree_AccessRight "0..9999" -- "1..1" filetree_FileTreeElement : accessRights2
-filetree_Container "1..1" *-- "0..9999" filetree_FileTreeElement : children3
-filetree_FileTree "1..1" *-- "0..9999" filetree_PathToTreeElementMap : elements0
-filetree_FileTree "0..1" -- "1..1" filetree_User : fileTree4
-filetree_Container "0..1" -- "1..1" filetree_FileTreeElement : parent1
-filetree_FileTreeElement "1..1" -- "1..1" filetree_PathToTreeElementMap : value6
+filetree_AccessRight "filetree_FileTreeElement 0..9999" -- "filetree_AccessRight 1..1" filetree_FileTreeElement : accessRights2
+filetree_Container "FileTreeElement 1..1" *-- "parent 0..9999" filetree_FileTreeElement : children3
+filetree_FileTree "filetree_PathToTreeElementMap 1..1" *-- "filetree_FileTree 0..9999" filetree_PathToTreeElementMap : elements0
+filetree_FileTree "filetree_User 0..1" -- "filetree_FileTree5 1..1" filetree_User : fileTree4
+filetree_Container "children 0..1" -- "Container 1..1" filetree_FileTreeElement : parent1
+filetree_FileTreeElement "filetree_PathToTreeElementMap7 1..1" -- "filetree_FileTreeElement8 1..1" filetree_PathToTreeElementMap : value6
 @enduml

@@ -219,9 +219,9 @@ def test_assoc_arraysHeap174_stub_double():
     partner = miniJava_State()
     setattr(partner, 'miniJava_State175', None)
     _safe_set(owner, 'miniJava_ArrayInstance', partner)
-    assert getattr(partner, 'miniJava_State175') == owner
+    assert owner in getattr(partner, 'miniJava_State175')
     _safe_set(owner, 'miniJava_ArrayInstance', None)
-    assert getattr(partner, 'miniJava_State175') is None
+    assert owner not in getattr(partner, 'miniJava_State175')
 
 
 def test_assoc_body12_stub_double():

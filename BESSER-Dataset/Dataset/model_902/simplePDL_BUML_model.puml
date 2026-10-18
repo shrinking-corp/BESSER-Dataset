@@ -1,4 +1,8 @@
 @startuml
+' model: simplePDL
+' project: sampleModel
+' owner: User
+' description: New project
 enum ParameterDirectionKind {
   in_
   inout
@@ -33,12 +37,12 @@ class simplePDL_WorkSequence {
 }
 WorkDefinition <|-- simplePDL_Activity
 WorkDefinition <|-- simplePDL_SubProcess
-simplePDL_Process "1..1" *-- "1..9999" simplePDL_WorkDefinition : activities0
-simplePDL_WorkDefinition "0..9999" -- "1..1" simplePDL_WorkSequence : linksToPredecessors9
-simplePDL_WorkDefinition "0..9999" -- "1..1" simplePDL_WorkSequence : linksToSuccessors8
-simplePDL_WorkDefinitionParameter "1..1" -- "1..1" simplePDL_WorkProduct : parameterType11
-simplePDL_WorkDefinition "1..1" *-- "0..9999" simplePDL_WorkDefinitionParameter : parameters6
-simplePDL_WorkDefinition "1..1" -- "1..1" simplePDL_WorkSequence : predecessor3
-simplePDL_WorkDefinition "1..1" -- "1..1" simplePDL_WorkSequence : successor4
-simplePDL_Process "1..1" *-- "0..9999" simplePDL_WorkSequence : workSequences1
+simplePDL_Process "simplePDL_WorkDefinition 1..1" *-- "simplePDL_Process 1..9999" simplePDL_WorkDefinition : activities0
+simplePDL_WorkDefinition "successor 0..9999" -- "WorkDefinition10 1..1" simplePDL_WorkSequence : linksToPredecessors9
+simplePDL_WorkDefinition "predecessor 0..9999" -- "WorkDefinition 1..1" simplePDL_WorkSequence : linksToSuccessors8
+simplePDL_WorkDefinitionParameter "simplePDL_WorkProduct 1..1" -- "simplePDL_WorkDefinitionParameter12 1..1" simplePDL_WorkProduct : parameterType11
+simplePDL_WorkDefinition "simplePDL_WorkDefinitionParameter 1..1" *-- "simplePDL_WorkDefinition7 0..9999" simplePDL_WorkDefinitionParameter : parameters6
+simplePDL_WorkDefinition "WorkSequence 1..1" -- "linksToSuccessors 1..1" simplePDL_WorkSequence : predecessor3
+simplePDL_WorkDefinition "WorkSequence5 1..1" -- "linksToPredecessors 1..1" simplePDL_WorkSequence : successor4
+simplePDL_Process "simplePDL_WorkSequence 1..1" *-- "simplePDL_Process2 0..9999" simplePDL_WorkSequence : workSequences1
 @enduml

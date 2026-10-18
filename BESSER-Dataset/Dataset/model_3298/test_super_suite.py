@@ -1534,28 +1534,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=standard_StandardStochasticDiseaseModel_strategy)
-@settings(max_examples=30)
-def test_hyp_standard_standardstochasticdiseasemodel_computenoise_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.computeNoise()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.computeNoise).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'computeNoise' in standard_StandardStochasticDiseaseModel is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'computeNoise' in standard_StandardStochasticDiseaseModel did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'computeNoise' in standard_StandardStochasticDiseaseModel is not implemented or raised an error")
 
 
 
@@ -1568,28 +1546,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=standard_IntegrationDecorator_strategy)
-@settings(max_examples=30)
-def test_hyp_standard_integrationdecorator_isdeterministic_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isDeterministic()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isDeterministic).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isDeterministic' in standard_IntegrationDecorator is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isDeterministic' in standard_IntegrationDecorator did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isDeterministic' in standard_IntegrationDecorator is not implemented or raised an error")
 
 
 
@@ -1790,28 +1746,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=standard_StandardDiseaseModel_strategy)
-@settings(max_examples=30)
-def test_hyp_standard_standarddiseasemodel_computetotalpopulationcountreciprocal_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.computeTotalPopulationCountReciprocal()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.computeTotalPopulationCountReciprocal).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'computeTotalPopulationCountReciprocal' in standard_StandardDiseaseModel is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'computeTotalPopulationCountReciprocal' in standard_StandardDiseaseModel did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'computeTotalPopulationCountReciprocal' in standard_StandardDiseaseModel is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1819,30 +1753,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=standard_StandardDiseaseModel_strategy)
-@settings(max_examples=30)
-def test_hyp_standard_standarddiseasemodel_domodelspecificadjustments_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.doModelSpecificAdjustments(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.doModelSpecificAdjustments).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'doModelSpecificAdjustments' in standard_StandardDiseaseModel is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'doModelSpecificAdjustments' in standard_StandardDiseaseModel did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'doModelSpecificAdjustments' in standard_StandardDiseaseModel is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1850,30 +1760,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=standard_StandardDiseaseModel_strategy)
-@settings(max_examples=30)
-def test_hyp_standard_standarddiseasemodel_addtototalarea_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.addToTotalArea(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.addToTotalArea).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'addToTotalArea' in standard_StandardDiseaseModel is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'addToTotalArea' in standard_StandardDiseaseModel did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'addToTotalArea' in standard_StandardDiseaseModel is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1881,32 +1767,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=standard_StandardDiseaseModel_strategy)
-@settings(max_examples=30)
-def test_hyp_standard_standarddiseasemodel_calculatedelta_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.calculateDelta(
-            "test", 
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.calculateDelta).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'calculateDelta' in standard_StandardDiseaseModel is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'calculateDelta' in standard_StandardDiseaseModel did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'calculateDelta' in standard_StandardDiseaseModel is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1914,30 +1774,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=standard_StandardDiseaseModel_strategy)
-@settings(max_examples=30)
-def test_hyp_standard_standarddiseasemodel_addtototalpopulationcount_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.addToTotalPopulationCount(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.addToTotalPopulationCount).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'addToTotalPopulationCount' in standard_StandardDiseaseModel is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'addToTotalPopulationCount' in standard_StandardDiseaseModel did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'addToTotalPopulationCount' in standard_StandardDiseaseModel is not implemented or raised an error")
 
 
 
@@ -1972,30 +1808,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=standard_DiseaseModelLabelValue_strategy)
-@settings(max_examples=30)
-def test_hyp_standard_diseasemodellabelvalue_scale_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.scale(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.scale).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'scale' in standard_DiseaseModelLabelValue is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'scale' in standard_DiseaseModelLabelValue did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'scale' in standard_DiseaseModelLabelValue is not implemented or raised an error")
 
 import warnings
 import copy
@@ -2003,28 +1815,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=standard_DiseaseModelLabelValue_strategy)
-@settings(max_examples=30)
-def test_hyp_standard_diseasemodellabelvalue_zerooutpopulationcount_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.zeroOutPopulationCount()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.zeroOutPopulationCount).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'zeroOutPopulationCount' in standard_DiseaseModelLabelValue is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'zeroOutPopulationCount' in standard_DiseaseModelLabelValue did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'zeroOutPopulationCount' in standard_DiseaseModelLabelValue is not implemented or raised an error")
 
 import warnings
 import copy
@@ -2032,30 +1822,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=standard_DiseaseModelLabelValue_strategy)
-@settings(max_examples=30)
-def test_hyp_standard_diseasemodellabelvalue_sub_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.sub(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.sub).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'sub' in standard_DiseaseModelLabelValue is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'sub' in standard_DiseaseModelLabelValue did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'sub' in standard_DiseaseModelLabelValue is not implemented or raised an error")
 
 import warnings
 import copy
@@ -2063,30 +1829,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=standard_DiseaseModelLabelValue_strategy)
-@settings(max_examples=30)
-def test_hyp_standard_diseasemodellabelvalue_add_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.add(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.add).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'add' in standard_DiseaseModelLabelValue is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'add' in standard_DiseaseModelLabelValue did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'add' in standard_DiseaseModelLabelValue is not implemented or raised an error")
 
 import warnings
 import copy
@@ -2094,30 +1836,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=standard_DiseaseModelLabelValue_strategy)
-@settings(max_examples=30)
-def test_hyp_standard_diseasemodellabelvalue_set_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.set(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.set).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'set' in standard_DiseaseModelLabelValue is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'set' in standard_DiseaseModelLabelValue did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'set' in standard_DiseaseModelLabelValue is not implemented or raised an error")
 
 
 
@@ -2247,28 +1965,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=standard_DiseaseModel_strategy)
-@settings(max_examples=30)
-def test_hyp_standard_diseasemodel_createinfector_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.createInfector()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.createInfector).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'createInfector' in standard_DiseaseModel is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'createInfector' in standard_DiseaseModel did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'createInfector' in standard_DiseaseModel is not implemented or raised an error")
 
 import warnings
 import copy
@@ -2276,30 +1972,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=standard_DiseaseModel_strategy)
-@settings(max_examples=30)
-def test_hyp_standard_diseasemodel_initializediseasestate_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.initializeDiseaseState(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.initializeDiseaseState).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'initializeDiseaseState' in standard_DiseaseModel is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'initializeDiseaseState' in standard_DiseaseModel did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'initializeDiseaseState' in standard_DiseaseModel is not implemented or raised an error")
 
 import warnings
 import copy
@@ -2307,28 +1979,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=standard_DiseaseModel_strategy)
-@settings(max_examples=30)
-def test_hyp_standard_diseasemodel_creatediseasemodelstate_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.createDiseaseModelState()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.createDiseaseModelState).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'createDiseaseModelState' in standard_DiseaseModel is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'createDiseaseModelState' in standard_DiseaseModel did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'createDiseaseModelState' in standard_DiseaseModel is not implemented or raised an error")
 
 import warnings
 import copy
@@ -2336,28 +1986,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=standard_DiseaseModel_strategy)
-@settings(max_examples=30)
-def test_hyp_standard_diseasemodel_creatediseasemodellabelvalue_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.createDiseaseModelLabelValue()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.createDiseaseModelLabelValue).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'createDiseaseModelLabelValue' in standard_DiseaseModel is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'createDiseaseModelLabelValue' in standard_DiseaseModel did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'createDiseaseModelLabelValue' in standard_DiseaseModel is not implemented or raised an error")
 
 import warnings
 import copy
@@ -2365,28 +1993,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=standard_DiseaseModel_strategy)
-@settings(max_examples=30)
-def test_hyp_standard_diseasemodel_creatediseasemodellabel_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.createDiseaseModelLabel()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.createDiseaseModelLabel).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'createDiseaseModelLabel' in standard_DiseaseModel is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'createDiseaseModelLabel' in standard_DiseaseModel did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'createDiseaseModelLabel' in standard_DiseaseModel is not implemented or raised an error")
 
 
 
@@ -4350,7 +3956,6 @@ def test_standard_DiseaseModel_createInfector():
 
 def test_standard_DiseaseModel_createDiseaseModelState():
     assert standard_DiseaseModel.createDiseaseModelState(standard_DiseaseModel(0.0, '', '', '', 0.0, False, False, 0.0)) == None
-
 from python_code import standard_DiseaseModelLabelValue
 
 def test_standard_DiseaseModelLabelValue___init__():
@@ -4370,7 +3975,6 @@ def test_standard_DiseaseModelLabelValue_scale():
 
 def test_standard_DiseaseModelLabelValue_zeroOutPopulationCount():
     assert standard_DiseaseModelLabelValue.zeroOutPopulationCount(standard_DiseaseModelLabelValue(0.0, 0.0, 0.0)) == None
-
 from python_code import standard_IntegrationDecorator
 
 def test_standard_IntegrationDecorator___init__():
@@ -4378,7 +3982,6 @@ def test_standard_IntegrationDecorator___init__():
 
 def test_standard_IntegrationDecorator_isDeterministic():
     assert standard_IntegrationDecorator.isDeterministic(standard_IntegrationDecorator()) == None
-
 from python_code import standard_SEIR
 
 def test_standard_SEIR___init__():
@@ -4386,24 +3989,20 @@ def test_standard_SEIR___init__():
 
 def test_standard_SEIR_getAdjustedIncubationRate():
     assert standard_SEIR.getAdjustedIncubationRate(standard_SEIR(0.0), '') == None
-
 from python_code import standard_SEIRLabel
 from python_code import standard_SEIRLabelValue
 
 def test_standard_SEIRLabelValue___init__():
     assert standard_SEIRLabelValue.__init__(standard_SEIRLabelValue(0.0, standard_SEIRLabelValue=standard_SEIRLabel(), standard_SEIRLabelValue12=standard_SEIRLabel(), standard_SEIRLabelValue15=standard_SEIRLabel(), standard_SEIRLabelValue21=standard_SEIRLabel(), standard_SEIRLabelValue18=standard_SEIRLabel()), 0.0, standard_SEIRLabelValue=standard_SEIRLabel(), standard_SEIRLabelValue12=standard_SEIRLabel(), standard_SEIRLabelValue15=standard_SEIRLabel(), standard_SEIRLabelValue21=standard_SEIRLabel(), standard_SEIRLabelValue18=standard_SEIRLabel()) == None
-
 from python_code import standard_SIInfector
 
 def test_standard_SIInfector___init__():
     assert standard_SIInfector.__init__(standard_SIInfector(0.0), 0.0) == None
-
 from python_code import standard_SILabel
 from python_code import standard_SILabelValue
 
 def test_standard_SILabelValue___init__():
     assert standard_SILabelValue.__init__(standard_SILabelValue(0.0, standard_SILabelValue=standard_SILabel(), standard_SILabelValue25=standard_SILabel(), standard_SILabelValue28=standard_SILabel(), standard_SILabelValue31=standard_SILabel(), standard_SILabelValue34=standard_SILabel()), 0.0, standard_SILabelValue=standard_SILabel(), standard_SILabelValue25=standard_SILabel(), standard_SILabelValue28=standard_SILabel(), standard_SILabelValue31=standard_SILabel(), standard_SILabelValue34=standard_SILabel()) == None
-
 from python_code import standard_SIR
 
 def test_standard_SIR___init__():
@@ -4411,28 +4010,23 @@ def test_standard_SIR___init__():
 
 def test_standard_SIR_getAdjustedImmunityLossRate():
     assert standard_SIR.getAdjustedImmunityLossRate(standard_SIR(0.0), '') == None
-
 from python_code import standard_SIRInoculator
 
 def test_standard_SIRInoculator___init__():
     assert standard_SIRInoculator.__init__(standard_SIRInoculator(0.0, False), 0.0, False) == None
-
 from python_code import standard_SIRLabel
 from python_code import standard_SIRLabelValue
 
 def test_standard_SIRLabelValue___init__():
     assert standard_SIRLabelValue.__init__(standard_SIRLabelValue(0.0, standard_SIRLabelValue=standard_SIRLabel(), standard_SIRLabelValue38=standard_SIRLabel(), standard_SIRLabelValue41=standard_SIRLabel(), standard_SIRLabelValue44=standard_SIRLabel(), standard_SIRLabelValue47=standard_SIRLabel()), 0.0, standard_SIRLabelValue=standard_SIRLabel(), standard_SIRLabelValue38=standard_SIRLabel(), standard_SIRLabelValue41=standard_SIRLabel(), standard_SIRLabelValue44=standard_SIRLabel(), standard_SIRLabelValue47=standard_SIRLabel()) == None
-
 from python_code import standard_StandardDiseaseModelLabelValue
 
 def test_standard_StandardDiseaseModelLabelValue___init__():
     assert standard_StandardDiseaseModelLabelValue.__init__(standard_StandardDiseaseModelLabelValue(0.0), 0.0) == None
-
 from python_code import standard_StandardDiseaseModelState
 
 def test_standard_StandardDiseaseModelState___init__():
     assert standard_StandardDiseaseModelState.__init__(standard_StandardDiseaseModelState(0.0), 0.0) == None
-
 from python_code import standard_StandardStochasticDiseaseModel
 
 def test_standard_StandardStochasticDiseaseModel___init__():
@@ -4440,7 +4034,6 @@ def test_standard_StandardStochasticDiseaseModel___init__():
 
 def test_standard_StandardStochasticDiseaseModel_computeNoise():
     assert standard_StandardStochasticDiseaseModel.computeNoise(standard_StandardStochasticDiseaseModel(0.0)) == None
-
 from python_code import standard_StochasticDiseaseModel
 
 def test_standard_StochasticDiseaseModel___init__():

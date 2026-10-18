@@ -1,4 +1,8 @@
 @startuml
+' model: RDM
+' project: sampleModel
+' owner: User
+' description: New project
 enum ConnectionDirection {
   LEFT
   RIGHT
@@ -70,31 +74,31 @@ Section <|-- RDM_Station
 Signal <|-- RDM_TurnoutSignal
 TrackElement <|-- RDM_Section
 TrackElement <|-- RDM_Turnout
-RDM_Station "1..1" -- "1..1" RDM_Train : arrivesTo15
-RDM_Route "0..1" -- "1..1" RDM_RouteElement : belongsTo49
-RDM_ConnectionPoint "1..3" --* "1..1" RDM_TrackElement : connectsTo27
-RDM_Signal "1..2" -- "1..1" RDM_Station : controls37
-RDM_Station "1..1" -- "1..1" RDM_Train : departuresFrom17
-RDM_RouteElement "1..1" *-- "0..1" RDM_TurnoutDesiredDirection : desiredDirection48
-RDM_ConnectionPoint "0..9999" --* "1..1" RDM_RailwayDomainModel : editorCP5
-RDM_RailwayDomainModel "1..1" *-- "0..9999" RDM_Route : editorRoute11
-RDM_RailwayDomainModel "1..1" *-- "0..9999" RDM_RouteElement : editorRouteElement13
-RDM_RailwayDomainModel "1..1" *-- "0..9999" RDM_Signal : editorSignal7
-RDM_RailwayDomainModel "1..1" *-- "0..9999" RDM_TurnoutDesiredDirection : editorTDD9
-RDM_Route "1..1" *-- "1..1" RDM_RouteElement : firstElement31
-RDM_Route "1..1" --* "1..1" RDM_Train : follows20
-RDM_ConnectionPoint "1..1" *-- "1..1" RDM_Signal : holds40
-RDM_ConnectionPoint "1..1" -- "1..1" RDM_TrackElement : nextElement42
-RDM_RouteElement "0..1" --* "1..1" RDM_RouteElement : nextElement51
-RDM_Signal "1..1" -- "1..1" RDM_TrackElement : observes25
-RDM_TrackElement "1..1" -- "0..1" RDM_Train : occupiedBy30
-RDM_RouteElement "1..1" -- "1..1" RDM_TrackElement : referredElement45
-RDM_Turnout "1..1" -- "1..1" RDM_TurnoutDesiredDirection : referredTurnout32
-RDM_RouteElement "0..1" -- "1..1" RDM_TurnoutDesiredDirection : routeElement35
-RDM_RailwayDomainModel "1..1" *-- "3..9999" RDM_Section : sections1
-RDM_TrackElement "1..2" -- "1..1" RDM_Train : standsOn23
-RDM_ConnectionPoint "0..1" -- "1..1" RDM_Signal : standsOn24
-RDM_RailwayDomainModel "1..1" *-- "2..9999" RDM_Train : trains0
-RDM_Turnout "1..1" -- "1..1" RDM_TurnoutSignal : turnout53
-RDM_RailwayDomainModel "1..1" *-- "2..9999" RDM_Turnout : turnouts3
+RDM_Station "RDM_Train16 1..1" -- "RDM_Station 1..1" RDM_Train : arrivesTo15
+RDM_Route "firstElement 0..1" -- "Route 1..1" RDM_RouteElement : belongsTo49
+RDM_ConnectionPoint "RDM_TrackElement28 1..3" --* "RDM_ConnectionPoint29 1..1" RDM_TrackElement : connectsTo27
+RDM_Signal "RDM_Station38 1..2" -- "RDM_Signal39 1..1" RDM_Station : controls37
+RDM_Station "RDM_Train18 1..1" -- "RDM_Station19 1..1" RDM_Train : departuresFrom17
+RDM_RouteElement "TurnoutDesiredDirection 1..1" *-- "routeElement 0..1" RDM_TurnoutDesiredDirection : desiredDirection48
+RDM_ConnectionPoint "RDM_RailwayDomainModel6 0..9999" --* "RDM_ConnectionPoint 1..1" RDM_RailwayDomainModel : editorCP5
+RDM_RailwayDomainModel "RDM_Route 1..1" *-- "RDM_RailwayDomainModel12 0..9999" RDM_Route : editorRoute11
+RDM_RailwayDomainModel "RDM_RouteElement 1..1" *-- "RDM_RailwayDomainModel14 0..9999" RDM_RouteElement : editorRouteElement13
+RDM_RailwayDomainModel "RDM_Signal 1..1" *-- "RDM_RailwayDomainModel8 0..9999" RDM_Signal : editorSignal7
+RDM_RailwayDomainModel "RDM_TurnoutDesiredDirection 1..1" *-- "RDM_RailwayDomainModel10 0..9999" RDM_TurnoutDesiredDirection : editorTDD9
+RDM_Route "RouteElement 1..1" *-- "belongsTo 1..1" RDM_RouteElement : firstElement31
+RDM_Route "RDM_Train21 1..1" --* "RDM_Route22 1..1" RDM_Train : follows20
+RDM_ConnectionPoint "Signal 1..1" *-- "standsOn41 1..1" RDM_Signal : holds40
+RDM_ConnectionPoint "RDM_TrackElement44 1..1" -- "RDM_ConnectionPoint43 1..1" RDM_TrackElement : nextElement42
+RDM_RouteElement "RDM_RouteElement50 0..1" --* "RDM_RouteElement52 1..1" RDM_RouteElement : nextElement51
+RDM_Signal "RDM_TrackElement 1..1" -- "RDM_Signal26 1..1" RDM_TrackElement : observes25
+RDM_TrackElement "Train 1..1" -- "standsOn 0..1" RDM_Train : occupiedBy30
+RDM_RouteElement "RDM_TrackElement47 1..1" -- "RDM_RouteElement46 1..1" RDM_TrackElement : referredElement45
+RDM_Turnout "RDM_TurnoutDesiredDirection33 1..1" -- "RDM_Turnout34 1..1" RDM_TurnoutDesiredDirection : referredTurnout32
+RDM_RouteElement "desiredDirection 0..1" -- "RouteElement36 1..1" RDM_TurnoutDesiredDirection : routeElement35
+RDM_RailwayDomainModel "RDM_Section 1..1" *-- "RDM_RailwayDomainModel2 3..9999" RDM_Section : sections1
+RDM_TrackElement "occupiedBy 1..2" -- "TrackElement 1..1" RDM_Train : standsOn23
+RDM_ConnectionPoint "holds 0..1" -- "ConnectionPoint 1..1" RDM_Signal : standsOn24
+RDM_RailwayDomainModel "RDM_Train 1..1" *-- "RDM_RailwayDomainModel 2..9999" RDM_Train : trains0
+RDM_Turnout "RDM_TurnoutSignal 1..1" -- "RDM_Turnout54 1..1" RDM_TurnoutSignal : turnout53
+RDM_RailwayDomainModel "RDM_Turnout 1..1" *-- "RDM_RailwayDomainModel4 2..9999" RDM_Turnout : turnouts3
 @enduml

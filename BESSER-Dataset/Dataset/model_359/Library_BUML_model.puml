@@ -1,4 +1,8 @@
 @startuml
+' model: libraryExample
+' project: sampleModel
+' owner: User
+' description: New project
 class Asset {
 }
 class Book {
@@ -33,8 +37,8 @@ class libraryExample_Writer {
 Asset <|-- libraryExample_SchoolBook
 Book <|-- libraryExample_SchoolBook
 Library <|-- libraryExample_SchoolLibrary
-libraryExample_Book "0..9999" --* "1..1" libraryExample_Library : books0
-libraryExample_Book "0..9999" -- "1..1" libraryExample_Writer : books4
-libraryExample_Book "1..1" -- "1..1" libraryExample_Writer : writer3
-libraryExample_Library "1..1" *-- "0..9999" libraryExample_Writer : writers1
+libraryExample_Book "libraryExample_Library 0..9999" --* "libraryExample_Book 1..1" libraryExample_Library : books0
+libraryExample_Book "writer 0..9999" -- "Book 1..1" libraryExample_Writer : books4
+libraryExample_Book "Writer 1..1" -- "books 1..1" libraryExample_Writer : writer3
+libraryExample_Library "libraryExample_Writer 1..1" *-- "libraryExample_Library2 0..9999" libraryExample_Writer : writers1
 @enduml

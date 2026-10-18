@@ -1,4 +1,8 @@
 @startuml
+' model: form
+' project: sampleModel
+' owner: User
+' description: New project
 class InputField {
 }
 class PageElement {
@@ -63,19 +67,19 @@ PageElement <|-- form_Text
 Text <|-- form_Heading
 Text <|-- form_Paragraph
 VisibilityCondition <|-- form_SelectionCondition
-form_Page "0..9999" -- "1..1" form_Page : allNextPages8
-form_Page "0..9999" -- "1..1" form_Page : allPreviousPages5
-form_PageElement "0..9999" -- "1..1" form_VisibilityCondition : concernsElements25
-form_Page "1..1" *-- "0..9999" form_PageElement : elements12
-form_SelectionField "1..1" -- "1..1" form_SelectionItem : field21
-form_SelectionCondition "1..1" -- "1..1" form_SelectionItem : item26
-form_SelectionField "1..1" *-- "1..9999" form_SelectionItem : items20
-form_List "1..1" *-- "1..9999" form_ListItem : items22
-form_Page "1..1" -- "0..1" form_Page : nextPage11
-form_Page "1..1" -- "1..1" form_PageElement : page18
-form_Page "1..1" -- "1..1" form_VisibilityCondition : page23
-form_Form "1..1" *-- "0..9999" form_Page : pages0
-form_Page "1..1" -- "0..1" form_Page : previousPage14
-form_Page "1..1" *-- "0..9999" form_VisibilityCondition : visibilityConditions16
-form_Form "1..1" -- "1..1" form_Page : welcomePage1
+form_Page "form_Page7 0..9999" -- "form_Page9 1..1" form_Page : allNextPages8
+form_Page "form_Page4 0..9999" -- "form_Page6 1..1" form_Page : allPreviousPages5
+form_PageElement "form_VisibilityCondition 0..9999" -- "form_PageElement 1..1" form_VisibilityCondition : concernsElements25
+form_Page "PageElement 1..1" *-- "page 0..9999" form_PageElement : elements12
+form_SelectionField "items 1..1" -- "SelectionField 1..1" form_SelectionItem : field21
+form_SelectionCondition "form_SelectionItem 1..1" -- "form_SelectionCondition 1..1" form_SelectionItem : item26
+form_SelectionField "SelectionItem 1..1" *-- "field 1..9999" form_SelectionItem : items20
+form_List "form_ListItem 1..1" *-- "form_List 1..9999" form_ListItem : items22
+form_Page "Page 1..1" -- "previousPage 0..1" form_Page : nextPage11
+form_Page "elements 1..1" -- "Page19 1..1" form_PageElement : page18
+form_Page "visibilityConditions 1..1" -- "Page24 1..1" form_VisibilityCondition : page23
+form_Form "form_Page 1..1" *-- "form_Form 0..9999" form_Page : pages0
+form_Page "Page15 1..1" -- "nextPage 0..1" form_Page : previousPage14
+form_Page "VisibilityCondition 1..1" *-- "page17 0..9999" form_VisibilityCondition : visibilityConditions16
+form_Form "form_Page3 1..1" -- "form_Form2 1..1" form_Page : welcomePage1
 @enduml

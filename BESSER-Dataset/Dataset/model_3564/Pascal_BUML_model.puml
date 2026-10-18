@@ -1,4 +1,8 @@
 @startuml
+' model: pascal
+' project: sampleModel
+' owner: User
+' description: New project
 class expression {
 }
 class pascal_EObject {
@@ -50,13 +54,13 @@ enum type {
 }
 expression <|-- pascal_arit_expression
 expression <|-- pascal_rel_expression
-pascal_atrib "0..9999" --* "1..1" pascal_statement : atrib_block9
-pascal_Pascal "1..1" *-- "0..9999" pascal_var_block : declarations1
-pascal_atrib "1..1" *-- "0..1" pascal_expression : exp11
-pascal_arit_expression "1..1" *-- "0..9999" pascal_repetitive_arit_expression : exp13
-pascal_repetitive_arit_expression "0..9999" --* "1..1" pascal_repetitive_arit_expression : exp15
-pascal_Pascal "1..1" *-- "0..1" pascal_program : head0
-pascal_Pascal "1..1" *-- "0..9999" pascal_block : scope3
-pascal_block "1..1" *-- "0..9999" pascal_statement : statements7
-pascal_EObject "0..9999" --* "1..1" pascal_var_block : var_statements5
+pascal_atrib "pascal_statement10 0..9999" --* "pascal_atrib 1..1" pascal_statement : atrib_block9
+pascal_Pascal "pascal_var_block 1..1" *-- "pascal_Pascal2 0..9999" pascal_var_block : declarations1
+pascal_atrib "pascal_expression 1..1" *-- "pascal_atrib12 0..1" pascal_expression : exp11
+pascal_arit_expression "pascal_repetitive_arit_expression 1..1" *-- "pascal_arit_expression 0..9999" pascal_repetitive_arit_expression : exp13
+pascal_repetitive_arit_expression "pascal_repetitive_arit_expression14 0..9999" --* "pascal_repetitive_arit_expression16 1..1" pascal_repetitive_arit_expression : exp15
+pascal_Pascal "pascal_program 1..1" *-- "pascal_Pascal 0..1" pascal_program : head0
+pascal_Pascal "pascal_block 1..1" *-- "pascal_Pascal4 0..9999" pascal_block : scope3
+pascal_block "pascal_statement 1..1" *-- "pascal_block8 0..9999" pascal_statement : statements7
+pascal_EObject "pascal_var_block6 0..9999" --* "pascal_EObject 1..1" pascal_var_block : var_statements5
 @enduml

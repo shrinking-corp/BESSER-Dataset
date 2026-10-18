@@ -1,4 +1,8 @@
 @startuml
+' model: statemachine
+' project: sampleModel
+' owner: User
+' description: New project
 class NamedElement {
 }
 class statemachine_Command {
@@ -20,12 +24,12 @@ class statemachine_Transition {
 NamedElement <|-- statemachine_Command
 NamedElement <|-- statemachine_Event
 NamedElement <|-- statemachine_State
-statemachine_Command "0..9999" --* "1..1" statemachine_State : actions8
-statemachine_Command "0..9999" --* "1..1" statemachine_Statemachine : commands4
-statemachine_Event "0..1" -- "1..1" statemachine_Transition : event13
-statemachine_Event "0..9999" --* "1..1" statemachine_Statemachine : events0
-statemachine_Event "0..9999" -- "1..1" statemachine_Statemachine : resetEvents1
-statemachine_State "0..1" -- "1..1" statemachine_Transition : state16
-statemachine_State "0..9999" --* "1..1" statemachine_Statemachine : states6
-statemachine_State "1..1" *-- "0..9999" statemachine_Transition : transitions11
+statemachine_Command "statemachine_State9 0..9999" --* "statemachine_Command10 1..1" statemachine_State : actions8
+statemachine_Command "statemachine_Statemachine5 0..9999" --* "statemachine_Command 1..1" statemachine_Statemachine : commands4
+statemachine_Event "statemachine_Transition14 0..1" -- "statemachine_Event15 1..1" statemachine_Transition : event13
+statemachine_Event "statemachine_Statemachine 0..9999" --* "statemachine_Event 1..1" statemachine_Statemachine : events0
+statemachine_Event "statemachine_Statemachine2 0..9999" -- "statemachine_Event3 1..1" statemachine_Statemachine : resetEvents1
+statemachine_State "statemachine_Transition17 0..1" -- "statemachine_State18 1..1" statemachine_Transition : state16
+statemachine_State "statemachine_Statemachine7 0..9999" --* "statemachine_State 1..1" statemachine_Statemachine : states6
+statemachine_State "statemachine_Transition 1..1" *-- "statemachine_State12 0..9999" statemachine_Transition : transitions11
 @enduml

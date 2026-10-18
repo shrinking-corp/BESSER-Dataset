@@ -1,4 +1,8 @@
 @startuml
+' model: featureModel
+' project: sampleModel
+' owner: User
+' description: New project
 enum FeatureGroupType {
   ORGROUP
   SIMPLEGROUP
@@ -56,17 +60,17 @@ Node <|-- featureModel_Feature
 Node <|-- featureModel_FeatureGroup
 Relation <|-- featureModel_RelationFG
 Relation <|-- featureModel_RelationFeature
-featureModel_Feature "1..1" -- "0..9999" featureModel_Node : children1
-featureModel_Feature "0..9999" -- "1..1" featureModel_FeatureGroup : children16
-featureModel_Node "0..1" -- "1..1" featureModel_Node : father19
-featureModel_Feature "0..1" -- "1..1" featureModel_TypedValue : featureValue9
-featureModel_Node "0..9999" --* "1..1" featureModel_Project : features12
-featureModel_Feature "0..1" -- "1..1" featureModel_Feature : references4
-featureModel_Feature "0..9999" -- "1..1" featureModel_Feature : referenciated7
-featureModel_Project "1..1" *-- "0..9999" featureModel_Relation : relations14
-featureModel_Node "1..1" -- "1..1" featureModel_RelationFG : source21
-featureModel_Feature "1..1" -- "1..1" featureModel_RelationFeature : source26
-featureModel_Node "1..1" -- "1..1" featureModel_RelationFG : target23
-featureModel_Feature "1..1" -- "1..1" featureModel_RelationFeature : target28
-featureModel_Feature "1..1" *-- "0..1" featureModel_TypedValue : typedValue0
+featureModel_Feature "featureModel_Node 1..1" -- "featureModel_Feature2 0..9999" featureModel_Node : children1
+featureModel_Feature "featureModel_FeatureGroup 0..9999" -- "featureModel_Feature17 1..1" featureModel_FeatureGroup : children16
+featureModel_Node "featureModel_Node18 0..1" -- "featureModel_Node20 1..1" featureModel_Node : father19
+featureModel_Feature "featureModel_TypedValue10 0..1" -- "featureModel_Feature11 1..1" featureModel_TypedValue : featureValue9
+featureModel_Node "featureModel_Project 0..9999" --* "featureModel_Node13 1..1" featureModel_Project : features12
+featureModel_Feature "featureModel_Feature3 0..1" -- "featureModel_Feature5 1..1" featureModel_Feature : references4
+featureModel_Feature "featureModel_Feature6 0..9999" -- "featureModel_Feature8 1..1" featureModel_Feature : referenciated7
+featureModel_Project "featureModel_Relation 1..1" *-- "featureModel_Project15 0..9999" featureModel_Relation : relations14
+featureModel_Node "featureModel_RelationFG 1..1" -- "featureModel_Node22 1..1" featureModel_RelationFG : source21
+featureModel_Feature "featureModel_RelationFeature 1..1" -- "featureModel_Feature27 1..1" featureModel_RelationFeature : source26
+featureModel_Node "featureModel_RelationFG24 1..1" -- "featureModel_Node25 1..1" featureModel_RelationFG : target23
+featureModel_Feature "featureModel_RelationFeature29 1..1" -- "featureModel_Feature30 1..1" featureModel_RelationFeature : target28
+featureModel_Feature "featureModel_TypedValue 1..1" *-- "featureModel_Feature 0..1" featureModel_TypedValue : typedValue0
 @enduml

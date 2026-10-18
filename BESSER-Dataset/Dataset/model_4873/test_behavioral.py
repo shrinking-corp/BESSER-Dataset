@@ -433,9 +433,9 @@ def test_assoc_properties9_stub_double():
     partner = application_Configuration()
     setattr(partner, 'application_Configuration', None)
     _safe_set(owner, 'application_Property', partner)
-    assert getattr(partner, 'application_Configuration') == owner
+    assert owner in getattr(partner, 'application_Configuration')
     _safe_set(owner, 'application_Property', None)
-    assert getattr(partner, 'application_Configuration') is None
+    assert owner not in getattr(partner, 'application_Configuration')
 
 
 def test_assoc_security22_stub_double():

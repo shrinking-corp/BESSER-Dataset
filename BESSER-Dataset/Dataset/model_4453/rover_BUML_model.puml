@@ -1,4 +1,8 @@
 @startuml
+' model: rover
+' project: sampleModel
+' owner: User
+' description: New project
 class Actuator {
 }
 enum AngleUnit {
@@ -148,38 +152,38 @@ Transition <|-- rover_TriggeredTransition
 TriggeredTransition <|-- rover_CompassTrigger
 TriggeredTransition <|-- rover_DistanceSensorTrigger
 TriggeredTransition <|-- rover_GPSTrigger
-rover_Length "1..1" -- "1..1" rover_Position : X64
-rover_Length "1..1" -- "1..1" rover_Position : Y67
-rover_Angle "1..1" -- "1..1" rover_Compass : angle13
-rover_Angle "1..1" -- "1..1" rover_Rotate : angle35
-rover_Angle "1..1" -- "1..1" rover_CompassTrigger : angle56
-rover_Block "1..1" --* "1..1" rover_Program : block8
-rover_Block "1..1" *-- "0..9999" rover_Command : command15
-rover_Compass "1..1" -- "1..1" rover_CompassTrigger : compass54
-rover_Component "1..9999" --* "1..1" rover_Rover : component3
-rover_Distance "1..1" -- "1..1" rover_DistanceSensorTrigger : distance49
-rover_GPS "1..1" -- "1..1" rover_GPSTrigger : gps59
-rover_Command "1..1" -- "0..9999" rover_Transition : incomingTransition22
-rover_Distance "1..1" -- "1..1" rover_Length : length14
-rover_Length "0..1" -- "1..1" rover_Move : length30
-rover_DistanceSensorTrigger "1..1" -- "1..1" rover_Length : length51
-rover_Light "1..1" -- "1..1" rover_SetLightColor : light27
-rover_Motor "1..1" -- "1..1" rover_Move : motor29
-rover_Move "0..9999" --* "1..1" rover_Repeat : move43
-rover_Command "1..1" -- "0..9999" rover_Transition : outgoingTransition21
-rover_GPS "1..1" -- "1..1" rover_Position : position12
-rover_GPSTrigger "1..1" -- "1..1" rover_Position : position61
-rover_Program "1..9999" --* "1..1" rover_System : program1
-rover_Program "1..1" *-- "0..9999" rover_Quantity : quantity10
-rover_Block "1..1" -- "0..1" rover_Repeat : repeat19
-rover_Repeat "1..1" *-- "0..9999" rover_Rotate : rotate46
-rover_Rover "1..9999" --* "1..1" rover_System : rover0
-rover_Program "1..1" -- "1..1" rover_Rover : rover5
-rover_Repeat "1..1" *-- "0..9999" rover_SetLightColor : setlightcolor37
-rover_Command "1..1" -- "1..1" rover_Transition : source24
-rover_Command "1..1" -- "1..1" rover_Transition : target25
-rover_Time "1..1" -- "1..1" rover_Wait : time28
-rover_Block "1..1" *-- "0..9999" rover_Transition : transition17
-rover_Move "1..1" -- "1..1" rover_Velocity : velocity33
-rover_Repeat "1..1" *-- "0..9999" rover_Wait : wait40
+rover_Length "rover_Position65 1..1" -- "rover_Length66 1..1" rover_Position : X64
+rover_Length "rover_Position68 1..1" -- "rover_Length69 1..1" rover_Position : Y67
+rover_Angle "rover_Compass 1..1" -- "rover_Angle 1..1" rover_Compass : angle13
+rover_Angle "rover_Rotate 1..1" -- "rover_Angle36 1..1" rover_Rotate : angle35
+rover_Angle "rover_CompassTrigger57 1..1" -- "rover_Angle58 1..1" rover_CompassTrigger : angle56
+rover_Block "rover_Program9 1..1" --* "rover_Block 1..1" rover_Program : block8
+rover_Block "rover_Command 1..1" *-- "rover_Block16 0..9999" rover_Command : command15
+rover_Compass "rover_CompassTrigger 1..1" -- "rover_Compass55 1..1" rover_CompassTrigger : compass54
+rover_Component "rover_Rover4 1..9999" --* "rover_Component 1..1" rover_Rover : component3
+rover_Distance "rover_DistanceSensorTrigger 1..1" -- "rover_Distance50 1..1" rover_DistanceSensorTrigger : distance49
+rover_GPS "rover_GPSTrigger 1..1" -- "rover_GPS60 1..1" rover_GPSTrigger : gps59
+rover_Command "Transition23 1..1" -- "target 0..9999" rover_Transition : incomingTransition22
+rover_Distance "rover_Length 1..1" -- "rover_Distance 1..1" rover_Length : length14
+rover_Length "rover_Move31 0..1" -- "rover_Length32 1..1" rover_Move : length30
+rover_DistanceSensorTrigger "rover_Length53 1..1" -- "rover_DistanceSensorTrigger52 1..1" rover_Length : length51
+rover_Light "rover_SetLightColor 1..1" -- "rover_Light 1..1" rover_SetLightColor : light27
+rover_Motor "rover_Move 1..1" -- "rover_Motor 1..1" rover_Move : motor29
+rover_Move "rover_Repeat44 0..9999" --* "rover_Move45 1..1" rover_Repeat : move43
+rover_Command "Transition 1..1" -- "source 0..9999" rover_Transition : outgoingTransition21
+rover_GPS "rover_Position 1..1" -- "rover_GPS 1..1" rover_Position : position12
+rover_GPSTrigger "rover_Position63 1..1" -- "rover_GPSTrigger62 1..1" rover_Position : position61
+rover_Program "rover_System2 1..9999" --* "rover_Program 1..1" rover_System : program1
+rover_Program "rover_Quantity 1..1" *-- "rover_Program11 0..9999" rover_Quantity : quantity10
+rover_Block "rover_Repeat 1..1" -- "rover_Block20 0..1" rover_Repeat : repeat19
+rover_Repeat "rover_Rotate48 1..1" *-- "rover_Repeat47 0..9999" rover_Rotate : rotate46
+rover_Rover "rover_System 1..9999" --* "rover_Rover 1..1" rover_System : rover0
+rover_Program "rover_Rover7 1..1" -- "rover_Program6 1..1" rover_Rover : rover5
+rover_Repeat "rover_SetLightColor39 1..1" *-- "rover_Repeat38 0..9999" rover_SetLightColor : setlightcolor37
+rover_Command "outgoingTransition 1..1" -- "Command 1..1" rover_Transition : source24
+rover_Command "incomingTransition 1..1" -- "Command26 1..1" rover_Transition : target25
+rover_Time "rover_Wait 1..1" -- "rover_Time 1..1" rover_Wait : time28
+rover_Block "rover_Transition 1..1" *-- "rover_Block18 0..9999" rover_Transition : transition17
+rover_Move "rover_Velocity 1..1" -- "rover_Move34 1..1" rover_Velocity : velocity33
+rover_Repeat "rover_Wait42 1..1" *-- "rover_Repeat41 0..9999" rover_Wait : wait40
 @enduml

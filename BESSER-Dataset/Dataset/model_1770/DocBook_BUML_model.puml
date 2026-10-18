@@ -1,4 +1,8 @@
 @startuml
+' model: book
+' project: sampleModel
+' owner: User
+' description: New project
 class book_Article {
   + title : str
 }
@@ -10,14 +14,14 @@ class book_DocBook {
 class book_Person {
   + name : str
 }
-book_Article "0..9999" -- "1..1" book_Person : articles16
-book_Article "0..9999" --* "1..1" book_Book : articles5
-book_Book "1..1" -- "0..9999" book_Person : author3
-book_Article "1..1" -- "0..9999" book_Person : author9
-book_Book "0..9999" -- "1..1" book_Person : authored14
-book_Book "0..9999" --* "1..1" book_DocBook : book0
-book_Article "1..1" -- "1..1" book_Book : book7
-book_Book "1..1" -- "1..1" book_DocBook : docBook1
-book_Book "0..9999" -- "1..1" book_Person : edited12
-book_Book "1..1" -- "0..9999" book_Person : editor2
+book_Article "author17 0..9999" -- "Article18 1..1" book_Person : articles16
+book_Article "book6 0..9999" --* "Article 1..1" book_Book : articles5
+book_Book "Person4 1..1" -- "authored 0..9999" book_Person : author3
+book_Article "Person11 1..1" -- "articles10 0..9999" book_Person : author9
+book_Book "author 0..9999" -- "Book15 1..1" book_Person : authored14
+book_Book "docBook 0..9999" --* "Book 1..1" book_DocBook : book0
+book_Article "Book8 1..1" -- "articles 1..1" book_Book : book7
+book_Book "DocBook 1..1" -- "book 1..1" book_DocBook : docBook1
+book_Book "editor 0..9999" -- "Book13 1..1" book_Person : edited12
+book_Book "Person 1..1" -- "edited 0..9999" book_Person : editor2
 @enduml

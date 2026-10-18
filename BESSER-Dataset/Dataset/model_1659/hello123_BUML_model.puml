@@ -1,4 +1,8 @@
 @startuml
+' model: hello123
+' project: sampleModel
+' owner: User
+' description: New project
 class NamedElement {
 }
 class hello123_Alias {
@@ -27,12 +31,12 @@ class hello123_World {
 }
 NamedElement <|-- hello123_RelatedTo
 NamedElement <|-- hello123_Thing
-hello123_Alias "0..9999" --* "1..1" hello123_NamedElement : aliases8
-hello123_Bar "0..9999" --* "1..1" hello123_Thing : bars6
-hello123_Foo "0..9999" --* "1..1" hello123_Thing : foos4
-hello123_RelatedTo "1..1" -- "0..1" hello123_Thing : fromThing9
-hello123_Property "0..9999" --* "1..1" hello123_Thing : properties2
-hello123_RelatedTo "0..9999" --* "1..1" hello123_Thing : relations1
-hello123_Thing "0..9999" --* "1..1" hello123_World : things0
-hello123_RelatedTo "1..1" -- "0..1" hello123_Thing : toThing10
+hello123_Alias "hello123_NamedElement 0..9999" --* "hello123_Alias 1..1" hello123_NamedElement : aliases8
+hello123_Bar "hello123_Thing7 0..9999" --* "hello123_Bar 1..1" hello123_Thing : bars6
+hello123_Foo "hello123_Thing5 0..9999" --* "hello123_Foo 1..1" hello123_Thing : foos4
+hello123_RelatedTo "Thing 1..1" -- "relations 0..1" hello123_Thing : fromThing9
+hello123_Property "hello123_Thing3 0..9999" --* "hello123_Property 1..1" hello123_Thing : properties2
+hello123_RelatedTo "fromThing 0..9999" --* "RelatedTo 1..1" hello123_Thing : relations1
+hello123_Thing "hello123_World 0..9999" --* "hello123_Thing 1..1" hello123_World : things0
+hello123_RelatedTo "hello123_Thing11 1..1" -- "hello123_RelatedTo 0..1" hello123_Thing : toThing10
 @enduml

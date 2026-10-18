@@ -1,4 +1,8 @@
 @startuml
+' model: iotw
+' project: sampleModel
+' owner: User
+' description: New project
 class Component {
 }
 enum ConnectionKind {
@@ -263,13 +267,13 @@ StateComponent <|-- iotw_Decision
 StateComponent <|-- iotw_EndPoint
 StateComponent <|-- iotw_StartPoint
 StateComponent <|-- iotw_StateFrame
-iotw_StateComponent "0..9999" --* "1..1" iotw_StateSchema : components5
-iotw_Connection "0..9999" --* "1..1" iotw_StateSchema : connnections6
-iotw_Device "0..9999" --* "1..1" iotw_Mainboard : devices14
-iotw_Connection "0..9999" -- "1..1" iotw_StateComponent : incomings7
-iotw_Device "1..1" -- "0..1" iotw_Mainboard : mainboard13
-iotw_Connection "0..9999" -- "1..1" iotw_StateComponent : outgoings10
-iotw_Component "0..1" -- "1..1" iotw_Connection : source0
-iotw_Connection "1..1" -- "0..1" iotw_StateSchema : stateSchema4
-iotw_Component "0..1" -- "1..1" iotw_Connection : target1
+iotw_StateComponent "iotw_StateSchema 0..9999" --* "iotw_StateComponent 1..1" iotw_StateSchema : components5
+iotw_Connection "stateSchema 0..9999" --* "Connection 1..1" iotw_StateSchema : connnections6
+iotw_Device "mainboard 0..9999" --* "Device 1..1" iotw_Mainboard : devices14
+iotw_Connection "iotw_StateComponent8 0..9999" -- "iotw_Connection9 1..1" iotw_StateComponent : incomings7
+iotw_Device "Mainboard 1..1" -- "devices 0..1" iotw_Mainboard : mainboard13
+iotw_Connection "iotw_StateComponent11 0..9999" -- "iotw_Connection12 1..1" iotw_StateComponent : outgoings10
+iotw_Component "iotw_Connection 0..1" -- "iotw_Component 1..1" iotw_Connection : source0
+iotw_Connection "StateSchema 1..1" -- "connnections 0..1" iotw_StateSchema : stateSchema4
+iotw_Component "iotw_Connection2 0..1" -- "iotw_Component3 1..1" iotw_Connection : target1
 @enduml

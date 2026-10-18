@@ -1,4 +1,8 @@
 @startuml
+' model: connection
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractMetadataObject {
 }
 class Connection {
@@ -337,37 +341,37 @@ MetadataTable <|-- connection_SubscriberTable
 SAPFunctionParameterTable <|-- connection_InputSAPFunctionParameterTable
 SAPFunctionParameterTable <|-- connection_OutputSAPFunctionParameterTable
 SAPFunctionParameterTable <|-- connection_SAPTestInputParameterTable
-connection_SAPConnection "1..1" *-- "0..9999" connection_SAPFunctionUnit : Funtions11
-connection_InputSAPFunctionParameterTable "0..1" --* "1..1" connection_SAPFunctionUnit : InputParameterTable13
-connection_MetadataTable "0..1" --* "1..1" connection_SAPFunctionUnit : MetadataTable16
-connection_OutputSAPFunctionParameterTable "0..1" --* "1..1" connection_SAPFunctionUnit : OutputParameterTable14
-connection_SAPFunctionParameterColumn "1..1" -- "0..1" connection_SAPFunctionParameterTable : ParameterTable23
-connection_SAPFunctionUnit "1..1" *-- "0..1" connection_SAPTestInputParameterTable : TestInputParameterTable21
-connection_CDCConnection "0..1" -- "1..1" connection_CDCType : cdcConnection47
-connection_CDCConnection "0..1" --* "1..1" connection_DatabaseConnection : cdcConns9
-connection_CDCConnection "1..1" *-- "0..9999" connection_CDCType : cdcTypes44
-connection_SAPFunctionParameterColumn "0..9999" --* "1..1" connection_SAPFunctionParameterTable : columns25
-connection_MetadataColumn "0..9999" --* "1..1" connection_MetadataTable : columns6
-connection_Concept "1..1" *-- "0..9999" connection_ConceptTarget : conceptTargets52
-connection_SAPConnection "0..1" -- "1..1" connection_SAPFunctionUnit : connection17
-connection_Connection "0..1" -- "1..1" connection_QueriesConnection : connection34
-connection_XmlFileConnection "0..1" -- "1..1" connection_XmlXPathLoopDescriptor : connection40
-connection_CDCConnection "1..1" -- "0..1" connection_DatabaseConnection : connection43
-connection_Connection "0..1" -- "1..1" connection_MetadataTable : connection7
-connection_Connection "0..9999" --* "1..1" connection_Metadata : connections0
-connection_InputSAPFunctionParameterTable "1..1" -- "0..1" connection_SAPFunctionUnit : functionUnit26
-connection_OutputSAPFunctionParameterTable "1..1" -- "0..1" connection_SAPFunctionUnit : functionUnit28
-connection_SAPFunctionUnit "0..1" -- "1..1" connection_SAPTestInputParameterTable : functionUnit50
-connection_Connection "1..1" *-- "0..1" connection_QueriesConnection : queries2
-connection_QueriesConnection "0..1" -- "1..1" connection_Query : queries38
-connection_QueriesConnection "1..1" *-- "0..9999" connection_Query : query36
-connection_XmlFileConnection "1..1" *-- "0..9999" connection_XmlXPathLoopDescriptor : schema30
-connection_SchemaTarget "1..1" -- "0..1" connection_XmlXPathLoopDescriptor : schema32
-connection_Concept "0..1" -- "1..1" connection_ConceptTarget : schema54
-connection_SchemaTarget "0..9999" --* "1..1" connection_XmlXPathLoopDescriptor : schemaTargets41
-connection_Concept "0..9999" --* "1..1" connection_MDMConnection : schemas8
-connection_CDCType "1..1" *-- "0..9999" connection_SubscriberTable : subscribers45
-connection_MetadataColumn "1..1" -- "0..1" connection_MetadataTable : table4
-connection_Connection "1..1" *-- "0..9999" connection_MetadataTable : tables1
-connection_MetadataTable "0..9999" --* "1..1" connection_SAPFunctionUnit : tables18
+connection_SAPConnection "SAPFunctionUnit 1..1" *-- "connection12 0..9999" connection_SAPFunctionUnit : Funtions11
+connection_InputSAPFunctionParameterTable "functionUnit 0..1" --* "InputSAPFunctionParameterTable 1..1" connection_SAPFunctionUnit : InputParameterTable13
+connection_MetadataTable "connection_SAPFunctionUnit 0..1" --* "connection_MetadataTable 1..1" connection_SAPFunctionUnit : MetadataTable16
+connection_OutputSAPFunctionParameterTable "functionUnit15 0..1" --* "OutputSAPFunctionParameterTable 1..1" connection_SAPFunctionUnit : OutputParameterTable14
+connection_SAPFunctionParameterColumn "SAPFunctionParameterTable 1..1" -- "columns24 0..1" connection_SAPFunctionParameterTable : ParameterTable23
+connection_SAPFunctionUnit "SAPTestInputParameterTable 1..1" *-- "functionUnit22 0..1" connection_SAPTestInputParameterTable : TestInputParameterTable21
+connection_CDCConnection "connection_CDCType48 0..1" -- "connection_CDCConnection49 1..1" connection_CDCType : cdcConnection47
+connection_CDCConnection "connection10 0..1" --* "CDCConnection 1..1" connection_DatabaseConnection : cdcConns9
+connection_CDCConnection "connection_CDCType 1..1" *-- "connection_CDCConnection 0..9999" connection_CDCType : cdcTypes44
+connection_SAPFunctionParameterColumn "ParameterTable 0..9999" --* "SAPFunctionParameterColumn 1..1" connection_SAPFunctionParameterTable : columns25
+connection_MetadataColumn "table 0..9999" --* "MetadataColumn 1..1" connection_MetadataTable : columns6
+connection_Concept "ConceptTarget 1..1" *-- "schema53 0..9999" connection_ConceptTarget : conceptTargets52
+connection_SAPConnection "Funtions 0..1" -- "SAPConnection 1..1" connection_SAPFunctionUnit : connection17
+connection_Connection "queries 0..1" -- "Connection35 1..1" connection_QueriesConnection : connection34
+connection_XmlFileConnection "schema 0..1" -- "XmlFileConnection 1..1" connection_XmlXPathLoopDescriptor : connection40
+connection_CDCConnection "DatabaseConnection 1..1" -- "cdcConns 0..1" connection_DatabaseConnection : connection43
+connection_Connection "tables 0..1" -- "Connection 1..1" connection_MetadataTable : connection7
+connection_Connection "connection_Metadata 0..9999" --* "connection_Connection 1..1" connection_Metadata : connections0
+connection_InputSAPFunctionParameterTable "SAPFunctionUnit27 1..1" -- "InputParameterTable 0..1" connection_SAPFunctionUnit : functionUnit26
+connection_OutputSAPFunctionParameterTable "SAPFunctionUnit29 1..1" -- "OutputParameterTable 0..1" connection_SAPFunctionUnit : functionUnit28
+connection_SAPFunctionUnit "TestInputParameterTable 0..1" -- "SAPFunctionUnit51 1..1" connection_SAPTestInputParameterTable : functionUnit50
+connection_Connection "QueriesConnection 1..1" *-- "connection3 0..1" connection_QueriesConnection : queries2
+connection_QueriesConnection "query 0..1" -- "QueriesConnection39 1..1" connection_Query : queries38
+connection_QueriesConnection "Query 1..1" *-- "queries37 0..9999" connection_Query : query36
+connection_XmlFileConnection "XmlXPathLoopDescriptor 1..1" *-- "connection31 0..9999" connection_XmlXPathLoopDescriptor : schema30
+connection_SchemaTarget "XmlXPathLoopDescriptor33 1..1" -- "schemaTargets 0..1" connection_XmlXPathLoopDescriptor : schema32
+connection_Concept "conceptTargets 0..1" -- "Concept 1..1" connection_ConceptTarget : schema54
+connection_SchemaTarget "schema42 0..9999" --* "SchemaTarget 1..1" connection_XmlXPathLoopDescriptor : schemaTargets41
+connection_Concept "connection_MDMConnection 0..9999" --* "connection_Concept 1..1" connection_MDMConnection : schemas8
+connection_CDCType "connection_SubscriberTable 1..1" *-- "connection_CDCType46 0..9999" connection_SubscriberTable : subscribers45
+connection_MetadataColumn "MetadataTable5 1..1" -- "columns 0..1" connection_MetadataTable : table4
+connection_Connection "MetadataTable 1..1" *-- "connection 0..9999" connection_MetadataTable : tables1
+connection_MetadataTable "connection_SAPFunctionUnit19 0..9999" --* "connection_MetadataTable20 1..1" connection_SAPFunctionUnit : tables18
 @enduml

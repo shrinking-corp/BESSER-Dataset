@@ -1,4 +1,8 @@
 @startuml
+' model: jointPackage_BibTeX2DocBook
+' project: sampleModel
+' owner: User
+' description: New project
 class SrcAuthor {
 }
 class SrcAuthoredEntry {
@@ -142,14 +146,14 @@ TrgSection <|-- jointPackage_BibTeX2DocBook_TrgSect1
 TrgSection <|-- jointPackage_BibTeX2DocBook_TrgSect2
 TrgTitledElement <|-- jointPackage_BibTeX2DocBook_TrgArticle
 TrgTitledElement <|-- jointPackage_BibTeX2DocBook_TrgSection
-TrgArticle "1..9999" --* "1..1" jointPackage_BibTeX2DocBook_TrgBook : articles6
-SrcAuthor "1..9999" --* "1..1" jointPackage_BibTeX2DocBook_SrcAuthoredEntry : authors4
-TrgBook "1..9999" --* "1..1" jointPackage_BibTeX2DocBook_TrgDocBook : books5
-SrcBibTeXEntry "0..9999" --* "1..1" jointPackage_BibTeX2DocBook_SrcBibTeXFile : entries3
-TrgPara "1..9999" --* "1..1" jointPackage_BibTeX2DocBook_TrgSection : paras8
-TrgSection "1..1" -- "1..1" jointPackage_BibTeX2DocBook_TrgPara : section10
-TrgSect1 "1..9999" --* "1..1" jointPackage_BibTeX2DocBook_TrgArticle : sections_17
-TrgSect2 "1..9999" --* "1..1" jointPackage_BibTeX2DocBook_TrgSect1 : sections_29
-SrcMasterThesis "1..1" --* "1..1" jointPackage_BibTeX2DocBook_JointMM : sourceRoot0
-TrgDocBook "1..1" --* "1..1" jointPackage_BibTeX2DocBook_JointMM : targetRoot1
+TrgArticle "jointPackage_BibTeX2DocBook_TrgBook 1..9999" --* "TrgArticle 1..1" jointPackage_BibTeX2DocBook_TrgBook : articles6
+SrcAuthor "jointPackage_BibTeX2DocBook_SrcAuthoredEntry 1..9999" --* "SrcAuthor 1..1" jointPackage_BibTeX2DocBook_SrcAuthoredEntry : authors4
+TrgBook "jointPackage_BibTeX2DocBook_TrgDocBook 1..9999" --* "TrgBook 1..1" jointPackage_BibTeX2DocBook_TrgDocBook : books5
+SrcBibTeXEntry "jointPackage_BibTeX2DocBook_SrcBibTeXFile 0..9999" --* "SrcBibTeXEntry 1..1" jointPackage_BibTeX2DocBook_SrcBibTeXFile : entries3
+TrgPara "section 1..9999" --* "TrgPara 1..1" jointPackage_BibTeX2DocBook_TrgSection : paras8
+TrgSection "paras 1..1" -- "TrgSection 1..1" jointPackage_BibTeX2DocBook_TrgPara : section10
+TrgSect1 "jointPackage_BibTeX2DocBook_TrgArticle 1..9999" --* "TrgSect1 1..1" jointPackage_BibTeX2DocBook_TrgArticle : sections_17
+TrgSect2 "jointPackage_BibTeX2DocBook_TrgSect1 1..9999" --* "TrgSect2 1..1" jointPackage_BibTeX2DocBook_TrgSect1 : sections_29
+SrcMasterThesis "jointPackage_BibTeX2DocBook_JointMM 1..1" --* "SrcMasterThesis 1..1" jointPackage_BibTeX2DocBook_JointMM : sourceRoot0
+TrgDocBook "jointPackage_BibTeX2DocBook_JointMM2 1..1" --* "TrgDocBook 1..1" jointPackage_BibTeX2DocBook_JointMM : targetRoot1
 @enduml

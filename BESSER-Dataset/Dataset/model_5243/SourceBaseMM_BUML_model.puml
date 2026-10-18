@@ -1,4 +1,8 @@
 @startuml
+' model: sbase
+' project: sampleModel
+' owner: User
+' description: New project
 class SElement {
 }
 class sbase_EObject {
@@ -19,10 +23,10 @@ SElement <|-- sbase_SRoot
 SElement <|-- sbase_X
 SElement <|-- sbase_Y
 SElement <|-- sbase_Z
-sbase_EObject "0..1" -- "1..1" sbase_SElement : ast6
-sbase_SRoot "1..1" *-- "0..9999" sbase_X : ownedX5
-sbase_X "1..1" *-- "0..9999" sbase_Y : ownsY0
-sbase_Y "1..1" *-- "0..1" sbase_Z : ownsZ1
-sbase_X "0..1" -- "1..1" sbase_Y : toX2
-sbase_Y "0..1" -- "1..1" sbase_Z : toY3
+sbase_EObject "sbase_SElement 0..1" -- "sbase_EObject 1..1" sbase_SElement : ast6
+sbase_SRoot "sbase_X 1..1" *-- "sbase_SRoot 0..9999" sbase_X : ownedX5
+sbase_X "Y 1..1" *-- "toX 0..9999" sbase_Y : ownsY0
+sbase_Y "Z 1..1" *-- "toY 0..1" sbase_Z : ownsZ1
+sbase_X "ownsY 0..1" -- "X 1..1" sbase_Y : toX2
+sbase_Y "ownsZ 0..1" -- "Y4 1..1" sbase_Z : toY3
 @enduml

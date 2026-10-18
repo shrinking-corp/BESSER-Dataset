@@ -1,4 +1,8 @@
 @startuml
+' model: _6ebaa76d_d77e_4880_8aa6_96b6f56d9c5b
+' project: sampleModel
+' owner: User
+' description: New project
 class Online_Shopping_System_Account {
   + Closed : str
   + ID : str
@@ -42,12 +46,12 @@ class Online_Shopping_System_Web_User {
   + login_id : str
   + passwd : str
 }
-Online_Shopping_System_Account "1..1" -- "0..9999" Online_Shopping_System_Order : Account_Order
-Online_Shopping_System_Account "1..1" -- "1..1" Online_Shopping_System_Customer : Customer_Account
-Online_Shopping_System_Line_item "0..9999" -- "1..1" Online_Shopping_System_Product : Line_item_Product
-Online_Shopping_System_Line_item "0..9999" -- "1..1" Online_Shopping_System_Order : Order_Line_item
-Online_Shopping_System_Account "1..1" -- "1..9999" Online_Shopping_System_Payment : Payment_Account
-Online_Shopping_System_Line_item "0..9999" -- "1..1" Online_Shopping_System_Shopping_Cart : Shopping_Cart_Line_item
-Online_Shopping_System_Customer "1..1" -- "0..1" Online_Shopping_System_Web_User : Web_User_Customer
-Online_Shopping_System_Shopping_Cart "0..1" -- "1..1" Online_Shopping_System_Web_User : Web_User_Shopping_Cart
+Online_Shopping_System_Account "account9 1..1" -- "order8 0..9999" Online_Shopping_System_Order : Account_Order
+Online_Shopping_System_Account "account2 1..1" -- "customer3 1..1" Online_Shopping_System_Customer : Customer_Account
+Online_Shopping_System_Line_item "line_item15 0..9999" -- "product14 1..1" Online_Shopping_System_Product : Line_item_Product
+Online_Shopping_System_Line_item "line_item12 0..9999" -- "_order__unique_13 1..1" Online_Shopping_System_Order : Order_Line_item
+Online_Shopping_System_Account "account4 1..1" -- "payment5 1..9999" Online_Shopping_System_Payment : Payment_Account
+Online_Shopping_System_Line_item "ordered__unique10 0..9999" -- "shopping_Cart11 1..1" Online_Shopping_System_Shopping_Cart : Shopping_Cart_Line_item
+Online_Shopping_System_Customer "customer0 1..1" -- "web_User1 0..1" Online_Shopping_System_Web_User : Web_User_Customer
+Online_Shopping_System_Shopping_Cart "shopping_Cart6 0..1" -- "web_User7 1..1" Online_Shopping_System_Web_User : Web_User_Shopping_Cart
 @enduml

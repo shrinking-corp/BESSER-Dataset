@@ -1,4 +1,8 @@
 @startuml
+' model: mpl
+' project: sampleModel
+' owner: User
+' description: New project
 class ArithmeticExpression {
 }
 class AtomicExpression {
@@ -41,13 +45,13 @@ Expression <|-- mpl_ArithmeticExpression
 Expression <|-- mpl_AtomicExpression
 Statement <|-- mpl_Assignment
 Statement <|-- mpl_ExpressionStatement
-mpl_Expression "1..1" --* "1..1" mpl_ExpressionStatement : expression8
-mpl_Assignment "1..1" *-- "1..1" mpl_VariableRefrence : leftHandSide6
-mpl_ArithmeticExpression "1..1" *-- "1..1" mpl_Expression : operand112
-mpl_ArithmeticExpression "1..1" *-- "1..1" mpl_Expression : operand210
-mpl_Assignment "1..1" *-- "1..1" mpl_Expression : rightHandSide5
-mpl_Program "1..1" *-- "0..9999" mpl_Statement : statement1
-mpl_Variable "1..1" -- "1..1" mpl_VariableRefrence : variable15
-mpl_Variable "1..1" --* "1..1" mpl_VariableDeclaration : variable3
-mpl_Program "1..1" *-- "0..9999" mpl_VariableDeclaration : variabledeclarations0
+mpl_Expression "mpl_ExpressionStatement 1..1" --* "mpl_Expression9 1..1" mpl_ExpressionStatement : expression8
+mpl_Assignment "mpl_VariableRefrence 1..1" *-- "mpl_Assignment7 1..1" mpl_VariableRefrence : leftHandSide6
+mpl_ArithmeticExpression "mpl_Expression14 1..1" *-- "mpl_ArithmeticExpression13 1..1" mpl_Expression : operand112
+mpl_ArithmeticExpression "mpl_Expression11 1..1" *-- "mpl_ArithmeticExpression 1..1" mpl_Expression : operand210
+mpl_Assignment "mpl_Expression 1..1" *-- "mpl_Assignment 1..1" mpl_Expression : rightHandSide5
+mpl_Program "mpl_Statement 1..1" *-- "mpl_Program2 0..9999" mpl_Statement : statement1
+mpl_Variable "mpl_VariableRefrence16 1..1" -- "mpl_Variable17 1..1" mpl_VariableRefrence : variable15
+mpl_Variable "mpl_VariableDeclaration4 1..1" --* "mpl_Variable 1..1" mpl_VariableDeclaration : variable3
+mpl_Program "mpl_VariableDeclaration 1..1" *-- "mpl_Program 0..9999" mpl_VariableDeclaration : variabledeclarations0
 @enduml

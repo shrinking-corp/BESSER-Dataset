@@ -1,4 +1,8 @@
 @startuml
+' model: ilp
+' project: sampleModel
+' owner: User
+' description: New project
 class BinaryExpression {
 }
 class Expression {
@@ -49,11 +53,11 @@ BinaryExpression <|-- ilp_ConstraintExpression
 Expression <|-- ilp_BinaryExpression
 Expression <|-- ilp_LiteralExpression
 Expression <|-- ilp_VariableExpression
-ilp_ConstraintExpression "0..9999" --* "1..1" ilp_IntegerLinearProgram : constraints1
-ilp_BinaryExpression "1..1" *-- "1..1" ilp_Expression : leftExpression5
-ilp_Expression "1..1" --* "1..1" ilp_ObjectiveFunctionExpression : objectiveFunction11
-ilp_IntegerLinearProgram "1..1" *-- "0..1" ilp_ObjectiveFunctionExpression : objectiveFunction3
-ilp_BinaryExpression "1..1" *-- "1..1" ilp_Expression : rightExpression6
-ilp_Variable "1..1" -- "1..1" ilp_VariableExpression : variable9
-ilp_IntegerLinearProgram "1..1" *-- "0..9999" ilp_Variable : variables0
+ilp_ConstraintExpression "ilp_IntegerLinearProgram2 0..9999" --* "ilp_ConstraintExpression 1..1" ilp_IntegerLinearProgram : constraints1
+ilp_BinaryExpression "ilp_Expression 1..1" *-- "ilp_BinaryExpression 1..1" ilp_Expression : leftExpression5
+ilp_Expression "ilp_ObjectiveFunctionExpression12 1..1" --* "ilp_Expression13 1..1" ilp_ObjectiveFunctionExpression : objectiveFunction11
+ilp_IntegerLinearProgram "ilp_ObjectiveFunctionExpression 1..1" *-- "ilp_IntegerLinearProgram4 0..1" ilp_ObjectiveFunctionExpression : objectiveFunction3
+ilp_BinaryExpression "ilp_Expression8 1..1" *-- "ilp_BinaryExpression7 1..1" ilp_Expression : rightExpression6
+ilp_Variable "ilp_VariableExpression 1..1" -- "ilp_Variable10 1..1" ilp_VariableExpression : variable9
+ilp_IntegerLinearProgram "ilp_Variable 1..1" *-- "ilp_IntegerLinearProgram 0..9999" ilp_Variable : variables0
 @enduml

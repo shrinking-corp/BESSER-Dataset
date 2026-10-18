@@ -1,4 +1,8 @@
 @startuml
+' model: iot
+' project: sampleModel
+' owner: User
+' description: New project
 class Component {
 }
 class Controller {
@@ -102,16 +106,16 @@ RequiredPort <|-- iot_ConditionPort
 RequiredPort <|-- iot_ElsePort
 RequiredPort <|-- iot_IfPort
 RequiredPort <|-- iot_ThenPort
-iot_ConditionPort "1..1" --* "1..1" iot_IterativeLoop : condition1
-iot_Branching "1..1" *-- "0..1" iot_ElsePort : elseport7
-iot_Branching "1..1" *-- "1..1" iot_IfPort : ifport4
-iot_Item "0..9999" --* "1..1" iot_Software : item0
-iot_Component "1..1" *-- "0..9999" iot_ProvidedPort : providedport14
-iot_Controller "1..1" *-- "1..1" iot_ProvidedPort : providedport17
-iot_Item "1..1" -- "1..1" iot_ProvidedPort : referto2
-iot_RequiredPort "1..9999" --* "1..1" iot_Sequence : requiredport10
-iot_Component "1..1" *-- "0..9999" iot_RequiredPort : requiredport12
-iot_Iteration "1..1" *-- "1..1" iot_RequiredPort : requiredport9
-iot_Branching "1..1" *-- "0..1" iot_ThenPort : thenport5
-iot_ProvidedPort "0..1" -- "1..1" iot_RequiredPort : use19
+iot_ConditionPort "iot_IterativeLoop 1..1" --* "iot_ConditionPort 1..1" iot_IterativeLoop : condition1
+iot_Branching "iot_ElsePort 1..1" *-- "iot_Branching8 0..1" iot_ElsePort : elseport7
+iot_Branching "iot_IfPort 1..1" *-- "iot_Branching 1..1" iot_IfPort : ifport4
+iot_Item "iot_Software 0..9999" --* "iot_Item 1..1" iot_Software : item0
+iot_Component "iot_ProvidedPort16 1..1" *-- "iot_Component15 0..9999" iot_ProvidedPort : providedport14
+iot_Controller "iot_ProvidedPort18 1..1" *-- "iot_Controller 1..1" iot_ProvidedPort : providedport17
+iot_Item "iot_ProvidedPort 1..1" -- "iot_Item3 1..1" iot_ProvidedPort : referto2
+iot_RequiredPort "iot_Sequence 1..9999" --* "iot_RequiredPort11 1..1" iot_Sequence : requiredport10
+iot_Component "iot_RequiredPort13 1..1" *-- "iot_Component 0..9999" iot_RequiredPort : requiredport12
+iot_Iteration "iot_RequiredPort 1..1" *-- "iot_Iteration 1..1" iot_RequiredPort : requiredport9
+iot_Branching "iot_ThenPort 1..1" *-- "iot_Branching6 0..1" iot_ThenPort : thenport5
+iot_ProvidedPort "iot_RequiredPort20 0..1" -- "iot_ProvidedPort21 1..1" iot_RequiredPort : use19
 @enduml

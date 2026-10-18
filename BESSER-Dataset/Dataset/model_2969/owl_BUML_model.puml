@@ -1,4 +1,8 @@
 @startuml
+' model: owl
+' project: sampleModel
+' owner: User
+' description: New project
 class OWLClass {
 }
 class OWLRestriction {
@@ -94,46 +98,46 @@ RDFSClass <|-- owl_OWLClass
 RDFSClass <|-- owl_OWLDataRange
 RDFSResource <|-- owl_Individual
 RDFSResource <|-- owl_OWLAllDifferent
-owl_DatatypeSlot "1..1" -- "0..1" owl_Individual : Individual58
-owl_Individual "0..1" -- "1..1" owl_ObjectSlot : Individual63
-owl_AllValuesFromRestriction "1..1" -- "1..1" owl_RDFSClass : OWLAllValuesFrom75
-owl_OWLOntology "1..1" -- "0..9999" owl_OWLOntology : OWLBackwardCompatibleWith1
-owl_CardinalityRestriction "1..1" -- "1..1" owl_RDFSLiteral : OWLCardinality78
-owl_ComplementClass "1..1" -- "1..1" owl_OWLClass : OWLComplementOf84
-owl_Individual "1..1" -- "0..9999" owl_Individual : OWLDifferentFrom39
-owl_OWLClass "1..1" -- "0..9999" owl_OWLClass : OWLDisjointWith19
-owl_Individual "2..9999" -- "1..1" owl_OWLAllDifferent : OWLDistinctMembers54
-owl_OWLClass "1..1" -- "0..9999" owl_OWLClass : OWLEquivalentClass16
-owl_Property "1..1" -- "0..9999" owl_Property : OWLEquivalentProperty34
-owl_HasValueRestriction "1..1" -- "1..1" owl_RDFSResource : OWLHasValue74
-owl_OWLOntology "0..9999" -- "1..1" owl_OWLOntology : OWLImports3
-owl_OWLOntology "0..9999" -- "1..1" owl_OWLOntology : OWLIncompatibleWith6
-owl_IntersectionClass "1..1" -- "0..9999" owl_OWLClass : OWLIntersectionOf70
-owl_OWLObjectProperty "1..1" -- "0..1" owl_OWLObjectProperty : OWLInverseOf29
-owl_MaxCardinalityRestriction "1..1" -- "1..1" owl_RDFSLiteral : OWLMaxCardinality80
-owl_MinCardinalityRestriction "1..1" -- "1..1" owl_RDFSLiteral : OWLMinCardinality82
-owl_OWLRestriction "1..1" -- "1..1" owl_RDFProperty : OWLOnProperty27
-owl_OWLDataRange "1..1" -- "1..9999" owl_RDFSLiteral : OWLOneOf56
-owl_EnumeratedClass "1..1" -- "0..9999" owl_Individual : OWLOneOf68
-owl_OWLOntology "1..1" -- "0..9999" owl_OWLOntology : OWLPriorVersion9
-owl_Individual "1..1" -- "0..9999" owl_Individual : OWLSameAs45
-owl_RDFSClass "1..1" -- "1..1" owl_SomeValuesFromRestriction : OWLSomeValuesFrom76
-owl_OWLClass "0..9999" -- "1..1" owl_UnionClass : OWLUnionOf72
-owl_OWLOntology "1..1" *-- "0..9999" owl_RDFSLiteral : OWLVersionInfo11
-owl_DatatypeSlot "1..1" *-- "1..9999" owl_RDFSLiteral : content60
-owl_Individual "1..9999" -- "1..1" owl_ObjectSlot : content65
-owl_DatatypeSlot "0..9999" --* "1..1" owl_Individual : datatypeSlot50
-owl_ComplementClass "0..9999" -- "1..1" owl_OWLClass : invOWLComplementOf26
-owl_Individual "1..1" -- "0..9999" owl_Individual : invOWLDifferentFrom41
-owl_OWLClass "1..1" -- "0..9999" owl_OWLClass : invOWLDisjointWith22
-owl_OWLClass "1..1" -- "0..9999" owl_OWLClass : invOWLEquivalentClass14
-owl_Property "0..9999" -- "1..1" owl_Property : invOWLEquivalentProperty36
-owl_OWLObjectProperty "0..9999" -- "1..1" owl_OWLObjectProperty : invOWLInverseOf31
-owl_Individual "1..1" -- "0..9999" owl_Individual : invOWLSameAs48
-owl_Individual "1..1" *-- "0..9999" owl_ObjectSlot : objectSlot52
-owl_DatatypeSlot "1..1" -- "1..1" owl_OWLDatatypeProperty : property62
-owl_OWLObjectProperty "1..1" -- "1..1" owl_ObjectSlot : property66
-owl_IntersectionClass "0..9999" -- "1..1" owl_OWLClass : refByIntersectionClass24
-owl_Individual "1..1" -- "0..9999" owl_OWLAllDifferent : refByOWLDistinctMembers43
-owl_OWLClass "1..1" -- "0..9999" owl_UnionClass : refByUnionClass25
+owl_DatatypeSlot "Individual59 1..1" -- "datatypeSlot 0..1" owl_Individual : Individual58
+owl_Individual "objectSlot 0..1" -- "Individual64 1..1" owl_ObjectSlot : Individual63
+owl_AllValuesFromRestriction "rdfs.ecoreRDFSClass 1..1" -- "refByAVFRestriction 1..1" owl_RDFSClass : OWLAllValuesFrom75
+owl_OWLOntology "owl_OWLOntology 1..1" -- "owl_OWLOntology0 0..9999" owl_OWLOntology : OWLBackwardCompatibleWith1
+owl_CardinalityRestriction "owl_RDFSLiteral79 1..1" -- "owl_CardinalityRestriction 1..1" owl_RDFSLiteral : OWLCardinality78
+owl_ComplementClass "OWLClass85 1..1" -- "invOWLComplementOf 1..1" owl_OWLClass : OWLComplementOf84
+owl_Individual "Individual 1..1" -- "invOWLDifferentFrom 0..9999" owl_Individual : OWLDifferentFrom39
+owl_OWLClass "OWLClass20 1..1" -- "invOWLDisjointWith 0..9999" owl_OWLClass : OWLDisjointWith19
+owl_Individual "refByOWLDistinctMembers 2..9999" -- "Individual55 1..1" owl_OWLAllDifferent : OWLDistinctMembers54
+owl_OWLClass "OWLClass17 1..1" -- "invOWLEquivalentClass 0..9999" owl_OWLClass : OWLEquivalentClass16
+owl_Property "Property 1..1" -- "invOWLEquivalentProperty 0..9999" owl_Property : OWLEquivalentProperty34
+owl_HasValueRestriction "owl_RDFSResource 1..1" -- "owl_HasValueRestriction 1..1" owl_RDFSResource : OWLHasValue74
+owl_OWLOntology "owl_OWLOntology2 0..9999" -- "owl_OWLOntology4 1..1" owl_OWLOntology : OWLImports3
+owl_OWLOntology "owl_OWLOntology5 0..9999" -- "owl_OWLOntology7 1..1" owl_OWLOntology : OWLIncompatibleWith6
+owl_IntersectionClass "OWLClass71 1..1" -- "refByIntersectionClass 0..9999" owl_OWLClass : OWLIntersectionOf70
+owl_OWLObjectProperty "OWLObjectProperty 1..1" -- "invOWLInverseOf 0..1" owl_OWLObjectProperty : OWLInverseOf29
+owl_MaxCardinalityRestriction "owl_RDFSLiteral81 1..1" -- "owl_MaxCardinalityRestriction 1..1" owl_RDFSLiteral : OWLMaxCardinality80
+owl_MinCardinalityRestriction "owl_RDFSLiteral83 1..1" -- "owl_MinCardinalityRestriction 1..1" owl_RDFSLiteral : OWLMinCardinality82
+owl_OWLRestriction "rdfs.ecoreRDFProperty 1..1" -- "refByRestriction 1..1" owl_RDFProperty : OWLOnProperty27
+owl_OWLDataRange "owl_RDFSLiteral57 1..1" -- "owl_OWLDataRange 1..9999" owl_RDFSLiteral : OWLOneOf56
+owl_EnumeratedClass "owl_Individual69 1..1" -- "owl_EnumeratedClass 0..9999" owl_Individual : OWLOneOf68
+owl_OWLOntology "owl_OWLOntology10 1..1" -- "owl_OWLOntology8 0..9999" owl_OWLOntology : OWLPriorVersion9
+owl_Individual "Individual46 1..1" -- "invOWLSameAs 0..9999" owl_Individual : OWLSameAs45
+owl_RDFSClass "refBySVFRestriction 1..1" -- "rdfs.ecoreRDFSClass77 1..1" owl_SomeValuesFromRestriction : OWLSomeValuesFrom76
+owl_OWLClass "refByUnionClass 0..9999" -- "OWLClass73 1..1" owl_UnionClass : OWLUnionOf72
+owl_OWLOntology "owl_RDFSLiteral 1..1" *-- "owl_OWLOntology12 0..9999" owl_RDFSLiteral : OWLVersionInfo11
+owl_DatatypeSlot "rdfs.ecoreRDFSLiteral 1..1" *-- "DatatypeSlot61 1..9999" owl_RDFSLiteral : content60
+owl_Individual "owl_ObjectSlot 1..9999" -- "owl_Individual 1..1" owl_ObjectSlot : content65
+owl_DatatypeSlot "Individual51 0..9999" --* "DatatypeSlot 1..1" owl_Individual : datatypeSlot50
+owl_ComplementClass "OWLComplementOf 0..9999" -- "ComplementClass 1..1" owl_OWLClass : invOWLComplementOf26
+owl_Individual "Individual42 1..1" -- "OWLDifferentFrom 0..9999" owl_Individual : invOWLDifferentFrom41
+owl_OWLClass "OWLClass23 1..1" -- "OWLDisjointWith 0..9999" owl_OWLClass : invOWLDisjointWith22
+owl_OWLClass "OWLClass 1..1" -- "OWLEquivalentClass 0..9999" owl_OWLClass : invOWLEquivalentClass14
+owl_Property "OWLEquivalentProperty 0..9999" -- "Property37 1..1" owl_Property : invOWLEquivalentProperty36
+owl_OWLObjectProperty "OWLInverseOf 0..9999" -- "OWLObjectProperty32 1..1" owl_OWLObjectProperty : invOWLInverseOf31
+owl_Individual "Individual49 1..1" -- "OWLSameAs 0..9999" owl_Individual : invOWLSameAs48
+owl_Individual "ObjectSlot 1..1" *-- "Individual53 0..9999" owl_ObjectSlot : objectSlot52
+owl_DatatypeSlot "owl_OWLDatatypeProperty 1..1" -- "owl_DatatypeSlot 1..1" owl_OWLDatatypeProperty : property62
+owl_OWLObjectProperty "owl_ObjectSlot67 1..1" -- "owl_OWLObjectProperty 1..1" owl_ObjectSlot : property66
+owl_IntersectionClass "OWLIntersectionOf 0..9999" -- "IntersectionClass 1..1" owl_OWLClass : refByIntersectionClass24
+owl_Individual "OWLAllDifferent 1..1" -- "OWLDistinctMembers 0..9999" owl_OWLAllDifferent : refByOWLDistinctMembers43
+owl_OWLClass "UnionClass 1..1" -- "OWLUnionOf 0..9999" owl_UnionClass : refByUnionClass25
 @enduml

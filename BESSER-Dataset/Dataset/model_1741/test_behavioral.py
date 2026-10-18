@@ -190,9 +190,9 @@ def test_assoc_contents19_stub_double():
     partner = MediaLibrary_MediaSource()
     setattr(partner, 'origin', None)
     _safe_set(owner, 'Artifact', partner)
-    assert getattr(partner, 'origin') == owner
+    assert owner in getattr(partner, 'origin')
     _safe_set(owner, 'Artifact', None)
-    assert getattr(partner, 'origin') is None
+    assert owner not in getattr(partner, 'origin')
 
 
 def test_assoc_devices1_stub_double():
@@ -205,9 +205,9 @@ def test_assoc_devices1_stub_double():
     partner = MediaLibrary_Ecosystem()
     setattr(partner, 'MediaLibrary_Ecosystem2', None)
     _safe_set(owner, 'MediaLibrary_Device', partner)
-    assert getattr(partner, 'MediaLibrary_Ecosystem2') == owner
+    assert owner in getattr(partner, 'MediaLibrary_Ecosystem2')
     _safe_set(owner, 'MediaLibrary_Device', None)
-    assert getattr(partner, 'MediaLibrary_Ecosystem2') is None
+    assert owner not in getattr(partner, 'MediaLibrary_Ecosystem2')
 
 
 def test_assoc_libraries0_stub_double():
@@ -220,9 +220,9 @@ def test_assoc_libraries0_stub_double():
     partner = MediaLibrary_Ecosystem()
     setattr(partner, 'MediaLibrary_Ecosystem', None)
     _safe_set(owner, 'MediaLibrary_Library', partner)
-    assert getattr(partner, 'MediaLibrary_Ecosystem') == owner
+    assert owner in getattr(partner, 'MediaLibrary_Ecosystem')
     _safe_set(owner, 'MediaLibrary_Library', None)
-    assert getattr(partner, 'MediaLibrary_Ecosystem') is None
+    assert owner not in getattr(partner, 'MediaLibrary_Ecosystem')
 
 
 def test_assoc_mediaArtifacts5_stub_double():
@@ -235,9 +235,9 @@ def test_assoc_mediaArtifacts5_stub_double():
     partner = MediaLibrary_Ecosystem()
     setattr(partner, 'MediaLibrary_Ecosystem6', None)
     _safe_set(owner, 'MediaLibrary_Artifact', partner)
-    assert getattr(partner, 'MediaLibrary_Ecosystem6') == owner
+    assert owner in getattr(partner, 'MediaLibrary_Ecosystem6')
     _safe_set(owner, 'MediaLibrary_Artifact', None)
-    assert getattr(partner, 'MediaLibrary_Ecosystem6') is None
+    assert owner not in getattr(partner, 'MediaLibrary_Ecosystem6')
 
 
 def test_assoc_origin18_stub_double():

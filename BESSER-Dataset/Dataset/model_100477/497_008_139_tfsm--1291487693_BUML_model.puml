@@ -1,4 +1,8 @@
 @startuml
+' model: tfsmextended
+' project: sampleModel
+' owner: User
+' description: New project
 class Guard {
 }
 class NamedElement {
@@ -48,23 +52,23 @@ NamedElement <|-- tfsmextended_State
 NamedElement <|-- tfsmextended_TFSM
 NamedElement <|-- tfsmextended_TimedSystem
 NamedElement <|-- tfsmextended_Transition
-tfsmextended_State "0..1" -- "1..1" tfsmextended_TFSM : currentState8
-tfsmextended_FSMEvent "0..9999" -- "1..1" tfsmextended_Transition : generatedEvents21
-tfsmextended_FSMClock "0..9999" --* "1..1" tfsmextended_TimedSystem : globalClocks33
-tfsmextended_FSMEvent "0..9999" --* "1..1" tfsmextended_TimedSystem : globalEvents36
-tfsmextended_State "1..1" -- "0..9999" tfsmextended_Transition : incomingTransitions13
-tfsmextended_State "1..1" -- "1..1" tfsmextended_TFSM : initialState1
-tfsmextended_FSMClock "1..1" --* "1..1" tfsmextended_TFSM : localClock4
-tfsmextended_FSMEvent "0..9999" --* "1..1" tfsmextended_TFSM : localEvents2
-tfsmextended_FSMClock "1..1" -- "1..1" tfsmextended_TemporalGuard : onClock24
-tfsmextended_State "1..1" -- "0..9999" tfsmextended_Transition : outgoingTransitions12
-tfsmextended_Guard "1..1" --* "1..1" tfsmextended_Transition : ownedGuard19
-tfsmextended_State "0..9999" --* "1..1" tfsmextended_TFSM : ownedStates0
-tfsmextended_TFSM "1..1" *-- "0..9999" tfsmextended_Transition : ownedTransitions6
-tfsmextended_State "1..1" -- "1..1" tfsmextended_TFSM : owningFSM11
-tfsmextended_FSMEvent "1..1" -- "0..9999" tfsmextended_Transition : sollicitingTransitions28
-tfsmextended_State "1..1" -- "1..1" tfsmextended_Transition : source15
-tfsmextended_State "1..1" -- "1..1" tfsmextended_Transition : target17
-tfsmextended_TFSM "0..9999" --* "1..1" tfsmextended_TimedSystem : tfsms31
-tfsmextended_EventGuard "1..1" -- "1..1" tfsmextended_FSMEvent : triggeringEvent26
+tfsmextended_State "tfsmextended_TFSM9 0..1" -- "tfsmextended_State10 1..1" tfsmextended_TFSM : currentState8
+tfsmextended_FSMEvent "tfsmextended_Transition22 0..9999" -- "tfsmextended_FSMEvent23 1..1" tfsmextended_Transition : generatedEvents21
+tfsmextended_FSMClock "tfsmextended_TimedSystem34 0..9999" --* "tfsmextended_FSMClock35 1..1" tfsmextended_TimedSystem : globalClocks33
+tfsmextended_FSMEvent "tfsmextended_TimedSystem37 0..9999" --* "tfsmextended_FSMEvent38 1..1" tfsmextended_TimedSystem : globalEvents36
+tfsmextended_State "Transition14 1..1" -- "target 0..9999" tfsmextended_Transition : incomingTransitions13
+tfsmextended_State "tfsmextended_TFSM 1..1" -- "tfsmextended_State 1..1" tfsmextended_TFSM : initialState1
+tfsmextended_FSMClock "tfsmextended_TFSM5 1..1" --* "tfsmextended_FSMClock 1..1" tfsmextended_TFSM : localClock4
+tfsmextended_FSMEvent "tfsmextended_TFSM3 0..9999" --* "tfsmextended_FSMEvent 1..1" tfsmextended_TFSM : localEvents2
+tfsmextended_FSMClock "tfsmextended_TemporalGuard 1..1" -- "tfsmextended_FSMClock25 1..1" tfsmextended_TemporalGuard : onClock24
+tfsmextended_State "Transition 1..1" -- "source 0..9999" tfsmextended_Transition : outgoingTransitions12
+tfsmextended_Guard "tfsmextended_Transition20 1..1" --* "tfsmextended_Guard 1..1" tfsmextended_Transition : ownedGuard19
+tfsmextended_State "owningFSM 0..9999" --* "State 1..1" tfsmextended_TFSM : ownedStates0
+tfsmextended_TFSM "tfsmextended_Transition 1..1" *-- "tfsmextended_TFSM7 0..9999" tfsmextended_Transition : ownedTransitions6
+tfsmextended_State "TFSM 1..1" -- "ownedStates 1..1" tfsmextended_TFSM : owningFSM11
+tfsmextended_FSMEvent "tfsmextended_Transition30 1..1" -- "tfsmextended_FSMEvent29 0..9999" tfsmextended_Transition : sollicitingTransitions28
+tfsmextended_State "outgoingTransitions 1..1" -- "State16 1..1" tfsmextended_Transition : source15
+tfsmextended_State "incomingTransitions 1..1" -- "State18 1..1" tfsmextended_Transition : target17
+tfsmextended_TFSM "tfsmextended_TimedSystem 0..9999" --* "tfsmextended_TFSM32 1..1" tfsmextended_TimedSystem : tfsms31
+tfsmextended_EventGuard "tfsmextended_FSMEvent27 1..1" -- "tfsmextended_EventGuard 1..1" tfsmextended_FSMEvent : triggeringEvent26
 @enduml

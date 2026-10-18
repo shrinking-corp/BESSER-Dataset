@@ -1,4 +1,8 @@
 @startuml
+' model: programmes
+' project: sampleModel
+' owner: User
+' description: New project
 enum CourseType {
   ELECTIVE
   MANDATORY
@@ -40,14 +44,14 @@ class programmes_University {
   + name : str
 }
 Programme <|-- programmes_Specialization
-programmes_Semester "1..1" -- "1..1" programmes_Specialization : chosenIn4
-programmes_CourseGroup "0..9999" --* "1..1" programmes_Programme : courseGroups2
-programmes_Course "0..9999" --* "1..1" programmes_University : courses14
-programmes_Course "0..9999" -- "1..1" programmes_Semester : courses7
-programmes_Course "0..9999" -- "1..1" programmes_CourseGroup : courses9
-programmes_Programme "1..1" -- "1..1" programmes_Semester : programme5
-programmes_Programme "1..1" *-- "0..9999" programmes_Semester : programmeSemester1
-programmes_Programme "1..1" *-- "0..9999" programmes_Specialization : specializations0
-programmes_Programme "0..1" -- "1..1" programmes_Specialization : specializesIn3
-programmes_Programme "0..9999" --* "1..1" programmes_University : studyProgrammes12
+programmes_Semester "programmes_Specialization 1..1" -- "programmes_Semester 1..1" programmes_Specialization : chosenIn4
+programmes_CourseGroup "programmes_Programme 0..9999" --* "programmes_CourseGroup 1..1" programmes_Programme : courseGroups2
+programmes_Course "programmes_University15 0..9999" --* "programmes_Course16 1..1" programmes_University : courses14
+programmes_Course "programmes_Semester8 0..9999" -- "programmes_Course 1..1" programmes_Semester : courses7
+programmes_Course "programmes_CourseGroup10 0..9999" -- "programmes_Course11 1..1" programmes_CourseGroup : courses9
+programmes_Programme "programmeSemester 1..1" -- "Programme6 1..1" programmes_Semester : programme5
+programmes_Programme "Semester 1..1" *-- "programme 0..9999" programmes_Semester : programmeSemester1
+programmes_Programme "Specialization 1..1" *-- "specializesIn 0..9999" programmes_Specialization : specializations0
+programmes_Programme "specializations 0..1" -- "Programme 1..1" programmes_Specialization : specializesIn3
+programmes_Programme "programmes_University 0..9999" --* "programmes_Programme13 1..1" programmes_University : studyProgrammes12
 @enduml

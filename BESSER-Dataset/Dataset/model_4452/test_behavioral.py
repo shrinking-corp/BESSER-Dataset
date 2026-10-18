@@ -495,9 +495,9 @@ def test_assoc_device13_stub_double():
     partner = wsmodel3_IoTNode()
     setattr(partner, 'wsmodel3_IoTNode14', None)
     _safe_set(owner, 'wsmodel3_Device', partner)
-    assert getattr(partner, 'wsmodel3_IoTNode14') == owner
+    assert owner in getattr(partner, 'wsmodel3_IoTNode14')
     _safe_set(owner, 'wsmodel3_Device', None)
-    assert getattr(partner, 'wsmodel3_IoTNode14') is None
+    assert owner not in getattr(partner, 'wsmodel3_IoTNode14')
 
 
 def test_assoc_devicedata24_stub_double():
@@ -525,9 +525,9 @@ def test_assoc_externalapi87_stub_double():
     partner = wsmodel3_OutputOrchestrator()
     setattr(partner, 'wsmodel3_OutputOrchestrator88', None)
     _safe_set(owner, 'wsmodel3_ExternalAPI89', partner)
-    assert getattr(partner, 'wsmodel3_OutputOrchestrator88') == owner
+    assert owner in getattr(partner, 'wsmodel3_OutputOrchestrator88')
     _safe_set(owner, 'wsmodel3_ExternalAPI89', None)
-    assert getattr(partner, 'wsmodel3_OutputOrchestrator88') is None
+    assert owner not in getattr(partner, 'wsmodel3_OutputOrchestrator88')
 
 
 def test_assoc_inputbridge79_stub_double():
@@ -555,9 +555,9 @@ def test_assoc_inputorchestrator43_stub_double():
     partner = wsmodel3_OutputBridge()
     setattr(partner, 'wsmodel3_OutputBridge', None)
     _safe_set(owner, 'wsmodel3_InputOrchestrator', partner)
-    assert getattr(partner, 'wsmodel3_OutputBridge') == owner
+    assert owner in getattr(partner, 'wsmodel3_OutputBridge')
     _safe_set(owner, 'wsmodel3_InputOrchestrator', None)
-    assert getattr(partner, 'wsmodel3_OutputBridge') is None
+    assert owner not in getattr(partner, 'wsmodel3_OutputBridge')
 
 
 def test_assoc_inputorchestrator76_stub_double():
@@ -570,9 +570,9 @@ def test_assoc_inputorchestrator76_stub_double():
     partner = wsmodel3_OutputOrchestrator()
     setattr(partner, 'wsmodel3_OutputOrchestrator77', None)
     _safe_set(owner, 'wsmodel3_InputOrchestrator78', partner)
-    assert getattr(partner, 'wsmodel3_OutputOrchestrator77') == owner
+    assert owner in getattr(partner, 'wsmodel3_OutputOrchestrator77')
     _safe_set(owner, 'wsmodel3_InputOrchestrator78', None)
-    assert getattr(partner, 'wsmodel3_OutputOrchestrator77') is None
+    assert owner not in getattr(partner, 'wsmodel3_OutputOrchestrator77')
 
 
 def test_assoc_integrationpattern7_stub_double():
@@ -615,9 +615,9 @@ def test_assoc_orchestrator50_stub_double():
     partner = wsmodel3_IntegrationPattern()
     setattr(partner, 'wsmodel3_IntegrationPattern51', None)
     _safe_set(owner, 'wsmodel3_Orchestrator', partner)
-    assert getattr(partner, 'wsmodel3_IntegrationPattern51') == owner
+    assert owner in getattr(partner, 'wsmodel3_IntegrationPattern51')
     _safe_set(owner, 'wsmodel3_Orchestrator', None)
-    assert getattr(partner, 'wsmodel3_IntegrationPattern51') is None
+    assert owner not in getattr(partner, 'wsmodel3_IntegrationPattern51')
 
 
 def test_assoc_outputorchestrator60_stub_double():
@@ -660,9 +660,9 @@ def test_assoc_rest15_stub_double():
     partner = wsmodel3_WebService()
     setattr(partner, 'wsmodel3_WebService16', None)
     _safe_set(owner, 'wsmodel3_REST', partner)
-    assert getattr(partner, 'wsmodel3_WebService16') == owner
+    assert owner in getattr(partner, 'wsmodel3_WebService16')
     _safe_set(owner, 'wsmodel3_REST', None)
-    assert getattr(partner, 'wsmodel3_WebService16') is None
+    assert owner not in getattr(partner, 'wsmodel3_WebService16')
 
 
 def test_assoc_rest84_stub_double():
@@ -675,9 +675,9 @@ def test_assoc_rest84_stub_double():
     partner = wsmodel3_OutputOrchestrator()
     setattr(partner, 'wsmodel3_OutputOrchestrator85', None)
     _safe_set(owner, 'wsmodel3_REST86', partner)
-    assert getattr(partner, 'wsmodel3_OutputOrchestrator85') == owner
+    assert owner in getattr(partner, 'wsmodel3_OutputOrchestrator85')
     _safe_set(owner, 'wsmodel3_REST86', None)
-    assert getattr(partner, 'wsmodel3_OutputOrchestrator85') is None
+    assert owner not in getattr(partner, 'wsmodel3_OutputOrchestrator85')
 
 
 def test_assoc_sensor37_stub_double():

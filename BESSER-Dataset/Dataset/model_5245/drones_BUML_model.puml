@@ -1,4 +1,8 @@
 @startuml
+' model: surveillance
+' project: sampleModel
+' owner: User
+' description: New project
 class MovingObject {
 }
 class ProbableElement {
@@ -32,12 +36,12 @@ MovingObject <|-- surveillance_Drone
 MovingObject <|-- surveillance_UnidentifiedObject
 ProbableElement <|-- surveillance_GunShot
 ProbableElement <|-- surveillance_UnidentifiedObject
-surveillance_Coordinate "0..1" -- "1..1" surveillance_MovingObject : currentPosition2
-surveillance_Drone "1..1" -- "1..1" surveillance_GunShot : drone9
-surveillance_Coordinate "1..1" -- "1..1" surveillance_MovingObject : object1
-surveillance_Coordinate "1..1" -- "1..1" surveillance_GunShot : shootingPosition7
-surveillance_Coordinate "1..1" -- "0..1" surveillance_GunShot : shot0
-surveillance_Drone "1..1" -- "0..9999" surveillance_GunShot : shot3
-surveillance_GunShot "0..9999" -- "1..1" surveillance_UnidentifiedObject : shot5
-surveillance_GunShot "1..1" -- "1..1" surveillance_UnidentifiedObject : target11
+surveillance_Coordinate "object 0..1" -- "Coordinate 1..1" surveillance_MovingObject : currentPosition2
+surveillance_Drone "shot10 1..1" -- "Drone 1..1" surveillance_GunShot : drone9
+surveillance_Coordinate "MovingObject 1..1" -- "currentPosition 1..1" surveillance_MovingObject : object1
+surveillance_Coordinate "shot 1..1" -- "Coordinate8 1..1" surveillance_GunShot : shootingPosition7
+surveillance_Coordinate "GunShot 1..1" -- "shootingPosition 0..1" surveillance_GunShot : shot0
+surveillance_Drone "GunShot4 1..1" -- "drone 0..9999" surveillance_GunShot : shot3
+surveillance_GunShot "target 0..9999" -- "GunShot6 1..1" surveillance_UnidentifiedObject : shot5
+surveillance_GunShot "UnidentifiedObject 1..1" -- "shot12 1..1" surveillance_UnidentifiedObject : target11
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: studyplan
+' project: sampleModel
+' owner: User
+' description: New project
 enum CourseStatus {
   ELECTIVE
   MANDATORY
@@ -30,14 +34,14 @@ class studyplan_SemesterCourse {
 class studyplan_Specialization {
   + name : str
 }
-studyplan_Course "0..1" -- "1..1" studyplan_SemesterCourse : course14
-studyplan_Course "0..9999" --* "1..1" studyplan_Department : courses16
-studyplan_Semester "1..1" *-- "0..9999" studyplan_SemesterCourse : courses4
-studyplan_Course "1..1" -- "0..1" studyplan_Department : department12
-studyplan_Department "0..1" -- "1..1" studyplan_Program : department3
-studyplan_Department "1..1" *-- "0..9999" studyplan_Program : programs17
-studyplan_Program "1..1" *-- "0..9999" studyplan_Semester : semesters0
-studyplan_Semester "0..9999" --* "1..1" studyplan_Specialization : semesters6
-studyplan_Program "1..1" *-- "0..9999" studyplan_Specialization : specializations1
-studyplan_Specialization "1..1" *-- "0..9999" studyplan_Specialization : specializations10
+studyplan_Course "studyplan_SemesterCourse15 0..1" -- "studyplan_Course 1..1" studyplan_SemesterCourse : course14
+studyplan_Course "department 0..9999" --* "Course 1..1" studyplan_Department : courses16
+studyplan_Semester "studyplan_SemesterCourse 1..1" *-- "studyplan_Semester5 0..9999" studyplan_SemesterCourse : courses4
+studyplan_Course "Department13 1..1" -- "courses 0..1" studyplan_Department : department12
+studyplan_Department "programs 0..1" -- "Department 1..1" studyplan_Program : department3
+studyplan_Department "Program 1..1" *-- "department18 0..9999" studyplan_Program : programs17
+studyplan_Program "studyplan_Semester 1..1" *-- "studyplan_Program 0..9999" studyplan_Semester : semesters0
+studyplan_Semester "studyplan_Specialization7 0..9999" --* "studyplan_Semester8 1..1" studyplan_Specialization : semesters6
+studyplan_Program "studyplan_Specialization 1..1" *-- "studyplan_Program2 0..9999" studyplan_Specialization : specializations1
+studyplan_Specialization "studyplan_Specialization11 1..1" *-- "studyplan_Specialization9 0..9999" studyplan_Specialization : specializations10
 @enduml

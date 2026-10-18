@@ -1,4 +1,8 @@
 @startuml
+' model: _bAFQ8HEcEeqhRdvvYtDJdw
+' project: sampleModel
+' owner: User
+' description: New project
 class Account {
   + billingAddress : str
   + closed : date
@@ -38,12 +42,12 @@ class ShoppinCart {
 }
 enum UserState {
 }
-Account "1..1" -- "0..9999" Order_Compute_Price : Account_Order
-Account "1..1" -- "0..9999" Payment : Account_Payment
-Account "1..1" -- "1..1" ShoppinCart : Account_ShoppinCart
-Account "1..1" -- "1..1" Customer : Customer_Account
-LineItem "1..9999" -- "0..9999" Order_Compute_Price : Order_LineItem
-Order_Compute_Price "1..1" -- "0..9999" Payment : Payment_Order
-LineItem "0..9999" -- "1..1" Product : Product_LineItem
-LineItem "0..9999" -- "1..1" ShoppinCart : ShoppinCart_LineItem
+Account "account5 1..1" -- "order4 0..9999" Order_Compute_Price : Account_Order
+Account "account1 1..1" -- "payment0 0..9999" Payment : Account_Payment
+Account "account13 1..1" -- "cart12 1..1" ShoppinCart : Account_ShoppinCart
+Account "acc6 1..1" -- "customer7 1..1" Customer : Customer_Account
+LineItem "items10 1..9999" -- "lineitem11 0..9999" Order_Compute_Price : Order_LineItem
+Order_Compute_Price "order2 1..1" -- "order3 0..9999" Payment : Payment_Order
+LineItem "item8 0..9999" -- "product9 1..1" Product : Product_LineItem
+LineItem "items14 0..9999" -- "sc15 1..1" ShoppinCart : ShoppinCart_LineItem
 @enduml

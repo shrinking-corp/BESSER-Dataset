@@ -1,4 +1,8 @@
 @startuml
+' model: pokerleague
+' project: sampleModel
+' owner: User
+' description: New project
 class DescribedEntity {
 }
 class IdentifiableEntity {
@@ -103,24 +107,24 @@ Serializable <|-- pokerleague_DataStructureVersion
 Serializable <|-- pokerleague_DataVersion
 Serializable <|-- pokerleague_IdentifiableEntity
 Serializable <|-- pokerleague_Settings
-pokerleague_Competition "0..1" -- "1..1" pokerleague_Tournament : competition12
-pokerleague_Competition "1..1" -- "0..1" pokerleague_PrizeMoneyRuleSet : defaultPrizeMoneyRuleSet5
-pokerleague_PrizeMoneyRuleSet "0..1" -- "1..1" pokerleague_Tournament : defaultPrizeMoneyRuleSet9
-pokerleague_Invitation "1..1" *-- "0..9999" pokerleague_InvitationEvent : events19
-pokerleague_Game "0..1" -- "1..1" pokerleague_PlayerInGame : game29
-pokerleague_Game "0..9999" --* "1..1" pokerleague_Tournament : games13
-pokerleague_Invitation "0..1" -- "1..1" pokerleague_InvitationEvent : invitation20
-pokerleague_Invitation "0..9999" --* "1..1" pokerleague_Tournament : invitations11
-pokerleague_Invitation "1..1" -- "0..1" pokerleague_Player : player17
-pokerleague_Player "0..1" -- "1..1" pokerleague_PlayerInGame : player27
-pokerleague_Competition "1..1" -- "0..9999" pokerleague_Player : players7
-pokerleague_Game "1..1" *-- "0..9999" pokerleague_PlayerInGame : playersInGame26
-pokerleague_PrizeMoneyFormula "0..9999" --* "1..1" pokerleague_PrizeMoneyRule : prizeMoneyFormulas2
-pokerleague_PrizeMoneyFormula "1..1" -- "0..1" pokerleague_PrizeMoneyRule : prizeMoneyRule3
-pokerleague_PrizeMoneyRule "1..1" -- "0..1" pokerleague_PrizeMoneyRuleSet : prizeMoneyRuleSet1
-pokerleague_Game "1..1" -- "0..1" pokerleague_PrizeMoneyRuleSet : prizeMoneyRuleSet24
-pokerleague_PrizeMoneyRule "0..9999" --* "1..1" pokerleague_PrizeMoneyRuleSet : prizeMoneyRules0
-pokerleague_Invitation "1..1" -- "0..1" pokerleague_Tournament : tournament15
-pokerleague_Game "1..1" -- "0..1" pokerleague_Tournament : tournament22
-pokerleague_Competition "1..1" *-- "0..9999" pokerleague_Tournament : tournaments6
+pokerleague_Competition "tournaments 0..1" -- "Competition 1..1" pokerleague_Tournament : competition12
+pokerleague_Competition "pokerleague_PrizeMoneyRuleSet 1..1" -- "pokerleague_Competition 0..1" pokerleague_PrizeMoneyRuleSet : defaultPrizeMoneyRuleSet5
+pokerleague_PrizeMoneyRuleSet "pokerleague_Tournament 0..1" -- "pokerleague_PrizeMoneyRuleSet10 1..1" pokerleague_Tournament : defaultPrizeMoneyRuleSet9
+pokerleague_Invitation "InvitationEvent 1..1" *-- "invitation 0..9999" pokerleague_InvitationEvent : events19
+pokerleague_Game "playersInGame 0..1" -- "Game30 1..1" pokerleague_PlayerInGame : game29
+pokerleague_Game "tournament14 0..9999" --* "Game 1..1" pokerleague_Tournament : games13
+pokerleague_Invitation "events 0..1" -- "Invitation21 1..1" pokerleague_InvitationEvent : invitation20
+pokerleague_Invitation "tournament 0..9999" --* "Invitation 1..1" pokerleague_Tournament : invitations11
+pokerleague_Invitation "pokerleague_Player18 1..1" -- "pokerleague_Invitation 0..1" pokerleague_Player : player17
+pokerleague_Player "pokerleague_PlayerInGame 0..1" -- "pokerleague_Player28 1..1" pokerleague_PlayerInGame : player27
+pokerleague_Competition "pokerleague_Player 1..1" -- "pokerleague_Competition8 0..9999" pokerleague_Player : players7
+pokerleague_Game "PlayerInGame 1..1" *-- "game 0..9999" pokerleague_PlayerInGame : playersInGame26
+pokerleague_PrizeMoneyFormula "prizeMoneyRule 0..9999" --* "PrizeMoneyFormula 1..1" pokerleague_PrizeMoneyRule : prizeMoneyFormulas2
+pokerleague_PrizeMoneyFormula "PrizeMoneyRule4 1..1" -- "prizeMoneyFormulas 0..1" pokerleague_PrizeMoneyRule : prizeMoneyRule3
+pokerleague_PrizeMoneyRule "PrizeMoneyRuleSet 1..1" -- "prizeMoneyRules 0..1" pokerleague_PrizeMoneyRuleSet : prizeMoneyRuleSet1
+pokerleague_Game "pokerleague_PrizeMoneyRuleSet25 1..1" -- "pokerleague_Game 0..1" pokerleague_PrizeMoneyRuleSet : prizeMoneyRuleSet24
+pokerleague_PrizeMoneyRule "prizeMoneyRuleSet 0..9999" --* "PrizeMoneyRule 1..1" pokerleague_PrizeMoneyRuleSet : prizeMoneyRules0
+pokerleague_Invitation "Tournament16 1..1" -- "invitations 0..1" pokerleague_Tournament : tournament15
+pokerleague_Game "Tournament23 1..1" -- "games 0..1" pokerleague_Tournament : tournament22
+pokerleague_Competition "Tournament 1..1" *-- "competition 0..9999" pokerleague_Tournament : tournaments6
 @enduml

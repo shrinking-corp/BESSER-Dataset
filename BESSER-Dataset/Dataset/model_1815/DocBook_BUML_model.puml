@@ -1,4 +1,8 @@
 @startuml
+' model: DocBook
+' project: sampleModel
+' owner: User
+' description: New project
 class DocBook_Article {
 }
 class DocBook_Book {
@@ -25,9 +29,9 @@ Section <|-- DocBook_Sect1
 Section <|-- DocBook_Sect2
 TitledElement <|-- DocBook_Article
 TitledElement <|-- DocBook_Section
-DocBook_Article "1..9999" --* "1..1" DocBook_Book : articles1
-DocBook_Book "1..9999" --* "1..1" DocBook_DocBook : books0
-DocBook_Para "1..9999" --* "1..1" DocBook_Section : paras5
-DocBook_Article "1..1" *-- "1..9999" DocBook_Sect1 : sections_13
-DocBook_Sect1 "1..1" *-- "1..9999" DocBook_Sect2 : sections_26
+DocBook_Article "DocBook_Book2 1..9999" --* "DocBook_Article 1..1" DocBook_Book : articles1
+DocBook_Book "DocBook_DocBook 1..9999" --* "DocBook_Book 1..1" DocBook_DocBook : books0
+DocBook_Para "DocBook_Section 1..9999" --* "DocBook_Para 1..1" DocBook_Section : paras5
+DocBook_Article "DocBook_Sect1 1..1" *-- "DocBook_Article4 1..9999" DocBook_Sect1 : sections_13
+DocBook_Sect1 "DocBook_Sect2 1..1" *-- "DocBook_Sect17 1..9999" DocBook_Sect2 : sections_26
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: PetriNet
+' project: sampleModel
+' owner: User
+' description: New project
 class Noeud {
 }
 class PetriElement {
@@ -24,10 +28,10 @@ Noeud <|-- PetriNet_Place
 Noeud <|-- PetriNet_Transition
 PetriElement <|-- PetriNet_Arc
 PetriElement <|-- PetriNet_Noeud
-PetriNet_Arc "0..9999" -- "1..1" PetriNet_Noeud : LinksToSuccessors8
-PetriNet_Arc "0..9999" -- "1..1" PetriNet_Noeud : linksToPredecessors7
-PetriNet_PetriElement "0..9999" --* "1..1" PetriNet_ReseauPetri : petrielement3
-PetriNet_Arc "1..1" -- "1..1" PetriNet_Noeud : predecessor1
-PetriNet_PetriElement "1..1" -- "0..1" PetriNet_ReseauPetri : reseauPetri4
-PetriNet_Arc "1..1" -- "1..1" PetriNet_Noeud : successor0
+PetriNet_Arc "predecessor 0..9999" -- "Arc9 1..1" PetriNet_Noeud : LinksToSuccessors8
+PetriNet_Arc "successor 0..9999" -- "Arc 1..1" PetriNet_Noeud : linksToPredecessors7
+PetriNet_PetriElement "PetriNet_ReseauPetri 0..9999" --* "PetriNet_PetriElement 1..1" PetriNet_ReseauPetri : petrielement3
+PetriNet_Arc "Noeud2 1..1" -- "LinksToSuccessors 1..1" PetriNet_Noeud : predecessor1
+PetriNet_PetriElement "PetriNet_ReseauPetri6 1..1" -- "PetriNet_PetriElement5 0..1" PetriNet_ReseauPetri : reseauPetri4
+PetriNet_Arc "Noeud 1..1" -- "linksToPredecessors 1..1" PetriNet_Noeud : successor0
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: sWML
+' project: sampleModel
+' owner: User
+' description: New project
 enum SWMLTypes {
   Boolean
   Email
@@ -24,10 +28,10 @@ class sWML_IndexPage {
 class sWML_WebModel {
   + name : str
 }
-sWML_Attribute "0..9999" --* "1..1" sWML_Class : attributes10
-sWML_Class "0..9999" --* "1..1" sWML_ContentLayer : classes7
-sWML_ContentLayer "0..1" --* "1..1" sWML_WebModel : content1
-sWML_Class "0..1" -- "1..1" sWML_IndexPage : displayedClass5
-sWML_HypertextLayer "0..1" --* "1..1" sWML_WebModel : hypertext0
-sWML_HypertextLayer "1..1" *-- "0..9999" sWML_IndexPage : pages3
+sWML_Attribute "sWML_Class11 0..9999" --* "sWML_Attribute 1..1" sWML_Class : attributes10
+sWML_Class "sWML_ContentLayer8 0..9999" --* "sWML_Class9 1..1" sWML_ContentLayer : classes7
+sWML_ContentLayer "sWML_WebModel2 0..1" --* "sWML_ContentLayer 1..1" sWML_WebModel : content1
+sWML_Class "sWML_IndexPage6 0..1" -- "sWML_Class 1..1" sWML_IndexPage : displayedClass5
+sWML_HypertextLayer "sWML_WebModel 0..1" --* "sWML_HypertextLayer 1..1" sWML_WebModel : hypertext0
+sWML_HypertextLayer "sWML_IndexPage 1..1" *-- "sWML_HypertextLayer4 0..9999" sWML_IndexPage : pages3
 @enduml

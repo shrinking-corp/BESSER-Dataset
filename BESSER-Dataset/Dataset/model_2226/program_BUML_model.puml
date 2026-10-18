@@ -1,4 +1,8 @@
 @startuml
+' model: Program
+' project: sampleModel
+' owner: User
+' description: New project
 enum CourseStatus {
   ELECTIVE
   MANDATORY
@@ -30,14 +34,14 @@ enum SemesterStatus {
   FALL
   SPRING
 }
-Program_Course "0..1" -- "1..1" Program_SemesterCourse : course10
-Program_Course "1..9999" --* "1..1" Program_Department : courses15
-Program_Course "1..1" -- "0..1" Program_Department : department12
-Program_Department "1..1" *-- "1..9999" Program_Program : programs13
-Program_Semester "0..1" -- "1..1" Program_SemesterCourse : semester11
-Program_Semester "1..1" *-- "0..9999" Program_SemesterCourse : semesterCourses9
-Program_Program "1..1" *-- "0..9999" Program_Semester : semesters0
-Program_Semester "0..9999" --* "1..1" Program_Specialization : semesters3
-Program_Program "1..1" *-- "0..9999" Program_Specialization : specializations1
-Program_Specialization "0..9999" --* "1..1" Program_Specialization : specializations7
+Program_Course "Program_SemesterCourse 0..1" -- "Program_Course 1..1" Program_SemesterCourse : course10
+Program_Course "department 1..9999" --* "Course 1..1" Program_Department : courses15
+Program_Course "Department 1..1" -- "courses 0..1" Program_Department : department12
+Program_Department "Program_Program14 1..1" *-- "Program_Department 1..9999" Program_Program : programs13
+Program_Semester "semesterCourses 0..1" -- "Semester 1..1" Program_SemesterCourse : semester11
+Program_Semester "SemesterCourse 1..1" *-- "semester 0..9999" Program_SemesterCourse : semesterCourses9
+Program_Program "Program_Semester 1..1" *-- "Program_Program 0..9999" Program_Semester : semesters0
+Program_Semester "Program_Specialization4 0..9999" --* "Program_Semester5 1..1" Program_Specialization : semesters3
+Program_Program "Program_Specialization 1..1" *-- "Program_Program2 0..9999" Program_Specialization : specializations1
+Program_Specialization "Program_Specialization6 0..9999" --* "Program_Specialization8 1..1" Program_Specialization : specializations7
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: tsm
+' project: sampleModel
+' owner: User
+' description: New project
 class NamedElement {
 }
 abstract class tsm_NamedElement {
@@ -16,12 +20,12 @@ class tsm_Transition {
 NamedElement <|-- tsm_State
 NamedElement <|-- tsm_StateMachine
 NamedElement <|-- tsm_Transition
-tsm_State "1..1" -- "0..9999" tsm_Transition : incoming6
-tsm_State "1..1" -- "0..9999" tsm_Transition : outgoing7
-tsm_State "1..1" -- "1..1" tsm_Transition : source12
-tsm_State "1..1" -- "1..1" tsm_StateMachine : start3
-tsm_State "0..9999" --* "1..1" tsm_StateMachine : states0
-tsm_State "1..1" -- "1..1" tsm_Transition : target11
-tsm_TimeEvent "1..1" --* "1..1" tsm_Transition : timer9
-tsm_StateMachine "1..1" *-- "0..9999" tsm_Transition : transitions1
+tsm_State "Transition 1..1" -- "target 0..9999" tsm_Transition : incoming6
+tsm_State "Transition8 1..1" -- "source 0..9999" tsm_Transition : outgoing7
+tsm_State "outgoing 1..1" -- "State13 1..1" tsm_Transition : source12
+tsm_State "tsm_StateMachine4 1..1" -- "tsm_State5 1..1" tsm_StateMachine : start3
+tsm_State "tsm_StateMachine 0..9999" --* "tsm_State 1..1" tsm_StateMachine : states0
+tsm_State "incoming 1..1" -- "State 1..1" tsm_Transition : target11
+tsm_TimeEvent "tsm_Transition10 1..1" --* "tsm_TimeEvent 1..1" tsm_Transition : timer9
+tsm_StateMachine "tsm_Transition 1..1" *-- "tsm_StateMachine2 0..9999" tsm_Transition : transitions1
 @enduml

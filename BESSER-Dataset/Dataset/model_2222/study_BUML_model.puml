@@ -1,4 +1,8 @@
 @startuml
+' model: study
+' project: sampleModel
+' owner: User
+' description: New project
 enum grades {
   A
   B
@@ -40,27 +44,27 @@ class study_StudyPlan {
 class study_courseAllocation {
   + grade : str
 }
-study_Course "0..1" -- "1..1" study_courseAllocation : course43
-study_Course "0..9999" --* "1..1" study_Department : courses0
-study_Course "1..9999" -- "1..1" study_Semester : courses30
-study_StudyPlan "1..1" *-- "0..9999" study_courseAllocation : courses36
-study_Department "1..1" -- "1..1" study_Student : department12
-study_Course "1..1" -- "1..1" study_Department : department16
-study_Department "1..1" -- "1..1" study_Specialisation : department25
-study_Department "0..1" -- "1..1" study_Semester : department31
-study_Department "1..1" -- "1..1" study_Program : department9
-study_Program "1..1" -- "1..1" study_Specialisation : program18
-study_Department "1..1" *-- "0..9999" study_Program : programs1
-study_Semester "1..1" --* "1..1" study_StudyPlan : semester34
-study_Semester "2..9999" -- "1..1" study_Specialisation : semesters23
-study_Department "1..1" *-- "0..9999" study_Semester : semesters7
-study_Semester "1..1" -- "1..1" study_Specialisation : specialisation28
-study_Program "1..1" -- "1..9999" study_Specialisation : specialisations10
-study_Specialisation "0..2" -- "1..1" study_Student : specialisations15
-study_Department "1..1" *-- "1..9999" study_Specialisation : specialisations5
-study_Student "1..1" -- "1..1" study_StudyPlan : student38
-study_Specialisation "1..1" -- "1..1" study_Student : students20
-study_Department "1..1" *-- "0..9999" study_Student : students3
-study_Student "1..1" *-- "1..1" study_StudyPlan : studyPlan14
-study_StudyPlan "0..1" -- "1..1" study_courseAllocation : studyPlan40
+study_Course "study_courseAllocation44 0..1" -- "study_Course45 1..1" study_courseAllocation : course43
+study_Course "department 0..9999" --* "Course 1..1" study_Department : courses0
+study_Course "study_Semester 1..9999" -- "study_Course 1..1" study_Semester : courses30
+study_StudyPlan "study_courseAllocation 1..1" *-- "study_StudyPlan37 0..9999" study_courseAllocation : courses36
+study_Department "students 1..1" -- "Department13 1..1" study_Student : department12
+study_Course "Department17 1..1" -- "courses 1..1" study_Department : department16
+study_Department "specialisations26 1..1" -- "Department27 1..1" study_Specialisation : department25
+study_Department "semesters32 0..1" -- "Department33 1..1" study_Semester : department31
+study_Department "programs 1..1" -- "Department 1..1" study_Program : department9
+study_Program "specialisations 1..1" -- "Program19 1..1" study_Specialisation : program18
+study_Department "Program 1..1" *-- "department2 0..9999" study_Program : programs1
+study_Semester "study_StudyPlan 1..1" --* "study_Semester35 1..1" study_StudyPlan : semester34
+study_Semester "specialisation 2..9999" -- "Semester24 1..1" study_Specialisation : semesters23
+study_Department "Semester 1..1" *-- "department8 0..9999" study_Semester : semesters7
+study_Semester "Specialisation29 1..1" -- "semesters 1..1" study_Specialisation : specialisation28
+study_Program "Specialisation11 1..1" -- "program 1..9999" study_Specialisation : specialisations10
+study_Specialisation "study_Student 0..2" -- "study_Specialisation 1..1" study_Student : specialisations15
+study_Department "Specialisation 1..1" *-- "department6 1..9999" study_Specialisation : specialisations5
+study_Student "studyPlan 1..1" -- "Student39 1..1" study_StudyPlan : student38
+study_Specialisation "study_Student22 1..1" -- "study_Specialisation21 1..1" study_Student : students20
+study_Department "Student 1..1" *-- "department4 0..9999" study_Student : students3
+study_Student "StudyPlan 1..1" *-- "student 1..1" study_StudyPlan : studyPlan14
+study_StudyPlan "study_courseAllocation41 0..1" -- "study_StudyPlan42 1..1" study_courseAllocation : studyPlan40
 @enduml

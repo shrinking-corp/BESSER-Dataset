@@ -1,4 +1,8 @@
 @startuml
+' model: gemoc
+' project: sampleModel
+' owner: User
+' description: New project
 class gemoc_FSM {
   + name : str
   + print() : void
@@ -10,10 +14,10 @@ class gemoc_Transition {
   + name : str
   + trigger : str
 }
-gemoc_State "1..1" -- "0..1" gemoc_Transition : incoming3
-gemoc_State "1..1" -- "0..1" gemoc_Transition : outcoming4
-gemoc_State "0..1" -- "1..1" gemoc_Transition : src7
-gemoc_FSM "1..1" *-- "0..9999" gemoc_State : state0
-gemoc_State "0..1" -- "1..1" gemoc_Transition : state6
-gemoc_FSM "1..1" *-- "0..9999" gemoc_Transition : transition1
+gemoc_State "Transition 1..1" -- "state 0..1" gemoc_Transition : incoming3
+gemoc_State "Transition5 1..1" -- "src 0..1" gemoc_Transition : outcoming4
+gemoc_State "outcoming 0..1" -- "State8 1..1" gemoc_Transition : src7
+gemoc_FSM "gemoc_State 1..1" *-- "gemoc_FSM 0..9999" gemoc_State : state0
+gemoc_State "incoming 0..1" -- "State 1..1" gemoc_Transition : state6
+gemoc_FSM "gemoc_Transition 1..1" *-- "gemoc_FSM2 0..9999" gemoc_Transition : transition1
 @enduml

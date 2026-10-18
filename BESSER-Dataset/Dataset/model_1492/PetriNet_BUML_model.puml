@@ -1,4 +1,8 @@
 @startuml
+' model: PetriNet
+' project: sampleModel
+' owner: User
+' description: New project
 class Element {
 }
 class LocatedElement {
@@ -24,10 +28,10 @@ Element <|-- PetriNet_Transition
 LocatedElement <|-- PetriNet_NamedElement
 NamedElement <|-- PetriNet_Element
 NamedElement <|-- PetriNet_PetriNet
-PetriNet_Element "0..9999" --* "1..1" PetriNet_PetriNet : elements0
-PetriNet_Place "1..1" -- "0..9999" PetriNet_Transition : incomingArc2
-PetriNet_Place "0..9999" -- "1..1" PetriNet_Transition : incomingArc5
-PetriNet_Element "1..1" -- "1..1" PetriNet_PetriNet : net1
-PetriNet_Place "1..1" -- "0..9999" PetriNet_Transition : outgoingArc3
-PetriNet_Place "0..9999" -- "1..1" PetriNet_Transition : outgoingArc7
+PetriNet_Element "net 0..9999" --* "Element 1..1" PetriNet_PetriNet : elements0
+PetriNet_Place "Transition 1..1" -- "outgoingArc 0..9999" PetriNet_Transition : incomingArc2
+PetriNet_Place "outgoingArc6 0..9999" -- "Place 1..1" PetriNet_Transition : incomingArc5
+PetriNet_Element "PetriNet 1..1" -- "elements 1..1" PetriNet_PetriNet : net1
+PetriNet_Place "Transition4 1..1" -- "incomingArc 0..9999" PetriNet_Transition : outgoingArc3
+PetriNet_Place "incomingArc8 0..9999" -- "Place9 1..1" PetriNet_Transition : outgoingArc7
 @enduml

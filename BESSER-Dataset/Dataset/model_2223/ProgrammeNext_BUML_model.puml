@@ -1,4 +1,8 @@
 @startuml
+' model: programme
+' project: sampleModel
+' owner: User
+' description: New project
 enum CourseLevel {
   HIGHER
   PHD
@@ -47,13 +51,13 @@ class programme_Specialization {
 class programme_StudyYear {
   + year : int
 }
-programme_Programme "1..1" *-- "0..9999" programme_Specialization : availableSpecializations3
-programme_Specialization "0..9999" -- "1..1" programme_Specialization : availableSpecializations8
-programme_Course "0..9999" --* "1..1" programme_Department : courses1
-programme_Semester "1..1" *-- "1..9999" programme_SemesterCourse : courses15
-programme_Department "1..1" *-- "0..9999" programme_Programme : programmes0
-programme_Course "1..1" -- "1..1" programme_SemesterCourse : semesterCourse17
-programme_Semester "2..2" --* "1..1" programme_StudyYear : semesters13
-programme_Specialization "1..1" *-- "0..9999" programme_StudyYear : studyYears10
-programme_Programme "1..1" *-- "0..9999" programme_StudyYear : studyYears5
+programme_Programme "programme_Specialization 1..1" *-- "programme_Programme4 0..9999" programme_Specialization : availableSpecializations3
+programme_Specialization "programme_Specialization7 0..9999" -- "programme_Specialization9 1..1" programme_Specialization : availableSpecializations8
+programme_Course "programme_Department2 0..9999" --* "programme_Course 1..1" programme_Department : courses1
+programme_Semester "programme_SemesterCourse 1..1" *-- "programme_Semester16 1..9999" programme_SemesterCourse : courses15
+programme_Department "programme_Programme 1..1" *-- "programme_Department 0..9999" programme_Programme : programmes0
+programme_Course "programme_SemesterCourse18 1..1" -- "programme_Course19 1..1" programme_SemesterCourse : semesterCourse17
+programme_Semester "programme_StudyYear14 2..2" --* "programme_Semester 1..1" programme_StudyYear : semesters13
+programme_Specialization "programme_StudyYear12 1..1" *-- "programme_Specialization11 0..9999" programme_StudyYear : studyYears10
+programme_Programme "programme_StudyYear 1..1" *-- "programme_Programme6 0..9999" programme_StudyYear : studyYears5
 @enduml

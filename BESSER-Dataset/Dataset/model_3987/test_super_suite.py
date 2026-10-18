@@ -3019,31 +3019,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=carnot_extensions_FormalParameterMappingsType_strategy)
-@settings(max_examples=30)
-def test_hyp_carnot_extensions_formalparametermappingstype_setmappeddata_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.setMappedData(
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.setMappedData).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'setMappedData' in carnot_extensions_FormalParameterMappingsType is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'setMappedData' in carnot_extensions_FormalParameterMappingsType did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'setMappedData' in carnot_extensions_FormalParameterMappingsType is not implemented or raised an error")
 
 
 
@@ -3509,30 +3484,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=carnot_IConnectionSymbol_strategy)
-@settings(max_examples=30)
-def test_hyp_carnot_iconnectionsymbol_setsourcenode_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.setSourceNode(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.setSourceNode).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'setSourceNode' in carnot_IConnectionSymbol is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'setSourceNode' in carnot_IConnectionSymbol did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'setSourceNode' in carnot_IConnectionSymbol is not implemented or raised an error")
 
 
 
@@ -3583,30 +3534,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=carnot_IModelElementNodeSymbol_strategy)
-@settings(max_examples=30)
-def test_hyp_carnot_imodelelementnodesymbol_setmodelelement_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.setModelElement(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.setModelElement).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'setModelElement' in carnot_IModelElementNodeSymbol is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'setModelElement' in carnot_IModelElementNodeSymbol did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'setModelElement' in carnot_IModelElementNodeSymbol is not implemented or raised an error")
 
 
 
@@ -3952,31 +3879,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=carnot_AttributeType_strategy)
-@settings(max_examples=30)
-def test_hyp_carnot_attributetype_setattributevalue_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.setAttributeValue(
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.setAttributeValue).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'setAttributeValue' in carnot_AttributeType is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'setAttributeValue' in carnot_AttributeType did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'setAttributeValue' in carnot_AttributeType is not implemented or raised an error")
 
 
 
@@ -11497,9 +11399,9 @@ def test_assoc_Code308_stub_double():
     partner = carnot_QualityControlType()
     setattr(partner, 'carnot_QualityControlType309', None)
     _safe_set(owner, 'carnot_Code310', partner)
-    assert getattr(partner, 'carnot_QualityControlType309') == owner
+    assert owner in getattr(partner, 'carnot_QualityControlType309')
     _safe_set(owner, 'carnot_Code310', None)
-    assert getattr(partner, 'carnot_QualityControlType309') is None
+    assert owner not in getattr(partner, 'carnot_QualityControlType309')
 
 
 def test_assoc_accessPoint5_stub_double():
@@ -11512,9 +11414,9 @@ def test_assoc_accessPoint5_stub_double():
     partner = carnot_IAccessPointOwner()
     setattr(partner, 'carnot_IAccessPointOwner', None)
     _safe_set(owner, 'carnot_AccessPointType', partner)
-    assert getattr(partner, 'carnot_IAccessPointOwner') == owner
+    assert owner in getattr(partner, 'carnot_IAccessPointOwner')
     _safe_set(owner, 'carnot_AccessPointType', None)
-    assert getattr(partner, 'carnot_IAccessPointOwner') is None
+    assert owner not in getattr(partner, 'carnot_IAccessPointOwner')
 
 
 def test_assoc_actionInstances175_stub_double():
@@ -11662,9 +11564,9 @@ def test_assoc_attribute0_stub_double():
     partner = carnot_IExtensibleElement()
     setattr(partner, 'carnot_IExtensibleElement', None)
     _safe_set(owner, 'carnot_AttributeType', partner)
-    assert getattr(partner, 'carnot_IExtensibleElement') == owner
+    assert owner in getattr(partner, 'carnot_IExtensibleElement')
     _safe_set(owner, 'carnot_AttributeType', None)
-    assert getattr(partner, 'carnot_IExtensibleElement') is None
+    assert owner not in getattr(partner, 'carnot_IExtensibleElement')
 
 
 def test_assoc_attribute1_stub_double():
@@ -11887,9 +11789,9 @@ def test_assoc_eventHandler4_stub_double():
     partner = carnot_IEventHandlerOwner()
     setattr(partner, 'carnot_IEventHandlerOwner', None)
     _safe_set(owner, 'carnot_EventHandlerType', partner)
-    assert getattr(partner, 'carnot_IEventHandlerOwner') == owner
+    assert owner in getattr(partner, 'carnot_IEventHandlerOwner')
     _safe_set(owner, 'carnot_EventHandlerType', None)
-    assert getattr(partner, 'carnot_IEventHandlerOwner') is None
+    assert owner not in getattr(partner, 'carnot_IEventHandlerOwner')
 
 
 def test_assoc_executedByConnection39_stub_double():
@@ -11992,9 +11894,9 @@ def test_assoc_gatewaySymbols90_stub_double():
     partner = carnot_ActivitySymbolType()
     setattr(partner, 'activitySymbol91', None)
     _safe_set(owner, 'GatewaySymbol', partner)
-    assert getattr(partner, 'activitySymbol91') == owner
+    assert owner in getattr(partner, 'activitySymbol91')
     _safe_set(owner, 'GatewaySymbol', None)
-    assert getattr(partner, 'activitySymbol91') is None
+    assert owner not in getattr(partner, 'activitySymbol91')
 
 
 def test_assoc_genericLinkConnection41_stub_double():
@@ -12052,9 +11954,9 @@ def test_assoc_inTransitions68_stub_double():
     partner = carnot_IFlowObjectSymbol()
     setattr(partner, 'targetActivitySymbol', None)
     _safe_set(owner, 'TransitionConnectionType', partner)
-    assert getattr(partner, 'targetActivitySymbol') == owner
+    assert owner in getattr(partner, 'targetActivitySymbol')
     _safe_set(owner, 'TransitionConnectionType', None)
-    assert getattr(partner, 'targetActivitySymbol') is None
+    assert owner not in getattr(partner, 'targetActivitySymbol')
 
 
 def test_assoc_intermediateEventSymbols21_stub_double():
@@ -12232,9 +12134,9 @@ def test_assoc_outTransitions69_stub_double():
     partner = carnot_IFlowObjectSymbol()
     setattr(partner, 'sourceActivitySymbol', None)
     _safe_set(owner, 'TransitionConnectionType70', partner)
-    assert getattr(partner, 'sourceActivitySymbol') == owner
+    assert owner in getattr(partner, 'sourceActivitySymbol')
     _safe_set(owner, 'TransitionConnectionType70', None)
-    assert getattr(partner, 'sourceActivitySymbol') is None
+    assert owner not in getattr(partner, 'sourceActivitySymbol')
 
 
 def test_assoc_packageRef191_stub_double():
@@ -12262,9 +12164,9 @@ def test_assoc_parameterMapping360_stub_double():
     partner = carnot_TriggerType()
     setattr(partner, 'carnot_TriggerType361', None)
     _safe_set(owner, 'carnot_ParameterMappingType', partner)
-    assert getattr(partner, 'carnot_TriggerType361') == owner
+    assert owner in getattr(partner, 'carnot_TriggerType361')
     _safe_set(owner, 'carnot_ParameterMappingType', None)
-    assert getattr(partner, 'carnot_TriggerType361') is None
+    assert owner not in getattr(partner, 'carnot_TriggerType361')
 
 
 def test_assoc_parentLane201_stub_double():
@@ -12367,9 +12269,9 @@ def test_assoc_performedActivities72_stub_double():
     partner = carnot_IModelParticipant()
     setattr(partner, 'performer', None)
     _safe_set(owner, 'ActivityType', partner)
-    assert getattr(partner, 'performer') == owner
+    assert owner in getattr(partner, 'performer')
     _safe_set(owner, 'ActivityType', None)
-    assert getattr(partner, 'performer') is None
+    assert owner not in getattr(partner, 'performer')
 
 
 def test_assoc_performedSwimlanes73_stub_double():
@@ -12382,9 +12284,9 @@ def test_assoc_performedSwimlanes73_stub_double():
     partner = carnot_IModelParticipant()
     setattr(partner, 'participant', None)
     _safe_set(owner, 'ISwimlaneSymbol', partner)
-    assert getattr(partner, 'participant') == owner
+    assert owner in getattr(partner, 'participant')
     _safe_set(owner, 'ISwimlaneSymbol', None)
-    assert getattr(partner, 'participant') is None
+    assert owner not in getattr(partner, 'participant')
 
 
 def test_assoc_performer95_stub_double():
@@ -13019,324 +12921,42 @@ def test_assoc_xSISchemaLocation170_stub_double():
 
 
 
-from enum import Enum
 from python_code import ActivityImplementationType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ActivityImplementationType.Manual, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ActivityImplementationType.Route, '', '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ActivityImplementationType.Manual, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ActivityImplementationType.Route, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ActivityImplementationType.Route, 'Route') == ActivityImplementationType.Route
-
-from enum import Enum
 from python_code import DiagramModeType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(DiagramModeType.MODE_4_5_0, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(DiagramModeType.MODE_4_5_0, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(DiagramModeType.MODE_4_0_0, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(DiagramModeType.MODE_4_5_0, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(DiagramModeType.MODE_4_5_0, 'MODE_4_5_0') == DiagramModeType.MODE_4_5_0
-
-from enum import Enum
 from python_code import DirectionType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(DirectionType.IN, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(DirectionType.IN, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(DirectionType.IN, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(DirectionType.IN, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(DirectionType.IN, 'IN') == DirectionType.IN
-
-from enum import Enum
 from python_code import FlowControlType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(FlowControlType.none, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(FlowControlType.none, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(FlowControlType.none, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(FlowControlType.join, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(FlowControlType.join, 'none') == FlowControlType.none
-
-from enum import Enum
 from python_code import ImplementationType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ImplementationType.push, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ImplementationType.push, 0, '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ImplementationType.push, '', '', '') == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ImplementationType.push, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ImplementationType.push, 'push') == ImplementationType.push
-
-from enum import Enum
 from python_code import JoinSplitType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(JoinSplitType.AND, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(JoinSplitType.AND, 0, '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(JoinSplitType.AND, '', '', '') == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(JoinSplitType.AND, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(JoinSplitType.AND, 'AND') == JoinSplitType.AND
-
-from enum import Enum
 from python_code import LinkCardinality
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(LinkCardinality.Many, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(LinkCardinality.Many, 0, '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(LinkCardinality.Many, '', '', '') == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(LinkCardinality.One, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(LinkCardinality.One, 'One') == LinkCardinality.One
-
-from enum import Enum
 from python_code import LinkColor
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(LinkColor.Black, '', 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(LinkColor.Red, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(LinkColor.Red, 0, 0, '') == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(LinkColor.Blue, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(LinkColor.Blue, 'Blue') == LinkColor.Blue
-
-from enum import Enum
 from python_code import LinkEndStyle
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(LinkEndStyle.NoArrow, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(LinkEndStyle.NoArrow, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(LinkEndStyle.NoArrow, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(LinkEndStyle.NoArrow, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(LinkEndStyle.NoArrow, 'NoArrow') == LinkEndStyle.NoArrow
-
-from enum import Enum
 from python_code import LinkLineStyle
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(LinkLineStyle.Normal, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(LinkLineStyle.Normal, '', 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(LinkLineStyle.Normal, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(LinkLineStyle.Normal, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(LinkLineStyle.Normal, 'Normal') == LinkLineStyle.Normal
-
-from enum import Enum
 from python_code import LoopType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(LoopType.While, 0, '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(LoopType.None_, '', 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(LoopType.None_, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(LoopType.None_, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(LoopType.None_, 'None_') == LoopType.None_
-
-from enum import Enum
 from python_code import OrientationType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(OrientationType.Vertical, '', 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(OrientationType.Vertical, '', 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(OrientationType.Vertical, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(OrientationType.Vertical, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(OrientationType.Vertical, 'Vertical') == OrientationType.Vertical
-
-from enum import Enum
 from python_code import RoutingType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(RoutingType.Default, 0, '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(RoutingType.Default, '', '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(RoutingType.Default, '', 0, '') == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(RoutingType.Default, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(RoutingType.Default, 'Default') == RoutingType.Default
-
-from enum import Enum
 from python_code import SubProcessModeType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(SubProcessModeType.sync_shared, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(SubProcessModeType.sync_shared, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(SubProcessModeType.sync_shared, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(SubProcessModeType.sync_shared, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(SubProcessModeType.sync_shared, 'sync_shared') == SubProcessModeType.sync_shared
-
 from python_code import carnot_AbstractEventSymbol
 
 def test_carnot_AbstractEventSymbol___init__():
     assert carnot_AbstractEventSymbol.__init__(carnot_AbstractEventSymbol(''), '') == None
-
 from python_code import carnot_DocumentRoot
 
 def test_carnot_DocumentRoot___init__():
     assert carnot_DocumentRoot.__init__(carnot_DocumentRoot('', carnot_DocumentRoot=set(), carnot_DocumentRoot171=set(), carnot_DocumentRoot174=set()), '', carnot_DocumentRoot=set(), carnot_DocumentRoot171=set(), carnot_DocumentRoot174=set()) == None
-
 from python_code import carnot_IConnectionSymbol
 
 def test_carnot_IConnectionSymbol___init__():
@@ -13353,18 +12973,15 @@ def test_carnot_IConnectionSymbol_getSourceNode():
 
 def test_carnot_IConnectionSymbol_setSourceNode():
     assert carnot_IConnectionSymbol.setSourceNode(carnot_IConnectionSymbol('\x00', '\x00\x00', '', carnot_IConnectionSymbol=set()), '') == None
-
 from python_code import carnot_IGraphicalObject
 from python_code import carnot_RefersToConnectionType
 
 def test_carnot_IGraphicalObject___init__():
     assert carnot_IGraphicalObject.__init__(carnot_IGraphicalObject('', '', '', to=set(), from_=set(), IGraphicalObject313=carnot_RefersToConnectionType(), IGraphicalObject=carnot_RefersToConnectionType()), '', '', '', to=set(), from_=set(), IGraphicalObject313=carnot_RefersToConnectionType(), IGraphicalObject=carnot_RefersToConnectionType()) == None
-
 from python_code import carnot_IIdentifiableElement
 
 def test_carnot_IIdentifiableElement___init__():
     assert carnot_IIdentifiableElement.__init__(carnot_IIdentifiableElement('', '\x00'), '\x00\x00', '') == None
-
 from python_code import carnot_IMetaType
 
 def test_carnot_IMetaType___init__():
@@ -13375,13 +12992,11 @@ def test_carnot_IMetaType_getTypedElements():
 
 def test_carnot_IMetaType_getExtensionPointId():
     assert carnot_IMetaType.getExtensionPointId(carnot_IMetaType('')) == None
-
 from python_code import carnot_IModelElement
 from python_code import carnot_ViewableType
 
 def test_carnot_IModelElement___init__():
     assert carnot_IModelElement.__init__(carnot_IModelElement('', carnot_IModelElement=carnot_ViewableType()), '', carnot_IModelElement=carnot_ViewableType()) == None
-
 from python_code import carnot_IModelElementNodeSymbol
 
 def test_carnot_IModelElementNodeSymbol___init__():
@@ -13392,7 +13007,6 @@ def test_carnot_IModelElementNodeSymbol_setModelElement():
 
 def test_carnot_IModelElementNodeSymbol_getModelElement():
     assert carnot_IModelElementNodeSymbol.getModelElement(carnot_IModelElementNodeSymbol()) == None
-
 from python_code import carnot_GenericLinkConnectionType
 from python_code import carnot_INodeSymbol
 
@@ -13404,7 +13018,6 @@ def test_carnot_INodeSymbol_getInConnectionFeatures():
 
 def test_carnot_INodeSymbol_getOutConnectionFeatures():
     assert carnot_INodeSymbol.getOutConnectionFeatures(carnot_INodeSymbol('\x00', '', '', '', '', targetSymbol=set(), sourceSymbol=set(), INodeSymbol=carnot_GenericLinkConnectionType(), INodeSymbol198=carnot_GenericLinkConnectionType())) == None
-
 from python_code import carnot_IModelParticipant
 from python_code import carnot_ISwimlaneSymbol
 from python_code import carnot_LaneSymbol

@@ -1,4 +1,8 @@
 @startuml
+' model: types
+' project: sampleModel
+' owner: User
+' description: New project
 class Feature {
 }
 class NamedElement {
@@ -30,12 +34,12 @@ NamedElement <|-- types_Parameter
 NamedElement <|-- types_Type
 TypedElement <|-- types_Feature
 TypedElement <|-- types_Parameter
-types_Feature "0..9999" --* "1..1" types_Type : features1
-types_Library "0..1" -- "1..1" types_Type : owningLibrary4
-types_Operation "0..1" -- "1..1" types_Parameter : owningOperation8
-types_Feature "1..1" -- "0..1" types_Type : owningType5
-types_Operation "1..1" *-- "0..9999" types_Parameter : parameters7
-types_Type "1..1" -- "0..9999" types_Type : superTypes3
-types_Type "0..1" -- "1..1" types_TypedElement : type9
-types_Library "1..1" *-- "0..9999" types_Type : types0
+types_Feature "owningType 0..9999" --* "Feature 1..1" types_Type : features1
+types_Library "types 0..1" -- "Library 1..1" types_Type : owningLibrary4
+types_Operation "parameters 0..1" -- "Operation 1..1" types_Parameter : owningOperation8
+types_Feature "Type6 1..1" -- "features 0..1" types_Type : owningType5
+types_Operation "Parameter 1..1" *-- "owningOperation 0..9999" types_Parameter : parameters7
+types_Type "types_Type 1..1" -- "types_Type2 0..9999" types_Type : superTypes3
+types_Type "types_TypedElement 0..1" -- "types_Type10 1..1" types_TypedElement : type9
+types_Library "Type 1..1" *-- "owningLibrary 0..9999" types_Type : types0
 @enduml

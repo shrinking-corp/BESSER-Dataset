@@ -1,4 +1,8 @@
 @startuml
+' model: epo
+' project: sampleModel
+' owner: User
+' description: New project
 class Address {
 }
 class GlobalLocation {
@@ -54,15 +58,15 @@ Address <|-- epo_CanadianAddress
 Address <|-- epo_GlobalAddress
 Address <|-- epo_USAddress
 GlobalLocation <|-- epo_GlobalAddress
-epo_Address "1..1" --* "1..1" epo_PurchaseOrder : billTo2
-epo_Customer "1..1" -- "1..1" epo_PurchaseOrder : customer6
-epo_Customer "0..9999" --* "1..1" epo_Supplier : customers10
-epo_Item "0..9999" --* "1..1" epo_PurchaseOrder : items1
-epo_Item "1..1" -- "1..1" epo_PurchaseOrder : order0
-epo_PurchaseOrder "0..9999" --* "1..1" epo_Supplier : orders11
-epo_Customer "1..1" -- "0..9999" epo_PurchaseOrder : orders20
-epo_PurchaseOrder "0..9999" -- "1..1" epo_Supplier : pendingOrders14
-epo_PurchaseOrder "0..1" -- "1..1" epo_PurchaseOrder : previousOrder8
-epo_Address "0..1" --* "1..1" epo_PurchaseOrder : shipTo3
-epo_PurchaseOrder "0..9999" -- "1..1" epo_Supplier : shippedOrders17
+epo_Address "epo_PurchaseOrder 1..1" --* "epo_Address 1..1" epo_PurchaseOrder : billTo2
+epo_Customer "orders 1..1" -- "Customer 1..1" epo_PurchaseOrder : customer6
+epo_Customer "epo_Supplier 0..9999" --* "epo_Customer 1..1" epo_Supplier : customers10
+epo_Item "order 0..9999" --* "Item 1..1" epo_PurchaseOrder : items1
+epo_Item "PurchaseOrder 1..1" -- "items 1..1" epo_PurchaseOrder : order0
+epo_PurchaseOrder "epo_Supplier12 0..9999" --* "epo_PurchaseOrder13 1..1" epo_Supplier : orders11
+epo_Customer "PurchaseOrder21 1..1" -- "customer 0..9999" epo_PurchaseOrder : orders20
+epo_PurchaseOrder "epo_Supplier15 0..9999" -- "epo_PurchaseOrder16 1..1" epo_Supplier : pendingOrders14
+epo_PurchaseOrder "epo_PurchaseOrder7 0..1" -- "epo_PurchaseOrder9 1..1" epo_PurchaseOrder : previousOrder8
+epo_Address "epo_PurchaseOrder4 0..1" --* "epo_Address5 1..1" epo_PurchaseOrder : shipTo3
+epo_PurchaseOrder "epo_Supplier18 0..9999" -- "epo_PurchaseOrder19 1..1" epo_Supplier : shippedOrders17
 @enduml

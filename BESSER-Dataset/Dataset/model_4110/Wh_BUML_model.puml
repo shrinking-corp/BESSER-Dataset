@@ -1,4 +1,8 @@
 @startuml
+' model: wh
+' project: sampleModel
+' owner: User
+' description: New project
 class Expr {
 }
 class ExprSimple {
@@ -41,14 +45,14 @@ class wh_cons {
 }
 Expr <|-- wh_ExprSimple
 ExprSimple <|-- wh_cons
-wh_Command "1..1" *-- "0..1" wh_EObject : cmd11
-wh_Commands "0..1" --* "1..1" wh_Definition : command5
-wh_Command "0..9999" --* "1..1" wh_Commands : commands9
-wh_Definition "0..1" --* "1..1" wh_Program : definition1
-wh_Program "0..9999" --* "1..1" wh_Wh : elements0
-wh_Affect "1..1" *-- "0..1" wh_Exprs : exp14
-wh_Expr "0..9999" --* "1..1" wh_Exprs : exprs16
-wh_Definition "1..1" *-- "0..1" wh_Input : input3
-wh_Definition "1..1" *-- "0..1" wh_Output : output7
-wh_Affect "1..1" *-- "0..1" wh_Vars : vars13
+wh_Command "wh_EObject 1..1" *-- "wh_Command12 0..1" wh_EObject : cmd11
+wh_Commands "wh_Definition6 0..1" --* "wh_Commands 1..1" wh_Definition : command5
+wh_Command "wh_Commands10 0..9999" --* "wh_Command 1..1" wh_Commands : commands9
+wh_Definition "wh_Program2 0..1" --* "wh_Definition 1..1" wh_Program : definition1
+wh_Program "wh_Wh 0..9999" --* "wh_Program 1..1" wh_Wh : elements0
+wh_Affect "wh_Exprs 1..1" *-- "wh_Affect15 0..1" wh_Exprs : exp14
+wh_Expr "wh_Exprs17 0..9999" --* "wh_Expr 1..1" wh_Exprs : exprs16
+wh_Definition "wh_Input 1..1" *-- "wh_Definition4 0..1" wh_Input : input3
+wh_Definition "wh_Output 1..1" *-- "wh_Definition8 0..1" wh_Output : output7
+wh_Affect "wh_Vars 1..1" *-- "wh_Affect 0..1" wh_Vars : vars13
 @enduml

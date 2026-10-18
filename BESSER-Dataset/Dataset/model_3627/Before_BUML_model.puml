@@ -1,4 +1,8 @@
 @startuml
+' model: minuml1
+' project: sampleModel
+' owner: User
+' description: New project
 class ModelElement {
 }
 enum PseudostateKind {
@@ -58,17 +62,17 @@ State <|-- minuml1_ObjectFlowState
 StateMachine <|-- minuml1_Activity
 StateVertex <|-- minuml1_Pseudostate
 StateVertex <|-- minuml1_State
-minuml1_ModelElement "0..9999" -- "1..1" minuml1_Partition : contents5
-minuml1_BooleanExpression "1..1" --* "1..1" minuml1_Guard : expression16
-minuml1_Guard "0..1" --* "1..1" minuml1_Transition : guard14
-minuml1_StateVertex "1..1" -- "0..9999" minuml1_Transition : incoming7
-minuml1_StateVertex "1..1" -- "0..9999" minuml1_Transition : outgoing6
-minuml1_Activity "1..1" *-- "0..9999" minuml1_Partition : parition4
-minuml1_ModelElement "1..1" -- "1..1" minuml1_Partition : partition0
-minuml1_StateVertex "1..1" -- "1..1" minuml1_Transition : source11
-minuml1_CompositeState "1..1" *-- "0..9999" minuml1_StateVertex : subvertex9
-minuml1_StateVertex "1..1" -- "1..1" minuml1_Transition : target12
-minuml1_State "1..1" --* "1..1" minuml1_StateMachine : top1
-minuml1_StateMachine "1..1" *-- "0..9999" minuml1_Transition : transitions2
-minuml1_ModelElement "1..1" --* "1..1" minuml1_ObjectFlowState : type10
+minuml1_ModelElement "partition 0..9999" -- "ModelElement 1..1" minuml1_Partition : contents5
+minuml1_BooleanExpression "minuml1_Guard17 1..1" --* "minuml1_BooleanExpression 1..1" minuml1_Guard : expression16
+minuml1_Guard "minuml1_Transition15 0..1" --* "minuml1_Guard 1..1" minuml1_Transition : guard14
+minuml1_StateVertex "Transition8 1..1" -- "target 0..9999" minuml1_Transition : incoming7
+minuml1_StateVertex "Transition 1..1" -- "source 0..9999" minuml1_Transition : outgoing6
+minuml1_Activity "minuml1_Partition 1..1" *-- "minuml1_Activity 0..9999" minuml1_Partition : parition4
+minuml1_ModelElement "Partition 1..1" -- "contents 1..1" minuml1_Partition : partition0
+minuml1_StateVertex "outgoing 1..1" -- "StateVertex 1..1" minuml1_Transition : source11
+minuml1_CompositeState "minuml1_StateVertex 1..1" *-- "minuml1_CompositeState 0..9999" minuml1_StateVertex : subvertex9
+minuml1_StateVertex "incoming 1..1" -- "StateVertex13 1..1" minuml1_Transition : target12
+minuml1_State "minuml1_StateMachine 1..1" --* "minuml1_State 1..1" minuml1_StateMachine : top1
+minuml1_StateMachine "minuml1_Transition 1..1" *-- "minuml1_StateMachine3 0..9999" minuml1_Transition : transitions2
+minuml1_ModelElement "minuml1_ObjectFlowState 1..1" --* "minuml1_ModelElement 1..1" minuml1_ObjectFlowState : type10
 @enduml

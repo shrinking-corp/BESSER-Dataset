@@ -1,4 +1,8 @@
 @startuml
+' model: comicBooks
+' project: sampleModel
+' owner: User
+' description: New project
 class comicBooks_Artist {
   + name : str
 }
@@ -20,22 +24,22 @@ class comicBooks_Series {
 class comicBooks_Writer {
   + name : str
 }
-comicBooks_Artist "0..9999" --* "1..1" comicBooks_ComicBookCollection : artists1
-comicBooks_Artist "1..9999" -- "1..1" comicBooks_Book : artists14
-comicBooks_Book "0..9999" --* "1..1" comicBooks_ComicBookCollection : books0
-comicBooks_Artist "1..1" -- "0..9999" comicBooks_Book : booksArtistFor21
-comicBooks_Artist "1..1" -- "0..9999" comicBooks_Book : booksCoverArtistFor23
-comicBooks_Book "0..9999" -- "1..1" comicBooks_Editor : booksEditorFor25
-comicBooks_Book "0..9999" -- "1..1" comicBooks_Series : booksInSeries12
-comicBooks_Book "0..9999" -- "1..1" comicBooks_Publisher : booksPublished11
-comicBooks_Book "0..9999" -- "1..1" comicBooks_Writer : booksWriterFor27
-comicBooks_Artist "1..1" -- "1..1" comicBooks_Book : coverArtist17
-comicBooks_Book "1..1" -- "1..9999" comicBooks_Editor : editors15
-comicBooks_ComicBookCollection "1..1" *-- "0..9999" comicBooks_Editor : editors3
-comicBooks_Book "1..1" -- "1..1" comicBooks_Publisher : publisher19
-comicBooks_ComicBookCollection "1..1" *-- "0..9999" comicBooks_Publisher : publishingCompanies7
-comicBooks_ComicBookCollection "1..1" *-- "0..9999" comicBooks_Series : series9
-comicBooks_Book "1..1" -- "1..1" comicBooks_Series : seriesPartOf20
-comicBooks_Book "1..1" -- "1..9999" comicBooks_Writer : writers16
-comicBooks_ComicBookCollection "1..1" *-- "0..9999" comicBooks_Writer : writers5
+comicBooks_Artist "comicBooks_ComicBookCollection2 0..9999" --* "comicBooks_Artist 1..1" comicBooks_ComicBookCollection : artists1
+comicBooks_Artist "booksArtistFor 1..9999" -- "Artist 1..1" comicBooks_Book : artists14
+comicBooks_Book "comicBooks_ComicBookCollection 0..9999" --* "comicBooks_Book 1..1" comicBooks_ComicBookCollection : books0
+comicBooks_Artist "Book22 1..1" -- "artists 0..9999" comicBooks_Book : booksArtistFor21
+comicBooks_Artist "Book24 1..1" -- "coverArtist 0..9999" comicBooks_Book : booksCoverArtistFor23
+comicBooks_Book "editors 0..9999" -- "Book26 1..1" comicBooks_Editor : booksEditorFor25
+comicBooks_Book "seriesPartOf 0..9999" -- "Book13 1..1" comicBooks_Series : booksInSeries12
+comicBooks_Book "publisher 0..9999" -- "Book 1..1" comicBooks_Publisher : booksPublished11
+comicBooks_Book "writers 0..9999" -- "Book28 1..1" comicBooks_Writer : booksWriterFor27
+comicBooks_Artist "booksCoverArtistFor 1..1" -- "Artist18 1..1" comicBooks_Book : coverArtist17
+comicBooks_Book "Editor 1..1" -- "booksEditorFor 1..9999" comicBooks_Editor : editors15
+comicBooks_ComicBookCollection "comicBooks_Editor 1..1" *-- "comicBooks_ComicBookCollection4 0..9999" comicBooks_Editor : editors3
+comicBooks_Book "Publisher 1..1" -- "booksPublished 1..1" comicBooks_Publisher : publisher19
+comicBooks_ComicBookCollection "comicBooks_Publisher 1..1" *-- "comicBooks_ComicBookCollection8 0..9999" comicBooks_Publisher : publishingCompanies7
+comicBooks_ComicBookCollection "comicBooks_Series 1..1" *-- "comicBooks_ComicBookCollection10 0..9999" comicBooks_Series : series9
+comicBooks_Book "Series 1..1" -- "booksInSeries 1..1" comicBooks_Series : seriesPartOf20
+comicBooks_Book "Writer 1..1" -- "booksWriterFor 1..9999" comicBooks_Writer : writers16
+comicBooks_ComicBookCollection "comicBooks_Writer 1..1" *-- "comicBooks_ComicBookCollection6 0..9999" comicBooks_Writer : writers5
 @enduml

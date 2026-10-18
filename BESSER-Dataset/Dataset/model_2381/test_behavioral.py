@@ -182,9 +182,9 @@ def test_assoc_assertions7_stub_double():
     partner = relational_Schema()
     setattr(partner, 'schema8', None)
     _safe_set(owner, 'Assertion', partner)
-    assert getattr(partner, 'schema8') == owner
+    assert owner in getattr(partner, 'schema8')
     _safe_set(owner, 'Assertion', None)
-    assert getattr(partner, 'schema8') is None
+    assert owner not in getattr(partner, 'schema8')
 
 
 def test_assoc_columns23_stub_double():
@@ -197,9 +197,9 @@ def test_assoc_columns23_stub_double():
     partner = relational_Table()
     setattr(partner, 'table24', None)
     _safe_set(owner, 'Column', partner)
-    assert getattr(partner, 'table24') == owner
+    assert owner in getattr(partner, 'table24')
     _safe_set(owner, 'Column', None)
-    assert getattr(partner, 'table24') is None
+    assert owner not in getattr(partner, 'table24')
 
 
 def test_assoc_foreignKey41_stub_double():
@@ -212,9 +212,9 @@ def test_assoc_foreignKey41_stub_double():
     partner = relational_UniqueConstraint()
     setattr(partner, 'uniqueConstraint', None)
     _safe_set(owner, 'ForeignKey42', partner)
-    assert getattr(partner, 'uniqueConstraint') == owner
+    assert owner in getattr(partner, 'uniqueConstraint')
     _safe_set(owner, 'ForeignKey42', None)
-    assert getattr(partner, 'uniqueConstraint') is None
+    assert owner not in getattr(partner, 'uniqueConstraint')
 
 
 def test_assoc_members33_stub_double():
@@ -227,9 +227,9 @@ def test_assoc_members33_stub_double():
     partner = relational_ReferenceConstraint()
     setattr(partner, 'referenceConstraint', None)
     _safe_set(owner, 'Column34', partner)
-    assert getattr(partner, 'referenceConstraint') == owner
+    assert owner in getattr(partner, 'referenceConstraint')
     _safe_set(owner, 'Column34', None)
-    assert getattr(partner, 'referenceConstraint') is None
+    assert owner not in getattr(partner, 'referenceConstraint')
 
 
 def test_assoc_referenceConstraint27_stub_double():
@@ -287,9 +287,9 @@ def test_assoc_referencingForeignKeys29_stub_double():
     partner = relational_BaseTable()
     setattr(partner, 'referencedTable', None)
     _safe_set(owner, 'ForeignKey30', partner)
-    assert getattr(partner, 'referencedTable') == owner
+    assert owner in getattr(partner, 'referencedTable')
     _safe_set(owner, 'ForeignKey30', None)
-    assert getattr(partner, 'referencedTable') is None
+    assert owner not in getattr(partner, 'referencedTable')
 
 
 def test_assoc_schema11_stub_double():
@@ -377,9 +377,9 @@ def test_assoc_triggers19_stub_double():
     partner = relational_Table()
     setattr(partner, 'table', None)
     _safe_set(owner, 'Trigger20', partner)
-    assert getattr(partner, 'table') == owner
+    assert owner in getattr(partner, 'table')
     _safe_set(owner, 'Trigger20', None)
-    assert getattr(partner, 'table') is None
+    assert owner not in getattr(partner, 'table')
 
 
 def test_assoc_triggers5_stub_double():
@@ -392,9 +392,9 @@ def test_assoc_triggers5_stub_double():
     partner = relational_Schema()
     setattr(partner, 'schema6', None)
     _safe_set(owner, 'Trigger', partner)
-    assert getattr(partner, 'schema6') == owner
+    assert owner in getattr(partner, 'schema6')
     _safe_set(owner, 'Trigger', None)
-    assert getattr(partner, 'schema6') is None
+    assert owner not in getattr(partner, 'schema6')
 
 
 def test_assoc_triggersConstrainted21_stub_double():
@@ -407,9 +407,9 @@ def test_assoc_triggersConstrainted21_stub_double():
     partner = relational_Table()
     setattr(partner, 'triggerTables', None)
     _safe_set(owner, 'Trigger22', partner)
-    assert getattr(partner, 'triggerTables') == owner
+    assert owner in getattr(partner, 'triggerTables')
     _safe_set(owner, 'Trigger22', None)
-    assert getattr(partner, 'triggerTables') is None
+    assert owner not in getattr(partner, 'triggerTables')
 
 
 def test_assoc_uniqueConstraint37_stub_double():

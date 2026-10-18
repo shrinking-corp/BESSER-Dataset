@@ -1,4 +1,8 @@
 @startuml
+' model: trace
+' project: sampleModel
+' owner: User
+' description: New project
 enum ParamterKindEnum {
   IN
   INOUT
@@ -36,19 +40,19 @@ Step <|-- trace_BigStep
 Step <|-- trace_SmallStep
 Value <|-- trace_LiteralValue
 Value <|-- trace_RefValue
-trace_BigStep "1..1" *-- "0..9999" trace_Step : children24
-trace_ModelState "0..9999" --* "1..1" trace_Trace : modelstate1
-trace_RefValue "1..1" -- "0..1" trace_TracedObject : objectstate19
-trace_ModelState "1..1" -- "0..9999" trace_ObjectState : objectstates21
-trace_ObjectState "1..9999" -- "1..1" trace_TracedObject : objectstates25
-trace_ObjectState "0..9999" --* "1..1" trace_Trace : objectstates3
-trace_ParameterValue "0..9999" --* "1..1" trace_Step : parametervalue12
-trace_BigStep "0..1" -- "1..1" trace_Step : parent14
-trace_ModelState "0..1" -- "1..1" trace_Step : state9
-trace_Step "0..9999" --* "1..1" trace_Trace : steps0
-trace_ObjectState "1..1" -- "1..1" trace_TracedObject : tracedobject18
-trace_Trace "1..1" *-- "0..9999" trace_TracedObject : tracedobject5
-trace_ObjectState "1..1" *-- "0..9999" trace_Value : value15
-trace_ParameterValue "1..1" -- "0..9999" trace_Value : value26
-trace_Trace "1..1" *-- "0..9999" trace_Value : values7
+trace_BigStep "Step 1..1" *-- "parent 0..9999" trace_Step : children24
+trace_ModelState "trace_Trace2 0..9999" --* "trace_ModelState 1..1" trace_Trace : modelstate1
+trace_RefValue "trace_TracedObject20 1..1" -- "trace_RefValue 0..1" trace_TracedObject : objectstate19
+trace_ModelState "trace_ObjectState23 1..1" -- "trace_ModelState22 0..9999" trace_ObjectState : objectstates21
+trace_ObjectState "tracedobject 1..9999" -- "ObjectState 1..1" trace_TracedObject : objectstates25
+trace_ObjectState "trace_Trace4 0..9999" --* "trace_ObjectState 1..1" trace_Trace : objectstates3
+trace_ParameterValue "trace_Step13 0..9999" --* "trace_ParameterValue 1..1" trace_Step : parametervalue12
+trace_BigStep "children 0..1" -- "BigStep 1..1" trace_Step : parent14
+trace_ModelState "trace_Step10 0..1" -- "trace_ModelState11 1..1" trace_Step : state9
+trace_Step "trace_Trace 0..9999" --* "trace_Step 1..1" trace_Trace : steps0
+trace_ObjectState "TracedObject 1..1" -- "objectstates 1..1" trace_TracedObject : tracedobject18
+trace_Trace "trace_TracedObject 1..1" *-- "trace_Trace6 0..9999" trace_TracedObject : tracedobject5
+trace_ObjectState "trace_Value17 1..1" *-- "trace_ObjectState16 0..9999" trace_Value : value15
+trace_ParameterValue "trace_Value28 1..1" -- "trace_ParameterValue27 0..9999" trace_Value : value26
+trace_Trace "trace_Value 1..1" *-- "trace_Trace8 0..9999" trace_Value : values7
 @enduml

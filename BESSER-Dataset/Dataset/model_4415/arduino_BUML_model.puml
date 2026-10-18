@@ -1,4 +1,8 @@
 @startuml
+' model: arduino
+' project: sampleModel
+' owner: User
+' description: New project
 class Actuadores {
 }
 class Bloques {
@@ -82,20 +86,20 @@ Sensores <|-- arduino_LDR
 Sensores <|-- arduino_PIR
 Sensores <|-- arduino_Potenciometro
 Sensores <|-- arduino_Temperatura
-arduino_Actuadores "0..9999" -- "1..1" arduino_Sensores : act10
-arduino_Actuadores "0..9999" --* "1..1" arduino_Sketch : actuadores1
-arduino_Actuadores "1..1" -- "0..1" arduino_Instrucciones : actuadorinstruccion7
-arduino_Apagar "0..1" -- "1..1" arduino_Esperar : apagar16
-arduino_Actuadores "0..9999" --* "1..1" arduino_Bloques : bactuadores27
-arduino_Bloques "1..1" *-- "0..9999" arduino_Instrucciones : binstrucciones30
-arduino_Actuadores "0..1" -- "1..1" arduino_Bloques : bloacts36
-arduino_Bloques "0..9999" --* "1..1" arduino_Bloques : bloq25
-arduino_Bloques "0..9999" --* "1..1" arduino_Sketch : bloques5
-arduino_Bloques "1..1" -- "0..1" arduino_Sensores : bsensores33
-arduino_Sensores "0..1" -- "1..1" arduino_Variar : datos14
-arduino_Encender "0..1" -- "1..1" arduino_Esperar : encender19
-arduino_Apagar "1..1" -- "0..1" arduino_Esperar : esperar113
-arduino_Encender "1..1" -- "0..1" arduino_Esperar : esperar21
-arduino_Instrucciones "0..9999" --* "1..1" arduino_Sketch : instrucciones3
-arduino_Sensores "0..9999" --* "1..1" arduino_Sketch : sensores0
+arduino_Actuadores "arduino_Sensores11 0..9999" -- "arduino_Actuadores12 1..1" arduino_Sensores : act10
+arduino_Actuadores "arduino_Sketch2 0..9999" --* "arduino_Actuadores 1..1" arduino_Sketch : actuadores1
+arduino_Actuadores "arduino_Instrucciones9 1..1" -- "arduino_Actuadores8 0..1" arduino_Instrucciones : actuadorinstruccion7
+arduino_Apagar "arduino_Esperar17 0..1" -- "arduino_Apagar18 1..1" arduino_Esperar : apagar16
+arduino_Actuadores "arduino_Bloques28 0..9999" --* "arduino_Actuadores29 1..1" arduino_Bloques : bactuadores27
+arduino_Bloques "arduino_Instrucciones32 1..1" *-- "arduino_Bloques31 0..9999" arduino_Instrucciones : binstrucciones30
+arduino_Actuadores "arduino_Bloques37 0..1" -- "arduino_Actuadores38 1..1" arduino_Bloques : bloacts36
+arduino_Bloques "arduino_Bloques24 0..9999" --* "arduino_Bloques26 1..1" arduino_Bloques : bloq25
+arduino_Bloques "arduino_Sketch6 0..9999" --* "arduino_Bloques 1..1" arduino_Sketch : bloques5
+arduino_Bloques "arduino_Sensores35 1..1" -- "arduino_Bloques34 0..1" arduino_Sensores : bsensores33
+arduino_Sensores "arduino_Variar 0..1" -- "arduino_Sensores15 1..1" arduino_Variar : datos14
+arduino_Encender "arduino_Esperar20 0..1" -- "arduino_Encender 1..1" arduino_Esperar : encender19
+arduino_Apagar "arduino_Esperar 1..1" -- "arduino_Apagar 0..1" arduino_Esperar : esperar113
+arduino_Encender "arduino_Esperar23 1..1" -- "arduino_Encender22 0..1" arduino_Esperar : esperar21
+arduino_Instrucciones "arduino_Sketch4 0..9999" --* "arduino_Instrucciones 1..1" arduino_Sketch : instrucciones3
+arduino_Sensores "arduino_Sketch 0..9999" --* "arduino_Sensores 1..1" arduino_Sketch : sensores0
 @enduml

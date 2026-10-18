@@ -1,4 +1,8 @@
 @startuml
+' model: robot
+' project: sampleModel
+' owner: User
+' description: New project
 class Condition {
 }
 class ConditionalStatement {
@@ -63,13 +67,13 @@ Statement <|-- robot_ConditionalStatement
 Statement <|-- robot_ControlStatement
 Statement <|-- robot_ExecuteStatement
 Statement <|-- robot_PrintStatement
-robot_Condition "1..1" --* "1..1" robot_ConditionalStatement : condition11
-robot_Connection "0..1" --* "1..1" robot_Robot : connection6
-robot_ExecuteStatement "1..1" -- "1..1" robot_Scenario : destination15
-robot_Robot "1..1" *-- "1..1" robot_StatementBlock : global_1
-robot_Robot "1..1" -- "0..1" robot_Scenario : initial3
-robot_Robot "1..1" *-- "0..9999" robot_Scenario : scenarii0
-robot_ConditionalStatement "1..1" *-- "1..1" robot_StatementBlock : statementBlock12
-robot_Scenario "1..1" *-- "1..1" robot_StatementBlock : statementBlock8
-robot_Statement "0..9999" --* "1..1" robot_StatementBlock : statements17
+robot_Condition "robot_ConditionalStatement 1..1" --* "robot_Condition 1..1" robot_ConditionalStatement : condition11
+robot_Connection "robot_Robot7 0..1" --* "robot_Connection 1..1" robot_Robot : connection6
+robot_ExecuteStatement "robot_Scenario16 1..1" -- "robot_ExecuteStatement 1..1" robot_Scenario : destination15
+robot_Robot "robot_StatementBlock 1..1" *-- "robot_Robot2 1..1" robot_StatementBlock : global_1
+robot_Robot "robot_Scenario5 1..1" -- "robot_Robot4 0..1" robot_Scenario : initial3
+robot_Robot "robot_Scenario 1..1" *-- "robot_Robot 0..9999" robot_Scenario : scenarii0
+robot_ConditionalStatement "robot_StatementBlock14 1..1" *-- "robot_ConditionalStatement13 1..1" robot_StatementBlock : statementBlock12
+robot_Scenario "robot_StatementBlock10 1..1" *-- "robot_Scenario9 1..1" robot_StatementBlock : statementBlock8
+robot_Statement "robot_StatementBlock18 0..9999" --* "robot_Statement 1..1" robot_StatementBlock : statements17
 @enduml

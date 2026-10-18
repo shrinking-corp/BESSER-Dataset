@@ -1,4 +1,8 @@
 @startuml
+' model: build
+' project: sampleModel
+' owner: User
+' description: New project
 enum ARCH {
   ia64_32
   ppc
@@ -110,25 +114,25 @@ class build_Repository {
 InstallationUnit <|-- build_Bundle
 InstallationUnit <|-- build_Feature
 InstallationUnit <|-- build_Product
-build_Build "1..1" -- "1..1" build_Platform : base11
-build_Build "1..1" -- "1..1" build_Platform : builder14
-build_Build "1..1" *-- "0..1" build_Contact : buildmaster21
-build_Bundle "0..9999" --* "1..1" build_Contribution : bundles37
-build_Build "1..1" *-- "0..9999" build_Category : categories5
-build_Category "0..9999" -- "1..1" build_Feature : category42
-build_Build "1..1" *-- "0..1" build_Compiler : compiler17
-build_Config "0..1" -- "1..1" build_Platform : config26
-build_Build "1..1" *-- "1..9999" build_Config : configs1
-build_Contact "0..9999" --* "1..1" build_Contribution : contacts30
-build_Build "1..1" *-- "0..9999" build_Contribution : contributions7
-build_Build "1..1" *-- "0..9999" build_Contact : defaultMailList23
-build_Category "1..1" -- "0..9999" build_Feature : features29
-build_Contribution "1..1" *-- "0..9999" build_Feature : features33
-build_Build "1..1" *-- "0..1" build_Map : map3
-build_Build "1..1" *-- "1..9999" build_Platform : platforms0
-build_Build "1..1" -- "0..1" build_Product : product9
-build_Contribution "1..1" *-- "0..9999" build_Product : products39
-build_Build "1..1" *-- "0..1" build_Promotion : promotion19
-build_InstallationUnit "1..1" -- "0..1" build_Repository : repo43
-build_Contribution "1..1" *-- "0..9999" build_Repository : repositories35
+build_Build "build_Platform13 1..1" -- "build_Build12 1..1" build_Platform : base11
+build_Build "build_Platform16 1..1" -- "build_Build15 1..1" build_Platform : builder14
+build_Build "build_Contact 1..1" *-- "build_Build22 0..1" build_Contact : buildmaster21
+build_Bundle "build_Contribution38 0..9999" --* "build_Bundle 1..1" build_Contribution : bundles37
+build_Build "build_Category 1..1" *-- "build_Build6 0..9999" build_Category : categories5
+build_Category "features 0..9999" -- "Category 1..1" build_Feature : category42
+build_Build "build_Compiler 1..1" *-- "build_Build18 0..1" build_Compiler : compiler17
+build_Config "build_Platform27 0..1" -- "build_Config28 1..1" build_Platform : config26
+build_Build "build_Config 1..1" *-- "build_Build2 1..9999" build_Config : configs1
+build_Contact "build_Contribution31 0..9999" --* "build_Contact32 1..1" build_Contribution : contacts30
+build_Build "build_Contribution 1..1" *-- "build_Build8 0..9999" build_Contribution : contributions7
+build_Build "build_Contact25 1..1" *-- "build_Build24 0..9999" build_Contact : defaultMailList23
+build_Category "Feature 1..1" -- "category 0..9999" build_Feature : features29
+build_Contribution "build_Feature 1..1" *-- "build_Contribution34 0..9999" build_Feature : features33
+build_Build "build_Map 1..1" *-- "build_Build4 0..1" build_Map : map3
+build_Build "build_Platform 1..1" *-- "build_Build 1..9999" build_Platform : platforms0
+build_Build "build_Product 1..1" -- "build_Build10 0..1" build_Product : product9
+build_Contribution "build_Product41 1..1" *-- "build_Contribution40 0..9999" build_Product : products39
+build_Build "build_Promotion 1..1" *-- "build_Build20 0..1" build_Promotion : promotion19
+build_InstallationUnit "build_Repository44 1..1" -- "build_InstallationUnit 0..1" build_Repository : repo43
+build_Contribution "build_Repository 1..1" *-- "build_Contribution36 0..9999" build_Repository : repositories35
 @enduml

@@ -791,9 +791,9 @@ def test_assoc_button211_stub_double():
     partner = MachineLibrary_Buttons()
     setattr(partner, 'MachineLibrary_Buttons212', None)
     _safe_set(owner, 'MachineLibrary_Button', partner)
-    assert getattr(partner, 'MachineLibrary_Buttons212') == owner
+    assert owner in getattr(partner, 'MachineLibrary_Buttons212')
     _safe_set(owner, 'MachineLibrary_Button', None)
-    assert getattr(partner, 'MachineLibrary_Buttons212') is None
+    assert owner not in getattr(partner, 'MachineLibrary_Buttons212')
 
 
 def test_assoc_buttons63_stub_double():
@@ -866,9 +866,9 @@ def test_assoc_checkSampleConfig_SuperQXRF195_stub_double():
     partner = MachineLibrary_CheckSample_SuperQXRF()
     setattr(partner, 'MachineLibrary_CheckSample_SuperQXRF196', None)
     _safe_set(owner, 'MachineLibrary_CheckSampleConfig_SuperQXRF', partner)
-    assert getattr(partner, 'MachineLibrary_CheckSample_SuperQXRF196') == owner
+    assert owner in getattr(partner, 'MachineLibrary_CheckSample_SuperQXRF196')
     _safe_set(owner, 'MachineLibrary_CheckSampleConfig_SuperQXRF', None)
-    assert getattr(partner, 'MachineLibrary_CheckSample_SuperQXRF196') is None
+    assert owner not in getattr(partner, 'MachineLibrary_CheckSample_SuperQXRF196')
 
 
 def test_assoc_command217_stub_double():
@@ -881,9 +881,9 @@ def test_assoc_command217_stub_double():
     partner = MachineLibrary_Commands()
     setattr(partner, 'MachineLibrary_Commands218', None)
     _safe_set(owner, 'MachineLibrary_Command', partner)
-    assert getattr(partner, 'MachineLibrary_Commands218') == owner
+    assert owner in getattr(partner, 'MachineLibrary_Commands218')
     _safe_set(owner, 'MachineLibrary_Command', None)
-    assert getattr(partner, 'MachineLibrary_Commands218') is None
+    assert owner not in getattr(partner, 'MachineLibrary_Commands218')
 
 
 def test_assoc_commands27_stub_double():
@@ -1106,9 +1106,9 @@ def test_assoc_historyConfig_AccPyc197_stub_double():
     partner = MachineLibrary_History_AccuPycMeter()
     setattr(partner, 'MachineLibrary_History_AccuPycMeter198', None)
     _safe_set(owner, 'MachineLibrary_HistoryConfig_AccuPyc', partner)
-    assert getattr(partner, 'MachineLibrary_History_AccuPycMeter198') == owner
+    assert owner in getattr(partner, 'MachineLibrary_History_AccuPycMeter198')
     _safe_set(owner, 'MachineLibrary_HistoryConfig_AccuPyc', None)
-    assert getattr(partner, 'MachineLibrary_History_AccuPycMeter198') is None
+    assert owner not in getattr(partner, 'MachineLibrary_History_AccuPycMeter198')
 
 
 def test_assoc_hostPC75_stub_double():
@@ -1166,9 +1166,9 @@ def test_assoc_labMachine1_stub_double():
     partner = MachineLibrary_LabMachines()
     setattr(partner, 'MachineLibrary_LabMachines2', None)
     _safe_set(owner, 'MachineLibrary_LabMachine', partner)
-    assert getattr(partner, 'MachineLibrary_LabMachines2') == owner
+    assert owner in getattr(partner, 'MachineLibrary_LabMachines2')
     _safe_set(owner, 'MachineLibrary_LabMachine', None)
-    assert getattr(partner, 'MachineLibrary_LabMachines2') is None
+    assert owner not in getattr(partner, 'MachineLibrary_LabMachines2')
 
 
 def test_assoc_labMachines0_stub_double():
@@ -1241,9 +1241,9 @@ def test_assoc_options209_stub_double():
     partner = MachineLibrary_CheckAddSID_PM2PM()
     setattr(partner, 'MachineLibrary_CheckAddSID_PM2PM210', None)
     _safe_set(owner, 'MachineLibrary_CheckAddSID_Values_PM2PM', partner)
-    assert getattr(partner, 'MachineLibrary_CheckAddSID_PM2PM210') == owner
+    assert owner in getattr(partner, 'MachineLibrary_CheckAddSID_PM2PM210')
     _safe_set(owner, 'MachineLibrary_CheckAddSID_Values_PM2PM', None)
-    assert getattr(partner, 'MachineLibrary_CheckAddSID_PM2PM210') is None
+    assert owner not in getattr(partner, 'MachineLibrary_CheckAddSID_PM2PM210')
 
 
 def test_assoc_outputRequest_OBLFOES107_stub_double():
@@ -1331,9 +1331,9 @@ def test_assoc_position213_stub_double():
     partner = MachineLibrary_Positions()
     setattr(partner, 'MachineLibrary_Positions214', None)
     _safe_set(owner, 'MachineLibrary_Position', partner)
-    assert getattr(partner, 'MachineLibrary_Positions214') == owner
+    assert owner in getattr(partner, 'MachineLibrary_Positions214')
     _safe_set(owner, 'MachineLibrary_Position', None)
-    assert getattr(partner, 'MachineLibrary_Positions214') is None
+    assert owner not in getattr(partner, 'MachineLibrary_Positions214')
 
 
 def test_assoc_positions55_stub_double():
@@ -1361,9 +1361,9 @@ def test_assoc_program219_stub_double():
     partner = MachineLibrary_NodePrograms()
     setattr(partner, 'MachineLibrary_NodePrograms220', None)
     _safe_set(owner, 'MachineLibrary_NodeProgram', partner)
-    assert getattr(partner, 'MachineLibrary_NodePrograms220') == owner
+    assert owner in getattr(partner, 'MachineLibrary_NodePrograms220')
     _safe_set(owner, 'MachineLibrary_NodeProgram', None)
-    assert getattr(partner, 'MachineLibrary_NodePrograms220') is None
+    assert owner not in getattr(partner, 'MachineLibrary_NodePrograms220')
 
 
 def test_assoc_programs29_stub_double():
@@ -1421,9 +1421,9 @@ def test_assoc_recalRequest_OBLFOES111_stub_double():
     partner = MachineLibrary_UnitConfig_OBLF_OES()
     setattr(partner, 'MachineLibrary_UnitConfig_OBLF_OES112', None)
     _safe_set(owner, 'MachineLibrary_RecalRequest_OBLFOES', partner)
-    assert getattr(partner, 'MachineLibrary_UnitConfig_OBLF_OES112') == owner
+    assert owner in getattr(partner, 'MachineLibrary_UnitConfig_OBLF_OES112')
     _safe_set(owner, 'MachineLibrary_RecalRequest_OBLFOES', None)
-    assert getattr(partner, 'MachineLibrary_UnitConfig_OBLF_OES112') is None
+    assert owner not in getattr(partner, 'MachineLibrary_UnitConfig_OBLF_OES112')
 
 
 def test_assoc_remote77_stub_double():
@@ -1526,9 +1526,9 @@ def test_assoc_robotConfSendOrder253_stub_double():
     partner = MachineLibrary_RobotConfSendOrders()
     setattr(partner, 'MachineLibrary_RobotConfSendOrders254', None)
     _safe_set(owner, 'MachineLibrary_RobotConfSendOrder', partner)
-    assert getattr(partner, 'MachineLibrary_RobotConfSendOrders254') == owner
+    assert owner in getattr(partner, 'MachineLibrary_RobotConfSendOrders254')
     _safe_set(owner, 'MachineLibrary_RobotConfSendOrder', None)
-    assert getattr(partner, 'MachineLibrary_RobotConfSendOrders254') is None
+    assert owner not in getattr(partner, 'MachineLibrary_RobotConfSendOrders254')
 
 
 def test_assoc_robotConfSendOrders241_stub_double():
@@ -1571,9 +1571,9 @@ def test_assoc_robotToWinCC257_stub_double():
     partner = MachineLibrary_RobotToWinccs()
     setattr(partner, 'MachineLibrary_RobotToWinccs258', None)
     _safe_set(owner, 'MachineLibrary_RobotToWinCC', partner)
-    assert getattr(partner, 'MachineLibrary_RobotToWinccs258') == owner
+    assert owner in getattr(partner, 'MachineLibrary_RobotToWinccs258')
     _safe_set(owner, 'MachineLibrary_RobotToWinCC', None)
-    assert getattr(partner, 'MachineLibrary_RobotToWinccs258') is None
+    assert owner not in getattr(partner, 'MachineLibrary_RobotToWinccs258')
 
 
 def test_assoc_robotToWinCCs245_stub_double():
@@ -1616,9 +1616,9 @@ def test_assoc_robotVarToBusycode251_stub_double():
     partner = MachineLibrary_RobotVarToBusyCodes()
     setattr(partner, 'MachineLibrary_RobotVarToBusyCodes252', None)
     _safe_set(owner, 'MachineLibrary_RobotVarToBusycode', partner)
-    assert getattr(partner, 'MachineLibrary_RobotVarToBusyCodes252') == owner
+    assert owner in getattr(partner, 'MachineLibrary_RobotVarToBusyCodes252')
     _safe_set(owner, 'MachineLibrary_RobotVarToBusycode', None)
-    assert getattr(partner, 'MachineLibrary_RobotVarToBusyCodes252') is None
+    assert owner not in getattr(partner, 'MachineLibrary_RobotVarToBusyCodes252')
 
 
 def test_assoc_robotVarToErrorBits249_stub_double():
@@ -1646,9 +1646,9 @@ def test_assoc_robotVarToErrorbit259_stub_double():
     partner = MachineLibrary_RobotVarToErrorbits()
     setattr(partner, 'MachineLibrary_RobotVarToErrorbits260', None)
     _safe_set(owner, 'MachineLibrary_RobotVarToErrorbit', partner)
-    assert getattr(partner, 'MachineLibrary_RobotVarToErrorbits260') == owner
+    assert owner in getattr(partner, 'MachineLibrary_RobotVarToErrorbits260')
     _safe_set(owner, 'MachineLibrary_RobotVarToErrorbit', None)
-    assert getattr(partner, 'MachineLibrary_RobotVarToErrorbits260') is None
+    assert owner not in getattr(partner, 'MachineLibrary_RobotVarToErrorbits260')
 
 
 def test_assoc_robotWinCCToRobot255_stub_double():
@@ -1661,9 +1661,9 @@ def test_assoc_robotWinCCToRobot255_stub_double():
     partner = MachineLibrary_RobotWinCCToRobots()
     setattr(partner, 'MachineLibrary_RobotWinCCToRobots256', None)
     _safe_set(owner, 'MachineLibrary_RobotWinCCToRobot', partner)
-    assert getattr(partner, 'MachineLibrary_RobotWinCCToRobots256') == owner
+    assert owner in getattr(partner, 'MachineLibrary_RobotWinCCToRobots256')
     _safe_set(owner, 'MachineLibrary_RobotWinCCToRobot', None)
-    assert getattr(partner, 'MachineLibrary_RobotWinCCToRobots256') is None
+    assert owner not in getattr(partner, 'MachineLibrary_RobotWinCCToRobots256')
 
 
 def test_assoc_robotWinCCToRobots243_stub_double():
@@ -1691,9 +1691,9 @@ def test_assoc_sampleTpyeParameters193_stub_double():
     partner = MachineLibrary_CheckSampleRunTime_SuperQXRF()
     setattr(partner, 'MachineLibrary_CheckSampleRunTime_SuperQXRF194', None)
     _safe_set(owner, 'MachineLibrary_CheckSampleRunTimeParams_SuperQXRF', partner)
-    assert getattr(partner, 'MachineLibrary_CheckSampleRunTime_SuperQXRF194') == owner
+    assert owner in getattr(partner, 'MachineLibrary_CheckSampleRunTime_SuperQXRF194')
     _safe_set(owner, 'MachineLibrary_CheckSampleRunTimeParams_SuperQXRF', None)
-    assert getattr(partner, 'MachineLibrary_CheckSampleRunTime_SuperQXRF194') is None
+    assert owner not in getattr(partner, 'MachineLibrary_CheckSampleRunTime_SuperQXRF194')
 
 
 def test_assoc_scanner87_stub_double():
@@ -1781,9 +1781,9 @@ def test_assoc_statusBit215_stub_double():
     partner = MachineLibrary_StausBits()
     setattr(partner, 'MachineLibrary_StausBits216', None)
     _safe_set(owner, 'MachineLibrary_StatusBit', partner)
-    assert getattr(partner, 'MachineLibrary_StausBits216') == owner
+    assert owner in getattr(partner, 'MachineLibrary_StausBits216')
     _safe_set(owner, 'MachineLibrary_StatusBit', None)
-    assert getattr(partner, 'MachineLibrary_StausBits216') is None
+    assert owner not in getattr(partner, 'MachineLibrary_StausBits216')
 
 
 def test_assoc_statusBits57_stub_double():
@@ -1871,9 +1871,9 @@ def test_assoc_testRequest_OBLFOES109_stub_double():
     partner = MachineLibrary_UnitConfig_OBLF_OES()
     setattr(partner, 'MachineLibrary_UnitConfig_OBLF_OES110', None)
     _safe_set(owner, 'MachineLibrary_TestRequest_OBLFOES', partner)
-    assert getattr(partner, 'MachineLibrary_UnitConfig_OBLF_OES110') == owner
+    assert owner in getattr(partner, 'MachineLibrary_UnitConfig_OBLF_OES110')
     _safe_set(owner, 'MachineLibrary_TestRequest_OBLFOES', None)
-    assert getattr(partner, 'MachineLibrary_UnitConfig_OBLF_OES110') is None
+    assert owner not in getattr(partner, 'MachineLibrary_UnitConfig_OBLF_OES110')
 
 
 def test_assoc_transferFileSection235_stub_double():
@@ -1886,9 +1886,9 @@ def test_assoc_transferFileSection235_stub_double():
     partner = MachineLibrary_Transfer()
     setattr(partner, 'MachineLibrary_Transfer236', None)
     _safe_set(owner, 'MachineLibrary_TransferFileSection', partner)
-    assert getattr(partner, 'MachineLibrary_Transfer236') == owner
+    assert owner in getattr(partner, 'MachineLibrary_Transfer236')
     _safe_set(owner, 'MachineLibrary_TransferFileSection', None)
-    assert getattr(partner, 'MachineLibrary_Transfer236') is None
+    assert owner not in getattr(partner, 'MachineLibrary_Transfer236')
 
 
 def test_assoc_translate_terminal105_stub_double():
@@ -1931,9 +1931,9 @@ def test_assoc_unitGeneralParameter71_stub_double():
     partner = MachineLibrary_UnitGeneral()
     setattr(partner, 'MachineLibrary_UnitGeneral72', None)
     _safe_set(owner, 'MachineLibrary_UnitGeneralParameters', partner)
-    assert getattr(partner, 'MachineLibrary_UnitGeneral72') == owner
+    assert owner in getattr(partner, 'MachineLibrary_UnitGeneral72')
     _safe_set(owner, 'MachineLibrary_UnitGeneralParameters', None)
-    assert getattr(partner, 'MachineLibrary_UnitGeneral72') is None
+    assert owner not in getattr(partner, 'MachineLibrary_UnitGeneral72')
 
 
 def test_assoc_unitGeneralSpecial67_stub_double():
@@ -1961,9 +1961,9 @@ def test_assoc_unitProgram221_stub_double():
     partner = MachineLibrary_UnitPrograms()
     setattr(partner, 'MachineLibrary_UnitPrograms222', None)
     _safe_set(owner, 'MachineLibrary_UnitProgram', partner)
-    assert getattr(partner, 'MachineLibrary_UnitPrograms222') == owner
+    assert owner in getattr(partner, 'MachineLibrary_UnitPrograms222')
     _safe_set(owner, 'MachineLibrary_UnitProgram', None)
-    assert getattr(partner, 'MachineLibrary_UnitPrograms222') is None
+    assert owner not in getattr(partner, 'MachineLibrary_UnitPrograms222')
 
 
 def test_assoc_unitSpecialConfiguration69_stub_double():

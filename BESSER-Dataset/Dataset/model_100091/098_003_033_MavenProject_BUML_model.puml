@@ -1,4 +1,8 @@
 @startuml
+' model: PrimitiveTypes
+' project: sampleModel
+' owner: User
+' description: New project
 class Build {
 }
 class MailingList {
@@ -53,10 +57,10 @@ class Resource {
 }
 Person <|-- MavenProject_Contributor
 Person <|-- MavenProject_Developer
-Build "0..1" --* "1..1" MavenProject_Project : build3
-MavenProject_Project "1..1" *-- "0..9999" Project : dependencies5
-MavenProject_Project "1..1" *-- "0..9999" Person : developersAndContributors1
-MailingList "0..9999" --* "1..1" MavenProject_Project : mailingLists0
-MavenProject_Build "1..1" -- "0..9999" Resource : resources8
-MavenProject_Build "1..1" -- "0..9999" Resource : uniTest7
+Build "MavenProject_Project4 0..1" --* "Build 1..1" MavenProject_Project : build3
+MavenProject_Project "Project 1..1" *-- "MavenProject_Project6 0..9999" Project : dependencies5
+MavenProject_Project "Person 1..1" *-- "MavenProject_Project2 0..9999" Person : developersAndContributors1
+MailingList "MavenProject_Project 0..9999" --* "MailingList 1..1" MavenProject_Project : mailingLists0
+MavenProject_Build "Resource10 1..1" -- "MavenProject_Build9 0..9999" Resource : resources8
+MavenProject_Build "Resource 1..1" -- "MavenProject_Build 0..9999" Resource : uniTest7
 @enduml

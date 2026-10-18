@@ -1,4 +1,8 @@
 @startuml
+' model: CD
+' project: sampleModel
+' owner: User
+' description: New project
 class CD_Attribute {
   + multiValued : str
 }
@@ -23,9 +27,9 @@ Classifier <|-- CD_DataType
 Classifier <|-- CD_Package
 NamedElt <|-- CD_Attribute
 NamedElt <|-- CD_Classifier
-CD_Attribute "0..9999" --* "1..1" CD_Class : attr2
-CD_Classifier "0..9999" --* "1..1" CD_Package : classifiers5
-CD_Attribute "1..1" -- "1..1" CD_Class : owner4
-CD_Class "1..1" -- "0..9999" CD_Class : super1
-CD_Attribute "1..1" -- "1..1" CD_Classifier : type3
+CD_Attribute "owner 0..9999" --* "Attribute 1..1" CD_Class : attr2
+CD_Classifier "CD_Package 0..9999" --* "CD_Classifier6 1..1" CD_Package : classifiers5
+CD_Attribute "Class 1..1" -- "attr 1..1" CD_Class : owner4
+CD_Class "CD_Class 1..1" -- "CD_Class0 0..9999" CD_Class : super1
+CD_Attribute "CD_Classifier 1..1" -- "CD_Attribute 1..1" CD_Classifier : type3
 @enduml

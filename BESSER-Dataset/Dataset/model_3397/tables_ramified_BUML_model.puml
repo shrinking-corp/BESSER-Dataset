@@ -1,4 +1,8 @@
 @startuml
+' model: ramRoot
+' project: sampleModel
+' owner: User
+' description: New project
 class MT__Element {
 }
 class MTpos__Element {
@@ -51,13 +55,13 @@ MTpre__Element <|-- ramRoot_MTpre__Chair
 MTpre__Element <|-- ramRoot_MTpre__Restaurant
 MTpre__Element <|-- ramRoot_MTpre__Table
 MTpre__Element <|-- ramRoot_MTpre__Waitress
-ramRoot_GenericNode "1..1" -- "0..9999" ramRoot_MT__Element : GenericLink0
-ramRoot_MTpos__Chair "0..9999" --* "1..1" ramRoot_MTpos__Table : chairs1
-ramRoot_MTpre__Chair "0..9999" --* "1..1" ramRoot_MTpre__Table : chairs4
-ramRoot_MTpos__Restaurant "1..1" *-- "0..9999" ramRoot_MTpos__Table : tables14
-ramRoot_MTpos__Table "0..9999" --* "1..1" ramRoot_MTpos__Waitress : tables2
-ramRoot_MTpre__Table "0..9999" --* "1..1" ramRoot_MTpre__Waitress : tables5
-ramRoot_MTpre__Restaurant "1..1" *-- "0..9999" ramRoot_MTpre__Table : tables7
-ramRoot_MTpos__Restaurant "1..1" *-- "0..9999" ramRoot_MTpos__Waitress : waitress12
-ramRoot_MTpre__Restaurant "1..1" *-- "0..9999" ramRoot_MTpre__Waitress : waitress9
+ramRoot_GenericNode "ramRoot_MT__Element 1..1" -- "ramRoot_GenericNode 0..9999" ramRoot_MT__Element : GenericLink0
+ramRoot_MTpos__Chair "ramRoot_MTpos__Table 0..9999" --* "ramRoot_MTpos__Chair 1..1" ramRoot_MTpos__Table : chairs1
+ramRoot_MTpre__Chair "ramRoot_MTpre__Table 0..9999" --* "ramRoot_MTpre__Chair 1..1" ramRoot_MTpre__Table : chairs4
+ramRoot_MTpos__Restaurant "ramRoot_MTpos__Table16 1..1" *-- "ramRoot_MTpos__Restaurant15 0..9999" ramRoot_MTpos__Table : tables14
+ramRoot_MTpos__Table "ramRoot_MTpos__Waitress 0..9999" --* "ramRoot_MTpos__Table3 1..1" ramRoot_MTpos__Waitress : tables2
+ramRoot_MTpre__Table "ramRoot_MTpre__Waitress 0..9999" --* "ramRoot_MTpre__Table6 1..1" ramRoot_MTpre__Waitress : tables5
+ramRoot_MTpre__Restaurant "ramRoot_MTpre__Table8 1..1" *-- "ramRoot_MTpre__Restaurant 0..9999" ramRoot_MTpre__Table : tables7
+ramRoot_MTpos__Restaurant "ramRoot_MTpos__Waitress13 1..1" *-- "ramRoot_MTpos__Restaurant 0..9999" ramRoot_MTpos__Waitress : waitress12
+ramRoot_MTpre__Restaurant "ramRoot_MTpre__Waitress11 1..1" *-- "ramRoot_MTpre__Restaurant10 0..9999" ramRoot_MTpre__Waitress : waitress9
 @enduml

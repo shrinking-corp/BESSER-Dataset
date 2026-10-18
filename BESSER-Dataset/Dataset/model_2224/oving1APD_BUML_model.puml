@@ -1,4 +1,8 @@
 @startuml
+' model: oving1APD
+' project: sampleModel
+' owner: User
+' description: New project
 enum CourseStatus {
   Elective
   Mandatory
@@ -26,20 +30,20 @@ class oving1APD_StudyProgram {
   + name : str
   + shortName : str
 }
-oving1APD_Course "0..1" -- "1..1" oving1APD_Specialization : course23
-oving1APD_Course "0..1" -- "1..1" oving1APD_Slot : course29
-oving1APD_Course "1..1" -- "0..1" oving1APD_Semester : courseInSemester6
-oving1APD_Department "0..1" -- "1..1" oving1APD_StudyProgram : department4
-oving1APD_Course "0..9999" -- "1..1" oving1APD_Semester : hasCourse12
-oving1APD_Semester "0..1" -- "1..1" oving1APD_StudyProgram : semester2
-oving1APD_Semester "0..1" -- "1..1" oving1APD_Specialization : semester21
-oving1APD_Semester "0..1" -- "1..1" oving1APD_Slot : semester31
-oving1APD_Course "1..1" -- "0..1" oving1APD_Slot : slot10
-oving1APD_Semester "1..1" *-- "0..1" oving1APD_Slot : slot13
-oving1APD_Specialization "0..1" --* "1..1" oving1APD_StudyProgram : specialization1
-oving1APD_Semester "1..1" -- "0..1" oving1APD_Specialization : specialization18
-oving1APD_Course "1..1" -- "0..1" oving1APD_Specialization : specialization8
-oving1APD_Department "1..1" *-- "0..1" oving1APD_StudyProgram : studyProgram0
-oving1APD_Semester "1..1" -- "0..1" oving1APD_StudyProgram : studyProgram15
-oving1APD_Specialization "1..1" -- "0..1" oving1APD_StudyProgram : studyProgram26
+oving1APD_Course "specialization24 0..1" -- "Course25 1..1" oving1APD_Specialization : course23
+oving1APD_Course "slot 0..1" -- "Course30 1..1" oving1APD_Slot : course29
+oving1APD_Course "Semester7 1..1" -- "hasCourse 0..1" oving1APD_Semester : courseInSemester6
+oving1APD_Department "studyProgram5 0..1" -- "Department 1..1" oving1APD_StudyProgram : department4
+oving1APD_Course "courseInSemester 0..9999" -- "Course 1..1" oving1APD_Semester : hasCourse12
+oving1APD_Semester "studyProgram3 0..1" -- "Semester 1..1" oving1APD_StudyProgram : semester2
+oving1APD_Semester "specialization 0..1" -- "Semester22 1..1" oving1APD_Specialization : semester21
+oving1APD_Semester "slot32 0..1" -- "Semester33 1..1" oving1APD_Slot : semester31
+oving1APD_Course "Slot 1..1" -- "course11 0..1" oving1APD_Slot : slot10
+oving1APD_Semester "Slot14 1..1" *-- "semester 0..1" oving1APD_Slot : slot13
+oving1APD_Specialization "studyProgram 0..1" --* "Specialization 1..1" oving1APD_StudyProgram : specialization1
+oving1APD_Semester "Specialization20 1..1" -- "semester19 0..1" oving1APD_Specialization : specialization18
+oving1APD_Course "Specialization9 1..1" -- "course 0..1" oving1APD_Specialization : specialization8
+oving1APD_Department "StudyProgram 1..1" *-- "department 0..1" oving1APD_StudyProgram : studyProgram0
+oving1APD_Semester "StudyProgram17 1..1" -- "semester16 0..1" oving1APD_StudyProgram : studyProgram15
+oving1APD_Specialization "StudyProgram28 1..1" -- "specialization27 0..1" oving1APD_StudyProgram : studyProgram26
 @enduml

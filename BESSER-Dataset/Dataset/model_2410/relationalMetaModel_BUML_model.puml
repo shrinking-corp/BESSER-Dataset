@@ -1,4 +1,8 @@
 @startuml
+' model: relationalMetaModel
+' project: sampleModel
+' owner: User
+' description: New project
 class relationalMetaModel_RelationalForeignKey {
   + Name : str
 }
@@ -8,10 +12,10 @@ class relationalMetaModel_RelationalSchema {
 class relationalMetaModel_RelationalTable {
   + Name : str
 }
-relationalMetaModel_RelationalForeignKey "0..9999" --* "1..1" relationalMetaModel_RelationalTable : ForeignKeys2
-relationalMetaModel_RelationalForeignKey "1..1" -- "1..1" relationalMetaModel_RelationalTable : OwnedByTable5
-relationalMetaModel_RelationalForeignKey "0..9999" -- "1..1" relationalMetaModel_RelationalTable : ReferencedBy3
-relationalMetaModel_RelationalForeignKey "1..1" -- "1..1" relationalMetaModel_RelationalTable : ReferencedTable7
-relationalMetaModel_RelationalSchema "1..1" -- "1..1" relationalMetaModel_RelationalTable : Schema1
-relationalMetaModel_RelationalSchema "1..1" *-- "0..9999" relationalMetaModel_RelationalTable : Tables0
+relationalMetaModel_RelationalForeignKey "OwnedByTable 0..9999" --* "RelationalForeignKey 1..1" relationalMetaModel_RelationalTable : ForeignKeys2
+relationalMetaModel_RelationalForeignKey "RelationalTable6 1..1" -- "ForeignKeys 1..1" relationalMetaModel_RelationalTable : OwnedByTable5
+relationalMetaModel_RelationalForeignKey "ReferencedTable 0..9999" -- "RelationalForeignKey4 1..1" relationalMetaModel_RelationalTable : ReferencedBy3
+relationalMetaModel_RelationalForeignKey "RelationalTable8 1..1" -- "ReferencedBy 1..1" relationalMetaModel_RelationalTable : ReferencedTable7
+relationalMetaModel_RelationalSchema "Tables 1..1" -- "RelationalSchema 1..1" relationalMetaModel_RelationalTable : Schema1
+relationalMetaModel_RelationalSchema "RelationalTable 1..1" *-- "Schema 0..9999" relationalMetaModel_RelationalTable : Tables0
 @enduml

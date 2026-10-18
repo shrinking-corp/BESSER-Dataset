@@ -1,4 +1,8 @@
 @startuml
+' model: SmartHome
+' project: sampleModel
+' owner: User
+' description: New project
 class Activator {
 }
 class IotComponent {
@@ -72,16 +76,16 @@ Sensor <|-- SmartHome_Clock
 Sensor <|-- SmartHome_LightSensor
 Value <|-- SmartHome_AnalValue
 Value <|-- SmartHome_DigitValue
-SmartHome_Clock "1..1" --* "1..1" SmartHome_Room : clock9
-SmartHome_IotComponent "1..1" -- "1..1" SmartHome_RuleComposant : iotcomponent23
-SmartHome_Light "0..9999" --* "1..1" SmartHome_Room : light1
-SmartHome_LightSensor "0..9999" --* "1..1" SmartHome_Room : lightsensor0
-SmartHome_PhysicalContext "1..1" --* "1..1" SmartHome_Room : physicalcontext3
-SmartHome_Home "1..1" *-- "0..9999" SmartHome_Room : room11
-SmartHome_Rule "1..1" *-- "1..9999" SmartHome_RuleComposant : rulecondition16
-SmartHome_Rule "1..1" *-- "1..9999" SmartHome_RuleComposant : ruleconsequence18
-SmartHome_Home "1..1" *-- "0..9999" SmartHome_Rule : rules13
-SmartHome_Room "1..1" *-- "0..9999" SmartHome_Rule : rules7
-SmartHome_Room "1..1" *-- "1..1" SmartHome_Shutter : shutters5
-SmartHome_RuleComposant "1..1" *-- "1..1" SmartHome_Value : value21
+SmartHome_Clock "SmartHome_Room10 1..1" --* "SmartHome_Clock 1..1" SmartHome_Room : clock9
+SmartHome_IotComponent "SmartHome_RuleComposant24 1..1" -- "SmartHome_IotComponent 1..1" SmartHome_RuleComposant : iotcomponent23
+SmartHome_Light "SmartHome_Room2 0..9999" --* "SmartHome_Light 1..1" SmartHome_Room : light1
+SmartHome_LightSensor "SmartHome_Room 0..9999" --* "SmartHome_LightSensor 1..1" SmartHome_Room : lightsensor0
+SmartHome_PhysicalContext "SmartHome_Room4 1..1" --* "SmartHome_PhysicalContext 1..1" SmartHome_Room : physicalcontext3
+SmartHome_Home "SmartHome_Room12 1..1" *-- "SmartHome_Home 0..9999" SmartHome_Room : room11
+SmartHome_Rule "SmartHome_RuleComposant 1..1" *-- "SmartHome_Rule17 1..9999" SmartHome_RuleComposant : rulecondition16
+SmartHome_Rule "SmartHome_RuleComposant20 1..1" *-- "SmartHome_Rule19 1..9999" SmartHome_RuleComposant : ruleconsequence18
+SmartHome_Home "SmartHome_Rule15 1..1" *-- "SmartHome_Home14 0..9999" SmartHome_Rule : rules13
+SmartHome_Room "SmartHome_Rule 1..1" *-- "SmartHome_Room8 0..9999" SmartHome_Rule : rules7
+SmartHome_Room "SmartHome_Shutter 1..1" *-- "SmartHome_Room6 1..1" SmartHome_Shutter : shutters5
+SmartHome_RuleComposant "SmartHome_Value 1..1" *-- "SmartHome_RuleComposant22 1..1" SmartHome_Value : value21
 @enduml

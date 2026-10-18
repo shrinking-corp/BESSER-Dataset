@@ -1,4 +1,8 @@
 @startuml
+' model: eiqlibrary
+' project: sampleModel
+' owner: User
+' description: New project
 enum BookCategory {
   Art
   Drama
@@ -19,11 +23,11 @@ class eiqlibrary_Library {
 class eiqlibrary_Writer {
   + name : str
 }
-eiqlibrary_Book "1..1" -- "0..9999" eiqlibrary_Writer : authors6
-eiqlibrary_Book "0..9999" --* "1..1" eiqlibrary_Library : books1
-eiqlibrary_Book "0..9999" -- "1..1" eiqlibrary_Writer : books7
-eiqlibrary_Book "0..1" -- "1..1" eiqlibrary_Writer : firstBook8
-eiqlibrary_Book "0..9999" -- "1..1" eiqlibrary_Writer : scifiBooks11
-eiqlibrary_Book "0..9999" -- "1..1" eiqlibrary_Library : someBooks3
-eiqlibrary_Library "1..1" *-- "0..9999" eiqlibrary_Writer : writers0
+eiqlibrary_Book "Writer 1..1" -- "books 0..9999" eiqlibrary_Writer : authors6
+eiqlibrary_Book "eiqlibrary_Library2 0..9999" --* "eiqlibrary_Book 1..1" eiqlibrary_Library : books1
+eiqlibrary_Book "authors 0..9999" -- "Book 1..1" eiqlibrary_Writer : books7
+eiqlibrary_Book "eiqlibrary_Writer9 0..1" -- "eiqlibrary_Book10 1..1" eiqlibrary_Writer : firstBook8
+eiqlibrary_Book "eiqlibrary_Writer12 0..9999" -- "eiqlibrary_Book13 1..1" eiqlibrary_Writer : scifiBooks11
+eiqlibrary_Book "eiqlibrary_Library4 0..9999" -- "eiqlibrary_Book5 1..1" eiqlibrary_Library : someBooks3
+eiqlibrary_Library "eiqlibrary_Writer 1..1" *-- "eiqlibrary_Library 0..9999" eiqlibrary_Writer : writers0
 @enduml

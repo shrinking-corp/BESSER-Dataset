@@ -1,4 +1,8 @@
 @startuml
+' model: notation
+' project: sampleModel
+' owner: User
+' description: New project
 class BendPoint {
 }
 class DiagramElement {
@@ -45,17 +49,17 @@ DiagramElement <|-- notation_Edge
 DiagramElement <|-- notation_Node
 Identifier <|-- notation_DiagramElement
 Node <|-- notation_HierarchicalNode
-notation_BendPoint "0..9999" --* "1..1" notation_Edge : bendPoints14
-notation_BendPoint "1..1" -- "1..1" notation_Edge : edge20
-notation_Edge "0..9999" --* "1..1" notation_HierarchicalNode : edges17
-notation_Edge "0..9999" -- "1..1" notation_Node : incoming2
-notation_DiagramElement "1..1" -- "0..1" notation_EObject : model0
-notation_HierarchicalNode "1..1" *-- "0..9999" notation_Node : nodes15
-notation_Edge "0..9999" -- "1..1" notation_Node : outgoing1
-notation_HierarchicalNode "0..1" -- "1..1" notation_Node : parent4
-notation_Edge "1..1" -- "0..1" notation_HierarchicalNode : parent8
-notation_Edge "1..1" -- "1..1" notation_Node : source5
-notation_Anchor "0..1" --* "1..1" notation_Edge : sourceAnchor10
-notation_Edge "1..1" -- "1..1" notation_Node : target6
-notation_Anchor "0..1" --* "1..1" notation_Edge : targetAnchor11
+notation_BendPoint "edge 0..9999" --* "BendPoint 1..1" notation_Edge : bendPoints14
+notation_BendPoint "Edge21 1..1" -- "bendPoints 1..1" notation_Edge : edge20
+notation_Edge "parent18 0..9999" --* "Edge19 1..1" notation_HierarchicalNode : edges17
+notation_Edge "target 0..9999" -- "Edge3 1..1" notation_Node : incoming2
+notation_DiagramElement "notation_EObject 1..1" -- "notation_DiagramElement 0..1" notation_EObject : model0
+notation_HierarchicalNode "Node16 1..1" *-- "parent 0..9999" notation_Node : nodes15
+notation_Edge "source 0..9999" -- "Edge 1..1" notation_Node : outgoing1
+notation_HierarchicalNode "nodes 0..1" -- "HierarchicalNode 1..1" notation_Node : parent4
+notation_Edge "HierarchicalNode9 1..1" -- "edges 0..1" notation_HierarchicalNode : parent8
+notation_Edge "Node 1..1" -- "outgoing 1..1" notation_Node : source5
+notation_Anchor "notation_Edge 0..1" --* "notation_Anchor 1..1" notation_Edge : sourceAnchor10
+notation_Edge "Node7 1..1" -- "incoming 1..1" notation_Node : target6
+notation_Anchor "notation_Edge12 0..1" --* "notation_Anchor13 1..1" notation_Edge : targetAnchor11
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: dag
+' project: sampleModel
+' owner: User
+' description: New project
 class dag_DAG {
 }
 class dag_Edge {
@@ -7,10 +11,10 @@ class dag_Edge {
 class dag_Vertex {
   + id : str
 }
-dag_DAG "1..1" *-- "0..9999" dag_Edge : edges1
-dag_Edge "1..1" -- "1..1" dag_Vertex : from_6
-dag_Edge "0..9999" -- "1..1" dag_Vertex : incoming4
-dag_Edge "0..9999" -- "1..1" dag_Vertex : outgoing3
-dag_Edge "1..1" -- "1..1" dag_Vertex : to7
-dag_DAG "1..1" *-- "1..9999" dag_Vertex : vertices0
+dag_DAG "dag_Edge 1..1" *-- "dag_DAG2 0..9999" dag_Edge : edges1
+dag_Edge "Vertex 1..1" -- "outgoing 1..1" dag_Vertex : from_6
+dag_Edge "to 0..9999" -- "Edge5 1..1" dag_Vertex : incoming4
+dag_Edge "from_ 0..9999" -- "Edge 1..1" dag_Vertex : outgoing3
+dag_Edge "Vertex8 1..1" -- "incoming 1..1" dag_Vertex : to7
+dag_DAG "dag_Vertex 1..1" *-- "dag_DAG 1..9999" dag_Vertex : vertices0
 @enduml

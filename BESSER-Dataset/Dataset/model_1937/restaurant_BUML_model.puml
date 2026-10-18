@@ -1,4 +1,8 @@
 @startuml
+' model: restaurant
+' project: sampleModel
+' owner: User
+' description: New project
 class restaurant_Booking {
 }
 class restaurant_Menu {
@@ -9,8 +13,8 @@ class restaurant_Table {
 }
 class restaurant_Waiter {
 }
-restaurant_Booking "0..9999" --* "1..1" restaurant_Restaurant : bookings5
-restaurant_Menu "0..9999" --* "1..1" restaurant_Restaurant : menus0
-restaurant_Restaurant "1..1" *-- "0..9999" restaurant_Table : tables1
-restaurant_Restaurant "1..1" *-- "0..9999" restaurant_Waiter : waiters3
+restaurant_Booking "restaurant_Restaurant6 0..9999" --* "restaurant_Booking 1..1" restaurant_Restaurant : bookings5
+restaurant_Menu "restaurant_Restaurant 0..9999" --* "restaurant_Menu 1..1" restaurant_Restaurant : menus0
+restaurant_Restaurant "restaurant_Table 1..1" *-- "restaurant_Restaurant2 0..9999" restaurant_Table : tables1
+restaurant_Restaurant "restaurant_Waiter 1..1" *-- "restaurant_Restaurant4 0..9999" restaurant_Waiter : waiters3
 @enduml

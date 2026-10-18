@@ -1,4 +1,8 @@
 @startuml
+' model: _5717d9fb_895c_434f_83a9_338c5c1af43d
+' project: sampleModel
+' owner: User
+' description: New project
 class Aircraft {
   + flightState : FlightState
   + state : MaintenanceState
@@ -28,13 +32,13 @@ class Navigator {
 }
 class Pilot {
 }
-Aircraft "0..9999" -- "1..9999" Captain : Aircraft_Captain
-Aircraft "0..9999" -- "1..9999" CoPilot : Aircraft_CoPilot
-Aircraft "0..9999" -- "0..9999" Pilot : Aircraft_Pilot
-Aircraft "0..9999" -- "0..9999" Airline : Airline_Aircraft
-Airline "1..1" -- "0..9999" Flight : Airline_Flight
-Company "1..1" -- "1..9999" Pilot : Company_Pilot
-Aircraft "1..1" -- "0..9999" Flight : Flight_Aircraft
-Airport "1..1" -- "0..9999" Flight : Flights_Airport
-Airport "1..1" -- "0..9999" Flight : Flights_Airport2
+Aircraft "captains17 0..9999" -- "requires16 1..9999" Captain : Aircraft_Captain
+Aircraft "copilots15 0..9999" -- "requires14 1..9999" CoPilot : Aircraft_CoPilot
+Aircraft "pilots13 0..9999" -- "employs12 0..9999" Pilot : Aircraft_Pilot
+Aircraft "aircraft0 0..9999" -- "owns1 0..9999" Airline : Airline_Aircraft
+Airline "operates9 1..1" -- "flight8 0..9999" Flight : Airline_Flight
+Company "company3 1..1" -- "pilot2 1..9999" Pilot : Company_Pilot
+Aircraft "aircraft10 1..1" -- "uses11 0..9999" Flight : Flight_Aircraft
+Airport "airport4 1..1" -- "arrives_at5 0..9999" Flight : Flights_Airport
+Airport "airport6 1..1" -- "departs_from7 0..9999" Flight : Flights_Airport2
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: umluseCases
+' project: sampleModel
+' owner: User
+' description: New project
 enum AggregationKind {
   composite
   none
@@ -184,30 +188,30 @@ RedefinableElement <|-- umluseCases_ExtensionPoint
 Relationship <|-- umluseCases_DirectedRelationship
 TemplateableElement <|-- umluseCases_Classifier
 Type <|-- umluseCases_Classifier
-umluseCases_Include "1..1" -- "1..1" umluseCases_UseCase : addition37
-umluseCases_Extend "0..9999" --* "1..1" umluseCases_UseCase : extend33
-umluseCases_Extend "1..1" -- "1..1" umluseCases_UseCase : extendedCase41
-umluseCases_Extend "1..1" -- "1..1" umluseCases_UseCase : extension45
-umluseCases_Extend "1..1" -- "1..9999" umluseCases_ExtensionPoint : extensionLocation43
-umluseCases_ExtensionPoint "0..9999" --* "1..1" umluseCases_UseCase : extensionPoint34
-umluseCases_Classifier "0..9999" -- "1..1" umluseCases_Classifier : general22
-umluseCases_Namespace "1..1" -- "0..9999" umluseCases_PackageableElement : importedMember13
-umluseCases_Include "0..9999" --* "1..1" umluseCases_UseCase : include32
-umluseCases_Include "1..1" -- "1..1" umluseCases_UseCase : includingCase39
-umluseCases_Classifier "1..1" -- "0..9999" umluseCases_NamedElement : inheritedMember16
-umluseCases_NamedElement "0..9999" -- "1..1" umluseCases_Namespace : member12
-umluseCases_NamedElement "1..1" -- "0..1" umluseCases_Namespace : namespace5
-umluseCases_Element "1..1" -- "0..9999" umluseCases_Element : ownedElement1
-umluseCases_NamedElement "0..9999" -- "1..1" umluseCases_Namespace : ownedMember15
-umluseCases_Classifier "1..1" *-- "0..9999" umluseCases_UseCase : ownedUseCase24
-umluseCases_Element "1..1" -- "0..1" umluseCases_Element : owner3
-umluseCases_Classifier "0..9999" -- "1..1" umluseCases_Classifier : redefinedClassifier19
-umluseCases_RedefinableElement "1..1" -- "0..9999" umluseCases_RedefinableElement : redefinedElement28
-umluseCases_Classifier "0..9999" -- "1..1" umluseCases_RedefinableElement : redefinitionContext29
-umluseCases_Element "1..9999" -- "1..1" umluseCases_Relationship : relatedElement10
-umluseCases_DirectedRelationship "1..1" -- "1..9999" umluseCases_Element : source6
-umluseCases_Classifier "0..9999" -- "1..1" umluseCases_UseCase : subject35
-umluseCases_DirectedRelationship "1..1" -- "1..9999" umluseCases_Element : target7
-umluseCases_Classifier "1..1" -- "0..9999" umluseCases_UseCase : useCase26
-umluseCases_ExtensionPoint "1..1" -- "1..1" umluseCases_UseCase : useCase47
+umluseCases_Include "umluseCases_UseCase38 1..1" -- "umluseCases_Include 1..1" umluseCases_UseCase : addition37
+umluseCases_Extend "extension 0..9999" --* "Extend 1..1" umluseCases_UseCase : extend33
+umluseCases_Extend "umluseCases_UseCase42 1..1" -- "umluseCases_Extend 1..1" umluseCases_UseCase : extendedCase41
+umluseCases_Extend "UseCase46 1..1" -- "extend 1..1" umluseCases_UseCase : extension45
+umluseCases_Extend "umluseCases_ExtensionPoint 1..1" -- "umluseCases_Extend44 1..9999" umluseCases_ExtensionPoint : extensionLocation43
+umluseCases_ExtensionPoint "useCase 0..9999" --* "ExtensionPoint 1..1" umluseCases_UseCase : extensionPoint34
+umluseCases_Classifier "umluseCases_Classifier21 0..9999" -- "umluseCases_Classifier23 1..1" umluseCases_Classifier : general22
+umluseCases_Namespace "umluseCases_PackageableElement 1..1" -- "umluseCases_Namespace14 0..9999" umluseCases_PackageableElement : importedMember13
+umluseCases_Include "includingCase 0..9999" --* "Include 1..1" umluseCases_UseCase : include32
+umluseCases_Include "UseCase40 1..1" -- "include 1..1" umluseCases_UseCase : includingCase39
+umluseCases_Classifier "umluseCases_NamedElement17 1..1" -- "umluseCases_Classifier 0..9999" umluseCases_NamedElement : inheritedMember16
+umluseCases_NamedElement "umluseCases_Namespace 0..9999" -- "umluseCases_NamedElement 1..1" umluseCases_Namespace : member12
+umluseCases_NamedElement "Namespace 1..1" -- "ownedMember 0..1" umluseCases_Namespace : namespace5
+umluseCases_Element "Element 1..1" -- "owner 0..9999" umluseCases_Element : ownedElement1
+umluseCases_NamedElement "namespace 0..9999" -- "NamedElement 1..1" umluseCases_Namespace : ownedMember15
+umluseCases_Classifier "umluseCases_UseCase 1..1" *-- "umluseCases_Classifier25 0..9999" umluseCases_UseCase : ownedUseCase24
+umluseCases_Element "Element4 1..1" -- "ownedElement 0..1" umluseCases_Element : owner3
+umluseCases_Classifier "umluseCases_Classifier18 0..9999" -- "umluseCases_Classifier20 1..1" umluseCases_Classifier : redefinedClassifier19
+umluseCases_RedefinableElement "umluseCases_RedefinableElement 1..1" -- "umluseCases_RedefinableElement27 0..9999" umluseCases_RedefinableElement : redefinedElement28
+umluseCases_Classifier "umluseCases_RedefinableElement30 0..9999" -- "umluseCases_Classifier31 1..1" umluseCases_RedefinableElement : redefinitionContext29
+umluseCases_Element "umluseCases_Relationship 1..9999" -- "umluseCases_Element11 1..1" umluseCases_Relationship : relatedElement10
+umluseCases_DirectedRelationship "umluseCases_Element 1..1" -- "umluseCases_DirectedRelationship 1..9999" umluseCases_Element : source6
+umluseCases_Classifier "useCase36 0..9999" -- "Classifier 1..1" umluseCases_UseCase : subject35
+umluseCases_DirectedRelationship "umluseCases_Element9 1..1" -- "umluseCases_DirectedRelationship8 1..9999" umluseCases_Element : target7
+umluseCases_Classifier "UseCase 1..1" -- "subject 0..9999" umluseCases_UseCase : useCase26
+umluseCases_ExtensionPoint "UseCase48 1..1" -- "extensionPoint 1..1" umluseCases_UseCase : useCase47
 @enduml

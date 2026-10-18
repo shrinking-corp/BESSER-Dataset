@@ -1,4 +1,8 @@
 @startuml
+' model: relationaldatabase
+' project: sampleModel
+' owner: User
+' description: New project
 class NamedElement {
 }
 class Taggable {
@@ -41,15 +45,15 @@ NamedElement <|-- relationaldatabase_DatabaseModel
 NamedElement <|-- relationaldatabase_ForeignKey
 NamedElement <|-- relationaldatabase_Table
 Taggable <|-- relationaldatabase_NamedElement
-relationaldatabase_Column "0..9999" --* "1..1" relationaldatabase_Table : columns7
-relationaldatabase_Configuration "0..1" --* "1..1" relationaldatabase_DatabaseModel : configuration5
-relationaldatabase_Column "1..1" -- "1..1" relationaldatabase_DataType : dataType11
-relationaldatabase_DataType "0..9999" --* "1..1" relationaldatabase_DatabaseModel : dataTypes1
-relationaldatabase_ForeignKey "0..9999" --* "1..1" relationaldatabase_Table : foreignKeys9
-relationaldatabase_Column "1..9999" -- "1..1" relationaldatabase_ForeignKey : sourceColumns14
-relationaldatabase_DatabaseModel "1..1" *-- "0..9999" relationaldatabase_Table : tables0
-relationaldatabase_Tag "0..9999" -- "1..1" relationaldatabase_Taggable : tag23
-relationaldatabase_DatabaseModel "1..1" *-- "0..9999" relationaldatabase_Tag : tags3
-relationaldatabase_Column "1..9999" -- "1..1" relationaldatabase_ForeignKey : targetColumns17
-relationaldatabase_ForeignKey "1..1" -- "0..1" relationaldatabase_Table : targetTable20
+relationaldatabase_Column "relationaldatabase_Table8 0..9999" --* "relationaldatabase_Column 1..1" relationaldatabase_Table : columns7
+relationaldatabase_Configuration "relationaldatabase_DatabaseModel6 0..1" --* "relationaldatabase_Configuration 1..1" relationaldatabase_DatabaseModel : configuration5
+relationaldatabase_Column "relationaldatabase_DataType13 1..1" -- "relationaldatabase_Column12 1..1" relationaldatabase_DataType : dataType11
+relationaldatabase_DataType "relationaldatabase_DatabaseModel2 0..9999" --* "relationaldatabase_DataType 1..1" relationaldatabase_DatabaseModel : dataTypes1
+relationaldatabase_ForeignKey "relationaldatabase_Table10 0..9999" --* "relationaldatabase_ForeignKey 1..1" relationaldatabase_Table : foreignKeys9
+relationaldatabase_Column "relationaldatabase_ForeignKey15 1..9999" -- "relationaldatabase_Column16 1..1" relationaldatabase_ForeignKey : sourceColumns14
+relationaldatabase_DatabaseModel "relationaldatabase_Table 1..1" *-- "relationaldatabase_DatabaseModel 0..9999" relationaldatabase_Table : tables0
+relationaldatabase_Tag "relationaldatabase_Taggable 0..9999" -- "relationaldatabase_Tag24 1..1" relationaldatabase_Taggable : tag23
+relationaldatabase_DatabaseModel "relationaldatabase_Tag 1..1" *-- "relationaldatabase_DatabaseModel4 0..9999" relationaldatabase_Tag : tags3
+relationaldatabase_Column "relationaldatabase_ForeignKey18 1..9999" -- "relationaldatabase_Column19 1..1" relationaldatabase_ForeignKey : targetColumns17
+relationaldatabase_ForeignKey "relationaldatabase_Table22 1..1" -- "relationaldatabase_ForeignKey21 0..1" relationaldatabase_Table : targetTable20
 @enduml

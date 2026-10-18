@@ -62,9 +62,9 @@ def test_assoc_Files4_stub_double():
     partner = file_FileOwner()
     setattr(partner, 'file_FileOwner', None)
     _safe_set(owner, 'file_File5', partner)
-    assert getattr(partner, 'file_FileOwner') == owner
+    assert owner in getattr(partner, 'file_FileOwner')
     _safe_set(owner, 'file_File5', None)
-    assert getattr(partner, 'file_FileOwner') is None
+    assert owner not in getattr(partner, 'file_FileOwner')
 
 
 def test_assoc_HandledFile1_stub_double():

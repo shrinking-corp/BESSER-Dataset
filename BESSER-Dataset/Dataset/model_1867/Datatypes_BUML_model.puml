@@ -1,4 +1,8 @@
 @startuml
+' model: datatypes
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractElement {
 }
 class DataType {
@@ -29,9 +33,9 @@ AbstractElement <|-- datatypes_DataTypeLibrary
 AbstractElement <|-- datatypes_Import
 DataType <|-- datatypes_ComplexType
 DataType <|-- datatypes_SimpleType
-datatypes_AbstractElement "0..9999" --* "1..1" datatypes_TypeModel : elements0
-datatypes_AbstractElement "0..9999" --* "1..1" datatypes_DataTypeLibrary : elements1
-datatypes_ComplexType "1..1" *-- "0..9999" datatypes_Field : fields5
-datatypes_ComplexType "1..1" -- "0..1" datatypes_ComplexType : superType4
-datatypes_DataType "0..1" -- "1..1" datatypes_Field : type7
+datatypes_AbstractElement "datatypes_TypeModel 0..9999" --* "datatypes_AbstractElement 1..1" datatypes_TypeModel : elements0
+datatypes_AbstractElement "datatypes_DataTypeLibrary 0..9999" --* "datatypes_AbstractElement2 1..1" datatypes_DataTypeLibrary : elements1
+datatypes_ComplexType "datatypes_Field 1..1" *-- "datatypes_ComplexType6 0..9999" datatypes_Field : fields5
+datatypes_ComplexType "datatypes_ComplexType 1..1" -- "datatypes_ComplexType3 0..1" datatypes_ComplexType : superType4
+datatypes_DataType "datatypes_Field8 0..1" -- "datatypes_DataType 1..1" datatypes_Field : type7
 @enduml

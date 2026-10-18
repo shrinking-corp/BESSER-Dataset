@@ -1,4 +1,8 @@
 @startuml
+' model: metrics
+' project: sampleModel
+' owner: User
+' description: New project
 class DataKind {
 }
 enum KindHintType {
@@ -83,16 +87,16 @@ Mapping <|-- metrics_MappingCSV
 Mapping <|-- metrics_MappingRDBMS
 Mapping <|-- metrics_MappingXLS
 MappingRecord <|-- metrics_MappingRecordXLS
-metrics_DataKind "0..1" --* "1..1" metrics_MappingXLSColumn : dataType4
-metrics_MappingRecord "0..9999" --* "1..1" metrics_MappingStatistic : failedRecords0
-metrics_MappingXLS "1..1" *-- "0..9999" metrics_MappingXLSColumn : mappingColumns3
-metrics_DateTimeRange "1..1" --* "1..1" metrics_MappingStatistic : mappingDuration1
-metrics_Mapping "0..1" --* "1..1" metrics_MetricSource : metricMapping12
-metrics_Metric "0..1" -- "1..1" metrics_ValueDataKind : metricRef17
-metrics_Metric "0..9999" -- "1..1" metrics_MetricSource : metricRefs11
-metrics_Metric "1..1" -- "0..1" metrics_MetricSource : metricSourceRef8
-metrics_MetricValueRange "1..1" *-- "0..9999" metrics_Value : metricValues16
-metrics_Metric "1..1" *-- "0..9999" metrics_Metric : metrics7
-metrics_MappingStatistic "0..9999" --* "1..1" metrics_MetricSource : statistics13
-metrics_Metric "1..1" -- "0..1" metrics_Unit : unitRef9
+metrics_DataKind "metrics_MappingXLSColumn5 0..1" --* "metrics_DataKind 1..1" metrics_MappingXLSColumn : dataType4
+metrics_MappingRecord "metrics_MappingStatistic 0..9999" --* "metrics_MappingRecord 1..1" metrics_MappingStatistic : failedRecords0
+metrics_MappingXLS "metrics_MappingXLSColumn 1..1" *-- "metrics_MappingXLS 0..9999" metrics_MappingXLSColumn : mappingColumns3
+metrics_DateTimeRange "metrics_MappingStatistic2 1..1" --* "metrics_DateTimeRange 1..1" metrics_MappingStatistic : mappingDuration1
+metrics_Mapping "metrics_MetricSource 0..1" --* "metrics_Mapping 1..1" metrics_MetricSource : metricMapping12
+metrics_Metric "metrics_ValueDataKind 0..1" -- "metrics_Metric18 1..1" metrics_ValueDataKind : metricRef17
+metrics_Metric "metricSourceRef 0..9999" -- "Metric 1..1" metrics_MetricSource : metricRefs11
+metrics_Metric "MetricSource 1..1" -- "metricRefs 0..1" metrics_MetricSource : metricSourceRef8
+metrics_MetricValueRange "metrics_Value 1..1" *-- "metrics_MetricValueRange 0..9999" metrics_Value : metricValues16
+metrics_Metric "metrics_Metric 1..1" *-- "metrics_Metric6 0..9999" metrics_Metric : metrics7
+metrics_MappingStatistic "metrics_MetricSource14 0..9999" --* "metrics_MappingStatistic15 1..1" metrics_MetricSource : statistics13
+metrics_Metric "metrics_Unit 1..1" -- "metrics_Metric10 0..1" metrics_Unit : unitRef9
 @enduml

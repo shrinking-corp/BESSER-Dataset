@@ -2018,9 +2018,9 @@ def test_assoc_dependent292_stub_double():
     partner = aml_QuestionRelationships()
     setattr(partner, 'aml_QuestionRelationships293', None)
     _safe_set(owner, 'aml_Dependent294', partner)
-    assert getattr(partner, 'aml_QuestionRelationships293') == owner
+    assert owner in getattr(partner, 'aml_QuestionRelationships293')
     _safe_set(owner, 'aml_Dependent294', None)
-    assert getattr(partner, 'aml_QuestionRelationships293') is None
+    assert owner not in getattr(partner, 'aml_QuestionRelationships293')
 
 
 def test_assoc_format134_stub_double():
@@ -2183,9 +2183,9 @@ def test_assoc_parameter1_stub_double():
     partner = aml_AggregationRule()
     setattr(partner, 'aml_AggregationRule2', None)
     _safe_set(owner, 'aml_Parameter', partner)
-    assert getattr(partner, 'aml_AggregationRule2') == owner
+    assert owner in getattr(partner, 'aml_AggregationRule2')
     _safe_set(owner, 'aml_Parameter', None)
-    assert getattr(partner, 'aml_AggregationRule2') is None
+    assert owner not in getattr(partner, 'aml_AggregationRule2')
 
 
 def test_assoc_questionRelationships175_stub_double():

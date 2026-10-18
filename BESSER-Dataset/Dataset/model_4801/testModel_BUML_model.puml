@@ -1,4 +1,8 @@
 @startuml
+' model: testModel
+' project: sampleModel
+' owner: User
+' description: New project
 enum ElementType {
   Type1
   Type2
@@ -47,9 +51,9 @@ class testModel_upperBoundLeaf {
 Leafs <|-- testModel_multiRefLeaf
 Leafs <|-- testModel_referedLeaf
 Leafs <|-- testModel_upperBoundLeaf
-testModel_ContainedLeaf "0..9999" --* "1..1" testModel_Node : contains2
-testModel_multiRefLeaf "0..9999" -- "1..1" testModel_referedLeaf : multiRef8
-testModel_ContainedLeaf "1..1" -- "0..9999" testModel_referedLeaf : ref4
-testModel_Node "1..1" -- "0..9999" testModel_Node : subNode1
-testModel_ContainedLeaf "1..1" *-- "0..2" testModel_upperBoundLeaf : upperBound6
+testModel_ContainedLeaf "testModel_Node3 0..9999" --* "testModel_ContainedLeaf 1..1" testModel_Node : contains2
+testModel_multiRefLeaf "testModel_referedLeaf9 0..9999" -- "testModel_multiRefLeaf 1..1" testModel_referedLeaf : multiRef8
+testModel_ContainedLeaf "testModel_referedLeaf 1..1" -- "testModel_ContainedLeaf5 0..9999" testModel_referedLeaf : ref4
+testModel_Node "testModel_Node 1..1" -- "testModel_Node0 0..9999" testModel_Node : subNode1
+testModel_ContainedLeaf "testModel_upperBoundLeaf 1..1" *-- "testModel_ContainedLeaf7 0..2" testModel_upperBoundLeaf : upperBound6
 @enduml

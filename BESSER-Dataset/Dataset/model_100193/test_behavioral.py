@@ -473,9 +473,9 @@ def test_assoc_columns39_stub_double():
     partner = SQL2003_evo_Restriction()
     setattr(partner, 'restrictions40', None)
     _safe_set(owner, 'StructuralComponent', partner)
-    assert getattr(partner, 'restrictions40') == owner
+    assert owner in getattr(partner, 'restrictions40')
     _safe_set(owner, 'StructuralComponent', None)
-    assert getattr(partner, 'restrictions40') is None
+    assert owner not in getattr(partner, 'restrictions40')
 
 
 def test_assoc_components88_stub_double():
@@ -488,9 +488,9 @@ def test_assoc_components88_stub_double():
     partner = SQL2003_evo_View()
     setattr(partner, 'views89', None)
     _safe_set(owner, 'StructuralComponent90', partner)
-    assert getattr(partner, 'views89') == owner
+    assert owner in getattr(partner, 'views89')
     _safe_set(owner, 'StructuralComponent90', None)
-    assert getattr(partner, 'views89') is None
+    assert owner not in getattr(partner, 'views89')
 
 
 def test_assoc_datatypes43_stub_double():
@@ -668,9 +668,9 @@ def test_assoc_tables86_stub_double():
     partner = SQL2003_evo_View()
     setattr(partner, 'views', None)
     _safe_set(owner, 'Table87', partner)
-    assert getattr(partner, 'views') == owner
+    assert owner in getattr(partner, 'views')
     _safe_set(owner, 'Table87', None)
-    assert getattr(partner, 'views') is None
+    assert owner not in getattr(partner, 'views')
 
 
 def test_assoc_type24_stub_double():

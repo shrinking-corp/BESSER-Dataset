@@ -1,4 +1,8 @@
 @startuml
+' model: nocollectionowner
+' project: sampleModel
+' owner: User
+' description: New project
 class nocollectionowner_Customer {
   + address : str
   + comments : str
@@ -30,13 +34,13 @@ class nocollectionowner_Transaction {
   + price : float
   + startDate : date
 }
-nocollectionowner_Customer "0..1" -- "1..1" nocollectionowner_Order : customer10
-nocollectionowner_Order "0..1" -- "1..1" nocollectionowner_Transaction : order11
-nocollectionowner_ProductCategory "1..1" -- "0..1" nocollectionowner_ProductCategory : parent7
-nocollectionowner_PriceCategory "0..1" -- "1..1" nocollectionowner_Product : priceCategory1
-nocollectionowner_Product "0..1" -- "1..1" nocollectionowner_Transaction : product12
-nocollectionowner_Product "1..1" -- "0..1" nocollectionowner_ProductCategory : productCategory0
-nocollectionowner_Product "0..9999" --* "1..1" nocollectionowner_ProductCategory : products2
-nocollectionowner_ProductCategory "1..1" *-- "0..9999" nocollectionowner_ProductCategory : subCategorys4
-nocollectionowner_Order "1..1" *-- "0..9999" nocollectionowner_Transaction : transactions9
+nocollectionowner_Customer "nocollectionowner_Order 0..1" -- "nocollectionowner_Customer 1..1" nocollectionowner_Order : customer10
+nocollectionowner_Order "transactions 0..1" -- "Order 1..1" nocollectionowner_Transaction : order11
+nocollectionowner_ProductCategory "ProductCategory8 1..1" -- "subCategorys 0..1" nocollectionowner_ProductCategory : parent7
+nocollectionowner_PriceCategory "nocollectionowner_Product 0..1" -- "nocollectionowner_PriceCategory 1..1" nocollectionowner_Product : priceCategory1
+nocollectionowner_Product "nocollectionowner_Transaction 0..1" -- "nocollectionowner_Product13 1..1" nocollectionowner_Transaction : product12
+nocollectionowner_Product "ProductCategory 1..1" -- "products 0..1" nocollectionowner_ProductCategory : productCategory0
+nocollectionowner_Product "productCategory 0..9999" --* "Product 1..1" nocollectionowner_ProductCategory : products2
+nocollectionowner_ProductCategory "ProductCategory5 1..1" *-- "parent 0..9999" nocollectionowner_ProductCategory : subCategorys4
+nocollectionowner_Order "Transaction 1..1" *-- "order 0..9999" nocollectionowner_Transaction : transactions9
 @enduml

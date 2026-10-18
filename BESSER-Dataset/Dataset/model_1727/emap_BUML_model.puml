@@ -1,4 +1,8 @@
 @startuml
+' model: emap
+' project: sampleModel
+' owner: User
+' description: New project
 enum Category {
   Complex
   Simple
@@ -23,10 +27,10 @@ class emap_Writer {
 class emap_WriterToStringMapEntry {
   + value : str
 }
-emap_Book "1..1" *-- "0..9999" emap_DateToCategoryMapEntry : categoryByDate5
-emap_Book "1..1" *-- "0..9999" emap_WriterToStringMapEntry : cityByWriter3
-emap_Writer "0..1" -- "1..1" emap_WriterToStringMapEntry : key9
-emap_Book "1..1" *-- "0..9999" emap_StringToStringMapEntry : keyWords1
-emap_StringToWriterMapEntry "1..1" -- "0..1" emap_Writer : value7
-emap_Book "1..1" *-- "0..9999" emap_StringToWriterMapEntry : writers0
+emap_Book "emap_DateToCategoryMapEntry 1..1" *-- "emap_Book6 0..9999" emap_DateToCategoryMapEntry : categoryByDate5
+emap_Book "emap_WriterToStringMapEntry 1..1" *-- "emap_Book4 0..9999" emap_WriterToStringMapEntry : cityByWriter3
+emap_Writer "emap_WriterToStringMapEntry10 0..1" -- "emap_Writer11 1..1" emap_WriterToStringMapEntry : key9
+emap_Book "emap_StringToStringMapEntry 1..1" *-- "emap_Book2 0..9999" emap_StringToStringMapEntry : keyWords1
+emap_StringToWriterMapEntry "emap_Writer 1..1" -- "emap_StringToWriterMapEntry8 0..1" emap_Writer : value7
+emap_Book "emap_StringToWriterMapEntry 1..1" *-- "emap_Book 0..9999" emap_StringToWriterMapEntry : writers0
 @enduml

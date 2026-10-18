@@ -1,4 +1,8 @@
 @startuml
+' model: datamodel
+' project: sampleModel
+' owner: User
+' description: New project
 enum ConstraintType {
   Expected
   GlobalIncoming
@@ -40,15 +44,15 @@ Ensemble <|-- datamodel_ConcreteEnsemble
 Ensemble <|-- datamodel_EmptyEnsemble
 TreeNode <|-- datamodel_Ensemble
 TreeNode <|-- datamodel_EnsembleRepository
-datamodel_TreeNode "1..1" *-- "0..9999" datamodel_TreeNode : children20
-datamodel_Constraint "0..9999" -- "1..1" datamodel_Ensemble : constraints0
-datamodel_Constraint "0..9999" --* "1..1" datamodel_Slice : constraints12
-datamodel_Ensemble "1..1" --* "1..1" datamodel_SliceRepository : emptyEnsemble10
-datamodel_Ensemble "0..9999" -- "1..1" datamodel_Slice : ensembles14
-datamodel_TreeNode "1..1" -- "0..1" datamodel_TreeNode : parent18
-datamodel_Slice "1..1" -- "1..1" datamodel_SliceRepository : sliceRepository15
-datamodel_Ensemble "1..1" -- "0..9999" datamodel_Slice : slices1
-datamodel_Slice "0..9999" --* "1..1" datamodel_SliceRepository : slices8
-datamodel_Constraint "1..1" -- "1..1" datamodel_Ensemble : source2
-datamodel_Constraint "1..1" -- "1..1" datamodel_Ensemble : target5
+datamodel_TreeNode "TreeNode21 1..1" *-- "parent 0..9999" datamodel_TreeNode : children20
+datamodel_Constraint "datamodel_Ensemble 0..9999" -- "datamodel_Constraint 1..1" datamodel_Ensemble : constraints0
+datamodel_Constraint "datamodel_Slice 0..9999" --* "datamodel_Constraint13 1..1" datamodel_Slice : constraints12
+datamodel_Ensemble "datamodel_SliceRepository 1..1" --* "datamodel_Ensemble11 1..1" datamodel_SliceRepository : emptyEnsemble10
+datamodel_Ensemble "slices 0..9999" -- "Ensemble 1..1" datamodel_Slice : ensembles14
+datamodel_TreeNode "TreeNode 1..1" -- "children 0..1" datamodel_TreeNode : parent18
+datamodel_Slice "SliceRepository 1..1" -- "slices16 1..1" datamodel_SliceRepository : sliceRepository15
+datamodel_Ensemble "Slice 1..1" -- "ensembles 0..9999" datamodel_Slice : slices1
+datamodel_Slice "sliceRepository 0..9999" --* "Slice9 1..1" datamodel_SliceRepository : slices8
+datamodel_Constraint "datamodel_Ensemble4 1..1" -- "datamodel_Constraint3 1..1" datamodel_Ensemble : source2
+datamodel_Constraint "datamodel_Ensemble7 1..1" -- "datamodel_Constraint6 1..1" datamodel_Ensemble : target5
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: PathExp
+' project: sampleModel
+' owner: User
+' description: New project
 class Element {
 }
 abstract class PathExp_Element {
@@ -16,10 +20,10 @@ class Transition {
 }
 Element <|-- PathExp_PathExp
 Element <|-- PathExp_Transition
-PathExp_State "1..1" -- "0..9999" Transition : incoming3
-PathExp_State "1..1" -- "0..9999" Transition : outgoing5
-PathExp_Transition "1..1" -- "1..1" State : source7
-PathExp_PathExp "1..1" *-- "1..9999" State : states0
-PathExp_Transition "1..1" -- "1..1" State : target9
-PathExp_PathExp "1..1" *-- "0..9999" Transition : transitions1
+PathExp_State "Transition4 1..1" -- "target 0..9999" Transition : incoming3
+PathExp_State "Transition6 1..1" -- "source 0..9999" Transition : outgoing5
+PathExp_Transition "State8 1..1" -- "outgoing 1..1" State : source7
+PathExp_PathExp "State 1..1" *-- "PathExp_PathExp 1..9999" State : states0
+PathExp_Transition "State10 1..1" -- "incoming 1..1" State : target9
+PathExp_PathExp "Transition 1..1" *-- "PathExp_PathExp2 0..9999" Transition : transitions1
 @enduml

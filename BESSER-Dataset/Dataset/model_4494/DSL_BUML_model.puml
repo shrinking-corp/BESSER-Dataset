@@ -1,4 +1,8 @@
 @startuml
+' model: dSL
+' project: sampleModel
+' owner: User
+' description: New project
 enum Direction {
   BACKWARD
   FORWARD
@@ -34,13 +38,13 @@ class dSL_Rule {
 }
 class dSL_Specification {
 }
-dSL_ActionList "0..1" --* "1..1" dSL_Rule : actionList3
-dSL_Action "0..9999" --* "1..1" dSL_ActionList : actions12
-dSL_Action "1..1" *-- "0..1" dSL_Angle : angle17
-dSL_Condition "0..1" --* "1..1" dSL_Condition : condition8
-dSL_ConditionList "0..1" --* "1..1" dSL_Rule : conditionList1
-dSL_Condition "0..9999" --* "1..1" dSL_ConditionList : conditions5
-dSL_Condition "1..1" *-- "0..1" dSL_Distance : distance10
-dSL_Action "1..1" *-- "0..1" dSL_Distance : distance14
-dSL_Rule "0..9999" --* "1..1" dSL_Specification : rule0
+dSL_ActionList "dSL_Rule4 0..1" --* "dSL_ActionList 1..1" dSL_Rule : actionList3
+dSL_Action "dSL_ActionList13 0..9999" --* "dSL_Action 1..1" dSL_ActionList : actions12
+dSL_Action "dSL_Angle 1..1" *-- "dSL_Action18 0..1" dSL_Angle : angle17
+dSL_Condition "dSL_Condition7 0..1" --* "dSL_Condition9 1..1" dSL_Condition : condition8
+dSL_ConditionList "dSL_Rule2 0..1" --* "dSL_ConditionList 1..1" dSL_Rule : conditionList1
+dSL_Condition "dSL_ConditionList6 0..9999" --* "dSL_Condition 1..1" dSL_ConditionList : conditions5
+dSL_Condition "dSL_Distance 1..1" *-- "dSL_Condition11 0..1" dSL_Distance : distance10
+dSL_Action "dSL_Distance16 1..1" *-- "dSL_Action15 0..1" dSL_Distance : distance14
+dSL_Rule "dSL_Specification 0..9999" --* "dSL_Rule 1..1" dSL_Specification : rule0
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: researchvc
+' project: sampleModel
+' owner: User
+' description: New project
 class Counted {
 }
 class Labelled {
@@ -51,19 +55,19 @@ Named <|-- researchvc_Paper
 Named <|-- researchvc_Paragraph
 Named <|-- researchvc_PublicationStructure
 Named <|-- researchvc_ReviewNote
-researchvc_Keyword "0..9999" --* "1..1" researchvc_PublicationStructure : allKeyWords26
-researchvc_Paper "1..1" -- "0..9999" researchvc_Researcher : authors7
-researchvc_Paper "0..1" -- "1..1" researchvc_Paper : citedBy11
-researchvc_Keyword "0..1" -- "1..1" researchvc_PaperKeyword : keyword28
-researchvc_Paper "1..1" *-- "0..9999" researchvc_PaperKeyword : keywords8
-researchvc_Paper "0..9999" --* "1..1" researchvc_PublicationStructure : papers23
-researchvc_Paragraph "0..1" -- "1..1" researchvc_Write : paragraph15
-researchvc_Paper "1..1" *-- "0..9999" researchvc_Paragraph : paragraphs6
-researchvc_Paper "0..9999" -- "1..1" researchvc_Researcher : res_papers3
-researchvc_PublicationStructure "1..1" *-- "0..9999" researchvc_Researcher : researchers21
-researchvc_Review "1..1" -- "0..1" researchvc_ReviewNote : reviewNote18
-researchvc_Researcher "1..1" *-- "0..9999" researchvc_Review : reviews1
-researchvc_Paragraph "1..1" *-- "0..9999" researchvc_ReviewNote : reviews13
-researchvc_Researcher "1..1" *-- "0..9999" researchvc_Skill : skills4
-researchvc_Researcher "1..1" *-- "0..9999" researchvc_Write : writes0
+researchvc_Keyword "researchvc_PublicationStructure27 0..9999" --* "researchvc_Keyword 1..1" researchvc_PublicationStructure : allKeyWords26
+researchvc_Paper "Researcher 1..1" -- "res_papers 0..9999" researchvc_Researcher : authors7
+researchvc_Paper "researchvc_Paper10 0..1" -- "researchvc_Paper12 1..1" researchvc_Paper : citedBy11
+researchvc_Keyword "researchvc_PaperKeyword29 0..1" -- "researchvc_Keyword30 1..1" researchvc_PaperKeyword : keyword28
+researchvc_Paper "researchvc_PaperKeyword 1..1" *-- "researchvc_Paper9 0..9999" researchvc_PaperKeyword : keywords8
+researchvc_Paper "researchvc_PublicationStructure24 0..9999" --* "researchvc_Paper25 1..1" researchvc_PublicationStructure : papers23
+researchvc_Paragraph "researchvc_Write16 0..1" -- "researchvc_Paragraph17 1..1" researchvc_Write : paragraph15
+researchvc_Paper "researchvc_Paragraph 1..1" *-- "researchvc_Paper 0..9999" researchvc_Paragraph : paragraphs6
+researchvc_Paper "authors 0..9999" -- "Paper 1..1" researchvc_Researcher : res_papers3
+researchvc_PublicationStructure "researchvc_Researcher22 1..1" *-- "researchvc_PublicationStructure 0..9999" researchvc_Researcher : researchers21
+researchvc_Review "researchvc_ReviewNote20 1..1" -- "researchvc_Review19 0..1" researchvc_ReviewNote : reviewNote18
+researchvc_Researcher "researchvc_Review 1..1" *-- "researchvc_Researcher2 0..9999" researchvc_Review : reviews1
+researchvc_Paragraph "researchvc_ReviewNote 1..1" *-- "researchvc_Paragraph14 0..9999" researchvc_ReviewNote : reviews13
+researchvc_Researcher "researchvc_Skill 1..1" *-- "researchvc_Researcher5 0..9999" researchvc_Skill : skills4
+researchvc_Researcher "researchvc_Write 1..1" *-- "researchvc_Researcher 0..9999" researchvc_Write : writes0
 @enduml

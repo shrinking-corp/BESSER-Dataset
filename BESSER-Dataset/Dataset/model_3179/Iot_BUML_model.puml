@@ -1,4 +1,8 @@
 @startuml
+' model: iot
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractElement {
 }
 class Expression {
@@ -78,34 +82,34 @@ Expression <|-- iot_Or
 Expression <|-- iot_Plus
 Expression <|-- iot_StringConstant
 Expression <|-- iot_VariableRef
-iot_Dispositivo "0..9999" --* "1..1" iot_Model : dispositivos0
-iot_AbstractElement "0..9999" --* "1..1" iot_Estado : elementos12
-iot_AbstractElement "0..9999" --* "1..1" iot_IfBlock : elementos26
-iot_IfBlock "0..1" --* "1..1" iot_IfStatement : elseBlock23
-iot_Estado "0..1" -- "1..1" iot_Transicion : estado17
-iot_Dispositivo "1..1" *-- "0..9999" iot_Estado : estados6
-iot_Dispositivo "1..1" *-- "0..9999" iot_Etiqueta : etiquetas4
-iot_Evento "0..1" -- "1..1" iot_Transicion : evento14
-iot_Dispositivo "1..1" *-- "0..9999" iot_Evento : eventos8
-iot_Expression "0..1" --* "1..1" iot_IfStatement : expression20
-iot_Expression "0..1" --* "1..1" iot_Variable : expression29
-iot_Expression "0..1" --* "1..1" iot_Not : expression66
-iot_Expression "0..1" --* "1..1" iot_Or : left31
-iot_And "1..1" *-- "0..1" iot_Expression : left36
-iot_Equality "1..1" *-- "0..1" iot_Expression : left41
-iot_Comparison "1..1" *-- "0..1" iot_Expression : left46
-iot_Expression "0..1" --* "1..1" iot_Plus : left51
-iot_Expression "0..1" --* "1..1" iot_Minus : left56
-iot_Expression "0..1" --* "1..1" iot_MulOrDiv : left61
-iot_Expression "0..1" --* "1..1" iot_Or : right33
-iot_And "1..1" *-- "0..1" iot_Expression : right38
-iot_Equality "1..1" *-- "0..1" iot_Expression : right43
-iot_Comparison "1..1" *-- "0..1" iot_Expression : right48
-iot_Expression "0..1" --* "1..1" iot_Plus : right53
-iot_Expression "0..1" --* "1..1" iot_Minus : right58
-iot_Expression "0..1" --* "1..1" iot_MulOrDiv : right63
-iot_Dispositivo "0..1" -- "1..1" iot_Dispositivo : superType2
-iot_IfBlock "0..1" --* "1..1" iot_IfStatement : thenBlock21
-iot_Dispositivo "1..1" *-- "0..9999" iot_Transicion : transiciones10
-iot_Variable "0..1" -- "1..1" iot_VariableRef : variable68
+iot_Dispositivo "iot_Model 0..9999" --* "iot_Dispositivo 1..1" iot_Model : dispositivos0
+iot_AbstractElement "iot_Estado13 0..9999" --* "iot_AbstractElement 1..1" iot_Estado : elementos12
+iot_AbstractElement "iot_IfBlock27 0..9999" --* "iot_AbstractElement28 1..1" iot_IfBlock : elementos26
+iot_IfBlock "iot_IfStatement24 0..1" --* "iot_IfBlock25 1..1" iot_IfStatement : elseBlock23
+iot_Estado "iot_Transicion18 0..1" -- "iot_Estado19 1..1" iot_Transicion : estado17
+iot_Dispositivo "iot_Estado 1..1" *-- "iot_Dispositivo7 0..9999" iot_Estado : estados6
+iot_Dispositivo "iot_Etiqueta 1..1" *-- "iot_Dispositivo5 0..9999" iot_Etiqueta : etiquetas4
+iot_Evento "iot_Transicion15 0..1" -- "iot_Evento16 1..1" iot_Transicion : evento14
+iot_Dispositivo "iot_Evento 1..1" *-- "iot_Dispositivo9 0..9999" iot_Evento : eventos8
+iot_Expression "iot_IfStatement 0..1" --* "iot_Expression 1..1" iot_IfStatement : expression20
+iot_Expression "iot_Variable 0..1" --* "iot_Expression30 1..1" iot_Variable : expression29
+iot_Expression "iot_Not 0..1" --* "iot_Expression67 1..1" iot_Not : expression66
+iot_Expression "iot_Or 0..1" --* "iot_Expression32 1..1" iot_Or : left31
+iot_And "iot_Expression37 1..1" *-- "iot_And 0..1" iot_Expression : left36
+iot_Equality "iot_Expression42 1..1" *-- "iot_Equality 0..1" iot_Expression : left41
+iot_Comparison "iot_Expression47 1..1" *-- "iot_Comparison 0..1" iot_Expression : left46
+iot_Expression "iot_Plus 0..1" --* "iot_Expression52 1..1" iot_Plus : left51
+iot_Expression "iot_Minus 0..1" --* "iot_Expression57 1..1" iot_Minus : left56
+iot_Expression "iot_MulOrDiv 0..1" --* "iot_Expression62 1..1" iot_MulOrDiv : left61
+iot_Expression "iot_Or34 0..1" --* "iot_Expression35 1..1" iot_Or : right33
+iot_And "iot_Expression40 1..1" *-- "iot_And39 0..1" iot_Expression : right38
+iot_Equality "iot_Expression45 1..1" *-- "iot_Equality44 0..1" iot_Expression : right43
+iot_Comparison "iot_Expression50 1..1" *-- "iot_Comparison49 0..1" iot_Expression : right48
+iot_Expression "iot_Plus54 0..1" --* "iot_Expression55 1..1" iot_Plus : right53
+iot_Expression "iot_Minus59 0..1" --* "iot_Expression60 1..1" iot_Minus : right58
+iot_Expression "iot_MulOrDiv64 0..1" --* "iot_Expression65 1..1" iot_MulOrDiv : right63
+iot_Dispositivo "iot_Dispositivo1 0..1" -- "iot_Dispositivo3 1..1" iot_Dispositivo : superType2
+iot_IfBlock "iot_IfStatement22 0..1" --* "iot_IfBlock 1..1" iot_IfStatement : thenBlock21
+iot_Dispositivo "iot_Transicion 1..1" *-- "iot_Dispositivo11 0..9999" iot_Transicion : transiciones10
+iot_Variable "iot_VariableRef 0..1" -- "iot_Variable69 1..1" iot_VariableRef : variable68
 @enduml

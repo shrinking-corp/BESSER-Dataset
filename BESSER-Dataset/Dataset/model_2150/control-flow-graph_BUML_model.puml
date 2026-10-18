@@ -1,4 +1,8 @@
 @startuml
+' model: cfgraph
+' project: sampleModel
+' owner: User
+' description: New project
 class BodyVertex {
 }
 class ControlFlowVertex {
@@ -33,11 +37,11 @@ ControlFlowVertex <|-- cfgraph_BodyVertex
 ControlFlowVertex <|-- cfgraph_StartVertex
 StatementVertex <|-- cfgraph_CallVertex
 StatementVertex <|-- cfgraph_SimpleStatementVertex
-cfgraph_BranchingVertex "1..1" -- "2..9999" cfgraph_ControlFlowEdge : branches9
-cfgraph_CallVertex "1..1" -- "1..1" cfgraph_StartVertex : called7
-cfgraph_BodyVertex "1..1" -- "1..1" cfgraph_ControlFlowEdge : end1
-cfgraph_BodyVertex "1..1" -- "1..9999" cfgraph_ControlFlowEdge : incomingEdges4
-cfgraph_ControlFlowEdge "1..1" -- "1..1" cfgraph_StartVertex : next2
-cfgraph_ControlFlowEdge "1..1" -- "1..1" cfgraph_StatementVertex : next5
-cfgraph_ControlFlowGraph "1..1" *-- "0..9999" cfgraph_StartVertex : startVertices0
+cfgraph_BranchingVertex "cfgraph_ControlFlowEdge10 1..1" -- "cfgraph_BranchingVertex 2..9999" cfgraph_ControlFlowEdge : branches9
+cfgraph_CallVertex "cfgraph_StartVertex8 1..1" -- "cfgraph_CallVertex 1..1" cfgraph_StartVertex : called7
+cfgraph_BodyVertex "incomingEdges 1..1" -- "BodyVertex 1..1" cfgraph_ControlFlowEdge : end1
+cfgraph_BodyVertex "ControlFlowEdge 1..1" -- "end 1..9999" cfgraph_ControlFlowEdge : incomingEdges4
+cfgraph_ControlFlowEdge "cfgraph_StartVertex3 1..1" -- "cfgraph_ControlFlowEdge 1..1" cfgraph_StartVertex : next2
+cfgraph_ControlFlowEdge "cfgraph_StatementVertex 1..1" -- "cfgraph_ControlFlowEdge6 1..1" cfgraph_StatementVertex : next5
+cfgraph_ControlFlowGraph "cfgraph_StartVertex 1..1" *-- "cfgraph_ControlFlowGraph 0..9999" cfgraph_StartVertex : startVertices0
 @enduml

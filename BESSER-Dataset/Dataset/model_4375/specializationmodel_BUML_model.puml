@@ -1,4 +1,8 @@
 @startuml
+' model: specializationModel
+' project: sampleModel
+' owner: User
+' description: New project
 enum ConfigState {
   UNDECIDED
   USER_ELIMINATED
@@ -64,17 +68,17 @@ Node <|-- specializationModel_Feature
 Node <|-- specializationModel_FeatureGroup
 Relation <|-- specializationModel_RelationFG
 Relation <|-- specializationModel_RelationFeature
-specializationModel_Feature "0..9999" -- "1..1" specializationModel_FeatureGroup : children16
-specializationModel_Feature "1..1" -- "0..9999" specializationModel_Node : children4
-specializationModel_Node "0..1" -- "1..1" specializationModel_Node : father19
-specializationModel_Feature "0..1" -- "1..1" specializationModel_TypedValue : featureValue9
-specializationModel_Node "0..9999" --* "1..1" specializationModel_Project : features12
-specializationModel_Feature "0..1" -- "1..1" specializationModel_Feature : references2
-specializationModel_Feature "0..9999" -- "1..1" specializationModel_Feature : referenciated7
-specializationModel_Project "1..1" *-- "0..9999" specializationModel_Relation : relations14
-specializationModel_Node "1..1" -- "1..1" specializationModel_RelationFG : source21
-specializationModel_Feature "1..1" -- "1..1" specializationModel_RelationFeature : source26
-specializationModel_Node "1..1" -- "1..1" specializationModel_RelationFG : target23
-specializationModel_Feature "1..1" -- "1..1" specializationModel_RelationFeature : target28
-specializationModel_Feature "1..1" *-- "0..1" specializationModel_TypedValue : typedValue0
+specializationModel_Feature "specializationModel_FeatureGroup 0..9999" -- "specializationModel_Feature17 1..1" specializationModel_FeatureGroup : children16
+specializationModel_Feature "specializationModel_Node 1..1" -- "specializationModel_Feature5 0..9999" specializationModel_Node : children4
+specializationModel_Node "specializationModel_Node18 0..1" -- "specializationModel_Node20 1..1" specializationModel_Node : father19
+specializationModel_Feature "specializationModel_TypedValue10 0..1" -- "specializationModel_Feature11 1..1" specializationModel_TypedValue : featureValue9
+specializationModel_Node "specializationModel_Project 0..9999" --* "specializationModel_Node13 1..1" specializationModel_Project : features12
+specializationModel_Feature "specializationModel_Feature1 0..1" -- "specializationModel_Feature3 1..1" specializationModel_Feature : references2
+specializationModel_Feature "specializationModel_Feature6 0..9999" -- "specializationModel_Feature8 1..1" specializationModel_Feature : referenciated7
+specializationModel_Project "specializationModel_Relation 1..1" *-- "specializationModel_Project15 0..9999" specializationModel_Relation : relations14
+specializationModel_Node "specializationModel_RelationFG 1..1" -- "specializationModel_Node22 1..1" specializationModel_RelationFG : source21
+specializationModel_Feature "specializationModel_RelationFeature 1..1" -- "specializationModel_Feature27 1..1" specializationModel_RelationFeature : source26
+specializationModel_Node "specializationModel_RelationFG24 1..1" -- "specializationModel_Node25 1..1" specializationModel_RelationFG : target23
+specializationModel_Feature "specializationModel_RelationFeature29 1..1" -- "specializationModel_Feature30 1..1" specializationModel_RelationFeature : target28
+specializationModel_Feature "specializationModel_TypedValue 1..1" *-- "specializationModel_Feature 0..1" specializationModel_TypedValue : typedValue0
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: PolicyEngine
+' project: sampleModel
+' owner: User
+' description: New project
 class Actuator {
 }
 enum CompOps {
@@ -169,55 +173,55 @@ Sensor <|-- PolicyEngine_PressureSensor
 Sensor <|-- PolicyEngine_SmokeSensor
 Sensor <|-- PolicyEngine_TemperatureSensor
 Sensor <|-- PolicyEngine_TouchSensor
-PolicyEngine_AccessControl "0..1" --* "1..1" PolicyEngine_Building : accessControl1
-PolicyEngine_AccessControl "1..1" *-- "0..9999" PolicyEngine_Actuator : accessControlDoorLockActuator31
-PolicyEngine_AccessControl "1..1" *-- "0..9999" PolicyEngine_Sensor : accessControlSensors28
-PolicyEngine_Actuator "0..1" --* "1..1" PolicyEngine_RoomUsage : act108
-PolicyEngine_Actuator "0..9999" --* "1..1" PolicyEngine_HasActuators : actuators36
-PolicyEngine_Building "0..9999" --* "1..1" PolicyEngine_Model : buildings11
-PolicyEngine_Building "1..1" *-- "0..1" PolicyEngine_CalendarSystem : calendarSystem3
-PolicyEngine_Expression "1..1" --* "1..1" PolicyEngine_If : cond90
-PolicyEngine_Policy "1..1" *-- "0..9999" PolicyEngine_Timer : controlledBy68
-PolicyEngine_Actuator "0..9999" --* "1..1" PolicyEngine_CTS : ctsActuators26
-PolicyEngine_Building "1..1" *-- "0..1" PolicyEngine_CTS : ctsSystem0
-PolicyEngine_ActuatorComponent "0..9999" --* "1..1" PolicyEngine_Room : declareActuator40
-PolicyEngine_Room "1..1" *-- "0..9999" PolicyEngine_SensorComponent : declareSensor38
-PolicyEngine_Policy "1..1" *-- "0..9999" PolicyEngine_State : defineLocalState80
-PolicyEngine_RoomUsage "1..1" -- "0..1" PolicyEngine_State : defineState111
-PolicyEngine_Policy "1..1" -- "0..9999" PolicyEngine_State : defineState71
-PolicyEngine_ActuatorComponent "0..1" -- "1..1" PolicyEngine_RoomActuators : definedActuator123
-PolicyEngine_Room "0..1" -- "1..1" PolicyEngine_RoomActuators : definedRoomActuator121
-PolicyEngine_Room "1..1" -- "0..9999" PolicyEngine_Schedule : during51
-PolicyEngine_Policy "1..1" -- "0..9999" PolicyEngine_Schedule : during74
-PolicyEngine_Expression "0..1" --* "1..1" PolicyEngine_If : else_99
-PolicyEngine_If "0..9999" --* "1..1" PolicyEngine_If : elseif97
-PolicyEngine_Expression "1..1" --* "1..1" PolicyEngine_UnaryOp : expr119
-PolicyEngine_Expression "0..1" --* "1..1" PolicyEngine_State : exprStates83
-PolicyEngine_Room "0..9999" -- "1..1" PolicyEngine_Room : extends43
-PolicyEngine_Building "1..1" *-- "0..9999" PolicyEngine_Floor : floors7
-PolicyEngine_Schedule "1..1" *-- "0..1" PolicyEngine_Time : from_85
-PolicyEngine_BinaryOps "1..1" *-- "1..1" PolicyEngine_Expression : lexpr114
-PolicyEngine_Building "1..1" *-- "0..1" PolicyEngine_MeetingScheduleSystem : meetingScheduleSystem5
-PolicyEngine_Policy "0..9999" -- "1..1" PolicyEngine_Room : policies48
-PolicyEngine_Model "1..1" *-- "0..9999" PolicyEngine_Policy : policyDefinition15
-PolicyEngine_Model "1..1" *-- "0..9999" PolicyEngine_Room : predefinedRooms13
-PolicyEngine_ResetExpression "1..1" -- "1..1" PolicyEngine_Timer : reset104
-PolicyEngine_BinaryOps "1..1" *-- "1..1" PolicyEngine_Expression : rexpr116
-PolicyEngine_Floor "1..1" *-- "0..9999" PolicyEngine_Room : rooms54
-PolicyEngine_Model "1..1" *-- "0..9999" PolicyEngine_Schedule : schedules22
-PolicyEngine_RoomUsage "1..1" *-- "0..1" PolicyEngine_Sensor : sen106
-PolicyEngine_HasSensors "1..1" *-- "0..9999" PolicyEngine_Sensor : sensors34
-PolicyEngine_If "1..9999" --* "1..1" PolicyEngine_Policy : specifiedBy66
-PolicyEngine_Model "1..1" *-- "0..9999" PolicyEngine_State : stateDefinition17
-PolicyEngine_CTS "1..1" *-- "0..9999" PolicyEngine_Sensor : temperatureSensors24
-PolicyEngine_Expression "0..9999" --* "1..1" PolicyEngine_If : then93
-PolicyEngine_TimeExpression "1..1" -- "1..1" PolicyEngine_Timer : time102
-PolicyEngine_Model "1..1" *-- "0..9999" PolicyEngine_Timer : timers19
-PolicyEngine_Room "1..1" *-- "0..9999" PolicyEngine_Timer : timers45
-PolicyEngine_Floor "1..1" *-- "0..9999" PolicyEngine_Timer : timers57
-PolicyEngine_Building "1..1" *-- "0..9999" PolicyEngine_Timer : timers9
-PolicyEngine_Schedule "1..1" *-- "0..1" PolicyEngine_Time : to87
-PolicyEngine_Actuator "0..9999" --* "1..1" PolicyEngine_Policy : usesActuators60
-PolicyEngine_Policy "1..1" -- "0..9999" PolicyEngine_Room : usesRooms77
-PolicyEngine_Policy "1..1" *-- "0..9999" PolicyEngine_Sensor : usesSensors63
+PolicyEngine_AccessControl "PolicyEngine_Building2 0..1" --* "PolicyEngine_AccessControl 1..1" PolicyEngine_Building : accessControl1
+PolicyEngine_AccessControl "PolicyEngine_Actuator33 1..1" *-- "PolicyEngine_AccessControl32 0..9999" PolicyEngine_Actuator : accessControlDoorLockActuator31
+PolicyEngine_AccessControl "PolicyEngine_Sensor30 1..1" *-- "PolicyEngine_AccessControl29 0..9999" PolicyEngine_Sensor : accessControlSensors28
+PolicyEngine_Actuator "PolicyEngine_RoomUsage109 0..1" --* "PolicyEngine_Actuator110 1..1" PolicyEngine_RoomUsage : act108
+PolicyEngine_Actuator "PolicyEngine_HasActuators 0..9999" --* "PolicyEngine_Actuator37 1..1" PolicyEngine_HasActuators : actuators36
+PolicyEngine_Building "PolicyEngine_Model 0..9999" --* "PolicyEngine_Building12 1..1" PolicyEngine_Model : buildings11
+PolicyEngine_Building "PolicyEngine_CalendarSystem 1..1" *-- "PolicyEngine_Building4 0..1" PolicyEngine_CalendarSystem : calendarSystem3
+PolicyEngine_Expression "PolicyEngine_If91 1..1" --* "PolicyEngine_Expression92 1..1" PolicyEngine_If : cond90
+PolicyEngine_Policy "PolicyEngine_Timer70 1..1" *-- "PolicyEngine_Policy69 0..9999" PolicyEngine_Timer : controlledBy68
+PolicyEngine_Actuator "PolicyEngine_CTS27 0..9999" --* "PolicyEngine_Actuator 1..1" PolicyEngine_CTS : ctsActuators26
+PolicyEngine_Building "PolicyEngine_CTS 1..1" *-- "PolicyEngine_Building 0..1" PolicyEngine_CTS : ctsSystem0
+PolicyEngine_ActuatorComponent "PolicyEngine_Room41 0..9999" --* "PolicyEngine_ActuatorComponent 1..1" PolicyEngine_Room : declareActuator40
+PolicyEngine_Room "PolicyEngine_SensorComponent 1..1" *-- "PolicyEngine_Room39 0..9999" PolicyEngine_SensorComponent : declareSensor38
+PolicyEngine_Policy "PolicyEngine_State82 1..1" *-- "PolicyEngine_Policy81 0..9999" PolicyEngine_State : defineLocalState80
+PolicyEngine_RoomUsage "PolicyEngine_State113 1..1" -- "PolicyEngine_RoomUsage112 0..1" PolicyEngine_State : defineState111
+PolicyEngine_Policy "PolicyEngine_State73 1..1" -- "PolicyEngine_Policy72 0..9999" PolicyEngine_State : defineState71
+PolicyEngine_ActuatorComponent "PolicyEngine_RoomActuators124 0..1" -- "PolicyEngine_ActuatorComponent125 1..1" PolicyEngine_RoomActuators : definedActuator123
+PolicyEngine_Room "PolicyEngine_RoomActuators 0..1" -- "PolicyEngine_Room122 1..1" PolicyEngine_RoomActuators : definedRoomActuator121
+PolicyEngine_Room "PolicyEngine_Schedule53 1..1" -- "PolicyEngine_Room52 0..9999" PolicyEngine_Schedule : during51
+PolicyEngine_Policy "PolicyEngine_Schedule76 1..1" -- "PolicyEngine_Policy75 0..9999" PolicyEngine_Schedule : during74
+PolicyEngine_Expression "PolicyEngine_If100 0..1" --* "PolicyEngine_Expression101 1..1" PolicyEngine_If : else_99
+PolicyEngine_If "PolicyEngine_If96 0..9999" --* "PolicyEngine_If98 1..1" PolicyEngine_If : elseif97
+PolicyEngine_Expression "PolicyEngine_UnaryOp 1..1" --* "PolicyEngine_Expression120 1..1" PolicyEngine_UnaryOp : expr119
+PolicyEngine_Expression "PolicyEngine_State84 0..1" --* "PolicyEngine_Expression 1..1" PolicyEngine_State : exprStates83
+PolicyEngine_Room "PolicyEngine_Room42 0..9999" -- "PolicyEngine_Room44 1..1" PolicyEngine_Room : extends43
+PolicyEngine_Building "PolicyEngine_Floor 1..1" *-- "PolicyEngine_Building8 0..9999" PolicyEngine_Floor : floors7
+PolicyEngine_Schedule "PolicyEngine_Time 1..1" *-- "PolicyEngine_Schedule86 0..1" PolicyEngine_Time : from_85
+PolicyEngine_BinaryOps "PolicyEngine_Expression115 1..1" *-- "PolicyEngine_BinaryOps 1..1" PolicyEngine_Expression : lexpr114
+PolicyEngine_Building "PolicyEngine_MeetingScheduleSystem 1..1" *-- "PolicyEngine_Building6 0..1" PolicyEngine_MeetingScheduleSystem : meetingScheduleSystem5
+PolicyEngine_Policy "PolicyEngine_Room49 0..9999" -- "PolicyEngine_Policy50 1..1" PolicyEngine_Room : policies48
+PolicyEngine_Model "PolicyEngine_Policy 1..1" *-- "PolicyEngine_Model16 0..9999" PolicyEngine_Policy : policyDefinition15
+PolicyEngine_Model "PolicyEngine_Room 1..1" *-- "PolicyEngine_Model14 0..9999" PolicyEngine_Room : predefinedRooms13
+PolicyEngine_ResetExpression "PolicyEngine_Timer105 1..1" -- "PolicyEngine_ResetExpression 1..1" PolicyEngine_Timer : reset104
+PolicyEngine_BinaryOps "PolicyEngine_Expression118 1..1" *-- "PolicyEngine_BinaryOps117 1..1" PolicyEngine_Expression : rexpr116
+PolicyEngine_Floor "PolicyEngine_Room56 1..1" *-- "PolicyEngine_Floor55 0..9999" PolicyEngine_Room : rooms54
+PolicyEngine_Model "PolicyEngine_Schedule 1..1" *-- "PolicyEngine_Model23 0..9999" PolicyEngine_Schedule : schedules22
+PolicyEngine_RoomUsage "PolicyEngine_Sensor107 1..1" *-- "PolicyEngine_RoomUsage 0..1" PolicyEngine_Sensor : sen106
+PolicyEngine_HasSensors "PolicyEngine_Sensor35 1..1" *-- "PolicyEngine_HasSensors 0..9999" PolicyEngine_Sensor : sensors34
+PolicyEngine_If "PolicyEngine_Policy67 1..9999" --* "PolicyEngine_If 1..1" PolicyEngine_Policy : specifiedBy66
+PolicyEngine_Model "PolicyEngine_State 1..1" *-- "PolicyEngine_Model18 0..9999" PolicyEngine_State : stateDefinition17
+PolicyEngine_CTS "PolicyEngine_Sensor 1..1" *-- "PolicyEngine_CTS25 0..9999" PolicyEngine_Sensor : temperatureSensors24
+PolicyEngine_Expression "PolicyEngine_If94 0..9999" --* "PolicyEngine_Expression95 1..1" PolicyEngine_If : then93
+PolicyEngine_TimeExpression "PolicyEngine_Timer103 1..1" -- "PolicyEngine_TimeExpression 1..1" PolicyEngine_Timer : time102
+PolicyEngine_Model "PolicyEngine_Timer21 1..1" *-- "PolicyEngine_Model20 0..9999" PolicyEngine_Timer : timers19
+PolicyEngine_Room "PolicyEngine_Timer47 1..1" *-- "PolicyEngine_Room46 0..9999" PolicyEngine_Timer : timers45
+PolicyEngine_Floor "PolicyEngine_Timer59 1..1" *-- "PolicyEngine_Floor58 0..9999" PolicyEngine_Timer : timers57
+PolicyEngine_Building "PolicyEngine_Timer 1..1" *-- "PolicyEngine_Building10 0..9999" PolicyEngine_Timer : timers9
+PolicyEngine_Schedule "PolicyEngine_Time89 1..1" *-- "PolicyEngine_Schedule88 0..1" PolicyEngine_Time : to87
+PolicyEngine_Actuator "PolicyEngine_Policy61 0..9999" --* "PolicyEngine_Actuator62 1..1" PolicyEngine_Policy : usesActuators60
+PolicyEngine_Policy "PolicyEngine_Room79 1..1" -- "PolicyEngine_Policy78 0..9999" PolicyEngine_Room : usesRooms77
+PolicyEngine_Policy "PolicyEngine_Sensor65 1..1" *-- "PolicyEngine_Policy64 0..9999" PolicyEngine_Sensor : usesSensors63
 @enduml

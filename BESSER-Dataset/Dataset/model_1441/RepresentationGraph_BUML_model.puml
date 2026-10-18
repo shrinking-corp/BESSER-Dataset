@@ -1,4 +1,8 @@
 @startuml
+' model: RepresentationGraph
+' project: sampleModel
+' owner: User
+' description: New project
 class ContainerElement {
 }
 class GraphicElement {
@@ -40,9 +44,9 @@ GraphicElement <|-- RepresentationGraph_EdgeElement
 GraphicElement <|-- RepresentationGraph_NodeElement
 NodeElement <|-- RepresentationGraph_ContainerElement
 NodeElement <|-- RepresentationGraph_IconElement
-RepresentationGraph_ContainerElement "1..1" *-- "0..9999" RepresentationGraph_NodeElement : contains8
-RepresentationGraph_Diagram "1..1" *-- "0..9999" RepresentationGraph_GraphicElement : elements0
-RepresentationGraph_NodeElement "0..9999" -- "1..1" RepresentationGraph_NodeElement : link6
-RepresentationGraph_EdgeElement "1..1" -- "1..1" RepresentationGraph_NodeElement : source1
-RepresentationGraph_EdgeElement "1..1" -- "1..1" RepresentationGraph_NodeElement : target2
+RepresentationGraph_ContainerElement "RepresentationGraph_NodeElement9 1..1" *-- "RepresentationGraph_ContainerElement 0..9999" RepresentationGraph_NodeElement : contains8
+RepresentationGraph_Diagram "RepresentationGraph_GraphicElement 1..1" *-- "RepresentationGraph_Diagram 0..9999" RepresentationGraph_GraphicElement : elements0
+RepresentationGraph_NodeElement "RepresentationGraph_NodeElement5 0..9999" -- "RepresentationGraph_NodeElement7 1..1" RepresentationGraph_NodeElement : link6
+RepresentationGraph_EdgeElement "RepresentationGraph_NodeElement 1..1" -- "RepresentationGraph_EdgeElement 1..1" RepresentationGraph_NodeElement : source1
+RepresentationGraph_EdgeElement "RepresentationGraph_NodeElement4 1..1" -- "RepresentationGraph_EdgeElement3 1..1" RepresentationGraph_NodeElement : target2
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: webapp
+' project: sampleModel
+' owner: User
+' description: New project
 class Controller {
 }
 class Data {
@@ -58,19 +62,19 @@ NamedElement <|-- webapp_Data
 NamedElement <|-- webapp_Template
 NamedElement <|-- webapp_View
 NamedElement <|-- webapp_WebApp
-webapp_Attribute "0..9999" --* "1..1" webapp_Model : attributes11
-webapp_Router "1..1" *-- "0..9999" webapp_RouterBinding : bindings24
-webapp_Collection "0..9999" --* "1..1" webapp_WebApp : collections0
-webapp_Controller "1..1" -- "1..1" webapp_RouterBinding : controller26
-webapp_Controller "0..9999" --* "1..1" webapp_WebApp : controllers5
-webapp_Data "0..1" -- "1..1" webapp_View : data22
-webapp_Collection "1..1" -- "0..1" webapp_Model : model13
-webapp_Model "0..9999" --* "1..1" webapp_WebApp : models3
-webapp_PageController "1..1" -- "0..1" webapp_View : page32
-webapp_Attribute "0..9999" --* "1..1" webapp_Controller : parameters29
-webapp_Router "0..1" --* "1..1" webapp_WebApp : router1
-webapp_View "0..9999" --* "1..1" webapp_View : subviews17
-webapp_Template "0..1" -- "1..1" webapp_View : template19
-webapp_Template "0..9999" --* "1..1" webapp_WebApp : templates7
-webapp_View "0..9999" --* "1..1" webapp_WebApp : views9
+webapp_Attribute "webapp_Model12 0..9999" --* "webapp_Attribute 1..1" webapp_Model : attributes11
+webapp_Router "webapp_RouterBinding 1..1" *-- "webapp_Router25 0..9999" webapp_RouterBinding : bindings24
+webapp_Collection "webapp_WebApp 0..9999" --* "webapp_Collection 1..1" webapp_WebApp : collections0
+webapp_Controller "webapp_RouterBinding27 1..1" -- "webapp_Controller28 1..1" webapp_RouterBinding : controller26
+webapp_Controller "webapp_WebApp6 0..9999" --* "webapp_Controller 1..1" webapp_WebApp : controllers5
+webapp_Data "webapp_View23 0..1" -- "webapp_Data 1..1" webapp_View : data22
+webapp_Collection "webapp_Model15 1..1" -- "webapp_Collection14 0..1" webapp_Model : model13
+webapp_Model "webapp_WebApp4 0..9999" --* "webapp_Model 1..1" webapp_WebApp : models3
+webapp_PageController "webapp_View33 1..1" -- "webapp_PageController 0..1" webapp_View : page32
+webapp_Attribute "webapp_Controller30 0..9999" --* "webapp_Attribute31 1..1" webapp_Controller : parameters29
+webapp_Router "webapp_WebApp2 0..1" --* "webapp_Router 1..1" webapp_WebApp : router1
+webapp_View "webapp_View16 0..9999" --* "webapp_View18 1..1" webapp_View : subviews17
+webapp_Template "webapp_View20 0..1" -- "webapp_Template21 1..1" webapp_View : template19
+webapp_Template "webapp_WebApp8 0..9999" --* "webapp_Template 1..1" webapp_WebApp : templates7
+webapp_View "webapp_WebApp10 0..9999" --* "webapp_View 1..1" webapp_WebApp : views9
 @enduml

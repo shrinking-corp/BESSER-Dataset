@@ -1,4 +1,8 @@
 @startuml
+' model: operators
+' project: sampleModel
+' owner: User
+' description: New project
 class Operator {
 }
 class QueryVariableQualifier {
@@ -90,32 +94,53 @@ Result <|-- operators_EObjectReference
 Result <|-- operators_PrimitiveReference
 Variable <|-- operators_QueryVariable
 Variable <|-- operators_TypeVariable
-operators_ASSIGN "1..1" -- "1..1" operators_EAttribute : attribute12
-operators_ASSIGN "1..1" *-- "1..1" operators_Referrable : attributeOwner13
-operators_DELETE "1..1" *-- "1..1" operators_Referrable : deletion10
-operators_EObject "1..9999" -- "1..1" operators_EObjectReference : elements16
-operators_EObject "1..1" -- "1..1" operators_TypeVariable : instance8
-operators_MERGE "1..1" *-- "2..9999" operators_Referrable : mergeObjects41
-operators_MOVE "1..1" *-- "1..1" operators_Referrable : movee32
-operators_CREATE "1..1" *-- "1..1" operators_TypeVariable : newInstanceVariable1
-operators_MOVE "1..1" *-- "1..1" operators_Referrable : newParent27
-operators_EOperation "1..1" -- "1..1" operators_EOperationQualifier : operation52
-operators_CREATE "1..1" *-- "1..1" operators_Referrable : parent2
-operators_CREATE "1..1" -- "1..1" operators_EReference : parentCompositeReference4
-operators_EReference "1..1" -- "1..1" operators_MOVE : parentReference29
-operators_QueryVariable "1..1" *-- "1..1" operators_QueryVariableQualifier : qualifier50
-operators_QueryVariable "1..1" *-- "1..1" operators_Referrable : queryObject44
-operators_QueryVariable "1..1" -- "1..1" operators_Result : queryResult47
-operators_EReference "1..1" -- "1..1" operators_SET : reference18
-operators_EReference "1..1" -- "1..1" operators_EReferenceQualifier : reference53
-operators_Referrable "1..1" --* "1..1" operators_SET : referenceOwner23
-operators_Variable "1..1" -- "1..1" operators_VariableReference : referencedVariable26
-operators_Operator "1..1" *-- "0..1" operators_Result : result0
-operators_Referrable "1..1" --* "1..1" operators_SPLIT : splitObject36
-operators_SPLIT "1..1" *-- "1..9999" operators_StructuralFeatureSet : splitSets35
-operators_EStructuralFeature "1..9999" -- "1..1" operators_StructuralFeatureSet : structuralFeatures39
-operators_EClass "1..1" -- "1..1" operators_TypeVariable : type6
-operators_Referrable "1..1" --* "1..1" operators_SET : value20
-operators_QueryVariable "1..1" --* "1..1" operators_VAR : variable43
-operators_QueryVariable "1..1" -- "1..1" operators_QueryVariableQualifier : variable51
+operators_ASSIGN "operators_EAttribute 1..1" -- "operators_ASSIGN 1..1" operators_EAttribute : attribute12
+operators_ASSIGN "operators_Referrable15 1..1" *-- "operators_ASSIGN14 1..1" operators_Referrable : attributeOwner13
+operators_DELETE "operators_Referrable11 1..1" *-- "operators_DELETE 1..1" operators_Referrable : deletion10
+operators_EObject "operators_EObjectReference 1..9999" -- "operators_EObject17 1..1" operators_EObjectReference : elements16
+operators_EObject "operators_TypeVariable9 1..1" -- "operators_EObject 1..1" operators_TypeVariable : instance8
+operators_MERGE "operators_Referrable42 1..1" *-- "operators_MERGE 2..9999" operators_Referrable : mergeObjects41
+operators_MOVE "operators_Referrable34 1..1" *-- "operators_MOVE33 1..1" operators_Referrable : movee32
+operators_CREATE "operators_TypeVariable 1..1" *-- "operators_CREATE 1..1" operators_TypeVariable : newInstanceVariable1
+operators_MOVE "operators_Referrable28 1..1" *-- "operators_MOVE 1..1" operators_Referrable : newParent27
+operators_EOperation "operators_EOperationQualifier 1..1" -- "operators_EOperation 1..1" operators_EOperationQualifier : operation52
+operators_CREATE "operators_Referrable 1..1" *-- "operators_CREATE3 1..1" operators_Referrable : parent2
+operators_CREATE "operators_EReference 1..1" -- "operators_CREATE5 1..1" operators_EReference : parentCompositeReference4
+operators_EReference "operators_MOVE30 1..1" -- "operators_EReference31 1..1" operators_MOVE : parentReference29
+operators_QueryVariable "QueryVariableQualifier 1..1" *-- "variable 1..1" operators_QueryVariableQualifier : qualifier50
+operators_QueryVariable "operators_Referrable46 1..1" *-- "operators_QueryVariable45 1..1" operators_Referrable : queryObject44
+operators_QueryVariable "operators_Result49 1..1" -- "operators_QueryVariable48 1..1" operators_Result : queryResult47
+operators_EReference "operators_SET 1..1" -- "operators_EReference19 1..1" operators_SET : reference18
+operators_EReference "operators_EReferenceQualifier 1..1" -- "operators_EReference54 1..1" operators_EReferenceQualifier : reference53
+operators_Referrable "operators_SET24 1..1" --* "operators_Referrable25 1..1" operators_SET : referenceOwner23
+operators_Variable "operators_VariableReference 1..1" -- "operators_Variable 1..1" operators_VariableReference : referencedVariable26
+operators_Operator "operators_Result 1..1" *-- "operators_Operator 0..1" operators_Result : result0
+operators_Referrable "operators_SPLIT37 1..1" --* "operators_Referrable38 1..1" operators_SPLIT : splitObject36
+operators_SPLIT "operators_StructuralFeatureSet 1..1" *-- "operators_SPLIT 1..9999" operators_StructuralFeatureSet : splitSets35
+operators_EStructuralFeature "operators_StructuralFeatureSet40 1..9999" -- "operators_EStructuralFeature 1..1" operators_StructuralFeatureSet : structuralFeatures39
+operators_EClass "operators_TypeVariable7 1..1" -- "operators_EClass 1..1" operators_TypeVariable : type6
+operators_Referrable "operators_SET21 1..1" --* "operators_Referrable22 1..1" operators_SET : value20
+operators_QueryVariable "operators_VAR 1..1" --* "operators_QueryVariable 1..1" operators_VAR : variable43
+operators_QueryVariable "qualifier 1..1" -- "QueryVariable 1..1" operators_QueryVariableQualifier : variable51
+note top of operators_CREATE
+  constraint containmentReference (OCL): context CREATE inv: self.parentCompositeReference.containment = true
+end note
+note top of operators_CREATE
+  constraint uniqueParent (OCL): context CREATE inv: letvariableReference : VariableReference = self.parent.oclAsType(VariableReference),queryResult : EObjectReference = variableReference.referencedVariable.oclAsType(QueryVariable).queryResult.oclAsType(EObjectReference)inif self.parent.oclIsKindOf(EObjectReference) thenself.parent.oclAsType(EObjectReference).elements->size() = 1elseif self.parent.oclIsKindOf(VariableReference) thenif variableReference.referencedVariable.oclIsKindOf(QueryVariable) thenif variableReference.referencedVariable.oclAsType(QueryVariable).queryResult.oclIsKindOf(EObjectReference) thenqueryResult.elements->size() = 1else falseendifelse trueendifelse trueendifendif
+end note
+note top of operators_EOperationQualifier
+  constraint parameterLessOperation (OCL): context EOperationQualifier inv: self.operation.eParameters->size() = 0
+end note
+note top of operators_MOVE
+  constraint uniqueParent2 (OCL): context MOVE inv: letvariableReference : VariableReference = self.newParent.oclAsType(VariableReference),queryResult : EObjectReference = variableReference.referencedVariable.oclAsType(QueryVariable).queryResult.oclAsType(EObjectReference)inif self.newParent.oclIsKindOf(EObjectReference) thenself.newParent.oclAsType(EObjectReference).elements->size() = 1elseif self.newParent.oclIsKindOf(VariableReference) thenif variableReference.referencedVariable.oclIsKindOf(QueryVariable) thenif variableReference.referencedVariable.oclAsType(QueryVariable).queryResult.oclIsKindOf(EObjectReference) thenqueryResult.elements->size() = 1else falseendifelse trueendifelse trueendifendif
+end note
+note top of operators_SET
+  constraint uniqueParent1 (OCL): context SET inv: letvariableReference : VariableReference = self.referenceOwner.oclAsType(VariableReference),queryResult : EObjectReference = variableReference.referencedVariable.oclAsType(QueryVariable).queryResult.oclAsType(EObjectReference)inif self.referenceOwner.oclIsKindOf(EObjectReference) thenself.referenceOwner.oclAsType(EObjectReference).elements->size() = 1elseif self.referenceOwner.oclIsKindOf(VariableReference) thenif variableReference.referencedVariable.oclIsKindOf(QueryVariable) thenif variableReference.referencedVariable.oclAsType(QueryVariable).queryResult.oclIsKindOf(EObjectReference) thenqueryResult.elements->size() = 1else falseendifelse trueendifelse trueendifendif
+end note
+note top of operators_TypeVariable
+  constraint typeMustBeConcrete (OCL): context TypeVariable inv: not(self.type.abstract = true)
+end note
+note top of operators_VariableReference
+  constraint nameNotNull (OCL): context Variable inv: not(self.name = null)
+end note
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: DB
+' project: sampleModel
+' owner: User
+' description: New project
 class DB_Column {
   + name : str
   + notNull : bool
@@ -24,16 +28,16 @@ enum DataType {
   unknown
   varchar
 }
-DB_Column "1..9999" --* "1..1" DB_Table : columns5
-DB_Database "1..1" -- "1..1" DB_Table : database7
-DB_Column "1..1" -- "0..9999" DB_ForeignKey : foreign16
-DB_Column "0..1" -- "1..1" DB_ForeignKey : foreign_column22
-DB_ForeignKey "0..9999" --* "1..1" DB_Table : foreignkeys1
-DB_Column "1..1" -- "0..1" DB_Key : key13
-DB_Column "1..9999" -- "1..1" DB_Key : key_column25
-DB_Key "0..9999" --* "1..1" DB_Table : primary_key3
-DB_ForeignKey "0..1" -- "1..1" DB_Key : referenced28
-DB_ForeignKey "1..1" -- "0..1" DB_Key : referencedKey19
-DB_Column "1..1" -- "0..1" DB_Table : table10
-DB_Database "1..1" *-- "1..9999" DB_Table : tables0
+DB_Column "DB_Table6 1..9999" --* "DB_Column 1..1" DB_Table : columns5
+DB_Database "DB_Table8 1..1" -- "DB_Database9 1..1" DB_Table : database7
+DB_Column "DB_ForeignKey18 1..1" -- "DB_Column17 0..9999" DB_ForeignKey : foreign16
+DB_Column "DB_ForeignKey23 0..1" -- "DB_Column24 1..1" DB_ForeignKey : foreign_column22
+DB_ForeignKey "DB_Table2 0..9999" --* "DB_ForeignKey 1..1" DB_Table : foreignkeys1
+DB_Column "DB_Key15 1..1" -- "DB_Column14 0..1" DB_Key : key13
+DB_Column "DB_Key26 1..9999" -- "DB_Column27 1..1" DB_Key : key_column25
+DB_Key "DB_Table4 0..9999" --* "DB_Key 1..1" DB_Table : primary_key3
+DB_ForeignKey "DB_Key29 0..1" -- "DB_ForeignKey30 1..1" DB_Key : referenced28
+DB_ForeignKey "DB_Key21 1..1" -- "DB_ForeignKey20 0..1" DB_Key : referencedKey19
+DB_Column "DB_Table12 1..1" -- "DB_Column11 0..1" DB_Table : table10
+DB_Database "DB_Table 1..1" *-- "DB_Database 1..9999" DB_Table : tables0
 @enduml

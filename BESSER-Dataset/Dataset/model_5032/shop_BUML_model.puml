@@ -1,4 +1,8 @@
 @startuml
+' model: shop
+' project: sampleModel
+' owner: User
+' description: New project
 class shop_Customer {
   + address : str
   + comments : str
@@ -30,13 +34,13 @@ class shop_Transaction {
   + price : float
   + startDate : date
 }
-shop_Customer "0..1" -- "1..1" shop_Order : customer10
-shop_Order "0..1" -- "1..1" shop_Transaction : order11
-shop_ProductCategory "1..1" -- "0..1" shop_ProductCategory : parent7
-shop_PriceCategory "0..1" -- "1..1" shop_Product : priceCategory1
-shop_Product "0..1" -- "1..1" shop_Transaction : product12
-shop_Product "1..1" -- "0..1" shop_ProductCategory : productCategory0
-shop_Product "0..9999" --* "1..1" shop_ProductCategory : products2
-shop_ProductCategory "1..1" *-- "0..9999" shop_ProductCategory : subCategorys4
-shop_Order "1..1" *-- "0..9999" shop_Transaction : transactions9
+shop_Customer "shop_Order 0..1" -- "shop_Customer 1..1" shop_Order : customer10
+shop_Order "transactions 0..1" -- "Order 1..1" shop_Transaction : order11
+shop_ProductCategory "ProductCategory8 1..1" -- "subCategorys 0..1" shop_ProductCategory : parent7
+shop_PriceCategory "shop_Product 0..1" -- "shop_PriceCategory 1..1" shop_Product : priceCategory1
+shop_Product "shop_Transaction 0..1" -- "shop_Product13 1..1" shop_Transaction : product12
+shop_Product "ProductCategory 1..1" -- "products 0..1" shop_ProductCategory : productCategory0
+shop_Product "productCategory 0..9999" --* "Product 1..1" shop_ProductCategory : products2
+shop_ProductCategory "ProductCategory5 1..1" *-- "parent 0..9999" shop_ProductCategory : subCategorys4
+shop_Order "Transaction 1..1" *-- "order 0..9999" shop_Transaction : transactions9
 @enduml

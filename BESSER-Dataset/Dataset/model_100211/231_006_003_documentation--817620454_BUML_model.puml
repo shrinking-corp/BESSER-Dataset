@@ -1,4 +1,8 @@
 @startuml
+' model: documentation
+' project: sampleModel
+' owner: User
+' description: New project
 class Fragment {
 }
 class FragmentContainer {
@@ -115,14 +119,14 @@ Text <|-- documentation_Reference
 TextContainer <|-- documentation_FragmentContainer
 TextContainer <|-- documentation_Listing
 TextContainer <|-- documentation_Paragraph
-documentation_Fragment "0..9999" --* "1..1" documentation_FragmentContainer : fragments13
-documentation_TableCell "0..9999" --* "1..1" documentation_TableHeader : headerCells7
-documentation_List "1..1" *-- "0..9999" documentation_ListItem : items3
-documentation_TableCell "0..9999" --* "1..1" documentation_TableRow : rowCells9
-documentation_Documentation "1..1" *-- "0..9999" documentation_Section : sections0
-documentation_Table "1..1" *-- "1..1" documentation_TableHeader : tableHeader4
-documentation_Table "1..1" *-- "0..9999" documentation_TableRow : tableRows5
-documentation_Documentation "1..1" *-- "0..9999" documentation_TermEntry : terminology1
-documentation_Text "0..9999" --* "1..1" documentation_TextContainer : texts14
-documentation_Image "1..1" *-- "1..1" documentation_Width : width12
+documentation_Fragment "documentation_FragmentContainer 0..9999" --* "documentation_Fragment 1..1" documentation_FragmentContainer : fragments13
+documentation_TableCell "documentation_TableHeader8 0..9999" --* "documentation_TableCell 1..1" documentation_TableHeader : headerCells7
+documentation_List "documentation_ListItem 1..1" *-- "documentation_List 0..9999" documentation_ListItem : items3
+documentation_TableCell "documentation_TableRow10 0..9999" --* "documentation_TableCell11 1..1" documentation_TableRow : rowCells9
+documentation_Documentation "documentation_Section 1..1" *-- "documentation_Documentation 0..9999" documentation_Section : sections0
+documentation_Table "documentation_TableHeader 1..1" *-- "documentation_Table 1..1" documentation_TableHeader : tableHeader4
+documentation_Table "documentation_TableRow 1..1" *-- "documentation_Table6 0..9999" documentation_TableRow : tableRows5
+documentation_Documentation "documentation_TermEntry 1..1" *-- "documentation_Documentation2 0..9999" documentation_TermEntry : terminology1
+documentation_Text "documentation_TextContainer 0..9999" --* "documentation_Text 1..1" documentation_TextContainer : texts14
+documentation_Image "documentation_Width 1..1" *-- "documentation_Image 1..1" documentation_Width : width12
 @enduml

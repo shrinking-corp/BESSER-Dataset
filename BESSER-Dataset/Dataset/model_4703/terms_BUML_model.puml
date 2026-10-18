@@ -1,4 +1,8 @@
 @startuml
+' model: terms
+' project: sampleModel
+' owner: User
+' description: New project
 class Operator {
 }
 class OperatorDecl {
@@ -93,38 +97,38 @@ Term <|-- terms_Variable
 TermsDeclaration <|-- terms_OperatorDecl
 TermsDeclaration <|-- terms_SortDecl
 TermsDeclaration <|-- terms_VariableDecl
-terms_MultisetSort "1..1" *-- "1..1" terms_Sort : basis19
-terms_All "0..1" -- "1..1" terms_Sort : containerAll9
-terms_Condition "0..1" -- "1..1" terms_Term : containerCondition26
-terms_Declaration "0..1" -- "1..1" terms_Declarations : containerDeclaration1
-terms_Declarations "0..1" -- "1..1" terms_TermsDeclaration : containerDeclarations2
-terms_Empty "0..1" -- "1..1" terms_Sort : containerEmpty10
-terms_EmptyList "0..1" -- "1..1" terms_Sort : containerEmptyList15
-terms_HLAnnotation "0..1" -- "1..1" terms_Term : containerHLAnnotation28
-terms_HLMarking "0..1" -- "1..1" terms_Term : containerHLMarking24
-terms_HLPNList "0..1" -- "1..1" terms_Sort : containerList13
-terms_MakeList "0..1" -- "1..1" terms_Sort : containerMakeList17
-terms_NamedOperator "0..1" -- "1..1" terms_Term : containerNamedOperator22
-terms_NamedOperator "0..1" -- "1..1" terms_VariableDecl : containerNamedOperator39
-terms_NamedSort "0..1" -- "1..1" terms_Sort : containerNamedSort4
-terms_Operator "0..1" -- "1..1" terms_Term : containerOperator21
-terms_Partition "0..1" -- "1..1" terms_Sort : containerPartition12
-terms_PartitionElement "0..1" -- "1..1" terms_Term : containerPartitionElement30
-terms_ProductSort "0..1" -- "1..1" terms_Sort : containerProductSort6
-terms_Sort "1..1" -- "0..1" terms_Type : containerType7
-terms_Sort "1..1" -- "0..1" terms_VariableDecl : containerVariableDecl5
-terms_Declarations "1..1" *-- "0..9999" terms_TermsDeclaration : declaration0
-terms_SortDecl "1..1" -- "1..1" terms_UserSort : declaration46
-terms_OperatorDecl "1..1" -- "1..1" terms_UserOperator : declaration52
-terms_NamedOperator "1..1" *-- "1..1" terms_Term : def_47
-terms_ProductSort "1..1" *-- "0..9999" terms_Sort : elementSort42
-terms_Operator "1..1" -- "0..9999" terms_Sort : input34
-terms_MultisetSort "0..1" -- "1..1" terms_Sort : multi3
-terms_Operator "1..1" -- "0..1" terms_Sort : output32
-terms_NamedOperator "1..1" *-- "0..9999" terms_VariableDecl : parameters49
-terms_Sort "0..1" -- "1..1" terms_Term : sort20
-terms_Sort "1..1" --* "1..1" terms_VariableDecl : sort37
-terms_NamedSort "1..1" *-- "1..1" terms_Sort : sortdef44
-terms_Operator "1..1" *-- "0..9999" terms_Term : subterm31
-terms_Variable "1..1" -- "1..1" terms_VariableDecl : variableDecl41
+terms_MultisetSort "Sort 1..1" *-- "multi 1..1" terms_Sort : basis19
+terms_All "refsort 0..1" -- "multisets.ecoreAll 1..1" terms_Sort : containerAll9
+terms_Condition "structure27 0..1" -- "hlcorestructure.ecoreCondition 1..1" terms_Term : containerCondition26
+terms_Declaration "structure 0..1" -- "hlcorestructure.ecoreDeclaration 1..1" terms_Declarations : containerDeclaration1
+terms_Declarations "declaration 0..1" -- "Declarations 1..1" terms_TermsDeclaration : containerDeclarations2
+terms_Empty "refsort11 0..1" -- "multisets.ecoreEmpty 1..1" terms_Sort : containerEmpty10
+terms_EmptyList "refsort16 0..1" -- "lists.ecoreEmptyList 1..1" terms_Sort : containerEmptyList15
+terms_HLAnnotation "structure29 0..1" -- "hlcorestructure.ecoreHLAnnotation 1..1" terms_Term : containerHLAnnotation28
+terms_HLMarking "structure25 0..1" -- "hlcorestructure.ecoreHLMarking 1..1" terms_Term : containerHLMarking24
+terms_HLPNList "basis14 0..1" -- "lists.ecoreHLPNList 1..1" terms_Sort : containerList13
+terms_MakeList "refsort18 0..1" -- "lists.ecoreMakeList 1..1" terms_Sort : containerMakeList17
+terms_NamedOperator "def_23 0..1" -- "NamedOperator 1..1" terms_Term : containerNamedOperator22
+terms_NamedOperator "parameters 0..1" -- "NamedOperator40 1..1" terms_VariableDecl : containerNamedOperator39
+terms_NamedSort "sortdef 0..1" -- "NamedSort 1..1" terms_Sort : containerNamedSort4
+terms_Operator "subterm 0..1" -- "Operator 1..1" terms_Term : containerOperator21
+terms_Partition "def_ 0..1" -- "partitions.ecorePartition 1..1" terms_Sort : containerPartition12
+terms_PartitionElement "partitionelementconstants 0..1" -- "partitions.ecorePartitionElement 1..1" terms_Term : containerPartitionElement30
+terms_ProductSort "elementSort 0..1" -- "ProductSort 1..1" terms_Sort : containerProductSort6
+terms_Sort "hlcorestructure.ecoreType 1..1" -- "structure8 0..1" terms_Type : containerType7
+terms_Sort "VariableDecl 1..1" -- "sort 0..1" terms_VariableDecl : containerVariableDecl5
+terms_Declarations "TermsDeclaration 1..1" *-- "containerDeclarations 0..9999" terms_TermsDeclaration : declaration0
+terms_SortDecl "terms_UserSort 1..1" -- "terms_SortDecl 1..1" terms_UserSort : declaration46
+terms_OperatorDecl "terms_UserOperator 1..1" -- "terms_OperatorDecl 1..1" terms_UserOperator : declaration52
+terms_NamedOperator "Term48 1..1" *-- "containerNamedOperator 1..1" terms_Term : def_47
+terms_ProductSort "Sort43 1..1" *-- "containerProductSort 0..9999" terms_Sort : elementSort42
+terms_Operator "terms_Sort36 1..1" -- "terms_Operator35 0..9999" terms_Sort : input34
+terms_MultisetSort "basis 0..1" -- "MultisetSort 1..1" terms_Sort : multi3
+terms_Operator "terms_Sort33 1..1" -- "terms_Operator 0..1" terms_Sort : output32
+terms_NamedOperator "VariableDecl51 1..1" *-- "containerNamedOperator50 0..9999" terms_VariableDecl : parameters49
+terms_Sort "terms_Term 0..1" -- "terms_Sort 1..1" terms_Term : sort20
+terms_Sort "containerVariableDecl 1..1" --* "Sort38 1..1" terms_VariableDecl : sort37
+terms_NamedSort "Sort45 1..1" *-- "containerNamedSort 1..1" terms_Sort : sortdef44
+terms_Operator "Term 1..1" *-- "containerOperator 0..9999" terms_Term : subterm31
+terms_Variable "terms_VariableDecl 1..1" -- "terms_Variable 1..1" terms_VariableDecl : variableDecl41
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: books
+' project: sampleModel
+' owner: User
+' description: New project
 class books_Book {
   + author : str
   + price : float
@@ -10,6 +14,6 @@ class books_Title {
   + lan : str
   + text : str
 }
-books_Book "1..9999" --* "1..1" books_Bookstore : books0
-books_Book "1..1" *-- "0..1" books_Title : title1
+books_Book "books_Bookstore 1..9999" --* "books_Book 1..1" books_Bookstore : books0
+books_Book "books_Title 1..1" *-- "books_Book2 0..1" books_Title : title1
 @enduml

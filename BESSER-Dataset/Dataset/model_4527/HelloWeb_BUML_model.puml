@@ -1,4 +1,8 @@
 @startuml
+' model: helloWeb
+' project: sampleModel
+' owner: User
+' description: New project
 class Command {
 }
 class SuperCommand {
@@ -67,7 +71,7 @@ Command <|-- helloWeb_Up
 Command <|-- helloWeb_Wait
 SuperCommand <|-- helloWeb_Command
 SuperCommand <|-- helloWeb_FunctionName
-helloWeb_Main "1..1" *-- "0..9999" helloWeb_SuperCommand : commands1
-helloWeb_Command "0..9999" --* "1..1" helloWeb_UserFunction : func3
-helloWeb_Main "0..1" --* "1..1" helloWeb_Program : main0
+helloWeb_Main "helloWeb_SuperCommand 1..1" *-- "helloWeb_Main2 0..9999" helloWeb_SuperCommand : commands1
+helloWeb_Command "helloWeb_UserFunction 0..9999" --* "helloWeb_Command 1..1" helloWeb_UserFunction : func3
+helloWeb_Main "helloWeb_Program 0..1" --* "helloWeb_Main 1..1" helloWeb_Program : main0
 @enduml

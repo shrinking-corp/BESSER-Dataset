@@ -918,15 +918,15 @@ def test_hyp_storage1_constructor_args():
 
 
 
-def test_hyp_kitchen_worker_is_not_abstract():
+def test_hyp_kitchen_worker_is_not_abstract__2():
     assert not inspect.isabstract(Kitchen_worker)
 
 
-def test_hyp_kitchen_worker_constructor_exists():
+def test_hyp_kitchen_worker_constructor_exists__2():
     assert callable(Kitchen_worker.__init__)
 
 
-def test_hyp_kitchen_worker_constructor_args():
+def test_hyp_kitchen_worker_constructor_args__2():
     sig = inspect.signature(Kitchen_worker.__init__)
     params = list(sig.parameters.keys())
     assert "Email" in params, "Missing parameter 'Email'"
@@ -1198,15 +1198,15 @@ def test_hyp_date2_constructor_args():
 
 
 
-def test_hyp_shopping_cart_is_not_abstract():
+def test_hyp_shopping_cart_is_not_abstract__2():
     assert not inspect.isabstract(Shopping_cart)
 
 
-def test_hyp_shopping_cart_constructor_exists():
+def test_hyp_shopping_cart_constructor_exists__2():
     assert callable(Shopping_cart.__init__)
 
 
-def test_hyp_shopping_cart_constructor_args():
+def test_hyp_shopping_cart_constructor_args__2():
     sig = inspect.signature(Shopping_cart.__init__)
     params = list(sig.parameters.keys())
     assert "time" in params, "Missing parameter 'time'"
@@ -1446,15 +1446,15 @@ def test_hyp_customer_actor_constructor_args():
 
 
 
-def test_hyp_catering_is_not_abstract():
+def test_hyp_catering_is_not_abstract__2():
     assert not inspect.isabstract(Catering)
 
 
-def test_hyp_catering_constructor_exists():
+def test_hyp_catering_constructor_exists__2():
     assert callable(Catering.__init__)
 
 
-def test_hyp_catering_constructor_args():
+def test_hyp_catering_constructor_args__2():
     sig = inspect.signature(Catering.__init__)
     params = list(sig.parameters.keys())
     assert "Menu" in params, "Missing parameter 'Menu'"
@@ -1506,15 +1506,15 @@ def test_hyp_printrecipts_constructor_args():
 
 
 
-def test_hyp_payment_is_not_abstract():
+def test_hyp_payment_is_not_abstract__2():
     assert not inspect.isabstract(Payment)
 
 
-def test_hyp_payment_constructor_exists():
+def test_hyp_payment_constructor_exists__2():
     assert callable(Payment.__init__)
 
 
-def test_hyp_payment_constructor_args():
+def test_hyp_payment_constructor_args__2():
     sig = inspect.signature(Payment.__init__)
     params = list(sig.parameters.keys())
     assert "OrderID" in params, "Missing parameter 'OrderID'"
@@ -1532,15 +1532,15 @@ def test_hyp_payment_constructor_args():
 
 
 
-def test_hyp_order_is_not_abstract():
+def test_hyp_order_is_not_abstract__2():
     assert not inspect.isabstract(Order)
 
 
-def test_hyp_order_constructor_exists():
+def test_hyp_order_constructor_exists__2():
     assert callable(Order.__init__)
 
 
-def test_hyp_order_constructor_args():
+def test_hyp_order_constructor_args__2():
     sig = inspect.signature(Order.__init__)
     params = list(sig.parameters.keys())
     assert "date" in params, "Missing parameter 'date'"
@@ -1556,15 +1556,15 @@ def test_hyp_order_constructor_args():
 
 
 
-def test_hyp_menu_is_not_abstract():
+def test_hyp_menu_is_not_abstract__2():
     assert not inspect.isabstract(Menu)
 
 
-def test_hyp_menu_constructor_exists():
+def test_hyp_menu_constructor_exists__2():
     assert callable(Menu.__init__)
 
 
-def test_hyp_menu_constructor_args():
+def test_hyp_menu_constructor_args__2():
     sig = inspect.signature(Menu.__init__)
     params = list(sig.parameters.keys())
     assert "DishName" in params, "Missing parameter 'DishName'"
@@ -1668,15 +1668,15 @@ def test_hyp_employee_constructor_args():
 
 
 
-def test_hyp_chef_is_not_abstract():
+def test_hyp_chef_is_not_abstract__2():
     assert not inspect.isabstract(chef)
 
 
-def test_hyp_chef_constructor_exists():
+def test_hyp_chef_constructor_exists__2():
     assert callable(chef.__init__)
 
 
-def test_hyp_chef_constructor_args():
+def test_hyp_chef_constructor_args__2():
     sig = inspect.signature(chef.__init__)
     params = list(sig.parameters.keys())
     assert "passowrd" in params, "Missing parameter 'passowrd'"
@@ -3920,7 +3920,7 @@ def test_hyp_payment_PaymentID_setter(instance):
 
 
 @given(instance=Order_strategy)
-def test_hyp_order_date_setter(instance):
+def test_hyp_order_date_setter__2(instance):
     original = instance.date
     instance.date = original
     assert instance.date == original
@@ -8956,9 +8956,9 @@ def test_assoc_Component_waiter_stub_double():
     partner = kitchen_worker()
     setattr(partner, 'component139', None)
     _safe_set(owner, 'waiter138', {partner})
-    assert getattr(partner, 'component139') == owner
+    assert owner in getattr(partner, 'component139')
     _safe_set(owner, 'waiter138', set())
-    assert getattr(partner, 'component139') is None
+    assert owner not in getattr(partner, 'component139')
 
 
 def test_assoc_Csutomer_catering_stub_double():
@@ -9001,9 +9001,9 @@ def test_assoc_Payment_bank_account_stub_double():
     partner = bank_account()
     setattr(partner, 'payment67', None)
     _safe_set(owner, 'bank_account66', partner)
-    assert getattr(partner, 'payment67') == owner
+    assert owner in getattr(partner, 'payment67')
     _safe_set(owner, 'bank_account66', None)
-    assert getattr(partner, 'payment67') is None
+    assert owner not in getattr(partner, 'payment67')
 
 
 def test_assoc_System_bank_account_stub_double():
@@ -9076,9 +9076,9 @@ def test_assoc_chef_planning_stub_double():
     partner = chef2()
     setattr(partner, 'planning150', None)
     _safe_set(owner, 'chef151', partner)
-    assert getattr(partner, 'planning150') == owner
+    assert owner in getattr(partner, 'planning150')
     _safe_set(owner, 'chef151', None)
-    assert getattr(partner, 'planning150') is None
+    assert owner not in getattr(partner, 'planning150')
 
 
 def test_assoc_menu_catering_stub_double():
@@ -9121,9 +9121,9 @@ def test_assoc_order_shopping_cart2_stub_double():
     partner = shopping_cart()
     setattr(partner, 'order159', None)
     _safe_set(owner, 'shopping_cart158', {partner})
-    assert getattr(partner, 'order159') == owner
+    assert owner in getattr(partner, 'order159')
     _safe_set(owner, 'shopping_cart158', set())
-    assert getattr(partner, 'order159') is None
+    assert owner not in getattr(partner, 'order159')
 
 
 def test_assoc_planning_chef_stub_double():
@@ -9151,9 +9151,9 @@ def test_assoc_shopping_cart_payment_stub_double():
     partner = shopping_cart()
     setattr(partner, 'payment132', None)
     _safe_set(owner, 'shopping_cart133', {partner})
-    assert getattr(partner, 'payment132') == owner
+    assert owner in getattr(partner, 'payment132')
     _safe_set(owner, 'shopping_cart133', set())
-    assert getattr(partner, 'payment132') is None
+    assert owner not in getattr(partner, 'payment132')
 
 
 def test_assoc_shopping_cart_payment2_stub_double():
@@ -9196,9 +9196,9 @@ def test_assoc_weekly_planning_of_dishes__by_waiter_waiter2_stub_double():
     partner = kitchen_worker()
     setattr(partner, 'weekly_planning_of_dishes__by_waiter147', None)
     _safe_set(owner, 'waiter146', {partner})
-    assert getattr(partner, 'weekly_planning_of_dishes__by_waiter147') == owner
+    assert owner in getattr(partner, 'weekly_planning_of_dishes__by_waiter147')
     _safe_set(owner, 'waiter146', set())
-    assert getattr(partner, 'weekly_planning_of_dishes__by_waiter147') is None
+    assert owner not in getattr(partner, 'weekly_planning_of_dishes__by_waiter147')
 
 
 
@@ -9207,94 +9207,76 @@ from python_code import Account
 
 def test_Account___init__():
     assert Account.__init__(Account('', '', '', '', '', ''), '', '', '', '', '\x00', '') == None
-
 from python_code import Account1
 
 def test_Account1___init__():
     assert Account1.__init__(Account1('', '', '', '', '', ''), '', '', '', '', '\x00', '') == None
-
 from python_code import Account_for_employee
 
 def test_Account_for_employee___init__():
     assert Account_for_employee.__init__(Account_for_employee('', '', '', '', '', ''), '', '', '', '', '\x00', '') == None
-
 from python_code import Catering
 
 def test_Catering___init__():
     assert Catering.__init__(Catering('', '\x00'), '\x00\x00', '') == None
-
 from python_code import Customer
 
 def test_Customer___init__():
     assert Customer.__init__(Customer('', 0, '', '', '', '', 0), '', 0, '', '', '', '', 0) == None
-
 from python_code import Customer_Balance
 
 def test_Customer_Balance___init__():
     assert Customer_Balance.__init__(Customer_Balance(0, '', '', '', ''), 0, '', '', '', '') == None
-
 from python_code import Employee
 
 def test_Employee___init__():
     assert Employee.__init__(Employee('', '', '', 0, '\x00', storage0=set(), plan2=set()), '', '', '', 0, '', storage0=set(), plan2=set()) == None
-
 from python_code import Employee1
 
 def test_Employee1___init__():
     assert Employee1.__init__(Employee1('', '', '', '', ''), '', '', '', '', '') == None
-
 from python_code import Menu
 
 def test_Menu___init__():
     assert Menu.__init__(Menu('\x00\x00', '', '', ''), '', '', '', '') == None
-
 from python_code import Order
 
 def test_Order___init__():
     assert Order.__init__(Order(0, 0, '', '', ''), 0, 0, '', '', '') == None
-
 from python_code import Payment
 
 def test_Payment___init__():
     assert Payment.__init__(Payment(0, '', 0, 0, '', ''), 0, '', 0, 0, '\x00', '') == None
-
 from python_code import Plan
 
 def test_Plan___init__():
     assert Plan.__init__(Plan('', '', '', employee3=set()), '', '', '', employee3=set()) == None
-
 from python_code import PrintRecipts
 
 def test_PrintRecipts___init__():
     assert PrintRecipts.__init__(PrintRecipts('', '', '', 0, '', '', 0), '', '\x00', '', 0, '', '', 0) == None
-
 from python_code import Shopping_cart
 
 def test_Shopping_cart___init__():
     assert Shopping_cart.__init__(Shopping_cart('', 0, 0, '', ''), '', 0, 0, '', '') == None
-
 from python_code import Storage
 
 def test_Storage___init__():
     assert Storage.__init__(Storage(0, '\x00', employee1=set()), 0, '', employee1=set()) == None
-
 from python_code import account_type
 
 def test_account_type___init__():
     assert account_type.__init__(account_type('', '', '', '', ''), '', '', '', '', '') == None
-
 from python_code import chef2
 from python_code import dayplan
 
 def test_dayplan___init__():
     assert dayplan.__init__(dayplan('', '', '', '', '', '', '', '', weekly_planning_of_dishes__by_waiter134=set(), chef136=chef2(), chef151=chef2()), '', '', '', '', '', '', '', '', weekly_planning_of_dishes__by_waiter134=set(), chef136=chef2(), chef151=chef2()) == None
-
 from python_code import payment
 from python_code import shopping_cart
 
 def test_payment___init__():
     assert payment.__init__(payment('', '', '', shopping_cart133=set(), shopping_cart171=shopping_cart()), '', '', '', shopping_cart133=set(), shopping_cart171=shopping_cart()) == None
-
 from python_code import solid1
 
 def test_solid1___init__():

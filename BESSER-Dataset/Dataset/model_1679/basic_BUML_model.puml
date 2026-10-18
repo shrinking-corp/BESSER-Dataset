@@ -1,4 +1,8 @@
 @startuml
+' model: basic
+' project: sampleModel
+' owner: User
+' description: New project
 class basic_RelatedTo {
   + since : str
 }
@@ -7,8 +11,8 @@ class basic_Thing {
 }
 class basic_World {
 }
-basic_RelatedTo "1..1" -- "0..1" basic_Thing : fromThing2
-basic_RelatedTo "0..9999" --* "1..1" basic_Thing : relations1
-basic_Thing "0..9999" --* "1..1" basic_World : things0
-basic_RelatedTo "1..1" -- "0..1" basic_Thing : toThing3
+basic_RelatedTo "Thing 1..1" -- "relations 0..1" basic_Thing : fromThing2
+basic_RelatedTo "fromThing 0..9999" --* "RelatedTo 1..1" basic_Thing : relations1
+basic_Thing "basic_World 0..9999" --* "basic_Thing 1..1" basic_World : things0
+basic_RelatedTo "basic_Thing4 1..1" -- "basic_RelatedTo 0..1" basic_Thing : toThing3
 @enduml

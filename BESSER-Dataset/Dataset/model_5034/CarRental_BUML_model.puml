@@ -1,4 +1,8 @@
 @startuml
+' model: CarRentalModel
+' project: sampleModel
+' owner: User
+' description: New project
 class CarRentalModel_Agency {
   + place : str
   + street : str
@@ -36,12 +40,12 @@ class Customer {
 Craft <|-- CarRentalModel_Automobile
 Craft <|-- CarRentalModel_Motorcycle
 Customer <|-- CarRentalModel_VipCustomer
-CarRentalModel_Agency "1..9999" --* "1..1" CarRentalModel_CarRental : agencies1
-CarRentalModel_Customer "1..1" *-- "1..9999" CarRentalModel_Order : bestellungen8
-CarRentalModel_Craft "1..1" -- "1..1" CarRentalModel_Order : craft9
-CarRentalModel_CarRental "1..1" *-- "1..9999" CarRentalModel_Craft : crafts3
-CarRentalModel_CarRental "1..1" *-- "0..9999" CarRentalModel_Customer : customer0
-CarRentalModel_Customer "1..1" -- "1..1" CarRentalModel_Order : customer10
-CarRentalModel_Agency "1..1" -- "1..1" CarRentalModel_CarRental : mainAgency5
-CarRentalModel_Craft "1..1" -- "0..9999" CarRentalModel_Order : rentBy11
+CarRentalModel_Agency "CarRentalModel_CarRental2 1..9999" --* "CarRentalModel_Agency 1..1" CarRentalModel_CarRental : agencies1
+CarRentalModel_Customer "Order 1..1" *-- "customer 1..9999" CarRentalModel_Order : bestellungen8
+CarRentalModel_Craft "rentBy 1..1" -- "Craft 1..1" CarRentalModel_Order : craft9
+CarRentalModel_CarRental "CarRentalModel_Craft 1..1" *-- "CarRentalModel_CarRental4 1..9999" CarRentalModel_Craft : crafts3
+CarRentalModel_CarRental "CarRentalModel_Customer 1..1" *-- "CarRentalModel_CarRental 0..9999" CarRentalModel_Customer : customer0
+CarRentalModel_Customer "bestellungen 1..1" -- "Customer 1..1" CarRentalModel_Order : customer10
+CarRentalModel_Agency "CarRentalModel_CarRental6 1..1" -- "CarRentalModel_Agency7 1..1" CarRentalModel_CarRental : mainAgency5
+CarRentalModel_Craft "Order12 1..1" -- "craft 0..9999" CarRentalModel_Order : rentBy11
 @enduml

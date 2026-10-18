@@ -355,9 +355,9 @@ def test_assoc_arguments77_stub_double():
     partner = docl_CollectionOpCallExp()
     setattr(partner, 'docl_CollectionOpCallExp', None)
     _safe_set(owner, 'docl_OclExpression78', partner)
-    assert getattr(partner, 'docl_CollectionOpCallExp') == owner
+    assert owner in getattr(partner, 'docl_CollectionOpCallExp')
     _safe_set(owner, 'docl_OclExpression78', None)
-    assert getattr(partner, 'docl_CollectionOpCallExp') is None
+    assert owner not in getattr(partner, 'docl_CollectionOpCallExp')
 
 
 def test_assoc_arguments92_stub_double():
@@ -370,9 +370,9 @@ def test_assoc_arguments92_stub_double():
     partner = docl_OperationCall()
     setattr(partner, 'docl_OperationCall', None)
     _safe_set(owner, 'docl_OclExpression93', partner)
-    assert getattr(partner, 'docl_OperationCall') == owner
+    assert owner in getattr(partner, 'docl_OperationCall')
     _safe_set(owner, 'docl_OclExpression93', None)
-    assert getattr(partner, 'docl_OperationCall') is None
+    assert owner not in getattr(partner, 'docl_OperationCall')
 
 
 def test_assoc_body84_stub_double():
@@ -565,9 +565,9 @@ def test_assoc_ifThen39_stub_double():
     partner = docl_IfExp()
     setattr(partner, 'docl_IfExp40', None)
     _safe_set(owner, 'docl_OclExpression41', partner)
-    assert getattr(partner, 'docl_IfExp40') == owner
+    assert owner in getattr(partner, 'docl_IfExp40')
     _safe_set(owner, 'docl_OclExpression41', None)
-    assert getattr(partner, 'docl_IfExp40') is None
+    assert owner not in getattr(partner, 'docl_IfExp40')
 
 
 def test_assoc_iterators79_stub_double():
@@ -580,9 +580,9 @@ def test_assoc_iterators79_stub_double():
     partner = docl_IterateExp()
     setattr(partner, 'docl_IterateExp', None)
     _safe_set(owner, 'docl_Iterator80', partner)
-    assert getattr(partner, 'docl_IterateExp') == owner
+    assert owner in getattr(partner, 'docl_IterateExp')
     _safe_set(owner, 'docl_Iterator80', None)
-    assert getattr(partner, 'docl_IterateExp') is None
+    assert owner not in getattr(partner, 'docl_IterateExp')
 
 
 def test_assoc_iterators87_stub_double():
@@ -595,9 +595,9 @@ def test_assoc_iterators87_stub_double():
     partner = docl_IteratorExp()
     setattr(partner, 'docl_IteratorExp', None)
     _safe_set(owner, 'docl_Iterator88', partner)
-    assert getattr(partner, 'docl_IteratorExp') == owner
+    assert owner in getattr(partner, 'docl_IteratorExp')
     _safe_set(owner, 'docl_Iterator88', None)
-    assert getattr(partner, 'docl_IteratorExp') is None
+    assert owner not in getattr(partner, 'docl_IteratorExp')
 
 
 def test_assoc_keyType52_stub_double():
@@ -625,9 +625,9 @@ def test_assoc_parts96_stub_double():
     partner = docl_TupleExp()
     setattr(partner, 'docl_TupleExp', None)
     _safe_set(owner, 'docl_TuplePart97', partner)
-    assert getattr(partner, 'docl_TupleExp') == owner
+    assert owner in getattr(partner, 'docl_TupleExp')
     _safe_set(owner, 'docl_TuplePart97', None)
-    assert getattr(partner, 'docl_TupleExp') is None
+    assert owner not in getattr(partner, 'docl_TupleExp')
 
 
 def test_assoc_result81_stub_double():

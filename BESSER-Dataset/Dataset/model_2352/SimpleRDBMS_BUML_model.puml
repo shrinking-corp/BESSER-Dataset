@@ -1,4 +1,8 @@
 @startuml
+' model: rdbms
+' project: sampleModel
+' owner: User
+' description: New project
 class RModelElement {
 }
 class rdbms_Column {
@@ -21,17 +25,17 @@ RModelElement <|-- rdbms_ForeignKey
 RModelElement <|-- rdbms_Key
 RModelElement <|-- rdbms_Schema
 RModelElement <|-- rdbms_Table
-rdbms_Column "0..9999" -- "1..1" rdbms_Key : column11
-rdbms_Column "0..9999" --* "1..1" rdbms_Table : columns16
-rdbms_Column "0..9999" -- "1..1" rdbms_ForeignKey : columns5
-rdbms_Column "1..1" -- "0..9999" rdbms_ForeignKey : foreignKeys1
-rdbms_ForeignKey "0..9999" --* "1..1" rdbms_Table : foreignKeys22
-rdbms_Key "0..9999" --* "1..1" rdbms_Table : keys19
-rdbms_Column "1..1" -- "0..9999" rdbms_Key : keys3
-rdbms_Column "1..1" -- "1..1" rdbms_Table : owner0
-rdbms_ForeignKey "1..1" -- "1..1" rdbms_Table : owner6
-rdbms_Key "1..1" -- "1..1" rdbms_Table : owner9
-rdbms_ForeignKey "1..1" -- "1..1" rdbms_Key : refersTo4
-rdbms_Schema "1..1" -- "1..1" rdbms_Table : schema18
-rdbms_Schema "1..1" *-- "0..9999" rdbms_Table : tables14
+rdbms_Column "keys12 0..9999" -- "Column13 1..1" rdbms_Key : column11
+rdbms_Column "owner 0..9999" --* "Column17 1..1" rdbms_Table : columns16
+rdbms_Column "foreignKeys 0..9999" -- "Column 1..1" rdbms_ForeignKey : columns5
+rdbms_Column "ForeignKey 1..1" -- "columns2 0..9999" rdbms_ForeignKey : foreignKeys1
+rdbms_ForeignKey "owner23 0..9999" --* "ForeignKey24 1..1" rdbms_Table : foreignKeys22
+rdbms_Key "owner20 0..9999" --* "Key21 1..1" rdbms_Table : keys19
+rdbms_Column "Key 1..1" -- "column 0..9999" rdbms_Key : keys3
+rdbms_Column "Table 1..1" -- "columns 1..1" rdbms_Table : owner0
+rdbms_ForeignKey "Table8 1..1" -- "foreignKeys7 1..1" rdbms_Table : owner6
+rdbms_Key "Table10 1..1" -- "keys 1..1" rdbms_Table : owner9
+rdbms_ForeignKey "rdbms_Key 1..1" -- "rdbms_ForeignKey 1..1" rdbms_Key : refersTo4
+rdbms_Schema "tables 1..1" -- "Schema 1..1" rdbms_Table : schema18
+rdbms_Schema "Table15 1..1" *-- "schema 0..9999" rdbms_Table : tables14
 @enduml

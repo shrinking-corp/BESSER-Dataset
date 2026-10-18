@@ -1,4 +1,8 @@
 @startuml
+' model: failureLogic
+' project: sampleModel
+' owner: User
+' description: New project
 class BaseElement {
 }
 class Cause {
@@ -102,27 +106,27 @@ FailureModel <|-- failureLogic_FMEA
 FailureModel <|-- failureLogic_FaultTree
 FailureModel <|-- failureLogic_MarkovChain
 ODEProductPackage <|-- failureLogic_FailureLogicPackage
-failureLogic_Cause "0..9999" --* "1..1" failureLogic_FaultTree : causes23
-failureLogic_Cause "0..9999" -- "1..1" failureLogic_Gate : causes27
-failureLogic_Failure "0..9999" -- "1..1" failureLogic_Failure : ccfFailures3
-failureLogic_MinimalCutSets "1..1" *-- "0..9999" failureLogic_MinimalCutset : cutsets13
-failureLogic_FMEDAEntry "1..1" *-- "0..1" failureLogic_ProbDist : diagnosisProbDistribution51
-failureLogic_FMEAEntry "1..1" -- "0..1" failureLogic_Failure : effect45
-failureLogic_FMEA "1..1" *-- "0..9999" failureLogic_FMEAEntry : entries44
-failureLogic_Failure "0..1" -- "1..1" failureLogic_State : failState32
-failureLogic_Cause "1..1" -- "0..1" failureLogic_Failure : failure24
-failureLogic_FailureLogicPackage "1..1" *-- "0..9999" failureLogic_FailureModel : failureModels0
-failureLogic_Failure "1..1" *-- "0..1" failureLogic_ProbDist : failureProbDistribution1
-failureLogic_Failure "0..9999" -- "1..1" failureLogic_MinimalCutSets : failures15
-failureLogic_Failure "0..9999" -- "1..1" failureLogic_MinimalCutset : failures18
-failureLogic_Failure "0..9999" --* "1..1" failureLogic_FailureModel : failures7
-failureLogic_State "0..9999" -- "1..1" failureLogic_Transition : fromStates38
-failureLogic_FailureModel "1..1" *-- "0..9999" failureLogic_MinimalCutSets : minimalCutsets5
-failureLogic_FMEAEntry "1..1" -- "0..1" failureLogic_Failure : mode48
-failureLogic_ProbDist "1..1" *-- "0..9999" failureLogic_ProbDistParam : parameters21
-failureLogic_MarkovChain "1..1" *-- "0..9999" failureLogic_State : states30
-failureLogic_FailureModel "0..9999" -- "1..1" failureLogic_FailureModel : subModels11
-failureLogic_State "0..9999" -- "1..1" failureLogic_Transition : toStates41
-failureLogic_ProbDist "0..1" --* "1..1" failureLogic_Transition : transitionProbDistribution35
-failureLogic_MarkovChain "1..1" *-- "0..9999" failureLogic_Transition : transitions29
+failureLogic_Cause "failureLogic_FaultTree 0..9999" --* "failureLogic_Cause 1..1" failureLogic_FaultTree : causes23
+failureLogic_Cause "failureLogic_Gate 0..9999" -- "failureLogic_Cause28 1..1" failureLogic_Gate : causes27
+failureLogic_Failure "failureLogic_Failure2 0..9999" -- "failureLogic_Failure4 1..1" failureLogic_Failure : ccfFailures3
+failureLogic_MinimalCutSets "failureLogic_MinimalCutset 1..1" *-- "failureLogic_MinimalCutSets14 0..9999" failureLogic_MinimalCutset : cutsets13
+failureLogic_FMEDAEntry "failureLogic_ProbDist52 1..1" *-- "failureLogic_FMEDAEntry 0..1" failureLogic_ProbDist : diagnosisProbDistribution51
+failureLogic_FMEAEntry "failureLogic_Failure47 1..1" -- "failureLogic_FMEAEntry46 0..1" failureLogic_Failure : effect45
+failureLogic_FMEA "failureLogic_FMEAEntry 1..1" *-- "failureLogic_FMEA 0..9999" failureLogic_FMEAEntry : entries44
+failureLogic_Failure "failureLogic_State33 0..1" -- "failureLogic_Failure34 1..1" failureLogic_State : failState32
+failureLogic_Cause "failureLogic_Failure26 1..1" -- "failureLogic_Cause25 0..1" failureLogic_Failure : failure24
+failureLogic_FailureLogicPackage "failureLogic_FailureModel 1..1" *-- "failureLogic_FailureLogicPackage 0..9999" failureLogic_FailureModel : failureModels0
+failureLogic_Failure "failureLogic_ProbDist 1..1" *-- "failureLogic_Failure 0..1" failureLogic_ProbDist : failureProbDistribution1
+failureLogic_Failure "failureLogic_MinimalCutSets16 0..9999" -- "failureLogic_Failure17 1..1" failureLogic_MinimalCutSets : failures15
+failureLogic_Failure "failureLogic_MinimalCutset19 0..9999" -- "failureLogic_Failure20 1..1" failureLogic_MinimalCutset : failures18
+failureLogic_Failure "failureLogic_FailureModel8 0..9999" --* "failureLogic_Failure9 1..1" failureLogic_FailureModel : failures7
+failureLogic_State "failureLogic_Transition39 0..9999" -- "failureLogic_State40 1..1" failureLogic_Transition : fromStates38
+failureLogic_FailureModel "failureLogic_MinimalCutSets 1..1" *-- "failureLogic_FailureModel6 0..9999" failureLogic_MinimalCutSets : minimalCutsets5
+failureLogic_FMEAEntry "failureLogic_Failure50 1..1" -- "failureLogic_FMEAEntry49 0..1" failureLogic_Failure : mode48
+failureLogic_ProbDist "failureLogic_ProbDistParam 1..1" *-- "failureLogic_ProbDist22 0..9999" failureLogic_ProbDistParam : parameters21
+failureLogic_MarkovChain "failureLogic_State 1..1" *-- "failureLogic_MarkovChain31 0..9999" failureLogic_State : states30
+failureLogic_FailureModel "failureLogic_FailureModel10 0..9999" -- "failureLogic_FailureModel12 1..1" failureLogic_FailureModel : subModels11
+failureLogic_State "failureLogic_Transition42 0..9999" -- "failureLogic_State43 1..1" failureLogic_Transition : toStates41
+failureLogic_ProbDist "failureLogic_Transition36 0..1" --* "failureLogic_ProbDist37 1..1" failureLogic_Transition : transitionProbDistribution35
+failureLogic_MarkovChain "failureLogic_Transition 1..1" *-- "failureLogic_MarkovChain 0..9999" failureLogic_Transition : transitions29
 @enduml

@@ -84,9 +84,9 @@ def test_assoc_srcP2T3_stub_double():
     partner = pn_Transition()
     setattr(partner, 'trgP2T', None)
     _safe_set(owner, 'Place4', partner)
-    assert getattr(partner, 'trgP2T') == owner
+    assert owner in getattr(partner, 'trgP2T')
     _safe_set(owner, 'Place4', None)
-    assert getattr(partner, 'trgP2T') is None
+    assert owner not in getattr(partner, 'trgP2T')
 
 
 def test_assoc_srcT2P6_stub_double():
@@ -129,8 +129,8 @@ def test_assoc_trgT2P2_stub_double():
     partner = pn_Transition()
     setattr(partner, 'srcT2P', None)
     _safe_set(owner, 'Place', partner)
-    assert getattr(partner, 'srcT2P') == owner
+    assert owner in getattr(partner, 'srcT2P')
     _safe_set(owner, 'Place', None)
-    assert getattr(partner, 'srcT2P') is None
+    assert owner not in getattr(partner, 'srcT2P')
 
 

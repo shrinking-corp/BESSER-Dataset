@@ -1,4 +1,8 @@
 @startuml
+' model: gyro
+' project: sampleModel
+' owner: User
+' description: New project
 class Action {
 }
 class Actuate {
@@ -101,11 +105,11 @@ Condition <|-- gyro_Distance
 Condition <|-- gyro_Waiting
 Node <|-- gyro_Action
 Node <|-- gyro_Behavior
-gyro_Child "0..9999" --* "1..1" gyro_GyroSpecification : child1
-gyro_GyroSpecification "1..1" *-- "0..9999" gyro_Sibling : next3
-gyro_GyroSpecification "1..1" *-- "0..9999" gyro_Node : nodes0
-gyro_Node "0..9999" -- "1..1" gyro_Sibling : source10
-gyro_Behavior "0..9999" -- "1..1" gyro_Child : source5
-gyro_Node "0..9999" -- "1..1" gyro_Sibling : target13
-gyro_Child "1..1" -- "0..9999" gyro_Node : target7
+gyro_Child "gyro_GyroSpecification2 0..9999" --* "gyro_Child 1..1" gyro_GyroSpecification : child1
+gyro_GyroSpecification "gyro_Sibling 1..1" *-- "gyro_GyroSpecification4 0..9999" gyro_Sibling : next3
+gyro_GyroSpecification "gyro_Node 1..1" *-- "gyro_GyroSpecification 0..9999" gyro_Node : nodes0
+gyro_Node "gyro_Sibling11 0..9999" -- "gyro_Node12 1..1" gyro_Sibling : source10
+gyro_Behavior "gyro_Child6 0..9999" -- "gyro_Behavior 1..1" gyro_Child : source5
+gyro_Node "gyro_Sibling14 0..9999" -- "gyro_Node15 1..1" gyro_Sibling : target13
+gyro_Child "gyro_Node9 1..1" -- "gyro_Child8 0..9999" gyro_Node : target7
 @enduml

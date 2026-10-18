@@ -1,4 +1,8 @@
 @startuml
+' model: _53x30EihEeqonN_RS9oRzw
+' project: sampleModel
+' owner: User
+' description: New project
 class Cosul_de_cumparaturi {
   + creationDate : date
 }
@@ -43,14 +47,14 @@ class cont {
   + isClosed : bool
   + open : date
 }
-Ordin "0..9999" -- "1..1" cont : Account_Order
-Plata "0..9999" -- "1..1" cont : Account_Payment
-Cosul_de_cumparaturi "1..1" -- "1..1" cont : Account_ShoppingCart
-client "1..1" -- "1..1" cont : Customer_Account
-LineItem "1..9999" -- "0..1" Ordin : Order_LineItem
-Ordin "1..1" -- "0..1" Plata : Payment_Order
-LineItem "0..9999" -- "1..1" Produse : Product_LineItem
-Cosul_de_cumparaturi "1..1" -- "1..1" LineItem : ShoppingCart_LineItem
-WebUser "1..1" -- "1..1" client : WebUser_Customer
-Cosul_de_cumparaturi "0..1" -- "1..1" WebUser : WebUser_ShoppingCart
+Ordin "ordin16 0..9999" -- "cont17 1..1" cont : Account_Order
+Plata "p0 0..9999" -- "acc1 1..1" cont : Account_Payment
+Cosul_de_cumparaturi "cart8 1..1" -- "cont9 1..1" cont : Account_ShoppingCart
+client "client7 1..1" -- "cont6 1..1" cont : Customer_Account
+LineItem "articole14 1..9999" -- "order15 0..1" Ordin : Order_LineItem
+Ordin "ordin18 1..1" -- "payment19 0..1" Plata : Payment_Order
+LineItem "elemente_de_linie12 0..9999" -- "product13 1..1" Produse : Product_LineItem
+Cosul_de_cumparaturi "sc11 1..1" -- "articole10 1..1" LineItem : ShoppingCart_LineItem
+WebUser "webUser5 1..1" -- "client4 1..1" client : WebUser_Customer
+Cosul_de_cumparaturi "Cosul_de_cumparaturi2 0..1" -- "webUser3 1..1" WebUser : WebUser_ShoppingCart
 @enduml

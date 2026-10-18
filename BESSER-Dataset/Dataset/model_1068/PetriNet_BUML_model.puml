@@ -1,4 +1,8 @@
 @startuml
+' model: PetriNet
+' project: sampleModel
+' owner: User
+' description: New project
 class Arc {
 }
 class Element {
@@ -46,16 +50,16 @@ LocatedElement <|-- PetriNet_NamedElement
 NamedElement <|-- PetriNet_Arc
 NamedElement <|-- PetriNet_Element
 NamedElement <|-- PetriNet_PetriNet
-Arc "0..9999" --* "1..1" PetriNet_PetriNet : arcs1
-Element "0..9999" --* "1..1" PetriNet_PetriNet : elements0
-PetriNet_PlaceToTransition "1..1" -- "1..1" Place : from_14
-PetriNet_TransitionToPlace "1..1" -- "1..1" Transition : from_16
-PetriNet_Place "1..1" -- "0..9999" TransitionToPlace : incomingArc4
-PetriNet_Transition "1..1" -- "1..9999" PlaceToTransition : incomingArc6
-PetriNet "1..1" -- "1..1" PetriNet_Arc : net12
-PetriNet "1..1" -- "1..1" PetriNet_Element : net3
-PetriNet_Place "1..1" -- "0..9999" PlaceToTransition : outgoingArc5
-PetriNet_Transition "1..1" -- "1..9999" TransitionToPlace : outgoingArc9
-PetriNet_PlaceToTransition "1..1" -- "1..1" Transition : to15
-PetriNet_TransitionToPlace "1..1" -- "1..1" Place : to19
+Arc "net2 0..9999" --* "Arc 1..1" PetriNet_PetriNet : arcs1
+Element "net 0..9999" --* "Element 1..1" PetriNet_PetriNet : elements0
+PetriNet_PlaceToTransition "Place 1..1" -- "outgoingArc 1..1" Place : from_14
+PetriNet_TransitionToPlace "Transition18 1..1" -- "outgoingArc17 1..1" Transition : from_16
+PetriNet_Place "TransitionToPlace 1..1" -- "to 0..9999" TransitionToPlace : incomingArc4
+PetriNet_Transition "PlaceToTransition8 1..1" -- "to7 1..9999" PlaceToTransition : incomingArc6
+PetriNet "arcs 1..1" -- "PetriNet13 1..1" PetriNet_Arc : net12
+PetriNet "elements 1..1" -- "PetriNet 1..1" PetriNet_Element : net3
+PetriNet_Place "PlaceToTransition 1..1" -- "from_ 0..9999" PlaceToTransition : outgoingArc5
+PetriNet_Transition "TransitionToPlace11 1..1" -- "from_10 1..9999" TransitionToPlace : outgoingArc9
+PetriNet_PlaceToTransition "Transition 1..1" -- "incomingArc 1..1" Transition : to15
+PetriNet_TransitionToPlace "Place21 1..1" -- "incomingArc20 1..1" Place : to19
 @enduml

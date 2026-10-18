@@ -1,4 +1,8 @@
 @startuml
+' model: PetriNets
+' project: sampleModel
+' owner: User
+' description: New project
 class PetriNet {
 }
 class PetriNets_PetriNet {
@@ -11,12 +15,12 @@ class PetriNets_Token {
 class PetriNets_Transition {
 }
 PetriNet <|-- PetriNets_Transition
-PetriNets_Place "0..9999" -- "1..1" PetriNets_Transition : ins9
-PetriNets_PetriNet "1..1" -- "1..1" PetriNets_Place : net3
-PetriNets_PetriNet "1..1" -- "1..1" PetriNets_Transition : net7
-PetriNets_Place "0..9999" -- "1..1" PetriNets_Transition : outs10
-PetriNets_Place "1..1" -- "1..1" PetriNets_Token : place5
-PetriNets_PetriNet "1..1" *-- "0..9999" PetriNets_Place : places0
-PetriNets_Place "1..1" *-- "0..9999" PetriNets_Token : tokens4
-PetriNets_PetriNet "1..1" *-- "0..9999" PetriNets_Transition : trans1
+PetriNets_Place "PetriNets_Transition 0..9999" -- "PetriNets_Place 1..1" PetriNets_Transition : ins9
+PetriNets_PetriNet "places 1..1" -- "PetriNet 1..1" PetriNets_Place : net3
+PetriNets_PetriNet "trans 1..1" -- "PetriNet8 1..1" PetriNets_Transition : net7
+PetriNets_Place "PetriNets_Transition11 0..9999" -- "PetriNets_Place12 1..1" PetriNets_Transition : outs10
+PetriNets_Place "tokens 1..1" -- "Place6 1..1" PetriNets_Token : place5
+PetriNets_PetriNet "Place 1..1" *-- "net 0..9999" PetriNets_Place : places0
+PetriNets_Place "Token 1..1" *-- "place 0..9999" PetriNets_Token : tokens4
+PetriNets_PetriNet "Transition 1..1" *-- "net2 0..9999" PetriNets_Transition : trans1
 @enduml

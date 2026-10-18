@@ -1,4 +1,8 @@
 @startuml
+' model: _9vTl0NnMEeeQi8PFukjNiw
+' project: sampleModel
+' owner: User
+' description: New project
 class Antrieb {
   + aNTRIEBSART : str
 }
@@ -20,12 +24,12 @@ class TurboliftSchacht {
 class TurboliftSystem {
   + alarmStufe : int
 }
-Antrieb "1..1" -- "1..1" TurboliftSchacht : TurboliftSchacht_Antrieb
-Kabine "1..1" -- "1..1" TurboliftSchacht : TurboliftSchacht_Kabine
-Steuerung "1..1" -- "1..1" TurboliftSystem : TurboliftSystem_Steuerung
-TurboliftSchacht "1..9999" -- "1..1" TurboliftSystem : besteht_aus
-Deck "1..1" -- "0..9999" Kabine : kennt
-Deck "0..9999" -- "0..9999" Kabine : kennt2
-Deck "1..9999" -- "0..9999" TurboliftSchacht : kennt3
-Steuerung "1..1" -- "1..9999" TurboliftSchacht : verwaltet
+Antrieb "antrieb12 1..1" -- "toDelete13 1..1" TurboliftSchacht : TurboliftSchacht_Antrieb
+Kabine "kabine14 1..1" -- "toDelete15 1..1" TurboliftSchacht : TurboliftSchacht_Kabine
+Steuerung "steuerung10 1..1" -- "toDelete11 1..1" TurboliftSystem : TurboliftSystem_Steuerung
+TurboliftSchacht "turboliftSchaechte8 1..9999" -- "toDelete9 1..1" TurboliftSystem : besteht_aus
+Deck "position2 1..1" -- "toDelete3 0..9999" Kabine : kennt
+Deck "fahrtziele4 0..9999" -- "toDelete5 0..9999" Kabine : kennt2
+Deck "decks6 1..9999" -- "toDelete7 0..9999" TurboliftSchacht : kennt3
+Steuerung "toDelete1 1..1" -- "turboliftSchaechte0 1..9999" TurboliftSchacht : verwaltet
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: _6bb78e6e_7df3_4e71_8ecf_bac7e7130e23
+' project: sampleModel
+' owner: User
+' description: New project
 class Address {
   + City : str
   + County : str
@@ -43,15 +47,15 @@ class Toppings {
   + isVegetarian : bool
   + name : str
 }
-Address "1..9999" -- "0..1" Customer : Customer_Address
-MealDeal "0..9999" -- "0..9999" Pizza : MealDeal_Pizza
-MealDeal "0..9999" -- "0..9999" Sides : MealDeal_Sides
-Address "0..1" -- "0..9999" Order : Order_Address
-Customer "1..1" -- "0..9999" Order : Order_Customer
-GPSLocation "0..1" -- "1..1" Order : Order_GPS_Location
-MealDeal "0..9999" -- "0..9999" Order : Order_MealDeal
-Order "0..1" -- "0..9999" Pizza : Order_Pizza
-Order "0..1" -- "0..9999" Sides : Order_Sides
-Base "1..1" -- "0..9999" Pizza : Pizza_Base
-Pizza "0..9999" -- "0..9999" Toppings : Pizza_Toppings
+Address "address12 1..9999" -- "customer13 0..1" Customer : Customer_Address
+MealDeal "mealDeal17 0..9999" -- "pizza16 0..9999" Pizza : MealDeal_Pizza
+MealDeal "mealDeal15 0..9999" -- "sides14 0..9999" Sides : MealDeal_Sides
+Address "address20 0..1" -- "order21 0..9999" Order : Order_Address
+Customer "customer8 1..1" -- "order9 0..9999" Order : Order_Customer
+GPSLocation "GPS_Location4 0..1" -- "order5 1..1" Order : Order_GPS_Location
+MealDeal "mealDeal18 0..9999" -- "order19 0..9999" Order : Order_MealDeal
+Order "order3 0..1" -- "pizza2 0..9999" Pizza : Order_Pizza
+Order "order11 0..1" -- "sides10 0..9999" Sides : Order_Sides
+Base "base0 1..1" -- "pizza1 0..9999" Pizza : Pizza_Base
+Pizza "pizza7 0..9999" -- "toppings6 0..9999" Toppings : Pizza_Toppings
 @enduml

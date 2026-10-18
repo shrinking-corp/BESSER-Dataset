@@ -1,4 +1,8 @@
 @startuml
+' model: iupjwq
+' project: sampleModel
+' owner: User
+' description: New project
 class iupjwq_RelatedTo {
   + since : str
 }
@@ -7,8 +11,8 @@ class iupjwq_Thing {
 }
 class iupjwq_World {
 }
-iupjwq_RelatedTo "1..1" -- "0..1" iupjwq_Thing : fromThing2
-iupjwq_RelatedTo "0..9999" --* "1..1" iupjwq_Thing : relations1
-iupjwq_Thing "0..9999" --* "1..1" iupjwq_World : things0
-iupjwq_RelatedTo "1..1" -- "0..1" iupjwq_Thing : toThing3
+iupjwq_RelatedTo "Thing 1..1" -- "relations 0..1" iupjwq_Thing : fromThing2
+iupjwq_RelatedTo "fromThing 0..9999" --* "RelatedTo 1..1" iupjwq_Thing : relations1
+iupjwq_Thing "iupjwq_World 0..9999" --* "iupjwq_Thing 1..1" iupjwq_World : things0
+iupjwq_RelatedTo "iupjwq_Thing4 1..1" -- "iupjwq_RelatedTo 0..1" iupjwq_Thing : toThing3
 @enduml

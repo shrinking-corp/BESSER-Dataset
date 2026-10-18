@@ -1,4 +1,8 @@
 @startuml
+' model: classmate
+' project: sampleModel
+' owner: User
+' description: New project
 class classmate_ClassmateSystem {
 }
 class classmate_Classroom {
@@ -14,10 +18,10 @@ class classmate_School {
 class classmate_Student {
   + name : str
 }
-classmate_Classroom "0..9999" --* "1..1" classmate_School : classrooms4
-classmate_ClassmateSystem "1..1" *-- "0..9999" classmate_Friend : friends2
-classmate_Friend "1..1" -- "0..1" classmate_Student : fromStudent7
-classmate_ClassmateSystem "1..1" *-- "0..1" classmate_School : school1
-classmate_Classroom "1..1" *-- "0..9999" classmate_Student : students0
-classmate_Friend "1..1" -- "0..1" classmate_Student : toStudent10
+classmate_Classroom "classmate_School5 0..9999" --* "classmate_Classroom6 1..1" classmate_School : classrooms4
+classmate_ClassmateSystem "classmate_Friend 1..1" *-- "classmate_ClassmateSystem3 0..9999" classmate_Friend : friends2
+classmate_Friend "classmate_Student9 1..1" -- "classmate_Friend8 0..1" classmate_Student : fromStudent7
+classmate_ClassmateSystem "classmate_School 1..1" *-- "classmate_ClassmateSystem 0..1" classmate_School : school1
+classmate_Classroom "classmate_Student 1..1" *-- "classmate_Classroom 0..9999" classmate_Student : students0
+classmate_Friend "classmate_Student12 1..1" -- "classmate_Friend11 0..1" classmate_Student : toStudent10
 @enduml

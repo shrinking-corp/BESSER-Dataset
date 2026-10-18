@@ -1,4 +1,8 @@
 @startuml
+' model: adaptiveSystem
+' project: sampleModel
+' owner: User
+' description: New project
 class Arc {
 }
 class Node {
@@ -67,24 +71,24 @@ Node <|-- adaptiveSystem_Event
 OccurrenceNet <|-- adaptiveSystem_AdaptiveProcess
 OccurrenceNet <|-- adaptiveSystem_DoNet
 OccurrenceNet <|-- adaptiveSystem_PreNet
-adaptiveSystem_AdaptiveProcess "1..1" --* "1..1" adaptiveSystem_AdaptiveSystem : adaptiveProcess1
-adaptiveSystem_Arc "0..9999" --* "1..1" adaptiveSystem_OccurrenceNet : arcs8
-adaptiveSystem_ArcToEvent "1..1" -- "0..1" adaptiveSystem_Event : destination31
-adaptiveSystem_ArcToCondition "1..1" -- "0..1" adaptiveSystem_Condition : destination36
-adaptiveSystem_DoNet "1..1" --* "1..1" adaptiveSystem_Oclet : doNet5
-adaptiveSystem_ArcToCondition "0..9999" -- "1..1" adaptiveSystem_Condition : incoming18
-adaptiveSystem_ArcToEvent "0..9999" -- "1..1" adaptiveSystem_Event : incoming23
-adaptiveSystem_Condition "0..9999" -- "1..1" adaptiveSystem_PreNet : markedConditions10
-adaptiveSystem_AdaptiveProcess "1..1" -- "0..9999" adaptiveSystem_Condition : markedConditions12
-adaptiveSystem_Node "0..9999" --* "1..1" adaptiveSystem_OccurrenceNet : nodes7
-adaptiveSystem_AdaptiveSystem "1..1" *-- "0..9999" adaptiveSystem_Oclet : oclets0
-adaptiveSystem_ArcToEvent "0..9999" -- "1..1" adaptiveSystem_Condition : outgoing19
-adaptiveSystem_ArcToCondition "0..9999" -- "1..1" adaptiveSystem_Event : outgoing26
-adaptiveSystem_Condition "0..9999" -- "1..1" adaptiveSystem_Event : postConditions21
-adaptiveSystem_Condition "1..1" -- "0..9999" adaptiveSystem_Event : postEvents16
-adaptiveSystem_Condition "0..9999" -- "1..1" adaptiveSystem_Event : preConditions20
-adaptiveSystem_Condition "1..1" -- "0..9999" adaptiveSystem_Event : preEvents15
-adaptiveSystem_Oclet "1..1" *-- "1..1" adaptiveSystem_PreNet : preNet3
-adaptiveSystem_ArcToEvent "1..1" -- "0..1" adaptiveSystem_Condition : source29
-adaptiveSystem_ArcToCondition "1..1" -- "0..1" adaptiveSystem_Event : source33
+adaptiveSystem_AdaptiveProcess "adaptiveSystem_AdaptiveSystem2 1..1" --* "adaptiveSystem_AdaptiveProcess 1..1" adaptiveSystem_AdaptiveSystem : adaptiveProcess1
+adaptiveSystem_Arc "adaptiveSystem_OccurrenceNet9 0..9999" --* "adaptiveSystem_Arc 1..1" adaptiveSystem_OccurrenceNet : arcs8
+adaptiveSystem_ArcToEvent "Event32 1..1" -- "incoming 0..1" adaptiveSystem_Event : destination31
+adaptiveSystem_ArcToCondition "Condition38 1..1" -- "incoming37 0..1" adaptiveSystem_Condition : destination36
+adaptiveSystem_DoNet "adaptiveSystem_Oclet6 1..1" --* "adaptiveSystem_DoNet 1..1" adaptiveSystem_Oclet : doNet5
+adaptiveSystem_ArcToCondition "destination 0..9999" -- "ArcToCondition 1..1" adaptiveSystem_Condition : incoming18
+adaptiveSystem_ArcToEvent "destination24 0..9999" -- "ArcToEvent25 1..1" adaptiveSystem_Event : incoming23
+adaptiveSystem_Condition "adaptiveSystem_PreNet11 0..9999" -- "adaptiveSystem_Condition 1..1" adaptiveSystem_PreNet : markedConditions10
+adaptiveSystem_AdaptiveProcess "adaptiveSystem_Condition14 1..1" -- "adaptiveSystem_AdaptiveProcess13 0..9999" adaptiveSystem_Condition : markedConditions12
+adaptiveSystem_Node "adaptiveSystem_OccurrenceNet 0..9999" --* "adaptiveSystem_Node 1..1" adaptiveSystem_OccurrenceNet : nodes7
+adaptiveSystem_AdaptiveSystem "adaptiveSystem_Oclet 1..1" *-- "adaptiveSystem_AdaptiveSystem 0..9999" adaptiveSystem_Oclet : oclets0
+adaptiveSystem_ArcToEvent "source 0..9999" -- "ArcToEvent 1..1" adaptiveSystem_Condition : outgoing19
+adaptiveSystem_ArcToCondition "source27 0..9999" -- "ArcToCondition28 1..1" adaptiveSystem_Event : outgoing26
+adaptiveSystem_Condition "preEvents 0..9999" -- "Condition22 1..1" adaptiveSystem_Event : postConditions21
+adaptiveSystem_Condition "Event17 1..1" -- "preConditions 0..9999" adaptiveSystem_Event : postEvents16
+adaptiveSystem_Condition "postEvents 0..9999" -- "Condition 1..1" adaptiveSystem_Event : preConditions20
+adaptiveSystem_Condition "Event 1..1" -- "postConditions 0..9999" adaptiveSystem_Event : preEvents15
+adaptiveSystem_Oclet "adaptiveSystem_PreNet 1..1" *-- "adaptiveSystem_Oclet4 1..1" adaptiveSystem_PreNet : preNet3
+adaptiveSystem_ArcToEvent "Condition30 1..1" -- "outgoing 0..1" adaptiveSystem_Condition : source29
+adaptiveSystem_ArcToCondition "Event35 1..1" -- "outgoing34 0..1" adaptiveSystem_Event : source33
 @enduml

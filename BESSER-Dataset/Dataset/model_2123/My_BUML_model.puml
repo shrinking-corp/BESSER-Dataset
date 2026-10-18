@@ -1,4 +1,8 @@
 @startuml
+' model: List
+' project: sampleModel
+' owner: User
+' description: New project
 class List_Element {
   + name : str
   + value : int
@@ -25,14 +29,14 @@ enum listType {
   ArrayList
   List
 }
-List_TestPackage_Test "1..1" -- "0..1" TestPackage_List_Element : elementPointer16
-List_SubTestPackage_SubTest "1..1" -- "0..1" SubTestPackage_List_Element : elementPointer20
-List_TestPackage_Test "1..1" -- "0..1" TestPackage_List_Element : elementPointer217
-List_Element "0..9999" --* "1..1" List_List : elements0
-List_Element "0..1" --* "1..1" List_List : firstElement1
-List_Element "0..1" --* "1..1" List_List : lastElement4
-List_List "1..1" -- "0..1" Test : packagePointer10
-List_Element "1..1" -- "0..1" List_List : subElements12
-List_Element "1..1" -- "0..1" SubTestPackage_SubTest : subTestPointer15
-List_List "0..1" -- "1..1" List_List : testPointer8
+List_TestPackage_Test "TestPackage_List_Element 1..1" -- "List_TestPackage_Test 0..1" TestPackage_List_Element : elementPointer16
+List_SubTestPackage_SubTest "Element 1..1" -- "subTestPointer 0..1" SubTestPackage_List_Element : elementPointer20
+List_TestPackage_Test "TestPackage_List_Element19 1..1" -- "List_TestPackage_Test18 0..1" TestPackage_List_Element : elementPointer217
+List_Element "List_List 0..9999" --* "List_Element 1..1" List_List : elements0
+List_Element "List_List2 0..1" --* "List_Element3 1..1" List_List : firstElement1
+List_Element "List_List5 0..1" --* "List_Element6 1..1" List_List : lastElement4
+List_List "Test 1..1" -- "List_List11 0..1" Test : packagePointer10
+List_Element "List_List14 1..1" -- "List_Element13 0..1" List_List : subElements12
+List_Element "SubTest 1..1" -- "elementPointer 0..1" SubTestPackage_SubTest : subTestPointer15
+List_List "List_List7 0..1" -- "List_List9 1..1" List_List : testPointer8
 @enduml

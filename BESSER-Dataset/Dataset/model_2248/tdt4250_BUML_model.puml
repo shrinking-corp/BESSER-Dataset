@@ -1,4 +1,8 @@
 @startuml
+' model: tdt4250
+' project: sampleModel
+' owner: User
+' description: New project
 enum Semester {
   autumn
   spring
@@ -28,14 +32,14 @@ class tdt4250_StudyProgram {
   + name : str
   + number_of_semesters : int
 }
-tdt4250_CourseGroup "0..1" -- "1..1" tdt4250_Specialisation : course_group22
-tdt4250_Course "0..9999" --* "1..1" tdt4250_Student : courses5
-tdt4250_Course "0..1" -- "1..1" tdt4250_CourseGroup : elective_courses10
-tdt4250_Specialisation "0..1" -- "1..1" tdt4250_Specialisation : further_specialisation20
-tdt4250_Course "0..1" -- "1..1" tdt4250_CourseGroup : mandatory_courses8
-tdt4250_Course "0..9999" --* "1..1" tdt4250_StudyProgram : obligatory_courses3
-tdt4250_CourseGroup "1..1" -- "0..1" tdt4250_Specialisation : specialisation13
-tdt4250_Specialisation "0..10" --* "1..1" tdt4250_StudyProgram : specialisations1
-tdt4250_Student "0..9999" --* "1..1" tdt4250_StudyProgram : students0
-tdt4250_Specialisation "1..1" *-- "0..9999" tdt4250_Student : students16
+tdt4250_CourseGroup "tdt4250_Specialisation23 0..1" -- "tdt4250_CourseGroup24 1..1" tdt4250_Specialisation : course_group22
+tdt4250_Course "tdt4250_Student6 0..9999" --* "tdt4250_Course7 1..1" tdt4250_Student : courses5
+tdt4250_Course "tdt4250_CourseGroup11 0..1" -- "tdt4250_Course12 1..1" tdt4250_CourseGroup : elective_courses10
+tdt4250_Specialisation "tdt4250_Specialisation19 0..1" -- "tdt4250_Specialisation21 1..1" tdt4250_Specialisation : further_specialisation20
+tdt4250_Course "tdt4250_CourseGroup 0..1" -- "tdt4250_Course9 1..1" tdt4250_CourseGroup : mandatory_courses8
+tdt4250_Course "tdt4250_StudyProgram4 0..9999" --* "tdt4250_Course 1..1" tdt4250_StudyProgram : obligatory_courses3
+tdt4250_CourseGroup "tdt4250_Specialisation15 1..1" -- "tdt4250_CourseGroup14 0..1" tdt4250_Specialisation : specialisation13
+tdt4250_Specialisation "tdt4250_StudyProgram2 0..10" --* "tdt4250_Specialisation 1..1" tdt4250_StudyProgram : specialisations1
+tdt4250_Student "tdt4250_StudyProgram 0..9999" --* "tdt4250_Student 1..1" tdt4250_StudyProgram : students0
+tdt4250_Specialisation "tdt4250_Student18 1..1" *-- "tdt4250_Specialisation17 0..9999" tdt4250_Student : students16
 @enduml

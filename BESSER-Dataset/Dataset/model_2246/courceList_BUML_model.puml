@@ -1,9 +1,13 @@
 @startuml
+' model: courceList
+' project: sampleModel
+' owner: User
+' description: New project
 enum Campus {
-  Gjøvik
+  GjÃ¸vik
   Trondheim
   Web
-  Ålesund
+  Ã…lesund
 }
 enum EducationLevel {
   bachelor
@@ -78,30 +82,30 @@ class courceList_StudyProgram {
 class courceList_Work {
   + weight : int
 }
-courceList_CourceSpecification "1..1" -- "0..1" courceList_Professor : coordinator41
-courceList_Cource "1..1" *-- "1..9999" courceList_CourceSpecification : corseSpecifications6
-courceList_CourceSpecification "0..1" -- "1..1" courceList_EvaluationForm : cource18
-courceList_CourceSpecification "1..1" -- "1..1" courceList_StudyCourceRelation : cource23
-courceList_Specialisation "1..1" *-- "1..9999" courceList_StudyCourceRelation : cource29
-courceList_Cource "1..1" -- "1..1" courceList_CourceSpecification : cource39
-courceList_Specialisation "0..9999" --* "1..1" courceList_StudyProgram : cource8
-courceList_Cource "1..9999" --* "1..1" courceList_Department : course1
-courceList_Department "0..1" -- "1..1" courceList_Professor : department27
-courceList_Department "0..1" -- "1..1" courceList_StudyGeneralization : department48
-courceList_Cource "1..1" -- "0..1" courceList_Department : department5
-courceList_EvaluationForm "0..1" -- "1..1" courceList_Exam : evaluationForm14
-courceList_EvaluationForm "0..1" -- "1..1" courceList_Work : evaluationForm21
-courceList_CourceSpecification "1..1" *-- "0..1" courceList_EvaluationForm : evaluationForm43
-courceList_EvaluationForm "1..1" *-- "0..1" courceList_Exam : exam15
-courceList_Specialisation "1..1" *-- "0..9999" courceList_Specialisation : furtherSpecialisation34
-courceList_StudyGeneralization "0..1" -- "1..1" courceList_StudyProgram : generalization9
-courceList_Specialisation "1..1" -- "0..1" courceList_Specialisation : hostSpecialisation37
-courceList_Department "1..1" *-- "1..9999" courceList_Professor : professor3
-courceList_Specialisation "0..1" -- "1..1" courceList_StudyCourceRelation : specialisation24
-courceList_Student "0..9999" --* "1..1" courceList_StudyProgram : student12
-courceList_Department "1..1" *-- "1..9999" courceList_StudyGeneralization : studyProgram0
-courceList_Specialisation "1..1" -- "0..1" courceList_StudyProgram : studyProgram30
-courceList_StudyGeneralization "1..1" *-- "1..9999" courceList_StudyProgram : studyProgram46
-courceList_Student "1..1" -- "1..1" courceList_StudyProgram : studyProgram7
-courceList_EvaluationForm "1..1" *-- "0..1" courceList_Work : work16
+courceList_CourceSpecification "courceList_Professor 1..1" -- "courceList_CourceSpecification42 0..1" courceList_Professor : coordinator41
+courceList_Cource "CourceSpecification 1..1" *-- "cource 1..9999" courceList_CourceSpecification : corseSpecifications6
+courceList_CourceSpecification "evaluationForm19 0..1" -- "CourceSpecification20 1..1" courceList_EvaluationForm : cource18
+courceList_CourceSpecification "courceList_StudyCourceRelation 1..1" -- "courceList_CourceSpecification 1..1" courceList_StudyCourceRelation : cource23
+courceList_Specialisation "StudyCourceRelation 1..1" *-- "specialisation 1..9999" courceList_StudyCourceRelation : cource29
+courceList_Cource "corseSpecifications 1..1" -- "Cource40 1..1" courceList_CourceSpecification : cource39
+courceList_Specialisation "studyProgram 0..9999" --* "Specialisation 1..1" courceList_StudyProgram : cource8
+courceList_Cource "department2 1..9999" --* "Cource 1..1" courceList_Department : course1
+courceList_Department "professor 0..1" -- "Department28 1..1" courceList_Professor : department27
+courceList_Department "studyProgram49 0..1" -- "Department50 1..1" courceList_StudyGeneralization : department48
+courceList_Cource "Department 1..1" -- "course 0..1" courceList_Department : department5
+courceList_EvaluationForm "exam 0..1" -- "EvaluationForm 1..1" courceList_Exam : evaluationForm14
+courceList_EvaluationForm "work 0..1" -- "EvaluationForm22 1..1" courceList_Work : evaluationForm21
+courceList_CourceSpecification "EvaluationForm45 1..1" *-- "cource44 0..1" courceList_EvaluationForm : evaluationForm43
+courceList_EvaluationForm "Exam 1..1" *-- "evaluationForm 0..1" courceList_Exam : exam15
+courceList_Specialisation "Specialisation35 1..1" *-- "hostSpecialisation 0..9999" courceList_Specialisation : furtherSpecialisation34
+courceList_StudyGeneralization "studyProgram10 0..1" -- "StudyGeneralization11 1..1" courceList_StudyProgram : generalization9
+courceList_Specialisation "Specialisation38 1..1" -- "furtherSpecialisation 0..1" courceList_Specialisation : hostSpecialisation37
+courceList_Department "Professor 1..1" *-- "department4 1..9999" courceList_Professor : professor3
+courceList_Specialisation "cource25 0..1" -- "Specialisation26 1..1" courceList_StudyCourceRelation : specialisation24
+courceList_Student "studyProgram13 0..9999" --* "Student 1..1" courceList_StudyProgram : student12
+courceList_Department "StudyGeneralization 1..1" *-- "department 1..9999" courceList_StudyGeneralization : studyProgram0
+courceList_Specialisation "StudyProgram32 1..1" -- "cource31 0..1" courceList_StudyProgram : studyProgram30
+courceList_StudyGeneralization "StudyProgram47 1..1" *-- "generalization 1..9999" courceList_StudyProgram : studyProgram46
+courceList_Student "StudyProgram 1..1" -- "student 1..1" courceList_StudyProgram : studyProgram7
+courceList_EvaluationForm "Work 1..1" *-- "evaluationForm17 0..1" courceList_Work : work16
 @enduml

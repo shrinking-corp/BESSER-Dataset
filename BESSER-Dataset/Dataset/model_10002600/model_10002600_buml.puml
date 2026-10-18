@@ -1,4 +1,8 @@
 @startuml
+' model: c5474a46_cbe6_4e3b_a216_4c47e21f4d2c
+' project: sampleModel
+' owner: User
+' description: New project
 class Booking {
   + booking_Id : str
   + contact : str
@@ -47,10 +51,10 @@ class Table {
 }
 class Waiter {
 }
-Food "1..9999" -- "0..9999" Order : Order_Food
-Order "1..1" -- "1..1" Table : Order_Table
-Booking "0..9999" -- "1..1" RMS : RMS_Booking
-RMS "1..1" -- "1..9999" Report : Report_RMS
-RMS "1..1" -- "0..9999" Staff : Staff_RMS
-Booking "1..1" -- "1..9999" Table : Table_Booking
+Food "has0 1..9999" -- "is_ordered_by1 0..9999" Order : Order_Food
+Order "has3 1..1" -- "is_ordered_by2 1..1" Table : Order_Table
+Booking "has6 0..9999" -- "is_in7 1..1" RMS : RMS_Booking
+RMS "generates10 1..1" -- "is_generated_by11 1..9999" Report : Report_RMS
+RMS "Staff_RMS_08 1..1" -- "accesses9 0..9999" Staff : Staff_RMS
+Booking "reserved4 1..1" -- "is_reserved_by5 1..9999" Table : Table_Booking
 @enduml

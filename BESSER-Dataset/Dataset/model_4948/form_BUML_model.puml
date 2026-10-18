@@ -1,4 +1,8 @@
 @startuml
+' model: form
+' project: sampleModel
+' owner: User
+' description: New project
 class Editable {
 }
 class Element {
@@ -37,12 +41,12 @@ Editable <|-- form_SelectionList
 Editable <|-- form_textArea
 Element <|-- form_Editable
 Element <|-- form_Label
-form_Element "1..1" -- "1..1" form_Orden : destino6
-form_Element "1..1" -- "0..1" form_Orden : entrantes9
-form_Element "0..9999" --* "1..1" form_Formulario : hasElement0
-form_Editable "1..1" *-- "0..1" form_Label : hasLabel3
-form_SelectionList "1..1" *-- "1..9999" form_option : hasOption4
-form_Formulario "1..1" *-- "0..9999" form_Orden : orden1
-form_Element "1..1" -- "1..1" form_Orden : origen5
-form_Element "1..1" -- "0..1" form_Orden : salientes8
+form_Element "entrantes 1..1" -- "Element7 1..1" form_Orden : destino6
+form_Element "Orden10 1..1" -- "destino 0..1" form_Orden : entrantes9
+form_Element "form_Formulario 0..9999" --* "form_Element 1..1" form_Formulario : hasElement0
+form_Editable "form_Label 1..1" *-- "form_Editable 0..1" form_Label : hasLabel3
+form_SelectionList "form_option 1..1" *-- "form_SelectionList 1..9999" form_option : hasOption4
+form_Formulario "form_Orden 1..1" *-- "form_Formulario2 0..9999" form_Orden : orden1
+form_Element "salientes 1..1" -- "Element 1..1" form_Orden : origen5
+form_Element "Orden 1..1" -- "origen 0..1" form_Orden : salientes8
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: family
+' project: sampleModel
+' owner: User
+' description: New project
 class family_Family {
 }
 class family_course {
@@ -12,12 +16,12 @@ class family_person {
 class family_university {
   + name : str
 }
-family_Family "1..1" *-- "0..1" family_person : Members17
-family_person "0..9999" -- "1..1" family_person : children6
-family_course "0..9999" --* "1..1" family_university : courses10
-family_person "1..1" -- "0..9999" family_university : enrollment8
-family_Family "1..1" -- "0..1" family_Family : members16
-family_person "0..1" -- "1..1" family_person : parent3
-family_person "1..1" -- "0..1" family_person : spouse1
-family_course "1..1" -- "0..9999" family_person : students12
+family_Family "family_person19 1..1" *-- "family_Family18 0..1" family_person : Members17
+family_person "family_person5 0..9999" -- "family_person7 1..1" family_person : children6
+family_course "family_university11 0..9999" --* "family_course 1..1" family_university : courses10
+family_person "family_university 1..1" -- "family_person9 0..9999" family_university : enrollment8
+family_Family "family_Family 1..1" -- "family_Family15 0..1" family_Family : members16
+family_person "family_person2 0..1" -- "family_person4 1..1" family_person : parent3
+family_person "family_person 1..1" -- "family_person0 0..1" family_person : spouse1
+family_course "family_person14 1..1" -- "family_course13 0..9999" family_person : students12
 @enduml

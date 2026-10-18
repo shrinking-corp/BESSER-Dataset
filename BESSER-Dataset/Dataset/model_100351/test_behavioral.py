@@ -173,9 +173,9 @@ def test_assoc_firingRules3_stub_double():
     partner = dataflownet_StateMachine()
     setattr(partner, 'dataflownet_StateMachine4', None)
     _safe_set(owner, 'dataflownet_FiringRule', partner)
-    assert getattr(partner, 'dataflownet_StateMachine4') == owner
+    assert owner in getattr(partner, 'dataflownet_StateMachine4')
     _safe_set(owner, 'dataflownet_FiringRule', None)
-    assert getattr(partner, 'dataflownet_StateMachine4') is None
+    assert owner not in getattr(partner, 'dataflownet_StateMachine4')
 
 
 def test_assoc_fromState21_stub_double():
@@ -203,9 +203,9 @@ def test_assoc_inputTransitions17_stub_double():
     partner = dataflownet_StateMachineState()
     setattr(partner, 'toState', None)
     _safe_set(owner, 'StateMachineTransition18', partner)
-    assert getattr(partner, 'toState') == owner
+    assert owner in getattr(partner, 'toState')
     _safe_set(owner, 'StateMachineTransition18', None)
-    assert getattr(partner, 'toState') is None
+    assert owner not in getattr(partner, 'toState')
 
 
 def test_assoc_nets42_stub_double():
@@ -233,9 +233,9 @@ def test_assoc_outputTransitions16_stub_double():
     partner = dataflownet_StateMachineState()
     setattr(partner, 'fromState', None)
     _safe_set(owner, 'StateMachineTransition', partner)
-    assert getattr(partner, 'fromState') == owner
+    assert owner in getattr(partner, 'fromState')
     _safe_set(owner, 'StateMachineTransition', None)
-    assert getattr(partner, 'fromState') is None
+    assert owner not in getattr(partner, 'fromState')
 
 
 def test_assoc_process14_stub_double():

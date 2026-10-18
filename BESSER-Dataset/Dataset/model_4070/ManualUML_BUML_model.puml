@@ -1,4 +1,8 @@
 @startuml
+' model: uml
+' project: sampleModel
+' owner: User
+' description: New project
 class Classifier {
 }
 class PackageElement {
@@ -30,16 +34,16 @@ PackageElement <|-- uml_Classifier
 UMLModelElement <|-- uml_Attribute
 UMLModelElement <|-- uml_Package
 UMLModelElement <|-- uml_PackageElement
-uml_Attribute "0..9999" --* "1..1" uml_Class : attributes9
-uml_Association "1..1" -- "1..1" uml_Class : destination4
-uml_Package "1..1" *-- "0..9999" uml_PackageElement : elements18
-uml_Association "0..9999" -- "1..1" uml_Class : forward8
-uml_Class "1..1" -- "0..9999" uml_Class : general6
-uml_Class "1..1" -- "0..9999" uml_Class : generalOpposite14
-uml_Package "0..1" -- "1..1" uml_PackageElement : namespace19
-uml_Attribute "1..1" -- "1..1" uml_Class : owner1
-uml_Association "0..9999" -- "1..1" uml_Class : reverse10
-uml_Association "1..1" -- "1..1" uml_Class : source2
-uml_Attribute "1..1" -- "1..1" uml_Classifier : type0
-uml_Attribute "0..9999" -- "1..1" uml_Classifier : typeOpposite16
+uml_Attribute "owner 0..9999" --* "Attribute 1..1" uml_Class : attributes9
+uml_Association "uml_Class 1..1" -- "uml_Association 1..1" uml_Class : destination4
+uml_Package "PackageElement 1..1" *-- "namespace 0..9999" uml_PackageElement : elements18
+uml_Association "source 0..9999" -- "Association 1..1" uml_Class : forward8
+uml_Class "Class7 1..1" -- "generalOpposite 0..9999" uml_Class : general6
+uml_Class "Class15 1..1" -- "general 0..9999" uml_Class : generalOpposite14
+uml_Package "elements 0..1" -- "Package 1..1" uml_PackageElement : namespace19
+uml_Attribute "Class 1..1" -- "attributes 1..1" uml_Class : owner1
+uml_Association "uml_Class11 0..9999" -- "uml_Association12 1..1" uml_Class : reverse10
+uml_Association "Class3 1..1" -- "forward 1..1" uml_Class : source2
+uml_Attribute "Classifier 1..1" -- "typeOpposite 1..1" uml_Classifier : type0
+uml_Attribute "type 0..9999" -- "Attribute17 1..1" uml_Classifier : typeOpposite16
 @enduml

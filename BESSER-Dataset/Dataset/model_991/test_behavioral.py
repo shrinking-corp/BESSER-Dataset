@@ -155,9 +155,9 @@ def test_assoc_edges14_stub_double():
     partner = dfs_DFSGraph()
     setattr(partner, 'graph', None)
     _safe_set(owner, 'Edge15', partner)
-    assert getattr(partner, 'graph') == owner
+    assert owner in getattr(partner, 'graph')
     _safe_set(owner, 'Edge15', None)
-    assert getattr(partner, 'graph') is None
+    assert owner not in getattr(partner, 'graph')
 
 
 def test_assoc_graph3_stub_double():
@@ -200,9 +200,9 @@ def test_assoc_nodes16_stub_double():
     partner = dfs_DFSGraph()
     setattr(partner, 'graph17', None)
     _safe_set(owner, 'Node18', partner)
-    assert getattr(partner, 'graph17') == owner
+    assert owner in getattr(partner, 'graph17')
     _safe_set(owner, 'Node18', None)
-    assert getattr(partner, 'graph17') is None
+    assert owner not in getattr(partner, 'graph17')
 
 
 def test_assoc_origin10_stub_double():

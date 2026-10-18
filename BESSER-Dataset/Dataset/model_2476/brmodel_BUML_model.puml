@@ -1,4 +1,8 @@
 @startuml
+' model: brmodel
+' project: sampleModel
+' owner: User
+' description: New project
 class Method {
 }
 class Trace {
@@ -46,13 +50,13 @@ Trace <|-- brmodel_Variable
 Variable <|-- brmodel_ReachableVariable
 Variable <|-- brmodel_RelatedVariable
 Variable <|-- brmodel_SlicedVariable
-brmodel_RulePart "1..1" *-- "1..1" brmodel_Statement : action9
-brmodel_EObject "0..1" -- "1..1" brmodel_Trace : linkToCode16
-brmodel_ReachableMethod "0..9999" --* "1..1" brmodel_RulePart : reachableMethods12
-brmodel_RelatedMethod "0..1" --* "1..1" brmodel_RulePart : relatedMethod5
-brmodel_RulePart "1..1" *-- "0..9999" brmodel_Statement : relatedStatements7
-brmodel_ReachableVariable "0..9999" --* "1..1" brmodel_RulePart : relatedVariables14
-brmodel_Rule "1..1" *-- "0..9999" brmodel_RulePart : ruleParts3
-brmodel_Model "1..1" *-- "0..9999" brmodel_Rule : rules0
-brmodel_Rule "1..1" *-- "1..1" brmodel_SlicedVariable : slicedVariable1
+brmodel_RulePart "brmodel_Statement11 1..1" *-- "brmodel_RulePart10 1..1" brmodel_Statement : action9
+brmodel_EObject "brmodel_Trace 0..1" -- "brmodel_EObject 1..1" brmodel_Trace : linkToCode16
+brmodel_ReachableMethod "brmodel_RulePart13 0..9999" --* "brmodel_ReachableMethod 1..1" brmodel_RulePart : reachableMethods12
+brmodel_RelatedMethod "brmodel_RulePart6 0..1" --* "brmodel_RelatedMethod 1..1" brmodel_RulePart : relatedMethod5
+brmodel_RulePart "brmodel_Statement 1..1" *-- "brmodel_RulePart8 0..9999" brmodel_Statement : relatedStatements7
+brmodel_ReachableVariable "brmodel_RulePart15 0..9999" --* "brmodel_ReachableVariable 1..1" brmodel_RulePart : relatedVariables14
+brmodel_Rule "brmodel_RulePart 1..1" *-- "brmodel_Rule4 0..9999" brmodel_RulePart : ruleParts3
+brmodel_Model "brmodel_Rule 1..1" *-- "brmodel_Model 0..9999" brmodel_Rule : rules0
+brmodel_Rule "brmodel_SlicedVariable 1..1" *-- "brmodel_Rule2 1..1" brmodel_SlicedVariable : slicedVariable1
 @enduml

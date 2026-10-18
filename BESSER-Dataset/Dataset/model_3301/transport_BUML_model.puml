@@ -1,4 +1,8 @@
 @startuml
+' model: transport
+' project: sampleModel
+' owner: User
+' description: New project
 class DynamicLabel {
 }
 class EdgeDecorator {
@@ -61,11 +65,11 @@ NodeLabel <|-- transport_PacketTransportLabel
 PopulationEdge <|-- transport_PipeTransportEdge
 TransportSystem <|-- transport_PacketStyleTransportSystem
 TransportSystem <|-- transport_PipeStyleTransportSystem
-transport_LoadUnloadEdgeLabel "1..1" -- "0..1" transport_STEMTime : activationTime0
-transport_LoadUnloadEdgeLabel "1..1" -- "0..1" transport_STEMTime : deactivationTime1
-transport_PipeStyleTransportSystem "1..1" -- "0..9999" transport_PipeTransportEdge : inTransportEdges10
-transport_LoadUnloadEdge "0..9999" -- "1..1" transport_PacketStyleTransportSystem : loadingEdges5
-transport_PipeStyleTransportSystem "1..1" -- "0..9999" transport_PipeTransportEdge : outTransportEdges11
-transport_PacketStyleTransportSystem "1..1" -- "0..1" transport_PacketTransportLabel : packetTransportLabel4
-transport_LoadUnloadEdge "0..9999" -- "1..1" transport_PacketStyleTransportSystem : unloadingEdges7
+transport_LoadUnloadEdgeLabel "transport_STEMTime 1..1" -- "transport_LoadUnloadEdgeLabel 0..1" transport_STEMTime : activationTime0
+transport_LoadUnloadEdgeLabel "transport_STEMTime3 1..1" -- "transport_LoadUnloadEdgeLabel2 0..1" transport_STEMTime : deactivationTime1
+transport_PipeStyleTransportSystem "transport_PipeTransportEdge 1..1" -- "transport_PipeStyleTransportSystem 0..9999" transport_PipeTransportEdge : inTransportEdges10
+transport_LoadUnloadEdge "transport_PacketStyleTransportSystem6 0..9999" -- "transport_LoadUnloadEdge 1..1" transport_PacketStyleTransportSystem : loadingEdges5
+transport_PipeStyleTransportSystem "transport_PipeTransportEdge13 1..1" -- "transport_PipeStyleTransportSystem12 0..9999" transport_PipeTransportEdge : outTransportEdges11
+transport_PacketStyleTransportSystem "transport_PacketTransportLabel 1..1" -- "transport_PacketStyleTransportSystem 0..1" transport_PacketTransportLabel : packetTransportLabel4
+transport_LoadUnloadEdge "transport_PacketStyleTransportSystem8 0..9999" -- "transport_LoadUnloadEdge9 1..1" transport_PacketStyleTransportSystem : unloadingEdges7
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: families
+' project: sampleModel
+' owner: User
+' description: New project
 class Member {
 }
 class NamedElement {
@@ -35,25 +39,25 @@ NamedElement <|-- families_Company
 NamedElement <|-- families_Country
 NamedElement <|-- families_Neighborhood
 NamedElement <|-- families_School
-families_City "1..9999" --* "1..1" families_Country : cities1
-families_City "1..1" -- "0..9999" families_Company : companies20
-families_Company "0..9999" --* "1..1" families_Country : companies3
-families_Family "1..9999" -- "1..1" families_Neighborhood : contains18
-families_Child "0..9999" --* "1..1" families_Family : daughters10
-families_Company "1..1" -- "0..9999" families_Parent : employees31
-families_Country "1..1" *-- "1..9999" families_Family : families0
-families_Family "1..1" -- "1..1" families_Member : family33
-families_Family "1..1" *-- "0..2" families_Parent : fathers5
-families_Child "1..1" -- "1..1" families_School : goesTo17
-families_City "1..9999" -- "1..1" families_Company : isIn32
-families_City "1..1" -- "1..1" families_Member : livesIn35
-families_Family "1..1" *-- "0..2" families_Parent : mothers7
-families_City "1..1" *-- "1..9999" families_Neighborhood : neighborhoods22
-families_School "1..1" *-- "0..9999" families_Service : ordinary25
-families_Family "1..1" -- "1..1" families_Neighborhood : registeredIn15
-families_Neighborhood "1..1" *-- "0..9999" families_School : schools19
-families_Child "0..9999" --* "1..1" families_Family : sons12
-families_School "1..1" *-- "0..9999" families_Service : special27
-families_Child "0..9999" -- "1..1" families_School : students30
-families_Company "0..1" -- "1..1" families_Parent : worksIn16
+families_City "families_Country2 1..9999" --* "families_City 1..1" families_Country : cities1
+families_City "Company21 1..1" -- "isIn 0..9999" families_Company : companies20
+families_Company "families_Country4 0..9999" --* "families_Company 1..1" families_Country : companies3
+families_Family "registeredIn 1..9999" -- "Family 1..1" families_Neighborhood : contains18
+families_Child "families_Family11 0..9999" --* "families_Child 1..1" families_Family : daughters10
+families_Company "Parent 1..1" -- "worksIn 0..9999" families_Parent : employees31
+families_Country "families_Family 1..1" *-- "families_Country 1..9999" families_Family : families0
+families_Family "families_Member 1..1" -- "families_Family34 1..1" families_Member : family33
+families_Family "families_Parent 1..1" *-- "families_Family6 0..2" families_Parent : fathers5
+families_Child "School 1..1" -- "students 1..1" families_School : goesTo17
+families_City "companies 1..9999" -- "City 1..1" families_Company : isIn32
+families_City "families_Member36 1..1" -- "families_City37 1..1" families_Member : livesIn35
+families_Family "families_Parent9 1..1" *-- "families_Family8 0..2" families_Parent : mothers7
+families_City "families_Neighborhood24 1..1" *-- "families_City23 1..9999" families_Neighborhood : neighborhoods22
+families_School "families_Service 1..1" *-- "families_School26 0..9999" families_Service : ordinary25
+families_Family "Neighborhood 1..1" -- "contains 1..1" families_Neighborhood : registeredIn15
+families_Neighborhood "families_School 1..1" *-- "families_Neighborhood 0..9999" families_School : schools19
+families_Child "families_Family13 0..9999" --* "families_Child14 1..1" families_Family : sons12
+families_School "families_Service29 1..1" *-- "families_School28 0..9999" families_Service : special27
+families_Child "goesTo 0..9999" -- "Child 1..1" families_School : students30
+families_Company "employees 0..1" -- "Company 1..1" families_Parent : worksIn16
 @enduml

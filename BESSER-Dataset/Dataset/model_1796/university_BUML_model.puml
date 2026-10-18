@@ -1,4 +1,8 @@
 @startuml
+' model: university
+' project: sampleModel
+' owner: User
+' description: New project
 class NamedElement {
 }
 enum StaffMemberType {
@@ -63,18 +67,18 @@ NamedElement <|-- university_Module
 NamedElement <|-- university_StaffMember
 NamedElement <|-- university_Student
 NamedElement <|-- university_University
-university_Book "0..9999" --* "1..1" university_Library : books9
-university_StaffMember "0..1" -- "1..1" university_University : chancelor3
-university_Department "1..9999" --* "1..1" university_University : departments0
-university_Module "0..9999" -- "1..1" university_Student : enrolledModules5
-university_Module "1..1" -- "0..9999" university_Student : enrolledStudents26
-university_Library "1..9999" --* "1..1" university_University : libraries1
-university_Library "1..1" -- "0..9999" university_Vehicle : libraryVans11
-university_Computer "0..1" --* "1..1" university_Library : mainComputer7
-university_Module "1..1" -- "0..9999" university_StaffMember : moduleLecturers25
-university_Student "1..1" -- "0..1" university_Vehicle : registeredVehicle6
-university_StaffMember "1..1" -- "0..3" university_Vehicle : registeredVehicles16
-university_Department "1..1" *-- "0..9999" university_StaffMember : staff19
-university_Department "1..1" *-- "0..9999" university_Student : students22
-university_Module "0..9999" -- "1..1" university_StaffMember : taughtModules14
+university_Book "university_Library10 0..9999" --* "university_Book 1..1" university_Library : books9
+university_StaffMember "university_University4 0..1" -- "university_StaffMember 1..1" university_University : chancelor3
+university_Department "university_University 1..9999" --* "university_Department 1..1" university_University : departments0
+university_Module "enrolledStudents 0..9999" -- "Module 1..1" university_Student : enrolledModules5
+university_Module "Student 1..1" -- "enrolledModules 0..9999" university_Student : enrolledStudents26
+university_Library "university_University2 1..9999" --* "university_Library 1..1" university_University : libraries1
+university_Library "university_Vehicle13 1..1" -- "university_Library12 0..9999" university_Vehicle : libraryVans11
+university_Computer "university_Library8 0..1" --* "university_Computer 1..1" university_Library : mainComputer7
+university_Module "StaffMember 1..1" -- "taughtModules 0..9999" university_StaffMember : moduleLecturers25
+university_Student "university_Vehicle 1..1" -- "university_Student 0..1" university_Vehicle : registeredVehicle6
+university_StaffMember "university_Vehicle18 1..1" -- "university_StaffMember17 0..3" university_Vehicle : registeredVehicles16
+university_Department "university_StaffMember21 1..1" *-- "university_Department20 0..9999" university_StaffMember : staff19
+university_Department "university_Student24 1..1" *-- "university_Department23 0..9999" university_Student : students22
+university_Module "moduleLecturers 0..9999" -- "Module15 1..1" university_StaffMember : taughtModules14
 @enduml

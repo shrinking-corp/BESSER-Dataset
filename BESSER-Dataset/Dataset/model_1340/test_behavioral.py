@@ -444,9 +444,9 @@ def test_assoc_literals17_stub_double():
     partner = basecs_DataTypeCS()
     setattr(partner, 'basecs_DataTypeCS', None)
     _safe_set(owner, 'basecs_EnumerationLiteralCS', partner)
-    assert getattr(partner, 'basecs_DataTypeCS') == owner
+    assert owner in getattr(partner, 'basecs_DataTypeCS')
     _safe_set(owner, 'basecs_EnumerationLiteralCS', None)
-    assert getattr(partner, 'basecs_DataTypeCS') is None
+    assert owner not in getattr(partner, 'basecs_DataTypeCS')
 
 
 def test_assoc_multiplicity106_stub_double():
@@ -504,9 +504,9 @@ def test_assoc_ownedContent0_stub_double():
     partner = basecs_AnnotationCS()
     setattr(partner, 'basecs_AnnotationCS', None)
     _safe_set(owner, 'basecs_ModelElementCS', partner)
-    assert getattr(partner, 'basecs_AnnotationCS') == owner
+    assert owner in getattr(partner, 'basecs_AnnotationCS')
     _safe_set(owner, 'basecs_ModelElementCS', None)
-    assert getattr(partner, 'basecs_AnnotationCS') is None
+    assert owner not in getattr(partner, 'basecs_AnnotationCS')
 
 
 def test_assoc_ownedContextType25_stub_double():
@@ -534,9 +534,9 @@ def test_assoc_ownedDetail3_stub_double():
     partner = basecs_AnnotationElementCS()
     setattr(partner, 'basecs_AnnotationElementCS', None)
     _safe_set(owner, 'basecs_DetailCS', partner)
-    assert getattr(partner, 'basecs_AnnotationElementCS') == owner
+    assert owner in getattr(partner, 'basecs_AnnotationElementCS')
     _safe_set(owner, 'basecs_DetailCS', None)
-    assert getattr(partner, 'basecs_AnnotationElementCS') is None
+    assert owner not in getattr(partner, 'basecs_AnnotationElementCS')
 
 
 def test_assoc_ownedException46_stub_double():
@@ -564,9 +564,9 @@ def test_assoc_ownedImport80_stub_double():
     partner = basecs_RootCS()
     setattr(partner, 'basecs_RootCS', None)
     _safe_set(owner, 'basecs_ImportCS81', partner)
-    assert getattr(partner, 'basecs_RootCS') == owner
+    assert owner in getattr(partner, 'basecs_RootCS')
     _safe_set(owner, 'basecs_ImportCS81', None)
-    assert getattr(partner, 'basecs_RootCS') is None
+    assert owner not in getattr(partner, 'basecs_RootCS')
 
 
 def test_assoc_ownedNestedPackage59_stub_double():
@@ -579,9 +579,9 @@ def test_assoc_ownedNestedPackage59_stub_double():
     partner = basecs_PackageOwnerCS()
     setattr(partner, 'basecs_PackageOwnerCS', None)
     _safe_set(owner, 'basecs_PackageCS', partner)
-    assert getattr(partner, 'basecs_PackageOwnerCS') == owner
+    assert owner in getattr(partner, 'basecs_PackageOwnerCS')
     _safe_set(owner, 'basecs_PackageCS', None)
-    assert getattr(partner, 'basecs_PackageOwnerCS') is None
+    assert owner not in getattr(partner, 'basecs_PackageOwnerCS')
 
 
 def test_assoc_ownedOperation5_stub_double():
@@ -594,9 +594,9 @@ def test_assoc_ownedOperation5_stub_double():
     partner = basecs_ClassCS()
     setattr(partner, 'owningClass', None)
     _safe_set(owner, 'OperationCS', partner)
-    assert getattr(partner, 'owningClass') == owner
+    assert owner in getattr(partner, 'owningClass')
     _safe_set(owner, 'OperationCS', None)
-    assert getattr(partner, 'owningClass') is None
+    assert owner not in getattr(partner, 'owningClass')
 
 
 def test_assoc_ownedParameterType27_stub_double():
@@ -639,9 +639,9 @@ def test_assoc_ownedProperty6_stub_double():
     partner = basecs_ClassCS()
     setattr(partner, 'owner', None)
     _safe_set(owner, 'StructuralFeatureCS', partner)
-    assert getattr(partner, 'owner') == owner
+    assert owner in getattr(partner, 'owner')
     _safe_set(owner, 'StructuralFeatureCS', None)
-    assert getattr(partner, 'owner') is None
+    assert owner not in getattr(partner, 'owner')
 
 
 def test_assoc_ownedResultType30_stub_double():

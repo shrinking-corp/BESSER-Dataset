@@ -1,4 +1,8 @@
 @startuml
+' model: esm
+' project: sampleModel
+' owner: User
+' description: New project
 class State {
 }
 class esm_EObject {
@@ -14,11 +18,11 @@ class esm_Transition {
   + action : str
 }
 State <|-- esm_EndState
-esm_EObject "0..1" --* "1..1" esm_Transition : actionImpl6
-esm_State "1..1" -- "0..9999" esm_Transition : incoming3
-esm_State "1..1" -- "0..9999" esm_Transition : outgoing4
-esm_State "1..1" -- "1..1" esm_Transition : source8
-esm_Machine "1..1" *-- "0..9999" esm_State : states0
-esm_State "1..1" -- "1..1" esm_Transition : target9
-esm_Machine "1..1" *-- "0..9999" esm_Transition : transitions1
+esm_EObject "esm_Transition7 0..1" --* "esm_EObject 1..1" esm_Transition : actionImpl6
+esm_State "Transition 1..1" -- "target 0..9999" esm_Transition : incoming3
+esm_State "Transition5 1..1" -- "source 0..9999" esm_Transition : outgoing4
+esm_State "outgoing 1..1" -- "State 1..1" esm_Transition : source8
+esm_Machine "esm_State 1..1" *-- "esm_Machine 0..9999" esm_State : states0
+esm_State "incoming 1..1" -- "State10 1..1" esm_Transition : target9
+esm_Machine "esm_Transition 1..1" *-- "esm_Machine2 0..9999" esm_Transition : transitions1
 @enduml

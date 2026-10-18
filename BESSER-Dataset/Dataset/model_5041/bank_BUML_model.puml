@@ -1,4 +1,8 @@
 @startuml
+' model: bank
+' project: sampleModel
+' owner: User
+' description: New project
 class Account {
 }
 class ContactMethod {
@@ -121,26 +125,26 @@ TransactionInitiator <|-- bank_Banker
 TransactionInitiator <|-- bank_Device
 TransactionInitiator <|-- bank_OnlineSession
 TransactionInitiator <|-- bank_Token
-bank_Customer "1..1" -- "0..9999" bank_CustomerAccount : accounts10
-bank_Account "0..9999" --* "1..1" bank_Bank : accounts4
-bank_Bank "1..1" *-- "0..9999" bank_Banker : bankers8
-bank_ContactMethod "0..9999" --* "1..1" bank_Party : contactMethods0
-bank_Statement "1..1" -- "1..1" bank_Transaction : credit16
-bank_Bank "1..1" *-- "0..9999" bank_Customer : customers6
-bank_Statement "1..1" -- "1..1" bank_Transaction : debit15
-bank_CustomerAccount "1..1" *-- "0..9999" bank_Device : devices31
-bank_Transaction "1..1" -- "0..1" bank_TransactionInitiator : initiator18
-bank_PointOfSale "1..1" *-- "0..1" bank_PostalAddress : location21
-bank_Card "1..1" -- "0..1" bank_Merchant : lockedTo24
-bank_Merchant "1..1" -- "1..1" bank_Token : merchant37
-bank_Bank "1..1" *-- "0..9999" bank_Merchant : merchants1
-bank_Customer "1..1" *-- "0..9999" bank_OnlineSession : onlineSessions11
-bank_Customer "0..9999" -- "1..1" bank_CustomerAccount : owners36
-bank_DeviceTransaction "1..1" -- "0..1" bank_PointOfSale : pointOfSale29
-bank_Merchant "1..1" *-- "0..9999" bank_PointOfSale : pointsOfSale19
-bank_CustomerAccount "1..1" -- "1..1" bank_Product : product33
-bank_Bank "1..1" *-- "0..9999" bank_Product : products2
-bank_Card "0..1" -- "1..1" bank_Card : replaces27
-bank_Account "1..1" *-- "0..9999" bank_Statement : statements13
-bank_Device "1..1" *-- "0..9999" bank_Token : tokens23
+bank_Customer "CustomerAccount 1..1" -- "owners 0..9999" bank_CustomerAccount : accounts10
+bank_Account "bank_Bank5 0..9999" --* "bank_Account 1..1" bank_Bank : accounts4
+bank_Bank "bank_Banker 1..1" *-- "bank_Bank9 0..9999" bank_Banker : bankers8
+bank_ContactMethod "bank_Party 0..9999" --* "bank_ContactMethod 1..1" bank_Party : contactMethods0
+bank_Statement "credits 1..1" -- "Statement17 1..1" bank_Transaction : credit16
+bank_Bank "bank_Customer 1..1" *-- "bank_Bank7 0..9999" bank_Customer : customers6
+bank_Statement "debits 1..1" -- "Statement 1..1" bank_Transaction : debit15
+bank_CustomerAccount "bank_Device32 1..1" *-- "bank_CustomerAccount 0..9999" bank_Device : devices31
+bank_Transaction "bank_TransactionInitiator 1..1" -- "bank_Transaction 0..1" bank_TransactionInitiator : initiator18
+bank_PointOfSale "bank_PostalAddress 1..1" *-- "bank_PointOfSale22 0..1" bank_PostalAddress : location21
+bank_Card "bank_Merchant25 1..1" -- "bank_Card 0..1" bank_Merchant : lockedTo24
+bank_Merchant "bank_Token38 1..1" -- "bank_Merchant39 1..1" bank_Token : merchant37
+bank_Bank "bank_Merchant 1..1" *-- "bank_Bank 0..9999" bank_Merchant : merchants1
+bank_Customer "bank_OnlineSession 1..1" *-- "bank_Customer12 0..9999" bank_OnlineSession : onlineSessions11
+bank_Customer "accounts 0..9999" -- "Customer 1..1" bank_CustomerAccount : owners36
+bank_DeviceTransaction "bank_PointOfSale30 1..1" -- "bank_DeviceTransaction 0..1" bank_PointOfSale : pointOfSale29
+bank_Merchant "bank_PointOfSale 1..1" *-- "bank_Merchant20 0..9999" bank_PointOfSale : pointsOfSale19
+bank_CustomerAccount "bank_Product35 1..1" -- "bank_CustomerAccount34 1..1" bank_Product : product33
+bank_Bank "bank_Product 1..1" *-- "bank_Bank3 0..9999" bank_Product : products2
+bank_Card "bank_Card26 0..1" -- "bank_Card28 1..1" bank_Card : replaces27
+bank_Account "bank_Statement 1..1" *-- "bank_Account14 0..9999" bank_Statement : statements13
+bank_Device "bank_Token 1..1" *-- "bank_Device 0..9999" bank_Token : tokens23
 @enduml

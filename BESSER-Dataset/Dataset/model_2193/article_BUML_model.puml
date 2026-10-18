@@ -1,4 +1,8 @@
 @startuml
+' model: article
+' project: sampleModel
+' owner: User
+' description: New project
 class Article {
 }
 class Body {
@@ -191,34 +195,34 @@ LinkTarget <|-- article_Section
 LinkTarget <|-- article_StructuralElement
 StructuralElement <|-- article_Body
 StructuralElement <|-- article_Documentation
-article_Article "1..1" -- "1..1" article_Chapter : article7
-article_Callout "0..9999" --* "1..1" article_Snippet : callouts9
-article_Body "1..1" -- "0..1" article_Category : category25
-article_Chapter "1..1" -- "1..1" article_Section : chapter24
-article_StructuralElement "1..1" *-- "0..9999" article_StructuralElement : children15
-article_TreeNode "1..1" *-- "0..9999" article_TreeNode : children39
-article_BodyElement "1..1" -- "1..1" article_BodyElementContainer : container27
-article_Context "1..1" -- "1..1" article_Documentation : context0
-article_Documentation "1..1" -- "0..9999" article_Documentation : dependencies3
-article_Description "0..1" --* "1..1" article_Snippet : description12
-article_Documentation "1..1" -- "1..1" article_StructuralElement : documentation19
-article_Documentation "1..1" -- "1..1" article_EmbeddableElement : documentation22
-article_Context "1..1" *-- "1..9999" article_Documentation : documentations6
-article_EmbeddableElement "1..1" -- "1..1" article_Embedding : element29
-article_BodyElement "0..9999" --* "1..1" article_BodyElementContainer : elements26
-article_Documentation "1..1" *-- "0..9999" article_EmbeddableElement : embeddableElements1
-article_ExtensionPoint "0..9999" --* "1..1" article_Plugin : extensionPoints31
-article_Formatter "1..1" --* "1..1" article_Snippet : formatter10
-article_JavaPackage "1..9999" --* "1..1" article_Plugin : packages30
-article_StructuralElement "1..1" -- "0..1" article_StructuralElement : parent17
-article_JavaPackage "1..1" -- "1..1" article_Plugin : plugin33
-article_ExtensionPoint "1..1" -- "1..1" article_Plugin : plugin34
-article_Documentation "1..1" *-- "0..9999" article_Plugin : plugins4
-article_TreeNode "1..1" *-- "0..9999" article_TreeNodeProperty : properties40
-article_TreeNodeProperty "0..9999" --* "1..1" article_TreeNodeProperty : properties43
-article_Chapter "1..1" *-- "0..9999" article_Section : sections8
-article_Callout "1..1" -- "1..1" article_Snippet : snippet21
-article_Formatter "1..1" -- "1..1" article_Snippet : snippet36
-article_Description "1..1" -- "1..1" article_Snippet : snippet45
-article_Link "1..1" -- "0..1" article_LinkTarget : target28
+article_Article "article_Chapter 1..1" -- "article_Article 1..1" article_Chapter : article7
+article_Callout "snippet 0..9999" --* "Callout 1..1" article_Snippet : callouts9
+article_Body "article_Category 1..1" -- "article_Body 0..1" article_Category : category25
+article_Chapter "sections 1..1" -- "Chapter 1..1" article_Section : chapter24
+article_StructuralElement "StructuralElement 1..1" *-- "parent 0..9999" article_StructuralElement : children15
+article_TreeNode "article_TreeNode 1..1" *-- "article_TreeNode38 0..9999" article_TreeNode : children39
+article_BodyElement "BodyElementContainer 1..1" -- "elements 1..1" article_BodyElementContainer : container27
+article_Context "documentations 1..1" -- "Context 1..1" article_Documentation : context0
+article_Documentation "article_Documentation 1..1" -- "article_Documentation2 0..9999" article_Documentation : dependencies3
+article_Description "snippet13 0..1" --* "Description 1..1" article_Snippet : description12
+article_Documentation "article_StructuralElement 1..1" -- "article_Documentation20 1..1" article_StructuralElement : documentation19
+article_Documentation "embeddableElements 1..1" -- "Documentation23 1..1" article_EmbeddableElement : documentation22
+article_Context "Documentation 1..1" *-- "context 1..9999" article_Documentation : documentations6
+article_EmbeddableElement "article_Embedding 1..1" -- "article_EmbeddableElement 1..1" article_Embedding : element29
+article_BodyElement "container 0..9999" --* "BodyElement 1..1" article_BodyElementContainer : elements26
+article_Documentation "EmbeddableElement 1..1" *-- "documentation 0..9999" article_EmbeddableElement : embeddableElements1
+article_ExtensionPoint "plugin32 0..9999" --* "ExtensionPoint 1..1" article_Plugin : extensionPoints31
+article_Formatter "snippet11 1..1" --* "Formatter 1..1" article_Snippet : formatter10
+article_JavaPackage "plugin 1..9999" --* "JavaPackage 1..1" article_Plugin : packages30
+article_StructuralElement "StructuralElement18 1..1" -- "children 0..1" article_StructuralElement : parent17
+article_JavaPackage "Plugin 1..1" -- "packages 1..1" article_Plugin : plugin33
+article_ExtensionPoint "Plugin35 1..1" -- "extensionPoints 1..1" article_Plugin : plugin34
+article_Documentation "article_Plugin 1..1" *-- "article_Documentation5 0..9999" article_Plugin : plugins4
+article_TreeNode "article_TreeNodeProperty 1..1" *-- "article_TreeNode41 0..9999" article_TreeNodeProperty : properties40
+article_TreeNodeProperty "article_TreeNodeProperty42 0..9999" --* "article_TreeNodeProperty44 1..1" article_TreeNodeProperty : properties43
+article_Chapter "Section 1..1" *-- "chapter 0..9999" article_Section : sections8
+article_Callout "Snippet 1..1" -- "callouts 1..1" article_Snippet : snippet21
+article_Formatter "Snippet37 1..1" -- "formatter 1..1" article_Snippet : snippet36
+article_Description "Snippet46 1..1" -- "description 1..1" article_Snippet : snippet45
+article_Link "article_LinkTarget 1..1" -- "article_Link 0..1" article_LinkTarget : target28
 @enduml

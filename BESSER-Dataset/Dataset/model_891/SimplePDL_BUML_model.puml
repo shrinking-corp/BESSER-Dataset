@@ -1,4 +1,8 @@
 @startuml
+' model: simplepdl
+' project: sampleModel
+' owner: User
+' description: New project
 class ProcessElements {
 }
 enum WorkSequenceType {
@@ -32,13 +36,13 @@ ProcessElements <|-- simplepdl_Guidance
 ProcessElements <|-- simplepdl_Ressource
 ProcessElements <|-- simplepdl_WorkDefinition
 ProcessElements <|-- simplepdl_WorkSequence
-simplepdl_Allocation "0..1" --* "1..1" simplepdl_WorkDefinition : allocation4
-simplepdl_WorkDefinition "1..1" -- "0..9999" simplepdl_WorkSequence : linksToPredecessors1
-simplepdl_WorkDefinition "1..1" -- "0..9999" simplepdl_WorkSequence : linksToSuccessors2
-simplepdl_WorkDefinition "1..1" -- "1..1" simplepdl_WorkSequence : predecessor5
-simplepdl_Process "1..1" *-- "0..9999" simplepdl_ProcessElements : processelement0
-simplepdl_Guidance "1..1" -- "0..1" simplepdl_ProcessElements : processelement8
-simplepdl_Allocation "1..1" -- "0..1" simplepdl_Ressource : ressource10
-simplepdl_WorkDefinition "1..1" -- "1..1" simplepdl_WorkSequence : successor6
-simplepdl_Allocation "1..1" -- "0..1" simplepdl_WorkDefinition : workdefinition12
+simplepdl_Allocation "simplepdl_WorkDefinition 0..1" --* "simplepdl_Allocation 1..1" simplepdl_WorkDefinition : allocation4
+simplepdl_WorkDefinition "WorkSequence 1..1" -- "successor 0..9999" simplepdl_WorkSequence : linksToPredecessors1
+simplepdl_WorkDefinition "WorkSequence3 1..1" -- "predecessor 0..9999" simplepdl_WorkSequence : linksToSuccessors2
+simplepdl_WorkDefinition "linksToSuccessors 1..1" -- "WorkDefinition 1..1" simplepdl_WorkSequence : predecessor5
+simplepdl_Process "simplepdl_ProcessElements 1..1" *-- "simplepdl_Process 0..9999" simplepdl_ProcessElements : processelement0
+simplepdl_Guidance "simplepdl_ProcessElements9 1..1" -- "simplepdl_Guidance 0..1" simplepdl_ProcessElements : processelement8
+simplepdl_Allocation "simplepdl_Ressource 1..1" -- "simplepdl_Allocation11 0..1" simplepdl_Ressource : ressource10
+simplepdl_WorkDefinition "linksToPredecessors 1..1" -- "WorkDefinition7 1..1" simplepdl_WorkSequence : successor6
+simplepdl_Allocation "simplepdl_WorkDefinition14 1..1" -- "simplepdl_Allocation13 0..1" simplepdl_WorkDefinition : workdefinition12
 @enduml

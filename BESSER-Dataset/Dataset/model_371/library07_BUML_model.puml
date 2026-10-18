@@ -1,4 +1,8 @@
 @startuml
+' model: library
+' project: sampleModel
+' owner: User
+' description: New project
 class library_Author {
   + name : str
 }
@@ -14,11 +18,11 @@ class library_Library {
 class library_Shelf {
   + name : str
 }
-library_Author "1..1" -- "1..1" library_Book : author1
-library_Author "0..9999" --* "1..1" library_Library : authors5
-library_Author "1..1" -- "0..9999" library_Book : books0
-library_Book "0..9999" --* "1..1" library_Shelf : books10
-library_Employee "0..9999" --* "1..1" library_Library : employees7
-library_Employee "1..1" -- "0..9999" library_Shelf : shelves2
-library_Library "1..1" *-- "0..9999" library_Shelf : shelves3
+library_Author "books 1..1" -- "Author 1..1" library_Book : author1
+library_Author "library_Library6 0..9999" --* "library_Author 1..1" library_Library : authors5
+library_Author "Book 1..1" -- "author 0..9999" library_Book : books0
+library_Book "library_Shelf11 0..9999" --* "library_Book 1..1" library_Shelf : books10
+library_Employee "library_Library8 0..9999" --* "library_Employee9 1..1" library_Library : employees7
+library_Employee "library_Shelf 1..1" -- "library_Employee 0..9999" library_Shelf : shelves2
+library_Library "library_Shelf4 1..1" *-- "library_Library 0..9999" library_Shelf : shelves3
 @enduml

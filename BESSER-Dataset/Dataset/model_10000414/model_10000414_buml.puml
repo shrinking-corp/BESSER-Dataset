@@ -1,4 +1,8 @@
 @startuml
+' model: _348cf966_a42e_438a_91b6_9396329db506
+' project: sampleModel
+' owner: User
+' description: New project
 class Administrateur {
   + actif : bool
   + id_administrateur : int
@@ -105,16 +109,16 @@ class Session {
   + id_session : int
   + label : str
 }
-ClassD "0..1" -- "0..1" ClassE : ClassD_ClassE
-ClassF "0..1" -- "0..1" ClassG : ClassD_ClassECopy
-ClassH "0..1" -- "0..1" ClassJ : ClassD_ClassECopyCopy
-Document "0..9999" -- "0..9999" Session : Document_Session
-Etudiant "1..9999" -- "1..9999" Session : Etudiant_Session
-CCP "0..9999" -- "0..9999" Formation : Formation_CCP
-Formation "1..1" -- "0..9999" Session : Formation_Session
-Administrateur "0..1" -- "0..9999" Personne : Personne_Administrateur
-Direction "0..1" -- "0..9999" Personne : Personne_Direction
-Etudiant "0..1" -- "0..9999" Personne : Personne_Etudiant
-Formateur "0..1" -- "0..9999" Personne : Personne_Formateur
-Formateur "1..9999" -- "1..9999" Session : Session_Formateur
+ClassD "classD1 0..1" -- "classE0 0..1" ClassE : ClassD_ClassE
+ClassF "classF3 0..1" -- "classG2 0..1" ClassG : ClassD_ClassECopy
+ClassH "classF5 0..1" -- "classG4 0..1" ClassJ : ClassD_ClassECopyCopy
+Document "document21 0..9999" -- "session20 0..9999" Session : Document_Session
+Etudiant "etudiant23 1..9999" -- "session22 1..9999" Session : Etudiant_Session
+CCP "cCP18 0..9999" -- "formation19 0..9999" Formation : Formation_CCP
+Formation "formation17 1..1" -- "session16 0..9999" Session : Formation_Session
+Administrateur "administrateur12 0..1" -- "personne13 0..9999" Personne : Personne_Administrateur
+Direction "direction10 0..1" -- "personne11 0..9999" Personne : Personne_Direction
+Etudiant "etudiant6 0..1" -- "personne7 0..9999" Personne : Personne_Etudiant
+Formateur "formateur8 0..1" -- "personne9 0..9999" Personne : Personne_Formateur
+Formateur "formateur14 1..9999" -- "session15 1..9999" Session : Session_Formateur
 @enduml

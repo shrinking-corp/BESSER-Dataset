@@ -1,7 +1,11 @@
 @startuml
+' model: studyPlan
+' project: sampleModel
+' owner: User
+' description: New project
 enum SeasonEnum {
-  Høst
-  Vår
+  HÃ¸st
+  VÃ¥r
 }
 class Semester {
 }
@@ -40,22 +44,22 @@ class studyPlan_University {
 }
 Semester <|-- studyPlan_SemesterPlan
 Semester <|-- studyPlan_SemesterProgramme
-studyPlan_Specialization "1..1" *-- "0..9999" studyPlan_Specialization : continuations28
-studyPlan_Course "0..9999" --* "1..1" studyPlan_University : courses4
-studyPlan_Course "0..9999" -- "1..1" studyPlan_SemesterProgramme : electiveCourses14
-studyPlan_Course "0..9999" -- "1..1" studyPlan_SemesterProgramme : mandatoryCourses12
-studyPlan_Course "0..9999" -- "1..1" studyPlan_SemesterPlan : selectedCourses10
-studyPlan_SemesterPlan "0..9999" --* "1..1" studyPlan_StudyPlan : semesterPlans8
-studyPlan_SemesterProgramme "1..9999" --* "1..1" studyPlan_Specialization : semesters29
-studyPlan_SemesterProgramme "1..1" -- "1..1" studyPlan_Specialization : specialization11
-studyPlan_Specialization "1..9999" --* "1..1" studyPlan_StudyProgramme : specializations23
-studyPlan_Student "1..1" -- "1..1" studyPlan_StudyPlan : student6
-studyPlan_Student "0..9999" --* "1..1" studyPlan_University : students1
-studyPlan_SemesterPlan "1..1" -- "1..1" studyPlan_StudyPlan : studyPlan9
-studyPlan_Specialization "1..1" -- "0..1" studyPlan_StudyProgramme : studyProgramme25
-studyPlan_StudyProgramme "0..9999" --* "1..1" studyPlan_University : studyProgrammes2
-studyPlan_Student "1..1" *-- "1..1" studyPlan_StudyPlan : studyplan19
-studyPlan_Course "1..1" -- "1..1" studyPlan_University : university0
-studyPlan_Student "1..1" -- "1..1" studyPlan_University : university17
-studyPlan_StudyProgramme "1..1" -- "1..1" studyPlan_University : university21
+studyPlan_Specialization "studyPlan_Specialization 1..1" *-- "studyPlan_Specialization27 0..9999" studyPlan_Specialization : continuations28
+studyPlan_Course "university5 0..9999" --* "Course 1..1" studyPlan_University : courses4
+studyPlan_Course "studyPlan_SemesterProgramme15 0..9999" -- "studyPlan_Course16 1..1" studyPlan_SemesterProgramme : electiveCourses14
+studyPlan_Course "studyPlan_SemesterProgramme 0..9999" -- "studyPlan_Course13 1..1" studyPlan_SemesterProgramme : mandatoryCourses12
+studyPlan_Course "studyPlan_SemesterPlan 0..9999" -- "studyPlan_Course 1..1" studyPlan_SemesterPlan : selectedCourses10
+studyPlan_SemesterPlan "studyPlan 0..9999" --* "SemesterPlan 1..1" studyPlan_StudyPlan : semesterPlans8
+studyPlan_SemesterProgramme "specialization 1..9999" --* "SemesterProgramme 1..1" studyPlan_Specialization : semesters29
+studyPlan_SemesterProgramme "Specialization 1..1" -- "semesters 1..1" studyPlan_Specialization : specialization11
+studyPlan_Specialization "studyProgramme 1..9999" --* "Specialization24 1..1" studyPlan_StudyProgramme : specializations23
+studyPlan_Student "studyplan 1..1" -- "Student7 1..1" studyPlan_StudyPlan : student6
+studyPlan_Student "university 0..9999" --* "Student 1..1" studyPlan_University : students1
+studyPlan_SemesterPlan "StudyPlan 1..1" -- "semesterPlans 1..1" studyPlan_StudyPlan : studyPlan9
+studyPlan_Specialization "StudyProgramme26 1..1" -- "specializations 0..1" studyPlan_StudyProgramme : studyProgramme25
+studyPlan_StudyProgramme "university3 0..9999" --* "StudyProgramme 1..1" studyPlan_University : studyProgrammes2
+studyPlan_Student "StudyPlan20 1..1" *-- "student 1..1" studyPlan_StudyPlan : studyplan19
+studyPlan_Course "University 1..1" -- "courses 1..1" studyPlan_University : university0
+studyPlan_Student "University18 1..1" -- "students 1..1" studyPlan_University : university17
+studyPlan_StudyProgramme "University22 1..1" -- "studyProgrammes 1..1" studyPlan_University : university21
 @enduml

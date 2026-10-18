@@ -1,4 +1,8 @@
 @startuml
+' model: common
+' project: sampleModel
+' owner: User
+' description: New project
 class Modifiable {
 }
 abstract class common_Comparable {
@@ -50,8 +54,8 @@ class common_StringValueList {
 }
 Modifiable <|-- common_DoubleValue
 Modifiable <|-- common_StringValue
-common_DublinCore "1..1" --* "1..1" common_Identifiable : dublinCore0
-common_DoubleValueList "0..9999" --* "1..1" common_DoubleValueMatrix : valueLists2
-common_DoubleValue "0..9999" --* "1..1" common_DoubleValueList : values1
-common_StringValue "0..9999" --* "1..1" common_StringValueList : values4
+common_DublinCore "common_Identifiable 1..1" --* "common_DublinCore 1..1" common_Identifiable : dublinCore0
+common_DoubleValueList "common_DoubleValueMatrix 0..9999" --* "common_DoubleValueList3 1..1" common_DoubleValueMatrix : valueLists2
+common_DoubleValue "common_DoubleValueList 0..9999" --* "common_DoubleValue 1..1" common_DoubleValueList : values1
+common_StringValue "common_StringValueList 0..9999" --* "common_StringValue 1..1" common_StringValueList : values4
 @enduml

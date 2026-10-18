@@ -94,8 +94,8 @@ def test_assoc_terms1_stub_double():
     partner = problog_ProbLogProgram()
     setattr(partner, 'problog_ProbLogProgram2', None)
     _safe_set(owner, 'problog_Term', partner)
-    assert getattr(partner, 'problog_ProbLogProgram2') == owner
+    assert owner in getattr(partner, 'problog_ProbLogProgram2')
     _safe_set(owner, 'problog_Term', None)
-    assert getattr(partner, 'problog_ProbLogProgram2') is None
+    assert owner not in getattr(partner, 'problog_ProbLogProgram2')
 
 

@@ -1,4 +1,8 @@
 @startuml
+' model: iOTConnector
+' project: sampleModel
+' owner: User
+' description: New project
 class Expression {
 }
 class Function {
@@ -96,44 +100,44 @@ Expression <|-- iOTConnector_Var
 Function <|-- iOTConnector_Filter
 Function <|-- iOTConnector_Process
 Function <|-- iOTConnector_Sample
-iOTConnector_BitwiseOperator "0..1" --* "1..1" iOTConnector_FilterExp : bitwiseOperator46
-iOTConnector_Board "0..9999" --* "1..1" iOTConnector_Program : boards5
-iOTConnector_Board "1..1" -- "0..1" iOTConnector_Config : configName11
-iOTConnector_Config "0..9999" --* "1..1" iOTConnector_Program : configs3
-iOTConnector_Expression "0..1" --* "1..1" iOTConnector_ProcessAction : exp55
-iOTConnector_Filter "1..1" *-- "0..9999" iOTConnector_FilterAction : filterActions32
-iOTConnector_FilterAction "1..1" *-- "0..1" iOTConnector_FilterExp : filterExp38
-iOTConnector_FilterExp "0..1" --* "1..1" iOTConnector_FilterExp : filterExp49
-iOTConnector_FilterAction "1..1" *-- "0..1" iOTConnector_FilterType : filterType36
-iOTConnector_Function "0..9999" --* "1..1" iOTConnector_Sensor : functions16
-iOTConnector_Expression "0..1" --* "1..1" iOTConnector_Plus : left68
-iOTConnector_Expression "0..1" --* "1..1" iOTConnector_Minus : left73
-iOTConnector_Expression "0..1" --* "1..1" iOTConnector_Mult : left78
-iOTConnector_Div "1..1" *-- "0..1" iOTConnector_Expression : left83
-iOTConnector_ReadingName "0..1" -- "1..1" iOTConnector_ReadingNameWithConfigScope : name65
-iOTConnector_Output "0..1" --* "1..1" iOTConnector_Sensor : output14
-iOTConnector_Process "1..1" *-- "0..9999" iOTConnector_ProcessAction : processActions51
-iOTConnector_ReadingName "0..1" -- "1..1" iOTConnector_SampleAction : readingName23
-iOTConnector_FilterAction "1..1" -- "0..1" iOTConnector_ReadingName : readingName33
-iOTConnector_FilterExp "1..1" *-- "0..1" iOTConnector_ReadingNameWithConfigScope : readingName40
-iOTConnector_ProcessAction "1..1" -- "0..1" iOTConnector_ReadingName : readingName52
-iOTConnector_ReadingName "0..1" -- "1..1" iOTConnector_SendAction : readingName59
-iOTConnector_ReadingNameWithConfigScope "0..1" --* "1..1" iOTConnector_Var : readingName88
-iOTConnector_ReadingNameWithConfigScope "0..1" --* "1..1" iOTConnector_SampleAction : readingNameToCompare26
-iOTConnector_Output "1..1" *-- "0..9999" iOTConnector_ReadingName : readingNames20
-iOTConnector_RelationalOperator "0..1" --* "1..1" iOTConnector_SampleAction : relationalOperator28
-iOTConnector_FilterExp "1..1" *-- "0..1" iOTConnector_RelationalOperator : relationalOperator43
-iOTConnector_RelationalOperator "0..1" --* "1..1" iOTConnector_SendAction : relationalOperator62
-iOTConnector_Expression "0..1" --* "1..1" iOTConnector_Plus : right70
-iOTConnector_Expression "0..1" --* "1..1" iOTConnector_Minus : right75
-iOTConnector_Expression "0..1" --* "1..1" iOTConnector_Mult : right80
-iOTConnector_Div "1..1" *-- "0..1" iOTConnector_Expression : right85
-iOTConnector_Sample "1..1" *-- "0..9999" iOTConnector_SampleAction : sampleActions22
-iOTConnector_Send "0..1" --* "1..1" iOTConnector_Sensor : send18
-iOTConnector_Send "1..1" *-- "0..9999" iOTConnector_SendAction : sendActions57
-iOTConnector_Board "1..1" *-- "0..9999" iOTConnector_SensorConfig : sensorConfigs9
-iOTConnector_Config "1..1" *-- "0..9999" iOTConnector_Sensor : sensors7
-iOTConnector_SampleAction "1..1" *-- "0..1" iOTConnector_TimeUnit : timeUnit30
-iOTConnector_Program "1..1" *-- "0..1" iOTConnector_Webserver : webserver0
-iOTConnector_Program "1..1" *-- "0..9999" iOTConnector_Wifi : wifis1
+iOTConnector_BitwiseOperator "iOTConnector_FilterExp47 0..1" --* "iOTConnector_BitwiseOperator 1..1" iOTConnector_FilterExp : bitwiseOperator46
+iOTConnector_Board "iOTConnector_Program6 0..9999" --* "iOTConnector_Board 1..1" iOTConnector_Program : boards5
+iOTConnector_Board "iOTConnector_Config13 1..1" -- "iOTConnector_Board12 0..1" iOTConnector_Config : configName11
+iOTConnector_Config "iOTConnector_Program4 0..9999" --* "iOTConnector_Config 1..1" iOTConnector_Program : configs3
+iOTConnector_Expression "iOTConnector_ProcessAction56 0..1" --* "iOTConnector_Expression 1..1" iOTConnector_ProcessAction : exp55
+iOTConnector_Filter "iOTConnector_FilterAction 1..1" *-- "iOTConnector_Filter 0..9999" iOTConnector_FilterAction : filterActions32
+iOTConnector_FilterAction "iOTConnector_FilterExp 1..1" *-- "iOTConnector_FilterAction39 0..1" iOTConnector_FilterExp : filterExp38
+iOTConnector_FilterExp "iOTConnector_FilterExp48 0..1" --* "iOTConnector_FilterExp50 1..1" iOTConnector_FilterExp : filterExp49
+iOTConnector_FilterAction "iOTConnector_FilterType 1..1" *-- "iOTConnector_FilterAction37 0..1" iOTConnector_FilterType : filterType36
+iOTConnector_Function "iOTConnector_Sensor17 0..9999" --* "iOTConnector_Function 1..1" iOTConnector_Sensor : functions16
+iOTConnector_Expression "iOTConnector_Plus 0..1" --* "iOTConnector_Expression69 1..1" iOTConnector_Plus : left68
+iOTConnector_Expression "iOTConnector_Minus 0..1" --* "iOTConnector_Expression74 1..1" iOTConnector_Minus : left73
+iOTConnector_Expression "iOTConnector_Mult 0..1" --* "iOTConnector_Expression79 1..1" iOTConnector_Mult : left78
+iOTConnector_Div "iOTConnector_Expression84 1..1" *-- "iOTConnector_Div 0..1" iOTConnector_Expression : left83
+iOTConnector_ReadingName "iOTConnector_ReadingNameWithConfigScope66 0..1" -- "iOTConnector_ReadingName67 1..1" iOTConnector_ReadingNameWithConfigScope : name65
+iOTConnector_Output "iOTConnector_Sensor15 0..1" --* "iOTConnector_Output 1..1" iOTConnector_Sensor : output14
+iOTConnector_Process "iOTConnector_ProcessAction 1..1" *-- "iOTConnector_Process 0..9999" iOTConnector_ProcessAction : processActions51
+iOTConnector_ReadingName "iOTConnector_SampleAction24 0..1" -- "iOTConnector_ReadingName25 1..1" iOTConnector_SampleAction : readingName23
+iOTConnector_FilterAction "iOTConnector_ReadingName35 1..1" -- "iOTConnector_FilterAction34 0..1" iOTConnector_ReadingName : readingName33
+iOTConnector_FilterExp "iOTConnector_ReadingNameWithConfigScope42 1..1" *-- "iOTConnector_FilterExp41 0..1" iOTConnector_ReadingNameWithConfigScope : readingName40
+iOTConnector_ProcessAction "iOTConnector_ReadingName54 1..1" -- "iOTConnector_ProcessAction53 0..1" iOTConnector_ReadingName : readingName52
+iOTConnector_ReadingName "iOTConnector_SendAction60 0..1" -- "iOTConnector_ReadingName61 1..1" iOTConnector_SendAction : readingName59
+iOTConnector_ReadingNameWithConfigScope "iOTConnector_Var 0..1" --* "iOTConnector_ReadingNameWithConfigScope89 1..1" iOTConnector_Var : readingName88
+iOTConnector_ReadingNameWithConfigScope "iOTConnector_SampleAction27 0..1" --* "iOTConnector_ReadingNameWithConfigScope 1..1" iOTConnector_SampleAction : readingNameToCompare26
+iOTConnector_Output "iOTConnector_ReadingName 1..1" *-- "iOTConnector_Output21 0..9999" iOTConnector_ReadingName : readingNames20
+iOTConnector_RelationalOperator "iOTConnector_SampleAction29 0..1" --* "iOTConnector_RelationalOperator 1..1" iOTConnector_SampleAction : relationalOperator28
+iOTConnector_FilterExp "iOTConnector_RelationalOperator45 1..1" *-- "iOTConnector_FilterExp44 0..1" iOTConnector_RelationalOperator : relationalOperator43
+iOTConnector_RelationalOperator "iOTConnector_SendAction63 0..1" --* "iOTConnector_RelationalOperator64 1..1" iOTConnector_SendAction : relationalOperator62
+iOTConnector_Expression "iOTConnector_Plus71 0..1" --* "iOTConnector_Expression72 1..1" iOTConnector_Plus : right70
+iOTConnector_Expression "iOTConnector_Minus76 0..1" --* "iOTConnector_Expression77 1..1" iOTConnector_Minus : right75
+iOTConnector_Expression "iOTConnector_Mult81 0..1" --* "iOTConnector_Expression82 1..1" iOTConnector_Mult : right80
+iOTConnector_Div "iOTConnector_Expression87 1..1" *-- "iOTConnector_Div86 0..1" iOTConnector_Expression : right85
+iOTConnector_Sample "iOTConnector_SampleAction 1..1" *-- "iOTConnector_Sample 0..9999" iOTConnector_SampleAction : sampleActions22
+iOTConnector_Send "iOTConnector_Sensor19 0..1" --* "iOTConnector_Send 1..1" iOTConnector_Sensor : send18
+iOTConnector_Send "iOTConnector_SendAction 1..1" *-- "iOTConnector_Send58 0..9999" iOTConnector_SendAction : sendActions57
+iOTConnector_Board "iOTConnector_SensorConfig 1..1" *-- "iOTConnector_Board10 0..9999" iOTConnector_SensorConfig : sensorConfigs9
+iOTConnector_Config "iOTConnector_Sensor 1..1" *-- "iOTConnector_Config8 0..9999" iOTConnector_Sensor : sensors7
+iOTConnector_SampleAction "iOTConnector_TimeUnit 1..1" *-- "iOTConnector_SampleAction31 0..1" iOTConnector_TimeUnit : timeUnit30
+iOTConnector_Program "iOTConnector_Webserver 1..1" *-- "iOTConnector_Program 0..1" iOTConnector_Webserver : webserver0
+iOTConnector_Program "iOTConnector_Wifi 1..1" *-- "iOTConnector_Program2 0..9999" iOTConnector_Wifi : wifis1
 @enduml

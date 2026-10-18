@@ -1,4 +1,8 @@
 @startuml
+' model: minilang
+' project: sampleModel
+' owner: User
+' description: New project
 class BinaryOperation {
 }
 enum Cardinals {
@@ -94,22 +98,22 @@ Statement <|-- minilang_VariableAffect
 Value <|-- minilang_BinaryOperation
 Value <|-- minilang_Constant
 Value <|-- minilang_VariableRef
-minilang_Block "1..1" --* "1..1" minilang_Method : block7
-minilang_Condition "1..1" --* "1..1" minilang_IfStmt : condition16
-minilang_Block "0..1" --* "1..1" minilang_IfStmt : elseBranch13
-minilang_GreaterThan "1..1" *-- "1..1" minilang_Value : left18
-minilang_BinaryOperation "1..1" *-- "1..1" minilang_Value : left31
-minilang_Line "0..9999" --* "1..1" minilang_Program : lines4
-minilang_Method "1..1" -- "1..1" minilang_Program : mainMethod1
-minilang_CallMethod "1..1" -- "1..1" minilang_Method : method34
-minilang_Method "0..9999" --* "1..1" minilang_Program : methods0
-minilang_Method "1..1" -- "1..1" minilang_Program : program6
-minilang_GreaterThan "1..1" *-- "1..1" minilang_Value : right19
-minilang_BinaryOperation "1..1" *-- "1..1" minilang_Value : right29
-minilang_Block "1..1" *-- "0..9999" minilang_Statement : statements9
-minilang_Block "1..1" --* "1..1" minilang_IfStmt : thenBranch11
-minilang_Value "1..1" --* "1..1" minilang_VariableAffect : value26
-minilang_Variable "1..1" -- "1..1" minilang_VariableRef : variable22
-minilang_Variable "1..1" -- "1..1" minilang_VariableAffect : variable24
-minilang_Program "1..1" *-- "0..9999" minilang_Variable : variables2
+minilang_Block "minilang_Method8 1..1" --* "minilang_Block 1..1" minilang_Method : block7
+minilang_Condition "minilang_IfStmt17 1..1" --* "minilang_Condition 1..1" minilang_IfStmt : condition16
+minilang_Block "minilang_IfStmt14 0..1" --* "minilang_Block15 1..1" minilang_IfStmt : elseBranch13
+minilang_GreaterThan "minilang_Value 1..1" *-- "minilang_GreaterThan 1..1" minilang_Value : left18
+minilang_BinaryOperation "minilang_Value33 1..1" *-- "minilang_BinaryOperation32 1..1" minilang_Value : left31
+minilang_Line "minilang_Program5 0..9999" --* "minilang_Line 1..1" minilang_Program : lines4
+minilang_Method "minilang_Program 1..1" -- "minilang_Method 1..1" minilang_Program : mainMethod1
+minilang_CallMethod "minilang_Method35 1..1" -- "minilang_CallMethod 1..1" minilang_Method : method34
+minilang_Method "program 0..9999" --* "Method 1..1" minilang_Program : methods0
+minilang_Method "Program 1..1" -- "methods 1..1" minilang_Program : program6
+minilang_GreaterThan "minilang_Value21 1..1" *-- "minilang_GreaterThan20 1..1" minilang_Value : right19
+minilang_BinaryOperation "minilang_Value30 1..1" *-- "minilang_BinaryOperation 1..1" minilang_Value : right29
+minilang_Block "minilang_Statement 1..1" *-- "minilang_Block10 0..9999" minilang_Statement : statements9
+minilang_Block "minilang_IfStmt 1..1" --* "minilang_Block12 1..1" minilang_IfStmt : thenBranch11
+minilang_Value "minilang_VariableAffect27 1..1" --* "minilang_Value28 1..1" minilang_VariableAffect : value26
+minilang_Variable "minilang_VariableRef 1..1" -- "minilang_Variable23 1..1" minilang_VariableRef : variable22
+minilang_Variable "minilang_VariableAffect 1..1" -- "minilang_Variable25 1..1" minilang_VariableAffect : variable24
+minilang_Program "minilang_Variable 1..1" *-- "minilang_Program3 0..9999" minilang_Variable : variables2
 @enduml

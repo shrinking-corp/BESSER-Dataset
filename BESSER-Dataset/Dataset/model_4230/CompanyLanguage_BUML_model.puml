@@ -1,4 +1,8 @@
 @startuml
+' model: CompanyLanguage
+' project: sampleModel
+' owner: User
+' description: New project
 class CompanyLanguage_Admin {
   + name : str
 }
@@ -11,9 +15,9 @@ class CompanyLanguage_Company {
 class CompanyLanguage_Employee {
   + name : str
 }
-CompanyLanguage_Admin "0..9999" --* "1..1" CompanyLanguage_Company : admin8
-CompanyLanguage_Admin "1..1" -- "0..1" CompanyLanguage_CEO : ceo0
-CompanyLanguage_CEO "0..9999" --* "1..1" CompanyLanguage_Company : ceo5
-CompanyLanguage_CEO "1..1" -- "0..9999" CompanyLanguage_Employee : employee1
-CompanyLanguage_Company "1..1" *-- "0..9999" CompanyLanguage_Employee : employee3
+CompanyLanguage_Admin "CompanyLanguage_Company9 0..9999" --* "CompanyLanguage_Admin10 1..1" CompanyLanguage_Company : admin8
+CompanyLanguage_Admin "CompanyLanguage_CEO 1..1" -- "CompanyLanguage_Admin 0..1" CompanyLanguage_CEO : ceo0
+CompanyLanguage_CEO "CompanyLanguage_Company6 0..9999" --* "CompanyLanguage_CEO7 1..1" CompanyLanguage_Company : ceo5
+CompanyLanguage_CEO "CompanyLanguage_Employee 1..1" -- "CompanyLanguage_CEO2 0..9999" CompanyLanguage_Employee : employee1
+CompanyLanguage_Company "CompanyLanguage_Employee4 1..1" *-- "CompanyLanguage_Company 0..9999" CompanyLanguage_Employee : employee3
 @enduml

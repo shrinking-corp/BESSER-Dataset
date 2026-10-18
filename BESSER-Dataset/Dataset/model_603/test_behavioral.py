@@ -476,9 +476,9 @@ def test_assoc_events53_stub_double():
     partner = mvc_EventAction()
     setattr(partner, 'mvc_EventAction54', None)
     _safe_set(owner, 'mvc_Event55', partner)
-    assert getattr(partner, 'mvc_EventAction54') == owner
+    assert owner in getattr(partner, 'mvc_EventAction54')
     _safe_set(owner, 'mvc_Event55', None)
-    assert getattr(partner, 'mvc_EventAction54') is None
+    assert owner not in getattr(partner, 'mvc_EventAction54')
 
 
 def test_assoc_models44_stub_double():
@@ -491,9 +491,9 @@ def test_assoc_models44_stub_double():
     partner = mvc_ControllerView()
     setattr(partner, 'mvc_ControllerView45', None)
     _safe_set(owner, 'mvc_Model46', partner)
-    assert getattr(partner, 'mvc_ControllerView45') == owner
+    assert owner in getattr(partner, 'mvc_ControllerView45')
     _safe_set(owner, 'mvc_Model46', None)
-    assert getattr(partner, 'mvc_ControllerView45') is None
+    assert owner not in getattr(partner, 'mvc_ControllerView45')
 
 
 def test_assoc_triggerEvent63_stub_double():

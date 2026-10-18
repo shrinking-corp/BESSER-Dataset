@@ -1,4 +1,8 @@
 @startuml
+' model: graphgrammar
+' project: sampleModel
+' owner: User
+' description: New project
 class Vertex {
 }
 class graphgrammar_Derivation {
@@ -74,56 +78,56 @@ class graphgrammar_ZoneVertex {
   + equivalates(graphgrammar_other : str) : bool
 }
 Vertex <|-- graphgrammar_ZoneVertex
-graphgrammar_Grammar "1..1" *-- "0..9999" graphgrammar_Symbol : alphabet0
-graphgrammar_Symbol "0..9999" --* "1..1" graphgrammar_TripleGrammar : alphabet82
-graphgrammar_ParsingTree "0..9999" --* "1..1" graphgrammar_ParsingTree : children52
-graphgrammar_Graph "0..1" --* "1..1" graphgrammar_TripleGraph : corr112
-graphgrammar_Rule "0..1" --* "1..1" graphgrammar_TripleRule : corr98
-graphgrammar_DerivationStep "0..1" --* "1..1" graphgrammar_ParsingTree : derivationStep48
-graphgrammar_Symbol "0..1" --* "1..1" graphgrammar_SymbolSymbolsPair : edgeLabel21
-graphgrammar_Edge "0..9999" --* "1..1" graphgrammar_Graph : edges62
-graphgrammar_Rule "1..1" *-- "0..9999" graphgrammar_VertexToSymbolSymbolsPairMap : embedding17
-graphgrammar_Edge "1..1" -- "0..1" graphgrammar_Vertex : from_73
-graphgrammar_Grammar "1..1" -- "0..1" graphgrammar_Symbol : initial9
-graphgrammar_Symbol "0..1" -- "1..1" graphgrammar_TripleGrammar : initial92
-graphgrammar_Vertex "0..1" -- "1..1" graphgrammar_VertexToVertexMap : key124
-graphgrammar_Vertex "0..1" -- "1..1" graphgrammar_VertexToStringMap : key130
-graphgrammar_Vertex "0..1" -- "1..1" graphgrammar_VertexToSymbolSymbolsPairMap : key26
-graphgrammar_Symbol "0..1" --* "1..1" graphgrammar_Vertex : label64
-graphgrammar_Edge "1..1" *-- "0..1" graphgrammar_Symbol : label79
-graphgrammar_Rule "1..1" *-- "0..1" graphgrammar_Symbol : lhs12
-graphgrammar_TripleRule "1..1" *-- "0..9999" graphgrammar_VertexToVertexMap : ms104
-graphgrammar_TripleGraph "1..1" *-- "0..9999" graphgrammar_VertexToVertexMap : ms118
-graphgrammar_TripleRule "1..1" *-- "0..9999" graphgrammar_VertexToVertexMap : mt107
-graphgrammar_TripleGraph "1..1" *-- "0..9999" graphgrammar_VertexToVertexMap : mt121
-graphgrammar_DerivationStep "1..1" *-- "0..1" graphgrammar_Graph : next40
-graphgrammar_Grammar "1..1" -- "0..9999" graphgrammar_Symbol : nonterminals4
-graphgrammar_Symbol "0..9999" -- "1..1" graphgrammar_TripleGrammar : nonterminals87
-graphgrammar_Rule "1..1" -- "0..9999" graphgrammar_Vertex : pac19
-graphgrammar_ResolutionStep "1..1" *-- "0..9999" graphgrammar_VertexToStringMap : pac54
-graphgrammar_Vertex "0..9999" --* "1..1" graphgrammar_ZoneVertex : pac70
-graphgrammar_DerivationStep "1..1" *-- "0..1" graphgrammar_Graph : previous37
-graphgrammar_Resolution "1..1" *-- "0..9999" graphgrammar_StringToVertexMap : referenceIds55
-graphgrammar_Graph "0..1" --* "1..1" graphgrammar_Rule : rhs15
-graphgrammar_DerivationStep "1..1" *-- "0..1" graphgrammar_Rule : rule32
-graphgrammar_Grammar "1..1" *-- "0..9999" graphgrammar_Rule : rules7
-graphgrammar_Graph "0..1" --* "1..1" graphgrammar_TripleGraph : source110
-graphgrammar_Rule "0..1" --* "1..1" graphgrammar_TripleRule : source95
-graphgrammar_Derivation "1..1" *-- "0..9999" graphgrammar_DerivationStep : steps45
-graphgrammar_Resolution "1..1" *-- "0..9999" graphgrammar_ResolutionStep : steps56
-graphgrammar_Rule "0..1" --* "1..1" graphgrammar_TripleRule : target101
-graphgrammar_Graph "0..1" --* "1..1" graphgrammar_TripleGraph : target115
-graphgrammar_Grammar "1..1" -- "0..9999" graphgrammar_Symbol : terminals1
-graphgrammar_Symbol "0..9999" -- "1..1" graphgrammar_TripleGrammar : terminals84
-graphgrammar_Edge "1..1" -- "0..1" graphgrammar_Vertex : to76
-graphgrammar_TripleGrammar "1..1" *-- "0..9999" graphgrammar_TripleRule : tripleRules90
-graphgrammar_DerivationStep "1..1" *-- "0..9999" graphgrammar_VertexToVertexMap : unifier43
-graphgrammar_Vertex "0..1" -- "1..1" graphgrammar_VertexToVertexMap : value127
-graphgrammar_StringToVertexMap "1..1" -- "0..1" graphgrammar_Vertex : value133
-graphgrammar_SymbolSymbolsPair "0..9999" --* "1..1" graphgrammar_VertexToSymbolSymbolsPairMap : value29
-graphgrammar_DerivationStep "1..1" *-- "0..1" graphgrammar_Vertex : vertex34
-graphgrammar_Symbol "0..9999" --* "1..1" graphgrammar_SymbolSymbolsPair : vertexLabels23
-graphgrammar_Graph "1..1" *-- "0..9999" graphgrammar_Vertex : vertices59
-graphgrammar_Vertex "0..9999" --* "1..1" graphgrammar_ZoneVertex : vertices67
-graphgrammar_ParsingTree "1..1" *-- "0..1" graphgrammar_ZoneVertex : zoneVertex47
+graphgrammar_Grammar "graphgrammar_Symbol 1..1" *-- "graphgrammar_Grammar 0..9999" graphgrammar_Symbol : alphabet0
+graphgrammar_Symbol "graphgrammar_TripleGrammar 0..9999" --* "graphgrammar_Symbol83 1..1" graphgrammar_TripleGrammar : alphabet82
+graphgrammar_ParsingTree "graphgrammar_ParsingTree51 0..9999" --* "graphgrammar_ParsingTree53 1..1" graphgrammar_ParsingTree : children52
+graphgrammar_Graph "graphgrammar_TripleGraph113 0..1" --* "graphgrammar_Graph114 1..1" graphgrammar_TripleGraph : corr112
+graphgrammar_Rule "graphgrammar_TripleRule99 0..1" --* "graphgrammar_Rule100 1..1" graphgrammar_TripleRule : corr98
+graphgrammar_DerivationStep "graphgrammar_ParsingTree49 0..1" --* "graphgrammar_DerivationStep50 1..1" graphgrammar_ParsingTree : derivationStep48
+graphgrammar_Symbol "graphgrammar_SymbolSymbolsPair 0..1" --* "graphgrammar_Symbol22 1..1" graphgrammar_SymbolSymbolsPair : edgeLabel21
+graphgrammar_Edge "graphgrammar_Graph63 0..9999" --* "graphgrammar_Edge 1..1" graphgrammar_Graph : edges62
+graphgrammar_Rule "graphgrammar_VertexToSymbolSymbolsPairMap 1..1" *-- "graphgrammar_Rule18 0..9999" graphgrammar_VertexToSymbolSymbolsPairMap : embedding17
+graphgrammar_Edge "graphgrammar_Vertex75 1..1" -- "graphgrammar_Edge74 0..1" graphgrammar_Vertex : from_73
+graphgrammar_Grammar "graphgrammar_Symbol11 1..1" -- "graphgrammar_Grammar10 0..1" graphgrammar_Symbol : initial9
+graphgrammar_Symbol "graphgrammar_TripleGrammar93 0..1" -- "graphgrammar_Symbol94 1..1" graphgrammar_TripleGrammar : initial92
+graphgrammar_Vertex "graphgrammar_VertexToVertexMap125 0..1" -- "graphgrammar_Vertex126 1..1" graphgrammar_VertexToVertexMap : key124
+graphgrammar_Vertex "graphgrammar_VertexToStringMap131 0..1" -- "graphgrammar_Vertex132 1..1" graphgrammar_VertexToStringMap : key130
+graphgrammar_Vertex "graphgrammar_VertexToSymbolSymbolsPairMap27 0..1" -- "graphgrammar_Vertex28 1..1" graphgrammar_VertexToSymbolSymbolsPairMap : key26
+graphgrammar_Symbol "graphgrammar_Vertex65 0..1" --* "graphgrammar_Symbol66 1..1" graphgrammar_Vertex : label64
+graphgrammar_Edge "graphgrammar_Symbol81 1..1" *-- "graphgrammar_Edge80 0..1" graphgrammar_Symbol : label79
+graphgrammar_Rule "graphgrammar_Symbol14 1..1" *-- "graphgrammar_Rule13 0..1" graphgrammar_Symbol : lhs12
+graphgrammar_TripleRule "graphgrammar_VertexToVertexMap106 1..1" *-- "graphgrammar_TripleRule105 0..9999" graphgrammar_VertexToVertexMap : ms104
+graphgrammar_TripleGraph "graphgrammar_VertexToVertexMap120 1..1" *-- "graphgrammar_TripleGraph119 0..9999" graphgrammar_VertexToVertexMap : ms118
+graphgrammar_TripleRule "graphgrammar_VertexToVertexMap109 1..1" *-- "graphgrammar_TripleRule108 0..9999" graphgrammar_VertexToVertexMap : mt107
+graphgrammar_TripleGraph "graphgrammar_VertexToVertexMap123 1..1" *-- "graphgrammar_TripleGraph122 0..9999" graphgrammar_VertexToVertexMap : mt121
+graphgrammar_DerivationStep "graphgrammar_Graph42 1..1" *-- "graphgrammar_DerivationStep41 0..1" graphgrammar_Graph : next40
+graphgrammar_Grammar "graphgrammar_Symbol6 1..1" -- "graphgrammar_Grammar5 0..9999" graphgrammar_Symbol : nonterminals4
+graphgrammar_Symbol "graphgrammar_TripleGrammar88 0..9999" -- "graphgrammar_Symbol89 1..1" graphgrammar_TripleGrammar : nonterminals87
+graphgrammar_Rule "graphgrammar_Vertex 1..1" -- "graphgrammar_Rule20 0..9999" graphgrammar_Vertex : pac19
+graphgrammar_ResolutionStep "graphgrammar_VertexToStringMap 1..1" *-- "graphgrammar_ResolutionStep 0..9999" graphgrammar_VertexToStringMap : pac54
+graphgrammar_Vertex "graphgrammar_ZoneVertex71 0..9999" --* "graphgrammar_Vertex72 1..1" graphgrammar_ZoneVertex : pac70
+graphgrammar_DerivationStep "graphgrammar_Graph39 1..1" *-- "graphgrammar_DerivationStep38 0..1" graphgrammar_Graph : previous37
+graphgrammar_Resolution "graphgrammar_StringToVertexMap 1..1" *-- "graphgrammar_Resolution 0..9999" graphgrammar_StringToVertexMap : referenceIds55
+graphgrammar_Graph "graphgrammar_Rule16 0..1" --* "graphgrammar_Graph 1..1" graphgrammar_Rule : rhs15
+graphgrammar_DerivationStep "graphgrammar_Rule33 1..1" *-- "graphgrammar_DerivationStep 0..1" graphgrammar_Rule : rule32
+graphgrammar_Grammar "graphgrammar_Rule 1..1" *-- "graphgrammar_Grammar8 0..9999" graphgrammar_Rule : rules7
+graphgrammar_Graph "graphgrammar_TripleGraph 0..1" --* "graphgrammar_Graph111 1..1" graphgrammar_TripleGraph : source110
+graphgrammar_Rule "graphgrammar_TripleRule96 0..1" --* "graphgrammar_Rule97 1..1" graphgrammar_TripleRule : source95
+graphgrammar_Derivation "graphgrammar_DerivationStep46 1..1" *-- "graphgrammar_Derivation 0..9999" graphgrammar_DerivationStep : steps45
+graphgrammar_Resolution "graphgrammar_ResolutionStep58 1..1" *-- "graphgrammar_Resolution57 0..9999" graphgrammar_ResolutionStep : steps56
+graphgrammar_Rule "graphgrammar_TripleRule102 0..1" --* "graphgrammar_Rule103 1..1" graphgrammar_TripleRule : target101
+graphgrammar_Graph "graphgrammar_TripleGraph116 0..1" --* "graphgrammar_Graph117 1..1" graphgrammar_TripleGraph : target115
+graphgrammar_Grammar "graphgrammar_Symbol3 1..1" -- "graphgrammar_Grammar2 0..9999" graphgrammar_Symbol : terminals1
+graphgrammar_Symbol "graphgrammar_TripleGrammar85 0..9999" -- "graphgrammar_Symbol86 1..1" graphgrammar_TripleGrammar : terminals84
+graphgrammar_Edge "graphgrammar_Vertex78 1..1" -- "graphgrammar_Edge77 0..1" graphgrammar_Vertex : to76
+graphgrammar_TripleGrammar "graphgrammar_TripleRule 1..1" *-- "graphgrammar_TripleGrammar91 0..9999" graphgrammar_TripleRule : tripleRules90
+graphgrammar_DerivationStep "graphgrammar_VertexToVertexMap 1..1" *-- "graphgrammar_DerivationStep44 0..9999" graphgrammar_VertexToVertexMap : unifier43
+graphgrammar_Vertex "graphgrammar_VertexToVertexMap128 0..1" -- "graphgrammar_Vertex129 1..1" graphgrammar_VertexToVertexMap : value127
+graphgrammar_StringToVertexMap "graphgrammar_Vertex135 1..1" -- "graphgrammar_StringToVertexMap134 0..1" graphgrammar_Vertex : value133
+graphgrammar_SymbolSymbolsPair "graphgrammar_VertexToSymbolSymbolsPairMap30 0..9999" --* "graphgrammar_SymbolSymbolsPair31 1..1" graphgrammar_VertexToSymbolSymbolsPairMap : value29
+graphgrammar_DerivationStep "graphgrammar_Vertex36 1..1" *-- "graphgrammar_DerivationStep35 0..1" graphgrammar_Vertex : vertex34
+graphgrammar_Symbol "graphgrammar_SymbolSymbolsPair24 0..9999" --* "graphgrammar_Symbol25 1..1" graphgrammar_SymbolSymbolsPair : vertexLabels23
+graphgrammar_Graph "graphgrammar_Vertex61 1..1" *-- "graphgrammar_Graph60 0..9999" graphgrammar_Vertex : vertices59
+graphgrammar_Vertex "graphgrammar_ZoneVertex68 0..9999" --* "graphgrammar_Vertex69 1..1" graphgrammar_ZoneVertex : vertices67
+graphgrammar_ParsingTree "graphgrammar_ZoneVertex 1..1" *-- "graphgrammar_ParsingTree 0..1" graphgrammar_ZoneVertex : zoneVertex47
 @enduml

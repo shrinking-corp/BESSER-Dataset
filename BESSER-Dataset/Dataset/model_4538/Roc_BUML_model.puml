@@ -1,4 +1,8 @@
 @startuml
+' model: roc
+' project: sampleModel
+' owner: User
+' description: New project
 enum DurationUnit {
   MILLISECONDS
   MINUTES
@@ -56,11 +60,11 @@ class roc_Speed {
   + SLOW : str
   + SLOWEST : str
 }
-roc_Action "0..1" --* "1..1" roc_Motion : action3
-roc_Action "1..1" *-- "0..1" roc_EObject : actionHolder7
-roc_DirectedAction "1..1" *-- "0..1" roc_EObject : actionName9
-roc_DirectedAction "1..1" *-- "0..1" roc_EObject : direction11
-roc_Motion "0..9999" --* "1..1" roc_Movement : motions1
-roc_Movement "0..9999" --* "1..1" roc_Program : movements0
-roc_Motion "1..1" *-- "0..1" roc_Speed : speed5
+roc_Action "roc_Motion4 0..1" --* "roc_Action 1..1" roc_Motion : action3
+roc_Action "roc_EObject 1..1" *-- "roc_Action8 0..1" roc_EObject : actionHolder7
+roc_DirectedAction "roc_EObject10 1..1" *-- "roc_DirectedAction 0..1" roc_EObject : actionName9
+roc_DirectedAction "roc_EObject13 1..1" *-- "roc_DirectedAction12 0..1" roc_EObject : direction11
+roc_Motion "roc_Movement2 0..9999" --* "roc_Motion 1..1" roc_Movement : motions1
+roc_Movement "roc_Program 0..9999" --* "roc_Movement 1..1" roc_Program : movements0
+roc_Motion "roc_Speed 1..1" *-- "roc_Motion6 0..1" roc_Speed : speed5
 @enduml

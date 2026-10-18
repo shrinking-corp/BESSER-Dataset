@@ -1,4 +1,8 @@
 @startuml
+' model: petrinet
+' project: sampleModel
+' owner: User
+' description: New project
 class NamedElement {
 }
 abstract class petrinet_NamedElement {
@@ -12,12 +16,12 @@ class petrinet_Transition {
 }
 NamedElement <|-- petrinet_Place
 NamedElement <|-- petrinet_Transition
-petrinet_Net "1..1" -- "1..1" petrinet_Transition : cnet12
-petrinet_Net "1..1" -- "1..1" petrinet_Place : cnet7
-petrinet_Net "1..1" *-- "0..9999" petrinet_Place : places0
-petrinet_Place "0..9999" -- "1..1" petrinet_Transition : postp10
-petrinet_Place "1..1" -- "0..9999" petrinet_Transition : postt3
-petrinet_Place "0..9999" -- "1..1" petrinet_Transition : prep8
-petrinet_Place "1..1" -- "0..9999" petrinet_Transition : pret5
-petrinet_Net "1..1" *-- "0..9999" petrinet_Transition : transitions1
+petrinet_Net "transitions 1..1" -- "Net13 1..1" petrinet_Transition : cnet12
+petrinet_Net "places 1..1" -- "Net 1..1" petrinet_Place : cnet7
+petrinet_Net "Place 1..1" *-- "cnet 0..9999" petrinet_Place : places0
+petrinet_Place "pret 0..9999" -- "Place11 1..1" petrinet_Transition : postp10
+petrinet_Place "Transition4 1..1" -- "prep 0..9999" petrinet_Transition : postt3
+petrinet_Place "postt 0..9999" -- "Place9 1..1" petrinet_Transition : prep8
+petrinet_Place "Transition6 1..1" -- "postp 0..9999" petrinet_Transition : pret5
+petrinet_Net "Transition 1..1" *-- "cnet2 0..9999" petrinet_Transition : transitions1
 @enduml

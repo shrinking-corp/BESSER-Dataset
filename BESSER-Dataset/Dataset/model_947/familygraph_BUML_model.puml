@@ -1,4 +1,8 @@
 @startuml
+' model: Graph
+' project: sampleModel
+' owner: User
+' description: New project
 class Graph_Edge {
   + degree : int
   + relation : str
@@ -8,9 +12,9 @@ class Graph_Graph {
 class Graph_Node {
   + name : str
 }
-Graph_Edge "0..9999" -- "1..1" Graph_Node : incoming2
-Graph_Graph "1..1" *-- "0..9999" Graph_Node : nodes0
-Graph_Edge "0..9999" --* "1..1" Graph_Node : outgoing1
-Graph_Edge "1..1" -- "0..1" Graph_Node : source4
-Graph_Edge "1..1" -- "0..1" Graph_Node : target5
+Graph_Edge "target 0..9999" -- "Edge3 1..1" Graph_Node : incoming2
+Graph_Graph "Graph_Node 1..1" *-- "Graph_Graph 0..9999" Graph_Node : nodes0
+Graph_Edge "source 0..9999" --* "Edge 1..1" Graph_Node : outgoing1
+Graph_Edge "Node 1..1" -- "outgoing 0..1" Graph_Node : source4
+Graph_Edge "Node6 1..1" -- "incoming 0..1" Graph_Node : target5
 @enduml

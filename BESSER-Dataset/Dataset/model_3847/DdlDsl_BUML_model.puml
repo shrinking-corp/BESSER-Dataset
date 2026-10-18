@@ -1,4 +1,8 @@
 @startuml
+' model: ddlDsl
+' project: sampleModel
+' owner: User
+' description: New project
 class AlterTableAction {
 }
 class Comment {
@@ -142,23 +146,23 @@ SqlDateTime <|-- ddlDsl_SqlInterval
 SqlDateTime <|-- ddlDsl_SqlTimeStamp
 TableProperty <|-- ddlDsl_Column
 TableProperty <|-- ddlDsl_Constraint
-ddlDsl_Alter "1..1" *-- "0..1" ddlDsl_AlterTableAction : action2
-ddlDsl_Column "0..1" -- "1..1" ddlDsl_ColumnComment : column10
-ddlDsl_Column "0..9999" -- "1..1" ddlDsl_CreateIndex : columns15
-ddlDsl_Column "0..9999" -- "1..1" ddlDsl_UniqueKeyConstraint : columns25
-ddlDsl_Column "0..9999" -- "1..1" ddlDsl_PrimaryKeyConstraint : columns27
-ddlDsl_Column "0..9999" -- "1..1" ddlDsl_ForeignKeyConstraint : columns29
-ddlDsl_Column "0..9999" -- "1..1" ddlDsl_ReferenceClause : columns37
-ddlDsl_Column "1..1" *-- "0..1" ddlDsl_Constraint : constraint20
-ddlDsl_AlterTableAction "1..1" *-- "0..1" ddlDsl_Constraint : constraint4
-ddlDsl_Constraint "0..1" -- "1..1" ddlDsl_DropTableConstraint : constraintRef6
-ddlDsl_CreateTable "1..1" *-- "0..9999" ddlDsl_TableProperty : properties11
-ddlDsl_Column "1..1" *-- "0..1" ddlDsl_ReferenceClause : reference23
-ddlDsl_ForeignKeyConstraint "1..1" *-- "0..1" ddlDsl_ReferenceClause : reference31
-ddlDsl_Ddl "1..1" *-- "0..9999" ddlDsl_DdlStatement : statements0
-ddlDsl_Alter "1..1" -- "0..1" ddlDsl_CreateTable : table1
-ddlDsl_CreateIndex "1..1" -- "0..1" ddlDsl_CreateTable : table13
-ddlDsl_CreateTable "0..1" -- "1..1" ddlDsl_ReferenceClause : table34
-ddlDsl_CreateTable "0..1" -- "1..1" ddlDsl_TableComment : table8
-ddlDsl_Column "1..1" *-- "0..1" ddlDsl_SqlDataType : type18
+ddlDsl_Alter "ddlDsl_AlterTableAction 1..1" *-- "ddlDsl_Alter3 0..1" ddlDsl_AlterTableAction : action2
+ddlDsl_Column "ddlDsl_ColumnComment 0..1" -- "ddlDsl_Column 1..1" ddlDsl_ColumnComment : column10
+ddlDsl_Column "ddlDsl_CreateIndex16 0..9999" -- "ddlDsl_Column17 1..1" ddlDsl_CreateIndex : columns15
+ddlDsl_Column "ddlDsl_UniqueKeyConstraint 0..9999" -- "ddlDsl_Column26 1..1" ddlDsl_UniqueKeyConstraint : columns25
+ddlDsl_Column "ddlDsl_PrimaryKeyConstraint 0..9999" -- "ddlDsl_Column28 1..1" ddlDsl_PrimaryKeyConstraint : columns27
+ddlDsl_Column "ddlDsl_ForeignKeyConstraint 0..9999" -- "ddlDsl_Column30 1..1" ddlDsl_ForeignKeyConstraint : columns29
+ddlDsl_Column "ddlDsl_ReferenceClause38 0..9999" -- "ddlDsl_Column39 1..1" ddlDsl_ReferenceClause : columns37
+ddlDsl_Column "ddlDsl_Constraint22 1..1" *-- "ddlDsl_Column21 0..1" ddlDsl_Constraint : constraint20
+ddlDsl_AlterTableAction "ddlDsl_Constraint 1..1" *-- "ddlDsl_AlterTableAction5 0..1" ddlDsl_Constraint : constraint4
+ddlDsl_Constraint "ddlDsl_DropTableConstraint 0..1" -- "ddlDsl_Constraint7 1..1" ddlDsl_DropTableConstraint : constraintRef6
+ddlDsl_CreateTable "ddlDsl_TableProperty 1..1" *-- "ddlDsl_CreateTable12 0..9999" ddlDsl_TableProperty : properties11
+ddlDsl_Column "ddlDsl_ReferenceClause 1..1" *-- "ddlDsl_Column24 0..1" ddlDsl_ReferenceClause : reference23
+ddlDsl_ForeignKeyConstraint "ddlDsl_ReferenceClause33 1..1" *-- "ddlDsl_ForeignKeyConstraint32 0..1" ddlDsl_ReferenceClause : reference31
+ddlDsl_Ddl "ddlDsl_DdlStatement 1..1" *-- "ddlDsl_Ddl 0..9999" ddlDsl_DdlStatement : statements0
+ddlDsl_Alter "ddlDsl_CreateTable 1..1" -- "ddlDsl_Alter 0..1" ddlDsl_CreateTable : table1
+ddlDsl_CreateIndex "ddlDsl_CreateTable14 1..1" -- "ddlDsl_CreateIndex 0..1" ddlDsl_CreateTable : table13
+ddlDsl_CreateTable "ddlDsl_ReferenceClause35 0..1" -- "ddlDsl_CreateTable36 1..1" ddlDsl_ReferenceClause : table34
+ddlDsl_CreateTable "ddlDsl_TableComment 0..1" -- "ddlDsl_CreateTable9 1..1" ddlDsl_TableComment : table8
+ddlDsl_Column "ddlDsl_SqlDataType 1..1" *-- "ddlDsl_Column19 0..1" ddlDsl_SqlDataType : type18
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: database
+' project: sampleModel
+' owner: User
+' description: New project
 class RefColumn {
 }
 class RefDatabase {
@@ -63,16 +67,16 @@ RefParameter <|-- database_Parameter
 RefProcedure <|-- database_Procedure
 RefTable <|-- database_Table
 RefType <|-- database_Type
-database_RefColumn "0..9999" --* "1..1" database_Table : columns0
-database_Column "1..9999" -- "1..1" database_PKey : columns20
-database_Column "1..9999" -- "1..1" database_FKey : columns5
-database_RefFKey "0..9999" --* "1..1" database_Table : fkeys3
-database_Procedure "1..1" *-- "0..9999" database_RefParameter : parameters14
-database_RefPKey "0..9999" --* "1..1" database_Table : pkeys1
-database_Database "1..1" *-- "0..9999" database_RefProcedure : procedures12
-database_FKey "1..1" -- "1..1" database_RefTable : reference6
-database_Procedure "1..1" *-- "0..1" database_RefType : return_15
-database_Database "1..1" *-- "0..9999" database_RefTable : tables10
-database_Parameter "1..1" *-- "1..1" database_RefType : type18
-database_Column "1..1" *-- "1..1" database_RefType : type8
+database_RefColumn "database_Table 0..9999" --* "database_RefColumn 1..1" database_Table : columns0
+database_Column "database_PKey 1..9999" -- "database_Column21 1..1" database_PKey : columns20
+database_Column "database_FKey 1..9999" -- "database_Column 1..1" database_FKey : columns5
+database_RefFKey "database_Table4 0..9999" --* "database_RefFKey 1..1" database_Table : fkeys3
+database_Procedure "database_RefParameter 1..1" *-- "database_Procedure 0..9999" database_RefParameter : parameters14
+database_RefPKey "database_Table2 0..9999" --* "database_RefPKey 1..1" database_Table : pkeys1
+database_Database "database_RefProcedure 1..1" *-- "database_Database13 0..9999" database_RefProcedure : procedures12
+database_FKey "database_RefTable 1..1" -- "database_FKey7 1..1" database_RefTable : reference6
+database_Procedure "database_RefType17 1..1" *-- "database_Procedure16 0..1" database_RefType : return_15
+database_Database "database_RefTable11 1..1" *-- "database_Database 0..9999" database_RefTable : tables10
+database_Parameter "database_RefType19 1..1" *-- "database_Parameter 1..1" database_RefType : type18
+database_Column "database_RefType 1..1" *-- "database_Column9 1..1" database_RefType : type8
 @enduml

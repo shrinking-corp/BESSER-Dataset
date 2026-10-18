@@ -1,4 +1,8 @@
 @startuml
+' model: graph
+' project: sampleModel
+' owner: User
+' description: New project
 class Expr {
 }
 class Statement {
@@ -78,35 +82,35 @@ Statement <|-- graph_IfStmt
 Statement <|-- graph_MoveStmt
 Statement <|-- graph_PrintStmt
 Statement <|-- graph_WhileStmt
-graph_Expr "0..1" --* "1..1" graph_Not : Expr58
-graph_Declaration "0..9999" --* "1..1" graph_Program : declarations0
-graph_Edge "1..1" -- "0..1" graph_Vertex : dest25
-graph_Edge "0..9999" --* "1..1" graph_GraphConstant : edges64
-graph_IfStmt "1..1" *-- "0..9999" graph_Statement : elseStmts14
-graph_Expr "0..1" --* "1..1" graph_WhileStmt : expr17
-graph_AssignStmt "1..1" *-- "0..1" graph_Expr : expr5
-graph_Expr "0..1" --* "1..1" graph_PrintStmt : expr7
-graph_Expr "0..1" --* "1..1" graph_IfStmt : expr9
-graph_Expr "0..1" --* "1..1" graph_ParticleConstant : graph67
-graph_Expr "0..1" --* "1..1" graph_Or : left28
-graph_And "1..1" *-- "0..1" graph_Expr : left33
-graph_Expr "0..1" --* "1..1" graph_PathExistence : left38
-graph_Comparison "1..1" *-- "0..1" graph_Expr : left43
-graph_Expr "0..1" --* "1..1" graph_PlusOrMin : left48
-graph_Expr "0..1" --* "1..1" graph_MulOrDiv : left53
-graph_Expr "0..1" --* "1..1" graph_Or : right30
-graph_And "1..1" *-- "0..1" graph_Expr : right35
-graph_Expr "0..1" --* "1..1" graph_PathExistence : right40
-graph_Comparison "1..1" *-- "0..1" graph_Expr : right45
-graph_Expr "0..1" --* "1..1" graph_PlusOrMin : right50
-graph_Expr "0..1" --* "1..1" graph_MulOrDiv : right55
-graph_Edge "1..1" -- "0..1" graph_Vertex : source24
-graph_Program "1..1" *-- "0..9999" graph_Statement : stmts1
-graph_IfStmt "1..1" *-- "0..9999" graph_Statement : stmts11
-graph_Statement "0..9999" --* "1..1" graph_WhileStmt : stmts19
-graph_Declaration "0..1" -- "1..1" graph_MoveStmt : var22
-graph_AssignStmt "1..1" -- "0..1" graph_Declaration : var3
-graph_Declaration "0..1" -- "1..1" graph_VariableRef : variable60
-graph_ParticleConstant "1..1" -- "0..1" graph_Vertex : vertex69
-graph_GraphConstant "1..1" *-- "0..9999" graph_Vertex : vertices62
+graph_Expr "graph_Not 0..1" --* "graph_Expr59 1..1" graph_Not : Expr58
+graph_Declaration "graph_Program 0..9999" --* "graph_Declaration 1..1" graph_Program : declarations0
+graph_Edge "graph_Vertex27 1..1" -- "graph_Edge26 0..1" graph_Vertex : dest25
+graph_Edge "graph_GraphConstant65 0..9999" --* "graph_Edge66 1..1" graph_GraphConstant : edges64
+graph_IfStmt "graph_Statement16 1..1" *-- "graph_IfStmt15 0..9999" graph_Statement : elseStmts14
+graph_Expr "graph_WhileStmt 0..1" --* "graph_Expr18 1..1" graph_WhileStmt : expr17
+graph_AssignStmt "graph_Expr 1..1" *-- "graph_AssignStmt6 0..1" graph_Expr : expr5
+graph_Expr "graph_PrintStmt 0..1" --* "graph_Expr8 1..1" graph_PrintStmt : expr7
+graph_Expr "graph_IfStmt 0..1" --* "graph_Expr10 1..1" graph_IfStmt : expr9
+graph_Expr "graph_ParticleConstant 0..1" --* "graph_Expr68 1..1" graph_ParticleConstant : graph67
+graph_Expr "graph_Or 0..1" --* "graph_Expr29 1..1" graph_Or : left28
+graph_And "graph_Expr34 1..1" *-- "graph_And 0..1" graph_Expr : left33
+graph_Expr "graph_PathExistence 0..1" --* "graph_Expr39 1..1" graph_PathExistence : left38
+graph_Comparison "graph_Expr44 1..1" *-- "graph_Comparison 0..1" graph_Expr : left43
+graph_Expr "graph_PlusOrMin 0..1" --* "graph_Expr49 1..1" graph_PlusOrMin : left48
+graph_Expr "graph_MulOrDiv 0..1" --* "graph_Expr54 1..1" graph_MulOrDiv : left53
+graph_Expr "graph_Or31 0..1" --* "graph_Expr32 1..1" graph_Or : right30
+graph_And "graph_Expr37 1..1" *-- "graph_And36 0..1" graph_Expr : right35
+graph_Expr "graph_PathExistence41 0..1" --* "graph_Expr42 1..1" graph_PathExistence : right40
+graph_Comparison "graph_Expr47 1..1" *-- "graph_Comparison46 0..1" graph_Expr : right45
+graph_Expr "graph_PlusOrMin51 0..1" --* "graph_Expr52 1..1" graph_PlusOrMin : right50
+graph_Expr "graph_MulOrDiv56 0..1" --* "graph_Expr57 1..1" graph_MulOrDiv : right55
+graph_Edge "graph_Vertex 1..1" -- "graph_Edge 0..1" graph_Vertex : source24
+graph_Program "graph_Statement 1..1" *-- "graph_Program2 0..9999" graph_Statement : stmts1
+graph_IfStmt "graph_Statement13 1..1" *-- "graph_IfStmt12 0..9999" graph_Statement : stmts11
+graph_Statement "graph_WhileStmt20 0..9999" --* "graph_Statement21 1..1" graph_WhileStmt : stmts19
+graph_Declaration "graph_MoveStmt 0..1" -- "graph_Declaration23 1..1" graph_MoveStmt : var22
+graph_AssignStmt "graph_Declaration4 1..1" -- "graph_AssignStmt 0..1" graph_Declaration : var3
+graph_Declaration "graph_VariableRef 0..1" -- "graph_Declaration61 1..1" graph_VariableRef : variable60
+graph_ParticleConstant "graph_Vertex71 1..1" -- "graph_ParticleConstant70 0..1" graph_Vertex : vertex69
+graph_GraphConstant "graph_Vertex63 1..1" *-- "graph_GraphConstant 0..9999" graph_Vertex : vertices62
 @enduml

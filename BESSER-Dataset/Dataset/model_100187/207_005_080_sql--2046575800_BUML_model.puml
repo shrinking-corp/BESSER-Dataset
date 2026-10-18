@@ -1,4 +1,8 @@
 @startuml
+' model: sql
+' project: sampleModel
+' owner: User
+' description: New project
 enum ApproximateNumericTypeKind {
   DOUBLE_PRECISION
   FLOAT
@@ -333,31 +337,31 @@ schema_TableColumnsConstraint <|-- sql_schema_UniqueTableConstraint
 schema_TableElement <|-- sql_schema_TableConstraint
 schema_UniqueConstraint <|-- sql_schema_UniqueColumnConstraint
 schema_UniqueConstraint <|-- sql_schema_UniqueTableConstraint
-SchemaQualifiedName "0..1" --* "1..1" sql_literal_CharacterStringLiteral : characterSetName1
-SchemaQualifiedName "0..1" --* "1..1" sql_datatype_CharacterStringType : characterSetName3
-SchemaQualifiedName "0..1" --* "1..1" sql_schema_Column : collationName22
-SchemaQualifiedName "0..1" --* "1..1" sql_datatype_CharacterStringType : collationName5
-SchemaQualifiedName "0..1" --* "1..1" sql_datatype_NationalCharacterStringType : collationName8
-Column "1..9999" -- "1..1" sql_schema_TableColumnsConstraint : columns42
-ColumnConstraint "0..1" --* "1..1" sql_schema_Column : constraint20
-TableContentsSource "1..1" --* "1..1" sql_schema_TableDefinition : contentsSource13
-DataType "1..1" --* "1..1" sql_schema_Column : dataType17
-DefaultOption "0..1" --* "1..1" sql_schema_Column : defaultOption18
-TableElement "1..9999" --* "1..1" sql_schema_TableElementList : elements14
-DatetimeValueFunction "1..1" --* "1..1" sql_schema_DatetimeValueFunctionDefaultOption : function34
-LargeObjectLength "0..1" --* "1..1" sql_datatype_BinaryLargeObjectStringType : length10
-Literal "1..1" --* "1..1" sql_schema_LiteralDefaultOption : literal33
-TableElementList "1..1" -- "1..1" sql_schema_TableElement : owner16
-TableDefinition "1..1" -- "1..1" sql_schema_TableContentsSource : owner27
-Column "1..1" -- "1..1" sql_schema_DefaultOption : owner28
-Column "1..1" -- "1..1" sql_schema_ColumnConstraint : owner29
-Column "0..9999" -- "1..1" sql_schema_ReferentialConstraint : referencedColumns36
-TableReference "1..1" --* "1..1" sql_schema_ReferentialConstraint : referencedTable38
-SchemaQualifiedName "1..1" --* "1..1" sql_schema_TableDefinition : schemaQualifiedName11
-SchemaQualifiedName "0..1" --* "1..1" sql_schema_TableConstraint : schemaQualifiedName25
-SchemaQualifiedName "0..1" --* "1..1" sql_schema_ColumnConstraint : schemaQualifiedName31
-Separator "0..9999" --* "1..1" sql_literal_NationalCharacterStringLiteral : separators2
-ImplicitlyTypedValueSpecification "1..1" --* "1..1" sql_schema_ImplicitlyTypedValueSpecificationDefaultOption : specification35
-Statement "0..9999" --* "1..1" sql_common_SQLScript : statements0
-TableDefinition "1..1" -- "1..1" sql_schema_TableReference : target40
+SchemaQualifiedName "sql_literal_CharacterStringLiteral 0..1" --* "SchemaQualifiedName 1..1" sql_literal_CharacterStringLiteral : characterSetName1
+SchemaQualifiedName "sql_datatype_CharacterStringType 0..1" --* "SchemaQualifiedName4 1..1" sql_datatype_CharacterStringType : characterSetName3
+SchemaQualifiedName "sql_schema_Column23 0..1" --* "SchemaQualifiedName24 1..1" sql_schema_Column : collationName22
+SchemaQualifiedName "sql_datatype_CharacterStringType6 0..1" --* "SchemaQualifiedName7 1..1" sql_datatype_CharacterStringType : collationName5
+SchemaQualifiedName "sql_datatype_NationalCharacterStringType 0..1" --* "SchemaQualifiedName9 1..1" sql_datatype_NationalCharacterStringType : collationName8
+Column "sql_schema_TableColumnsConstraint 1..9999" -- "Column43 1..1" sql_schema_TableColumnsConstraint : columns42
+ColumnConstraint "owner21 0..1" --* "ColumnConstraint 1..1" sql_schema_Column : constraint20
+TableContentsSource "owner 1..1" --* "TableContentsSource 1..1" sql_schema_TableDefinition : contentsSource13
+DataType "sql_schema_Column 1..1" --* "DataType 1..1" sql_schema_Column : dataType17
+DefaultOption "owner19 0..1" --* "DefaultOption 1..1" sql_schema_Column : defaultOption18
+TableElement "owner15 1..9999" --* "TableElement 1..1" sql_schema_TableElementList : elements14
+DatetimeValueFunction "sql_schema_DatetimeValueFunctionDefaultOption 1..1" --* "DatetimeValueFunction 1..1" sql_schema_DatetimeValueFunctionDefaultOption : function34
+LargeObjectLength "sql_datatype_BinaryLargeObjectStringType 0..1" --* "LargeObjectLength 1..1" sql_datatype_BinaryLargeObjectStringType : length10
+Literal "sql_schema_LiteralDefaultOption 1..1" --* "Literal 1..1" sql_schema_LiteralDefaultOption : literal33
+TableElementList "elements 1..1" -- "TableElementList 1..1" sql_schema_TableElement : owner16
+TableDefinition "contentsSource 1..1" -- "TableDefinition 1..1" sql_schema_TableContentsSource : owner27
+Column "defaultOption 1..1" -- "Column 1..1" sql_schema_DefaultOption : owner28
+Column "constraint 1..1" -- "Column30 1..1" sql_schema_ColumnConstraint : owner29
+Column "sql_schema_ReferentialConstraint 0..9999" -- "Column37 1..1" sql_schema_ReferentialConstraint : referencedColumns36
+TableReference "sql_schema_ReferentialConstraint39 1..1" --* "TableReference 1..1" sql_schema_ReferentialConstraint : referencedTable38
+SchemaQualifiedName "sql_schema_TableDefinition 1..1" --* "SchemaQualifiedName12 1..1" sql_schema_TableDefinition : schemaQualifiedName11
+SchemaQualifiedName "sql_schema_TableConstraint 0..1" --* "SchemaQualifiedName26 1..1" sql_schema_TableConstraint : schemaQualifiedName25
+SchemaQualifiedName "sql_schema_ColumnConstraint 0..1" --* "SchemaQualifiedName32 1..1" sql_schema_ColumnConstraint : schemaQualifiedName31
+Separator "sql_literal_NationalCharacterStringLiteral 0..9999" --* "Separator 1..1" sql_literal_NationalCharacterStringLiteral : separators2
+ImplicitlyTypedValueSpecification "sql_schema_ImplicitlyTypedValueSpecificationDefaultOption 1..1" --* "ImplicitlyTypedValueSpecification 1..1" sql_schema_ImplicitlyTypedValueSpecificationDefaultOption : specification35
+Statement "sql_common_SQLScript 0..9999" --* "Statement 1..1" sql_common_SQLScript : statements0
+TableDefinition "sql_schema_TableReference 1..1" -- "TableDefinition41 1..1" sql_schema_TableReference : target40
 @enduml

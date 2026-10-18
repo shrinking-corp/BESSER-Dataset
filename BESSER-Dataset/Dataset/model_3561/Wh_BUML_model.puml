@@ -1,4 +1,8 @@
 @startuml
+' model: wh
+' project: sampleModel
+' owner: User
+' description: New project
 class wh_Assign {
 }
 class wh_Command {
@@ -57,38 +61,38 @@ class wh_Vars {
 }
 class wh_While {
 }
-wh_Command "0..9999" --* "1..1" wh_Commands : command11
-wh_Command "1..1" *-- "0..1" wh_EObject : command13
-wh_Commands "0..1" --* "1..1" wh_While : commands19
-wh_Commands "0..1" --* "1..1" wh_For : commands24
-wh_Commands "0..1" --* "1..1" wh_Foreach : commands40
-wh_Commands "0..1" --* "1..1" wh_Definition : commands7
-wh_Expr "0..1" --* "1..1" wh_While : cond18
-wh_Expr "0..1" --* "1..1" wh_For : cond22
-wh_Expr "0..1" --* "1..1" wh_If : cond27
-wh_Expr "0..1" --* "1..1" wh_Foreach : cond35
-wh_ExprSimple "1..1" *-- "0..1" wh_LExpr : cons_exp48
-wh_Definition "0..1" --* "1..1" wh_Function : definition3
-wh_Commands "0..1" --* "1..1" wh_If : else_commands32
-wh_Expr "0..1" --* "1..1" wh_Foreach : ens37
-wh_Expr "0..9999" --* "1..1" wh_Exprs : expr43
-wh_Expr "0..1" --* "1..1" wh_ExprEq : expr73
-wh_Expr "0..9999" --* "1..1" wh_LExpr : expr76
-wh_Expr "1..1" *-- "0..1" wh_ExprAnd : expr_and46
-wh_ExprEq "0..1" --* "1..1" wh_ExprNot : expr_eq62
-wh_ExprEq "1..1" *-- "0..1" wh_ExprSimple : expr_left64
-wh_ExprNot "0..9999" --* "1..1" wh_ExprOr : expr_not60
-wh_ExprAnd "1..1" *-- "0..9999" wh_ExprOr : expr_or58
-wh_ExprEq "1..1" *-- "0..1" wh_ExprSimple : expr_right67
-wh_Assign "1..1" *-- "0..1" wh_Exprs : exprs16
-wh_Function "0..9999" --* "1..1" wh_Program : functions1
-wh_Expr "0..1" --* "1..1" wh_ExprSimple : hd_expr52
-wh_Commands "0..1" --* "1..1" wh_If : if_commands29
-wh_Definition "1..1" *-- "0..1" wh_Input : inputs5
-wh_ExprEq "1..1" *-- "0..1" wh_LExpr : lexpr70
-wh_ExprSimple "1..1" *-- "0..1" wh_LExpr : list_exp49
-wh_Definition "1..1" *-- "0..1" wh_Output : outputs9
-wh_Model "1..1" *-- "0..1" wh_Program : text0
-wh_Expr "0..1" --* "1..1" wh_ExprSimple : tl_expr55
-wh_Assign "1..1" *-- "0..1" wh_Vars : vars15
+wh_Command "wh_Commands12 0..9999" --* "wh_Command 1..1" wh_Commands : command11
+wh_Command "wh_EObject 1..1" *-- "wh_Command14 0..1" wh_EObject : command13
+wh_Commands "wh_While20 0..1" --* "wh_Commands21 1..1" wh_While : commands19
+wh_Commands "wh_For25 0..1" --* "wh_Commands26 1..1" wh_For : commands24
+wh_Commands "wh_Foreach41 0..1" --* "wh_Commands42 1..1" wh_Foreach : commands40
+wh_Commands "wh_Definition8 0..1" --* "wh_Commands 1..1" wh_Definition : commands7
+wh_Expr "wh_While 0..1" --* "wh_Expr 1..1" wh_While : cond18
+wh_Expr "wh_For 0..1" --* "wh_Expr23 1..1" wh_For : cond22
+wh_Expr "wh_If 0..1" --* "wh_Expr28 1..1" wh_If : cond27
+wh_Expr "wh_Foreach 0..1" --* "wh_Expr36 1..1" wh_Foreach : cond35
+wh_ExprSimple "wh_LExpr 1..1" *-- "wh_ExprSimple 0..1" wh_LExpr : cons_exp48
+wh_Definition "wh_Function4 0..1" --* "wh_Definition 1..1" wh_Function : definition3
+wh_Commands "wh_If33 0..1" --* "wh_Commands34 1..1" wh_If : else_commands32
+wh_Expr "wh_Foreach38 0..1" --* "wh_Expr39 1..1" wh_Foreach : ens37
+wh_Expr "wh_Exprs44 0..9999" --* "wh_Expr45 1..1" wh_Exprs : expr43
+wh_Expr "wh_ExprEq74 0..1" --* "wh_Expr75 1..1" wh_ExprEq : expr73
+wh_Expr "wh_LExpr77 0..9999" --* "wh_Expr78 1..1" wh_LExpr : expr76
+wh_Expr "wh_ExprAnd 1..1" *-- "wh_Expr47 0..1" wh_ExprAnd : expr_and46
+wh_ExprEq "wh_ExprNot63 0..1" --* "wh_ExprEq 1..1" wh_ExprNot : expr_eq62
+wh_ExprEq "wh_ExprSimple66 1..1" *-- "wh_ExprEq65 0..1" wh_ExprSimple : expr_left64
+wh_ExprNot "wh_ExprOr61 0..9999" --* "wh_ExprNot 1..1" wh_ExprOr : expr_not60
+wh_ExprAnd "wh_ExprOr 1..1" *-- "wh_ExprAnd59 0..9999" wh_ExprOr : expr_or58
+wh_ExprEq "wh_ExprSimple69 1..1" *-- "wh_ExprEq68 0..1" wh_ExprSimple : expr_right67
+wh_Assign "wh_Exprs 1..1" *-- "wh_Assign17 0..1" wh_Exprs : exprs16
+wh_Function "wh_Program2 0..9999" --* "wh_Function 1..1" wh_Program : functions1
+wh_Expr "wh_ExprSimple53 0..1" --* "wh_Expr54 1..1" wh_ExprSimple : hd_expr52
+wh_Commands "wh_If30 0..1" --* "wh_Commands31 1..1" wh_If : if_commands29
+wh_Definition "wh_Input 1..1" *-- "wh_Definition6 0..1" wh_Input : inputs5
+wh_ExprEq "wh_LExpr72 1..1" *-- "wh_ExprEq71 0..1" wh_LExpr : lexpr70
+wh_ExprSimple "wh_LExpr51 1..1" *-- "wh_ExprSimple50 0..1" wh_LExpr : list_exp49
+wh_Definition "wh_Output 1..1" *-- "wh_Definition10 0..1" wh_Output : outputs9
+wh_Model "wh_Program 1..1" *-- "wh_Model 0..1" wh_Program : text0
+wh_Expr "wh_ExprSimple56 0..1" --* "wh_Expr57 1..1" wh_ExprSimple : tl_expr55
+wh_Assign "wh_Vars 1..1" *-- "wh_Assign 0..1" wh_Vars : vars15
 @enduml

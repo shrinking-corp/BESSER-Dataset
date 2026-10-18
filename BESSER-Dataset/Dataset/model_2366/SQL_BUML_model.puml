@@ -1,4 +1,8 @@
 @startuml
+' model: sql
+' project: sampleModel
+' owner: User
+' description: New project
 enum Action {
   Cascade
   SetNull
@@ -53,20 +57,20 @@ ModelElement <|-- sql_NamedElement
 NamedElement <|-- sql_Column
 NamedElement <|-- sql_Schema
 NamedElement <|-- sql_Table
-sql_Column "1..1" -- "1..1" sql_Key : column10
-sql_Column "1..1" -- "0..9999" sql_Key : keys9
-sql_Annotation "0..9999" --* "1..1" sql_ModelElement : ownedAnnotations23
-sql_Column "1..9999" --* "1..1" sql_Table : ownedColumns0
-sql_Event "0..9999" --* "1..1" sql_ForeignKey : ownedEvents18
-sql_ForeignKey "0..9999" --* "1..1" sql_Table : ownedForeignKeys3
-sql_PrimaryKey "0..1" --* "1..1" sql_Table : ownedPrimaryKey1
-sql_Schema "1..1" *-- "1..9999" sql_Table : ownedTables21
-sql_Event "1..1" -- "1..1" sql_ForeignKey : owningForeignKey19
-sql_Annotation "1..1" -- "1..1" sql_ModelElement : owningModelElement24
-sql_Schema "1..1" -- "1..1" sql_Table : owningSchema7
-sql_PrimaryKey "1..1" -- "1..1" sql_Table : owningTable12
-sql_ForeignKey "1..1" -- "1..1" sql_Table : owningTable16
-sql_Column "1..1" -- "1..1" sql_Table : owningTable8
-sql_ForeignKey "1..1" -- "1..1" sql_Table : referencedTable14
-sql_ForeignKey "0..9999" -- "1..1" sql_Table : referencingForeignKeys5
+sql_Column "keys 1..1" -- "Column11 1..1" sql_Key : column10
+sql_Column "Key 1..1" -- "column 0..9999" sql_Key : keys9
+sql_Annotation "owningModelElement 0..9999" --* "Annotation 1..1" sql_ModelElement : ownedAnnotations23
+sql_Column "owningTable 1..9999" --* "Column 1..1" sql_Table : ownedColumns0
+sql_Event "owningForeignKey 0..9999" --* "Event 1..1" sql_ForeignKey : ownedEvents18
+sql_ForeignKey "owningTable4 0..9999" --* "ForeignKey 1..1" sql_Table : ownedForeignKeys3
+sql_PrimaryKey "owningTable2 0..1" --* "PrimaryKey 1..1" sql_Table : ownedPrimaryKey1
+sql_Schema "Table22 1..1" *-- "owningSchema 1..9999" sql_Table : ownedTables21
+sql_Event "ForeignKey20 1..1" -- "ownedEvents 1..1" sql_ForeignKey : owningForeignKey19
+sql_Annotation "ModelElement 1..1" -- "ownedAnnotations 1..1" sql_ModelElement : owningModelElement24
+sql_Schema "ownedTables 1..1" -- "Schema 1..1" sql_Table : owningSchema7
+sql_PrimaryKey "Table13 1..1" -- "ownedPrimaryKey 1..1" sql_Table : owningTable12
+sql_ForeignKey "Table17 1..1" -- "ownedForeignKeys 1..1" sql_Table : owningTable16
+sql_Column "Table 1..1" -- "ownedColumns 1..1" sql_Table : owningTable8
+sql_ForeignKey "Table15 1..1" -- "referencingForeignKeys 1..1" sql_Table : referencedTable14
+sql_ForeignKey "referencedTable 0..9999" -- "ForeignKey6 1..1" sql_Table : referencingForeignKeys5
 @enduml

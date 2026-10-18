@@ -1,4 +1,8 @@
 @startuml
+' model: mathCompiler
+' project: sampleModel
+' owner: User
+' description: New project
 class Expression {
 }
 class mathCompiler_Div {
@@ -37,16 +41,16 @@ Expression <|-- mathCompiler_Mult
 Expression <|-- mathCompiler_Num
 Expression <|-- mathCompiler_Plus
 Expression <|-- mathCompiler_Var
-mathCompiler_Expression "0..1" --* "1..1" mathCompiler_Let : binding23
-mathCompiler_Expression "0..1" --* "1..1" mathCompiler_Let : body25
-mathCompiler_Expression "0..1" --* "1..1" mathCompiler_MathExp : exp1
-mathCompiler_Expressions "1..1" *-- "0..9999" mathCompiler_MathExp : expressions0
-mathCompiler_Expression "0..1" --* "1..1" mathCompiler_Mult : left13
-mathCompiler_Div "1..1" *-- "0..1" mathCompiler_Expression : left18
-mathCompiler_Expression "0..1" --* "1..1" mathCompiler_Plus : left3
-mathCompiler_Expression "0..1" --* "1..1" mathCompiler_Minus : left8
-mathCompiler_Expression "0..1" --* "1..1" mathCompiler_Minus : right10
-mathCompiler_Expression "0..1" --* "1..1" mathCompiler_Mult : right15
-mathCompiler_Div "1..1" *-- "0..1" mathCompiler_Expression : right20
-mathCompiler_Expression "0..1" --* "1..1" mathCompiler_Plus : right5
+mathCompiler_Expression "mathCompiler_Let 0..1" --* "mathCompiler_Expression24 1..1" mathCompiler_Let : binding23
+mathCompiler_Expression "mathCompiler_Let26 0..1" --* "mathCompiler_Expression27 1..1" mathCompiler_Let : body25
+mathCompiler_Expression "mathCompiler_MathExp2 0..1" --* "mathCompiler_Expression 1..1" mathCompiler_MathExp : exp1
+mathCompiler_Expressions "mathCompiler_MathExp 1..1" *-- "mathCompiler_Expressions 0..9999" mathCompiler_MathExp : expressions0
+mathCompiler_Expression "mathCompiler_Mult 0..1" --* "mathCompiler_Expression14 1..1" mathCompiler_Mult : left13
+mathCompiler_Div "mathCompiler_Expression19 1..1" *-- "mathCompiler_Div 0..1" mathCompiler_Expression : left18
+mathCompiler_Expression "mathCompiler_Plus 0..1" --* "mathCompiler_Expression4 1..1" mathCompiler_Plus : left3
+mathCompiler_Expression "mathCompiler_Minus 0..1" --* "mathCompiler_Expression9 1..1" mathCompiler_Minus : left8
+mathCompiler_Expression "mathCompiler_Minus11 0..1" --* "mathCompiler_Expression12 1..1" mathCompiler_Minus : right10
+mathCompiler_Expression "mathCompiler_Mult16 0..1" --* "mathCompiler_Expression17 1..1" mathCompiler_Mult : right15
+mathCompiler_Div "mathCompiler_Expression22 1..1" *-- "mathCompiler_Div21 0..1" mathCompiler_Expression : right20
+mathCompiler_Expression "mathCompiler_Plus6 0..1" --* "mathCompiler_Expression7 1..1" mathCompiler_Plus : right5
 @enduml

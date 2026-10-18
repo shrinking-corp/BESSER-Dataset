@@ -1,4 +1,8 @@
 @startuml
+' model: _PTJYQI4yEeqwvcm2LAkYWA
+' project: sampleModel
+' owner: User
+' description: New project
 class domain_Authentification {
   + id : str
   + password : str
@@ -43,13 +47,13 @@ class domain_Voiture {
   + model : str
   + nbPlaces : int
 }
-domain_Avis "0..9999" -- "0..1" domain_Trajet : Avis_Evenement
-domain_Avis "0..9999" -- "0..1" domain_Profil : Avis_Personne
-domain_Profil "1..9999" -- "0..9999" domain_Trajet : Personne_Evenement
-domain_Authentification "1..9999" -- "0..9999" domain_Profil : Personne_Preferences
-domain_Profil "0..9999" -- "0..1" domain_Ville : Personne_Ville
-domain_Profil "1..9999" -- "0..1" domain_Reservation : Profil_Reservation
-domain_Reservation "1..9999" -- "0..1" domain_Trajet : Trajet_Reservation
-domain_Trajet "1..1" -- "1..1" domain_Ville : Ville_Trajet
-domain_Profil "0..1" -- "0..1" domain_Voiture : Voiture_Passager
+domain_Avis "avis7 0..9999" -- "evenement6 0..1" domain_Trajet : Avis_Evenement
+domain_Avis "avis5 0..9999" -- "personne4 0..1" domain_Profil : Avis_Personne
+domain_Profil "participants3 1..9999" -- "events2 0..9999" domain_Trajet : Personne_Evenement
+domain_Authentification "Cr_e0 1..9999" -- "personne1 0..9999" domain_Profil : Personne_Preferences
+domain_Profil "personnes9 0..9999" -- "adresse8 0..1" domain_Ville : Personne_Ville
+domain_Profil "profil12 1..9999" -- "reservation13 0..1" domain_Reservation : Profil_Reservation
+domain_Reservation "reservation15 1..9999" -- "trajet14 0..1" domain_Trajet : Trajet_Reservation
+domain_Trajet "trajet11 1..1" -- "ville10 1..1" domain_Ville : Ville_Trajet
+domain_Profil "Profil17 0..1" -- "voiture16 0..1" domain_Voiture : Voiture_Passager
 @enduml

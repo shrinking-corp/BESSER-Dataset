@@ -1,4 +1,8 @@
 @startuml
+' model: book
+' project: sampleModel
+' owner: User
+' description: New project
 class Action {
 }
 class Animation {
@@ -95,15 +99,15 @@ Control <|-- book_Media
 Node <|-- book_Control
 Node <|-- book_Shape
 Page <|-- book_Splash
-book_Group "1..1" *-- "0..9999" book_Node : children15
-book_Control "0..1" --* "1..1" book_Layer : control8
-book_Animation "0..1" --* "1..1" book_ImageFlash : in_17
-book_Layer "0..9999" --* "1..1" book_Page : layers6
-book_Book "1..1" *-- "0..1" book_Page : main3
-book_Action "0..9999" --* "1..1" book_Control : onExposed10
-book_Action "0..9999" --* "1..1" book_Control : onTouched12
-book_Animation "0..1" --* "1..1" book_ImageFlash : out16
-book_OpenPage "1..1" -- "0..1" book_Page : page20
-book_Book "1..1" *-- "0..9999" book_Page : pages0
-book_Book "1..1" *-- "0..1" book_Splash : splash1
+book_Group "book_Node 1..1" *-- "book_Group 0..9999" book_Node : children15
+book_Control "book_Layer9 0..1" --* "book_Control 1..1" book_Layer : control8
+book_Animation "book_ImageFlash18 0..1" --* "book_Animation19 1..1" book_ImageFlash : in_17
+book_Layer "book_Page7 0..9999" --* "book_Layer 1..1" book_Page : layers6
+book_Book "book_Page5 1..1" *-- "book_Book4 0..1" book_Page : main3
+book_Action "book_Control11 0..9999" --* "book_Action 1..1" book_Control : onExposed10
+book_Action "book_Control13 0..9999" --* "book_Action14 1..1" book_Control : onTouched12
+book_Animation "book_ImageFlash 0..1" --* "book_Animation 1..1" book_ImageFlash : out16
+book_OpenPage "book_Page21 1..1" -- "book_OpenPage 0..1" book_Page : page20
+book_Book "book_Page 1..1" *-- "book_Book 0..9999" book_Page : pages0
+book_Book "book_Splash 1..1" *-- "book_Book2 0..1" book_Splash : splash1
 @enduml

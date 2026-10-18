@@ -1,4 +1,8 @@
 @startuml
+' model: school
+' project: sampleModel
+' owner: User
+' description: New project
 class Named {
 }
 class Person {
@@ -21,7 +25,7 @@ Named <|-- school_Person
 Named <|-- school_School
 Person <|-- school_Student
 Person <|-- school_Teacher
-school_Person "0..9999" --* "1..1" school_School : persons1
-school_School "0..9999" --* "1..1" school_SchoolModel : schools0
-school_Student "1..1" -- "0..9999" school_Teacher : teachers3
+school_Person "school_School2 0..9999" --* "school_Person 1..1" school_School : persons1
+school_School "school_SchoolModel 0..9999" --* "school_School 1..1" school_SchoolModel : schools0
+school_Student "school_Teacher 1..1" -- "school_Student 0..9999" school_Teacher : teachers3
 @enduml

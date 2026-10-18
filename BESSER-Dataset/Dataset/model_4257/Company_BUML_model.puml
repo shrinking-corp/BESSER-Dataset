@@ -1,4 +1,8 @@
 @startuml
+' model: EvoCompany
+' project: sampleModel
+' owner: User
+' description: New project
 class Division {
 }
 class EvoCompany_Category {
@@ -38,16 +42,16 @@ Division <|-- EvoCompany_ServiceLine
 Division <|-- EvoCompany_Unit
 Person <|-- EvoCompany_Client
 Person <|-- EvoCompany_Employee
-EvoCompany_Person "1..1" -- "0..9999" EvoCompany_Project : assignedTo0
-EvoCompany_Category "0..9999" --* "1..1" EvoCompany_CompanyModel : categories16
-EvoCompany_Category "1..1" -- "1..1" EvoCompany_Topic : category13
-EvoCompany_CompanyModel "1..1" *-- "1..1" EvoCompany_Organisation : company14
-EvoCompany_CompanyModel "1..1" *-- "0..9999" EvoCompany_Division : division21
-EvoCompany_Person "1..1" -- "0..1" EvoCompany_Unit : employed1
-EvoCompany_Division "0..9999" --* "1..1" EvoCompany_Organisation : lines8
-EvoCompany_Organisation "1..1" *-- "0..9999" EvoCompany_Person : persons3
-EvoCompany_Organisation "1..1" *-- "0..9999" EvoCompany_Project : projects5
-EvoCompany_Project "1..1" -- "1..1" EvoCompany_Topic : related10
-EvoCompany_Category "1..1" -- "0..9999" EvoCompany_Topic : topics12
-EvoCompany_CompanyModel "1..1" *-- "0..9999" EvoCompany_Topic : topics18
+EvoCompany_Person "EvoCompany_Project 1..1" -- "EvoCompany_Person 0..9999" EvoCompany_Project : assignedTo0
+EvoCompany_Category "EvoCompany_CompanyModel17 0..9999" --* "EvoCompany_Category 1..1" EvoCompany_CompanyModel : categories16
+EvoCompany_Category "topics 1..1" -- "Category 1..1" EvoCompany_Topic : category13
+EvoCompany_CompanyModel "EvoCompany_Organisation15 1..1" *-- "EvoCompany_CompanyModel 1..1" EvoCompany_Organisation : company14
+EvoCompany_CompanyModel "EvoCompany_Division23 1..1" *-- "EvoCompany_CompanyModel22 0..9999" EvoCompany_Division : division21
+EvoCompany_Person "EvoCompany_Unit 1..1" -- "EvoCompany_Person2 0..1" EvoCompany_Unit : employed1
+EvoCompany_Division "EvoCompany_Organisation9 0..9999" --* "EvoCompany_Division 1..1" EvoCompany_Organisation : lines8
+EvoCompany_Organisation "EvoCompany_Person4 1..1" *-- "EvoCompany_Organisation 0..9999" EvoCompany_Person : persons3
+EvoCompany_Organisation "EvoCompany_Project7 1..1" *-- "EvoCompany_Organisation6 0..9999" EvoCompany_Project : projects5
+EvoCompany_Project "EvoCompany_Topic 1..1" -- "EvoCompany_Project11 1..1" EvoCompany_Topic : related10
+EvoCompany_Category "Topic 1..1" -- "category 0..9999" EvoCompany_Topic : topics12
+EvoCompany_CompanyModel "EvoCompany_Topic20 1..1" *-- "EvoCompany_CompanyModel19 0..9999" EvoCompany_Topic : topics18
 @enduml

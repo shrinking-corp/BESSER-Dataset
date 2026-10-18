@@ -1,4 +1,8 @@
 @startuml
+' model: myDsl
+' project: sampleModel
+' owner: User
+' description: New project
 class Greeting {
 }
 class myDsl_Define {
@@ -16,7 +20,7 @@ class myDsl_Selecao {
 Greeting <|-- myDsl_Define
 Greeting <|-- myDsl_Expressao
 Greeting <|-- myDsl_Selecao
-myDsl_Expressao "0..1" --* "1..1" myDsl_Greeting : Exp1
-myDsl_Define "1..1" *-- "0..1" myDsl_Selecao : Sel3
-myDsl_Greeting "0..9999" --* "1..1" myDsl_Model : greetings0
+myDsl_Expressao "myDsl_Greeting2 0..1" --* "myDsl_Expressao 1..1" myDsl_Greeting : Exp1
+myDsl_Define "myDsl_Selecao 1..1" *-- "myDsl_Define 0..1" myDsl_Selecao : Sel3
+myDsl_Greeting "myDsl_Model 0..9999" --* "myDsl_Greeting 1..1" myDsl_Model : greetings0
 @enduml

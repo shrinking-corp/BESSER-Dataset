@@ -1,4 +1,8 @@
 @startuml
+' model: _437ab337_a90b_4f71_b624_4453324e5fa9
+' project: sampleModel
+' owner: User
+' description: New project
 class APNAdv {
 }
 class APNAdvertiser {
@@ -203,17 +207,17 @@ class updater_events_dataset_updater_events_daily {
   + segments_id : str
   + sojernId : str
 }
-APNLineItem "0..1" -- "0..1" APNLineItemModelService : APNLineItemModelService_APNLineItem
-APNLineItem "0..9999" -- "0..9999" APNModel : APNLineItem_APNModel
-APNModel "0..9999" -- "1..1" APNModelFactory : APNModelFactory_APNModel
-APNAdv "0..9999" -- "0..9999" APNModel : APNModel_APNAdv
-APNAdvertiser "0..9999" -- "0..9999" APNModel : APNModel_APNAdvertiser
-APNLineItem "1..1" -- "0..9999" APNModel : APNModel_APNLineItem
-APNModel "0..1" -- "0..1" APNProgrammaticModel : APNProgrammaticModel_APNModel
-APNModelFactory "1..1" -- "1..1" APNProgrammaticModel : APNProgrammaticModel_APNModelFactory
-APNProgrammaticModel "0..1" -- "0..1" APNRepository_Interface : APNProgrammaticModel_APNRepository
-APNCache_Interface "0..1" -- "0..1" APNRepository_Interface : APNRepository_APNCache
-APNRepository_Interface "0..1" -- "0..1" APNStore_Interface : APNRepository_APNStore
-APNStore_Interface "0..1" -- "0..1" RestClient : APNStore_RestClient
-BQJobError "0..1" -- "0..1" BQManager : BQManager_BQJobError
+APNLineItem "APNLineItemModelService_APNLineItem_020 0..1" -- "APNLineItemModelService_APNLineItem_121 0..1" APNLineItemModelService : APNLineItemModelService_APNLineItem
+APNLineItem "APNLineItem_APNModel_119 0..9999" -- "APNLineItem_APNModel_018 0..9999" APNModel : APNLineItem_APNModel
+APNModel "APNModelFactory_APNModel_016 0..9999" -- "APNModelFactory_APNModel_117 1..1" APNModelFactory : APNModelFactory_APNModel
+APNAdv "aPNAdv24 0..9999" -- "aPNModel25 0..9999" APNModel : APNModel_APNAdv
+APNAdvertiser "APNModel_APNAdvertiser_02 0..9999" -- "APNModel_APNAdvertiser_13 0..9999" APNModel : APNModel_APNAdvertiser
+APNLineItem "APNModel_APNLineItem_04 1..1" -- "APNModel_APNLineItem_15 0..9999" APNModel : APNModel_APNLineItem
+APNModel "aPNModel12 0..1" -- "aPNProgrammaticModel13 0..1" APNProgrammaticModel : APNProgrammaticModel_APNModel
+APNModelFactory "APNProgrammaticModel_APNModelFactory_014 1..1" -- "aPNProgrammaticModel15 1..1" APNProgrammaticModel : APNProgrammaticModel_APNModelFactory
+APNProgrammaticModel "aPNProgrammaticModel7 0..1" -- "aPNRepository6 0..1" APNRepository_Interface : APNProgrammaticModel_APNRepository
+APNCache_Interface "aPNCache10 0..1" -- "aPNRepository11 0..1" APNRepository_Interface : APNRepository_APNCache
+APNRepository_Interface "aPNRepository9 0..1" -- "aPNStore8 0..1" APNStore_Interface : APNRepository_APNStore
+APNStore_Interface "aPNStore23 0..1" -- "restClient22 0..1" RestClient : APNStore_RestClient
+BQJobError "bQJobError0 0..1" -- "bQManager1 0..1" BQManager : BQManager_BQJobError
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: statemachine
+' project: sampleModel
+' owner: User
+' description: New project
 class Behavior {
 }
 class BehavioralFeature {
@@ -70,27 +74,27 @@ NamedElement <|-- statemachine_Vertex
 State <|-- statemachine_FinalState
 Vertex <|-- statemachine_PseudoState
 Vertex <|-- statemachine_State
-statemachine_Behavior "0..1" -- "1..1" statemachine_BehavioralFeature : behavior27
-statemachine_Behavior "1..1" -- "0..1" statemachine_Transition : behaviortransition7
-statemachine_Constraint "1..1" -- "0..1" statemachine_Transition : constrainttransition33
-statemachine_Behavior "1..1" -- "0..1" statemachine_BehavioredClassifier : context6
-statemachine_Behavior "0..1" --* "1..1" statemachine_Transition : effect17
-statemachine_Event "1..1" -- "1..1" statemachine_Trigger : event32
-statemachine_Event "1..1" -- "0..1" statemachine_Trigger : eventtrigger25
-statemachine_Constraint "0..1" --* "1..1" statemachine_Transition : guard9
-statemachine_Transition "0..9999" -- "1..1" statemachine_Vertex : incoming21
-statemachine_Region "1..1" -- "0..1" statemachine_StateMachine : machine2
-statemachine_CallEvent "1..1" -- "1..1" statemachine_Operation : operation26
-statemachine_Transition "0..9999" -- "1..1" statemachine_Vertex : outgoing19
-statemachine_Behavior "0..9999" --* "1..1" statemachine_BehavioredClassifier : ownedBehavior1
-statemachine_Region "1..9999" --* "1..1" statemachine_StateMachine : region0
-statemachine_Region "0..1" -- "1..1" statemachine_Vertex : regionvertex23
-statemachine_Transition "1..1" -- "1..1" statemachine_Vertex : source10
-statemachine_Behavior "1..1" -- "0..1" statemachine_BehavioralFeature : specification5
-statemachine_Region "1..1" *-- "0..9999" statemachine_Vertex : subvertex3
-statemachine_Transition "1..1" -- "1..1" statemachine_Vertex : target12
-statemachine_Region "1..1" *-- "0..9999" statemachine_Transition : transition4
-statemachine_Region "1..1" -- "1..1" statemachine_Transition : transitionregion14
-statemachine_Transition "1..1" *-- "0..9999" statemachine_Trigger : trigger16
-statemachine_Transition "0..1" -- "1..1" statemachine_Trigger : triggertransition29
+statemachine_Behavior "specification 0..1" -- "Behavior28 1..1" statemachine_BehavioralFeature : behavior27
+statemachine_Behavior "Transition8 1..1" -- "effect 0..1" statemachine_Transition : behaviortransition7
+statemachine_Constraint "Transition34 1..1" -- "guard 0..1" statemachine_Transition : constrainttransition33
+statemachine_Behavior "BehavioredClassifier 1..1" -- "ownedBehavior 0..1" statemachine_BehavioredClassifier : context6
+statemachine_Behavior "behaviortransition 0..1" --* "Behavior18 1..1" statemachine_Transition : effect17
+statemachine_Event "eventtrigger 1..1" -- "Event 1..1" statemachine_Trigger : event32
+statemachine_Event "Trigger 1..1" -- "event 0..1" statemachine_Trigger : eventtrigger25
+statemachine_Constraint "constrainttransition 0..1" --* "Constraint 1..1" statemachine_Transition : guard9
+statemachine_Transition "target 0..9999" -- "Transition22 1..1" statemachine_Vertex : incoming21
+statemachine_Region "StateMachine 1..1" -- "region 0..1" statemachine_StateMachine : machine2
+statemachine_CallEvent "statemachine_Operation 1..1" -- "statemachine_CallEvent 1..1" statemachine_Operation : operation26
+statemachine_Transition "source 0..9999" -- "Transition20 1..1" statemachine_Vertex : outgoing19
+statemachine_Behavior "context 0..9999" --* "Behavior 1..1" statemachine_BehavioredClassifier : ownedBehavior1
+statemachine_Region "machine 1..9999" --* "Region 1..1" statemachine_StateMachine : region0
+statemachine_Region "subvertex 0..1" -- "Region24 1..1" statemachine_Vertex : regionvertex23
+statemachine_Transition "Vertex11 1..1" -- "outgoing 1..1" statemachine_Vertex : source10
+statemachine_Behavior "BehavioralFeature 1..1" -- "behavior 0..1" statemachine_BehavioralFeature : specification5
+statemachine_Region "Vertex 1..1" *-- "regionvertex 0..9999" statemachine_Vertex : subvertex3
+statemachine_Transition "Vertex13 1..1" -- "incoming 1..1" statemachine_Vertex : target12
+statemachine_Region "Transition 1..1" *-- "transitionregion 0..9999" statemachine_Transition : transition4
+statemachine_Region "transition 1..1" -- "Region15 1..1" statemachine_Transition : transitionregion14
+statemachine_Transition "statemachine_Trigger 1..1" *-- "statemachine_Transition 0..9999" statemachine_Trigger : trigger16
+statemachine_Transition "statemachine_Trigger30 0..1" -- "statemachine_Transition31 1..1" statemachine_Trigger : triggertransition29
 @enduml

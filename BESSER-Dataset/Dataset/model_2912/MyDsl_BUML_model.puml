@@ -1,4 +1,8 @@
 @startuml
+' model: myDsl
+' project: sampleModel
+' owner: User
+' description: New project
 class Type {
 }
 class myDsl_DataType {
@@ -15,8 +19,8 @@ class myDsl_Type {
 }
 Type <|-- myDsl_DataType
 Type <|-- myDsl_Entity
-myDsl_DomainModel "1..1" *-- "0..9999" myDsl_Type : elements0
-myDsl_Entity "1..1" *-- "0..9999" myDsl_Features : features5
-myDsl_Entity "1..1" -- "0..1" myDsl_Entity : supertype4
-myDsl_Features "1..1" -- "0..1" myDsl_Type : type1
+myDsl_DomainModel "myDsl_Type 1..1" *-- "myDsl_DomainModel 0..9999" myDsl_Type : elements0
+myDsl_Entity "myDsl_Features7 1..1" *-- "myDsl_Entity6 0..9999" myDsl_Features : features5
+myDsl_Entity "myDsl_Entity 1..1" -- "myDsl_Entity3 0..1" myDsl_Entity : supertype4
+myDsl_Features "myDsl_Type2 1..1" -- "myDsl_Features 0..1" myDsl_Type : type1
 @enduml

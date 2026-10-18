@@ -1,4 +1,8 @@
 @startuml
+' model: remes
+' project: sampleModel
+' owner: User
+' description: New project
 class ActionRoot {
 }
 class ControlPath {
@@ -101,33 +105,33 @@ Point <|-- remes_ExitPoint
 Referable <|-- remes_Constant
 Referable <|-- remes_Resource
 Referable <|-- remes_Variable
-remes_CompositeEntryPoint "1..1" -- "0..1" remes_CompositeMode : composite28
-remes_CompositeExitPoint "1..1" -- "0..1" remes_CompositeMode : composite30
-remes_CompositeEntryPoint "1..1" --* "1..1" remes_CompositeMode : compositeEntryPoint13
-remes_CompositeExitPoint "1..1" --* "1..1" remes_CompositeMode : compositeExitPoint14
-remes_CompositeMode "1..1" *-- "0..9999" remes_ConditionalConnector : conditionalConnectors10
-remes_Edge "1..1" -- "1..1" remes_ExitPoint : connectFrom34
-remes_Edge "1..1" -- "1..1" remes_EntryPoint : connectTo36
-remes_Constant "0..9999" --* "1..1" remes_Mode : constants7
-remes_ControlPath "0..1" -- "1..1" remes_EntryPoint : container23
-remes_ControlPath "0..1" -- "1..1" remes_ExitPoint : container26
-remes_Edge "0..9999" -- "1..1" remes_EntryPoint : entryEdges22
-remes_ControlPath "1..1" *-- "1..1" remes_EntryPoint : entryPoint1
-remes_Edge "0..9999" --* "1..1" remes_ExitPoint : exitEdges24
-remes_ControlPath "1..1" *-- "1..1" remes_ExitPoint : exitPoint2
-remes_CompositeMode "1..1" *-- "1..1" remes_InitPoint : initPoint12
-remes_Mode "0..9999" --* "1..1" remes_RemesDiagram : modes0
-remes_CompositeMode "0..1" -- "1..1" remes_SubMode : parent18
-remes_CompositeMode "0..1" -- "1..1" remes_ConditionalConnector : parent20
-ActionRoot "0..1" --* "1..1" remes_Edge : parsedActionBody38
-LogicalRoot "0..1" --* "1..1" remes_Edge : parsedActionGuard32
-ResourceRoot "0..1" --* "1..1" remes_Resource : parsedExpression43
-LogicalRoot "0..1" --* "1..1" remes_SubMode : parsedInvariant19
-remes_Mode "1..1" *-- "0..9999" remes_Resource : resources5
-remes_Mode "1..1" -- "1..1" remes_Variable : scope40
-remes_Mode "1..1" -- "1..1" remes_Resource : scope41
-remes_Constant "1..1" -- "1..1" remes_Mode : scope44
-remes_CompositeMode "1..1" *-- "1..9999" remes_SubMode : subModes9
-remes_Mode "1..1" *-- "0..9999" remes_Variable : variables4
-remes_CompositeMode "1..1" *-- "1..1" remes_WritePoint : writePoint16
+remes_CompositeEntryPoint "CompositeMode29 1..1" -- "compositeEntryPoint 0..1" remes_CompositeMode : composite28
+remes_CompositeExitPoint "CompositeMode31 1..1" -- "compositeExitPoint 0..1" remes_CompositeMode : composite30
+remes_CompositeEntryPoint "composite 1..1" --* "CompositeEntryPoint 1..1" remes_CompositeMode : compositeEntryPoint13
+remes_CompositeExitPoint "composite15 1..1" --* "CompositeExitPoint 1..1" remes_CompositeMode : compositeExitPoint14
+remes_CompositeMode "ConditionalConnector 1..1" *-- "parent11 0..9999" remes_ConditionalConnector : conditionalConnectors10
+remes_Edge "ExitPoint35 1..1" -- "exitEdges 1..1" remes_ExitPoint : connectFrom34
+remes_Edge "EntryPoint37 1..1" -- "entryEdges 1..1" remes_EntryPoint : connectTo36
+remes_Constant "scope8 0..9999" --* "Constant 1..1" remes_Mode : constants7
+remes_ControlPath "entryPoint 0..1" -- "ControlPath 1..1" remes_EntryPoint : container23
+remes_ControlPath "exitPoint 0..1" -- "ControlPath27 1..1" remes_ExitPoint : container26
+remes_Edge "connectTo 0..9999" -- "Edge 1..1" remes_EntryPoint : entryEdges22
+remes_ControlPath "EntryPoint 1..1" *-- "container 1..1" remes_EntryPoint : entryPoint1
+remes_Edge "connectFrom 0..9999" --* "Edge25 1..1" remes_ExitPoint : exitEdges24
+remes_ControlPath "ExitPoint 1..1" *-- "container3 1..1" remes_ExitPoint : exitPoint2
+remes_CompositeMode "remes_InitPoint 1..1" *-- "remes_CompositeMode 1..1" remes_InitPoint : initPoint12
+remes_Mode "remes_RemesDiagram 0..9999" --* "remes_Mode 1..1" remes_RemesDiagram : modes0
+remes_CompositeMode "subModes 0..1" -- "CompositeMode 1..1" remes_SubMode : parent18
+remes_CompositeMode "conditionalConnectors 0..1" -- "CompositeMode21 1..1" remes_ConditionalConnector : parent20
+ActionRoot "remes_Edge39 0..1" --* "ActionRoot 1..1" remes_Edge : parsedActionBody38
+LogicalRoot "remes_Edge 0..1" --* "LogicalRoot33 1..1" remes_Edge : parsedActionGuard32
+ResourceRoot "remes_Resource 0..1" --* "ResourceRoot 1..1" remes_Resource : parsedExpression43
+LogicalRoot "remes_SubMode 0..1" --* "LogicalRoot 1..1" remes_SubMode : parsedInvariant19
+remes_Mode "Resource 1..1" *-- "scope6 0..9999" remes_Resource : resources5
+remes_Mode "variables 1..1" -- "Mode 1..1" remes_Variable : scope40
+remes_Mode "resources 1..1" -- "Mode42 1..1" remes_Resource : scope41
+remes_Constant "Mode45 1..1" -- "constants 1..1" remes_Mode : scope44
+remes_CompositeMode "SubMode 1..1" *-- "parent 1..9999" remes_SubMode : subModes9
+remes_Mode "Variable 1..1" *-- "scope 0..9999" remes_Variable : variables4
+remes_CompositeMode "remes_WritePoint 1..1" *-- "remes_CompositeMode17 1..1" remes_WritePoint : writePoint16
 @enduml

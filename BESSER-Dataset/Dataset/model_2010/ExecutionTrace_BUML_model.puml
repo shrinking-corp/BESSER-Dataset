@@ -1,4 +1,8 @@
 @startuml
+' model: trace
+' project: sampleModel
+' owner: User
+' description: New project
 class TraceElement {
 }
 class trace_ExecutionContext {
@@ -24,18 +28,18 @@ TraceElement <|-- trace_ModelElement
 TraceElement <|-- trace_ModuleElement
 TraceElement <|-- trace_Property
 TraceElement <|-- trace_Trace
-trace_Property "0..9999" -- "1..1" trace_Trace : accesses15
-trace_ExecutionContext "1..1" -- "0..9999" trace_Trace : contains1
-trace_ExecutionContext "0..9999" -- "1..1" trace_ModelElement : executionContext17
-trace_ExecutionContext "0..1" -- "1..1" trace_Trace : executionContext7
-trace_ExecutionContext "0..9999" -- "1..1" trace_ModuleElement : executionContexts4
-trace_ExecutionContext "1..1" -- "0..9999" trace_ModuleElement : for_0
-trace_ExecutionContext "1..1" -- "0..9999" trace_ModelElement : involves2
-trace_ModelElement "1..1" -- "1..1" trace_Property : modelElement23
-trace_ModelElement "1..1" -- "0..9999" trace_Property : owns21
-trace_ModelElement "0..9999" -- "1..1" trace_Trace : reaches12
-trace_ModelElement "1..1" -- "0..9999" trace_Trace : traces19
-trace_Property "1..1" -- "0..9999" trace_Trace : traces25
-trace_ModuleElement "1..1" -- "0..9999" trace_Trace : traces5
-trace_ModuleElement "1..1" -- "1..1" trace_Trace : traces9
+trace_Property "traces16 0..9999" -- "Property 1..1" trace_Trace : accesses15
+trace_ExecutionContext "Trace 1..1" -- "executionContext 0..9999" trace_Trace : contains1
+trace_ExecutionContext "involves 0..9999" -- "ExecutionContext18 1..1" trace_ModelElement : executionContext17
+trace_ExecutionContext "contains 0..1" -- "ExecutionContext8 1..1" trace_Trace : executionContext7
+trace_ExecutionContext "for_ 0..9999" -- "ExecutionContext 1..1" trace_ModuleElement : executionContexts4
+trace_ExecutionContext "ModuleElement 1..1" -- "executionContexts 0..9999" trace_ModuleElement : for_0
+trace_ExecutionContext "ModelElement 1..1" -- "executionContext3 0..9999" trace_ModelElement : involves2
+trace_ModelElement "owns 1..1" -- "ModelElement24 1..1" trace_Property : modelElement23
+trace_ModelElement "Property22 1..1" -- "modelElement 0..9999" trace_Property : owns21
+trace_ModelElement "traces13 0..9999" -- "ModelElement14 1..1" trace_Trace : reaches12
+trace_ModelElement "Trace20 1..1" -- "reaches 0..9999" trace_Trace : traces19
+trace_Property "Trace26 1..1" -- "accesses 0..9999" trace_Trace : traces25
+trace_ModuleElement "Trace6 1..1" -- "traces 0..9999" trace_Trace : traces5
+trace_ModuleElement "traces10 1..1" -- "ModuleElement11 1..1" trace_Trace : traces9
 @enduml

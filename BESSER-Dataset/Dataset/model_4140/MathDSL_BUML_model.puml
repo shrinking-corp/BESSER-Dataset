@@ -1,4 +1,8 @@
 @startuml
+' model: mathDSL
+' project: sampleModel
+' owner: User
+' description: New project
 class Expression {
 }
 class mathDSL_Div {
@@ -21,13 +25,13 @@ Expression <|-- mathDSL_Minus
 Expression <|-- mathDSL_Multi
 Expression <|-- mathDSL_NumberLiteral
 Expression <|-- mathDSL_Plus
-mathDSL_Expression "0..1" --* "1..1" mathDSL_Math : expression0
-mathDSL_Expression "0..1" --* "1..1" mathDSL_Plus : left1
-mathDSL_Expression "0..1" --* "1..1" mathDSL_Multi : left11
-mathDSL_Div "1..1" *-- "0..1" mathDSL_Expression : left16
-mathDSL_Expression "0..1" --* "1..1" mathDSL_Minus : left6
-mathDSL_Expression "0..1" --* "1..1" mathDSL_Multi : right13
-mathDSL_Div "1..1" *-- "0..1" mathDSL_Expression : right18
-mathDSL_Expression "0..1" --* "1..1" mathDSL_Plus : right3
-mathDSL_Expression "0..1" --* "1..1" mathDSL_Minus : right8
+mathDSL_Expression "mathDSL_Math 0..1" --* "mathDSL_Expression 1..1" mathDSL_Math : expression0
+mathDSL_Expression "mathDSL_Plus 0..1" --* "mathDSL_Expression2 1..1" mathDSL_Plus : left1
+mathDSL_Expression "mathDSL_Multi 0..1" --* "mathDSL_Expression12 1..1" mathDSL_Multi : left11
+mathDSL_Div "mathDSL_Expression17 1..1" *-- "mathDSL_Div 0..1" mathDSL_Expression : left16
+mathDSL_Expression "mathDSL_Minus 0..1" --* "mathDSL_Expression7 1..1" mathDSL_Minus : left6
+mathDSL_Expression "mathDSL_Multi14 0..1" --* "mathDSL_Expression15 1..1" mathDSL_Multi : right13
+mathDSL_Div "mathDSL_Expression20 1..1" *-- "mathDSL_Div19 0..1" mathDSL_Expression : right18
+mathDSL_Expression "mathDSL_Plus4 0..1" --* "mathDSL_Expression5 1..1" mathDSL_Plus : right3
+mathDSL_Expression "mathDSL_Minus9 0..1" --* "mathDSL_Expression10 1..1" mathDSL_Minus : right8
 @enduml

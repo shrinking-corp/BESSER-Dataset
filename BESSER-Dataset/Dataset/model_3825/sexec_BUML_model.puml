@@ -1,4 +1,8 @@
 @startuml
+' model: sexec
+' project: sampleModel
+' owner: User
+' description: New project
 class Check {
 }
 class Event {
@@ -131,38 +135,38 @@ Trace <|-- sexec_TraceNodeExecuted
 Trace <|-- sexec_TraceReactionWillFire
 Trace <|-- sexec_TraceStateEntered
 Trace <|-- sexec_TraceStateExited
-sexec_StateCase "0..9999" --* "1..1" sexec_StateSwitch : cases47
-sexec_Check "0..1" -- "1..1" sexec_CheckRef : check34
-sexec_Check "1..1" *-- "0..1" sexec_Expression : condition32
-sexec_ExecutionState "1..1" *-- "0..1" sexec_Step : entryAction13
-sexec_ExecutionFlow "1..1" *-- "0..1" sexec_Step : entryAction8
-sexec_ExecutionFlow "1..1" *-- "0..1" sexec_Step : exitAction10
-sexec_ExecutionState "1..1" *-- "0..1" sexec_Step : exitAction16
-sexec_ExecutionRegion "0..1" -- "1..1" sexec_StateSwitch : historyRegion48
-sexec_HistoryEntry "1..1" *-- "0..1" sexec_Step : historyStep64
-sexec_ExecutionRegion "1..1" *-- "0..1" sexec_StateVector : historyVector26
-sexec_ExecutionFlow "1..1" *-- "0..1" sexec_StateVector : historyVector6
-sexec_HistoryEntry "1..1" *-- "0..1" sexec_Step : initialStep59
-sexec_ExecutionNode "0..1" -- "1..1" sexec_TraceNodeExecuted : node67
-sexec_ExecutionFlow "1..1" *-- "0..9999" sexec_ExecutionNode : nodes2
-sexec_ExecutionNode "0..9999" -- "1..1" sexec_ExecutionRegion : nodes29
-sexec_Check "1..1" -- "0..9999" sexec_CheckRef : refs33
-sexec_ExecutionRegion "0..1" -- "1..1" sexec_SaveHistory : region57
-sexec_ExecutionRegion "0..1" -- "1..1" sexec_HistoryEntry : region61
-sexec_ExecutionFlow "1..1" *-- "0..9999" sexec_ExecutionRegion : regions4
-sexec_EObject "0..1" -- "1..1" sexec_MappedElement : sourceElement0
-sexec_EnterState "1..1" -- "0..1" sexec_ExecutionState : state37
-sexec_ExecutionState "0..1" -- "1..1" sexec_ExitState : state39
-sexec_ExecutionState "0..1" -- "1..1" sexec_StateCase : state51
-sexec_ExecutionState "0..1" -- "1..1" sexec_TraceStateEntered : state69
-sexec_ExecutionState "0..1" -- "1..1" sexec_TraceStateExited : state71
-sexec_ExecutionScope "1..1" *-- "0..1" sexec_StateVector : stateVector19
-sexec_Execution "1..1" *-- "0..1" sexec_Expression : statement35
-sexec_ExecutionFlow "1..1" *-- "0..9999" sexec_ExecutionState : states1
-sexec_StateCase "1..1" *-- "0..1" sexec_Step : step54
-sexec_ExecutionScope "1..1" -- "0..9999" sexec_ExecutionScope : subScopes22
-sexec_ExecutionScope "1..1" -- "0..1" sexec_ExecutionScope : superScope24
-sexec_ScheduleTimeEvent "1..1" -- "0..1" sexec_TimeEvent : timeEvent41
-sexec_TimeEvent "0..1" -- "1..1" sexec_UnscheduleTimeEvent : timeEvent45
-sexec_Expression "0..1" --* "1..1" sexec_ScheduleTimeEvent : timeValue42
+sexec_StateCase "sexec_StateSwitch 0..9999" --* "sexec_StateCase 1..1" sexec_StateSwitch : cases47
+sexec_Check "refs 0..1" -- "Check 1..1" sexec_CheckRef : check34
+sexec_Check "sexec_Expression 1..1" *-- "sexec_Check 0..1" sexec_Expression : condition32
+sexec_ExecutionState "sexec_Step15 1..1" *-- "sexec_ExecutionState14 0..1" sexec_Step : entryAction13
+sexec_ExecutionFlow "sexec_Step 1..1" *-- "sexec_ExecutionFlow9 0..1" sexec_Step : entryAction8
+sexec_ExecutionFlow "sexec_Step12 1..1" *-- "sexec_ExecutionFlow11 0..1" sexec_Step : exitAction10
+sexec_ExecutionState "sexec_Step18 1..1" *-- "sexec_ExecutionState17 0..1" sexec_Step : exitAction16
+sexec_ExecutionRegion "sexec_StateSwitch49 0..1" -- "sexec_ExecutionRegion50 1..1" sexec_StateSwitch : historyRegion48
+sexec_HistoryEntry "sexec_Step66 1..1" *-- "sexec_HistoryEntry65 0..1" sexec_Step : historyStep64
+sexec_ExecutionRegion "sexec_StateVector28 1..1" *-- "sexec_ExecutionRegion27 0..1" sexec_StateVector : historyVector26
+sexec_ExecutionFlow "sexec_StateVector 1..1" *-- "sexec_ExecutionFlow7 0..1" sexec_StateVector : historyVector6
+sexec_HistoryEntry "sexec_Step60 1..1" *-- "sexec_HistoryEntry 0..1" sexec_Step : initialStep59
+sexec_ExecutionNode "sexec_TraceNodeExecuted 0..1" -- "sexec_ExecutionNode68 1..1" sexec_TraceNodeExecuted : node67
+sexec_ExecutionFlow "sexec_ExecutionNode 1..1" *-- "sexec_ExecutionFlow3 0..9999" sexec_ExecutionNode : nodes2
+sexec_ExecutionNode "sexec_ExecutionRegion30 0..9999" -- "sexec_ExecutionNode31 1..1" sexec_ExecutionRegion : nodes29
+sexec_Check "CheckRef 1..1" -- "check 0..9999" sexec_CheckRef : refs33
+sexec_ExecutionRegion "sexec_SaveHistory 0..1" -- "sexec_ExecutionRegion58 1..1" sexec_SaveHistory : region57
+sexec_ExecutionRegion "sexec_HistoryEntry62 0..1" -- "sexec_ExecutionRegion63 1..1" sexec_HistoryEntry : region61
+sexec_ExecutionFlow "sexec_ExecutionRegion 1..1" *-- "sexec_ExecutionFlow5 0..9999" sexec_ExecutionRegion : regions4
+sexec_EObject "sexec_MappedElement 0..1" -- "sexec_EObject 1..1" sexec_MappedElement : sourceElement0
+sexec_EnterState "sexec_ExecutionState38 1..1" -- "sexec_EnterState 0..1" sexec_ExecutionState : state37
+sexec_ExecutionState "sexec_ExitState 0..1" -- "sexec_ExecutionState40 1..1" sexec_ExitState : state39
+sexec_ExecutionState "sexec_StateCase52 0..1" -- "sexec_ExecutionState53 1..1" sexec_StateCase : state51
+sexec_ExecutionState "sexec_TraceStateEntered 0..1" -- "sexec_ExecutionState70 1..1" sexec_TraceStateEntered : state69
+sexec_ExecutionState "sexec_TraceStateExited 0..1" -- "sexec_ExecutionState72 1..1" sexec_TraceStateExited : state71
+sexec_ExecutionScope "sexec_StateVector20 1..1" *-- "sexec_ExecutionScope 0..1" sexec_StateVector : stateVector19
+sexec_Execution "sexec_Expression36 1..1" *-- "sexec_Execution 0..1" sexec_Expression : statement35
+sexec_ExecutionFlow "sexec_ExecutionState 1..1" *-- "sexec_ExecutionFlow 0..9999" sexec_ExecutionState : states1
+sexec_StateCase "sexec_Step56 1..1" *-- "sexec_StateCase55 0..1" sexec_Step : step54
+sexec_ExecutionScope "ExecutionScope 1..1" -- "superScope 0..9999" sexec_ExecutionScope : subScopes22
+sexec_ExecutionScope "ExecutionScope25 1..1" -- "subScopes 0..1" sexec_ExecutionScope : superScope24
+sexec_ScheduleTimeEvent "sexec_TimeEvent 1..1" -- "sexec_ScheduleTimeEvent 0..1" sexec_TimeEvent : timeEvent41
+sexec_TimeEvent "sexec_UnscheduleTimeEvent 0..1" -- "sexec_TimeEvent46 1..1" sexec_UnscheduleTimeEvent : timeEvent45
+sexec_Expression "sexec_ScheduleTimeEvent43 0..1" --* "sexec_Expression44 1..1" sexec_ScheduleTimeEvent : timeValue42
 @enduml

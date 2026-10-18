@@ -1,4 +1,8 @@
 @startuml
+' model: comicBookCollection
+' project: sampleModel
+' owner: User
+' description: New project
 class comicBookCollection_Book {
   + publicationDate : str
   + title : str
@@ -14,11 +18,11 @@ class comicBookCollection_Publisher {
 class comicBookCollection_Series {
   + seriesTitle : str
 }
-comicBookCollection_Book "1..1" *-- "0..9999" comicBookCollection_Person : artists10
-comicBookCollection_Book "0..9999" --* "1..1" comicBookCollection_Series : booksInSeries3
-comicBookCollection_Book "1..1" -- "0..1" comicBookCollection_Person : coverArtist13
-comicBookCollection_Book "1..1" *-- "0..9999" comicBookCollection_Person : editors7
-comicBookCollection_ComicBookCollection "1..1" *-- "0..9999" comicBookCollection_Publisher : publishers0
-comicBookCollection_Publisher "1..1" *-- "0..9999" comicBookCollection_Series : series1
-comicBookCollection_Book "1..1" *-- "0..9999" comicBookCollection_Person : writers5
+comicBookCollection_Book "comicBookCollection_Person12 1..1" *-- "comicBookCollection_Book11 0..9999" comicBookCollection_Person : artists10
+comicBookCollection_Book "comicBookCollection_Series4 0..9999" --* "comicBookCollection_Book 1..1" comicBookCollection_Series : booksInSeries3
+comicBookCollection_Book "comicBookCollection_Person15 1..1" -- "comicBookCollection_Book14 0..1" comicBookCollection_Person : coverArtist13
+comicBookCollection_Book "comicBookCollection_Person9 1..1" *-- "comicBookCollection_Book8 0..9999" comicBookCollection_Person : editors7
+comicBookCollection_ComicBookCollection "comicBookCollection_Publisher 1..1" *-- "comicBookCollection_ComicBookCollection 0..9999" comicBookCollection_Publisher : publishers0
+comicBookCollection_Publisher "comicBookCollection_Series 1..1" *-- "comicBookCollection_Publisher2 0..9999" comicBookCollection_Series : series1
+comicBookCollection_Book "comicBookCollection_Person 1..1" *-- "comicBookCollection_Book6 0..9999" comicBookCollection_Person : writers5
 @enduml

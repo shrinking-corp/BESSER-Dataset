@@ -1,4 +1,8 @@
 @startuml
+' model: helloworld150
+' project: sampleModel
+' owner: User
+' description: New project
 class NamedElement {
 }
 class helloworld150_Comment {
@@ -26,13 +30,13 @@ class helloworld150_World {
 NamedElement <|-- helloworld150_Own
 NamedElement <|-- helloworld150_Person
 NamedElement <|-- helloworld150_Thing
-helloworld150_Comment "0..1" --* "1..1" helloworld150_NamedElement : comment8
-helloworld150_Own "0..1" -- "1..1" helloworld150_Thing : ownership5
-helloworld150_Own "0..9999" --* "1..1" helloworld150_Thing : ownerships6
-helloworld150_Own "1..1" -- "0..1" helloworld150_Person : person10
-helloworld150_Person "0..9999" --* "1..1" helloworld150_World : persons1
-helloworld150_Person "1..1" -- "0..1" helloworld150_Profession : profession13
-helloworld150_Profession "0..9999" --* "1..1" helloworld150_World : professions3
-helloworld150_Own "1..1" -- "0..1" helloworld150_Thing : thing9
-helloworld150_Thing "0..9999" --* "1..1" helloworld150_World : things0
+helloworld150_Comment "helloworld150_NamedElement 0..1" --* "helloworld150_Comment 1..1" helloworld150_NamedElement : comment8
+helloworld150_Own "thing 0..1" -- "Own 1..1" helloworld150_Thing : ownership5
+helloworld150_Own "helloworld150_Thing7 0..9999" --* "helloworld150_Own 1..1" helloworld150_Thing : ownerships6
+helloworld150_Own "helloworld150_Person12 1..1" -- "helloworld150_Own11 0..1" helloworld150_Person : person10
+helloworld150_Person "helloworld150_World2 0..9999" --* "helloworld150_Person 1..1" helloworld150_World : persons1
+helloworld150_Person "helloworld150_Profession15 1..1" -- "helloworld150_Person14 0..1" helloworld150_Profession : profession13
+helloworld150_Profession "helloworld150_World4 0..9999" --* "helloworld150_Profession 1..1" helloworld150_World : professions3
+helloworld150_Own "Thing 1..1" -- "ownership 0..1" helloworld150_Thing : thing9
+helloworld150_Thing "helloworld150_World 0..9999" --* "helloworld150_Thing 1..1" helloworld150_World : things0
 @enduml

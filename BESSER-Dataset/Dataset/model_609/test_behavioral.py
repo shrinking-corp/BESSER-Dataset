@@ -593,9 +593,9 @@ def test_assoc_action23_stub_double():
     partner = webapp_Controller()
     setattr(partner, 'webapp_Controller24', None)
     _safe_set(owner, 'webapp_Action', partner)
-    assert getattr(partner, 'webapp_Controller24') == owner
+    assert owner in getattr(partner, 'webapp_Controller24')
     _safe_set(owner, 'webapp_Action', None)
-    assert getattr(partner, 'webapp_Controller24') is None
+    assert owner not in getattr(partner, 'webapp_Controller24')
 
 
 def test_assoc_appConfig0_stub_double():
@@ -623,9 +623,9 @@ def test_assoc_check43_stub_double():
     partner = webapp_Constraint()
     setattr(partner, 'webapp_Constraint44', None)
     _safe_set(owner, 'webapp_Check', partner)
-    assert getattr(partner, 'webapp_Constraint44') == owner
+    assert owner in getattr(partner, 'webapp_Constraint44')
     _safe_set(owner, 'webapp_Check', None)
-    assert getattr(partner, 'webapp_Constraint44') is None
+    assert owner not in getattr(partner, 'webapp_Constraint44')
 
 
 def test_assoc_column47_stub_double():
@@ -638,9 +638,9 @@ def test_assoc_column47_stub_double():
     partner = webapp_PrimaryKey()
     setattr(partner, 'webapp_PrimaryKey48', None)
     _safe_set(owner, 'webapp_Column49', partner)
-    assert getattr(partner, 'webapp_PrimaryKey48') == owner
+    assert owner in getattr(partner, 'webapp_PrimaryKey48')
     _safe_set(owner, 'webapp_Column49', None)
-    assert getattr(partner, 'webapp_PrimaryKey48') is None
+    assert owner not in getattr(partner, 'webapp_PrimaryKey48')
 
 
 def test_assoc_column63_stub_double():
@@ -653,9 +653,9 @@ def test_assoc_column63_stub_double():
     partner = webapp_Unique()
     setattr(partner, 'webapp_Unique64', None)
     _safe_set(owner, 'webapp_Column65', partner)
-    assert getattr(partner, 'webapp_Unique64') == owner
+    assert owner in getattr(partner, 'webapp_Unique64')
     _safe_set(owner, 'webapp_Column65', None)
-    assert getattr(partner, 'webapp_Unique64') is None
+    assert owner not in getattr(partner, 'webapp_Unique64')
 
 
 def test_assoc_constraint35_stub_double():
@@ -773,9 +773,9 @@ def test_assoc_navigation15_stub_double():
     partner = webapp_View()
     setattr(partner, 'webapp_View16', None)
     _safe_set(owner, 'webapp_Navigation', partner)
-    assert getattr(partner, 'webapp_View16') == owner
+    assert owner in getattr(partner, 'webapp_View16')
     _safe_set(owner, 'webapp_Navigation', None)
-    assert getattr(partner, 'webapp_View16') is None
+    assert owner not in getattr(partner, 'webapp_View16')
 
 
 def test_assoc_onDelete53_stub_double():
@@ -818,9 +818,9 @@ def test_assoc_page13_stub_double():
     partner = webapp_View()
     setattr(partner, 'webapp_View14', None)
     _safe_set(owner, 'webapp_Page', partner)
-    assert getattr(partner, 'webapp_View14') == owner
+    assert owner in getattr(partner, 'webapp_View14')
     _safe_set(owner, 'webapp_Page', None)
-    assert getattr(partner, 'webapp_View14') is None
+    assert owner not in getattr(partner, 'webapp_View14')
 
 
 def test_assoc_propertie29_stub_double():
@@ -833,9 +833,9 @@ def test_assoc_propertie29_stub_double():
     partner = webapp_Resource()
     setattr(partner, 'webapp_Resource30', None)
     _safe_set(owner, 'webapp_Properties', partner)
-    assert getattr(partner, 'webapp_Resource30') == owner
+    assert owner in getattr(partner, 'webapp_Resource30')
     _safe_set(owner, 'webapp_Properties', None)
-    assert getattr(partner, 'webapp_Resource30') is None
+    assert owner not in getattr(partner, 'webapp_Resource30')
 
 
 def test_assoc_resource11_stub_double():
@@ -863,9 +863,9 @@ def test_assoc_tag101_stub_double():
     partner = webapp_Td()
     setattr(partner, 'webapp_Td102', None)
     _safe_set(owner, 'webapp_Tag103', partner)
-    assert getattr(partner, 'webapp_Td102') == owner
+    assert owner in getattr(partner, 'webapp_Td102')
     _safe_set(owner, 'webapp_Tag103', None)
-    assert getattr(partner, 'webapp_Td102') is None
+    assert owner not in getattr(partner, 'webapp_Td102')
 
 
 def test_assoc_validator21_stub_double():
@@ -878,9 +878,9 @@ def test_assoc_validator21_stub_double():
     partner = webapp_Controller()
     setattr(partner, 'webapp_Controller22', None)
     _safe_set(owner, 'webapp_Validator', partner)
-    assert getattr(partner, 'webapp_Controller22') == owner
+    assert owner in getattr(partner, 'webapp_Controller22')
     _safe_set(owner, 'webapp_Validator', None)
-    assert getattr(partner, 'webapp_Controller22') is None
+    assert owner not in getattr(partner, 'webapp_Controller22')
 
 
 def test_assoc_view5_stub_double():

@@ -1,4 +1,8 @@
 @startuml
+' model: publication101
+' project: sampleModel
+' owner: User
+' description: New project
 class Counted {
 }
 class Labelled {
@@ -76,32 +80,32 @@ Named <|-- publication101_PublicationProcess
 Named <|-- publication101_PublicationStructure
 Named <|-- publication101_PublicationSystem
 Named <|-- publication101_ReviewNote
-publication101_Keyword "0..9999" --* "1..1" publication101_KnowledgeManager : allkeywords51
-publication101_Paper "1..1" -- "0..9999" publication101_Researcher : authors13
-publication101_Paper "0..1" -- "1..1" publication101_Paper : citedBy17
-publication101_Collaboration "1..1" -- "0..1" publication101_Paper : col_paper57
-publication101_Collaboration "0..9999" --* "1..1" publication101_Researcher : collaborations9
-publication101_Keyword "0..1" -- "1..1" publication101_PaperKeyword : keyword54
-publication101_Paper "1..1" *-- "0..9999" publication101_PaperKeyword : keywords14
-publication101_KnowledgeManager "0..1" --* "1..1" publication101_PublicationStructure : knowledgeMan36
-publication101_Keyword "1..1" -- "0..9999" publication101_Paper : kpapers49
-publication101_Paper "0..1" -- "1..1" publication101_Progress : paper23
-publication101_Paper "0..9999" --* "1..1" publication101_PublicationStructure : papers33
-publication101_Paragraph "0..1" -- "1..1" publication101_Write : paragraph25
-publication101_Paper "1..1" *-- "0..9999" publication101_Paragraph : paragraphs11
-publication101_Position "0..1" -- "1..1" publication101_Position : parent47
-publication101_Phase "0..9999" --* "1..1" publication101_PublicationProcess : phases0
-publication101_Position "0..9999" --* "1..1" publication101_PublicationSystem : positions43
-publication101_Progress "1..1" -- "0..1" publication101_PublicationProcess : process21
-publication101_PublicationProcess "0..1" --* "1..1" publication101_PublicationSystem : processView38
-publication101_Paper "1..1" *-- "0..9999" publication101_Progress : progress12
-publication101_Paper "0..9999" -- "1..1" publication101_Researcher : res_papers4
-publication101_Position "0..1" -- "1..1" publication101_Researcher : res_position7
-publication101_PublicationStructure "1..1" *-- "0..9999" publication101_Researcher : researchers31
-publication101_Review "1..1" -- "0..1" publication101_ReviewNote : reviewNote28
-publication101_Paragraph "1..1" *-- "0..9999" publication101_ReviewNote : reviews19
-publication101_Researcher "1..1" *-- "0..9999" publication101_Review : reviews2
-publication101_Researcher "1..1" *-- "0..9999" publication101_Skill : skills5
-publication101_PublicationStructure "0..1" --* "1..1" publication101_PublicationSystem : structuralView40
-publication101_Researcher "1..1" *-- "0..9999" publication101_Write : writes1
+publication101_Keyword "publication101_KnowledgeManager52 0..9999" --* "publication101_Keyword53 1..1" publication101_KnowledgeManager : allkeywords51
+publication101_Paper "Researcher 1..1" -- "res_papers 0..9999" publication101_Researcher : authors13
+publication101_Paper "publication101_Paper16 0..1" -- "publication101_Paper18 1..1" publication101_Paper : citedBy17
+publication101_Collaboration "publication101_Paper59 1..1" -- "publication101_Collaboration58 0..1" publication101_Paper : col_paper57
+publication101_Collaboration "publication101_Researcher10 0..9999" --* "publication101_Collaboration 1..1" publication101_Researcher : collaborations9
+publication101_Keyword "publication101_PaperKeyword55 0..1" -- "publication101_Keyword56 1..1" publication101_PaperKeyword : keyword54
+publication101_Paper "publication101_PaperKeyword 1..1" *-- "publication101_Paper15 0..9999" publication101_PaperKeyword : keywords14
+publication101_KnowledgeManager "publication101_PublicationStructure37 0..1" --* "publication101_KnowledgeManager 1..1" publication101_PublicationStructure : knowledgeMan36
+publication101_Keyword "publication101_Paper50 1..1" -- "publication101_Keyword 0..9999" publication101_Paper : kpapers49
+publication101_Paper "progress 0..1" -- "Paper24 1..1" publication101_Progress : paper23
+publication101_Paper "publication101_PublicationStructure34 0..9999" --* "publication101_Paper35 1..1" publication101_PublicationStructure : papers33
+publication101_Paragraph "publication101_Write26 0..1" -- "publication101_Paragraph27 1..1" publication101_Write : paragraph25
+publication101_Paper "publication101_Paragraph 1..1" *-- "publication101_Paper 0..9999" publication101_Paragraph : paragraphs11
+publication101_Position "publication101_Position46 0..1" -- "publication101_Position48 1..1" publication101_Position : parent47
+publication101_Phase "publication101_PublicationProcess 0..9999" --* "publication101_Phase 1..1" publication101_PublicationProcess : phases0
+publication101_Position "publication101_PublicationSystem44 0..9999" --* "publication101_Position45 1..1" publication101_PublicationSystem : positions43
+publication101_Progress "publication101_PublicationProcess22 1..1" -- "publication101_Progress 0..1" publication101_PublicationProcess : process21
+publication101_PublicationProcess "publication101_PublicationSystem 0..1" --* "publication101_PublicationProcess39 1..1" publication101_PublicationSystem : processView38
+publication101_Paper "Progress 1..1" *-- "paper 0..9999" publication101_Progress : progress12
+publication101_Paper "authors 0..9999" -- "Paper 1..1" publication101_Researcher : res_papers4
+publication101_Position "publication101_Researcher8 0..1" -- "publication101_Position 1..1" publication101_Researcher : res_position7
+publication101_PublicationStructure "publication101_Researcher32 1..1" *-- "publication101_PublicationStructure 0..9999" publication101_Researcher : researchers31
+publication101_Review "publication101_ReviewNote30 1..1" -- "publication101_Review29 0..1" publication101_ReviewNote : reviewNote28
+publication101_Paragraph "publication101_ReviewNote 1..1" *-- "publication101_Paragraph20 0..9999" publication101_ReviewNote : reviews19
+publication101_Researcher "publication101_Review 1..1" *-- "publication101_Researcher3 0..9999" publication101_Review : reviews2
+publication101_Researcher "publication101_Skill 1..1" *-- "publication101_Researcher6 0..9999" publication101_Skill : skills5
+publication101_PublicationStructure "publication101_PublicationSystem41 0..1" --* "publication101_PublicationStructure42 1..1" publication101_PublicationSystem : structuralView40
+publication101_Researcher "publication101_Write 1..1" *-- "publication101_Researcher 0..9999" publication101_Write : writes1
 @enduml

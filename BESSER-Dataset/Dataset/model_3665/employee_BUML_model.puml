@@ -1,4 +1,8 @@
 @startuml
+' model: employee
+' project: sampleModel
+' owner: User
+' description: New project
 enum Gender {
   Female
   Male
@@ -54,15 +58,15 @@ class employee_SmallProject {
 }
 Project <|-- employee_LargeProject
 Project <|-- employee_SmallProject
-employee_Address "0..1" --* "1..1" employee_Employee : address4
-employee_Degree "0..9999" -- "1..1" employee_Employee : degrees15
-employee_EmailAddress "0..9999" --* "1..1" employee_Employee : emailAddresses20
-employee_Employee "1..1" -- "0..1" employee_JobTitle : jobTitle6
-employee_Employee "1..1" -- "0..9999" employee_Employee : managedEmployees12
-employee_Employee "1..1" -- "0..1" employee_Employee : manager9
-employee_Employee "1..1" -- "1..1" employee_PhoneNumber : owner1
-employee_Employee "1..1" *-- "0..1" employee_EmploymentPeriod : period2
-employee_Employee "1..1" *-- "0..9999" employee_PhoneNumber : phoneNumbers14
-employee_Employee "1..1" -- "0..9999" employee_Project : projects17
-employee_Employee "0..1" -- "1..1" employee_Project : teamLeader0
+employee_Address "employee_Employee5 0..1" --* "employee_Address 1..1" employee_Employee : address4
+employee_Degree "employee_Employee16 0..9999" -- "employee_Degree 1..1" employee_Employee : degrees15
+employee_EmailAddress "employee_Employee21 0..9999" --* "employee_EmailAddress 1..1" employee_Employee : emailAddresses20
+employee_Employee "employee_JobTitle 1..1" -- "employee_Employee7 0..1" employee_JobTitle : jobTitle6
+employee_Employee "Employee13 1..1" -- "manager 0..9999" employee_Employee : managedEmployees12
+employee_Employee "Employee10 1..1" -- "managedEmployees 0..1" employee_Employee : manager9
+employee_Employee "phoneNumbers 1..1" -- "Employee 1..1" employee_PhoneNumber : owner1
+employee_Employee "employee_EmploymentPeriod 1..1" *-- "employee_Employee3 0..1" employee_EmploymentPeriod : period2
+employee_Employee "PhoneNumber 1..1" *-- "owner 0..9999" employee_PhoneNumber : phoneNumbers14
+employee_Employee "employee_Project19 1..1" -- "employee_Employee18 0..9999" employee_Project : projects17
+employee_Employee "employee_Project 0..1" -- "employee_Employee 1..1" employee_Project : teamLeader0
 @enduml

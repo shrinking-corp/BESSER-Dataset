@@ -1,4 +1,8 @@
 @startuml
+' model: library
+' project: sampleModel
+' owner: User
+' description: New project
 enum BookCategory {
   Biography
   Mystery
@@ -23,13 +27,13 @@ class library_Review {
 class library_Writer {
   + name : str
 }
-library_Book "1..1" -- "1..1" library_Writer : author5
-library_Book "1..1" -- "1..1" library_Opinion : book11
-library_Book "1..1" -- "1..1" library_Review : book7
-library_Book "0..9999" --* "1..1" library_Library : books1
-library_Book "0..9999" -- "1..1" library_Writer : books3
-library_Opinion "0..9999" --* "1..1" library_Writer : opinions4
-library_Book "1..1" *-- "0..9999" library_Review : reviews6
-library_Opinion "1..1" -- "1..1" library_Writer : writer9
-library_Library "1..1" *-- "0..9999" library_Writer : writers0
+library_Book "Writer 1..1" -- "books 1..1" library_Writer : author5
+library_Book "library_Opinion 1..1" -- "library_Book12 1..1" library_Opinion : book11
+library_Book "reviews 1..1" -- "Book8 1..1" library_Review : book7
+library_Book "library_Library2 0..9999" --* "library_Book 1..1" library_Library : books1
+library_Book "author 0..9999" -- "Book 1..1" library_Writer : books3
+library_Opinion "writer 0..9999" --* "Opinion 1..1" library_Writer : opinions4
+library_Book "Review 1..1" *-- "book 0..9999" library_Review : reviews6
+library_Opinion "Writer10 1..1" -- "opinions 1..1" library_Writer : writer9
+library_Library "library_Writer 1..1" *-- "library_Library 0..9999" library_Writer : writers0
 @enduml

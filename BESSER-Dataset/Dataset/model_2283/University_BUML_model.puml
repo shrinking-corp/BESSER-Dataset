@@ -1,4 +1,8 @@
 @startuml
+' model: University
+' project: sampleModel
+' owner: User
+' description: New project
 enum CourseType {
   PR
   SEM
@@ -29,10 +33,10 @@ class University_UniversityManagementSystem {
 }
 Person <|-- University_Professor
 Person <|-- University_Student
-University_Course "0..9999" -- "1..1" University_Student : attends0
-University_Course "0..9999" --* "1..1" University_UniversityManagementSystem : course8
-University_Course "1..1" *-- "0..9999" University_Exam : exam6
-University_Course "0..9999" -- "1..1" University_Professor : lectures1
-University_Course "0..9999" -- "1..1" University_Course : mandatoryFor4
-University_Person "0..9999" --* "1..1" University_UniversityManagementSystem : person10
+University_Course "University_Student 0..9999" -- "University_Course 1..1" University_Student : attends0
+University_Course "University_UniversityManagementSystem 0..9999" --* "University_Course9 1..1" University_UniversityManagementSystem : course8
+University_Course "University_Exam 1..1" *-- "University_Course7 0..9999" University_Exam : exam6
+University_Course "University_Professor 0..9999" -- "University_Course2 1..1" University_Professor : lectures1
+University_Course "University_Course3 0..9999" -- "University_Course5 1..1" University_Course : mandatoryFor4
+University_Person "University_UniversityManagementSystem11 0..9999" --* "University_Person 1..1" University_UniversityManagementSystem : person10
 @enduml

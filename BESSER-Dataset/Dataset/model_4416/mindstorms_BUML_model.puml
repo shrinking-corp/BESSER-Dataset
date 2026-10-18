@@ -1,4 +1,8 @@
 @startuml
+' model: mindstorms
+' project: sampleModel
+' owner: User
+' description: New project
 class Action {
 }
 class Behavior {
@@ -151,10 +155,10 @@ NamedElement <|-- mindstorms_Sensor
 Sensor <|-- mindstorms_ColorSensor
 Sensor <|-- mindstorms_TouchSensor
 Sensor <|-- mindstorms_UltrasonicSensor
-mindstorms_Arbitrator "1..1" *-- "0..9999" mindstorms_Behavior : behaviors2
-mindstorms_Block "0..9999" --* "1..1" mindstorms_BlockContainer : blocks1
-mindstorms_Condition "0..1" --* "1..1" mindstorms_ConditionContainer : condition8
-mindstorms_Instruction "0..9999" --* "1..1" mindstorms_Main : instructions0
-mindstorms_Arbitrator "1..1" -- "0..9999" mindstorms_Behavior : reuse3
-mindstorms_Instruction "0..1" -- "1..1" mindstorms_ReuseInstruction : reuse6
+mindstorms_Arbitrator "mindstorms_Behavior 1..1" *-- "mindstorms_Arbitrator 0..9999" mindstorms_Behavior : behaviors2
+mindstorms_Block "mindstorms_BlockContainer 0..9999" --* "mindstorms_Block 1..1" mindstorms_BlockContainer : blocks1
+mindstorms_Condition "mindstorms_ConditionContainer 0..1" --* "mindstorms_Condition 1..1" mindstorms_ConditionContainer : condition8
+mindstorms_Instruction "mindstorms_Main 0..9999" --* "mindstorms_Instruction 1..1" mindstorms_Main : instructions0
+mindstorms_Arbitrator "mindstorms_Behavior5 1..1" -- "mindstorms_Arbitrator4 0..9999" mindstorms_Behavior : reuse3
+mindstorms_Instruction "mindstorms_ReuseInstruction 0..1" -- "mindstorms_Instruction7 1..1" mindstorms_ReuseInstruction : reuse6
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: FlowDesigner
+' project: sampleModel
+' owner: User
+' description: New project
 class FlowDesigner_ActionState {
 }
 class FlowDesigner_Event {
@@ -43,9 +47,9 @@ Source <|-- FlowDesigner_InitialState
 Source <|-- FlowDesigner_NamedState
 Target <|-- FlowDesigner_FinalState
 Target <|-- FlowDesigner_NamedState
-FlowDesigner_Event "0..9999" --* "1..1" FlowDesigner_Source : events1
-FlowDesigner_FinalState "0..1" --* "1..1" FlowDesigner_Flow : finalState6
-FlowDesigner_Flow "1..1" *-- "1..1" FlowDesigner_InitialState : initialState3
-FlowDesigner_Event "1..1" -- "1..1" FlowDesigner_Target : nextState0
-FlowDesigner_Flow "1..1" *-- "0..9999" FlowDesigner_NamedState : states4
+FlowDesigner_Event "FlowDesigner_Source 0..9999" --* "FlowDesigner_Event2 1..1" FlowDesigner_Source : events1
+FlowDesigner_FinalState "FlowDesigner_Flow7 0..1" --* "FlowDesigner_FinalState 1..1" FlowDesigner_Flow : finalState6
+FlowDesigner_Flow "FlowDesigner_InitialState 1..1" *-- "FlowDesigner_Flow 1..1" FlowDesigner_InitialState : initialState3
+FlowDesigner_Event "FlowDesigner_Target 1..1" -- "FlowDesigner_Event 1..1" FlowDesigner_Target : nextState0
+FlowDesigner_Flow "FlowDesigner_NamedState 1..1" *-- "FlowDesigner_Flow5 0..9999" FlowDesigner_NamedState : states4
 @enduml

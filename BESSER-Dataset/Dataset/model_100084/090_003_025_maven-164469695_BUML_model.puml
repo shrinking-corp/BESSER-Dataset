@@ -1,4 +1,8 @@
 @startuml
+' model: maven
+' project: sampleModel
+' owner: User
+' description: New project
 class GroupAndArtifact {
 }
 class Provider {
@@ -28,10 +32,10 @@ class maven_Transform {
 }
 GroupAndArtifact <|-- maven_MapEntry
 Provider <|-- maven_MavenProvider
-maven_GroupAndArtifact "0..9999" -- "1..1" maven_MapEntry : aliases0
-maven_MapEntry "0..9999" --* "1..1" maven_Mappings : entries1
-maven_Mappings "0..1" --* "1..1" maven_MavenProvider : mappings5
-maven_Mappings "1..1" *-- "0..9999" maven_Transform : rules3
-maven_Scope "0..9999" --* "1..1" maven_Scopes : scope9
-maven_MavenProvider "1..1" *-- "0..1" maven_Scopes : scopes7
+maven_GroupAndArtifact "maven_MapEntry 0..9999" -- "maven_GroupAndArtifact 1..1" maven_MapEntry : aliases0
+maven_MapEntry "maven_Mappings 0..9999" --* "maven_MapEntry2 1..1" maven_Mappings : entries1
+maven_Mappings "maven_MavenProvider 0..1" --* "maven_Mappings6 1..1" maven_MavenProvider : mappings5
+maven_Mappings "maven_Transform 1..1" *-- "maven_Mappings4 0..9999" maven_Transform : rules3
+maven_Scope "maven_Scopes10 0..9999" --* "maven_Scope 1..1" maven_Scopes : scope9
+maven_MavenProvider "maven_Scopes 1..1" *-- "maven_MavenProvider8 0..1" maven_Scopes : scopes7
 @enduml

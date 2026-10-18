@@ -1,4 +1,8 @@
 @startuml
+' model: ZestGraph
+' project: sampleModel
+' owner: User
+' description: New project
 class GraphItem {
 }
 class NamedElement {
@@ -29,12 +33,12 @@ GraphItem <|-- ZestGraph_GraphConnection
 GraphItem <|-- ZestGraph_GraphNode
 NamedElement <|-- ZestGraph_GraphContainer
 NamedElement <|-- ZestGraph_ZestGraph
-ZestGraph_GraphContainer "0..9999" --* "1..1" ZestGraph_ZestGraph : containers1
-ZestGraph_GraphItem "1..1" -- "0..1" ZestGraph_ZestGraph : graph4
-ZestGraph_GraphConnection "0..9999" -- "1..1" ZestGraph_GraphNode : ingoing6
-ZestGraph_GraphItem "0..9999" --* "1..1" ZestGraph_ZestGraph : items0
-ZestGraph_GraphContainer "1..1" -- "0..9999" ZestGraph_GraphNode : nodes2
-ZestGraph_GraphConnection "0..9999" -- "1..1" ZestGraph_GraphNode : outgoing5
-ZestGraph_GraphConnection "1..1" -- "0..1" ZestGraph_GraphNode : sourceNode8
-ZestGraph_GraphConnection "1..1" -- "0..1" ZestGraph_GraphNode : targetNode9
+ZestGraph_GraphContainer "ZestGraph_ZestGraph 0..9999" --* "ZestGraph_GraphContainer 1..1" ZestGraph_ZestGraph : containers1
+ZestGraph_GraphItem "ZestGraph 1..1" -- "items 0..1" ZestGraph_ZestGraph : graph4
+ZestGraph_GraphConnection "targetNode 0..9999" -- "GraphConnection7 1..1" ZestGraph_GraphNode : ingoing6
+ZestGraph_GraphItem "graph 0..9999" --* "GraphItem 1..1" ZestGraph_ZestGraph : items0
+ZestGraph_GraphContainer "ZestGraph_GraphNode 1..1" -- "ZestGraph_GraphContainer3 0..9999" ZestGraph_GraphNode : nodes2
+ZestGraph_GraphConnection "sourceNode 0..9999" -- "GraphConnection 1..1" ZestGraph_GraphNode : outgoing5
+ZestGraph_GraphConnection "GraphNode 1..1" -- "outgoing 0..1" ZestGraph_GraphNode : sourceNode8
+ZestGraph_GraphConnection "GraphNode10 1..1" -- "ingoing 0..1" ZestGraph_GraphNode : targetNode9
 @enduml

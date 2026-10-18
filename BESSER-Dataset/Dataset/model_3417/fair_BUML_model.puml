@@ -1,4 +1,8 @@
 @startuml
+' model: fair
+' project: sampleModel
+' owner: User
+' description: New project
 enum Award {
   BlueRibbon
   GrandChampion
@@ -69,23 +73,23 @@ class fair_YouthClub {
   + name : str
 }
 Person <|-- fair_YoungPerson
-fair_Animal "1..1" -- "1..1" fair_Exhibit : animal7
-fair_Class "1..1" -- "1..1" fair_Lot : class_27
-fair_Class "1..9999" --* "1..1" fair_Department : classes16
-fair_YoungPerson "1..1" -- "1..1" fair_YouthClub : club31
-fair_Person "1..9999" -- "1..1" fair_YouthClub : contacts12
-fair_Class "1..1" -- "1..1" fair_Department : department24
-fair_Department "1..9999" --* "1..1" fair_Division : departments15
-fair_Department "1..1" -- "1..1" fair_Division : division19
-fair_Division "1..9999" --* "1..1" fair_Fair : divisions1
-fair_Exhibit "1..1" -- "1..1" fair_Person : exhibitor8
-fair_Exhibit "1..9999" --* "1..1" fair_Lot : exhibits26
-fair_Class "1..1" -- "1..9999" fair_Person : judges22
-fair_Exhibit "1..1" -- "1..1" fair_Lot : lot11
-fair_Class "1..1" *-- "1..9999" fair_Lot : lots20
-fair_Person "1..9999" -- "1..1" fair_YoungPerson : parents29
-fair_Fair "1..1" *-- "0..9999" fair_Person : people5
-fair_Fair "1..1" -- "1..1" fair_Premises : premises3
-fair_Department "1..1" -- "0..9999" fair_Person : superintendents17
-fair_Fair "1..1" *-- "0..9999" fair_YouthClub : youthClubs0
+fair_Animal "fair_Exhibit 1..1" -- "fair_Animal 1..1" fair_Exhibit : animal7
+fair_Class "lots 1..1" -- "Class28 1..1" fair_Lot : class_27
+fair_Class "department 1..9999" --* "Class 1..1" fair_Department : classes16
+fair_YoungPerson "fair_YouthClub33 1..1" -- "fair_YoungPerson32 1..1" fair_YouthClub : club31
+fair_Person "fair_YouthClub13 1..9999" -- "fair_Person14 1..1" fair_YouthClub : contacts12
+fair_Class "Department25 1..1" -- "classes 1..1" fair_Department : department24
+fair_Department "division 1..9999" --* "Department 1..1" fair_Division : departments15
+fair_Department "Division 1..1" -- "departments 1..1" fair_Division : division19
+fair_Division "fair_Fair2 1..9999" --* "fair_Division 1..1" fair_Fair : divisions1
+fair_Exhibit "fair_Person10 1..1" -- "fair_Exhibit9 1..1" fair_Person : exhibitor8
+fair_Exhibit "lot 1..9999" --* "Exhibit 1..1" fair_Lot : exhibits26
+fair_Class "fair_Person23 1..1" -- "fair_Class 1..9999" fair_Person : judges22
+fair_Exhibit "Lot 1..1" -- "exhibits 1..1" fair_Lot : lot11
+fair_Class "Lot21 1..1" *-- "class_ 1..9999" fair_Lot : lots20
+fair_Person "fair_YoungPerson 1..9999" -- "fair_Person30 1..1" fair_YoungPerson : parents29
+fair_Fair "fair_Person 1..1" *-- "fair_Fair6 0..9999" fair_Person : people5
+fair_Fair "fair_Premises 1..1" -- "fair_Fair4 1..1" fair_Premises : premises3
+fair_Department "fair_Person18 1..1" -- "fair_Department 0..9999" fair_Person : superintendents17
+fair_Fair "fair_YouthClub 1..1" *-- "fair_Fair 0..9999" fair_YouthClub : youthClubs0
 @enduml

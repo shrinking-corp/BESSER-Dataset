@@ -1,4 +1,8 @@
 @startuml
+' model: kiamacs
+' project: sampleModel
+' owner: User
+' description: New project
 class BaseCS {
 }
 class NodeCS {
@@ -19,7 +23,7 @@ BaseCS <|-- kiamacs_NodeCS
 BaseCS <|-- kiamacs_TopCS
 NodeCS <|-- kiamacs_CompositeCS
 NodeCS <|-- kiamacs_LeafCS
-kiamacs_BaseCS "1..1" -- "0..1" kiamacs_EObject : ast3
-kiamacs_CompositeCS "1..1" *-- "0..1" kiamacs_NodeCS : child1
-kiamacs_NodeCS "1..1" --* "1..1" kiamacs_TopCS : node0
+kiamacs_BaseCS "kiamacs_EObject 1..1" -- "kiamacs_BaseCS 0..1" kiamacs_EObject : ast3
+kiamacs_CompositeCS "kiamacs_NodeCS2 1..1" *-- "kiamacs_CompositeCS 0..1" kiamacs_NodeCS : child1
+kiamacs_NodeCS "kiamacs_TopCS 1..1" --* "kiamacs_NodeCS 1..1" kiamacs_TopCS : node0
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: Selects
+' project: sampleModel
+' owner: User
+' description: New project
 class NamedElement {
 }
 class Selects_Aplicacion {
@@ -25,12 +29,12 @@ class Selects_Where {
 }
 NamedElement <|-- Selects_Fichero
 NamedElement <|-- Selects_Tabla
-Selects_Aplicacion "1..1" *-- "0..9999" Selects_Fichero : ficheros0
-Selects_Join "0..9999" --* "1..1" Selects_Where : joins9
-Selects_Join "1..1" *-- "1..1" Selects_Operando : operando111
-Selects_Join "1..1" *-- "1..1" Selects_Operando : operando213
-Selects_From "1..1" --* "1..1" Selects_Select : parte_from3
-Selects_Select "1..1" *-- "1..1" Selects_Where : parte_where5
-Selects_Fichero "1..1" *-- "0..9999" Selects_Select : selects1
-Selects_From "1..1" *-- "1..9999" Selects_Tabla : tablas7
+Selects_Aplicacion "Selects_Fichero 1..1" *-- "Selects_Aplicacion 0..9999" Selects_Fichero : ficheros0
+Selects_Join "Selects_Where10 0..9999" --* "Selects_Join 1..1" Selects_Where : joins9
+Selects_Join "Selects_Operando 1..1" *-- "Selects_Join12 1..1" Selects_Operando : operando111
+Selects_Join "Selects_Operando15 1..1" *-- "Selects_Join14 1..1" Selects_Operando : operando213
+Selects_From "Selects_Select4 1..1" --* "Selects_From 1..1" Selects_Select : parte_from3
+Selects_Select "Selects_Where 1..1" *-- "Selects_Select6 1..1" Selects_Where : parte_where5
+Selects_Fichero "Selects_Select 1..1" *-- "Selects_Fichero2 0..9999" Selects_Select : selects1
+Selects_From "Selects_Tabla 1..1" *-- "Selects_From8 1..9999" Selects_Tabla : tablas7
 @enduml

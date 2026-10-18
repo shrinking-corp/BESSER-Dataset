@@ -1,4 +1,8 @@
 @startuml
+' model: fsmkerm
+' project: sampleModel
+' owner: User
+' description: New project
 class FSMException {
 }
 class fsmkerm_FSM {
@@ -25,15 +29,15 @@ class fsmkerm_Transition {
 FSMException <|-- fsmkerm_NoInitialStateException
 FSMException <|-- fsmkerm_NoTransition
 FSMException <|-- fsmkerm_NonDeterminism
-fsmkerm_FSM "1..1" -- "0..1" fsmkerm_State : currentState2
-fsmkerm_FSM "1..1" -- "1..9999" fsmkerm_State : finalState5
-fsmkerm_FSM "1..1" *-- "0..1" fsmkerm_FSMException : fsmException10
-fsmkerm_State "1..1" -- "0..9999" fsmkerm_Transition : incomingTransition14
-fsmkerm_FSM "1..1" -- "1..1" fsmkerm_State : initialState1
-fsmkerm_State "1..1" -- "0..9999" fsmkerm_Transition : outgoingTransition13
-fsmkerm_FSM "1..1" *-- "0..9999" fsmkerm_State : ownedState0
-fsmkerm_FSM "1..1" -- "1..1" fsmkerm_State : owningFSM12
-fsmkerm_State "1..1" -- "1..1" fsmkerm_Transition : source16
-fsmkerm_State "1..1" -- "1..1" fsmkerm_Transition : target18
-fsmkerm_FSM "1..1" *-- "0..9999" fsmkerm_Transition : transition8
+fsmkerm_FSM "fsmkerm_State4 1..1" -- "fsmkerm_FSM3 0..1" fsmkerm_State : currentState2
+fsmkerm_FSM "fsmkerm_State7 1..1" -- "fsmkerm_FSM6 1..9999" fsmkerm_State : finalState5
+fsmkerm_FSM "fsmkerm_FSMException 1..1" *-- "fsmkerm_FSM11 0..1" fsmkerm_FSMException : fsmException10
+fsmkerm_State "Transition15 1..1" -- "target 0..9999" fsmkerm_Transition : incomingTransition14
+fsmkerm_FSM "fsmkerm_State 1..1" -- "fsmkerm_FSM 1..1" fsmkerm_State : initialState1
+fsmkerm_State "Transition 1..1" -- "source 0..9999" fsmkerm_Transition : outgoingTransition13
+fsmkerm_FSM "State 1..1" *-- "owningFSM 0..9999" fsmkerm_State : ownedState0
+fsmkerm_FSM "ownedState 1..1" -- "FSM 1..1" fsmkerm_State : owningFSM12
+fsmkerm_State "outgoingTransition 1..1" -- "State17 1..1" fsmkerm_Transition : source16
+fsmkerm_State "incomingTransition 1..1" -- "State19 1..1" fsmkerm_Transition : target18
+fsmkerm_FSM "fsmkerm_Transition 1..1" *-- "fsmkerm_FSM9 0..9999" fsmkerm_Transition : transition8
 @enduml

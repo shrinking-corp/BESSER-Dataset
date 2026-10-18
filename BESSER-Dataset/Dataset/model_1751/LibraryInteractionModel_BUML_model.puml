@@ -1,4 +1,8 @@
 @startuml
+' model: libraryinteractionmodel
+' project: sampleModel
+' owner: User
+' description: New project
 class libraryinteractionmodel_Author {
   + fullBio : str
   + name : str
@@ -34,20 +38,20 @@ class libraryinteractionmodel_Reservation {
 }
 class libraryinteractionmodel_Reservations {
 }
-libraryinteractionmodel_AuthorShort "1..1" --* "1..1" libraryinteractionmodel_Book : author5
-libraryinteractionmodel_Authors "1..1" -- "1..1" libraryinteractionmodel_Library : authors1
-libraryinteractionmodel_Books "1..1" -- "1..1" libraryinteractionmodel_Library : availableBooks0
-libraryinteractionmodel_Book "1..1" -- "1..1" libraryinteractionmodel_Reservation : book25
-libraryinteractionmodel_Author "1..1" *-- "0..9999" libraryinteractionmodel_BookShort : books28
-libraryinteractionmodel_Client "1..1" -- "1..1" libraryinteractionmodel_Reservation : client22
-libraryinteractionmodel_Clients "1..1" -- "1..1" libraryinteractionmodel_Library : clients3
-libraryinteractionmodel_Book "1..1" -- "0..1" libraryinteractionmodel_Reservation : currentReservation6
-libraryinteractionmodel_BookShort "0..9999" --* "1..1" libraryinteractionmodel_Books : items10
-libraryinteractionmodel_AuthorShort "0..9999" --* "1..1" libraryinteractionmodel_Authors : items12
-libraryinteractionmodel_Client "0..9999" --* "1..1" libraryinteractionmodel_Clients : items19
-libraryinteractionmodel_Reservation "0..9999" --* "1..1" libraryinteractionmodel_Reservations : items34
-libraryinteractionmodel_Book "1..1" -- "1..1" libraryinteractionmodel_Reservations : reservations8
-libraryinteractionmodel_Author "1..1" -- "1..1" libraryinteractionmodel_AuthorShort : self15
-libraryinteractionmodel_Client "1..1" -- "1..1" libraryinteractionmodel_Client : self18
-libraryinteractionmodel_Book "1..1" -- "1..1" libraryinteractionmodel_BookShort : self31
+libraryinteractionmodel_AuthorShort "libraryinteractionmodel_Book 1..1" --* "libraryinteractionmodel_AuthorShort 1..1" libraryinteractionmodel_Book : author5
+libraryinteractionmodel_Authors "libraryinteractionmodel_Library2 1..1" -- "libraryinteractionmodel_Authors 1..1" libraryinteractionmodel_Library : authors1
+libraryinteractionmodel_Books "libraryinteractionmodel_Library 1..1" -- "libraryinteractionmodel_Books 1..1" libraryinteractionmodel_Library : availableBooks0
+libraryinteractionmodel_Book "libraryinteractionmodel_Reservation26 1..1" -- "libraryinteractionmodel_Book27 1..1" libraryinteractionmodel_Reservation : book25
+libraryinteractionmodel_Author "libraryinteractionmodel_BookShort30 1..1" *-- "libraryinteractionmodel_Author29 0..9999" libraryinteractionmodel_BookShort : books28
+libraryinteractionmodel_Client "libraryinteractionmodel_Reservation23 1..1" -- "libraryinteractionmodel_Client24 1..1" libraryinteractionmodel_Reservation : client22
+libraryinteractionmodel_Clients "libraryinteractionmodel_Library4 1..1" -- "libraryinteractionmodel_Clients 1..1" libraryinteractionmodel_Library : clients3
+libraryinteractionmodel_Book "libraryinteractionmodel_Reservation 1..1" -- "libraryinteractionmodel_Book7 0..1" libraryinteractionmodel_Reservation : currentReservation6
+libraryinteractionmodel_BookShort "libraryinteractionmodel_Books11 0..9999" --* "libraryinteractionmodel_BookShort 1..1" libraryinteractionmodel_Books : items10
+libraryinteractionmodel_AuthorShort "libraryinteractionmodel_Authors13 0..9999" --* "libraryinteractionmodel_AuthorShort14 1..1" libraryinteractionmodel_Authors : items12
+libraryinteractionmodel_Client "libraryinteractionmodel_Clients20 0..9999" --* "libraryinteractionmodel_Client21 1..1" libraryinteractionmodel_Clients : items19
+libraryinteractionmodel_Reservation "libraryinteractionmodel_Reservations35 0..9999" --* "libraryinteractionmodel_Reservation36 1..1" libraryinteractionmodel_Reservations : items34
+libraryinteractionmodel_Book "libraryinteractionmodel_Reservations 1..1" -- "libraryinteractionmodel_Book9 1..1" libraryinteractionmodel_Reservations : reservations8
+libraryinteractionmodel_Author "libraryinteractionmodel_AuthorShort16 1..1" -- "libraryinteractionmodel_Author 1..1" libraryinteractionmodel_AuthorShort : self15
+libraryinteractionmodel_Client "libraryinteractionmodel_Client 1..1" -- "libraryinteractionmodel_Client17 1..1" libraryinteractionmodel_Client : self18
+libraryinteractionmodel_Book "libraryinteractionmodel_BookShort32 1..1" -- "libraryinteractionmodel_Book33 1..1" libraryinteractionmodel_BookShort : self31
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: _b32rMMEKEeeEXb8Dudo6PQ
+' project: sampleModel
+' owner: User
+' description: New project
 class Acquired_UseCase {
 }
 class Acquisition_of_Books_UseCase {
@@ -47,22 +51,22 @@ class Retired_UseCase {
 }
 class Retirement_of_Books_UseCase {
 }
-Acquisition_of_Books_UseCase "0..1" -- "0..1" Librarian_Actor : Acquisition_of_Books_Librarian
-Acquired_UseCase "0..1" -- "0..1" Book_Actor : Book_Acquired
-Book_Actor "0..1" -- "0..1" Checked_In_UseCase : Book_Check_In
-Book_Actor "0..1" -- "0..1" Checked_Out_UseCase : Book_Check_Out
-Book_Actor "0..1" -- "0..1" Retired_UseCase : Book_Retired
-Check_In_Book_UseCase "0..1" -- "0..1" Librarian_Actor : Check_In_Book_Librarian
-Check_In_Book_UseCase "0..1" -- "0..1" Patron_Actor : Check_In_Book_Patron
-Check_Out_Book_UseCase "0..1" -- "0..1" Librarian_Actor : Check_Out_Book_Librarian
-Book "0..9999" -- "0..1" Librarian : Librarian_Book
-Librarian "0..1" -- "0..1" Library : Library_Librarian
-Library "0..1" -- "0..9999" Patron : Library_Patron
-Librarian_Actor "0..1" -- "0..1" Mail_2_Week_Reminders_UseCase : Mail_2_Week_Reminders_Librarian
-Book "0..9999" -- "0..1" Patron : Patron_Book
-Check_Out_Book_UseCase "0..1" -- "0..1" Patron_Actor : Patron_Check_Out_Book
-Librarian "0..1" -- "0..9999" Patron : Patron_Librarian
-Librarian_Actor "0..1" -- "0..1" Reserve_Book_UseCase : Reserve_Book_Librarian
-Patron_Actor "0..1" -- "0..1" Reserve_Book_UseCase : Reserve_Book_Patron
-Librarian_Actor "0..1" -- "0..1" Retirement_of_Books_UseCase : Retirement_of_Books_Librarian
+Acquisition_of_Books_UseCase "acquisition_of_Books15 0..1" -- "librarian14 0..1" Librarian_Actor : Acquisition_of_Books_Librarian
+Acquired_UseCase "acquired30 0..1" -- "book31 0..1" Book_Actor : Book_Acquired
+Book_Actor "book33 0..1" -- "check_In32 0..1" Checked_In_UseCase : Book_Check_In
+Book_Actor "book35 0..1" -- "check_Out34 0..1" Checked_Out_UseCase : Book_Check_Out
+Book_Actor "book29 0..1" -- "retired28 0..1" Retired_UseCase : Book_Retired
+Check_In_Book_UseCase "check_In_Book9 0..1" -- "librarian8 0..1" Librarian_Actor : Check_In_Book_Librarian
+Check_In_Book_UseCase "check_In_Book3 0..1" -- "patron2 0..1" Patron_Actor : Check_In_Book_Patron
+Check_Out_Book_UseCase "check_Out_Book7 0..1" -- "librarian6 0..1" Librarian_Actor : Check_Out_Book_Librarian
+Book "book22 0..9999" -- "librarian23 0..1" Librarian : Librarian_Book
+Librarian "librarian20 0..1" -- "library21 0..1" Library : Library_Librarian
+Library "library27 0..1" -- "patron26 0..9999" Patron : Library_Patron
+Librarian_Actor "librarian12 0..1" -- "mail_2_Week_Reminders13 0..1" Mail_2_Week_Reminders_UseCase : Mail_2_Week_Reminders_Librarian
+Book "book18 0..9999" -- "patron19 0..1" Patron : Patron_Book
+Check_Out_Book_UseCase "check_Out_Book0 0..1" -- "patron1 0..1" Patron_Actor : Patron_Check_Out_Book
+Librarian "librarian24 0..1" -- "patron25 0..9999" Patron : Patron_Librarian
+Librarian_Actor "librarian10 0..1" -- "reserve_Book11 0..1" Reserve_Book_UseCase : Reserve_Book_Librarian
+Patron_Actor "patron4 0..1" -- "reserve_Book5 0..1" Reserve_Book_UseCase : Reserve_Book_Patron
+Librarian_Actor "librarian16 0..1" -- "retirement_of_Books17 0..1" Retirement_of_Books_UseCase : Retirement_of_Books_Librarian
 @enduml

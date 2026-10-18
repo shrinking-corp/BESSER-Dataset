@@ -1,4 +1,8 @@
 @startuml
+' model: entityDsl
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractType {
 }
 class Named {
@@ -29,8 +33,8 @@ AbstractType <|-- entityDsl_StringType
 Named <|-- entityDsl_Attribute
 Named <|-- entityDsl_Entity
 Named <|-- entityDsl_Module
-entityDsl_Attribute "0..9999" --* "1..1" entityDsl_Entity : attributes1
-entityDsl_Entity "0..9999" --* "1..1" entityDsl_Module : entities0
-entityDsl_Entity "0..1" -- "1..1" entityDsl_EntityReference : ref5
-entityDsl_AbstractType "0..1" --* "1..1" entityDsl_Attribute : type3
+entityDsl_Attribute "entityDsl_Entity2 0..9999" --* "entityDsl_Attribute 1..1" entityDsl_Entity : attributes1
+entityDsl_Entity "entityDsl_Module 0..9999" --* "entityDsl_Entity 1..1" entityDsl_Module : entities0
+entityDsl_Entity "entityDsl_EntityReference 0..1" -- "entityDsl_Entity6 1..1" entityDsl_EntityReference : ref5
+entityDsl_AbstractType "entityDsl_Attribute4 0..1" --* "entityDsl_AbstractType 1..1" entityDsl_Attribute : type3
 @enduml

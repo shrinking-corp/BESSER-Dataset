@@ -1066,9 +1066,9 @@ def test_assoc_algorithm34_stub_double():
     partner = mMDSL_Method()
     setattr(partner, 'mMDSL_Method35', None)
     _safe_set(owner, 'mMDSL_Algorithm', partner)
-    assert getattr(partner, 'mMDSL_Method35') == owner
+    assert owner in getattr(partner, 'mMDSL_Method35')
     _safe_set(owner, 'mMDSL_Algorithm', None)
-    assert getattr(partner, 'mMDSL_Method35') is None
+    assert owner not in getattr(partner, 'mMDSL_Method35')
 
 
 def test_assoc_attribute276_stub_double():
@@ -1096,9 +1096,9 @@ def test_assoc_attribute42_stub_double():
     partner = mMDSL_Metamodel()
     setattr(partner, 'mMDSL_Metamodel43', None)
     _safe_set(owner, 'mMDSL_Attribute', partner)
-    assert getattr(partner, 'mMDSL_Metamodel43') == owner
+    assert owner in getattr(partner, 'mMDSL_Metamodel43')
     _safe_set(owner, 'mMDSL_Attribute', None)
-    assert getattr(partner, 'mMDSL_Metamodel43') is None
+    assert owner not in getattr(partner, 'mMDSL_Metamodel43')
 
 
 def test_assoc_attributeget476_stub_double():
@@ -1156,9 +1156,9 @@ def test_assoc_breakcontinue252_stub_double():
     partner = mMDSL_WhileLoop()
     setattr(partner, 'mMDSL_WhileLoop253', None)
     _safe_set(owner, 'mMDSL_BreakContinue', partner)
-    assert getattr(partner, 'mMDSL_WhileLoop253') == owner
+    assert owner in getattr(partner, 'mMDSL_WhileLoop253')
     _safe_set(owner, 'mMDSL_BreakContinue', None)
-    assert getattr(partner, 'mMDSL_WhileLoop253') is None
+    assert owner not in getattr(partner, 'mMDSL_WhileLoop253')
 
 
 def test_assoc_circle134_stub_double():
@@ -1201,9 +1201,9 @@ def test_assoc_class_38_stub_double():
     partner = mMDSL_Metamodel()
     setattr(partner, 'mMDSL_Metamodel39', None)
     _safe_set(owner, 'mMDSL_Class', partner)
-    assert getattr(partner, 'mMDSL_Metamodel39') == owner
+    assert owner in getattr(partner, 'mMDSL_Metamodel39')
     _safe_set(owner, 'mMDSL_Class', None)
-    assert getattr(partner, 'mMDSL_Metamodel39') is None
+    assert owner not in getattr(partner, 'mMDSL_Metamodel39')
 
 
 def test_assoc_classinstancecreate417_stub_double():
@@ -1396,9 +1396,9 @@ def test_assoc_embedcode9_stub_double():
     partner = mMDSL_Root()
     setattr(partner, 'mMDSL_Root10', None)
     _safe_set(owner, 'mMDSL_EmbedCode', partner)
-    assert getattr(partner, 'mMDSL_Root10') == owner
+    assert owner in getattr(partner, 'mMDSL_Root10')
     _safe_set(owner, 'mMDSL_EmbedCode', None)
-    assert getattr(partner, 'mMDSL_Root10') is None
+    assert owner not in getattr(partner, 'mMDSL_Root10')
 
 
 def test_assoc_embedcodetype5_stub_double():
@@ -1411,9 +1411,9 @@ def test_assoc_embedcodetype5_stub_double():
     partner = mMDSL_Root()
     setattr(partner, 'mMDSL_Root6', None)
     _safe_set(owner, 'mMDSL_EmbedCodeType', partner)
-    assert getattr(partner, 'mMDSL_Root6') == owner
+    assert owner in getattr(partner, 'mMDSL_Root6')
     _safe_set(owner, 'mMDSL_EmbedCodeType', None)
-    assert getattr(partner, 'mMDSL_Root6') is None
+    assert owner not in getattr(partner, 'mMDSL_Root6')
 
 
 def test_assoc_embeddedcode291_stub_double():
@@ -1441,9 +1441,9 @@ def test_assoc_embedplatformtype3_stub_double():
     partner = mMDSL_Root()
     setattr(partner, 'mMDSL_Root4', None)
     _safe_set(owner, 'mMDSL_EmbedPlatformType', partner)
-    assert getattr(partner, 'mMDSL_Root4') == owner
+    assert owner in getattr(partner, 'mMDSL_Root4')
     _safe_set(owner, 'mMDSL_EmbedPlatformType', None)
-    assert getattr(partner, 'mMDSL_Root4') is None
+    assert owner not in getattr(partner, 'mMDSL_Root4')
 
 
 def test_assoc_enumeration24_stub_double():
@@ -1456,9 +1456,9 @@ def test_assoc_enumeration24_stub_double():
     partner = mMDSL_Method()
     setattr(partner, 'mMDSL_Method25', None)
     _safe_set(owner, 'mMDSL_Enumeration', partner)
-    assert getattr(partner, 'mMDSL_Method25') == owner
+    assert owner in getattr(partner, 'mMDSL_Method25')
     _safe_set(owner, 'mMDSL_Enumeration', None)
-    assert getattr(partner, 'mMDSL_Method25') is None
+    assert owner not in getattr(partner, 'mMDSL_Method25')
 
 
 def test_assoc_enumtype93_stub_double():
@@ -1501,9 +1501,9 @@ def test_assoc_event36_stub_double():
     partner = mMDSL_Method()
     setattr(partner, 'mMDSL_Method37', None)
     _safe_set(owner, 'mMDSL_Event', partner)
-    assert getattr(partner, 'mMDSL_Method37') == owner
+    assert owner in getattr(partner, 'mMDSL_Method37')
     _safe_set(owner, 'mMDSL_Event', None)
-    assert getattr(partner, 'mMDSL_Method37') is None
+    assert owner not in getattr(partner, 'mMDSL_Method37')
 
 
 def test_assoc_expr299_stub_double():
@@ -1651,9 +1651,9 @@ def test_assoc_includelibrary7_stub_double():
     partner = mMDSL_Root()
     setattr(partner, 'mMDSL_Root8', None)
     _safe_set(owner, 'mMDSL_IncludeLibrary', partner)
-    assert getattr(partner, 'mMDSL_Root8') == owner
+    assert owner in getattr(partner, 'mMDSL_Root8')
     _safe_set(owner, 'mMDSL_IncludeLibrary', None)
-    assert getattr(partner, 'mMDSL_Root8') is None
+    assert owner not in getattr(partner, 'mMDSL_Root8')
 
 
 def test_assoc_includelibrarytype1_stub_double():
@@ -1666,9 +1666,9 @@ def test_assoc_includelibrarytype1_stub_double():
     partner = mMDSL_Root()
     setattr(partner, 'mMDSL_Root2', None)
     _safe_set(owner, 'mMDSL_IncludeLibraryType', partner)
-    assert getattr(partner, 'mMDSL_Root2') == owner
+    assert owner in getattr(partner, 'mMDSL_Root2')
     _safe_set(owner, 'mMDSL_IncludeLibraryType', None)
-    assert getattr(partner, 'mMDSL_Root2') is None
+    assert owner not in getattr(partner, 'mMDSL_Root2')
 
 
 def test_assoc_infobox355_stub_double():
@@ -1936,9 +1936,9 @@ def test_assoc_modeltype44_stub_double():
     partner = mMDSL_Metamodel()
     setattr(partner, 'mMDSL_Metamodel45', None)
     _safe_set(owner, 'mMDSL_ModelType', partner)
-    assert getattr(partner, 'mMDSL_Metamodel45') == owner
+    assert owner in getattr(partner, 'mMDSL_Metamodel45')
     _safe_set(owner, 'mMDSL_ModelType', None)
-    assert getattr(partner, 'mMDSL_Metamodel45') is None
+    assert owner not in getattr(partner, 'mMDSL_Metamodel45')
 
 
 def test_assoc_modeltypename87_stub_double():
@@ -2131,9 +2131,9 @@ def test_assoc_parameters183_stub_double():
     partner = mMDSL_MoveTo()
     setattr(partner, 'mMDSL_MoveTo184', None)
     _safe_set(owner, 'mMDSL_PathParametersMLT', partner)
-    assert getattr(partner, 'mMDSL_MoveTo184') == owner
+    assert owner in getattr(partner, 'mMDSL_MoveTo184')
     _safe_set(owner, 'mMDSL_PathParametersMLT', None)
-    assert getattr(partner, 'mMDSL_MoveTo184') is None
+    assert owner not in getattr(partner, 'mMDSL_MoveTo184')
 
 
 def test_assoc_parameters185_stub_double():
@@ -2146,9 +2146,9 @@ def test_assoc_parameters185_stub_double():
     partner = mMDSL_LineTo()
     setattr(partner, 'mMDSL_LineTo186', None)
     _safe_set(owner, 'mMDSL_PathParametersMLT187', partner)
-    assert getattr(partner, 'mMDSL_LineTo186') == owner
+    assert owner in getattr(partner, 'mMDSL_LineTo186')
     _safe_set(owner, 'mMDSL_PathParametersMLT187', None)
-    assert getattr(partner, 'mMDSL_LineTo186') is None
+    assert owner not in getattr(partner, 'mMDSL_LineTo186')
 
 
 def test_assoc_parameters188_stub_double():
@@ -2161,9 +2161,9 @@ def test_assoc_parameters188_stub_double():
     partner = mMDSL_HorizontalLineTo()
     setattr(partner, 'mMDSL_HorizontalLineTo189', None)
     _safe_set(owner, 'mMDSL_PathParametersHV', partner)
-    assert getattr(partner, 'mMDSL_HorizontalLineTo189') == owner
+    assert owner in getattr(partner, 'mMDSL_HorizontalLineTo189')
     _safe_set(owner, 'mMDSL_PathParametersHV', None)
-    assert getattr(partner, 'mMDSL_HorizontalLineTo189') is None
+    assert owner not in getattr(partner, 'mMDSL_HorizontalLineTo189')
 
 
 def test_assoc_parameters190_stub_double():
@@ -2176,9 +2176,9 @@ def test_assoc_parameters190_stub_double():
     partner = mMDSL_VerticalLineTo()
     setattr(partner, 'mMDSL_VerticalLineTo191', None)
     _safe_set(owner, 'mMDSL_PathParametersHV192', partner)
-    assert getattr(partner, 'mMDSL_VerticalLineTo191') == owner
+    assert owner in getattr(partner, 'mMDSL_VerticalLineTo191')
     _safe_set(owner, 'mMDSL_PathParametersHV192', None)
-    assert getattr(partner, 'mMDSL_VerticalLineTo191') is None
+    assert owner not in getattr(partner, 'mMDSL_VerticalLineTo191')
 
 
 def test_assoc_parameters193_stub_double():
@@ -2191,9 +2191,9 @@ def test_assoc_parameters193_stub_double():
     partner = mMDSL_CurveTo()
     setattr(partner, 'mMDSL_CurveTo194', None)
     _safe_set(owner, 'mMDSL_PathParametersC', partner)
-    assert getattr(partner, 'mMDSL_CurveTo194') == owner
+    assert owner in getattr(partner, 'mMDSL_CurveTo194')
     _safe_set(owner, 'mMDSL_PathParametersC', None)
-    assert getattr(partner, 'mMDSL_CurveTo194') is None
+    assert owner not in getattr(partner, 'mMDSL_CurveTo194')
 
 
 def test_assoc_parameters195_stub_double():
@@ -2206,9 +2206,9 @@ def test_assoc_parameters195_stub_double():
     partner = mMDSL_SmoothCurveTo()
     setattr(partner, 'mMDSL_SmoothCurveTo196', None)
     _safe_set(owner, 'mMDSL_PathParametersS', partner)
-    assert getattr(partner, 'mMDSL_SmoothCurveTo196') == owner
+    assert owner in getattr(partner, 'mMDSL_SmoothCurveTo196')
     _safe_set(owner, 'mMDSL_PathParametersS', None)
-    assert getattr(partner, 'mMDSL_SmoothCurveTo196') is None
+    assert owner not in getattr(partner, 'mMDSL_SmoothCurveTo196')
 
 
 def test_assoc_parameters197_stub_double():
@@ -2221,9 +2221,9 @@ def test_assoc_parameters197_stub_double():
     partner = mMDSL_QuadraticBezierCurve()
     setattr(partner, 'mMDSL_QuadraticBezierCurve198', None)
     _safe_set(owner, 'mMDSL_PathParametersQ', partner)
-    assert getattr(partner, 'mMDSL_QuadraticBezierCurve198') == owner
+    assert owner in getattr(partner, 'mMDSL_QuadraticBezierCurve198')
     _safe_set(owner, 'mMDSL_PathParametersQ', None)
-    assert getattr(partner, 'mMDSL_QuadraticBezierCurve198') is None
+    assert owner not in getattr(partner, 'mMDSL_QuadraticBezierCurve198')
 
 
 def test_assoc_parameters199_stub_double():
@@ -2236,9 +2236,9 @@ def test_assoc_parameters199_stub_double():
     partner = mMDSL_SmoothQuadraticBezierCurveTo()
     setattr(partner, 'mMDSL_SmoothQuadraticBezierCurveTo200', None)
     _safe_set(owner, 'mMDSL_PathParametersMLT201', partner)
-    assert getattr(partner, 'mMDSL_SmoothQuadraticBezierCurveTo200') == owner
+    assert owner in getattr(partner, 'mMDSL_SmoothQuadraticBezierCurveTo200')
     _safe_set(owner, 'mMDSL_PathParametersMLT201', None)
-    assert getattr(partner, 'mMDSL_SmoothQuadraticBezierCurveTo200') is None
+    assert owner not in getattr(partner, 'mMDSL_SmoothQuadraticBezierCurveTo200')
 
 
 def test_assoc_parameters202_stub_double():
@@ -2251,9 +2251,9 @@ def test_assoc_parameters202_stub_double():
     partner = mMDSL_EllipticalArc()
     setattr(partner, 'mMDSL_EllipticalArc203', None)
     _safe_set(owner, 'mMDSL_PathParametersA', partner)
-    assert getattr(partner, 'mMDSL_EllipticalArc203') == owner
+    assert owner in getattr(partner, 'mMDSL_EllipticalArc203')
     _safe_set(owner, 'mMDSL_PathParametersA', None)
-    assert getattr(partner, 'mMDSL_EllipticalArc203') is None
+    assert owner not in getattr(partner, 'mMDSL_EllipticalArc203')
 
 
 def test_assoc_pathdata159_stub_double():
@@ -2266,9 +2266,9 @@ def test_assoc_pathdata159_stub_double():
     partner = mMDSL_Path()
     setattr(partner, 'mMDSL_Path160', None)
     _safe_set(owner, 'mMDSL_PathData', partner)
-    assert getattr(partner, 'mMDSL_Path160') == owner
+    assert owner in getattr(partner, 'mMDSL_Path160')
     _safe_set(owner, 'mMDSL_PathData', None)
-    assert getattr(partner, 'mMDSL_Path160') is None
+    assert owner not in getattr(partner, 'mMDSL_Path160')
 
 
 def test_assoc_points154_stub_double():
@@ -2281,9 +2281,9 @@ def test_assoc_points154_stub_double():
     partner = mMDSL_Polyline()
     setattr(partner, 'mMDSL_Polyline155', None)
     _safe_set(owner, 'mMDSL_Points', partner)
-    assert getattr(partner, 'mMDSL_Polyline155') == owner
+    assert owner in getattr(partner, 'mMDSL_Polyline155')
     _safe_set(owner, 'mMDSL_Points', None)
-    assert getattr(partner, 'mMDSL_Polyline155') is None
+    assert owner not in getattr(partner, 'mMDSL_Polyline155')
 
 
 def test_assoc_points156_stub_double():
@@ -2296,9 +2296,9 @@ def test_assoc_points156_stub_double():
     partner = mMDSL_Polygon()
     setattr(partner, 'mMDSL_Polygon157', None)
     _safe_set(owner, 'mMDSL_Points158', partner)
-    assert getattr(partner, 'mMDSL_Polygon157') == owner
+    assert owner in getattr(partner, 'mMDSL_Polygon157')
     _safe_set(owner, 'mMDSL_Points158', None)
-    assert getattr(partner, 'mMDSL_Polygon157') is None
+    assert owner not in getattr(partner, 'mMDSL_Polygon157')
 
 
 def test_assoc_quadraticbeziercurve177_stub_double():
@@ -2371,9 +2371,9 @@ def test_assoc_relation40_stub_double():
     partner = mMDSL_Metamodel()
     setattr(partner, 'mMDSL_Metamodel41', None)
     _safe_set(owner, 'mMDSL_Relation', partner)
-    assert getattr(partner, 'mMDSL_Metamodel41') == owner
+    assert owner in getattr(partner, 'mMDSL_Metamodel41')
     _safe_set(owner, 'mMDSL_Relation', None)
-    assert getattr(partner, 'mMDSL_Metamodel41') is None
+    assert owner not in getattr(partner, 'mMDSL_Metamodel41')
 
 
 def test_assoc_relationinstancecreate442_stub_double():
@@ -2506,9 +2506,9 @@ def test_assoc_symbolclass28_stub_double():
     partner = mMDSL_Method()
     setattr(partner, 'mMDSL_Method29', None)
     _safe_set(owner, 'mMDSL_SymbolClass', partner)
-    assert getattr(partner, 'mMDSL_Method29') == owner
+    assert owner in getattr(partner, 'mMDSL_Method29')
     _safe_set(owner, 'mMDSL_SymbolClass', None)
-    assert getattr(partner, 'mMDSL_Method29') is None
+    assert owner not in getattr(partner, 'mMDSL_Method29')
 
 
 def test_assoc_symbolclass282_stub_double():
@@ -2551,9 +2551,9 @@ def test_assoc_symbolrelation30_stub_double():
     partner = mMDSL_Method()
     setattr(partner, 'mMDSL_Method31', None)
     _safe_set(owner, 'mMDSL_SymbolRelation', partner)
-    assert getattr(partner, 'mMDSL_Method31') == owner
+    assert owner in getattr(partner, 'mMDSL_Method31')
     _safe_set(owner, 'mMDSL_SymbolRelation', None)
-    assert getattr(partner, 'mMDSL_Method31') is None
+    assert owner not in getattr(partner, 'mMDSL_Method31')
 
 
 def test_assoc_symbolstyle148_stub_double():
@@ -2581,9 +2581,9 @@ def test_assoc_symbolstyle26_stub_double():
     partner = mMDSL_Method()
     setattr(partner, 'mMDSL_Method27', None)
     _safe_set(owner, 'mMDSL_SymbolStyle', partner)
-    assert getattr(partner, 'mMDSL_Method27') == owner
+    assert owner in getattr(partner, 'mMDSL_Method27')
     _safe_set(owner, 'mMDSL_SymbolStyle', None)
-    assert getattr(partner, 'mMDSL_Method27') is None
+    assert owner not in getattr(partner, 'mMDSL_Method27')
 
 
 def test_assoc_symbolstyle288_stub_double():

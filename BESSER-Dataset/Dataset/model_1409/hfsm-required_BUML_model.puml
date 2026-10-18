@@ -1,4 +1,8 @@
 @startuml
+' model: hfsmReq
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractState {
 }
 class NamedElement {
@@ -18,12 +22,12 @@ AbstractState <|-- hfsmReq_State
 NamedElement <|-- hfsmReq_AbstractState
 NamedElement <|-- hfsmReq_Region
 NamedElement <|-- hfsmReq_Transition
-hfsmReq_AbstractState "1..1" -- "0..9999" hfsmReq_Transition : incoming6
-hfsmReq_AbstractState "1..1" -- "0..9999" hfsmReq_Transition : outgoing8
-hfsmReq_Region "0..9999" --* "1..1" hfsmReq_State : ownedRegions0
-hfsmReq_AbstractState "1..1" -- "1..1" hfsmReq_Region : ownerRegion11
-hfsmReq_Region "1..1" -- "0..1" hfsmReq_State : ownerState1
-hfsmReq_AbstractState "1..1" -- "1..1" hfsmReq_Transition : source17
-hfsmReq_AbstractState "0..9999" --* "1..1" hfsmReq_Region : subvertex4
-hfsmReq_AbstractState "1..1" -- "1..1" hfsmReq_Transition : target14
+hfsmReq_AbstractState "hfsmReq_Transition 1..1" -- "hfsmReq_AbstractState7 0..9999" hfsmReq_Transition : incoming6
+hfsmReq_AbstractState "hfsmReq_Transition10 1..1" -- "hfsmReq_AbstractState9 0..9999" hfsmReq_Transition : outgoing8
+hfsmReq_Region "hfsmReq_State 0..9999" --* "hfsmReq_Region 1..1" hfsmReq_State : ownedRegions0
+hfsmReq_AbstractState "hfsmReq_Region13 1..1" -- "hfsmReq_AbstractState12 1..1" hfsmReq_Region : ownerRegion11
+hfsmReq_Region "hfsmReq_State3 1..1" -- "hfsmReq_Region2 0..1" hfsmReq_State : ownerState1
+hfsmReq_AbstractState "hfsmReq_Transition18 1..1" -- "hfsmReq_AbstractState19 1..1" hfsmReq_Transition : source17
+hfsmReq_AbstractState "hfsmReq_Region5 0..9999" --* "hfsmReq_AbstractState 1..1" hfsmReq_Region : subvertex4
+hfsmReq_AbstractState "hfsmReq_Transition15 1..1" -- "hfsmReq_AbstractState16 1..1" hfsmReq_Transition : target14
 @enduml

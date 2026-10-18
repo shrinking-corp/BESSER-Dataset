@@ -1,4 +1,8 @@
 @startuml
+' model: model
+' project: sampleModel
+' owner: User
+' description: New project
 class model_Buffer {
   + initialValue : str
   + name : str
@@ -17,19 +21,19 @@ class model_Transition {
   + name : str
   + trigger : str
 }
-model_FSM "0..1" -- "1..1" model_State : fsm11
-model_FSM "0..1" -- "1..1" model_Transition : fsm20
-model_State "1..1" -- "0..9999" model_Transition : incoming7
-model_Buffer "1..1" -- "0..1" model_FSM : incomingFSM14
-model_FSM "1..1" -- "0..1" model_State : initialState6
-model_Buffer "0..1" -- "1..1" model_FSM : inputBuffer3
-model_State "1..1" -- "0..9999" model_Transition : outgoing9
-model_Buffer "1..1" -- "0..1" model_FSM : outgoingFSM12
-model_Buffer "0..1" -- "1..1" model_FSM : outputBuffer4
-model_Buffer "0..9999" --* "1..1" model_System : ownedBuffers24
-model_FSM "0..9999" --* "1..1" model_System : ownedFsms22
-model_FSM "1..1" *-- "0..9999" model_State : ownedStates0
-model_FSM "1..1" *-- "0..9999" model_Transition : ownedTransitions1
-model_State "0..1" -- "1..1" model_Transition : src18
-model_State "0..1" -- "1..1" model_Transition : tgt16
+model_FSM "ownedStates 0..1" -- "FSM 1..1" model_State : fsm11
+model_FSM "ownedTransitions 0..1" -- "FSM21 1..1" model_Transition : fsm20
+model_State "Transition8 1..1" -- "tgt 0..9999" model_Transition : incoming7
+model_Buffer "FSM15 1..1" -- "outputBuffer 0..1" model_FSM : incomingFSM14
+model_FSM "model_State 1..1" -- "model_FSM 0..1" model_State : initialState6
+model_Buffer "outgoingFSM 0..1" -- "Buffer 1..1" model_FSM : inputBuffer3
+model_State "Transition10 1..1" -- "src 0..9999" model_Transition : outgoing9
+model_Buffer "FSM13 1..1" -- "inputBuffer 0..1" model_FSM : outgoingFSM12
+model_Buffer "incomingFSM 0..1" -- "Buffer5 1..1" model_FSM : outputBuffer4
+model_Buffer "model_System25 0..9999" --* "model_Buffer 1..1" model_System : ownedBuffers24
+model_FSM "model_System 0..9999" --* "model_FSM23 1..1" model_System : ownedFsms22
+model_FSM "State 1..1" *-- "fsm 0..9999" model_State : ownedStates0
+model_FSM "Transition 1..1" *-- "fsm2 0..9999" model_Transition : ownedTransitions1
+model_State "outgoing 0..1" -- "State19 1..1" model_Transition : src18
+model_State "incoming 0..1" -- "State17 1..1" model_Transition : tgt16
 @enduml

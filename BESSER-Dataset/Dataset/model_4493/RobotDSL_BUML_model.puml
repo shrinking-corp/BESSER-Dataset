@@ -1,4 +1,8 @@
 @startuml
+' model: robotDSL
+' project: sampleModel
+' owner: User
+' description: New project
 enum ArmOpType {
   DOWN
   UP
@@ -97,28 +101,28 @@ class robotDSL_Trigger {
   + degrees : int
   + touching : str
 }
-robotDSL_Action "0..9999" --* "1..1" robotDSL_Task : actionList16
-robotDSL_Action "1..1" *-- "0..1" robotDSL_Bool : bool36
-robotDSL_Bool "0..1" --* "1..1" robotDSL_Trigger : boolType38
-robotDSL_Color "0..1" --* "1..1" robotDSL_Trigger : color48
-robotDSL_Distance "0..1" --* "1..1" robotDSL_Trigger : dist50
-robotDSL_Action "0..9999" --* "1..1" robotDSL_Goal : finishActions11
-robotDSL_Action "1..1" -- "0..1" robotDSL_Flag : flag33
-robotDSL_Flag "0..1" -- "1..1" robotDSL_Trigger : flag43
-robotDSL_Flag "0..9999" --* "1..1" robotDSL_Mission : flagsList1
-robotDSL_Goal "0..1" --* "1..1" robotDSL_Mission : goal5
-robotDSL_Goal "1..1" *-- "0..9999" robotDSL_Trigger : goalEvents7
-robotDSL_Mission "0..9999" --* "1..1" robotDSL_Missions : missionList0
-robotDSL_Action "1..1" *-- "0..1" robotDSL_Direction : moveDir19
-robotDSL_Negation "0..1" --* "1..1" robotDSL_Trigger : neg41
-robotDSL_Action "1..1" *-- "0..1" robotDSL_ArmOp : op29
-robotDSL_Bool "0..1" --* "1..1" robotDSL_Distance : rangeBool52
-robotDSL_Sensor "0..1" --* "1..1" robotDSL_Trigger : sensor46
-robotDSL_Action "1..1" *-- "0..1" robotDSL_Sound : sound31
-robotDSL_Action "1..1" *-- "0..1" robotDSL_Speed : speed21
-robotDSL_Mission "1..1" *-- "0..9999" robotDSL_Task : taskList3
-robotDSL_Goal "1..1" *-- "0..1" robotDSL_Time : timeout9
-robotDSL_Action "1..1" *-- "0..9999" robotDSL_Trigger : trig26
-robotDSL_Task "1..1" *-- "0..9999" robotDSL_Trigger : triggerList13
-robotDSL_Action "1..1" *-- "0..1" robotDSL_Direction : turnDir23
+robotDSL_Action "robotDSL_Task17 0..9999" --* "robotDSL_Action18 1..1" robotDSL_Task : actionList16
+robotDSL_Action "robotDSL_Bool 1..1" *-- "robotDSL_Action37 0..1" robotDSL_Bool : bool36
+robotDSL_Bool "robotDSL_Trigger39 0..1" --* "robotDSL_Bool40 1..1" robotDSL_Trigger : boolType38
+robotDSL_Color "robotDSL_Trigger49 0..1" --* "robotDSL_Color 1..1" robotDSL_Trigger : color48
+robotDSL_Distance "robotDSL_Trigger51 0..1" --* "robotDSL_Distance 1..1" robotDSL_Trigger : dist50
+robotDSL_Action "robotDSL_Goal12 0..9999" --* "robotDSL_Action 1..1" robotDSL_Goal : finishActions11
+robotDSL_Action "robotDSL_Flag35 1..1" -- "robotDSL_Action34 0..1" robotDSL_Flag : flag33
+robotDSL_Flag "robotDSL_Trigger44 0..1" -- "robotDSL_Flag45 1..1" robotDSL_Trigger : flag43
+robotDSL_Flag "robotDSL_Mission2 0..9999" --* "robotDSL_Flag 1..1" robotDSL_Mission : flagsList1
+robotDSL_Goal "robotDSL_Mission6 0..1" --* "robotDSL_Goal 1..1" robotDSL_Mission : goal5
+robotDSL_Goal "robotDSL_Trigger 1..1" *-- "robotDSL_Goal8 0..9999" robotDSL_Trigger : goalEvents7
+robotDSL_Mission "robotDSL_Missions 0..9999" --* "robotDSL_Mission 1..1" robotDSL_Missions : missionList0
+robotDSL_Action "robotDSL_Direction 1..1" *-- "robotDSL_Action20 0..1" robotDSL_Direction : moveDir19
+robotDSL_Negation "robotDSL_Trigger42 0..1" --* "robotDSL_Negation 1..1" robotDSL_Trigger : neg41
+robotDSL_Action "robotDSL_ArmOp 1..1" *-- "robotDSL_Action30 0..1" robotDSL_ArmOp : op29
+robotDSL_Bool "robotDSL_Distance53 0..1" --* "robotDSL_Bool54 1..1" robotDSL_Distance : rangeBool52
+robotDSL_Sensor "robotDSL_Trigger47 0..1" --* "robotDSL_Sensor 1..1" robotDSL_Trigger : sensor46
+robotDSL_Action "robotDSL_Sound 1..1" *-- "robotDSL_Action32 0..1" robotDSL_Sound : sound31
+robotDSL_Action "robotDSL_Speed 1..1" *-- "robotDSL_Action22 0..1" robotDSL_Speed : speed21
+robotDSL_Mission "robotDSL_Task 1..1" *-- "robotDSL_Mission4 0..9999" robotDSL_Task : taskList3
+robotDSL_Goal "robotDSL_Time 1..1" *-- "robotDSL_Goal10 0..1" robotDSL_Time : timeout9
+robotDSL_Action "robotDSL_Trigger28 1..1" *-- "robotDSL_Action27 0..9999" robotDSL_Trigger : trig26
+robotDSL_Task "robotDSL_Trigger15 1..1" *-- "robotDSL_Task14 0..9999" robotDSL_Trigger : triggerList13
+robotDSL_Action "robotDSL_Direction25 1..1" *-- "robotDSL_Action24 0..1" robotDSL_Direction : turnDir23
 @enduml

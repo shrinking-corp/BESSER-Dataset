@@ -95,8 +95,8 @@ def test_assoc_R_A_stub_double():
     partner = R()
     setattr(partner, 'a4', None)
     _safe_set(owner, 'r5', partner)
-    assert getattr(partner, 'a4') == owner
+    assert owner in getattr(partner, 'a4')
     _safe_set(owner, 'r5', None)
-    assert getattr(partner, 'a4') is None
+    assert owner not in getattr(partner, 'a4')
 
 

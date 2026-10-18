@@ -1,4 +1,8 @@
 @startuml
+' model: mprologTermReference
+' project: sampleModel
+' owner: User
+' description: New project
 class Term {
 }
 class TermReference {
@@ -47,20 +51,20 @@ Term <|-- mprologTermReference_TermReference
 Term <|-- mprologTermReference_Variable
 TermReference <|-- mprologTermReference_FunctorReference
 TermReference <|-- mprologTermReference_VariableReference
-mprologTermReference_Functor "0..1" -- "1..1" mprologTermReference_FunctorReference : idReference27
-mprologTermReference_Variable "0..1" -- "1..1" mprologTermReference_VariableReference : idReference32
-mprologTermReference_InfixExpression "1..1" *-- "1..1" mprologTermReference_Term : leftTerm20
-mprologTermReference_Term "1..1" *-- "0..1" mprologTermReference_Term : nextTerm8
-mprologTermReference_Body "0..1" --* "1..1" mprologTermReference_Clause : ownedBody3
-mprologTermReference_Clause "0..9999" --* "1..1" mprologTermReference_Model : ownedClause0
-mprologTermReference_Functor "1..1" --* "1..1" mprologTermReference_Head : ownedFunctor5
-mprologTermReference_Clause "1..1" *-- "0..1" mprologTermReference_Head : ownedHead1
-mprologTermReference_List "1..1" *-- "0..1" mprologTermReference_Term : ownedHeadTerms15
-mprologTermReference_InfixExpression "1..1" *-- "1..1" mprologTermReference_Operator : ownedOperator25
-mprologTermReference_List "1..1" *-- "0..1" mprologTermReference_Term : ownedTailTerms17
-mprologTermReference_Functor "1..1" *-- "0..1" mprologTermReference_Term : ownedTerm12
-mprologTermReference_FunctorReference "1..1" *-- "0..1" mprologTermReference_Term : ownedTerm29
-mprologTermReference_Parenthesis "1..1" *-- "1..1" mprologTermReference_Term : ownedTerm33
-mprologTermReference_Body "1..1" *-- "1..1" mprologTermReference_Term : ownedTerm9
-mprologTermReference_InfixExpression "1..1" *-- "1..1" mprologTermReference_Term : rightTerm22
+mprologTermReference_Functor "mprologTermReference_FunctorReference 0..1" -- "mprologTermReference_Functor28 1..1" mprologTermReference_FunctorReference : idReference27
+mprologTermReference_Variable "mprologTermReference_VariableReference 0..1" -- "mprologTermReference_Variable 1..1" mprologTermReference_VariableReference : idReference32
+mprologTermReference_InfixExpression "mprologTermReference_Term21 1..1" *-- "mprologTermReference_InfixExpression 1..1" mprologTermReference_Term : leftTerm20
+mprologTermReference_Term "mprologTermReference_Term 1..1" *-- "mprologTermReference_Term7 0..1" mprologTermReference_Term : nextTerm8
+mprologTermReference_Body "mprologTermReference_Clause4 0..1" --* "mprologTermReference_Body 1..1" mprologTermReference_Clause : ownedBody3
+mprologTermReference_Clause "mprologTermReference_Model 0..9999" --* "mprologTermReference_Clause 1..1" mprologTermReference_Model : ownedClause0
+mprologTermReference_Functor "mprologTermReference_Head6 1..1" --* "mprologTermReference_Functor 1..1" mprologTermReference_Head : ownedFunctor5
+mprologTermReference_Clause "mprologTermReference_Head 1..1" *-- "mprologTermReference_Clause2 0..1" mprologTermReference_Head : ownedHead1
+mprologTermReference_List "mprologTermReference_Term16 1..1" *-- "mprologTermReference_List 0..1" mprologTermReference_Term : ownedHeadTerms15
+mprologTermReference_InfixExpression "mprologTermReference_Operator 1..1" *-- "mprologTermReference_InfixExpression26 1..1" mprologTermReference_Operator : ownedOperator25
+mprologTermReference_List "mprologTermReference_Term19 1..1" *-- "mprologTermReference_List18 0..1" mprologTermReference_Term : ownedTailTerms17
+mprologTermReference_Functor "mprologTermReference_Term14 1..1" *-- "mprologTermReference_Functor13 0..1" mprologTermReference_Term : ownedTerm12
+mprologTermReference_FunctorReference "mprologTermReference_Term31 1..1" *-- "mprologTermReference_FunctorReference30 0..1" mprologTermReference_Term : ownedTerm29
+mprologTermReference_Parenthesis "mprologTermReference_Term34 1..1" *-- "mprologTermReference_Parenthesis 1..1" mprologTermReference_Term : ownedTerm33
+mprologTermReference_Body "mprologTermReference_Term11 1..1" *-- "mprologTermReference_Body10 1..1" mprologTermReference_Term : ownedTerm9
+mprologTermReference_InfixExpression "mprologTermReference_Term24 1..1" *-- "mprologTermReference_InfixExpression23 1..1" mprologTermReference_Term : rightTerm22
 @enduml

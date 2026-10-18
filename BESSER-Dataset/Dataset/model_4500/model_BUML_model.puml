@@ -1,4 +1,8 @@
 @startuml
+' model: model
+' project: sampleModel
+' owner: User
+' description: New project
 class BaseQuantity {
 }
 class BaseQuantityUnit {
@@ -213,16 +217,16 @@ Quantity <|-- model_BaseQuantity
 Quantity <|-- model_DerivedQuantity
 Unit <|-- model_BaseQuantityUnit
 Unit <|-- model_DerivedQuantityUnit
-model_ConversionFactor "1..1" -- "1..1" model_Unit : baseUnit9
-model_ConversionFactor "0..9999" --* "1..1" model_Unit : conversionFactors5
-model_Dimension "0..9999" --* "1..1" model_Unit : dimensions3
-model_MeasurementUncertainty "1..1" *-- "0..1" model_MeasurementUncertaintyInformation : information14
-model_Interval "1..1" *-- "1..1" model_Quantity : lowerEndpoint16
-model_Quantity "0..9999" --* "1..1" model_Sample : quantity22
-model_Sample "0..9999" --* "1..1" model_Sampling : samples21
-model_MeasurementUncertainty "1..1" --* "1..1" model_QuantityValue : uncertainty12
-model_Quantity "1..1" -- "1..1" model_Unit : unit0
-model_SystemOfUnits "1..1" *-- "0..9999" model_Unit : units7
-model_Interval "1..1" *-- "1..1" model_Quantity : upperEndpoint18
-model_Quantity "1..1" *-- "1..1" model_QuantityValue : value1
+model_ConversionFactor "model_Unit11 1..1" -- "model_ConversionFactor10 1..1" model_Unit : baseUnit9
+model_ConversionFactor "model_Unit6 0..9999" --* "model_ConversionFactor 1..1" model_Unit : conversionFactors5
+model_Dimension "model_Unit4 0..9999" --* "model_Dimension 1..1" model_Unit : dimensions3
+model_MeasurementUncertainty "model_MeasurementUncertaintyInformation 1..1" *-- "model_MeasurementUncertainty15 0..1" model_MeasurementUncertaintyInformation : information14
+model_Interval "model_Quantity17 1..1" *-- "model_Interval 1..1" model_Quantity : lowerEndpoint16
+model_Quantity "model_Sample23 0..9999" --* "model_Quantity24 1..1" model_Sample : quantity22
+model_Sample "model_Sampling 0..9999" --* "model_Sample 1..1" model_Sampling : samples21
+model_MeasurementUncertainty "model_QuantityValue13 1..1" --* "model_MeasurementUncertainty 1..1" model_QuantityValue : uncertainty12
+model_Quantity "model_Unit 1..1" -- "model_Quantity 1..1" model_Unit : unit0
+model_SystemOfUnits "model_Unit8 1..1" *-- "model_SystemOfUnits 0..9999" model_Unit : units7
+model_Interval "model_Quantity20 1..1" *-- "model_Interval19 1..1" model_Quantity : upperEndpoint18
+model_Quantity "model_QuantityValue 1..1" *-- "model_Quantity2 1..1" model_QuantityValue : value1
 @enduml

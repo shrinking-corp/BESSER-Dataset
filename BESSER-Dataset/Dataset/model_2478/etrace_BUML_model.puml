@@ -1,4 +1,8 @@
 @startuml
+' model: etrace
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractLink {
 }
 class CompositeLink {
@@ -26,13 +30,13 @@ class etrace_LinkType {
 AbstractLink <|-- etrace_CompositeLink
 AbstractLink <|-- etrace_Link
 CompositeLink <|-- etrace_ETrace
-etrace_AbstractLink "0..9999" --* "1..1" etrace_CompositeLink : children19
-etrace_EObject "0..9999" --* "1..1" etrace_ETrace : deletedElement13
-etrace_EObject "0..9999" --* "1..1" etrace_ETrace : externalElement16
-etrace_AbstractLink "1..1" -- "0..1" etrace_EObject : source0
-etrace_LinkType "1..1" -- "0..9999" etrace_LinkType : subType7
-etrace_LinkType "1..1" -- "0..1" etrace_LinkType : superType9
-etrace_AbstractLink "1..1" -- "0..1" etrace_EObject : target1
-etrace_AbstractLink "1..1" -- "1..1" etrace_LinkType : type4
-etrace_ETrace "1..1" *-- "0..9999" etrace_LinkType : typeList11
+etrace_AbstractLink "etrace_CompositeLink 0..9999" --* "etrace_AbstractLink20 1..1" etrace_CompositeLink : children19
+etrace_EObject "etrace_ETrace14 0..9999" --* "etrace_EObject15 1..1" etrace_ETrace : deletedElement13
+etrace_EObject "etrace_ETrace17 0..9999" --* "etrace_EObject18 1..1" etrace_ETrace : externalElement16
+etrace_AbstractLink "etrace_EObject 1..1" -- "etrace_AbstractLink 0..1" etrace_EObject : source0
+etrace_LinkType "LinkType 1..1" -- "superType 0..9999" etrace_LinkType : subType7
+etrace_LinkType "LinkType10 1..1" -- "subType 0..1" etrace_LinkType : superType9
+etrace_AbstractLink "etrace_EObject3 1..1" -- "etrace_AbstractLink2 0..1" etrace_EObject : target1
+etrace_AbstractLink "etrace_LinkType 1..1" -- "etrace_AbstractLink5 1..1" etrace_LinkType : type4
+etrace_ETrace "etrace_LinkType12 1..1" *-- "etrace_ETrace 0..9999" etrace_LinkType : typeList11
 @enduml

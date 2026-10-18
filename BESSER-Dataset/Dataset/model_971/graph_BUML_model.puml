@@ -1,4 +1,8 @@
 @startuml
+' model: graph
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractNamedObject {
 }
 abstract class graph_AbstractNamedObject {
@@ -12,9 +16,9 @@ class graph_Node {
 }
 AbstractNamedObject <|-- graph_Graph
 AbstractNamedObject <|-- graph_Node
-graph_Edge "0..9999" -- "1..1" graph_Node : incomingEdges1
-graph_Graph "1..1" *-- "0..9999" graph_Node : nodes0
-graph_Edge "0..9999" -- "1..1" graph_Node : outgoingEdges2
-graph_Edge "1..1" -- "1..1" graph_Node : source4
-graph_Edge "1..1" -- "0..1" graph_Node : target5
+graph_Edge "target 0..9999" -- "Edge 1..1" graph_Node : incomingEdges1
+graph_Graph "graph_Node 1..1" *-- "graph_Graph 0..9999" graph_Node : nodes0
+graph_Edge "source 0..9999" -- "Edge3 1..1" graph_Node : outgoingEdges2
+graph_Edge "Node 1..1" -- "outgoingEdges 1..1" graph_Node : source4
+graph_Edge "Node6 1..1" -- "incomingEdges 0..1" graph_Node : target5
 @enduml

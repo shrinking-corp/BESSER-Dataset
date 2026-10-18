@@ -1,4 +1,8 @@
 @startuml
+' model: _0877c0da_9e98_42d6_87a9_063942ac640f
+' project: sampleModel
+' owner: User
+' description: New project
 class AdminController {
   + UserID : int
   + UserLevel : int
@@ -32,12 +36,12 @@ class Table {
 }
 class processQuery {
 }
-Login "0..1" -- "0..1" processQuery : Login_processQuery
-Membership_Card "0..1" -- "0..9999" OrderController : Order_Membership_Card
-OrderController "1..1" -- "1..1" Table : Order_Table
-BookingController "1..1" -- "1..9999" Table : Table_Booking
-AdminController "0..1" -- "0..1" processQuery : processQuery_AdminPanel
-BookingController "0..1" -- "0..1" processQuery : processQuery_Booking
-OrderController "0..1" -- "0..1" processQuery : processQuery_Order
-Table "0..1" -- "0..1" processQuery : processQuery_Table
+Login "login13 0..1" -- "processQuery12 0..1" processQuery : Login_processQuery
+Membership_Card "membership_Card4 0..1" -- "order5 0..9999" OrderController : Order_Membership_Card
+OrderController "has1 1..1" -- "is_ordered_by0 1..1" Table : Order_Table
+BookingController "reserved2 1..1" -- "is_reserved_by3 1..9999" Table : Table_Booking
+AdminController "adminPanel6 0..1" -- "processQuery7 0..1" processQuery : processQuery_AdminPanel
+BookingController "booking8 0..1" -- "processQuery9 0..1" processQuery : processQuery_Booking
+OrderController "order10 0..1" -- "processQuery11 0..1" processQuery : processQuery_Order
+Table "table14 0..1" -- "processQuery15 0..1" processQuery : processQuery_Table
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: maps
+' project: sampleModel
+' owner: User
+' description: New project
 class PublicSpace {
 }
 class Road {
@@ -37,9 +41,21 @@ PublicSpace <|-- maps_Square
 Road <|-- maps_Boulevard
 Road <|-- maps_Pedestrian
 Road <|-- maps_Street
-maps_PublicSpace "0..9999" -- "1..1" maps_Road : border3
-maps_PublicSpace "1..1" -- "1..9999" maps_Road : borderedBy7
-maps_Road "0..9999" -- "1..1" maps_Road : meet5
-maps_Road "0..9999" --* "1..1" maps_map : roads0
-maps_PublicSpace "0..9999" --* "1..1" maps_map : spaces1
+maps_PublicSpace "borderedBy 0..9999" -- "PublicSpace 1..1" maps_Road : border3
+maps_PublicSpace "Road 1..1" -- "border 1..9999" maps_Road : borderedBy7
+maps_Road "maps_Road4 0..9999" -- "maps_Road6 1..1" maps_Road : meet5
+maps_Road "maps_map 0..9999" --* "maps_Road 1..1" maps_map : roads0
+maps_PublicSpace "maps_map2 0..9999" --* "maps_PublicSpace 1..1" maps_map : spaces1
+note top of maps_Road
+  constraint Unnamed (OCL): context Road inv: length > 1
+end note
+note top of maps_map
+  constraint Unnamed1 (OCL): context map inv: roads->forAll(n1, n2 | n1.name <> n2.name)
+end note
+note top of maps_map
+  constraint Unnamed2 (OCL): context map inv: spaces->forAll(n1, n2 | n1.name <> n2.name)
+end note
+note top of maps_map
+  constraint Unnamed3 (OCL): context map inv: roads->forAll(n1, n2 | n1.length <> n2.length)
+end note
 @enduml

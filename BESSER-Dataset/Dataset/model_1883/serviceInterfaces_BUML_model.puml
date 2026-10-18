@@ -1,4 +1,8 @@
 @startuml
+' model: serviceInterfaces
+' project: sampleModel
+' owner: User
+' description: New project
 enum CodeGenLanguage {
   ACCELEO
 }
@@ -86,12 +90,12 @@ Pointcut <|-- serviceInterfaces_codegen_ClassPointcut
 Pointcut <|-- serviceInterfaces_codegen_ImportElementPointcut
 Pointcut <|-- serviceInterfaces_codegen_MethodPoincut
 Pointcut <|-- serviceInterfaces_codegen_StatementPoincut
-serviceInterfaces_InterfaceRepository "1..1" *-- "0..9999" serviceInterfaces_Packageable : contents0
-serviceInterfaces_Package "1..1" *-- "0..9999" serviceInterfaces_Packageable : contents1
-JavaTypeDeclaration "1..9999" --* "1..1" serviceInterfaces_modelingenv_InjectorAcceptorInterfaceL0 : injectorImplements5
-TransformationLibrary "0..1" -- "1..1" serviceInterfaces_codegen_InjectorAcceptorInterfaceL1 : injectorProvides3
-Operation "0..9999" --* "1..1" serviceInterfaces_modelingenv_JavaInterface : operations6
-Operation "0..9999" --* "1..1" serviceInterfaces_modelingenv_JavaClass : operations7
-Pointcut "0..1" -- "1..1" serviceInterfaces_codegen_SlotPlugInterfaceL1 : pointcuts4
-ExtensionPoint "1..9999" --* "1..1" serviceInterfaces_modelingenv_SlotPlugInterfaceL0 : slot9
+serviceInterfaces_InterfaceRepository "serviceInterfaces_Packageable 1..1" *-- "serviceInterfaces_InterfaceRepository 0..9999" serviceInterfaces_Packageable : contents0
+serviceInterfaces_Package "serviceInterfaces_Packageable2 1..1" *-- "serviceInterfaces_Package 0..9999" serviceInterfaces_Packageable : contents1
+JavaTypeDeclaration "serviceInterfaces_modelingenv_InjectorAcceptorInterfaceL0 1..9999" --* "JavaTypeDeclaration 1..1" serviceInterfaces_modelingenv_InjectorAcceptorInterfaceL0 : injectorImplements5
+TransformationLibrary "serviceInterfaces_codegen_InjectorAcceptorInterfaceL1 0..1" -- "TransformationLibrary 1..1" serviceInterfaces_codegen_InjectorAcceptorInterfaceL1 : injectorProvides3
+Operation "serviceInterfaces_modelingenv_JavaInterface 0..9999" --* "Operation 1..1" serviceInterfaces_modelingenv_JavaInterface : operations6
+Operation "serviceInterfaces_modelingenv_JavaClass 0..9999" --* "Operation8 1..1" serviceInterfaces_modelingenv_JavaClass : operations7
+Pointcut "serviceInterfaces_codegen_SlotPlugInterfaceL1 0..1" -- "Pointcut 1..1" serviceInterfaces_codegen_SlotPlugInterfaceL1 : pointcuts4
+ExtensionPoint "serviceInterfaces_modelingenv_SlotPlugInterfaceL0 1..9999" --* "ExtensionPoint 1..1" serviceInterfaces_modelingenv_SlotPlugInterfaceL0 : slot9
 @enduml

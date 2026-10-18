@@ -1,4 +1,8 @@
 @startuml
+' model: query
+' project: sampleModel
+' owner: User
+' description: New project
 class DataType {
 }
 class Function {
@@ -458,228 +462,228 @@ expressions_ValueExpression <|-- query_QueryValueExpression
 statements_SQLControlStatement <|-- query_CallStatement
 statements_SQLDataChangeStatement <|-- query_QueryChangeStatement
 statements_SQLDataStatement <|-- query_QueryStatement
-query_MergeSourceTable "1..1" -- "0..9999" query_QueryMergeStatement : QueryMergeStatement396
-query_CallStatement "1..1" *-- "0..9999" query_QueryValueExpression : argumentList418
-query_MergeUpdateSpecification "1..1" *-- "1..9999" query_UpdateAssignmentExpression : assignementExprList405
-query_QueryUpdateStatement "1..1" *-- "1..9999" query_UpdateAssignmentExpression : assignmentClause19
-query_UpdateAssignmentExpression "0..9999" -- "1..1" query_ValueExpressionColumn : assignmentExprTarget261
-query_PredicateBasic "0..1" -- "1..1" query_QueryValueExpression : basicLeft75
-query_PredicateBasic "0..1" -- "1..1" query_QueryValueExpression : basicRight74
-query_PredicateBetween "0..1" -- "1..1" query_QueryValueExpression : betweenLeft94
-query_PredicateBetween "0..1" -- "1..1" query_QueryValueExpression : betweenRight196
-query_PredicateBetween "0..1" -- "1..1" query_QueryValueExpression : betweenRight298
-query_CallStatement "1..1" -- "1..1" query_QueryValueExpression : callStatement131
-query_CallStatement "1..1" -- "1..1" query_ProcedureReference : callStatement422
-query_ValueExpressionCase "1..1" *-- "0..1" query_ValueExpressionCaseElse : caseElse280
-query_TableExpression "1..1" *-- "0..9999" query_ValueExpressionColumn : columnList166
-query_ColumnName "0..9999" --* "1..1" query_WithTableSpecification : columnNameList187
-query_ColumnName "0..9999" --* "1..1" query_TableCorrelation : columnNameList375
-query_QuerySearchCondition "1..1" -- "0..1" query_SearchConditionCombined : combinedLeft44
-query_QueryCombined "0..1" -- "1..1" query_QueryExpressionBody : combinedLeft57
-query_QuerySearchCondition "1..1" -- "0..1" query_SearchConditionCombined : combinedRight45
-query_QueryCombined "0..1" -- "1..1" query_QueryExpressionBody : combinedRight58
-query_ValueExpressionCaseSimple "1..1" *-- "1..9999" query_ValueExpressionCaseSimpleContent : contentList311
-DataType "0..1" --* "1..1" query_QueryValueExpression : dataType68
-Table "1..1" -- "1..1" query_TableInDatabase : databaseTable339
-query_QueryDeleteStatement "0..1" -- "1..1" query_TableInDatabase : deleteStatement333
-query_CursorReference "1..1" -- "0..1" query_QueryDeleteStatement : deleteStatement36
-query_QueryDeleteStatement "0..1" -- "1..1" query_QuerySearchCondition : deleteStatement40
-query_TableInDatabase "1..1" -- "0..9999" query_ValueExpressionColumn : derivedColumnList340
-query_PredicateLike "1..1" *-- "0..1" query_QueryValueExpression : escapeValueExpr237
-query_QueryValueExpression "1..9999" --* "1..1" query_ValuesRow : exprList154
-query_QuerySelect "1..1" *-- "1..9999" query_TableReference : fromClause208
-Function "1..1" -- "1..1" query_ValueExpressionFunction : function286
-Function "1..1" -- "1..1" query_TableFunction : function342
-query_GroupingSpecification "0..9999" --* "1..1" query_QuerySelect : groupByClause205
-query_Grouping "1..1" --* "1..1" query_GroupingSetsElementExpression : grouping297
-query_GroupingExpression "0..1" -- "1..1" query_QueryValueExpression : groupingExpr108
-query_GroupingExpression "1..1" --* "1..1" query_SuperGroupElementExpression : groupingExpr307
-query_GroupingSets "0..1" -- "1..1" query_GroupingSetsElement : groupingSets293
-query_Grouping "1..1" -- "0..1" query_GroupingSetsElementExpression : groupingSetsElementExpr292
-query_GroupingSetsElementExpression "1..9999" --* "1..1" query_GroupingSetsElementSublist : groupingSetsElementExprList294
-query_GroupingSets "1..1" *-- "1..9999" query_GroupingSetsElement : groupingSetsElementList291
-query_GroupingSetsElementExpression "1..1" -- "0..1" query_GroupingSetsElementSublist : groupingSetsElementSublist296
-query_QuerySearchCondition "0..1" --* "1..1" query_QuerySelect : havingClause201
-query_PredicateInValueList "0..1" -- "1..1" query_QueryValueExpression : inValueListLeft83
-query_PredicateInValueList "0..1" -- "1..1" query_QueryValueExpression : inValueListRight82
-query_PredicateInValueRowSelect "0..1" -- "1..1" query_QueryValueExpression : inValueRowSelectLeft86
-query_PredicateInValueRowSelect "0..1" -- "1..1" query_QueryExpressionRoot : inValueRowSelectRight138
-query_PredicateInValueSelect "0..1" -- "1..1" query_QueryValueExpression : inValueSelectLeft88
-query_PredicateInValueSelect "0..1" -- "1..1" query_QueryExpressionRoot : inValueSelectRight141
-query_QueryExpressionRoot "1..1" -- "0..1" query_QueryInsertStatement : insertStatement132
-query_QueryInsertStatement "0..1" -- "1..1" query_ValuesRow : insertStatement152
-query_QueryInsertStatement "0..9999" -- "1..1" query_ValueExpressionColumn : insertStatement265
-query_QueryInsertStatement "0..1" -- "1..1" query_TableInDatabase : insertStatement336
-query_QuerySelect "1..1" *-- "0..9999" query_ValueExpressionVariable : intoClause211
-query_QuerySearchCondition "0..1" --* "1..1" query_TableJoined : joinCondition176
-query_QuerySearchCondition "1..1" --* "1..1" query_SearchConditionCombined : leftCondition189
-query_QueryCombined "1..1" *-- "1..1" query_QueryExpressionBody : leftQuery195
-query_PredicateBasic "1..1" *-- "1..1" query_QueryValueExpression : leftValueExpr223
-query_PredicateBetween "1..1" *-- "1..1" query_QueryValueExpression : leftValueExpr225
-query_QueryValueExpression "1..1" --* "1..1" query_ValueExpressionCombined : leftValueExpr287
-query_PredicateLike "0..1" -- "1..1" query_QueryValueExpression : likeEscape120
-query_PredicateLike "0..1" -- "1..1" query_QueryValueExpression : likeMatching78
-query_PredicateLike "0..1" -- "1..1" query_QueryValueExpression : likePattern77
-query_PredicateLike "1..1" *-- "1..1" query_QueryValueExpression : matchingValueExpr235
-query_MergeInsertSpecification "0..9999" -- "1..1" query_ValueExpressionColumn : mergeInsertSpec272
-query_MergeOnCondition "0..1" -- "1..1" query_QuerySearchCondition : mergeOnCondition53
-query_MergeSourceTable "0..1" -- "1..1" query_TableReference : mergeSourceTable165
-query_MergeTargetTable "1..1" -- "0..1" query_QueryMergeStatement : mergeStatement392
-query_MergeSourceTable "1..1" -- "0..1" query_QueryMergeStatement : mergeStatement397
-query_MergeOnCondition "1..1" -- "0..1" query_QueryMergeStatement : mergeStatement401
-query_MergeOperationSpecification "1..1" -- "0..1" query_QueryMergeStatement : mergeStatement410
-query_MergeTargetTable "0..1" -- "1..1" query_TableExpression : mergeTargetTable174
-query_MergeUpdateSpecification "0..1" -- "1..1" query_UpdateAssignmentExpression : mergeUpdateSpec33
-query_QueryValueExpression "1..1" -- "0..1" query_ValueExpressionNested : nest124
-query_TableNested "0..1" -- "1..1" query_TableReference : nest164
-query_QuerySearchCondition "1..1" -- "0..1" query_SearchConditionNested : nest52
-query_QuerySearchCondition "1..1" --* "1..1" query_SearchConditionNested : nestedCondition363
-query_QueryExpressionBody "1..1" --* "1..1" query_QueryNested : nestedQuery388
-query_TableNested "1..1" *-- "1..1" query_TableReference : nestedTableRef351
-query_QueryValueExpression "1..1" --* "1..1" query_ValueExpressionNested : nestedValueExpr366
-query_MergeOnCondition "1..1" --* "1..1" query_QueryMergeStatement : onCondition358
-query_MergeOperationSpecification "1..9999" --* "1..1" query_QueryMergeStatement : operationSpecList361
-query_OrderBySpecification "0..9999" --* "1..1" query_QuerySelectStatement : orderByClause15
-query_OrderByResultColumn "0..9999" -- "1..1" query_ResultColumn : orderByResultCol220
-query_OrderByValueExpression "0..1" -- "1..1" query_QueryValueExpression : orderByValueExpr71
-query_QueryValueExpression "0..9999" --* "1..1" query_ValueExpressionFunction : parameterList284
-query_QueryValueExpression "0..9999" --* "1..1" query_TableFunction : parameterList344
-query_TableExpression "1..1" -- "1..1" query_ValueExpressionColumn : parentTableExpr263
-query_PredicateLike "1..1" *-- "1..1" query_QueryValueExpression : patternValueExpr233
-query_PredicateExists "0..1" -- "1..1" query_QueryExpressionBody : predicateExists60
-query_PredicateIsNull "0..1" -- "1..1" query_QueryValueExpression : predicateNull80
-Procedure "1..1" -- "1..1" query_ProcedureReference : procedure424
-query_CallStatement "1..1" *-- "1..1" query_ProcedureReference : procedureRef420
-query_PredicateQuantifiedRowSelect "0..1" -- "1..1" query_QueryValueExpression : quantifiedRowSelectLeft90
-query_PredicateQuantifiedRowSelect "0..1" -- "1..1" query_QueryExpressionRoot : quantifiedRowSelectRight144
-query_PredicateQuantifiedValueSelect "0..1" -- "1..1" query_QueryValueExpression : quantifiedValueSelectLeft92
-query_PredicateQuantifiedValueSelect "0..1" -- "1..1" query_QueryExpressionRoot : quantifiedValueSelectRight147
-query_QueryExpressionBody "1..1" --* "1..1" query_QueryExpressionRoot : query137
-query_OrderBySpecification "1..1" -- "0..1" query_QueryExpressionBody : query371
-query_QueryExpressionBody "1..1" --* "1..1" query_TableQueryLateral : query425
-query_QueryExpressionRoot "1..1" --* "1..1" query_QuerySelectStatement : queryExpr13
-query_PredicateExists "1..1" *-- "1..1" query_QueryExpressionBody : queryExpr231
-query_PredicateQuantifiedValueSelect "1..1" *-- "1..1" query_QueryExpressionRoot : queryExpr241
-query_PredicateQuantifiedRowSelect "1..1" *-- "1..1" query_QueryExpressionRoot : queryExpr245
-query_PredicateInValueSelect "1..1" *-- "1..1" query_QueryExpressionRoot : queryExpr249
-query_PredicateInValueRowSelect "1..1" *-- "1..1" query_QueryExpressionRoot : queryExpr259
-query_QueryExpressionRoot "1..1" --* "1..1" query_ValueExpressionScalarSelect : queryExpr276
-query_QueryExpressionBody "1..1" --* "1..1" query_UpdateSourceQuery : queryExpr382
-query_QueryExpressionBody "1..1" -- "0..1" query_QueryExpressionRoot : queryExpression55
-query_QueryExpressionRoot "0..1" -- "1..1" query_WithTableSpecification : queryExpressionRoot181
-query_QueryExpressionBody "1..1" -- "0..1" query_QueryNested : queryNest64
-query_QuerySelect "0..1" -- "1..1" query_TableReference : querySelect162
-query_GroupingSpecification "1..1" -- "0..1" query_QuerySelect : querySelect213
-query_QueryResultSpecification "1..1" -- "0..1" query_QuerySelect : querySelect215
-query_QuerySelect "0..1" -- "1..1" query_ValueExpressionVariable : querySelect274
-query_QuerySearchCondition "1..1" -- "0..1" query_QuerySelect : querySelectHaving47
-query_QuerySearchCondition "1..1" -- "0..1" query_QuerySelect : querySelectWhere48
-query_QueryValues "1..1" -- "1..1" query_ValuesRow : queryValues155
-query_OrderByResultColumn "1..1" -- "1..1" query_ResultColumn : resultCol384
-query_QueryValueExpression "1..1" -- "0..1" query_ResultColumn : resultColumn72
-query_ResultTableAllColumns "0..9999" -- "1..1" query_TableExpression : resultTableAllColumns169
-query_QueryValueExpression "1..1" --* "1..1" query_ValueExpressionCaseSimpleContent : resultValueExpr329
-query_QuerySearchCondition "1..1" --* "1..1" query_SearchConditionCombined : rightCondition191
-query_QueryCombined "1..1" *-- "1..1" query_QueryExpressionBody : rightQuery198
-query_PredicateBetween "1..1" *-- "1..1" query_QueryValueExpression : rightValueExpr1227
-query_PredicateBasic "1..1" *-- "1..1" query_QueryValueExpression : rightValueExpr221
-query_PredicateBetween "1..1" *-- "1..1" query_QueryValueExpression : rightValueExpr2229
-query_QueryValueExpression "1..1" --* "1..1" query_ValueExpressionCombined : rightValueExpr289
-query_QuerySearchCondition "1..1" --* "1..1" query_ValueExpressionCaseSearchContent : searchCondition321
-query_MergeOnCondition "1..1" *-- "1..1" query_QuerySearchCondition : searchCondition403
-query_ValueExpressionCaseSearch "1..1" *-- "1..9999" query_ValueExpressionCaseSearchContent : searchContentList309
-query_QueryResultSpecification "0..9999" --* "1..1" query_QuerySelect : selectClause206
-query_QueryExpressionRoot "1..1" -- "0..1" query_QuerySelectStatement : selectStatement133
-query_OrderBySpecification "1..1" -- "0..1" query_QuerySelectStatement : selectStatement369
-query_QuerySelectStatement "0..1" -- "1..1" query_UpdatabilityExpression : selectStatement415
-query_OrderBySpecification "0..9999" --* "1..1" query_QueryExpressionBody : sortSpecList65
-query_QueryExpressionRoot "0..1" --* "1..1" query_QueryInsertStatement : sourceQuery5
-query_MergeSourceTable "1..1" --* "1..1" query_QueryMergeStatement : sourceTable355
-query_MergeInsertSpecification "1..1" *-- "1..1" query_ValuesRow : sourceValuesRow409
-query_QueryInsertStatement "1..1" *-- "0..9999" query_ValuesRow : sourceValuesRowList6
-query_SuperGroup "0..1" -- "1..1" query_SuperGroupElement : superGroup303
-query_GroupingExpression "1..1" -- "0..1" query_SuperGroupElementExpression : superGroupElementExpr301
-query_SuperGroupElementExpression "1..9999" --* "1..1" query_SuperGroupElementSublist : superGroupElementExprList304
-query_SuperGroup "1..1" *-- "0..9999" query_SuperGroupElement : superGroupElementList298
-query_SuperGroupElementExpression "1..1" -- "0..1" query_SuperGroupElementSublist : superGroupElementSublist306
-query_TableCorrelation "0..1" --* "1..1" query_TableExpression : tableCorrelation168
-query_ColumnName "1..1" -- "0..1" query_TableCorrelation : tableCorrelation346
-query_ResultTableAllColumns "1..1" -- "1..1" query_TableExpression : tableExpr217
-query_TableExpression "1..1" -- "1..1" query_ValueExpressionColumn : tableExpr268
-query_TableCorrelation "1..1" -- "0..1" query_TableExpression : tableExpr373
-query_MergeTargetTable "1..1" *-- "1..1" query_TableExpression : tableExpr394
-query_QueryValueExpression "1..1" -- "1..1" query_TableFunction : tableFunction127
-query_TableInDatabase "0..1" -- "1..1" query_ValueExpressionColumn : tableInDatabase270
-query_QuerySearchCondition "1..1" -- "0..1" query_TableJoined : tableJoined43
-query_TableJoined "1..1" -- "1..1" query_TableReference : tableJoinedLeft160
-query_TableJoined "1..1" -- "1..1" query_TableReference : tableJoinedRight158
-query_MergeSourceTable "1..1" *-- "1..1" query_TableReference : tableRef399
-query_TableJoined "1..1" *-- "1..1" query_TableReference : tableRefLeft179
-query_TableJoined "1..1" *-- "1..1" query_TableReference : tableRefRight178
-query_QueryInsertStatement "1..1" -- "0..9999" query_ValueExpressionColumn : targetColumnList11
-query_UpdateAssignmentExpression "1..1" -- "1..9999" query_ValueExpressionColumn : targetColumnList30
-query_MergeInsertSpecification "1..1" -- "0..9999" query_ValueExpressionColumn : targetColumnList407
-query_QueryUpdateStatement "1..1" *-- "1..1" query_TableInDatabase : targetTable26
-query_QueryDeleteStatement "1..1" *-- "1..1" query_TableInDatabase : targetTable3
-query_MergeTargetTable "1..1" --* "1..1" query_QueryMergeStatement : targetTable353
-query_QueryInsertStatement "1..1" *-- "1..1" query_TableInDatabase : targetTable8
-query_QuerySelectStatement "1..1" *-- "0..1" query_UpdatabilityExpression : updatabilityExpr17
-query_UpdatabilityExpression "0..1" -- "1..1" query_UpdateOfColumn : updatabilityExpr412
-query_UpdateAssignmentExpression "0..1" -- "1..1" query_UpdateSource : updateAssignmentExpr378
-query_UpdatabilityExpression "1..1" *-- "0..9999" query_UpdateOfColumn : updateOfColumnList414
-query_UpdateAssignmentExpression "1..1" *-- "1..1" query_UpdateSource : updateSource32
-query_QueryValueExpression "1..1" -- "0..1" query_UpdateSourceExprList : updateSourceExprList125
-query_QueryExpressionBody "1..1" -- "1..1" query_UpdateSourceQuery : updateSourceQuery61
-query_QueryUpdateStatement "0..1" -- "1..1" query_UpdateAssignmentExpression : updateStatement29
-query_QueryUpdateStatement "0..1" -- "1..1" query_TableInDatabase : updateStatement331
-query_CursorReference "1..1" -- "0..1" query_QueryUpdateStatement : updateStatement34
-query_QuerySearchCondition "1..1" -- "0..1" query_QueryUpdateStatement : updateStatement38
-query_QueryExpressionRoot "1..1" -- "0..1" query_ValueExpressionScalarSelect : valExprScalarSelect150
-query_OrderByValueExpression "1..1" *-- "1..1" query_QueryValueExpression : valueExpr193
-query_QueryValueExpression "1..1" --* "1..1" query_ResultColumn : valueExpr218
-query_PredicateIsNull "1..1" *-- "1..1" query_QueryValueExpression : valueExpr239
-query_PredicateQuantifiedValueSelect "1..1" *-- "1..1" query_QueryValueExpression : valueExpr243
-query_PredicateInValueSelect "1..1" *-- "1..1" query_QueryValueExpression : valueExpr251
-query_PredicateInValueList "1..1" *-- "1..1" query_QueryValueExpression : valueExpr255
-query_QueryValueExpression "1..1" --* "1..1" query_ValueExpressionLabeledDuration : valueExpr278
-query_QueryValueExpression "1..1" --* "1..1" query_ValueExpressionCast : valueExpr282
-query_GroupingExpression "1..1" *-- "1..1" query_QueryValueExpression : valueExpr299
-query_QueryValueExpression "1..1" --* "1..1" query_ValueExpressionCaseSimple : valueExpr313
-query_QueryValueExpression "0..1" --* "1..1" query_ValueExpressionCaseElse : valueExpr317
-query_QueryValueExpression "1..1" --* "1..1" query_ValueExpressionCaseSearchContent : valueExpr319
-query_ValueExpressionCase "0..1" -- "1..1" query_ValueExpressionCaseElse : valueExprCase316
-query_QueryValueExpression "1..1" -- "0..1" query_ValueExpressionCaseElse : valueExprCaseElse110
-query_ValueExpressionCaseSearch "0..1" -- "1..1" query_ValueExpressionCaseSearchContent : valueExprCaseSearch324
-query_QueryValueExpression "1..1" -- "0..1" query_ValueExpressionCaseSearchContent : valueExprCaseSearchContent117
-query_QuerySearchCondition "1..1" -- "0..1" query_ValueExpressionCaseSearchContent : valueExprCaseSearchContent51
-query_QueryValueExpression "1..1" -- "0..1" query_ValueExpressionCaseSimple : valueExprCaseSimple112
-query_ValueExpressionCaseSimple "0..1" -- "1..1" query_ValueExpressionCaseSimpleContent : valueExprCaseSimple325
-query_QueryValueExpression "1..1" -- "0..1" query_ValueExpressionCaseSimpleContent : valueExprCaseSimpleContentResult115
-query_QueryValueExpression "1..1" -- "0..1" query_ValueExpressionCaseSimpleContent : valueExprCaseSimpleContentWhen114
-query_QueryValueExpression "1..1" -- "0..1" query_ValueExpressionCast : valueExprCast100
-query_TableExpression "1..1" -- "0..9999" query_ValueExpressionColumn : valueExprColumns171
-query_QueryValueExpression "1..1" -- "0..1" query_ValueExpressionCombined : valueExprCombinedLeft103
-query_QueryValueExpression "1..1" -- "0..1" query_ValueExpressionCombined : valueExprCombinedRight105
-query_QueryValueExpression "1..1" -- "0..1" query_ValueExpressionFunction : valueExprFunction102
-query_QueryValueExpression "1..1" -- "0..1" query_ValueExpressionLabeledDuration : valueExprLabeledDuration122
-query_PredicateQuantifiedRowSelect "1..1" *-- "1..9999" query_QueryValueExpression : valueExprList247
-query_PredicateInValueList "1..1" *-- "1..9999" query_QueryValueExpression : valueExprList253
-query_PredicateInValueRowSelect "1..1" *-- "1..9999" query_QueryValueExpression : valueExprList257
-query_QueryValueExpression "1..9999" --* "1..1" query_UpdateSourceExprList : valueExprList380
-query_QueryValueExpression "0..9999" --* "1..1" query_ValueExpressionRow : valueExprList390
-query_QueryValueExpression "1..1" -- "1..1" query_ValueExpressionRow : valueExprRow129
-query_QueryValueExpression "1..1" -- "0..1" query_ValuesRow : valuesRow69
-query_QueryValues "1..1" *-- "1..9999" query_ValuesRow : valuesRowList156
-query_QueryValueExpression "1..1" --* "1..1" query_ValueExpressionCaseSimpleContent : whenValueExpr327
-query_QueryDeleteStatement "1..1" *-- "0..1" query_QuerySearchCondition : whereClause1
-query_QuerySearchCondition "0..1" --* "1..1" query_QuerySelect : whereClause203
-query_QuerySearchCondition "0..1" --* "1..1" query_QueryUpdateStatement : whereClause23
-query_CursorReference "0..1" --* "1..1" query_QueryDeleteStatement : whereCurrentOfClause0
-query_CursorReference "0..1" --* "1..1" query_QueryUpdateStatement : whereCurrentOfClause20
-query_QueryExpressionRoot "1..1" *-- "0..9999" query_WithTableSpecification : withClause135
-query_QueryExpressionBody "1..1" --* "1..1" query_WithTableSpecification : withTableQueryExpr183
-query_WithTableReference "0..9999" -- "1..1" query_WithTableSpecification : withTableReferences185
-query_ColumnName "1..1" -- "1..1" query_WithTableSpecification : withTableSpecification348
-query_WithTableReference "1..1" -- "1..1" query_WithTableSpecification : withTableSpecification386
-query_QueryExpressionBody "1..1" -- "1..1" query_WithTableSpecification : withTableSpecification63
+query_MergeSourceTable "query_QueryMergeStatement 1..1" -- "query_MergeSourceTable 0..9999" query_QueryMergeStatement : QueryMergeStatement396
+query_CallStatement "QueryValueExpression419 1..1" *-- "callStatement 0..9999" query_QueryValueExpression : argumentList418
+query_MergeUpdateSpecification "UpdateAssignmentExpression406 1..1" *-- "mergeUpdateSpec 1..9999" query_UpdateAssignmentExpression : assignementExprList405
+query_QueryUpdateStatement "UpdateAssignmentExpression 1..1" *-- "updateStatement 1..9999" query_UpdateAssignmentExpression : assignmentClause19
+query_UpdateAssignmentExpression "targetColumnList 0..9999" -- "UpdateAssignmentExpression262 1..1" query_ValueExpressionColumn : assignmentExprTarget261
+query_PredicateBasic "leftValueExpr 0..1" -- "PredicateBasic76 1..1" query_QueryValueExpression : basicLeft75
+query_PredicateBasic "rightValueExpr 0..1" -- "PredicateBasic 1..1" query_QueryValueExpression : basicRight74
+query_PredicateBetween "leftValueExpr95 0..1" -- "PredicateBetween 1..1" query_QueryValueExpression : betweenLeft94
+query_PredicateBetween "rightValueExpr1 0..1" -- "PredicateBetween97 1..1" query_QueryValueExpression : betweenRight196
+query_PredicateBetween "rightValueExpr2 0..1" -- "PredicateBetween99 1..1" query_QueryValueExpression : betweenRight298
+query_CallStatement "argumentList 1..1" -- "CallStatement 1..1" query_QueryValueExpression : callStatement131
+query_CallStatement "procedureRef 1..1" -- "CallStatement423 1..1" query_ProcedureReference : callStatement422
+query_ValueExpressionCase "ValueExpressionCaseElse281 1..1" *-- "valueExprCase 0..1" query_ValueExpressionCaseElse : caseElse280
+query_TableExpression "ValueExpressionColumn167 1..1" *-- "parentTableExpr 0..9999" query_ValueExpressionColumn : columnList166
+query_ColumnName "withTableSpecification188 0..9999" --* "ColumnName 1..1" query_WithTableSpecification : columnNameList187
+query_ColumnName "tableCorrelation376 0..9999" --* "ColumnName377 1..1" query_TableCorrelation : columnNameList375
+query_QuerySearchCondition "SearchConditionCombined 1..1" -- "leftCondition 0..1" query_SearchConditionCombined : combinedLeft44
+query_QueryCombined "leftQuery 0..1" -- "QueryCombined 1..1" query_QueryExpressionBody : combinedLeft57
+query_QuerySearchCondition "SearchConditionCombined46 1..1" -- "rightCondition 0..1" query_SearchConditionCombined : combinedRight45
+query_QueryCombined "rightQuery 0..1" -- "QueryCombined59 1..1" query_QueryExpressionBody : combinedRight58
+query_ValueExpressionCaseSimple "ValueExpressionCaseSimpleContent312 1..1" *-- "valueExprCaseSimple 1..9999" query_ValueExpressionCaseSimpleContent : contentList311
+DataType "query_QueryValueExpression 0..1" --* "DataType 1..1" query_QueryValueExpression : dataType68
+Table "query_TableInDatabase 1..1" -- "Table 1..1" query_TableInDatabase : databaseTable339
+query_QueryDeleteStatement "targetTable334 0..1" -- "QueryDeleteStatement335 1..1" query_TableInDatabase : deleteStatement333
+query_CursorReference "QueryDeleteStatement 1..1" -- "whereCurrentOfClause37 0..1" query_QueryDeleteStatement : deleteStatement36
+query_QueryDeleteStatement "whereClause41 0..1" -- "QueryDeleteStatement42 1..1" query_QuerySearchCondition : deleteStatement40
+query_TableInDatabase "ValueExpressionColumn341 1..1" -- "tableInDatabase 0..9999" query_ValueExpressionColumn : derivedColumnList340
+query_PredicateLike "QueryValueExpression238 1..1" *-- "likeEscape 0..1" query_QueryValueExpression : escapeValueExpr237
+query_QueryValueExpression "valuesRow 1..9999" --* "QueryValueExpression 1..1" query_ValuesRow : exprList154
+query_QuerySelect "TableReference210 1..1" *-- "querySelect209 1..9999" query_TableReference : fromClause208
+Function "query_ValueExpressionFunction 1..1" -- "Function 1..1" query_ValueExpressionFunction : function286
+Function "query_TableFunction 1..1" -- "Function343 1..1" query_TableFunction : function342
+query_GroupingSpecification "querySelect 0..9999" --* "GroupingSpecification 1..1" query_QuerySelect : groupByClause205
+query_Grouping "groupingSetsElementExpr 1..1" --* "Grouping 1..1" query_GroupingSetsElementExpression : grouping297
+query_GroupingExpression "valueExpr109 0..1" -- "GroupingExpression 1..1" query_QueryValueExpression : groupingExpr108
+query_GroupingExpression "superGroupElementExpr 1..1" --* "GroupingExpression308 1..1" query_SuperGroupElementExpression : groupingExpr307
+query_GroupingSets "groupingSetsElementList 0..1" -- "GroupingSets 1..1" query_GroupingSetsElement : groupingSets293
+query_Grouping "GroupingSetsElementExpression 1..1" -- "grouping 0..1" query_GroupingSetsElementExpression : groupingSetsElementExpr292
+query_GroupingSetsElementExpression "groupingSetsElementSublist 1..9999" --* "GroupingSetsElementExpression295 1..1" query_GroupingSetsElementSublist : groupingSetsElementExprList294
+query_GroupingSets "GroupingSetsElement 1..1" *-- "groupingSets 1..9999" query_GroupingSetsElement : groupingSetsElementList291
+query_GroupingSetsElementExpression "GroupingSetsElementSublist 1..1" -- "groupingSetsElementExprList 0..1" query_GroupingSetsElementSublist : groupingSetsElementSublist296
+query_QuerySearchCondition "querySelectHaving 0..1" --* "QuerySearchCondition202 1..1" query_QuerySelect : havingClause201
+query_PredicateInValueList "valueExpr84 0..1" -- "PredicateInValueList85 1..1" query_QueryValueExpression : inValueListLeft83
+query_PredicateInValueList "valueExprList 0..1" -- "PredicateInValueList 1..1" query_QueryValueExpression : inValueListRight82
+query_PredicateInValueRowSelect "valueExprList87 0..1" -- "PredicateInValueRowSelect 1..1" query_QueryValueExpression : inValueRowSelectLeft86
+query_PredicateInValueRowSelect "queryExpr139 0..1" -- "PredicateInValueRowSelect140 1..1" query_QueryExpressionRoot : inValueRowSelectRight138
+query_PredicateInValueSelect "valueExpr89 0..1" -- "PredicateInValueSelect 1..1" query_QueryValueExpression : inValueSelectLeft88
+query_PredicateInValueSelect "queryExpr142 0..1" -- "PredicateInValueSelect143 1..1" query_QueryExpressionRoot : inValueSelectRight141
+query_QueryExpressionRoot "QueryInsertStatement 1..1" -- "sourceQuery 0..1" query_QueryInsertStatement : insertStatement132
+query_QueryInsertStatement "sourceValuesRowList 0..1" -- "QueryInsertStatement153 1..1" query_ValuesRow : insertStatement152
+query_QueryInsertStatement "targetColumnList266 0..9999" -- "QueryInsertStatement267 1..1" query_ValueExpressionColumn : insertStatement265
+query_QueryInsertStatement "targetTable337 0..1" -- "QueryInsertStatement338 1..1" query_TableInDatabase : insertStatement336
+query_QuerySelect "ValueExpressionVariable 1..1" *-- "querySelect212 0..9999" query_ValueExpressionVariable : intoClause211
+query_QuerySearchCondition "tableJoined 0..1" --* "QuerySearchCondition177 1..1" query_TableJoined : joinCondition176
+query_QuerySearchCondition "combinedLeft 1..1" --* "QuerySearchCondition190 1..1" query_SearchConditionCombined : leftCondition189
+query_QueryCombined "QueryExpressionBody197 1..1" *-- "combinedLeft196 1..1" query_QueryExpressionBody : leftQuery195
+query_PredicateBasic "QueryValueExpression224 1..1" *-- "basicLeft 1..1" query_QueryValueExpression : leftValueExpr223
+query_PredicateBetween "QueryValueExpression226 1..1" *-- "betweenLeft 1..1" query_QueryValueExpression : leftValueExpr225
+query_QueryValueExpression "valueExprCombinedLeft 1..1" --* "QueryValueExpression288 1..1" query_ValueExpressionCombined : leftValueExpr287
+query_PredicateLike "escapeValueExpr 0..1" -- "PredicateLike121 1..1" query_QueryValueExpression : likeEscape120
+query_PredicateLike "matchingValueExpr 0..1" -- "PredicateLike79 1..1" query_QueryValueExpression : likeMatching78
+query_PredicateLike "patternValueExpr 0..1" -- "PredicateLike 1..1" query_QueryValueExpression : likePattern77
+query_PredicateLike "QueryValueExpression236 1..1" *-- "likeMatching 1..1" query_QueryValueExpression : matchingValueExpr235
+query_MergeInsertSpecification "targetColumnList273 0..9999" -- "MergeInsertSpecification 1..1" query_ValueExpressionColumn : mergeInsertSpec272
+query_MergeOnCondition "searchCondition54 0..1" -- "MergeOnCondition 1..1" query_QuerySearchCondition : mergeOnCondition53
+query_MergeSourceTable "tableRef 0..1" -- "MergeSourceTable 1..1" query_TableReference : mergeSourceTable165
+query_MergeTargetTable "QueryMergeStatement 1..1" -- "targetTable393 0..1" query_QueryMergeStatement : mergeStatement392
+query_MergeSourceTable "QueryMergeStatement398 1..1" -- "sourceTable 0..1" query_QueryMergeStatement : mergeStatement397
+query_MergeOnCondition "QueryMergeStatement402 1..1" -- "onCondition 0..1" query_QueryMergeStatement : mergeStatement401
+query_MergeOperationSpecification "QueryMergeStatement411 1..1" -- "operationSpecList 0..1" query_QueryMergeStatement : mergeStatement410
+query_MergeTargetTable "tableExpr175 0..1" -- "MergeTargetTable 1..1" query_TableExpression : mergeTargetTable174
+query_MergeUpdateSpecification "assignementExprList 0..1" -- "MergeUpdateSpecification 1..1" query_UpdateAssignmentExpression : mergeUpdateSpec33
+query_QueryValueExpression "ValueExpressionNested 1..1" -- "nestedValueExpr 0..1" query_ValueExpressionNested : nest124
+query_TableNested "nestedTableRef 0..1" -- "TableNested 1..1" query_TableReference : nest164
+query_QuerySearchCondition "SearchConditionNested 1..1" -- "nestedCondition 0..1" query_SearchConditionNested : nest52
+query_QuerySearchCondition "nest364 1..1" --* "QuerySearchCondition365 1..1" query_SearchConditionNested : nestedCondition363
+query_QueryExpressionBody "queryNest 1..1" --* "QueryExpressionBody389 1..1" query_QueryNested : nestedQuery388
+query_TableNested "TableReference352 1..1" *-- "nest 1..1" query_TableReference : nestedTableRef351
+query_QueryValueExpression "nest367 1..1" --* "QueryValueExpression368 1..1" query_ValueExpressionNested : nestedValueExpr366
+query_MergeOnCondition "mergeStatement359 1..1" --* "MergeOnCondition360 1..1" query_QueryMergeStatement : onCondition358
+query_MergeOperationSpecification "mergeStatement362 1..9999" --* "MergeOperationSpecification 1..1" query_QueryMergeStatement : operationSpecList361
+query_OrderBySpecification "selectStatement16 0..9999" --* "OrderBySpecification 1..1" query_QuerySelectStatement : orderByClause15
+query_OrderByResultColumn "resultCol 0..9999" -- "OrderByResultColumn 1..1" query_ResultColumn : orderByResultCol220
+query_OrderByValueExpression "valueExpr 0..1" -- "OrderByValueExpression 1..1" query_QueryValueExpression : orderByValueExpr71
+query_QueryValueExpression "valueExprFunction 0..9999" --* "QueryValueExpression285 1..1" query_ValueExpressionFunction : parameterList284
+query_QueryValueExpression "tableFunction 0..9999" --* "QueryValueExpression345 1..1" query_TableFunction : parameterList344
+query_TableExpression "columnList 1..1" -- "TableExpression264 1..1" query_ValueExpressionColumn : parentTableExpr263
+query_PredicateLike "QueryValueExpression234 1..1" *-- "likePattern 1..1" query_QueryValueExpression : patternValueExpr233
+query_PredicateExists "queryExpr 0..1" -- "PredicateExists 1..1" query_QueryExpressionBody : predicateExists60
+query_PredicateIsNull "valueExpr81 0..1" -- "PredicateIsNull 1..1" query_QueryValueExpression : predicateNull80
+Procedure "query_ProcedureReference 1..1" -- "Procedure 1..1" query_ProcedureReference : procedure424
+query_CallStatement "ProcedureReference 1..1" *-- "callStatement421 1..1" query_ProcedureReference : procedureRef420
+query_PredicateQuantifiedRowSelect "valueExprList91 0..1" -- "PredicateQuantifiedRowSelect 1..1" query_QueryValueExpression : quantifiedRowSelectLeft90
+query_PredicateQuantifiedRowSelect "queryExpr145 0..1" -- "PredicateQuantifiedRowSelect146 1..1" query_QueryExpressionRoot : quantifiedRowSelectRight144
+query_PredicateQuantifiedValueSelect "valueExpr93 0..1" -- "PredicateQuantifiedValueSelect 1..1" query_QueryValueExpression : quantifiedValueSelectLeft92
+query_PredicateQuantifiedValueSelect "queryExpr148 0..1" -- "PredicateQuantifiedValueSelect149 1..1" query_QueryExpressionRoot : quantifiedValueSelectRight147
+query_QueryExpressionBody "queryExpression 1..1" --* "QueryExpressionBody 1..1" query_QueryExpressionRoot : query137
+query_OrderBySpecification "QueryExpressionBody372 1..1" -- "sortSpecList 0..1" query_QueryExpressionBody : query371
+query_QueryExpressionBody "query_TableQueryLateral 1..1" --* "query_QueryExpressionBody 1..1" query_TableQueryLateral : query425
+query_QueryExpressionRoot "selectStatement 1..1" --* "QueryExpressionRoot14 1..1" query_QuerySelectStatement : queryExpr13
+query_PredicateExists "QueryExpressionBody232 1..1" *-- "predicateExists 1..1" query_QueryExpressionBody : queryExpr231
+query_PredicateQuantifiedValueSelect "QueryExpressionRoot242 1..1" *-- "quantifiedValueSelectRight 1..1" query_QueryExpressionRoot : queryExpr241
+query_PredicateQuantifiedRowSelect "QueryExpressionRoot246 1..1" *-- "quantifiedRowSelectRight 1..1" query_QueryExpressionRoot : queryExpr245
+query_PredicateInValueSelect "QueryExpressionRoot250 1..1" *-- "inValueSelectRight 1..1" query_QueryExpressionRoot : queryExpr249
+query_PredicateInValueRowSelect "QueryExpressionRoot260 1..1" *-- "inValueRowSelectRight 1..1" query_QueryExpressionRoot : queryExpr259
+query_QueryExpressionRoot "valExprScalarSelect 1..1" --* "QueryExpressionRoot277 1..1" query_ValueExpressionScalarSelect : queryExpr276
+query_QueryExpressionBody "updateSourceQuery 1..1" --* "QueryExpressionBody383 1..1" query_UpdateSourceQuery : queryExpr382
+query_QueryExpressionBody "QueryExpressionRoot56 1..1" -- "query 0..1" query_QueryExpressionRoot : queryExpression55
+query_QueryExpressionRoot "withClause 0..1" -- "QueryExpressionRoot182 1..1" query_WithTableSpecification : queryExpressionRoot181
+query_QueryExpressionBody "QueryNested 1..1" -- "nestedQuery 0..1" query_QueryNested : queryNest64
+query_QuerySelect "fromClause 0..1" -- "QuerySelect163 1..1" query_TableReference : querySelect162
+query_GroupingSpecification "QuerySelect214 1..1" -- "groupByClause 0..1" query_QuerySelect : querySelect213
+query_QueryResultSpecification "QuerySelect216 1..1" -- "selectClause 0..1" query_QuerySelect : querySelect215
+query_QuerySelect "intoClause 0..1" -- "QuerySelect275 1..1" query_ValueExpressionVariable : querySelect274
+query_QuerySearchCondition "QuerySelect 1..1" -- "havingClause 0..1" query_QuerySelect : querySelectHaving47
+query_QuerySearchCondition "QuerySelect50 1..1" -- "whereClause49 0..1" query_QuerySelect : querySelectWhere48
+query_QueryValues "valuesRowList 1..1" -- "QueryValues 1..1" query_ValuesRow : queryValues155
+query_OrderByResultColumn "ResultColumn385 1..1" -- "orderByResultCol 1..1" query_ResultColumn : resultCol384
+query_QueryValueExpression "ResultColumn 1..1" -- "valueExpr73 0..1" query_ResultColumn : resultColumn72
+query_ResultTableAllColumns "tableExpr170 0..9999" -- "ResultTableAllColumns 1..1" query_TableExpression : resultTableAllColumns169
+query_QueryValueExpression "valueExprCaseSimpleContentResult 1..1" --* "QueryValueExpression330 1..1" query_ValueExpressionCaseSimpleContent : resultValueExpr329
+query_QuerySearchCondition "combinedRight 1..1" --* "QuerySearchCondition192 1..1" query_SearchConditionCombined : rightCondition191
+query_QueryCombined "QueryExpressionBody200 1..1" *-- "combinedRight199 1..1" query_QueryExpressionBody : rightQuery198
+query_PredicateBetween "QueryValueExpression228 1..1" *-- "betweenRight1 1..1" query_QueryValueExpression : rightValueExpr1227
+query_PredicateBasic "QueryValueExpression222 1..1" *-- "basicRight 1..1" query_QueryValueExpression : rightValueExpr221
+query_PredicateBetween "QueryValueExpression230 1..1" *-- "betweenRight2 1..1" query_QueryValueExpression : rightValueExpr2229
+query_QueryValueExpression "valueExprCombinedRight 1..1" --* "QueryValueExpression290 1..1" query_ValueExpressionCombined : rightValueExpr289
+query_QuerySearchCondition "valueExprCaseSearchContent322 1..1" --* "QuerySearchCondition323 1..1" query_ValueExpressionCaseSearchContent : searchCondition321
+query_MergeOnCondition "QuerySearchCondition404 1..1" *-- "mergeOnCondition 1..1" query_QuerySearchCondition : searchCondition403
+query_ValueExpressionCaseSearch "ValueExpressionCaseSearchContent310 1..1" *-- "valueExprCaseSearch 1..9999" query_ValueExpressionCaseSearchContent : searchContentList309
+query_QueryResultSpecification "querySelect207 0..9999" --* "QueryResultSpecification 1..1" query_QuerySelect : selectClause206
+query_QueryExpressionRoot "QuerySelectStatement 1..1" -- "queryExpr134 0..1" query_QuerySelectStatement : selectStatement133
+query_OrderBySpecification "QuerySelectStatement370 1..1" -- "orderByClause 0..1" query_QuerySelectStatement : selectStatement369
+query_QuerySelectStatement "updatabilityExpr416 0..1" -- "QuerySelectStatement417 1..1" query_UpdatabilityExpression : selectStatement415
+query_OrderBySpecification "query66 0..9999" --* "OrderBySpecification67 1..1" query_QueryExpressionBody : sortSpecList65
+query_QueryExpressionRoot "insertStatement 0..1" --* "QueryExpressionRoot 1..1" query_QueryInsertStatement : sourceQuery5
+query_MergeSourceTable "mergeStatement356 1..1" --* "MergeSourceTable357 1..1" query_QueryMergeStatement : sourceTable355
+query_MergeInsertSpecification "query_ValuesRow 1..1" *-- "query_MergeInsertSpecification 1..1" query_ValuesRow : sourceValuesRow409
+query_QueryInsertStatement "ValuesRow 1..1" *-- "insertStatement7 0..9999" query_ValuesRow : sourceValuesRowList6
+query_SuperGroup "superGroupElementList 0..1" -- "SuperGroup 1..1" query_SuperGroupElement : superGroup303
+query_GroupingExpression "SuperGroupElementExpression 1..1" -- "groupingExpr302 0..1" query_SuperGroupElementExpression : superGroupElementExpr301
+query_SuperGroupElementExpression "superGroupElementSublist 1..9999" --* "SuperGroupElementExpression305 1..1" query_SuperGroupElementSublist : superGroupElementExprList304
+query_SuperGroup "SuperGroupElement 1..1" *-- "superGroup 0..9999" query_SuperGroupElement : superGroupElementList298
+query_SuperGroupElementExpression "SuperGroupElementSublist 1..1" -- "superGroupElementExprList 0..1" query_SuperGroupElementSublist : superGroupElementSublist306
+query_TableCorrelation "tableExpr 0..1" --* "TableCorrelation 1..1" query_TableExpression : tableCorrelation168
+query_ColumnName "TableCorrelation347 1..1" -- "columnNameList 0..1" query_TableCorrelation : tableCorrelation346
+query_ResultTableAllColumns "TableExpression 1..1" -- "resultTableAllColumns 1..1" query_TableExpression : tableExpr217
+query_TableExpression "valueExprColumns 1..1" -- "TableExpression269 1..1" query_ValueExpressionColumn : tableExpr268
+query_TableCorrelation "TableExpression374 1..1" -- "tableCorrelation 0..1" query_TableExpression : tableExpr373
+query_MergeTargetTable "TableExpression395 1..1" *-- "mergeTargetTable 1..1" query_TableExpression : tableExpr394
+query_QueryValueExpression "TableFunction 1..1" -- "parameterList128 1..1" query_TableFunction : tableFunction127
+query_TableInDatabase "derivedColumnList 0..1" -- "TableInDatabase271 1..1" query_ValueExpressionColumn : tableInDatabase270
+query_QuerySearchCondition "TableJoined 1..1" -- "joinCondition 0..1" query_TableJoined : tableJoined43
+query_TableJoined "tableRefLeft 1..1" -- "TableJoined161 1..1" query_TableReference : tableJoinedLeft160
+query_TableJoined "tableRefRight 1..1" -- "TableJoined159 1..1" query_TableReference : tableJoinedRight158
+query_MergeSourceTable "TableReference400 1..1" *-- "mergeSourceTable 1..1" query_TableReference : tableRef399
+query_TableJoined "TableReference180 1..1" *-- "tableJoinedLeft 1..1" query_TableReference : tableRefLeft179
+query_TableJoined "TableReference 1..1" *-- "tableJoinedRight 1..1" query_TableReference : tableRefRight178
+query_QueryInsertStatement "ValueExpressionColumn 1..1" -- "insertStatement12 0..9999" query_ValueExpressionColumn : targetColumnList11
+query_UpdateAssignmentExpression "ValueExpressionColumn31 1..1" -- "assignmentExprTarget 1..9999" query_ValueExpressionColumn : targetColumnList30
+query_MergeInsertSpecification "ValueExpressionColumn408 1..1" -- "mergeInsertSpec 0..9999" query_ValueExpressionColumn : targetColumnList407
+query_QueryUpdateStatement "TableInDatabase28 1..1" *-- "updateStatement27 1..1" query_TableInDatabase : targetTable26
+query_QueryDeleteStatement "TableInDatabase 1..1" *-- "deleteStatement4 1..1" query_TableInDatabase : targetTable3
+query_MergeTargetTable "mergeStatement 1..1" --* "MergeTargetTable354 1..1" query_QueryMergeStatement : targetTable353
+query_QueryInsertStatement "TableInDatabase10 1..1" *-- "insertStatement9 1..1" query_TableInDatabase : targetTable8
+query_QuerySelectStatement "UpdatabilityExpression 1..1" *-- "selectStatement18 0..1" query_UpdatabilityExpression : updatabilityExpr17
+query_UpdatabilityExpression "updateOfColumnList 0..1" -- "UpdatabilityExpression413 1..1" query_UpdateOfColumn : updatabilityExpr412
+query_UpdateAssignmentExpression "updateSource 0..1" -- "UpdateAssignmentExpression379 1..1" query_UpdateSource : updateAssignmentExpr378
+query_UpdatabilityExpression "UpdateOfColumn 1..1" *-- "updatabilityExpr 0..9999" query_UpdateOfColumn : updateOfColumnList414
+query_UpdateAssignmentExpression "UpdateSource 1..1" *-- "updateAssignmentExpr 1..1" query_UpdateSource : updateSource32
+query_QueryValueExpression "UpdateSourceExprList 1..1" -- "valueExprList126 0..1" query_UpdateSourceExprList : updateSourceExprList125
+query_QueryExpressionBody "UpdateSourceQuery 1..1" -- "queryExpr62 1..1" query_UpdateSourceQuery : updateSourceQuery61
+query_QueryUpdateStatement "assignmentClause 0..1" -- "QueryUpdateStatement 1..1" query_UpdateAssignmentExpression : updateStatement29
+query_QueryUpdateStatement "targetTable 0..1" -- "QueryUpdateStatement332 1..1" query_TableInDatabase : updateStatement331
+query_CursorReference "QueryUpdateStatement35 1..1" -- "whereCurrentOfClause 0..1" query_QueryUpdateStatement : updateStatement34
+query_QuerySearchCondition "QueryUpdateStatement39 1..1" -- "whereClause 0..1" query_QueryUpdateStatement : updateStatement38
+query_QueryExpressionRoot "ValueExpressionScalarSelect 1..1" -- "queryExpr151 0..1" query_ValueExpressionScalarSelect : valExprScalarSelect150
+query_OrderByValueExpression "QueryValueExpression194 1..1" *-- "orderByValueExpr 1..1" query_QueryValueExpression : valueExpr193
+query_QueryValueExpression "resultColumn 1..1" --* "QueryValueExpression219 1..1" query_ResultColumn : valueExpr218
+query_PredicateIsNull "QueryValueExpression240 1..1" *-- "predicateNull 1..1" query_QueryValueExpression : valueExpr239
+query_PredicateQuantifiedValueSelect "QueryValueExpression244 1..1" *-- "quantifiedValueSelectLeft 1..1" query_QueryValueExpression : valueExpr243
+query_PredicateInValueSelect "QueryValueExpression252 1..1" *-- "inValueSelectLeft 1..1" query_QueryValueExpression : valueExpr251
+query_PredicateInValueList "QueryValueExpression256 1..1" *-- "inValueListLeft 1..1" query_QueryValueExpression : valueExpr255
+query_QueryValueExpression "valueExprLabeledDuration 1..1" --* "QueryValueExpression279 1..1" query_ValueExpressionLabeledDuration : valueExpr278
+query_QueryValueExpression "valueExprCast 1..1" --* "QueryValueExpression283 1..1" query_ValueExpressionCast : valueExpr282
+query_GroupingExpression "QueryValueExpression300 1..1" *-- "groupingExpr 1..1" query_QueryValueExpression : valueExpr299
+query_QueryValueExpression "valueExprCaseSimple314 1..1" --* "QueryValueExpression315 1..1" query_ValueExpressionCaseSimple : valueExpr313
+query_QueryValueExpression "valueExprCaseElse 0..1" --* "QueryValueExpression318 1..1" query_ValueExpressionCaseElse : valueExpr317
+query_QueryValueExpression "valueExprCaseSearchContent 1..1" --* "QueryValueExpression320 1..1" query_ValueExpressionCaseSearchContent : valueExpr319
+query_ValueExpressionCase "caseElse 0..1" -- "ValueExpressionCase 1..1" query_ValueExpressionCaseElse : valueExprCase316
+query_QueryValueExpression "ValueExpressionCaseElse 1..1" -- "valueExpr111 0..1" query_ValueExpressionCaseElse : valueExprCaseElse110
+query_ValueExpressionCaseSearch "searchContentList 0..1" -- "ValueExpressionCaseSearch 1..1" query_ValueExpressionCaseSearchContent : valueExprCaseSearch324
+query_QueryValueExpression "ValueExpressionCaseSearchContent119 1..1" -- "valueExpr118 0..1" query_ValueExpressionCaseSearchContent : valueExprCaseSearchContent117
+query_QuerySearchCondition "ValueExpressionCaseSearchContent 1..1" -- "searchCondition 0..1" query_ValueExpressionCaseSearchContent : valueExprCaseSearchContent51
+query_QueryValueExpression "ValueExpressionCaseSimple 1..1" -- "valueExpr113 0..1" query_ValueExpressionCaseSimple : valueExprCaseSimple112
+query_ValueExpressionCaseSimple "contentList 0..1" -- "ValueExpressionCaseSimple326 1..1" query_ValueExpressionCaseSimpleContent : valueExprCaseSimple325
+query_QueryValueExpression "ValueExpressionCaseSimpleContent116 1..1" -- "resultValueExpr 0..1" query_ValueExpressionCaseSimpleContent : valueExprCaseSimpleContentResult115
+query_QueryValueExpression "ValueExpressionCaseSimpleContent 1..1" -- "whenValueExpr 0..1" query_ValueExpressionCaseSimpleContent : valueExprCaseSimpleContentWhen114
+query_QueryValueExpression "ValueExpressionCast 1..1" -- "valueExpr101 0..1" query_ValueExpressionCast : valueExprCast100
+query_TableExpression "ValueExpressionColumn173 1..1" -- "tableExpr172 0..9999" query_ValueExpressionColumn : valueExprColumns171
+query_QueryValueExpression "ValueExpressionCombined 1..1" -- "leftValueExpr104 0..1" query_ValueExpressionCombined : valueExprCombinedLeft103
+query_QueryValueExpression "ValueExpressionCombined107 1..1" -- "rightValueExpr106 0..1" query_ValueExpressionCombined : valueExprCombinedRight105
+query_QueryValueExpression "ValueExpressionFunction 1..1" -- "parameterList 0..1" query_ValueExpressionFunction : valueExprFunction102
+query_QueryValueExpression "ValueExpressionLabeledDuration 1..1" -- "valueExpr123 0..1" query_ValueExpressionLabeledDuration : valueExprLabeledDuration122
+query_PredicateQuantifiedRowSelect "QueryValueExpression248 1..1" *-- "quantifiedRowSelectLeft 1..9999" query_QueryValueExpression : valueExprList247
+query_PredicateInValueList "QueryValueExpression254 1..1" *-- "inValueListRight 1..9999" query_QueryValueExpression : valueExprList253
+query_PredicateInValueRowSelect "QueryValueExpression258 1..1" *-- "inValueRowSelectLeft 1..9999" query_QueryValueExpression : valueExprList257
+query_QueryValueExpression "updateSourceExprList 1..9999" --* "QueryValueExpression381 1..1" query_UpdateSourceExprList : valueExprList380
+query_QueryValueExpression "valueExprRow 0..9999" --* "QueryValueExpression391 1..1" query_ValueExpressionRow : valueExprList390
+query_QueryValueExpression "ValueExpressionRow 1..1" -- "valueExprList130 1..1" query_ValueExpressionRow : valueExprRow129
+query_QueryValueExpression "ValuesRow70 1..1" -- "exprList 0..1" query_ValuesRow : valuesRow69
+query_QueryValues "ValuesRow157 1..1" *-- "queryValues 1..9999" query_ValuesRow : valuesRowList156
+query_QueryValueExpression "valueExprCaseSimpleContentWhen 1..1" --* "QueryValueExpression328 1..1" query_ValueExpressionCaseSimpleContent : whenValueExpr327
+query_QueryDeleteStatement "QuerySearchCondition 1..1" *-- "deleteStatement2 0..1" query_QuerySearchCondition : whereClause1
+query_QuerySearchCondition "querySelectWhere 0..1" --* "QuerySearchCondition204 1..1" query_QuerySelect : whereClause203
+query_QuerySearchCondition "updateStatement24 0..1" --* "QuerySearchCondition25 1..1" query_QueryUpdateStatement : whereClause23
+query_CursorReference "deleteStatement 0..1" --* "CursorReference 1..1" query_QueryDeleteStatement : whereCurrentOfClause0
+query_CursorReference "updateStatement21 0..1" --* "CursorReference22 1..1" query_QueryUpdateStatement : whereCurrentOfClause20
+query_QueryExpressionRoot "WithTableSpecification136 1..1" *-- "queryExpressionRoot 0..9999" query_WithTableSpecification : withClause135
+query_QueryExpressionBody "withTableSpecification 1..1" --* "QueryExpressionBody184 1..1" query_WithTableSpecification : withTableQueryExpr183
+query_WithTableReference "withTableSpecification186 0..9999" -- "WithTableReference 1..1" query_WithTableSpecification : withTableReferences185
+query_ColumnName "WithTableSpecification350 1..1" -- "columnNameList349 1..1" query_WithTableSpecification : withTableSpecification348
+query_WithTableReference "WithTableSpecification387 1..1" -- "withTableReferences 1..1" query_WithTableSpecification : withTableSpecification386
+query_QueryExpressionBody "WithTableSpecification 1..1" -- "withTableQueryExpr 1..1" query_WithTableSpecification : withTableSpecification63
 @enduml

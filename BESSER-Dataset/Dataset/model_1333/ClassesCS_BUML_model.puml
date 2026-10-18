@@ -1,4 +1,8 @@
 @startuml
+' model: classescs
+' project: sampleModel
+' owner: User
+' description: New project
 class ElementCS {
 }
 class NamedElementCS {
@@ -26,9 +30,9 @@ ElementCS <|-- classescs_RootCS
 NamedElementCS <|-- classescs_ClassCS
 NamedElementCS <|-- classescs_PackageCS
 NamedElementCS <|-- classescs_PathElementCS
-classescs_Element "0..1" -- "1..1" classescs_ElementCS : ast0
-classescs_ClassCS "1..1" *-- "0..1" classescs_PathNameCS : extends2
-classescs_ClassCS "0..9999" --* "1..1" classescs_PackageCS : ownedClasses1
-classescs_PackageCS "0..9999" --* "1..1" classescs_RootCS : ownedPackages6
-classescs_PathElementCS "1..9999" --* "1..1" classescs_PathNameCS : path4
+classescs_Element "classescs_ElementCS 0..1" -- "classescs_Element 1..1" classescs_ElementCS : ast0
+classescs_ClassCS "classescs_PathNameCS 1..1" *-- "classescs_ClassCS3 0..1" classescs_PathNameCS : extends2
+classescs_ClassCS "classescs_PackageCS 0..9999" --* "classescs_ClassCS 1..1" classescs_PackageCS : ownedClasses1
+classescs_PackageCS "classescs_RootCS 0..9999" --* "classescs_PackageCS7 1..1" classescs_RootCS : ownedPackages6
+classescs_PathElementCS "classescs_PathNameCS5 1..9999" --* "classescs_PathElementCS 1..1" classescs_PathNameCS : path4
 @enduml

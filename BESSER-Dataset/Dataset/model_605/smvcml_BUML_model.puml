@@ -1,4 +1,8 @@
 @startuml
+' model: SMVC
+' project: sampleModel
+' owner: User
+' description: New project
 enum AttributeType {
   BIGINTEGER
   DOUBLE
@@ -69,19 +73,19 @@ Component <|-- SMVC_EntityComponent
 Controller <|-- SMVC_EntityController
 EntityComponent <|-- SMVC_Form
 EntityComponent <|-- SMVC_List
-SMVC_Attribute "0..9999" --* "1..1" SMVC_Entity : attributes18
-SMVC_Attribute "1..1" -- "0..1" SMVC_Entity : complexType20
-SMVC_Component "0..9999" --* "1..1" SMVC_View : components27
-SMVC_Controller "0..9999" --* "1..1" SMVC_SMVCApplication : controller1
-SMVC_DataAccessObject "1..1" -- "1..1" SMVC_EntityController : dao13
-SMVC_DataAccessObject "0..9999" --* "1..1" SMVC_SMVCApplication : daos4
-SMVC_Entity "0..9999" --* "1..1" SMVC_SMVCApplication : entities6
-SMVC_Entity "1..1" -- "1..1" SMVC_EntityComponent : entity29
-SMVC_DataAccessObject "1..1" -- "1..1" SMVC_Entity : forEntity15
-SMVC_Controller "1..1" --* "1..1" SMVC_SMVCApplication : homeController0
-SMVC_Link "0..9999" --* "1..1" SMVC_Page : links23
-SMVC_Controller "1..1" *-- "1..1" SMVC_Page : page11
-SMVC_Controller "1..1" *-- "0..9999" SMVC_Controller : subController9
-SMVC_List "1..1" *-- "0..4" SMVC_SupportedOperation : supportedOperations31
-SMVC_Page "1..1" *-- "1..1" SMVC_View : view25
+SMVC_Attribute "SMVC_Entity19 0..9999" --* "SMVC_Attribute 1..1" SMVC_Entity : attributes18
+SMVC_Attribute "SMVC_Entity22 1..1" -- "SMVC_Attribute21 0..1" SMVC_Entity : complexType20
+SMVC_Component "SMVC_View28 0..9999" --* "SMVC_Component 1..1" SMVC_View : components27
+SMVC_Controller "SMVC_SMVCApplication2 0..9999" --* "SMVC_Controller3 1..1" SMVC_SMVCApplication : controller1
+SMVC_DataAccessObject "SMVC_EntityController 1..1" -- "SMVC_DataAccessObject14 1..1" SMVC_EntityController : dao13
+SMVC_DataAccessObject "SMVC_SMVCApplication5 0..9999" --* "SMVC_DataAccessObject 1..1" SMVC_SMVCApplication : daos4
+SMVC_Entity "SMVC_SMVCApplication7 0..9999" --* "SMVC_Entity 1..1" SMVC_SMVCApplication : entities6
+SMVC_Entity "SMVC_EntityComponent 1..1" -- "SMVC_Entity30 1..1" SMVC_EntityComponent : entity29
+SMVC_DataAccessObject "SMVC_Entity17 1..1" -- "SMVC_DataAccessObject16 1..1" SMVC_Entity : forEntity15
+SMVC_Controller "SMVC_SMVCApplication 1..1" --* "SMVC_Controller 1..1" SMVC_SMVCApplication : homeController0
+SMVC_Link "SMVC_Page24 0..9999" --* "SMVC_Link 1..1" SMVC_Page : links23
+SMVC_Controller "SMVC_Page 1..1" *-- "SMVC_Controller12 1..1" SMVC_Page : page11
+SMVC_Controller "SMVC_Controller10 1..1" *-- "SMVC_Controller8 0..9999" SMVC_Controller : subController9
+SMVC_List "SMVC_SupportedOperation 1..1" *-- "SMVC_List 0..4" SMVC_SupportedOperation : supportedOperations31
+SMVC_Page "SMVC_View 1..1" *-- "SMVC_Page26 1..1" SMVC_View : view25
 @enduml

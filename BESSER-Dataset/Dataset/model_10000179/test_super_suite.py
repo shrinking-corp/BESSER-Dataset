@@ -818,9 +818,9 @@ def test_assoc_Hand_Card2_stub_double():
     partner = classes_Hand()
     setattr(partner, 'hand2', None)
     _safe_set(owner, 'hand3', partner)
-    assert getattr(partner, 'hand2') == owner
+    assert owner in getattr(partner, 'hand2')
     _safe_set(owner, 'hand3', None)
-    assert getattr(partner, 'hand2') is None
+    assert owner not in getattr(partner, 'hand2')
 
 
 

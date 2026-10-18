@@ -1,4 +1,8 @@
 @startuml
+' model: simplepdl
+' project: sampleModel
+' owner: User
+' description: New project
 class ProcessElement {
 }
 enum WorkSequenceType {
@@ -36,16 +40,16 @@ ProcessElement <|-- simplepdl_RequeteDeRessource
 ProcessElement <|-- simplepdl_Resources
 ProcessElement <|-- simplepdl_WorkDefinition
 ProcessElement <|-- simplepdl_WorkSequence
-simplepdl_Guidance "1..1" -- "0..9999" simplepdl_ProcessElement : elements8
-simplepdl_Guidance "1..1" -- "1..1" simplepdl_GuidanceLink : guidance16
-simplepdl_WorkDefinition "1..1" -- "0..9999" simplepdl_WorkSequence : linksToPredecessors1
-simplepdl_WorkDefinition "1..1" -- "0..9999" simplepdl_WorkSequence : linksToSuccessors2
-simplepdl_RequeteDeRessource "0..9999" -- "1..1" simplepdl_Resources : linktoresource10
-simplepdl_RequeteDeRessource "0..9999" -- "1..1" simplepdl_WorkDefinition : linktoresource4
-simplepdl_WorkDefinition "1..1" -- "1..1" simplepdl_WorkSequence : predecessor5
-simplepdl_Process "1..1" *-- "0..9999" simplepdl_ProcessElement : processElements0
-simplepdl_RequeteDeRessource "1..1" -- "1..1" simplepdl_Resources : resources12
-simplepdl_WorkDefinition "1..1" -- "1..1" simplepdl_WorkSequence : successor6
-simplepdl_RequeteDeRessource "1..1" -- "1..1" simplepdl_WorkDefinition : workdefinition13
-simplepdl_GuidanceLink "1..1" -- "1..1" simplepdl_WorkDefinition : workdefinition18
+simplepdl_Guidance "simplepdl_ProcessElement9 1..1" -- "simplepdl_Guidance 0..9999" simplepdl_ProcessElement : elements8
+simplepdl_Guidance "simplepdl_GuidanceLink 1..1" -- "simplepdl_Guidance17 1..1" simplepdl_GuidanceLink : guidance16
+simplepdl_WorkDefinition "WorkSequence 1..1" -- "successor 0..9999" simplepdl_WorkSequence : linksToPredecessors1
+simplepdl_WorkDefinition "WorkSequence3 1..1" -- "predecessor 0..9999" simplepdl_WorkSequence : linksToSuccessors2
+simplepdl_RequeteDeRessource "resources 0..9999" -- "RequeteDeRessource11 1..1" simplepdl_Resources : linktoresource10
+simplepdl_RequeteDeRessource "workdefinition 0..9999" -- "RequeteDeRessource 1..1" simplepdl_WorkDefinition : linktoresource4
+simplepdl_WorkDefinition "linksToSuccessors 1..1" -- "WorkDefinition 1..1" simplepdl_WorkSequence : predecessor5
+simplepdl_Process "simplepdl_ProcessElement 1..1" *-- "simplepdl_Process 0..9999" simplepdl_ProcessElement : processElements0
+simplepdl_RequeteDeRessource "Resources 1..1" -- "linktoresource 1..1" simplepdl_Resources : resources12
+simplepdl_WorkDefinition "linksToPredecessors 1..1" -- "WorkDefinition7 1..1" simplepdl_WorkSequence : successor6
+simplepdl_RequeteDeRessource "WorkDefinition15 1..1" -- "linktoresource14 1..1" simplepdl_WorkDefinition : workdefinition13
+simplepdl_GuidanceLink "simplepdl_WorkDefinition 1..1" -- "simplepdl_GuidanceLink19 1..1" simplepdl_WorkDefinition : workdefinition18
 @enduml

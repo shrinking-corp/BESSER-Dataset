@@ -1,4 +1,8 @@
 @startuml
+' model: build
+' project: sampleModel
+' owner: User
+' description: New project
 class AdviceGroup {
 }
 class BuildUnitCommand {
@@ -411,62 +415,62 @@ SinglePropertyFilter <|-- build_filter_RegexpFilter
 SinglePropertyFilter <|-- build_filter_SimplePatternFIlter
 resolver_DefaultResolver <|-- build_resolver_EFSResolver
 resolver_IEFSBasedAccess <|-- build_resolver_EFSResolver
-IFilter "0..1" -- "1..1" build_command_FilterAdvice : add92
-IAdvise "0..9999" --* "1..1" build_IClosure : advice20
-IAdvise "0..9999" --* "1..1" build_context_IBuildContext : advice43
-IAdvise "0..9999" --* "1..1" build_command_BuildUnitCommand : advice85
-IAdvise "0..9999" --* "1..1" build_command_AdviceGroup : advice95
-build_IBuildUnit "1..1" *-- "0..9999" build_IRequiredCapability : allRequiredCapabilities5
-build_IBuildPart "1..1" -- "1..1" build_PartCapability : buildPart33
-build_IBuildPart "1..1" -- "0..1" build_IBuildUnit : buildUnit16
-IFilter "0..9999" --* "1..1" build_filter_FilterGroup : filters97
-build_runtime_UpToDateExtension "1..1" -- "1..1" runtime_build_IUpToDatePolicy : instance64
-IMaterializer "1..1" -- "1..1" build_runtime_MaterializerExtension : instance65
-IMetaDataTranslatorFactory "0..1" -- "1..1" build_runtime_MetaDataTranslatorFactoryExtension : instance67
-IResolver "1..1" -- "1..1" build_runtime_ResolverExtension : instance68
-IExpr "0..1" --* "1..1" build_resolver_IResolver : location70
-Match "0..9999" --* "1..1" build_properties_replace : matchers76
-IMaterializer "0..1" -- "1..1" build_context_ImportOptions : materializer56
-MaterializerExtension "0..9999" --* "1..1" build_runtime_BuildRuntime : materializers58
-build_IBuildUnit "1..1" *-- "0..9999" build_IRequiredCapability : metaRequiredCapabilities2
-IExpr "0..9999" --* "1..1" build_properties_IFunction : operands74
-ImportOptions "0..1" -- "1..1" build_context_IResolution : options54
-ResolutionOptions "0..1" -- "1..1" build_command_IUnitRequest : options77
-build_IBuildUnit "1..1" *-- "0..9999" build_PartCapability : partCapabilities13
-build_IBuildPart "0..9999" --* "1..1" build_IBuildUnit : parts0
-build_IArtifactsPart "1..1" *-- "0..9999" build_IPathGroup : paths17
-build_IPathGroup "0..1" --* "1..1" build_IProducedPart : paths24
-build_IPathGroup "0..1" --* "1..1" build_ResultingPathGroup : paths31
-build_IActionPart "1..1" -- "1..1" build_IActionResult : producedBy23
-build_IProducedPart "1..1" -- "1..1" build_IResultingParts : producedBy26
-build_IProducedPart "0..9999" -- "1..1" build_IResultingParts : producedParts27
-build_IActionPart "1..1" *-- "0..1" build_IActionResult : produces18
-build_PropertyScope "1..1" *-- "0..1" build_StringProperties : properties35
-build_command_BuildUnitCommand "1..1" *-- "0..1" command_build_PropertyScope : properties80
-build_command_PropertyAdvice "1..1" *-- "0..1" command_build_PropertyScope : properties89
-build_IBuildUnit "1..1" *-- "0..9999" build_ICapability : providedCapabilities8
-build_IBuildPart "1..1" -- "0..9999" build_PartCapability : publishedCapabilities15
-IFilter "0..1" -- "1..1" build_command_FilterAdvice : remove91
-IUnitRequest "0..9999" --* "1..1" build_context_IBuildContext : requests38
-IUnitRequest "1..9999" --* "1..1" build_command_BuildUnitCommand : requests78
-build_IBuildUnit "1..1" *-- "0..9999" build_IRequiredCapability : requiredCapabilities1
-build_IRequiredCapability "1..1" -- "1..1" build_Requirement : requiredCapability29
-build_IBuildPart "1..1" -- "1..1" build_PartRequirement : requiredPart22
-build_IPrerequisites "1..1" *-- "0..9999" build_IRequirement : requiredParts21
-build_context_IResolution "1..1" -- "0..1" context_build_ICapability : resolution49
-IResolution "0..9999" --* "1..1" build_context_IBuildContext : resolutions39
-IResolver "0..1" --* "1..1" build_context_IBuildContext : resolver46
-IResolver "0..1" -- "1..1" build_command_BuildUnitCommand : resolver82
-ResolverExtension "0..9999" --* "1..1" build_runtime_BuildRuntime : resolvers62
-IResolver "0..9999" --* "1..1" build_resolver_ResolverGroup : resolvers71
-build_context_IResolution "1..1" -- "1..1" context_build_IRequiredCapability : resolves48
-ContextNodeSelector "0..1" -- "1..1" build_command_IAdvise : selector88
-build_IGenericUnit "1..1" -- "1..1" build_IPathGroup : self36
-build_IBuildUnit "0..1" --* "1..1" build_IBuildUnit : selfCapability11
-IResolution "0..9999" --* "1..1" build_context_IResolution : subResolutions51
-IMetaDataTranslator "0..1" --* "1..1" build_resolver_DefaultResolver : translator73
-MetaDataTranslatorFactoryExtension "0..9999" --* "1..1" build_runtime_BuildRuntime : unitTypes60
-build_context_IBuildContext "1..1" *-- "0..9999" context_build_IBuildUnit : units41
-UpToDateExtension "0..9999" --* "1..1" build_runtime_BuildRuntime : upToDatePolicies57
-build_IActionPart "1..1" -- "0..1" build_IUpToDatePolicy : upToDatePolicy19
+IFilter "build_command_FilterAdvice93 0..1" -- "IFilter94 1..1" build_command_FilterAdvice : add92
+IAdvise "build_IClosure 0..9999" --* "IAdvise 1..1" build_IClosure : advice20
+IAdvise "build_context_IBuildContext44 0..9999" --* "IAdvise45 1..1" build_context_IBuildContext : advice43
+IAdvise "build_command_BuildUnitCommand86 0..9999" --* "IAdvise87 1..1" build_command_BuildUnitCommand : advice85
+IAdvise "build_command_AdviceGroup 0..9999" --* "IAdvise96 1..1" build_command_AdviceGroup : advice95
+build_IBuildUnit "build_IRequiredCapability7 1..1" *-- "build_IBuildUnit6 0..9999" build_IRequiredCapability : allRequiredCapabilities5
+build_IBuildPart "publishedCapabilities 1..1" -- "IBuildPart34 1..1" build_PartCapability : buildPart33
+build_IBuildPart "IBuildUnit 1..1" -- "parts 0..1" build_IBuildUnit : buildUnit16
+IFilter "build_filter_FilterGroup 0..9999" --* "IFilter98 1..1" build_filter_FilterGroup : filters97
+build_runtime_UpToDateExtension "runtime_build_IUpToDatePolicy 1..1" -- "build_runtime_UpToDateExtension 1..1" runtime_build_IUpToDatePolicy : instance64
+IMaterializer "build_runtime_MaterializerExtension 1..1" -- "IMaterializer66 1..1" build_runtime_MaterializerExtension : instance65
+IMetaDataTranslatorFactory "build_runtime_MetaDataTranslatorFactoryExtension 0..1" -- "IMetaDataTranslatorFactory 1..1" build_runtime_MetaDataTranslatorFactoryExtension : instance67
+IResolver "build_runtime_ResolverExtension 1..1" -- "IResolver69 1..1" build_runtime_ResolverExtension : instance68
+IExpr "build_resolver_IResolver 0..1" --* "IExpr 1..1" build_resolver_IResolver : location70
+Match "build_properties_replace 0..9999" --* "Match 1..1" build_properties_replace : matchers76
+IMaterializer "build_context_ImportOptions 0..1" -- "IMaterializer 1..1" build_context_ImportOptions : materializer56
+MaterializerExtension "build_runtime_BuildRuntime59 0..9999" --* "MaterializerExtension 1..1" build_runtime_BuildRuntime : materializers58
+build_IBuildUnit "build_IRequiredCapability4 1..1" *-- "build_IBuildUnit3 0..9999" build_IRequiredCapability : metaRequiredCapabilities2
+IExpr "build_properties_IFunction 0..9999" --* "IExpr75 1..1" build_properties_IFunction : operands74
+ImportOptions "build_context_IResolution55 0..1" -- "ImportOptions 1..1" build_context_IResolution : options54
+ResolutionOptions "build_command_IUnitRequest 0..1" -- "ResolutionOptions 1..1" build_command_IUnitRequest : options77
+build_IBuildUnit "build_PartCapability 1..1" *-- "build_IBuildUnit14 0..9999" build_PartCapability : partCapabilities13
+build_IBuildPart "buildUnit 0..9999" --* "IBuildPart 1..1" build_IBuildUnit : parts0
+build_IArtifactsPart "build_IPathGroup 1..1" *-- "build_IArtifactsPart 0..9999" build_IPathGroup : paths17
+build_IPathGroup "build_IProducedPart 0..1" --* "build_IPathGroup25 1..1" build_IProducedPart : paths24
+build_IPathGroup "build_ResultingPathGroup 0..1" --* "build_IPathGroup32 1..1" build_ResultingPathGroup : paths31
+build_IActionPart "produces 1..1" -- "IActionPart 1..1" build_IActionResult : producedBy23
+build_IProducedPart "IResultingParts 1..1" -- "producedParts 1..1" build_IResultingParts : producedBy26
+build_IProducedPart "producedBy28 0..9999" -- "IProducedPart 1..1" build_IResultingParts : producedParts27
+build_IActionPart "IActionResult 1..1" *-- "producedBy 0..1" build_IActionResult : produces18
+build_PropertyScope "build_StringProperties 1..1" *-- "build_PropertyScope 0..1" build_StringProperties : properties35
+build_command_BuildUnitCommand "command_build_PropertyScope 1..1" *-- "build_command_BuildUnitCommand81 0..1" command_build_PropertyScope : properties80
+build_command_PropertyAdvice "command_build_PropertyScope90 1..1" *-- "build_command_PropertyAdvice 0..1" command_build_PropertyScope : properties89
+build_IBuildUnit "build_ICapability 1..1" *-- "build_IBuildUnit9 0..9999" build_ICapability : providedCapabilities8
+build_IBuildPart "PartCapability 1..1" -- "buildPart 0..9999" build_PartCapability : publishedCapabilities15
+IFilter "build_command_FilterAdvice 0..1" -- "IFilter 1..1" build_command_FilterAdvice : remove91
+IUnitRequest "build_context_IBuildContext 0..9999" --* "IUnitRequest 1..1" build_context_IBuildContext : requests38
+IUnitRequest "build_command_BuildUnitCommand 1..9999" --* "IUnitRequest79 1..1" build_command_BuildUnitCommand : requests78
+build_IBuildUnit "build_IRequiredCapability 1..1" *-- "build_IBuildUnit 0..9999" build_IRequiredCapability : requiredCapabilities1
+build_IRequiredCapability "build_Requirement 1..1" -- "build_IRequiredCapability30 1..1" build_Requirement : requiredCapability29
+build_IBuildPart "build_PartRequirement 1..1" -- "build_IBuildPart 1..1" build_PartRequirement : requiredPart22
+build_IPrerequisites "build_IRequirement 1..1" *-- "build_IPrerequisites 0..9999" build_IRequirement : requiredParts21
+build_context_IResolution "context_build_ICapability 1..1" -- "build_context_IResolution50 0..1" context_build_ICapability : resolution49
+IResolution "build_context_IBuildContext40 0..9999" --* "IResolution 1..1" build_context_IBuildContext : resolutions39
+IResolver "build_context_IBuildContext47 0..1" --* "IResolver 1..1" build_context_IBuildContext : resolver46
+IResolver "build_command_BuildUnitCommand83 0..1" -- "IResolver84 1..1" build_command_BuildUnitCommand : resolver82
+ResolverExtension "build_runtime_BuildRuntime63 0..9999" --* "ResolverExtension 1..1" build_runtime_BuildRuntime : resolvers62
+IResolver "build_resolver_ResolverGroup 0..9999" --* "IResolver72 1..1" build_resolver_ResolverGroup : resolvers71
+build_context_IResolution "context_build_IRequiredCapability 1..1" -- "build_context_IResolution 1..1" context_build_IRequiredCapability : resolves48
+ContextNodeSelector "build_command_IAdvise 0..1" -- "ContextNodeSelector 1..1" build_command_IAdvise : selector88
+build_IGenericUnit "build_IPathGroup37 1..1" -- "build_IGenericUnit 1..1" build_IPathGroup : self36
+build_IBuildUnit "build_IBuildUnit10 0..1" --* "build_IBuildUnit12 1..1" build_IBuildUnit : selfCapability11
+IResolution "build_context_IResolution52 0..9999" --* "IResolution53 1..1" build_context_IResolution : subResolutions51
+IMetaDataTranslator "build_resolver_DefaultResolver 0..1" --* "IMetaDataTranslator 1..1" build_resolver_DefaultResolver : translator73
+MetaDataTranslatorFactoryExtension "build_runtime_BuildRuntime61 0..9999" --* "MetaDataTranslatorFactoryExtension 1..1" build_runtime_BuildRuntime : unitTypes60
+build_context_IBuildContext "context_build_IBuildUnit 1..1" *-- "build_context_IBuildContext42 0..9999" context_build_IBuildUnit : units41
+UpToDateExtension "build_runtime_BuildRuntime 0..9999" --* "UpToDateExtension 1..1" build_runtime_BuildRuntime : upToDatePolicies57
+build_IActionPart "build_IUpToDatePolicy 1..1" -- "build_IActionPart 0..1" build_IUpToDatePolicy : upToDatePolicy19
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: errorstm
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractState {
 }
 enum ActionKind {
@@ -30,12 +34,12 @@ AbstractState <|-- errorstm_CompositeState
 AbstractState <|-- errorstm_FinalState
 AbstractState <|-- errorstm_InitialState
 AbstractState <|-- errorstm_SimpleState
-errorstm_AbstractState "1..1" *-- "0..9999" errorstm_Action : actions6
-errorstm_AbstractState "1..1" -- "1..1" errorstm_Transition : from_0
-errorstm_AbstractState "1..1" -- "0..9999" errorstm_Transition : incoming3
-errorstm_AbstractState "1..1" -- "0..9999" errorstm_Transition : outgoing4
-errorstm_CompositeState "0..1" --* "1..1" errorstm_StateMachine : state11
-errorstm_AbstractState "0..9999" --* "1..1" errorstm_CompositeState : states7
-errorstm_AbstractState "1..1" -- "1..1" errorstm_Transition : to1
-errorstm_CompositeState "1..1" *-- "0..9999" errorstm_Transition : transitions9
+errorstm_AbstractState "errorstm_Action 1..1" *-- "errorstm_AbstractState 0..9999" errorstm_Action : actions6
+errorstm_AbstractState "outgoing 1..1" -- "AbstractState 1..1" errorstm_Transition : from_0
+errorstm_AbstractState "Transition 1..1" -- "to 0..9999" errorstm_Transition : incoming3
+errorstm_AbstractState "Transition5 1..1" -- "from_ 0..9999" errorstm_Transition : outgoing4
+errorstm_CompositeState "errorstm_StateMachine 0..1" --* "errorstm_CompositeState12 1..1" errorstm_StateMachine : state11
+errorstm_AbstractState "errorstm_CompositeState 0..9999" --* "errorstm_AbstractState8 1..1" errorstm_CompositeState : states7
+errorstm_AbstractState "incoming 1..1" -- "AbstractState2 1..1" errorstm_Transition : to1
+errorstm_CompositeState "errorstm_Transition 1..1" *-- "errorstm_CompositeState10 0..9999" errorstm_Transition : transitions9
 @enduml

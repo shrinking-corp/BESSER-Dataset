@@ -2857,26 +2857,12 @@ def test_hyp_dsl_methoddeclarator_squareBrackets_setter(instance):
 
 
 
-@given(instance=dsl_ExplicitConstructorInvocation_strategy)
-@settings(max_examples=50)
-def test_hyp_dsl_explicitconstructorinvocation_instantiation(instance):
-    assert isinstance(instance, dsl_ExplicitConstructorInvocation)
 
 
 
-@given(instance=dsl_ExplicitConstructorInvocation_strategy)
-def test_hyp_dsl_explicitconstructorinvocation_parent_setter(instance):
-    original = instance.parent
-    instance.parent = original
-    assert instance.parent == original
 
 
 
-@given(instance=dsl_ExplicitConstructorInvocation_strategy)
-def test_hyp_dsl_explicitconstructorinvocation_self_setter(instance):
-    original = instance.self
-    instance.self = original
-    assert instance.self == original
 
 
 
@@ -8904,9 +8890,9 @@ def test_assoc_constants41_stub_double():
     partner = dsl_EnumBody()
     setattr(partner, 'dsl_EnumBody42', None)
     _safe_set(owner, 'dsl_EnumConstant', partner)
-    assert getattr(partner, 'dsl_EnumBody42') == owner
+    assert owner in getattr(partner, 'dsl_EnumBody42')
     _safe_set(owner, 'dsl_EnumConstant', None)
-    assert getattr(partner, 'dsl_EnumBody42') is None
+    assert owner not in getattr(partner, 'dsl_EnumBody42')
 
 
 def test_assoc_continueSt327_stub_double():
@@ -8964,9 +8950,9 @@ def test_assoc_decls470_stub_double():
     partner = dsl_AnnotationTypeBody()
     setattr(partner, 'dsl_AnnotationTypeBody471', None)
     _safe_set(owner, 'dsl_AnnotationTypeMemberDeclaration', partner)
-    assert getattr(partner, 'dsl_AnnotationTypeBody471') == owner
+    assert owner in getattr(partner, 'dsl_AnnotationTypeBody471')
     _safe_set(owner, 'dsl_AnnotationTypeMemberDeclaration', None)
-    assert getattr(partner, 'dsl_AnnotationTypeBody471') is None
+    assert owner not in getattr(partner, 'dsl_AnnotationTypeBody471')
 
 
 def test_assoc_defaultVal478_stub_double():
@@ -9069,9 +9055,9 @@ def test_assoc_expr283_stub_double():
     partner = dsl_ArgumentList()
     setattr(partner, 'dsl_ArgumentList284', None)
     _safe_set(owner, 'dsl_Expression285', partner)
-    assert getattr(partner, 'dsl_ArgumentList284') == owner
+    assert owner in getattr(partner, 'dsl_ArgumentList284')
     _safe_set(owner, 'dsl_Expression285', None)
-    assert getattr(partner, 'dsl_ArgumentList284') is None
+    assert owner not in getattr(partner, 'dsl_ArgumentList284')
 
 
 def test_assoc_expr313_stub_double():
@@ -9144,9 +9130,9 @@ def test_assoc_expr419_stub_double():
     partner = dsl_StatementExpressionList()
     setattr(partner, 'dsl_StatementExpressionList420', None)
     _safe_set(owner, 'dsl_StatementExpression421', partner)
-    assert getattr(partner, 'dsl_StatementExpressionList420') == owner
+    assert owner in getattr(partner, 'dsl_StatementExpressionList420')
     _safe_set(owner, 'dsl_StatementExpression421', None)
-    assert getattr(partner, 'dsl_StatementExpressionList420') is None
+    assert owner not in getattr(partner, 'dsl_StatementExpressionList420')
 
 
 def test_assoc_expr425_stub_double():
@@ -9429,9 +9415,9 @@ def test_assoc_impls30_stub_double():
     partner = dsl_ExtendsList()
     setattr(partner, 'dsl_ExtendsList31', None)
     _safe_set(owner, 'dsl_ClassOrInterfaceType32', partner)
-    assert getattr(partner, 'dsl_ExtendsList31') == owner
+    assert owner in getattr(partner, 'dsl_ExtendsList31')
     _safe_set(owner, 'dsl_ClassOrInterfaceType32', None)
-    assert getattr(partner, 'dsl_ExtendsList31') is None
+    assert owner not in getattr(partner, 'dsl_ExtendsList31')
 
 
 def test_assoc_impls36_stub_double():
@@ -9579,9 +9565,9 @@ def test_assoc_names146_stub_double():
     partner = dsl_NameList()
     setattr(partner, 'dsl_NameList147', None)
     _safe_set(owner, 'dsl_Name148', partner)
-    assert getattr(partner, 'dsl_NameList147') == owner
+    assert owner in getattr(partner, 'dsl_NameList147')
     _safe_set(owner, 'dsl_Name148', None)
-    assert getattr(partner, 'dsl_NameList147') is None
+    assert owner not in getattr(partner, 'dsl_NameList147')
 
 
 def test_assoc_nestedClassEnumType65_stub_double():
@@ -9609,9 +9595,9 @@ def test_assoc_pairs452_stub_double():
     partner = dsl_MemberValuePairs()
     setattr(partner, 'dsl_MemberValuePairs453', None)
     _safe_set(owner, 'dsl_MemberValuePair', partner)
-    assert getattr(partner, 'dsl_MemberValuePairs453') == owner
+    assert owner in getattr(partner, 'dsl_MemberValuePairs453')
     _safe_set(owner, 'dsl_MemberValuePair', None)
-    assert getattr(partner, 'dsl_MemberValuePairs453') is None
+    assert owner not in getattr(partner, 'dsl_MemberValuePairs453')
 
 
 def test_assoc_params110_stub_double():
@@ -9624,9 +9610,9 @@ def test_assoc_params110_stub_double():
     partner = dsl_FormalParameters()
     setattr(partner, 'dsl_FormalParameters111', None)
     _safe_set(owner, 'dsl_FormalParameter', partner)
-    assert getattr(partner, 'dsl_FormalParameters111') == owner
+    assert owner in getattr(partner, 'dsl_FormalParameters111')
     _safe_set(owner, 'dsl_FormalParameter', None)
-    assert getattr(partner, 'dsl_FormalParameters111') is None
+    assert owner not in getattr(partner, 'dsl_FormalParameters111')
 
 
 def test_assoc_params440_stub_double():
@@ -9639,9 +9625,9 @@ def test_assoc_params440_stub_double():
     partner = dsl_TryStatement()
     setattr(partner, 'dsl_TryStatement441', None)
     _safe_set(owner, 'dsl_FormalParameter442', partner)
-    assert getattr(partner, 'dsl_TryStatement441') == owner
+    assert owner in getattr(partner, 'dsl_TryStatement441')
     _safe_set(owner, 'dsl_FormalParameter442', None)
-    assert getattr(partner, 'dsl_TryStatement441') is None
+    assert owner not in getattr(partner, 'dsl_TryStatement441')
 
 
 def test_assoc_preDecrExpr197_stub_double():
@@ -9819,9 +9805,9 @@ def test_assoc_switchLabel378_stub_double():
     partner = dsl_SwitchStatement()
     setattr(partner, 'dsl_SwitchStatement379', None)
     _safe_set(owner, 'dsl_SwitchLabel', partner)
-    assert getattr(partner, 'dsl_SwitchStatement379') == owner
+    assert owner in getattr(partner, 'dsl_SwitchStatement379')
     _safe_set(owner, 'dsl_SwitchLabel', None)
-    assert getattr(partner, 'dsl_SwitchStatement379') is None
+    assert owner not in getattr(partner, 'dsl_SwitchStatement379')
 
 
 def test_assoc_throwsList95_stub_double():
@@ -9954,9 +9940,9 @@ def test_assoc_typeKind33_stub_double():
     partner = dsl_ImplementsList()
     setattr(partner, 'dsl_ImplementsList34', None)
     _safe_set(owner, 'dsl_ClassOrInterfaceType35', partner)
-    assert getattr(partner, 'dsl_ImplementsList34') == owner
+    assert owner in getattr(partner, 'dsl_ImplementsList34')
     _safe_set(owner, 'dsl_ClassOrInterfaceType35', None)
-    assert getattr(partner, 'dsl_ImplementsList34') is None
+    assert owner not in getattr(partner, 'dsl_ImplementsList34')
 
 
 def test_assoc_typeKind54_stub_double():
@@ -9969,9 +9955,9 @@ def test_assoc_typeKind54_stub_double():
     partner = dsl_TypeBound()
     setattr(partner, 'dsl_TypeBound55', None)
     _safe_set(owner, 'dsl_ClassOrInterfaceType56', partner)
-    assert getattr(partner, 'dsl_TypeBound55') == owner
+    assert owner in getattr(partner, 'dsl_TypeBound55')
     _safe_set(owner, 'dsl_ClassOrInterfaceType56', None)
-    assert getattr(partner, 'dsl_TypeBound55') is None
+    assert owner not in getattr(partner, 'dsl_TypeBound55')
 
 
 def test_assoc_typeParams20_stub_double():
@@ -9999,9 +9985,9 @@ def test_assoc_typeParams50_stub_double():
     partner = dsl_TypeParameters()
     setattr(partner, 'dsl_TypeParameters51', None)
     _safe_set(owner, 'dsl_TypeParameter', partner)
-    assert getattr(partner, 'dsl_TypeParameters51') == owner
+    assert owner in getattr(partner, 'dsl_TypeParameters51')
     _safe_set(owner, 'dsl_TypeParameter', None)
-    assert getattr(partner, 'dsl_TypeParameters51') is None
+    assert owner not in getattr(partner, 'dsl_TypeParameters51')
 
 
 def test_assoc_typeParams90_stub_double():
@@ -10081,40 +10067,18 @@ def test_assoc_wildCard138_stub_double():
 
 
 
-from enum import Enum
 from python_code import Visibility
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(Visibility.PUBLIC, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(Visibility.PUBLIC, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(Visibility.PUBLIC, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(Visibility.PUBLIC, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(Visibility.PUBLIC, 'PUBLIC') == Visibility.PUBLIC
-
 from python_code import dsl_BreakStatement
 from python_code import dsl_Statement
 
 def test_dsl_BreakStatement___init__():
     assert dsl_BreakStatement.__init__(dsl_BreakStatement('', dsl_BreakStatement=dsl_Statement()), '', dsl_BreakStatement=dsl_Statement()) == None
-
 from python_code import dsl_ContinueStatement
 from python_code import dsl_Statement
 
 def test_dsl_ContinueStatement___init__():
     assert dsl_ContinueStatement.__init__(dsl_ContinueStatement('', dsl_ContinueStatement=dsl_Statement()), '', dsl_ContinueStatement=dsl_Statement()) == None
-
 from python_code import dsl_Arguments
 from python_code import dsl_ClassOrInterfaceBody
 from python_code import dsl_EnumBody
@@ -10122,27 +10086,23 @@ from python_code import dsl_EnumConstant
 
 def test_dsl_EnumConstant___init__():
     assert dsl_EnumConstant.__init__(dsl_EnumConstant('', dsl_EnumConstant=dsl_EnumBody(), dsl_EnumConstant46=dsl_Arguments(), dsl_EnumConstant48=dsl_ClassOrInterfaceBody()), '', dsl_EnumConstant=dsl_EnumBody(), dsl_EnumConstant46=dsl_Arguments(), dsl_EnumConstant48=dsl_ClassOrInterfaceBody()) == None
-
 from python_code import dsl_Block
 from python_code import dsl_ClassOrInterfaceBodyDeclaration
 from python_code import dsl_Initializer
 
 def test_dsl_Initializer___init__():
     assert dsl_Initializer.__init__(dsl_Initializer(True, dsl_Initializer=dsl_ClassOrInterfaceBodyDeclaration(), dsl_Initializer124=dsl_Block()), False, dsl_Initializer=dsl_ClassOrInterfaceBodyDeclaration(), dsl_Initializer124=dsl_Block()) == None
-
 from python_code import dsl_LabeledStatement
 from python_code import dsl_Statement
 
 def test_dsl_LabeledStatement___init__():
     assert dsl_LabeledStatement.__init__(dsl_LabeledStatement('', dsl_LabeledStatement=dsl_Statement(), dsl_LabeledStatement344=dsl_Statement()), '', dsl_LabeledStatement=dsl_Statement(), dsl_LabeledStatement344=dsl_Statement()) == None
-
 from python_code import dsl_MemberValue
 from python_code import dsl_MemberValuePair
 from python_code import dsl_MemberValuePairs
 
 def test_dsl_MemberValuePair___init__():
     assert dsl_MemberValuePair.__init__(dsl_MemberValuePair('', dsl_MemberValuePair=dsl_MemberValuePairs(), dsl_MemberValuePair455=dsl_MemberValue()), '', dsl_MemberValuePair=dsl_MemberValuePairs(), dsl_MemberValuePair455=dsl_MemberValue()) == None
-
 from python_code import dsl_TypeBound
 from python_code import dsl_TypeParameter
 from python_code import dsl_TypeParameters

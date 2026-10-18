@@ -329,28 +329,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=statemachine_State_strategy)
-@settings(max_examples=30)
-def test_hyp_statemachine_state_printreachable_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.printReachable()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.printReachable).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'printReachable' in statemachine_State is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'printReachable' in statemachine_State did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'printReachable' in statemachine_State is not implemented or raised an error")
 
 
 
@@ -433,28 +411,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=statemachine_StateMachine_strategy)
-@settings(max_examples=30)
-def test_hyp_statemachine_statemachine_printreachable_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.printReachable()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.printReachable).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'printReachable' in statemachine_StateMachine is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'printReachable' in statemachine_StateMachine did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'printReachable' in statemachine_StateMachine is not implemented or raised an error")
 
 
 import warnings
@@ -463,28 +419,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=statemachine_Declaration_strategy)
-@settings(max_examples=30)
-def test_hyp_statemachine_declaration_printreachable_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.printReachable()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.printReachable).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'printReachable' in statemachine_Declaration is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'printReachable' in statemachine_Declaration did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'printReachable' in statemachine_Declaration is not implemented or raised an error")
 
 
 # ----- SECTION B: test_structural_full.py (deterministic-first suite) -----
@@ -1070,7 +1004,6 @@ from python_code import statemachine_NormalState
 
 def test_statemachine_Action___init__():
     assert statemachine_Action.__init__(statemachine_Action('', '\x00', statemachine_Action=statemachine_NormalState()), '\x00\x00', '', statemachine_Action=statemachine_NormalState()) == None
-
 from python_code import statemachine_StateMachine
 
 def test_statemachine_StateMachine___init__():

@@ -3085,30 +3085,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=java__QueryCollection_strategy)
-@settings(max_examples=30)
-def test_hyp_java__querycollection_textelementinjavadoc_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.textElementInJavadoc(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.textElementInJavadoc).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'textElementInJavadoc' in java__QueryCollection is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'textElementInJavadoc' in java__QueryCollection did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'textElementInJavadoc' in java__QueryCollection is not implemented or raised an error")
 
 import warnings
 import copy
@@ -3116,28 +3092,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=java__QueryCollection_strategy)
-@settings(max_examples=30)
-def test_hyp_java__querycollection_thrownexceptions_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.thrownExceptions()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.thrownExceptions).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'thrownExceptions' in java__QueryCollection is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'thrownExceptions' in java__QueryCollection did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'thrownExceptions' in java__QueryCollection is not implemented or raised an error")
 
 import warnings
 import copy
@@ -3145,30 +3099,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=java__QueryCollection_strategy)
-@settings(max_examples=30)
-def test_hyp_java__querycollection_emptytextelementinjavadoc_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.emptyTextElementInJavadoc(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.emptyTextElementInJavadoc).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'emptyTextElementInJavadoc' in java__QueryCollection is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'emptyTextElementInJavadoc' in java__QueryCollection did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'emptyTextElementInJavadoc' in java__QueryCollection is not implemented or raised an error")
 
 import warnings
 import copy
@@ -3176,28 +3106,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=java__QueryCollection_strategy)
-@settings(max_examples=30)
-def test_hyp_java__querycollection_grabats09_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.grabats09()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.grabats09).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'grabats09' in java__QueryCollection is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'grabats09' in java__QueryCollection did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'grabats09' in java__QueryCollection is not implemented or raised an error")
 
 import warnings
 import copy
@@ -3205,28 +3113,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=java__QueryCollection_strategy)
-@settings(max_examples=30)
-def test_hyp_java__querycollection_invisiblemethods_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.invisibleMethods()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.invisibleMethods).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'invisibleMethods' in java__QueryCollection is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'invisibleMethods' in java__QueryCollection did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'invisibleMethods' in java__QueryCollection is not implemented or raised an error")
 
 
 
@@ -7866,9 +7752,9 @@ def test_assoc_comments40_stub_double():
     partner = java__ASTNode()
     setattr(partner, 'java__ASTNode', None)
     _safe_set(owner, 'java__Comment41', partner)
-    assert getattr(partner, 'java__ASTNode') == owner
+    assert owner in getattr(partner, 'java__ASTNode')
     _safe_set(owner, 'java__Comment41', None)
-    assert getattr(partner, 'java__ASTNode') is None
+    assert owner not in getattr(partner, 'java__ASTNode')
 
 
 def test_assoc_commentsAfterBody16_stub_double():
@@ -7881,9 +7767,9 @@ def test_assoc_commentsAfterBody16_stub_double():
     partner = java__AbstractTypeDeclaration()
     setattr(partner, 'java__AbstractTypeDeclaration17', None)
     _safe_set(owner, 'java__Comment18', partner)
-    assert getattr(partner, 'java__AbstractTypeDeclaration17') == owner
+    assert owner in getattr(partner, 'java__AbstractTypeDeclaration17')
     _safe_set(owner, 'java__Comment18', None)
-    assert getattr(partner, 'java__AbstractTypeDeclaration17') is None
+    assert owner not in getattr(partner, 'java__AbstractTypeDeclaration17')
 
 
 def test_assoc_commentsBeforeBody15_stub_double():
@@ -7896,9 +7782,9 @@ def test_assoc_commentsBeforeBody15_stub_double():
     partner = java__AbstractTypeDeclaration()
     setattr(partner, 'java__AbstractTypeDeclaration', None)
     _safe_set(owner, 'java__Comment', partner)
-    assert getattr(partner, 'java__AbstractTypeDeclaration') == owner
+    assert owner in getattr(partner, 'java__AbstractTypeDeclaration')
     _safe_set(owner, 'java__Comment', None)
-    assert getattr(partner, 'java__AbstractTypeDeclaration') is None
+    assert owner not in getattr(partner, 'java__AbstractTypeDeclaration')
 
 
 def test_assoc_elementType78_stub_double():
@@ -7941,9 +7827,9 @@ def test_assoc_entryAttributes208_stub_double():
     partner = java__Manifest()
     setattr(partner, 'java__Manifest209', None)
     _safe_set(owner, 'java__ManifestEntry', partner)
-    assert getattr(partner, 'java__Manifest209') == owner
+    assert owner in getattr(partner, 'java__Manifest209')
     _safe_set(owner, 'java__ManifestEntry', None)
-    assert getattr(partner, 'java__Manifest209') is None
+    assert owner not in getattr(partner, 'java__Manifest209')
 
 
 def test_assoc_exception99_stub_double():
@@ -8061,9 +7947,9 @@ def test_assoc_mainAttributes206_stub_double():
     partner = java__Manifest()
     setattr(partner, 'java__Manifest207', None)
     _safe_set(owner, 'java__ManifestAttribute', partner)
-    assert getattr(partner, 'java__Manifest207') == owner
+    assert owner in getattr(partner, 'java__Manifest207')
     _safe_set(owner, 'java__ManifestAttribute', None)
-    assert getattr(partner, 'java__Manifest207') is None
+    assert owner not in getattr(partner, 'java__Manifest207')
 
 
 def test_assoc_manifest33_stub_double():
@@ -8301,9 +8187,9 @@ def test_assoc_parameters1_stub_double():
     partner = java__AbstractMethodDeclaration()
     setattr(partner, 'methodDeclaration', None)
     _safe_set(owner, 'SingleVariableDeclaration', partner)
-    assert getattr(partner, 'methodDeclaration') == owner
+    assert owner in getattr(partner, 'methodDeclaration')
     _safe_set(owner, 'SingleVariableDeclaration', None)
-    assert getattr(partner, 'methodDeclaration') is None
+    assert owner not in getattr(partner, 'methodDeclaration')
 
 
 def test_assoc_parameters230_stub_double():
@@ -8316,9 +8202,9 @@ def test_assoc_parameters230_stub_double():
     partner = java__MethodRef()
     setattr(partner, 'java__MethodRef231', None)
     _safe_set(owner, 'java__MethodRefParameter', partner)
-    assert getattr(partner, 'java__MethodRef231') == owner
+    assert owner in getattr(partner, 'java__MethodRef231')
     _safe_set(owner, 'java__MethodRefParameter', None)
-    assert getattr(partner, 'java__MethodRef231') is None
+    assert owner not in getattr(partner, 'java__MethodRef231')
 
 
 def test_assoc_returnType217_stub_double():
@@ -8376,9 +8262,9 @@ def test_assoc_tags200_stub_double():
     partner = java__Javadoc()
     setattr(partner, 'java__Javadoc', None)
     _safe_set(owner, 'java__TagElement', partner)
-    assert getattr(partner, 'java__Javadoc') == owner
+    assert owner in getattr(partner, 'java__Javadoc')
     _safe_set(owner, 'java__TagElement', None)
-    assert getattr(partner, 'java__Javadoc') is None
+    assert owner not in getattr(partner, 'java__Javadoc')
 
 
 def test_assoc_type103_stub_double():
@@ -8503,172 +8389,46 @@ def test_assoc_variableDeclarationExpression256_stub_double():
 
 
 
-from enum import Enum
 from python_code import AssignmentKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(AssignmentKind.ASSIGN, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(AssignmentKind.ASSIGN, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(AssignmentKind.ASSIGN, '', 0, 0) == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(AssignmentKind.ASSIGN, '')
-
-def test_Enum___new___2():
-    assert Enum.__new__(AssignmentKind.ASSIGN, 'ASSIGN') == AssignmentKind.ASSIGN
-
-from enum import Enum
 from python_code import InfixExpressionKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(InfixExpressionKind.PLUS, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(InfixExpressionKind.PLUS, 0, '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(InfixExpressionKind.PLUS, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(InfixExpressionKind.PLUS, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(InfixExpressionKind.TIMES, 'OR') == InfixExpressionKind.OR
-
-from enum import Enum
 from python_code import InheritanceKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(InheritanceKind.none, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(InheritanceKind.none, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(InheritanceKind.none, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(InheritanceKind.none, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(InheritanceKind.none, 'none') == InheritanceKind.none
-
-from enum import Enum
 from python_code import PostfixExpressionKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(PostfixExpressionKind.DECREMENT, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(PostfixExpressionKind.DECREMENT, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(PostfixExpressionKind.INCREMENT, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(PostfixExpressionKind.DECREMENT, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(PostfixExpressionKind.DECREMENT, 'DECREMENT') == PostfixExpressionKind.DECREMENT
-
-from enum import Enum
 from python_code import PrefixExpressionKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(PrefixExpressionKind.PLUS, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(PrefixExpressionKind.NOT, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(PrefixExpressionKind.NOT, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(PrefixExpressionKind.NOT, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(PrefixExpressionKind.NOT, 'NOT') == PrefixExpressionKind.NOT
-
-from enum import Enum
 from python_code import VisibilityKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(VisibilityKind.public, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(VisibilityKind.none, '', '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(VisibilityKind.none, '', '', '') == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(VisibilityKind.none, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(VisibilityKind.none, 'none') == VisibilityKind.none
-
 from python_code import java__ArrayType
 from python_code import java__TypeAccess
 
 def test_java__ArrayType___init__():
     assert java__ArrayType.__init__(java__ArrayType(0, java__ArrayType=java__TypeAccess()), 0, java__ArrayType=java__TypeAccess()) == None
-
 from python_code import java__Assignment
 from python_code import java__Expression
 
 def test_java__Assignment___init__():
     assert java__Assignment.__init__(java__Assignment('', java__Assignment=java__Expression(), java__Assignment83=java__Expression()), '', java__Assignment=java__Expression(), java__Assignment83=java__Expression()) == None
-
 from python_code import java__BooleanLiteral
 
 def test_java__BooleanLiteral___init__():
     assert java__BooleanLiteral.__init__(java__BooleanLiteral(True), False) == None
-
 from python_code import java__CharacterLiteral
 
 def test_java__CharacterLiteral___init__():
     assert java__CharacterLiteral.__init__(java__CharacterLiteral(''), '') == None
-
 from python_code import java__Expression
 from python_code import java__InfixExpression
 
 def test_java__InfixExpression___init__():
     assert java__InfixExpression.__init__(java__InfixExpression('', java__InfixExpression=java__Expression(), java__InfixExpression188=java__Expression(), java__InfixExpression191=set()), '', java__InfixExpression=java__Expression(), java__InfixExpression188=java__Expression(), java__InfixExpression191=set()) == None
-
 from python_code import java__Manifest
 from python_code import java__ManifestEntry
 
 def test_java__ManifestEntry___init__():
     assert java__ManifestEntry.__init__(java__ManifestEntry('', java__ManifestEntry=java__Manifest(), java__ManifestEntry211=set()), '', java__ManifestEntry=java__Manifest(), java__ManifestEntry211=set()) == None
-
 from python_code import java__MethodRef
 from python_code import java__MethodRefParameter
 from python_code import java__TypeAccess

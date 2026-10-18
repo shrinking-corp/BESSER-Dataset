@@ -1,4 +1,8 @@
 @startuml
+' model: libraryModel_ecore
+' project: sampleModel
+' owner: User
+' description: New project
 class NamedElement {
 }
 class libraryModel_ecore_Author {
@@ -17,11 +21,11 @@ class libraryModel_ecore_Picture {
 NamedElement <|-- libraryModel_ecore_Author
 NamedElement <|-- libraryModel_ecore_Book
 NamedElement <|-- libraryModel_ecore_Picture
-libraryModel_ecore_Author "0..9999" -- "1..1" libraryModel_ecore_Book : authors0
-libraryModel_ecore_Author "0..9999" --* "1..1" libraryModel_ecore_LibraryModel : authors7
-libraryModel_ecore_Book "0..9999" --* "1..1" libraryModel_ecore_LibraryModel : book6
-libraryModel_ecore_Book "0..1" -- "1..1" libraryModel_ecore_Picture : book9
-libraryModel_ecore_Book "1..1" -- "0..1" libraryModel_ecore_LibraryModel : library1
-libraryModel_ecore_Author "1..1" -- "0..1" libraryModel_ecore_LibraryModel : library4
-libraryModel_ecore_Book "1..1" *-- "0..9999" libraryModel_ecore_Picture : pictures2
+libraryModel_ecore_Author "libraryModel_ecore_Book 0..9999" -- "libraryModel_ecore_Author 1..1" libraryModel_ecore_Book : authors0
+libraryModel_ecore_Author "library8 0..9999" --* "Author 1..1" libraryModel_ecore_LibraryModel : authors7
+libraryModel_ecore_Book "library 0..9999" --* "Book 1..1" libraryModel_ecore_LibraryModel : book6
+libraryModel_ecore_Book "pictures 0..1" -- "Book10 1..1" libraryModel_ecore_Picture : book9
+libraryModel_ecore_Book "LibraryModel 1..1" -- "book 0..1" libraryModel_ecore_LibraryModel : library1
+libraryModel_ecore_Author "LibraryModel5 1..1" -- "authors 0..1" libraryModel_ecore_LibraryModel : library4
+libraryModel_ecore_Book "Picture 1..1" *-- "book3 0..9999" libraryModel_ecore_Picture : pictures2
 @enduml

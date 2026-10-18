@@ -1,4 +1,8 @@
 @startuml
+' model: profile
+' project: sampleModel
+' owner: User
+' description: New project
 enum BindingKind {
   Dynamic
   Static
@@ -134,32 +138,32 @@ class profile_ValueSetVersion {
   + getEnumerationQualifiedName() : str
   + setEnumerationName(profile_name : str) : void
 }
-profile_Class "1..1" -- "1..1" profile_ConceptDomain : base_Class13
-profile_Class "1..1" -- "1..1" profile_ValueSetContextBinding : base_Class45
-profile_Class "1..1" -- "1..1" profile_UsageContext : base_Class48
-profile_Classifier "1..1" -- "1..1" profile_CodedType : base_Classifier62
-profile_CodeSystemVersion "1..1" -- "1..1" profile_Enumeration : base_Enumeration22
-profile_Enumeration "1..1" -- "1..1" profile_ValueSetVersion : base_Enumeration31
-profile_Context "1..1" -- "1..1" profile_Enumeration : base_Enumeration60
-profile_EnumerationLiteral "1..1" -- "1..1" profile_ValueSetCode : base_EnumerationLiteral36
-profile_ConceptDomainConstraint "1..1" -- "1..1" profile_Property : base_Property11
-profile_CodeSystemConstraint "1..1" -- "1..1" profile_Property : base_Property19
-profile_Property "1..1" -- "1..1" profile_ValueSetConstraint : base_Property25
-profile_Property "1..1" -- "1..1" profile_ValueSetConstraints : base_Property51
-profile_NullValueSetConstraint "1..1" -- "1..1" profile_Property : base_Property57
-profile_CodeSystemVersion "0..1" -- "1..1" profile_ValueSetVersion : codeSystem28
-profile_CodeSystemVersion "0..1" -- "1..1" profile_ValueSetCode : codeSystem34
-profile_ConceptDomain "1..1" -- "1..1" profile_ValueSetContextBinding : conceptDomain38
-profile_ContextToValueSet "0..9999" --* "1..1" profile_ValueSetConstraints : constraints53
-profile_CD "0..1" --* "1..1" profile_CR : name4
-profile_CD "1..1" *-- "0..9999" profile_CR : qualifier0
-profile_CR "0..9999" -- "1..1" profile_CodeSystemConstraint : qualifier16
-profile_ConceptDomain "0..1" -- "1..1" profile_ConceptDomainConstraint : reference10
-profile_CodeSystemConstraint "1..1" -- "0..1" profile_CodeSystemVersion : reference15
-profile_ValueSetConstraint "1..1" -- "0..1" profile_ValueSetVersion : reference24
-profile_NullValueSetConstraint "1..1" -- "0..1" profile_ValueSetVersion : reference55
-profile_CD "0..9999" --* "1..1" profile_CD : translation2
-profile_UsageContext "1..1" -- "1..1" profile_ValueSetContextBinding : usageContext43
-profile_CD "0..1" --* "1..1" profile_CR : value7
-profile_ValueSetContextBinding "1..1" -- "1..1" profile_ValueSetVersion : valueSet40
+profile_Class "profile_ConceptDomain14 1..1" -- "profile_Class 1..1" profile_ConceptDomain : base_Class13
+profile_Class "profile_ValueSetContextBinding46 1..1" -- "profile_Class47 1..1" profile_ValueSetContextBinding : base_Class45
+profile_Class "profile_UsageContext49 1..1" -- "profile_Class50 1..1" profile_UsageContext : base_Class48
+profile_Classifier "profile_CodedType 1..1" -- "profile_Classifier 1..1" profile_CodedType : base_Classifier62
+profile_CodeSystemVersion "profile_Enumeration 1..1" -- "profile_CodeSystemVersion23 1..1" profile_Enumeration : base_Enumeration22
+profile_Enumeration "profile_ValueSetVersion32 1..1" -- "profile_Enumeration33 1..1" profile_ValueSetVersion : base_Enumeration31
+profile_Context "profile_Enumeration61 1..1" -- "profile_Context 1..1" profile_Enumeration : base_Enumeration60
+profile_EnumerationLiteral "profile_ValueSetCode37 1..1" -- "profile_EnumerationLiteral 1..1" profile_ValueSetCode : base_EnumerationLiteral36
+profile_ConceptDomainConstraint "profile_Property 1..1" -- "profile_ConceptDomainConstraint12 1..1" profile_Property : base_Property11
+profile_CodeSystemConstraint "profile_Property21 1..1" -- "profile_CodeSystemConstraint20 1..1" profile_Property : base_Property19
+profile_Property "profile_ValueSetConstraint26 1..1" -- "profile_Property27 1..1" profile_ValueSetConstraint : base_Property25
+profile_Property "profile_ValueSetConstraints 1..1" -- "profile_Property52 1..1" profile_ValueSetConstraints : base_Property51
+profile_NullValueSetConstraint "profile_Property59 1..1" -- "profile_NullValueSetConstraint58 1..1" profile_Property : base_Property57
+profile_CodeSystemVersion "profile_ValueSetVersion29 0..1" -- "profile_CodeSystemVersion30 1..1" profile_ValueSetVersion : codeSystem28
+profile_CodeSystemVersion "profile_ValueSetCode 0..1" -- "profile_CodeSystemVersion35 1..1" profile_ValueSetCode : codeSystem34
+profile_ConceptDomain "profile_ValueSetContextBinding 1..1" -- "profile_ConceptDomain39 1..1" profile_ValueSetContextBinding : conceptDomain38
+profile_ContextToValueSet "profile_ValueSetConstraints54 0..9999" --* "profile_ContextToValueSet 1..1" profile_ValueSetConstraints : constraints53
+profile_CD "profile_CR5 0..1" --* "profile_CD6 1..1" profile_CR : name4
+profile_CD "profile_CR 1..1" *-- "profile_CD 0..9999" profile_CR : qualifier0
+profile_CR "profile_CodeSystemConstraint17 0..9999" -- "profile_CR18 1..1" profile_CodeSystemConstraint : qualifier16
+profile_ConceptDomain "profile_ConceptDomainConstraint 0..1" -- "profile_ConceptDomain 1..1" profile_ConceptDomainConstraint : reference10
+profile_CodeSystemConstraint "profile_CodeSystemVersion 1..1" -- "profile_CodeSystemConstraint 0..1" profile_CodeSystemVersion : reference15
+profile_ValueSetConstraint "profile_ValueSetVersion 1..1" -- "profile_ValueSetConstraint 0..1" profile_ValueSetVersion : reference24
+profile_NullValueSetConstraint "profile_ValueSetVersion56 1..1" -- "profile_NullValueSetConstraint 0..1" profile_ValueSetVersion : reference55
+profile_CD "profile_CD1 0..9999" --* "profile_CD3 1..1" profile_CD : translation2
+profile_UsageContext "profile_ValueSetContextBinding44 1..1" -- "profile_UsageContext 1..1" profile_ValueSetContextBinding : usageContext43
+profile_CD "profile_CR8 0..1" --* "profile_CD9 1..1" profile_CR : value7
+profile_ValueSetContextBinding "profile_ValueSetVersion42 1..1" -- "profile_ValueSetContextBinding41 1..1" profile_ValueSetVersion : valueSet40
 @enduml

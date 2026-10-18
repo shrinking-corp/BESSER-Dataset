@@ -1,4 +1,8 @@
 @startuml
+' model: conference
+' project: sampleModel
+' owner: User
+' description: New project
 enum GENDER {
   FEMALE
   MALE
@@ -40,13 +44,13 @@ class conference_Topic {
   + documentation : str
   + references : str
 }
-conference_Person "1..1" -- "0..9999" conference_Talk : assists7
-conference_Person "0..1" -- "1..1" conference_Talk : creator16
-conference_Conference "1..1" *-- "0..9999" conference_Person : participants0
-conference_Person "1..1" -- "1..1" conference_Talk : presenter13
-conference_Room "0..9999" --* "1..1" conference_Site : rooms19
-conference_Conference "1..1" *-- "0..9999" conference_Site : sites5
-conference_Conference "1..1" *-- "0..9999" conference_Talk : talks1
-conference_Talk "1..1" -- "1..1" conference_Topic : topic10
-conference_Conference "1..1" *-- "0..9999" conference_Topic : topics3
+conference_Person "conference_Talk9 1..1" -- "conference_Person8 0..9999" conference_Talk : assists7
+conference_Person "conference_Talk17 0..1" -- "conference_Person18 1..1" conference_Talk : creator16
+conference_Conference "conference_Person 1..1" *-- "conference_Conference 0..9999" conference_Person : participants0
+conference_Person "conference_Talk14 1..1" -- "conference_Person15 1..1" conference_Talk : presenter13
+conference_Room "conference_Site20 0..9999" --* "conference_Room 1..1" conference_Site : rooms19
+conference_Conference "conference_Site 1..1" *-- "conference_Conference6 0..9999" conference_Site : sites5
+conference_Conference "conference_Talk 1..1" *-- "conference_Conference2 0..9999" conference_Talk : talks1
+conference_Talk "conference_Topic12 1..1" -- "conference_Talk11 1..1" conference_Topic : topic10
+conference_Conference "conference_Topic 1..1" *-- "conference_Conference4 0..9999" conference_Topic : topics3
 @enduml

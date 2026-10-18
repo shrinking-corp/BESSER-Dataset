@@ -1,4 +1,8 @@
 @startuml
+' model: b99c4430_9f8c_4332_8879_95909be22ca7
+' project: sampleModel
+' owner: User
+' description: New project
 class Booking {
   + b_id : int
   + contact_no : int
@@ -48,11 +52,11 @@ class Table {
   + numSeats : int
   + table_id : str
 }
-CustomerUI "0..9999" -- "1..1" ReservationManagementSystem : CustomerUI_ReservationManagementSystem
-Food "1..9999" -- "1..1" Order : Order_Food
-Booking "0..9999" -- "1..1" ReservationManagementSystem : ReservationManagementSystem_Booking
-Report "0..9999" -- "1..1" ReservationManagementSystem : ReservationManagementSystem_Report
-Booking "0..1" -- "0..1" Restaurants : Restaurants_Booking2
-Restaurants "1..1" -- "1..9999" Table : Table_Booking
-Order "1..1" -- "1..1" Table : Table_Order
+CustomerUI "interacts1 0..9999" -- "CustomerUI_ReservationManagementSystem_00 1..1" ReservationManagementSystem : CustomerUI_ReservationManagementSystem
+Food "orde10 1..9999" -- "has11 1..1" Order : Order_Food
+Booking "booking2 0..9999" -- "ReservationManagementSystem_Booking_13 1..1" ReservationManagementSystem : ReservationManagementSystem_Booking
+Report "generates4 0..9999" -- "reservationManagementSystem5 1..1" ReservationManagementSystem : ReservationManagementSystem_Report
+Booking "booking12 0..1" -- "restaurants13 0..1" Restaurants : Restaurants_Booking2
+Restaurants "Table_Booking_08 1..1" -- "reservedBy9 1..9999" Table : Table_Booking
+Order "has6 1..1" -- "table7 1..1" Table : Table_Order
 @enduml

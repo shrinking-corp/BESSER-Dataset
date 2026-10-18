@@ -1,4 +1,8 @@
 @startuml
+' model: featuremodels
+' project: sampleModel
+' owner: User
+' description: New project
 class Attribute {
 }
 enum ConstraintType {
@@ -36,15 +40,15 @@ class featuremodels_SimpleAttribute {
   + value : str
 }
 Attribute <|-- featuremodels_SimpleAttribute
-featuremodels_Attribute "0..9999" --* "1..1" featuremodels_Feature : attributes9
-featuremodels_Constraint "0..9999" --* "1..1" featuremodels_FeatureModel : constraints16
-featuremodels_ContainmentAssociation "0..1" -- "1..1" featuremodels_Feature : containerParent6
-featuremodels_ContainmentAssociation "0..9999" --* "1..1" featuremodels_Feature : containers5
-featuremodels_Feature "1..1" -- "0..1" featuremodels_Feature : featureParent3
-featuremodels_FeatureModel "1..1" *-- "0..9999" featuremodels_Instance : instances18
-featuremodels_ContainmentAssociation "1..1" -- "0..1" featuremodels_Feature : parent12
-featuremodels_Feature "1..1" --* "1..1" featuremodels_FeatureModel : rootFeature14
-featuremodels_Feature "1..9999" -- "1..1" featuremodels_Instance : selectedFeatures20
-featuremodels_Feature "1..1" *-- "0..9999" featuremodels_Feature : subFeatures1
-featuremodels_ContainmentAssociation "1..1" *-- "1..9999" featuremodels_Feature : subFeatures10
+featuremodels_Attribute "featuremodels_Feature 0..9999" --* "featuremodels_Attribute 1..1" featuremodels_Feature : attributes9
+featuremodels_Constraint "featuremodels_FeatureModel17 0..9999" --* "featuremodels_Constraint 1..1" featuremodels_FeatureModel : constraints16
+featuremodels_ContainmentAssociation "subFeatures7 0..1" -- "ContainmentAssociation8 1..1" featuremodels_Feature : containerParent6
+featuremodels_ContainmentAssociation "parent 0..9999" --* "ContainmentAssociation 1..1" featuremodels_Feature : containers5
+featuremodels_Feature "Feature4 1..1" -- "subFeatures 0..1" featuremodels_Feature : featureParent3
+featuremodels_FeatureModel "featuremodels_Instance 1..1" *-- "featuremodels_FeatureModel19 0..9999" featuremodels_Instance : instances18
+featuremodels_ContainmentAssociation "Feature13 1..1" -- "containers 0..1" featuremodels_Feature : parent12
+featuremodels_Feature "featuremodels_FeatureModel 1..1" --* "featuremodels_Feature15 1..1" featuremodels_FeatureModel : rootFeature14
+featuremodels_Feature "featuremodels_Instance21 1..9999" -- "featuremodels_Feature22 1..1" featuremodels_Instance : selectedFeatures20
+featuremodels_Feature "Feature 1..1" *-- "featureParent 0..9999" featuremodels_Feature : subFeatures1
+featuremodels_ContainmentAssociation "Feature11 1..1" *-- "containerParent 1..9999" featuremodels_Feature : subFeatures10
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: FeatureModel
+' project: sampleModel
+' owner: User
+' description: New project
 class ConfigConstraint {
 }
 class Constraint {
@@ -38,10 +42,10 @@ ConfigConstraint <|-- FeatureModel_Or
 ConfigConstraint <|-- FeatureModel_Xor
 Constraint <|-- FeatureModel_ConfigConstraint
 Constraint <|-- FeatureModel_FeatureConstraint
-FeatureModel_ConfigConstraint "1..9999" --* "1..1" FeatureModel_RootFeature : ConfConst3
-FeatureModel_ConfigConstraint "1..1" *-- "0..9999" FeatureModel_Feature : ConfFeatures8
-FeatureModel_ConfigConstraint "1..1" -- "1..1" FeatureModel_Feature : Config7
-FeatureModel_FeatureConstraint "0..9999" --* "1..1" FeatureModel_FeatureModel : FConst1
-FeatureModel_Feature "2..2" -- "1..1" FeatureModel_FeatureConstraint : Features5
-FeatureModel_FeatureModel "1..1" *-- "1..1" FeatureModel_RootFeature : RootFeature0
+FeatureModel_ConfigConstraint "FeatureModel_RootFeature4 1..9999" --* "FeatureModel_ConfigConstraint 1..1" FeatureModel_RootFeature : ConfConst3
+FeatureModel_ConfigConstraint "Feature 1..1" *-- "Config 0..9999" FeatureModel_Feature : ConfFeatures8
+FeatureModel_ConfigConstraint "ConfFeatures 1..1" -- "ConfigConstraint 1..1" FeatureModel_Feature : Config7
+FeatureModel_FeatureConstraint "FeatureModel_FeatureModel2 0..9999" --* "FeatureModel_FeatureConstraint 1..1" FeatureModel_FeatureModel : FConst1
+FeatureModel_Feature "FeatureModel_FeatureConstraint6 2..2" -- "FeatureModel_Feature 1..1" FeatureModel_FeatureConstraint : Features5
+FeatureModel_FeatureModel "FeatureModel_RootFeature 1..1" *-- "FeatureModel_FeatureModel 1..1" FeatureModel_RootFeature : RootFeature0
 @enduml

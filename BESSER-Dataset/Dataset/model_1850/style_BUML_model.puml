@@ -1,4 +1,8 @@
 @startuml
+' model: style
+' project: sampleModel
+' owner: User
+' description: New project
 class style_StyleLibrary {
   + name : str
   + uid : str
@@ -9,6 +13,6 @@ class style_StyleSet {
   + name : str
   + uid : str
 }
-style_StyleLibrary "0..1" -- "1..1" style_StylePointer : styleLibrary1
-style_StyleLibrary "1..1" *-- "0..9999" style_StyleSet : styles0
+style_StyleLibrary "style_StylePointer 0..1" -- "style_StyleLibrary2 1..1" style_StylePointer : styleLibrary1
+style_StyleLibrary "style_StyleSet 1..1" *-- "style_StyleLibrary 0..9999" style_StyleSet : styles0
 @enduml

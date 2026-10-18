@@ -165,30 +165,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=operators_Type_strategy)
-@settings(max_examples=30)
-def test_hyp_operators_type_issametype_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isSameType(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isSameType).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isSameType' in operators_Type is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isSameType' in operators_Type did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isSameType' in operators_Type is not implemented or raised an error")
 
 import warnings
 import copy
@@ -196,30 +172,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=operators_Type_strategy)
-@settings(max_examples=30)
-def test_hyp_operators_type_issupertypeof_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isSuperTypeOf(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isSuperTypeOf).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isSuperTypeOf' in operators_Type is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isSuperTypeOf' in operators_Type did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isSuperTypeOf' in operators_Type is not implemented or raised an error")
 
 
 
@@ -497,7 +449,6 @@ from python_code import operators_OperationCallExp
 
 def test_operators_OperationCallExp___init__():
     assert operators_OperationCallExp.__init__(operators_OperationCallExp('', operators_OperationCallExp=operators_OclExpression(), operators_OperationCallExp4=set()), '', operators_OperationCallExp=operators_OclExpression(), operators_OperationCallExp4=set()) == None
-
 from python_code import operators_OclExpression
 from python_code import operators_Type
 

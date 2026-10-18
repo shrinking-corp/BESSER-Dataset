@@ -1,4 +1,8 @@
 @startuml
+' model: Enum
+' project: sampleModel
+' owner: User
+' description: New project
 class ASM_AccessUpdateFunction {
   + type : str
 }
@@ -174,48 +178,48 @@ Term <|-- ASM_OperatorTerm
 VariableDecl <|-- ASM_Argument
 XAsmFile <|-- ASM_Body
 XAsmFile <|-- ASM_XAsmSpec
-ASM_XAsmSpec "1..1" *-- "1..9999" Asm : Asm0
-ASM_MetaInformation "1..1" *-- "0..9999" AccessUpdateFunction : accessUpdateFunctions14
-ASM_AsmInvocation "1..1" *-- "0..9999" Term : arguments32
-ASM_Signature "1..1" *-- "0..9999" Argument : arguments6
-ASM_Asm "1..1" *-- "1..1" Body : body4
-ASM_ChooseRule "1..1" *-- "1..1" VariableDecl : chooseId38
-ASM_DoForallRule "1..1" *-- "0..1" Term : condition56
-ASM_ConditionalRule "1..1" *-- "1..1" Term : condition62
-ASM_ElseIf "1..1" *-- "1..1" Term : condition72
-ASM_FunctionOrVariableTerm "1..1" -- "1..1" ElementDecl : declaration23
-ASM_Body "1..1" *-- "0..9999" Declaration : declarations7
-ASM_DoForallRule "1..1" *-- "1..9999" Rule : doRule59
-ASM_Extension "1..1" *-- "1..9999" VariableDecl : elements87
-ASM_ConditionalRule "1..1" *-- "0..1" ElseIf : elseIfRule70
-ASM_ElseIf "1..1" *-- "0..1" ElseIf : elseIfRule80
-ASM_ConditionalRule "1..1" *-- "0..1" Rule : elseRule67
-ASM_ElseIf "1..1" *-- "0..1" Rule : elseRule77
-ASM_ExtendRule "1..1" *-- "1..9999" Extension : extensions83
-ASM_UpdateRule "1..1" *-- "1..1" FunctionOrVariableTerm : function34
-ASM_AccessUpdateFunction "1..1" *-- "1..9999" Function : functions16
-ASM_ChooseRule "1..1" *-- "0..1" Term : guard42
-ASM_DoForallRule "1..1" *-- "1..1" VariableDecl : id51
-ASM_ChooseRule "1..1" *-- "1..9999" Rule : ifChoosenRules45
-ASM_ChooseRule "1..1" *-- "0..1" Rule : ifNotChoosenRule48
-ASM_ChooseRule "1..1" *-- "0..1" Universe : inSet39
-ASM_DoForallRule "1..1" *-- "0..1" Universe : inSet53
-ASM_Function "1..1" *-- "0..1" Term : initTerm18
-ASM_Body "1..1" *-- "0..1" Initialization : initialization8
-ASM_OperatorTerm "1..1" *-- "1..1" Term : leftExp27
-ASM_Asm "1..1" *-- "1..1" MetaInformation : metaInformation2
-ASM_Function "1..1" *-- "0..9999" Parameter : parameters17
-ASM_OperatorTerm "1..1" *-- "0..1" Term : rightExp29
-ASM_Body "1..1" *-- "0..9999" Rule : rules10
-ASM_Initialization "1..1" *-- "1..9999" Rule : rules21
-ASM_ExtendRule "1..1" *-- "1..9999" Rule : rules84
-ASM_Asm "1..1" *-- "1..1" Signature : signature1
-ASM_Universe "1..1" -- "0..9999" Universe : superUniverses20
-ASM_ReturnRule "1..1" *-- "1..1" Term : term92
-ASM_FunctionOrVariableTerm "1..1" *-- "0..9999" Term : terms24
-ASM_ConditionalRule "1..1" *-- "1..9999" Rule : thenRule64
-ASM_ElseIf "1..1" *-- "1..9999" Rule : thenRule74
-ASM_Extension "1..1" *-- "1..1" Universe : universe89
-ASM_UpdateRule "1..1" *-- "1..1" Term : updateTerm35
-ASM_MetaInformation "1..1" *-- "0..9999" Signature : usedAsIn12
+ASM_XAsmSpec "Asm 1..1" *-- "ASM_XAsmSpec 1..9999" Asm : Asm0
+ASM_MetaInformation "AccessUpdateFunction 1..1" *-- "ASM_MetaInformation15 0..9999" AccessUpdateFunction : accessUpdateFunctions14
+ASM_AsmInvocation "Term33 1..1" *-- "ASM_AsmInvocation 0..9999" Term : arguments32
+ASM_Signature "Argument 1..1" *-- "ASM_Signature 0..9999" Argument : arguments6
+ASM_Asm "Body 1..1" *-- "ASM_Asm5 1..1" Body : body4
+ASM_ChooseRule "VariableDecl 1..1" *-- "ASM_ChooseRule 1..1" VariableDecl : chooseId38
+ASM_DoForallRule "Term58 1..1" *-- "ASM_DoForallRule57 0..1" Term : condition56
+ASM_ConditionalRule "Term63 1..1" *-- "ASM_ConditionalRule 1..1" Term : condition62
+ASM_ElseIf "Term73 1..1" *-- "ASM_ElseIf 1..1" Term : condition72
+ASM_FunctionOrVariableTerm "ElementDecl 1..1" -- "ASM_FunctionOrVariableTerm 1..1" ElementDecl : declaration23
+ASM_Body "Declaration 1..1" *-- "ASM_Body 0..9999" Declaration : declarations7
+ASM_DoForallRule "Rule61 1..1" *-- "ASM_DoForallRule60 1..9999" Rule : doRule59
+ASM_Extension "VariableDecl88 1..1" *-- "ASM_Extension 1..9999" VariableDecl : elements87
+ASM_ConditionalRule "ElseIf 1..1" *-- "ASM_ConditionalRule71 0..1" ElseIf : elseIfRule70
+ASM_ElseIf "ElseIf82 1..1" *-- "ASM_ElseIf81 0..1" ElseIf : elseIfRule80
+ASM_ConditionalRule "Rule69 1..1" *-- "ASM_ConditionalRule68 0..1" Rule : elseRule67
+ASM_ElseIf "Rule79 1..1" *-- "ASM_ElseIf78 0..1" Rule : elseRule77
+ASM_ExtendRule "Extension 1..1" *-- "ASM_ExtendRule 1..9999" Extension : extensions83
+ASM_UpdateRule "FunctionOrVariableTerm 1..1" *-- "ASM_UpdateRule 1..1" FunctionOrVariableTerm : function34
+ASM_AccessUpdateFunction "Function 1..1" *-- "ASM_AccessUpdateFunction 1..9999" Function : functions16
+ASM_ChooseRule "Term44 1..1" *-- "ASM_ChooseRule43 0..1" Term : guard42
+ASM_DoForallRule "VariableDecl52 1..1" *-- "ASM_DoForallRule 1..1" VariableDecl : id51
+ASM_ChooseRule "Rule47 1..1" *-- "ASM_ChooseRule46 1..9999" Rule : ifChoosenRules45
+ASM_ChooseRule "Rule50 1..1" *-- "ASM_ChooseRule49 0..1" Rule : ifNotChoosenRule48
+ASM_ChooseRule "Universe41 1..1" *-- "ASM_ChooseRule40 0..1" Universe : inSet39
+ASM_DoForallRule "Universe55 1..1" *-- "ASM_DoForallRule54 0..1" Universe : inSet53
+ASM_Function "Term 1..1" *-- "ASM_Function19 0..1" Term : initTerm18
+ASM_Body "Initialization 1..1" *-- "ASM_Body9 0..1" Initialization : initialization8
+ASM_OperatorTerm "Term28 1..1" *-- "ASM_OperatorTerm 1..1" Term : leftExp27
+ASM_Asm "MetaInformation 1..1" *-- "ASM_Asm3 1..1" MetaInformation : metaInformation2
+ASM_Function "Parameter 1..1" *-- "ASM_Function 0..9999" Parameter : parameters17
+ASM_OperatorTerm "Term31 1..1" *-- "ASM_OperatorTerm30 0..1" Term : rightExp29
+ASM_Body "Rule 1..1" *-- "ASM_Body11 0..9999" Rule : rules10
+ASM_Initialization "Rule22 1..1" *-- "ASM_Initialization 1..9999" Rule : rules21
+ASM_ExtendRule "Rule86 1..1" *-- "ASM_ExtendRule85 1..9999" Rule : rules84
+ASM_Asm "Signature 1..1" *-- "ASM_Asm 1..1" Signature : signature1
+ASM_Universe "Universe 1..1" -- "ASM_Universe 0..9999" Universe : superUniverses20
+ASM_ReturnRule "Term93 1..1" *-- "ASM_ReturnRule 1..1" Term : term92
+ASM_FunctionOrVariableTerm "Term26 1..1" *-- "ASM_FunctionOrVariableTerm25 0..9999" Term : terms24
+ASM_ConditionalRule "Rule66 1..1" *-- "ASM_ConditionalRule65 1..9999" Rule : thenRule64
+ASM_ElseIf "Rule76 1..1" *-- "ASM_ElseIf75 1..9999" Rule : thenRule74
+ASM_Extension "Universe91 1..1" *-- "ASM_Extension90 1..1" Universe : universe89
+ASM_UpdateRule "Term37 1..1" *-- "ASM_UpdateRule36 1..1" Term : updateTerm35
+ASM_MetaInformation "Signature13 1..1" *-- "ASM_MetaInformation 0..9999" Signature : usedAsIn12
 @enduml

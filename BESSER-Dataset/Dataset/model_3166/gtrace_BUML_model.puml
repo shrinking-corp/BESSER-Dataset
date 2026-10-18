@@ -1,4 +1,8 @@
 @startuml
+' model: gtrace
+' project: sampleModel
+' owner: User
+' description: New project
 class TTrace {
 }
 class gtrace_MClassifier {
@@ -32,15 +36,15 @@ class gtrace_TTraceModel {
 TTrace <|-- gtrace_TRequirementTrace
 TTrace <|-- gtrace_TScenarioStepTrace
 TTrace <|-- gtrace_TScenarioTrace
-gtrace_MClassifier "0..1" -- "1..1" gtrace_TScenarioTrace : classifier11
-gtrace_MOperation "0..1" -- "1..1" gtrace_TScenarioStepTrace : operation17
-gtrace_RRequirement "1..1" -- "1..1" gtrace_TRequirementTrace : requirement5
-gtrace_TRequirementTrace "0..9999" --* "1..1" gtrace_TTraceModel : requirementTrace0
-gtrace_RScenario "1..1" -- "1..1" gtrace_TScenarioTrace : scenario9
-gtrace_RScenarioStep "1..1" -- "1..1" gtrace_TScenarioStepTrace : scenarioStep15
-gtrace_TScenarioStepTrace "0..9999" --* "1..1" gtrace_TTraceModel : scenarioStepTrace3
-gtrace_TScenarioTrace "0..9999" --* "1..1" gtrace_TTraceModel : scenarioTrace1
-gtrace_MState "0..1" -- "1..1" gtrace_TScenarioStepTrace : state19
-gtrace_MStateMachine "0..1" -- "1..1" gtrace_TScenarioTrace : stateMachine13
-gtrace_MElement "1..1" -- "1..1" gtrace_TRequirementTrace : structuralElement7
+gtrace_MClassifier "gtrace_TScenarioTrace12 0..1" -- "gtrace_MClassifier 1..1" gtrace_TScenarioTrace : classifier11
+gtrace_MOperation "gtrace_TScenarioStepTrace18 0..1" -- "gtrace_MOperation 1..1" gtrace_TScenarioStepTrace : operation17
+gtrace_RRequirement "gtrace_TRequirementTrace6 1..1" -- "gtrace_RRequirement 1..1" gtrace_TRequirementTrace : requirement5
+gtrace_TRequirementTrace "gtrace_TTraceModel 0..9999" --* "gtrace_TRequirementTrace 1..1" gtrace_TTraceModel : requirementTrace0
+gtrace_RScenario "gtrace_TScenarioTrace10 1..1" -- "gtrace_RScenario 1..1" gtrace_TScenarioTrace : scenario9
+gtrace_RScenarioStep "gtrace_TScenarioStepTrace16 1..1" -- "gtrace_RScenarioStep 1..1" gtrace_TScenarioStepTrace : scenarioStep15
+gtrace_TScenarioStepTrace "gtrace_TTraceModel4 0..9999" --* "gtrace_TScenarioStepTrace 1..1" gtrace_TTraceModel : scenarioStepTrace3
+gtrace_TScenarioTrace "gtrace_TTraceModel2 0..9999" --* "gtrace_TScenarioTrace 1..1" gtrace_TTraceModel : scenarioTrace1
+gtrace_MState "gtrace_TScenarioStepTrace20 0..1" -- "gtrace_MState 1..1" gtrace_TScenarioStepTrace : state19
+gtrace_MStateMachine "gtrace_TScenarioTrace14 0..1" -- "gtrace_MStateMachine 1..1" gtrace_TScenarioTrace : stateMachine13
+gtrace_MElement "gtrace_TRequirementTrace8 1..1" -- "gtrace_MElement 1..1" gtrace_TRequirementTrace : structuralElement7
 @enduml

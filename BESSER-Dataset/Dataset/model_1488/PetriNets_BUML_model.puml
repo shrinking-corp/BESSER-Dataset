@@ -1,4 +1,8 @@
 @startuml
+' model: PetriNets
+' project: sampleModel
+' owner: User
+' description: New project
 class PetriNets_InputArc {
   + weight : int
 }
@@ -16,12 +20,12 @@ class PetriNets_Place {
 class PetriNets_Transition {
   + name : str
 }
-PetriNets_InputArc "1..1" -- "0..1" PetriNets_Place : InputArcFromPlace7
-PetriNets_InputArc "1..1" -- "0..1" PetriNets_Transition : InputArcToTransition10
-PetriNets_OutputArc "1..1" -- "0..1" PetriNets_Transition : OutputArcFromTransition13
-PetriNets_OutputArc "1..1" -- "0..1" PetriNets_Place : OutputArcToPlace16
-PetriNets_InputArc "0..9999" --* "1..1" PetriNets_PetriNet : containsInputArcs3
-PetriNets_OutputArc "0..9999" --* "1..1" PetriNets_PetriNet : containsOutputArcs5
-PetriNets_PetriNet "1..1" *-- "0..9999" PetriNets_Place : containsPlaces0
-PetriNets_PetriNet "1..1" *-- "0..9999" PetriNets_Transition : containsTransitions1
+PetriNets_InputArc "PetriNets_Place9 1..1" -- "PetriNets_InputArc8 0..1" PetriNets_Place : InputArcFromPlace7
+PetriNets_InputArc "PetriNets_Transition12 1..1" -- "PetriNets_InputArc11 0..1" PetriNets_Transition : InputArcToTransition10
+PetriNets_OutputArc "PetriNets_Transition15 1..1" -- "PetriNets_OutputArc14 0..1" PetriNets_Transition : OutputArcFromTransition13
+PetriNets_OutputArc "PetriNets_Place18 1..1" -- "PetriNets_OutputArc17 0..1" PetriNets_Place : OutputArcToPlace16
+PetriNets_InputArc "PetriNets_PetriNet4 0..9999" --* "PetriNets_InputArc 1..1" PetriNets_PetriNet : containsInputArcs3
+PetriNets_OutputArc "PetriNets_PetriNet6 0..9999" --* "PetriNets_OutputArc 1..1" PetriNets_PetriNet : containsOutputArcs5
+PetriNets_PetriNet "PetriNets_Place 1..1" *-- "PetriNets_PetriNet 0..9999" PetriNets_Place : containsPlaces0
+PetriNets_PetriNet "PetriNets_Transition 1..1" *-- "PetriNets_PetriNet2 0..9999" PetriNets_Transition : containsTransitions1
 @enduml

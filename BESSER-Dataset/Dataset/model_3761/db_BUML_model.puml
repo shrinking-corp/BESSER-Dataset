@@ -1,4 +1,8 @@
 @startuml
+' model: db
+' project: sampleModel
+' owner: User
+' description: New project
 class CriticsReviewType {
 }
 enum GenreTypes {
@@ -46,13 +50,13 @@ class db_MovieType {
   + title : str
 }
 CriticsReviewType <|-- db_CustomerReviewType
-db_CustomerType "1..1" -- "1..1" db_MovieType : checkedOutBy17
-db_CustomerType "0..9999" -- "1..1" db_DocumentRoot : checkedOutBy4
-db_CriticsReviewType "0..9999" --* "1..1" db_MovieType : criticsReview14
-db_CriticsReviewType "0..9999" --* "1..1" db_DocumentRoot : criticsReview6
-db_CustomerReviewType "0..9999" --* "1..1" db_DocumentRoot : customerReview8
-db_MovieDBType "1..1" *-- "1..9999" db_MovieType : movie12
-db_DocumentRoot "1..1" *-- "0..9999" db_MovieDBType : movieDB10
-db_DocumentRoot "1..1" *-- "0..9999" db_EStringToStringMapEntry : xMLNSPrefixMap0
-db_DocumentRoot "1..1" *-- "0..9999" db_EStringToStringMapEntry : xSISchemaLocation1
+db_CustomerType "db_MovieType18 1..1" -- "db_CustomerType19 1..1" db_MovieType : checkedOutBy17
+db_CustomerType "db_DocumentRoot5 0..9999" -- "db_CustomerType 1..1" db_DocumentRoot : checkedOutBy4
+db_CriticsReviewType "db_MovieType15 0..9999" --* "db_CriticsReviewType16 1..1" db_MovieType : criticsReview14
+db_CriticsReviewType "db_DocumentRoot7 0..9999" --* "db_CriticsReviewType 1..1" db_DocumentRoot : criticsReview6
+db_CustomerReviewType "db_DocumentRoot9 0..9999" --* "db_CustomerReviewType 1..1" db_DocumentRoot : customerReview8
+db_MovieDBType "db_MovieType 1..1" *-- "db_MovieDBType13 1..9999" db_MovieType : movie12
+db_DocumentRoot "db_MovieDBType 1..1" *-- "db_DocumentRoot11 0..9999" db_MovieDBType : movieDB10
+db_DocumentRoot "db_EStringToStringMapEntry 1..1" *-- "db_DocumentRoot 0..9999" db_EStringToStringMapEntry : xMLNSPrefixMap0
+db_DocumentRoot "db_EStringToStringMapEntry3 1..1" *-- "db_DocumentRoot2 0..9999" db_EStringToStringMapEntry : xSISchemaLocation1
 @enduml

@@ -736,9 +736,9 @@ def test_assoc_features1_stub_double():
     partner = metamodel_Entity()
     setattr(partner, 'metamodel_Entity', None)
     _safe_set(owner, 'metamodel_Feature', partner)
-    assert getattr(partner, 'metamodel_Entity') == owner
+    assert owner in getattr(partner, 'metamodel_Entity')
     _safe_set(owner, 'metamodel_Feature', None)
-    assert getattr(partner, 'metamodel_Entity') is None
+    assert owner not in getattr(partner, 'metamodel_Entity')
 
 
 def test_assoc_queries2_stub_double():
@@ -751,9 +751,9 @@ def test_assoc_queries2_stub_double():
     partner = metamodel_Entity()
     setattr(partner, 'metamodel_Entity3', None)
     _safe_set(owner, 'metamodel_Query', partner)
-    assert getattr(partner, 'metamodel_Entity3') == owner
+    assert owner in getattr(partner, 'metamodel_Entity3')
     _safe_set(owner, 'metamodel_Query', None)
-    assert getattr(partner, 'metamodel_Entity3') is None
+    assert owner not in getattr(partner, 'metamodel_Entity3')
 
 
 def test_assoc_types0_stub_double():
@@ -766,32 +766,13 @@ def test_assoc_types0_stub_double():
     partner = metamodel_Model()
     setattr(partner, 'metamodel_Model', None)
     _safe_set(owner, 'metamodel_Type', partner)
-    assert getattr(partner, 'metamodel_Model') == owner
+    assert owner in getattr(partner, 'metamodel_Model')
     _safe_set(owner, 'metamodel_Type', None)
-    assert getattr(partner, 'metamodel_Model') is None
+    assert owner not in getattr(partner, 'metamodel_Model')
 
 
 
 
-from enum import Enum
 from python_code import Annotation
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(Annotation.Id, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(Annotation.Id, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(Annotation.Id, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(Annotation.Id, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(Annotation.Id, 'Id') == Annotation.Id
 

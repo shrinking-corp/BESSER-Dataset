@@ -1,4 +1,8 @@
 @startuml
+' model: _fCkkYMleEeiZ3fREAmKE6g
+' project: sampleModel
+' owner: User
+' description: New project
 class Decision_support_system_Check_treatment_recommendation_for_diagnosed_disease_UseCase {
 }
 class Decision_support_system_Generate_heart_disease_diagnosis_UseCase {
@@ -31,11 +35,11 @@ class user {
   + id : str
   + name : str
 }
-Doctor "1..1" -- "1..1" Model : Doctor_Model
-Doctor "1..1" -- "0..9999" Treatment : Doctor_Treatment
-Decision_support_system_Check_treatment_recommendation_for_diagnosed_disease_UseCase "0..1" -- "0..1" Medical_staff_Actor : Medical_staff_Check_treatment_recommendation
-Decision_support_system_Generate_heart_disease_diagnosis_UseCase "0..1" -- "0..1" Medical_staff_Actor : Medical_staff_Generate_diagnosis
-Decision_support_system_Input_heart_disease_symptoms_UseCase "0..1" -- "0..1" Medical_staff_Actor : Medical_staff_Input_symptoms
-Decision_support_system_Input_heart_disease_symptoms_UseCase "0..1" -- "0..1" Patient_Actor : Patient_Input_symptoms
-Input_Data "0..9999" -- "1..1" user : user_Input_Data
+Doctor "doctor11 1..1" -- "model10 1..1" Model : Doctor_Model
+Doctor "doctor13 1..1" -- "treatment12 0..9999" Treatment : Doctor_Treatment
+Decision_support_system_Check_treatment_recommendation_for_diagnosed_disease_UseCase "check_treatment_recommendation6 0..1" -- "medical_staff7 0..1" Medical_staff_Actor : Medical_staff_Check_treatment_recommendation
+Decision_support_system_Generate_heart_disease_diagnosis_UseCase "generate_diagnosis4 0..1" -- "medical_staff5 0..1" Medical_staff_Actor : Medical_staff_Generate_diagnosis
+Decision_support_system_Input_heart_disease_symptoms_UseCase "input_symptoms2 0..1" -- "medical_staff3 0..1" Medical_staff_Actor : Medical_staff_Input_symptoms
+Decision_support_system_Input_heart_disease_symptoms_UseCase "input_symptoms0 0..1" -- "patient1 0..1" Patient_Actor : Patient_Input_symptoms
+Input_Data "input_Data8 0..9999" -- "user9 1..1" user : user_Input_Data
 @enduml

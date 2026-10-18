@@ -1,4 +1,8 @@
 @startuml
+' model: mteach
+' project: sampleModel
+' owner: User
+' description: New project
 class mteach_Course {
   + coefficient : float
   + name : str
@@ -11,8 +15,8 @@ class mteach_Professor {
 class mteach_Topic {
   + title : str
 }
-mteach_Course "0..1" -- "1..1" mteach_Topic : course3
-mteach_Course "1..1" -- "0..1" mteach_Professor : professor2
-mteach_Course "0..9999" -- "1..1" mteach_Professor : teachedCourses0
-mteach_Course "1..1" -- "1..9999" mteach_Topic : topics1
+mteach_Course "topics 0..1" -- "Course4 1..1" mteach_Topic : course3
+mteach_Course "Professor 1..1" -- "teachedCourses 0..1" mteach_Professor : professor2
+mteach_Course "professor 0..9999" -- "Course 1..1" mteach_Professor : teachedCourses0
+mteach_Course "Topic 1..1" -- "course 1..9999" mteach_Topic : topics1
 @enduml

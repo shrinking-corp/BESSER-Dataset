@@ -1,4 +1,8 @@
 @startuml
+' model: StudyProgramme
+' project: sampleModel
+' owner: User
+' description: New project
 class StudyProgramme_Course {
   + code : str
   + credits : float
@@ -26,14 +30,14 @@ class StudyProgramme_Semester {
 class StudyProgramme_Specialization {
   + name : str
 }
-StudyProgramme_Course "0..9999" --* "1..1" StudyProgramme_Department : course21
-StudyProgramme_CourseGroup "1..2" --* "1..1" StudyProgramme_Semester : courseGroups5
-StudyProgramme_Course "0..9999" -- "1..1" StudyProgramme_Semester : courseList3
-StudyProgramme_Course "1..9999" -- "1..1" StudyProgramme_CourseGroup : coursesInGroup16
-StudyProgramme_Programme "1..1" *-- "0..9999" StudyProgramme_Semester : programmeSemester0
-StudyProgramme_Programme "1..1" *-- "0..9999" StudyProgramme_Specialization : programmeSpecializaton1
-StudyProgramme_Department "1..1" *-- "0..9999" StudyProgramme_Programme : programmes19
-StudyProgramme_Semester "0..9999" --* "1..1" StudyProgramme_Specialization : semesters10
-StudyProgramme_Course "0..1" -- "1..1" StudyProgramme_Specialization : specializationCourse7
-StudyProgramme_Specialization "0..9999" --* "1..1" StudyProgramme_Specialization : specializations14
+StudyProgramme_Course "StudyProgramme_Department22 0..9999" --* "StudyProgramme_Course23 1..1" StudyProgramme_Department : course21
+StudyProgramme_CourseGroup "StudyProgramme_Semester6 1..2" --* "StudyProgramme_CourseGroup 1..1" StudyProgramme_Semester : courseGroups5
+StudyProgramme_Course "StudyProgramme_Semester4 0..9999" -- "StudyProgramme_Course 1..1" StudyProgramme_Semester : courseList3
+StudyProgramme_Course "StudyProgramme_CourseGroup17 1..9999" -- "StudyProgramme_Course18 1..1" StudyProgramme_CourseGroup : coursesInGroup16
+StudyProgramme_Programme "StudyProgramme_Semester 1..1" *-- "StudyProgramme_Programme 0..9999" StudyProgramme_Semester : programmeSemester0
+StudyProgramme_Programme "StudyProgramme_Specialization 1..1" *-- "StudyProgramme_Programme2 0..9999" StudyProgramme_Specialization : programmeSpecializaton1
+StudyProgramme_Department "StudyProgramme_Programme20 1..1" *-- "StudyProgramme_Department 0..9999" StudyProgramme_Programme : programmes19
+StudyProgramme_Semester "StudyProgramme_Specialization11 0..9999" --* "StudyProgramme_Semester12 1..1" StudyProgramme_Specialization : semesters10
+StudyProgramme_Course "StudyProgramme_Specialization8 0..1" -- "StudyProgramme_Course9 1..1" StudyProgramme_Specialization : specializationCourse7
+StudyProgramme_Specialization "StudyProgramme_Specialization13 0..9999" --* "StudyProgramme_Specialization15 1..1" StudyProgramme_Specialization : specializations14
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: entities
+' project: sampleModel
+' owner: User
+' description: New project
 class entities_DomainModel {
 }
 class entities_Entity {
@@ -8,8 +12,8 @@ class entities_Feature {
   + many : bool
   + name : str
 }
-entities_DomainModel "1..1" *-- "0..9999" entities_Entity : entities0
-entities_Entity "1..1" *-- "0..9999" entities_Feature : features4
-entities_Entity "0..1" -- "1..1" entities_Entity : superType2
-entities_Entity "0..1" -- "1..1" entities_Feature : type6
+entities_DomainModel "entities_Entity 1..1" *-- "entities_DomainModel 0..9999" entities_Entity : entities0
+entities_Entity "entities_Feature 1..1" *-- "entities_Entity5 0..9999" entities_Feature : features4
+entities_Entity "entities_Entity1 0..1" -- "entities_Entity3 1..1" entities_Entity : superType2
+entities_Entity "entities_Feature7 0..1" -- "entities_Entity8 1..1" entities_Feature : type6
 @enduml

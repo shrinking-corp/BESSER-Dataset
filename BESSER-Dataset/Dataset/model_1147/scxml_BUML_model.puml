@@ -1,4 +1,8 @@
 @startuml
+' model: scxml
+' project: sampleModel
+' owner: User
+' description: New project
 class scxml_DocumentRoot {
   + mixed : str
 }
@@ -42,18 +46,18 @@ class scxml_ScxmlTransitionType {
   + scxmlExecutablecontent : str
   + target : str
 }
-scxml_ScxmlOnexecuteType "0..9999" --* "1..1" scxml_ScxmlStateType : onentry9
-scxml_ScxmlOnexecuteType "0..9999" --* "1..1" scxml_ScxmlStateType : onexit12
-scxml_ScxmlParamType "0..9999" --* "1..1" scxml_ScxmlSendType : param7
-scxml_ScxmlOnexecuteType "1..1" *-- "0..9999" scxml_ScxmlScriptType : script1
-scxml_ScxmlScriptType "0..9999" --* "1..1" scxml_ScxmlTransitionType : script23
-scxml_ScxmlScriptType "0..9999" --* "1..1" scxml_ScxmlScxmlType : script4
-scxml_DocumentRoot "1..1" *-- "0..9999" scxml_ScxmlScxmlType : scxml30
-scxml_ScxmlOnexecuteType "1..1" *-- "0..9999" scxml_ScxmlSendType : send0
-scxml_ScxmlSendType "0..9999" --* "1..1" scxml_ScxmlTransitionType : send20
-scxml_ScxmlStateType "0..9999" --* "1..1" scxml_ScxmlStateType : state18
-scxml_ScxmlScxmlType "1..1" *-- "0..9999" scxml_ScxmlStateType : state3
-scxml_ScxmlStateType "1..1" *-- "0..9999" scxml_ScxmlTransitionType : transition15
-scxml_DocumentRoot "1..1" *-- "0..9999" scxml_EStringToStringMapEntry : xMLNSPrefixMap26
-scxml_DocumentRoot "1..1" *-- "0..9999" scxml_EStringToStringMapEntry : xSISchemaLocation27
+scxml_ScxmlOnexecuteType "scxml_ScxmlStateType10 0..9999" --* "scxml_ScxmlOnexecuteType11 1..1" scxml_ScxmlStateType : onentry9
+scxml_ScxmlOnexecuteType "scxml_ScxmlStateType13 0..9999" --* "scxml_ScxmlOnexecuteType14 1..1" scxml_ScxmlStateType : onexit12
+scxml_ScxmlParamType "scxml_ScxmlSendType8 0..9999" --* "scxml_ScxmlParamType 1..1" scxml_ScxmlSendType : param7
+scxml_ScxmlOnexecuteType "scxml_ScxmlScriptType 1..1" *-- "scxml_ScxmlOnexecuteType2 0..9999" scxml_ScxmlScriptType : script1
+scxml_ScxmlScriptType "scxml_ScxmlTransitionType24 0..9999" --* "scxml_ScxmlScriptType25 1..1" scxml_ScxmlTransitionType : script23
+scxml_ScxmlScriptType "scxml_ScxmlScxmlType5 0..9999" --* "scxml_ScxmlScriptType6 1..1" scxml_ScxmlScxmlType : script4
+scxml_DocumentRoot "scxml_ScxmlScxmlType32 1..1" *-- "scxml_DocumentRoot31 0..9999" scxml_ScxmlScxmlType : scxml30
+scxml_ScxmlOnexecuteType "scxml_ScxmlSendType 1..1" *-- "scxml_ScxmlOnexecuteType 0..9999" scxml_ScxmlSendType : send0
+scxml_ScxmlSendType "scxml_ScxmlTransitionType21 0..9999" --* "scxml_ScxmlSendType22 1..1" scxml_ScxmlTransitionType : send20
+scxml_ScxmlStateType "scxml_ScxmlStateType17 0..9999" --* "scxml_ScxmlStateType19 1..1" scxml_ScxmlStateType : state18
+scxml_ScxmlScxmlType "scxml_ScxmlStateType 1..1" *-- "scxml_ScxmlScxmlType 0..9999" scxml_ScxmlStateType : state3
+scxml_ScxmlStateType "scxml_ScxmlTransitionType 1..1" *-- "scxml_ScxmlStateType16 0..9999" scxml_ScxmlTransitionType : transition15
+scxml_DocumentRoot "scxml_EStringToStringMapEntry 1..1" *-- "scxml_DocumentRoot 0..9999" scxml_EStringToStringMapEntry : xMLNSPrefixMap26
+scxml_DocumentRoot "scxml_EStringToStringMapEntry29 1..1" *-- "scxml_DocumentRoot28 0..9999" scxml_EStringToStringMapEntry : xSISchemaLocation27
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: message
+' project: sampleModel
+' owner: User
+' description: New project
 class Categorized {
 }
 class message_Language {
@@ -20,7 +24,7 @@ class message_Translation {
   + uid : str
 }
 Categorized <|-- message_MessageLibrary
-message_Language "0..1" -- "1..1" message_Translation : lang3
-message_Message "0..9999" --* "1..1" message_MessageLibrary : messages0
-message_Message "1..1" *-- "0..9999" message_Translation : translatioins1
+message_Language "message_Translation4 0..1" -- "message_Language 1..1" message_Translation : lang3
+message_Message "message_MessageLibrary 0..9999" --* "message_Message 1..1" message_MessageLibrary : messages0
+message_Message "message_Translation 1..1" *-- "message_Message2 0..9999" message_Translation : translatioins1
 @enduml

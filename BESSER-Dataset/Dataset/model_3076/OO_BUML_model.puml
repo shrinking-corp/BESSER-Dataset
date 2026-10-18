@@ -1,4 +1,8 @@
 @startuml
+' model: OO
+' project: sampleModel
+' owner: User
+' description: New project
 class AnnotatedElement {
 }
 class Class {
@@ -71,16 +75,16 @@ PackageableElement <|-- OO_Classifier
 PackageableElement <|-- OO_Package
 StructuralFeature <|-- OO_Attribute
 StructuralFeature <|-- OO_Reference
-OO_AnnotatedElement "1..1" *-- "0..9999" OO_Annotation : annotations1
-OO_Package "1..1" *-- "0..9999" OO_PackageableElement : contents2
-OO_Class "1..1" -- "0..9999" OO_Class : extendedBy8
-OO_Class "1..1" -- "1..1" OO_Class : extends6
-OO_Class "1..1" *-- "0..9999" OO_Feature : features10
-OO_Class "1..1" -- "1..1" OO_Feature : owner11
-OO_Operation "1..1" -- "1..1" OO_Parameter : owner18
-OO_Package "1..1" -- "1..1" OO_PackageableElement : package0
-OO_Operation "1..1" *-- "0..9999" OO_Parameter : parameters14
-OO_Classifier "1..1" -- "1..1" OO_Feature : type13
-OO_Classifier "1..1" -- "1..1" OO_Parameter : type16
-OO_Package "1..1" -- "0..9999" OO_Package : uses4
+OO_AnnotatedElement "OO_Annotation 1..1" *-- "OO_AnnotatedElement 0..9999" OO_Annotation : annotations1
+OO_Package "PackageableElement 1..1" *-- "package 0..9999" OO_PackageableElement : contents2
+OO_Class "Class9 1..1" -- "extends 0..9999" OO_Class : extendedBy8
+OO_Class "Class 1..1" -- "extendedBy 1..1" OO_Class : extends6
+OO_Class "Feature 1..1" *-- "owner 0..9999" OO_Feature : features10
+OO_Class "features 1..1" -- "Class12 1..1" OO_Feature : owner11
+OO_Operation "parameters 1..1" -- "Operation 1..1" OO_Parameter : owner18
+OO_Package "contents 1..1" -- "Package 1..1" OO_PackageableElement : package0
+OO_Operation "Parameter 1..1" *-- "owner15 0..9999" OO_Parameter : parameters14
+OO_Classifier "OO_Feature 1..1" -- "OO_Classifier 1..1" OO_Feature : type13
+OO_Classifier "OO_Parameter 1..1" -- "OO_Classifier17 1..1" OO_Parameter : type16
+OO_Package "OO_Package 1..1" -- "OO_Package3 0..9999" OO_Package : uses4
 @enduml

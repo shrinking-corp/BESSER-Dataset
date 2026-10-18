@@ -1,4 +1,8 @@
 @startuml
+' model: QualityMetrics
+' project: sampleModel
+' owner: User
+' description: New project
 class Metric {
 }
 class QualityMetrics_AggregatedIntegerMetric {
@@ -27,7 +31,7 @@ class QualityMetrics_SimpleMetric {
 Metric <|-- QualityMetrics_AggregatedIntegerMetric
 Metric <|-- QualityMetrics_AggregatedRealMetric
 Metric <|-- QualityMetrics_SimpleMetric
-QualityMetrics_AggregatedIntegerMetric "0..9999" --* "1..1" QualityMetrics_Metrics : AggregatedIntegerMetrics1
-QualityMetrics_AggregatedRealMetric "0..9999" --* "1..1" QualityMetrics_Metrics : AggregatedRealMetrics3
-QualityMetrics_Metrics "1..1" *-- "0..9999" QualityMetrics_SimpleMetric : SimpleMetrics0
+QualityMetrics_AggregatedIntegerMetric "QualityMetrics_Metrics2 0..9999" --* "QualityMetrics_AggregatedIntegerMetric 1..1" QualityMetrics_Metrics : AggregatedIntegerMetrics1
+QualityMetrics_AggregatedRealMetric "QualityMetrics_Metrics4 0..9999" --* "QualityMetrics_AggregatedRealMetric 1..1" QualityMetrics_Metrics : AggregatedRealMetrics3
+QualityMetrics_Metrics "QualityMetrics_SimpleMetric 1..1" *-- "QualityMetrics_Metrics 0..9999" QualityMetrics_SimpleMetric : SimpleMetrics0
 @enduml

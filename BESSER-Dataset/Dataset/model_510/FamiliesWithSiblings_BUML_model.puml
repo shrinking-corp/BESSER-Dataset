@@ -1,4 +1,8 @@
 @startuml
+' model: FamiliesWithSiblings
+' project: sampleModel
+' owner: User
+' description: New project
 class FamiliesWithSiblings_Family {
   + name : str
 }
@@ -7,15 +11,15 @@ class FamiliesWithSiblings_FamilyMember {
 }
 class FamiliesWithSiblings_FamilyRegister {
 }
-FamiliesWithSiblings_Family "1..1" *-- "0..9999" FamiliesWithSiblings_FamilyMember : daughters6
-FamiliesWithSiblings_Family "0..1" -- "1..1" FamiliesWithSiblings_FamilyMember : daughtersInverse17
-FamiliesWithSiblings_Family "0..9999" --* "1..1" FamiliesWithSiblings_FamilyRegister : families0
-FamiliesWithSiblings_Family "1..1" -- "0..1" FamiliesWithSiblings_FamilyRegister : familiesInverse8
-FamiliesWithSiblings_Family "1..1" *-- "0..1" FamiliesWithSiblings_FamilyMember : father1
-FamiliesWithSiblings_Family "0..1" -- "1..1" FamiliesWithSiblings_FamilyMember : fatherInverse11
-FamiliesWithSiblings_Family "1..1" *-- "0..1" FamiliesWithSiblings_FamilyMember : mother2
-FamiliesWithSiblings_Family "0..1" -- "1..1" FamiliesWithSiblings_FamilyMember : motherInverse13
-FamiliesWithSiblings_Family "1..1" -- "0..5" FamiliesWithSiblings_Family : siblings10
-FamiliesWithSiblings_Family "1..1" *-- "0..9999" FamiliesWithSiblings_FamilyMember : sons4
-FamiliesWithSiblings_Family "0..1" -- "1..1" FamiliesWithSiblings_FamilyMember : sonsInverse15
+FamiliesWithSiblings_Family "FamilyMember7 1..1" *-- "daughtersInverse 0..9999" FamiliesWithSiblings_FamilyMember : daughters6
+FamiliesWithSiblings_Family "daughters 0..1" -- "Family18 1..1" FamiliesWithSiblings_FamilyMember : daughtersInverse17
+FamiliesWithSiblings_Family "familiesInverse 0..9999" --* "Family 1..1" FamiliesWithSiblings_FamilyRegister : families0
+FamiliesWithSiblings_Family "FamilyRegister 1..1" -- "families 0..1" FamiliesWithSiblings_FamilyRegister : familiesInverse8
+FamiliesWithSiblings_Family "FamilyMember 1..1" *-- "fatherInverse 0..1" FamiliesWithSiblings_FamilyMember : father1
+FamiliesWithSiblings_Family "father 0..1" -- "Family12 1..1" FamiliesWithSiblings_FamilyMember : fatherInverse11
+FamiliesWithSiblings_Family "FamilyMember3 1..1" *-- "motherInverse 0..1" FamiliesWithSiblings_FamilyMember : mother2
+FamiliesWithSiblings_Family "mother 0..1" -- "Family14 1..1" FamiliesWithSiblings_FamilyMember : motherInverse13
+FamiliesWithSiblings_Family "FamiliesWithSiblings_Family 1..1" -- "FamiliesWithSiblings_Family9 0..5" FamiliesWithSiblings_Family : siblings10
+FamiliesWithSiblings_Family "FamilyMember5 1..1" *-- "sonsInverse 0..9999" FamiliesWithSiblings_FamilyMember : sons4
+FamiliesWithSiblings_Family "sons 0..1" -- "Family16 1..1" FamiliesWithSiblings_FamilyMember : sonsInverse15
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: webapp
+' project: sampleModel
+' owner: User
+' description: New project
 class Control {
 }
 enum DateFormat {
@@ -87,12 +91,12 @@ Page <|-- webapp_NormalPage
 TextBox <|-- webapp_DateBox
 TextBox <|-- webapp_EmailBox
 TextBox <|-- webapp_PasswordBox
-webapp_Control "1..9999" --* "1..1" webapp_FormPage : controls4
-webapp_NormalControl "0..9999" --* "1..1" webapp_NormalPage : controls6
-webapp_Link "1..1" -- "1..1" webapp_Page : destination7
-webapp_ListElement "2..9999" --* "1..1" webapp_RadioButton : elements10
-webapp_DropDownList "1..1" *-- "0..9999" webapp_ListElement : elements9
-webapp_FormPage "1..1" -- "0..1" webapp_Page : errorTarget1
-webapp_DynamicWebApp "1..1" *-- "1..9999" webapp_Page : pages12
-webapp_FormPage "1..1" -- "0..1" webapp_Page : successTarget0
+webapp_Control "webapp_FormPage5 1..9999" --* "webapp_Control 1..1" webapp_FormPage : controls4
+webapp_NormalControl "webapp_NormalPage 0..9999" --* "webapp_NormalControl 1..1" webapp_NormalPage : controls6
+webapp_Link "webapp_Page8 1..1" -- "webapp_Link 1..1" webapp_Page : destination7
+webapp_ListElement "webapp_RadioButton 2..9999" --* "webapp_ListElement11 1..1" webapp_RadioButton : elements10
+webapp_DropDownList "webapp_ListElement 1..1" *-- "webapp_DropDownList 0..9999" webapp_ListElement : elements9
+webapp_FormPage "webapp_Page3 1..1" -- "webapp_FormPage2 0..1" webapp_Page : errorTarget1
+webapp_DynamicWebApp "webapp_Page13 1..1" *-- "webapp_DynamicWebApp 1..9999" webapp_Page : pages12
+webapp_FormPage "webapp_Page 1..1" -- "webapp_FormPage 0..1" webapp_Page : successTarget0
 @enduml

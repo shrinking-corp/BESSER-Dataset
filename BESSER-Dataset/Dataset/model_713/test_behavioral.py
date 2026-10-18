@@ -1379,9 +1379,9 @@ def test_assoc_application189_stub_double():
     partner = pivot_Profile()
     setattr(partner, 'appliedProfile', None)
     _safe_set(owner, 'ProfileApplication190', partner)
-    assert getattr(partner, 'appliedProfile') == owner
+    assert owner in getattr(partner, 'appliedProfile')
     _safe_set(owner, 'ProfileApplication190', None)
-    assert getattr(partner, 'appliedProfile') is None
+    assert owner not in getattr(partner, 'appliedProfile')
 
 
 def test_assoc_appliedProfile191_stub_double():
@@ -1529,9 +1529,9 @@ def test_assoc_connectionPoint265_stub_double():
     partner = pivot_StateMachine()
     setattr(partner, 'pivot_StateMachine266', None)
     _safe_set(owner, 'pivot_Pseudostate267', partner)
-    assert getattr(partner, 'pivot_StateMachine266') == owner
+    assert owner in getattr(partner, 'pivot_StateMachine266')
     _safe_set(owner, 'pivot_Pseudostate267', None)
-    assert getattr(partner, 'pivot_StateMachine266') is None
+    assert owner not in getattr(partner, 'pivot_StateMachine266')
 
 
 def test_assoc_container308_stub_double():
@@ -1694,9 +1694,9 @@ def test_assoc_entry26_stub_double():
     partner = pivot_ConnectionPointReference()
     setattr(partner, 'pivot_ConnectionPointReference', None)
     _safe_set(owner, 'pivot_Pseudostate', partner)
-    assert getattr(partner, 'pivot_ConnectionPointReference') == owner
+    assert owner in getattr(partner, 'pivot_ConnectionPointReference')
     _safe_set(owner, 'pivot_Pseudostate', None)
-    assert getattr(partner, 'pivot_ConnectionPointReference') is None
+    assert owner not in getattr(partner, 'pivot_ConnectionPointReference')
 
 
 def test_assoc_enumeration69_stub_double():
@@ -1739,9 +1739,9 @@ def test_assoc_exit27_stub_double():
     partner = pivot_ConnectionPointReference()
     setattr(partner, 'pivot_ConnectionPointReference28', None)
     _safe_set(owner, 'pivot_Pseudostate29', partner)
-    assert getattr(partner, 'pivot_ConnectionPointReference28') == owner
+    assert owner in getattr(partner, 'pivot_ConnectionPointReference28')
     _safe_set(owner, 'pivot_Pseudostate29', None)
-    assert getattr(partner, 'pivot_ConnectionPointReference28') is None
+    assert owner not in getattr(partner, 'pivot_ConnectionPointReference28')
 
 
 def test_assoc_expressionInOCL142_stub_double():
@@ -1769,9 +1769,9 @@ def test_assoc_extensionOfs275_stub_double():
     partner = pivot_Stereotype()
     setattr(partner, 'stereotype', None)
     _safe_set(owner, 'TypeExtension', partner)
-    assert getattr(partner, 'stereotype') == owner
+    assert owner in getattr(partner, 'stereotype')
     _safe_set(owner, 'TypeExtension', None)
-    assert getattr(partner, 'stereotype') is None
+    assert owner not in getattr(partner, 'stereotype')
 
 
 def test_assoc_imports234_stub_double():
@@ -1814,9 +1814,9 @@ def test_assoc_incoming368_stub_double():
     partner = pivot_Vertex()
     setattr(partner, 'target', None)
     _safe_set(owner, 'Transition369', partner)
-    assert getattr(partner, 'target') == owner
+    assert owner in getattr(partner, 'target')
     _safe_set(owner, 'Transition369', None)
-    assert getattr(partner, 'target') is None
+    assert owner not in getattr(partner, 'target')
 
 
 def test_assoc_initExpression359_stub_double():
@@ -1949,9 +1949,9 @@ def test_assoc_outgoing370_stub_double():
     partner = pivot_Vertex()
     setattr(partner, 'source', None)
     _safe_set(owner, 'Transition371', partner)
-    assert getattr(partner, 'source') == owner
+    assert owner in getattr(partner, 'source')
     _safe_set(owner, 'Transition371', None)
-    assert getattr(partner, 'source') is None
+    assert owner not in getattr(partner, 'source')
 
 
 def test_assoc_ownedActual294_stub_double():
@@ -1994,9 +1994,9 @@ def test_assoc_ownedContent0_stub_double():
     partner = pivot_Annotation()
     setattr(partner, 'pivot_Annotation', None)
     _safe_set(owner, 'pivot_Element', partner)
-    assert getattr(partner, 'pivot_Annotation') == owner
+    assert owner in getattr(partner, 'pivot_Annotation')
     _safe_set(owner, 'pivot_Element', None)
-    assert getattr(partner, 'pivot_Annotation') is None
+    assert owner not in getattr(partner, 'pivot_Annotation')
 
 
 def test_assoc_ownedDefault281_stub_double():
@@ -2024,9 +2024,9 @@ def test_assoc_ownedDetail1_stub_double():
     partner = pivot_Annotation()
     setattr(partner, 'pivot_Annotation2', None)
     _safe_set(owner, 'pivot_Detail', partner)
-    assert getattr(partner, 'pivot_Annotation2') == owner
+    assert owner in getattr(partner, 'pivot_Annotation2')
     _safe_set(owner, 'pivot_Detail', None)
-    assert getattr(partner, 'pivot_Annotation2') is None
+    assert owner not in getattr(partner, 'pivot_Annotation2')
 
 
 def test_assoc_ownedLiteral68_stub_double():
@@ -2039,9 +2039,9 @@ def test_assoc_ownedLiteral68_stub_double():
     partner = pivot_Enumeration()
     setattr(partner, 'enumeration', None)
     _safe_set(owner, 'EnumerationLiteral', partner)
-    assert getattr(partner, 'enumeration') == owner
+    assert owner in getattr(partner, 'enumeration')
     _safe_set(owner, 'EnumerationLiteral', None)
-    assert getattr(partner, 'enumeration') is None
+    assert owner not in getattr(partner, 'enumeration')
 
 
 def test_assoc_ownedParameter151_stub_double():
@@ -2084,9 +2084,9 @@ def test_assoc_ownedPrecedence109_stub_double():
     partner = pivot_Library()
     setattr(partner, 'pivot_Library', None)
     _safe_set(owner, 'pivot_Precedence', partner)
-    assert getattr(partner, 'pivot_Library') == owner
+    assert owner in getattr(partner, 'pivot_Library')
     _safe_set(owner, 'pivot_Precedence', None)
-    assert getattr(partner, 'pivot_Library') is None
+    assert owner not in getattr(partner, 'pivot_Library')
 
 
 def test_assoc_ownedProperty56_stub_double():
@@ -2099,9 +2099,9 @@ def test_assoc_ownedProperty56_stub_double():
     partner = pivot_DynamicType()
     setattr(partner, 'pivot_DynamicType', None)
     _safe_set(owner, 'pivot_DynamicProperty57', partner)
-    assert getattr(partner, 'pivot_DynamicType') == owner
+    assert owner in getattr(partner, 'pivot_DynamicType')
     _safe_set(owner, 'pivot_DynamicProperty57', None)
-    assert getattr(partner, 'pivot_DynamicType') is None
+    assert owner not in getattr(partner, 'pivot_DynamicType')
 
 
 def test_assoc_ownedRule134_stub_double():
@@ -2114,9 +2114,9 @@ def test_assoc_ownedRule134_stub_double():
     partner = pivot_Namespace()
     setattr(partner, 'pivot_Namespace135', None)
     _safe_set(owner, 'pivot_Constraint136', partner)
-    assert getattr(partner, 'pivot_Namespace135') == owner
+    assert owner in getattr(partner, 'pivot_Namespace135')
     _safe_set(owner, 'pivot_Constraint136', None)
-    assert getattr(partner, 'pivot_Namespace135') is None
+    assert owner not in getattr(partner, 'pivot_Namespace135')
 
 
 def test_assoc_ownedTemplateSignature302_stub_double():
@@ -2159,9 +2159,9 @@ def test_assoc_parameterType98_stub_double():
     partner = pivot_LambdaType()
     setattr(partner, 'pivot_LambdaType99', None)
     _safe_set(owner, 'pivot_Type100', partner)
-    assert getattr(partner, 'pivot_LambdaType99') == owner
+    assert owner in getattr(partner, 'pivot_LambdaType99')
     _safe_set(owner, 'pivot_Type100', None)
-    assert getattr(partner, 'pivot_LambdaType99') is None
+    assert owner not in getattr(partner, 'pivot_LambdaType99')
 
 
 def test_assoc_parameterVariable74_stub_double():
@@ -2174,9 +2174,9 @@ def test_assoc_parameterVariable74_stub_double():
     partner = pivot_ExpressionInOCL()
     setattr(partner, 'pivot_ExpressionInOCL75', None)
     _safe_set(owner, 'pivot_Variable76', partner)
-    assert getattr(partner, 'pivot_ExpressionInOCL75') == owner
+    assert owner in getattr(partner, 'pivot_ExpressionInOCL75')
     _safe_set(owner, 'pivot_Variable76', None)
-    assert getattr(partner, 'pivot_ExpressionInOCL75') is None
+    assert owner not in getattr(partner, 'pivot_ExpressionInOCL75')
 
 
 def test_assoc_parameteredElement285_stub_double():
@@ -2234,9 +2234,9 @@ def test_assoc_reference3_stub_double():
     partner = pivot_Annotation()
     setattr(partner, 'pivot_Annotation4', None)
     _safe_set(owner, 'pivot_Element5', partner)
-    assert getattr(partner, 'pivot_Annotation4') == owner
+    assert owner in getattr(partner, 'pivot_Annotation4')
     _safe_set(owner, 'pivot_Element5', None)
-    assert getattr(partner, 'pivot_Annotation4') is None
+    assert owner not in getattr(partner, 'pivot_Annotation4')
 
 
 def test_assoc_referredIteration115_stub_double():
@@ -2564,9 +2564,9 @@ def test_assoc_submachineState273_stub_double():
     partner = pivot_StateMachine()
     setattr(partner, 'submachine', None)
     _safe_set(owner, 'State274', partner)
-    assert getattr(partner, 'submachine') == owner
+    assert owner in getattr(partner, 'submachine')
     _safe_set(owner, 'State274', None)
-    assert getattr(partner, 'submachine') is None
+    assert owner not in getattr(partner, 'submachine')
 
 
 def test_assoc_target125_stub_double():
@@ -2669,9 +2669,9 @@ def test_assoc_transition231_stub_double():
     partner = pivot_Region()
     setattr(partner, 'container232', None)
     _safe_set(owner, 'Transition233', partner)
-    assert getattr(partner, 'container232') == owner
+    assert owner in getattr(partner, 'container232')
     _safe_set(owner, 'Transition233', None)
-    assert getattr(partner, 'container232') is None
+    assert owner not in getattr(partner, 'container232')
 
 
 def test_assoc_transition324_stub_double():
@@ -2729,9 +2729,9 @@ def test_assoc_unownedAttribute6_stub_double():
     partner = pivot_AssociationClass()
     setattr(partner, 'associationClass', None)
     _safe_set(owner, 'Property', partner)
-    assert getattr(partner, 'associationClass') == owner
+    assert owner in getattr(partner, 'associationClass')
     _safe_set(owner, 'Property', None)
-    assert getattr(partner, 'associationClass') is None
+    assert owner not in getattr(partner, 'associationClass')
 
 
 def test_assoc_upperBound356_stub_double():

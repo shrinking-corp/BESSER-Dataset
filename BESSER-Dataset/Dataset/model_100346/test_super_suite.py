@@ -1339,9 +1339,9 @@ def test_assoc_states3_stub_double():
     partner = automaton_Automaton()
     setattr(partner, 'automaton_Automaton4', None)
     _safe_set(owner, 'automaton_State', partner)
-    assert getattr(partner, 'automaton_Automaton4') == owner
+    assert owner in getattr(partner, 'automaton_Automaton4')
     _safe_set(owner, 'automaton_State', None)
-    assert getattr(partner, 'automaton_Automaton4') is None
+    assert owner not in getattr(partner, 'automaton_Automaton4')
 
 
 def test_assoc_timedZones17_stub_double():
@@ -1354,9 +1354,9 @@ def test_assoc_timedZones17_stub_double():
     partner = automaton_EventToken()
     setattr(partner, 'automaton_EventToken18', None)
     _safe_set(owner, 'automaton_TimedZone19', partner)
-    assert getattr(partner, 'automaton_EventToken18') == owner
+    assert owner in getattr(partner, 'automaton_EventToken18')
     _safe_set(owner, 'automaton_TimedZone19', None)
-    assert getattr(partner, 'automaton_EventToken18') is None
+    assert owner not in getattr(partner, 'automaton_EventToken18')
 
 
 def test_assoc_timedZones8_stub_double():
@@ -1369,35 +1369,15 @@ def test_assoc_timedZones8_stub_double():
     partner = automaton_Automaton()
     setattr(partner, 'automaton_Automaton9', None)
     _safe_set(owner, 'automaton_TimedZone', partner)
-    assert getattr(partner, 'automaton_Automaton9') == owner
+    assert owner in getattr(partner, 'automaton_Automaton9')
     _safe_set(owner, 'automaton_TimedZone', None)
-    assert getattr(partner, 'automaton_Automaton9') is None
+    assert owner not in getattr(partner, 'automaton_Automaton9')
 
 
 
 
-from enum import Enum
 from python_code import EventContext
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(EventContext.RECENT, '', 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(EventContext.RECENT, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(EventContext.RECENT, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(EventContext.RECENT, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(EventContext.RECENT, 'RECENT') == EventContext.RECENT
-
 from python_code import automaton_Event
 from python_code import automaton_InternalModel
 

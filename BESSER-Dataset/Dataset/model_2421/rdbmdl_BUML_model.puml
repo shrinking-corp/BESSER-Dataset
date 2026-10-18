@@ -1,4 +1,8 @@
 @startuml
+' model: rdbmdl
+' project: sampleModel
+' owner: User
+' description: New project
 class CheckConstraint {
 }
 class Column {
@@ -173,24 +177,24 @@ UniqueConstraint <|-- rdbmdl_constraints_PrimaryKey
 ViewColumn <|-- rdbmdl_view_ReferencedViewColumn
 ViewColumn <|-- rdbmdl_view_ViewExpressionColumn
 datatypes_PrimitiveDataType <|-- rdbmdl_datatypes_Domain
-CheckConstraint "0..9999" --* "1..1" rdbmdl_Table : checks14
-ViewColumn "1..9999" --* "1..1" rdbmdl_view_View : columns28
-rdbmdl_Table "1..1" *-- "1..9999" rdbmdl_TableColumn : columns5
-Domain "0..1" -- "1..1" rdbmdl_TableColumn : domain16
-rdbmdl_Schema "1..1" *-- "0..9999" rdbmdl_SchemaElement : elements3
-ForeignKey "0..9999" --* "1..1" rdbmdl_Table : foreignKeys10
-constraints_rdbmdl_TableColumn "1..9999" -- "1..1" rdbmdl_constraints_ColumnRefConstraint : includedColumns20
-IndexedColumn "0..9999" --* "1..1" rdbmdl_constraints_Index : indexedColumns23
-Index "0..9999" --* "1..1" rdbmdl_Table : indices12
-rdbmdl_Element "1..1" -- "0..1" rdbmdl_Element : parent1
-Domain "0..1" -- "1..1" rdbmdl_datatypes_Domain : parentDomain26
-PrimaryKey "0..1" --* "1..1" rdbmdl_Table : primaryKey6
-constraints_rdbmdl_TableColumn "1..1" -- "1..1" rdbmdl_constraints_IndexedColumn : refColumn24
-rdbmdl_view_ReferencedViewColumn "1..1" -- "1..1" view_rdbmdl_Column : refColumn32
-rdbmdl_view_ViewAlias "1..1" -- "1..1" view_rdbmdl_NamedColumnSet : referencedTableOrView31
-ViewAlias "0..9999" --* "1..1" rdbmdl_view_View : referencedTablesAndViews29
-UniqueConstraint "1..1" -- "1..1" rdbmdl_constraints_ForeignKey : referredUC21
-rdbmdl_Model "1..1" *-- "0..9999" rdbmdl_Schema : schemas2
-PrimitiveDataType "0..1" --* "1..1" rdbmdl_TableColumn : type18
-UniqueConstraint "0..9999" --* "1..1" rdbmdl_Table : uniqueConstraints8
+CheckConstraint "rdbmdl_Table15 0..9999" --* "CheckConstraint 1..1" rdbmdl_Table : checks14
+ViewColumn "rdbmdl_view_View 1..9999" --* "ViewColumn 1..1" rdbmdl_view_View : columns28
+rdbmdl_Table "rdbmdl_TableColumn 1..1" *-- "rdbmdl_Table 1..9999" rdbmdl_TableColumn : columns5
+Domain "rdbmdl_TableColumn17 0..1" -- "Domain 1..1" rdbmdl_TableColumn : domain16
+rdbmdl_Schema "rdbmdl_SchemaElement 1..1" *-- "rdbmdl_Schema4 0..9999" rdbmdl_SchemaElement : elements3
+ForeignKey "rdbmdl_Table11 0..9999" --* "ForeignKey 1..1" rdbmdl_Table : foreignKeys10
+constraints_rdbmdl_TableColumn "rdbmdl_constraints_ColumnRefConstraint 1..9999" -- "constraints_rdbmdl_TableColumn 1..1" rdbmdl_constraints_ColumnRefConstraint : includedColumns20
+IndexedColumn "rdbmdl_constraints_Index 0..9999" --* "IndexedColumn 1..1" rdbmdl_constraints_Index : indexedColumns23
+Index "rdbmdl_Table13 0..9999" --* "Index 1..1" rdbmdl_Table : indices12
+rdbmdl_Element "rdbmdl_Element 1..1" -- "rdbmdl_Element0 0..1" rdbmdl_Element : parent1
+Domain "rdbmdl_datatypes_Domain 0..1" -- "Domain27 1..1" rdbmdl_datatypes_Domain : parentDomain26
+PrimaryKey "rdbmdl_Table7 0..1" --* "PrimaryKey 1..1" rdbmdl_Table : primaryKey6
+constraints_rdbmdl_TableColumn "rdbmdl_constraints_IndexedColumn 1..1" -- "constraints_rdbmdl_TableColumn25 1..1" rdbmdl_constraints_IndexedColumn : refColumn24
+rdbmdl_view_ReferencedViewColumn "view_rdbmdl_Column 1..1" -- "rdbmdl_view_ReferencedViewColumn 1..1" view_rdbmdl_Column : refColumn32
+rdbmdl_view_ViewAlias "view_rdbmdl_NamedColumnSet 1..1" -- "rdbmdl_view_ViewAlias 1..1" view_rdbmdl_NamedColumnSet : referencedTableOrView31
+ViewAlias "rdbmdl_view_View30 0..9999" --* "ViewAlias 1..1" rdbmdl_view_View : referencedTablesAndViews29
+UniqueConstraint "rdbmdl_constraints_ForeignKey 1..1" -- "UniqueConstraint22 1..1" rdbmdl_constraints_ForeignKey : referredUC21
+rdbmdl_Model "rdbmdl_Schema 1..1" *-- "rdbmdl_Model 0..9999" rdbmdl_Schema : schemas2
+PrimitiveDataType "rdbmdl_TableColumn19 0..1" --* "PrimitiveDataType 1..1" rdbmdl_TableColumn : type18
+UniqueConstraint "rdbmdl_Table9 0..9999" --* "UniqueConstraint 1..1" rdbmdl_Table : uniqueConstraints8
 @enduml

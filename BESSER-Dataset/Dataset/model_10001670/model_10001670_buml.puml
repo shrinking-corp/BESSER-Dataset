@@ -1,4 +1,8 @@
 @startuml
+' model: _Nl19wDQxEeqqcaoAsxFIeg
+' project: sampleModel
+' owner: User
+' description: New project
 class Account {
   + Address : str
   + ContactNo : str
@@ -45,19 +49,19 @@ class Social_Login {
   + email : str
   + password : str
 }
-Account "0..1" -- "0..1" Customer : Account_Customer
-Account "1..1" -- "0..1" Order : Account_Order
-Corporate_Order "1..1" -- "1..1" Customer : Corporate_Order_Customer
-Corporate_Order "0..9999" -- "1..9999" Items : Corporate_Order_Items
-Account "1..1" -- "1..1" Customer : Customer_Account
-Customer "1..1" -- "1..9999" Order : Customer_Order
-Customer "1..1" -- "1..1" Payment : Customer_Payment
-Customer "1..9999" -- "1..9999" Products : Customer_Products
-Customer "1..1" -- "1..1" Shopping_Cart : Customer_Shopping_Cart
-Account "0..1" -- "0..1" Order : Order_Account
-Account "0..1" -- "0..1" Order : Order_Account2
-Order "1..1" -- "1..1" Payment : Payment__Order
-Customer "0..1" -- "1..1" Phone_Order : Phone_Order_Customer
-Items "1..9999" -- "0..9999" Phone_Order : Phone_Order_Items
-Items "1..9999" -- "0..9999" Shopping_Cart : Shopping_Cart_Items
+Account "account9 0..1" -- "customer8 0..1" Customer : Account_Customer
+Account "Account_Order_121 1..1" -- "Account_Order_020 0..1" Order : Account_Order
+Corporate_Order "Corporate_Order_Customer_129 1..1" -- "Corporate_Order_Customer_028 1..1" Customer : Corporate_Order_Customer
+Corporate_Order "Corporate_Order_Items_125 0..9999" -- "Corporate_Order_Items_024 1..9999" Items : Corporate_Order_Items
+Account "Customer_Account_010 1..1" -- "Customer_Account_111 1..1" Customer : Customer_Account
+Customer "Customer_Order_13 1..1" -- "Customer_Order_02 1..9999" Order : Customer_Order
+Customer "Customer_Payment_17 1..1" -- "Customer_Payment_06 1..1" Payment : Customer_Payment
+Customer "Customer_Products_11 1..9999" -- "Customer_Products_00 1..9999" Products : Customer_Products
+Customer "Customer_Shopping_Cart_15 1..1" -- "Customer_Shopping_Cart_04 1..1" Shopping_Cart : Customer_Shopping_Cart
+Account "account16 0..1" -- "order17 0..1" Order : Order_Account
+Account "account18 0..1" -- "order19 0..1" Order : Order_Account2
+Order "Payment__Order_012 1..1" -- "Payment__Order_113 1..1" Payment : Payment__Order
+Customer "Phone_Order_Customer_026 0..1" -- "Phone_Order_Customer_127 1..1" Phone_Order : Phone_Order_Customer
+Items "Phone_Order_Items_022 1..9999" -- "Phone_Order_Items_123 0..9999" Phone_Order : Phone_Order_Items
+Items "Shopping_Cart_Items_014 1..9999" -- "Shopping_Cart_Items_115 0..9999" Shopping_Cart : Shopping_Cart_Items
 @enduml

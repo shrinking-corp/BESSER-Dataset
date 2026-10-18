@@ -975,9 +975,9 @@ def test_assoc_attributes104_stub_double():
     partner = room_PortClass()
     setattr(partner, 'room_PortClass105', None)
     _safe_set(owner, 'room_Attribute106', partner)
-    assert getattr(partner, 'room_PortClass105') == owner
+    assert owner in getattr(partner, 'room_PortClass105')
     _safe_set(owner, 'room_Attribute106', None)
-    assert getattr(partner, 'room_PortClass105') is None
+    assert owner not in getattr(partner, 'room_PortClass105')
 
 
 def test_assoc_attributes48_stub_double():
@@ -990,9 +990,9 @@ def test_assoc_attributes48_stub_double():
     partner = room_DataClass()
     setattr(partner, 'room_DataClass49', None)
     _safe_set(owner, 'room_Attribute', partner)
-    assert getattr(partner, 'room_DataClass49') == owner
+    assert owner in getattr(partner, 'room_DataClass49')
     _safe_set(owner, 'room_Attribute', None)
-    assert getattr(partner, 'room_DataClass49') is None
+    assert owner not in getattr(partner, 'room_DataClass49')
 
 
 def test_assoc_base232_stub_double():
@@ -1020,9 +1020,9 @@ def test_assoc_chPoints228_stub_double():
     partner = room_StateGraph()
     setattr(partner, 'room_StateGraph229', None)
     _safe_set(owner, 'room_ChoicePoint', partner)
-    assert getattr(partner, 'room_StateGraph229') == owner
+    assert owner in getattr(partner, 'room_StateGraph229')
     _safe_set(owner, 'room_ChoicePoint', None)
-    assert getattr(partner, 'room_StateGraph229') is None
+    assert owner not in getattr(partner, 'room_StateGraph229')
 
 
 def test_assoc_condition249_stub_double():
@@ -1305,9 +1305,9 @@ def test_assoc_relayPorts174_stub_double():
     partner = room_SubSystemClass()
     setattr(partner, 'room_SubSystemClass175', None)
     _safe_set(owner, 'room_Port176', partner)
-    assert getattr(partner, 'room_SubSystemClass175') == owner
+    assert owner in getattr(partner, 'room_SubSystemClass175')
     _safe_set(owner, 'room_Port176', None)
-    assert getattr(partner, 'room_SubSystemClass175') is None
+    assert owner not in getattr(partner, 'room_SubSystemClass175')
 
 
 def test_assoc_semantics93_stub_double():
@@ -1410,9 +1410,9 @@ def test_assoc_states223_stub_double():
     partner = room_StateGraph()
     setattr(partner, 'room_StateGraph224', None)
     _safe_set(owner, 'room_State225', partner)
-    assert getattr(partner, 'room_StateGraph224') == owner
+    assert owner in getattr(partner, 'room_StateGraph224')
     _safe_set(owner, 'room_State225', None)
-    assert getattr(partner, 'room_StateGraph224') is None
+    assert owner not in getattr(partner, 'room_StateGraph224')
 
 
 def test_assoc_strSAPs141_stub_double():
@@ -1485,9 +1485,9 @@ def test_assoc_threads177_stub_double():
     partner = room_SubSystemClass()
     setattr(partner, 'room_SubSystemClass178', None)
     _safe_set(owner, 'room_LogicalThread', partner)
-    assert getattr(partner, 'room_SubSystemClass178') == owner
+    assert owner in getattr(partner, 'room_SubSystemClass178')
     _safe_set(owner, 'room_LogicalThread', None)
-    assert getattr(partner, 'room_SubSystemClass178') is None
+    assert owner not in getattr(partner, 'room_SubSystemClass178')
 
 
 def test_assoc_to236_stub_double():
@@ -1545,9 +1545,9 @@ def test_assoc_trPoints226_stub_double():
     partner = room_StateGraph()
     setattr(partner, 'room_StateGraph227', None)
     _safe_set(owner, 'room_TrPoint', partner)
-    assert getattr(partner, 'room_StateGraph227') == owner
+    assert owner in getattr(partner, 'room_StateGraph227')
     _safe_set(owner, 'room_TrPoint', None)
-    assert getattr(partner, 'room_StateGraph227') is None
+    assert owner not in getattr(partner, 'room_StateGraph227')
 
 
 def test_assoc_transitions230_stub_double():
@@ -1560,9 +1560,9 @@ def test_assoc_transitions230_stub_double():
     partner = room_StateGraph()
     setattr(partner, 'room_StateGraph231', None)
     _safe_set(owner, 'room_Transition', partner)
-    assert getattr(partner, 'room_StateGraph231') == owner
+    assert owner in getattr(partner, 'room_StateGraph231')
     _safe_set(owner, 'room_Transition', None)
-    assert getattr(partner, 'room_StateGraph231') is None
+    assert owner not in getattr(partner, 'room_StateGraph231')
 
 
 def test_assoc_type206_stub_double():

@@ -301,9 +301,9 @@ def test_assoc_constants39_stub_double():
     partner = b_ConcreteConstants()
     setattr(partner, 'b_ConcreteConstants40', None)
     _safe_set(owner, 'b_Variable41', partner)
-    assert getattr(partner, 'b_ConcreteConstants40') == owner
+    assert owner in getattr(partner, 'b_ConcreteConstants40')
     _safe_set(owner, 'b_Variable41', None)
-    assert getattr(partner, 'b_ConcreteConstants40') is None
+    assert owner not in getattr(partner, 'b_ConcreteConstants40')
 
 
 def test_assoc_def_82_stub_double():
@@ -346,9 +346,9 @@ def test_assoc_elems91_stub_double():
     partner = b_Set()
     setattr(partner, 'b_Set92', None)
     _safe_set(owner, 'b_Variable93', partner)
-    assert getattr(partner, 'b_Set92') == owner
+    assert owner in getattr(partner, 'b_Set92')
     _safe_set(owner, 'b_Variable93', None)
-    assert getattr(partner, 'b_Set92') is None
+    assert owner not in getattr(partner, 'b_Set92')
 
 
 def test_assoc_expr80_stub_double():
@@ -376,9 +376,9 @@ def test_assoc_exprs32_stub_double():
     partner = b_Values()
     setattr(partner, 'b_Values33', None)
     _safe_set(owner, 'b_ValueExpr', partner)
-    assert getattr(partner, 'b_Values33') == owner
+    assert owner in getattr(partner, 'b_Values33')
     _safe_set(owner, 'b_ValueExpr', None)
-    assert getattr(partner, 'b_Values33') is None
+    assert owner not in getattr(partner, 'b_Values33')
 
 
 def test_assoc_exprs75_stub_double():
@@ -391,9 +391,9 @@ def test_assoc_exprs75_stub_double():
     partner = b_Definitions()
     setattr(partner, 'b_Definitions76', None)
     _safe_set(owner, 'b_Definition', partner)
-    assert getattr(partner, 'b_Definitions76') == owner
+    assert owner in getattr(partner, 'b_Definitions76')
     _safe_set(owner, 'b_Definition', None)
-    assert getattr(partner, 'b_Definitions76') is None
+    assert owner not in getattr(partner, 'b_Definitions76')
 
 
 def test_assoc_imports29_stub_double():
@@ -406,9 +406,9 @@ def test_assoc_imports29_stub_double():
     partner = b_Imports()
     setattr(partner, 'b_Imports30', None)
     _safe_set(owner, 'b_Abstraction31', partner)
-    assert getattr(partner, 'b_Imports30') == owner
+    assert owner in getattr(partner, 'b_Imports30')
     _safe_set(owner, 'b_Abstraction31', None)
-    assert getattr(partner, 'b_Imports30') is None
+    assert owner not in getattr(partner, 'b_Imports30')
 
 
 def test_assoc_left180_stub_double():
@@ -481,9 +481,9 @@ def test_assoc_operations161_stub_double():
     partner = b_LocalOperations()
     setattr(partner, 'b_LocalOperations162', None)
     _safe_set(owner, 'b_Operation163', partner)
-    assert getattr(partner, 'b_LocalOperations162') == owner
+    assert owner in getattr(partner, 'b_LocalOperations162')
     _safe_set(owner, 'b_Operation163', None)
-    assert getattr(partner, 'b_LocalOperations162') is None
+    assert owner not in getattr(partner, 'b_LocalOperations162')
 
 
 def test_assoc_operations7_stub_double():
@@ -511,9 +511,9 @@ def test_assoc_operations94_stub_double():
     partner = b_Operations()
     setattr(partner, 'b_Operations95', None)
     _safe_set(owner, 'b_Operation', partner)
-    assert getattr(partner, 'b_Operations95') == owner
+    assert owner in getattr(partner, 'b_Operations95')
     _safe_set(owner, 'b_Operation', None)
-    assert getattr(partner, 'b_Operations95') is None
+    assert owner not in getattr(partner, 'b_Operations95')
 
 
 def test_assoc_properties5_stub_double():
@@ -556,9 +556,9 @@ def test_assoc_rets148_stub_double():
     partner = b_Call()
     setattr(partner, 'b_Call', None)
     _safe_set(owner, 'b_Variable149', partner)
-    assert getattr(partner, 'b_Call') == owner
+    assert owner in getattr(partner, 'b_Call')
     _safe_set(owner, 'b_Variable149', None)
-    assert getattr(partner, 'b_Call') is None
+    assert owner not in getattr(partner, 'b_Call')
 
 
 def test_assoc_right182_stub_double():
@@ -586,9 +586,9 @@ def test_assoc_seens26_stub_double():
     partner = b_Sees()
     setattr(partner, 'b_Sees27', None)
     _safe_set(owner, 'b_Abstraction28', partner)
-    assert getattr(partner, 'b_Sees27') == owner
+    assert owner in getattr(partner, 'b_Sees27')
     _safe_set(owner, 'b_Abstraction28', None)
-    assert getattr(partner, 'b_Sees27') is None
+    assert owner not in getattr(partner, 'b_Sees27')
 
 
 def test_assoc_sees0_stub_double():
@@ -766,9 +766,9 @@ def test_assoc_variables36_stub_double():
     partner = b_ConcreteVariables()
     setattr(partner, 'b_ConcreteVariables37', None)
     _safe_set(owner, 'b_Variable38', partner)
-    assert getattr(partner, 'b_ConcreteVariables37') == owner
+    assert owner in getattr(partner, 'b_ConcreteVariables37')
     _safe_set(owner, 'b_Variable38', None)
-    assert getattr(partner, 'b_ConcreteVariables37') is None
+    assert owner not in getattr(partner, 'b_ConcreteVariables37')
 
 
 def test_assoc_vars122_stub_double():
@@ -781,9 +781,9 @@ def test_assoc_vars122_stub_double():
     partner = b_Var()
     setattr(partner, 'b_Var', None)
     _safe_set(owner, 'b_Variable123', partner)
-    assert getattr(partner, 'b_Var') == owner
+    assert owner in getattr(partner, 'b_Var')
     _safe_set(owner, 'b_Variable123', None)
-    assert getattr(partner, 'b_Var') is None
+    assert owner not in getattr(partner, 'b_Var')
 
 
 def test_assoc_vars218_stub_double():
@@ -796,8 +796,8 @@ def test_assoc_vars218_stub_double():
     partner = b_ReturnTuple()
     setattr(partner, 'b_ReturnTuple', None)
     _safe_set(owner, 'b_Variable219', partner)
-    assert getattr(partner, 'b_ReturnTuple') == owner
+    assert owner in getattr(partner, 'b_ReturnTuple')
     _safe_set(owner, 'b_Variable219', None)
-    assert getattr(partner, 'b_ReturnTuple') is None
+    assert owner not in getattr(partner, 'b_ReturnTuple')
 
 

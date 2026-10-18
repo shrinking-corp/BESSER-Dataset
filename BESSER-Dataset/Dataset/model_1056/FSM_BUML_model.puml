@@ -1,4 +1,8 @@
 @startuml
+' model: fSM
+' project: sampleModel
+' owner: User
+' description: New project
 class fSM_EnumerationLiteral {
   + name : str
 }
@@ -13,12 +17,12 @@ class fSM_State {
 }
 class fSM_Transition {
 }
-fSM_FSM "0..9999" --* "1..1" fSM_Model : fsm1
-fSM_EnumerationLiteral "0..1" -- "1..1" fSM_State : literal8
-fSM_EnumerationLiteral "0..9999" --* "1..1" fSM_EnumerationType : literals15
-fSM_State "1..1" *-- "0..9999" fSM_Transition : outgoingTransition10
-fSM_FSM "1..1" *-- "0..9999" fSM_State : ownedState6
-fSM_State "0..1" -- "1..1" fSM_Transition : target12
-fSM_EnumerationType "0..1" -- "1..1" fSM_FSM : type3
-fSM_EnumerationType "0..9999" --* "1..1" fSM_Model : types0
+fSM_FSM "fSM_Model2 0..9999" --* "fSM_FSM 1..1" fSM_Model : fsm1
+fSM_EnumerationLiteral "fSM_State9 0..1" -- "fSM_EnumerationLiteral 1..1" fSM_State : literal8
+fSM_EnumerationLiteral "fSM_EnumerationType16 0..9999" --* "fSM_EnumerationLiteral17 1..1" fSM_EnumerationType : literals15
+fSM_State "fSM_Transition 1..1" *-- "fSM_State11 0..9999" fSM_Transition : outgoingTransition10
+fSM_FSM "fSM_State 1..1" *-- "fSM_FSM7 0..9999" fSM_State : ownedState6
+fSM_State "fSM_Transition13 0..1" -- "fSM_State14 1..1" fSM_Transition : target12
+fSM_EnumerationType "fSM_FSM4 0..1" -- "fSM_EnumerationType5 1..1" fSM_FSM : type3
+fSM_EnumerationType "fSM_Model 0..9999" --* "fSM_EnumerationType 1..1" fSM_Model : types0
 @enduml

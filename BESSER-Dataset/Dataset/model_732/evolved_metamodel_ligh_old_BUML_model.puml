@@ -1,4 +1,8 @@
 @startuml
+' model: uml
+' project: sampleModel
+' owner: User
+' description: New project
 class Action {
 }
 class ActivityEdge {
@@ -184,16 +188,16 @@ Type <|-- uml_Classifier
 TypedElement <|-- uml_ObjectNode
 TypedElement <|-- uml_ValueSpecification
 ValueSpecification <|-- uml_OpaqueExpression
-uml_Activity "1..1" *-- "0..9999" uml_ActivityEdge : edge2
-uml_ActivityEdge "0..9999" -- "1..1" uml_ActivityPartition : edge8
-uml_Activity "1..1" *-- "0..9999" uml_ActivityGroup : group4
-uml_ActivityEdge "1..1" *-- "1..1" uml_ValueSpecification : guard18
-uml_ActivityEdge "0..9999" -- "1..1" uml_ActivityNode : incoming13
-uml_Activity "1..1" *-- "0..9999" uml_ActivityNode : node1
-uml_ActivityNode "0..9999" -- "1..1" uml_ActivityPartition : node6
-uml_ActivityEdge "0..9999" -- "1..1" uml_ActivityNode : outgoing12
-uml_Package "1..1" *-- "0..9999" uml_PackageableElement : packagedElement0
-uml_ActivityEdge "1..1" -- "1..1" uml_ActivityNode : source15
-uml_ActivityEdge "1..1" -- "1..1" uml_ActivityNode : target16
-uml_Type "0..1" -- "1..1" uml_TypedElement : type11
+uml_Activity "uml_ActivityEdge 1..1" *-- "uml_Activity3 0..9999" uml_ActivityEdge : edge2
+uml_ActivityEdge "uml_ActivityPartition9 0..9999" -- "uml_ActivityEdge10 1..1" uml_ActivityPartition : edge8
+uml_Activity "uml_ActivityGroup 1..1" *-- "uml_Activity5 0..9999" uml_ActivityGroup : group4
+uml_ActivityEdge "uml_ValueSpecification 1..1" *-- "uml_ActivityEdge19 1..1" uml_ValueSpecification : guard18
+uml_ActivityEdge "target 0..9999" -- "ActivityEdge14 1..1" uml_ActivityNode : incoming13
+uml_Activity "uml_ActivityNode 1..1" *-- "uml_Activity 0..9999" uml_ActivityNode : node1
+uml_ActivityNode "uml_ActivityPartition 0..9999" -- "uml_ActivityNode7 1..1" uml_ActivityPartition : node6
+uml_ActivityEdge "source 0..9999" -- "ActivityEdge 1..1" uml_ActivityNode : outgoing12
+uml_Package "uml_PackageableElement 1..1" *-- "uml_Package 0..9999" uml_PackageableElement : packagedElement0
+uml_ActivityEdge "ActivityNode 1..1" -- "outgoing 1..1" uml_ActivityNode : source15
+uml_ActivityEdge "ActivityNode17 1..1" -- "incoming 1..1" uml_ActivityNode : target16
+uml_Type "uml_TypedElement 0..1" -- "uml_Type 1..1" uml_TypedElement : type11
 @enduml

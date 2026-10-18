@@ -1,4 +1,8 @@
 @startuml
+' model: fsm
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractState {
 }
 abstract class fsm_AbstractState {
@@ -21,13 +25,13 @@ class fsm_Transition {
 AbstractState <|-- fsm_CompositeState
 AbstractState <|-- fsm_InitialState
 AbstractState <|-- fsm_RegularState
-fsm_AbstractState "1..1" -- "0..1" fsm_CompositeState : compositeStates10
-fsm_AbstractState "1..1" -- "1..1" fsm_Transition : source4
-fsm_StateMachine "1..1" -- "1..1" fsm_Transition : stateMachine3
-fsm_AbstractState "1..1" -- "1..1" fsm_StateMachine : stateMachine8
-fsm_Root "1..1" *-- "0..9999" fsm_StateMachine : stateMachines14
-fsm_AbstractState "0..9999" --* "1..1" fsm_StateMachine : states1
-fsm_AbstractState "0..9999" -- "1..1" fsm_CompositeState : states12
-fsm_AbstractState "1..1" -- "1..1" fsm_Transition : target5
-fsm_StateMachine "1..1" *-- "0..9999" fsm_Transition : transitions0
+fsm_AbstractState "CompositeState 1..1" -- "states11 0..1" fsm_CompositeState : compositeStates10
+fsm_AbstractState "fsm_Transition 1..1" -- "fsm_AbstractState 1..1" fsm_Transition : source4
+fsm_StateMachine "transitions 1..1" -- "StateMachine 1..1" fsm_Transition : stateMachine3
+fsm_AbstractState "StateMachine9 1..1" -- "states 1..1" fsm_StateMachine : stateMachine8
+fsm_Root "fsm_StateMachine 1..1" *-- "fsm_Root 0..9999" fsm_StateMachine : stateMachines14
+fsm_AbstractState "stateMachine2 0..9999" --* "AbstractState 1..1" fsm_StateMachine : states1
+fsm_AbstractState "compositeStates 0..9999" -- "AbstractState13 1..1" fsm_CompositeState : states12
+fsm_AbstractState "fsm_Transition6 1..1" -- "fsm_AbstractState7 1..1" fsm_Transition : target5
+fsm_StateMachine "Transition 1..1" *-- "stateMachine 0..9999" fsm_Transition : transitions0
 @enduml

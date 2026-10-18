@@ -1,4 +1,8 @@
 @startuml
+' model: primitives
+' project: sampleModel
+' owner: User
+' description: New project
 class Class {
 }
 class Classifier {
@@ -82,22 +86,22 @@ StructuralFeature <|-- km3_Reference
 TypedElement <|-- km3_Operation
 TypedElement <|-- km3_Parameter
 TypedElement <|-- km3_StructuralFeature
-ModelElement "0..9999" --* "1..1" km3_Package : contents23
-Package "0..9999" --* "1..1" km3_Metamodel : contents26
-StructuralFeature "0..9999" -- "1..1" km3_StructuralFeature : derivedFrom14
-Enumeration "0..1" -- "1..1" km3_EnumLiteral : enum2
-EnumLiteral "0..9999" -- "1..1" km3_Enumeration : literals1
-Metamodel "0..1" -- "1..1" km3_Package : metamodel24
-Operation "0..9999" -- "1..1" km3_Class : operations7
-Reference "0..1" -- "1..1" km3_Reference : opposite16
-Class "0..1" -- "1..1" km3_StructuralFeature : owner10
-Class "0..1" -- "1..1" km3_Operation : owner17
-Operation "0..1" -- "1..1" km3_Parameter : owner21
-Package "0..1" -- "1..1" km3_ModelElement : package0
-Parameter "0..9999" -- "1..1" km3_Operation : parameters19
-TemplateParameter "0..9999" -- "1..1" km3_Class : parameters3
-StructuralFeature "0..9999" --* "1..1" km3_Class : structuralFeatures6
-StructuralFeature "0..9999" -- "1..1" km3_StructuralFeature : subsetOf12
-Class "0..9999" -- "1..1" km3_Class : supertypes4
-Classifier "1..1" -- "1..1" km3_TypedElement : type9
+ModelElement "package 0..9999" --* "ModelElement 1..1" km3_Package : contents23
+Package "metamodel 0..9999" --* "Package27 1..1" km3_Metamodel : contents26
+StructuralFeature "subsetOf 0..9999" -- "StructuralFeature15 1..1" km3_StructuralFeature : derivedFrom14
+Enumeration "literals 0..1" -- "Enumeration 1..1" km3_EnumLiteral : enum2
+EnumLiteral "enum 0..9999" -- "EnumLiteral 1..1" km3_Enumeration : literals1
+Metamodel "contents25 0..1" -- "Metamodel 1..1" km3_Package : metamodel24
+Operation "owner8 0..9999" -- "Operation 1..1" km3_Class : operations7
+Reference "km3_Reference 0..1" -- "Reference 1..1" km3_Reference : opposite16
+Class "structuralFeatures 0..1" -- "Class11 1..1" km3_StructuralFeature : owner10
+Class "operations 0..1" -- "Class18 1..1" km3_Operation : owner17
+Operation "parameters 0..1" -- "Operation22 1..1" km3_Parameter : owner21
+Package "contents 0..1" -- "Package 1..1" km3_ModelElement : package0
+Parameter "owner20 0..9999" -- "Parameter 1..1" km3_Operation : parameters19
+TemplateParameter "km3_Class 0..9999" -- "TemplateParameter 1..1" km3_Class : parameters3
+StructuralFeature "owner 0..9999" --* "StructuralFeature 1..1" km3_Class : structuralFeatures6
+StructuralFeature "derivedFrom 0..9999" -- "StructuralFeature13 1..1" km3_StructuralFeature : subsetOf12
+Class "km3_Class5 0..9999" -- "Class 1..1" km3_Class : supertypes4
+Classifier "km3_TypedElement 1..1" -- "Classifier 1..1" km3_TypedElement : type9
 @enduml

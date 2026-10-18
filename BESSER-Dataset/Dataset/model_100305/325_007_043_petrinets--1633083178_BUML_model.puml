@@ -1,4 +1,8 @@
 @startuml
+' model: standardPetriNets
+' project: sampleModel
+' owner: User
+' description: New project
 class standardPetriNets_InputArc {
   + weight : int
 }
@@ -16,12 +20,12 @@ class standardPetriNets_Place {
 class standardPetriNets_Transition {
   + name : str
 }
-standardPetriNets_InputArc "0..9999" --* "1..1" standardPetriNets_PetriNet : containsInputArcs13
-standardPetriNets_OutputArc "0..9999" --* "1..1" standardPetriNets_PetriNet : containsOutputArcs16
-standardPetriNets_PetriNet "1..1" *-- "0..9999" standardPetriNets_Place : containsPlaces8
-standardPetriNets_PetriNet "1..1" *-- "0..9999" standardPetriNets_Transition : containsTransitions10
-standardPetriNets_InputArc "1..1" -- "0..1" standardPetriNets_Place : inputArcFromPlace0
-standardPetriNets_InputArc "1..1" -- "0..1" standardPetriNets_Transition : inputArcToTransition1
-standardPetriNets_OutputArc "1..1" -- "0..1" standardPetriNets_Transition : outputArcFromTransition3
-standardPetriNets_OutputArc "1..1" -- "0..1" standardPetriNets_Place : outputArcToPlace5
+standardPetriNets_InputArc "standardPetriNets_PetriNet14 0..9999" --* "standardPetriNets_InputArc15 1..1" standardPetriNets_PetriNet : containsInputArcs13
+standardPetriNets_OutputArc "standardPetriNets_PetriNet17 0..9999" --* "standardPetriNets_OutputArc18 1..1" standardPetriNets_PetriNet : containsOutputArcs16
+standardPetriNets_PetriNet "standardPetriNets_Place9 1..1" *-- "standardPetriNets_PetriNet 0..9999" standardPetriNets_Place : containsPlaces8
+standardPetriNets_PetriNet "standardPetriNets_Transition12 1..1" *-- "standardPetriNets_PetriNet11 0..9999" standardPetriNets_Transition : containsTransitions10
+standardPetriNets_InputArc "standardPetriNets_Place 1..1" -- "standardPetriNets_InputArc 0..1" standardPetriNets_Place : inputArcFromPlace0
+standardPetriNets_InputArc "standardPetriNets_Transition 1..1" -- "standardPetriNets_InputArc2 0..1" standardPetriNets_Transition : inputArcToTransition1
+standardPetriNets_OutputArc "standardPetriNets_Transition4 1..1" -- "standardPetriNets_OutputArc 0..1" standardPetriNets_Transition : outputArcFromTransition3
+standardPetriNets_OutputArc "standardPetriNets_Place7 1..1" -- "standardPetriNets_OutputArc6 0..1" standardPetriNets_Place : outputArcToPlace5
 @enduml

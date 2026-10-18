@@ -1,4 +1,8 @@
 @startuml
+' model: KM3
+' project: sampleModel
+' owner: User
+' description: New project
 class Classifier {
 }
 class KM3_Attribute {
@@ -50,13 +54,13 @@ ModelElement <|-- KM3_Package
 ModelElement <|-- KM3_StructuralFeature
 StructuralFeature <|-- KM3_Attribute
 StructuralFeature <|-- KM3_Reference
-KM3_Metamodel "1..1" *-- "0..9999" KM3_Package : contents10
-KM3_ModelElement "0..9999" --* "1..1" KM3_Package : contents8
-KM3_EnumLiteral "0..9999" --* "1..1" KM3_Enumeration : literals0
-KM3_Metamodel "1..1" -- "1..1" KM3_Package : metamodel9
-KM3_Reference "1..1" -- "0..1" KM3_Reference : opposite7
-KM3_Class "1..1" -- "1..1" KM3_StructuralFeature : owner4
-KM3_Class "1..1" *-- "0..9999" KM3_StructuralFeature : structuralFeatures3
-KM3_Class "1..1" -- "0..9999" KM3_Class : supertypes2
-KM3_Classifier "1..1" -- "1..1" KM3_StructuralFeature : type5
+KM3_Metamodel "Package 1..1" *-- "metamodel 0..9999" KM3_Package : contents10
+KM3_ModelElement "KM3_Package 0..9999" --* "KM3_ModelElement 1..1" KM3_Package : contents8
+KM3_EnumLiteral "KM3_Enumeration 0..9999" --* "KM3_EnumLiteral 1..1" KM3_Enumeration : literals0
+KM3_Metamodel "contents 1..1" -- "Metamodel 1..1" KM3_Package : metamodel9
+KM3_Reference "KM3_Reference 1..1" -- "KM3_Reference6 0..1" KM3_Reference : opposite7
+KM3_Class "structuralFeatures 1..1" -- "Class 1..1" KM3_StructuralFeature : owner4
+KM3_Class "StructuralFeature 1..1" *-- "owner 0..9999" KM3_StructuralFeature : structuralFeatures3
+KM3_Class "KM3_Class 1..1" -- "KM3_Class1 0..9999" KM3_Class : supertypes2
+KM3_Classifier "KM3_StructuralFeature 1..1" -- "KM3_Classifier 1..1" KM3_StructuralFeature : type5
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: graph
+' project: sampleModel
+' owner: User
+' description: New project
 class Element {
 }
 class ElementType {
@@ -24,14 +28,14 @@ Element <|-- graph_Edge
 Element <|-- graph_Node
 ElementType <|-- graph_EdgeType
 ElementType <|-- graph_NodeType
-graph_Element "0..9999" --* "1..1" graph_Graph : element11
-graph_ElementType "0..9999" -- "1..1" graph_Graph : elementType12
-graph_Element "1..1" -- "1..1" graph_Graph : graph8
-graph_ElementType "1..1" -- "1..1" graph_Graph : graph9
-graph_Edge "0..9999" -- "1..1" graph_Node : incoming0
-graph_Edge "0..9999" -- "1..1" graph_Node : outgoing1
-graph_Edge "1..1" -- "1..1" graph_Node : source5
-graph_Edge "1..1" -- "1..1" graph_Node : target4
-graph_Node "1..1" -- "0..1" graph_NodeType : type3
-graph_Edge "1..1" -- "0..1" graph_EdgeType : type7
+graph_Element "graph 0..9999" --* "Element 1..1" graph_Graph : element11
+graph_ElementType "graph13 0..9999" -- "ElementType 1..1" graph_Graph : elementType12
+graph_Element "Graph 1..1" -- "element 1..1" graph_Graph : graph8
+graph_ElementType "Graph10 1..1" -- "elementType 1..1" graph_Graph : graph9
+graph_Edge "target 0..9999" -- "Edge 1..1" graph_Node : incoming0
+graph_Edge "source 0..9999" -- "Edge2 1..1" graph_Node : outgoing1
+graph_Edge "Node6 1..1" -- "outgoing 1..1" graph_Node : source5
+graph_Edge "Node 1..1" -- "incoming 1..1" graph_Node : target4
+graph_Node "graph_NodeType 1..1" -- "graph_Node 0..1" graph_NodeType : type3
+graph_Edge "graph_EdgeType 1..1" -- "graph_Edge 0..1" graph_EdgeType : type7
 @enduml

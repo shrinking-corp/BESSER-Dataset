@@ -1,4 +1,8 @@
 @startuml
+' model: pyrep
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractDataMove {
 }
 class DataMove {
@@ -62,14 +66,14 @@ Entity <|-- pyrep_Robot
 Entity <|-- pyrep_Sensor
 Entity <|-- pyrep_TypeSensor
 Entity <|-- pyrep_Wheel
-pyrep_Entity "0..9999" --* "1..1" pyrep_Model : environment0
-pyrep_Environment "1..1" -- "0..1" pyrep_IP : ip1
-pyrep_AbstractDataMove "0..9999" --* "1..1" pyrep_MoveCollection : moves11
-pyrep_Environment "1..1" -- "0..9999" pyrep_MoveCollection : moves4
-pyrep_MoveCollection "1..1" -- "0..1" pyrep_Robot : robot8
-pyrep_Environment "1..1" -- "0..9999" pyrep_Robot : robots2
-pyrep_Sensor "1..1" *-- "0..1" pyrep_TypeSensor : type16
-pyrep_AbstractMove "1..1" *-- "0..1" pyrep_DataMove : typeM13
-pyrep_AbstractCrossMove "1..1" -- "0..1" pyrep_DataMove : typeM14
-pyrep_Robot "1..1" -- "0..9999" pyrep_Wheel : wheels6
+pyrep_Entity "pyrep_Model 0..9999" --* "pyrep_Entity 1..1" pyrep_Model : environment0
+pyrep_Environment "pyrep_IP 1..1" -- "pyrep_Environment 0..1" pyrep_IP : ip1
+pyrep_AbstractDataMove "pyrep_MoveCollection12 0..9999" --* "pyrep_AbstractDataMove 1..1" pyrep_MoveCollection : moves11
+pyrep_Environment "pyrep_MoveCollection 1..1" -- "pyrep_Environment5 0..9999" pyrep_MoveCollection : moves4
+pyrep_MoveCollection "pyrep_Robot10 1..1" -- "pyrep_MoveCollection9 0..1" pyrep_Robot : robot8
+pyrep_Environment "pyrep_Robot 1..1" -- "pyrep_Environment3 0..9999" pyrep_Robot : robots2
+pyrep_Sensor "pyrep_TypeSensor 1..1" *-- "pyrep_Sensor 0..1" pyrep_TypeSensor : type16
+pyrep_AbstractMove "pyrep_DataMove 1..1" *-- "pyrep_AbstractMove 0..1" pyrep_DataMove : typeM13
+pyrep_AbstractCrossMove "pyrep_DataMove15 1..1" -- "pyrep_AbstractCrossMove 0..1" pyrep_DataMove : typeM14
+pyrep_Robot "pyrep_Wheel 1..1" -- "pyrep_Robot7 0..9999" pyrep_Wheel : wheels6
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: fsm
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractState {
 }
 enum ArithmeticOperator {
@@ -117,30 +121,30 @@ Statement <|-- fsm_Loop
 Statement <|-- fsm_Program
 Statement <|-- fsm_VarDecl
 Statement <|-- fsm_Wait
-fsm_Loop "1..1" *-- "0..1" fsm_Program : body36
-fsm_Conditional "1..1" *-- "1..1" fsm_Expression : condition26
-fsm_Program "0..1" --* "1..1" fsm_State : doActivity6
-fsm_Statement "0..9999" --* "1..1" fsm_Transition : effect18
-fsm_Conditional "1..1" *-- "0..1" fsm_Program : elseInstructions31
-fsm_Program "0..1" --* "1..1" fsm_State : entry7
-fsm_Program "0..1" --* "1..1" fsm_State : exit10
-fsm_Expression "1..1" --* "1..1" fsm_RelationalConstraint : expression22
-fsm_Expression "1..1" --* "1..1" fsm_VarDecl : expression39
-fsm_Assignation "1..1" *-- "1..1" fsm_Expression : expression53
-fsm_Constraint "1..1" --* "1..1" fsm_Transition : guard20
-fsm_Expression "1..1" --* "1..1" fsm_Loop : guard34
-fsm_AbstractState "1..1" -- "0..9999" fsm_Transition : incoming3
-fsm_ArithmeticExpression "1..1" *-- "1..1" fsm_Expression : left41
-fsm_Expression "1..1" --* "1..1" fsm_RelationalExpression : left46
-fsm_AbstractState "1..1" -- "0..9999" fsm_Transition : outgoing4
-fsm_ArithmeticExpression "1..1" *-- "1..1" fsm_Expression : right43
-fsm_Expression "1..1" --* "1..1" fsm_RelationalExpression : right48
-fsm_AbstractState "1..1" -- "1..1" fsm_Transition : source16
-fsm_Program "1..1" *-- "0..9999" fsm_Statement : statements23
-fsm_AbstractState "0..9999" --* "1..1" fsm_StateMachine : subvertex0
-fsm_AbstractState "1..1" -- "1..1" fsm_Transition : target15
-fsm_Conditional "1..1" *-- "0..1" fsm_Program : thenInstructions28
-fsm_StateMachine "1..1" *-- "0..9999" fsm_Transition : transitions1
-fsm_Transition "1..1" *-- "0..1" fsm_Trigger : trigger13
-fsm_Assignation "1..1" -- "1..1" fsm_VarDecl : varRef51
+fsm_Loop "fsm_Program38 1..1" *-- "fsm_Loop37 0..1" fsm_Program : body36
+fsm_Conditional "fsm_Expression27 1..1" *-- "fsm_Conditional 1..1" fsm_Expression : condition26
+fsm_Program "fsm_State 0..1" --* "fsm_Program 1..1" fsm_State : doActivity6
+fsm_Statement "fsm_Transition19 0..9999" --* "fsm_Statement 1..1" fsm_Transition : effect18
+fsm_Conditional "fsm_Program33 1..1" *-- "fsm_Conditional32 0..1" fsm_Program : elseInstructions31
+fsm_Program "fsm_State8 0..1" --* "fsm_Program9 1..1" fsm_State : entry7
+fsm_Program "fsm_State11 0..1" --* "fsm_Program12 1..1" fsm_State : exit10
+fsm_Expression "fsm_RelationalConstraint 1..1" --* "fsm_Expression 1..1" fsm_RelationalConstraint : expression22
+fsm_Expression "fsm_VarDecl 1..1" --* "fsm_Expression40 1..1" fsm_VarDecl : expression39
+fsm_Assignation "fsm_Expression55 1..1" *-- "fsm_Assignation54 1..1" fsm_Expression : expression53
+fsm_Constraint "fsm_Transition21 1..1" --* "fsm_Constraint 1..1" fsm_Transition : guard20
+fsm_Expression "fsm_Loop 1..1" --* "fsm_Expression35 1..1" fsm_Loop : guard34
+fsm_AbstractState "Transition 1..1" -- "target 0..9999" fsm_Transition : incoming3
+fsm_ArithmeticExpression "fsm_Expression42 1..1" *-- "fsm_ArithmeticExpression 1..1" fsm_Expression : left41
+fsm_Expression "fsm_RelationalExpression 1..1" --* "fsm_Expression47 1..1" fsm_RelationalExpression : left46
+fsm_AbstractState "Transition5 1..1" -- "source 0..9999" fsm_Transition : outgoing4
+fsm_ArithmeticExpression "fsm_Expression45 1..1" *-- "fsm_ArithmeticExpression44 1..1" fsm_Expression : right43
+fsm_Expression "fsm_RelationalExpression49 1..1" --* "fsm_Expression50 1..1" fsm_RelationalExpression : right48
+fsm_AbstractState "outgoing 1..1" -- "AbstractState17 1..1" fsm_Transition : source16
+fsm_Program "fsm_Statement25 1..1" *-- "fsm_Program24 0..9999" fsm_Statement : statements23
+fsm_AbstractState "fsm_StateMachine 0..9999" --* "fsm_AbstractState 1..1" fsm_StateMachine : subvertex0
+fsm_AbstractState "incoming 1..1" -- "AbstractState 1..1" fsm_Transition : target15
+fsm_Conditional "fsm_Program30 1..1" *-- "fsm_Conditional29 0..1" fsm_Program : thenInstructions28
+fsm_StateMachine "fsm_Transition 1..1" *-- "fsm_StateMachine2 0..9999" fsm_Transition : transitions1
+fsm_Transition "fsm_Trigger 1..1" *-- "fsm_Transition14 0..1" fsm_Trigger : trigger13
+fsm_Assignation "fsm_VarDecl52 1..1" -- "fsm_Assignation 1..1" fsm_VarDecl : varRef51
 @enduml

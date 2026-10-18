@@ -1,4 +1,8 @@
 @startuml
+' model: PetriNet
+' project: sampleModel
+' owner: User
+' description: New project
 class Arc {
 }
 class Element {
@@ -32,15 +36,15 @@ Arc <|-- PetriNet_TransToPlaceArc
 Element <|-- PetriNet_PetriNet
 Element <|-- PetriNet_Place
 Element <|-- PetriNet_Transition
-Arc "0..9999" --* "1..1" PetriNet_PetriNet : arcs3
-PetriNet_Place "1..1" -- "0..9999" TransToPlaceArc : incoming5
-PetriNet_Transition "1..1" -- "1..9999" PlaceToTransArc : incoming7
-PetriNet_Transition "1..1" -- "1..9999" TransToPlaceArc : outgoing10
-PetriNet_Place "1..1" -- "0..9999" PlaceToTransArc : outgoing6
-PetriNet_PetriNet "1..1" *-- "1..9999" Place : places0
-PetriNet_PlaceToTransArc "1..1" -- "1..1" Place : source13
-PetriNet_TransToPlaceArc "1..1" -- "1..1" Transition : source17
-PetriNet_PlaceToTransArc "1..1" -- "1..1" Transition : target15
-PetriNet_TransToPlaceArc "1..1" -- "1..1" Place : target20
-PetriNet_PetriNet "1..1" *-- "0..9999" Transition : transitions1
+Arc "PetriNet_PetriNet4 0..9999" --* "Arc 1..1" PetriNet_PetriNet : arcs3
+PetriNet_Place "TransToPlaceArc 1..1" -- "target 0..9999" TransToPlaceArc : incoming5
+PetriNet_Transition "PlaceToTransArc9 1..1" -- "target8 1..9999" PlaceToTransArc : incoming7
+PetriNet_Transition "TransToPlaceArc12 1..1" -- "source11 1..9999" TransToPlaceArc : outgoing10
+PetriNet_Place "PlaceToTransArc 1..1" -- "source 0..9999" PlaceToTransArc : outgoing6
+PetriNet_PetriNet "Place 1..1" *-- "PetriNet_PetriNet 1..9999" Place : places0
+PetriNet_PlaceToTransArc "Place14 1..1" -- "outgoing 1..1" Place : source13
+PetriNet_TransToPlaceArc "Transition19 1..1" -- "outgoing18 1..1" Transition : source17
+PetriNet_PlaceToTransArc "Transition16 1..1" -- "incoming 1..1" Transition : target15
+PetriNet_TransToPlaceArc "Place22 1..1" -- "incoming21 1..1" Place : target20
+PetriNet_PetriNet "Transition 1..1" *-- "PetriNet_PetriNet2 0..9999" Transition : transitions1
 @enduml

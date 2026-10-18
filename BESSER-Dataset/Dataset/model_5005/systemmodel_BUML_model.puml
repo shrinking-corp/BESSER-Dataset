@@ -1,4 +1,8 @@
 @startuml
+' model: systemmodel
+' project: sampleModel
+' owner: User
+' description: New project
 class Block {
 }
 class DataType {
@@ -72,16 +76,16 @@ SMElement <|-- systemmodel_DataType
 SMElement <|-- systemmodel_Port
 SMElement <|-- systemmodel_Signal
 SMElement <|-- systemmodel_SystemModel
-systemmodel_Block "0..9999" --* "1..1" systemmodel_SystemModel : blocks0
-systemmodel_DataType "1..9999" --* "1..1" systemmodel_SystemModel : dataTypes3
-systemmodel_Inport "1..1" -- "1..1" systemmodel_Signal : dstPort10
-systemmodel_Inport "1..1" -- "0..1" systemmodel_Signal : inSignal12
-systemmodel_Block "1..1" *-- "0..9999" systemmodel_Inport : inports5
-systemmodel_Outport "1..1" -- "0..9999" systemmodel_Signal : outSignals14
-systemmodel_Block "1..1" *-- "0..9999" systemmodel_Outport : outports6
-systemmodel_Block "1..1" -- "1..1" systemmodel_Inport : parentBlock13
-systemmodel_Block "1..1" -- "1..1" systemmodel_Outport : parentBlock16
-systemmodel_Signal "0..9999" --* "1..1" systemmodel_SystemModel : signals1
-systemmodel_Outport "1..1" -- "1..1" systemmodel_Signal : srcPort8
-systemmodel_DataType "1..1" -- "1..1" systemmodel_Port : type18
+systemmodel_Block "systemmodel_SystemModel 0..9999" --* "systemmodel_Block 1..1" systemmodel_SystemModel : blocks0
+systemmodel_DataType "systemmodel_SystemModel4 1..9999" --* "systemmodel_DataType 1..1" systemmodel_SystemModel : dataTypes3
+systemmodel_Inport "inSignal 1..1" -- "Inport11 1..1" systemmodel_Signal : dstPort10
+systemmodel_Inport "Signal 1..1" -- "dstPort 0..1" systemmodel_Signal : inSignal12
+systemmodel_Block "Inport 1..1" *-- "parentBlock 0..9999" systemmodel_Inport : inports5
+systemmodel_Outport "Signal15 1..1" -- "srcPort 0..9999" systemmodel_Signal : outSignals14
+systemmodel_Block "Outport 1..1" *-- "parentBlock7 0..9999" systemmodel_Outport : outports6
+systemmodel_Block "inports 1..1" -- "Block 1..1" systemmodel_Inport : parentBlock13
+systemmodel_Block "outports 1..1" -- "Block17 1..1" systemmodel_Outport : parentBlock16
+systemmodel_Signal "systemmodel_SystemModel2 0..9999" --* "systemmodel_Signal 1..1" systemmodel_SystemModel : signals1
+systemmodel_Outport "outSignals 1..1" -- "Outport9 1..1" systemmodel_Signal : srcPort8
+systemmodel_DataType "systemmodel_Port 1..1" -- "systemmodel_DataType19 1..1" systemmodel_Port : type18
 @enduml

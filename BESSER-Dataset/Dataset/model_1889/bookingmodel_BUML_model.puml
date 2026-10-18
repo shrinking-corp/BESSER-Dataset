@@ -1,4 +1,8 @@
 @startuml
+' model: bookingmodel
+' project: sampleModel
+' owner: User
+' description: New project
 class BookingInfo {
 }
 class CustomerInfo {
@@ -175,16 +179,16 @@ IBookingProvidesForGuest <|-- bookingmodel_BookingProvides
 IBookingProvidesForHost <|-- bookingmodel_BookingProvides
 Person <|-- bookingmodel_Customer
 Person <|-- bookingmodel_Guest
-bookingmodel_BookingHandler "1..1" --* "1..1" bookingmodel_BookingProvides : bookingHandler21
-bookingmodel_BookingHandler "1..1" *-- "0..9999" bookingmodel_BookingRefToBookingEntry : bookingsMap13
-bookingmodel_Booking "1..1" *-- "1..1" bookingmodel_Customer : customer1
-bookingmodel_BookingHandler "1..1" *-- "0..9999" bookingmodel_CustomerEmailToBookingRefEntry : customerEmailToBookingRefEntry17
-bookingmodel_Booking "1..1" *-- "0..9999" bookingmodel_ExtraToIsPayedEntry : extraToIsPayedMap9
-bookingmodel_BookingHandler "1..1" *-- "0..9999" bookingmodel_GuestEmailToRoomIDEntry : guestEmailToRoomIDEntry19
-bookingmodel_Booking "1..1" *-- "1..9999" bookingmodel_Guest : guestList3
-bookingmodel_Customer "1..1" *-- "1..1" bookingmodel_PaymentDetails : paymentDetails11
-bookingmodel_BookingHandler "1..1" *-- "0..9999" bookingmodel_RoomIDToBookingRefEntry : roomIDToBookingRefMap15
-bookingmodel_Booking "1..1" *-- "0..9999" bookingmodel_RoomToGuestIDEntry : roomIDToGuestMap5
-bookingmodel_Booking "1..1" *-- "0..9999" bookingmodel_RoomIDToRoomTypeEntry : roomIDToRoomTypeMap7
-bookingmodel_Booking "1..1" -- "1..1" bookingmodel_BookingRefToBookingEntry : value0
+bookingmodel_BookingHandler "bookingmodel_BookingProvides 1..1" --* "bookingmodel_BookingHandler22 1..1" bookingmodel_BookingProvides : bookingHandler21
+bookingmodel_BookingHandler "bookingmodel_BookingRefToBookingEntry14 1..1" *-- "bookingmodel_BookingHandler 0..9999" bookingmodel_BookingRefToBookingEntry : bookingsMap13
+bookingmodel_Booking "bookingmodel_Customer 1..1" *-- "bookingmodel_Booking2 1..1" bookingmodel_Customer : customer1
+bookingmodel_BookingHandler "bookingmodel_CustomerEmailToBookingRefEntry 1..1" *-- "bookingmodel_BookingHandler18 0..9999" bookingmodel_CustomerEmailToBookingRefEntry : customerEmailToBookingRefEntry17
+bookingmodel_Booking "bookingmodel_ExtraToIsPayedEntry 1..1" *-- "bookingmodel_Booking10 0..9999" bookingmodel_ExtraToIsPayedEntry : extraToIsPayedMap9
+bookingmodel_BookingHandler "bookingmodel_GuestEmailToRoomIDEntry 1..1" *-- "bookingmodel_BookingHandler20 0..9999" bookingmodel_GuestEmailToRoomIDEntry : guestEmailToRoomIDEntry19
+bookingmodel_Booking "bookingmodel_Guest 1..1" *-- "bookingmodel_Booking4 1..9999" bookingmodel_Guest : guestList3
+bookingmodel_Customer "bookingmodel_PaymentDetails 1..1" *-- "bookingmodel_Customer12 1..1" bookingmodel_PaymentDetails : paymentDetails11
+bookingmodel_BookingHandler "bookingmodel_RoomIDToBookingRefEntry 1..1" *-- "bookingmodel_BookingHandler16 0..9999" bookingmodel_RoomIDToBookingRefEntry : roomIDToBookingRefMap15
+bookingmodel_Booking "bookingmodel_RoomToGuestIDEntry 1..1" *-- "bookingmodel_Booking6 0..9999" bookingmodel_RoomToGuestIDEntry : roomIDToGuestMap5
+bookingmodel_Booking "bookingmodel_RoomIDToRoomTypeEntry 1..1" *-- "bookingmodel_Booking8 0..9999" bookingmodel_RoomIDToRoomTypeEntry : roomIDToRoomTypeMap7
+bookingmodel_Booking "bookingmodel_BookingRefToBookingEntry 1..1" -- "bookingmodel_Booking 1..1" bookingmodel_BookingRefToBookingEntry : value0
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: graph
+' project: sampleModel
+' owner: User
+' description: New project
 class GAlignable {
 }
 class GBoundsAware {
@@ -127,17 +131,17 @@ GShapeElement <|-- graph_GIssueMarker
 GShapeElement <|-- graph_GLabel
 GShapeElement <|-- graph_GNode
 GShapeElement <|-- graph_GPort
-graph_GAlignable "1..1" *-- "0..1" graph_GPoint : alignment21
-graph_GBounds "0..1" --* "1..1" graph_GModelRoot : canvasBounds6
-graph_GModelElement "1..1" *-- "0..9999" graph_GModelElement : children1
-graph_GEdgeLayoutable "1..1" *-- "0..1" graph_GEdgePlacement : edgePlacement18
-graph_GIssue "0..9999" --* "1..1" graph_GIssueMarker : issues13
-graph_GLayoutOptions "0..1" --* "1..1" graph_GLayouting : layoutOptions19
-graph_GGraph "1..1" *-- "0..1" graph_GLayoutOptions : layoutOptions5
-graph_GModelElement "1..1" -- "0..1" graph_GModelElement : parent3
-graph_GBoundsAware "1..1" *-- "0..1" graph_GPoint : position14
-graph_GEdge "1..1" *-- "0..9999" graph_GPoint : routingPoints7
-graph_GBoundsAware "1..1" *-- "0..1" graph_GDimension : size16
-graph_GEdge "1..1" -- "0..1" graph_GModelElement : source8
-graph_GEdge "1..1" -- "0..1" graph_GModelElement : target10
+graph_GAlignable "graph_GPoint22 1..1" *-- "graph_GAlignable 0..1" graph_GPoint : alignment21
+graph_GBounds "graph_GModelRoot 0..1" --* "graph_GBounds 1..1" graph_GModelRoot : canvasBounds6
+graph_GModelElement "GModelElement 1..1" *-- "parent 0..9999" graph_GModelElement : children1
+graph_GEdgeLayoutable "graph_GEdgePlacement 1..1" *-- "graph_GEdgeLayoutable 0..1" graph_GEdgePlacement : edgePlacement18
+graph_GIssue "graph_GIssueMarker 0..9999" --* "graph_GIssue 1..1" graph_GIssueMarker : issues13
+graph_GLayoutOptions "graph_GLayouting 0..1" --* "graph_GLayoutOptions20 1..1" graph_GLayouting : layoutOptions19
+graph_GGraph "graph_GLayoutOptions 1..1" *-- "graph_GGraph 0..1" graph_GLayoutOptions : layoutOptions5
+graph_GModelElement "GModelElement4 1..1" -- "children 0..1" graph_GModelElement : parent3
+graph_GBoundsAware "graph_GPoint15 1..1" *-- "graph_GBoundsAware 0..1" graph_GPoint : position14
+graph_GEdge "graph_GPoint 1..1" *-- "graph_GEdge 0..9999" graph_GPoint : routingPoints7
+graph_GBoundsAware "graph_GDimension 1..1" *-- "graph_GBoundsAware17 0..1" graph_GDimension : size16
+graph_GEdge "graph_GModelElement 1..1" -- "graph_GEdge9 0..1" graph_GModelElement : source8
+graph_GEdge "graph_GModelElement12 1..1" -- "graph_GEdge11 0..1" graph_GModelElement : target10
 @enduml

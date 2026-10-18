@@ -1,4 +1,8 @@
 @startuml
+' model: database
+' project: sampleModel
+' owner: User
+' description: New project
 class Index {
 }
 class NamedElement {
@@ -33,11 +37,11 @@ Index <|-- database_Unique
 NamedElement <|-- database_Column
 NamedElement <|-- database_Index
 NamedElement <|-- database_Table
-database_Column "1..9999" -- "1..1" database_Index : columns12
-database_Column "1..9999" --* "1..1" database_Table : columns4
-database_DataBase "0..1" -- "1..1" database_Table : dataBase1
-database_Index "0..9999" --* "1..1" database_Table : indexes6
-database_PrimaryKey "0..1" -- "1..1" database_Table : primaryKey8
-database_DataBase "1..1" *-- "0..9999" database_Table : tables0
-database_Table "1..1" -- "0..9999" database_Unique : uniques10
+database_Column "database_Index13 1..9999" -- "database_Column14 1..1" database_Index : columns12
+database_Column "database_Table5 1..9999" --* "database_Column 1..1" database_Table : columns4
+database_DataBase "database_Table2 0..1" -- "database_DataBase3 1..1" database_Table : dataBase1
+database_Index "database_Table7 0..9999" --* "database_Index 1..1" database_Table : indexes6
+database_PrimaryKey "database_Table9 0..1" -- "database_PrimaryKey 1..1" database_Table : primaryKey8
+database_DataBase "database_Table 1..1" *-- "database_DataBase 0..9999" database_Table : tables0
+database_Table "database_Unique 1..1" -- "database_Table11 0..9999" database_Unique : uniques10
 @enduml

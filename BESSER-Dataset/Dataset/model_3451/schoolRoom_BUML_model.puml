@@ -1,4 +1,8 @@
 @startuml
+' model: School
+' project: sampleModel
+' owner: User
+' description: New project
 class School_Buzzer {
 }
 class School_Clock {
@@ -7,9 +11,9 @@ class School_School {
 }
 class School_SchoolRoom {
 }
-School_Buzzer "0..9999" -- "1..1" School_Clock : alarm6
-School_Buzzer "1..1" --* "1..1" School_SchoolRoom : buzzer3
-School_Clock "1..1" --* "1..1" School_School : clock1
-School_Buzzer "1..1" -- "1..1" School_Clock : ring5
-School_School "1..1" *-- "0..9999" School_SchoolRoom : room0
+School_Buzzer "ring 0..9999" -- "Buzzer 1..1" School_Clock : alarm6
+School_Buzzer "School_SchoolRoom4 1..1" --* "School_Buzzer 1..1" School_SchoolRoom : buzzer3
+School_Clock "School_School2 1..1" --* "School_Clock 1..1" School_School : clock1
+School_Buzzer "Clock 1..1" -- "alarm 1..1" School_Clock : ring5
+School_School "School_SchoolRoom 1..1" *-- "School_School 0..9999" School_SchoolRoom : room0
 @enduml

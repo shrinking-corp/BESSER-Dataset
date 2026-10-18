@@ -1,4 +1,8 @@
 @startuml
+' model: family
+' project: sampleModel
+' owner: User
+' description: New project
 class EModelElement {
 }
 enum Month {
@@ -36,12 +40,12 @@ EModelElement <|-- family_Family
 EModelElement <|-- family_Person
 Person <|-- family_Man
 Person <|-- family_Woman
-family_Person "0..9999" -- "1..1" family_Person : children12
-family_Family "0..9999" --* "1..1" family_Family : families4
-family_Man "0..1" -- "1..1" family_Person : father6
-family_Man "0..1" -- "1..1" family_Woman : husband17
-family_Family "1..1" *-- "0..9999" family_Man : men0
-family_Person "1..1" -- "0..1" family_Woman : mother8
-family_Man "1..1" -- "0..1" family_Woman : wife14
-family_Family "1..1" *-- "0..9999" family_Woman : women1
+family_Person "family_Person11 0..9999" -- "family_Person13 1..1" family_Person : children12
+family_Family "family_Family3 0..9999" --* "family_Family5 1..1" family_Family : families4
+family_Man "family_Person 0..1" -- "family_Man7 1..1" family_Person : father6
+family_Man "family_Woman18 0..1" -- "family_Man19 1..1" family_Woman : husband17
+family_Family "family_Man 1..1" *-- "family_Family 0..9999" family_Man : men0
+family_Person "family_Woman10 1..1" -- "family_Person9 0..1" family_Woman : mother8
+family_Man "family_Woman16 1..1" -- "family_Man15 0..1" family_Woman : wife14
+family_Family "family_Woman 1..1" *-- "family_Family2 0..9999" family_Woman : women1
 @enduml

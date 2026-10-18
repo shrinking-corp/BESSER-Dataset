@@ -1,4 +1,8 @@
 @startuml
+' model: arduino
+' project: sampleModel
+' owner: User
+' description: New project
 enum ARDUINO_ATMEGA_168_SERIES {
   UNKNOWN
   _168_ATMEGA_1280
@@ -276,17 +280,17 @@ Port <|-- arduino_PortVIN
 Port <|-- arduino_RstPort
 Port <|-- arduino_RxPort
 Port <|-- arduino_TxPort
-arduino_AnalogPort "0..9999" --* "1..1" arduino_Arduino : analogPorts1
-arduino_AREFPort "0..1" --* "1..1" arduino_Arduino : aref21
-arduino_Arduino "0..9999" --* "1..1" arduino_Bench : boards23
-arduino_Arduino "1..1" *-- "0..9999" arduino_DigitalPort : digitalPorts0
-arduino_Arduino "1..1" *-- "0..9999" arduino_GndPort : groundPorts5
-arduino_Arduino "1..1" *-- "0..1" arduino_PortIO7 : io717
-arduino_Arduino "1..1" *-- "0..1" arduino_Port3V3 : pwm3V39
-arduino_Arduino "1..1" *-- "0..1" arduino_Port5V : pwm5V15
-arduino_Arduino "1..1" *-- "0..1" arduino_Port9V : pwm9V13
-arduino_Arduino "1..1" *-- "0..1" arduino_RstPort : resetPort11
-arduino_Arduino "1..1" *-- "0..1" arduino_RxPort : rx7
-arduino_Arduino "1..1" *-- "0..1" arduino_TxPort : tx3
-arduino_Arduino "1..1" *-- "0..1" arduino_PortVIN : vin19
+arduino_AnalogPort "arduino_Arduino2 0..9999" --* "arduino_AnalogPort 1..1" arduino_Arduino : analogPorts1
+arduino_AREFPort "arduino_Arduino22 0..1" --* "arduino_AREFPort 1..1" arduino_Arduino : aref21
+arduino_Arduino "arduino_Bench 0..9999" --* "arduino_Arduino24 1..1" arduino_Bench : boards23
+arduino_Arduino "arduino_DigitalPort 1..1" *-- "arduino_Arduino 0..9999" arduino_DigitalPort : digitalPorts0
+arduino_Arduino "arduino_GndPort 1..1" *-- "arduino_Arduino6 0..9999" arduino_GndPort : groundPorts5
+arduino_Arduino "arduino_PortIO7 1..1" *-- "arduino_Arduino18 0..1" arduino_PortIO7 : io717
+arduino_Arduino "arduino_Port3V3 1..1" *-- "arduino_Arduino10 0..1" arduino_Port3V3 : pwm3V39
+arduino_Arduino "arduino_Port5V 1..1" *-- "arduino_Arduino16 0..1" arduino_Port5V : pwm5V15
+arduino_Arduino "arduino_Port9V 1..1" *-- "arduino_Arduino14 0..1" arduino_Port9V : pwm9V13
+arduino_Arduino "arduino_RstPort 1..1" *-- "arduino_Arduino12 0..1" arduino_RstPort : resetPort11
+arduino_Arduino "arduino_RxPort 1..1" *-- "arduino_Arduino8 0..1" arduino_RxPort : rx7
+arduino_Arduino "arduino_TxPort 1..1" *-- "arduino_Arduino4 0..1" arduino_TxPort : tx3
+arduino_Arduino "arduino_PortVIN 1..1" *-- "arduino_Arduino20 0..1" arduino_PortVIN : vin19
 @enduml

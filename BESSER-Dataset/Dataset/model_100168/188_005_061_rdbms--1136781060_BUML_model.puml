@@ -1,4 +1,8 @@
 @startuml
+' model: rdbms
+' project: sampleModel
+' owner: User
+' description: New project
 enum Action {
   CASCADE
   NO_ACTION
@@ -82,21 +86,21 @@ ModelElement <|-- rdbms_Database
 ModelElement <|-- rdbms_Table
 PKeyAndUnique <|-- rdbms_PrimaryKeyCon
 PKeyAndUnique <|-- rdbms_UniqueCon
-rdbms_ForeignKey "1..1" -- "1..1" rdbms_Table : FKTable29
-rdbms_Column "1..9999" -- "1..1" rdbms_PKeyAndUnique : PKandUQColumns30
-rdbms_Column "1..1" -- "1..1" rdbms_DataType : columnDataType18
-rdbms_Column "1..1" -- "0..1" rdbms_ForeignKey : columnInFK16
-rdbms_Column "1..1" -- "0..1" rdbms_PKeyAndUnique : columnInPKandUQ14
-rdbms_Column "1..9999" --* "1..1" rdbms_Table : columns10
-rdbms_SystemDataType "1..1" -- "1..1" rdbms_UserDefinedDataType : dataType33
-rdbms_Database "1..1" *-- "0..9999" rdbms_SystemDataType : dataTypes3
-rdbms_Column "1..9999" -- "1..1" rdbms_ForeignKey : lhsAttr23
-rdbms_ForeignKey "1..1" -- "1..1" rdbms_Table : refersTo26
-rdbms_ForeignKey "1..1" -- "1..1" rdbms_PKeyAndUnique : rhsKey20
-rdbms_CheckCon "0..9999" --* "1..1" rdbms_Table : tableCHs12
-rdbms_ForeignKey "0..9999" --* "1..1" rdbms_Table : tableFKs5
-rdbms_PrimaryKeyCon "1..1" --* "1..1" rdbms_Table : tablePK6
-rdbms_Table "1..1" *-- "0..9999" rdbms_UniqueCon : tableUQ8
-rdbms_Database "1..1" *-- "0..9999" rdbms_Table : tables1
-rdbms_Database "1..1" *-- "0..9999" rdbms_UserDefinedDataType : userDefinedDataTypes0
+rdbms_ForeignKey "Table 1..1" -- "tableFKs 1..1" rdbms_Table : FKTable29
+rdbms_Column "rdbms_PKeyAndUnique31 1..9999" -- "rdbms_Column32 1..1" rdbms_PKeyAndUnique : PKandUQColumns30
+rdbms_Column "rdbms_DataType 1..1" -- "rdbms_Column19 1..1" rdbms_DataType : columnDataType18
+rdbms_Column "rdbms_ForeignKey 1..1" -- "rdbms_Column17 0..1" rdbms_ForeignKey : columnInFK16
+rdbms_Column "rdbms_PKeyAndUnique 1..1" -- "rdbms_Column15 0..1" rdbms_PKeyAndUnique : columnInPKandUQ14
+rdbms_Column "rdbms_Table11 1..9999" --* "rdbms_Column 1..1" rdbms_Table : columns10
+rdbms_SystemDataType "rdbms_UserDefinedDataType34 1..1" -- "rdbms_SystemDataType35 1..1" rdbms_UserDefinedDataType : dataType33
+rdbms_Database "rdbms_SystemDataType 1..1" *-- "rdbms_Database4 0..9999" rdbms_SystemDataType : dataTypes3
+rdbms_Column "rdbms_ForeignKey24 1..9999" -- "rdbms_Column25 1..1" rdbms_ForeignKey : lhsAttr23
+rdbms_ForeignKey "rdbms_Table28 1..1" -- "rdbms_ForeignKey27 1..1" rdbms_Table : refersTo26
+rdbms_ForeignKey "rdbms_PKeyAndUnique22 1..1" -- "rdbms_ForeignKey21 1..1" rdbms_PKeyAndUnique : rhsKey20
+rdbms_CheckCon "rdbms_Table13 0..9999" --* "rdbms_CheckCon 1..1" rdbms_Table : tableCHs12
+rdbms_ForeignKey "FKTable 0..9999" --* "ForeignKey 1..1" rdbms_Table : tableFKs5
+rdbms_PrimaryKeyCon "rdbms_Table7 1..1" --* "rdbms_PrimaryKeyCon 1..1" rdbms_Table : tablePK6
+rdbms_Table "rdbms_UniqueCon 1..1" *-- "rdbms_Table9 0..9999" rdbms_UniqueCon : tableUQ8
+rdbms_Database "rdbms_Table 1..1" *-- "rdbms_Database2 0..9999" rdbms_Table : tables1
+rdbms_Database "rdbms_UserDefinedDataType 1..1" *-- "rdbms_Database 0..9999" rdbms_UserDefinedDataType : userDefinedDataTypes0
 @enduml

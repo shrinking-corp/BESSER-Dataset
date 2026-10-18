@@ -1,4 +1,8 @@
 @startuml
+' model: fm
+' project: sampleModel
+' owner: User
+' description: New project
 class Cardinality {
 }
 class Constraints {
@@ -53,17 +57,17 @@ Feature <|-- fm_OrFeature
 Operator <|-- fm_AndOperator
 Operator <|-- fm_OrOperator
 OrFeature <|-- fm_XorFeature
-fm_CardExConstraint "1..1" *-- "1..1" fm_Operation : action14
-fm_Attribute "0..9999" --* "1..1" fm_Feature : attributes8
-fm_CardExConstraint "1..1" *-- "1..9999" fm_Operation : condition15
-fm_Constraints "0..9999" --* "1..1" fm_FeatureModel : constraints1
-fm_Feature "1..1" -- "1..1" fm_Operation : feature20
-fm_Feature "1..1" *-- "0..1" fm_FeatureCardinality : featureCardinality6
-fm_BooleanConstraints "1..1" -- "1..1" fm_Feature : from_23
-fm_GroupCardinality "0..1" --* "1..1" fm_OrFeature : groupCardinality12
-fm_CardExConstraint "1..1" *-- "1..1" fm_Operator : operator18
-fm_Feature "1..1" --* "1..1" fm_FeatureModel : root0
-fm_Feature "0..9999" --* "1..1" fm_Feature : subFeatures4
-fm_BooleanConstraints "1..1" -- "1..1" fm_Feature : to25
-fm_Feature "2..9999" --* "1..1" fm_OrFeature : variants10
+fm_CardExConstraint "fm_Operation 1..1" *-- "fm_CardExConstraint 1..1" fm_Operation : action14
+fm_Attribute "fm_Feature9 0..9999" --* "fm_Attribute 1..1" fm_Feature : attributes8
+fm_CardExConstraint "fm_Operation17 1..1" *-- "fm_CardExConstraint16 1..9999" fm_Operation : condition15
+fm_Constraints "fm_FeatureModel2 0..9999" --* "fm_Constraints 1..1" fm_FeatureModel : constraints1
+fm_Feature "fm_Operation21 1..1" -- "fm_Feature22 1..1" fm_Operation : feature20
+fm_Feature "fm_FeatureCardinality 1..1" *-- "fm_Feature7 0..1" fm_FeatureCardinality : featureCardinality6
+fm_BooleanConstraints "fm_Feature24 1..1" -- "fm_BooleanConstraints 1..1" fm_Feature : from_23
+fm_GroupCardinality "fm_OrFeature13 0..1" --* "fm_GroupCardinality 1..1" fm_OrFeature : groupCardinality12
+fm_CardExConstraint "fm_Operator 1..1" *-- "fm_CardExConstraint19 1..1" fm_Operator : operator18
+fm_Feature "fm_FeatureModel 1..1" --* "fm_Feature 1..1" fm_FeatureModel : root0
+fm_Feature "fm_Feature3 0..9999" --* "fm_Feature5 1..1" fm_Feature : subFeatures4
+fm_BooleanConstraints "fm_Feature27 1..1" -- "fm_BooleanConstraints26 1..1" fm_Feature : to25
+fm_Feature "fm_OrFeature 2..9999" --* "fm_Feature11 1..1" fm_OrFeature : variants10
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: _klGBkZgOEemt1PHp7arfQg
+' project: sampleModel
+' owner: User
+' description: New project
 class Administrator {
   + adminID : int
   + email : str
@@ -65,15 +69,15 @@ class User {
   + password : str
   + userID : int
 }
-AdvSearch "0..9999" -- "0..9999" BookSet : BookSet_AdvSearch
-BookSet "0..9999" -- "0..9999" Search : BookSet_Search
-Administrator "1..1" -- "0..9999" BooksOrder : BooksOrder_Administrator
-Book "1..9999" -- "1..1" BooksOrder : BooksOrder_Book
-Book "1..1" -- "1..9999" Category : Category_Book
-BooksOrder "1..1" -- "0..9999" Customer : Customer_BooksOrder
-Customer "1..9999" -- "1..1" ShoppingCart : Customer_ShoppingCart
-Category "0..1" -- "1..1" SessionManager : SessionManager_Category
-SessionManager "0..1" -- "1..1" User : SessionManager_User
-BooksOrder "1..9999" -- "1..1" ShoppingCart : ShoppingCart_BooksOrder
-User "0..1" -- "0..1" User : User_User
+AdvSearch "advSearch12 0..9999" -- "bookSet13 0..9999" BookSet : BookSet_AdvSearch
+BookSet "bookSet11 0..9999" -- "search10 0..9999" Search : BookSet_Search
+Administrator "administrator8 1..1" -- "booksOrder9 0..9999" BooksOrder : BooksOrder_Administrator
+Book "book6 1..9999" -- "booksOrder7 1..1" BooksOrder : BooksOrder_Book
+Book "book16 1..1" -- "category17 1..9999" Category : Category_Book
+BooksOrder "booksOrder4 1..1" -- "customer5 0..9999" Customer : Customer_BooksOrder
+Customer "customer21 1..9999" -- "shoppingCart20 1..1" ShoppingCart : Customer_ShoppingCart
+Category "category14 0..1" -- "sessionManager15 1..1" SessionManager : SessionManager_Category
+SessionManager "sessionManager3 0..1" -- "user2 1..1" User : SessionManager_User
+BooksOrder "booksOrder18 1..9999" -- "shoppingCart19 1..1" ShoppingCart : ShoppingCart_BooksOrder
+User "user0 0..1" -- "user1 0..1" User : User_User
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: model
+' project: sampleModel
+' owner: User
+' description: New project
 class Action {
 }
 class ActionsList {
@@ -81,11 +85,11 @@ RandomAction <|-- model_Move
 RandomAction <|-- model_Turn
 RotorAction <|-- model_Move
 RotorAction <|-- model_Turn
-model_Action "1..9999" --* "1..1" model_ActionsList : actions10
-model_ActionsList "1..1" *-- "0..1" model_Ending : ending11
-model_Event "1..1" --* "1..1" model_EventListener : event8
-model_EventListener "0..9999" --* "1..1" model_RoboProse : listeners3
-model_Main "0..1" --* "1..1" model_RoboProse : main1
-model_RoboProse "1..1" --* "1..1" model_Root : robot0
-model_EventListener "0..9999" --* "1..1" model_EventListener : sublisteners6
+model_Action "model_ActionsList 1..9999" --* "model_Action 1..1" model_ActionsList : actions10
+model_ActionsList "model_Ending 1..1" *-- "model_ActionsList12 0..1" model_Ending : ending11
+model_Event "model_EventListener9 1..1" --* "model_Event 1..1" model_EventListener : event8
+model_EventListener "model_RoboProse4 0..9999" --* "model_EventListener 1..1" model_RoboProse : listeners3
+model_Main "model_RoboProse2 0..1" --* "model_Main 1..1" model_RoboProse : main1
+model_RoboProse "model_Root 1..1" --* "model_RoboProse 1..1" model_Root : robot0
+model_EventListener "model_EventListener5 0..9999" --* "model_EventListener7 1..1" model_EventListener : sublisteners6
 @enduml

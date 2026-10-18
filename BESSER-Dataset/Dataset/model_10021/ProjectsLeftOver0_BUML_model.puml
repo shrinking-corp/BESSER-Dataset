@@ -1,4 +1,8 @@
 @startuml
+' model: Projects
+' project: sampleModel
+' owner: User
+' description: New project
 enum ProjectSize {
   big
   medium
@@ -24,12 +28,21 @@ class Projects_Qualification {
 }
 class Projects_Worker {
 }
-Projects_Company "1..1" -- "1..1" Projects_Project : company8
-Projects_Company "1..1" -- "1..9999" Projects_Worker : employees1
-Projects_Project "1..1" -- "0..9999" Projects_Worker : members11
-Projects_Project "0..9999" -- "1..1" Projects_Project : predecessors18
-Projects_Company "1..1" -- "0..9999" Projects_Project : projects0
-Projects_Project "0..9999" -- "1..1" Projects_Worker : projects5
-Projects_Qualification "1..9999" -- "1..1" Projects_Worker : qualifications3
-Projects_Project "1..1" -- "1..9999" Projects_Qualification : requirements14
+Projects_Company "Projects_Project9 1..1" -- "Projects_Company10 1..1" Projects_Project : company8
+Projects_Company "Projects_Worker 1..1" -- "Projects_Company2 1..9999" Projects_Worker : employees1
+Projects_Project "Projects_Worker13 1..1" -- "Projects_Project12 0..9999" Projects_Worker : members11
+Projects_Project "Projects_Project17 0..9999" -- "Projects_Project19 1..1" Projects_Project : predecessors18
+Projects_Company "Projects_Project 1..1" -- "Projects_Company 0..9999" Projects_Project : projects0
+Projects_Project "Projects_Worker6 0..9999" -- "Projects_Project7 1..1" Projects_Worker : projects5
+Projects_Qualification "Projects_Worker4 1..9999" -- "Projects_Qualification 1..1" Projects_Worker : qualifications3
+Projects_Project "Projects_Qualification16 1..1" -- "Projects_Project15 1..9999" Projects_Qualification : requirements14
+note top of Projects_Company
+  constraint OnlyOwnEmployeesInProjects (OCL): context Company inv: employees->includesAll(projects.members->asSet())
+end note
+note top of Projects_Project
+  constraint AllQualificationsForActiveProject (OCL): context Project inv: status = ProjectStatus_active implies (requirements->select(q|not members->exists(m | m.qualifications->includes(q))))->isEmpty()
+end note
+note top of Projects_Worker
+  constraint notOverloaded (OCL): context Worker inv: not (projects->select(p|p.status = ProjectStatus_active)->select(p|p.size=ProjectSize_big)->size() * 2 + projects->select(p|p.status = ProjectStatus_active)->select(p|p.size=ProjectSize_medium)->size() > 3)
+end note
 @enduml

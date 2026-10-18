@@ -1,4 +1,8 @@
 @startuml
+' model: _QSy1kNQvEeehRMl7r1_c5g
+' project: sampleModel
+' owner: User
+' description: New project
 class Part {
   + _description : str
   + _part_number : str
@@ -44,20 +48,20 @@ class release_receptionist_Actor {
 }
 class student_Actor {
 }
-Part "1..9999" -- "0..9999" Part : Part_Part
-Part "0..9999" -- "1..9999" Storage : Part_Storage
-Part "0..9999" -- "1..9999" _supplier : Part__supplier
-Part "1..1" -- "1..1" price_quote : Part_price_quote
-Part "1..1" -- "0..1" Routing_number : Routing_number_Part
-admission_receptionist_Actor "0..1" -- "0..1" check_in_external : admission_receptionist_check_in
-admission_receptionist_Actor "0..1" -- "0..1" patient_Actor : admission_receptionist_patient
-enter_lab_notes_external "0..1" -- "0..1" medical_technologist_Actor : enter_lab_notes_medical_technologist
-enter_patient_notes_external "0..1" -- "0..1" physicians_Actor : enter_patient_notes_physicians
-enter_patient_notes_external "0..1" -- "0..1" floor_nurse_Actor : floor_nurse_enter_patient_notes
-floor_nurse_Actor "0..1" -- "0..1" list_of_patients_external : floor_nurse_list_of_patients
-medical_technologist_Actor "0..1" -- "0..1" receive_patient_records_external : medical_technologist_receive_patient_records
-patient_Actor "0..1" -- "0..1" release_receptionist_Actor : patient_release_receptionist
-physicians_Actor "0..1" -- "0..1" receive_records_external : physicians_receive_records
-_supplier "1..1" -- "1..1" price_quote : price_quote__supplier
-check_out_external "0..1" -- "0..1" release_receptionist_Actor : release_receptionist_check_out
+Part "part23 1..9999" -- "subpart22 0..9999" Part : Part_Part
+Part "part21 0..9999" -- "storage20 1..9999" Storage : Part_Storage
+Part "part25 0..9999" -- "_supplier24 1..9999" _supplier : Part__supplier
+Part "part29 1..1" -- "price_quote28 1..1" price_quote : Part_price_quote
+Part "part30 1..1" -- "routing_number31 0..1" Routing_number : Routing_number_Part
+admission_receptionist_Actor "admission_receptionist5 0..1" -- "check_in4 0..1" check_in_external : admission_receptionist_check_in
+admission_receptionist_Actor "admission_receptionist7 0..1" -- "patient6 0..1" patient_Actor : admission_receptionist_patient
+enter_lab_notes_external "enter_lab_notes1 0..1" -- "medical_technologist0 0..1" medical_technologist_Actor : enter_lab_notes_medical_technologist
+enter_patient_notes_external "enter_patient_notes3 0..1" -- "physicians2 0..1" physicians_Actor : enter_patient_notes_physicians
+enter_patient_notes_external "enter_patient_notes16 0..1" -- "floor_nurse17 0..1" floor_nurse_Actor : floor_nurse_enter_patient_notes
+floor_nurse_Actor "floor_nurse19 0..1" -- "list_of_patients18 0..1" list_of_patients_external : floor_nurse_list_of_patients
+medical_technologist_Actor "medical_technologist13 0..1" -- "receive_patient_records12 0..1" receive_patient_records_external : medical_technologist_receive_patient_records
+patient_Actor "patient9 0..1" -- "release_receptionist8 0..1" release_receptionist_Actor : patient_release_receptionist
+physicians_Actor "physicians15 0..1" -- "receive_records14 0..1" receive_records_external : physicians_receive_records
+_supplier "_supplier26 1..1" -- "price_quote27 1..1" price_quote : price_quote__supplier
+check_out_external "check_out10 0..1" -- "release_receptionist11 0..1" release_receptionist_Actor : release_receptionist_check_out
 @enduml

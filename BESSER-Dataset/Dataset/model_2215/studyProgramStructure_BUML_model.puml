@@ -1,4 +1,8 @@
 @startuml
+' model: studyProgramStructure
+' project: sampleModel
+' owner: User
+' description: New project
 enum CourseStatus {
   elective
   mandatory
@@ -50,25 +54,25 @@ class studyProgramStructure_StudyPlan {
 class studyProgramStructure_University {
   + name : str
 }
-studyProgramStructure_Specialization "1..1" -- "0..1" studyProgramStructure_Specialization : baseSpecialization7
-studyProgramStructure_Course "0..1" -- "1..1" studyProgramStructure_CourseAllocation : course37
-studyProgramStructure_CourseAllocation "0..9999" --* "1..1" studyProgramStructure_StudyPlan : courseAllocation34
-studyProgramStructure_CourseGroup "0..9999" --* "1..1" studyProgramStructure_Semester : courseGroups12
-studyProgramStructure_Course "0..9999" -- "1..1" studyProgramStructure_CourseGroup : courses20
-studyProgramStructure_Course "0..9999" --* "1..1" studyProgramStructure_University : courses22
-studyProgramStructure_Specialization "1..1" -- "0..9999" studyProgramStructure_Specialization : furtherSpecializations4
-studyProgramStructure_Program "1..1" -- "1..1" studyProgramStructure_Specialization : program11
-studyProgramStructure_Program "0..1" -- "1..1" studyProgramStructure_Semester : program13
-studyProgramStructure_Program "0..1" -- "1..1" studyProgramStructure_Student : program28
-studyProgramStructure_Program "0..9999" --* "1..1" studyProgramStructure_University : programs21
-studyProgramStructure_CourseGroup "1..1" -- "1..1" studyProgramStructure_Semester : semester18
-studyProgramStructure_Program "1..1" *-- "0..9999" studyProgramStructure_Semester : semesters1
-studyProgramStructure_Semester "0..9999" -- "1..1" studyProgramStructure_StudyPlan : semesters33
-studyProgramStructure_Semester "0..9999" --* "1..1" studyProgramStructure_Specialization : semesters9
-studyProgramStructure_Semester "1..1" -- "0..1" studyProgramStructure_Specialization : specialization15
-studyProgramStructure_Program "1..1" *-- "0..9999" studyProgramStructure_Specialization : specializations0
-studyProgramStructure_Specialization "0..9999" -- "1..1" studyProgramStructure_Student : specializations31
-studyProgramStructure_Student "0..1" -- "1..1" studyProgramStructure_StudyPlan : student36
-studyProgramStructure_Student "0..9999" --* "1..1" studyProgramStructure_University : students25
-studyProgramStructure_Student "1..1" *-- "0..1" studyProgramStructure_StudyPlan : studyPlan27
+studyProgramStructure_Specialization "Specialization8 1..1" -- "furtherSpecializations 0..1" studyProgramStructure_Specialization : baseSpecialization7
+studyProgramStructure_Course "studyProgramStructure_CourseAllocation38 0..1" -- "studyProgramStructure_Course39 1..1" studyProgramStructure_CourseAllocation : course37
+studyProgramStructure_CourseAllocation "studyProgramStructure_StudyPlan35 0..9999" --* "studyProgramStructure_CourseAllocation 1..1" studyProgramStructure_StudyPlan : courseAllocation34
+studyProgramStructure_CourseGroup "semester 0..9999" --* "CourseGroup 1..1" studyProgramStructure_Semester : courseGroups12
+studyProgramStructure_Course "studyProgramStructure_CourseGroup 0..9999" -- "studyProgramStructure_Course 1..1" studyProgramStructure_CourseGroup : courses20
+studyProgramStructure_Course "studyProgramStructure_University23 0..9999" --* "studyProgramStructure_Course24 1..1" studyProgramStructure_University : courses22
+studyProgramStructure_Specialization "Specialization5 1..1" -- "baseSpecialization 0..9999" studyProgramStructure_Specialization : furtherSpecializations4
+studyProgramStructure_Program "specializations 1..1" -- "Program 1..1" studyProgramStructure_Specialization : program11
+studyProgramStructure_Program "semesters 0..1" -- "Program14 1..1" studyProgramStructure_Semester : program13
+studyProgramStructure_Program "studyProgramStructure_Student29 0..1" -- "studyProgramStructure_Program30 1..1" studyProgramStructure_Student : program28
+studyProgramStructure_Program "studyProgramStructure_University 0..9999" --* "studyProgramStructure_Program 1..1" studyProgramStructure_University : programs21
+studyProgramStructure_CourseGroup "Semester19 1..1" -- "courseGroups 1..1" studyProgramStructure_Semester : semester18
+studyProgramStructure_Program "Semester 1..1" *-- "program2 0..9999" studyProgramStructure_Semester : semesters1
+studyProgramStructure_Semester "studyProgramStructure_StudyPlan 0..9999" -- "studyProgramStructure_Semester 1..1" studyProgramStructure_StudyPlan : semesters33
+studyProgramStructure_Semester "specialization 0..9999" --* "Semester10 1..1" studyProgramStructure_Specialization : semesters9
+studyProgramStructure_Semester "Specialization17 1..1" -- "semesters16 0..1" studyProgramStructure_Specialization : specialization15
+studyProgramStructure_Program "Specialization 1..1" *-- "program 0..9999" studyProgramStructure_Specialization : specializations0
+studyProgramStructure_Specialization "studyProgramStructure_Student32 0..9999" -- "studyProgramStructure_Specialization 1..1" studyProgramStructure_Student : specializations31
+studyProgramStructure_Student "studyPlan 0..1" -- "Student 1..1" studyProgramStructure_StudyPlan : student36
+studyProgramStructure_Student "studyProgramStructure_University26 0..9999" --* "studyProgramStructure_Student 1..1" studyProgramStructure_University : students25
+studyProgramStructure_Student "StudyPlan 1..1" *-- "student 0..1" studyProgramStructure_StudyPlan : studyPlan27
 @enduml

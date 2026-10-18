@@ -1,4 +1,8 @@
 @startuml
+' model: PersonCompany
+' project: sampleModel
+' owner: User
+' description: New project
 class PersonCompany_Company {
   + name : str
   + employee() : str
@@ -13,10 +17,10 @@ class PersonCompany_Person {
   + name : str
   + employer() : str
 }
-PersonCompany_Job "0..1" -- "1..1" PersonCompany_Job : BossWorker_Job_role_boss9
-PersonCompany_Job "0..9999" -- "1..1" PersonCompany_Job : BossWorker_Job_role_worker6
-PersonCompany_Company "1..1" -- "1..1" PersonCompany_Job : CompanyJob_Company_role_employer4
-PersonCompany_Company "1..1" -- "0..9999" PersonCompany_Job : CompanyJob_Job_role_job1
-PersonCompany_Job "0..9999" -- "1..1" PersonCompany_Person : PersonJob_Job_role_job0
-PersonCompany_Job "1..1" -- "1..1" PersonCompany_Person : PersonJob_Person_role_employee3
+PersonCompany_Job "BossWorker_Job_role_worker 0..1" -- "Job10 1..1" PersonCompany_Job : BossWorker_Job_role_boss9
+PersonCompany_Job "BossWorker_Job_role_boss 0..9999" -- "Job7 1..1" PersonCompany_Job : BossWorker_Job_role_worker6
+PersonCompany_Company "CompanyJob_Job_role_job 1..1" -- "Company 1..1" PersonCompany_Job : CompanyJob_Company_role_employer4
+PersonCompany_Company "Job2 1..1" -- "CompanyJob_Company_role_employer 0..9999" PersonCompany_Job : CompanyJob_Job_role_job1
+PersonCompany_Job "PersonJob_Person_role_employee 0..9999" -- "Job 1..1" PersonCompany_Person : PersonJob_Job_role_job0
+PersonCompany_Job "Person 1..1" -- "PersonJob_Job_role_job 1..1" PersonCompany_Person : PersonJob_Person_role_employee3
 @enduml

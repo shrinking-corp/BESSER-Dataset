@@ -1,4 +1,8 @@
 @startuml
+' model: lts
+' project: sampleModel
+' owner: User
+' description: New project
 class lts_LTS {
   + name : str
 }
@@ -9,13 +13,13 @@ class lts_Transition {
   + input : str
   + output : str
 }
-lts_LTS "1..1" -- "0..1" lts_State : currentState2
-lts_LTS "1..1" -- "0..9999" lts_State : finalState5
-lts_State "1..1" -- "0..9999" lts_Transition : incomingTransition10
-lts_LTS "1..1" -- "1..1" lts_State : initialState1
-lts_State "1..1" *-- "0..9999" lts_Transition : outgoingTransition9
-lts_LTS "1..1" *-- "0..9999" lts_State : ownedState0
-lts_LTS "1..1" -- "1..1" lts_State : owningLTS8
-lts_State "1..1" -- "1..1" lts_Transition : source12
-lts_State "1..1" -- "1..1" lts_Transition : target14
+lts_LTS "lts_State4 1..1" -- "lts_LTS3 0..1" lts_State : currentState2
+lts_LTS "lts_State7 1..1" -- "lts_LTS6 0..9999" lts_State : finalState5
+lts_State "Transition11 1..1" -- "target 0..9999" lts_Transition : incomingTransition10
+lts_LTS "lts_State 1..1" -- "lts_LTS 1..1" lts_State : initialState1
+lts_State "Transition 1..1" *-- "source 0..9999" lts_Transition : outgoingTransition9
+lts_LTS "State 1..1" *-- "owningLTS 0..9999" lts_State : ownedState0
+lts_LTS "ownedState 1..1" -- "LTS 1..1" lts_State : owningLTS8
+lts_State "outgoingTransition 1..1" -- "State13 1..1" lts_Transition : source12
+lts_State "incomingTransition 1..1" -- "State15 1..1" lts_Transition : target14
 @enduml

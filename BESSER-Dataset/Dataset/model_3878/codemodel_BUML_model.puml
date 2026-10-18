@@ -1,4 +1,8 @@
 @startuml
+' model: codemodel
+' project: sampleModel
+' owner: User
+' description: New project
 class AssignmentStmt {
 }
 class CMElement {
@@ -82,24 +86,24 @@ Statement <|-- codemodel_statements_IfStmt
 Variable <|-- codemodel_FunctionArgument
 Variable <|-- codemodel_GlobalVariable
 Variable <|-- codemodel_LocalVariable
-codemodel_Function "1..1" *-- "0..9999" codemodel_FunctionArgument : arguments7
-Statement "0..9999" --* "1..1" codemodel_Function : body11
-Expression "1..1" --* "1..1" codemodel_statements_IfStmt : condition25
-Expression "1..1" --* "1..1" codemodel_statements_ForStmt : condition34
-codemodel_CodeModule "1..1" *-- "1..9999" codemodel_DataType : dataTypes3
-Statement "0..1" --* "1..1" codemodel_statements_IfStmt : elseStmt30
-Statement "1..1" --* "1..1" codemodel_statements_ForStmt : forStmt40
-codemodel_CodeModule "1..1" *-- "0..9999" codemodel_Function : functions1
-codemodel_CodeModule "1..1" *-- "0..9999" codemodel_GlobalVariable : globalVariables0
-Expression "1..1" --* "1..1" codemodel_statements_ForStmt : increment37
-AssignmentStmt "1..1" --* "1..1" codemodel_statements_ForStmt : init33
-Expression "1..1" --* "1..1" codemodel_expressions_BinaryExp : left14
-Expression "1..1" --* "1..1" codemodel_statements_AssignmentStmt : leftExp18
-codemodel_Function "1..1" *-- "0..9999" codemodel_LocalVariable : localVariables9
-codemodel_expressions_VariableExp "1..1" -- "1..1" expressions_codemodel_Variable : referencedVariable13
-Expression "1..1" --* "1..1" codemodel_expressions_BinaryExp : right15
-Expression "1..1" --* "1..1" codemodel_statements_AssignmentStmt : rightExp20
-Statement "0..9999" --* "1..1" codemodel_statements_CompositeStmt : statements23
-Statement "1..1" --* "1..1" codemodel_statements_IfStmt : thenStmt27
-codemodel_DataType "1..1" -- "1..1" codemodel_Variable : type5
+codemodel_Function "codemodel_FunctionArgument 1..1" *-- "codemodel_Function8 0..9999" codemodel_FunctionArgument : arguments7
+Statement "codemodel_Function12 0..9999" --* "Statement 1..1" codemodel_Function : body11
+Expression "codemodel_statements_IfStmt 1..1" --* "Expression26 1..1" codemodel_statements_IfStmt : condition25
+Expression "codemodel_statements_ForStmt35 1..1" --* "Expression36 1..1" codemodel_statements_ForStmt : condition34
+codemodel_CodeModule "codemodel_DataType 1..1" *-- "codemodel_CodeModule4 1..9999" codemodel_DataType : dataTypes3
+Statement "codemodel_statements_IfStmt31 0..1" --* "Statement32 1..1" codemodel_statements_IfStmt : elseStmt30
+Statement "codemodel_statements_ForStmt41 1..1" --* "Statement42 1..1" codemodel_statements_ForStmt : forStmt40
+codemodel_CodeModule "codemodel_Function 1..1" *-- "codemodel_CodeModule2 0..9999" codemodel_Function : functions1
+codemodel_CodeModule "codemodel_GlobalVariable 1..1" *-- "codemodel_CodeModule 0..9999" codemodel_GlobalVariable : globalVariables0
+Expression "codemodel_statements_ForStmt38 1..1" --* "Expression39 1..1" codemodel_statements_ForStmt : increment37
+AssignmentStmt "codemodel_statements_ForStmt 1..1" --* "AssignmentStmt 1..1" codemodel_statements_ForStmt : init33
+Expression "codemodel_expressions_BinaryExp 1..1" --* "Expression 1..1" codemodel_expressions_BinaryExp : left14
+Expression "codemodel_statements_AssignmentStmt 1..1" --* "Expression19 1..1" codemodel_statements_AssignmentStmt : leftExp18
+codemodel_Function "codemodel_LocalVariable 1..1" *-- "codemodel_Function10 0..9999" codemodel_LocalVariable : localVariables9
+codemodel_expressions_VariableExp "expressions_codemodel_Variable 1..1" -- "codemodel_expressions_VariableExp 1..1" expressions_codemodel_Variable : referencedVariable13
+Expression "codemodel_expressions_BinaryExp16 1..1" --* "Expression17 1..1" codemodel_expressions_BinaryExp : right15
+Expression "codemodel_statements_AssignmentStmt21 1..1" --* "Expression22 1..1" codemodel_statements_AssignmentStmt : rightExp20
+Statement "codemodel_statements_CompositeStmt 0..9999" --* "Statement24 1..1" codemodel_statements_CompositeStmt : statements23
+Statement "codemodel_statements_IfStmt28 1..1" --* "Statement29 1..1" codemodel_statements_IfStmt : thenStmt27
+codemodel_DataType "codemodel_Variable 1..1" -- "codemodel_DataType6 1..1" codemodel_Variable : type5
 @enduml

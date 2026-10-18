@@ -1,4 +1,8 @@
 @startuml
+' model: PrimitiveTypes
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractRequirement {
 }
 class Attribute {
@@ -55,17 +59,17 @@ TextElement <|-- Reqtify_Section
 TypedElement <|-- Reqtify_Attribute
 TypedElement <|-- Reqtify_CoverLink
 TypedElement <|-- Reqtify_ElementWithIL
-Attribute "0..9999" --* "1..1" Reqtify_AbstractRequirement : attribute14
-AbstractRequirement "0..9999" --* "1..1" Reqtify_MacroRequirement : contains16
-CoverLink "0..9999" --* "1..1" Reqtify_AbstractRequirement : coverLinks13
-Document "0..1" -- "1..1" Reqtify_Section : document3
-Document "1..9999" --* "1..1" Reqtify_Project : documents0
-MacroRequirement "0..1" -- "1..1" Reqtify_AbstractRequirement : isContained12
-AbstractRequirement "1..1" -- "1..1" Reqtify_CoverLink : linkWith18
-Project "1..1" -- "1..1" Reqtify_Document : project1
-AbstractRequirement "0..9999" --* "1..1" Reqtify_Section : requirements9
-Reqtify_AbstractRequirement "1..1" -- "0..1" Section : section10
-Reqtify_Section "1..1" *-- "0..9999" Section : sectionChildren5
-Reqtify_Section "1..1" -- "0..1" Section : sectionParent7
-Reqtify_Document "1..1" *-- "0..9999" Section : sections2
+Attribute "Reqtify_AbstractRequirement15 0..9999" --* "Attribute 1..1" Reqtify_AbstractRequirement : attribute14
+AbstractRequirement "isContained 0..9999" --* "AbstractRequirement17 1..1" Reqtify_MacroRequirement : contains16
+CoverLink "Reqtify_AbstractRequirement 0..9999" --* "CoverLink 1..1" Reqtify_AbstractRequirement : coverLinks13
+Document "sections 0..1" -- "Document4 1..1" Reqtify_Section : document3
+Document "project 1..9999" --* "Document 1..1" Reqtify_Project : documents0
+MacroRequirement "contains 0..1" -- "MacroRequirement 1..1" Reqtify_AbstractRequirement : isContained12
+AbstractRequirement "Reqtify_CoverLink 1..1" -- "AbstractRequirement19 1..1" Reqtify_CoverLink : linkWith18
+Project "documents 1..1" -- "Project 1..1" Reqtify_Document : project1
+AbstractRequirement "section 0..9999" --* "AbstractRequirement 1..1" Reqtify_Section : requirements9
+Reqtify_AbstractRequirement "Section11 1..1" -- "requirements 0..1" Section : section10
+Reqtify_Section "Section6 1..1" *-- "sectionParent 0..9999" Section : sectionChildren5
+Reqtify_Section "Section8 1..1" -- "sectionChildren 0..1" Section : sectionParent7
+Reqtify_Document "Section 1..1" *-- "document 0..9999" Section : sections2
 @enduml

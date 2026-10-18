@@ -1,4 +1,8 @@
 @startuml
+' model: PrimitiveTypes
+' project: sampleModel
+' owner: User
+' description: New project
 class Abstract {
 }
 class Adress {
@@ -136,44 +140,44 @@ ValuedElement <|-- LaTeX_Phone
 ValuedElement <|-- LaTeX_Title
 ValuedElement <|-- LaTeX_Type
 ValuedElement <|-- LaTeX_Value
-Abstract "0..1" --* "1..1" LaTeX_Document : abstract64
-Adress "1..1" --* "1..1" LaTeX_Organisation : adress6
-Author "0..1" -- "1..1" LaTeX_Name : author0
-Author "1..1" --* "1..1" LaTeX_Citation : author36
-Author "0..1" --* "1..1" LaTeX_Document : author55
-Bibliography "1..1" -- "1..1" LaTeX_Citation : bibliography41
-Bibliography "0..9999" --* "1..1" LaTeX_DocumentBody : bibliography47
-Citation "1..9999" --* "1..1" LaTeX_Bibliography : citations42
-Corps "0..9999" --* "1..1" LaTeX_SectionBody : corps15
-Date "1..1" --* "1..1" LaTeX_Description : date33
-Date "0..1" --* "1..1" LaTeX_Document : date58
-Description "1..1" --* "1..1" LaTeX_Citation : description39
-Document "1..1" -- "1..1" LaTeX_DocumentBody : document49
-DocumentBody "1..1" -- "1..1" LaTeX_Bibliography : documentbody43
-DocumentBody "1..1" --* "1..1" LaTeX_Document : documentbody68
-EMail "0..1" --* "1..1" LaTeX_Heading : email13
-Enumerate "0..1" -- "1..1" LaTeX_Item : enumeratecontainer24
-Fax "0..1" --* "1..1" LaTeX_Heading : fax11
-Heading "0..1" --* "1..1" LaTeX_Document : heading61
-Heading "1..1" -- "1..1" LaTeX_Organisation : heading7
-Item "1..9999" --* "1..1" LaTeX_Items : item26
-Item "1..9999" --* "1..1" LaTeX_Enumerate : item27
-Items "0..1" -- "1..1" LaTeX_Item : itemscontainer23
-Keywords "0..1" --* "1..1" LaTeX_Document : keywords66
-LaTeX_Figure "1..1" *-- "1..1" Label : label19
-LaTeX_Citation "1..1" *-- "1..1" Label : label34
-LaTeX_Author "1..1" *-- "1..9999" Name : names3
-LaTeX_Organisation "1..1" *-- "1..9999" Name : names4
-LaTeX_Name "1..1" -- "0..1" Organisation : organisation1
-LaTeX_Heading "1..1" *-- "0..9999" Organisation : organisations8
-LaTeX_Figure "1..1" *-- "1..1" Path : path18
-LaTeX_Heading "1..1" *-- "0..1" Phone : phone10
-LaTeX_SectionBody "1..1" -- "1..1" Section : section16
-LaTeX_Section "1..1" *-- "1..1" SectionBody : sectionBody31
-LaTeX_Corps "1..1" -- "1..1" SectionBody : sectionbody17
-LaTeX_DocumentBody "1..1" *-- "1..9999" Section : sections45
-LaTeX_Figure "1..1" *-- "1..1" Title : title21
-LaTeX_Section "1..1" *-- "1..1" Title : title29
-LaTeX_Document "1..1" *-- "1..1" Title : title52
-LaTeX_Document "1..1" *-- "1..1" Type : type51
+Abstract "LaTeX_Document65 0..1" --* "Abstract 1..1" LaTeX_Document : abstract64
+Adress "LaTeX_Organisation 1..1" --* "Adress 1..1" LaTeX_Organisation : adress6
+Author "names 0..1" -- "Author 1..1" LaTeX_Name : author0
+Author "LaTeX_Citation37 1..1" --* "Author38 1..1" LaTeX_Citation : author36
+Author "LaTeX_Document56 0..1" --* "Author57 1..1" LaTeX_Document : author55
+Bibliography "citations 1..1" -- "Bibliography 1..1" LaTeX_Citation : bibliography41
+Bibliography "documentbody 0..9999" --* "Bibliography48 1..1" LaTeX_DocumentBody : bibliography47
+Citation "bibliography 1..9999" --* "Citation 1..1" LaTeX_Bibliography : citations42
+Corps "sectionbody 0..9999" --* "Corps 1..1" LaTeX_SectionBody : corps15
+Date "LaTeX_Description 1..1" --* "Date 1..1" LaTeX_Description : date33
+Date "LaTeX_Document59 0..1" --* "Date60 1..1" LaTeX_Document : date58
+Description "LaTeX_Citation40 1..1" --* "Description 1..1" LaTeX_Citation : description39
+Document "documentbody50 1..1" -- "Document 1..1" LaTeX_DocumentBody : document49
+DocumentBody "bibliography44 1..1" -- "DocumentBody 1..1" LaTeX_Bibliography : documentbody43
+DocumentBody "document 1..1" --* "DocumentBody69 1..1" LaTeX_Document : documentbody68
+EMail "LaTeX_Heading14 0..1" --* "EMail 1..1" LaTeX_Heading : email13
+Enumerate "item25 0..1" -- "Enumerate 1..1" LaTeX_Item : enumeratecontainer24
+Fax "LaTeX_Heading12 0..1" --* "Fax 1..1" LaTeX_Heading : fax11
+Heading "LaTeX_Document62 0..1" --* "Heading63 1..1" LaTeX_Document : heading61
+Heading "organisations 1..1" -- "Heading 1..1" LaTeX_Organisation : heading7
+Item "itemscontainer 1..9999" --* "Item 1..1" LaTeX_Items : item26
+Item "enumeratecontainer 1..9999" --* "Item28 1..1" LaTeX_Enumerate : item27
+Items "item 0..1" -- "Items 1..1" LaTeX_Item : itemscontainer23
+Keywords "LaTeX_Document67 0..1" --* "Keywords 1..1" LaTeX_Document : keywords66
+LaTeX_Figure "Label 1..1" *-- "LaTeX_Figure20 1..1" Label : label19
+LaTeX_Citation "Label35 1..1" *-- "LaTeX_Citation 1..1" Label : label34
+LaTeX_Author "Name 1..1" *-- "author 1..9999" Name : names3
+LaTeX_Organisation "Name5 1..1" *-- "organisation 1..9999" Name : names4
+LaTeX_Name "Organisation 1..1" -- "names2 0..1" Organisation : organisation1
+LaTeX_Heading "Organisation9 1..1" *-- "heading 0..9999" Organisation : organisations8
+LaTeX_Figure "Path 1..1" *-- "LaTeX_Figure 1..1" Path : path18
+LaTeX_Heading "Phone 1..1" *-- "LaTeX_Heading 0..1" Phone : phone10
+LaTeX_SectionBody "Section 1..1" -- "sectionBody 1..1" Section : section16
+LaTeX_Section "SectionBody32 1..1" *-- "section 1..1" SectionBody : sectionBody31
+LaTeX_Corps "SectionBody 1..1" -- "corps 1..1" SectionBody : sectionbody17
+LaTeX_DocumentBody "Section46 1..1" *-- "LaTeX_DocumentBody 1..9999" Section : sections45
+LaTeX_Figure "Title 1..1" *-- "LaTeX_Figure22 1..1" Title : title21
+LaTeX_Section "Title30 1..1" *-- "LaTeX_Section 1..1" Title : title29
+LaTeX_Document "Title54 1..1" *-- "LaTeX_Document53 1..1" Title : title52
+LaTeX_Document "Type 1..1" *-- "LaTeX_Document 1..1" Type : type51
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: employee
+' project: sampleModel
+' owner: User
+' description: New project
 enum Gender {
   Female
   Male
@@ -54,17 +58,17 @@ class employee_SmallProject {
 }
 Project <|-- employee_LargeProject
 Project <|-- employee_SmallProject
-employee_Address "0..1" --* "1..1" employee_Employee : address12
-employee_EmailAddress "0..9999" --* "1..1" employee_Employee : emailAddresses29
-employee_Employee "0..9999" --* "1..1" employee_Organization : employees0
-employee_Employee "1..1" -- "0..1" employee_JobTitle : jobTitle14
-employee_JobTitle "0..9999" --* "1..1" employee_Organization : jobs3
-employee_Employee "0..9999" -- "1..1" employee_Employee : managedEmployees21
-employee_Employee "0..1" -- "1..1" employee_Employee : manager18
-employee_Employee "1..1" -- "1..1" employee_PhoneNumber : owner8
-employee_Employee "1..1" *-- "0..1" employee_EmploymentPeriod : period10
-employee_Employee "1..1" *-- "0..9999" employee_PhoneNumber : phoneNumbers23
-employee_Organization "1..1" *-- "0..9999" employee_Project : projects1
-employee_Employee "1..1" -- "0..9999" employee_Project : projects26
-employee_Employee "0..1" -- "1..1" employee_Project : teamLeader5
+employee_Address "employee_Employee13 0..1" --* "employee_Address 1..1" employee_Employee : address12
+employee_EmailAddress "employee_Employee30 0..9999" --* "employee_EmailAddress 1..1" employee_Employee : emailAddresses29
+employee_Employee "employee_Organization 0..9999" --* "employee_Employee 1..1" employee_Organization : employees0
+employee_Employee "employee_JobTitle16 1..1" -- "employee_Employee15 0..1" employee_JobTitle : jobTitle14
+employee_JobTitle "employee_Organization4 0..9999" --* "employee_JobTitle 1..1" employee_Organization : jobs3
+employee_Employee "employee_Employee20 0..9999" -- "employee_Employee22 1..1" employee_Employee : managedEmployees21
+employee_Employee "employee_Employee17 0..1" -- "employee_Employee19 1..1" employee_Employee : manager18
+employee_Employee "employee_PhoneNumber 1..1" -- "employee_Employee9 1..1" employee_PhoneNumber : owner8
+employee_Employee "employee_EmploymentPeriod 1..1" *-- "employee_Employee11 0..1" employee_EmploymentPeriod : period10
+employee_Employee "employee_PhoneNumber25 1..1" *-- "employee_Employee24 0..9999" employee_PhoneNumber : phoneNumbers23
+employee_Organization "employee_Project 1..1" *-- "employee_Organization2 0..9999" employee_Project : projects1
+employee_Employee "employee_Project28 1..1" -- "employee_Employee27 0..9999" employee_Project : projects26
+employee_Employee "employee_Project6 0..1" -- "employee_Employee7 1..1" employee_Project : teamLeader5
 @enduml

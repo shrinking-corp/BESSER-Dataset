@@ -1,4 +1,8 @@
 @startuml
+' model: _15ec6afd_0f1e_45d4_8fb0_77dec37ee67a
+' project: sampleModel
+' owner: User
+' description: New project
 class Agent {
   + Agent_ID : str
   + BrojAgenta : int
@@ -36,9 +40,9 @@ class Transakcija {
   + suma : str
   + tip : str
 }
-Agent "0..9999" -- "0..9999" Aran_man : Agent_Aran_man
-Agent "1..1" -- "0..9999" Kupac : Agent_Kupac
-Kupac "0..9999" -- "0..1" Osiguranje : Osiguranje_Putnik
-Aran_man "0..9999" -- "1..1" Kupac : Putnik_Rezervisanje
-Kupac "0..9999" -- "1..9999" Transakcija : Transakcija_Kupac
+Agent "Agent_Aran_man_19 0..9999" -- "Agent_Aran_man_08 0..9999" Aran_man : Agent_Aran_man
+Agent "Agent_Kupac_17 1..1" -- "Agent_Kupac_06 0..9999" Kupac : Agent_Kupac
+Kupac "Osiguranje_Putnik_00 0..9999" -- "Osiguranje_Putnik_11 0..1" Osiguranje : Osiguranje_Putnik
+Aran_man "Putnik_Rezervisanje_02 0..9999" -- "Putnik_Rezervisanje_13 1..1" Kupac : Putnik_Rezervisanje
+Kupac "Transakcija_Kupac_04 0..9999" -- "Transakcija_Kupac_15 1..9999" Transakcija : Transakcija_Kupac
 @enduml

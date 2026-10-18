@@ -18477,9 +18477,9 @@ def test_assoc_behavior572_stub_double():
     partner = UML2_ExecutionOccurrence()
     setattr(partner, 'UML2_ExecutionOccurrence', None)
     _safe_set(owner, 'UML2_Behavior573', partner)
-    assert getattr(partner, 'UML2_ExecutionOccurrence') == owner
+    assert owner in getattr(partner, 'UML2_ExecutionOccurrence')
     _safe_set(owner, 'UML2_Behavior573', None)
-    assert getattr(partner, 'UML2_ExecutionOccurrence') is None
+    assert owner not in getattr(partner, 'UML2_ExecutionOccurrence')
 
 
 def test_assoc_behavior832_stub_double():
@@ -18582,9 +18582,9 @@ def test_assoc_classifier161_stub_double():
     partner = UML2_InstanceSpecification()
     setattr(partner, 'UML2_InstanceSpecification', None)
     _safe_set(owner, 'UML2_Classifier162', partner)
-    assert getattr(partner, 'UML2_InstanceSpecification') == owner
+    assert owner in getattr(partner, 'UML2_InstanceSpecification')
     _safe_set(owner, 'UML2_Classifier162', None)
-    assert getattr(partner, 'UML2_InstanceSpecification') is None
+    assert owner not in getattr(partner, 'UML2_InstanceSpecification')
 
 
 def test_assoc_classifier748_stub_double():
@@ -18657,9 +18657,9 @@ def test_assoc_client250_stub_double():
     partner = UML2_Dependency()
     setattr(partner, 'clientDependency', None)
     _safe_set(owner, 'NamedElement', partner)
-    assert getattr(partner, 'clientDependency') == owner
+    assert owner in getattr(partner, 'clientDependency')
     _safe_set(owner, 'NamedElement', None)
-    assert getattr(partner, 'clientDependency') is None
+    assert owner not in getattr(partner, 'clientDependency')
 
 
 def test_assoc_clientDependency10_stub_double():
@@ -18687,9 +18687,9 @@ def test_assoc_configuration867_stub_double():
     partner = UML2_Deployment()
     setattr(partner, 'UML2_Deployment868', None)
     _safe_set(owner, 'UML2_DeploymentSpecification', partner)
-    assert getattr(partner, 'UML2_Deployment868') == owner
+    assert owner in getattr(partner, 'UML2_Deployment868')
     _safe_set(owner, 'UML2_DeploymentSpecification', None)
-    assert getattr(partner, 'UML2_Deployment868') is None
+    assert owner not in getattr(partner, 'UML2_Deployment868')
 
 
 def test_assoc_connection693_stub_double():
@@ -18717,9 +18717,9 @@ def test_assoc_connectionPoint675_stub_double():
     partner = UML2_StateMachine()
     setattr(partner, 'UML2_StateMachine', None)
     _safe_set(owner, 'UML2_Pseudostate', partner)
-    assert getattr(partner, 'UML2_StateMachine') == owner
+    assert owner in getattr(partner, 'UML2_StateMachine')
     _safe_set(owner, 'UML2_Pseudostate', None)
-    assert getattr(partner, 'UML2_StateMachine') is None
+    assert owner not in getattr(partner, 'UML2_StateMachine')
 
 
 def test_assoc_containedEdge473_stub_double():
@@ -18837,9 +18837,9 @@ def test_assoc_conveyed270_stub_double():
     partner = UML2_InformationFlow()
     setattr(partner, 'UML2_InformationFlow271', None)
     _safe_set(owner, 'UML2_Classifier272', partner)
-    assert getattr(partner, 'UML2_InformationFlow271') == owner
+    assert owner in getattr(partner, 'UML2_InformationFlow271')
     _safe_set(owner, 'UML2_Classifier272', None)
-    assert getattr(partner, 'UML2_InformationFlow271') is None
+    assert owner not in getattr(partner, 'UML2_InformationFlow271')
 
 
 def test_assoc_datatype59_stub_double():
@@ -18987,9 +18987,9 @@ def test_assoc_deployedElement870_stub_double():
     partner = UML2_DeploymentTarget()
     setattr(partner, 'UML2_DeploymentTarget', None)
     _safe_set(owner, 'UML2_PackageableElement871', partner)
-    assert getattr(partner, 'UML2_DeploymentTarget') == owner
+    assert owner in getattr(partner, 'UML2_DeploymentTarget')
     _safe_set(owner, 'UML2_PackageableElement871', None)
-    assert getattr(partner, 'UML2_DeploymentTarget') is None
+    assert owner not in getattr(partner, 'UML2_DeploymentTarget')
 
 
 def test_assoc_duration845_stub_double():
@@ -19002,9 +19002,9 @@ def test_assoc_duration845_stub_double():
     partner = UML2_DurationObservationAction()
     setattr(partner, 'UML2_DurationObservationAction', None)
     _safe_set(owner, 'UML2_Duration846', partner)
-    assert getattr(partner, 'UML2_DurationObservationAction') == owner
+    assert owner in getattr(partner, 'UML2_DurationObservationAction')
     _safe_set(owner, 'UML2_Duration846', None)
-    assert getattr(partner, 'UML2_DurationObservationAction') is None
+    assert owner not in getattr(partner, 'UML2_DurationObservationAction')
 
 
 def test_assoc_edge243_stub_double():
@@ -19032,9 +19032,9 @@ def test_assoc_elementImport17_stub_double():
     partner = UML2_Namespace()
     setattr(partner, 'importingNamespace', None)
     _safe_set(owner, 'ElementImport', partner)
-    assert getattr(partner, 'importingNamespace') == owner
+    assert owner in getattr(partner, 'importingNamespace')
     _safe_set(owner, 'ElementImport', None)
-    assert getattr(partner, 'importingNamespace') is None
+    assert owner not in getattr(partner, 'importingNamespace')
 
 
 def test_assoc_end285_stub_double():
@@ -19107,9 +19107,9 @@ def test_assoc_entry723_stub_double():
     partner = UML2_ConnectionPointReference()
     setattr(partner, 'UML2_ConnectionPointReference724', None)
     _safe_set(owner, 'UML2_Pseudostate725', partner)
-    assert getattr(partner, 'UML2_ConnectionPointReference724') == owner
+    assert owner in getattr(partner, 'UML2_ConnectionPointReference724')
     _safe_set(owner, 'UML2_Pseudostate725', None)
-    assert getattr(partner, 'UML2_ConnectionPointReference724') is None
+    assert owner not in getattr(partner, 'UML2_ConnectionPointReference724')
 
 
 def test_assoc_exceptionInput646_stub_double():
@@ -19137,9 +19137,9 @@ def test_assoc_exceptionType649_stub_double():
     partner = UML2_ExceptionHandler()
     setattr(partner, 'UML2_ExceptionHandler650', None)
     _safe_set(owner, 'UML2_Classifier651', partner)
-    assert getattr(partner, 'UML2_ExceptionHandler650') == owner
+    assert owner in getattr(partner, 'UML2_ExceptionHandler650')
     _safe_set(owner, 'UML2_Classifier651', None)
-    assert getattr(partner, 'UML2_ExceptionHandler650') is None
+    assert owner not in getattr(partner, 'UML2_ExceptionHandler650')
 
 
 def test_assoc_exit726_stub_double():
@@ -19152,9 +19152,9 @@ def test_assoc_exit726_stub_double():
     partner = UML2_ConnectionPointReference()
     setattr(partner, 'UML2_ConnectionPointReference727', None)
     _safe_set(owner, 'UML2_Pseudostate728', partner)
-    assert getattr(partner, 'UML2_ConnectionPointReference727') == owner
+    assert owner in getattr(partner, 'UML2_ConnectionPointReference727')
     _safe_set(owner, 'UML2_Pseudostate728', None)
-    assert getattr(partner, 'UML2_ConnectionPointReference727') is None
+    assert owner not in getattr(partner, 'UML2_ConnectionPointReference727')
 
 
 def test_assoc_function801_stub_double():
@@ -19212,9 +19212,9 @@ def test_assoc_importedMember15_stub_double():
     partner = UML2_Namespace()
     setattr(partner, 'UML2_Namespace16', None)
     _safe_set(owner, 'UML2_PackageableElement', partner)
-    assert getattr(partner, 'UML2_Namespace16') == owner
+    assert owner in getattr(partner, 'UML2_Namespace16')
     _safe_set(owner, 'UML2_PackageableElement', None)
-    assert getattr(partner, 'UML2_Namespace16') is None
+    assert owner not in getattr(partner, 'UML2_Namespace16')
 
 
 def test_assoc_importedPackage186_stub_double():
@@ -19272,9 +19272,9 @@ def test_assoc_inPartition314_stub_double():
     partner = UML2_ActivityEdge()
     setattr(partner, 'containedEdge315', None)
     _safe_set(owner, 'ActivityPartition', partner)
-    assert getattr(partner, 'containedEdge315') == owner
+    assert owner in getattr(partner, 'containedEdge315')
     _safe_set(owner, 'ActivityPartition', None)
-    assert getattr(partner, 'containedEdge315') is None
+    assert owner not in getattr(partner, 'containedEdge315')
 
 
 def test_assoc_inPartition338_stub_double():
@@ -19287,9 +19287,9 @@ def test_assoc_inPartition338_stub_double():
     partner = UML2_ActivityNode()
     setattr(partner, 'containedNode339', None)
     _safe_set(owner, 'ActivityPartition340', partner)
-    assert getattr(partner, 'containedNode339') == owner
+    assert owner in getattr(partner, 'containedNode339')
     _safe_set(owner, 'ActivityPartition340', None)
-    assert getattr(partner, 'containedNode339') is None
+    assert owner not in getattr(partner, 'containedNode339')
 
 
 def test_assoc_inStructuredNode313_stub_double():
@@ -19332,9 +19332,9 @@ def test_assoc_incoming720_stub_double():
     partner = UML2_Vertex()
     setattr(partner, 'target721', None)
     _safe_set(owner, 'Transition722', partner)
-    assert getattr(partner, 'target721') == owner
+    assert owner in getattr(partner, 'target721')
     _safe_set(owner, 'Transition722', None)
-    assert getattr(partner, 'target721') is None
+    assert owner not in getattr(partner, 'target721')
 
 
 def test_assoc_input346_stub_double():
@@ -19557,9 +19557,9 @@ def test_assoc_member12_stub_double():
     partner = UML2_Namespace()
     setattr(partner, 'UML2_Namespace', None)
     _safe_set(owner, 'UML2_NamedElement13', partner)
-    assert getattr(partner, 'UML2_Namespace') == owner
+    assert owner in getattr(partner, 'UML2_Namespace')
     _safe_set(owner, 'UML2_NamedElement13', None)
-    assert getattr(partner, 'UML2_Namespace') is None
+    assert owner not in getattr(partner, 'UML2_Namespace')
 
 
 def test_assoc_message521_stub_double():
@@ -19572,9 +19572,9 @@ def test_assoc_message521_stub_double():
     partner = UML2_Interaction()
     setattr(partner, 'interaction522', None)
     _safe_set(owner, 'Message', partner)
-    assert getattr(partner, 'interaction522') == owner
+    assert owner in getattr(partner, 'interaction522')
     _safe_set(owner, 'Message', None)
-    assert getattr(partner, 'interaction522') is None
+    assert owner not in getattr(partner, 'interaction522')
 
 
 def test_assoc_metaclassReference202_stub_double():
@@ -19587,9 +19587,9 @@ def test_assoc_metaclassReference202_stub_double():
     partner = UML2_Profile()
     setattr(partner, 'UML2_Profile203', None)
     _safe_set(owner, 'UML2_ElementImport204', partner)
-    assert getattr(partner, 'UML2_Profile203') == owner
+    assert owner in getattr(partner, 'UML2_Profile203')
     _safe_set(owner, 'UML2_ElementImport204', None)
-    assert getattr(partner, 'UML2_Profile203') is None
+    assert owner not in getattr(partner, 'UML2_Profile203')
 
 
 def test_assoc_metamodelReference205_stub_double():
@@ -19602,9 +19602,9 @@ def test_assoc_metamodelReference205_stub_double():
     partner = UML2_Profile()
     setattr(partner, 'UML2_Profile206', None)
     _safe_set(owner, 'UML2_PackageImport207', partner)
-    assert getattr(partner, 'UML2_Profile206') == owner
+    assert owner in getattr(partner, 'UML2_Profile206')
     _safe_set(owner, 'UML2_PackageImport207', None)
-    assert getattr(partner, 'UML2_Profile206') is None
+    assert owner not in getattr(partner, 'UML2_Profile206')
 
 
 def test_assoc_nameExpression11_stub_double():
@@ -19632,9 +19632,9 @@ def test_assoc_nestedClassifier384_stub_double():
     partner = UML2_Interface()
     setattr(partner, 'UML2_Interface385', None)
     _safe_set(owner, 'UML2_Classifier386', partner)
-    assert getattr(partner, 'UML2_Interface385') == owner
+    assert owner in getattr(partner, 'UML2_Interface385')
     _safe_set(owner, 'UML2_Classifier386', None)
-    assert getattr(partner, 'UML2_Interface385') is None
+    assert owner not in getattr(partner, 'UML2_Interface385')
 
 
 def test_assoc_node245_stub_double():
@@ -19662,9 +19662,9 @@ def test_assoc_now838_stub_double():
     partner = UML2_TimeObservationAction()
     setattr(partner, 'UML2_TimeObservationAction', None)
     _safe_set(owner, 'UML2_TimeExpression839', partner)
-    assert getattr(partner, 'UML2_TimeObservationAction') == owner
+    assert owner in getattr(partner, 'UML2_TimeObservationAction')
     _safe_set(owner, 'UML2_TimeExpression839', None)
-    assert getattr(partner, 'UML2_TimeObservationAction') is None
+    assert owner not in getattr(partner, 'UML2_TimeObservationAction')
 
 
 def test_assoc_object896_stub_double():
@@ -19797,9 +19797,9 @@ def test_assoc_outgoing717_stub_double():
     partner = UML2_Vertex()
     setattr(partner, 'source718', None)
     _safe_set(owner, 'Transition719', partner)
-    assert getattr(partner, 'source718') == owner
+    assert owner in getattr(partner, 'source718')
     _safe_set(owner, 'Transition719', None)
-    assert getattr(partner, 'source718') is None
+    assert owner not in getattr(partner, 'source718')
 
 
 def test_assoc_output344_stub_double():
@@ -19842,9 +19842,9 @@ def test_assoc_ownedAttribute107_stub_double():
     partner = UML2_DataType()
     setattr(partner, 'datatype', None)
     _safe_set(owner, 'Property108', partner)
-    assert getattr(partner, 'datatype') == owner
+    assert owner in getattr(partner, 'datatype')
     _safe_set(owner, 'Property108', None)
-    assert getattr(partner, 'datatype') is None
+    assert owner not in getattr(partner, 'datatype')
 
 
 def test_assoc_ownedAttribute291_stub_double():
@@ -19857,9 +19857,9 @@ def test_assoc_ownedAttribute291_stub_double():
     partner = UML2_StructuredClassifier()
     setattr(partner, 'UML2_StructuredClassifier', None)
     _safe_set(owner, 'UML2_Property292', partner)
-    assert getattr(partner, 'UML2_StructuredClassifier') == owner
+    assert owner in getattr(partner, 'UML2_StructuredClassifier')
     _safe_set(owner, 'UML2_Property292', None)
-    assert getattr(partner, 'UML2_StructuredClassifier') is None
+    assert owner not in getattr(partner, 'UML2_StructuredClassifier')
 
 
 def test_assoc_ownedAttribute376_stub_double():
@@ -19872,9 +19872,9 @@ def test_assoc_ownedAttribute376_stub_double():
     partner = UML2_Interface()
     setattr(partner, 'UML2_Interface', None)
     _safe_set(owner, 'UML2_Property377', partner)
-    assert getattr(partner, 'UML2_Interface') == owner
+    assert owner in getattr(partner, 'UML2_Interface')
     _safe_set(owner, 'UML2_Property377', None)
-    assert getattr(partner, 'UML2_Interface') is None
+    assert owner not in getattr(partner, 'UML2_Interface')
 
 
 def test_assoc_ownedAttribute461_stub_double():
@@ -19887,9 +19887,9 @@ def test_assoc_ownedAttribute461_stub_double():
     partner = UML2_Signal()
     setattr(partner, 'UML2_Signal462', None)
     _safe_set(owner, 'UML2_Property463', partner)
-    assert getattr(partner, 'UML2_Signal462') == owner
+    assert owner in getattr(partner, 'UML2_Signal462')
     _safe_set(owner, 'UML2_Property463', None)
-    assert getattr(partner, 'UML2_Signal462') is None
+    assert owner not in getattr(partner, 'UML2_Signal462')
 
 
 def test_assoc_ownedBehavior235_stub_double():
@@ -19902,9 +19902,9 @@ def test_assoc_ownedBehavior235_stub_double():
     partner = UML2_BehavioredClassifier()
     setattr(partner, 'context', None)
     _safe_set(owner, 'Behavior236', partner)
-    assert getattr(partner, 'context') == owner
+    assert owner in getattr(partner, 'context')
     _safe_set(owner, 'Behavior236', None)
-    assert getattr(partner, 'context') is None
+    assert owner not in getattr(partner, 'context')
 
 
 def test_assoc_ownedComment5_stub_double():
@@ -19917,9 +19917,9 @@ def test_assoc_ownedComment5_stub_double():
     partner = UML2_Element()
     setattr(partner, 'UML2_Element', None)
     _safe_set(owner, 'UML2_Comment', partner)
-    assert getattr(partner, 'UML2_Element') == owner
+    assert owner in getattr(partner, 'UML2_Element')
     _safe_set(owner, 'UML2_Comment', None)
-    assert getattr(partner, 'UML2_Element') is None
+    assert owner not in getattr(partner, 'UML2_Element')
 
 
 def test_assoc_ownedConnector298_stub_double():
@@ -19932,9 +19932,9 @@ def test_assoc_ownedConnector298_stub_double():
     partner = UML2_StructuredClassifier()
     setattr(partner, 'UML2_StructuredClassifier299', None)
     _safe_set(owner, 'UML2_Connector300', partner)
-    assert getattr(partner, 'UML2_StructuredClassifier299') == owner
+    assert owner in getattr(partner, 'UML2_StructuredClassifier299')
     _safe_set(owner, 'UML2_Connector300', None)
-    assert getattr(partner, 'UML2_StructuredClassifier299') is None
+    assert owner not in getattr(partner, 'UML2_StructuredClassifier299')
 
 
 def test_assoc_ownedMember99_stub_double():
@@ -19947,9 +19947,9 @@ def test_assoc_ownedMember99_stub_double():
     partner = UML2_Package()
     setattr(partner, 'UML2_Package', None)
     _safe_set(owner, 'UML2_PackageableElement100', partner)
-    assert getattr(partner, 'UML2_Package') == owner
+    assert owner in getattr(partner, 'UML2_Package')
     _safe_set(owner, 'UML2_PackageableElement100', None)
-    assert getattr(partner, 'UML2_Package') is None
+    assert owner not in getattr(partner, 'UML2_Package')
 
 
 def test_assoc_ownedOperation109_stub_double():
@@ -19962,9 +19962,9 @@ def test_assoc_ownedOperation109_stub_double():
     partner = UML2_DataType()
     setattr(partner, 'datatype110', None)
     _safe_set(owner, 'Operation111', partner)
-    assert getattr(partner, 'datatype110') == owner
+    assert owner in getattr(partner, 'datatype110')
     _safe_set(owner, 'Operation111', None)
-    assert getattr(partner, 'datatype110') is None
+    assert owner not in getattr(partner, 'datatype110')
 
 
 def test_assoc_ownedOperation378_stub_double():
@@ -19977,9 +19977,9 @@ def test_assoc_ownedOperation378_stub_double():
     partner = UML2_Interface()
     setattr(partner, 'UML2_Interface379', None)
     _safe_set(owner, 'UML2_Operation380', partner)
-    assert getattr(partner, 'UML2_Interface379') == owner
+    assert owner in getattr(partner, 'UML2_Interface379')
     _safe_set(owner, 'UML2_Operation380', None)
-    assert getattr(partner, 'UML2_Interface379') is None
+    assert owner not in getattr(partner, 'UML2_Interface379')
 
 
 def test_assoc_ownedParameterSet233_stub_double():
@@ -20007,9 +20007,9 @@ def test_assoc_ownedPort450_stub_double():
     partner = UML2_EncapsulatedClassifier()
     setattr(partner, 'UML2_EncapsulatedClassifier', None)
     _safe_set(owner, 'UML2_Port451', partner)
-    assert getattr(partner, 'UML2_EncapsulatedClassifier') == owner
+    assert owner in getattr(partner, 'UML2_EncapsulatedClassifier')
     _safe_set(owner, 'UML2_Port451', None)
-    assert getattr(partner, 'UML2_EncapsulatedClassifier') is None
+    assert owner not in getattr(partner, 'UML2_EncapsulatedClassifier')
 
 
 def test_assoc_ownedReception44_stub_double():
@@ -20052,9 +20052,9 @@ def test_assoc_packageImport18_stub_double():
     partner = UML2_Namespace()
     setattr(partner, 'importingNamespace19', None)
     _safe_set(owner, 'PackageImport', partner)
-    assert getattr(partner, 'importingNamespace19') == owner
+    assert owner in getattr(partner, 'importingNamespace19')
     _safe_set(owner, 'PackageImport', None)
-    assert getattr(partner, 'importingNamespace19') is None
+    assert owner not in getattr(partner, 'importingNamespace19')
 
 
 def test_assoc_parameter372_stub_double():
@@ -20082,9 +20082,9 @@ def test_assoc_parameter851_stub_double():
     partner = UML2_ParameterSet()
     setattr(partner, 'parameterSet', None)
     _safe_set(owner, 'Parameter852', partner)
-    assert getattr(partner, 'parameterSet') == owner
+    assert owner in getattr(partner, 'parameterSet')
     _safe_set(owner, 'Parameter852', None)
-    assert getattr(partner, 'parameterSet') is None
+    assert owner not in getattr(partner, 'parameterSet')
 
 
 def test_assoc_parameterSet91_stub_double():
@@ -20112,9 +20112,9 @@ def test_assoc_part293_stub_double():
     partner = UML2_StructuredClassifier()
     setattr(partner, 'UML2_StructuredClassifier294', None)
     _safe_set(owner, 'UML2_Property295', partner)
-    assert getattr(partner, 'UML2_StructuredClassifier294') == owner
+    assert owner in getattr(partner, 'UML2_StructuredClassifier294')
     _safe_set(owner, 'UML2_Property295', None)
-    assert getattr(partner, 'UML2_StructuredClassifier294') is None
+    assert owner not in getattr(partner, 'UML2_StructuredClassifier294')
 
 
 def test_assoc_partWithPort276_stub_double():
@@ -20142,9 +20142,9 @@ def test_assoc_port456_stub_double():
     partner = UML2_Trigger()
     setattr(partner, 'UML2_Trigger457', None)
     _safe_set(owner, 'UML2_Port458', partner)
-    assert getattr(partner, 'UML2_Trigger457') == owner
+    assert owner in getattr(partner, 'UML2_Trigger457')
     _safe_set(owner, 'UML2_Port458', None)
-    assert getattr(partner, 'UML2_Trigger457') is None
+    assert owner not in getattr(partner, 'UML2_Trigger457')
 
 
 def test_assoc_postcondition230_stub_double():
@@ -20367,9 +20367,9 @@ def test_assoc_referred880_stub_double():
     partner = UML2_ProtocolTransition()
     setattr(partner, 'UML2_ProtocolTransition881', None)
     _safe_set(owner, 'UML2_Operation882', partner)
-    assert getattr(partner, 'UML2_ProtocolTransition881') == owner
+    assert owner in getattr(partner, 'UML2_ProtocolTransition881')
     _safe_set(owner, 'UML2_Operation882', None)
-    assert getattr(partner, 'UML2_ProtocolTransition881') is None
+    assert owner not in getattr(partner, 'UML2_ProtocolTransition881')
 
 
 def test_assoc_region701_stub_double():
@@ -20442,9 +20442,9 @@ def test_assoc_represented266_stub_double():
     partner = UML2_InformationItem()
     setattr(partner, 'UML2_InformationItem', None)
     _safe_set(owner, 'UML2_Classifier267', partner)
-    assert getattr(partner, 'UML2_InformationItem') == owner
+    assert owner in getattr(partner, 'UML2_InformationItem')
     _safe_set(owner, 'UML2_Classifier267', None)
-    assert getattr(partner, 'UML2_InformationItem') is None
+    assert owner not in getattr(partner, 'UML2_InformationItem')
 
 
 def test_assoc_represents636_stub_double():
@@ -20697,9 +20697,9 @@ def test_assoc_subject422_stub_double():
     partner = UML2_UseCase()
     setattr(partner, 'useCase423', None)
     _safe_set(owner, 'Classifier424', partner)
-    assert getattr(partner, 'useCase423') == owner
+    assert owner in getattr(partner, 'useCase423')
     _safe_set(owner, 'Classifier424', None)
-    assert getattr(partner, 'useCase423') is None
+    assert owner not in getattr(partner, 'useCase423')
 
 
 def test_assoc_submachine690_stub_double():
@@ -20757,9 +20757,9 @@ def test_assoc_supplier251_stub_double():
     partner = UML2_Dependency()
     setattr(partner, 'UML2_Dependency', None)
     _safe_set(owner, 'UML2_NamedElement252', partner)
-    assert getattr(partner, 'UML2_Dependency') == owner
+    assert owner in getattr(partner, 'UML2_Dependency')
     _safe_set(owner, 'UML2_NamedElement252', None)
-    assert getattr(partner, 'UML2_Dependency') is None
+    assert owner not in getattr(partner, 'UML2_Dependency')
 
 
 def test_assoc_target734_stub_double():
@@ -20817,9 +20817,9 @@ def test_assoc_transition682_stub_double():
     partner = UML2_Region()
     setattr(partner, 'container683', None)
     _safe_set(owner, 'Transition', partner)
-    assert getattr(partner, 'container683') == owner
+    assert owner in getattr(partner, 'container683')
     _safe_set(owner, 'Transition', None)
-    assert getattr(partner, 'container683') is None
+    assert owner not in getattr(partner, 'container683')
 
 
 def test_assoc_trigger739_stub_double():
@@ -20929,338 +20929,86 @@ def test_assoc_when466_stub_double():
 
 
 
-from enum import Enum
 from python_code import AggregationKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(AggregationKind.shared, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(AggregationKind.shared, 0, '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(AggregationKind.shared, '', '', '') == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(AggregationKind.none, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(AggregationKind.none, 'none') == AggregationKind.none
-
-from enum import Enum
 from python_code import CallConcurrencyKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(CallConcurrencyKind.guarded, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(CallConcurrencyKind.guarded, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(CallConcurrencyKind.guarded, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(CallConcurrencyKind.guarded, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(CallConcurrencyKind.guarded, 'guarded') == CallConcurrencyKind.guarded
-
-from enum import Enum
 from python_code import ConnectorKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ConnectorKind.assembly, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ConnectorKind.assembly, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ConnectorKind.assembly, '', '', 0) == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ConnectorKind.assembly, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ConnectorKind.assembly, 'assembly') == ConnectorKind.assembly
-
-from enum import Enum
 from python_code import ExpansionKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ExpansionKind.stream, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ExpansionKind.stream, 0, '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ExpansionKind.stream, '', '', '') == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ExpansionKind.stream, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ExpansionKind.stream, 'stream') == ExpansionKind.stream
-
-from enum import Enum
 from python_code import InteractionOperator
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(InteractionOperator.loop, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(InteractionOperator.alt, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(InteractionOperator.par, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(InteractionOperator.opt, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(InteractionOperator.par, 'par') == InteractionOperator.par
-
-from enum import Enum
 from python_code import MessageKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(MessageKind.lost, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(MessageKind.lost, '', 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(MessageKind.lost, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(MessageKind.lost, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(MessageKind.lost, 'lost') == MessageKind.lost
-
-from enum import Enum
 from python_code import MessageSort
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(MessageSort.synchCall, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(MessageSort.synchCall, '', 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(MessageSort.synchCall, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(MessageSort.synchCall, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(MessageSort.synchCall, 'synchCall') == MessageSort.synchCall
-
-from enum import Enum
 from python_code import ObjectNodeOrderingKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ObjectNodeOrderingKind.ordered, 0, '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ObjectNodeOrderingKind.LIFO, 0, '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ObjectNodeOrderingKind.LIFO, '', 0, 0) == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ObjectNodeOrderingKind.LIFO, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ObjectNodeOrderingKind.LIFO, 'LIFO') == ObjectNodeOrderingKind.LIFO
-
-from enum import Enum
 from python_code import ParameterDirectionKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ParameterDirectionKind.out, 0, '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ParameterDirectionKind.out, '', '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ParameterDirectionKind.out, '', 0, '') == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ParameterDirectionKind.out, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ParameterDirectionKind.out, 'out') == ParameterDirectionKind.out
-
-from enum import Enum
 from python_code import ParameterEffectKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ParameterEffectKind.read, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ParameterEffectKind.read, '', 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ParameterEffectKind.read, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ParameterEffectKind.read, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ParameterEffectKind.read, 'read') == ParameterEffectKind.read
-
-from enum import Enum
 from python_code import PseudostateKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(PseudostateKind.join, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(PseudostateKind.join, '', 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(PseudostateKind.join, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(PseudostateKind.join, '')
-
-def test_Enum___new___2():
-    assert Enum.__new__(PseudostateKind.join, 'join') == PseudostateKind.join
-
-from enum import Enum
 from python_code import TransitionKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(TransitionKind.external, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(TransitionKind.internal, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(TransitionKind.internal, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(TransitionKind.local, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(TransitionKind.local, 'local') == TransitionKind.local
-
 from python_code import UML2_AddStructuralFeatureValueAction
 from python_code import UML2_InputPin
 
 def test_UML2_AddStructuralFeatureValueAction___init__():
     assert UML2_AddStructuralFeatureValueAction.__init__(UML2_AddStructuralFeatureValueAction(True, UML2_AddStructuralFeatureValueAction=UML2_InputPin()), False, UML2_AddStructuralFeatureValueAction=UML2_InputPin()) == None
-
 from python_code import UML2_AddVariableValueAction
 from python_code import UML2_InputPin
 
 def test_UML2_AddVariableValueAction___init__():
     assert UML2_AddVariableValueAction.__init__(UML2_AddVariableValueAction(True, UML2_AddVariableValueAction=UML2_InputPin()), False, UML2_AddVariableValueAction=UML2_InputPin()) == None
-
 from python_code import UML2_CallAction
 
 def test_UML2_CallAction___init__():
     assert UML2_CallAction.__init__(UML2_CallAction(False, UML2_CallAction=set()), False, UML2_CallAction=set()) == None
-
 from python_code import UML2_ClassifierTemplateParameter
 
 def test_UML2_ClassifierTemplateParameter___init__():
     assert UML2_ClassifierTemplateParameter.__init__(UML2_ClassifierTemplateParameter(True), False) == None
-
 from python_code import UML2_CombinedFragment
 
 def test_UML2_CombinedFragment___init__():
     assert UML2_CombinedFragment.__init__(UML2_CombinedFragment('', UML2_CombinedFragment=set(), UML2_CombinedFragment672=set()), '', UML2_CombinedFragment=set(), UML2_CombinedFragment672=set()) == None
-
 from python_code import UML2_Comment
 from python_code import UML2_Element
 from python_code import UML2_StringExpression
 
 def test_UML2_Comment___init__():
     assert UML2_Comment.__init__(UML2_Comment('', UML2_Comment=UML2_Element(), UML2_Comment26=set(), UML2_Comment29=UML2_StringExpression()), '', UML2_Comment=UML2_Element(), UML2_Comment26=set(), UML2_Comment29=UML2_StringExpression()) == None
-
 from python_code import UML2_Component
 from python_code import UML2_Realization
 
 def test_UML2_Component___init__():
     assert UML2_Component.__init__(UML2_Component(True, Component=UML2_Realization(), UML2_Component=set(), UML2_Component859=set(), abstraction=set(), UML2_Component863=set()), False, Component=UML2_Realization(), UML2_Component=set(), UML2_Component859=set(), abstraction=set(), UML2_Component863=set()) == None
-
 from python_code import UML2_ConditionalNode
 
 def test_UML2_ConditionalNode___init__():
     assert UML2_ConditionalNode.__init__(UML2_ConditionalNode(False, False, UML2_ConditionalNode=set(), UML2_ConditionalNode478=set()), False, True, UML2_ConditionalNode=set(), UML2_ConditionalNode478=set()) == None
-
 from python_code import UML2_Continuation
 
 def test_UML2_Continuation___init__():
     assert UML2_Continuation.__init__(UML2_Continuation(True), False) == None
-
 from python_code import UML2_Deployment
 from python_code import UML2_DeploymentSpecification
 
 def test_UML2_DeploymentSpecification___init__():
     assert UML2_DeploymentSpecification.__init__(UML2_DeploymentSpecification('', '\x00', UML2_DeploymentSpecification=UML2_Deployment()), '\x00\x00', '', UML2_DeploymentSpecification=UML2_Deployment()) == None
-
 from python_code import UML2_DestroyObjectAction
 from python_code import UML2_InputPin
 
 def test_UML2_DestroyObjectAction___init__():
     assert UML2_DestroyObjectAction.__init__(UML2_DestroyObjectAction(False, False, UML2_DestroyObjectAction=UML2_InputPin()), False, False, UML2_DestroyObjectAction=UML2_InputPin()) == None
-
 from python_code import UML2_ExpansionNode
 from python_code import UML2_ExpansionRegion
 
 def test_UML2_ExpansionRegion___init__():
     assert UML2_ExpansionRegion.__init__(UML2_ExpansionRegion('', ExpansionRegion=UML2_ExpansionNode(), ExpansionRegion640=UML2_ExpansionNode(), regionAsOutput=set(), regionAsInput=set()), '', ExpansionRegion=UML2_ExpansionNode(), ExpansionRegion640=UML2_ExpansionNode(), regionAsOutput=set(), regionAsInput=set()) == None
-
 from python_code import UML2_Expression
 
 def test_UML2_Expression___init__():

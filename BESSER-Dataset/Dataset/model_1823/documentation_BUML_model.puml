@@ -1,4 +1,8 @@
 @startuml
+' model: Documentation
+' project: sampleModel
+' owner: User
+' description: New project
 class Documentation_Book {
   + title : str
 }
@@ -39,13 +43,13 @@ ParagraphValue <|-- Documentation_ItemizedListValue
 ParagraphValue <|-- Documentation_TextualValue
 ParagraphValue <|-- Documentation_XRefValue
 TextualValue <|-- Documentation_EmphasisValue
-Documentation_InformalTableValue "1..1" *-- "0..9999" Documentation_InformalTableValueRow : bodyRows11
-Documentation_Book "1..1" *-- "0..9999" Documentation_Section : content0
-Documentation_InformalTableValueRow "1..1" *-- "0..9999" Documentation_TextualValue : entry15
-Documentation_InformalTableValue "1..1" *-- "0..9999" Documentation_InformalTableValueRow : headRows12
-Documentation_ItemizedListValue "1..1" *-- "0..9999" Documentation_ItemizedListValueItem : items8
-Documentation_Section "1..1" -- "1..1" Documentation_XRefValue : linkend9
-Documentation_Paragraph "0..9999" --* "1..1" Documentation_Section : para5
-Documentation_Section "0..9999" --* "1..1" Documentation_Section : section3
-Documentation_Paragraph "1..1" *-- "0..9999" Documentation_ParagraphValue : values1
+Documentation_InformalTableValue "Documentation_InformalTableValueRow 1..1" *-- "Documentation_InformalTableValue 0..9999" Documentation_InformalTableValueRow : bodyRows11
+Documentation_Book "Documentation_Section 1..1" *-- "Documentation_Book 0..9999" Documentation_Section : content0
+Documentation_InformalTableValueRow "Documentation_TextualValue 1..1" *-- "Documentation_InformalTableValueRow16 0..9999" Documentation_TextualValue : entry15
+Documentation_InformalTableValue "Documentation_InformalTableValueRow14 1..1" *-- "Documentation_InformalTableValue13 0..9999" Documentation_InformalTableValueRow : headRows12
+Documentation_ItemizedListValue "Documentation_ItemizedListValueItem 1..1" *-- "Documentation_ItemizedListValue 0..9999" Documentation_ItemizedListValueItem : items8
+Documentation_Section "Documentation_XRefValue 1..1" -- "Documentation_Section10 1..1" Documentation_XRefValue : linkend9
+Documentation_Paragraph "Documentation_Section6 0..9999" --* "Documentation_Paragraph7 1..1" Documentation_Section : para5
+Documentation_Section "Documentation_Section2 0..9999" --* "Documentation_Section4 1..1" Documentation_Section : section3
+Documentation_Paragraph "Documentation_ParagraphValue 1..1" *-- "Documentation_Paragraph 0..9999" Documentation_ParagraphValue : values1
 @enduml

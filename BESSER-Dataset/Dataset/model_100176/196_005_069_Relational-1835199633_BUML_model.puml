@@ -1,4 +1,8 @@
 @startuml
+' model: Relational
+' project: sampleModel
+' owner: User
+' description: New project
 enum AttributeType {
   Derivate
   Simple
@@ -41,16 +45,16 @@ class Relational_Table {
 CandidateKey <|-- Relational_ForeignKey
 Domain <|-- Relational_EnumerationType
 Domain <|-- Relational_PrimitiveType
-Relational_Attribute "1..9999" --* "1..1" Relational_Table : attributes10
-Relational_Attribute "1..9999" -- "1..1" Relational_CandidateKey : attributes20
-Relational_CandidateKey "1..9999" --* "1..1" Relational_Table : candidateKey7
-Relational_Constraint "0..9999" --* "1..1" Relational_Domain : constraints17
-Relational_Constraint "0..9999" --* "1..1" Relational_Schema : constraints3
-Relational_Attribute "1..1" -- "1..1" Relational_Domain : domain14
-Relational_Domain "0..9999" --* "1..1" Relational_Schema : domains1
-Relational_ForeignKey "0..9999" --* "1..1" Relational_Table : foreignKey12
-Relational_EnumeratedLiteral "1..9999" --* "1..1" Relational_EnumerationType : literals26
-Relational_CandidateKey "1..1" -- "1..1" Relational_Table : primaryKey5
-Relational_ForeignKey "1..1" -- "1..1" Relational_Table : referencedTable23
-Relational_Schema "1..1" *-- "0..9999" Relational_Table : tables0
+Relational_Attribute "Relational_Table11 1..9999" --* "Relational_Attribute 1..1" Relational_Table : attributes10
+Relational_Attribute "Relational_CandidateKey21 1..9999" -- "Relational_Attribute22 1..1" Relational_CandidateKey : attributes20
+Relational_CandidateKey "Relational_Table8 1..9999" --* "Relational_CandidateKey9 1..1" Relational_Table : candidateKey7
+Relational_Constraint "Relational_Domain18 0..9999" --* "Relational_Constraint19 1..1" Relational_Domain : constraints17
+Relational_Constraint "Relational_Schema4 0..9999" --* "Relational_Constraint 1..1" Relational_Schema : constraints3
+Relational_Attribute "Relational_Domain16 1..1" -- "Relational_Attribute15 1..1" Relational_Domain : domain14
+Relational_Domain "Relational_Schema2 0..9999" --* "Relational_Domain 1..1" Relational_Schema : domains1
+Relational_ForeignKey "Relational_Table13 0..9999" --* "Relational_ForeignKey 1..1" Relational_Table : foreignKey12
+Relational_EnumeratedLiteral "Relational_EnumerationType 1..9999" --* "Relational_EnumeratedLiteral 1..1" Relational_EnumerationType : literals26
+Relational_CandidateKey "Relational_Table6 1..1" -- "Relational_CandidateKey 1..1" Relational_Table : primaryKey5
+Relational_ForeignKey "Relational_Table25 1..1" -- "Relational_ForeignKey24 1..1" Relational_Table : referencedTable23
+Relational_Schema "Relational_Table 1..1" *-- "Relational_Schema 0..9999" Relational_Table : tables0
 @enduml

@@ -69,9 +69,9 @@ def test_assoc_column0_stub_double():
     partner = SimpleRDBMS_Table()
     setattr(partner, 'owner', None)
     _safe_set(owner, 'Column', partner)
-    assert getattr(partner, 'owner') == owner
+    assert owner in getattr(partner, 'owner')
     _safe_set(owner, 'Column', None)
-    assert getattr(partner, 'owner') is None
+    assert owner not in getattr(partner, 'owner')
 
 
 def test_assoc_column13_stub_double():
@@ -84,9 +84,9 @@ def test_assoc_column13_stub_double():
     partner = SimpleRDBMS_Key()
     setattr(partner, '_key', None)
     _safe_set(owner, 'Column14', partner)
-    assert getattr(partner, '_key') == owner
+    assert owner in getattr(partner, '_key')
     _safe_set(owner, 'Column14', None)
-    assert getattr(partner, '_key') is None
+    assert owner not in getattr(partner, '_key')
 
 
 def test_assoc_column18_stub_double():
@@ -99,9 +99,9 @@ def test_assoc_column18_stub_double():
     partner = SimpleRDBMS_ForeignKey()
     setattr(partner, 'foreignKey', None)
     _safe_set(owner, 'Column19', partner)
-    assert getattr(partner, 'foreignKey') == owner
+    assert owner in getattr(partner, 'foreignKey')
     _safe_set(owner, 'Column19', None)
-    assert getattr(partner, 'foreignKey') is None
+    assert owner not in getattr(partner, 'foreignKey')
 
 
 def test_assoc_foreignKey10_stub_double():

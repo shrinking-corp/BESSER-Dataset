@@ -1,4 +1,8 @@
 @startuml
+' model: javaMetaModel
+' project: sampleModel
+' owner: User
+' description: New project
 enum Direction {
   input
   return_
@@ -73,12 +77,12 @@ JField <|-- javaMetaModel_JAttribute
 JField <|-- javaMetaModel_JReference
 JParameter <|-- javaMetaModel_JPrimitiveTypePar
 JParameter <|-- javaMetaModel_JReferenceTypePar
-javaMetaModel_JClass "0..9999" --* "1..1" javaMetaModel_JPackage : jclass9
-javaMetaModel_JClass "1..1" *-- "0..9999" javaMetaModel_JFeature : jfeature1
-javaMetaModel_JMethod "1..1" *-- "0..9999" javaMetaModel_JParameter : jparameter0
-javaMetaModel_JClass "1..1" -- "0..9999" javaMetaModel_JClass : jsubClass5
-javaMetaModel_JClass "1..1" -- "0..1" javaMetaModel_JClass : jsuperClass7
-javaMetaModel_JMethod "0..1" -- "1..1" javaMetaModel_JParameter : owner12
-javaMetaModel_JClass "0..1" -- "1..1" javaMetaModel_JFeature : owner13
-javaMetaModel_JClass "1..1" -- "0..1" javaMetaModel_JPackage : owner3
+javaMetaModel_JClass "owner10 0..9999" --* "JClass11 1..1" javaMetaModel_JPackage : jclass9
+javaMetaModel_JClass "JFeature 1..1" *-- "owner2 0..9999" javaMetaModel_JFeature : jfeature1
+javaMetaModel_JMethod "JParameter 1..1" *-- "owner 0..9999" javaMetaModel_JParameter : jparameter0
+javaMetaModel_JClass "JClass 1..1" -- "jsuperClass 0..9999" javaMetaModel_JClass : jsubClass5
+javaMetaModel_JClass "JClass8 1..1" -- "jsubClass 0..1" javaMetaModel_JClass : jsuperClass7
+javaMetaModel_JMethod "jparameter 0..1" -- "JMethod 1..1" javaMetaModel_JParameter : owner12
+javaMetaModel_JClass "jfeature 0..1" -- "JClass14 1..1" javaMetaModel_JFeature : owner13
+javaMetaModel_JClass "JPackage 1..1" -- "jclass 0..1" javaMetaModel_JPackage : owner3
 @enduml

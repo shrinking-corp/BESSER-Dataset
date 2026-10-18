@@ -1,4 +1,8 @@
 @startuml
+' model: while
+' project: sampleModel
+' owner: User
+' description: New project
 class BinaryExp {
 }
 class BoolExp {
@@ -53,19 +57,19 @@ Statement <|-- while_Assignment
 Statement <|-- while_If
 Statement <|-- while_Ret
 Statement <|-- while_While
-while_BoolExp "0..1" --* "1..1" while_If : condition12
-while_BoolExp "0..1" --* "1..1" while_While : condition5
-while_If "1..1" *-- "0..1" while_Statement : else_17
-while_Assignment "1..1" *-- "0..1" while_Exp : exp28
-while_Exp "0..1" --* "1..1" while_Ret : exp31
-while_Program "1..1" *-- "0..1" while_Statement : first0
-while_BinaryExp "1..1" *-- "0..1" while_Exp : lhs20
-while_Program "1..1" *-- "0..9999" while_Val : literals3
-while_Statement "1..1" *-- "0..1" while_Statement : next10
-while_BinaryExp "1..1" *-- "0..1" while_Exp : rhs21
-while_If "1..1" *-- "0..1" while_Statement : then14
-while_Statement "0..1" --* "1..1" while_While : then6
-while_Var "0..1" -- "1..1" while_VarExp : var24
-while_Assignment "1..1" -- "0..1" while_Var : var26
-while_Program "1..1" *-- "0..9999" while_Var : variables1
+while_BoolExp "while_If 0..1" --* "while_BoolExp13 1..1" while_If : condition12
+while_BoolExp "while_While 0..1" --* "while_BoolExp 1..1" while_While : condition5
+while_If "while_Statement19 1..1" *-- "while_If18 0..1" while_Statement : else_17
+while_Assignment "while_Exp30 1..1" *-- "while_Assignment29 0..1" while_Exp : exp28
+while_Exp "while_Ret 0..1" --* "while_Exp32 1..1" while_Ret : exp31
+while_Program "while_Statement 1..1" *-- "while_Program 0..1" while_Statement : first0
+while_BinaryExp "while_Exp 1..1" *-- "while_BinaryExp 0..1" while_Exp : lhs20
+while_Program "while_Val 1..1" *-- "while_Program4 0..9999" while_Val : literals3
+while_Statement "while_Statement11 1..1" *-- "while_Statement9 0..1" while_Statement : next10
+while_BinaryExp "while_Exp23 1..1" *-- "while_BinaryExp22 0..1" while_Exp : rhs21
+while_If "while_Statement16 1..1" *-- "while_If15 0..1" while_Statement : then14
+while_Statement "while_While7 0..1" --* "while_Statement8 1..1" while_While : then6
+while_Var "while_VarExp 0..1" -- "while_Var25 1..1" while_VarExp : var24
+while_Assignment "while_Var27 1..1" -- "while_Assignment 0..1" while_Var : var26
+while_Program "while_Var 1..1" *-- "while_Program2 0..9999" while_Var : variables1
 @enduml

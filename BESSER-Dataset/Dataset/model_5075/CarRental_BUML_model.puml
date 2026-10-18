@@ -1,4 +1,8 @@
 @startuml
+' model: CarRental
+' project: sampleModel
+' owner: User
+' description: New project
 enum CarGroupKind {
   compact
   intermediate
@@ -42,24 +46,24 @@ class Person {
 }
 Person <|-- CarRental_Customer
 Person <|-- CarRental_Employee
-CarRental_Branch "1..1" -- "1..1" CarRental_Rental : branch21
-CarRental_Branch "0..9999" -- "1..1" CarRental_CarGroup : branch26
-CarRental_Branch "1..1" -- "1..1" CarRental_Car : branch40
-CarRental_Branch "1..1" -- "0..9999" CarRental_Car : car11
-CarRental_Car "0..1" -- "1..1" CarRental_Rental : car17
-CarRental_Car "0..9999" -- "1..1" CarRental_CarGroup : car28
-CarRental_Branch "1..1" -- "0..9999" CarRental_CarGroup : carGroup12
-CarRental_CarGroup "1..1" -- "1..1" CarRental_Rental : carGroup23
-CarRental_Car "1..1" -- "1..1" CarRental_CarGroup : carGroup42
-CarRental_Customer "1..1" -- "1..1" CarRental_Rental : customer19
-CarRental_Branch "1..1" -- "0..9999" CarRental_Employee : employee8
-CarRental_Branch "1..1" -- "1..1" CarRental_Employee : employer2
-CarRental_CarGroup "1..1" -- "0..1" CarRental_CarGroup : higher35
-CarRental_CarGroup "1..1" -- "0..1" CarRental_CarGroup : lower38
-CarRental_Branch "0..1" -- "1..1" CarRental_Employee : managedBranch1
-CarRental_Branch "1..1" -- "1..1" CarRental_Employee : manager5
-CarRental_Customer "1..1" -- "0..9999" CarRental_Rental : rental0
-CarRental_Branch "1..1" -- "0..9999" CarRental_Rental : rental14
-CarRental_CarGroup "1..1" -- "0..9999" CarRental_Rental : rental31
-CarRental_Car "1..1" -- "0..1" CarRental_Rental : rental45
+CarRental_Branch "rental22 1..1" -- "Branch 1..1" CarRental_Rental : branch21
+CarRental_Branch "carGroup 0..9999" -- "Branch27 1..1" CarRental_CarGroup : branch26
+CarRental_Branch "car 1..1" -- "Branch41 1..1" CarRental_Car : branch40
+CarRental_Branch "Car 1..1" -- "branch 0..9999" CarRental_Car : car11
+CarRental_Car "rental 0..1" -- "Car18 1..1" CarRental_Rental : car17
+CarRental_Car "carGroup29 0..9999" -- "Car30 1..1" CarRental_CarGroup : car28
+CarRental_Branch "CarGroup 1..1" -- "branch13 0..9999" CarRental_CarGroup : carGroup12
+CarRental_CarGroup "rental24 1..1" -- "CarGroup25 1..1" CarRental_Rental : carGroup23
+CarRental_Car "CarGroup44 1..1" -- "car43 1..1" CarRental_CarGroup : carGroup42
+CarRental_Customer "rental20 1..1" -- "Customer 1..1" CarRental_Rental : customer19
+CarRental_Branch "CarRental_Employee10 1..1" -- "CarRental_Branch9 0..9999" CarRental_Employee : employee8
+CarRental_Branch "CarRental_Employee3 1..1" -- "CarRental_Branch4 1..1" CarRental_Employee : employer2
+CarRental_CarGroup "CarGroup36 1..1" -- "lower 0..1" CarRental_CarGroup : higher35
+CarRental_CarGroup "CarGroup39 1..1" -- "higher 0..1" CarRental_CarGroup : lower38
+CarRental_Branch "CarRental_Employee 0..1" -- "CarRental_Branch 1..1" CarRental_Employee : managedBranch1
+CarRental_Branch "CarRental_Employee7 1..1" -- "CarRental_Branch6 1..1" CarRental_Employee : manager5
+CarRental_Customer "Rental 1..1" -- "customer 0..9999" CarRental_Rental : rental0
+CarRental_Branch "Rental16 1..1" -- "branch15 0..9999" CarRental_Rental : rental14
+CarRental_CarGroup "Rental33 1..1" -- "carGroup32 0..9999" CarRental_Rental : rental31
+CarRental_Car "Rental47 1..1" -- "car46 0..1" CarRental_Rental : rental45
 @enduml

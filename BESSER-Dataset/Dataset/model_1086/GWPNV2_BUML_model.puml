@@ -1,4 +1,8 @@
 @startuml
+' model: PetriNet
+' project: sampleModel
+' owner: User
+' description: New project
 class PetriNet_Net {
 }
 class PetriNet_PTArc {
@@ -9,20 +13,20 @@ class PetriNet_TPArc {
 }
 class PetriNet_Transition {
 }
-PetriNet_PTArc "1..1" -- "1..1" PetriNet_Transition : dst22
-PetriNet_Place "1..1" -- "1..1" PetriNet_TPArc : dst31
-PetriNet_Place "1..1" -- "0..9999" PetriNet_TPArc : in22
-PetriNet_PTArc "1..9999" -- "1..1" PetriNet_Transition : in25
-PetriNet_Net "1..1" -- "1..1" PetriNet_Place : net0
-PetriNet_Net "1..1" -- "1..1" PetriNet_PTArc : net20
-PetriNet_Net "1..1" -- "1..1" PetriNet_TPArc : net26
-PetriNet_Net "1..1" -- "1..1" PetriNet_Transition : net3
-PetriNet_PTArc "0..9999" -- "1..1" PetriNet_Place : out1
-PetriNet_TPArc "1..9999" -- "1..1" PetriNet_Transition : out8
-PetriNet_Net "1..1" *-- "1..9999" PetriNet_Place : place11
-PetriNet_Net "1..1" *-- "1..9999" PetriNet_PTArc : ptArc14
-PetriNet_PTArc "1..1" -- "1..1" PetriNet_Place : src24
-PetriNet_TPArc "1..1" -- "1..1" PetriNet_Transition : src28
-PetriNet_Net "1..1" *-- "1..9999" PetriNet_TPArc : tpArc17
-PetriNet_Net "1..1" *-- "1..9999" PetriNet_Transition : transition12
+PetriNet_PTArc "Transition23 1..1" -- "in2 1..1" PetriNet_Transition : dst22
+PetriNet_Place "in232 1..1" -- "Place33 1..1" PetriNet_TPArc : dst31
+PetriNet_Place "TPArc 1..1" -- "dst 0..9999" PetriNet_TPArc : in22
+PetriNet_PTArc "dst6 1..9999" -- "PTArc7 1..1" PetriNet_Transition : in25
+PetriNet_Net "place 1..1" -- "Net 1..1" PetriNet_Place : net0
+PetriNet_Net "ptArc 1..1" -- "Net21 1..1" PetriNet_PTArc : net20
+PetriNet_Net "tpArc 1..1" -- "Net27 1..1" PetriNet_TPArc : net26
+PetriNet_Net "transition 1..1" -- "Net4 1..1" PetriNet_Transition : net3
+PetriNet_PTArc "src 0..9999" -- "PTArc 1..1" PetriNet_Place : out1
+PetriNet_TPArc "src9 1..9999" -- "TPArc10 1..1" PetriNet_Transition : out8
+PetriNet_Net "Place 1..1" *-- "net 1..9999" PetriNet_Place : place11
+PetriNet_Net "PTArc16 1..1" *-- "net15 1..9999" PetriNet_PTArc : ptArc14
+PetriNet_PTArc "Place25 1..1" -- "out 1..1" PetriNet_Place : src24
+PetriNet_TPArc "Transition30 1..1" -- "out29 1..1" PetriNet_Transition : src28
+PetriNet_Net "TPArc19 1..1" *-- "net18 1..9999" PetriNet_TPArc : tpArc17
+PetriNet_Net "Transition 1..1" *-- "net13 1..9999" PetriNet_Transition : transition12
 @enduml

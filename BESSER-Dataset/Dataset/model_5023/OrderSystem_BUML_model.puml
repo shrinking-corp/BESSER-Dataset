@@ -1,4 +1,8 @@
 @startuml
+' model: ordersystem
+' project: sampleModel
+' owner: User
+' description: New project
 class Customer {
 }
 class Product {
@@ -55,23 +59,23 @@ class ordersystem_special_PreferredCustomer {
 }
 Customer <|-- ordersystem_special_PreferredCustomer
 Product <|-- ordersystem_special_LimitedEditionProduct
-ordersystem_InventoryItem "1..1" -- "0..1" ordersystem_Warehouse : Warehouse17
-ordersystem_Account "0..9999" --* "1..1" ordersystem_Customer : account24
-ordersystem_Account "1..1" *-- "1..1" ordersystem_Address : billingAddress31
-ordersystem_Customer "0..9999" --* "1..1" ordersystem_OrderSystem : customer7
-ordersystem_LineItem "0..9999" --* "1..1" ordersystem_Order : item1
-ordersystem_InventoryItem "0..9999" --* "1..1" ordersystem_Warehouse : item5
-ordersystem_Address "1..1" --* "1..1" ordersystem_Warehouse : location6
-ordersystem_Customer "1..1" *-- "0..9999" ordersystem_Order : order26
-ordersystem_Customer "0..1" -- "1..1" ordersystem_Order : owner0
-ordersystem_LineItem "1..1" -- "0..1" ordersystem_Order : owner15
-ordersystem_OrderSystem "0..1" -- "1..1" ordersystem_Product : owner2
-ordersystem_Customer "1..1" -- "0..1" ordersystem_OrderSystem : owner22
-ordersystem_Account "1..1" -- "0..1" ordersystem_Customer : owner29
-ordersystem_OrderSystem "0..1" -- "1..1" ordersystem_Warehouse : owner3
-ordersystem_OrderSystem "1..1" *-- "0..9999" ordersystem_Product : product10
-ordersystem_LineItem "1..1" -- "1..1" ordersystem_Product : product16
-ordersystem_InventoryItem "1..1" -- "1..1" ordersystem_Product : product20
-ordersystem_Account "1..1" *-- "1..1" ordersystem_Address : shippingAddress33
-ordersystem_OrderSystem "1..1" *-- "0..9999" ordersystem_Warehouse : warehouse12
+ordersystem_InventoryItem "Warehouse19 1..1" -- "item18 0..1" ordersystem_Warehouse : Warehouse17
+ordersystem_Account "owner25 0..9999" --* "Account 1..1" ordersystem_Customer : account24
+ordersystem_Account "ordersystem_Address32 1..1" *-- "ordersystem_Account 1..1" ordersystem_Address : billingAddress31
+ordersystem_Customer "owner8 0..9999" --* "Customer9 1..1" ordersystem_OrderSystem : customer7
+ordersystem_LineItem "owner 0..9999" --* "LineItem 1..1" ordersystem_Order : item1
+ordersystem_InventoryItem "Warehouse 0..9999" --* "InventoryItem 1..1" ordersystem_Warehouse : item5
+ordersystem_Address "ordersystem_Warehouse 1..1" --* "ordersystem_Address 1..1" ordersystem_Warehouse : location6
+ordersystem_Customer "Order28 1..1" *-- "owner27 0..9999" ordersystem_Order : order26
+ordersystem_Customer "order 0..1" -- "Customer 1..1" ordersystem_Order : owner0
+ordersystem_LineItem "Order 1..1" -- "item 0..1" ordersystem_Order : owner15
+ordersystem_OrderSystem "product 0..1" -- "OrderSystem 1..1" ordersystem_Product : owner2
+ordersystem_Customer "OrderSystem23 1..1" -- "customer 0..1" ordersystem_OrderSystem : owner22
+ordersystem_Account "Customer30 1..1" -- "account 0..1" ordersystem_Customer : owner29
+ordersystem_OrderSystem "warehouse 0..1" -- "OrderSystem4 1..1" ordersystem_Warehouse : owner3
+ordersystem_OrderSystem "Product 1..1" *-- "owner11 0..9999" ordersystem_Product : product10
+ordersystem_LineItem "ordersystem_Product 1..1" -- "ordersystem_LineItem 1..1" ordersystem_Product : product16
+ordersystem_InventoryItem "ordersystem_Product21 1..1" -- "ordersystem_InventoryItem 1..1" ordersystem_Product : product20
+ordersystem_Account "ordersystem_Address35 1..1" *-- "ordersystem_Account34 1..1" ordersystem_Address : shippingAddress33
+ordersystem_OrderSystem "Warehouse14 1..1" *-- "owner13 0..9999" ordersystem_Warehouse : warehouse12
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: ClassM
+' project: sampleModel
+' owner: User
+' description: New project
 class ClassM_Attribute {
   + is_primary : bool
   + name : str
@@ -16,8 +20,8 @@ class Classifier {
 }
 Classifier <|-- ClassM_Class
 Classifier <|-- ClassM_PrimitiveType
-ClassM_Attribute "0..9999" --* "1..1" ClassM_Class : attrs0
-ClassM_Classifier "0..9999" --* "1..1" ClassM_Model : classifiers3
-ClassM_Attribute "1..1" -- "0..1" ClassM_Class : owner2
-ClassM_Attribute "1..1" -- "0..1" ClassM_Classifier : type1
+ClassM_Attribute "owner 0..9999" --* "Attribute 1..1" ClassM_Class : attrs0
+ClassM_Classifier "ClassM_Model 0..9999" --* "ClassM_Classifier4 1..1" ClassM_Model : classifiers3
+ClassM_Attribute "Class 1..1" -- "attrs 0..1" ClassM_Class : owner2
+ClassM_Attribute "ClassM_Classifier 1..1" -- "ClassM_Attribute 0..1" ClassM_Classifier : type1
 @enduml

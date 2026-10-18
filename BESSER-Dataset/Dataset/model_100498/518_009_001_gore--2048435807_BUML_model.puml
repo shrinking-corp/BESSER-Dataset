@@ -1,4 +1,8 @@
 @startuml
+' model: gore
+' project: sampleModel
+' owner: User
+' description: New project
 enum AggregationLevel {
   BOTH
   CLASS
@@ -118,21 +122,21 @@ PerformativeRequirement <|-- gore_Goal
 PerformativeRequirement <|-- gore_Task
 Requirement <|-- gore_DefinableRequirement
 Requirement <|-- gore_Softgoal
-gore_Actor "0..9999" --* "1..1" gore_GoalModel : actors23
-gore_Requirement "1..1" *-- "0..9999" gore_Requirement : children1
-gore_Configuration "0..1" --* "1..1" gore_GoalModel : configuration25
-gore_Configuration "0..1" -- "1..1" gore_Parameter : configuration29
-gore_QualityConstraint "0..9999" -- "1..1" gore_Softgoal : constraints5
-gore_Goal "1..1" -- "0..1" gore_GoalModel : goalModel11
-gore_Actor "1..1" -- "0..1" gore_GoalModel : goalModel12
-gore_Configuration "1..1" -- "0..1" gore_GoalModel : goalModel15
-gore_AwReq "0..1" -- "1..1" gore_DifferentialRelation : indicator18
-gore_AwReq "1..1" -- "0..9999" gore_DefinableRequirement : otherTargets7
-gore_DifferentialRelation "1..1" -- "0..1" gore_Parameter : parameter20
-gore_Configuration "1..1" *-- "0..9999" gore_Parameter : parameters14
-gore_Requirement "1..1" -- "0..1" gore_Requirement : parent3
-gore_DifferentialRelation "0..9999" --* "1..1" gore_GoalModel : relations27
-gore_Goal "1..1" --* "1..1" gore_GoalModel : rootGoal22
-gore_QualityConstraint "1..1" -- "1..1" gore_Softgoal : softgoal6
-gore_AwReq "1..1" -- "1..1" gore_DefinableRequirement : target8
+gore_Actor "goalModel24 0..9999" --* "Actor 1..1" gore_GoalModel : actors23
+gore_Requirement "Requirement 1..1" *-- "parent 0..9999" gore_Requirement : children1
+gore_Configuration "goalModel26 0..1" --* "Configuration 1..1" gore_GoalModel : configuration25
+gore_Configuration "parameters 0..1" -- "Configuration30 1..1" gore_Parameter : configuration29
+gore_QualityConstraint "softgoal 0..9999" -- "QualityConstraint 1..1" gore_Softgoal : constraints5
+gore_Goal "GoalModel 1..1" -- "rootGoal 0..1" gore_GoalModel : goalModel11
+gore_Actor "GoalModel13 1..1" -- "actors 0..1" gore_GoalModel : goalModel12
+gore_Configuration "GoalModel17 1..1" -- "configuration16 0..1" gore_GoalModel : goalModel15
+gore_AwReq "gore_DifferentialRelation 0..1" -- "gore_AwReq19 1..1" gore_DifferentialRelation : indicator18
+gore_AwReq "gore_DefinableRequirement 1..1" -- "gore_AwReq 0..9999" gore_DefinableRequirement : otherTargets7
+gore_DifferentialRelation "gore_Parameter 1..1" -- "gore_DifferentialRelation21 0..1" gore_Parameter : parameter20
+gore_Configuration "Parameter 1..1" *-- "configuration 0..9999" gore_Parameter : parameters14
+gore_Requirement "Requirement4 1..1" -- "children 0..1" gore_Requirement : parent3
+gore_DifferentialRelation "gore_GoalModel 0..9999" --* "gore_DifferentialRelation28 1..1" gore_GoalModel : relations27
+gore_Goal "goalModel 1..1" --* "Goal 1..1" gore_GoalModel : rootGoal22
+gore_QualityConstraint "Softgoal 1..1" -- "constraints 1..1" gore_Softgoal : softgoal6
+gore_AwReq "gore_DefinableRequirement10 1..1" -- "gore_AwReq9 1..1" gore_DefinableRequirement : target8
 @enduml

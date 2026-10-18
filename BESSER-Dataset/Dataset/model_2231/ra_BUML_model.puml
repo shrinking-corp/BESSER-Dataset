@@ -1,4 +1,8 @@
 @startuml
+' model: ra
+' project: sampleModel
+' owner: User
+' description: New project
 enum programmeCode {
   Datateknologi2
   Datateknologi5
@@ -27,19 +31,19 @@ class ra_Specialization {
 }
 class ra_StudyPlan {
 }
-ra_Course "0..9999" --* "1..1" ra_Department : course1
-ra_Course "0..1" -- "1..1" ra_MandatoryCourse : course26
-ra_Course "0..9999" -- "1..1" ra_Semester : courseSlot20
-ra_MandatoryCourse "0..9999" --* "1..1" ra_StudyPlan : mandatoryCourse15
-ra_MandatoryCourse "0..9999" -- "1..1" ra_Semester : mandatoryCourse23
-ra_Course "1..1" -- "0..1" ra_MandatoryCourse : mandatoryCourse7
-ra_Department "1..1" *-- "0..9999" ra_Programme : programme0
-ra_Programme "0..1" -- "1..1" ra_StudyPlan : programme9
-ra_Semester "0..9999" --* "1..1" ra_StudyPlan : semester13
-ra_Semester "0..9999" --* "1..1" ra_Specialization : semester17
-ra_MandatoryCourse "1..1" -- "0..1" ra_Semester : semester25
-ra_Specialization "0..9999" --* "1..1" ra_StudyPlan : spesialization10
-ra_Department "1..1" *-- "0..1" ra_Specialization : spesialization5
-ra_Department "1..1" *-- "0..1" ra_StudyPlan : studyPlan3
-ra_Programme "1..1" *-- "0..1" ra_StudyPlan : studyPlan8
+ra_Course "ra_Department2 0..9999" --* "ra_Course 1..1" ra_Department : course1
+ra_Course "mandatoryCourse27 0..1" -- "Course 1..1" ra_MandatoryCourse : course26
+ra_Course "ra_Semester21 0..9999" -- "ra_Course22 1..1" ra_Semester : courseSlot20
+ra_MandatoryCourse "ra_StudyPlan16 0..9999" --* "ra_MandatoryCourse 1..1" ra_StudyPlan : mandatoryCourse15
+ra_MandatoryCourse "semester 0..9999" -- "MandatoryCourse24 1..1" ra_Semester : mandatoryCourse23
+ra_Course "MandatoryCourse 1..1" -- "course 0..1" ra_MandatoryCourse : mandatoryCourse7
+ra_Department "ra_Programme 1..1" *-- "ra_Department 0..9999" ra_Programme : programme0
+ra_Programme "studyPlan 0..1" -- "Programme 1..1" ra_StudyPlan : programme9
+ra_Semester "ra_StudyPlan14 0..9999" --* "ra_Semester 1..1" ra_StudyPlan : semester13
+ra_Semester "ra_Specialization18 0..9999" --* "ra_Semester19 1..1" ra_Specialization : semester17
+ra_MandatoryCourse "Semester 1..1" -- "mandatoryCourse 0..1" ra_Semester : semester25
+ra_Specialization "ra_StudyPlan11 0..9999" --* "ra_Specialization12 1..1" ra_StudyPlan : spesialization10
+ra_Department "ra_Specialization 1..1" *-- "ra_Department6 0..1" ra_Specialization : spesialization5
+ra_Department "ra_StudyPlan 1..1" *-- "ra_Department4 0..1" ra_StudyPlan : studyPlan3
+ra_Programme "StudyPlan 1..1" *-- "programme 0..1" ra_StudyPlan : studyPlan8
 @enduml

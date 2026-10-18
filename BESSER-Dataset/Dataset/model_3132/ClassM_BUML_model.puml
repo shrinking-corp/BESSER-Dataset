@@ -1,4 +1,8 @@
 @startuml
+' model: ClassM
+' project: sampleModel
+' owner: User
+' description: New project
 class ClassM_Attribute {
   + multivalued : bool
 }
@@ -34,13 +38,13 @@ StructuralFeature <|-- ClassM_Attribute
 StructuralFeature <|-- ClassM_Operation
 TypedElement <|-- ClassM_Parameter
 TypedElement <|-- ClassM_StructuralFeature
-ClassM_Class "0..9999" -- "1..1" ClassM_Class : children4
-ClassM_Classifier "0..9999" --* "1..1" ClassM_Model : classifiers11
-ClassM_Class "1..1" *-- "0..9999" ClassM_StructuralFeature : features0
-ClassM_Class "1..1" -- "1..1" ClassM_StructuralFeature : owner7
-ClassM_Operation "1..1" -- "1..1" ClassM_Parameter : paramOf10
-ClassM_Operation "1..1" -- "0..9999" ClassM_Parameter : params9
-ClassM_Class "1..1" -- "0..9999" ClassM_Class : parents2
-ClassM_Classifier "0..1" -- "1..1" ClassM_TypedElement : type8
-ClassM_Classifier "1..1" -- "0..9999" ClassM_TypedElement : typeOf6
+ClassM_Class "ClassM_Class3 0..9999" -- "ClassM_Class5 1..1" ClassM_Class : children4
+ClassM_Classifier "ClassM_Model 0..9999" --* "ClassM_Classifier 1..1" ClassM_Model : classifiers11
+ClassM_Class "StructuralFeature 1..1" *-- "owner 0..9999" ClassM_StructuralFeature : features0
+ClassM_Class "features 1..1" -- "Class 1..1" ClassM_StructuralFeature : owner7
+ClassM_Operation "params 1..1" -- "Operation 1..1" ClassM_Parameter : paramOf10
+ClassM_Operation "Parameter 1..1" -- "paramOf 0..9999" ClassM_Parameter : params9
+ClassM_Class "ClassM_Class 1..1" -- "ClassM_Class1 0..9999" ClassM_Class : parents2
+ClassM_Classifier "typeOf 0..1" -- "Classifier 1..1" ClassM_TypedElement : type8
+ClassM_Classifier "TypedElement 1..1" -- "type 0..9999" ClassM_TypedElement : typeOf6
 @enduml

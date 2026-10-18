@@ -1,4 +1,8 @@
 @startuml
+' model: dsl
+' project: sampleModel
+' owner: User
+' description: New project
 class Action {
 }
 class dsl_Abort {
@@ -217,12 +221,12 @@ Action <|-- dsl_TrelloGET
 Action <|-- dsl_TrelloPUT
 Action <|-- dsl_Updatedaudit
 Action <|-- dsl_WriteCsv
-dsl_Action "0..9999" --* "1..1" dsl_Catch : action10
-dsl_Action "0..9999" --* "1..1" dsl_Try : action5
-dsl_Action "0..9999" --* "1..1" dsl_Finally : action7
-dsl_Catch "0..1" --* "1..1" dsl_Process : catch1
-dsl_Action "1..1" *-- "0..1" dsl_Expression : condition13
-dsl_Finally "0..1" --* "1..1" dsl_Process : finally_3
-dsl_Rest "1..1" *-- "0..9999" dsl_RestPart : parts15
-dsl_Process "1..1" *-- "0..1" dsl_Try : try_0
+dsl_Action "dsl_Catch11 0..9999" --* "dsl_Action12 1..1" dsl_Catch : action10
+dsl_Action "dsl_Try6 0..9999" --* "dsl_Action 1..1" dsl_Try : action5
+dsl_Action "dsl_Finally8 0..9999" --* "dsl_Action9 1..1" dsl_Finally : action7
+dsl_Catch "dsl_Process2 0..1" --* "dsl_Catch 1..1" dsl_Process : catch1
+dsl_Action "dsl_Expression 1..1" *-- "dsl_Action14 0..1" dsl_Expression : condition13
+dsl_Finally "dsl_Process4 0..1" --* "dsl_Finally 1..1" dsl_Process : finally_3
+dsl_Rest "dsl_RestPart 1..1" *-- "dsl_Rest 0..9999" dsl_RestPart : parts15
+dsl_Process "dsl_Try 1..1" *-- "dsl_Process 0..1" dsl_Try : try_0
 @enduml

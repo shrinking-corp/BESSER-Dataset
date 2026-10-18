@@ -1,4 +1,8 @@
 @startuml
+' model: architecture
+' project: sampleModel
+' owner: User
+' description: New project
 class AnalysedElement {
 }
 class Dependency {
@@ -102,11 +106,11 @@ Relationship <|-- architecture_extension_ExtensionRelationship
 Relationship <|-- architecture_extension_PatternRelationship
 Relationship <|-- architecture_extension_RoleRelationship
 RuntimeDependency <|-- architecture_InjectionDependency
-architecture_AnalysedElement "1..1" *-- "0..9999" architecture_AnalysedElement : containedElements4
-architecture_AnalysedElement "1..1" -- "0..9999" architecture_Relationship : incomingRelationships1
-architecture_AnalysedElement "0..1" -- "1..1" architecture_InjectionDependency : mapping12
-architecture_AnalysedElement "1..1" *-- "0..9999" architecture_Relationship : outgoingRelationships0
-architecture_AnalysedElement "1..1" -- "0..1" architecture_AnalysedElement : parent6
-architecture_AnalysedElement "1..1" -- "1..1" architecture_Relationship : source10
-architecture_AnalysedElement "1..1" -- "1..1" architecture_Relationship : target8
+architecture_AnalysedElement "AnalysedElement 1..1" *-- "parent 0..9999" architecture_AnalysedElement : containedElements4
+architecture_AnalysedElement "Relationship2 1..1" -- "target 0..9999" architecture_Relationship : incomingRelationships1
+architecture_AnalysedElement "architecture_InjectionDependency 0..1" -- "architecture_AnalysedElement 1..1" architecture_InjectionDependency : mapping12
+architecture_AnalysedElement "Relationship 1..1" *-- "source 0..9999" architecture_Relationship : outgoingRelationships0
+architecture_AnalysedElement "AnalysedElement7 1..1" -- "containedElements 0..1" architecture_AnalysedElement : parent6
+architecture_AnalysedElement "outgoingRelationships 1..1" -- "AnalysedElement11 1..1" architecture_Relationship : source10
+architecture_AnalysedElement "incomingRelationships 1..1" -- "AnalysedElement9 1..1" architecture_Relationship : target8
 @enduml

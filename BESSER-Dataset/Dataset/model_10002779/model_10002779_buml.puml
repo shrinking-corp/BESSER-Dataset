@@ -1,4 +1,8 @@
 @startuml
+' model: d922418c_b09b_46cc_b0da_bbbe6883c037
+' project: sampleModel
+' owner: User
+' description: New project
 class Administrator {
   + admin_name : str
   + password : str
@@ -60,13 +64,13 @@ class User {
   + email : str
   + location : str
 }
-Buildings "0..9999" -- "1..1" Manager : Advertiser_Advertiesment
-Payment "1..1" -- "0..9999" Property : Payment_Property
-Payment "1..1" -- "1..9999" Reg_User : Payment_Reg_User
-Property "0..9999" -- "1..1" Tenant : Property_Buyer
-Management "0..9999" -- "1..1" Property : Property_Management
-Owner "1..1" -- "0..9999" Property : Property_Seller
-Reg_User "1..9999" -- "0..9999" Requirement : Reg_User_Requirement
-Administrator "1..1" -- "1..9999" User : User_Administrator
-Request "0..9999" -- "1..1" User : User_Request
+Buildings "adds2 0..9999" -- "owner3 1..1" Manager : Advertiser_Advertiesment
+Payment "payment17 1..1" -- "property16 0..9999" Property : Payment_Property
+Payment "payment15 1..1" -- "reg_User14 1..9999" Reg_User : Payment_Reg_User
+Property "property9 0..9999" -- "user8 1..1" Tenant : Property_Buyer
+Management "management12 0..9999" -- "property13 1..1" Property : Property_Management
+Owner "owner4 1..1" -- "property5 0..9999" Property : Property_Seller
+Reg_User "user11 1..9999" -- "requirement10 0..9999" Requirement : Reg_User_Requirement
+Administrator "administrator0 1..1" -- "employee1 1..9999" User : User_Administrator
+Request "request6 0..9999" -- "user7 1..1" User : User_Request
 @enduml

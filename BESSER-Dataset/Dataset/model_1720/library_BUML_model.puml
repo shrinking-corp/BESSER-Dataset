@@ -1,4 +1,8 @@
 @startuml
+' model: library
+' project: sampleModel
+' owner: User
+' description: New project
 class library_Book {
 }
 class library_BookCopy {
@@ -7,6 +11,6 @@ class library_BookCopy {
 class library_Library {
   + name : str
 }
-library_Book "0..1" -- "1..1" library_BookCopy : book1
-library_BookCopy "0..9999" --* "1..1" library_Library : books0
+library_Book "library_BookCopy2 0..1" -- "library_Book 1..1" library_BookCopy : book1
+library_BookCopy "library_Library 0..9999" --* "library_BookCopy 1..1" library_Library : books0
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: Train5
+' project: sampleModel
+' owner: User
+' description: New project
 class NamedElement {
 }
 enum Signal {
@@ -39,14 +43,14 @@ NamedElement <|-- Train5_TrackElement
 TrackElement <|-- Train5_Segment
 TrackElement <|-- Train5_Station
 TrackElement <|-- Train5_Switch
-Train5_RoutePart "1..1" -- "1..1" Train5_TrackElement : element17
-Train5_Segment "2..9999" -- "1..1" Train5_Switch : neighbour3
-Train5_RoutePart "0..1" -- "1..1" Train5_RoutePart : next15
-Train5_RoutePart "0..1" -- "1..1" Train5_RoutePart : previous21
-Train5_Route "1..1" *-- "1..9999" Train5_RoutePart : route1
-Train5_RailwayDiagram "1..1" *-- "0..9999" Train5_Route : routes11
-Train5_SensorNetwork "1..1" -- "0..9999" Train5_Switch : sensors4
-Train5_RailwayDiagram "1..1" *-- "0..9999" Train5_SensorNetwork : sensors8
-Train5_RailwayDiagram "1..1" *-- "0..9999" Train5_TrackElement : trackelements6
-Train5_Route "0..1" -- "1..1" Train5_TrackElement : train0
+Train5_RoutePart "Train5_TrackElement19 1..1" -- "Train5_RoutePart18 1..1" Train5_TrackElement : element17
+Train5_Segment "Train5_Switch 2..9999" -- "Train5_Segment 1..1" Train5_Switch : neighbour3
+Train5_RoutePart "Train5_RoutePart14 0..1" -- "Train5_RoutePart16 1..1" Train5_RoutePart : next15
+Train5_RoutePart "Train5_RoutePart20 0..1" -- "Train5_RoutePart22 1..1" Train5_RoutePart : previous21
+Train5_Route "Train5_RoutePart 1..1" *-- "Train5_Route2 1..9999" Train5_RoutePart : route1
+Train5_RailwayDiagram "Train5_Route13 1..1" *-- "Train5_RailwayDiagram12 0..9999" Train5_Route : routes11
+Train5_SensorNetwork "Train5_Switch5 1..1" -- "Train5_SensorNetwork 0..9999" Train5_Switch : sensors4
+Train5_RailwayDiagram "Train5_SensorNetwork10 1..1" *-- "Train5_RailwayDiagram9 0..9999" Train5_SensorNetwork : sensors8
+Train5_RailwayDiagram "Train5_TrackElement7 1..1" *-- "Train5_RailwayDiagram 0..9999" Train5_TrackElement : trackelements6
+Train5_Route "Train5_TrackElement 0..1" -- "Train5_Route 1..1" Train5_TrackElement : train0
 @enduml

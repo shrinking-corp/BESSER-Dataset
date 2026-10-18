@@ -1407,9 +1407,9 @@ def test_assoc_deltaDecl1_stub_double():
     partner = abs_Compilation_Unit()
     setattr(partner, 'abs_Compilation_Unit2', None)
     _safe_set(owner, 'abs_Delta_decl', partner)
-    assert getattr(partner, 'abs_Compilation_Unit2') == owner
+    assert owner in getattr(partner, 'abs_Compilation_Unit2')
     _safe_set(owner, 'abs_Delta_decl', None)
-    assert getattr(partner, 'abs_Compilation_Unit2') is None
+    assert owner not in getattr(partner, 'abs_Compilation_Unit2')
 
 
 def test_assoc_delta_access265_stub_double():
@@ -1452,9 +1452,9 @@ def test_assoc_delta_id341_stub_double():
     partner = abs_After_condition()
     setattr(partner, 'abs_After_condition342', None)
     _safe_set(owner, 'abs_Delta_decl343', partner)
-    assert getattr(partner, 'abs_After_condition342') == owner
+    assert owner in getattr(partner, 'abs_After_condition342')
     _safe_set(owner, 'abs_Delta_decl343', None)
-    assert getattr(partner, 'abs_After_condition342') is None
+    assert owner not in getattr(partner, 'abs_After_condition342')
 
 
 def test_assoc_deltaspec332_stub_double():
@@ -1512,9 +1512,9 @@ def test_assoc_feature368_stub_double():
     partner = abs_Product_expr()
     setattr(partner, 'abs_Product_expr369', None)
     _safe_set(owner, 'abs_Feature_decl370', partner)
-    assert getattr(partner, 'abs_Product_expr369') == owner
+    assert owner in getattr(partner, 'abs_Product_expr369')
     _safe_set(owner, 'abs_Feature_decl370', None)
-    assert getattr(partner, 'abs_Product_expr369') is None
+    assert owner not in getattr(partner, 'abs_Product_expr369')
 
 
 def test_assoc_feature_decl9_stub_double():
@@ -1527,9 +1527,9 @@ def test_assoc_feature_decl9_stub_double():
     partner = abs_Compilation_Unit()
     setattr(partner, 'abs_Compilation_Unit10', None)
     _safe_set(owner, 'abs_Feature_decl', partner)
-    assert getattr(partner, 'abs_Compilation_Unit10') == owner
+    assert owner in getattr(partner, 'abs_Compilation_Unit10')
     _safe_set(owner, 'abs_Feature_decl', None)
-    assert getattr(partner, 'abs_Compilation_Unit10') is None
+    assert owner not in getattr(partner, 'abs_Compilation_Unit10')
 
 
 def test_assoc_feature_decl_constraint386_stub_double():
@@ -1602,9 +1602,9 @@ def test_assoc_fextension11_stub_double():
     partner = abs_Compilation_Unit()
     setattr(partner, 'abs_Compilation_Unit12', None)
     _safe_set(owner, 'abs_Fextension', partner)
-    assert getattr(partner, 'abs_Compilation_Unit12') == owner
+    assert owner in getattr(partner, 'abs_Compilation_Unit12')
     _safe_set(owner, 'abs_Fextension', None)
-    assert getattr(partner, 'abs_Compilation_Unit12') is None
+    assert owner not in getattr(partner, 'abs_Compilation_Unit12')
 
 
 def test_assoc_field269_stub_double():
@@ -1632,9 +1632,9 @@ def test_assoc_field_decl123_stub_double():
     partner = abs_Class_decl()
     setattr(partner, 'abs_Class_decl124', None)
     _safe_set(owner, 'abs_Field_decl125', partner)
-    assert getattr(partner, 'abs_Class_decl124') == owner
+    assert owner in getattr(partner, 'abs_Class_decl124')
     _safe_set(owner, 'abs_Field_decl125', None)
-    assert getattr(partner, 'abs_Class_decl124') is None
+    assert owner not in getattr(partner, 'abs_Class_decl124')
 
 
 def test_assoc_function_list40_stub_double():
@@ -1662,9 +1662,9 @@ def test_assoc_function_name_decl28_stub_double():
     partner = abs_Function_name_list()
     setattr(partner, 'abs_Function_name_list29', None)
     _safe_set(owner, 'abs_Function_name_decl', partner)
-    assert getattr(partner, 'abs_Function_name_list29') == owner
+    assert owner in getattr(partner, 'abs_Function_name_list29')
     _safe_set(owner, 'abs_Function_name_decl', None)
-    assert getattr(partner, 'abs_Function_name_list29') is None
+    assert owner not in getattr(partner, 'abs_Function_name_list29')
 
 
 def test_assoc_functions22_stub_double():
@@ -1887,9 +1887,9 @@ def test_assoc_method132_stub_double():
     partner = abs_Class_decl()
     setattr(partner, 'abs_Class_decl133', None)
     _safe_set(owner, 'abs_Method', partner)
-    assert getattr(partner, 'abs_Class_decl133') == owner
+    assert owner in getattr(partner, 'abs_Class_decl133')
     _safe_set(owner, 'abs_Method', None)
-    assert getattr(partner, 'abs_Class_decl133') is None
+    assert owner not in getattr(partner, 'abs_Class_decl133')
 
 
 def test_assoc_method223_stub_double():
@@ -1902,9 +1902,9 @@ def test_assoc_method223_stub_double():
     partner = abs_Trait_expr()
     setattr(partner, 'abs_Trait_expr', None)
     _safe_set(owner, 'abs_Method224', partner)
-    assert getattr(partner, 'abs_Trait_expr') == owner
+    assert owner in getattr(partner, 'abs_Trait_expr')
     _safe_set(owner, 'abs_Method224', None)
-    assert getattr(partner, 'abs_Trait_expr') is None
+    assert owner not in getattr(partner, 'abs_Trait_expr')
 
 
 def test_assoc_method236_stub_double():
@@ -1947,9 +1947,9 @@ def test_assoc_methodsig110_stub_double():
     partner = abs_Interface_decl()
     setattr(partner, 'abs_Interface_decl111', None)
     _safe_set(owner, 'abs_Methodsig', partner)
-    assert getattr(partner, 'abs_Interface_decl111') == owner
+    assert owner in getattr(partner, 'abs_Interface_decl111')
     _safe_set(owner, 'abs_Methodsig', None)
-    assert getattr(partner, 'abs_Interface_decl111') is None
+    assert owner not in getattr(partner, 'abs_Interface_decl111')
 
 
 def test_assoc_methodsig239_stub_double():
@@ -1962,9 +1962,9 @@ def test_assoc_methodsig239_stub_double():
     partner = abs_Trait_oper()
     setattr(partner, 'abs_Trait_oper240', None)
     _safe_set(owner, 'abs_Methodsig241', partner)
-    assert getattr(partner, 'abs_Trait_oper240') == owner
+    assert owner in getattr(partner, 'abs_Trait_oper240')
     _safe_set(owner, 'abs_Methodsig241', None)
-    assert getattr(partner, 'abs_Trait_oper240') is None
+    assert owner not in getattr(partner, 'abs_Trait_oper240')
 
 
 def test_assoc_methodsig304_stub_double():
@@ -1977,9 +1977,9 @@ def test_assoc_methodsig304_stub_double():
     partner = abs_Class_modifier_fragment()
     setattr(partner, 'abs_Class_modifier_fragment305', None)
     _safe_set(owner, 'abs_Methodsig306', partner)
-    assert getattr(partner, 'abs_Class_modifier_fragment305') == owner
+    assert owner in getattr(partner, 'abs_Class_modifier_fragment305')
     _safe_set(owner, 'abs_Methodsig306', None)
-    assert getattr(partner, 'abs_Class_modifier_fragment305') is None
+    assert owner not in getattr(partner, 'abs_Class_modifier_fragment305')
 
 
 def test_assoc_mexp390_stub_double():
@@ -2022,9 +2022,9 @@ def test_assoc_module0_stub_double():
     partner = abs_Compilation_Unit()
     setattr(partner, 'abs_Compilation_Unit', None)
     _safe_set(owner, 'abs_Module_decl', partner)
-    assert getattr(partner, 'abs_Compilation_Unit') == owner
+    assert owner in getattr(partner, 'abs_Compilation_Unit')
     _safe_set(owner, 'abs_Module_decl', None)
-    assert getattr(partner, 'abs_Compilation_Unit') is None
+    assert owner not in getattr(partner, 'abs_Compilation_Unit')
 
 
 def test_assoc_module_modifier267_stub_double():
@@ -2097,9 +2097,9 @@ def test_assoc_param_decl89_stub_double():
     partner = abs_Param_list()
     setattr(partner, 'abs_Param_list90', None)
     _safe_set(owner, 'abs_Param_decl', partner)
-    assert getattr(partner, 'abs_Param_list90') == owner
+    assert owner in getattr(partner, 'abs_Param_list90')
     _safe_set(owner, 'abs_Param_decl', None)
-    assert getattr(partner, 'abs_Param_list90') is None
+    assert owner not in getattr(partner, 'abs_Param_list90')
 
 
 def test_assoc_paramlist115_stub_double():
@@ -2202,9 +2202,9 @@ def test_assoc_product_decl7_stub_double():
     partner = abs_Compilation_Unit()
     setattr(partner, 'abs_Compilation_Unit8', None)
     _safe_set(owner, 'abs_Product_decl', partner)
-    assert getattr(partner, 'abs_Compilation_Unit8') == owner
+    assert owner in getattr(partner, 'abs_Compilation_Unit8')
     _safe_set(owner, 'abs_Product_decl', None)
-    assert getattr(partner, 'abs_Compilation_Unit8') is None
+    assert owner not in getattr(partner, 'abs_Compilation_Unit8')
 
 
 def test_assoc_product_expr366_stub_double():
@@ -2277,9 +2277,9 @@ def test_assoc_pure_exp79_stub_double():
     partner = abs_Pure_exp_list()
     setattr(partner, 'abs_Pure_exp_list80', None)
     _safe_set(owner, 'abs_Pure_exp81', partner)
-    assert getattr(partner, 'abs_Pure_exp_list80') == owner
+    assert owner in getattr(partner, 'abs_Pure_exp_list80')
     _safe_set(owner, 'abs_Pure_exp81', None)
-    assert getattr(partner, 'abs_Pure_exp_list80') is None
+    assert owner not in getattr(partner, 'abs_Pure_exp_list80')
 
 
 def test_assoc_pure_exp86_stub_double():
@@ -2487,9 +2487,9 @@ def test_assoc_stmt126_stub_double():
     partner = abs_Class_decl()
     setattr(partner, 'abs_Class_decl127', None)
     _safe_set(owner, 'abs_Stmt', partner)
-    assert getattr(partner, 'abs_Class_decl127') == owner
+    assert owner in getattr(partner, 'abs_Class_decl127')
     _safe_set(owner, 'abs_Stmt', None)
-    assert getattr(partner, 'abs_Class_decl127') is None
+    assert owner not in getattr(partner, 'abs_Class_decl127')
 
 
 def test_assoc_stmt218_stub_double():
@@ -2517,9 +2517,9 @@ def test_assoc_stmt260_stub_double():
     partner = abs_Main_block()
     setattr(partner, 'abs_Main_block261', None)
     _safe_set(owner, 'abs_Stmt262', partner)
-    assert getattr(partner, 'abs_Main_block261') == owner
+    assert owner in getattr(partner, 'abs_Main_block261')
     _safe_set(owner, 'abs_Stmt262', None)
-    assert getattr(partner, 'abs_Main_block261') is None
+    assert owner not in getattr(partner, 'abs_Main_block261')
 
 
 def test_assoc_traitMethod225_stub_double():
@@ -2562,9 +2562,9 @@ def test_assoc_update_decl3_stub_double():
     partner = abs_Compilation_Unit()
     setattr(partner, 'abs_Compilation_Unit4', None)
     _safe_set(owner, 'abs_Update_decl', partner)
-    assert getattr(partner, 'abs_Compilation_Unit4') == owner
+    assert owner in getattr(partner, 'abs_Compilation_Unit4')
     _safe_set(owner, 'abs_Update_decl', None)
-    assert getattr(partner, 'abs_Compilation_Unit4') is None
+    assert owner not in getattr(partner, 'abs_Compilation_Unit4')
 
 
 def test_assoc_var_or_field_ref319_stub_double():

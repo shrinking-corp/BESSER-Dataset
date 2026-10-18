@@ -1,4 +1,8 @@
 @startuml
+' model: persons
+' project: sampleModel
+' owner: User
+' description: New project
 class Facility {
 }
 class NamedElement {
@@ -40,12 +44,12 @@ NamedElement <|-- persons_Facility
 NamedElement <|-- persons_TownHall
 Person <|-- persons_Man
 Person <|-- persons_Woman
-persons_Association "0..9999" --* "1..1" persons_Community : associations3
-persons_Committee "1..1" --* "1..1" persons_TownHall : committee8
-persons_District "1..9999" --* "1..1" persons_TownHall : districts10
-persons_District "1..1" *-- "0..9999" persons_Facility : facilities12
-persons_Facility "1..1" -- "0..9999" persons_Person : members14
-persons_Community "1..1" *-- "1..9999" persons_Person : persons0
-persons_Community "1..1" *-- "1..9999" persons_TownHall : townHalls1
-persons_Person "0..9999" -- "1..1" persons_TownHall : workers5
+persons_Association "persons_Community4 0..9999" --* "persons_Association 1..1" persons_Community : associations3
+persons_Committee "persons_TownHall9 1..1" --* "persons_Committee 1..1" persons_TownHall : committee8
+persons_District "persons_TownHall11 1..9999" --* "persons_District 1..1" persons_TownHall : districts10
+persons_District "persons_Facility 1..1" *-- "persons_District13 0..9999" persons_Facility : facilities12
+persons_Facility "persons_Person16 1..1" -- "persons_Facility15 0..9999" persons_Person : members14
+persons_Community "persons_Person 1..1" *-- "persons_Community 1..9999" persons_Person : persons0
+persons_Community "persons_TownHall 1..1" *-- "persons_Community2 1..9999" persons_TownHall : townHalls1
+persons_Person "persons_TownHall6 0..9999" -- "persons_Person7 1..1" persons_TownHall : workers5
 @enduml

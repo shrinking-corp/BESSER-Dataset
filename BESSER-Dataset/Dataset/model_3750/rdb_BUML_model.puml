@@ -1,4 +1,8 @@
 @startuml
+' model: rdb
+' project: sampleModel
+' owner: User
+' description: New project
 class ERDInfo {
 }
 enum RelationKind {
@@ -65,20 +69,20 @@ class rdb_View {
 }
 ERDInfo <|-- rdb_DB
 Table <|-- rdb_View
-rdb_DB "1..1" -- "0..1" rdb_UserComment : DBComment3
-rdb_Table "1..1" -- "0..100" rdb_UserComment : UserCommentReference12
-rdb_Column "1..9999" --* "1..1" rdb_Table : columns6
-rdb_DB "1..1" -- "1..1" rdb_Relation : db20
-rdb_DB "1..1" -- "1..1" rdb_Style : db25
-rdb_DB "1..1" -- "1..1" rdb_Table : db7
-rdb_Relation "0..9999" -- "1..1" rdb_Table : incomingLinks8
-rdb_Relation "0..9999" -- "1..1" rdb_Table : outgoingLinks10
-rdb_DB "1..1" *-- "0..9999" rdb_Relation : references1
-rdb_Relation "1..1" -- "0..1" rdb_Table : source16
-rdb_ERDInfo "1..1" -- "1..1" rdb_Style : style24
-rdb_DB "1..1" *-- "0..9999" rdb_Style : styledReference4
-rdb_Column "1..1" -- "1..1" rdb_Table : table14
-rdb_Table "1..1" -- "1..1" rdb_View : tableName22
-rdb_DB "1..1" *-- "0..9999" rdb_Table : tables0
-rdb_Relation "1..1" -- "0..1" rdb_Table : target18
+rdb_DB "rdb_UserComment 1..1" -- "rdb_DB 0..1" rdb_UserComment : DBComment3
+rdb_Table "rdb_UserComment13 1..1" -- "rdb_Table 0..100" rdb_UserComment : UserCommentReference12
+rdb_Column "table 1..9999" --* "Column 1..1" rdb_Table : columns6
+rdb_DB "references 1..1" -- "DB21 1..1" rdb_Relation : db20
+rdb_DB "styledReference 1..1" -- "DB26 1..1" rdb_Style : db25
+rdb_DB "tables 1..1" -- "DB 1..1" rdb_Table : db7
+rdb_Relation "target 0..9999" -- "Relation9 1..1" rdb_Table : incomingLinks8
+rdb_Relation "source 0..9999" -- "Relation11 1..1" rdb_Table : outgoingLinks10
+rdb_DB "Relation 1..1" *-- "db2 0..9999" rdb_Relation : references1
+rdb_Relation "Table17 1..1" -- "outgoingLinks 0..1" rdb_Table : source16
+rdb_ERDInfo "rdb_Style 1..1" -- "rdb_ERDInfo 1..1" rdb_Style : style24
+rdb_DB "Style 1..1" *-- "db5 0..9999" rdb_Style : styledReference4
+rdb_Column "Table15 1..1" -- "columns 1..1" rdb_Table : table14
+rdb_Table "rdb_View 1..1" -- "rdb_Table23 1..1" rdb_View : tableName22
+rdb_DB "Table 1..1" *-- "db 0..9999" rdb_Table : tables0
+rdb_Relation "Table19 1..1" -- "incomingLinks 0..1" rdb_Table : target18
 @enduml

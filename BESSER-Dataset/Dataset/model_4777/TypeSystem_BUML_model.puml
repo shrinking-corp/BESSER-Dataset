@@ -1,4 +1,8 @@
 @startuml
+' model: typesystem
+' project: sampleModel
+' owner: User
+' description: New project
 class ArrayType {
 }
 class DataType {
@@ -136,13 +140,13 @@ PrimitiveType <|-- typesystem_NumericType
 PrimitiveType <|-- typesystem_StringType
 UnitProduct <|-- typesystem_UnitDenominator
 UnitProduct <|-- typesystem_UnitNumerator
-typesystem_ArrayType "1..1" *-- "0..1" typesystem_DataType : definedElementType2
-typesystem_Unit "1..1" *-- "0..1" typesystem_UnitDenominator : denominator11
-typesystem_ArrayDimension "0..9999" --* "1..1" typesystem_ArrayType : dimensions5
-typesystem_ArrayType "1..1" -- "0..1" typesystem_DataType : elementType1
-typesystem_UnitFactor "0..9999" --* "1..1" typesystem_UnitProduct : factors13
-typesystem_Unit "1..1" *-- "0..1" typesystem_UnitNumerator : numerator9
-typesystem_ArrayDimension "1..1" *-- "0..1" typesystem_Expression : size7
-typesystem_NumericType "1..1" *-- "1..1" typesystem_Unit : unit0
-typesystem_NumericLiteral "1..1" *-- "1..1" typesystem_Unit : unit14
+typesystem_ArrayType "typesystem_DataType4 1..1" *-- "typesystem_ArrayType3 0..1" typesystem_DataType : definedElementType2
+typesystem_Unit "typesystem_UnitDenominator 1..1" *-- "typesystem_Unit12 0..1" typesystem_UnitDenominator : denominator11
+typesystem_ArrayDimension "typesystem_ArrayType6 0..9999" --* "typesystem_ArrayDimension 1..1" typesystem_ArrayType : dimensions5
+typesystem_ArrayType "typesystem_DataType 1..1" -- "typesystem_ArrayType 0..1" typesystem_DataType : elementType1
+typesystem_UnitFactor "typesystem_UnitProduct 0..9999" --* "typesystem_UnitFactor 1..1" typesystem_UnitProduct : factors13
+typesystem_Unit "typesystem_UnitNumerator 1..1" *-- "typesystem_Unit10 0..1" typesystem_UnitNumerator : numerator9
+typesystem_ArrayDimension "typesystem_Expression 1..1" *-- "typesystem_ArrayDimension8 0..1" typesystem_Expression : size7
+typesystem_NumericType "typesystem_Unit 1..1" *-- "typesystem_NumericType 1..1" typesystem_Unit : unit0
+typesystem_NumericLiteral "typesystem_Unit15 1..1" *-- "typesystem_NumericLiteral 1..1" typesystem_Unit : unit14
 @enduml

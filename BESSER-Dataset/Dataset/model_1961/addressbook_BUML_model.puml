@@ -1,4 +1,8 @@
 @startuml
+' model: addressbook
+' project: sampleModel
+' owner: User
+' description: New project
 class Contact {
 }
 enum NoteType {
@@ -42,12 +46,12 @@ class addressbook_Relationship {
 }
 Contact <|-- addressbook_Company
 Contact <|-- addressbook_Person
-addressbook_AddressBook "1..1" *-- "0..9999" addressbook_Contact : Contact9
-addressbook_Contact "1..1" *-- "0..9999" addressbook_Note : Note7
-addressbook_Address "0..9999" --* "1..1" addressbook_Contact : address0
-addressbook_Contact "0..9999" -- "1..1" addressbook_Contact : inRelation2
-addressbook_Contact "1..1" -- "0..9999" addressbook_Relationship : isRelated5
-addressbook_Contact "1..1" *-- "0..9999" addressbook_Relationship : relates4
-addressbook_Contact "1..1" -- "1..1" addressbook_Relationship : source12
-addressbook_Contact "1..1" -- "1..1" addressbook_Relationship : target11
+addressbook_AddressBook "addressbook_Contact10 1..1" *-- "addressbook_AddressBook 0..9999" addressbook_Contact : Contact9
+addressbook_Contact "addressbook_Note 1..1" *-- "addressbook_Contact8 0..9999" addressbook_Note : Note7
+addressbook_Address "addressbook_Contact 0..9999" --* "addressbook_Address 1..1" addressbook_Contact : address0
+addressbook_Contact "addressbook_Contact1 0..9999" -- "addressbook_Contact3 1..1" addressbook_Contact : inRelation2
+addressbook_Contact "Relationship6 1..1" -- "target 0..9999" addressbook_Relationship : isRelated5
+addressbook_Contact "Relationship 1..1" *-- "source 0..9999" addressbook_Relationship : relates4
+addressbook_Contact "relates 1..1" -- "Contact13 1..1" addressbook_Relationship : source12
+addressbook_Contact "isRelated 1..1" -- "Contact 1..1" addressbook_Relationship : target11
 @enduml

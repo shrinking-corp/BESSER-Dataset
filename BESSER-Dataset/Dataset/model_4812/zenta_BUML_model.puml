@@ -1,4 +1,8 @@
 @startuml
+' model: model
+' project: sampleModel
+' owner: User
+' description: New project
 class Adapter {
 }
 class BasicObject {
@@ -252,33 +256,33 @@ ZentaModelElement <|-- model_DiagramModel
 ZentaModelElement <|-- model_Folder
 ZentaModelElement <|-- model_ZentaElement
 ZentaModelElement <|-- model_ZentaModel
-model_BasicObject "1..1" -- "1..1" model_BasicObject : ancestor34
-model_Attribute "0..9999" --* "1..1" model_BasicObject : attributes32
-model_DiagramModelBendpoint "0..9999" --* "1..1" model_DiagramModelConnection : bendpoints22
-model_Bounds "1..1" --* "1..1" model_DiagramModelObject : bounds9
-model_BasicObject "1..1" -- "0..9999" model_BasicObject : children37
-model_DiagramModelContainer "1..1" *-- "0..9999" model_DiagramModelObject : children6
-model_BasicObject "0..9999" -- "1..1" model_Template : classes27
-model_Attribute "1..1" -- "1..1" model_BasicObject : connectedObject49
-model_BasicRelationship "1..1" -- "0..9999" model_DiagramModelZentaConnection : diagConnections45
-model_DiagramModelZentaObject "0..9999" -- "1..1" model_ZentaElement : diagObjects31
-model_DiagramModel "0..1" -- "1..1" model_Template : diagram29
-model_DiagramModel "0..1" -- "1..1" model_DiagramModelComponent : diagramModel5
-model_Folder "1..1" *-- "0..9999" model_Nameable : elements3
-model_Folder "0..9999" --* "1..1" model_FolderContainer : folders1
-model_Metamodel "1..1" -- "1..1" model_Template : metamodel28
-model_Properties "1..1" *-- "0..9999" model_Property : properties0
-model_DiagramModel "0..1" -- "1..1" model_DiagramModelReference : referencedModel7
-model_Attribute "1..1" -- "1..1" model_BasicRelationship : relation46
-model_BasicRelationship "0..1" -- "1..1" model_DiagramModelZentaConnection : relationship25
-model_DiagramModelConnection "1..1" -- "0..1" model_DiagramModelObject : source16
-model_BasicRelationship "1..1" -- "0..1" model_ZentaElement : source41
-model_DiagramModelConnection "0..9999" --* "1..1" model_DiagramModelObject : sourceConnections11
-model_DiagramModelConnection "1..1" -- "0..1" model_DiagramModelObject : target19
-model_BasicRelationship "1..1" -- "0..1" model_ZentaElement : target42
-model_DiagramModelConnection "0..9999" -- "1..1" model_DiagramModelObject : targetConnections13
-model_BasicObject "1..1" -- "0..1" model_Template : template39
-model_Metamodel "1..1" *-- "0..9999" model_Template : templates26
-model_DiagramModelZentaObject "1..1" -- "0..1" model_ZentaElement : zentaElement24
-model_ZentaModel "0..1" -- "1..1" model_ZentaModelElement : zentaModel2
+model_BasicObject "BasicObject35 1..1" -- "children 1..1" model_BasicObject : ancestor34
+model_Attribute "model_BasicObject 0..9999" --* "model_Attribute 1..1" model_BasicObject : attributes32
+model_DiagramModelBendpoint "model_DiagramModelConnection23 0..9999" --* "model_DiagramModelBendpoint 1..1" model_DiagramModelConnection : bendpoints22
+model_Bounds "model_DiagramModelObject10 1..1" --* "model_Bounds 1..1" model_DiagramModelObject : bounds9
+model_BasicObject "BasicObject38 1..1" -- "ancestor 0..9999" model_BasicObject : children37
+model_DiagramModelContainer "model_DiagramModelObject 1..1" *-- "model_DiagramModelContainer 0..9999" model_DiagramModelObject : children6
+model_BasicObject "template 0..9999" -- "BasicObject 1..1" model_Template : classes27
+model_Attribute "model_BasicObject51 1..1" -- "model_Attribute50 1..1" model_BasicObject : connectedObject49
+model_BasicRelationship "DiagramModelZentaConnection 1..1" -- "relationship 0..9999" model_DiagramModelZentaConnection : diagConnections45
+model_DiagramModelZentaObject "zentaElement 0..9999" -- "DiagramModelZentaObject 1..1" model_ZentaElement : diagObjects31
+model_DiagramModel "model_Template 0..1" -- "model_DiagramModel30 1..1" model_Template : diagram29
+model_DiagramModel "model_DiagramModelComponent 0..1" -- "model_DiagramModel 1..1" model_DiagramModelComponent : diagramModel5
+model_Folder "model_Nameable 1..1" *-- "model_Folder4 0..9999" model_Nameable : elements3
+model_Folder "model_FolderContainer 0..9999" --* "model_Folder 1..1" model_FolderContainer : folders1
+model_Metamodel "templates 1..1" -- "Metamodel 1..1" model_Template : metamodel28
+model_Properties "model_Property 1..1" *-- "model_Properties 0..9999" model_Property : properties0
+model_DiagramModel "model_DiagramModelReference 0..1" -- "model_DiagramModel8 1..1" model_DiagramModelReference : referencedModel7
+model_Attribute "model_BasicRelationship48 1..1" -- "model_Attribute47 1..1" model_BasicRelationship : relation46
+model_BasicRelationship "diagConnections 0..1" -- "BasicRelationship 1..1" model_DiagramModelZentaConnection : relationship25
+model_DiagramModelConnection "model_DiagramModelObject18 1..1" -- "model_DiagramModelConnection17 0..1" model_DiagramModelObject : source16
+model_BasicRelationship "model_ZentaElement 1..1" -- "model_BasicRelationship 0..1" model_ZentaElement : source41
+model_DiagramModelConnection "model_DiagramModelObject12 0..9999" --* "model_DiagramModelConnection 1..1" model_DiagramModelObject : sourceConnections11
+model_DiagramModelConnection "model_DiagramModelObject21 1..1" -- "model_DiagramModelConnection20 0..1" model_DiagramModelObject : target19
+model_BasicRelationship "model_ZentaElement44 1..1" -- "model_BasicRelationship43 0..1" model_ZentaElement : target42
+model_DiagramModelConnection "model_DiagramModelObject14 0..9999" -- "model_DiagramModelConnection15 1..1" model_DiagramModelObject : targetConnections13
+model_BasicObject "Template40 1..1" -- "classes 0..1" model_Template : template39
+model_Metamodel "Template 1..1" *-- "metamodel 0..9999" model_Template : templates26
+model_DiagramModelZentaObject "ZentaElement 1..1" -- "diagObjects 0..1" model_ZentaElement : zentaElement24
+model_ZentaModel "model_ZentaModelElement 0..1" -- "model_ZentaModel 1..1" model_ZentaModelElement : zentaModel2
 @enduml

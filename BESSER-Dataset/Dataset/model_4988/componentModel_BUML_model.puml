@@ -1,4 +1,8 @@
 @startuml
+' model: componentmodel
+' project: sampleModel
+' owner: User
+' description: New project
 class Component {
 }
 class Port {
@@ -41,13 +45,13 @@ Port <|-- componentmodel_InPort
 Port <|-- componentmodel_OutPort
 Property <|-- componentmodel_EnumProperty
 Property <|-- componentmodel_NumericProperty
-componentmodel_Component "1..9999" --* "1..1" componentmodel_CompositeComponent : components2
-componentmodel_InPort "1..1" -- "0..1" componentmodel_InPort : delegatesFrom8
-componentmodel_InPort "1..1" -- "0..9999" componentmodel_InPort : delegatesTo5
-componentmodel_Component "1..1" *-- "1..9999" componentmodel_Port : ports0
-componentmodel_OutPort "1..1" -- "0..1" componentmodel_OutPort : propagatesFrom11
-componentmodel_OutPort "1..1" -- "0..9999" componentmodel_OutPort : propagatesTo16
-componentmodel_PrimitiveComponent "1..1" *-- "0..9999" componentmodel_Property : properties1
-componentmodel_InPort "0..9999" -- "1..1" componentmodel_OutPort : sink13
-componentmodel_InPort "1..1" -- "0..1" componentmodel_OutPort : source6
+componentmodel_Component "componentmodel_CompositeComponent 1..9999" --* "componentmodel_Component3 1..1" componentmodel_CompositeComponent : components2
+componentmodel_InPort "InPort9 1..1" -- "delegatesTo 0..1" componentmodel_InPort : delegatesFrom8
+componentmodel_InPort "InPort 1..1" -- "delegatesFrom 0..9999" componentmodel_InPort : delegatesTo5
+componentmodel_Component "componentmodel_Port 1..1" *-- "componentmodel_Component 1..9999" componentmodel_Port : ports0
+componentmodel_OutPort "OutPort12 1..1" -- "propagatesTo 0..1" componentmodel_OutPort : propagatesFrom11
+componentmodel_OutPort "OutPort17 1..1" -- "propagatesFrom 0..9999" componentmodel_OutPort : propagatesTo16
+componentmodel_PrimitiveComponent "componentmodel_Property 1..1" *-- "componentmodel_PrimitiveComponent 0..9999" componentmodel_Property : properties1
+componentmodel_InPort "source 0..9999" -- "InPort14 1..1" componentmodel_OutPort : sink13
+componentmodel_InPort "OutPort 1..1" -- "sink 0..1" componentmodel_OutPort : source6
 @enduml

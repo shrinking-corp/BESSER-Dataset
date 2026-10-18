@@ -1,4 +1,8 @@
 @startuml
+' model: wiki
+' project: sampleModel
+' owner: User
+' description: New project
 class Graph {
 }
 class wiki_ArticleGraph {
@@ -35,18 +39,18 @@ Graph <|-- wiki_ArticleGraph
 Graph <|-- wiki_CategoryGraph
 Graph <|-- wiki_ClassificationGraph
 Graph <|-- wiki_IndexGraph
-wiki_Edge "0..9999" -- "1..1" wiki_Graph : edgerefs15
-wiki_Edge "0..9999" --* "1..1" wiki_Wiki : edges9
-wiki_Edge "1..1" -- "1..1" wiki_Node : from_26
-wiki_ArticleGraph "0..1" --* "1..1" wiki_Wiki : graphArticles3
-wiki_CategoryGraph "0..1" --* "1..1" wiki_Wiki : graphCategories1
-wiki_ClassificationGraph "0..1" --* "1..1" wiki_Wiki : graphClassification5
-wiki_IndexGraph "0..1" --* "1..1" wiki_Wiki : graphIndex0
-wiki_Node "1..1" -- "0..1" wiki_Revision : lastRevision18
-wiki_Node "0..1" -- "1..1" wiki_Revision : node22
-wiki_Graph "1..1" -- "0..9999" wiki_Node : noderefs13
-wiki_Node "0..9999" --* "1..1" wiki_Wiki : nodes7
-wiki_Revision "0..9999" --* "1..1" wiki_Wiki : revisions11
-wiki_Node "1..1" -- "0..9999" wiki_Revision : revisions21
-wiki_Edge "1..1" -- "1..1" wiki_Node : to23
+wiki_Edge "wiki_Graph16 0..9999" -- "wiki_Edge17 1..1" wiki_Graph : edgerefs15
+wiki_Edge "wiki_Wiki10 0..9999" --* "wiki_Edge 1..1" wiki_Wiki : edges9
+wiki_Edge "wiki_Node28 1..1" -- "wiki_Edge27 1..1" wiki_Node : from_26
+wiki_ArticleGraph "wiki_Wiki4 0..1" --* "wiki_ArticleGraph 1..1" wiki_Wiki : graphArticles3
+wiki_CategoryGraph "wiki_Wiki2 0..1" --* "wiki_CategoryGraph 1..1" wiki_Wiki : graphCategories1
+wiki_ClassificationGraph "wiki_Wiki6 0..1" --* "wiki_ClassificationGraph 1..1" wiki_Wiki : graphClassification5
+wiki_IndexGraph "wiki_Wiki 0..1" --* "wiki_IndexGraph 1..1" wiki_Wiki : graphIndex0
+wiki_Node "wiki_Revision20 1..1" -- "wiki_Node19 0..1" wiki_Revision : lastRevision18
+wiki_Node "revisions 0..1" -- "Node 1..1" wiki_Revision : node22
+wiki_Graph "wiki_Node14 1..1" -- "wiki_Graph 0..9999" wiki_Node : noderefs13
+wiki_Node "wiki_Wiki8 0..9999" --* "wiki_Node 1..1" wiki_Wiki : nodes7
+wiki_Revision "wiki_Wiki12 0..9999" --* "wiki_Revision 1..1" wiki_Wiki : revisions11
+wiki_Node "Revision 1..1" -- "node 0..9999" wiki_Revision : revisions21
+wiki_Edge "wiki_Node25 1..1" -- "wiki_Edge24 1..1" wiki_Node : to23
 @enduml

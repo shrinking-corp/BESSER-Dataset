@@ -1,4 +1,8 @@
 @startuml
+' model: _uQJeUBiEEeizPrac7I6KfQ
+' project: sampleModel
+' owner: User
+' description: New project
 class Comment {
   + subject : str
   + text : str
@@ -39,14 +43,14 @@ class User {
   + links : str
   + nickname : str
 }
-Comment "0..9999" -- "0..1" Course : Course_Comment
-Course "1..1" -- "0..9999" Section : Course_Section
-Course "0..9999" -- "1..1" User : Course_User
-Comment "0..1" -- "0..9999" Rating : Rating_Comment
-Course "0..1" -- "0..9999" Rating : Rating_Course
-Rating "0..9999" -- "1..1" User : Rating_User
-Comment "0..9999" -- "0..1" Section : Section_Comment
-Question "0..9999" -- "1..1" Section : Section_Question
-Comment "0..9999" -- "1..1" User : User_Comment
-Course "0..9999" -- "0..9999" User : User_Course
+Comment "comments_course6 0..9999" -- "has_comments7 0..1" Course : Course_Comment
+Course "has_sections5 1..1" -- "has_course4 0..9999" Section : Course_Section
+Course "has_owner19 0..9999" -- "owns18 1..1" User : Course_User
+Comment "has_ratings16 0..1" -- "rates_comment17 0..9999" Rating : Rating_Comment
+Course "has_ratings14 0..1" -- "rates_course15 0..9999" Rating : Rating_Course
+Rating "has_owner13 0..9999" -- "has_ratings12 1..1" User : Rating_User
+Comment "comments_section2 0..9999" -- "has_comments3 0..1" Section : Section_Comment
+Question "has_section0 0..9999" -- "has_question1 1..1" Section : Section_Question
+Comment "has_owner8 0..9999" -- "has_comments9 1..1" User : User_Comment
+Course "has_users10 0..9999" -- "has_courses11 0..9999" User : User_Course
 @enduml

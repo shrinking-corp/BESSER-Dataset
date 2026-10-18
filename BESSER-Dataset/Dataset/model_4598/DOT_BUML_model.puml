@@ -1,4 +1,8 @@
 @startuml
+' model: DOT
+' project: sampleModel
+' owner: User
+' description: New project
 class Arc {
 }
 class Compartment {
@@ -133,34 +137,34 @@ Nodelike <|-- DOT_Node
 Nodelike <|-- DOT_SubGraph
 Shape <|-- DOT_ArrowShape
 Shape <|-- DOT_NodeShape
-DOT_Anchor "0..1" -- "1..1" DOT_Compartment : anchor5
-DOT_Arc "0..9999" -- "1..1" DOT_Layer : arcs14
-DOT_ArrowShape "0..1" --* "1..1" DOT_DirectedArc : arrowHead42
-DOT_ArrowShape "0..1" --* "1..1" DOT_DirectedArc : arrowTail48
-DOT_Label "0..1" --* "1..1" DOT_MNodeShape : bottomlabel53
-DOT_Compartment "1..9999" --* "1..1" DOT_ComplexLabel : compartments1
-DOT_Compartment "1..1" *-- "0..1" DOT_Compartment : compartments4
-DOT_Compartment "1..1" -- "0..1" DOT_ComplexLabel : complexLabel2
-DOT_GraphElement "0..1" -- "1..1" DOT_Label : element0
-DOT_Arc "1..1" -- "1..1" DOT_Nodelike : fromNode32
-DOT_Graph "1..1" -- "1..1" DOT_Layer : graph16
-DOT_Graph "0..1" -- "1..1" DOT_Nodelike : graph23
-DOT_DirectedArc "1..1" -- "0..1" DOT_Label : headlabel43
-DOT_GraphElement "1..1" *-- "0..1" DOT_Label : label8
-DOT_Graph "1..1" *-- "0..9999" DOT_Layer : layers10
-DOT_Layer "0..9999" -- "1..1" DOT_Nodelike : layers26
-DOT_Arc "1..1" -- "0..9999" DOT_Layer : layers36
-DOT_Arc "1..1" -- "0..1" DOT_Nodelike : lhead38
-DOT_Arc "1..1" -- "0..1" DOT_Nodelike : ltail39
-DOT_Layer "1..1" -- "0..9999" DOT_Nodelike : nodes12
-DOT_Nodelike "0..9999" --* "1..1" DOT_SubGraph : nodes29
-DOT_Graph "1..1" *-- "0..9999" DOT_Nodelike : nodes9
-DOT_Nodelike "1..1" -- "0..1" DOT_SubGraph : owner18
-DOT_Arc "0..9999" -- "1..1" DOT_Nodelike : referredBy21
-DOT_Arc "0..9999" -- "1..1" DOT_Nodelike : refers19
-DOT_Node "1..1" *-- "0..1" DOT_NodeShape : shape31
-DOT_Anchor "1..1" -- "0..1" DOT_Compartment : source6
-DOT_DirectedArc "1..1" -- "0..1" DOT_Label : taillabel45
-DOT_Arc "1..1" -- "1..1" DOT_Nodelike : toNode34
-DOT_Label "0..1" --* "1..1" DOT_MNodeShape : toplabel51
+DOT_Anchor "source 0..1" -- "Anchor 1..1" DOT_Compartment : anchor5
+DOT_Arc "layers15 0..9999" -- "Arc 1..1" DOT_Layer : arcs14
+DOT_ArrowShape "DOT_DirectedArc 0..1" --* "DOT_ArrowShape 1..1" DOT_DirectedArc : arrowHead42
+DOT_ArrowShape "DOT_DirectedArc49 0..1" --* "DOT_ArrowShape50 1..1" DOT_DirectedArc : arrowTail48
+DOT_Label "DOT_MNodeShape54 0..1" --* "DOT_Label55 1..1" DOT_MNodeShape : bottomlabel53
+DOT_Compartment "complexLabel 1..9999" --* "Compartment 1..1" DOT_ComplexLabel : compartments1
+DOT_Compartment "DOT_Compartment 1..1" *-- "DOT_Compartment3 0..1" DOT_Compartment : compartments4
+DOT_Compartment "ComplexLabel 1..1" -- "compartments 0..1" DOT_ComplexLabel : complexLabel2
+DOT_GraphElement "label 0..1" -- "GraphElement 1..1" DOT_Label : element0
+DOT_Arc "Nodelike33 1..1" -- "refers 1..1" DOT_Nodelike : fromNode32
+DOT_Graph "layers17 1..1" -- "Graph 1..1" DOT_Layer : graph16
+DOT_Graph "nodes24 0..1" -- "Graph25 1..1" DOT_Nodelike : graph23
+DOT_DirectedArc "DOT_Label 1..1" -- "DOT_DirectedArc44 0..1" DOT_Label : headlabel43
+DOT_GraphElement "Label 1..1" *-- "element 0..1" DOT_Label : label8
+DOT_Graph "Layer 1..1" *-- "graph11 0..9999" DOT_Layer : layers10
+DOT_Layer "nodes27 0..9999" -- "Layer28 1..1" DOT_Nodelike : layers26
+DOT_Arc "Layer37 1..1" -- "arcs 0..9999" DOT_Layer : layers36
+DOT_Arc "DOT_Nodelike 1..1" -- "DOT_Arc 0..1" DOT_Nodelike : lhead38
+DOT_Arc "DOT_Nodelike41 1..1" -- "DOT_Arc40 0..1" DOT_Nodelike : ltail39
+DOT_Layer "Nodelike13 1..1" -- "layers 0..9999" DOT_Nodelike : nodes12
+DOT_Nodelike "owner 0..9999" --* "Nodelike30 1..1" DOT_SubGraph : nodes29
+DOT_Graph "Nodelike 1..1" *-- "graph 0..9999" DOT_Nodelike : nodes9
+DOT_Nodelike "SubGraph 1..1" -- "nodes 0..1" DOT_SubGraph : owner18
+DOT_Arc "toNode 0..9999" -- "Arc22 1..1" DOT_Nodelike : referredBy21
+DOT_Arc "fromNode 0..9999" -- "Arc20 1..1" DOT_Nodelike : refers19
+DOT_Node "DOT_NodeShape 1..1" *-- "DOT_Node 0..1" DOT_NodeShape : shape31
+DOT_Anchor "Compartment7 1..1" -- "anchor 0..1" DOT_Compartment : source6
+DOT_DirectedArc "DOT_Label47 1..1" -- "DOT_DirectedArc46 0..1" DOT_Label : taillabel45
+DOT_Arc "Nodelike35 1..1" -- "referredBy 1..1" DOT_Nodelike : toNode34
+DOT_Label "DOT_MNodeShape 0..1" --* "DOT_Label52 1..1" DOT_MNodeShape : toplabel51
 @enduml

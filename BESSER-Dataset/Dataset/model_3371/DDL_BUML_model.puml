@@ -1,4 +1,8 @@
 @startuml
+' model: DDL
+' project: sampleModel
+' owner: User
+' description: New project
 class DDL_CreateCk {
   + columnName : str
   + nameCk : str
@@ -50,10 +54,10 @@ DataDefinition <|-- DDL_CreateCommentTable
 DataDefinition <|-- DDL_CreateDatabase
 DataDefinition <|-- DDL_CreateTable
 Statement <|-- DDL_DataDefinition
-DDL_CreateCk "0..9999" --* "1..1" DDL_CreateTable : checks8
-DDL_CreateColumn "0..9999" --* "1..1" DDL_CreateTable : columns1
-DDL_CreateFk "0..9999" --* "1..1" DDL_CreateTable : columnsFk5
-DDL_CreatePk "0..1" --* "1..1" DDL_CreateTable : columnsPk3
-DDL_CreateFk "1..1" -- "0..1" DDL_CreateTable : references0
-DDL_DDLDefinition "1..1" *-- "0..9999" DDL_Statement : statements10
+DDL_CreateCk "DDL_CreateTable9 0..9999" --* "DDL_CreateCk 1..1" DDL_CreateTable : checks8
+DDL_CreateColumn "DDL_CreateTable2 0..9999" --* "DDL_CreateColumn 1..1" DDL_CreateTable : columns1
+DDL_CreateFk "DDL_CreateTable6 0..9999" --* "DDL_CreateFk7 1..1" DDL_CreateTable : columnsFk5
+DDL_CreatePk "DDL_CreateTable4 0..1" --* "DDL_CreatePk 1..1" DDL_CreateTable : columnsPk3
+DDL_CreateFk "DDL_CreateTable 1..1" -- "DDL_CreateFk 0..1" DDL_CreateTable : references0
+DDL_DDLDefinition "DDL_Statement 1..1" *-- "DDL_DDLDefinition 0..9999" DDL_Statement : statements10
 @enduml

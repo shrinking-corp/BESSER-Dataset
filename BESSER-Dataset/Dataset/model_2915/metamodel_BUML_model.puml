@@ -1,4 +1,8 @@
 @startuml
+' model: metamodel
+' project: sampleModel
+' owner: User
+' description: New project
 class Type {
 }
 class Variable {
@@ -51,19 +55,19 @@ Type <|-- metamodel_View
 Variable <|-- metamodel_PlainVariable
 Variable <|-- metamodel_StaticVariable
 Variable <|-- metamodel_TransientVariable
-metamodel_ActsAs "0..9999" --* "1..1" metamodel_Entity : actsAs8
-metamodel_Controller "1..1" -- "1..1" metamodel_View : belongsTo21
-metamodel_ConnectionToEntity "0..9999" --* "1..1" metamodel_Entity : belongsToEntity1
-metamodel_EntityObserver "1..1" *-- "0..9999" metamodel_Extension_MQPublishing : extendedBy19
-metamodel_Entity "1..1" *-- "0..9999" metamodel_Variable : hasAttribute0
-metamodel_Controller "0..9999" --* "1..1" metamodel_Model : hasControllers22
-metamodel_Entity "0..9999" --* "1..1" metamodel_Model : hasEntities27
-metamodel_ConnectionToEntity "0..9999" --* "1..1" metamodel_Entity : hasEntity3
-metamodel_Model "1..1" *-- "0..9999" metamodel_View : hasViews24
-metamodel_Entity "1..1" *-- "0..9999" metamodel_EntityObserver : isObservedBy6
-metamodel_ConnectionToEntity "1..1" -- "1..1" metamodel_Entity : otherEntity11
-metamodel_Validation_ValueRestriction "1..1" *-- "1..9999" metamodel_ValueRestriction_Value : restrictsTo10
-metamodel_Type "1..1" -- "1..1" metamodel_Variable : type14
-metamodel_Model "1..1" *-- "0..9999" metamodel_Type : types30
-metamodel_Validation_ValueRestriction "0..1" --* "1..1" metamodel_Variable : validatedBy16
+metamodel_ActsAs "metamodel_Entity9 0..9999" --* "metamodel_ActsAs 1..1" metamodel_Entity : actsAs8
+metamodel_Controller "metamodel_View 1..1" -- "metamodel_Controller 1..1" metamodel_View : belongsTo21
+metamodel_ConnectionToEntity "metamodel_Entity2 0..9999" --* "metamodel_ConnectionToEntity 1..1" metamodel_Entity : belongsToEntity1
+metamodel_EntityObserver "metamodel_Extension_MQPublishing 1..1" *-- "metamodel_EntityObserver20 0..9999" metamodel_Extension_MQPublishing : extendedBy19
+metamodel_Entity "metamodel_Variable 1..1" *-- "metamodel_Entity 0..9999" metamodel_Variable : hasAttribute0
+metamodel_Controller "metamodel_Model 0..9999" --* "metamodel_Controller23 1..1" metamodel_Model : hasControllers22
+metamodel_Entity "metamodel_Model28 0..9999" --* "metamodel_Entity29 1..1" metamodel_Model : hasEntities27
+metamodel_ConnectionToEntity "metamodel_Entity4 0..9999" --* "metamodel_ConnectionToEntity5 1..1" metamodel_Entity : hasEntity3
+metamodel_Model "metamodel_View26 1..1" *-- "metamodel_Model25 0..9999" metamodel_View : hasViews24
+metamodel_Entity "metamodel_EntityObserver 1..1" *-- "metamodel_Entity7 0..9999" metamodel_EntityObserver : isObservedBy6
+metamodel_ConnectionToEntity "metamodel_Entity13 1..1" -- "metamodel_ConnectionToEntity12 1..1" metamodel_Entity : otherEntity11
+metamodel_Validation_ValueRestriction "metamodel_ValueRestriction_Value 1..1" *-- "metamodel_Validation_ValueRestriction 1..9999" metamodel_ValueRestriction_Value : restrictsTo10
+metamodel_Type "metamodel_Variable15 1..1" -- "metamodel_Type 1..1" metamodel_Variable : type14
+metamodel_Model "metamodel_Type32 1..1" *-- "metamodel_Model31 0..9999" metamodel_Type : types30
+metamodel_Validation_ValueRestriction "metamodel_Variable17 0..1" --* "metamodel_Validation_ValueRestriction18 1..1" metamodel_Variable : validatedBy16
 @enduml

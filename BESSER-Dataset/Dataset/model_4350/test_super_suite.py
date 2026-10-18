@@ -5812,9 +5812,9 @@ def test_assoc_eAnnotations107_stub_double():
     partner = ecoreDiff_EModelElement()
     setattr(partner, 'eModelElement', None)
     _safe_set(owner, 'EAnnotation', partner)
-    assert getattr(partner, 'eModelElement') == owner
+    assert owner in getattr(partner, 'eModelElement')
     _safe_set(owner, 'EAnnotation', None)
-    assert getattr(partner, 'eModelElement') is None
+    assert owner not in getattr(partner, 'eModelElement')
 
 
 def test_assoc_eClassifier71_stub_double():
@@ -5872,9 +5872,9 @@ def test_assoc_eExceptions78_stub_double():
     partner = ecoreDiff_EOperation()
     setattr(partner, 'ecoreDiff_EOperation79', None)
     _safe_set(owner, 'ecoreDiff_EClassifier80', partner)
-    assert getattr(partner, 'ecoreDiff_EOperation79') == owner
+    assert owner in getattr(partner, 'ecoreDiff_EOperation79')
     _safe_set(owner, 'ecoreDiff_EClassifier80', None)
-    assert getattr(partner, 'ecoreDiff_EOperation79') is None
+    assert owner not in getattr(partner, 'ecoreDiff_EOperation79')
 
 
 def test_assoc_eFactoryInstance42_stub_double():
@@ -5932,9 +5932,9 @@ def test_assoc_eLiterals105_stub_double():
     partner = ecoreDiff_EEnum()
     setattr(partner, 'eEnum', None)
     _safe_set(owner, 'EEnumLiteral', partner)
-    assert getattr(partner, 'eEnum') == owner
+    assert owner in getattr(partner, 'eEnum')
     _safe_set(owner, 'EEnumLiteral', None)
-    assert getattr(partner, 'eEnum') is None
+    assert owner not in getattr(partner, 'eEnum')
 
 
 def test_assoc_eModelElement1_stub_double():
@@ -6230,20 +6230,17 @@ from python_code import ecoreDiff_EModelElement
 
 def test_ecoreDiff_EAnnotation___init__():
     assert ecoreDiff_EAnnotation.__init__(ecoreDiff_EAnnotation('', ecoreDiff_EAnnotation5=set(), eAnnotations=ecoreDiff_EModelElement(), EAnnotation=ecoreDiff_EModelElement(), ecoreDiff_EAnnotation=set(), ecoreDiff_EAnnotation3=set(), ecoreDiff_EAnnotation112=ecoreDiff_ChangedEAnnotation()), '', ecoreDiff_EAnnotation5=set(), eAnnotations=ecoreDiff_EModelElement(), EAnnotation=ecoreDiff_EModelElement(), ecoreDiff_EAnnotation=set(), ecoreDiff_EAnnotation3=set(), ecoreDiff_EAnnotation112=ecoreDiff_ChangedEAnnotation()) == None
-
 from python_code import ecoreDiff_ChangedEEnumLiteral
 from python_code import ecoreDiff_EEnum
 from python_code import ecoreDiff_EEnumLiteral
 
 def test_ecoreDiff_EEnumLiteral___init__():
     assert ecoreDiff_EEnumLiteral.__init__(ecoreDiff_EEnumLiteral(0, '', '\x00\x00', eLiterals=ecoreDiff_EEnum(), EEnumLiteral=ecoreDiff_EEnum(), ecoreDiff_EEnumLiteral=ecoreDiff_ChangedEEnumLiteral()), 0, '', '', eLiterals=ecoreDiff_EEnum(), EEnumLiteral=ecoreDiff_EEnum(), ecoreDiff_EEnumLiteral=ecoreDiff_ChangedEEnumLiteral()) == None
-
 from python_code import ecoreDiff_ChangedENamedElement
 from python_code import ecoreDiff_ENamedElement
 
 def test_ecoreDiff_ENamedElement___init__():
     assert ecoreDiff_ENamedElement.__init__(ecoreDiff_ENamedElement('', ecoreDiff_ENamedElement=ecoreDiff_ChangedENamedElement()), '', ecoreDiff_ENamedElement=ecoreDiff_ChangedENamedElement()) == None
-
 from python_code import ecoreDiff_ChangedETypedElement
 from python_code import ecoreDiff_EGenericType
 from python_code import ecoreDiff_EObject

@@ -1,4 +1,8 @@
 @startuml
+' model: company104
+' project: sampleModel
+' owner: User
+' description: New project
 class Function {
 }
 enum Hierarchy {
@@ -84,24 +88,24 @@ Interval <|-- company104_Goal
 NamedElement <|-- company104_Flow
 NamedElement <|-- company104_Function
 NamedElement <|-- company104_Workstation
-company104_Agency "0..9999" --* "1..1" company104_Company : agencies0
-company104_Agency "1..1" *-- "0..9999" company104_Department : departments27
-company104_Agency "1..1" *-- "0..9999" company104_Employee : employees30
-company104_Flow "0..9999" --* "1..1" company104_Function : flows41
-company104_Employee "0..1" -- "1..1" company104_HierarchyLink : fromEmployee13
-company104_Flow "1..1" -- "0..1" company104_Function : fromFunction4
-company104_Company "1..1" *-- "0..9999" company104_Goal : goals1
-company104_Employee "1..1" *-- "0..9999" company104_HierarchyLink : hierarchies8
-company104_Employee "1..1" -- "0..1" company104_Workstation : inChargeOf12
-company104_Goal "1..1" *-- "0..9999" company104_Objective : objectives25
-company104_Employee "0..9999" -- "1..1" company104_Workstation : owners24
-company104_Room "0..9999" -- "1..1" company104_Room : parent20
-company104_Agency "1..1" *-- "0..9999" company104_ObjectiveReach : reacheds33
-company104_Employee "1..1" -- "0..1" company104_Room : responsibleOf9
-company104_Department "1..1" *-- "0..9999" company104_Room : rooms3
-company104_Agency "0..1" -- "1..1" company104_ObjectiveReach : srcAgency38
-company104_Employee "0..1" -- "1..1" company104_HierarchyLink : toEmployee16
-company104_Flow "1..1" -- "0..1" company104_Function : toFunction5
-company104_Objective "0..1" -- "1..1" company104_ObjectiveReach : trgObjective35
-company104_Room "1..1" *-- "0..9999" company104_Workstation : workstations22
+company104_Agency "company104_Company 0..9999" --* "company104_Agency 1..1" company104_Company : agencies0
+company104_Agency "company104_Department29 1..1" *-- "company104_Agency28 0..9999" company104_Department : departments27
+company104_Agency "company104_Employee32 1..1" *-- "company104_Agency31 0..9999" company104_Employee : employees30
+company104_Flow "company104_Function42 0..9999" --* "company104_Flow43 1..1" company104_Function : flows41
+company104_Employee "company104_HierarchyLink14 0..1" -- "company104_Employee15 1..1" company104_HierarchyLink : fromEmployee13
+company104_Flow "company104_Function 1..1" -- "company104_Flow 0..1" company104_Function : fromFunction4
+company104_Company "company104_Goal 1..1" *-- "company104_Company2 0..9999" company104_Goal : goals1
+company104_Employee "company104_HierarchyLink 1..1" *-- "company104_Employee 0..9999" company104_HierarchyLink : hierarchies8
+company104_Employee "Workstation 1..1" -- "owners 0..1" company104_Workstation : inChargeOf12
+company104_Goal "company104_Objective 1..1" *-- "company104_Goal26 0..9999" company104_Objective : objectives25
+company104_Employee "inChargeOf 0..9999" -- "Employee 1..1" company104_Workstation : owners24
+company104_Room "company104_Room19 0..9999" -- "company104_Room21 1..1" company104_Room : parent20
+company104_Agency "company104_ObjectiveReach 1..1" *-- "company104_Agency34 0..9999" company104_ObjectiveReach : reacheds33
+company104_Employee "company104_Room11 1..1" -- "company104_Employee10 0..1" company104_Room : responsibleOf9
+company104_Department "company104_Room 1..1" *-- "company104_Department 0..9999" company104_Room : rooms3
+company104_Agency "company104_ObjectiveReach39 0..1" -- "company104_Agency40 1..1" company104_ObjectiveReach : srcAgency38
+company104_Employee "company104_HierarchyLink17 0..1" -- "company104_Employee18 1..1" company104_HierarchyLink : toEmployee16
+company104_Flow "company104_Function7 1..1" -- "company104_Flow6 0..1" company104_Function : toFunction5
+company104_Objective "company104_ObjectiveReach36 0..1" -- "company104_Objective37 1..1" company104_ObjectiveReach : trgObjective35
+company104_Room "company104_Workstation 1..1" *-- "company104_Room23 0..9999" company104_Workstation : workstations22
 @enduml

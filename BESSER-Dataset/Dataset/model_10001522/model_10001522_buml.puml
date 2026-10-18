@@ -1,4 +1,8 @@
 @startuml
+' model: _DLKSUK1eEee6S77dw3LIvQ
+' project: sampleModel
+' owner: User
+' description: New project
 class CSV {
   + cloumn : str
   + row : str
@@ -37,20 +41,20 @@ class status_of_book {
 }
 class transaction {
 }
-File "0..9999" -- "1..1" User : User_Parser
-Data "0..9999" -- "1..1" User : User_data
-book "1..1" -- "1..1" status_of_book : book_status_of_book
-Data "1..1" -- "1..1" File : data_File
-cash "0..1" -- "1..1" fine : fine_class
-credit_card "0..1" -- "1..1" fine : fine_credit_card
-librarian "1..9999" -- "1..9999" library_member : librarian_member_profile
-librarian "1..9999" -- "1..9999" transaction : librarian_transaction
-book "1..9999" -- "1..1" library : library_book
-librarian "1..9999" -- "1..1" library : library_librarian
-library_member "1..1" -- "1..1" member_profile : library_member_member_profile
-library_member "1..9999" -- "1..9999" status_of_book : library_member_status_of_book
-library "1..1" -- "1..9999" transaction : library_transaction
-library_member "1..1" -- "1..1" transaction : member_library_card
-book "1..1" -- "1..1" transaction : transaction_book
-fine "0..1" -- "1..1" transaction : transaction_fine
+File "parser4 0..9999" -- "upload5 1..1" User : User_Parser
+Data "User_data_00 0..9999" -- "modify1 1..1" User : User_data
+book "book25 1..1" -- "status_of_book24 1..1" status_of_book : book_status_of_book
+Data "data_File_13 1..1" -- "parse2 1..1" File : data_File
+cash "class20 0..1" -- "fine21 1..1" fine : fine_class
+credit_card "credit_card18 0..1" -- "fine19 1..1" fine : fine_credit_card
+librarian "librarian31 1..9999" -- "member_profile30 1..9999" library_member : librarian_member_profile
+librarian "librarian17 1..9999" -- "transaction16 1..9999" transaction : librarian_transaction
+book "book8 1..9999" -- "library9 1..1" library : library_book
+librarian "librarian10 1..9999" -- "library11 1..1" library : library_librarian
+library_member "library_member29 1..1" -- "member_profile28 1..1" member_profile : library_member_member_profile
+library_member "library_member27 1..9999" -- "status_of_book26 1..9999" status_of_book : library_member_status_of_book
+library "library13 1..1" -- "transaction12 1..9999" transaction : library_transaction
+library_member "library_card6 1..1" -- "member7 1..1" transaction : member_library_card
+book "book22 1..1" -- "transaction23 1..1" transaction : transaction_book
+fine "fine14 0..1" -- "transaction15 1..1" transaction : transaction_fine
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: PiServiceComposition
+' project: sampleModel
+' owner: User
+' description: New project
 enum ActionType {
   AOP
   WS
@@ -102,31 +106,31 @@ NamedElement <|-- PiServiceComposition_Activity
 NamedElement <|-- PiServiceComposition_ActivityEdge
 NamedElement <|-- PiServiceComposition_ActivityNode
 NamedElement <|-- PiServiceComposition_ActivityPartition
-PiServiceComposition_ActivityPartition "0..1" --* "1..1" PiServiceComposition_ActivityPartition : APartition12
-PiServiceComposition_Action "1..9999" --* "1..1" PiServiceComposition_ServiceActivity : action37
-PiServiceComposition_Action "0..9999" -- "1..1" PiServiceComposition_Policy : action51
-PiServiceComposition_Activity "0..9999" --* "1..1" PiServiceComposition_CompositionServiceModel : activities1
-PiServiceComposition_Activity "0..1" -- "1..1" PiServiceComposition_ActivityNode : activity25
-PiServiceComposition_CompositionServiceModel "1..1" *-- "0..9999" PiServiceComposition_Policy : compositionPolices5
-PiServiceComposition_Policy "1..1" *-- "1..9999" PiServiceComposition_Rule : contains46
-PiServiceComposition_Action "1..1" -- "0..1" PiServiceComposition_Policy : definePolices41
-PiServiceComposition_ActivityEdge "0..9999" -- "1..1" PiServiceComposition_ActivityPartition : edges14
-PiServiceComposition_ActivityEdge "0..9999" --* "1..1" PiServiceComposition_CompositionServiceModel : edges3
-PiServiceComposition_Policy "0..9999" -- "1..1" PiServiceComposition_ServiceActivity : hasPolices38
-PiServiceComposition_BussinessCollaborator "1..1" -- "0..9999" PiServiceComposition_Policy : hasPolices42
-PiServiceComposition_Policy "1..1" -- "0..9999" PiServiceComposition_Variable : hasVars47
-PiServiceComposition_ActivityEdge "0..9999" -- "1..1" PiServiceComposition_ActivityNode : incoming28
-PiServiceComposition_Activity "1..1" *-- "0..9999" PiServiceComposition_ActivityNode : node9
-PiServiceComposition_ActivityNode "0..9999" -- "1..1" PiServiceComposition_ActivityPartition : nodes15
-PiServiceComposition_ActivityEdge "0..9999" -- "1..1" PiServiceComposition_ActivityNode : outgoing30
-PiServiceComposition_ActivityPartition "0..9999" --* "1..1" PiServiceComposition_CompositionServiceModel : partition0
-PiServiceComposition_ActivityEdge "1..1" -- "0..1" PiServiceComposition_ActivityPartition : partition24
-PiServiceComposition_ActivityNode "1..1" -- "0..1" PiServiceComposition_ActivityPartition : partition35
-PiServiceComposition_Policy "1..1" -- "1..1" PiServiceComposition_Rule : policy44
-PiServiceComposition_ActivityEdge "0..9999" -- "1..1" PiServiceComposition_ActivityEdge : redefinedElement22
-PiServiceComposition_ActivityNode "0..9999" -- "1..1" PiServiceComposition_ActivityNode : redefinedElement33
-PiServiceComposition_ActivityEdge "1..1" -- "1..1" PiServiceComposition_ActivityNode : source19
-PiServiceComposition_ActivityEdge "1..1" -- "1..1" PiServiceComposition_ActivityNode : target17
-PiServiceComposition_BussinessCollaborator "0..9999" -- "1..1" PiServiceComposition_Policy : typeOperation50
-PiServiceComposition_CompositionServiceModel "1..1" *-- "0..9999" PiServiceComposition_Variable : vars7
+PiServiceComposition_ActivityPartition "PiServiceComposition_ActivityPartition11 0..1" --* "PiServiceComposition_ActivityPartition13 1..1" PiServiceComposition_ActivityPartition : APartition12
+PiServiceComposition_Action "PiServiceComposition_ServiceActivity 1..9999" --* "PiServiceComposition_Action 1..1" PiServiceComposition_ServiceActivity : action37
+PiServiceComposition_Action "definePolices 0..9999" -- "Action 1..1" PiServiceComposition_Policy : action51
+PiServiceComposition_Activity "PiServiceComposition_CompositionServiceModel2 0..9999" --* "PiServiceComposition_Activity 1..1" PiServiceComposition_CompositionServiceModel : activities1
+PiServiceComposition_Activity "PiServiceComposition_ActivityNode26 0..1" -- "PiServiceComposition_Activity27 1..1" PiServiceComposition_ActivityNode : activity25
+PiServiceComposition_CompositionServiceModel "PiServiceComposition_Policy 1..1" *-- "PiServiceComposition_CompositionServiceModel6 0..9999" PiServiceComposition_Policy : compositionPolices5
+PiServiceComposition_Policy "Rule 1..1" *-- "policy 1..9999" PiServiceComposition_Rule : contains46
+PiServiceComposition_Action "Policy 1..1" -- "action 0..1" PiServiceComposition_Policy : definePolices41
+PiServiceComposition_ActivityEdge "partition 0..9999" -- "ActivityEdge 1..1" PiServiceComposition_ActivityPartition : edges14
+PiServiceComposition_ActivityEdge "PiServiceComposition_CompositionServiceModel4 0..9999" --* "PiServiceComposition_ActivityEdge 1..1" PiServiceComposition_CompositionServiceModel : edges3
+PiServiceComposition_Policy "PiServiceComposition_ServiceActivity39 0..9999" -- "PiServiceComposition_Policy40 1..1" PiServiceComposition_ServiceActivity : hasPolices38
+PiServiceComposition_BussinessCollaborator "Policy43 1..1" -- "typeOperation 0..9999" PiServiceComposition_Policy : hasPolices42
+PiServiceComposition_Policy "PiServiceComposition_Variable49 1..1" -- "PiServiceComposition_Policy48 0..9999" PiServiceComposition_Variable : hasVars47
+PiServiceComposition_ActivityEdge "target 0..9999" -- "ActivityEdge29 1..1" PiServiceComposition_ActivityNode : incoming28
+PiServiceComposition_Activity "PiServiceComposition_ActivityNode 1..1" *-- "PiServiceComposition_Activity10 0..9999" PiServiceComposition_ActivityNode : node9
+PiServiceComposition_ActivityNode "partition16 0..9999" -- "ActivityNode 1..1" PiServiceComposition_ActivityPartition : nodes15
+PiServiceComposition_ActivityEdge "source 0..9999" -- "ActivityEdge31 1..1" PiServiceComposition_ActivityNode : outgoing30
+PiServiceComposition_ActivityPartition "PiServiceComposition_CompositionServiceModel 0..9999" --* "PiServiceComposition_ActivityPartition 1..1" PiServiceComposition_CompositionServiceModel : partition0
+PiServiceComposition_ActivityEdge "ActivityPartition 1..1" -- "edges 0..1" PiServiceComposition_ActivityPartition : partition24
+PiServiceComposition_ActivityNode "ActivityPartition36 1..1" -- "nodes 0..1" PiServiceComposition_ActivityPartition : partition35
+PiServiceComposition_Policy "contains 1..1" -- "Policy45 1..1" PiServiceComposition_Rule : policy44
+PiServiceComposition_ActivityEdge "PiServiceComposition_ActivityEdge21 0..9999" -- "PiServiceComposition_ActivityEdge23 1..1" PiServiceComposition_ActivityEdge : redefinedElement22
+PiServiceComposition_ActivityNode "PiServiceComposition_ActivityNode32 0..9999" -- "PiServiceComposition_ActivityNode34 1..1" PiServiceComposition_ActivityNode : redefinedElement33
+PiServiceComposition_ActivityEdge "ActivityNode20 1..1" -- "outgoing 1..1" PiServiceComposition_ActivityNode : source19
+PiServiceComposition_ActivityEdge "ActivityNode18 1..1" -- "incoming 1..1" PiServiceComposition_ActivityNode : target17
+PiServiceComposition_BussinessCollaborator "hasPolices 0..9999" -- "BussinessCollaborator 1..1" PiServiceComposition_Policy : typeOperation50
+PiServiceComposition_CompositionServiceModel "PiServiceComposition_Variable 1..1" *-- "PiServiceComposition_CompositionServiceModel8 0..9999" PiServiceComposition_Variable : vars7
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: petrinetsemantics
+' project: sampleModel
+' owner: User
+' description: New project
 class Arc {
 }
 enum ArcKind {
@@ -66,20 +70,20 @@ Node <|-- petrinetsemantics_DDMMPetriNet_Transition
 Node_dynamic <|-- petrinetsemantics_SDMMPetriNet_Place_dynamic
 PNSimEvent <|-- petrinetsemantics_EDMMPetriNet_PetriNetEvent
 PetriNetEvent <|-- petrinetsemantics_EDMMPetriNet_FireTransitionEvent
-Node "1..1" -- "1..1" petrinetsemantics_SDMMPetriNet_Node_dynamic : Node_static14
-PetriNet "1..1" -- "1..1" petrinetsemantics_SDMMPetriNet_PetriNet_dynamic : PetriNet_static18
-Place "1..1" -- "1..1" petrinetsemantics_SDMMPetriNet_Place_dynamic : Place_static16
-Arc "0..9999" --* "1..1" petrinetsemantics_DDMMPetriNet_PetriNet : arcs1
-Transition "1..1" -- "1..1" petrinetsemantics_EDMMPetriNet_FireTransitionEvent : firedTransition21
-Arc "0..9999" -- "1..1" petrinetsemantics_DDMMPetriNet_Node : incomings6
-PetriNet "1..1" -- "1..1" petrinetsemantics_DDMMPetriNet_Arc : net12
-PetriNet "1..1" -- "1..1" petrinetsemantics_DDMMPetriNet_Node : net3
-Node "0..9999" --* "1..1" petrinetsemantics_DDMMPetriNet_PetriNet : nodes0
-Node_dynamic "0..9999" --* "1..1" petrinetsemantics_SDMMPetriNet_PetriNet_dynamic : nodes17
-Arc "0..9999" -- "1..1" petrinetsemantics_DDMMPetriNet_Node : outgoings4
-PNScenario "1..1" -- "1..1" petrinetsemantics_TM3PetriNet_PNTrace : scenario24
-PNSimEvent "0..9999" --* "1..1" petrinetsemantics_TM3PetriNet_PNScenario : simEvents23
-Node "1..1" -- "1..1" petrinetsemantics_DDMMPetriNet_Arc : source10
-Node "1..1" -- "1..1" petrinetsemantics_DDMMPetriNet_Arc : target8
-PNTrace "0..9999" -- "1..1" petrinetsemantics_TM3PetriNet_PNScenario : traces22
+Node "petrinetsemantics_SDMMPetriNet_Node_dynamic 1..1" -- "Node15 1..1" petrinetsemantics_SDMMPetriNet_Node_dynamic : Node_static14
+PetriNet "petrinetsemantics_SDMMPetriNet_PetriNet_dynamic19 1..1" -- "PetriNet20 1..1" petrinetsemantics_SDMMPetriNet_PetriNet_dynamic : PetriNet_static18
+Place "petrinetsemantics_SDMMPetriNet_Place_dynamic 1..1" -- "Place 1..1" petrinetsemantics_SDMMPetriNet_Place_dynamic : Place_static16
+Arc "net2 0..9999" --* "Arc 1..1" petrinetsemantics_DDMMPetriNet_PetriNet : arcs1
+Transition "petrinetsemantics_EDMMPetriNet_FireTransitionEvent 1..1" -- "Transition 1..1" petrinetsemantics_EDMMPetriNet_FireTransitionEvent : firedTransition21
+Arc "target 0..9999" -- "Arc7 1..1" petrinetsemantics_DDMMPetriNet_Node : incomings6
+PetriNet "arcs 1..1" -- "PetriNet13 1..1" petrinetsemantics_DDMMPetriNet_Arc : net12
+PetriNet "nodes 1..1" -- "PetriNet 1..1" petrinetsemantics_DDMMPetriNet_Node : net3
+Node "net 0..9999" --* "Node 1..1" petrinetsemantics_DDMMPetriNet_PetriNet : nodes0
+Node_dynamic "petrinetsemantics_SDMMPetriNet_PetriNet_dynamic 0..9999" --* "Node_dynamic 1..1" petrinetsemantics_SDMMPetriNet_PetriNet_dynamic : nodes17
+Arc "source 0..9999" -- "Arc5 1..1" petrinetsemantics_DDMMPetriNet_Node : outgoings4
+PNScenario "traces 1..1" -- "PNScenario 1..1" petrinetsemantics_TM3PetriNet_PNTrace : scenario24
+PNSimEvent "petrinetsemantics_TM3PetriNet_PNScenario 0..9999" --* "PNSimEvent 1..1" petrinetsemantics_TM3PetriNet_PNScenario : simEvents23
+Node "outgoings 1..1" -- "Node11 1..1" petrinetsemantics_DDMMPetriNet_Arc : source10
+Node "incomings 1..1" -- "Node9 1..1" petrinetsemantics_DDMMPetriNet_Arc : target8
+PNTrace "scenario 0..9999" -- "PNTrace 1..1" petrinetsemantics_TM3PetriNet_PNScenario : traces22
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: services
+' project: sampleModel
+' owner: User
+' description: New project
 class Service {
 }
 enum ServiceClassType {
@@ -59,24 +63,24 @@ class services_Value {
 }
 Service <|-- services_CFSService
 Service <|-- services_RFSService
-services_CIID "0..9999" --* "1..1" services_Service : cIID3
-services_Expression "0..9999" -- "1..1" services_ServiceDistribution : expressionRefs17
-services_Expression "0..9999" -- "1..1" services_ServiceUser : expressionRefs40
-services_Node "0..9999" -- "1..1" services_RFSService : nodes0
-services_DateTimeRange "0..1" --* "1..1" services_ServiceForecast : period19
-services_DateTimeRange "0..1" --* "1..1" services_ServiceMonitor : period30
-services_NetXResource "0..9999" --* "1..1" services_ServiceProfile : profileResources35
-services_ResourceForecast "0..9999" --* "1..1" services_ServiceForecast : resourceForecasts23
-services_ResourceMonitor "0..9999" --* "1..1" services_ServiceMonitor : resourceMonitors33
-services_Service "1..1" *-- "0..1" services_ServiceDistribution : serviceDistribution13
-services_ServiceForecast "1..1" *-- "0..9999" services_ServiceForecastUsers : serviceForecastUsers21
-services_Service "1..1" *-- "0..9999" services_ServiceForecast : serviceForecasts7
-services_Service "1..1" *-- "0..9999" services_ServiceMonitor : serviceMonitors9
-services_ServiceProfile "0..1" --* "1..1" services_ServiceUser : serviceProfile37
-services_NetXResource "0..9999" --* "1..1" services_ServiceDistribution : serviceResources15
-services_ServiceForecastUsers "1..1" -- "0..1" services_ServiceUser : serviceUserRef27
-services_Service "1..1" -- "0..9999" services_ServiceUser : serviceUserRefs11
-services_Service "0..9999" --* "1..1" services_Service : services5
-services_RFSService "1..1" -- "0..9999" services_Tolerance : toleranceRefs1
-services_ServiceForecastUsers "1..1" *-- "0..9999" services_Value : userValues25
+services_CIID "services_Service 0..9999" --* "services_CIID 1..1" services_Service : cIID3
+services_Expression "services_ServiceDistribution18 0..9999" -- "services_Expression 1..1" services_ServiceDistribution : expressionRefs17
+services_Expression "services_ServiceUser41 0..9999" -- "services_Expression42 1..1" services_ServiceUser : expressionRefs40
+services_Node "services_RFSService 0..9999" -- "services_Node 1..1" services_RFSService : nodes0
+services_DateTimeRange "services_ServiceForecast20 0..1" --* "services_DateTimeRange 1..1" services_ServiceForecast : period19
+services_DateTimeRange "services_ServiceMonitor31 0..1" --* "services_DateTimeRange32 1..1" services_ServiceMonitor : period30
+services_NetXResource "services_ServiceProfile 0..9999" --* "services_NetXResource36 1..1" services_ServiceProfile : profileResources35
+services_ResourceForecast "services_ServiceForecast24 0..9999" --* "services_ResourceForecast 1..1" services_ServiceForecast : resourceForecasts23
+services_ResourceMonitor "services_ServiceMonitor34 0..9999" --* "services_ResourceMonitor 1..1" services_ServiceMonitor : resourceMonitors33
+services_Service "services_ServiceDistribution 1..1" *-- "services_Service14 0..1" services_ServiceDistribution : serviceDistribution13
+services_ServiceForecast "services_ServiceForecastUsers 1..1" *-- "services_ServiceForecast22 0..9999" services_ServiceForecastUsers : serviceForecastUsers21
+services_Service "services_ServiceForecast 1..1" *-- "services_Service8 0..9999" services_ServiceForecast : serviceForecasts7
+services_Service "services_ServiceMonitor 1..1" *-- "services_Service10 0..9999" services_ServiceMonitor : serviceMonitors9
+services_ServiceProfile "services_ServiceUser38 0..1" --* "services_ServiceProfile39 1..1" services_ServiceUser : serviceProfile37
+services_NetXResource "services_ServiceDistribution16 0..9999" --* "services_NetXResource 1..1" services_ServiceDistribution : serviceResources15
+services_ServiceForecastUsers "services_ServiceUser29 1..1" -- "services_ServiceForecastUsers28 0..1" services_ServiceUser : serviceUserRef27
+services_Service "services_ServiceUser 1..1" -- "services_Service12 0..9999" services_ServiceUser : serviceUserRefs11
+services_Service "services_Service4 0..9999" --* "services_Service6 1..1" services_Service : services5
+services_RFSService "services_Tolerance 1..1" -- "services_RFSService2 0..9999" services_Tolerance : toleranceRefs1
+services_ServiceForecastUsers "services_Value 1..1" *-- "services_ServiceForecastUsers26 0..9999" services_Value : userValues25
 @enduml

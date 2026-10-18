@@ -1,4 +1,8 @@
 @startuml
+' model: _214aebd4_0201_4c31_a929_fcfa7e36c9b6
+' project: sampleModel
+' owner: User
+' description: New project
 class Profile {
   + IDNum : str
   + IDType : int
@@ -106,12 +110,12 @@ enum transaction_TransactionType {
 }
 class transaction_TransferTransaction {
 }
-loan_Loan "0..1" -- "0..1" loan_LoanApplication : LoanApplication_Loan
-loan_LoanApplication "1..1" -- "0..5" loan_LoanApplicationFile : LoanApplication_LoanApplicationFile
-transaction_PaybillsTransaction "0..9999" -- "0..1" transaction_Payee : PaybillsTransaction_Payee
-Profile "0..1" -- "0..9999" account_Account : Profile_Account
-Profile "1..1" -- "0..9999" loan_LoanApplication : Profile_LoanApplication
-Profile "0..1" -- "0..1" User : Profile_User
-account_Account "0..1" -- "0..9999" transaction_Transaction : Transaction_Account
-transaction_ExternalAccount "0..1" -- "0..9999" transaction_TransferTransaction : TransferTransaction_ExternalAccount
+loan_Loan "loan12 0..1" -- "loanApplication13 0..1" loan_LoanApplication : LoanApplication_Loan
+loan_LoanApplication "loanApplication11 1..1" -- "loanApplicationFile10 0..5" loan_LoanApplicationFile : LoanApplication_LoanApplicationFile
+transaction_PaybillsTransaction "paybillsTransaction5 0..9999" -- "payee4 0..1" transaction_Payee : PaybillsTransaction_Payee
+Profile "profile9 0..1" -- "account8 0..9999" account_Account : Profile_Account
+Profile "profile15 1..1" -- "loanApplication14 0..9999" loan_LoanApplication : Profile_LoanApplication
+Profile "profile7 0..1" -- "user6 0..1" User : Profile_User
+account_Account "account0 0..1" -- "transaction1 0..9999" transaction_Transaction : Transaction_Account
+transaction_ExternalAccount "externalAccount2 0..1" -- "transferTransaction3 0..9999" transaction_TransferTransaction : TransferTransaction_ExternalAccount
 @enduml

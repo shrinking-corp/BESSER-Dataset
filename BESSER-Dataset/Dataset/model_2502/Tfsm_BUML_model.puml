@@ -1,4 +1,8 @@
 @startuml
+' model: tfsm
+' project: sampleModel
+' owner: User
+' description: New project
 class FSM {
 }
 class State {
@@ -18,6 +22,6 @@ class tfsm_Transition {
 FSM <|-- tfsm_FSM
 State <|-- tfsm_State
 Transition <|-- tfsm_Transition
-tfsm_FSM "1..1" -- "0..1" tfsm_State : currentState0
-tfsm_Guard "0..1" --* "1..1" tfsm_Transition : guard1
+tfsm_FSM "tfsm_State 1..1" -- "tfsm_FSM 0..1" tfsm_State : currentState0
+tfsm_Guard "tfsm_Transition 0..1" --* "tfsm_Guard 1..1" tfsm_Transition : guard1
 @enduml

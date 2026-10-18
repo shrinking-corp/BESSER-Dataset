@@ -1,4 +1,8 @@
 @startuml
+' model: PrimitiveTypes
+' project: sampleModel
+' owner: User
+' description: New project
 class Column {
 }
 class DataBase {
@@ -23,10 +27,10 @@ class Table {
 NamedElement <|-- RelationalDBSchema_Column
 NamedElement <|-- RelationalDBSchema_DataBase
 NamedElement <|-- RelationalDBSchema_Table
-Column "0..9999" --* "1..1" RelationalDBSchema_Table : columns2
-DataBase "1..1" -- "1..1" RelationalDBSchema_Table : database1
-Column "0..9999" -- "1..1" RelationalDBSchema_Table : key3
-RelationalDBSchema_Column "1..1" -- "0..1" Table : keyOf7
-RelationalDBSchema_Column "1..1" -- "1..1" Table : owner5
-RelationalDBSchema_DataBase "1..1" *-- "0..9999" Table : tables0
+Column "owner 0..9999" --* "Column 1..1" RelationalDBSchema_Table : columns2
+DataBase "tables 1..1" -- "DataBase 1..1" RelationalDBSchema_Table : database1
+Column "keyOf 0..9999" -- "Column4 1..1" RelationalDBSchema_Table : key3
+RelationalDBSchema_Column "Table8 1..1" -- "key 0..1" Table : keyOf7
+RelationalDBSchema_Column "Table6 1..1" -- "columns 1..1" Table : owner5
+RelationalDBSchema_DataBase "Table 1..1" *-- "database 0..9999" Table : tables0
 @enduml

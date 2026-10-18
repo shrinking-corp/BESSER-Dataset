@@ -1,4 +1,8 @@
 @startuml
+' model: PrimitiveTypes
+' project: sampleModel
+' owner: User
+' description: New project
 class Column {
 }
 class Named {
@@ -27,12 +31,12 @@ Named <|-- Relational_Schema
 Named <|-- Relational_System
 Named <|-- Relational_Table
 Named <|-- Relational_Type
-Column "0..9999" --* "1..1" Relational_Table : col2
-Column "0..9999" -- "1..1" Relational_Table : key4
-Relational_Column "1..1" -- "0..1" Table : keyOf8
-Relational_Schema "1..1" *-- "0..9999" Table : ownedElements0
-Relational_Table "1..1" -- "1..1" Schema : owner1
-Relational_Column "1..1" -- "1..1" Table : owner6
-Relational_System "1..1" *-- "0..9999" Schema : schemas11
-Relational_Column "1..1" -- "1..1" Type : type10
+Column "owner3 0..9999" --* "Column 1..1" Relational_Table : col2
+Column "keyOf 0..9999" -- "Column5 1..1" Relational_Table : key4
+Relational_Column "Table9 1..1" -- "key 0..1" Table : keyOf8
+Relational_Schema "Table 1..1" *-- "owner 0..9999" Table : ownedElements0
+Relational_Table "Schema 1..1" -- "ownedElements 1..1" Schema : owner1
+Relational_Column "Table7 1..1" -- "col 1..1" Table : owner6
+Relational_System "Schema12 1..1" *-- "Relational_System 0..9999" Schema : schemas11
+Relational_Column "Type 1..1" -- "Relational_Column 1..1" Type : type10
 @enduml

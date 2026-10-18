@@ -1,4 +1,8 @@
 @startuml
+' model: state
+' project: sampleModel
+' owner: User
+' description: New project
 class Node {
 }
 class Transition {
@@ -33,13 +37,13 @@ Node <|-- state_FinalNode
 Node <|-- state_InitialNode
 Node <|-- state_State
 Transition <|-- state_TimeoutTransition
-state_Condition "0..1" --* "1..1" state_ConditionalNode : condition12
-state_Condition "0..1" --* "1..1" state_Transition : guard10
-state_Node "1..1" -- "0..9999" state_Transition : incoming0
-state_Module "0..1" -- "1..1" state_StateMachine : module19
-state_Node "0..9999" --* "1..1" state_StateMachine : nodes14
-state_Node "1..1" -- "0..9999" state_Transition : outgoing1
-state_Node "0..1" -- "1..1" state_Transition : source4
-state_Node "0..1" -- "1..1" state_Transition : target7
-state_StateMachine "1..1" *-- "0..9999" state_Transition : transitions16
+state_Condition "state_ConditionalNode 0..1" --* "state_Condition13 1..1" state_ConditionalNode : condition12
+state_Condition "state_Transition11 0..1" --* "state_Condition 1..1" state_Transition : guard10
+state_Node "state_Transition 1..1" -- "state_Node 0..9999" state_Transition : incoming0
+state_Module "state_StateMachine20 0..1" -- "state_Module 1..1" state_StateMachine : module19
+state_Node "state_StateMachine 0..9999" --* "state_Node15 1..1" state_StateMachine : nodes14
+state_Node "state_Transition3 1..1" -- "state_Node2 0..9999" state_Transition : outgoing1
+state_Node "state_Transition5 0..1" -- "state_Node6 1..1" state_Transition : source4
+state_Node "state_Transition8 0..1" -- "state_Node9 1..1" state_Transition : target7
+state_StateMachine "state_Transition18 1..1" *-- "state_StateMachine17 0..9999" state_Transition : transitions16
 @enduml

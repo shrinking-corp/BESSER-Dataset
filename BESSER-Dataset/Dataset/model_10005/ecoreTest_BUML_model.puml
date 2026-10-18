@@ -1,4 +1,8 @@
 @startuml
+' model: ecoreTest
+' project: sampleModel
+' owner: User
+' description: New project
 class Eclass5 {
 }
 class ecoreTest_EClass2 {
@@ -12,6 +16,12 @@ class ecoreTest_Eclass1 {
   + eAttribute2 : str
 }
 Eclass5 <|-- ecoreTest_EClass3
-ecoreTest_EClass2 "0..9999" --* "1..1" ecoreTest_Eclass1 : classes20
-ecoreTest_EClass2 "1..1" *-- "0..9999" ecoreTest_EClass3 : classes31
+ecoreTest_EClass2 "ecoreTest_Eclass1 0..9999" --* "ecoreTest_EClass2 1..1" ecoreTest_Eclass1 : classes20
+ecoreTest_EClass2 "ecoreTest_EClass3 1..1" *-- "ecoreTest_EClass22 0..9999" ecoreTest_EClass3 : classes31
+note top of ecoreTest_EClass2
+  constraint eclass2_constraint (OCL): context EClass2 inv: Tuple{status: Boolean = false,severity: Integer = 0,message : String = 'ecoreTest: eclass2_constraint '+self.toString()}.status
+end note
+note top of ecoreTest_Eclass1
+  constraint eclass1_constraint (OCL): context Eclass1 inv: Tuple{status: Boolean = false,severity: Integer = 0,message : String = 'ecoreTest: eclass1_constraint '+self.toString()}.status
+end note
 @enduml

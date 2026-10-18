@@ -1,4 +1,8 @@
 @startuml
+' model: _UFLu4IP1EeqWAK1R3DAmBw
+' project: sampleModel
+' owner: User
+' description: New project
 class ShoppingCart {
   + cartId : int
   + dateAdded : int
@@ -51,11 +55,11 @@ class user {
   + loginstatus : str
   + password : str
 }
-ShoppingCart "1..1" -- "0..1" cartitem : ShoppingCart_cartitem
-ShoppingCart "0..1" -- "1..1" coustomer : ShoppingCart_coustomer
-cartitem "0..1" -- "0..1" product : cartitem_ProLocal
-coustomer "1..1" -- "1..9999" order : coustomer_order
-orderDetail "1..9999" -- "1..1" product : orderDetail_ProLocal
-order "1..1" -- "1..1" orderDetail : order_orderDetail
-order "1..1" -- "1..1" shippinginfo : order_shippinginfo
+ShoppingCart "ShoppingCart_cartitem_13 1..1" -- "ShoppingCart_cartitem_02 0..1" cartitem : ShoppingCart_cartitem
+ShoppingCart "ShoppingCart_coustomer_11 0..1" -- "ShoppingCart_coustomer_00 1..1" coustomer : ShoppingCart_coustomer
+cartitem "cartitem_ProLocal_15 0..1" -- "cartitem_ProLocal_04 0..1" product : cartitem_ProLocal
+coustomer "coustomer_order_19 1..1" -- "coustomer_order_08 1..9999" order : coustomer_order
+orderDetail "orderDetail_ProLocal_17 1..9999" -- "orderDetail_ProLocal_06 1..1" product : orderDetail_ProLocal
+order "order_orderDetail_111 1..1" -- "order_orderDetail_010 1..1" orderDetail : order_orderDetail
+order "order_shippinginfo_113 1..1" -- "order_shippinginfo_012 1..1" shippinginfo : order_shippinginfo
 @enduml

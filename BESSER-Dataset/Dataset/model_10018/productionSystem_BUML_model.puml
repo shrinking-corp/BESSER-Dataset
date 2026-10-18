@@ -1,4 +1,8 @@
 @startuml
+' model: ProductionSystem
+' project: sampleModel
+' owner: User
+' description: New project
 class Piece {
 }
 class ProductionSystem_Conveyor {
@@ -17,12 +21,15 @@ class ProductionSystem_Raw {
 }
 Piece <|-- ProductionSystem_Processed
 Piece <|-- ProductionSystem_Raw
-ProductionSystem_Conveyor "0..1" -- "1..1" ProductionSystem_Piece : conveyor13
-ProductionSystem_Conveyor "0..9999" --* "1..1" ProductionSystem_Machine : ic0
-ProductionSystem_Conveyor "1..1" -- "0..1" ProductionSystem_Machine : im10
-ProductionSystem_Conveyor "1..1" -- "0..9999" ProductionSystem_Conveyor : next5
-ProductionSystem_Conveyor "0..9999" --* "1..1" ProductionSystem_Machine : oc1
-ProductionSystem_Conveyor "1..1" -- "0..1" ProductionSystem_Machine : om11
-ProductionSystem_Conveyor "1..1" *-- "0..9999" ProductionSystem_Piece : piece3
-ProductionSystem_Conveyor "1..1" -- "0..1" ProductionSystem_Conveyor : prev8
+ProductionSystem_Conveyor "piece 0..1" -- "Conveyor14 1..1" ProductionSystem_Piece : conveyor13
+ProductionSystem_Conveyor "om 0..9999" --* "Conveyor 1..1" ProductionSystem_Machine : ic0
+ProductionSystem_Conveyor "Machine 1..1" -- "oc 0..1" ProductionSystem_Machine : im10
+ProductionSystem_Conveyor "Conveyor6 1..1" -- "prev 0..9999" ProductionSystem_Conveyor : next5
+ProductionSystem_Conveyor "im 0..9999" --* "Conveyor2 1..1" ProductionSystem_Machine : oc1
+ProductionSystem_Conveyor "Machine12 1..1" -- "ic 0..1" ProductionSystem_Machine : om11
+ProductionSystem_Conveyor "Piece 1..1" *-- "conveyor 0..9999" ProductionSystem_Piece : piece3
+ProductionSystem_Conveyor "Conveyor9 1..1" -- "next 0..1" ProductionSystem_Conveyor : prev8
+note top of ProductionSystem_Conveyor
+  constraint conveyorInv (OCL): context Conveyor inv: Conveyor.allInstances()->forAll(var | var.piece->size()<=var.capacity) and Piece.allInstances()->forAll(z| z.conveyor->size() =1)
+end note
 @enduml

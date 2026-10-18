@@ -1,4 +1,8 @@
 @startuml
+' model: research2
+' project: sampleModel
+' owner: User
+' description: New project
 class Counted {
 }
 class Labelled {
@@ -70,29 +74,29 @@ Named <|-- research2_PublicationProcess
 Named <|-- research2_PublicationStructure
 Named <|-- research2_PublicationSystem
 Named <|-- research2_ReviewNote
-research2_Keyword "0..9999" --* "1..1" research2_KnowledgeManager : allkeywords48
-research2_Paper "1..1" -- "0..9999" research2_Researcher : authors11
-research2_Paper "0..1" -- "1..1" research2_Paper : citedBy14
-research2_Keyword "0..9999" -- "1..1" research2_Paper : keywords12
-research2_KnowledgeManager "0..1" --* "1..1" research2_PublicationStructure : knowledgeMan33
-research2_Keyword "1..1" -- "0..9999" research2_Paper : kpapers46
-research2_Paper "0..1" -- "1..1" research2_Progress : paper20
-research2_Paper "0..9999" --* "1..1" research2_PublicationStructure : papers30
-research2_Paragraph "0..1" -- "1..1" research2_Write : paragraph22
-research2_Paper "1..1" *-- "0..9999" research2_Paragraph : paragraphs9
-research2_Position "0..1" -- "1..1" research2_Position : parent44
-research2_Phase "0..9999" --* "1..1" research2_PublicationProcess : phases0
-research2_Position "0..9999" --* "1..1" research2_PublicationSystem : positions40
-research2_Progress "1..1" -- "0..1" research2_PublicationProcess : process18
-research2_PublicationProcess "0..1" --* "1..1" research2_PublicationSystem : processView35
-research2_Paper "1..1" *-- "0..9999" research2_Progress : progress10
-research2_Paper "0..9999" -- "1..1" research2_Researcher : res_papers4
-research2_Position "0..1" -- "1..1" research2_Researcher : res_position7
-research2_PublicationStructure "1..1" *-- "0..9999" research2_Researcher : researchers28
-research2_Review "1..1" -- "0..1" research2_ReviewNote : reviewNote25
-research2_Paragraph "1..1" *-- "0..9999" research2_ReviewNote : reviews16
-research2_Researcher "1..1" *-- "0..9999" research2_Review : reviews2
-research2_Researcher "1..1" *-- "0..9999" research2_Skill : skills5
-research2_PublicationStructure "0..1" --* "1..1" research2_PublicationSystem : structuralView37
-research2_Researcher "1..1" *-- "0..9999" research2_Write : writes1
+research2_Keyword "research2_KnowledgeManager49 0..9999" --* "research2_Keyword 1..1" research2_KnowledgeManager : allkeywords48
+research2_Paper "Researcher 1..1" -- "res_papers 0..9999" research2_Researcher : authors11
+research2_Paper "research2_Paper13 0..1" -- "research2_Paper15 1..1" research2_Paper : citedBy14
+research2_Keyword "kpapers 0..9999" -- "Keyword 1..1" research2_Paper : keywords12
+research2_KnowledgeManager "research2_PublicationStructure34 0..1" --* "research2_KnowledgeManager 1..1" research2_PublicationStructure : knowledgeMan33
+research2_Keyword "Paper47 1..1" -- "keywords 0..9999" research2_Paper : kpapers46
+research2_Paper "progress 0..1" -- "Paper21 1..1" research2_Progress : paper20
+research2_Paper "research2_PublicationStructure31 0..9999" --* "research2_Paper32 1..1" research2_PublicationStructure : papers30
+research2_Paragraph "research2_Write23 0..1" -- "research2_Paragraph24 1..1" research2_Write : paragraph22
+research2_Paper "research2_Paragraph 1..1" *-- "research2_Paper 0..9999" research2_Paragraph : paragraphs9
+research2_Position "research2_Position43 0..1" -- "research2_Position45 1..1" research2_Position : parent44
+research2_Phase "research2_PublicationProcess 0..9999" --* "research2_Phase 1..1" research2_PublicationProcess : phases0
+research2_Position "research2_PublicationSystem41 0..9999" --* "research2_Position42 1..1" research2_PublicationSystem : positions40
+research2_Progress "research2_PublicationProcess19 1..1" -- "research2_Progress 0..1" research2_PublicationProcess : process18
+research2_PublicationProcess "research2_PublicationSystem 0..1" --* "research2_PublicationProcess36 1..1" research2_PublicationSystem : processView35
+research2_Paper "Progress 1..1" *-- "paper 0..9999" research2_Progress : progress10
+research2_Paper "authors 0..9999" -- "Paper 1..1" research2_Researcher : res_papers4
+research2_Position "research2_Researcher8 0..1" -- "research2_Position 1..1" research2_Researcher : res_position7
+research2_PublicationStructure "research2_Researcher29 1..1" *-- "research2_PublicationStructure 0..9999" research2_Researcher : researchers28
+research2_Review "research2_ReviewNote27 1..1" -- "research2_Review26 0..1" research2_ReviewNote : reviewNote25
+research2_Paragraph "research2_ReviewNote 1..1" *-- "research2_Paragraph17 0..9999" research2_ReviewNote : reviews16
+research2_Researcher "research2_Review 1..1" *-- "research2_Researcher3 0..9999" research2_Review : reviews2
+research2_Researcher "research2_Skill 1..1" *-- "research2_Researcher6 0..9999" research2_Skill : skills5
+research2_PublicationStructure "research2_PublicationSystem38 0..1" --* "research2_PublicationStructure39 1..1" research2_PublicationSystem : structuralView37
+research2_Researcher "research2_Write 1..1" *-- "research2_Researcher 0..9999" research2_Write : writes1
 @enduml

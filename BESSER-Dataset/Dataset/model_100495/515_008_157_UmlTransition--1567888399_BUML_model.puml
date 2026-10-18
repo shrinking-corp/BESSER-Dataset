@@ -1,4 +1,8 @@
 @startuml
+' model: umlTransition
+' project: sampleModel
+' owner: User
+' description: New project
 enum BehaviorKind {
   ACTIVITY
   OPAQUE_BEHAVIOR
@@ -42,8 +46,8 @@ EventRule <|-- umlTransition_ChangeEventRule
 EventRule <|-- umlTransition_TimeEventRule
 TimeEventRule <|-- umlTransition_AbsoluteTimeEventRule
 TimeEventRule <|-- umlTransition_RelativeTimeEventRule
-umlTransition_EffectRule "0..1" --* "1..1" umlTransition_TransitionRule : effect3
-umlTransition_GuardRule "0..1" --* "1..1" umlTransition_TransitionRule : guard1
-umlTransition_CallOrSignalEventRule "1..1" -- "0..1" umlTransition_NamedElement : operationOrSignal5
-umlTransition_EventRule "0..9999" --* "1..1" umlTransition_TransitionRule : triggers0
+umlTransition_EffectRule "umlTransition_TransitionRule4 0..1" --* "umlTransition_EffectRule 1..1" umlTransition_TransitionRule : effect3
+umlTransition_GuardRule "umlTransition_TransitionRule2 0..1" --* "umlTransition_GuardRule 1..1" umlTransition_TransitionRule : guard1
+umlTransition_CallOrSignalEventRule "umlTransition_NamedElement 1..1" -- "umlTransition_CallOrSignalEventRule 0..1" umlTransition_NamedElement : operationOrSignal5
+umlTransition_EventRule "umlTransition_TransitionRule 0..9999" --* "umlTransition_EventRule 1..1" umlTransition_TransitionRule : triggers0
 @enduml

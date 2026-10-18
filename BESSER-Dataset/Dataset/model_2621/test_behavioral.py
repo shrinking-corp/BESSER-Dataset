@@ -1786,9 +1786,9 @@ def test_assoc_incomingEdges106_stub_double():
     partner = diagram_EdgeTarget()
     setattr(partner, 'targetNode', None)
     _safe_set(owner, 'DEdge107', partner)
-    assert getattr(partner, 'targetNode') == owner
+    assert owner in getattr(partner, 'targetNode')
     _safe_set(owner, 'DEdge107', None)
-    assert getattr(partner, 'targetNode') is None
+    assert owner not in getattr(partner, 'targetNode')
 
 
 def test_assoc_init135_stub_double():
@@ -2221,9 +2221,9 @@ def test_assoc_outgoingEdges105_stub_double():
     partner = diagram_EdgeTarget()
     setattr(partner, 'sourceNode', None)
     _safe_set(owner, 'DEdge', partner)
-    assert getattr(partner, 'sourceNode') == owner
+    assert owner in getattr(partner, 'sourceNode')
     _safe_set(owner, 'DEdge', None)
-    assert getattr(partner, 'sourceNode') is None
+    assert owner not in getattr(partner, 'sourceNode')
 
 
 def test_assoc_ownedStyle67_stub_double():

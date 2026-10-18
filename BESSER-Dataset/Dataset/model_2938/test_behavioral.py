@@ -975,9 +975,9 @@ def test_assoc_attributes94_stub_double():
     partner = eJSL_DetailPageField()
     setattr(partner, 'eJSL_DetailPageField95', None)
     _safe_set(owner, 'eJSL_KeyValuePair96', partner)
-    assert getattr(partner, 'eJSL_DetailPageField95') == owner
+    assert owner in getattr(partner, 'eJSL_DetailPageField95')
     _safe_set(owner, 'eJSL_KeyValuePair96', None)
-    assert getattr(partner, 'eJSL_DetailPageField95') is None
+    assert owner not in getattr(partner, 'eJSL_DetailPageField95')
 
 
 def test_assoc_classes141_stub_double():
@@ -990,9 +990,9 @@ def test_assoc_classes141_stub_double():
     partner = eJSL_Library()
     setattr(partner, 'eJSL_Library142', None)
     _safe_set(owner, 'eJSL_Class', partner)
-    assert getattr(partner, 'eJSL_Library142') == owner
+    assert owner in getattr(partner, 'eJSL_Library142')
     _safe_set(owner, 'eJSL_Class', None)
-    assert getattr(partner, 'eJSL_Library142') is None
+    assert owner not in getattr(partner, 'eJSL_Library142')
 
 
 def test_assoc_cssblocks174_stub_double():
@@ -1005,9 +1005,9 @@ def test_assoc_cssblocks174_stub_double():
     partner = eJSL_Template()
     setattr(partner, 'eJSL_Template175', None)
     _safe_set(owner, 'eJSL_CssBlock', partner)
-    assert getattr(partner, 'eJSL_Template175') == owner
+    assert owner in getattr(partner, 'eJSL_Template175')
     _safe_set(owner, 'eJSL_CssBlock', None)
-    assert getattr(partner, 'eJSL_Template175') is None
+    assert owner not in getattr(partner, 'eJSL_Template175')
 
 
 def test_assoc_datatypes1_stub_double():
@@ -1020,9 +1020,9 @@ def test_assoc_datatypes1_stub_double():
     partner = eJSL_EJSLPart()
     setattr(partner, 'eJSL_EJSLPart2', None)
     _safe_set(owner, 'eJSL_Datatype', partner)
-    assert getattr(partner, 'eJSL_EJSLPart2') == owner
+    assert owner in getattr(partner, 'eJSL_EJSLPart2')
     _safe_set(owner, 'eJSL_Datatype', None)
-    assert getattr(partner, 'eJSL_EJSLPart2') is None
+    assert owner not in getattr(partner, 'eJSL_EJSLPart2')
 
 
 def test_assoc_dtype20_stub_double():
@@ -1065,9 +1065,9 @@ def test_assoc_entities12_stub_double():
     partner = eJSL_Feature()
     setattr(partner, 'eJSL_Feature13', None)
     _safe_set(owner, 'eJSL_Entity', partner)
-    assert getattr(partner, 'eJSL_Feature13') == owner
+    assert owner in getattr(partner, 'eJSL_Feature13')
     _safe_set(owner, 'eJSL_Entity', None)
-    assert getattr(partner, 'eJSL_Feature13') is None
+    assert owner not in getattr(partner, 'eJSL_Feature13')
 
 
 def test_assoc_entities139_stub_double():
@@ -1080,9 +1080,9 @@ def test_assoc_entities139_stub_double():
     partner = eJSL_Library()
     setattr(partner, 'eJSL_Library', None)
     _safe_set(owner, 'eJSL_Entity140', partner)
-    assert getattr(partner, 'eJSL_Library') == owner
+    assert owner in getattr(partner, 'eJSL_Library')
     _safe_set(owner, 'eJSL_Entity140', None)
-    assert getattr(partner, 'eJSL_Library') is None
+    assert owner not in getattr(partner, 'eJSL_Library')
 
 
 def test_assoc_entitypackages10_stub_double():
@@ -1095,9 +1095,9 @@ def test_assoc_entitypackages10_stub_double():
     partner = eJSL_Feature()
     setattr(partner, 'eJSL_Feature11', None)
     _safe_set(owner, 'eJSL_Entitypackage', partner)
-    assert getattr(partner, 'eJSL_Feature11') == owner
+    assert owner in getattr(partner, 'eJSL_Feature11')
     _safe_set(owner, 'eJSL_Entitypackage', None)
-    assert getattr(partner, 'eJSL_Feature11') is None
+    assert owner not in getattr(partner, 'eJSL_Feature11')
 
 
 def test_assoc_extensions115_stub_double():
@@ -1110,9 +1110,9 @@ def test_assoc_extensions115_stub_double():
     partner = eJSL_ExtensionPackage()
     setattr(partner, 'eJSL_ExtensionPackage', None)
     _safe_set(owner, 'eJSL_Extension116', partner)
-    assert getattr(partner, 'eJSL_ExtensionPackage') == owner
+    assert owner in getattr(partner, 'eJSL_ExtensionPackage')
     _safe_set(owner, 'eJSL_Extension116', None)
-    assert getattr(partner, 'eJSL_ExtensionPackage') is None
+    assert owner not in getattr(partner, 'eJSL_ExtensionPackage')
 
 
 def test_assoc_extensions9_stub_double():
@@ -1125,9 +1125,9 @@ def test_assoc_extensions9_stub_double():
     partner = eJSL_CMSExtension()
     setattr(partner, 'eJSL_CMSExtension', None)
     _safe_set(owner, 'eJSL_Extension', partner)
-    assert getattr(partner, 'eJSL_CMSExtension') == owner
+    assert owner in getattr(partner, 'eJSL_CMSExtension')
     _safe_set(owner, 'eJSL_Extension', None)
-    assert getattr(partner, 'eJSL_CMSExtension') is None
+    assert owner not in getattr(partner, 'eJSL_CMSExtension')
 
 
 def test_assoc_globalParamter117_stub_double():
@@ -1140,9 +1140,9 @@ def test_assoc_globalParamter117_stub_double():
     partner = eJSL_Component()
     setattr(partner, 'eJSL_Component', None)
     _safe_set(owner, 'eJSL_ParameterGroup118', partner)
-    assert getattr(partner, 'eJSL_Component') == owner
+    assert owner in getattr(partner, 'eJSL_Component')
     _safe_set(owner, 'eJSL_ParameterGroup118', None)
-    assert getattr(partner, 'eJSL_Component') is None
+    assert owner not in getattr(partner, 'eJSL_Component')
 
 
 def test_assoc_globalparameters3_stub_double():
@@ -1155,9 +1155,9 @@ def test_assoc_globalparameters3_stub_double():
     partner = eJSL_EJSLPart()
     setattr(partner, 'eJSL_EJSLPart4', None)
     _safe_set(owner, 'eJSL_Parameter', partner)
-    assert getattr(partner, 'eJSL_EJSLPart4') == owner
+    assert owner in getattr(partner, 'eJSL_EJSLPart4')
     _safe_set(owner, 'eJSL_Parameter', None)
-    assert getattr(partner, 'eJSL_EJSLPart4') is None
+    assert owner not in getattr(partner, 'eJSL_EJSLPart4')
 
 
 def test_assoc_linkedAction102_stub_double():
@@ -1200,9 +1200,9 @@ def test_assoc_linkparameters107_stub_double():
     partner = eJSL_ContextLink()
     setattr(partner, 'eJSL_ContextLink', None)
     _safe_set(owner, 'eJSL_LinkParameter', partner)
-    assert getattr(partner, 'eJSL_ContextLink') == owner
+    assert owner in getattr(partner, 'eJSL_ContextLink')
     _safe_set(owner, 'eJSL_LinkParameter', None)
-    assert getattr(partner, 'eJSL_ContextLink') is None
+    assert owner not in getattr(partner, 'eJSL_ContextLink')
 
 
 def test_assoc_links74_stub_double():
@@ -1230,9 +1230,9 @@ def test_assoc_localparameters170_stub_double():
     partner = eJSL_Template()
     setattr(partner, 'eJSL_Template', None)
     _safe_set(owner, 'eJSL_Parameter171', partner)
-    assert getattr(partner, 'eJSL_Template') == owner
+    assert owner in getattr(partner, 'eJSL_Template')
     _safe_set(owner, 'eJSL_Parameter171', None)
-    assert getattr(partner, 'eJSL_Template') is None
+    assert owner not in getattr(partner, 'eJSL_Template')
 
 
 def test_assoc_packages143_stub_double():
@@ -1245,9 +1245,9 @@ def test_assoc_packages143_stub_double():
     partner = eJSL_Library()
     setattr(partner, 'eJSL_Library144', None)
     _safe_set(owner, 'eJSL_Package', partner)
-    assert getattr(partner, 'eJSL_Library144') == owner
+    assert owner in getattr(partner, 'eJSL_Library144')
     _safe_set(owner, 'eJSL_Package', None)
-    assert getattr(partner, 'eJSL_Library144') is None
+    assert owner not in getattr(partner, 'eJSL_Library144')
 
 
 def test_assoc_pageRef122_stub_double():
@@ -1260,9 +1260,9 @@ def test_assoc_pageRef122_stub_double():
     partner = eJSL_Section()
     setattr(partner, 'eJSL_Section123', None)
     _safe_set(owner, 'eJSL_PageReference', partner)
-    assert getattr(partner, 'eJSL_Section123') == owner
+    assert owner in getattr(partner, 'eJSL_Section123')
     _safe_set(owner, 'eJSL_PageReference', None)
-    assert getattr(partner, 'eJSL_Section123') is None
+    assert owner not in getattr(partner, 'eJSL_Section123')
 
 
 def test_assoc_pageRef132_stub_double():
@@ -1290,9 +1290,9 @@ def test_assoc_pages14_stub_double():
     partner = eJSL_Feature()
     setattr(partner, 'eJSL_Feature15', None)
     _safe_set(owner, 'eJSL_Page', partner)
-    assert getattr(partner, 'eJSL_Feature15') == owner
+    assert owner in getattr(partner, 'eJSL_Feature15')
     _safe_set(owner, 'eJSL_Page', None)
-    assert getattr(partner, 'eJSL_Feature15') is None
+    assert owner not in getattr(partner, 'eJSL_Feature15')
 
 
 def test_assoc_parametergroups5_stub_double():
@@ -1305,9 +1305,9 @@ def test_assoc_parametergroups5_stub_double():
     partner = eJSL_EJSLPart()
     setattr(partner, 'eJSL_EJSLPart6', None)
     _safe_set(owner, 'eJSL_ParameterGroup', partner)
-    assert getattr(partner, 'eJSL_EJSLPart6') == owner
+    assert owner in getattr(partner, 'eJSL_EJSLPart6')
     _safe_set(owner, 'eJSL_ParameterGroup', None)
-    assert getattr(partner, 'eJSL_EJSLPart6') is None
+    assert owner not in getattr(partner, 'eJSL_EJSLPart6')
 
 
 def test_assoc_positions172_stub_double():
@@ -1320,9 +1320,9 @@ def test_assoc_positions172_stub_double():
     partner = eJSL_Template()
     setattr(partner, 'eJSL_Template173', None)
     _safe_set(owner, 'eJSL_Position', partner)
-    assert getattr(partner, 'eJSL_Template173') == owner
+    assert owner in getattr(partner, 'eJSL_Template173')
     _safe_set(owner, 'eJSL_Position', None)
-    assert getattr(partner, 'eJSL_Template173') is None
+    assert owner not in getattr(partner, 'eJSL_Template173')
 
 
 def test_assoc_ref129_stub_double():
@@ -1410,8 +1410,8 @@ def test_assoc_values91_stub_double():
     partner = eJSL_DetailPageField()
     setattr(partner, 'eJSL_DetailPageField92', None)
     _safe_set(owner, 'eJSL_KeyValuePair93', partner)
-    assert getattr(partner, 'eJSL_DetailPageField92') == owner
+    assert owner in getattr(partner, 'eJSL_DetailPageField92')
     _safe_set(owner, 'eJSL_KeyValuePair93', None)
-    assert getattr(partner, 'eJSL_DetailPageField92') is None
+    assert owner not in getattr(partner, 'eJSL_DetailPageField92')
 
 

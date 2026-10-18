@@ -1,4 +1,8 @@
 @startuml
+' model: TypeB
+' project: sampleModel
+' owner: User
+' description: New project
 class PortB {
 }
 class TypeB_BlockB {
@@ -12,6 +16,6 @@ abstract class TypeB_PortB {
 }
 PortB <|-- TypeB_InPortB
 PortB <|-- TypeB_OutPortB
-TypeB_BlockB "1..1" *-- "0..9999" TypeB_InPortB : inputPorts0
-TypeB_BlockB "1..1" *-- "0..9999" TypeB_OutPortB : outputPorts1
+TypeB_BlockB "TypeB_InPortB 1..1" *-- "TypeB_BlockB 0..9999" TypeB_InPortB : inputPorts0
+TypeB_BlockB "TypeB_OutPortB 1..1" *-- "TypeB_BlockB2 0..9999" TypeB_OutPortB : outputPorts1
 @enduml

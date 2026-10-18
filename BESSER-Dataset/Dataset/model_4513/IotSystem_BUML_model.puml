@@ -1,4 +1,8 @@
 @startuml
+' model: iotsystem
+' project: sampleModel
+' owner: User
+' description: New project
 enum Actions {
   EMAIL
   SMS
@@ -59,14 +63,14 @@ NamedElement <|-- iotsystem_DigitalArtifact
 NamedElement <|-- iotsystem_IotSystem
 NamedElement <|-- iotsystem_PhysicalEntity
 NamedElement <|-- iotsystem_Rule
-iotsystem_Action "1..9999" --* "1..1" iotsystem_Rule : actions5
-iotsystem_Condition "1..1" --* "1..1" iotsystem_Rule : condition7
-iotsystem_Device "1..1" -- "1..9999" iotsystem_Resource : consumes0
-iotsystem_Device "0..9999" --* "1..1" iotsystem_PhysicalEntity : devices11
-iotsystem_DigitalArtifact "1..9999" --* "1..1" iotsystem_IotSystem : digitalArtifacts15
-iotsystem_Action "1..1" *-- "0..9999" iotsystem_Parameter : parameters9
-iotsystem_IotSystem "1..1" *-- "1..9999" iotsystem_PhysicalEntity : physicalEntities13
-iotsystem_DigitalArtifact "1..1" *-- "0..9999" iotsystem_Resource : resources1
-iotsystem_DigitalArtifact "1..1" *-- "0..9999" iotsystem_Rule : rules3
-iotsystem_Condition "1..1" -- "1..1" iotsystem_Sensor : variable18
+iotsystem_Action "iotsystem_Rule6 1..9999" --* "iotsystem_Action 1..1" iotsystem_Rule : actions5
+iotsystem_Condition "iotsystem_Rule8 1..1" --* "iotsystem_Condition 1..1" iotsystem_Rule : condition7
+iotsystem_Device "iotsystem_Resource 1..1" -- "iotsystem_Device 1..9999" iotsystem_Resource : consumes0
+iotsystem_Device "iotsystem_PhysicalEntity 0..9999" --* "iotsystem_Device12 1..1" iotsystem_PhysicalEntity : devices11
+iotsystem_DigitalArtifact "iotsystem_IotSystem16 1..9999" --* "iotsystem_DigitalArtifact17 1..1" iotsystem_IotSystem : digitalArtifacts15
+iotsystem_Action "iotsystem_Parameter 1..1" *-- "iotsystem_Action10 0..9999" iotsystem_Parameter : parameters9
+iotsystem_IotSystem "iotsystem_PhysicalEntity14 1..1" *-- "iotsystem_IotSystem 1..9999" iotsystem_PhysicalEntity : physicalEntities13
+iotsystem_DigitalArtifact "iotsystem_Resource2 1..1" *-- "iotsystem_DigitalArtifact 0..9999" iotsystem_Resource : resources1
+iotsystem_DigitalArtifact "iotsystem_Rule 1..1" *-- "iotsystem_DigitalArtifact4 0..9999" iotsystem_Rule : rules3
+iotsystem_Condition "iotsystem_Sensor 1..1" -- "iotsystem_Condition19 1..1" iotsystem_Sensor : variable18
 @enduml

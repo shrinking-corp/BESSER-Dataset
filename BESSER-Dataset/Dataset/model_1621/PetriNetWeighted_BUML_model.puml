@@ -1,4 +1,8 @@
 @startuml
+' model: pnw
+' project: sampleModel
+' owner: User
+' description: New project
 class Edge {
 }
 class NamedElement {
@@ -33,14 +37,14 @@ NamedElement <|-- pnw_Transition
 NetElement <|-- pnw_Edge
 NetElement <|-- pnw_Place
 NetElement <|-- pnw_Transition
-pnw_Net "1..1" *-- "0..9999" pnw_NetElement : elements0
-pnw_PTEdge "1..1" -- "1..1" pnw_Place : fromPlace10
-pnw_TPEdge "1..1" -- "1..1" pnw_Transition : fromTransition8
-pnw_PTEdge "0..9999" -- "1..1" pnw_Transition : inPTEdges3
-pnw_Place "1..1" -- "0..9999" pnw_TPEdge : inTPEdges6
-pnw_Net "1..1" -- "1..1" pnw_NetElement : net1
-pnw_PTEdge "0..9999" -- "1..1" pnw_Place : outPTEdges4
-pnw_TPEdge "0..9999" -- "1..1" pnw_Transition : outTPEdges2
-pnw_Place "1..1" -- "1..1" pnw_TPEdge : toPlace9
-pnw_PTEdge "1..1" -- "1..1" pnw_Transition : toTransition12
+pnw_Net "NetElement 1..1" *-- "net 0..9999" pnw_NetElement : elements0
+pnw_PTEdge "Place11 1..1" -- "outPTEdges 1..1" pnw_Place : fromPlace10
+pnw_TPEdge "Transition 1..1" -- "outTPEdges 1..1" pnw_Transition : fromTransition8
+pnw_PTEdge "toTransition 0..9999" -- "PTEdge 1..1" pnw_Transition : inPTEdges3
+pnw_Place "TPEdge7 1..1" -- "toPlace 0..9999" pnw_TPEdge : inTPEdges6
+pnw_Net "elements 1..1" -- "Net 1..1" pnw_NetElement : net1
+pnw_PTEdge "fromPlace 0..9999" -- "PTEdge5 1..1" pnw_Place : outPTEdges4
+pnw_TPEdge "fromTransition 0..9999" -- "TPEdge 1..1" pnw_Transition : outTPEdges2
+pnw_Place "inTPEdges 1..1" -- "Place 1..1" pnw_TPEdge : toPlace9
+pnw_PTEdge "Transition13 1..1" -- "inPTEdges 1..1" pnw_Transition : toTransition12
 @enduml

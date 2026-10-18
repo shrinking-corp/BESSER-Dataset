@@ -1254,9 +1254,9 @@ def test_assoc_arrayComponentAssociation543_stub_double():
     partner = adb_NamedArrayAggregate()
     setattr(partner, 'adb_NamedArrayAggregate', None)
     _safe_set(owner, 'adb_ArrayComponentAssociation', partner)
-    assert getattr(partner, 'adb_NamedArrayAggregate') == owner
+    assert owner in getattr(partner, 'adb_NamedArrayAggregate')
     _safe_set(owner, 'adb_ArrayComponentAssociation', None)
-    assert getattr(partner, 'adb_NamedArrayAggregate') is None
+    assert owner not in getattr(partner, 'adb_NamedArrayAggregate')
 
 
 def test_assoc_arrayTypeDefinition139_stub_double():
@@ -1314,9 +1314,9 @@ def test_assoc_componentChoiceList530_stub_double():
     partner = adb_RecordComponentAssociation()
     setattr(partner, 'adb_RecordComponentAssociation531', None)
     _safe_set(owner, 'adb_ComponentChoiceList', partner)
-    assert getattr(partner, 'adb_RecordComponentAssociation531') == owner
+    assert owner in getattr(partner, 'adb_RecordComponentAssociation531')
     _safe_set(owner, 'adb_ComponentChoiceList', None)
-    assert getattr(partner, 'adb_RecordComponentAssociation531') is None
+    assert owner not in getattr(partner, 'adb_RecordComponentAssociation531')
 
 
 def test_assoc_componentDefinition360_stub_double():
@@ -1749,9 +1749,9 @@ def test_assoc_elsifConditions168_stub_double():
     partner = adb_IfStatement()
     setattr(partner, 'adb_IfStatement169', None)
     _safe_set(owner, 'adb_Expression170', partner)
-    assert getattr(partner, 'adb_IfStatement169') == owner
+    assert owner in getattr(partner, 'adb_IfStatement169')
     _safe_set(owner, 'adb_Expression170', None)
-    assert getattr(partner, 'adb_IfStatement169') is None
+    assert owner not in getattr(partner, 'adb_IfStatement169')
 
 
 def test_assoc_endId222_stub_double():
@@ -1854,9 +1854,9 @@ def test_assoc_exceptionHandler76_stub_double():
     partner = adb_SequenceOfStatements()
     setattr(partner, 'adb_SequenceOfStatements77', None)
     _safe_set(owner, 'adb_ExceptionHandler78', partner)
-    assert getattr(partner, 'adb_SequenceOfStatements77') == owner
+    assert owner in getattr(partner, 'adb_SequenceOfStatements77')
     _safe_set(owner, 'adb_ExceptionHandler78', None)
-    assert getattr(partner, 'adb_SequenceOfStatements77') is None
+    assert owner not in getattr(partner, 'adb_SequenceOfStatements77')
 
 
 def test_assoc_exceptionName307_stub_double():
@@ -2034,9 +2034,9 @@ def test_assoc_genericAssociation312_stub_double():
     partner = adb_GenericActualPart()
     setattr(partner, 'adb_GenericActualPart313', None)
     _safe_set(owner, 'adb_GenericAssociation314', partner)
-    assert getattr(partner, 'adb_GenericActualPart313') == owner
+    assert owner in getattr(partner, 'adb_GenericActualPart313')
     _safe_set(owner, 'adb_GenericAssociation314', None)
-    assert getattr(partner, 'adb_GenericActualPart313') is None
+    assert owner not in getattr(partner, 'adb_GenericActualPart313')
 
 
 def test_assoc_handledSequenceOfStatements211_stub_double():
@@ -2139,9 +2139,9 @@ def test_assoc_importedNamespace10_stub_double():
     partner = adb_UsePackageClause()
     setattr(partner, 'adb_UsePackageClause', None)
     _safe_set(owner, 'adb_LibraryUnitDeclaration11', partner)
-    assert getattr(partner, 'adb_UsePackageClause') == owner
+    assert owner in getattr(partner, 'adb_UsePackageClause')
     _safe_set(owner, 'adb_LibraryUnitDeclaration11', None)
-    assert getattr(partner, 'adb_UsePackageClause') is None
+    assert owner not in getattr(partner, 'adb_UsePackageClause')
 
 
 def test_assoc_index568_stub_double():
@@ -2274,9 +2274,9 @@ def test_assoc_interfaceSubtypeMark333_stub_double():
     partner = adb_InterfaceList()
     setattr(partner, 'adb_InterfaceList334', None)
     _safe_set(owner, 'adb_Name335', partner)
-    assert getattr(partner, 'adb_InterfaceList334') == owner
+    assert owner in getattr(partner, 'adb_InterfaceList334')
     _safe_set(owner, 'adb_Name335', None)
-    assert getattr(partner, 'adb_InterfaceList334') is None
+    assert owner not in getattr(partner, 'adb_InterfaceList334')
 
 
 def test_assoc_interval486_stub_double():
@@ -2349,9 +2349,9 @@ def test_assoc_labels81_stub_double():
     partner = adb_LabelisableStatement()
     setattr(partner, 'adb_LabelisableStatement82', None)
     _safe_set(owner, 'adb_Label', partner)
-    assert getattr(partner, 'adb_LabelisableStatement82') == owner
+    assert owner in getattr(partner, 'adb_LabelisableStatement82')
     _safe_set(owner, 'adb_Label', None)
-    assert getattr(partner, 'adb_LabelisableStatement82') is None
+    assert owner not in getattr(partner, 'adb_LabelisableStatement82')
 
 
 def test_assoc_last413_stub_double():
@@ -2724,9 +2724,9 @@ def test_assoc_parameterAssociation552_stub_double():
     partner = adb_PrimaryName()
     setattr(partner, 'adb_PrimaryName553', None)
     _safe_set(owner, 'adb_ParameterAssociation', partner)
-    assert getattr(partner, 'adb_PrimaryName553') == owner
+    assert owner in getattr(partner, 'adb_PrimaryName553')
     _safe_set(owner, 'adb_ParameterAssociation', None)
-    assert getattr(partner, 'adb_PrimaryName553') is None
+    assert owner not in getattr(partner, 'adb_PrimaryName553')
 
 
 def test_assoc_parameterEffectiveValue562_stub_double():
@@ -2754,9 +2754,9 @@ def test_assoc_pragmas5_stub_double():
     partner = adb_CompilationUnit()
     setattr(partner, 'adb_CompilationUnit6', None)
     _safe_set(owner, 'adb_Pragma', partner)
-    assert getattr(partner, 'adb_CompilationUnit6') == owner
+    assert owner in getattr(partner, 'adb_CompilationUnit6')
     _safe_set(owner, 'adb_Pragma', None)
-    assert getattr(partner, 'adb_CompilationUnit6') is None
+    assert owner not in getattr(partner, 'adb_CompilationUnit6')
 
 
 def test_assoc_primary492_stub_double():
@@ -3114,9 +3114,9 @@ def test_assoc_subtypeMark362_stub_double():
     partner = adb_UnconstrainedIndexes()
     setattr(partner, 'adb_UnconstrainedIndexes', None)
     _safe_set(owner, 'adb_Name363', partner)
-    assert getattr(partner, 'adb_UnconstrainedIndexes') == owner
+    assert owner in getattr(partner, 'adb_UnconstrainedIndexes')
     _safe_set(owner, 'adb_Name363', None)
-    assert getattr(partner, 'adb_UnconstrainedIndexes') is None
+    assert owner not in getattr(partner, 'adb_UnconstrainedIndexes')
 
 
 def test_assoc_subtypeMark386_stub_double():
@@ -3189,9 +3189,9 @@ def test_assoc_taskNames304_stub_double():
     partner = adb_TaskNames()
     setattr(partner, 'adb_TaskNames', None)
     _safe_set(owner, 'adb_Name305', partner)
-    assert getattr(partner, 'adb_TaskNames') == owner
+    assert owner in getattr(partner, 'adb_TaskNames')
     _safe_set(owner, 'adb_Name305', None)
-    assert getattr(partner, 'adb_TaskNames') is None
+    assert owner not in getattr(partner, 'adb_TaskNames')
 
 
 def test_assoc_typeName501_stub_double():

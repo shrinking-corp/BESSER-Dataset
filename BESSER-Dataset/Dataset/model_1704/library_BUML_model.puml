@@ -1,4 +1,8 @@
 @startuml
+' model: library
+' project: sampleModel
+' owner: User
+' description: New project
 enum AnnotationColor {
   Blue
   Green
@@ -39,7 +43,7 @@ class library_TextAnnotation {
   + comment : str
 }
 Bookmark <|-- library_TextAnnotation
-library_Book "1..1" *-- "0..9999" library_Bookmark : bookmarks1
-library_Book "0..9999" --* "1..1" library_Library : books0
-library_Book "1..1" *-- "0..9999" library_Metadata : metadata3
+library_Book "library_Bookmark 1..1" *-- "library_Book2 0..9999" library_Bookmark : bookmarks1
+library_Book "library_Library 0..9999" --* "library_Book 1..1" library_Library : books0
+library_Book "library_Metadata 1..1" *-- "library_Book4 0..9999" library_Metadata : metadata3
 @enduml

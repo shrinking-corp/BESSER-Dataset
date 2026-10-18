@@ -1,4 +1,8 @@
 @startuml
+' model: dataflownet
+' project: sampleModel
+' owner: User
+' description: New project
 enum Comparation {
   Equal
   Greater
@@ -52,28 +56,28 @@ NamedElement <|-- dataflownet_StateMachineState
 NamedElement <|-- dataflownet_StateMachineTransition
 Node <|-- dataflownet_DataflowNet
 Node <|-- dataflownet_StateMachine
-dataflownet_Channel "1..1" -- "1..1" dataflownet_FiringRule : channel32
-dataflownet_Channel "0..9999" --* "1..1" dataflownet_DataflowSystem : channels45
-dataflownet_FiringRule "0..9999" --* "1..1" dataflownet_StateMachine : firingRules3
-dataflownet_StateMachineState "1..1" -- "1..1" dataflownet_StateMachineTransition : fromState21
-dataflownet_StateMachine "1..1" -- "1..1" dataflownet_StateMachineState : initialState2
-dataflownet_Channel "0..9999" -- "1..1" dataflownet_DataflowNet : inputChannels6
-dataflownet_StateMachineState "1..1" -- "0..9999" dataflownet_StateMachineTransition : inputTransitions17
-dataflownet_FiringRule "0..9999" -- "1..1" dataflownet_StateMachineTransition : inputs25
-dataflownet_DataflowNet "1..9999" --* "1..1" dataflownet_DataflowSystem : nets42
-dataflownet_StateMachine "1..1" *-- "1..9999" dataflownet_StateMachineState : nodes1
-dataflownet_DataflowNet "1..1" *-- "0..9999" dataflownet_Node : nodes9
-dataflownet_Channel "0..9999" -- "1..1" dataflownet_DataflowNet : outputChannels5
-dataflownet_StateMachineState "1..1" *-- "0..9999" dataflownet_StateMachineTransition : outputTransitions16
-dataflownet_FiringRule "0..9999" -- "1..1" dataflownet_StateMachineTransition : outputs27
-dataflownet_Channel "0..9999" --* "1..1" dataflownet_DataflowNet : ownChannels11
-dataflownet_DataflowNet "0..1" -- "1..1" dataflownet_Node : parent0
-dataflownet_StateMachine "1..1" -- "1..1" dataflownet_StateMachineState : parent19
-dataflownet_DataflowNet "1..1" -- "0..1" dataflownet_Process : process14
-dataflownet_DataflowSystem "1..1" *-- "1..9999" dataflownet_Process : processes48
-dataflownet_StateMachineState "1..1" -- "1..1" dataflownet_StateMachineTransition : toState23
-dataflownet_FiringRule "1..1" *-- "1..1" dataflownet_Token : tokens35
-dataflownet_Channel "1..1" -- "1..1" dataflownet_Type : type30
-dataflownet_Token "1..1" -- "1..1" dataflownet_Type : type37
-dataflownet_DataflowSystem "1..1" *-- "0..9999" dataflownet_Type : types40
+dataflownet_Channel "dataflownet_FiringRule33 1..1" -- "dataflownet_Channel34 1..1" dataflownet_FiringRule : channel32
+dataflownet_Channel "dataflownet_DataflowSystem46 0..9999" --* "dataflownet_Channel47 1..1" dataflownet_DataflowSystem : channels45
+dataflownet_FiringRule "dataflownet_StateMachine4 0..9999" --* "dataflownet_FiringRule 1..1" dataflownet_StateMachine : firingRules3
+dataflownet_StateMachineState "outputTransitions 1..1" -- "StateMachineState22 1..1" dataflownet_StateMachineTransition : fromState21
+dataflownet_StateMachine "dataflownet_StateMachineState 1..1" -- "dataflownet_StateMachine 1..1" dataflownet_StateMachineState : initialState2
+dataflownet_Channel "dataflownet_DataflowNet7 0..9999" -- "dataflownet_Channel8 1..1" dataflownet_DataflowNet : inputChannels6
+dataflownet_StateMachineState "StateMachineTransition18 1..1" -- "toState 0..9999" dataflownet_StateMachineTransition : inputTransitions17
+dataflownet_FiringRule "dataflownet_StateMachineTransition 0..9999" -- "dataflownet_FiringRule26 1..1" dataflownet_StateMachineTransition : inputs25
+dataflownet_DataflowNet "dataflownet_DataflowSystem43 1..9999" --* "dataflownet_DataflowNet44 1..1" dataflownet_DataflowSystem : nets42
+dataflownet_StateMachine "StateMachineState 1..1" *-- "parent 1..9999" dataflownet_StateMachineState : nodes1
+dataflownet_DataflowNet "Node 1..1" *-- "parent10 0..9999" dataflownet_Node : nodes9
+dataflownet_Channel "dataflownet_DataflowNet 0..9999" -- "dataflownet_Channel 1..1" dataflownet_DataflowNet : outputChannels5
+dataflownet_StateMachineState "StateMachineTransition 1..1" *-- "fromState 0..9999" dataflownet_StateMachineTransition : outputTransitions16
+dataflownet_FiringRule "dataflownet_StateMachineTransition28 0..9999" -- "dataflownet_FiringRule29 1..1" dataflownet_StateMachineTransition : outputs27
+dataflownet_Channel "dataflownet_DataflowNet12 0..9999" --* "dataflownet_Channel13 1..1" dataflownet_DataflowNet : ownChannels11
+dataflownet_DataflowNet "nodes 0..1" -- "DataflowNet 1..1" dataflownet_Node : parent0
+dataflownet_StateMachine "nodes20 1..1" -- "StateMachine 1..1" dataflownet_StateMachineState : parent19
+dataflownet_DataflowNet "dataflownet_Process 1..1" -- "dataflownet_DataflowNet15 0..1" dataflownet_Process : process14
+dataflownet_DataflowSystem "dataflownet_Process50 1..1" *-- "dataflownet_DataflowSystem49 1..9999" dataflownet_Process : processes48
+dataflownet_StateMachineState "inputTransitions 1..1" -- "StateMachineState24 1..1" dataflownet_StateMachineTransition : toState23
+dataflownet_FiringRule "dataflownet_Token 1..1" *-- "dataflownet_FiringRule36 1..1" dataflownet_Token : tokens35
+dataflownet_Channel "dataflownet_Type 1..1" -- "dataflownet_Channel31 1..1" dataflownet_Type : type30
+dataflownet_Token "dataflownet_Type39 1..1" -- "dataflownet_Token38 1..1" dataflownet_Type : type37
+dataflownet_DataflowSystem "dataflownet_Type41 1..1" *-- "dataflownet_DataflowSystem 0..9999" dataflownet_Type : types40
 @enduml

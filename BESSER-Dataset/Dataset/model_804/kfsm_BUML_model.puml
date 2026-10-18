@@ -1,4 +1,8 @@
 @startuml
+' model: kfsm
+' project: sampleModel
+' owner: User
+' description: New project
 class kfsm_Action {
   + id : str
 }
@@ -11,13 +15,13 @@ class kfsm_Transition {
   + input : str
   + output : str
 }
-kfsm_FSM "1..1" -- "1..9999" kfsm_State : finalState2
-kfsm_State "1..1" -- "0..9999" kfsm_Transition : incomingTransition7
-kfsm_FSM "1..1" -- "1..1" kfsm_State : initialState1
-kfsm_State "1..1" *-- "0..9999" kfsm_Transition : outgoingTransition6
-kfsm_FSM "1..1" *-- "0..9999" kfsm_State : ownedState0
-kfsm_FSM "1..1" -- "1..1" kfsm_State : owningFSM5
-kfsm_Action "0..1" --* "1..1" kfsm_State : s_action9
-kfsm_State "1..1" -- "1..1" kfsm_Transition : source11
-kfsm_State "1..1" -- "1..1" kfsm_Transition : target13
+kfsm_FSM "kfsm_State4 1..1" -- "kfsm_FSM3 1..9999" kfsm_State : finalState2
+kfsm_State "Transition8 1..1" -- "target 0..9999" kfsm_Transition : incomingTransition7
+kfsm_FSM "kfsm_State 1..1" -- "kfsm_FSM 1..1" kfsm_State : initialState1
+kfsm_State "Transition 1..1" *-- "source 0..9999" kfsm_Transition : outgoingTransition6
+kfsm_FSM "State 1..1" *-- "owningFSM 0..9999" kfsm_State : ownedState0
+kfsm_FSM "ownedState 1..1" -- "FSM 1..1" kfsm_State : owningFSM5
+kfsm_Action "kfsm_State10 0..1" --* "kfsm_Action 1..1" kfsm_State : s_action9
+kfsm_State "outgoingTransition 1..1" -- "State12 1..1" kfsm_Transition : source11
+kfsm_State "incomingTransition 1..1" -- "State14 1..1" kfsm_Transition : target13
 @enduml

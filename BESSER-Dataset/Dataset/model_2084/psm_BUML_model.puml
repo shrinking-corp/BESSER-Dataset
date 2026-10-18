@@ -1,4 +1,8 @@
 @startuml
+' model: ws
+' project: sampleModel
+' owner: User
+' description: New project
 class BasicNode {
 }
 class Coordinator {
@@ -112,22 +116,22 @@ ServiceDescription <|-- ws_middleware_ServiceImpl
 Simulator <|-- ws_tree_CDEVSSimulator
 Simulator <|-- ws_tree_PDEVSSimulator
 Simulator <|-- ws_tree_P_Simulator
-Coordinator "0..9999" --* "1..1" ws_tree_Tree : Coordinator10
-Process "1..9999" --* "1..1" ws_bundle_Bundle : Process22
-Root "1..1" --* "1..1" ws_tree_Tree : Root9
-Simulator "1..9999" --* "1..1" ws_tree_Tree : Simulator12
-BasicNode "1..1" -- "1..1" ws_tree_Root : child14
-BasicNode "1..9999" -- "1..1" ws_tree_Coordinator : children15
-ServiceImpl "1..1" -- "1..1" ws_middleware_Stub : impl7
-Middleware "1..1" -- "1..1" ws_bundle_Process : middleware26
-Node "1..9999" -- "1..1" ws_bundle_Process : nodes25
-Process "1..9999" -- "1..1" ws_middleware_Middleware : process1
-Processor "1..9999" --* "1..1" ws_middleware_VM : processors6
-Repository "1..1" -- "1..1" ws_middleware_WebService : registry4
-Root "1..9999" --* "1..1" ws_skeleton_Skeleton : rootskel18
-ServiceDescription "1..9999" --* "1..1" ws_middleware_Repository : services8
-Skeleton "1..1" -- "1..1" ws_bundle_Bundle : skeleton21
-Stub "1..9999" --* "1..1" ws_middleware_WebService : stubs3
-Tree "0..1" -- "1..1" ws_skeleton_Skeleton : tree17
-VM "0..1" -- "1..1" ws_middleware_Middleware : uses0
+Coordinator "ws_tree_Tree11 0..9999" --* "Coordinator 1..1" ws_tree_Tree : Coordinator10
+Process "ws_bundle_Bundle23 1..9999" --* "Process24 1..1" ws_bundle_Bundle : Process22
+Root "ws_tree_Tree 1..1" --* "Root 1..1" ws_tree_Tree : Root9
+Simulator "ws_tree_Tree13 1..9999" --* "Simulator 1..1" ws_tree_Tree : Simulator12
+BasicNode "ws_tree_Root 1..1" -- "BasicNode 1..1" ws_tree_Root : child14
+BasicNode "ws_tree_Coordinator 1..9999" -- "BasicNode16 1..1" ws_tree_Coordinator : children15
+ServiceImpl "ws_middleware_Stub 1..1" -- "ServiceImpl 1..1" ws_middleware_Stub : impl7
+Middleware "ws_bundle_Process27 1..1" -- "Middleware 1..1" ws_bundle_Process : middleware26
+Node "ws_bundle_Process 1..9999" -- "Node 1..1" ws_bundle_Process : nodes25
+Process "ws_middleware_Middleware2 1..9999" -- "Process 1..1" ws_middleware_Middleware : process1
+Processor "ws_middleware_VM 1..9999" --* "Processor 1..1" ws_middleware_VM : processors6
+Repository "ws_middleware_WebService5 1..1" -- "Repository 1..1" ws_middleware_WebService : registry4
+Root "ws_skeleton_Skeleton19 1..9999" --* "Root20 1..1" ws_skeleton_Skeleton : rootskel18
+ServiceDescription "ws_middleware_Repository 1..9999" --* "ServiceDescription 1..1" ws_middleware_Repository : services8
+Skeleton "ws_bundle_Bundle 1..1" -- "Skeleton 1..1" ws_bundle_Bundle : skeleton21
+Stub "ws_middleware_WebService 1..9999" --* "Stub 1..1" ws_middleware_WebService : stubs3
+Tree "ws_skeleton_Skeleton 0..1" -- "Tree 1..1" ws_skeleton_Skeleton : tree17
+VM "ws_middleware_Middleware 0..1" -- "VM 1..1" ws_middleware_Middleware : uses0
 @enduml

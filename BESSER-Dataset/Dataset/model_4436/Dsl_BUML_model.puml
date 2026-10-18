@@ -1,4 +1,8 @@
 @startuml
+' model: dsl
+' project: sampleModel
+' owner: User
+' description: New project
 enum Actions {
   BEEP
   DRIVETOEDGE
@@ -75,6 +79,6 @@ class dsl_UltrasonicSensor {
 SensorType <|-- dsl_ColorSensor
 SensorType <|-- dsl_TouchSensor
 SensorType <|-- dsl_UltrasonicSensor
-dsl_SensorType "0..1" --* "1..1" dsl_Task : sensor1
-dsl_Mission "1..1" *-- "0..9999" dsl_Task : tasks0
+dsl_SensorType "dsl_Task2 0..1" --* "dsl_SensorType 1..1" dsl_Task : sensor1
+dsl_Mission "dsl_Task 1..1" *-- "dsl_Mission 0..9999" dsl_Task : tasks0
 @enduml

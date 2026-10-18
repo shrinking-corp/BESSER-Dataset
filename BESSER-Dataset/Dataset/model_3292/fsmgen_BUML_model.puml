@@ -1,4 +1,8 @@
 @startuml
+' model: fsmgen
+' project: sampleModel
+' owner: User
+' description: New project
 class FSMGenElement {
 }
 class GraphItem {
@@ -46,25 +50,25 @@ FSMGenElement <|-- fsmgen_GraphContainer
 FSMGenElement <|-- fsmgen_GraphItem
 GraphItem <|-- fsmgen_Link
 GraphItem <|-- fsmgen_Node
-fsmgen_CommonTrigger "0..9999" --* "1..1" fsmgen_Node : caughtTriggers18
-fsmgen_Link "1..1" -- "0..9999" fsmgen_Link : chainHeads27
-fsmgen_EObject "0..1" -- "1..1" fsmgen_Link : commonData28
-fsmgen_GraphContainer "1..1" -- "0..1" fsmgen_ModelComponent : component1
-fsmgen_Graph "0..1" --* "1..1" fsmgen_GraphContainer : graph0
-fsmgen_Graph "0..1" -- "1..1" fsmgen_Node : graph10
-fsmgen_Graph "0..1" -- "1..1" fsmgen_Link : graph20
-fsmgen_AbstractInterfaceItem "0..1" -- "1..1" fsmgen_CommonTrigger : ifitem35
-fsmgen_Link "0..9999" -- "1..1" fsmgen_Node : incoming15
-fsmgen_CommonTrigger "1..1" -- "0..9999" fsmgen_Link : links37
-fsmgen_Graph "1..1" *-- "0..9999" fsmgen_Link : links4
-fsmgen_CommonTrigger "1..1" -- "0..1" fsmgen_EObject : msg32
-fsmgen_Graph "1..1" -- "0..1" fsmgen_Node : node8
-fsmgen_Graph "1..1" *-- "0..9999" fsmgen_Node : nodes3
-fsmgen_Link "0..9999" -- "1..1" fsmgen_Node : outgoing13
-fsmgen_Link "1..1" -- "0..1" fsmgen_Node : source22
-fsmgen_Graph "1..1" -- "0..1" fsmgen_StateGraph : stateGraph6
-fsmgen_Node "1..1" -- "0..1" fsmgen_StateGraphNode : stateGraphNode17
-fsmgen_Graph "0..1" --* "1..1" fsmgen_Node : subgraph11
-fsmgen_Link "1..1" -- "0..1" fsmgen_Node : target24
-fsmgen_Link "1..1" -- "0..1" fsmgen_TransitionBase : transition30
+fsmgen_CommonTrigger "fsmgen_Node19 0..9999" --* "fsmgen_CommonTrigger 1..1" fsmgen_Node : caughtTriggers18
+fsmgen_Link "fsmgen_Link 1..1" -- "fsmgen_Link26 0..9999" fsmgen_Link : chainHeads27
+fsmgen_EObject "fsmgen_Link29 0..1" -- "fsmgen_EObject 1..1" fsmgen_Link : commonData28
+fsmgen_GraphContainer "fsmgen_ModelComponent 1..1" -- "fsmgen_GraphContainer2 0..1" fsmgen_ModelComponent : component1
+fsmgen_Graph "fsmgen_GraphContainer 0..1" --* "fsmgen_Graph 1..1" fsmgen_GraphContainer : graph0
+fsmgen_Graph "nodes 0..1" -- "Graph 1..1" fsmgen_Node : graph10
+fsmgen_Graph "links 0..1" -- "Graph21 1..1" fsmgen_Link : graph20
+fsmgen_AbstractInterfaceItem "fsmgen_CommonTrigger36 0..1" -- "fsmgen_AbstractInterfaceItem 1..1" fsmgen_CommonTrigger : ifitem35
+fsmgen_Link "target 0..9999" -- "Link16 1..1" fsmgen_Node : incoming15
+fsmgen_CommonTrigger "fsmgen_Link39 1..1" -- "fsmgen_CommonTrigger38 0..9999" fsmgen_Link : links37
+fsmgen_Graph "Link 1..1" *-- "graph5 0..9999" fsmgen_Link : links4
+fsmgen_CommonTrigger "fsmgen_EObject34 1..1" -- "fsmgen_CommonTrigger33 0..1" fsmgen_EObject : msg32
+fsmgen_Graph "Node9 1..1" -- "subgraph 0..1" fsmgen_Node : node8
+fsmgen_Graph "Node 1..1" *-- "graph 0..9999" fsmgen_Node : nodes3
+fsmgen_Link "source 0..9999" -- "Link14 1..1" fsmgen_Node : outgoing13
+fsmgen_Link "Node23 1..1" -- "outgoing 0..1" fsmgen_Node : source22
+fsmgen_Graph "fsmgen_StateGraph 1..1" -- "fsmgen_Graph7 0..1" fsmgen_StateGraph : stateGraph6
+fsmgen_Node "fsmgen_StateGraphNode 1..1" -- "fsmgen_Node 0..1" fsmgen_StateGraphNode : stateGraphNode17
+fsmgen_Graph "node 0..1" --* "Graph12 1..1" fsmgen_Node : subgraph11
+fsmgen_Link "Node25 1..1" -- "incoming 0..1" fsmgen_Node : target24
+fsmgen_Link "fsmgen_TransitionBase 1..1" -- "fsmgen_Link31 0..1" fsmgen_TransitionBase : transition30
 @enduml

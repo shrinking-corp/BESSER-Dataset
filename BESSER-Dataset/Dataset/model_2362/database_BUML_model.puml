@@ -1,4 +1,8 @@
 @startuml
+' model: database
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractTable {
 }
 class DatabaseElement {
@@ -88,33 +92,33 @@ NamedElement <|-- database_TableContainer
 TableContainer <|-- database_DataBase
 TableContainer <|-- database_Schema
 TypesLibraryUser <|-- database_DataBase
-database_Column "0..1" -- "1..1" database_IndexElement : column45
-database_Column "0..9999" -- "1..1" database_PrimaryKey : columns29
-database_AbstractTable "1..1" *-- "0..9999" database_Column : columns3
-database_Constraint "0..9999" --* "1..1" database_Table : constraints25
-database_DataBase "1..1" *-- "0..9999" database_UserDefinedTypesLibrary : defines1
-database_Index "1..1" *-- "0..9999" database_IndexElement : elements17
-database_ForeignKey "1..1" *-- "0..9999" database_ForeignKeyElement : elements34
-database_Column "0..1" -- "1..1" database_ForeignKeyElement : fkColumn40
-database_Column "1..1" -- "0..9999" database_ForeignKeyElement : foreignKeyElements10
-database_ForeignKey "0..9999" --* "1..1" database_Table : foreignKeys23
-database_Column "1..1" -- "0..9999" database_ForeignKey : foreignKeys8
-database_Column "1..1" -- "0..9999" database_IndexElement : indexElements6
-database_Index "0..9999" --* "1..1" database_Table : indexes27
-database_Column "1..1" -- "0..9999" database_Index : indexes5
-database_AbstractTable "1..1" -- "1..1" database_Column : owner15
-database_Index "1..1" -- "1..1" database_Table : owner19
-database_PrimaryKey "1..1" -- "1..1" database_Table : owner31
-database_ForeignKey "1..1" -- "1..1" database_Table : owner36
-database_AbstractTable "1..1" -- "1..1" database_TableContainer : owner4
-database_Constraint "1..1" -- "1..1" database_Table : owner47
-database_Column "0..1" -- "1..1" database_ForeignKeyElement : pkColumn42
-database_PrimaryKey "0..1" --* "1..1" database_Table : primaryKey20
-database_Column "1..1" -- "0..1" database_PrimaryKey : primaryKey7
-database_DataBase "1..1" *-- "0..9999" database_Schema : schemas0
-database_Column "1..1" -- "0..1" database_Sequence : sequence13
-database_Sequence "0..9999" --* "1..1" database_TableContainer : sequences52
-database_AbstractTable "0..9999" --* "1..1" database_TableContainer : tables49
-database_ForeignKey "1..1" -- "0..1" database_Table : target38
-database_Column "1..1" *-- "1..1" database_Type : type11
+database_Column "indexElements 0..1" -- "Column46 1..1" database_IndexElement : column45
+database_Column "primaryKey 0..9999" -- "Column30 1..1" database_PrimaryKey : columns29
+database_AbstractTable "Column 1..1" *-- "owner 0..9999" database_Column : columns3
+database_Constraint "owner26 0..9999" --* "Constraint 1..1" database_Table : constraints25
+database_DataBase "database_UserDefinedTypesLibrary 1..1" *-- "database_DataBase2 0..9999" database_UserDefinedTypesLibrary : defines1
+database_Index "database_IndexElement 1..1" *-- "database_Index18 0..9999" database_IndexElement : elements17
+database_ForeignKey "database_ForeignKeyElement 1..1" *-- "database_ForeignKey35 0..9999" database_ForeignKeyElement : elements34
+database_Column "foreignKeyElements 0..1" -- "Column41 1..1" database_ForeignKeyElement : fkColumn40
+database_Column "ForeignKeyElement 1..1" -- "fkColumn 0..9999" database_ForeignKeyElement : foreignKeyElements10
+database_ForeignKey "owner24 0..9999" --* "ForeignKey 1..1" database_Table : foreignKeys23
+database_Column "database_ForeignKey 1..1" -- "database_Column9 0..9999" database_ForeignKey : foreignKeys8
+database_Column "IndexElement 1..1" -- "column 0..9999" database_IndexElement : indexElements6
+database_Index "owner28 0..9999" --* "Index 1..1" database_Table : indexes27
+database_Column "database_Index 1..1" -- "database_Column 0..9999" database_Index : indexes5
+database_AbstractTable "columns16 1..1" -- "AbstractTable 1..1" database_Column : owner15
+database_Index "Table 1..1" -- "indexes 1..1" database_Table : owner19
+database_PrimaryKey "Table33 1..1" -- "primaryKey32 1..1" database_Table : owner31
+database_ForeignKey "Table37 1..1" -- "foreignKeys 1..1" database_Table : owner36
+database_AbstractTable "TableContainer 1..1" -- "tables 1..1" database_TableContainer : owner4
+database_Constraint "Table48 1..1" -- "constraints 1..1" database_Table : owner47
+database_Column "database_ForeignKeyElement43 0..1" -- "database_Column44 1..1" database_ForeignKeyElement : pkColumn42
+database_PrimaryKey "owner21 0..1" --* "PrimaryKey22 1..1" database_Table : primaryKey20
+database_Column "PrimaryKey 1..1" -- "columns 0..1" database_PrimaryKey : primaryKey7
+database_DataBase "database_Schema 1..1" *-- "database_DataBase 0..9999" database_Schema : schemas0
+database_Column "database_Sequence 1..1" -- "database_Column14 0..1" database_Sequence : sequence13
+database_Sequence "database_TableContainer 0..9999" --* "database_Sequence53 1..1" database_TableContainer : sequences52
+database_AbstractTable "owner50 0..9999" --* "AbstractTable51 1..1" database_TableContainer : tables49
+database_ForeignKey "database_Table 1..1" -- "database_ForeignKey39 0..1" database_Table : target38
+database_Column "database_Type 1..1" *-- "database_Column12 1..1" database_Type : type11
 @enduml

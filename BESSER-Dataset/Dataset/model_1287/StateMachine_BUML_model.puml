@@ -1,4 +1,8 @@
 @startuml
+' model: StateMachine
+' project: sampleModel
+' owner: User
+' description: New project
 class StateMachine_Event {
 }
 class StateMachine_FinalState {
@@ -20,11 +24,11 @@ class StateVertex {
 StateVertex <|-- StateMachine_FinalState
 StateVertex <|-- StateMachine_InitialState
 StateVertex <|-- StateMachine_SimpleState
-StateMachine_StateVertex "1..1" -- "0..9999" StateMachine_Transition : incoming4
-StateMachine_StateVertex "1..1" -- "0..9999" StateMachine_Transition : outgoing3
-StateMachine_StateVertex "1..1" -- "1..1" StateMachine_Transition : source8
-StateMachine_StateMachine "1..1" *-- "0..9999" StateMachine_StateVertex : states0
-StateMachine_StateVertex "1..1" -- "1..1" StateMachine_Transition : target9
-StateMachine_StateMachine "1..1" *-- "0..9999" StateMachine_Transition : transitions1
-StateMachine_Event "0..1" -- "1..1" StateMachine_Transition : trigger6
+StateMachine_StateVertex "Transition5 1..1" -- "target 0..9999" StateMachine_Transition : incoming4
+StateMachine_StateVertex "Transition 1..1" -- "source 0..9999" StateMachine_Transition : outgoing3
+StateMachine_StateVertex "outgoing 1..1" -- "StateVertex 1..1" StateMachine_Transition : source8
+StateMachine_StateMachine "StateMachine_StateVertex 1..1" *-- "StateMachine_StateMachine 0..9999" StateMachine_StateVertex : states0
+StateMachine_StateVertex "incoming 1..1" -- "StateVertex10 1..1" StateMachine_Transition : target9
+StateMachine_StateMachine "StateMachine_Transition 1..1" *-- "StateMachine_StateMachine2 0..9999" StateMachine_Transition : transitions1
+StateMachine_Event "StateMachine_Transition7 0..1" -- "StateMachine_Event 1..1" StateMachine_Transition : trigger6
 @enduml

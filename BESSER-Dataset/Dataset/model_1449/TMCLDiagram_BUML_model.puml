@@ -1,4 +1,8 @@
 @startuml
+' model: model
+' project: sampleModel
+' owner: User
+' description: New project
 enum EdgeType {
   AKO_TYPE
   IS_A_TYPE
@@ -28,9 +32,9 @@ class model_TypeNode {
 }
 Node <|-- model_AssociationNode
 Node <|-- model_TypeNode
-model_BendPoint "0..1" --* "1..1" model_Edge : bendpoints3
-model_Diagram "1..1" *-- "0..9999" model_Edge : edges1
-model_Diagram "1..1" *-- "0..9999" model_Node : nodes0
-model_Edge "1..1" -- "1..1" model_Node : source5
-model_Edge "1..1" -- "1..1" model_Node : target8
+model_BendPoint "model_Edge4 0..1" --* "model_BendPoint 1..1" model_Edge : bendpoints3
+model_Diagram "model_Edge 1..1" *-- "model_Diagram2 0..9999" model_Edge : edges1
+model_Diagram "model_Node 1..1" *-- "model_Diagram 0..9999" model_Node : nodes0
+model_Edge "model_Node7 1..1" -- "model_Edge6 1..1" model_Node : source5
+model_Edge "model_Node10 1..1" -- "model_Edge9 1..1" model_Node : target8
 @enduml

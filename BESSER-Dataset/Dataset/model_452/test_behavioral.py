@@ -2053,9 +2053,9 @@ def test_assoc_behavior572_stub_double():
     partner = UML2WithID_ExecutionOccurrence()
     setattr(partner, 'UML2WithID_ExecutionOccurrence', None)
     _safe_set(owner, 'UML2WithID_Behavior573', partner)
-    assert getattr(partner, 'UML2WithID_ExecutionOccurrence') == owner
+    assert owner in getattr(partner, 'UML2WithID_ExecutionOccurrence')
     _safe_set(owner, 'UML2WithID_Behavior573', None)
-    assert getattr(partner, 'UML2WithID_ExecutionOccurrence') is None
+    assert owner not in getattr(partner, 'UML2WithID_ExecutionOccurrence')
 
 
 def test_assoc_behavior832_stub_double():
@@ -2158,9 +2158,9 @@ def test_assoc_classifier161_stub_double():
     partner = UML2WithID_InstanceSpecification()
     setattr(partner, 'UML2WithID_InstanceSpecification', None)
     _safe_set(owner, 'UML2WithID_Classifier162', partner)
-    assert getattr(partner, 'UML2WithID_InstanceSpecification') == owner
+    assert owner in getattr(partner, 'UML2WithID_InstanceSpecification')
     _safe_set(owner, 'UML2WithID_Classifier162', None)
-    assert getattr(partner, 'UML2WithID_InstanceSpecification') is None
+    assert owner not in getattr(partner, 'UML2WithID_InstanceSpecification')
 
 
 def test_assoc_classifier748_stub_double():
@@ -2233,9 +2233,9 @@ def test_assoc_client250_stub_double():
     partner = UML2WithID_Dependency()
     setattr(partner, 'clientDependency', None)
     _safe_set(owner, 'NamedElement', partner)
-    assert getattr(partner, 'clientDependency') == owner
+    assert owner in getattr(partner, 'clientDependency')
     _safe_set(owner, 'NamedElement', None)
-    assert getattr(partner, 'clientDependency') is None
+    assert owner not in getattr(partner, 'clientDependency')
 
 
 def test_assoc_clientDependency10_stub_double():
@@ -2263,9 +2263,9 @@ def test_assoc_configuration867_stub_double():
     partner = UML2WithID_Deployment()
     setattr(partner, 'UML2WithID_Deployment868', None)
     _safe_set(owner, 'UML2WithID_DeploymentSpecification', partner)
-    assert getattr(partner, 'UML2WithID_Deployment868') == owner
+    assert owner in getattr(partner, 'UML2WithID_Deployment868')
     _safe_set(owner, 'UML2WithID_DeploymentSpecification', None)
-    assert getattr(partner, 'UML2WithID_Deployment868') is None
+    assert owner not in getattr(partner, 'UML2WithID_Deployment868')
 
 
 def test_assoc_connection693_stub_double():
@@ -2293,9 +2293,9 @@ def test_assoc_connectionPoint675_stub_double():
     partner = UML2WithID_StateMachine()
     setattr(partner, 'UML2WithID_StateMachine', None)
     _safe_set(owner, 'UML2WithID_Pseudostate', partner)
-    assert getattr(partner, 'UML2WithID_StateMachine') == owner
+    assert owner in getattr(partner, 'UML2WithID_StateMachine')
     _safe_set(owner, 'UML2WithID_Pseudostate', None)
-    assert getattr(partner, 'UML2WithID_StateMachine') is None
+    assert owner not in getattr(partner, 'UML2WithID_StateMachine')
 
 
 def test_assoc_constrainedElement145_stub_double():
@@ -2308,9 +2308,9 @@ def test_assoc_constrainedElement145_stub_double():
     partner = UML2WithID_Constraint()
     setattr(partner, 'UML2WithID_Constraint146', None)
     _safe_set(owner, 'UML2WithID_Element147', partner)
-    assert getattr(partner, 'UML2WithID_Constraint146') == owner
+    assert owner in getattr(partner, 'UML2WithID_Constraint146')
     _safe_set(owner, 'UML2WithID_Element147', None)
-    assert getattr(partner, 'UML2WithID_Constraint146') is None
+    assert owner not in getattr(partner, 'UML2WithID_Constraint146')
 
 
 def test_assoc_containedEdge473_stub_double():
@@ -2428,9 +2428,9 @@ def test_assoc_conveyed270_stub_double():
     partner = UML2WithID_InformationFlow()
     setattr(partner, 'UML2WithID_InformationFlow271', None)
     _safe_set(owner, 'UML2WithID_Classifier272', partner)
-    assert getattr(partner, 'UML2WithID_InformationFlow271') == owner
+    assert owner in getattr(partner, 'UML2WithID_InformationFlow271')
     _safe_set(owner, 'UML2WithID_Classifier272', None)
-    assert getattr(partner, 'UML2WithID_InformationFlow271') is None
+    assert owner not in getattr(partner, 'UML2WithID_InformationFlow271')
 
 
 def test_assoc_datatype59_stub_double():
@@ -2578,9 +2578,9 @@ def test_assoc_deployedElement870_stub_double():
     partner = UML2WithID_DeploymentTarget()
     setattr(partner, 'UML2WithID_DeploymentTarget', None)
     _safe_set(owner, 'UML2WithID_PackageableElement871', partner)
-    assert getattr(partner, 'UML2WithID_DeploymentTarget') == owner
+    assert owner in getattr(partner, 'UML2WithID_DeploymentTarget')
     _safe_set(owner, 'UML2WithID_PackageableElement871', None)
-    assert getattr(partner, 'UML2WithID_DeploymentTarget') is None
+    assert owner not in getattr(partner, 'UML2WithID_DeploymentTarget')
 
 
 def test_assoc_duration845_stub_double():
@@ -2593,9 +2593,9 @@ def test_assoc_duration845_stub_double():
     partner = UML2WithID_DurationObservationAction()
     setattr(partner, 'UML2WithID_DurationObservationAction', None)
     _safe_set(owner, 'UML2WithID_Duration846', partner)
-    assert getattr(partner, 'UML2WithID_DurationObservationAction') == owner
+    assert owner in getattr(partner, 'UML2WithID_DurationObservationAction')
     _safe_set(owner, 'UML2WithID_Duration846', None)
-    assert getattr(partner, 'UML2WithID_DurationObservationAction') is None
+    assert owner not in getattr(partner, 'UML2WithID_DurationObservationAction')
 
 
 def test_assoc_edge243_stub_double():
@@ -2623,9 +2623,9 @@ def test_assoc_elementImport17_stub_double():
     partner = UML2WithID_Namespace()
     setattr(partner, 'importingNamespace', None)
     _safe_set(owner, 'ElementImport', partner)
-    assert getattr(partner, 'importingNamespace') == owner
+    assert owner in getattr(partner, 'importingNamespace')
     _safe_set(owner, 'ElementImport', None)
-    assert getattr(partner, 'importingNamespace') is None
+    assert owner not in getattr(partner, 'importingNamespace')
 
 
 def test_assoc_end285_stub_double():
@@ -2698,9 +2698,9 @@ def test_assoc_entry723_stub_double():
     partner = UML2WithID_ConnectionPointReference()
     setattr(partner, 'UML2WithID_ConnectionPointReference724', None)
     _safe_set(owner, 'UML2WithID_Pseudostate725', partner)
-    assert getattr(partner, 'UML2WithID_ConnectionPointReference724') == owner
+    assert owner in getattr(partner, 'UML2WithID_ConnectionPointReference724')
     _safe_set(owner, 'UML2WithID_Pseudostate725', None)
-    assert getattr(partner, 'UML2WithID_ConnectionPointReference724') is None
+    assert owner not in getattr(partner, 'UML2WithID_ConnectionPointReference724')
 
 
 def test_assoc_exceptionInput646_stub_double():
@@ -2728,9 +2728,9 @@ def test_assoc_exceptionType649_stub_double():
     partner = UML2WithID_ExceptionHandler()
     setattr(partner, 'UML2WithID_ExceptionHandler650', None)
     _safe_set(owner, 'UML2WithID_Classifier651', partner)
-    assert getattr(partner, 'UML2WithID_ExceptionHandler650') == owner
+    assert owner in getattr(partner, 'UML2WithID_ExceptionHandler650')
     _safe_set(owner, 'UML2WithID_Classifier651', None)
-    assert getattr(partner, 'UML2WithID_ExceptionHandler650') is None
+    assert owner not in getattr(partner, 'UML2WithID_ExceptionHandler650')
 
 
 def test_assoc_exit726_stub_double():
@@ -2743,9 +2743,9 @@ def test_assoc_exit726_stub_double():
     partner = UML2WithID_ConnectionPointReference()
     setattr(partner, 'UML2WithID_ConnectionPointReference727', None)
     _safe_set(owner, 'UML2WithID_Pseudostate728', partner)
-    assert getattr(partner, 'UML2WithID_ConnectionPointReference727') == owner
+    assert owner in getattr(partner, 'UML2WithID_ConnectionPointReference727')
     _safe_set(owner, 'UML2WithID_Pseudostate728', None)
-    assert getattr(partner, 'UML2WithID_ConnectionPointReference727') is None
+    assert owner not in getattr(partner, 'UML2WithID_ConnectionPointReference727')
 
 
 def test_assoc_function801_stub_double():
@@ -2803,9 +2803,9 @@ def test_assoc_importedMember15_stub_double():
     partner = UML2WithID_Namespace()
     setattr(partner, 'UML2WithID_Namespace16', None)
     _safe_set(owner, 'UML2WithID_PackageableElement', partner)
-    assert getattr(partner, 'UML2WithID_Namespace16') == owner
+    assert owner in getattr(partner, 'UML2WithID_Namespace16')
     _safe_set(owner, 'UML2WithID_PackageableElement', None)
-    assert getattr(partner, 'UML2WithID_Namespace16') is None
+    assert owner not in getattr(partner, 'UML2WithID_Namespace16')
 
 
 def test_assoc_importedPackage186_stub_double():
@@ -2863,9 +2863,9 @@ def test_assoc_inPartition314_stub_double():
     partner = UML2WithID_ActivityEdge()
     setattr(partner, 'containedEdge315', None)
     _safe_set(owner, 'ActivityPartition', partner)
-    assert getattr(partner, 'containedEdge315') == owner
+    assert owner in getattr(partner, 'containedEdge315')
     _safe_set(owner, 'ActivityPartition', None)
-    assert getattr(partner, 'containedEdge315') is None
+    assert owner not in getattr(partner, 'containedEdge315')
 
 
 def test_assoc_inPartition338_stub_double():
@@ -2878,9 +2878,9 @@ def test_assoc_inPartition338_stub_double():
     partner = UML2WithID_ActivityNode()
     setattr(partner, 'containedNode339', None)
     _safe_set(owner, 'ActivityPartition340', partner)
-    assert getattr(partner, 'containedNode339') == owner
+    assert owner in getattr(partner, 'containedNode339')
     _safe_set(owner, 'ActivityPartition340', None)
-    assert getattr(partner, 'containedNode339') is None
+    assert owner not in getattr(partner, 'containedNode339')
 
 
 def test_assoc_inStructuredNode313_stub_double():
@@ -2923,9 +2923,9 @@ def test_assoc_incoming720_stub_double():
     partner = UML2WithID_Vertex()
     setattr(partner, 'target721', None)
     _safe_set(owner, 'Transition722', partner)
-    assert getattr(partner, 'target721') == owner
+    assert owner in getattr(partner, 'target721')
     _safe_set(owner, 'Transition722', None)
-    assert getattr(partner, 'target721') is None
+    assert owner not in getattr(partner, 'target721')
 
 
 def test_assoc_input346_stub_double():
@@ -3148,9 +3148,9 @@ def test_assoc_member12_stub_double():
     partner = UML2WithID_Namespace()
     setattr(partner, 'UML2WithID_Namespace', None)
     _safe_set(owner, 'UML2WithID_NamedElement13', partner)
-    assert getattr(partner, 'UML2WithID_Namespace') == owner
+    assert owner in getattr(partner, 'UML2WithID_Namespace')
     _safe_set(owner, 'UML2WithID_NamedElement13', None)
-    assert getattr(partner, 'UML2WithID_Namespace') is None
+    assert owner not in getattr(partner, 'UML2WithID_Namespace')
 
 
 def test_assoc_message521_stub_double():
@@ -3163,9 +3163,9 @@ def test_assoc_message521_stub_double():
     partner = UML2WithID_Interaction()
     setattr(partner, 'interaction522', None)
     _safe_set(owner, 'Message', partner)
-    assert getattr(partner, 'interaction522') == owner
+    assert owner in getattr(partner, 'interaction522')
     _safe_set(owner, 'Message', None)
-    assert getattr(partner, 'interaction522') is None
+    assert owner not in getattr(partner, 'interaction522')
 
 
 def test_assoc_metaclassReference202_stub_double():
@@ -3178,9 +3178,9 @@ def test_assoc_metaclassReference202_stub_double():
     partner = UML2WithID_Profile()
     setattr(partner, 'UML2WithID_Profile203', None)
     _safe_set(owner, 'UML2WithID_ElementImport204', partner)
-    assert getattr(partner, 'UML2WithID_Profile203') == owner
+    assert owner in getattr(partner, 'UML2WithID_Profile203')
     _safe_set(owner, 'UML2WithID_ElementImport204', None)
-    assert getattr(partner, 'UML2WithID_Profile203') is None
+    assert owner not in getattr(partner, 'UML2WithID_Profile203')
 
 
 def test_assoc_metamodelReference205_stub_double():
@@ -3193,9 +3193,9 @@ def test_assoc_metamodelReference205_stub_double():
     partner = UML2WithID_Profile()
     setattr(partner, 'UML2WithID_Profile206', None)
     _safe_set(owner, 'UML2WithID_PackageImport207', partner)
-    assert getattr(partner, 'UML2WithID_Profile206') == owner
+    assert owner in getattr(partner, 'UML2WithID_Profile206')
     _safe_set(owner, 'UML2WithID_PackageImport207', None)
-    assert getattr(partner, 'UML2WithID_Profile206') is None
+    assert owner not in getattr(partner, 'UML2WithID_Profile206')
 
 
 def test_assoc_nameExpression11_stub_double():
@@ -3223,9 +3223,9 @@ def test_assoc_nestedClassifier384_stub_double():
     partner = UML2WithID_Interface()
     setattr(partner, 'UML2WithID_Interface385', None)
     _safe_set(owner, 'UML2WithID_Classifier386', partner)
-    assert getattr(partner, 'UML2WithID_Interface385') == owner
+    assert owner in getattr(partner, 'UML2WithID_Interface385')
     _safe_set(owner, 'UML2WithID_Classifier386', None)
-    assert getattr(partner, 'UML2WithID_Interface385') is None
+    assert owner not in getattr(partner, 'UML2WithID_Interface385')
 
 
 def test_assoc_node245_stub_double():
@@ -3253,9 +3253,9 @@ def test_assoc_now838_stub_double():
     partner = UML2WithID_TimeObservationAction()
     setattr(partner, 'UML2WithID_TimeObservationAction', None)
     _safe_set(owner, 'UML2WithID_TimeExpression839', partner)
-    assert getattr(partner, 'UML2WithID_TimeObservationAction') == owner
+    assert owner in getattr(partner, 'UML2WithID_TimeObservationAction')
     _safe_set(owner, 'UML2WithID_TimeExpression839', None)
-    assert getattr(partner, 'UML2WithID_TimeObservationAction') is None
+    assert owner not in getattr(partner, 'UML2WithID_TimeObservationAction')
 
 
 def test_assoc_object896_stub_double():
@@ -3388,9 +3388,9 @@ def test_assoc_outgoing717_stub_double():
     partner = UML2WithID_Vertex()
     setattr(partner, 'source718', None)
     _safe_set(owner, 'Transition719', partner)
-    assert getattr(partner, 'source718') == owner
+    assert owner in getattr(partner, 'source718')
     _safe_set(owner, 'Transition719', None)
-    assert getattr(partner, 'source718') is None
+    assert owner not in getattr(partner, 'source718')
 
 
 def test_assoc_output344_stub_double():
@@ -3433,9 +3433,9 @@ def test_assoc_ownedAttribute107_stub_double():
     partner = UML2WithID_DataType()
     setattr(partner, 'datatype', None)
     _safe_set(owner, 'Property108', partner)
-    assert getattr(partner, 'datatype') == owner
+    assert owner in getattr(partner, 'datatype')
     _safe_set(owner, 'Property108', None)
-    assert getattr(partner, 'datatype') is None
+    assert owner not in getattr(partner, 'datatype')
 
 
 def test_assoc_ownedAttribute291_stub_double():
@@ -3448,9 +3448,9 @@ def test_assoc_ownedAttribute291_stub_double():
     partner = UML2WithID_StructuredClassifier()
     setattr(partner, 'UML2WithID_StructuredClassifier', None)
     _safe_set(owner, 'UML2WithID_Property292', partner)
-    assert getattr(partner, 'UML2WithID_StructuredClassifier') == owner
+    assert owner in getattr(partner, 'UML2WithID_StructuredClassifier')
     _safe_set(owner, 'UML2WithID_Property292', None)
-    assert getattr(partner, 'UML2WithID_StructuredClassifier') is None
+    assert owner not in getattr(partner, 'UML2WithID_StructuredClassifier')
 
 
 def test_assoc_ownedAttribute376_stub_double():
@@ -3463,9 +3463,9 @@ def test_assoc_ownedAttribute376_stub_double():
     partner = UML2WithID_Interface()
     setattr(partner, 'UML2WithID_Interface', None)
     _safe_set(owner, 'UML2WithID_Property377', partner)
-    assert getattr(partner, 'UML2WithID_Interface') == owner
+    assert owner in getattr(partner, 'UML2WithID_Interface')
     _safe_set(owner, 'UML2WithID_Property377', None)
-    assert getattr(partner, 'UML2WithID_Interface') is None
+    assert owner not in getattr(partner, 'UML2WithID_Interface')
 
 
 def test_assoc_ownedAttribute461_stub_double():
@@ -3478,9 +3478,9 @@ def test_assoc_ownedAttribute461_stub_double():
     partner = UML2WithID_Signal()
     setattr(partner, 'UML2WithID_Signal462', None)
     _safe_set(owner, 'UML2WithID_Property463', partner)
-    assert getattr(partner, 'UML2WithID_Signal462') == owner
+    assert owner in getattr(partner, 'UML2WithID_Signal462')
     _safe_set(owner, 'UML2WithID_Property463', None)
-    assert getattr(partner, 'UML2WithID_Signal462') is None
+    assert owner not in getattr(partner, 'UML2WithID_Signal462')
 
 
 def test_assoc_ownedBehavior235_stub_double():
@@ -3493,9 +3493,9 @@ def test_assoc_ownedBehavior235_stub_double():
     partner = UML2WithID_BehavioredClassifier()
     setattr(partner, 'context', None)
     _safe_set(owner, 'Behavior236', partner)
-    assert getattr(partner, 'context') == owner
+    assert owner in getattr(partner, 'context')
     _safe_set(owner, 'Behavior236', None)
-    assert getattr(partner, 'context') is None
+    assert owner not in getattr(partner, 'context')
 
 
 def test_assoc_ownedConnector298_stub_double():
@@ -3508,9 +3508,9 @@ def test_assoc_ownedConnector298_stub_double():
     partner = UML2WithID_StructuredClassifier()
     setattr(partner, 'UML2WithID_StructuredClassifier299', None)
     _safe_set(owner, 'UML2WithID_Connector300', partner)
-    assert getattr(partner, 'UML2WithID_StructuredClassifier299') == owner
+    assert owner in getattr(partner, 'UML2WithID_StructuredClassifier299')
     _safe_set(owner, 'UML2WithID_Connector300', None)
-    assert getattr(partner, 'UML2WithID_StructuredClassifier299') is None
+    assert owner not in getattr(partner, 'UML2WithID_StructuredClassifier299')
 
 
 def test_assoc_ownedMember99_stub_double():
@@ -3523,9 +3523,9 @@ def test_assoc_ownedMember99_stub_double():
     partner = UML2WithID_Package()
     setattr(partner, 'UML2WithID_Package', None)
     _safe_set(owner, 'UML2WithID_PackageableElement100', partner)
-    assert getattr(partner, 'UML2WithID_Package') == owner
+    assert owner in getattr(partner, 'UML2WithID_Package')
     _safe_set(owner, 'UML2WithID_PackageableElement100', None)
-    assert getattr(partner, 'UML2WithID_Package') is None
+    assert owner not in getattr(partner, 'UML2WithID_Package')
 
 
 def test_assoc_ownedOperation109_stub_double():
@@ -3538,9 +3538,9 @@ def test_assoc_ownedOperation109_stub_double():
     partner = UML2WithID_DataType()
     setattr(partner, 'datatype110', None)
     _safe_set(owner, 'Operation111', partner)
-    assert getattr(partner, 'datatype110') == owner
+    assert owner in getattr(partner, 'datatype110')
     _safe_set(owner, 'Operation111', None)
-    assert getattr(partner, 'datatype110') is None
+    assert owner not in getattr(partner, 'datatype110')
 
 
 def test_assoc_ownedOperation378_stub_double():
@@ -3553,9 +3553,9 @@ def test_assoc_ownedOperation378_stub_double():
     partner = UML2WithID_Interface()
     setattr(partner, 'UML2WithID_Interface379', None)
     _safe_set(owner, 'UML2WithID_Operation380', partner)
-    assert getattr(partner, 'UML2WithID_Interface379') == owner
+    assert owner in getattr(partner, 'UML2WithID_Interface379')
     _safe_set(owner, 'UML2WithID_Operation380', None)
-    assert getattr(partner, 'UML2WithID_Interface379') is None
+    assert owner not in getattr(partner, 'UML2WithID_Interface379')
 
 
 def test_assoc_ownedParameterSet233_stub_double():
@@ -3583,9 +3583,9 @@ def test_assoc_ownedPort450_stub_double():
     partner = UML2WithID_EncapsulatedClassifier()
     setattr(partner, 'UML2WithID_EncapsulatedClassifier', None)
     _safe_set(owner, 'UML2WithID_Port451', partner)
-    assert getattr(partner, 'UML2WithID_EncapsulatedClassifier') == owner
+    assert owner in getattr(partner, 'UML2WithID_EncapsulatedClassifier')
     _safe_set(owner, 'UML2WithID_Port451', None)
-    assert getattr(partner, 'UML2WithID_EncapsulatedClassifier') is None
+    assert owner not in getattr(partner, 'UML2WithID_EncapsulatedClassifier')
 
 
 def test_assoc_ownedReception44_stub_double():
@@ -3628,9 +3628,9 @@ def test_assoc_packageImport18_stub_double():
     partner = UML2WithID_Namespace()
     setattr(partner, 'importingNamespace19', None)
     _safe_set(owner, 'PackageImport', partner)
-    assert getattr(partner, 'importingNamespace19') == owner
+    assert owner in getattr(partner, 'importingNamespace19')
     _safe_set(owner, 'PackageImport', None)
-    assert getattr(partner, 'importingNamespace19') is None
+    assert owner not in getattr(partner, 'importingNamespace19')
 
 
 def test_assoc_parameter372_stub_double():
@@ -3658,9 +3658,9 @@ def test_assoc_parameter851_stub_double():
     partner = UML2WithID_ParameterSet()
     setattr(partner, 'parameterSet', None)
     _safe_set(owner, 'Parameter852', partner)
-    assert getattr(partner, 'parameterSet') == owner
+    assert owner in getattr(partner, 'parameterSet')
     _safe_set(owner, 'Parameter852', None)
-    assert getattr(partner, 'parameterSet') is None
+    assert owner not in getattr(partner, 'parameterSet')
 
 
 def test_assoc_parameterSet91_stub_double():
@@ -3688,9 +3688,9 @@ def test_assoc_part293_stub_double():
     partner = UML2WithID_StructuredClassifier()
     setattr(partner, 'UML2WithID_StructuredClassifier294', None)
     _safe_set(owner, 'UML2WithID_Property295', partner)
-    assert getattr(partner, 'UML2WithID_StructuredClassifier294') == owner
+    assert owner in getattr(partner, 'UML2WithID_StructuredClassifier294')
     _safe_set(owner, 'UML2WithID_Property295', None)
-    assert getattr(partner, 'UML2WithID_StructuredClassifier294') is None
+    assert owner not in getattr(partner, 'UML2WithID_StructuredClassifier294')
 
 
 def test_assoc_partWithPort276_stub_double():
@@ -3718,9 +3718,9 @@ def test_assoc_port456_stub_double():
     partner = UML2WithID_Trigger()
     setattr(partner, 'UML2WithID_Trigger457', None)
     _safe_set(owner, 'UML2WithID_Port458', partner)
-    assert getattr(partner, 'UML2WithID_Trigger457') == owner
+    assert owner in getattr(partner, 'UML2WithID_Trigger457')
     _safe_set(owner, 'UML2WithID_Port458', None)
-    assert getattr(partner, 'UML2WithID_Trigger457') is None
+    assert owner not in getattr(partner, 'UML2WithID_Trigger457')
 
 
 def test_assoc_postcondition230_stub_double():
@@ -3943,9 +3943,9 @@ def test_assoc_referred880_stub_double():
     partner = UML2WithID_ProtocolTransition()
     setattr(partner, 'UML2WithID_ProtocolTransition881', None)
     _safe_set(owner, 'UML2WithID_Operation882', partner)
-    assert getattr(partner, 'UML2WithID_ProtocolTransition881') == owner
+    assert owner in getattr(partner, 'UML2WithID_ProtocolTransition881')
     _safe_set(owner, 'UML2WithID_Operation882', None)
-    assert getattr(partner, 'UML2WithID_ProtocolTransition881') is None
+    assert owner not in getattr(partner, 'UML2WithID_ProtocolTransition881')
 
 
 def test_assoc_region701_stub_double():
@@ -4003,9 +4003,9 @@ def test_assoc_relatedElement36_stub_double():
     partner = UML2WithID_Relationship()
     setattr(partner, 'UML2WithID_Relationship', None)
     _safe_set(owner, 'UML2WithID_Element37', partner)
-    assert getattr(partner, 'UML2WithID_Relationship') == owner
+    assert owner in getattr(partner, 'UML2WithID_Relationship')
     _safe_set(owner, 'UML2WithID_Element37', None)
-    assert getattr(partner, 'UML2WithID_Relationship') is None
+    assert owner not in getattr(partner, 'UML2WithID_Relationship')
 
 
 def test_assoc_representation132_stub_double():
@@ -4033,9 +4033,9 @@ def test_assoc_represented266_stub_double():
     partner = UML2WithID_InformationItem()
     setattr(partner, 'UML2WithID_InformationItem', None)
     _safe_set(owner, 'UML2WithID_Classifier267', partner)
-    assert getattr(partner, 'UML2WithID_InformationItem') == owner
+    assert owner in getattr(partner, 'UML2WithID_InformationItem')
     _safe_set(owner, 'UML2WithID_Classifier267', None)
-    assert getattr(partner, 'UML2WithID_InformationItem') is None
+    assert owner not in getattr(partner, 'UML2WithID_InformationItem')
 
 
 def test_assoc_required439_stub_double():
@@ -4213,9 +4213,9 @@ def test_assoc_source31_stub_double():
     partner = UML2WithID_DirectedRelationship()
     setattr(partner, 'UML2WithID_DirectedRelationship', None)
     _safe_set(owner, 'UML2WithID_Element32', partner)
-    assert getattr(partner, 'UML2WithID_DirectedRelationship') == owner
+    assert owner in getattr(partner, 'UML2WithID_DirectedRelationship')
     _safe_set(owner, 'UML2WithID_Element32', None)
-    assert getattr(partner, 'UML2WithID_DirectedRelationship') is None
+    assert owner not in getattr(partner, 'UML2WithID_DirectedRelationship')
 
 
 def test_assoc_source731_stub_double():
@@ -4288,9 +4288,9 @@ def test_assoc_subject422_stub_double():
     partner = UML2WithID_UseCase()
     setattr(partner, 'useCase423', None)
     _safe_set(owner, 'Classifier424', partner)
-    assert getattr(partner, 'useCase423') == owner
+    assert owner in getattr(partner, 'useCase423')
     _safe_set(owner, 'Classifier424', None)
-    assert getattr(partner, 'useCase423') is None
+    assert owner not in getattr(partner, 'useCase423')
 
 
 def test_assoc_submachine690_stub_double():
@@ -4348,9 +4348,9 @@ def test_assoc_supplier251_stub_double():
     partner = UML2WithID_Dependency()
     setattr(partner, 'UML2WithID_Dependency', None)
     _safe_set(owner, 'UML2WithID_NamedElement252', partner)
-    assert getattr(partner, 'UML2WithID_Dependency') == owner
+    assert owner in getattr(partner, 'UML2WithID_Dependency')
     _safe_set(owner, 'UML2WithID_NamedElement252', None)
-    assert getattr(partner, 'UML2WithID_Dependency') is None
+    assert owner not in getattr(partner, 'UML2WithID_Dependency')
 
 
 def test_assoc_target33_stub_double():
@@ -4363,9 +4363,9 @@ def test_assoc_target33_stub_double():
     partner = UML2WithID_DirectedRelationship()
     setattr(partner, 'UML2WithID_DirectedRelationship34', None)
     _safe_set(owner, 'UML2WithID_Element35', partner)
-    assert getattr(partner, 'UML2WithID_DirectedRelationship34') == owner
+    assert owner in getattr(partner, 'UML2WithID_DirectedRelationship34')
     _safe_set(owner, 'UML2WithID_Element35', None)
-    assert getattr(partner, 'UML2WithID_DirectedRelationship34') is None
+    assert owner not in getattr(partner, 'UML2WithID_DirectedRelationship34')
 
 
 def test_assoc_target734_stub_double():
@@ -4423,9 +4423,9 @@ def test_assoc_transition682_stub_double():
     partner = UML2WithID_Region()
     setattr(partner, 'container683', None)
     _safe_set(owner, 'Transition', partner)
-    assert getattr(partner, 'container683') == owner
+    assert owner in getattr(partner, 'container683')
     _safe_set(owner, 'Transition', None)
-    assert getattr(partner, 'container683') is None
+    assert owner not in getattr(partner, 'container683')
 
 
 def test_assoc_trigger739_stub_double():

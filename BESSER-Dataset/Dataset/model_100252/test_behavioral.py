@@ -221,8 +221,8 @@ def test_assoc_models14_stub_double():
     partner = Styling_Styling()
     setattr(partner, 'Styling_Styling', None)
     _safe_set(owner, 'Styling_StylingModel15', partner)
-    assert getattr(partner, 'Styling_Styling') == owner
+    assert owner in getattr(partner, 'Styling_Styling')
     _safe_set(owner, 'Styling_StylingModel15', None)
-    assert getattr(partner, 'Styling_Styling') is None
+    assert owner not in getattr(partner, 'Styling_Styling')
 
 

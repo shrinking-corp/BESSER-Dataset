@@ -1,4 +1,8 @@
 @startuml
+' model: mealymodel
+' project: sampleModel
+' owner: User
+' description: New project
 class mealymodel_Alphabet {
   + characters : str
 }
@@ -11,11 +15,11 @@ class mealymodel_Transition {
   + input : str
   + output : str
 }
-mealymodel_MealyMachine "1..1" *-- "1..1" mealymodel_State : initialState0
-mealymodel_Alphabet "1..1" --* "1..1" mealymodel_MealyMachine : inputAlphabet4
-mealymodel_Alphabet "1..1" --* "1..1" mealymodel_MealyMachine : outputAlphabet6
-mealymodel_State "1..1" -- "1..1" mealymodel_Transition : sourceState11
-mealymodel_MealyMachine "1..1" *-- "1..9999" mealymodel_State : states1
-mealymodel_State "1..1" -- "1..1" mealymodel_Transition : targetState14
-mealymodel_MealyMachine "1..1" *-- "1..9999" mealymodel_Transition : transitions9
+mealymodel_MealyMachine "mealymodel_State 1..1" *-- "mealymodel_MealyMachine 1..1" mealymodel_State : initialState0
+mealymodel_Alphabet "mealymodel_MealyMachine5 1..1" --* "mealymodel_Alphabet 1..1" mealymodel_MealyMachine : inputAlphabet4
+mealymodel_Alphabet "mealymodel_MealyMachine7 1..1" --* "mealymodel_Alphabet8 1..1" mealymodel_MealyMachine : outputAlphabet6
+mealymodel_State "mealymodel_Transition12 1..1" -- "mealymodel_State13 1..1" mealymodel_Transition : sourceState11
+mealymodel_MealyMachine "mealymodel_State3 1..1" *-- "mealymodel_MealyMachine2 1..9999" mealymodel_State : states1
+mealymodel_State "mealymodel_Transition15 1..1" -- "mealymodel_State16 1..1" mealymodel_Transition : targetState14
+mealymodel_MealyMachine "mealymodel_Transition 1..1" *-- "mealymodel_MealyMachine10 1..9999" mealymodel_Transition : transitions9
 @enduml

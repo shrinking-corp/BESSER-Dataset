@@ -1683,9 +1683,9 @@ def test_assoc_classifier66_stub_double():
     partner = CompleteDSLPckg_InstanceSpecification()
     setattr(partner, 'CompleteDSLPckg_InstanceSpecification67', None)
     _safe_set(owner, 'CompleteDSLPckg_Classifier', partner)
-    assert getattr(partner, 'CompleteDSLPckg_InstanceSpecification67') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_InstanceSpecification67')
     _safe_set(owner, 'CompleteDSLPckg_Classifier', None)
-    assert getattr(partner, 'CompleteDSLPckg_InstanceSpecification67') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_InstanceSpecification67')
 
 
 def test_assoc_classifierBehavior224_stub_double():
@@ -1728,9 +1728,9 @@ def test_assoc_client195_stub_double():
     partner = CompleteDSLPckg_Dependency()
     setattr(partner, 'clientDependency', None)
     _safe_set(owner, 'NamedElement196', partner)
-    assert getattr(partner, 'clientDependency') == owner
+    assert owner in getattr(partner, 'clientDependency')
     _safe_set(owner, 'NamedElement196', None)
-    assert getattr(partner, 'clientDependency') is None
+    assert owner not in getattr(partner, 'clientDependency')
 
 
 def test_assoc_clientDependency7_stub_double():
@@ -1788,9 +1788,9 @@ def test_assoc_configuration387_stub_double():
     partner = CompleteDSLPckg_Deployment()
     setattr(partner, 'CompleteDSLPckg_Deployment388', None)
     _safe_set(owner, 'CompleteDSLPckg_DeploymentSpecification', partner)
-    assert getattr(partner, 'CompleteDSLPckg_Deployment388') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_Deployment388')
     _safe_set(owner, 'CompleteDSLPckg_DeploymentSpecification', None)
-    assert getattr(partner, 'CompleteDSLPckg_Deployment388') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_Deployment388')
 
 
 def test_assoc_connection636_stub_double():
@@ -2118,9 +2118,9 @@ def test_assoc_elementImport12_stub_double():
     partner = CompleteDSLPckg_Namespace()
     setattr(partner, 'importingNamespace', None)
     _safe_set(owner, 'ElementImport', partner)
-    assert getattr(partner, 'importingNamespace') == owner
+    assert owner in getattr(partner, 'importingNamespace')
     _safe_set(owner, 'ElementImport', None)
-    assert getattr(partner, 'importingNamespace') is None
+    assert owner not in getattr(partner, 'importingNamespace')
 
 
 def test_assoc_end311_stub_double():
@@ -2178,9 +2178,9 @@ def test_assoc_exceptionType869_stub_double():
     partner = CompleteDSLPckg_ExceptionHandler()
     setattr(partner, 'CompleteDSLPckg_ExceptionHandler870', None)
     _safe_set(owner, 'CompleteDSLPckg_Classifier871', partner)
-    assert getattr(partner, 'CompleteDSLPckg_ExceptionHandler870') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_ExceptionHandler870')
     _safe_set(owner, 'CompleteDSLPckg_Classifier871', None)
-    assert getattr(partner, 'CompleteDSLPckg_ExceptionHandler870') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_ExceptionHandler870')
 
 
 def test_assoc_group682_stub_double():
@@ -2313,9 +2313,9 @@ def test_assoc_incoming598_stub_double():
     partner = CompleteDSLPckg_Vertex()
     setattr(partner, 'CompleteDSLPckg_Vertex599', None)
     _safe_set(owner, 'CompleteDSLPckg_Transition600', partner)
-    assert getattr(partner, 'CompleteDSLPckg_Vertex599') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_Vertex599')
     _safe_set(owner, 'CompleteDSLPckg_Transition600', None)
-    assert getattr(partner, 'CompleteDSLPckg_Vertex599') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_Vertex599')
 
 
 def test_assoc_inputElement872_stub_double():
@@ -2493,9 +2493,9 @@ def test_assoc_member9_stub_double():
     partner = CompleteDSLPckg_Namespace()
     setattr(partner, 'CompleteDSLPckg_Namespace10', None)
     _safe_set(owner, 'CompleteDSLPckg_NamedElement', partner)
-    assert getattr(partner, 'CompleteDSLPckg_Namespace10') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_Namespace10')
     _safe_set(owner, 'CompleteDSLPckg_NamedElement', None)
-    assert getattr(partner, 'CompleteDSLPckg_Namespace10') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_Namespace10')
 
 
 def test_assoc_mergedPackage193_stub_double():
@@ -2538,9 +2538,9 @@ def test_assoc_message961_stub_double():
     partner = CompleteDSLPckg_ConsiderIgnoreFragment()
     setattr(partner, 'CompleteDSLPckg_ConsiderIgnoreFragment', None)
     _safe_set(owner, 'CompleteDSLPckg_NamedElement962', partner)
-    assert getattr(partner, 'CompleteDSLPckg_ConsiderIgnoreFragment') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_ConsiderIgnoreFragment')
     _safe_set(owner, 'CompleteDSLPckg_NamedElement962', None)
-    assert getattr(partner, 'CompleteDSLPckg_ConsiderIgnoreFragment') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_ConsiderIgnoreFragment')
 
 
 def test_assoc_namespace6_stub_double():
@@ -2568,9 +2568,9 @@ def test_assoc_nestedClassifier167_stub_double():
     partner = CompleteDSLPckg_Class()
     setattr(partner, 'CompleteDSLPckg_Class', None)
     _safe_set(owner, 'CompleteDSLPckg_Classifier168', partner)
-    assert getattr(partner, 'CompleteDSLPckg_Class') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_Class')
     _safe_set(owner, 'CompleteDSLPckg_Classifier168', None)
-    assert getattr(partner, 'CompleteDSLPckg_Class') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_Class')
 
 
 def test_assoc_nestedClassifier205_stub_double():
@@ -2718,9 +2718,9 @@ def test_assoc_outgoing595_stub_double():
     partner = CompleteDSLPckg_Vertex()
     setattr(partner, 'CompleteDSLPckg_Vertex596', None)
     _safe_set(owner, 'CompleteDSLPckg_Transition597', partner)
-    assert getattr(partner, 'CompleteDSLPckg_Vertex596') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_Vertex596')
     _safe_set(owner, 'CompleteDSLPckg_Transition597', None)
-    assert getattr(partner, 'CompleteDSLPckg_Vertex596') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_Vertex596')
 
 
 def test_assoc_outputElement873_stub_double():
@@ -2763,9 +2763,9 @@ def test_assoc_ownedAttribute173_stub_double():
     partner = CompleteDSLPckg_Class()
     setattr(partner, 'class_174', None)
     _safe_set(owner, 'Property175', partner)
-    assert getattr(partner, 'class_174') == owner
+    assert owner in getattr(partner, 'class_174')
     _safe_set(owner, 'Property175', None)
-    assert getattr(partner, 'class_174') is None
+    assert owner not in getattr(partner, 'class_174')
 
 
 def test_assoc_ownedAttribute184_stub_double():
@@ -2778,9 +2778,9 @@ def test_assoc_ownedAttribute184_stub_double():
     partner = CompleteDSLPckg_DataType()
     setattr(partner, 'dataType', None)
     _safe_set(owner, 'Property185', partner)
-    assert getattr(partner, 'dataType') == owner
+    assert owner in getattr(partner, 'dataType')
     _safe_set(owner, 'Property185', None)
-    assert getattr(partner, 'dataType') is None
+    assert owner not in getattr(partner, 'dataType')
 
 
 def test_assoc_ownedAttribute210_stub_double():
@@ -2793,9 +2793,9 @@ def test_assoc_ownedAttribute210_stub_double():
     partner = CompleteDSLPckg_Interface()
     setattr(partner, 'interface', None)
     _safe_set(owner, 'Property211', partner)
-    assert getattr(partner, 'interface') == owner
+    assert owner in getattr(partner, 'interface')
     _safe_set(owner, 'Property211', None)
-    assert getattr(partner, 'interface') is None
+    assert owner not in getattr(partner, 'interface')
 
 
 def test_assoc_ownedAttribute249_stub_double():
@@ -2808,9 +2808,9 @@ def test_assoc_ownedAttribute249_stub_double():
     partner = CompleteDSLPckg_Signal()
     setattr(partner, 'CompleteDSLPckg_Signal', None)
     _safe_set(owner, 'CompleteDSLPckg_Property250', partner)
-    assert getattr(partner, 'CompleteDSLPckg_Signal') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_Signal')
     _safe_set(owner, 'CompleteDSLPckg_Property250', None)
-    assert getattr(partner, 'CompleteDSLPckg_Signal') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_Signal')
 
 
 def test_assoc_ownedBehavior222_stub_double():
@@ -2823,9 +2823,9 @@ def test_assoc_ownedBehavior222_stub_double():
     partner = CompleteDSLPckg_BehavioredClassifier()
     setattr(partner, 'CompleteDSLPckg_BehavioredClassifier', None)
     _safe_set(owner, 'CompleteDSLPckg_Behavior223', partner)
-    assert getattr(partner, 'CompleteDSLPckg_BehavioredClassifier') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_BehavioredClassifier')
     _safe_set(owner, 'CompleteDSLPckg_Behavior223', None)
-    assert getattr(partner, 'CompleteDSLPckg_BehavioredClassifier') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_BehavioredClassifier')
 
 
 def test_assoc_ownedComment0_stub_double():
@@ -2838,9 +2838,9 @@ def test_assoc_ownedComment0_stub_double():
     partner = CompleteDSLPckg_Element()
     setattr(partner, 'owningElement', None)
     _safe_set(owner, 'Comment', partner)
-    assert getattr(partner, 'owningElement') == owner
+    assert owner in getattr(partner, 'owningElement')
     _safe_set(owner, 'Comment', None)
-    assert getattr(partner, 'owningElement') is None
+    assert owner not in getattr(partner, 'owningElement')
 
 
 def test_assoc_ownedConnector332_stub_double():
@@ -2853,9 +2853,9 @@ def test_assoc_ownedConnector332_stub_double():
     partner = CompleteDSLPckg_StructuredClassifier()
     setattr(partner, 'CompleteDSLPckg_StructuredClassifier', None)
     _safe_set(owner, 'CompleteDSLPckg_Connector333', partner)
-    assert getattr(partner, 'CompleteDSLPckg_StructuredClassifier') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_StructuredClassifier')
     _safe_set(owner, 'CompleteDSLPckg_Connector333', None)
-    assert getattr(partner, 'CompleteDSLPckg_StructuredClassifier') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_StructuredClassifier')
 
 
 def test_assoc_ownedFormalParam142_stub_double():
@@ -2883,9 +2883,9 @@ def test_assoc_ownedMember11_stub_double():
     partner = CompleteDSLPckg_Namespace()
     setattr(partner, 'namespace', None)
     _safe_set(owner, 'NamedElement', partner)
-    assert getattr(partner, 'namespace') == owner
+    assert owner in getattr(partner, 'namespace')
     _safe_set(owner, 'NamedElement', None)
-    assert getattr(partner, 'namespace') is None
+    assert owner not in getattr(partner, 'namespace')
 
 
 def test_assoc_ownedOperation169_stub_double():
@@ -2898,9 +2898,9 @@ def test_assoc_ownedOperation169_stub_double():
     partner = CompleteDSLPckg_Class()
     setattr(partner, 'class_', None)
     _safe_set(owner, 'Operation', partner)
-    assert getattr(partner, 'class_') == owner
+    assert owner in getattr(partner, 'class_')
     _safe_set(owner, 'Operation', None)
-    assert getattr(partner, 'class_') is None
+    assert owner not in getattr(partner, 'class_')
 
 
 def test_assoc_ownedOperation186_stub_double():
@@ -2913,9 +2913,9 @@ def test_assoc_ownedOperation186_stub_double():
     partner = CompleteDSLPckg_DataType()
     setattr(partner, 'dataType187', None)
     _safe_set(owner, 'Operation188', partner)
-    assert getattr(partner, 'dataType187') == owner
+    assert owner in getattr(partner, 'dataType187')
     _safe_set(owner, 'Operation188', None)
-    assert getattr(partner, 'dataType187') is None
+    assert owner not in getattr(partner, 'dataType187')
 
 
 def test_assoc_ownedOperation212_stub_double():
@@ -2928,9 +2928,9 @@ def test_assoc_ownedOperation212_stub_double():
     partner = CompleteDSLPckg_Interface()
     setattr(partner, 'interface213', None)
     _safe_set(owner, 'Operation214', partner)
-    assert getattr(partner, 'interface213') == owner
+    assert owner in getattr(partner, 'interface213')
     _safe_set(owner, 'Operation214', None)
-    assert getattr(partner, 'interface213') is None
+    assert owner not in getattr(partner, 'interface213')
 
 
 def test_assoc_ownedParameter137_stub_double():
@@ -2943,9 +2943,9 @@ def test_assoc_ownedParameter137_stub_double():
     partner = CompleteDSLPckg_BehavioralFeature()
     setattr(partner, 'CompleteDSLPckg_BehavioralFeature', None)
     _safe_set(owner, 'CompleteDSLPckg_Parameter138', partner)
-    assert getattr(partner, 'CompleteDSLPckg_BehavioralFeature') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_BehavioralFeature')
     _safe_set(owner, 'CompleteDSLPckg_Parameter138', None)
-    assert getattr(partner, 'CompleteDSLPckg_BehavioralFeature') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_BehavioralFeature')
 
 
 def test_assoc_ownedPort351_stub_double():
@@ -2958,9 +2958,9 @@ def test_assoc_ownedPort351_stub_double():
     partner = CompleteDSLPckg_EncapsulatedClassifier()
     setattr(partner, 'CompleteDSLPckg_EncapsulatedClassifier', None)
     _safe_set(owner, 'CompleteDSLPckg_Port352', partner)
-    assert getattr(partner, 'CompleteDSLPckg_EncapsulatedClassifier') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_EncapsulatedClassifier')
     _safe_set(owner, 'CompleteDSLPckg_Port352', None)
-    assert getattr(partner, 'CompleteDSLPckg_EncapsulatedClassifier') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_EncapsulatedClassifier')
 
 
 def test_assoc_ownedType31_stub_double():
@@ -3048,9 +3048,9 @@ def test_assoc_packageImport13_stub_double():
     partner = CompleteDSLPckg_Namespace()
     setattr(partner, 'importingNamespace14', None)
     _safe_set(owner, 'PackageImport', partner)
-    assert getattr(partner, 'importingNamespace14') == owner
+    assert owner in getattr(partner, 'importingNamespace14')
     _safe_set(owner, 'PackageImport', None)
-    assert getattr(partner, 'importingNamespace14') is None
+    assert owner not in getattr(partner, 'importingNamespace14')
 
 
 def test_assoc_packageMerge32_stub_double():
@@ -3123,9 +3123,9 @@ def test_assoc_parameter787_stub_double():
     partner = CompleteDSLPckg_ParameterSet()
     setattr(partner, 'CompleteDSLPckg_ParameterSet', None)
     _safe_set(owner, 'CompleteDSLPckg_Parameter788', partner)
-    assert getattr(partner, 'CompleteDSLPckg_ParameterSet') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_ParameterSet')
     _safe_set(owner, 'CompleteDSLPckg_Parameter788', None)
-    assert getattr(partner, 'CompleteDSLPckg_ParameterSet') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_ParameterSet')
 
 
 def test_assoc_part340_stub_double():
@@ -3138,9 +3138,9 @@ def test_assoc_part340_stub_double():
     partner = CompleteDSLPckg_StructuredClassifier()
     setattr(partner, 'CompleteDSLPckg_StructuredClassifier341', None)
     _safe_set(owner, 'CompleteDSLPckg_Property342', partner)
-    assert getattr(partner, 'CompleteDSLPckg_StructuredClassifier341') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_StructuredClassifier341')
     _safe_set(owner, 'CompleteDSLPckg_Property342', None)
-    assert getattr(partner, 'CompleteDSLPckg_StructuredClassifier341') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_StructuredClassifier341')
 
 
 def test_assoc_partWithPort318_stub_double():
@@ -3318,9 +3318,9 @@ def test_assoc_realizingClassifier308_stub_double():
     partner = CompleteDSLPckg_ComponentRealization()
     setattr(partner, 'CompleteDSLPckg_ComponentRealization309', None)
     _safe_set(owner, 'CompleteDSLPckg_Classifier310', partner)
-    assert getattr(partner, 'CompleteDSLPckg_ComponentRealization309') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_ComponentRealization309')
     _safe_set(owner, 'CompleteDSLPckg_Classifier310', None)
-    assert getattr(partner, 'CompleteDSLPckg_ComponentRealization309') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_ComponentRealization309')
 
 
 def test_assoc_receiveEvent933_stub_double():
@@ -3363,9 +3363,9 @@ def test_assoc_referred678_stub_double():
     partner = CompleteDSLPckg_ProtocolTransition()
     setattr(partner, 'CompleteDSLPckg_ProtocolTransition679', None)
     _safe_set(owner, 'CompleteDSLPckg_Operation680', partner)
-    assert getattr(partner, 'CompleteDSLPckg_ProtocolTransition679') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_ProtocolTransition679')
     _safe_set(owner, 'CompleteDSLPckg_Operation680', None)
-    assert getattr(partner, 'CompleteDSLPckg_ProtocolTransition679') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_ProtocolTransition679')
 
 
 def test_assoc_region645_stub_double():
@@ -3723,9 +3723,9 @@ def test_assoc_structuredOwnedAttribute337_stub_double():
     partner = CompleteDSLPckg_StructuredClassifier()
     setattr(partner, 'CompleteDSLPckg_StructuredClassifier338', None)
     _safe_set(owner, 'CompleteDSLPckg_Property339', partner)
-    assert getattr(partner, 'CompleteDSLPckg_StructuredClassifier338') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_StructuredClassifier338')
     _safe_set(owner, 'CompleteDSLPckg_Property339', None)
-    assert getattr(partner, 'CompleteDSLPckg_StructuredClassifier338') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_StructuredClassifier338')
 
 
 def test_assoc_subject983_stub_double():
@@ -3738,9 +3738,9 @@ def test_assoc_subject983_stub_double():
     partner = CompleteDSLPckg_UseCase()
     setattr(partner, 'CompleteDSLPckg_UseCase', None)
     _safe_set(owner, 'CompleteDSLPckg_Classifier984', partner)
-    assert getattr(partner, 'CompleteDSLPckg_UseCase') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_UseCase')
     _safe_set(owner, 'CompleteDSLPckg_Classifier984', None)
-    assert getattr(partner, 'CompleteDSLPckg_UseCase') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_UseCase')
 
 
 def test_assoc_submachine642_stub_double():
@@ -3768,9 +3768,9 @@ def test_assoc_submachineState577_stub_double():
     partner = CompleteDSLPckg_StateMachine()
     setattr(partner, 'CompleteDSLPckg_StateMachine578', None)
     _safe_set(owner, 'CompleteDSLPckg_State', partner)
-    assert getattr(partner, 'CompleteDSLPckg_StateMachine578') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_StateMachine578')
     _safe_set(owner, 'CompleteDSLPckg_State', None)
-    assert getattr(partner, 'CompleteDSLPckg_StateMachine578') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_StateMachine578')
 
 
 def test_assoc_substitutingClassifier201_stub_double():
@@ -3813,9 +3813,9 @@ def test_assoc_supplier197_stub_double():
     partner = CompleteDSLPckg_Dependency()
     setattr(partner, 'CompleteDSLPckg_Dependency', None)
     _safe_set(owner, 'CompleteDSLPckg_NamedElement198', partner)
-    assert getattr(partner, 'CompleteDSLPckg_Dependency') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_Dependency')
     _safe_set(owner, 'CompleteDSLPckg_NamedElement198', None)
-    assert getattr(partner, 'CompleteDSLPckg_Dependency') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_Dependency')
 
 
 def test_assoc_target607_stub_double():
@@ -3888,9 +3888,9 @@ def test_assoc_transition587_stub_double():
     partner = CompleteDSLPckg_Region()
     setattr(partner, 'CompleteDSLPckg_Region588', None)
     _safe_set(owner, 'CompleteDSLPckg_Transition', partner)
-    assert getattr(partner, 'CompleteDSLPckg_Region588') == owner
+    assert owner in getattr(partner, 'CompleteDSLPckg_Region588')
     _safe_set(owner, 'CompleteDSLPckg_Transition', None)
-    assert getattr(partner, 'CompleteDSLPckg_Region588') is None
+    assert owner not in getattr(partner, 'CompleteDSLPckg_Region588')
 
 
 def test_assoc_trigger502_stub_double():

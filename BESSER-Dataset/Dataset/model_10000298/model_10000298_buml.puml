@@ -1,4 +1,8 @@
 @startuml
+' model: _24f4043f_298c_4f75_b255_f4069b4b9cbf
+' project: sampleModel
+' owner: User
+' description: New project
 class Cliente {
   + Asunto : str
   + Ciudad : str
@@ -34,14 +38,14 @@ class WebADM {
   + password : str
   + state : str
 }
-Order "0..9999" -- "1..1" Toma_de_pedido : Account_Order
-Pago "0..9999" -- "1..1" Toma_de_pedido : Account_Payment
-Lineamiento "1..1" -- "1..1" Toma_de_pedido : Account_ShoppingCart
-Cliente "1..1" -- "1..1" Toma_de_pedido : Customer_Account
-Lineamiento "1..9999" -- "0..1" Order : Order_LineItem
-Order "1..1" -- "0..1" Pago : Payment_Order
-Entrega_producto "1..1" -- "0..9999" Lineamiento : Product_LineItem
-Lineamiento "1..1" -- "1..1" ShoppingCart : ShoppingCart_LineItem
-Cliente "1..1" -- "1..1" WebADM : WebUser_Customer
-ShoppingCart "0..1" -- "1..1" WebADM : WebUser_ShoppingCart
+Order "order16 0..9999" -- "account17 1..1" Toma_de_pedido : Account_Order
+Pago "p0 0..9999" -- "acc1 1..1" Toma_de_pedido : Account_Payment
+Lineamiento "cart8 1..1" -- "account9 1..1" Toma_de_pedido : Account_ShoppingCart
+Cliente "customer7 1..1" -- "account6 1..1" Toma_de_pedido : Customer_Account
+Lineamiento "items14 1..9999" -- "order15 0..1" Order : Order_LineItem
+Order "order18 1..1" -- "payment19 0..1" Pago : Payment_Order
+Entrega_producto "product13 1..1" -- "lineItems12 0..9999" Lineamiento : Product_LineItem
+Lineamiento "items10 1..1" -- "sc11 1..1" ShoppingCart : ShoppingCart_LineItem
+Cliente "customer4 1..1" -- "webUser5 1..1" WebADM : WebUser_Customer
+ShoppingCart "shoppingCart2 0..1" -- "webUser3 1..1" WebADM : WebUser_ShoppingCart
 @enduml

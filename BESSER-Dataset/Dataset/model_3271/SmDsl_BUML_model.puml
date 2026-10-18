@@ -1,4 +1,8 @@
 @startuml
+' model: smDsl
+' project: sampleModel
+' owner: User
+' description: New project
 class smDsl_Command {
   + name : str
 }
@@ -18,15 +22,15 @@ class smDsl_State {
   + initial : bool
   + name : str
 }
-smDsl_Command "0..9999" -- "1..1" smDsl_EventHandlingDescription : commands20
-smDsl_Command "0..9999" --* "1..1" smDsl_CommandsSection : commands7
-smDsl_CommandsSection "0..1" --* "1..1" smDsl_Model : commandsSection1
-smDsl_Command "0..9999" -- "1..1" smDsl_State : entryCommands9
-smDsl_Event "0..1" -- "1..1" smDsl_EventHandlingDescription : event17
-smDsl_EventHandlingDescription "0..9999" --* "1..1" smDsl_State : eventHandlingDescriptions12
-smDsl_Event "0..9999" --* "1..1" smDsl_EventsSection : events5
-smDsl_EventsSection "0..1" --* "1..1" smDsl_Model : eventsSection0
-smDsl_Command "0..9999" -- "1..1" smDsl_State : exitCommands14
-smDsl_Model "1..1" *-- "0..9999" smDsl_State : states3
-smDsl_EventHandlingDescription "1..1" -- "0..1" smDsl_State : targetState23
+smDsl_Command "smDsl_EventHandlingDescription21 0..9999" -- "smDsl_Command22 1..1" smDsl_EventHandlingDescription : commands20
+smDsl_Command "smDsl_CommandsSection8 0..9999" --* "smDsl_Command 1..1" smDsl_CommandsSection : commands7
+smDsl_CommandsSection "smDsl_Model2 0..1" --* "smDsl_CommandsSection 1..1" smDsl_Model : commandsSection1
+smDsl_Command "smDsl_State10 0..9999" -- "smDsl_Command11 1..1" smDsl_State : entryCommands9
+smDsl_Event "smDsl_EventHandlingDescription18 0..1" -- "smDsl_Event19 1..1" smDsl_EventHandlingDescription : event17
+smDsl_EventHandlingDescription "smDsl_State13 0..9999" --* "smDsl_EventHandlingDescription 1..1" smDsl_State : eventHandlingDescriptions12
+smDsl_Event "smDsl_EventsSection6 0..9999" --* "smDsl_Event 1..1" smDsl_EventsSection : events5
+smDsl_EventsSection "smDsl_Model 0..1" --* "smDsl_EventsSection 1..1" smDsl_Model : eventsSection0
+smDsl_Command "smDsl_State15 0..9999" -- "smDsl_Command16 1..1" smDsl_State : exitCommands14
+smDsl_Model "smDsl_State 1..1" *-- "smDsl_Model4 0..9999" smDsl_State : states3
+smDsl_EventHandlingDescription "smDsl_State25 1..1" -- "smDsl_EventHandlingDescription24 0..1" smDsl_State : targetState23
 @enduml

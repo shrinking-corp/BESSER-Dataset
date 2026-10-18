@@ -1,4 +1,8 @@
 @startuml
+' model: editormodel
+' project: sampleModel
+' owner: User
+' description: New project
 class Adapter {
 }
 class ExtensibleElement {
@@ -70,36 +74,36 @@ NamedElementModel <|-- editormodel_Diagram
 NodeVisualModel <|-- editormodel_ConnectionVisualModel
 NodeVisualModel <|-- editormodel_VisualDiagramJump
 VisualModel <|-- editormodel_NodeVisualModel
-editormodel_Color "0..1" --* "1..1" editormodel_VisualModel : backgroundColor29
-editormodel_ConnectionBendpoint "0..9999" --* "1..1" editormodel_ConnectionVisualModel : bendpoints39
-editormodel_VisualModel "1..1" *-- "0..9999" editormodel_VisualModel : children17
-editormodel_Diagram "1..1" *-- "0..9999" editormodel_VisualModel : children3
-editormodel_CoreModel "0..1" -- "1..1" editormodel_Diagram : coreModel0
-editormodel_CoreModel "0..1" --* "1..1" editormodel_FlabotFileModel : coreModel5
-editormodel_Diagram "0..1" -- "1..1" editormodel_VisualModel : diagram27
-editormodel_Diagram "0..9999" -- "1..1" editormodel_Folder : diagrams51
-editormodel_Diagram "0..9999" --* "1..1" editormodel_FlabotFileModel : diagrams6
-editormodel_FlabotFileModel "0..1" -- "1..1" editormodel_Folder : fileModel56
-editormodel_ConnectionBendpoint "1..1" *-- "0..1" editormodel_Dimension : firstRelativeDimension34
-editormodel_FlabotFileModel "1..1" *-- "0..1" editormodel_Folder : folder11
-editormodel_Diagram "1..1" -- "0..1" editormodel_Folder : folder4
-editormodel_Folder "1..1" *-- "0..9999" editormodel_Folder : folders48
-editormodel_Color "0..1" --* "1..1" editormodel_VisualModel : foregroundColor31
-editormodel_FlabotFileModel "1..1" *-- "0..9999" editormodel_FlabotFileModel : importedFiles9
-editormodel_Point "0..1" --* "1..1" editormodel_VisualModel : location23
-editormodel_Diagram "1..1" *-- "0..9999" editormodel_Note : notes1
-editormodel_Diagram "0..9999" -- "1..1" editormodel_FlabotFileModel : openDiagrams13
-editormodel_VisualModel "1..1" -- "0..1" editormodel_VisualModel : parent20
-editormodel_Folder "1..1" -- "0..1" editormodel_Folder : parent54
-editormodel_ConnectionBendpoint "1..1" *-- "0..1" editormodel_Dimension : secondRelativeDimension36
-editormodel_EObject "0..1" -- "1..1" editormodel_VisualModel : semanticModel22
-editormodel_Dimension "0..1" --* "1..1" editormodel_VisualModel : size25
-editormodel_ConnectionVisualModel "1..1" -- "0..1" editormodel_NodeVisualModel : source41
-editormodel_ConnectionVisualModel "0..9999" --* "1..1" editormodel_NodeVisualModel : sourceConnections44
-editormodel_Diagram "0..1" -- "1..1" editormodel_VisualDiagramJump : sourceDiagram61
-editormodel_ConnectionVisualModel "1..1" -- "0..1" editormodel_NodeVisualModel : target42
-editormodel_ConnectionVisualModel "0..9999" -- "1..1" editormodel_NodeVisualModel : targetConnections45
-editormodel_Diagram "0..1" -- "1..1" editormodel_VisualDiagramJump : targetDiagram63
-editormodel_NodeVisualModel "0..1" -- "1..1" editormodel_VisualDiagramJump : targetVisualNode66
-editormodel_EObject "0..1" --* "1..1" editormodel_EStringToEObjectMapEntry : value59
+editormodel_Color "editormodel_VisualModel30 0..1" --* "editormodel_Color 1..1" editormodel_VisualModel : backgroundColor29
+editormodel_ConnectionBendpoint "editormodel_ConnectionVisualModel 0..9999" --* "editormodel_ConnectionBendpoint40 1..1" editormodel_ConnectionVisualModel : bendpoints39
+editormodel_VisualModel "VisualModel18 1..1" *-- "parent 0..9999" editormodel_VisualModel : children17
+editormodel_Diagram "VisualModel 1..1" *-- "diagram 0..9999" editormodel_VisualModel : children3
+editormodel_CoreModel "editormodel_Diagram 0..1" -- "editormodel_CoreModel 1..1" editormodel_Diagram : coreModel0
+editormodel_CoreModel "file 0..1" --* "coremodel.ecoreCoreModel 1..1" editormodel_FlabotFileModel : coreModel5
+editormodel_Diagram "children28 0..1" -- "Diagram 1..1" editormodel_VisualModel : diagram27
+editormodel_Diagram "folder 0..9999" -- "Diagram52 1..1" editormodel_Folder : diagrams51
+editormodel_Diagram "editormodel_FlabotFileModel 0..9999" --* "editormodel_Diagram7 1..1" editormodel_FlabotFileModel : diagrams6
+editormodel_FlabotFileModel "editormodel_Folder57 0..1" -- "editormodel_FlabotFileModel58 1..1" editormodel_Folder : fileModel56
+editormodel_ConnectionBendpoint "editormodel_Dimension35 1..1" *-- "editormodel_ConnectionBendpoint 0..1" editormodel_Dimension : firstRelativeDimension34
+editormodel_FlabotFileModel "editormodel_Folder 1..1" *-- "editormodel_FlabotFileModel12 0..1" editormodel_Folder : folder11
+editormodel_Diagram "Folder 1..1" -- "diagrams 0..1" editormodel_Folder : folder4
+editormodel_Folder "Folder50 1..1" *-- "parent49 0..9999" editormodel_Folder : folders48
+editormodel_Color "editormodel_VisualModel32 0..1" --* "editormodel_Color33 1..1" editormodel_VisualModel : foregroundColor31
+editormodel_FlabotFileModel "editormodel_FlabotFileModel10 1..1" *-- "editormodel_FlabotFileModel8 0..9999" editormodel_FlabotFileModel : importedFiles9
+editormodel_Point "editormodel_VisualModel24 0..1" --* "editormodel_Point 1..1" editormodel_VisualModel : location23
+editormodel_Diagram "editormodel_Note 1..1" *-- "editormodel_Diagram2 0..9999" editormodel_Note : notes1
+editormodel_Diagram "editormodel_FlabotFileModel14 0..9999" -- "editormodel_Diagram15 1..1" editormodel_FlabotFileModel : openDiagrams13
+editormodel_VisualModel "VisualModel21 1..1" -- "children 0..1" editormodel_VisualModel : parent20
+editormodel_Folder "Folder55 1..1" -- "folders 0..1" editormodel_Folder : parent54
+editormodel_ConnectionBendpoint "editormodel_Dimension38 1..1" *-- "editormodel_ConnectionBendpoint37 0..1" editormodel_Dimension : secondRelativeDimension36
+editormodel_EObject "editormodel_VisualModel 0..1" -- "editormodel_EObject 1..1" editormodel_VisualModel : semanticModel22
+editormodel_Dimension "editormodel_VisualModel26 0..1" --* "editormodel_Dimension 1..1" editormodel_VisualModel : size25
+editormodel_ConnectionVisualModel "NodeVisualModel 1..1" -- "sourceConnections 0..1" editormodel_NodeVisualModel : source41
+editormodel_ConnectionVisualModel "source 0..9999" --* "ConnectionVisualModel 1..1" editormodel_NodeVisualModel : sourceConnections44
+editormodel_Diagram "editormodel_VisualDiagramJump 0..1" -- "editormodel_Diagram62 1..1" editormodel_VisualDiagramJump : sourceDiagram61
+editormodel_ConnectionVisualModel "NodeVisualModel43 1..1" -- "targetConnections 0..1" editormodel_NodeVisualModel : target42
+editormodel_ConnectionVisualModel "target 0..9999" -- "ConnectionVisualModel46 1..1" editormodel_NodeVisualModel : targetConnections45
+editormodel_Diagram "editormodel_VisualDiagramJump64 0..1" -- "editormodel_Diagram65 1..1" editormodel_VisualDiagramJump : targetDiagram63
+editormodel_NodeVisualModel "editormodel_VisualDiagramJump67 0..1" -- "editormodel_NodeVisualModel 1..1" editormodel_VisualDiagramJump : targetVisualNode66
+editormodel_EObject "editormodel_EStringToEObjectMapEntry 0..1" --* "editormodel_EObject60 1..1" editormodel_EStringToEObjectMapEntry : value59
 @enduml

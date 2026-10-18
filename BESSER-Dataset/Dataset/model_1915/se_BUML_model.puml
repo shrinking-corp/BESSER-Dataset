@@ -1,4 +1,8 @@
 @startuml
+' model: se
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractEvent {
 }
 enum EventType {
@@ -170,13 +174,13 @@ bookingSystem_IHotelCustomerProvides <|-- se_bookingSystem_BookingSystem
 roomManager_IHotelRoomManager <|-- se_roomManager_RoomManager
 roomManager_IHotelRoomProvider <|-- se_roomManager_RoomManager
 roomManager_IHotelStartupProvies <|-- se_roomManager_RoomManager
-bookingSystem_IBooking "0..9999" -- "1..1" se_bookingSystem_BookingSystem : bookings1
-roomManager_IRoom "0..9999" -- "1..1" se_bookingSystem_Booking : checkedInRooms9
-bookingSystem_IEvent "0..9999" -- "1..1" se_bookingSystem_BookingSystem : events0
-roomManager_IRoom "0..9999" -- "1..1" se_bookingSystem_Booking : roomList7
-roomManager_IHotelRoomProvider "1..1" -- "1..1" se_bookingSystem_BookingSystem : roomProvider3
-roomManager_IRoomType "1..1" -- "1..1" se_roomManager_Room : roomType16
-roomManager_IRoomType "0..9999" -- "1..1" se_roomManager_RoomManager : roomTypes12
-roomManager_IRoom "0..9999" -- "1..1" se_roomManager_RoomManager : rooms13
-roomManager_IRoom "0..9999" -- "1..1" se_bookingSystem_BookingSystem : rooms5
+bookingSystem_IBooking "se_bookingSystem_BookingSystem2 0..9999" -- "bookingSystem_IBooking 1..1" se_bookingSystem_BookingSystem : bookings1
+roomManager_IRoom "se_bookingSystem_Booking10 0..9999" -- "roomManager_IRoom11 1..1" se_bookingSystem_Booking : checkedInRooms9
+bookingSystem_IEvent "se_bookingSystem_BookingSystem 0..9999" -- "bookingSystem_IEvent 1..1" se_bookingSystem_BookingSystem : events0
+roomManager_IRoom "se_bookingSystem_Booking 0..9999" -- "roomManager_IRoom8 1..1" se_bookingSystem_Booking : roomList7
+roomManager_IHotelRoomProvider "se_bookingSystem_BookingSystem4 1..1" -- "roomManager_IHotelRoomProvider 1..1" se_bookingSystem_BookingSystem : roomProvider3
+roomManager_IRoomType "se_roomManager_Room 1..1" -- "roomManager_IRoomType17 1..1" se_roomManager_Room : roomType16
+roomManager_IRoomType "se_roomManager_RoomManager 0..9999" -- "roomManager_IRoomType 1..1" se_roomManager_RoomManager : roomTypes12
+roomManager_IRoom "se_roomManager_RoomManager14 0..9999" -- "roomManager_IRoom15 1..1" se_roomManager_RoomManager : rooms13
+roomManager_IRoom "se_bookingSystem_BookingSystem6 0..9999" -- "roomManager_IRoom 1..1" se_bookingSystem_BookingSystem : rooms5
 @enduml

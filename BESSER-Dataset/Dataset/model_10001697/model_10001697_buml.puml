@@ -1,4 +1,8 @@
 @startuml
+' model: _PKbbIMskEemfA78eeeotcQ
+' project: sampleModel
+' owner: User
+' description: New project
 class Address {
   + City : str
   + House : str
@@ -49,15 +53,15 @@ class Products {
   + ID : int
   + Name : str
 }
-Address "1..1" -- "1..1" Customer1 : Address_Customer
-Address "1..1" -- "1..1" Order : Address_Order
-CustomerProduct "1..9999" -- "1..1" Products : CustomerProduct_Products
-Customer "0..1" -- "1..9999" Customer : Customer_Customer
-Customer "0..9999" -- "0..1" Customer : Customer_Customer2
-Customer1 "1..1" -- "1..9999" CustomerProduct : Customer_CustomerProduct
-Customer1 "1..1" -- "1..9999" OrderCustomer : Customer_OrderCustomer
-Customer1 "1..1" -- "1..9999" Payment : Customer_Payment
-Order "1..1" -- "1..9999" OrderCustomer : Order_OrderCustomer
-Order "1..9999" -- "1..1" OrderProduct : Order_OrderProduct
-OrderProduct "1..9999" -- "1..1" Products : Products_OrderProduct
+Address "address15 1..1" -- "customer14 1..1" Customer1 : Address_Customer
+Address "address17 1..1" -- "order16 1..1" Order : Address_Order
+CustomerProduct "customerProduct7 1..9999" -- "products6 1..1" Products : CustomerProduct_Products
+Customer "customer0 0..1" -- "customer1 1..9999" Customer : Customer_Customer
+Customer "customer2 0..9999" -- "customer3 0..1" Customer : Customer_Customer2
+Customer1 "customer5 1..1" -- "customerProduct4 1..9999" CustomerProduct : Customer_CustomerProduct
+Customer1 "customer21 1..1" -- "orderCustomer20 1..9999" OrderCustomer : Customer_OrderCustomer
+Customer1 "customer13 1..1" -- "payment12 1..9999" Payment : Customer_Payment
+Order "order19 1..1" -- "orderCustomer18 1..9999" OrderCustomer : Order_OrderCustomer
+Order "order11 1..9999" -- "orderProduct10 1..1" OrderProduct : Order_OrderProduct
+OrderProduct "orderProduct8 1..9999" -- "products9 1..1" Products : Products_OrderProduct
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: webapp
+' project: sampleModel
+' owner: User
+' description: New project
 class Named {
 }
 class UIElement {
@@ -47,20 +51,20 @@ UIElement <|-- webapp_Form
 UIElement <|-- webapp_ImageViewer
 UIElement <|-- webapp_Table
 UIElement <|-- webapp_TextArea
-webapp_Attribute "1..1" -- "1..1" webapp_DataStructure : attributeOf16
-webapp_ClientPage "1..9999" --* "1..1" webapp_WebApp : clientPages0
-webapp_ClientPage "1..1" *-- "0..9999" webapp_UIElement : composedOf20
-webapp_ClientPage "1..1" -- "1..1" webapp_ServerPage : connectsTo22
-webapp_DataStructure "1..1" -- "1..1" webapp_UIElement : content24
-webapp_DataSourceManager "0..9999" --* "1..1" webapp_WebApp : contentProviders5
-webapp_DataStructure "0..9999" --* "1..1" webapp_WebApp : entities3
-webapp_ClientPage "1..1" -- "1..1" webapp_ServerPage : generates7
-webapp_DataSourceManager "1..9999" -- "1..1" webapp_ServerPage : getContents8
-webapp_Attribute "1..1" -- "0..9999" webapp_DataStructure : linkedBy18
-webapp_Attribute "0..9999" -- "1..1" webapp_DataStructure : linkedTo12
-webapp_DataStructure "1..1" -- "1..9999" webapp_ServerPage : managedBy10
-webapp_DataStructure "1..9999" -- "1..1" webapp_ServerPage : manages9
-webapp_Attribute "0..9999" --* "1..1" webapp_DataStructure : parentOf11
-webapp_DataSourceManager "1..1" -- "1..9999" webapp_ServerPage : providesContent14
-webapp_ServerPage "1..9999" --* "1..1" webapp_WebApp : serverPages1
+webapp_Attribute "DataStructure17 1..1" -- "parentOf 1..1" webapp_DataStructure : attributeOf16
+webapp_ClientPage "webapp_WebApp 1..9999" --* "webapp_ClientPage 1..1" webapp_WebApp : clientPages0
+webapp_ClientPage "webapp_UIElement 1..1" *-- "webapp_ClientPage21 0..9999" webapp_UIElement : composedOf20
+webapp_ClientPage "ServerPage23 1..1" -- "generates 1..1" webapp_ServerPage : connectsTo22
+webapp_DataStructure "webapp_UIElement25 1..1" -- "webapp_DataStructure26 1..1" webapp_UIElement : content24
+webapp_DataSourceManager "webapp_WebApp6 0..9999" --* "webapp_DataSourceManager 1..1" webapp_WebApp : contentProviders5
+webapp_DataStructure "webapp_WebApp4 0..9999" --* "webapp_DataStructure 1..1" webapp_WebApp : entities3
+webapp_ClientPage "connectsTo 1..1" -- "ClientPage 1..1" webapp_ServerPage : generates7
+webapp_DataSourceManager "providesContent 1..9999" -- "DataSourceManager 1..1" webapp_ServerPage : getContents8
+webapp_Attribute "DataStructure19 1..1" -- "linkedTo 0..9999" webapp_DataStructure : linkedBy18
+webapp_Attribute "linkedBy 0..9999" -- "Attribute13 1..1" webapp_DataStructure : linkedTo12
+webapp_DataStructure "ServerPage 1..1" -- "manages 1..9999" webapp_ServerPage : managedBy10
+webapp_DataStructure "managedBy 1..9999" -- "DataStructure 1..1" webapp_ServerPage : manages9
+webapp_Attribute "attributeOf 0..9999" --* "Attribute 1..1" webapp_DataStructure : parentOf11
+webapp_DataSourceManager "ServerPage15 1..1" -- "getContents 1..9999" webapp_ServerPage : providesContent14
+webapp_ServerPage "webapp_WebApp2 1..9999" --* "webapp_ServerPage 1..1" webapp_WebApp : serverPages1
 @enduml

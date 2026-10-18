@@ -1,4 +1,8 @@
 @startuml
+' model: MySQL
+' project: sampleModel
+' owner: User
+' description: New project
 class Column {
 }
 class DataBase {
@@ -40,11 +44,11 @@ NamedElement <|-- MySQL_Column
 NamedElement <|-- MySQL_DataBase
 NamedElement <|-- MySQL_EnumItem
 NamedElement <|-- MySQL_Table
-Column "0..9999" --* "1..1" MySQL_Table : columns1
-DataBase "1..1" -- "1..1" MySQL_Table : database2
-EnumItem "0..9999" --* "1..1" MySQL_EnumSet : enumItems6
-EnumSet "1..1" --* "1..1" MySQL_EnumColumn : enumSet5
-EnumSet "1..1" -- "1..1" MySQL_EnumItem : enumSet7
-MySQL_Column "1..1" -- "1..1" Table : table3
-MySQL_DataBase "1..1" *-- "0..9999" Table : tables0
+Column "table 0..9999" --* "Column 1..1" MySQL_Table : columns1
+DataBase "tables 1..1" -- "DataBase 1..1" MySQL_Table : database2
+EnumItem "enumSet 0..9999" --* "EnumItem 1..1" MySQL_EnumSet : enumItems6
+EnumSet "MySQL_EnumColumn 1..1" --* "EnumSet 1..1" MySQL_EnumColumn : enumSet5
+EnumSet "enumItems 1..1" -- "EnumSet8 1..1" MySQL_EnumItem : enumSet7
+MySQL_Column "Table4 1..1" -- "columns 1..1" Table : table3
+MySQL_DataBase "Table 1..1" *-- "database 0..9999" Table : tables0
 @enduml

@@ -3436,9 +3436,9 @@ def test_assoc_elements0_stub_double():
     partner = tExp_Domainmodel()
     setattr(partner, 'tExp_Domainmodel', None)
     _safe_set(owner, 'tExp_TraceExpression', partner)
-    assert getattr(partner, 'tExp_Domainmodel') == owner
+    assert owner in getattr(partner, 'tExp_Domainmodel')
     _safe_set(owner, 'tExp_TraceExpression', None)
-    assert getattr(partner, 'tExp_Domainmodel') is None
+    assert owner not in getattr(partner, 'tExp_Domainmodel')
 
 
 def test_assoc_filterExpr116_stub_double():
@@ -3616,9 +3616,9 @@ def test_assoc_roles78_stub_double():
     partner = tExp_Together()
     setattr(partner, 'tExp_Together79', None)
     _safe_set(owner, 'tExp_Role80', partner)
-    assert getattr(partner, 'tExp_Together79') == owner
+    assert owner in getattr(partner, 'tExp_Together79')
     _safe_set(owner, 'tExp_Role80', None)
-    assert getattr(partner, 'tExp_Together79') is None
+    assert owner not in getattr(partner, 'tExp_Together79')
 
 
 def test_assoc_seqExpr114_stub_double():
@@ -3687,27 +3687,22 @@ from python_code import tExp_Cardinality
 
 def test_tExp_Cardinality___init__():
     assert tExp_Cardinality.__init__(tExp_Cardinality(0, 0), 0, 0) == None
-
 from python_code import tExp_NumberExpression
 
 def test_tExp_NumberExpression___init__():
     assert tExp_NumberExpression.__init__(tExp_NumberExpression(''), '') == None
-
 from python_code import tExp_Singletons
 
 def test_tExp_Singletons___init__():
     assert tExp_Singletons.__init__(tExp_Singletons(0, 0), 0, 0) == None
-
 from python_code import tExp_Size
 
 def test_tExp_Size___init__():
     assert tExp_Size.__init__(tExp_Size(0, 0), 0, 0) == None
-
 from python_code import tExp_StringExpression
 
 def test_tExp_StringExpression___init__():
     assert tExp_StringExpression.__init__(tExp_StringExpression(''), '') == None
-
 from python_code import tExp_VariableExpression
 
 def test_tExp_VariableExpression___init__():

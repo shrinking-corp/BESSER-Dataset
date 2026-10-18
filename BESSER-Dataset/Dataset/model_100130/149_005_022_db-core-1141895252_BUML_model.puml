@@ -1,4 +1,8 @@
 @startuml
+' model: core
+' project: sampleModel
+' owner: User
+' description: New project
 class AuthenticationUserPassword {
 }
 class ContextProvider {
@@ -146,11 +150,11 @@ JavaCloseable <|-- core_Statement
 Object <|-- core_DatabaseContainer
 Statement <|-- core_PreparedStatement
 TableDef <|-- core_ViewDef
-core_CatalogContainer "1..9999" --* "1..1" core_DatabaseContainer : catalogContainers5
-core_IndexColumnDef "0..9999" --* "1..1" core_IndexDef : columns10
-core_TableColumnDef "0..9999" --* "1..1" core_TableDef : columns11
-core_CatalogContainer "1..1" *-- "1..1" core_ConnectionConfig : connectionConfig0
-core_ConnectionConfig "1..1" *-- "1..1" core_ConnectionCredentials : credentials3
-core_CatalogContainer "1..1" -- "1..1" core_DatabaseContainer : defaultCatalogContainer7
-core_CatalogContainer "1..1" *-- "1..1" core_CatalogGenerationStrategy : generationStrategy1
+core_CatalogContainer "core_DatabaseContainer 1..9999" --* "core_CatalogContainer6 1..1" core_DatabaseContainer : catalogContainers5
+core_IndexColumnDef "core_IndexDef 0..9999" --* "core_IndexColumnDef 1..1" core_IndexDef : columns10
+core_TableColumnDef "core_TableDef 0..9999" --* "core_TableColumnDef 1..1" core_TableDef : columns11
+core_CatalogContainer "core_ConnectionConfig 1..1" *-- "core_CatalogContainer 1..1" core_ConnectionConfig : connectionConfig0
+core_ConnectionConfig "core_ConnectionCredentials 1..1" *-- "core_ConnectionConfig4 1..1" core_ConnectionCredentials : credentials3
+core_CatalogContainer "core_DatabaseContainer8 1..1" -- "core_CatalogContainer9 1..1" core_DatabaseContainer : defaultCatalogContainer7
+core_CatalogContainer "core_CatalogGenerationStrategy 1..1" *-- "core_CatalogContainer2 1..1" core_CatalogGenerationStrategy : generationStrategy1
 @enduml

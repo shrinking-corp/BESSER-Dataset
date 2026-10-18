@@ -1,4 +1,8 @@
 @startuml
+' model: servicefeaturemodel
+' project: sampleModel
+' owner: User
+' description: New project
 enum AggregationRules {
   AtLeastOnce
   Maximum
@@ -112,25 +116,25 @@ ServiceFeature <|-- servicefeaturemodel_MandatoryServiceFeature
 ServiceFeature <|-- servicefeaturemodel_OptionalServiceFeature
 Variant <|-- servicefeaturemodel_OR
 Variant <|-- servicefeaturemodel_XOR
-servicefeaturemodel_OptionalServiceFeature "2..9999" --* "1..1" servicefeaturemodel_Variant : contains35
-servicefeaturemodel_Configuration "0..9999" --* "1..1" servicefeaturemodel_PossibleConfigurations : contains37
-servicefeaturemodel_AttributeType "0..9999" --* "1..1" servicefeaturemodel_AttributeTypes : contains40
-servicefeaturemodel_Excludes "0..9999" --* "1..1" servicefeaturemodel_ServiceFeature : containsExcludes10
-servicefeaturemodel_ServiceFeature "0..9999" --* "1..1" servicefeaturemodel_ServiceFeatureDiagram : containsFeatures25
-servicefeaturemodel_Attribute "1..1" *-- "0..9999" servicefeaturemodel_ModifyRelationship : containsModifyRelationship17
-servicefeaturemodel_Requires "0..9999" --* "1..1" servicefeaturemodel_ServiceFeature : containsRequires8
-servicefeaturemodel_ServiceFeature "1..1" *-- "0..1" servicefeaturemodel_Variant : containsVariant6
-servicefeaturemodel_ServiceFeature "0..9999" --* "1..1" servicefeaturemodel_ServiceFeature : decomposesInto13
-servicefeaturemodel_Attribute "0..9999" --* "1..1" servicefeaturemodel_Configuration : describedBy32
-servicefeaturemodel_Attribute "0..9999" --* "1..1" servicefeaturemodel_ServiceFeature : describedBy5
-servicefeaturemodel_PossibleConfigurations "1..1" --* "1..1" servicefeaturemodel_Service : enables1
-servicefeaturemodel_Configuration "1..1" *-- "0..9999" servicefeaturemodel_Preference : evaluatedBy30
-servicefeaturemodel_Excludes "1..1" -- "1..1" servicefeaturemodel_ServiceFeature : excludesServiceFeature22
-servicefeaturemodel_Configuration "1..1" -- "0..9999" servicefeaturemodel_ServiceFeature : groups28
-servicefeaturemodel_AttributeTypes "1..1" --* "1..1" servicefeaturemodel_Service : has3
-servicefeaturemodel_Attribute "1..1" -- "1..1" servicefeaturemodel_AttributeType : ofAttributeType15
-servicefeaturemodel_Service "1..1" *-- "1..1" servicefeaturemodel_ServiceFeatureDiagram : representedBy0
-servicefeaturemodel_Requires "1..1" -- "1..1" servicefeaturemodel_ServiceFeature : requiresServiceFeature19
-servicefeaturemodel_Attribute "1..1" -- "1..1" servicefeaturemodel_AttributeToAttributeModifyRelationship : triggeredByAttribute43
-servicefeaturemodel_FeatureToAttributeModifyRelationship "1..1" -- "1..1" servicefeaturemodel_ServiceFeature : triggeredByServiceFeature45
+servicefeaturemodel_OptionalServiceFeature "servicefeaturemodel_Variant36 2..9999" --* "servicefeaturemodel_OptionalServiceFeature 1..1" servicefeaturemodel_Variant : contains35
+servicefeaturemodel_Configuration "servicefeaturemodel_PossibleConfigurations38 0..9999" --* "servicefeaturemodel_Configuration39 1..1" servicefeaturemodel_PossibleConfigurations : contains37
+servicefeaturemodel_AttributeType "servicefeaturemodel_AttributeTypes41 0..9999" --* "servicefeaturemodel_AttributeType42 1..1" servicefeaturemodel_AttributeTypes : contains40
+servicefeaturemodel_Excludes "servicefeaturemodel_ServiceFeature11 0..9999" --* "servicefeaturemodel_Excludes 1..1" servicefeaturemodel_ServiceFeature : containsExcludes10
+servicefeaturemodel_ServiceFeature "servicefeaturemodel_ServiceFeatureDiagram26 0..9999" --* "servicefeaturemodel_ServiceFeature27 1..1" servicefeaturemodel_ServiceFeatureDiagram : containsFeatures25
+servicefeaturemodel_Attribute "servicefeaturemodel_ModifyRelationship 1..1" *-- "servicefeaturemodel_Attribute18 0..9999" servicefeaturemodel_ModifyRelationship : containsModifyRelationship17
+servicefeaturemodel_Requires "servicefeaturemodel_ServiceFeature9 0..9999" --* "servicefeaturemodel_Requires 1..1" servicefeaturemodel_ServiceFeature : containsRequires8
+servicefeaturemodel_ServiceFeature "servicefeaturemodel_Variant 1..1" *-- "servicefeaturemodel_ServiceFeature7 0..1" servicefeaturemodel_Variant : containsVariant6
+servicefeaturemodel_ServiceFeature "servicefeaturemodel_ServiceFeature12 0..9999" --* "servicefeaturemodel_ServiceFeature14 1..1" servicefeaturemodel_ServiceFeature : decomposesInto13
+servicefeaturemodel_Attribute "servicefeaturemodel_Configuration33 0..9999" --* "servicefeaturemodel_Attribute34 1..1" servicefeaturemodel_Configuration : describedBy32
+servicefeaturemodel_Attribute "servicefeaturemodel_ServiceFeature 0..9999" --* "servicefeaturemodel_Attribute 1..1" servicefeaturemodel_ServiceFeature : describedBy5
+servicefeaturemodel_PossibleConfigurations "servicefeaturemodel_Service2 1..1" --* "servicefeaturemodel_PossibleConfigurations 1..1" servicefeaturemodel_Service : enables1
+servicefeaturemodel_Configuration "servicefeaturemodel_Preference 1..1" *-- "servicefeaturemodel_Configuration31 0..9999" servicefeaturemodel_Preference : evaluatedBy30
+servicefeaturemodel_Excludes "servicefeaturemodel_ServiceFeature24 1..1" -- "servicefeaturemodel_Excludes23 1..1" servicefeaturemodel_ServiceFeature : excludesServiceFeature22
+servicefeaturemodel_Configuration "servicefeaturemodel_ServiceFeature29 1..1" -- "servicefeaturemodel_Configuration 0..9999" servicefeaturemodel_ServiceFeature : groups28
+servicefeaturemodel_AttributeTypes "servicefeaturemodel_Service4 1..1" --* "servicefeaturemodel_AttributeTypes 1..1" servicefeaturemodel_Service : has3
+servicefeaturemodel_Attribute "servicefeaturemodel_AttributeType 1..1" -- "servicefeaturemodel_Attribute16 1..1" servicefeaturemodel_AttributeType : ofAttributeType15
+servicefeaturemodel_Service "servicefeaturemodel_ServiceFeatureDiagram 1..1" *-- "servicefeaturemodel_Service 1..1" servicefeaturemodel_ServiceFeatureDiagram : representedBy0
+servicefeaturemodel_Requires "servicefeaturemodel_ServiceFeature21 1..1" -- "servicefeaturemodel_Requires20 1..1" servicefeaturemodel_ServiceFeature : requiresServiceFeature19
+servicefeaturemodel_Attribute "servicefeaturemodel_AttributeToAttributeModifyRelationship 1..1" -- "servicefeaturemodel_Attribute44 1..1" servicefeaturemodel_AttributeToAttributeModifyRelationship : triggeredByAttribute43
+servicefeaturemodel_FeatureToAttributeModifyRelationship "servicefeaturemodel_ServiceFeature46 1..1" -- "servicefeaturemodel_FeatureToAttributeModifyRelationship 1..1" servicefeaturemodel_ServiceFeature : triggeredByServiceFeature45
 @enduml

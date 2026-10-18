@@ -1,4 +1,8 @@
 @startuml
+' model: hierarchy
+' project: sampleModel
+' owner: User
+' description: New project
 class hierarchy_Book {
   + Name : str
   + genre : str
@@ -12,8 +16,8 @@ class hierarchy_HierLibrary {
 class hierarchy_NonFiction {
   + Name : str
 }
-hierarchy_Fiction "0..1" --* "1..1" hierarchy_HierLibrary : fiction0
-hierarchy_Book "0..9999" --* "1..1" hierarchy_Fiction : members3
-hierarchy_Book "0..9999" --* "1..1" hierarchy_NonFiction : members5
-hierarchy_HierLibrary "1..1" *-- "0..1" hierarchy_NonFiction : nonfiction1
+hierarchy_Fiction "hierarchy_HierLibrary 0..1" --* "hierarchy_Fiction 1..1" hierarchy_HierLibrary : fiction0
+hierarchy_Book "hierarchy_Fiction4 0..9999" --* "hierarchy_Book 1..1" hierarchy_Fiction : members3
+hierarchy_Book "hierarchy_NonFiction6 0..9999" --* "hierarchy_Book7 1..1" hierarchy_NonFiction : members5
+hierarchy_HierLibrary "hierarchy_NonFiction 1..1" *-- "hierarchy_HierLibrary2 0..1" hierarchy_NonFiction : nonfiction1
 @enduml

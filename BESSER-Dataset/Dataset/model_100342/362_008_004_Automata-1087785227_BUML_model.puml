@@ -1,4 +1,8 @@
 @startuml
+' model: automata
+' project: sampleModel
+' owner: User
+' description: New project
 class automata_Automata {
 }
 class automata_Current {
@@ -17,14 +21,14 @@ class automata_Transition {
   + name : str
   + token : str
 }
-automata_Automata "1..1" *-- "0..1" automata_Current : current0
-automata_Automata "1..1" *-- "0..9999" automata_Final : finals7
-automata_Automata "1..1" *-- "0..1" automata_Initial : initial1
-automata_State "0..1" -- "1..1" automata_Transition : source9
-automata_Initial "1..1" -- "0..1" automata_State : state15
-automata_Final "1..1" -- "0..1" automata_State : state18
-automata_Current "1..1" -- "0..1" automata_State : state21
-automata_Automata "1..1" *-- "0..9999" automata_State : states3
-automata_State "0..1" -- "1..1" automata_Transition : target12
-automata_Automata "1..1" *-- "0..9999" automata_Transition : transitions5
+automata_Automata "automata_Current 1..1" *-- "automata_Automata 0..1" automata_Current : current0
+automata_Automata "automata_Final 1..1" *-- "automata_Automata8 0..9999" automata_Final : finals7
+automata_Automata "automata_Initial 1..1" *-- "automata_Automata2 0..1" automata_Initial : initial1
+automata_State "automata_Transition10 0..1" -- "automata_State11 1..1" automata_Transition : source9
+automata_Initial "automata_State17 1..1" -- "automata_Initial16 0..1" automata_State : state15
+automata_Final "automata_State20 1..1" -- "automata_Final19 0..1" automata_State : state18
+automata_Current "automata_State23 1..1" -- "automata_Current22 0..1" automata_State : state21
+automata_Automata "automata_State 1..1" *-- "automata_Automata4 0..9999" automata_State : states3
+automata_State "automata_Transition13 0..1" -- "automata_State14 1..1" automata_Transition : target12
+automata_Automata "automata_Transition 1..1" *-- "automata_Automata6 0..9999" automata_Transition : transitions5
 @enduml

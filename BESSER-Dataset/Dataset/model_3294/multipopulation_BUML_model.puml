@@ -1,4 +1,8 @@
 @startuml
+' model: multipopulation
+' project: sampleModel
+' owner: User
+' description: New project
 class MultiPopulationSIDiseaseModel {
 }
 class MultiPopulationSIRDiseaseModel {
@@ -23,10 +27,10 @@ class multipopulation_StringValueList {
 MultiPopulationSIDiseaseModel <|-- multipopulation_MultiPopulationSIRDiseaseModel
 MultiPopulationSIRDiseaseModel <|-- multipopulation_MultiPopulationSEIRDiseaseModel
 StandardDiseaseModel <|-- multipopulation_MultiPopulationSIDiseaseModel
-multipopulation_DoubleValueList "1..1" --* "1..1" multipopulation_MultiPopulationSIRDiseaseModel : immunityLossRate8
-multipopulation_DoubleValueList "1..1" --* "1..1" multipopulation_MultiPopulationSEIRDiseaseModel : incubationRate10
-multipopulation_DoubleValueList "1..1" --* "1..1" multipopulation_MultiPopulationSIDiseaseModel : infectiousMortalityRate5
-multipopulation_MultiPopulationSIDiseaseModel "1..1" *-- "1..1" multipopulation_StringValueList : populationGroups0
-multipopulation_DoubleValueList "1..1" --* "1..1" multipopulation_MultiPopulationSIDiseaseModel : recoveryRate3
-multipopulation_DoubleValueMatrix "1..1" --* "1..1" multipopulation_MultiPopulationSIDiseaseModel : transmissionRate1
+multipopulation_DoubleValueList "multipopulation_MultiPopulationSIRDiseaseModel 1..1" --* "multipopulation_DoubleValueList9 1..1" multipopulation_MultiPopulationSIRDiseaseModel : immunityLossRate8
+multipopulation_DoubleValueList "multipopulation_MultiPopulationSEIRDiseaseModel 1..1" --* "multipopulation_DoubleValueList11 1..1" multipopulation_MultiPopulationSEIRDiseaseModel : incubationRate10
+multipopulation_DoubleValueList "multipopulation_MultiPopulationSIDiseaseModel6 1..1" --* "multipopulation_DoubleValueList7 1..1" multipopulation_MultiPopulationSIDiseaseModel : infectiousMortalityRate5
+multipopulation_MultiPopulationSIDiseaseModel "multipopulation_StringValueList 1..1" *-- "multipopulation_MultiPopulationSIDiseaseModel 1..1" multipopulation_StringValueList : populationGroups0
+multipopulation_DoubleValueList "multipopulation_MultiPopulationSIDiseaseModel4 1..1" --* "multipopulation_DoubleValueList 1..1" multipopulation_MultiPopulationSIDiseaseModel : recoveryRate3
+multipopulation_DoubleValueMatrix "multipopulation_MultiPopulationSIDiseaseModel2 1..1" --* "multipopulation_DoubleValueMatrix 1..1" multipopulation_MultiPopulationSIDiseaseModel : transmissionRate1
 @enduml

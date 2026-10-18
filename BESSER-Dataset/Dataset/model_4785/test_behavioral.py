@@ -90,9 +90,9 @@ def test_assoc_constraint1_stub_double():
     partner = types_Type()
     setattr(partner, 'types_Type', None)
     _safe_set(owner, 'types_TypeConstraint', partner)
-    assert getattr(partner, 'types_Type') == owner
+    assert owner in getattr(partner, 'types_Type')
     _safe_set(owner, 'types_TypeConstraint', None)
-    assert getattr(partner, 'types_Type') is None
+    assert owner not in getattr(partner, 'types_Type')
 
 
 def test_assoc_enumerator10_stub_double():
@@ -105,9 +105,9 @@ def test_assoc_enumerator10_stub_double():
     partner = types_EnumerationType()
     setattr(partner, 'owningEnumeration', None)
     _safe_set(owner, 'Enumerator', partner)
-    assert getattr(partner, 'owningEnumeration') == owner
+    assert owner in getattr(partner, 'owningEnumeration')
     _safe_set(owner, 'Enumerator', None)
-    assert getattr(partner, 'owningEnumeration') is None
+    assert owner not in getattr(partner, 'owningEnumeration')
 
 
 def test_assoc_features13_stub_double():

@@ -1,4 +1,8 @@
 @startuml
+' model: library
+' project: sampleModel
+' owner: User
+' description: New project
 class Borrowable {
 }
 abstract class library_Borrowable {
@@ -21,8 +25,8 @@ class library_borrowables_Magazine {
 Borrowable <|-- library_borrowables_Book
 Borrowable <|-- library_borrowables_CD
 Borrowable <|-- library_borrowables_Magazine
-library_Borrowable "0..9999" --* "1..1" library_CityLibrary : borrowables0
-library_Borrowable "0..9999" -- "1..1" library_Customer : borrowed2
-library_CityLibrary "1..1" *-- "0..9999" library_Customer : customers1
-library_Borrowable "1..1" -- "0..1" library_CityLibrary : library4
+library_Borrowable "library 0..9999" --* "Borrowable 1..1" library_CityLibrary : borrowables0
+library_Borrowable "library_Customer3 0..9999" -- "library_Borrowable 1..1" library_Customer : borrowed2
+library_CityLibrary "library_Customer 1..1" *-- "library_CityLibrary 0..9999" library_Customer : customers1
+library_Borrowable "CityLibrary 1..1" -- "borrowables 0..1" library_CityLibrary : library4
 @enduml

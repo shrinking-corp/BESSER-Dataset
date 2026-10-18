@@ -1,4 +1,8 @@
 @startuml
+' model: StateMachine
+' project: sampleModel
+' owner: User
+' description: New project
 class StateMachine_Arc {
   + toPlace : bool
   + weight : int
@@ -9,6 +13,6 @@ class StateMachine_Place {
   + name : str
   + tokens : int
 }
-StateMachine_Arc "0..9999" -- "1..1" StateMachine_Place : arcPlace1
-StateMachine_Arc "1..1" -- "1..1" StateMachine_PNTransition : arcTransition0
+StateMachine_Arc "StateMachine_Place 0..9999" -- "StateMachine_Arc2 1..1" StateMachine_Place : arcPlace1
+StateMachine_Arc "StateMachine_PNTransition 1..1" -- "StateMachine_Arc 1..1" StateMachine_PNTransition : arcTransition0
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: generatedplugin
+' project: sampleModel
+' owner: User
+' description: New project
 class generatedplugin_DublinCore {
   + bibliographicCitation : str
   + categoryId : str
@@ -33,7 +37,7 @@ class generatedplugin_StemCategory {
   + name : str
   + parentId : str
 }
-generatedplugin_Extension "1..1" *-- "1..9999" generatedplugin_StemCategory : categories0
-generatedplugin_DublinCore "0..9999" --* "1..1" generatedplugin_Extension : dublinCores1
-generatedplugin_Extension "0..9999" --* "1..1" generatedplugin_Plugin : extensionelement3
+generatedplugin_Extension "generatedplugin_StemCategory 1..1" *-- "generatedplugin_Extension 1..9999" generatedplugin_StemCategory : categories0
+generatedplugin_DublinCore "generatedplugin_Extension2 0..9999" --* "generatedplugin_DublinCore 1..1" generatedplugin_Extension : dublinCores1
+generatedplugin_Extension "generatedplugin_Plugin 0..9999" --* "generatedplugin_Extension4 1..1" generatedplugin_Plugin : extensionelement3
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: CoachBusWithEDataType
+' project: sampleModel
+' owner: User
+' description: New project
 class CoachBusWithEDataType_AdultTicket {
   + isElderlyDiscount : bool
 }
@@ -68,20 +72,20 @@ Ticket <|-- CoachBusWithEDataType_AdultTicket
 Ticket <|-- CoachBusWithEDataType_ChildTicket
 Trip <|-- CoachBusWithEDataType_PrivateTrip
 Trip <|-- CoachBusWithEDataType_RegularTrip
-CoachBusWithEDataType_Coach "1..1" -- "1..1" CoachBusWithEDataType_SecurityGuard : coach10
-CoachBusWithEDataType_Coach "1..9999" -- "1..1" CoachBusWithEDataType_Trip : coaches0
-CoachBusWithEDataType_BookingOffice "1..1" -- "1..9999" CoachBusWithEDataType_Coach : coaches14
-CoachBusWithEDataType_Coach "1..1" -- "0..9999" CoachBusWithEDataType_SecurityGuard : guards4
-CoachBusWithEDataType_BookingOffice "1..1" -- "0..1" CoachBusWithEDataType_Manager : manager16
-CoachBusWithEDataType_BookingOffice "0..1" -- "1..1" CoachBusWithEDataType_Manager : office12
-CoachBusWithEDataType_BookingOffice "1..1" -- "1..1" CoachBusWithEDataType_VendingMachine : office26
-CoachBusWithEDataType_BookingOffice "0..9999" -- "1..1" CoachBusWithEDataType_Coach : offices5
-CoachBusWithEDataType_Passenger "1..9999" -- "1..1" CoachBusWithEDataType_Trip : passengers1
-CoachBusWithEDataType_Passenger "1..1" -- "1..1" CoachBusWithEDataType_Ticket : psg19
-CoachBusWithEDataType_Ticket "0..9999" -- "1..1" CoachBusWithEDataType_VendingMachine : tickets24
-CoachBusWithEDataType_Passenger "1..1" -- "0..9999" CoachBusWithEDataType_Ticket : tickets9
-CoachBusWithEDataType_Coach "1..1" -- "1..9999" CoachBusWithEDataType_Trip : trips3
-CoachBusWithEDataType_Passenger "1..1" -- "1..9999" CoachBusWithEDataType_Trip : trips7
-CoachBusWithEDataType_Ticket "1..1" -- "1..1" CoachBusWithEDataType_VendingMachine : vm21
-CoachBusWithEDataType_BookingOffice "1..1" -- "0..9999" CoachBusWithEDataType_VendingMachine : vms17
+CoachBusWithEDataType_Coach "guards 1..1" -- "Coach11 1..1" CoachBusWithEDataType_SecurityGuard : coach10
+CoachBusWithEDataType_Coach "trips 1..9999" -- "Coach 1..1" CoachBusWithEDataType_Trip : coaches0
+CoachBusWithEDataType_BookingOffice "Coach15 1..1" -- "offices 1..9999" CoachBusWithEDataType_Coach : coaches14
+CoachBusWithEDataType_Coach "SecurityGuard 1..1" -- "coach 0..9999" CoachBusWithEDataType_SecurityGuard : guards4
+CoachBusWithEDataType_BookingOffice "Manager 1..1" -- "office 0..1" CoachBusWithEDataType_Manager : manager16
+CoachBusWithEDataType_BookingOffice "manager 0..1" -- "BookingOffice13 1..1" CoachBusWithEDataType_Manager : office12
+CoachBusWithEDataType_BookingOffice "vms 1..1" -- "BookingOffice27 1..1" CoachBusWithEDataType_VendingMachine : office26
+CoachBusWithEDataType_BookingOffice "coaches6 0..9999" -- "BookingOffice 1..1" CoachBusWithEDataType_Coach : offices5
+CoachBusWithEDataType_Passenger "trips2 1..9999" -- "Passenger 1..1" CoachBusWithEDataType_Trip : passengers1
+CoachBusWithEDataType_Passenger "tickets 1..1" -- "Passenger20 1..1" CoachBusWithEDataType_Ticket : psg19
+CoachBusWithEDataType_Ticket "vm 0..9999" -- "Ticket25 1..1" CoachBusWithEDataType_VendingMachine : tickets24
+CoachBusWithEDataType_Passenger "Ticket 1..1" -- "psg 0..9999" CoachBusWithEDataType_Ticket : tickets9
+CoachBusWithEDataType_Coach "Trip 1..1" -- "coaches 1..9999" CoachBusWithEDataType_Trip : trips3
+CoachBusWithEDataType_Passenger "Trip8 1..1" -- "passengers 1..9999" CoachBusWithEDataType_Trip : trips7
+CoachBusWithEDataType_Ticket "VendingMachine23 1..1" -- "tickets22 1..1" CoachBusWithEDataType_VendingMachine : vm21
+CoachBusWithEDataType_BookingOffice "VendingMachine 1..1" -- "office18 0..9999" CoachBusWithEDataType_VendingMachine : vms17
 @enduml

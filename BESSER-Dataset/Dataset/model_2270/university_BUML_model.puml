@@ -1,4 +1,8 @@
 @startuml
+' model: university
+' project: sampleModel
+' owner: User
+' description: New project
 class university_Course {
   + name : str
 }
@@ -8,8 +12,8 @@ class university_Professor {
 class university_University {
   + name : str
 }
-university_Course "1..9999" -- "1..1" university_Professor : courses1
-university_Course "0..9999" --* "1..1" university_University : courses3
-university_Course "1..1" -- "5..10" university_Professor : professors0
-university_Professor "0..9999" --* "1..1" university_University : professors2
+university_Course "professors 1..9999" -- "Course 1..1" university_Professor : courses1
+university_Course "university_University4 0..9999" --* "university_Course 1..1" university_University : courses3
+university_Course "Professor 1..1" -- "courses 5..10" university_Professor : professors0
+university_Professor "university_University 0..9999" --* "university_Professor 1..1" university_University : professors2
 @enduml

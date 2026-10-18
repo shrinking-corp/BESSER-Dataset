@@ -1,4 +1,8 @@
 @startuml
+' model: uisut
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractState {
 }
 class UISUTElement {
@@ -64,22 +68,22 @@ UISUTElement <|-- uisut_UITransition
 UISUTElement <|-- uisut_UITrigger
 UITrigger <|-- uisut_ComponentTrigger
 UITrigger <|-- uisut_UserTrigger
-uisut_UIDataVariable "0..9999" -- "1..1" uisut_UIState : addedDataVariable10
-uisut_UIDataVariable "0..9999" -- "1..1" uisut_UIState : deletedDataVariable13
-uisut_UIDataVariable "0..9999" -- "1..1" uisut_UITransition : guardedDataVariable25
-uisut_Action "0..1" --* "1..1" uisut_UITransition : itsAction23
-uisut_UICondition "0..1" --* "1..1" uisut_UITransition : itsCondition21
-uisut_UIDataVariable "0..9999" --* "1..1" uisut_UIStatemachine : itsDataVariable7
-uisut_AbstractState "1..1" -- "0..9999" uisut_UITransition : itsInTransition34
-uisut_UIControl "1..1" -- "0..1" uisut_UIDataVariable : itsInputDaa28
-uisut_AbstractState "1..1" -- "0..9999" uisut_UITransition : itsOutTransition35
-uisut_UIControl "1..1" -- "0..1" uisut_UIDataVariable : itsOutputData31
-uisut_UISUT "1..1" *-- "0..1" uisut_UIStatemachine : itsSTM0
-uisut_AbstractState "1..1" -- "1..1" uisut_UITransition : itsSrcState17
-uisut_AbstractState "0..9999" --* "1..1" uisut_UIStatemachine : itsState3
-uisut_UIStatemachine "1..1" *-- "0..9999" uisut_UITransition : itsTransition5
-uisut_AbstractState "1..1" -- "1..1" uisut_UITransition : itsTrgtState16
-uisut_UITransition "1..1" *-- "0..1" uisut_UITrigger : itsTrigger19
-uisut_UIControl "0..9999" --* "1..1" uisut_UIState : itsUIControl9
-uisut_ApplicationSystem "1..1" *-- "0..1" uisut_UISUT : itsUISUT1
+uisut_UIDataVariable "uisut_UIState11 0..9999" -- "uisut_UIDataVariable12 1..1" uisut_UIState : addedDataVariable10
+uisut_UIDataVariable "uisut_UIState14 0..9999" -- "uisut_UIDataVariable15 1..1" uisut_UIState : deletedDataVariable13
+uisut_UIDataVariable "uisut_UITransition26 0..9999" -- "uisut_UIDataVariable27 1..1" uisut_UITransition : guardedDataVariable25
+uisut_Action "uisut_UITransition24 0..1" --* "uisut_Action 1..1" uisut_UITransition : itsAction23
+uisut_UICondition "uisut_UITransition22 0..1" --* "uisut_UICondition 1..1" uisut_UITransition : itsCondition21
+uisut_UIDataVariable "uisut_UIStatemachine8 0..9999" --* "uisut_UIDataVariable 1..1" uisut_UIStatemachine : itsDataVariable7
+uisut_AbstractState "UITransition 1..1" -- "itsTrgtState 0..9999" uisut_UITransition : itsInTransition34
+uisut_UIControl "uisut_UIDataVariable30 1..1" -- "uisut_UIControl29 0..1" uisut_UIDataVariable : itsInputDaa28
+uisut_AbstractState "UITransition36 1..1" -- "itsSrcState 0..9999" uisut_UITransition : itsOutTransition35
+uisut_UIControl "uisut_UIDataVariable33 1..1" -- "uisut_UIControl32 0..1" uisut_UIDataVariable : itsOutputData31
+uisut_UISUT "uisut_UIStatemachine 1..1" *-- "uisut_UISUT 0..1" uisut_UIStatemachine : itsSTM0
+uisut_AbstractState "itsOutTransition 1..1" -- "AbstractState18 1..1" uisut_UITransition : itsSrcState17
+uisut_AbstractState "uisut_UIStatemachine4 0..9999" --* "uisut_AbstractState 1..1" uisut_UIStatemachine : itsState3
+uisut_UIStatemachine "uisut_UITransition 1..1" *-- "uisut_UIStatemachine6 0..9999" uisut_UITransition : itsTransition5
+uisut_AbstractState "itsInTransition 1..1" -- "AbstractState 1..1" uisut_UITransition : itsTrgtState16
+uisut_UITransition "uisut_UITrigger 1..1" *-- "uisut_UITransition20 0..1" uisut_UITrigger : itsTrigger19
+uisut_UIControl "uisut_UIState 0..9999" --* "uisut_UIControl 1..1" uisut_UIState : itsUIControl9
+uisut_ApplicationSystem "uisut_UISUT2 1..1" *-- "uisut_ApplicationSystem 0..1" uisut_UISUT : itsUISUT1
 @enduml

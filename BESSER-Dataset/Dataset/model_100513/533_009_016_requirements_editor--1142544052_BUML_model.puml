@@ -1,4 +1,8 @@
 @startuml
+' model: requirements_editor
+' project: sampleModel
+' owner: User
+' description: New project
 class Argument {
 }
 enum BinaryOperator {
@@ -71,20 +75,20 @@ Requirement <|-- requirements_editor_QualityRequirement
 SimpleDependency <|-- requirements_editor_CValue
 SimpleDependency <|-- requirements_editor_ICost
 SimpleDependency <|-- requirements_editor_Refines
-requirements_editor_Argument "1..1" --* "1..1" requirements_editor_Requires : argument15
-requirements_editor_Argument "1..1" --* "1..1" requirements_editor_NOTOperator : argument27
-requirements_editor_Category "1..1" -- "1..1" requirements_editor_Person : categoryOwnedBy6
-requirements_editor_Dependency "0..9999" --* "1..1" requirements_editor_Requirement : dependencySource2
-requirements_editor_Requirement "1..1" -- "1..1" requirements_editor_SimpleDependency : dependencyTarget13
-requirements_editor_Description "1..1" --* "1..1" requirements_editor_Requirement : description0
-requirements_editor_Argument "1..1" --* "1..1" requirements_editor_BinaryOperatorArgument : leftSideArgument18
-requirements_editor_DocumentRoot "1..1" *-- "0..9999" requirements_editor_Person : person25
-requirements_editor_Category "0..9999" -- "1..1" requirements_editor_Person : personOwnsCategory12
-requirements_editor_Person "1..1" -- "0..9999" requirements_editor_Requirement : personOwnsRequirement11
-requirements_editor_Requirement "1..1" -- "1..1" requirements_editor_RequirementArgument : requirement21
-requirements_editor_Category "1..1" *-- "0..9999" requirements_editor_Requirement : requirement8
-requirements_editor_Person "1..1" -- "1..1" requirements_editor_Requirement : requirementOwnedBy1
-requirements_editor_Argument "1..1" --* "1..1" requirements_editor_BinaryOperatorArgument : rightSideArgument16
-requirements_editor_Category "0..9999" --* "1..1" requirements_editor_DocumentRoot : rootCategories23
-requirements_editor_Category "1..1" *-- "0..9999" requirements_editor_Category : subcategoryOf5
+requirements_editor_Argument "requirements_editor_Requires 1..1" --* "requirements_editor_Argument 1..1" requirements_editor_Requires : argument15
+requirements_editor_Argument "requirements_editor_NOTOperator 1..1" --* "requirements_editor_Argument28 1..1" requirements_editor_NOTOperator : argument27
+requirements_editor_Category "Person7 1..1" -- "personOwnsCategory 1..1" requirements_editor_Person : categoryOwnedBy6
+requirements_editor_Dependency "requirements_editor_Requirement3 0..9999" --* "requirements_editor_Dependency 1..1" requirements_editor_Requirement : dependencySource2
+requirements_editor_Requirement "requirements_editor_SimpleDependency 1..1" -- "requirements_editor_Requirement14 1..1" requirements_editor_SimpleDependency : dependencyTarget13
+requirements_editor_Description "requirements_editor_Requirement 1..1" --* "requirements_editor_Description 1..1" requirements_editor_Requirement : description0
+requirements_editor_Argument "requirements_editor_BinaryOperatorArgument19 1..1" --* "requirements_editor_Argument20 1..1" requirements_editor_BinaryOperatorArgument : leftSideArgument18
+requirements_editor_DocumentRoot "requirements_editor_Person 1..1" *-- "requirements_editor_DocumentRoot26 0..9999" requirements_editor_Person : person25
+requirements_editor_Category "categoryOwnedBy 0..9999" -- "Category 1..1" requirements_editor_Person : personOwnsCategory12
+requirements_editor_Person "Requirement 1..1" -- "requirementOwnedBy 0..9999" requirements_editor_Requirement : personOwnsRequirement11
+requirements_editor_Requirement "requirements_editor_RequirementArgument 1..1" -- "requirements_editor_Requirement22 1..1" requirements_editor_RequirementArgument : requirement21
+requirements_editor_Category "requirements_editor_Requirement10 1..1" *-- "requirements_editor_Category9 0..9999" requirements_editor_Requirement : requirement8
+requirements_editor_Person "personOwnsRequirement 1..1" -- "Person 1..1" requirements_editor_Requirement : requirementOwnedBy1
+requirements_editor_Argument "requirements_editor_BinaryOperatorArgument 1..1" --* "requirements_editor_Argument17 1..1" requirements_editor_BinaryOperatorArgument : rightSideArgument16
+requirements_editor_Category "requirements_editor_DocumentRoot 0..9999" --* "requirements_editor_Category24 1..1" requirements_editor_DocumentRoot : rootCategories23
+requirements_editor_Category "requirements_editor_Category 1..1" *-- "requirements_editor_Category4 0..9999" requirements_editor_Category : subcategoryOf5
 @enduml

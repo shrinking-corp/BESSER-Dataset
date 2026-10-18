@@ -1,4 +1,8 @@
 @startuml
+' model: drone
+' project: sampleModel
+' owner: User
+' description: New project
 enum LaunchType {
   HTOL
   OTHER
@@ -91,14 +95,14 @@ NamedElement <|-- drone_Memory
 NamedElement <|-- drone_Processor
 NamedElement <|-- drone_Property
 NamedElement <|-- drone_ROSDriver
-drone_Battery "0..9999" --* "1..1" drone_Drone : batteries3
-drone_Device "0..9999" --* "1..1" drone_Drone : dataEquipment9
-drone_Drone "1..1" *-- "1..1" drone_FlightPerformance : flightPerf1
-drone_Drone "1..1" *-- "1..9999" drone_Memory : memory7
-drone_Action "1..1" *-- "0..9999" drone_Parameter : parameters17
-drone_Drone "1..1" *-- "1..9999" drone_Processor : processors5
-drone_Device "1..1" *-- "0..9999" drone_Property : properties15
-drone_Drone "1..1" *-- "0..1" drone_ROSDriver : rosDriver11
-drone_Drone "1..1" *-- "1..1" drone_Size : size0
-drone_Action "0..9999" --* "1..1" drone_Device : supportedActions13
+drone_Battery "drone_Drone4 0..9999" --* "drone_Battery 1..1" drone_Drone : batteries3
+drone_Device "drone_Drone10 0..9999" --* "drone_Device 1..1" drone_Drone : dataEquipment9
+drone_Drone "drone_FlightPerformance 1..1" *-- "drone_Drone2 1..1" drone_FlightPerformance : flightPerf1
+drone_Drone "drone_Memory 1..1" *-- "drone_Drone8 1..9999" drone_Memory : memory7
+drone_Action "drone_Parameter 1..1" *-- "drone_Action18 0..9999" drone_Parameter : parameters17
+drone_Drone "drone_Processor 1..1" *-- "drone_Drone6 1..9999" drone_Processor : processors5
+drone_Device "drone_Property 1..1" *-- "drone_Device16 0..9999" drone_Property : properties15
+drone_Drone "drone_ROSDriver 1..1" *-- "drone_Drone12 0..1" drone_ROSDriver : rosDriver11
+drone_Drone "drone_Size 1..1" *-- "drone_Drone 1..1" drone_Size : size0
+drone_Action "drone_Device14 0..9999" --* "drone_Action 1..1" drone_Device : supportedActions13
 @enduml

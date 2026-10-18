@@ -1,4 +1,8 @@
 @startuml
+' model: notation
+' project: sampleModel
+' owner: User
+' description: New project
 enum Color {
   BLACK
   BLUE
@@ -83,11 +87,11 @@ TextualElement <|-- notation_Token
 TextualElement <|-- notation_Value
 Value <|-- notation_AttributeValue
 Value <|-- notation_ReferenceValue
-notation_EAttribute "1..1" -- "1..1" notation_Value : attribute1
-notation_Definition "1..1" *-- "0..9999" notation_NotationElement : elements9
-notation_EReference "1..1" -- "1..1" notation_ReferenceValue : reference2
-notation_EReference "1..1" -- "1..1" notation_SyntaxOf : reference3
-notation_NotationElement "0..1" -- "1..1" notation_SyntaxOf : separator5
-notation_Composite "1..1" *-- "0..9999" notation_NotationElement : subElements7
-notation_Label "1..1" *-- "1..1" notation_TextualElement : text0
+notation_EAttribute "notation_Value 1..1" -- "notation_EAttribute 1..1" notation_Value : attribute1
+notation_Definition "notation_NotationElement10 1..1" *-- "notation_Definition 0..9999" notation_NotationElement : elements9
+notation_EReference "notation_ReferenceValue 1..1" -- "notation_EReference 1..1" notation_ReferenceValue : reference2
+notation_EReference "notation_SyntaxOf 1..1" -- "notation_EReference4 1..1" notation_SyntaxOf : reference3
+notation_NotationElement "notation_SyntaxOf6 0..1" -- "notation_NotationElement 1..1" notation_SyntaxOf : separator5
+notation_Composite "notation_NotationElement8 1..1" *-- "notation_Composite 0..9999" notation_NotationElement : subElements7
+notation_Label "notation_TextualElement 1..1" *-- "notation_Label 1..1" notation_TextualElement : text0
 @enduml

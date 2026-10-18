@@ -1,4 +1,8 @@
 @startuml
+' model: wikigen
+' project: sampleModel
+' owner: User
+' description: New project
 class HtmlProfile {
 }
 class wikigen_Article {
@@ -20,7 +24,7 @@ class wikigen_GenLatexDocument {
 abstract class wikigen_HtmlProfile {
 }
 HtmlProfile <|-- wikigen_Article
-wikigen_Container "0..9999" -- "1..1" wikigen_GenLatexDocument : roots0
-wikigen_Document "0..9999" -- "1..1" wikigen_GenHtmlDocument : roots2
-wikigen_GenHtmlDocument "1..1" *-- "0..1" wikigen_HtmlProfile : style1
+wikigen_Container "wikigen_GenLatexDocument 0..9999" -- "wikigen_Container 1..1" wikigen_GenLatexDocument : roots0
+wikigen_Document "wikigen_GenHtmlDocument3 0..9999" -- "wikigen_Document 1..1" wikigen_GenHtmlDocument : roots2
+wikigen_GenHtmlDocument "wikigen_HtmlProfile 1..1" *-- "wikigen_GenHtmlDocument 0..1" wikigen_HtmlProfile : style1
 @enduml

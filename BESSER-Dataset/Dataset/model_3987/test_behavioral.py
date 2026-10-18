@@ -1423,9 +1423,9 @@ def test_assoc_Code308_stub_double():
     partner = carnot_QualityControlType()
     setattr(partner, 'carnot_QualityControlType309', None)
     _safe_set(owner, 'carnot_Code310', partner)
-    assert getattr(partner, 'carnot_QualityControlType309') == owner
+    assert owner in getattr(partner, 'carnot_QualityControlType309')
     _safe_set(owner, 'carnot_Code310', None)
-    assert getattr(partner, 'carnot_QualityControlType309') is None
+    assert owner not in getattr(partner, 'carnot_QualityControlType309')
 
 
 def test_assoc_accessPoint5_stub_double():
@@ -1438,9 +1438,9 @@ def test_assoc_accessPoint5_stub_double():
     partner = carnot_IAccessPointOwner()
     setattr(partner, 'carnot_IAccessPointOwner', None)
     _safe_set(owner, 'carnot_AccessPointType', partner)
-    assert getattr(partner, 'carnot_IAccessPointOwner') == owner
+    assert owner in getattr(partner, 'carnot_IAccessPointOwner')
     _safe_set(owner, 'carnot_AccessPointType', None)
-    assert getattr(partner, 'carnot_IAccessPointOwner') is None
+    assert owner not in getattr(partner, 'carnot_IAccessPointOwner')
 
 
 def test_assoc_actionInstances175_stub_double():
@@ -1588,9 +1588,9 @@ def test_assoc_attribute0_stub_double():
     partner = carnot_IExtensibleElement()
     setattr(partner, 'carnot_IExtensibleElement', None)
     _safe_set(owner, 'carnot_AttributeType', partner)
-    assert getattr(partner, 'carnot_IExtensibleElement') == owner
+    assert owner in getattr(partner, 'carnot_IExtensibleElement')
     _safe_set(owner, 'carnot_AttributeType', None)
-    assert getattr(partner, 'carnot_IExtensibleElement') is None
+    assert owner not in getattr(partner, 'carnot_IExtensibleElement')
 
 
 def test_assoc_attribute1_stub_double():
@@ -1813,9 +1813,9 @@ def test_assoc_eventHandler4_stub_double():
     partner = carnot_IEventHandlerOwner()
     setattr(partner, 'carnot_IEventHandlerOwner', None)
     _safe_set(owner, 'carnot_EventHandlerType', partner)
-    assert getattr(partner, 'carnot_IEventHandlerOwner') == owner
+    assert owner in getattr(partner, 'carnot_IEventHandlerOwner')
     _safe_set(owner, 'carnot_EventHandlerType', None)
-    assert getattr(partner, 'carnot_IEventHandlerOwner') is None
+    assert owner not in getattr(partner, 'carnot_IEventHandlerOwner')
 
 
 def test_assoc_executedByConnection39_stub_double():
@@ -1918,9 +1918,9 @@ def test_assoc_gatewaySymbols90_stub_double():
     partner = carnot_ActivitySymbolType()
     setattr(partner, 'activitySymbol91', None)
     _safe_set(owner, 'GatewaySymbol', partner)
-    assert getattr(partner, 'activitySymbol91') == owner
+    assert owner in getattr(partner, 'activitySymbol91')
     _safe_set(owner, 'GatewaySymbol', None)
-    assert getattr(partner, 'activitySymbol91') is None
+    assert owner not in getattr(partner, 'activitySymbol91')
 
 
 def test_assoc_genericLinkConnection41_stub_double():
@@ -1978,9 +1978,9 @@ def test_assoc_inTransitions68_stub_double():
     partner = carnot_IFlowObjectSymbol()
     setattr(partner, 'targetActivitySymbol', None)
     _safe_set(owner, 'TransitionConnectionType', partner)
-    assert getattr(partner, 'targetActivitySymbol') == owner
+    assert owner in getattr(partner, 'targetActivitySymbol')
     _safe_set(owner, 'TransitionConnectionType', None)
-    assert getattr(partner, 'targetActivitySymbol') is None
+    assert owner not in getattr(partner, 'targetActivitySymbol')
 
 
 def test_assoc_intermediateEventSymbols21_stub_double():
@@ -2158,9 +2158,9 @@ def test_assoc_outTransitions69_stub_double():
     partner = carnot_IFlowObjectSymbol()
     setattr(partner, 'sourceActivitySymbol', None)
     _safe_set(owner, 'TransitionConnectionType70', partner)
-    assert getattr(partner, 'sourceActivitySymbol') == owner
+    assert owner in getattr(partner, 'sourceActivitySymbol')
     _safe_set(owner, 'TransitionConnectionType70', None)
-    assert getattr(partner, 'sourceActivitySymbol') is None
+    assert owner not in getattr(partner, 'sourceActivitySymbol')
 
 
 def test_assoc_packageRef191_stub_double():
@@ -2188,9 +2188,9 @@ def test_assoc_parameterMapping360_stub_double():
     partner = carnot_TriggerType()
     setattr(partner, 'carnot_TriggerType361', None)
     _safe_set(owner, 'carnot_ParameterMappingType', partner)
-    assert getattr(partner, 'carnot_TriggerType361') == owner
+    assert owner in getattr(partner, 'carnot_TriggerType361')
     _safe_set(owner, 'carnot_ParameterMappingType', None)
-    assert getattr(partner, 'carnot_TriggerType361') is None
+    assert owner not in getattr(partner, 'carnot_TriggerType361')
 
 
 def test_assoc_parentLane201_stub_double():
@@ -2293,9 +2293,9 @@ def test_assoc_performedActivities72_stub_double():
     partner = carnot_IModelParticipant()
     setattr(partner, 'performer', None)
     _safe_set(owner, 'ActivityType', partner)
-    assert getattr(partner, 'performer') == owner
+    assert owner in getattr(partner, 'performer')
     _safe_set(owner, 'ActivityType', None)
-    assert getattr(partner, 'performer') is None
+    assert owner not in getattr(partner, 'performer')
 
 
 def test_assoc_performedSwimlanes73_stub_double():
@@ -2308,9 +2308,9 @@ def test_assoc_performedSwimlanes73_stub_double():
     partner = carnot_IModelParticipant()
     setattr(partner, 'participant', None)
     _safe_set(owner, 'ISwimlaneSymbol', partner)
-    assert getattr(partner, 'participant') == owner
+    assert owner in getattr(partner, 'participant')
     _safe_set(owner, 'ISwimlaneSymbol', None)
-    assert getattr(partner, 'participant') is None
+    assert owner not in getattr(partner, 'participant')
 
 
 def test_assoc_performer95_stub_double():

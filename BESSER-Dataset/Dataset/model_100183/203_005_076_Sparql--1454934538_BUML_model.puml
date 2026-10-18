@@ -1,4 +1,8 @@
 @startuml
+' model: sparql
+' project: sampleModel
+' owner: User
+' description: New project
 class Aggregate {
 }
 class Constraint {
@@ -293,67 +297,67 @@ Value <|-- sparql_IntegerValue
 Value <|-- sparql_StringValue
 Variable <|-- sparql_NamedVariable
 Variable <|-- sparql_UnNamedVariable
-sparql_Base "0..1" --* "1..1" sparql_SelectionQuery : base2
-sparql_GroupClause "1..1" *-- "0..1" sparql_GroupCondition : condition33
-sparql_Constraint "0..1" --* "1..1" sparql_HavingClause : constraint35
-sparql_ConstructQuery "1..1" *-- "0..1" sparql_GroupGraphPattern : constructTemplate16
-sparql_DatasetClause "1..1" *-- "0..1" sparql_IRI : dataSet27
-sparql_DatasetClause "0..9999" --* "1..1" sparql_SelectionQuery : datasetClause4
-sparql_BuiltInCall "1..1" *-- "0..1" sparql_Expression : elseExpr105
-sparql_Expression "0..9999" --* "1..1" sparql_OrFilterExpression : entries115
-sparql_AndFilterExpression "1..1" *-- "0..9999" sparql_Expression : entries117
-sparql_ExprAggArg "1..1" *-- "0..1" sparql_Expression : expr108
-sparql_CountAggregate "1..1" *-- "0..1" sparql_Expression : expr119
-sparql_ExprAggArg "0..1" --* "1..1" sparql_SumAggregate : expr121
-sparql_ExprAggArg "0..1" --* "1..1" sparql_MinAgregate : expr123
-sparql_ExprAggArg "0..1" --* "1..1" sparql_MaxAggregate : expr125
-sparql_AvgAggregate "1..1" *-- "0..1" sparql_ExprAggArg : expr127
-sparql_ExprAggArg "0..1" --* "1..1" sparql_SampleAggregate : expr129
-sparql_Expression "0..9999" --* "1..1" sparql_GroupAggregate : expr131
-sparql_BuiltInCall "1..1" *-- "0..1" sparql_Expression : expr88
-sparql_Expression "0..1" --* "1..1" sparql_FilterPattern : expression73
-sparql_GroupGraphPattern "0..9999" --* "1..1" sparql_OptionalGraphPattern : graphPattern55
-sparql_GraphPattern "0..9999" --* "1..1" sparql_GroupGraphPatternSub : graphPatterns48
-sparql_GroupGraphPattern "0..9999" --* "1..1" sparql_GroupOrUnionGraphPattern : graphPatterns53
-sparql_GroupClause "0..1" --* "1..1" sparql_SubSelectQuery : groupClause42
-sparql_GroupClause "0..1" --* "1..1" sparql_SelectionQuery : groupClause8
-sparql_GroupGraphPattern "0..1" --* "1..1" sparql_WhereClause : groupGraphPattern30
-sparql_HavingClause "0..1" --* "1..1" sparql_SelectionQuery : havingClause10
-sparql_HavingClause "0..1" --* "1..1" sparql_SubSelectQuery : havingClause45
-sparql_BuiltInCall "1..1" *-- "0..1" sparql_Expression : ifExpr99
-sparql_DeleteQuery "1..1" *-- "0..1" sparql_GroupGraphPattern : insertPattern22
-sparql_Base "1..1" *-- "0..1" sparql_IRI : iref1
-sparql_ExpressionFilterExpression "1..1" *-- "0..1" sparql_FilterNode : left80
-sparql_BuiltInCall "1..1" *-- "0..1" sparql_Expression : left90
-sparql_LimitClause "0..1" --* "1..1" sparql_SelectionQuery : limitClause12
-sparql_GraphNode "0..1" --* "1..1" sparql_PropertyList : object60
-sparql_UpdateOperation "0..9999" --* "1..1" sparql_UpdateQuery : operations17
-sparql_Function "1..1" *-- "0..9999" sparql_Variable : parameters84
-sparql_GroupGraphPattern "0..1" --* "1..1" sparql_ModifyQuery : pattern18
-sparql_GraphGraphPattern "1..1" *-- "0..1" sparql_GroupGraphPattern : pattern65
-sparql_GroupGraphPattern "0..1" --* "1..1" sparql_ServiceGraphPattern : pattern70
-sparql_ExistsPattern "1..1" *-- "0..1" sparql_GroupGraphPattern : pattern74
-sparql_GroupGraphPattern "0..1" --* "1..1" sparql_NotExistsPattern : pattern76
-sparql_GroupGraphPattern "0..1" --* "1..1" sparql_MinusPattern : pattern78
-sparql_NamedVariable "1..1" -- "0..1" sparql_Prefix : prefix110
-sparql_NamedFunction "1..1" -- "0..1" sparql_Prefix : prefix86
-sparql_Prefix "0..9999" --* "1..1" sparql_SPARQLQuery : prefixes0
-sparql_GraphNode "0..1" --* "1..1" sparql_PropertyList : property57
-sparql_PropertyList "0..9999" --* "1..1" sparql_TriplesSameSubject : propertyList51
-sparql_ExpressionFilterExpression "1..1" *-- "0..1" sparql_FilterNode : right81
-sparql_BuiltInCall "1..1" *-- "0..1" sparql_Expression : right93
-sparql_GraphNode "0..1" --* "1..1" sparql_TriplesSameSubject : subject49
-sparql_RDFTag "0..1" --* "1..1" sparql_Value : tag112
-sparql_BuiltInCall "1..1" *-- "0..1" sparql_Expression : thenExpr102
-sparql_GraphNode "0..1" --* "1..1" sparql_TypeTag : type113
-sparql_GraphGraphPattern "1..1" *-- "0..1" sparql_GraphNode : var63
-sparql_GraphNode "0..1" --* "1..1" sparql_ServiceGraphPattern : var68
-sparql_BuiltInCall "1..1" *-- "0..1" sparql_Variable : var96
-sparql_SelectQuery "1..1" *-- "0..9999" sparql_Variable : variables14
-sparql_DescribeQuery "1..1" *-- "0..9999" sparql_GraphNode : variables15
-sparql_SubSelectQuery "1..1" *-- "0..9999" sparql_Variable : variables37
-sparql_InsertQuery "1..1" *-- "0..1" sparql_WhereClause : whereClause20
-sparql_DeleteQuery "1..1" *-- "0..1" sparql_WhereClause : whereClause24
-sparql_SubSelectQuery "1..1" *-- "0..1" sparql_WhereClause : whereClause39
-sparql_SelectionQuery "1..1" *-- "0..1" sparql_WhereClause : whereClause6
+sparql_Base "sparql_SelectionQuery 0..1" --* "sparql_Base3 1..1" sparql_SelectionQuery : base2
+sparql_GroupClause "sparql_GroupCondition 1..1" *-- "sparql_GroupClause34 0..1" sparql_GroupCondition : condition33
+sparql_Constraint "sparql_HavingClause36 0..1" --* "sparql_Constraint 1..1" sparql_HavingClause : constraint35
+sparql_ConstructQuery "sparql_GroupGraphPattern 1..1" *-- "sparql_ConstructQuery 0..1" sparql_GroupGraphPattern : constructTemplate16
+sparql_DatasetClause "sparql_IRI29 1..1" *-- "sparql_DatasetClause28 0..1" sparql_IRI : dataSet27
+sparql_DatasetClause "sparql_SelectionQuery5 0..9999" --* "sparql_DatasetClause 1..1" sparql_SelectionQuery : datasetClause4
+sparql_BuiltInCall "sparql_Expression107 1..1" *-- "sparql_BuiltInCall106 0..1" sparql_Expression : elseExpr105
+sparql_Expression "sparql_OrFilterExpression 0..9999" --* "sparql_Expression116 1..1" sparql_OrFilterExpression : entries115
+sparql_AndFilterExpression "sparql_Expression118 1..1" *-- "sparql_AndFilterExpression 0..9999" sparql_Expression : entries117
+sparql_ExprAggArg "sparql_Expression109 1..1" *-- "sparql_ExprAggArg 0..1" sparql_Expression : expr108
+sparql_CountAggregate "sparql_Expression120 1..1" *-- "sparql_CountAggregate 0..1" sparql_Expression : expr119
+sparql_ExprAggArg "sparql_SumAggregate 0..1" --* "sparql_ExprAggArg122 1..1" sparql_SumAggregate : expr121
+sparql_ExprAggArg "sparql_MinAgregate 0..1" --* "sparql_ExprAggArg124 1..1" sparql_MinAgregate : expr123
+sparql_ExprAggArg "sparql_MaxAggregate 0..1" --* "sparql_ExprAggArg126 1..1" sparql_MaxAggregate : expr125
+sparql_AvgAggregate "sparql_ExprAggArg128 1..1" *-- "sparql_AvgAggregate 0..1" sparql_ExprAggArg : expr127
+sparql_ExprAggArg "sparql_SampleAggregate 0..1" --* "sparql_ExprAggArg130 1..1" sparql_SampleAggregate : expr129
+sparql_Expression "sparql_GroupAggregate 0..9999" --* "sparql_Expression132 1..1" sparql_GroupAggregate : expr131
+sparql_BuiltInCall "sparql_Expression89 1..1" *-- "sparql_BuiltInCall 0..1" sparql_Expression : expr88
+sparql_Expression "sparql_FilterPattern 0..1" --* "sparql_Expression 1..1" sparql_FilterPattern : expression73
+sparql_GroupGraphPattern "sparql_OptionalGraphPattern 0..9999" --* "sparql_GroupGraphPattern56 1..1" sparql_OptionalGraphPattern : graphPattern55
+sparql_GraphPattern "sparql_GroupGraphPatternSub 0..9999" --* "sparql_GraphPattern 1..1" sparql_GroupGraphPatternSub : graphPatterns48
+sparql_GroupGraphPattern "sparql_GroupOrUnionGraphPattern 0..9999" --* "sparql_GroupGraphPattern54 1..1" sparql_GroupOrUnionGraphPattern : graphPatterns53
+sparql_GroupClause "sparql_SubSelectQuery43 0..1" --* "sparql_GroupClause44 1..1" sparql_SubSelectQuery : groupClause42
+sparql_GroupClause "sparql_SelectionQuery9 0..1" --* "sparql_GroupClause 1..1" sparql_SelectionQuery : groupClause8
+sparql_GroupGraphPattern "sparql_WhereClause31 0..1" --* "sparql_GroupGraphPattern32 1..1" sparql_WhereClause : groupGraphPattern30
+sparql_HavingClause "sparql_SelectionQuery11 0..1" --* "sparql_HavingClause 1..1" sparql_SelectionQuery : havingClause10
+sparql_HavingClause "sparql_SubSelectQuery46 0..1" --* "sparql_HavingClause47 1..1" sparql_SubSelectQuery : havingClause45
+sparql_BuiltInCall "sparql_Expression101 1..1" *-- "sparql_BuiltInCall100 0..1" sparql_Expression : ifExpr99
+sparql_DeleteQuery "sparql_GroupGraphPattern23 1..1" *-- "sparql_DeleteQuery 0..1" sparql_GroupGraphPattern : insertPattern22
+sparql_Base "sparql_IRI 1..1" *-- "sparql_Base 0..1" sparql_IRI : iref1
+sparql_ExpressionFilterExpression "sparql_FilterNode 1..1" *-- "sparql_ExpressionFilterExpression 0..1" sparql_FilterNode : left80
+sparql_BuiltInCall "sparql_Expression92 1..1" *-- "sparql_BuiltInCall91 0..1" sparql_Expression : left90
+sparql_LimitClause "sparql_SelectionQuery13 0..1" --* "sparql_LimitClause 1..1" sparql_SelectionQuery : limitClause12
+sparql_GraphNode "sparql_PropertyList61 0..1" --* "sparql_GraphNode62 1..1" sparql_PropertyList : object60
+sparql_UpdateOperation "sparql_UpdateQuery 0..9999" --* "sparql_UpdateOperation 1..1" sparql_UpdateQuery : operations17
+sparql_Function "sparql_Variable85 1..1" *-- "sparql_Function 0..9999" sparql_Variable : parameters84
+sparql_GroupGraphPattern "sparql_ModifyQuery 0..1" --* "sparql_GroupGraphPattern19 1..1" sparql_ModifyQuery : pattern18
+sparql_GraphGraphPattern "sparql_GroupGraphPattern67 1..1" *-- "sparql_GraphGraphPattern66 0..1" sparql_GroupGraphPattern : pattern65
+sparql_GroupGraphPattern "sparql_ServiceGraphPattern71 0..1" --* "sparql_GroupGraphPattern72 1..1" sparql_ServiceGraphPattern : pattern70
+sparql_ExistsPattern "sparql_GroupGraphPattern75 1..1" *-- "sparql_ExistsPattern 0..1" sparql_GroupGraphPattern : pattern74
+sparql_GroupGraphPattern "sparql_NotExistsPattern 0..1" --* "sparql_GroupGraphPattern77 1..1" sparql_NotExistsPattern : pattern76
+sparql_GroupGraphPattern "sparql_MinusPattern 0..1" --* "sparql_GroupGraphPattern79 1..1" sparql_MinusPattern : pattern78
+sparql_NamedVariable "sparql_Prefix111 1..1" -- "sparql_NamedVariable 0..1" sparql_Prefix : prefix110
+sparql_NamedFunction "sparql_Prefix87 1..1" -- "sparql_NamedFunction 0..1" sparql_Prefix : prefix86
+sparql_Prefix "sparql_SPARQLQuery 0..9999" --* "sparql_Prefix 1..1" sparql_SPARQLQuery : prefixes0
+sparql_GraphNode "sparql_PropertyList58 0..1" --* "sparql_GraphNode59 1..1" sparql_PropertyList : property57
+sparql_PropertyList "sparql_TriplesSameSubject52 0..9999" --* "sparql_PropertyList 1..1" sparql_TriplesSameSubject : propertyList51
+sparql_ExpressionFilterExpression "sparql_FilterNode83 1..1" *-- "sparql_ExpressionFilterExpression82 0..1" sparql_FilterNode : right81
+sparql_BuiltInCall "sparql_Expression95 1..1" *-- "sparql_BuiltInCall94 0..1" sparql_Expression : right93
+sparql_GraphNode "sparql_TriplesSameSubject 0..1" --* "sparql_GraphNode50 1..1" sparql_TriplesSameSubject : subject49
+sparql_RDFTag "sparql_Value 0..1" --* "sparql_RDFTag 1..1" sparql_Value : tag112
+sparql_BuiltInCall "sparql_Expression104 1..1" *-- "sparql_BuiltInCall103 0..1" sparql_Expression : thenExpr102
+sparql_GraphNode "sparql_TypeTag 0..1" --* "sparql_GraphNode114 1..1" sparql_TypeTag : type113
+sparql_GraphGraphPattern "sparql_GraphNode64 1..1" *-- "sparql_GraphGraphPattern 0..1" sparql_GraphNode : var63
+sparql_GraphNode "sparql_ServiceGraphPattern 0..1" --* "sparql_GraphNode69 1..1" sparql_ServiceGraphPattern : var68
+sparql_BuiltInCall "sparql_Variable98 1..1" *-- "sparql_BuiltInCall97 0..1" sparql_Variable : var96
+sparql_SelectQuery "sparql_Variable 1..1" *-- "sparql_SelectQuery 0..9999" sparql_Variable : variables14
+sparql_DescribeQuery "sparql_GraphNode 1..1" *-- "sparql_DescribeQuery 0..9999" sparql_GraphNode : variables15
+sparql_SubSelectQuery "sparql_Variable38 1..1" *-- "sparql_SubSelectQuery 0..9999" sparql_Variable : variables37
+sparql_InsertQuery "sparql_WhereClause21 1..1" *-- "sparql_InsertQuery 0..1" sparql_WhereClause : whereClause20
+sparql_DeleteQuery "sparql_WhereClause26 1..1" *-- "sparql_DeleteQuery25 0..1" sparql_WhereClause : whereClause24
+sparql_SubSelectQuery "sparql_WhereClause41 1..1" *-- "sparql_SubSelectQuery40 0..1" sparql_WhereClause : whereClause39
+sparql_SelectionQuery "sparql_WhereClause 1..1" *-- "sparql_SelectionQuery7 0..1" sparql_WhereClause : whereClause6
 @enduml

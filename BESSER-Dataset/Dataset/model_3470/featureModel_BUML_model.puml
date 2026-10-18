@@ -1,4 +1,8 @@
 @startuml
+' model: featureModel
+' project: sampleModel
+' owner: User
+' description: New project
 enum BinaryOperator {
   Add
   And
@@ -71,13 +75,13 @@ Expression <|-- featureModel_Identifier
 Expression <|-- featureModel_UnaryOperation
 Feature <|-- featureModel_GroupedFeature
 Feature <|-- featureModel_SolitaryFeature
-featureModel_Feature "0..9999" --* "1..1" featureModel_Model : RootFeature5
-featureModel_Expression "0..9999" --* "1..1" featureModel_Feature : constraints3
-featureModel_Expression "1..1" --* "1..1" featureModel_UnaryOperation : exp14
-featureModel_Feature "1..1" *-- "0..9999" featureModel_SolitaryFeature : features1
-featureModel_Group "1..1" *-- "2..9999" featureModel_GroupedFeature : groupedFeatures7
-featureModel_Feature "1..1" *-- "0..9999" featureModel_Group : groups0
-featureModel_BinaryOperation "1..1" *-- "1..1" featureModel_Expression : lexp11
-featureModel_Feature "1..9999" -- "1..1" featureModel_Identifier : ref16
-featureModel_BinaryOperation "1..1" *-- "1..1" featureModel_Expression : rexp9
+featureModel_Feature "featureModel_Model 0..9999" --* "featureModel_Feature6 1..1" featureModel_Model : RootFeature5
+featureModel_Expression "featureModel_Feature4 0..9999" --* "featureModel_Expression 1..1" featureModel_Feature : constraints3
+featureModel_Expression "featureModel_UnaryOperation 1..1" --* "featureModel_Expression15 1..1" featureModel_UnaryOperation : exp14
+featureModel_Feature "featureModel_SolitaryFeature 1..1" *-- "featureModel_Feature2 0..9999" featureModel_SolitaryFeature : features1
+featureModel_Group "featureModel_GroupedFeature 1..1" *-- "featureModel_Group8 2..9999" featureModel_GroupedFeature : groupedFeatures7
+featureModel_Feature "featureModel_Group 1..1" *-- "featureModel_Feature 0..9999" featureModel_Group : groups0
+featureModel_BinaryOperation "featureModel_Expression13 1..1" *-- "featureModel_BinaryOperation12 1..1" featureModel_Expression : lexp11
+featureModel_Feature "featureModel_Identifier 1..9999" -- "featureModel_Feature17 1..1" featureModel_Identifier : ref16
+featureModel_BinaryOperation "featureModel_Expression10 1..1" *-- "featureModel_BinaryOperation 1..1" featureModel_Expression : rexp9
 @enduml

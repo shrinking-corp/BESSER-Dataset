@@ -1,4 +1,8 @@
 @startuml
+' model: petrinet
+' project: sampleModel
+' owner: User
+' description: New project
 class Arc {
 }
 class ArcSortant {
@@ -30,12 +34,12 @@ Arc <|-- petrinet_ArcSortant
 ArcSortant <|-- petrinet_ReadArc
 Element <|-- petrinet_Place
 Element <|-- petrinet_Transition
-petrinet_Arc "0..9999" --* "1..1" petrinet_Reseau : arcs9
-petrinet_Element "1..9999" --* "1..1" petrinet_Reseau : elements8
-petrinet_ArcSortant "1..1" -- "1..1" petrinet_Place : predecesseur3
-petrinet_ArcEntrant "1..1" -- "1..1" petrinet_Transition : predecesseur6
-petrinet_ArcSortant "1..9999" -- "1..1" petrinet_Transition : predecesseurs0
-petrinet_ArcSortant "1..1" -- "1..1" petrinet_Transition : successeur2
-petrinet_ArcEntrant "1..1" -- "1..1" petrinet_Place : successeur4
-petrinet_ArcEntrant "1..9999" -- "1..1" petrinet_Transition : successeurs1
+petrinet_Arc "petrinet_Reseau10 0..9999" --* "petrinet_Arc 1..1" petrinet_Reseau : arcs9
+petrinet_Element "petrinet_Reseau 1..9999" --* "petrinet_Element 1..1" petrinet_Reseau : elements8
+petrinet_ArcSortant "petrinet_Place 1..1" -- "petrinet_ArcSortant 1..1" petrinet_Place : predecesseur3
+petrinet_ArcEntrant "Transition7 1..1" -- "successeurs 1..1" petrinet_Transition : predecesseur6
+petrinet_ArcSortant "successeur 1..9999" -- "ArcSortant 1..1" petrinet_Transition : predecesseurs0
+petrinet_ArcSortant "Transition 1..1" -- "predecesseurs 1..1" petrinet_Transition : successeur2
+petrinet_ArcEntrant "petrinet_Place5 1..1" -- "petrinet_ArcEntrant 1..1" petrinet_Place : successeur4
+petrinet_ArcEntrant "predecesseur 1..9999" -- "ArcEntrant 1..1" petrinet_Transition : successeurs1
 @enduml

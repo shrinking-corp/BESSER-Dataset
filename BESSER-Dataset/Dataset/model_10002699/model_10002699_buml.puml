@@ -1,4 +1,8 @@
 @startuml
+' model: cffd64a0_2173_48d1_b418_f9cf960957d1
+' project: sampleModel
+' owner: User
+' description: New project
 class Answer {
 }
 class Booking {
@@ -34,10 +38,10 @@ class Ticket {
   + Id : str
   + Seat : str
 }
-Answer "1..9999" -- "1..1" Problem : Answer_Problem
-Booking "1..1" -- "1..9999" Ticket : Booking_Ticket
-Booking "1..9999" -- "1..1" Client : Client_Booking
-Client "1..1" -- "0..9999" Problem : Client_Problem
-Client "1..1" -- "1..9999" Ticket : Client_Ticket
-Flight "1..1" -- "1..9999" Ticket : Ticket_Flight
+Answer "Answer_Problem_11 1..9999" -- "Answer_Problem_00 1..1" Problem : Answer_Problem
+Booking "Booking_Ticket_17 1..1" -- "Booking_Ticket_06 1..9999" Ticket : Booking_Ticket
+Booking "Client_Booking_08 1..9999" -- "One_clinet_makes_the_booking_9 1..1" Client : Client_Booking
+Client "Client_Problem_13 1..1" -- "Client_Problem_02 0..9999" Problem : Client_Problem
+Client "Client_Ticket_15 1..1" -- "Client_Ticket_04 1..9999" Ticket : Client_Ticket
+Flight "Ticket_Flight_010 1..1" -- "Ticket_Flight_111 1..9999" Ticket : Ticket_Flight
 @enduml

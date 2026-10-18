@@ -1,4 +1,8 @@
 @startuml
+' model: expansionmodel
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractRepresentation {
 }
 class Representation {
@@ -36,14 +40,14 @@ class expansionmodel_UseContext {
 AbstractRepresentation <|-- expansionmodel_InducedRepresentation
 AbstractRepresentation <|-- expansionmodel_Representation
 Representation <|-- expansionmodel_GMFT_BasedRepresentation
-expansionmodel_InducedRepresentation "1..1" -- "0..9999" expansionmodel_Representation : children5
-expansionmodel_GMFT_BasedRepresentation "0..9999" --* "1..1" expansionmodel_UseContext : gmftRepresentations15
-expansionmodel_InducedRepresentation "0..9999" -- "1..1" expansionmodel_Representation : inducedRepresentations0
-expansionmodel_AbstractRepresentation "1..1" -- "0..1" expansionmodel_RepresentationKind : kind4
-expansionmodel_DiagramExpansion "1..1" *-- "0..9999" expansionmodel_GraphicalElementLibrary : libraries19
-expansionmodel_GraphicalElementLibrary "1..1" *-- "0..9999" expansionmodel_RepresentationKind : representationkinds8
-expansionmodel_AbstractRepresentation "0..9999" --* "1..1" expansionmodel_GraphicalElementLibrary : representations10
-expansionmodel_Representation "1..9999" -- "1..1" expansionmodel_UseContext : representations13
-expansionmodel_Representation "0..9999" -- "1..1" expansionmodel_Representation : subRepresentations2
-expansionmodel_DiagramExpansion "1..1" *-- "0..9999" expansionmodel_UseContext : usages17
+expansionmodel_InducedRepresentation "expansionmodel_Representation7 1..1" -- "expansionmodel_InducedRepresentation6 0..9999" expansionmodel_Representation : children5
+expansionmodel_GMFT_BasedRepresentation "expansionmodel_UseContext16 0..9999" --* "expansionmodel_GMFT_BasedRepresentation 1..1" expansionmodel_UseContext : gmftRepresentations15
+expansionmodel_InducedRepresentation "expansionmodel_Representation 0..9999" -- "expansionmodel_InducedRepresentation 1..1" expansionmodel_Representation : inducedRepresentations0
+expansionmodel_AbstractRepresentation "expansionmodel_RepresentationKind 1..1" -- "expansionmodel_AbstractRepresentation 0..1" expansionmodel_RepresentationKind : kind4
+expansionmodel_DiagramExpansion "expansionmodel_GraphicalElementLibrary21 1..1" *-- "expansionmodel_DiagramExpansion20 0..9999" expansionmodel_GraphicalElementLibrary : libraries19
+expansionmodel_GraphicalElementLibrary "expansionmodel_RepresentationKind9 1..1" *-- "expansionmodel_GraphicalElementLibrary 0..9999" expansionmodel_RepresentationKind : representationkinds8
+expansionmodel_AbstractRepresentation "expansionmodel_GraphicalElementLibrary11 0..9999" --* "expansionmodel_AbstractRepresentation12 1..1" expansionmodel_GraphicalElementLibrary : representations10
+expansionmodel_Representation "expansionmodel_UseContext 1..9999" -- "expansionmodel_Representation14 1..1" expansionmodel_UseContext : representations13
+expansionmodel_Representation "expansionmodel_Representation1 0..9999" -- "expansionmodel_Representation3 1..1" expansionmodel_Representation : subRepresentations2
+expansionmodel_DiagramExpansion "expansionmodel_UseContext18 1..1" *-- "expansionmodel_DiagramExpansion 0..9999" expansionmodel_UseContext : usages17
 @enduml

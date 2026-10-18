@@ -1,4 +1,8 @@
 @startuml
+' model: library
+' project: sampleModel
+' owner: User
+' description: New project
 enum BookCategory {
   Biography
   MYSTERY
@@ -23,13 +27,13 @@ class library_Library {
 class library_Writer {
   + name : str
 }
-library_Book "1..1" -- "0..1" library_Writer : author0
-library_EStringToBookMapEntry "0..9999" --* "1..1" library_Library : bookByTitleMap7
-library_Book "0..9999" -- "1..1" library_Writer : books11
-library_Book "0..9999" --* "1..1" library_Library : books2
-library_Book "0..9999" -- "1..1" library_Library : specialBooks4
-library_Book "0..1" -- "1..1" library_EStringToBookMapEntry : value12
-library_EStringToWriterMapEntry "1..1" -- "0..1" library_Writer : value15
-library_EStringToWriterMapEntry "0..9999" --* "1..1" library_Library : writerByNameMap9
-library_Library "1..1" *-- "0..9999" library_Writer : writers1
+library_Book "Writer 1..1" -- "books 0..1" library_Writer : author0
+library_EStringToBookMapEntry "library_Library8 0..9999" --* "library_EStringToBookMapEntry 1..1" library_Library : bookByTitleMap7
+library_Book "author 0..9999" -- "Book 1..1" library_Writer : books11
+library_Book "library_Library3 0..9999" --* "library_Book 1..1" library_Library : books2
+library_Book "library_Library5 0..9999" -- "library_Book6 1..1" library_Library : specialBooks4
+library_Book "library_EStringToBookMapEntry13 0..1" -- "library_Book14 1..1" library_EStringToBookMapEntry : value12
+library_EStringToWriterMapEntry "library_Writer17 1..1" -- "library_EStringToWriterMapEntry16 0..1" library_Writer : value15
+library_EStringToWriterMapEntry "library_Library10 0..9999" --* "library_EStringToWriterMapEntry 1..1" library_Library : writerByNameMap9
+library_Library "library_Writer 1..1" *-- "library_Library 0..9999" library_Writer : writers1
 @enduml

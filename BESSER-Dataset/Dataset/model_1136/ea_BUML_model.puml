@@ -1,4 +1,8 @@
 @startuml
+' model: ea
+' project: sampleModel
+' owner: User
+' description: New project
 class Automaton {
 }
 class ExtendibleElement {
@@ -61,16 +65,16 @@ ExtensionElement <|-- ea_extensions_StringExtension
 ExtensionElement <|-- ea_extensions_StringListExtension
 IExtendible <|-- ea_extensions_ExtendibleElement
 IExtension <|-- ea_extensions_ExtensionElement
-Automaton "0..9999" --* "1..1" ea_automata_Module : automata15
-Automaton "0..1" -- "1..1" ea_automata_State : automaton4
-Automaton "0..1" -- "1..1" ea_automata_Transition : automaton9
-IExtension "0..9999" --* "1..1" ea_extensions_IExtendible : extensions17
-Transition "0..9999" -- "1..1" ea_automata_State : incoming5
-Module "0..1" -- "1..1" ea_automata_Automaton : module3
-Transition "0..9999" -- "1..1" ea_automata_State : outgoing7
-IExtendible "0..1" -- "1..1" ea_extensions_IExtension : owner18
-State "0..1" -- "1..1" ea_automata_Transition : source11
-State "0..9999" --* "1..1" ea_automata_Automaton : states0
-State "0..1" -- "1..1" ea_automata_Transition : target13
-Transition "0..9999" --* "1..1" ea_automata_Automaton : transitions1
+Automaton "module 0..9999" --* "Automaton16 1..1" ea_automata_Module : automata15
+Automaton "states 0..1" -- "Automaton 1..1" ea_automata_State : automaton4
+Automaton "transitions 0..1" -- "Automaton10 1..1" ea_automata_Transition : automaton9
+IExtension "owner 0..9999" --* "IExtension 1..1" ea_extensions_IExtendible : extensions17
+Transition "target 0..9999" -- "Transition6 1..1" ea_automata_State : incoming5
+Module "automata 0..1" -- "Module 1..1" ea_automata_Automaton : module3
+Transition "source 0..9999" -- "Transition8 1..1" ea_automata_State : outgoing7
+IExtendible "extensions 0..1" -- "IExtendible 1..1" ea_extensions_IExtension : owner18
+State "outgoing 0..1" -- "State12 1..1" ea_automata_Transition : source11
+State "automaton 0..9999" --* "State 1..1" ea_automata_Automaton : states0
+State "incoming 0..1" -- "State14 1..1" ea_automata_Transition : target13
+Transition "automaton2 0..9999" --* "Transition 1..1" ea_automata_Automaton : transitions1
 @enduml

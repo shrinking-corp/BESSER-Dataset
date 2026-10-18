@@ -721,9 +721,9 @@ def test_assoc_aggregatedRole135_stub_double():
     partner = spem_CompositeRole()
     setattr(partner, 'spem_CompositeRole', None)
     _safe_set(owner, 'spem_RoleDefinition136', partner)
-    assert getattr(partner, 'spem_CompositeRole') == owner
+    assert owner in getattr(partner, 'spem_CompositeRole')
     _safe_set(owner, 'spem_RoleDefinition136', None)
-    assert getattr(partner, 'spem_CompositeRole') is None
+    assert owner not in getattr(partner, 'spem_CompositeRole')
 
 
 def test_assoc_any200_stub_double():
@@ -796,9 +796,9 @@ def test_assoc_connectedPort205_stub_double():
     partner = spem_WorkProductPortConnector()
     setattr(partner, 'spem_WorkProductPortConnector', None)
     _safe_set(owner, 'spem_WorkProductPort206', partner)
-    assert getattr(partner, 'spem_WorkProductPortConnector') == owner
+    assert owner in getattr(partner, 'spem_WorkProductPortConnector')
     _safe_set(owner, 'spem_WorkProductPort206', None)
-    assert getattr(partner, 'spem_WorkProductPortConnector') is None
+    assert owner not in getattr(partner, 'spem_WorkProductPortConnector')
 
 
 def test_assoc_contentReference228_stub_double():
@@ -946,9 +946,9 @@ def test_assoc_linkedRoleDefinition113_stub_double():
     partner = spem_Default_TaskDefinitionPerformer()
     setattr(partner, 'spem_Default_TaskDefinitionPerformer114', None)
     _safe_set(owner, 'spem_RoleDefinition115', partner)
-    assert getattr(partner, 'spem_Default_TaskDefinitionPerformer114') == owner
+    assert owner in getattr(partner, 'spem_Default_TaskDefinitionPerformer114')
     _safe_set(owner, 'spem_RoleDefinition115', None)
-    assert getattr(partner, 'spem_Default_TaskDefinitionPerformer114') is None
+    assert owner not in getattr(partner, 'spem_Default_TaskDefinitionPerformer114')
 
 
 def test_assoc_linkedRoleDefinition116_stub_double():
@@ -961,9 +961,9 @@ def test_assoc_linkedRoleDefinition116_stub_double():
     partner = spem_Default_ResponsibilityAssignment()
     setattr(partner, 'spem_Default_ResponsibilityAssignment', None)
     _safe_set(owner, 'spem_RoleDefinition117', partner)
-    assert getattr(partner, 'spem_Default_ResponsibilityAssignment') == owner
+    assert owner in getattr(partner, 'spem_Default_ResponsibilityAssignment')
     _safe_set(owner, 'spem_RoleDefinition117', None)
-    assert getattr(partner, 'spem_Default_ResponsibilityAssignment') is None
+    assert owner not in getattr(partner, 'spem_Default_ResponsibilityAssignment')
 
 
 def test_assoc_linkedTaskUse35_stub_double():
@@ -1006,9 +1006,9 @@ def test_assoc_managedWorkProduct77_stub_double():
     partner = spem_ToolDefinition()
     setattr(partner, 'spem_ToolDefinition', None)
     _safe_set(owner, 'spem_WorkProductDefinition78', partner)
-    assert getattr(partner, 'spem_ToolDefinition') == owner
+    assert owner in getattr(partner, 'spem_ToolDefinition')
     _safe_set(owner, 'spem_WorkProductDefinition78', None)
-    assert getattr(partner, 'spem_ToolDefinition') is None
+    assert owner not in getattr(partner, 'spem_ToolDefinition')
 
 
 def test_assoc_methodContentKind75_stub_double():
@@ -1036,9 +1036,9 @@ def test_assoc_methodPluginSelection158_stub_double():
     partner = spem_MethodConfiguration()
     setattr(partner, 'spem_MethodConfiguration159', None)
     _safe_set(owner, 'spem_MethodPlugin', partner)
-    assert getattr(partner, 'spem_MethodConfiguration159') == owner
+    assert owner in getattr(partner, 'spem_MethodConfiguration159')
     _safe_set(owner, 'spem_MethodPlugin', None)
-    assert getattr(partner, 'spem_MethodConfiguration159') is None
+    assert owner not in getattr(partner, 'spem_MethodConfiguration159')
 
 
 def test_assoc_ownedMethodContentMember121_stub_double():
@@ -1051,9 +1051,9 @@ def test_assoc_ownedMethodContentMember121_stub_double():
     partner = spem_MethodContentPackage()
     setattr(partner, 'spem_MethodContentPackage', None)
     _safe_set(owner, 'spem_MethodContentPackageableElement', partner)
-    assert getattr(partner, 'spem_MethodContentPackage') == owner
+    assert owner in getattr(partner, 'spem_MethodContentPackage')
     _safe_set(owner, 'spem_MethodContentPackageableElement', None)
-    assert getattr(partner, 'spem_MethodContentPackage') is None
+    assert owner not in getattr(partner, 'spem_MethodContentPackage')
 
 
 def test_assoc_ownedMethodContentPackage178_stub_double():
@@ -1081,9 +1081,9 @@ def test_assoc_ownedProcessMember125_stub_double():
     partner = spem_ProcessPackage()
     setattr(partner, 'spem_ProcessPackage', None)
     _safe_set(owner, 'spem_ProcessPackageableElement', partner)
-    assert getattr(partner, 'spem_ProcessPackage') == owner
+    assert owner in getattr(partner, 'spem_ProcessPackage')
     _safe_set(owner, 'spem_ProcessPackageableElement', None)
-    assert getattr(partner, 'spem_ProcessPackage') is None
+    assert owner not in getattr(partner, 'spem_ProcessPackage')
 
 
 def test_assoc_ownedProcessPackage181_stub_double():
@@ -1246,9 +1246,9 @@ def test_assoc_step83_stub_double():
     partner = spem_TaskDefinition()
     setattr(partner, 'spem_TaskDefinition84', None)
     _safe_set(owner, 'spem_Step', partner)
-    assert getattr(partner, 'spem_TaskDefinition84') == owner
+    assert owner in getattr(partner, 'spem_TaskDefinition84')
     _safe_set(owner, 'spem_Step', None)
-    assert getattr(partner, 'spem_TaskDefinition84') is None
+    assert owner not in getattr(partner, 'spem_TaskDefinition84')
 
 
 def test_assoc_subPractice225_stub_double():
@@ -1276,9 +1276,9 @@ def test_assoc_target108_stub_double():
     partner = spem_WorkProductDefinitionRelationship()
     setattr(partner, 'spem_WorkProductDefinitionRelationship109', None)
     _safe_set(owner, 'spem_WorkProductDefinition110', partner)
-    assert getattr(partner, 'spem_WorkProductDefinitionRelationship109') == owner
+    assert owner in getattr(partner, 'spem_WorkProductDefinitionRelationship109')
     _safe_set(owner, 'spem_WorkProductDefinition110', None)
-    assert getattr(partner, 'spem_WorkProductDefinitionRelationship109') is None
+    assert owner not in getattr(partner, 'spem_WorkProductDefinitionRelationship109')
 
 
 def test_assoc_task126_stub_double():
@@ -1351,9 +1351,9 @@ def test_assoc_usedPort152_stub_double():
     partner = spem_ProcessComponentUse()
     setattr(partner, 'spem_ProcessComponentUse153', None)
     _safe_set(owner, 'spem_WorkProductPort154', partner)
-    assert getattr(partner, 'spem_ProcessComponentUse153') == owner
+    assert owner in getattr(partner, 'spem_ProcessComponentUse153')
     _safe_set(owner, 'spem_WorkProductPort154', None)
-    assert getattr(partner, 'spem_ProcessComponentUse153') is None
+    assert owner not in getattr(partner, 'spem_ProcessComponentUse153')
 
 
 def test_assoc_validContext25_stub_double():

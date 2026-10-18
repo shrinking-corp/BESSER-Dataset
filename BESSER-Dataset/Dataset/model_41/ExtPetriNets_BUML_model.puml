@@ -1,4 +1,8 @@
 @startuml
+' model: extendedPetriNets
+' project: sampleModel
+' owner: User
+' description: New project
 class GenericPlace {
 }
 abstract class extendedPetriNets_GenericPlace {
@@ -27,12 +31,12 @@ class extendedPetriNets_Transition {
 GenericPlace <|-- extendedPetriNets_InputPort
 GenericPlace <|-- extendedPetriNets_OutputPort
 GenericPlace <|-- extendedPetriNets_Place
-extendedPetriNets_GenericPlace "0..1" -- "1..1" extendedPetriNets_InputArc : InputArcFromPlace10
-extendedPetriNets_InputArc "1..1" -- "0..1" extendedPetriNets_Transition : InputArcToTransition7
-extendedPetriNets_OutputArc "1..1" -- "0..1" extendedPetriNets_Transition : OutputArcFromTransition13
-extendedPetriNets_GenericPlace "0..1" -- "1..1" extendedPetriNets_OutputArc : OutputArcToPlace16
-extendedPetriNets_GenericPlace "0..9999" --* "1..1" extendedPetriNets_PetriNet : containsGenericPlaces0
-extendedPetriNets_InputArc "0..9999" --* "1..1" extendedPetriNets_PetriNet : containsInputArcs3
-extendedPetriNets_OutputArc "0..9999" --* "1..1" extendedPetriNets_PetriNet : containsOutputArcs5
-extendedPetriNets_PetriNet "1..1" *-- "0..9999" extendedPetriNets_Transition : containsTransitions1
+extendedPetriNets_GenericPlace "extendedPetriNets_InputArc11 0..1" -- "extendedPetriNets_GenericPlace12 1..1" extendedPetriNets_InputArc : InputArcFromPlace10
+extendedPetriNets_InputArc "extendedPetriNets_Transition9 1..1" -- "extendedPetriNets_InputArc8 0..1" extendedPetriNets_Transition : InputArcToTransition7
+extendedPetriNets_OutputArc "extendedPetriNets_Transition15 1..1" -- "extendedPetriNets_OutputArc14 0..1" extendedPetriNets_Transition : OutputArcFromTransition13
+extendedPetriNets_GenericPlace "extendedPetriNets_OutputArc17 0..1" -- "extendedPetriNets_GenericPlace18 1..1" extendedPetriNets_OutputArc : OutputArcToPlace16
+extendedPetriNets_GenericPlace "extendedPetriNets_PetriNet 0..9999" --* "extendedPetriNets_GenericPlace 1..1" extendedPetriNets_PetriNet : containsGenericPlaces0
+extendedPetriNets_InputArc "extendedPetriNets_PetriNet4 0..9999" --* "extendedPetriNets_InputArc 1..1" extendedPetriNets_PetriNet : containsInputArcs3
+extendedPetriNets_OutputArc "extendedPetriNets_PetriNet6 0..9999" --* "extendedPetriNets_OutputArc 1..1" extendedPetriNets_PetriNet : containsOutputArcs5
+extendedPetriNets_PetriNet "extendedPetriNets_Transition 1..1" *-- "extendedPetriNets_PetriNet2 0..9999" extendedPetriNets_Transition : containsTransitions1
 @enduml

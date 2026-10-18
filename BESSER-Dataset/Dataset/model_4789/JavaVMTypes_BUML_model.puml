@@ -1,4 +1,8 @@
 @startuml
+' model: types
+' project: sampleModel
+' owner: User
+' description: New project
 class JvmAnnotationTarget {
 }
 class JvmAnnotationValue {
@@ -270,39 +274,39 @@ JvmTypeReference <|-- types_JvmParameterizedTypeReference
 JvmTypeReference <|-- types_JvmSpecializedTypeReference
 JvmTypeReference <|-- types_JvmUnknownTypeReference
 JvmTypeReference <|-- types_JvmWildcardTypeReference
-types_JvmAnnotationReference "1..1" -- "0..1" types_JvmAnnotationType : annotation35
-types_JvmAnnotationReference "0..9999" --* "1..1" types_JvmAnnotationTarget : annotations34
-types_JvmParameterizedTypeReference "1..1" *-- "0..9999" types_JvmTypeReference : arguments11
-types_JvmArrayType "0..1" --* "1..1" types_JvmComponentType : arrayType0
-types_JvmArrayType "1..1" -- "0..1" types_JvmComponentType : componentType1
-types_JvmGenericArrayTypeReference "1..1" *-- "0..1" types_JvmTypeReference : componentType15
-types_JvmConstraintOwner "1..1" *-- "0..9999" types_JvmTypeConstraint : constraints6
-types_JvmTypeParameter "1..1" -- "0..1" types_JvmTypeParameterDeclarator : declarator4
-types_JvmDeclaredType "0..1" -- "1..1" types_JvmMember : declaringType19
-types_JvmAnnotationValue "0..1" --* "1..1" types_JvmOperation : defaultValue29
-types_JvmDelegateTypeReference "1..1" -- "0..1" types_JvmTypeReference : delegate49
-types_JvmSpecializedTypeReference "1..1" *-- "0..1" types_JvmTypeReference : equivalent51
-types_JvmExecutable "1..1" *-- "0..9999" types_JvmTypeReference : exceptions24
-types_JvmAnnotationReference "1..1" *-- "0..9999" types_JvmAnnotationValue : explicitValues37
-types_JvmEnumerationLiteral "0..9999" -- "1..1" types_JvmEnumerationType : literals10
-types_JvmFeature "1..1" *-- "0..9999" types_JvmGenericType : localClasses20
-types_JvmDeclaredType "1..1" *-- "0..9999" types_JvmMember : members3
-types_JvmAnnotationValue "1..1" -- "0..1" types_JvmOperation : operation40
-types_JvmInnerTypeReference "1..1" *-- "0..1" types_JvmParameterizedTypeReference : outer59
-types_JvmConstraintOwner "0..1" -- "1..1" types_JvmTypeConstraint : owner9
-types_JvmFormalParameter "1..1" *-- "0..1" types_JvmTypeReference : parameterType31
-types_JvmExecutable "1..1" *-- "0..9999" types_JvmFormalParameter : parameters23
-types_JvmCompoundTypeReference "1..1" *-- "0..9999" types_JvmTypeReference : references55
-types_JvmOperation "1..1" *-- "0..1" types_JvmTypeReference : returnType27
-types_JvmDeclaredType "1..1" *-- "0..9999" types_JvmTypeReference : superTypes2
-types_JvmParameterizedTypeReference "1..1" -- "0..1" types_JvmType : type13
-types_JvmAnyTypeReference "1..1" -- "0..1" types_JvmType : type17
-types_JvmField "1..1" *-- "0..1" types_JvmTypeReference : type21
-types_JvmCompoundTypeReference "1..1" -- "0..1" types_JvmType : type53
-types_JvmTypeParameter "0..9999" --* "1..1" types_JvmTypeParameterDeclarator : typeParameters5
-types_JvmTypeConstraint "1..1" *-- "0..1" types_JvmTypeReference : typeReference7
-types_JvmTypeAnnotationValue "1..1" *-- "0..9999" types_JvmTypeReference : values43
-types_JvmAnnotationAnnotationValue "1..1" *-- "0..9999" types_JvmAnnotationReference : values45
-types_JvmEnumAnnotationValue "1..1" -- "0..9999" types_JvmEnumerationLiteral : values47
-types_EObject "0..9999" -- "1..1" types_JvmCustomAnnotationValue : values58
+types_JvmAnnotationReference "types_JvmAnnotationType 1..1" -- "types_JvmAnnotationReference36 0..1" types_JvmAnnotationType : annotation35
+types_JvmAnnotationReference "types_JvmAnnotationTarget 0..9999" --* "types_JvmAnnotationReference 1..1" types_JvmAnnotationTarget : annotations34
+types_JvmParameterizedTypeReference "types_JvmTypeReference12 1..1" *-- "types_JvmParameterizedTypeReference 0..9999" types_JvmTypeReference : arguments11
+types_JvmArrayType "componentType 0..1" --* "JvmArrayType 1..1" types_JvmComponentType : arrayType0
+types_JvmArrayType "JvmComponentType 1..1" -- "arrayType 0..1" types_JvmComponentType : componentType1
+types_JvmGenericArrayTypeReference "types_JvmTypeReference16 1..1" *-- "types_JvmGenericArrayTypeReference 0..1" types_JvmTypeReference : componentType15
+types_JvmConstraintOwner "JvmTypeConstraint 1..1" *-- "owner 0..9999" types_JvmTypeConstraint : constraints6
+types_JvmTypeParameter "JvmTypeParameterDeclarator 1..1" -- "typeParameters 0..1" types_JvmTypeParameterDeclarator : declarator4
+types_JvmDeclaredType "members 0..1" -- "JvmDeclaredType 1..1" types_JvmMember : declaringType19
+types_JvmAnnotationValue "types_JvmOperation30 0..1" --* "types_JvmAnnotationValue 1..1" types_JvmOperation : defaultValue29
+types_JvmDelegateTypeReference "types_JvmTypeReference50 1..1" -- "types_JvmDelegateTypeReference 0..1" types_JvmTypeReference : delegate49
+types_JvmSpecializedTypeReference "types_JvmTypeReference52 1..1" *-- "types_JvmSpecializedTypeReference 0..1" types_JvmTypeReference : equivalent51
+types_JvmExecutable "types_JvmTypeReference26 1..1" *-- "types_JvmExecutable25 0..9999" types_JvmTypeReference : exceptions24
+types_JvmAnnotationReference "types_JvmAnnotationValue39 1..1" *-- "types_JvmAnnotationReference38 0..9999" types_JvmAnnotationValue : explicitValues37
+types_JvmEnumerationLiteral "types_JvmEnumerationType 0..9999" -- "types_JvmEnumerationLiteral 1..1" types_JvmEnumerationType : literals10
+types_JvmFeature "types_JvmGenericType 1..1" *-- "types_JvmFeature 0..9999" types_JvmGenericType : localClasses20
+types_JvmDeclaredType "JvmMember 1..1" *-- "declaringType 0..9999" types_JvmMember : members3
+types_JvmAnnotationValue "types_JvmOperation42 1..1" -- "types_JvmAnnotationValue41 0..1" types_JvmOperation : operation40
+types_JvmInnerTypeReference "types_JvmParameterizedTypeReference60 1..1" *-- "types_JvmInnerTypeReference 0..1" types_JvmParameterizedTypeReference : outer59
+types_JvmConstraintOwner "constraints 0..1" -- "JvmConstraintOwner 1..1" types_JvmTypeConstraint : owner9
+types_JvmFormalParameter "types_JvmTypeReference33 1..1" *-- "types_JvmFormalParameter32 0..1" types_JvmTypeReference : parameterType31
+types_JvmExecutable "types_JvmFormalParameter 1..1" *-- "types_JvmExecutable 0..9999" types_JvmFormalParameter : parameters23
+types_JvmCompoundTypeReference "types_JvmTypeReference57 1..1" *-- "types_JvmCompoundTypeReference56 0..9999" types_JvmTypeReference : references55
+types_JvmOperation "types_JvmTypeReference28 1..1" *-- "types_JvmOperation 0..1" types_JvmTypeReference : returnType27
+types_JvmDeclaredType "types_JvmTypeReference 1..1" *-- "types_JvmDeclaredType 0..9999" types_JvmTypeReference : superTypes2
+types_JvmParameterizedTypeReference "types_JvmType 1..1" -- "types_JvmParameterizedTypeReference14 0..1" types_JvmType : type13
+types_JvmAnyTypeReference "types_JvmType18 1..1" -- "types_JvmAnyTypeReference 0..1" types_JvmType : type17
+types_JvmField "types_JvmTypeReference22 1..1" *-- "types_JvmField 0..1" types_JvmTypeReference : type21
+types_JvmCompoundTypeReference "types_JvmType54 1..1" -- "types_JvmCompoundTypeReference 0..1" types_JvmType : type53
+types_JvmTypeParameter "declarator 0..9999" --* "JvmTypeParameter 1..1" types_JvmTypeParameterDeclarator : typeParameters5
+types_JvmTypeConstraint "types_JvmTypeReference8 1..1" *-- "types_JvmTypeConstraint 0..1" types_JvmTypeReference : typeReference7
+types_JvmTypeAnnotationValue "types_JvmTypeReference44 1..1" *-- "types_JvmTypeAnnotationValue 0..9999" types_JvmTypeReference : values43
+types_JvmAnnotationAnnotationValue "types_JvmAnnotationReference46 1..1" *-- "types_JvmAnnotationAnnotationValue 0..9999" types_JvmAnnotationReference : values45
+types_JvmEnumAnnotationValue "types_JvmEnumerationLiteral48 1..1" -- "types_JvmEnumAnnotationValue 0..9999" types_JvmEnumerationLiteral : values47
+types_EObject "types_JvmCustomAnnotationValue 0..9999" -- "types_EObject 1..1" types_JvmCustomAnnotationValue : values58
 @enduml

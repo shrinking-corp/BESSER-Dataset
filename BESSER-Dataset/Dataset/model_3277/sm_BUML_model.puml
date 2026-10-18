@@ -1,4 +1,8 @@
 @startuml
+' model: sm
+' project: sampleModel
+' owner: User
+' description: New project
 class sm_Observation {
   + time : str
 }
@@ -11,17 +15,17 @@ class sm_StateMachine {
 class sm_Transition {
   + name : str
 }
-sm_StateMachine "1..1" *-- "0..9999" sm_Transition : edges5
-sm_State "0..9999" -- "1..1" sm_StateMachine : final1
-sm_State "1..1" -- "1..1" sm_StateMachine : graph14
-sm_StateMachine "1..1" -- "1..1" sm_Transition : graph20
-sm_Observation "1..1" -- "1..1" sm_StateMachine : graph24
-sm_State "0..1" -- "1..1" sm_StateMachine : initial0
-sm_Observation "0..1" -- "1..1" sm_State : mark12
-sm_Observation "0..9999" --* "1..1" sm_StateMachine : marks7
-sm_Observation "1..1" -- "1..1" sm_State : node22
-sm_State "0..9999" --* "1..1" sm_StateMachine : nodes4
-sm_State "1..1" -- "1..1" sm_Transition : source15
-sm_State "1..1" *-- "0..9999" sm_StateMachine : subMachines9
-sm_State "1..1" -- "1..1" sm_Transition : target17
+sm_StateMachine "Transition 1..1" *-- "graph6 0..9999" sm_Transition : edges5
+sm_State "sm_StateMachine2 0..9999" -- "sm_State3 1..1" sm_StateMachine : final1
+sm_State "StateMachine 1..1" -- "nodes 1..1" sm_StateMachine : graph14
+sm_StateMachine "edges 1..1" -- "StateMachine21 1..1" sm_Transition : graph20
+sm_Observation "StateMachine25 1..1" -- "marks 1..1" sm_StateMachine : graph24
+sm_State "sm_StateMachine 0..1" -- "sm_State 1..1" sm_StateMachine : initial0
+sm_Observation "node 0..1" -- "Observation13 1..1" sm_State : mark12
+sm_Observation "graph8 0..9999" --* "Observation 1..1" sm_StateMachine : marks7
+sm_Observation "State23 1..1" -- "mark 1..1" sm_State : node22
+sm_State "graph 0..9999" --* "State 1..1" sm_StateMachine : nodes4
+sm_State "sm_Transition 1..1" -- "sm_State16 1..1" sm_Transition : source15
+sm_State "sm_StateMachine11 1..1" *-- "sm_State10 0..9999" sm_StateMachine : subMachines9
+sm_State "sm_Transition18 1..1" -- "sm_State19 1..1" sm_Transition : target17
 @enduml

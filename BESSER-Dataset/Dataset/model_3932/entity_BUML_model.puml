@@ -1,4 +1,8 @@
 @startuml
+' model: entity
+' project: sampleModel
+' owner: User
+' description: New project
 class Member {
 }
 class NamedElement {
@@ -30,7 +34,7 @@ NamedElement <|-- entity_Package
 NamedElement <|-- entity_Type
 Type <|-- entity_Entity
 Type <|-- entity_Service
-entity_Entity "1..1" *-- "0..9999" entity_Member : members1
-entity_Method "0..9999" --* "1..1" entity_Service : methods2
-entity_Package "1..1" *-- "0..9999" entity_Type : types0
+entity_Entity "entity_Member 1..1" *-- "entity_Entity 0..9999" entity_Member : members1
+entity_Method "entity_Service 0..9999" --* "entity_Method 1..1" entity_Service : methods2
+entity_Package "entity_Type 1..1" *-- "entity_Package 0..9999" entity_Type : types0
 @enduml

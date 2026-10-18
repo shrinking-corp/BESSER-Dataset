@@ -1,4 +1,8 @@
 @startuml
+' model: di
+' project: sampleModel
+' owner: User
+' description: New project
 enum Alignment {
   BOTTOM
   CENTER
@@ -98,25 +102,25 @@ Shape <|-- di_Comment
 Shape <|-- di_GradientShape
 View <|-- di_Container
 View <|-- di_Node
-di_Container "1..1" *-- "0..9999" di_Shape : children6
-di_CommentLink "0..9999" -- "1..1" di_Node : commentLinks1
-di_CommentLink "0..9999" --* "1..1" di_Diagram : commentLinks10
-di_Comment "0..9999" --* "1..1" di_Diagram : comments9
-di_EObject "0..1" -- "1..1" di_View : element0
-di_ElementEntry "0..9999" --* "1..1" di_Guide : elementMap32
-di_Diagram "1..1" *-- "0..1" di_Grid : grid17
-di_Guide "0..9999" --* "1..1" di_Ruler : guides30
-di_Diagram "1..1" *-- "0..1" di_Ruler : horizontalRuler12
-di_Connector "0..9999" -- "1..1" di_Node : incomingLines4
-di_Comment "1..1" -- "0..9999" di_CommentLink : inputs24
-di_ElementEntry "1..1" -- "1..1" di_View : key33
-di_Container "1..1" *-- "0..9999" di_Line : lines7
-di_Connector "0..9999" -- "1..1" di_Node : outgoingLines2
-di_Connector "1..1" -- "0..1" di_EObject : reverseElement22
-di_Guide "1..1" -- "0..1" di_Ruler : ruler31
-di_Connector "1..1" -- "0..1" di_Node : source20
-di_CommentLink "1..1" -- "0..1" di_Node : source27
-di_Connector "1..1" -- "0..1" di_Node : target19
-di_Comment "0..1" -- "1..1" di_CommentLink : target29
-di_Diagram "1..1" *-- "0..1" di_Ruler : verticalRuler14
+di_Container "di_Shape 1..1" *-- "di_Container 0..9999" di_Shape : children6
+di_CommentLink "source 0..9999" -- "CommentLink 1..1" di_Node : commentLinks1
+di_CommentLink "di_Diagram11 0..9999" --* "di_CommentLink 1..1" di_Diagram : commentLinks10
+di_Comment "di_Diagram 0..9999" --* "di_Comment 1..1" di_Diagram : comments9
+di_EObject "di_View 0..1" -- "di_EObject 1..1" di_View : element0
+di_ElementEntry "di_Guide 0..9999" --* "di_ElementEntry 1..1" di_Guide : elementMap32
+di_Diagram "di_Grid 1..1" *-- "di_Diagram18 0..1" di_Grid : grid17
+di_Guide "ruler 0..9999" --* "Guide 1..1" di_Ruler : guides30
+di_Diagram "di_Ruler 1..1" *-- "di_Diagram13 0..1" di_Ruler : horizontalRuler12
+di_Connector "target 0..9999" -- "Connector5 1..1" di_Node : incomingLines4
+di_Comment "CommentLink26 1..1" -- "target25 0..9999" di_CommentLink : inputs24
+di_ElementEntry "di_View35 1..1" -- "di_ElementEntry34 1..1" di_View : key33
+di_Container "di_Line 1..1" *-- "di_Container8 0..9999" di_Line : lines7
+di_Connector "source3 0..9999" -- "Connector 1..1" di_Node : outgoingLines2
+di_Connector "di_EObject23 1..1" -- "di_Connector 0..1" di_EObject : reverseElement22
+di_Guide "Ruler 1..1" -- "guides 0..1" di_Ruler : ruler31
+di_Connector "Node21 1..1" -- "outgoingLines 0..1" di_Node : source20
+di_CommentLink "Node28 1..1" -- "commentLinks 0..1" di_Node : source27
+di_Connector "Node 1..1" -- "incomingLines 0..1" di_Node : target19
+di_Comment "inputs 0..1" -- "Comment 1..1" di_CommentLink : target29
+di_Diagram "di_Ruler16 1..1" *-- "di_Diagram15 0..1" di_Ruler : verticalRuler14
 @enduml

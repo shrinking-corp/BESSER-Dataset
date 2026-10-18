@@ -1,4 +1,8 @@
 @startuml
+' model: platoon
+' project: sampleModel
+' owner: User
+' description: New project
 class Command {
 }
 class Constraint {
@@ -40,13 +44,13 @@ Command <|-- platoon_TurnCommand
 Constraint <|-- platoon_HeadwayConstraint
 Vehicle <|-- platoon_FollowVehicle
 Vehicle <|-- platoon_LeadingVehicle
-platoon_FollowVehicle "0..9999" --* "1..1" platoon_Platoon : FV1
-platoon_LeadingVehicle "1..1" --* "1..1" platoon_Platoon : LV0
-platoon_Command "1..9999" --* "1..1" platoon_Route : commands3
-platoon_Constraints "0..1" --* "1..1" platoon_World : constraints14
-platoon_Constraint "0..9999" --* "1..1" platoon_Constraints : constraints16
-platoon_FollowVehicle "1..1" -- "1..1" platoon_Vehicle : follows4
-platoon_Platoon "1..1" --* "1..1" platoon_World : platoon9
-platoon_Route "1..1" --* "1..1" platoon_World : route11
-platoon_LeadingVehicle "1..1" -- "1..1" platoon_Route : route6
+platoon_FollowVehicle "platoon_Platoon2 0..9999" --* "platoon_FollowVehicle 1..1" platoon_Platoon : FV1
+platoon_LeadingVehicle "platoon_Platoon 1..1" --* "platoon_LeadingVehicle 1..1" platoon_Platoon : LV0
+platoon_Command "platoon_Route 1..9999" --* "platoon_Command 1..1" platoon_Route : commands3
+platoon_Constraints "platoon_World15 0..1" --* "platoon_Constraints 1..1" platoon_World : constraints14
+platoon_Constraint "platoon_Constraints17 0..9999" --* "platoon_Constraint 1..1" platoon_Constraints : constraints16
+platoon_FollowVehicle "platoon_Vehicle 1..1" -- "platoon_FollowVehicle5 1..1" platoon_Vehicle : follows4
+platoon_Platoon "platoon_World 1..1" --* "platoon_Platoon10 1..1" platoon_World : platoon9
+platoon_Route "platoon_World12 1..1" --* "platoon_Route13 1..1" platoon_World : route11
+platoon_LeadingVehicle "platoon_Route8 1..1" -- "platoon_LeadingVehicle7 1..1" platoon_Route : route6
 @enduml

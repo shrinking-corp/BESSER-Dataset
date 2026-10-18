@@ -1,4 +1,8 @@
 @startuml
+' model: unql
+' project: sampleModel
+' owner: User
+' description: New project
 class unql_Connection {
   + name : str
   + password : str
@@ -16,7 +20,7 @@ class unql_Select {
   + conditions : str
   + relations : str
 }
-unql_Connection "0..9999" --* "1..1" unql_Program : connections1
-unql_Definition "0..9999" --* "1..1" unql_Program : definitions0
-unql_Program "1..1" *-- "0..9999" unql_Select : queries3
+unql_Connection "unql_Program2 0..9999" --* "unql_Connection 1..1" unql_Program : connections1
+unql_Definition "unql_Program 0..9999" --* "unql_Definition 1..1" unql_Program : definitions0
+unql_Program "unql_Select 1..1" *-- "unql_Program4 0..9999" unql_Select : queries3
 @enduml

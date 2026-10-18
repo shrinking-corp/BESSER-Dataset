@@ -1,4 +1,8 @@
 @startuml
+' model: spreadsheet
+' project: sampleModel
+' owner: User
+' description: New project
 enum CellType {
   CellTypeDate
   CellTypeFormula
@@ -31,14 +35,14 @@ abstract class spreadsheet_Spreadsheet {
   + getSheet(spreadsheet_sheetindex : str) : str
   + readFile() : void
 }
-spreadsheet_Cell "0..9999" -- "1..1" spreadsheet_Column : Cell13
-spreadsheet_Cell "0..9999" --* "1..1" spreadsheet_Row : Cell8
-spreadsheet_Cell "1..1" -- "1..1" spreadsheet_Column : Column22
-spreadsheet_Column "0..9999" --* "1..1" spreadsheet_Sheet : Column3
-spreadsheet_Row "0..9999" --* "1..1" spreadsheet_Sheet : Row1
-spreadsheet_Cell "1..1" -- "1..1" spreadsheet_Row : Row19
-spreadsheet_Sheet "0..9999" --* "1..1" spreadsheet_Spreadsheet : Sheet0
-spreadsheet_Row "1..1" -- "1..1" spreadsheet_Sheet : Sheet10
-spreadsheet_Column "1..1" -- "1..1" spreadsheet_Sheet : Sheet16
-spreadsheet_Sheet "1..1" -- "0..1" spreadsheet_Spreadsheet : Spreadsheet5
+spreadsheet_Cell "Column14 0..9999" -- "Cell15 1..1" spreadsheet_Column : Cell13
+spreadsheet_Cell "Row9 0..9999" --* "Cell 1..1" spreadsheet_Row : Cell8
+spreadsheet_Cell "Column24 1..1" -- "Cell23 1..1" spreadsheet_Column : Column22
+spreadsheet_Column "Sheet4 0..9999" --* "Column 1..1" spreadsheet_Sheet : Column3
+spreadsheet_Row "Sheet2 0..9999" --* "Row 1..1" spreadsheet_Sheet : Row1
+spreadsheet_Cell "Row21 1..1" -- "Cell20 1..1" spreadsheet_Row : Row19
+spreadsheet_Sheet "Spreadsheet 0..9999" --* "Sheet 1..1" spreadsheet_Spreadsheet : Sheet0
+spreadsheet_Row "Sheet12 1..1" -- "Row11 1..1" spreadsheet_Sheet : Sheet10
+spreadsheet_Column "Sheet18 1..1" -- "Column17 1..1" spreadsheet_Sheet : Sheet16
+spreadsheet_Sheet "Spreadsheet7 1..1" -- "Sheet6 0..1" spreadsheet_Spreadsheet : Spreadsheet5
 @enduml

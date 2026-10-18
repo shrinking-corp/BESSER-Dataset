@@ -1,4 +1,8 @@
 @startuml
+' model: region
+' project: sampleModel
+' owner: User
+' description: New project
 class ModelRoot {
 }
 class Named {
@@ -24,9 +28,9 @@ ModelRoot <|-- region_RgRegion
 Named <|-- region_RgInitialPseudostate
 Named <|-- region_RgState
 Referenced <|-- region_RgTransition
-region_RgInitialPseudostate "1..1" -- "1..1" region_RgRegion : initialPseudostate0
-region_RgInitialPseudostate "1..1" -- "1..1" region_RgTransition : initialTransition3
-region_RgRegion "1..1" -- "1..9999" region_RgState : states1
-region_RgState "1..1" -- "1..1" region_RgTransition : target8
-region_RgState "1..1" -- "0..9999" region_RgTransition : transitions5
+region_RgInitialPseudostate "region_RgRegion 1..1" -- "region_RgInitialPseudostate 1..1" region_RgRegion : initialPseudostate0
+region_RgInitialPseudostate "region_RgTransition 1..1" -- "region_RgInitialPseudostate4 1..1" region_RgTransition : initialTransition3
+region_RgRegion "region_RgState 1..1" -- "region_RgRegion2 1..9999" region_RgState : states1
+region_RgState "region_RgTransition9 1..1" -- "region_RgState10 1..1" region_RgTransition : target8
+region_RgState "region_RgTransition7 1..1" -- "region_RgState6 0..9999" region_RgTransition : transitions5
 @enduml

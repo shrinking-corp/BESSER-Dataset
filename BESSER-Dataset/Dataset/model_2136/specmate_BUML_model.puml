@@ -1,4 +1,8 @@
 @startuml
+' model: model
+' project: sampleModel
+' owner: User
+' description: New project
 class Change {
 }
 enum ErrorCode {
@@ -252,19 +256,19 @@ base_IPositionable <|-- model_testspecification_TestStep
 base_IRecycled <|-- model_base_IContentElement
 base_ISpecmateModelObject <|-- model_requirements_Requirement
 base_ITracingElement <|-- model_base_ISpecmateModelObject
-ParameterAssignment "0..9999" -- "1..1" model_testspecification_TestParameter : assignments10
-Change "0..9999" --* "1..1" model_history_HistoryEntry : changes15
-IContentElement "0..9999" --* "1..1" model_base_IContainer : contents0
-HistoryEntry "0..9999" --* "1..1" model_history_History : entries14
-IModelConnection "0..9999" -- "1..1" model_base_IModelNode : incomingConnections5
-Operation "0..9999" --* "1..1" model_batch_BatchOperation : operations16
-IModelConnection "0..9999" -- "1..1" model_base_IModelNode : outgoingConnections4
-TestParameter "0..1" -- "1..1" model_testspecification_ParameterAssignment : parameter11
-TestParameter "0..9999" -- "1..1" model_testspecification_TestStep : referencedTestParameters12
-IModelNode "0..1" -- "1..1" model_base_IModelConnection : source1
-IContentElement "0..1" -- "1..1" model_batch_Operation : target17
-IModelNode "0..1" -- "1..1" model_base_IModelConnection : target2
-ITracingElement "0..9999" -- "1..1" model_base_ITracingElement : tracesFrom8
-ITracingElement "0..9999" -- "1..1" model_base_ITracingElement : tracesTo7
-IContentElement "0..1" --* "1..1" model_batch_Operation : value19
+ParameterAssignment "parameter 0..9999" -- "ParameterAssignment 1..1" model_testspecification_TestParameter : assignments10
+Change "model_history_HistoryEntry 0..9999" --* "Change 1..1" model_history_HistoryEntry : changes15
+IContentElement "model_base_IContainer 0..9999" --* "IContentElement 1..1" model_base_IContainer : contents0
+HistoryEntry "model_history_History 0..9999" --* "HistoryEntry 1..1" model_history_History : entries14
+IModelConnection "target 0..9999" -- "IModelConnection6 1..1" model_base_IModelNode : incomingConnections5
+Operation "model_batch_BatchOperation 0..9999" --* "Operation 1..1" model_batch_BatchOperation : operations16
+IModelConnection "source 0..9999" -- "IModelConnection 1..1" model_base_IModelNode : outgoingConnections4
+TestParameter "assignments 0..1" -- "TestParameter 1..1" model_testspecification_ParameterAssignment : parameter11
+TestParameter "model_testspecification_TestStep 0..9999" -- "TestParameter13 1..1" model_testspecification_TestStep : referencedTestParameters12
+IModelNode "outgoingConnections 0..1" -- "IModelNode 1..1" model_base_IModelConnection : source1
+IContentElement "model_batch_Operation 0..1" -- "IContentElement18 1..1" model_batch_Operation : target17
+IModelNode "incomingConnections 0..1" -- "IModelNode3 1..1" model_base_IModelConnection : target2
+ITracingElement "tracesTo 0..9999" -- "ITracingElement9 1..1" model_base_ITracingElement : tracesFrom8
+ITracingElement "tracesFrom 0..9999" -- "ITracingElement 1..1" model_base_ITracingElement : tracesTo7
+IContentElement "model_batch_Operation20 0..1" --* "IContentElement21 1..1" model_batch_Operation : value19
 @enduml

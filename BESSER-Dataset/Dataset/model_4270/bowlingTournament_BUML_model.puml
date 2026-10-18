@@ -1,4 +1,8 @@
 @startuml
+' model: bowlingTournament
+' project: sampleModel
+' owner: User
+' description: New project
 enum TournamentType {
   Amateur
   Pro
@@ -20,10 +24,10 @@ class bowlingTournament_Player {
 class bowlingTournament_Tournament {
   + type : str
 }
-bowlingTournament_Game "0..2" --* "1..1" bowlingTournament_Matchup : games5
-bowlingTournament_League "0..9999" --* "1..1" bowlingTournament_Tournament : league2
-bowlingTournament_Game "1..1" -- "0..1" bowlingTournament_Matchup : matchup8
-bowlingTournament_Matchup "0..9999" --* "1..1" bowlingTournament_Tournament : matchups1
-bowlingTournament_League "1..1" *-- "0..9999" bowlingTournament_Player : player0
-bowlingTournament_Game "1..1" *-- "0..1" bowlingTournament_Player : player6
+bowlingTournament_Game "matchup 0..2" --* "Game 1..1" bowlingTournament_Matchup : games5
+bowlingTournament_League "bowlingTournament_Tournament3 0..9999" --* "bowlingTournament_League4 1..1" bowlingTournament_Tournament : league2
+bowlingTournament_Game "Matchup 1..1" -- "games 0..1" bowlingTournament_Matchup : matchup8
+bowlingTournament_Matchup "bowlingTournament_Tournament 0..9999" --* "bowlingTournament_Matchup 1..1" bowlingTournament_Tournament : matchups1
+bowlingTournament_League "bowlingTournament_Player 1..1" *-- "bowlingTournament_League 0..9999" bowlingTournament_Player : player0
+bowlingTournament_Game "bowlingTournament_Player7 1..1" *-- "bowlingTournament_Game 0..1" bowlingTournament_Player : player6
 @enduml

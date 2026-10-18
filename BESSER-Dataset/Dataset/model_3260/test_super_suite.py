@@ -6563,31 +6563,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=aadl2_Prototype_strategy)
-@settings(max_examples=30)
-def test_hyp_aadl2_prototype_categoryconstraint_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.categoryConstraint(
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.categoryConstraint).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'categoryConstraint' in aadl2_Prototype is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'categoryConstraint' in aadl2_Prototype did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'categoryConstraint' in aadl2_Prototype is not implemented or raised an error")
 
 
 
@@ -6629,28 +6604,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=aadl2_Classifier_strategy)
-@settings(max_examples=30)
-def test_hyp_aadl2_classifier_allfeatures_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.allFeatures()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.allFeatures).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'allFeatures' in aadl2_Classifier is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'allFeatures' in aadl2_Classifier did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'allFeatures' in aadl2_Classifier is not implemented or raised an error")
 
 import warnings
 import copy
@@ -6658,28 +6611,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=aadl2_Classifier_strategy)
-@settings(max_examples=30)
-def test_hyp_aadl2_classifier_allparents_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.allParents()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.allParents).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'allParents' in aadl2_Classifier is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'allParents' in aadl2_Classifier did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'allParents' in aadl2_Classifier is not implemented or raised an error")
 
 import warnings
 import copy
@@ -6687,30 +6618,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=aadl2_Classifier_strategy)
-@settings(max_examples=30)
-def test_hyp_aadl2_classifier_inherit_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.inherit(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.inherit).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'inherit' in aadl2_Classifier is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'inherit' in aadl2_Classifier did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'inherit' in aadl2_Classifier is not implemented or raised an error")
 
 import warnings
 import copy
@@ -6718,30 +6625,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=aadl2_Classifier_strategy)
-@settings(max_examples=30)
-def test_hyp_aadl2_classifier_mayspecializetype_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.maySpecializeType(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.maySpecializeType).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'maySpecializeType' in aadl2_Classifier is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'maySpecializeType' in aadl2_Classifier did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'maySpecializeType' in aadl2_Classifier is not implemented or raised an error")
 
 import warnings
 import copy
@@ -6749,31 +6632,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=aadl2_Classifier_strategy)
-@settings(max_examples=30)
-def test_hyp_aadl2_classifier_no_cycles_in_generalization_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.no_cycles_in_generalization(
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.no_cycles_in_generalization).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'no_cycles_in_generalization' in aadl2_Classifier is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'no_cycles_in_generalization' in aadl2_Classifier did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'no_cycles_in_generalization' in aadl2_Classifier is not implemented or raised an error")
 
 import warnings
 import copy
@@ -6781,31 +6639,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=aadl2_Classifier_strategy)
-@settings(max_examples=30)
-def test_hyp_aadl2_classifier_specialize_type_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.specialize_type(
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.specialize_type).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'specialize_type' in aadl2_Classifier is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'specialize_type' in aadl2_Classifier did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'specialize_type' in aadl2_Classifier is not implemented or raised an error")
 
 import warnings
 import copy
@@ -6813,30 +6646,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=aadl2_Classifier_strategy)
-@settings(max_examples=30)
-def test_hyp_aadl2_classifier_inheritablemembers_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.inheritableMembers(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.inheritableMembers).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'inheritableMembers' in aadl2_Classifier is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'inheritableMembers' in aadl2_Classifier did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'inheritableMembers' in aadl2_Classifier is not implemented or raised an error")
 
 import warnings
 import copy
@@ -6844,30 +6653,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=aadl2_Classifier_strategy)
-@settings(max_examples=30)
-def test_hyp_aadl2_classifier_hasvisibilityof_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.hasVisibilityOf(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.hasVisibilityOf).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'hasVisibilityOf' in aadl2_Classifier is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'hasVisibilityOf' in aadl2_Classifier did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'hasVisibilityOf' in aadl2_Classifier is not implemented or raised an error")
 
 import warnings
 import copy
@@ -6875,28 +6660,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=aadl2_Classifier_strategy)
-@settings(max_examples=30)
-def test_hyp_aadl2_classifier_inheritedmember_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.inheritedMember()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.inheritedMember).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'inheritedMember' in aadl2_Classifier is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'inheritedMember' in aadl2_Classifier did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'inheritedMember' in aadl2_Classifier is not implemented or raised an error")
 
 import warnings
 import copy
@@ -6904,28 +6667,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=aadl2_Classifier_strategy)
-@settings(max_examples=30)
-def test_hyp_aadl2_classifier_parents_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.parents()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.parents).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'parents' in aadl2_Classifier is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'parents' in aadl2_Classifier did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'parents' in aadl2_Classifier is not implemented or raised an error")
 
 
 
@@ -6981,31 +6722,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=aadl2_Element_strategy)
-@settings(max_examples=30)
-def test_hyp_aadl2_element_has_owner_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.has_owner(
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.has_owner).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'has_owner' in aadl2_Element is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'has_owner' in aadl2_Element did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'has_owner' in aadl2_Element is not implemented or raised an error")
 
 import warnings
 import copy
@@ -7013,31 +6729,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=aadl2_Element_strategy)
-@settings(max_examples=30)
-def test_hyp_aadl2_element_not_own_self_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.not_own_self(
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.not_own_self).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'not_own_self' in aadl2_Element is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'not_own_self' in aadl2_Element did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'not_own_self' in aadl2_Element is not implemented or raised an error")
 
 import warnings
 import copy
@@ -7045,28 +6736,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=aadl2_Element_strategy)
-@settings(max_examples=30)
-def test_hyp_aadl2_element_allownedelements_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.allOwnedElements()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.allOwnedElements).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'allOwnedElements' in aadl2_Element is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'allOwnedElements' in aadl2_Element did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'allOwnedElements' in aadl2_Element is not implemented or raised an error")
 
 import warnings
 import copy
@@ -7074,28 +6743,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=aadl2_Element_strategy)
-@settings(max_examples=30)
-def test_hyp_aadl2_element_mustbeowned_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.mustBeOwned()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.mustBeOwned).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'mustBeOwned' in aadl2_Element is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'mustBeOwned' in aadl2_Element did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'mustBeOwned' in aadl2_Element is not implemented or raised an error")
 
 
 
@@ -7110,30 +6757,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=aadl2_Type_strategy)
-@settings(max_examples=30)
-def test_hyp_aadl2_type_conformsto_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.conformsTo(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.conformsTo).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'conformsTo' in aadl2_Type is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'conformsTo' in aadl2_Type did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'conformsTo' in aadl2_Type is not implemented or raised an error")
 
 
 
@@ -7159,31 +6782,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=aadl2_Namespace_strategy)
-@settings(max_examples=30)
-def test_hyp_aadl2_namespace_members_distinguishable_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.members_distinguishable(
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.members_distinguishable).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'members_distinguishable' in aadl2_Namespace is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'members_distinguishable' in aadl2_Namespace did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'members_distinguishable' in aadl2_Namespace is not implemented or raised an error")
 
 import warnings
 import copy
@@ -7191,28 +6789,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=aadl2_Namespace_strategy)
-@settings(max_examples=30)
-def test_hyp_aadl2_namespace_membersaredistinguishable_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.membersAreDistinguishable()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.membersAreDistinguishable).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'membersAreDistinguishable' in aadl2_Namespace is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'membersAreDistinguishable' in aadl2_Namespace did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'membersAreDistinguishable' in aadl2_Namespace is not implemented or raised an error")
 
 
 
@@ -7293,31 +6869,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=aadl2_NamedElement_strategy)
-@settings(max_examples=30)
-def test_hyp_aadl2_namedelement_has_no_qualified_name_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.has_no_qualified_name(
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.has_no_qualified_name).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'has_no_qualified_name' in aadl2_NamedElement is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'has_no_qualified_name' in aadl2_NamedElement did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'has_no_qualified_name' in aadl2_NamedElement is not implemented or raised an error")
 
 import warnings
 import copy
@@ -7325,31 +6876,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=aadl2_NamedElement_strategy)
-@settings(max_examples=30)
-def test_hyp_aadl2_namedelement_has_qualified_name_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.has_qualified_name(
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.has_qualified_name).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'has_qualified_name' in aadl2_NamedElement is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'has_qualified_name' in aadl2_NamedElement did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'has_qualified_name' in aadl2_NamedElement is not implemented or raised an error")
 
 import warnings
 import copy
@@ -7357,28 +6883,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=aadl2_NamedElement_strategy)
-@settings(max_examples=30)
-def test_hyp_aadl2_namedelement_separator_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.separator()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.separator).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'separator' in aadl2_NamedElement is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'separator' in aadl2_NamedElement did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'separator' in aadl2_NamedElement is not implemented or raised an error")
 
 import warnings
 import copy
@@ -7386,28 +6890,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=aadl2_NamedElement_strategy)
-@settings(max_examples=30)
-def test_hyp_aadl2_namedelement_allnamespaces_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.allNamespaces()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.allNamespaces).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'allNamespaces' in aadl2_NamedElement is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'allNamespaces' in aadl2_NamedElement did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'allNamespaces' in aadl2_NamedElement is not implemented or raised an error")
 
 import warnings
 import copy
@@ -7415,31 +6897,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=aadl2_NamedElement_strategy)
-@settings(max_examples=30)
-def test_hyp_aadl2_namedelement_isdistinguishablefrom_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isDistinguishableFrom(
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isDistinguishableFrom).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isDistinguishableFrom' in aadl2_NamedElement is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isDistinguishableFrom' in aadl2_NamedElement did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isDistinguishableFrom' in aadl2_NamedElement is not implemented or raised an error")
 
 import warnings
 import copy
@@ -7619,28 +7076,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=aadl2_BehavioredImplementation_strategy)
-@settings(max_examples=30)
-def test_hyp_aadl2_behavioredimplementation_callspecifications_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.callSpecifications()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.callSpecifications).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'callSpecifications' in aadl2_BehavioredImplementation is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'callSpecifications' in aadl2_BehavioredImplementation did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'callSpecifications' in aadl2_BehavioredImplementation is not implemented or raised an error")
 
 
 
@@ -17555,9 +16990,9 @@ def test_assoc_actual791_stub_double():
     partner = aadl2_ComponentPrototypeBinding()
     setattr(partner, 'aadl2_ComponentPrototypeBinding', None)
     _safe_set(owner, 'aadl2_ComponentPrototypeActual', partner)
-    assert getattr(partner, 'aadl2_ComponentPrototypeBinding') == owner
+    assert owner in getattr(partner, 'aadl2_ComponentPrototypeBinding')
     _safe_set(owner, 'aadl2_ComponentPrototypeActual', None)
-    assert getattr(partner, 'aadl2_ComponentPrototypeBinding') is None
+    assert owner not in getattr(partner, 'aadl2_ComponentPrototypeBinding')
 
 
 def test_assoc_appliesTo13_stub_double():
@@ -17600,9 +17035,9 @@ def test_assoc_arrayRange70_stub_double():
     partner = aadl2_ContainmentPathElement()
     setattr(partner, 'aadl2_ContainmentPathElement71', None)
     _safe_set(owner, 'aadl2_ArrayRange', partner)
-    assert getattr(partner, 'aadl2_ContainmentPathElement71') == owner
+    assert owner in getattr(partner, 'aadl2_ContainmentPathElement71')
     _safe_set(owner, 'aadl2_ArrayRange', None)
-    assert getattr(partner, 'aadl2_ContainmentPathElement71') is None
+    assert owner not in getattr(partner, 'aadl2_ContainmentPathElement71')
 
 
 def test_assoc_arraySpecification79_stub_double():
@@ -17705,9 +17140,9 @@ def test_assoc_classifierReference878_stub_double():
     partner = aadl2_ClassifierType()
     setattr(partner, 'aadl2_ClassifierType', None)
     _safe_set(owner, 'aadl2_MetaclassReference879', partner)
-    assert getattr(partner, 'aadl2_ClassifierType') == owner
+    assert owner in getattr(partner, 'aadl2_ClassifierType')
     _safe_set(owner, 'aadl2_MetaclassReference879', None)
-    assert getattr(partner, 'aadl2_ClassifierType') is None
+    assert owner not in getattr(partner, 'aadl2_ClassifierType')
 
 
 def test_assoc_componentClassifier233_stub_double():
@@ -17945,9 +17380,9 @@ def test_assoc_featuringClassifier44_stub_double():
     partner = aadl2_ClassifierFeature()
     setattr(partner, 'classifierFeature', None)
     _safe_set(owner, 'Classifier', partner)
-    assert getattr(partner, 'classifierFeature') == owner
+    assert owner in getattr(partner, 'classifierFeature')
     _safe_set(owner, 'Classifier', None)
-    assert getattr(partner, 'classifierFeature') is None
+    assert owner not in getattr(partner, 'classifierFeature')
 
 
 def test_assoc_flowElement266_stub_double():
@@ -18170,9 +17605,9 @@ def test_assoc_namedElementReference887_stub_double():
     partner = aadl2_ReferenceType()
     setattr(partner, 'aadl2_ReferenceType', None)
     _safe_set(owner, 'aadl2_MetaclassReference888', partner)
-    assert getattr(partner, 'aadl2_ReferenceType') == owner
+    assert owner in getattr(partner, 'aadl2_ReferenceType')
     _safe_set(owner, 'aadl2_MetaclassReference888', None)
-    assert getattr(partner, 'aadl2_ReferenceType') is None
+    assert owner not in getattr(partner, 'aadl2_ReferenceType')
 
 
 def test_assoc_outContext172_stub_double():
@@ -18620,9 +18055,9 @@ def test_assoc_ownedField885_stub_double():
     partner = aadl2_RecordType()
     setattr(partner, 'aadl2_RecordType', None)
     _safe_set(owner, 'aadl2_BasicProperty886', partner)
-    assert getattr(partner, 'aadl2_RecordType') == owner
+    assert owner in getattr(partner, 'aadl2_RecordType')
     _safe_set(owner, 'aadl2_BasicProperty886', None)
-    assert getattr(partner, 'aadl2_RecordType') is None
+    assert owner not in getattr(partner, 'aadl2_RecordType')
 
 
 def test_assoc_ownedInternalEvent122_stub_double():
@@ -19280,9 +18715,9 @@ def test_assoc_propertySet861_stub_double():
     partner = aadl2_GlobalNamespace()
     setattr(partner, 'aadl2_GlobalNamespace862', None)
     _safe_set(owner, 'aadl2_PropertySet863', partner)
-    assert getattr(partner, 'aadl2_GlobalNamespace862') == owner
+    assert owner in getattr(partner, 'aadl2_GlobalNamespace862')
     _safe_set(owner, 'aadl2_PropertySet863', None)
-    assert getattr(partner, 'aadl2_GlobalNamespace862') is None
+    assert owner not in getattr(partner, 'aadl2_GlobalNamespace862')
 
 
 def test_assoc_prototype138_stub_double():
@@ -19355,9 +18790,9 @@ def test_assoc_relatedElement54_stub_double():
     partner = aadl2_Relationship()
     setattr(partner, 'aadl2_Relationship', None)
     _safe_set(owner, 'aadl2_Element55', partner)
-    assert getattr(partner, 'aadl2_Relationship') == owner
+    assert owner in getattr(partner, 'aadl2_Relationship')
     _safe_set(owner, 'aadl2_Element55', None)
-    assert getattr(partner, 'aadl2_Relationship') is None
+    assert owner not in getattr(partner, 'aadl2_Relationship')
 
 
 def test_assoc_renamedFeatureGroupType400_stub_double():
@@ -19445,9 +18880,9 @@ def test_assoc_source49_stub_double():
     partner = aadl2_DirectedRelationship()
     setattr(partner, 'aadl2_DirectedRelationship', None)
     _safe_set(owner, 'aadl2_Element50', partner)
-    assert getattr(partner, 'aadl2_DirectedRelationship') == owner
+    assert owner in getattr(partner, 'aadl2_DirectedRelationship')
     _safe_set(owner, 'aadl2_Element50', None)
-    assert getattr(partner, 'aadl2_DirectedRelationship') is None
+    assert owner not in getattr(partner, 'aadl2_DirectedRelationship')
 
 
 def test_assoc_sourceContext289_stub_double():
@@ -19490,9 +18925,9 @@ def test_assoc_target51_stub_double():
     partner = aadl2_DirectedRelationship()
     setattr(partner, 'aadl2_DirectedRelationship52', None)
     _safe_set(owner, 'aadl2_Element53', partner)
-    assert getattr(partner, 'aadl2_DirectedRelationship52') == owner
+    assert owner in getattr(partner, 'aadl2_DirectedRelationship52')
     _safe_set(owner, 'aadl2_Element53', None)
-    assert getattr(partner, 'aadl2_DirectedRelationship52') is None
+    assert owner not in getattr(partner, 'aadl2_DirectedRelationship52')
 
 
 def test_assoc_type29_stub_double():
@@ -19527,199 +18962,36 @@ def test_assoc_unit836_stub_double():
 
 
 
-from enum import Enum
 from python_code import AccessCategory
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(AccessCategory.data, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(AccessCategory.bus, '', '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(AccessCategory.data, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(AccessCategory.bus, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(AccessCategory.bus, 'bus') == AccessCategory.bus
-
-from enum import Enum
 from python_code import AccessType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(AccessType.required, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(AccessType.required, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(AccessType.provided, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(AccessType.required, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(AccessType.required, 'required') == AccessType.required
-
-from enum import Enum
 from python_code import ComponentCategory
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ComponentCategory.bus, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ComponentCategory.bus, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ComponentCategory.bus, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ComponentCategory.data, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ComponentCategory.bus, 'bus') == ComponentCategory.bus
-
-from enum import Enum
 from python_code import ConnectionKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ConnectionKind.Port, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ConnectionKind.Port, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ConnectionKind.Port, '', 0, 0) == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ConnectionKind.Port, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ConnectionKind.Port, 'Port') == ConnectionKind.Port
-
-from enum import Enum
 from python_code import DirectionType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(DirectionType.in_, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(DirectionType.in_, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(DirectionType.in_, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(DirectionType.in_, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(DirectionType.in_, 'in_') == DirectionType.in_
-
-from enum import Enum
 from python_code import FlowKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(FlowKind.path, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(FlowKind.path, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(FlowKind.path, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(FlowKind.path, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(FlowKind.path, 'path') == FlowKind.path
-
-from enum import Enum
 from python_code import OperationKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(OperationKind.or_, '', 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(OperationKind.or_, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(OperationKind.or_, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(OperationKind.or_, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(OperationKind.or_, 'or_') == OperationKind.or_
-
-from enum import Enum
 from python_code import PortCategory
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(PortCategory.event, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(PortCategory.event, 0, '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(PortCategory.event, '', '', '') == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(PortCategory.data, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(PortCategory.data, 'data') == PortCategory.data
-
 from python_code import aadl2_Access
 
 def test_aadl2_Access___init__():
     assert aadl2_Access.__init__(aadl2_Access('', '\x00'), '\x00\x00', '') == None
-
 from python_code import aadl2_ArrayRange
 from python_code import aadl2_ContainmentPathElement
 
 def test_aadl2_ArrayRange___init__():
     assert aadl2_ArrayRange.__init__(aadl2_ArrayRange('', '\x00', aadl2_ArrayRange=aadl2_ContainmentPathElement()), '\x00\x00', '', aadl2_ArrayRange=aadl2_ContainmentPathElement()) == None
-
 from python_code import aadl2_ArraySpecification
 from python_code import aadl2_ArrayableElement
 
 def test_aadl2_ArraySpecification___init__():
     assert aadl2_ArraySpecification.__init__(aadl2_ArraySpecification('', aadl2_ArraySpecification80=aadl2_ArrayableElement(), aadl2_ArraySpecification=set()), '', aadl2_ArraySpecification80=aadl2_ArrayableElement(), aadl2_ArraySpecification=set()) == None
-
 from python_code import aadl2_BasicProperty
 from python_code import aadl2_BasicPropertyAssociation
 from python_code import aadl2_PropertyType
@@ -19727,7 +18999,6 @@ from python_code import aadl2_RecordType
 
 def test_aadl2_BasicProperty___init__():
     assert aadl2_BasicProperty.__init__(aadl2_BasicProperty('', aadl2_BasicProperty=aadl2_PropertyType(), aadl2_BasicProperty825=aadl2_BasicPropertyAssociation(), aadl2_BasicProperty886=aadl2_RecordType()), '', aadl2_BasicProperty=aadl2_PropertyType(), aadl2_BasicProperty825=aadl2_BasicPropertyAssociation(), aadl2_BasicProperty886=aadl2_RecordType()) == None
-
 from python_code import aadl2_BehavioredImplementation
 
 def test_aadl2_BehavioredImplementation___init__():
@@ -19735,54 +19006,44 @@ def test_aadl2_BehavioredImplementation___init__():
 
 def test_aadl2_BehavioredImplementation_callSpecifications():
     assert aadl2_BehavioredImplementation.callSpecifications(aadl2_BehavioredImplementation(aadl2_BehavioredImplementation=set(), aadl2_BehavioredImplementation452=set())) == None
-
 from python_code import aadl2_BooleanLiteral
 
 def test_aadl2_BooleanLiteral___init__():
     assert aadl2_BooleanLiteral.__init__(aadl2_BooleanLiteral(''), '') == None
-
 from python_code import aadl2_ComponentPrototypeActual
 from python_code import aadl2_ComponentPrototypeBinding
 
 def test_aadl2_ComponentPrototypeActual___init__():
     assert aadl2_ComponentPrototypeActual.__init__(aadl2_ComponentPrototypeActual('', aadl2_ComponentPrototypeActual=aadl2_ComponentPrototypeBinding()), '', aadl2_ComponentPrototypeActual=aadl2_ComponentPrototypeBinding()) == None
-
 from python_code import aadl2_ComputedValue
 
 def test_aadl2_ComputedValue___init__():
     assert aadl2_ComputedValue.__init__(aadl2_ComputedValue(''), '') == None
-
 from python_code import aadl2_DefaultAnnexLibrary
 
 def test_aadl2_DefaultAnnexLibrary___init__():
     assert aadl2_DefaultAnnexLibrary.__init__(aadl2_DefaultAnnexLibrary(''), '') == None
-
 from python_code import aadl2_DefaultAnnexSubclause
 
 def test_aadl2_DefaultAnnexSubclause___init__():
     assert aadl2_DefaultAnnexSubclause.__init__(aadl2_DefaultAnnexSubclause(''), '') == None
-
 from python_code import aadl2_DirectedFeature
 
 def test_aadl2_DirectedFeature___init__():
     assert aadl2_DirectedFeature.__init__(aadl2_DirectedFeature(''), '') == None
-
 from python_code import aadl2_IntegerLiteral
 
 def test_aadl2_IntegerLiteral___init__():
     assert aadl2_IntegerLiteral.__init__(aadl2_IntegerLiteral('', '\x00'), '\x00\x00', '') == None
-
 from python_code import aadl2_NumberValue
 from python_code import aadl2_UnitLiteral
 
 def test_aadl2_NumberValue___init__():
     assert aadl2_NumberValue.__init__(aadl2_NumberValue('', aadl2_NumberValue=aadl2_UnitLiteral(), aadl2_NumberValue837=aadl2_UnitLiteral()), '', aadl2_NumberValue=aadl2_UnitLiteral(), aadl2_NumberValue837=aadl2_UnitLiteral()) == None
-
 from python_code import aadl2_Numeral
 
 def test_aadl2_Numeral___init__():
     assert aadl2_Numeral.__init__(aadl2_Numeral(''), '') == None
-
 from python_code import aadl2_Operation
 
 def test_aadl2_Operation___init__():

@@ -1,4 +1,8 @@
 @startuml
+' model: model
+' project: sampleModel
+' owner: User
+' description: New project
 class model_App {
   + auth(model_login : str, model_password : str) : void
   + authFailure() : void
@@ -19,7 +23,7 @@ class model_User {
   + name : str
   + password : str
 }
-model_Service "1..1" -- "0..9999" model_User : allowedUsers0
-model_App "1..1" *-- "0..9999" model_Service : services3
-model_App "1..1" *-- "0..9999" model_User : users1
+model_Service "model_User 1..1" -- "model_Service 0..9999" model_User : allowedUsers0
+model_App "model_Service5 1..1" *-- "model_App4 0..9999" model_Service : services3
+model_App "model_User2 1..1" *-- "model_App 0..9999" model_User : users1
 @enduml

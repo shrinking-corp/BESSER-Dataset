@@ -1744,9 +1744,9 @@ def test_assoc_Source150_stub_double():
     partner = avm_ValueFlowMux()
     setattr(partner, 'avm_ValueFlowMux151', None)
     _safe_set(owner, 'avm_ValueNode152', partner)
-    assert getattr(partner, 'avm_ValueFlowMux151') == owner
+    assert owner in getattr(partner, 'avm_ValueFlowMux151')
     _safe_set(owner, 'avm_ValueNode152', None)
-    assert getattr(partner, 'avm_ValueFlowMux151') is None
+    assert owner not in getattr(partner, 'avm_ValueFlowMux151')
 
 
 def test_assoc_SystemCPort290_stub_double():

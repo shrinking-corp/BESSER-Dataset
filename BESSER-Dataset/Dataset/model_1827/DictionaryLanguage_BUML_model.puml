@@ -1,4 +1,8 @@
 @startuml
+' model: DictionaryLanguage
+' project: sampleModel
+' owner: User
+' description: New project
 class DictionaryLanguage_Author {
   + email : str
 }
@@ -15,12 +19,12 @@ class DictionaryLanguage_Library {
 class DictionaryLanguage_Shelf {
   + description : str
 }
-DictionaryLanguage_Author "1..1" -- "1..1" DictionaryLanguage_Dictionary : author4
-DictionaryLanguage_Author "0..9999" --* "1..1" DictionaryLanguage_Library : author8
-DictionaryLanguage_Author "1..1" -- "0..9999" DictionaryLanguage_Dictionary : dictionary1
-DictionaryLanguage_Dictionary "0..9999" --* "1..1" DictionaryLanguage_Shelf : dictionary10
-DictionaryLanguage_Dictionary "1..1" *-- "0..9999" DictionaryLanguage_Entry : entry6
-DictionaryLanguage_Author "1..1" -- "1..1" DictionaryLanguage_Library : library0
-DictionaryLanguage_Dictionary "1..1" -- "1..1" DictionaryLanguage_Shelf : shelf3
-DictionaryLanguage_Library "1..1" *-- "0..9999" DictionaryLanguage_Shelf : shelf7
+DictionaryLanguage_Author "dictionary5 1..1" -- "Author 1..1" DictionaryLanguage_Dictionary : author4
+DictionaryLanguage_Author "library 0..9999" --* "Author9 1..1" DictionaryLanguage_Library : author8
+DictionaryLanguage_Author "Dictionary 1..1" -- "author2 0..9999" DictionaryLanguage_Dictionary : dictionary1
+DictionaryLanguage_Dictionary "shelf 0..9999" --* "Dictionary11 1..1" DictionaryLanguage_Shelf : dictionary10
+DictionaryLanguage_Dictionary "DictionaryLanguage_Entry 1..1" *-- "DictionaryLanguage_Dictionary 0..9999" DictionaryLanguage_Entry : entry6
+DictionaryLanguage_Author "Library 1..1" -- "author 1..1" DictionaryLanguage_Library : library0
+DictionaryLanguage_Dictionary "Shelf 1..1" -- "dictionary 1..1" DictionaryLanguage_Shelf : shelf3
+DictionaryLanguage_Library "DictionaryLanguage_Shelf 1..1" *-- "DictionaryLanguage_Library 0..9999" DictionaryLanguage_Shelf : shelf7
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: actions
+' project: sampleModel
+' owner: User
+' description: New project
 class Action {
 }
 class ActionResult {
@@ -49,15 +53,15 @@ ActionResult <|-- actions_AtomicActionResult
 AtomicProcess <|-- actions_AtomicAction
 CompositeProcess <|-- actions_CompositeAction
 Process <|-- actions_Action
-actions_Action "0..9999" --* "1..1" actions_ActionsCollection : actions16
-actions_ActionResult "1..1" *-- "0..9999" actions_Expression : hasAddEffect3
-actions_AtomicAction "1..1" *-- "0..9999" actions_AtomicActionResult : hasAtomicActionResult1
-actions_AtomicActionResult "1..1" *-- "0..9999" actions_Distribution : hasCostDistribution8
-actions_ActionResult "1..1" *-- "0..9999" actions_Expression : hasDeleteEffect5
-actions_AtomicActionResult "1..1" *-- "0..9999" actions_Distribution : hasDurationDistribution10
-actions_AtomicActionResult "1..1" *-- "0..9999" actions_Distribution : hasQualityDistribution13
-actions_ActionResult "1..1" *-- "0..9999" actions_Condition : inCondition2
-actions_ActionsCollection "1..1" *-- "0..9999" actions_Parameter : parameters20
-actions_ActionsCollection "1..1" *-- "0..9999" actions_Participant : participants18
-actions_Action "1..1" -- "0..9999" actions_Role : performedByRole0
+actions_Action "actions_ActionsCollection 0..9999" --* "actions_Action17 1..1" actions_ActionsCollection : actions16
+actions_ActionResult "actions_Expression 1..1" *-- "actions_ActionResult4 0..9999" actions_Expression : hasAddEffect3
+actions_AtomicAction "actions_AtomicActionResult 1..1" *-- "actions_AtomicAction 0..9999" actions_AtomicActionResult : hasAtomicActionResult1
+actions_AtomicActionResult "actions_Distribution 1..1" *-- "actions_AtomicActionResult9 0..9999" actions_Distribution : hasCostDistribution8
+actions_ActionResult "actions_Expression7 1..1" *-- "actions_ActionResult6 0..9999" actions_Expression : hasDeleteEffect5
+actions_AtomicActionResult "actions_Distribution12 1..1" *-- "actions_AtomicActionResult11 0..9999" actions_Distribution : hasDurationDistribution10
+actions_AtomicActionResult "actions_Distribution15 1..1" *-- "actions_AtomicActionResult14 0..9999" actions_Distribution : hasQualityDistribution13
+actions_ActionResult "actions_Condition 1..1" *-- "actions_ActionResult 0..9999" actions_Condition : inCondition2
+actions_ActionsCollection "actions_Parameter 1..1" *-- "actions_ActionsCollection21 0..9999" actions_Parameter : parameters20
+actions_ActionsCollection "actions_Participant 1..1" *-- "actions_ActionsCollection19 0..9999" actions_Participant : participants18
+actions_Action "actions_Role 1..1" -- "actions_Action 0..9999" actions_Role : performedByRole0
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: fsm
+' project: sampleModel
+' owner: User
+' description: New project
 class fsm_FSM {
   + name : str
 }
@@ -9,13 +13,13 @@ class fsm_Transition {
   + input : str
   + output : str
 }
-fsm_FSM "0..1" -- "1..1" fsm_Transition : containingFSM13
-fsm_FSM "1..1" -- "1..1" fsm_State : containingFSM8
-fsm_State "1..1" -- "0..9999" fsm_Transition : incomingTransitions6
-fsm_FSM "1..1" -- "1..1" fsm_State : initialState3
-fsm_State "1..1" -- "0..9999" fsm_Transition : outgoingTransitions4
-fsm_State "1..1" -- "1..1" fsm_Transition : source11
-fsm_FSM "1..1" *-- "0..9999" fsm_State : states0
-fsm_State "1..1" -- "1..1" fsm_Transition : target9
-fsm_FSM "1..1" *-- "0..9999" fsm_Transition : transitions1
+fsm_FSM "transitions 0..1" -- "FSM14 1..1" fsm_Transition : containingFSM13
+fsm_FSM "states 1..1" -- "FSM 1..1" fsm_State : containingFSM8
+fsm_State "Transition7 1..1" -- "target 0..9999" fsm_Transition : incomingTransitions6
+fsm_FSM "fsm_State 1..1" -- "fsm_FSM 1..1" fsm_State : initialState3
+fsm_State "Transition5 1..1" -- "source 0..9999" fsm_Transition : outgoingTransitions4
+fsm_State "outgoingTransitions 1..1" -- "State12 1..1" fsm_Transition : source11
+fsm_FSM "State 1..1" *-- "containingFSM 0..9999" fsm_State : states0
+fsm_State "incomingTransitions 1..1" -- "State10 1..1" fsm_Transition : target9
+fsm_FSM "Transition 1..1" *-- "containingFSM2 0..9999" fsm_Transition : transitions1
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: klang
+' project: sampleModel
+' owner: User
+' description: New project
 class ActorEvent {
 }
 class Event {
@@ -92,14 +96,14 @@ Event <|-- klang_GlobalEvent
 GlobalEvent <|-- klang_GameStartEvent
 GlobalEvent <|-- klang_KeyPressEvent
 GlobalEvent <|-- klang_MessageReceivedEvent
-klang_AbstractActor "1..1" *-- "0..9999" klang_EventHandler : eventHandlers7
-klang_Expression "0..1" --* "1..1" klang_VariableDeclaration : expression6
-klang_AbstractActor "1..1" *-- "0..9999" klang_VariableDeclaration : localVariables8
-klang_Program "0..1" -- "1..1" klang_SceneActor : program0
-klang_Program "0..1" -- "1..1" klang_SpriteActor : program1
-klang_Event "0..1" --* "1..1" klang_EventHandler : referenceEvent4
-klang_Program "1..1" *-- "0..1" klang_SceneActor : sceneActor11
-klang_Program "1..1" *-- "0..9999" klang_SpriteActor : spriteActors12
-klang_EventHandler "1..1" *-- "0..9999" klang_Statement : statements3
-klang_CollisionEvent "1..1" -- "0..1" klang_SpriteActor : target10
+klang_AbstractActor "EventHandler 1..1" *-- "actor 0..9999" klang_EventHandler : eventHandlers7
+klang_Expression "klang_VariableDeclaration 0..1" --* "klang_Expression 1..1" klang_VariableDeclaration : expression6
+klang_AbstractActor "VariableDeclaration 1..1" *-- "actor9 0..9999" klang_VariableDeclaration : localVariables8
+klang_Program "sceneActor 0..1" -- "Program 1..1" klang_SceneActor : program0
+klang_Program "spriteActors 0..1" -- "Program2 1..1" klang_SpriteActor : program1
+klang_Event "klang_EventHandler5 0..1" --* "klang_Event 1..1" klang_EventHandler : referenceEvent4
+klang_Program "SceneActor 1..1" *-- "program 0..1" klang_SceneActor : sceneActor11
+klang_Program "SpriteActor 1..1" *-- "program13 0..9999" klang_SpriteActor : spriteActors12
+klang_EventHandler "klang_Statement 1..1" *-- "klang_EventHandler 0..9999" klang_Statement : statements3
+klang_CollisionEvent "klang_SpriteActor 1..1" -- "klang_CollisionEvent 0..1" klang_SpriteActor : target10
 @enduml

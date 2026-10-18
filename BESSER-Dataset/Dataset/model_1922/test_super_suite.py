@@ -2052,30 +2052,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=libraryElement_I4DIACElement_strategy)
-@settings(max_examples=30)
-def test_hyp_libraryelement_i4diacelement_createannotation_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.createAnnotation(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.createAnnotation).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'createAnnotation' in libraryElement_I4DIACElement is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'createAnnotation' in libraryElement_I4DIACElement did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'createAnnotation' in libraryElement_I4DIACElement is not implemented or raised an error")
 
 import warnings
 import copy
@@ -2083,30 +2059,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=libraryElement_I4DIACElement_strategy)
-@settings(max_examples=30)
-def test_hyp_libraryelement_i4diacelement_removeannotation_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.removeAnnotation(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.removeAnnotation).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'removeAnnotation' in libraryElement_I4DIACElement is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'removeAnnotation' in libraryElement_I4DIACElement did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'removeAnnotation' in libraryElement_I4DIACElement is not implemented or raised an error")
 
 
 
@@ -2116,28 +2068,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=libraryElement_ResourceTypeFB_strategy)
-@settings(max_examples=30)
-def test_hyp_libraryelement_resourcetypefb_isresourcetypefb_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isResourceTypeFB()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isResourceTypeFB).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isResourceTypeFB' in libraryElement_ResourceTypeFB is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isResourceTypeFB' in libraryElement_ResourceTypeFB did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isResourceTypeFB' in libraryElement_ResourceTypeFB is not implemented or raised an error")
 
 
 
@@ -2217,28 +2147,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=libraryElement_Connection_strategy)
-@settings(max_examples=30)
-def test_hyp_libraryelement_connection_isresourceconnection_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isResourceConnection()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isResourceConnection).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isResourceConnection' in libraryElement_Connection is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isResourceConnection' in libraryElement_Connection did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isResourceConnection' in libraryElement_Connection is not implemented or raised an error")
 
 import warnings
 import copy
@@ -2246,28 +2154,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=libraryElement_Connection_strategy)
-@settings(max_examples=30)
-def test_hyp_libraryelement_connection_checkifconnectionbroken_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.checkIfConnectionBroken()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.checkIfConnectionBroken).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'checkIfConnectionBroken' in libraryElement_Connection is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'checkIfConnectionBroken' in libraryElement_Connection did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'checkIfConnectionBroken' in libraryElement_Connection is not implemented or raised an error")
 
 
 
@@ -2279,28 +2165,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=libraryElement_AdapterFB_strategy)
-@settings(max_examples=30)
-def test_hyp_libraryelement_adapterfb_isplug_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isPlug()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isPlug).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isPlug' in libraryElement_AdapterFB is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isPlug' in libraryElement_AdapterFB did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isPlug' in libraryElement_AdapterFB is not implemented or raised an error")
 
 import warnings
 import copy
@@ -2308,28 +2172,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=libraryElement_AdapterFB_strategy)
-@settings(max_examples=30)
-def test_hyp_libraryelement_adapterfb_issocket_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isSocket()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isSocket).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isSocket' in libraryElement_AdapterFB is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isSocket' in libraryElement_AdapterFB did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isSocket' in libraryElement_AdapterFB is not implemented or raised an error")
 
 
 
@@ -2394,28 +2236,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=libraryElement_FBNetwork_strategy)
-@settings(max_examples=30)
-def test_hyp_libraryelement_fbnetwork_isresourcenetwork_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isResourceNetwork()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isResourceNetwork).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isResourceNetwork' in libraryElement_FBNetwork is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isResourceNetwork' in libraryElement_FBNetwork did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isResourceNetwork' in libraryElement_FBNetwork is not implemented or raised an error")
 
 import warnings
 import copy
@@ -2423,30 +2243,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=libraryElement_FBNetwork_strategy)
-@settings(max_examples=30)
-def test_hyp_libraryelement_fbnetwork_removeconnection_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.removeConnection(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.removeConnection).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'removeConnection' in libraryElement_FBNetwork is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'removeConnection' in libraryElement_FBNetwork did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'removeConnection' in libraryElement_FBNetwork is not implemented or raised an error")
 
 import warnings
 import copy
@@ -2454,28 +2250,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=libraryElement_FBNetwork_strategy)
-@settings(max_examples=30)
-def test_hyp_libraryelement_fbnetwork_issubapplicationnetwork_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isSubApplicationNetwork()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isSubApplicationNetwork).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isSubApplicationNetwork' in libraryElement_FBNetwork is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isSubApplicationNetwork' in libraryElement_FBNetwork did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isSubApplicationNetwork' in libraryElement_FBNetwork is not implemented or raised an error")
 
 import warnings
 import copy
@@ -2483,28 +2257,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=libraryElement_FBNetwork_strategy)
-@settings(max_examples=30)
-def test_hyp_libraryelement_fbnetwork_iscfbtypenetwork_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isCFBTypeNetwork()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isCFBTypeNetwork).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isCFBTypeNetwork' in libraryElement_FBNetwork is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isCFBTypeNetwork' in libraryElement_FBNetwork did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isCFBTypeNetwork' in libraryElement_FBNetwork is not implemented or raised an error")
 
 import warnings
 import copy
@@ -2512,30 +2264,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=libraryElement_FBNetwork_strategy)
-@settings(max_examples=30)
-def test_hyp_libraryelement_fbnetwork_addconnection_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.addConnection(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.addConnection).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'addConnection' in libraryElement_FBNetwork is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'addConnection' in libraryElement_FBNetwork did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'addConnection' in libraryElement_FBNetwork is not implemented or raised an error")
 
 import warnings
 import copy
@@ -2543,28 +2271,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=libraryElement_FBNetwork_strategy)
-@settings(max_examples=30)
-def test_hyp_libraryelement_fbnetwork_isapplicationnetwork_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isApplicationNetwork()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isApplicationNetwork).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isApplicationNetwork' in libraryElement_FBNetwork is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isApplicationNetwork' in libraryElement_FBNetwork did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isApplicationNetwork' in libraryElement_FBNetwork is not implemented or raised an error")
 
 
 
@@ -2608,31 +2314,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=libraryElement_ConfigurableObject_strategy)
-@settings(max_examples=30)
-def test_hyp_libraryelement_configurableobject_setparameter_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.setParameter(
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.setParameter).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'setParameter' in libraryElement_ConfigurableObject is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'setParameter' in libraryElement_ConfigurableObject did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'setParameter' in libraryElement_ConfigurableObject is not implemented or raised an error")
 
 
 
@@ -2819,28 +2500,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=libraryElement_FBNetworkElement_strategy)
-@settings(max_examples=30)
-def test_hyp_libraryelement_fbnetworkelement_ismapped_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isMapped()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isMapped).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isMapped' in libraryElement_FBNetworkElement is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isMapped' in libraryElement_FBNetworkElement did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isMapped' in libraryElement_FBNetworkElement is not implemented or raised an error")
 
 import warnings
 import copy
@@ -2848,28 +2507,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=libraryElement_FBNetworkElement_strategy)
-@settings(max_examples=30)
-def test_hyp_libraryelement_fbnetworkelement_checkconnections_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.checkConnections()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.checkConnections).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'checkConnections' in libraryElement_FBNetworkElement is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'checkConnections' in libraryElement_FBNetworkElement did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'checkConnections' in libraryElement_FBNetworkElement is not implemented or raised an error")
 
 
 
@@ -2880,28 +2517,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=libraryElement_FB_strategy)
-@settings(max_examples=30)
-def test_hyp_libraryelement_fb_isresourcetypefb_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isResourceTypeFB()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isResourceTypeFB).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isResourceTypeFB' in libraryElement_FB is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isResourceTypeFB' in libraryElement_FB did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isResourceTypeFB' in libraryElement_FB is not implemented or raised an error")
 
 import warnings
 import copy
@@ -2909,28 +2524,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=libraryElement_FB_strategy)
-@settings(max_examples=30)
-def test_hyp_libraryelement_fb_isresourcefb_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isResourceFB()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isResourceFB).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isResourceFB' in libraryElement_FB is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isResourceFB' in libraryElement_FB did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isResourceFB' in libraryElement_FB is not implemented or raised an error")
 
 
 
@@ -2949,28 +2542,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=libraryElement_VarDeclaration_strategy)
-@settings(max_examples=30)
-def test_hyp_libraryelement_vardeclaration_isarray_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isArray()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isArray).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isArray' in libraryElement_VarDeclaration is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isArray' in libraryElement_VarDeclaration did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isArray' in libraryElement_VarDeclaration is not implemented or raised an error")
 
 
 
@@ -2996,28 +2567,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=libraryElement_ECState_strategy)
-@settings(max_examples=30)
-def test_hyp_libraryelement_ecstate_isstartstate_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isStartState()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isStartState).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isStartState' in libraryElement_ECState is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isStartState' in libraryElement_ECState did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isStartState' in libraryElement_ECState is not implemented or raised an error")
 
 
 
@@ -7149,9 +6698,9 @@ def test_assoc_eCState29_stub_double():
     partner = libraryElement_ECC()
     setattr(partner, 'libraryElement_ECC30', None)
     _safe_set(owner, 'libraryElement_ECState', partner)
-    assert getattr(partner, 'libraryElement_ECC30') == owner
+    assert owner in getattr(partner, 'libraryElement_ECC30')
     _safe_set(owner, 'libraryElement_ECState', None)
-    assert getattr(partner, 'libraryElement_ECC30') is None
+    assert owner not in getattr(partner, 'libraryElement_ECC30')
 
 
 def test_assoc_eCTransition31_stub_double():
@@ -7164,9 +6713,9 @@ def test_assoc_eCTransition31_stub_double():
     partner = libraryElement_ECC()
     setattr(partner, 'libraryElement_ECC32', None)
     _safe_set(owner, 'libraryElement_ECTransition', partner)
-    assert getattr(partner, 'libraryElement_ECC32') == owner
+    assert owner in getattr(partner, 'libraryElement_ECC32')
     _safe_set(owner, 'libraryElement_ECTransition', None)
-    assert getattr(partner, 'libraryElement_ECC32') is None
+    assert owner not in getattr(partner, 'libraryElement_ECC32')
 
 
 def test_assoc_eventInputs65_stub_double():
@@ -7314,9 +6863,9 @@ def test_assoc_internalVars7_stub_double():
     partner = libraryElement_BasicFBType()
     setattr(partner, 'libraryElement_BasicFBType8', None)
     _safe_set(owner, 'libraryElement_VarDeclaration', partner)
-    assert getattr(partner, 'libraryElement_BasicFBType8') == owner
+    assert owner in getattr(partner, 'libraryElement_BasicFBType8')
     _safe_set(owner, 'libraryElement_VarDeclaration', None)
-    assert getattr(partner, 'libraryElement_BasicFBType8') is None
+    assert owner not in getattr(partner, 'libraryElement_BasicFBType8')
 
 
 def test_assoc_links150_stub_double():
@@ -7419,9 +6968,9 @@ def test_assoc_serviceSequence165_stub_double():
     partner = libraryElement_Service()
     setattr(partner, 'libraryElement_Service166', None)
     _safe_set(owner, 'libraryElement_ServiceSequence167', partner)
-    assert getattr(partner, 'libraryElement_Service166') == owner
+    assert owner in getattr(partner, 'libraryElement_Service166')
     _safe_set(owner, 'libraryElement_ServiceSequence167', None)
-    assert getattr(partner, 'libraryElement_Service166') is None
+    assert owner not in getattr(partner, 'libraryElement_Service166')
 
 
 def test_assoc_sockets62_stub_double():
@@ -7479,9 +7028,9 @@ def test_assoc_varDeclaration153_stub_double():
     partner = libraryElement_SegmentType()
     setattr(partner, 'libraryElement_SegmentType', None)
     _safe_set(owner, 'libraryElement_VarDeclaration154', partner)
-    assert getattr(partner, 'libraryElement_SegmentType') == owner
+    assert owner in getattr(partner, 'libraryElement_SegmentType')
     _safe_set(owner, 'libraryElement_VarDeclaration154', None)
-    assert getattr(partner, 'libraryElement_SegmentType') is None
+    assert owner not in getattr(partner, 'libraryElement_SegmentType')
 
 
 def test_assoc_varDeclaration90_stub_double():
@@ -7494,9 +7043,9 @@ def test_assoc_varDeclaration90_stub_double():
     partner = libraryElement_ResourceType()
     setattr(partner, 'libraryElement_ResourceType', None)
     _safe_set(owner, 'libraryElement_VarDeclaration91', partner)
-    assert getattr(partner, 'libraryElement_ResourceType') == owner
+    assert owner in getattr(partner, 'libraryElement_ResourceType')
     _safe_set(owner, 'libraryElement_VarDeclaration91', None)
-    assert getattr(partner, 'libraryElement_ResourceType') is None
+    assert owner not in getattr(partner, 'libraryElement_ResourceType')
 
 
 def test_assoc_varDeclarations173_stub_double():
@@ -7509,9 +7058,9 @@ def test_assoc_varDeclarations173_stub_double():
     partner = libraryElement_IVarElement()
     setattr(partner, 'libraryElement_IVarElement', None)
     _safe_set(owner, 'libraryElement_VarDeclaration174', partner)
-    assert getattr(partner, 'libraryElement_IVarElement') == owner
+    assert owner in getattr(partner, 'libraryElement_IVarElement')
     _safe_set(owner, 'libraryElement_VarDeclaration174', None)
-    assert getattr(partner, 'libraryElement_IVarElement') is None
+    assert owner not in getattr(partner, 'libraryElement_IVarElement')
 
 
 def test_assoc_varInitialization124_stub_double():
@@ -7554,9 +7103,9 @@ def test_assoc_versionInfo128_stub_double():
     partner = libraryElement_LibraryElement()
     setattr(partner, 'libraryElement_LibraryElement', None)
     _safe_set(owner, 'libraryElement_VersionInfo', partner)
-    assert getattr(partner, 'libraryElement_LibraryElement') == owner
+    assert owner in getattr(partner, 'libraryElement_LibraryElement')
     _safe_set(owner, 'libraryElement_VersionInfo', None)
-    assert getattr(partner, 'libraryElement_LibraryElement') is None
+    assert owner not in getattr(partner, 'libraryElement_LibraryElement')
 
 
 def test_assoc_withs126_stub_double():
@@ -7576,28 +7125,8 @@ def test_assoc_withs126_stub_double():
 
 
 
-from enum import Enum
 from python_code import Language
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(Language.Java, 0, '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(Language.C, '', '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(Language.C, '', '', '') == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(Language.C, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(Language.C, 'C') == Language.C
-
 from python_code import libraryElement_AdapterDeclaration
 from python_code import libraryElement_AdapterFB
 
@@ -7612,7 +7141,6 @@ def test_libraryElement_AdapterFB_isPlug():
 
 def test_libraryElement_AdapterFB_getType():
     assert libraryElement_AdapterFB.getType(libraryElement_AdapterFB(AdapterFB=libraryElement_AdapterDeclaration(), adapterFB=libraryElement_AdapterDeclaration())) == None
-
 from python_code import libraryElement_AdapterFBType
 from python_code import libraryElement_AdapterType
 
@@ -7627,19 +7155,16 @@ def test_libraryElement_AdapterType_getPlugType():
 
 def test_libraryElement_AdapterType_getSocketType():
     assert libraryElement_AdapterType.getSocketType(libraryElement_AdapterType(libraryElement_AdapterType=libraryElement_AdapterFBType(), libraryElement_AdapterType157=libraryElement_AdapterFBType())) == None
-
 from python_code import libraryElement_Color
 from python_code import libraryElement_ColorizableElement
 
 def test_libraryElement_Color___init__():
     assert libraryElement_Color.__init__(libraryElement_Color('', '', '\x00\x00', libraryElement_Color=libraryElement_ColorizableElement()), '', '', '', libraryElement_Color=libraryElement_ColorizableElement()) == None
-
 from python_code import libraryElement_CompilableType
 from python_code import libraryElement_CompilerInfo
 
 def test_libraryElement_CompilerInfo___init__():
     assert libraryElement_CompilerInfo.__init__(libraryElement_CompilerInfo('\x00\x00', '', libraryElement_CompilerInfo=set(), libraryElement_CompilerInfo133=libraryElement_CompilableType()), '', '', libraryElement_CompilerInfo=set(), libraryElement_CompilerInfo133=libraryElement_CompilableType()) == None
-
 from python_code import libraryElement_ConfigurableObject
 
 def test_libraryElement_ConfigurableObject___init__():
@@ -7650,7 +7175,6 @@ def test_libraryElement_ConfigurableObject_getParameter():
 
 def test_libraryElement_ConfigurableObject_setParameter():
     assert libraryElement_ConfigurableObject.setParameter(libraryElement_ConfigurableObject(libraryElement_ConfigurableObject=set()), 0, '\x00\x00') == None
-
 from python_code import libraryElement_FB
 
 def test_libraryElement_FB___init__():
@@ -7664,7 +7188,6 @@ def test_libraryElement_FB_isResourceTypeFB():
 
 def test_libraryElement_FB_isResourceFB():
     assert libraryElement_FB.isResourceFB(libraryElement_FB()) == None
-
 from python_code import libraryElement_I4DIACElement
 
 def test_libraryElement_I4DIACElement___init__():
@@ -7675,34 +7198,28 @@ def test_libraryElement_I4DIACElement_createAnnotation():
 
 def test_libraryElement_I4DIACElement_removeAnnotation():
     assert libraryElement_I4DIACElement.removeAnnotation(libraryElement_I4DIACElement(libraryElement_I4DIACElement=set()), 0) == None
-
 from python_code import libraryElement_INamedElement
 
 def test_libraryElement_INamedElement___init__():
     assert libraryElement_INamedElement.__init__(libraryElement_INamedElement('', '\x00'), '\x00\x00', '') == None
-
 from python_code import libraryElement_Identification
 from python_code import libraryElement_LibraryElement
 
 def test_libraryElement_Identification___init__():
     assert libraryElement_Identification.__init__(libraryElement_Identification('', '', '', '', '', '', libraryElement_Identification=libraryElement_LibraryElement()), '', '', '', '', '\x00', '', libraryElement_Identification=libraryElement_LibraryElement()) == None
-
 from python_code import libraryElement_OtherAlgorithm
 
 def test_libraryElement_OtherAlgorithm___init__():
     assert libraryElement_OtherAlgorithm.__init__(libraryElement_OtherAlgorithm(''), '') == None
-
 from python_code import libraryElement_PositionableElement
 
 def test_libraryElement_PositionableElement___init__():
     assert libraryElement_PositionableElement.__init__(libraryElement_PositionableElement('', '\x00'), '\x00\x00', '') == None
-
 from python_code import libraryElement_Primitive
 from python_code import libraryElement_ServiceInterface
 
 def test_libraryElement_Primitive___init__():
     assert libraryElement_Primitive.__init__(libraryElement_Primitive('', '\x00', libraryElement_Primitive=libraryElement_ServiceInterface()), '\x00\x00', '', libraryElement_Primitive=libraryElement_ServiceInterface()) == None
-
 from python_code import libraryElement_ResourceTypeFB
 
 def test_libraryElement_ResourceTypeFB___init__():
@@ -7710,18 +7227,15 @@ def test_libraryElement_ResourceTypeFB___init__():
 
 def test_libraryElement_ResourceTypeFB_isResourceTypeFB():
     assert libraryElement_ResourceTypeFB.isResourceTypeFB(libraryElement_ResourceTypeFB()) == None
-
 from python_code import libraryElement_Service
 from python_code import libraryElement_ServiceSequence
 
 def test_libraryElement_ServiceSequence___init__():
     assert libraryElement_ServiceSequence.__init__(libraryElement_ServiceSequence('', libraryElement_ServiceSequence=set(), libraryElement_ServiceSequence167=libraryElement_Service()), '', libraryElement_ServiceSequence=set(), libraryElement_ServiceSequence167=libraryElement_Service()) == None
-
 from python_code import libraryElement_TextAlgorithm
 
 def test_libraryElement_TextAlgorithm___init__():
     assert libraryElement_TextAlgorithm.__init__(libraryElement_TextAlgorithm(''), '') == None
-
 from python_code import libraryElement_PaletteEntry
 from python_code import libraryElement_TypedConfigureableObject
 
@@ -7733,7 +7247,6 @@ def test_libraryElement_TypedConfigureableObject_getType():
 
 def test_libraryElement_TypedConfigureableObject_getTypeName():
     assert libraryElement_TypedConfigureableObject.getTypeName(libraryElement_TypedConfigureableObject(libraryElement_TypedConfigureableObject=libraryElement_PaletteEntry())) == None
-
 from python_code import libraryElement_LibraryElement
 from python_code import libraryElement_VersionInfo
 

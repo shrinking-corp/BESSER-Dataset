@@ -1,4 +1,8 @@
 @startuml
+' model: documentation
+' project: sampleModel
+' owner: User
+' description: New project
 class Fragment {
 }
 class NamedElement {
@@ -70,10 +74,10 @@ TextFragmentContainer <|-- documentation_Paragraph
 TextFragmentContainer <|-- documentation_Section
 TextFragmentContainer <|-- documentation_Subsection
 TextFragmentContainer <|-- documentation_Subsubsection
-documentation_Fragment "0..9999" --* "1..1" documentation_TextFragmentContainer : fragments3
-documentation_List "1..1" *-- "0..9999" documentation_ListItem : items4
-documentation_Documentation "1..1" *-- "0..9999" documentation_Section : sections0
-documentation_Table "1..1" *-- "1..1" documentation_TableHeader : tableHeader5
-documentation_Table "1..1" *-- "0..9999" documentation_TableRow : tableRows6
-documentation_Documentation "1..1" *-- "0..9999" documentation_TermEntry : terminology1
+documentation_Fragment "documentation_TextFragmentContainer 0..9999" --* "documentation_Fragment 1..1" documentation_TextFragmentContainer : fragments3
+documentation_List "documentation_ListItem 1..1" *-- "documentation_List 0..9999" documentation_ListItem : items4
+documentation_Documentation "documentation_Section 1..1" *-- "documentation_Documentation 0..9999" documentation_Section : sections0
+documentation_Table "documentation_TableHeader 1..1" *-- "documentation_Table 1..1" documentation_TableHeader : tableHeader5
+documentation_Table "documentation_TableRow 1..1" *-- "documentation_Table7 0..9999" documentation_TableRow : tableRows6
+documentation_Documentation "documentation_TermEntry 1..1" *-- "documentation_Documentation2 0..9999" documentation_TermEntry : terminology1
 @enduml

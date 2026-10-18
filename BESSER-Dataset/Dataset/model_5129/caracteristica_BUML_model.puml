@@ -1,4 +1,8 @@
 @startuml
+' model: caracteristica
+' project: sampleModel
+' owner: User
+' description: New project
 class Caracteristica {
 }
 enum CardinalidadeMaxima {
@@ -102,14 +106,14 @@ ElementoCaracteristico <|-- caracteristica_VariacaoDois
 ElementoCaracteristico <|-- caracteristica_Variante
 PontoDeVariacao <|-- caracteristica_Variacao
 PontoDeVariacao <|-- caracteristica_Variante
-caracteristica_CaracteristicaRaiz "1..1" -- "1..1" caracteristica_LPS : LpsDoSistema12
-caracteristica_Atributo "0..9999" -- "1..1" caracteristica_Caracteristica : atributo10
-caracteristica_Caracteristica "1..1" -- "0..9999" caracteristica_Caracteristica : caracteristicaFilha6
-caracteristica_Atributo "1..1" -- "0..1" caracteristica_Caracteristica : caracteristicaPai1
-caracteristica_Caracteristica "0..1" -- "1..1" caracteristica_Variacao : caracteristicaPai15
-caracteristica_Caracteristica "1..1" -- "0..1" caracteristica_Caracteristica : caracteristicaPai3
-caracteristica_Elemento "0..9999" --* "1..1" caracteristica_LPS : elementos0
-caracteristica_Variacao "0..1" -- "1..1" caracteristica_Variante : variacaoPai17
-caracteristica_Caracteristica "1..1" -- "0..9999" caracteristica_Variacao : variacoes8
-caracteristica_Variacao "1..1" -- "0..9999" caracteristica_Variante : variantes14
+caracteristica_CaracteristicaRaiz "caracteristica_LPS13 1..1" -- "caracteristica_CaracteristicaRaiz 1..1" caracteristica_LPS : LpsDoSistema12
+caracteristica_Atributo "caracteristicaPai11 0..9999" -- "Atributo 1..1" caracteristica_Caracteristica : atributo10
+caracteristica_Caracteristica "Caracteristica7 1..1" -- "caracteristicaPai 0..9999" caracteristica_Caracteristica : caracteristicaFilha6
+caracteristica_Atributo "Caracteristica 1..1" -- "atributo 0..1" caracteristica_Caracteristica : caracteristicaPai1
+caracteristica_Caracteristica "variacoes 0..1" -- "Caracteristica16 1..1" caracteristica_Variacao : caracteristicaPai15
+caracteristica_Caracteristica "Caracteristica4 1..1" -- "caracteristicaFilha 0..1" caracteristica_Caracteristica : caracteristicaPai3
+caracteristica_Elemento "caracteristica_LPS 0..9999" --* "caracteristica_Elemento 1..1" caracteristica_LPS : elementos0
+caracteristica_Variacao "variantes 0..1" -- "Variacao18 1..1" caracteristica_Variante : variacaoPai17
+caracteristica_Caracteristica "Variacao 1..1" -- "caracteristicaPai9 0..9999" caracteristica_Variacao : variacoes8
+caracteristica_Variacao "Variante 1..1" -- "variacaoPai 0..9999" caracteristica_Variante : variantes14
 @enduml

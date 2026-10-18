@@ -1,4 +1,8 @@
 @startuml
+' model: d1a01f97_dfb5_4898_92a5_d558d218f99b
+' project: sampleModel
+' owner: User
+' description: New project
 class Administrateur_Actor {
 }
 class Client {
@@ -230,25 +234,25 @@ class panier_Passer_une_commande_UseCase {
 }
 class panier_Supprimer_du_panier_UseCase {
 }
-Administrateur_Actor "0..1" -- "0..1" backoffice_S_authentifier_UseCase : Administrateur_S_authentifier
-be_jebouquine_entities_Client "1..1" -- "0..9999" be_jebouquine_entities_Commande : Client_Commande
-be_jebouquine_entities_Client "1..1" -- "0..9999" be_jebouquine_entities_Commentaire : Client_Commentaire
-Client_Actor "0..1" -- "0..1" compte_S_authentifier_UseCase : Client_S_authentifier
-be_jebouquine_entities_Commande "0..9999" -- "1..1" be_jebouquine_entities_EtatCommande : Commande_EtatCommande
-be_jebouquine_entities_Commande "1..1" -- "1..9999" be_jebouquine_entities_LigneCommande : Commande_LigneCommande
-be_jebouquine_entities_Commande "0..9999" -- "1..1" be_jebouquine_entities_LivraisonType : Commande_LivraisonInfo
-be_jebouquine_entities_Langue "1..1" -- "0..9999" be_jebouquine_entities_Livre : Langue_Livre
-be_jebouquine_entities_LigneCommande "0..9999" -- "1..1" be_jebouquine_entities_Livre : LigneCommande_Livre
-be_jebouquine_entities_Auteur "1..9999" -- "0..1" be_jebouquine_entities_Livre : Livre_Auteur
-be_jebouquine_entities_Categorie "1..9999" -- "0..1" be_jebouquine_entities_Livre : Livre_Categorie
-be_jebouquine_entities_Commentaire "0..9999" -- "1..1" be_jebouquine_entities_Livre : Livre_Commentaire
-be_jebouquine_entities_Editeur "1..1" -- "0..1" be_jebouquine_entities_Livre : Livre_Editeur
-navigation_Afficher_la_liste_des_livres_UseCase "0..1" -- "0..1" navigation_Parcourir_les_livres_UseCase : Parcourir_les_livres_Afficher_la_liste_des_livres
-Visiteur_Actor "0..1" -- "0..1" navigation_Parcourir_les_livres_UseCase : Parcourir_les_livres_Visiteur
-navigation_Afficher_la_liste_des_livres_UseCase "0..1" -- "0..1" navigation_Rechercher_un_livre_UseCase : Rechercher_un_livre_Afficher_la_liste_des_livres
-navigation_Recherche_par_critere_UseCase "0..1" -- "0..1" navigation_Rechercher_un_livre_UseCase : Rechercher_un_livre_Recherche_par_critere
-Visiteur_Actor "0..1" -- "0..1" navigation_Rechercher_un_livre_UseCase : Rechercher_un_livre_Visiteur
-Systeme_Paiement_Actor "0..1" -- "0..1" commande_Payer_commande_UseCase : Systeme_Paiement_Payer_commande
-Visiteur_Actor "0..1" -- "0..1" information_Consulter_l_aide_UseCase : Visiteur_Consulter_l_aide
-Visiteur_Actor "0..1" -- "0..1" panier_Gerer_panier_UseCase : Visiteur_Gerer_panier
+Administrateur_Actor "administrateur1 0..1" -- "s_authentifier0 0..1" backoffice_S_authentifier_UseCase : Administrateur_S_authentifier
+be_jebouquine_entities_Client "client13 1..1" -- "commande12 0..9999" be_jebouquine_entities_Commande : Client_Commande
+be_jebouquine_entities_Client "client23 1..1" -- "commentaire22 0..9999" be_jebouquine_entities_Commentaire : Client_Commentaire
+Client_Actor "client5 0..1" -- "s_authentifier4 0..1" compte_S_authentifier_UseCase : Client_S_authentifier
+be_jebouquine_entities_Commande "commande25 0..9999" -- "etatCommande24 1..1" be_jebouquine_entities_EtatCommande : Commande_EtatCommande
+be_jebouquine_entities_Commande "commande33 1..1" -- "ligneCommande32 1..9999" be_jebouquine_entities_LigneCommande : Commande_LigneCommande
+be_jebouquine_entities_Commande "commande35 0..9999" -- "livraisonInfo34 1..1" be_jebouquine_entities_LivraisonType : Commande_LivraisonInfo
+be_jebouquine_entities_Langue "langue27 1..1" -- "livre26 0..9999" be_jebouquine_entities_Livre : Langue_Livre
+be_jebouquine_entities_LigneCommande "ligneCommande15 0..9999" -- "livre14 1..1" be_jebouquine_entities_Livre : LigneCommande_Livre
+be_jebouquine_entities_Auteur "auteur18 1..9999" -- "livre19 0..1" be_jebouquine_entities_Livre : Livre_Auteur
+be_jebouquine_entities_Categorie "categorie20 1..9999" -- "livre21 0..1" be_jebouquine_entities_Livre : Livre_Categorie
+be_jebouquine_entities_Commentaire "commentaire28 0..9999" -- "livre29 1..1" be_jebouquine_entities_Livre : Livre_Commentaire
+be_jebouquine_entities_Editeur "editeur16 1..1" -- "livre17 0..1" be_jebouquine_entities_Livre : Livre_Editeur
+navigation_Afficher_la_liste_des_livres_UseCase "afficher_la_liste_des_livres38 0..1" -- "parcourir_les_livres39 0..1" navigation_Parcourir_les_livres_UseCase : Parcourir_les_livres_Afficher_la_liste_des_livres
+Visiteur_Actor "visiteur6 0..1" -- "parcourir_les_livres7 0..1" navigation_Parcourir_les_livres_UseCase : Parcourir_les_livres_Visiteur
+navigation_Afficher_la_liste_des_livres_UseCase "afficher_la_liste_des_livres40 0..1" -- "rechercher_un_livre41 0..1" navigation_Rechercher_un_livre_UseCase : Rechercher_un_livre_Afficher_la_liste_des_livres
+navigation_Recherche_par_critere_UseCase "recherche_par_critere36 0..1" -- "rechercher_un_livre37 0..1" navigation_Rechercher_un_livre_UseCase : Rechercher_un_livre_Recherche_par_critere
+Visiteur_Actor "visiteur8 0..1" -- "rechercher_un_livre9 0..1" navigation_Rechercher_un_livre_UseCase : Rechercher_un_livre_Visiteur
+Systeme_Paiement_Actor "systeme_Paiement3 0..1" -- "payer_commande2 0..1" commande_Payer_commande_UseCase : Systeme_Paiement_Payer_commande
+Visiteur_Actor "visiteur11 0..1" -- "consulter_l_aide10 0..1" information_Consulter_l_aide_UseCase : Visiteur_Consulter_l_aide
+Visiteur_Actor "visiteur31 0..1" -- "gerer_panier30 0..1" panier_Gerer_panier_UseCase : Visiteur_Gerer_panier
 @enduml

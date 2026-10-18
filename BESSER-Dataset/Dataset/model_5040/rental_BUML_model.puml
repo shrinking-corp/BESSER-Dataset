@@ -1,4 +1,8 @@
 @startuml
+' model: rental
+' project: sampleModel
+' owner: User
+' description: New project
 enum StreetType {
   Road
   Street
@@ -40,16 +44,16 @@ class rental_RentalObject {
   + isAvailable() : bool
   + rent(rental_customer : str) : str
 }
-rental_Address "1..1" --* "1..1" rental_Customer : address0
-rental_Address "1..1" --* "1..1" rental_RentalAgency : address3
-rental_Customer "1..1" -- "1..1" rental_Rental : customer14
-rental_Customer "0..9999" --* "1..1" rental_RentalAgency : customers6
-rental_Customer "1..1" *-- "0..9999" rental_License : licenses1
-rental_RentalAgency "1..1" *-- "0..9999" rental_RentalObject : objectsToRent5
-rental_Customer "0..1" -- "1..1" rental_License : owner12
-rental_RentalAgency "1..1" -- "1..1" rental_RentalObject : parentAgency10
-rental_Rental "1..1" -- "1..1" rental_RentalAgency : parentAgency19
-rental_Customer "1..1" -- "1..1" rental_RentalAgency : parentAgency2
-rental_Rental "0..9999" --* "1..1" rental_RentalAgency : rentals8
-rental_Rental "1..1" -- "0..1" rental_RentalObject : rentedObject17
+rental_Address "rental_Customer 1..1" --* "rental_Address 1..1" rental_Customer : address0
+rental_Address "rental_RentalAgency 1..1" --* "rental_Address4 1..1" rental_RentalAgency : address3
+rental_Customer "rental_Rental15 1..1" -- "rental_Customer16 1..1" rental_Rental : customer14
+rental_Customer "parentAgency7 0..9999" --* "Customer 1..1" rental_RentalAgency : customers6
+rental_Customer "License 1..1" *-- "owner 0..9999" rental_License : licenses1
+rental_RentalAgency "RentalObject 1..1" *-- "parentAgency 0..9999" rental_RentalObject : objectsToRent5
+rental_Customer "licenses 0..1" -- "Customer13 1..1" rental_License : owner12
+rental_RentalAgency "objectsToRent 1..1" -- "RentalAgency11 1..1" rental_RentalObject : parentAgency10
+rental_Rental "rental_RentalAgency21 1..1" -- "rental_Rental20 1..1" rental_RentalAgency : parentAgency19
+rental_Customer "RentalAgency 1..1" -- "customers 1..1" rental_RentalAgency : parentAgency2
+rental_Rental "rental_RentalAgency9 0..9999" --* "rental_Rental 1..1" rental_RentalAgency : rentals8
+rental_Rental "rental_RentalObject 1..1" -- "rental_Rental18 0..1" rental_RentalObject : rentedObject17
 @enduml

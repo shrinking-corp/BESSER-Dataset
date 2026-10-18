@@ -1,4 +1,8 @@
 @startuml
+' model: core
+' project: sampleModel
+' owner: User
+' description: New project
 class COREConfiguration {
 }
 enum COREFeatureRelationshipType {
@@ -108,57 +112,57 @@ CORENamedElement <|-- core_COREConcern
 CORENamedElement <|-- core_COREModel
 CORENamedElement <|-- core_COREModelElement
 CORENamedElement <|-- core_COREReuse
-core_COREFeature "1..1" -- "0..9999" core_COREFeature : children21
-core_COREReuse "1..1" *-- "0..9999" core_COREReuseConfiguration : configurations54
-core_COREConcernConfiguration "0..9999" --* "1..1" core_COREFeatureModel : configurations81
-core_COREContribution "0..9999" --* "1..1" core_COREImpactModel : contributions8
-core_COREConcern "1..1" -- "1..1" core_COREModel : coreConcern4
-core_COREInterface "1..1" -- "0..9999" core_COREModelElement : customizable40
-core_COREConcernConfiguration "0..1" -- "1..1" core_COREFeatureModel : defaultConfiguration83
-core_COREConfiguration "0..9999" -- "1..1" core_COREInterface : defaults49
-core_COREFeature "0..9999" -- "1..1" core_COREFeature : excludes30
-core_COREConfiguration "1..1" *-- "0..9999" core_COREReuseConfiguration : extendingConfigurations72
-core_COREReuse "0..1" -- "1..1" core_COREReuse : extends60
-core_COREConcern "1..1" *-- "1..1" core_COREFeatureModel : featureModel12
-core_COREFeature "1..1" -- "1..1" core_CORERelativity_Opt2 : features119
-core_COREFeature "0..9999" --* "1..1" core_COREFeatureModel : features75
-core_COREConcern "1..1" *-- "0..1" core_COREImpactModel : impactModel14
-core_COREImpactModel "1..1" *-- "0..9999" core_COREImpactNode : impactModelElements5
-core_COREImpactNode "0..9999" -- "1..1" core_COREInterface : impacted46
-core_COREContribution "1..1" -- "1..1" core_COREImpactNode : impacts92
-core_COREFeature "1..1" -- "0..9999" core_CORERelativity_Opt2 : incoming35
-core_COREContribution "0..9999" -- "1..1" core_COREImpactNode : incoming64
-core_COREConcern "1..1" *-- "1..1" core_COREInterface : interface11
-core_EObject "1..1" -- "1..1" core_LayoutMap : key94
-core_EObject "1..1" -- "1..1" core_LayoutContainerMap : key97
-core_COREImpactModel "1..1" *-- "0..9999" core_LayoutContainerMap : layouts6
-core_COREModel "1..1" -- "0..9999" core_COREModelElement : modelElements1
-core_COREModel "1..1" *-- "0..9999" core_COREModelReuse : modelReuses0
-core_COREConcern "1..1" -- "1..9999" core_COREModel : models10
-core_COREFeature "1..1" -- "0..9999" core_CORERelativity_Opt2 : outgoing34
-core_COREContribution "0..9999" -- "1..1" core_COREImpactNode : outgoing62
-core_COREFeature "1..1" -- "0..1" core_COREFeature : parent24
-core_COREFeature "1..1" -- "0..9999" core_COREModel : realizedBy17
-core_COREFeature "0..9999" -- "1..1" core_COREModel : realizes3
-core_COREConfiguration "1..1" -- "0..9999" core_COREFeature : reexposed69
-core_COREFeatureModel "1..1" *-- "0..9999" core_CORERelativity_Opt2 : relatedFeatures86
-core_COREFeature "1..1" -- "0..9999" core_CORERelativity : relatedTo32
-core_COREFeature "0..1" -- "1..1" core_CORERelativity : relatedToFeature113
-core_COREFeature "1..1" -- "1..1" core_COREFeatureImpactNode : represents103
-core_COREFeature "0..9999" -- "1..1" core_COREFeature : requires27
-core_COREReuse "0..1" -- "1..1" core_COREReuseConfiguration : reuse110
-core_COREModelReuse "1..1" -- "1..1" core_COREReuse : reuse88
-core_COREConcern "1..1" -- "1..1" core_COREReuse : reusedConcern51
-core_COREConcernConfiguration "0..1" -- "1..1" core_COREReuseConfiguration : reusedConfiguration107
-core_COREFeature "1..1" *-- "0..9999" core_COREReuse : reuses19
-core_COREFeature "1..1" -- "1..1" core_COREFeatureModel : root78
-core_COREFeature "0..9999" -- "1..1" core_COREInterface : selectable37
-core_COREConfiguration "1..1" -- "0..9999" core_COREFeature : selected66
-core_COREReuse "1..1" -- "0..1" core_COREReuseConfiguration : selectedConfiguration56
-core_COREFeature "1..1" -- "1..1" core_CORERelativity_Opt2 : source116
-core_COREContribution "1..1" -- "1..1" core_COREImpactNode : source91
-core_COREInterface "1..1" -- "0..9999" core_COREModelElement : usable43
-core_LayoutContainerMap "1..1" *-- "1..9999" core_LayoutMap : value100
-core_LayoutElement "1..1" --* "1..1" core_LayoutMap : value95
-core_COREFeatureImpactNode "1..1" -- "0..9999" core_COREWeightedMapping : weightedMappings105
+core_COREFeature "COREFeature22 1..1" -- "parent 0..9999" core_COREFeature : children21
+core_COREReuse "core_COREReuseConfiguration 1..1" *-- "core_COREReuse55 0..9999" core_COREReuseConfiguration : configurations54
+core_COREConcernConfiguration "core_COREFeatureModel82 0..9999" --* "core_COREConcernConfiguration 1..1" core_COREFeatureModel : configurations81
+core_COREContribution "core_COREImpactModel9 0..9999" --* "core_COREContribution 1..1" core_COREImpactModel : contributions8
+core_COREConcern "models 1..1" -- "COREConcern 1..1" core_COREModel : coreConcern4
+core_COREInterface "core_COREModelElement42 1..1" -- "core_COREInterface41 0..9999" core_COREModelElement : customizable40
+core_COREConcernConfiguration "core_COREFeatureModel84 0..1" -- "core_COREConcernConfiguration85 1..1" core_COREFeatureModel : defaultConfiguration83
+core_COREConfiguration "core_COREInterface50 0..9999" -- "core_COREConfiguration 1..1" core_COREInterface : defaults49
+core_COREFeature "core_COREFeature29 0..9999" -- "core_COREFeature31 1..1" core_COREFeature : excludes30
+core_COREConfiguration "core_COREReuseConfiguration74 1..1" *-- "core_COREConfiguration73 0..9999" core_COREReuseConfiguration : extendingConfigurations72
+core_COREReuse "core_COREReuse59 0..1" -- "core_COREReuse61 1..1" core_COREReuse : extends60
+core_COREConcern "core_COREFeatureModel 1..1" *-- "core_COREConcern13 1..1" core_COREFeatureModel : featureModel12
+core_COREFeature "incoming120 1..1" -- "COREFeature121 1..1" core_CORERelativity_Opt2 : features119
+core_COREFeature "core_COREFeatureModel76 0..9999" --* "core_COREFeature77 1..1" core_COREFeatureModel : features75
+core_COREConcern "core_COREImpactModel16 1..1" *-- "core_COREConcern15 0..1" core_COREImpactModel : impactModel14
+core_COREImpactModel "core_COREImpactNode 1..1" *-- "core_COREImpactModel 0..9999" core_COREImpactNode : impactModelElements5
+core_COREImpactNode "core_COREInterface47 0..9999" -- "core_COREImpactNode48 1..1" core_COREInterface : impacted46
+core_COREContribution "COREImpactNode93 1..1" -- "incoming 1..1" core_COREImpactNode : impacts92
+core_COREFeature "CORERelativity_Opt236 1..1" -- "features 0..9999" core_CORERelativity_Opt2 : incoming35
+core_COREContribution "impacts 0..9999" -- "COREContribution65 1..1" core_COREImpactNode : incoming64
+core_COREConcern "core_COREInterface 1..1" *-- "core_COREConcern 1..1" core_COREInterface : interface11
+core_EObject "core_LayoutMap 1..1" -- "core_EObject 1..1" core_LayoutMap : key94
+core_EObject "core_LayoutContainerMap98 1..1" -- "core_EObject99 1..1" core_LayoutContainerMap : key97
+core_COREImpactModel "core_LayoutContainerMap 1..1" *-- "core_COREImpactModel7 0..9999" core_LayoutContainerMap : layouts6
+core_COREModel "core_COREModelElement 1..1" -- "core_COREModel2 0..9999" core_COREModelElement : modelElements1
+core_COREModel "core_COREModelReuse 1..1" *-- "core_COREModel 0..9999" core_COREModelReuse : modelReuses0
+core_COREConcern "COREModel 1..1" -- "coreConcern 1..9999" core_COREModel : models10
+core_COREFeature "CORERelativity_Opt2 1..1" -- "source 0..9999" core_CORERelativity_Opt2 : outgoing34
+core_COREContribution "source63 0..9999" -- "COREContribution 1..1" core_COREImpactNode : outgoing62
+core_COREFeature "COREFeature25 1..1" -- "children 0..1" core_COREFeature : parent24
+core_COREFeature "COREModel18 1..1" -- "realizes 0..9999" core_COREModel : realizedBy17
+core_COREFeature "realizedBy 0..9999" -- "COREFeature 1..1" core_COREModel : realizes3
+core_COREConfiguration "core_COREFeature71 1..1" -- "core_COREConfiguration70 0..9999" core_COREFeature : reexposed69
+core_COREFeatureModel "core_CORERelativity_Opt2 1..1" *-- "core_COREFeatureModel87 0..9999" core_CORERelativity_Opt2 : relatedFeatures86
+core_COREFeature "core_CORERelativity 1..1" -- "core_COREFeature33 0..9999" core_CORERelativity : relatedTo32
+core_COREFeature "core_CORERelativity114 0..1" -- "core_COREFeature115 1..1" core_CORERelativity : relatedToFeature113
+core_COREFeature "core_COREFeatureImpactNode 1..1" -- "core_COREFeature104 1..1" core_COREFeatureImpactNode : represents103
+core_COREFeature "core_COREFeature26 0..9999" -- "core_COREFeature28 1..1" core_COREFeature : requires27
+core_COREReuse "core_COREReuseConfiguration111 0..1" -- "core_COREReuse112 1..1" core_COREReuseConfiguration : reuse110
+core_COREModelReuse "core_COREReuse90 1..1" -- "core_COREModelReuse89 1..1" core_COREReuse : reuse88
+core_COREConcern "core_COREReuse52 1..1" -- "core_COREConcern53 1..1" core_COREReuse : reusedConcern51
+core_COREConcernConfiguration "core_COREReuseConfiguration108 0..1" -- "core_COREConcernConfiguration109 1..1" core_COREReuseConfiguration : reusedConfiguration107
+core_COREFeature "core_COREReuse 1..1" *-- "core_COREFeature 0..9999" core_COREReuse : reuses19
+core_COREFeature "core_COREFeatureModel79 1..1" -- "core_COREFeature80 1..1" core_COREFeatureModel : root78
+core_COREFeature "core_COREInterface38 0..9999" -- "core_COREFeature39 1..1" core_COREInterface : selectable37
+core_COREConfiguration "core_COREFeature68 1..1" -- "core_COREConfiguration67 0..9999" core_COREFeature : selected66
+core_COREReuse "core_COREReuseConfiguration58 1..1" -- "core_COREReuse57 0..1" core_COREReuseConfiguration : selectedConfiguration56
+core_COREFeature "outgoing117 1..1" -- "COREFeature118 1..1" core_CORERelativity_Opt2 : source116
+core_COREContribution "COREImpactNode 1..1" -- "outgoing 1..1" core_COREImpactNode : source91
+core_COREInterface "core_COREModelElement45 1..1" -- "core_COREInterface44 0..9999" core_COREModelElement : usable43
+core_LayoutContainerMap "core_LayoutMap102 1..1" *-- "core_LayoutContainerMap101 1..9999" core_LayoutMap : value100
+core_LayoutElement "core_LayoutMap96 1..1" --* "core_LayoutElement 1..1" core_LayoutMap : value95
+core_COREFeatureImpactNode "core_COREWeightedMapping 1..1" -- "core_COREFeatureImpactNode106 0..9999" core_COREWeightedMapping : weightedMappings105
 @enduml

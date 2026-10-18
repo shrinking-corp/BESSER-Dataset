@@ -1,16 +1,20 @@
 @startuml
+' model: family
+' project: sampleModel
+' owner: User
+' description: New project
 class family_Family {
   + lastName : str
 }
 abstract class family_Member {
   + name : str
 }
-family_Family "1..1" -- "0..9999" family_Member : daughter12
-family_Family "0..1" -- "1..1" family_Member : familyDaughter5
-family_Family "0..1" -- "1..1" family_Member : familyFather0
-family_Family "0..1" -- "1..1" family_Member : familyMother1
-family_Family "0..1" -- "1..1" family_Member : familySon3
-family_Family "1..1" -- "0..1" family_Member : father7
-family_Family "1..1" -- "0..1" family_Member : mother8
-family_Family "1..1" -- "0..9999" family_Member : son10
+family_Family "Member13 1..1" -- "familyDaughter 0..9999" family_Member : daughter12
+family_Family "daughter 0..1" -- "Family6 1..1" family_Member : familyDaughter5
+family_Family "father 0..1" -- "Family 1..1" family_Member : familyFather0
+family_Family "mother 0..1" -- "Family2 1..1" family_Member : familyMother1
+family_Family "son 0..1" -- "Family4 1..1" family_Member : familySon3
+family_Family "Member 1..1" -- "familyFather 0..1" family_Member : father7
+family_Family "Member9 1..1" -- "familyMother 0..1" family_Member : mother8
+family_Family "Member11 1..1" -- "familySon 0..9999" family_Member : son10
 @enduml

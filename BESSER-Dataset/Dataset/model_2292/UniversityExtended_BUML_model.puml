@@ -1,4 +1,8 @@
 @startuml
+' model: universityextended
+' project: sampleModel
+' owner: User
+' description: New project
 class Assistant {
 }
 enum Building {
@@ -93,23 +97,23 @@ Event <|-- universityextended_administration_Tutorial
 Person <|-- universityextended_people_Assistant
 Person <|-- universityextended_people_Professor
 Person <|-- universityextended_people_Student
-Course "1..1" -- "1..1" universityextended_administration_Lecture : course21
-Course "1..1" -- "1..1" universityextended_administration_Tutorial : course24
-Course "1..1" -- "1..1" universityextended_connection_Visits : course33
-Visits "0..9999" -- "1..1" universityextended_people_Student : courseVisit9
-Course "0..9999" --* "1..1" universityextended_University : courses3
-Lecture "1..1" --* "1..1" universityextended_administration_Course : lecture13
-Professor "1..1" -- "1..1" universityextended_administration_Lecture : lecturer23
-Lecture "0..9999" -- "1..1" universityextended_people_Professor : lectures11
-Person "0..9999" --* "1..1" universityextended_University : persons0
-Room "1..1" -- "1..1" universityextended_administration_Event : room30
-Room "0..9999" --* "1..1" universityextended_University : rooms7
-Student "1..1" -- "1..1" universityextended_connection_Visits : student35
-Time "1..1" -- "1..1" universityextended_administration_Event : time28
-Time "0..9999" --* "1..1" universityextended_University : times5
-Assistant "1..1" -- "1..1" universityextended_administration_Tutorial : tutor26
-Tutorial "0..9999" -- "1..1" universityextended_people_Assistant : tutorial12
-Tutorial "0..1" --* "1..1" universityextended_administration_Course : tutorial15
-Visits "0..9999" -- "1..1" universityextended_administration_Course : visitor18
-Visits "0..9999" --* "1..1" universityextended_University : visits1
+Course "lecture 1..1" -- "Course22 1..1" universityextended_administration_Lecture : course21
+Course "tutorial 1..1" -- "Course25 1..1" universityextended_administration_Tutorial : course24
+Course "visitor 1..1" -- "Course34 1..1" universityextended_connection_Visits : course33
+Visits "student 0..9999" -- "Visits10 1..1" universityextended_people_Student : courseVisit9
+Course "universityextended_University4 0..9999" --* "Course 1..1" universityextended_University : courses3
+Lecture "course 1..1" --* "Lecture14 1..1" universityextended_administration_Course : lecture13
+Professor "lectures 1..1" -- "Professor 1..1" universityextended_administration_Lecture : lecturer23
+Lecture "lecturer 0..9999" -- "Lecture 1..1" universityextended_people_Professor : lectures11
+Person "universityextended_University 0..9999" --* "Person 1..1" universityextended_University : persons0
+Room "universityextended_administration_Event31 1..1" -- "Room32 1..1" universityextended_administration_Event : room30
+Room "universityextended_University8 0..9999" --* "Room 1..1" universityextended_University : rooms7
+Student "courseVisit 1..1" -- "Student 1..1" universityextended_connection_Visits : student35
+Time "universityextended_administration_Event 1..1" -- "Time29 1..1" universityextended_administration_Event : time28
+Time "universityextended_University6 0..9999" --* "Time 1..1" universityextended_University : times5
+Assistant "tutorial27 1..1" -- "Assistant 1..1" universityextended_administration_Tutorial : tutor26
+Tutorial "tutor 0..9999" -- "Tutorial 1..1" universityextended_people_Assistant : tutorial12
+Tutorial "course16 0..1" --* "Tutorial17 1..1" universityextended_administration_Course : tutorial15
+Visits "course19 0..9999" -- "Visits20 1..1" universityextended_administration_Course : visitor18
+Visits "universityextended_University2 0..9999" --* "Visits 1..1" universityextended_University : visits1
 @enduml

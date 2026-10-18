@@ -1,4 +1,8 @@
 @startuml
+' model: _vQ6JAPcOEemUnaCK8fYTPQ
+' project: sampleModel
+' owner: User
+' description: New project
 class Card {
   + _address : str
   + _email : str
@@ -42,11 +46,11 @@ class _PaymentInfo {
 class _TransactionType {
   + _type : str
 }
-Card "1..1" -- "0..9999" _TransactionType : Farmer__ProductType
-_Fee "0..9999" -- "1..1" _TransactionType : ProductType_Product
-Card "1..1" -- "0..9999" Transaction : Ratings_Customer
-Card "1..1" -- "1..1" _LoginCredential : WebUser_Customer
-Card "1..1" -- "1..9999" _OrderDetail : _Customer__OrderDetails
-_OrderDetail "1..1" -- "1..1" _PaymentInfo : _PaymentInfo__OrderDetail
-_Fee "0..9999" -- "0..9999" _OrderDetail : _Product__OrderDetails
+Card "farmer13 1..1" -- "_Add_Product_Type12 0..9999" _TransactionType : Farmer__ProductType
+_Fee "_has_products4 0..9999" -- "_type_of5 1..1" _TransactionType : ProductType_Product
+Card "_Delivers2 1..1" -- "_ships3 0..9999" Transaction : Ratings_Customer
+Card "_for0 1..1" -- "_logs_in_with1 1..1" _LoginCredential : WebUser_Customer
+Card "receives9 1..1" -- "_orders8 1..9999" _OrderDetail : _Customer__OrderDetails
+_OrderDetail "_OrderDetail10 1..1" -- "_PaymentInfo11 1..1" _PaymentInfo : _PaymentInfo__OrderDetail
+_Fee "_contains7 0..9999" -- "_is_in6 0..9999" _OrderDetail : _Product__OrderDetails
 @enduml

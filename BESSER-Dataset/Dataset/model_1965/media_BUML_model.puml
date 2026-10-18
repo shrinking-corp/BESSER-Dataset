@@ -1,4 +1,8 @@
 @startuml
+' model: MediaPlayer
+' project: sampleModel
+' owner: User
+' description: New project
 class BaseObject {
 }
 class MediaPlayer_BaseObject {
@@ -43,10 +47,10 @@ enum State {
 BaseObject <|-- MediaPlayer_Library
 BaseObject <|-- MediaPlayer_MediaObject
 BaseObject <|-- MediaPlayer_Playlist
-MediaPlayer_MediaApi "1..1" -- "0..9999" MediaPlayer_MediaObject : currentlyPaused3
-MediaPlayer_MediaApi "1..1" -- "0..9999" MediaPlayer_MediaObject : currentlyPlaying1
-MediaPlayer_MediaApi "0..9999" -- "1..1" MediaPlayer_PlayLayer : installedApi6
-MediaPlayer_Library "1..1" *-- "0..9999" MediaPlayer_MediaObject : mediaLibrary10
-MediaPlayer_MediaObject "0..9999" -- "1..1" MediaPlayer_Playlist : mediaList0
-MediaPlayer_Library "0..1" -- "1..1" MediaPlayer_PlayLayer : myLibrary8
+MediaPlayer_MediaApi "MediaPlayer_MediaObject5 1..1" -- "MediaPlayer_MediaApi4 0..9999" MediaPlayer_MediaObject : currentlyPaused3
+MediaPlayer_MediaApi "MediaPlayer_MediaObject2 1..1" -- "MediaPlayer_MediaApi 0..9999" MediaPlayer_MediaObject : currentlyPlaying1
+MediaPlayer_MediaApi "MediaPlayer_PlayLayer 0..9999" -- "MediaPlayer_MediaApi7 1..1" MediaPlayer_PlayLayer : installedApi6
+MediaPlayer_Library "MediaPlayer_MediaObject12 1..1" *-- "MediaPlayer_Library11 0..9999" MediaPlayer_MediaObject : mediaLibrary10
+MediaPlayer_MediaObject "MediaPlayer_Playlist 0..9999" -- "MediaPlayer_MediaObject 1..1" MediaPlayer_Playlist : mediaList0
+MediaPlayer_Library "MediaPlayer_PlayLayer9 0..1" -- "MediaPlayer_Library 1..1" MediaPlayer_PlayLayer : myLibrary8
 @enduml

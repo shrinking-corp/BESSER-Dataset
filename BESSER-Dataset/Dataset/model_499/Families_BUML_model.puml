@@ -1,4 +1,8 @@
 @startuml
+' model: families
+' project: sampleModel
+' owner: User
+' description: New project
 class families_Family {
   + lastName : str
   + street : str
@@ -10,16 +14,16 @@ class families_Member {
   + age : int
   + firstName : str
 }
-families_Family "1..1" -- "0..9999" families_Member : daughters5
-families_Family "0..9999" --* "1..1" families_FamilyModel : families17
-families_Family "0..1" -- "1..1" families_Member : familyDaughter13
-families_Family "0..1" -- "1..1" families_Member : familyFather8
-families_Family "0..1" -- "1..1" families_Member : familyMother9
-families_Family "0..1" -- "1..1" families_Member : familySon11
-families_Family "1..1" -- "1..1" families_Member : father0
-families_FamilyModel "1..1" *-- "0..9999" families_Member : members19
-families_FamilyModel "1..1" -- "1..1" families_Member : model15
-families_Family "1..1" -- "1..1" families_FamilyModel : model7
-families_Family "1..1" -- "1..1" families_Member : mother1
-families_Family "1..1" -- "0..9999" families_Member : sons3
+families_Family "Member6 1..1" -- "familyDaughter 0..9999" families_Member : daughters5
+families_Family "model 0..9999" --* "Family18 1..1" families_FamilyModel : families17
+families_Family "daughters 0..1" -- "Family14 1..1" families_Member : familyDaughter13
+families_Family "father 0..1" -- "Family 1..1" families_Member : familyFather8
+families_Family "mother 0..1" -- "Family10 1..1" families_Member : familyMother9
+families_Family "sons 0..1" -- "Family12 1..1" families_Member : familySon11
+families_Family "Member 1..1" -- "familyFather 1..1" families_Member : father0
+families_FamilyModel "Member21 1..1" *-- "model20 0..9999" families_Member : members19
+families_FamilyModel "members 1..1" -- "FamilyModel16 1..1" families_Member : model15
+families_Family "FamilyModel 1..1" -- "families 1..1" families_FamilyModel : model7
+families_Family "Member2 1..1" -- "familyMother 1..1" families_Member : mother1
+families_Family "Member4 1..1" -- "familySon 0..9999" families_Member : sons3
 @enduml

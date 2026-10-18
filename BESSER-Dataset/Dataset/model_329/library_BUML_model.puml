@@ -1,4 +1,8 @@
 @startuml
+' model: bz242995
+' project: sampleModel
+' owner: User
+' description: New project
 enum BookCategory {
   Biography
   Mystery
@@ -23,10 +27,10 @@ class bz242995_OneTimeWonder {
 class bz242995_Writer {
   + name : str
 }
-bz242995_Book "1..1" -- "1..1" bz242995_Writer : author0
-bz242995_Book "0..9999" --* "1..1" bz242995_Library : books2
-bz242995_Book "0..9999" -- "1..1" bz242995_Writer : books4
-bz242995_Author "1..1" -- "1..1" bz242995_OneTimeWonder : theAuthor5
-bz242995_Author "1..1" -- "1..1" bz242995_OneTimeWonder : theBook6
-bz242995_Library "1..1" *-- "0..9999" bz242995_Writer : writers1
+bz242995_Book "Writer 1..1" -- "books 1..1" bz242995_Writer : author0
+bz242995_Book "bz242995_Library3 0..9999" --* "bz242995_Book 1..1" bz242995_Library : books2
+bz242995_Book "author 0..9999" -- "Book 1..1" bz242995_Writer : books4
+bz242995_Author "theBook 1..1" -- "Author 1..1" bz242995_OneTimeWonder : theAuthor5
+bz242995_Author "OneTimeWonder 1..1" -- "theAuthor 1..1" bz242995_OneTimeWonder : theBook6
+bz242995_Library "bz242995_Writer 1..1" *-- "bz242995_Library 0..9999" bz242995_Writer : writers1
 @enduml

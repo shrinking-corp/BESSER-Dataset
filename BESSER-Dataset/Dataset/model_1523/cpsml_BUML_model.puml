@@ -1,4 +1,8 @@
 @startuml
+' model: cpsml
+' project: sampleModel
+' owner: User
+' description: New project
 class Transition {
 }
 class cpsml_ComTransition {
@@ -47,32 +51,32 @@ class cpsml_Variable {
 }
 Transition <|-- cpsml_ComTransition
 Transition <|-- cpsml_ProbTransition
-cpsml_Condition "1..1" --* "1..1" cpsml_ODE : condition52
-cpsml_ComTransition "1..1" -- "1..1" cpsml_State : csrc43
-cpsml_ComTransition "1..1" -- "1..1" cpsml_State : ctgt44
-cpsml_DeVariable "1..1" --* "1..1" cpsml_Function : devariable58
-cpsml_Fright "1..1" --* "1..1" cpsml_Function : fright60
-cpsml_Function "1..1" --* "1..1" cpsml_ODE : function50
-cpsml_ComTransition "0..9999" -- "1..1" cpsml_State : incomingComTransitions17
-cpsml_ProbTransition "0..9999" -- "1..1" cpsml_State : incomingProbTransitions20
-cpsml_Function "1..1" *-- "1..1" cpsml_IndeVariable : indevariable56
-cpsml_State "1..1" -- "1..1" cpsml_System : initialState8
-cpsml_State "1..1" -- "1..1" cpsml_State : initialsubstate26
-cpsml_Interval "1..1" --* "1..1" cpsml_ODE : interval54
-cpsml_ComTransition "0..9999" -- "1..1" cpsml_State : outgoingComTransitions16
-cpsml_ProbTransition "0..9999" -- "1..1" cpsml_State : outgoingProbTransitions19
-cpsml_State "0..9999" --* "1..1" cpsml_System : ownedStates4
-cpsml_System "1..1" *-- "0..9999" cpsml_Transition : ownedTransitions6
-cpsml_ODE "0..9999" --* "1..1" cpsml_System : ownedodes11
-cpsml_System "1..1" *-- "0..9999" cpsml_Variable : ownedvariables0
-cpsml_ProbTransition "1..1" -- "1..1" cpsml_State : psrc46
-cpsml_ProbTransition "1..1" -- "1..1" cpsml_State : ptgt48
-cpsml_System "1..1" -- "1..1" cpsml_Variable : relatedvariable1
-cpsml_Transition "1..1" -- "1..1" cpsml_Variable : relatedvariable240
-cpsml_ODE "1..1" -- "1..1" cpsml_State : slaveode13
-cpsml_State "0..9999" --* "1..1" cpsml_State : subStates23
-cpsml_ODE "0..9999" --* "1..1" cpsml_State : subodes31
-cpsml_State "1..1" -- "1..1" cpsml_Variable : subrelatedvariable37
-cpsml_State "1..1" *-- "0..9999" cpsml_Variable : subrelatedvariables34
-cpsml_State "1..1" *-- "0..9999" cpsml_Transition : subtransitions28
+cpsml_Condition "cpsml_ODE53 1..1" --* "cpsml_Condition 1..1" cpsml_ODE : condition52
+cpsml_ComTransition "State 1..1" -- "outgoingComTransitions 1..1" cpsml_State : csrc43
+cpsml_ComTransition "State45 1..1" -- "incomingComTransitions 1..1" cpsml_State : ctgt44
+cpsml_DeVariable "cpsml_Function59 1..1" --* "cpsml_DeVariable 1..1" cpsml_Function : devariable58
+cpsml_Fright "cpsml_Function61 1..1" --* "cpsml_Fright 1..1" cpsml_Function : fright60
+cpsml_Function "cpsml_ODE51 1..1" --* "cpsml_Function 1..1" cpsml_ODE : function50
+cpsml_ComTransition "ctgt 0..9999" -- "ComTransition18 1..1" cpsml_State : incomingComTransitions17
+cpsml_ProbTransition "ptgt 0..9999" -- "ProbTransition21 1..1" cpsml_State : incomingProbTransitions20
+cpsml_Function "cpsml_IndeVariable 1..1" *-- "cpsml_Function57 1..1" cpsml_IndeVariable : indevariable56
+cpsml_State "cpsml_System9 1..1" -- "cpsml_State10 1..1" cpsml_System : initialState8
+cpsml_State "cpsml_State25 1..1" -- "cpsml_State27 1..1" cpsml_State : initialsubstate26
+cpsml_Interval "cpsml_ODE55 1..1" --* "cpsml_Interval 1..1" cpsml_ODE : interval54
+cpsml_ComTransition "csrc 0..9999" -- "ComTransition 1..1" cpsml_State : outgoingComTransitions16
+cpsml_ProbTransition "psrc 0..9999" -- "ProbTransition 1..1" cpsml_State : outgoingProbTransitions19
+cpsml_State "cpsml_System5 0..9999" --* "cpsml_State 1..1" cpsml_System : ownedStates4
+cpsml_System "cpsml_Transition 1..1" *-- "cpsml_System7 0..9999" cpsml_Transition : ownedTransitions6
+cpsml_ODE "cpsml_System12 0..9999" --* "cpsml_ODE 1..1" cpsml_System : ownedodes11
+cpsml_System "cpsml_Variable 1..1" *-- "cpsml_System 0..9999" cpsml_Variable : ownedvariables0
+cpsml_ProbTransition "State47 1..1" -- "outgoingProbTransitions 1..1" cpsml_State : psrc46
+cpsml_ProbTransition "State49 1..1" -- "incomingProbTransitions 1..1" cpsml_State : ptgt48
+cpsml_System "cpsml_Variable3 1..1" -- "cpsml_System2 1..1" cpsml_Variable : relatedvariable1
+cpsml_Transition "cpsml_Variable42 1..1" -- "cpsml_Transition41 1..1" cpsml_Variable : relatedvariable240
+cpsml_ODE "cpsml_State14 1..1" -- "cpsml_ODE15 1..1" cpsml_State : slaveode13
+cpsml_State "cpsml_State22 0..9999" --* "cpsml_State24 1..1" cpsml_State : subStates23
+cpsml_ODE "cpsml_State32 0..9999" --* "cpsml_ODE33 1..1" cpsml_State : subodes31
+cpsml_State "cpsml_Variable39 1..1" -- "cpsml_State38 1..1" cpsml_Variable : subrelatedvariable37
+cpsml_State "cpsml_Variable36 1..1" *-- "cpsml_State35 0..9999" cpsml_Variable : subrelatedvariables34
+cpsml_State "cpsml_Transition30 1..1" *-- "cpsml_State29 0..9999" cpsml_Transition : subtransitions28
 @enduml

@@ -3063,9 +3063,9 @@ def test_assoc_elements362_stub_double():
     partner = jpdl31_Model()
     setattr(partner, 'jpdl31_Model', None)
     _safe_set(owner, 'jpdl31_DocumentRoot363', partner)
-    assert getattr(partner, 'jpdl31_Model') == owner
+    assert owner in getattr(partner, 'jpdl31_Model')
     _safe_set(owner, 'jpdl31_DocumentRoot363', None)
-    assert getattr(partner, 'jpdl31_Model') is None
+    assert owner not in getattr(partner, 'jpdl31_Model')
 
 
 def test_assoc_goals401_stub_double():
@@ -3078,9 +3078,9 @@ def test_assoc_goals401_stub_double():
     partner = jpdl31_ExperimentalPlan()
     setattr(partner, 'jpdl31_ExperimentalPlan402', None)
     _safe_set(owner, 'jpdl31_Goal403', partner)
-    assert getattr(partner, 'jpdl31_ExperimentalPlan402') == owner
+    assert owner in getattr(partner, 'jpdl31_ExperimentalPlan402')
     _safe_set(owner, 'jpdl31_Goal403', None)
-    assert getattr(partner, 'jpdl31_ExperimentalPlan402') is None
+    assert owner not in getattr(partner, 'jpdl31_ExperimentalPlan402')
 
 
 def test_assoc_hypothesis404_stub_double():
@@ -3093,9 +3093,9 @@ def test_assoc_hypothesis404_stub_double():
     partner = jpdl31_ExperimentalPlan()
     setattr(partner, 'jpdl31_ExperimentalPlan405', None)
     _safe_set(owner, 'jpdl31_Hyphotesis406', partner)
-    assert getattr(partner, 'jpdl31_ExperimentalPlan405') == owner
+    assert owner in getattr(partner, 'jpdl31_ExperimentalPlan405')
     _safe_set(owner, 'jpdl31_Hyphotesis406', None)
-    assert getattr(partner, 'jpdl31_ExperimentalPlan405') is None
+    assert owner not in getattr(partner, 'jpdl31_ExperimentalPlan405')
 
 
 def test_assoc_plan71_stub_double():

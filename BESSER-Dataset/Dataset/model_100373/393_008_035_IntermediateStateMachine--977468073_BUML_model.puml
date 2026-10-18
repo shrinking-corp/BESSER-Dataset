@@ -1,4 +1,8 @@
 @startuml
+' model: MDAIntermediateStateMachine
+' project: sampleModel
+' owner: User
+' description: New project
 class MDAIntermediateStateMachine_Automaton {
   + name : str
 }
@@ -23,22 +27,22 @@ class MDAIntermediateStateMachine_Transition {
 class MDAIntermediateStateMachine_Value {
   + value : str
 }
-MDAIntermediateStateMachine_Automaton "1..9999" --* "1..1" MDAIntermediateStateMachine_Content : automatons1
-MDAIntermediateStateMachine_Automaton "1..1" -- "1..1" MDAIntermediateStateMachine_State : initialState11
-MDAIntermediateStateMachine_Operation "0..1" -- "1..1" MDAIntermediateStateMachine_Transition : input28
-MDAIntermediateStateMachine_Message "0..9999" -- "1..1" MDAIntermediateStateMachine_MessageSequence : messages42
-MDAIntermediateStateMachine_Content "1..1" *-- "0..9999" MDAIntermediateStateMachine_Message : messages7
-MDAIntermediateStateMachine_Message "1..1" -- "1..1" MDAIntermediateStateMachine_Operation : operation33
-MDAIntermediateStateMachine_Content "1..1" *-- "1..9999" MDAIntermediateStateMachine_Operation : operations3
-MDAIntermediateStateMachine_Automaton "1..1" -- "1..1" MDAIntermediateStateMachine_Participant : participant19
-MDAIntermediateStateMachine_Content "1..1" *-- "0..9999" MDAIntermediateStateMachine_Participant : participants5
-MDAIntermediateStateMachine_State "1..1" -- "1..1" MDAIntermediateStateMachine_Transition : postState25
-MDAIntermediateStateMachine_State "1..1" -- "1..1" MDAIntermediateStateMachine_Transition : preState22
-MDAIntermediateStateMachine_Message "1..1" -- "1..1" MDAIntermediateStateMachine_Participant : receiver36
-MDAIntermediateStateMachine_Transition "1..1" *-- "0..1" MDAIntermediateStateMachine_Value : returnValue31
-MDAIntermediateStateMachine_Message "1..1" *-- "1..1" MDAIntermediateStateMachine_Value : returnValue39
-MDAIntermediateStateMachine_MessageSequence "0..9999" --* "1..1" MDAIntermediateStateMachine_State : sequences9
-MDAIntermediateStateMachine_Content "1..1" *-- "1..9999" MDAIntermediateStateMachine_State : states0
-MDAIntermediateStateMachine_Automaton "1..1" -- "1..9999" MDAIntermediateStateMachine_State : states14
-MDAIntermediateStateMachine_Automaton "1..1" *-- "0..9999" MDAIntermediateStateMachine_Transition : transitions17
+MDAIntermediateStateMachine_Automaton "MDAIntermediateStateMachine_Content2 1..9999" --* "MDAIntermediateStateMachine_Automaton 1..1" MDAIntermediateStateMachine_Content : automatons1
+MDAIntermediateStateMachine_Automaton "MDAIntermediateStateMachine_State13 1..1" -- "MDAIntermediateStateMachine_Automaton12 1..1" MDAIntermediateStateMachine_State : initialState11
+MDAIntermediateStateMachine_Operation "MDAIntermediateStateMachine_Transition29 0..1" -- "MDAIntermediateStateMachine_Operation30 1..1" MDAIntermediateStateMachine_Transition : input28
+MDAIntermediateStateMachine_Message "MDAIntermediateStateMachine_MessageSequence43 0..9999" -- "MDAIntermediateStateMachine_Message44 1..1" MDAIntermediateStateMachine_MessageSequence : messages42
+MDAIntermediateStateMachine_Content "MDAIntermediateStateMachine_Message 1..1" *-- "MDAIntermediateStateMachine_Content8 0..9999" MDAIntermediateStateMachine_Message : messages7
+MDAIntermediateStateMachine_Message "MDAIntermediateStateMachine_Operation35 1..1" -- "MDAIntermediateStateMachine_Message34 1..1" MDAIntermediateStateMachine_Operation : operation33
+MDAIntermediateStateMachine_Content "MDAIntermediateStateMachine_Operation 1..1" *-- "MDAIntermediateStateMachine_Content4 1..9999" MDAIntermediateStateMachine_Operation : operations3
+MDAIntermediateStateMachine_Automaton "MDAIntermediateStateMachine_Participant21 1..1" -- "MDAIntermediateStateMachine_Automaton20 1..1" MDAIntermediateStateMachine_Participant : participant19
+MDAIntermediateStateMachine_Content "MDAIntermediateStateMachine_Participant 1..1" *-- "MDAIntermediateStateMachine_Content6 0..9999" MDAIntermediateStateMachine_Participant : participants5
+MDAIntermediateStateMachine_State "MDAIntermediateStateMachine_Transition26 1..1" -- "MDAIntermediateStateMachine_State27 1..1" MDAIntermediateStateMachine_Transition : postState25
+MDAIntermediateStateMachine_State "MDAIntermediateStateMachine_Transition23 1..1" -- "MDAIntermediateStateMachine_State24 1..1" MDAIntermediateStateMachine_Transition : preState22
+MDAIntermediateStateMachine_Message "MDAIntermediateStateMachine_Participant38 1..1" -- "MDAIntermediateStateMachine_Message37 1..1" MDAIntermediateStateMachine_Participant : receiver36
+MDAIntermediateStateMachine_Transition "MDAIntermediateStateMachine_Value 1..1" *-- "MDAIntermediateStateMachine_Transition32 0..1" MDAIntermediateStateMachine_Value : returnValue31
+MDAIntermediateStateMachine_Message "MDAIntermediateStateMachine_Value41 1..1" *-- "MDAIntermediateStateMachine_Message40 1..1" MDAIntermediateStateMachine_Value : returnValue39
+MDAIntermediateStateMachine_MessageSequence "MDAIntermediateStateMachine_State10 0..9999" --* "MDAIntermediateStateMachine_MessageSequence 1..1" MDAIntermediateStateMachine_State : sequences9
+MDAIntermediateStateMachine_Content "MDAIntermediateStateMachine_State 1..1" *-- "MDAIntermediateStateMachine_Content 1..9999" MDAIntermediateStateMachine_State : states0
+MDAIntermediateStateMachine_Automaton "MDAIntermediateStateMachine_State16 1..1" -- "MDAIntermediateStateMachine_Automaton15 1..9999" MDAIntermediateStateMachine_State : states14
+MDAIntermediateStateMachine_Automaton "MDAIntermediateStateMachine_Transition 1..1" *-- "MDAIntermediateStateMachine_Automaton18 0..9999" MDAIntermediateStateMachine_Transition : transitions17
 @enduml

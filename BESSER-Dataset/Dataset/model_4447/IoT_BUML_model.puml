@@ -1,4 +1,8 @@
 @startuml
+' model: ioT
+' project: sampleModel
+' owner: User
+' description: New project
 class Action {
 }
 class Address {
@@ -233,51 +237,51 @@ TIMEUNIT <|-- ioT_SECONDS
 TIMEUNIT <|-- ioT_WEEKS
 VarOrList <|-- ioT_PyList
 VarOrList <|-- ioT_Variable
-ioT_Address "0..1" --* "1..1" ioT_ConnectStatement : address26
-ioT_ExpressionRight "0..1" --* "1..1" ioT_ListenStatement : body19
-ioT_Command "0..9999" --* "1..1" ioT_Loop : command35
-ioT_Block "1..1" *-- "0..9999" ioT_Command : commands47
-ioT_Command "0..9999" --* "1..1" ioT_ElseBlock : commands51
-ioT_Command "0..9999" --* "1..1" ioT_IfStatement : commands70
-ioT_Comparison "0..1" --* "1..1" ioT_IfStatement : condition69
-ioT_Config "0..9999" --* "1..1" ioT_Model : configs1
-ioT_ConnectStatement "1..1" -- "0..1" ioT_ConnectionConfig : configuration28
-ioT_ConnectStatement "0..9999" --* "1..1" ioT_Program : connectStatements11
-ioT_ConnectionConfig "0..1" -- "1..1" ioT_WifiStatement : connectionConfig21
-ioT_Config "1..1" *-- "0..9999" ioT_Declaration : declarations5
-ioT_ConnectStatement "1..1" -- "0..1" ioT_Device : device23
-ioT_Device "0..9999" --* "1..1" ioT_Model : devices3
-ioT_ElseBlock "0..1" --* "1..1" ioT_IfStatement : elseBlock73
-ioT_ExternalDeclaration "0..9999" --* "1..1" ioT_Model : externalDeclarations0
-ioT_ArrowCommand "1..1" *-- "0..1" ioT_ExpressionLeft : left57
-ioT_Comparison "0..1" --* "1..1" ioT_OR : left76
-ioT_AND "1..1" *-- "0..1" ioT_Comparison : left81
-ioT_Comparison "0..1" --* "1..1" ioT_EQL : left86
-ioT_ClearListAction "1..1" -- "0..1" ioT_PyList : list56
-ioT_AddToList "1..1" -- "0..1" ioT_PyList : list65
-ioT_ListenStatement "0..9999" --* "1..1" ioT_Program : listenStatements15
-ioT_Loop "0..9999" --* "1..1" ioT_Program : loops17
-ioT_ExternalDeclaration "0..1" -- "1..1" ioT_ExternalOf : method41
-ioT_ExternalDeclaration "0..1" -- "1..1" ioT_ExternalRight : method49
-ioT_ComparisonOp "0..1" --* "1..1" ioT_EQL : op88
-ioT_Device "1..1" *-- "0..1" ioT_Program : program7
-ioT_ArrowCommand "1..1" *-- "0..1" ioT_ExpressionRight : right58
-ioT_Comparison "0..1" --* "1..1" ioT_OR : right78
-ioT_AND "1..1" *-- "0..1" ioT_Comparison : right83
-ioT_Comparison "0..1" --* "1..1" ioT_EQL : right90
-ioT_ReadSensor "1..1" *-- "0..1" ioT_SENSOR : sensor46
-ioT_Device "0..1" -- "1..1" ioT_ReadConnection : source39
-ioT_ExternalOf "1..1" -- "0..1" ioT_VarOrList : target43
-ioT_Device "0..1" -- "1..1" ioT_SendCommand : target67
-ioT_Loop "1..1" *-- "0..1" ioT_TIMEUNIT : timeUnit33
-ioT_Expression "0..1" --* "1..1" ioT_Loop : timeVal31
-ioT_Bool "0..1" --* "1..1" ioT_BoolExpression : value37
-ioT_ReadVariable "1..1" -- "0..1" ioT_Variable : value38
-ioT_Expression "0..1" --* "1..1" ioT_Variable : value53
-ioT_ItemVariable "1..1" -- "0..1" ioT_Variable : value93
-ioT_Bool "0..1" --* "1..1" ioT_ItemBool : value95
-ioT_ToVar "1..1" -- "0..1" ioT_Variable : variable63
-ioT_VarAccess "1..1" -- "0..1" ioT_VarOrList : variableName61
-ioT_Program "1..1" *-- "0..9999" ioT_VarOrList : variables13
-ioT_Program "1..1" *-- "0..1" ioT_WifiStatement : wifiStatements9
+ioT_Address "ioT_ConnectStatement27 0..1" --* "ioT_Address 1..1" ioT_ConnectStatement : address26
+ioT_ExpressionRight "ioT_ListenStatement20 0..1" --* "ioT_ExpressionRight 1..1" ioT_ListenStatement : body19
+ioT_Command "ioT_Loop36 0..9999" --* "ioT_Command 1..1" ioT_Loop : command35
+ioT_Block "ioT_Command48 1..1" *-- "ioT_Block 0..9999" ioT_Command : commands47
+ioT_Command "ioT_ElseBlock 0..9999" --* "ioT_Command52 1..1" ioT_ElseBlock : commands51
+ioT_Command "ioT_IfStatement71 0..9999" --* "ioT_Command72 1..1" ioT_IfStatement : commands70
+ioT_Comparison "ioT_IfStatement 0..1" --* "ioT_Comparison 1..1" ioT_IfStatement : condition69
+ioT_Config "ioT_Model2 0..9999" --* "ioT_Config 1..1" ioT_Model : configs1
+ioT_ConnectStatement "ioT_ConnectionConfig30 1..1" -- "ioT_ConnectStatement29 0..1" ioT_ConnectionConfig : configuration28
+ioT_ConnectStatement "ioT_Program12 0..9999" --* "ioT_ConnectStatement 1..1" ioT_Program : connectStatements11
+ioT_ConnectionConfig "ioT_WifiStatement22 0..1" -- "ioT_ConnectionConfig 1..1" ioT_WifiStatement : connectionConfig21
+ioT_Config "ioT_Declaration 1..1" *-- "ioT_Config6 0..9999" ioT_Declaration : declarations5
+ioT_ConnectStatement "ioT_Device25 1..1" -- "ioT_ConnectStatement24 0..1" ioT_Device : device23
+ioT_Device "ioT_Model4 0..9999" --* "ioT_Device 1..1" ioT_Model : devices3
+ioT_ElseBlock "ioT_IfStatement74 0..1" --* "ioT_ElseBlock75 1..1" ioT_IfStatement : elseBlock73
+ioT_ExternalDeclaration "ioT_Model 0..9999" --* "ioT_ExternalDeclaration 1..1" ioT_Model : externalDeclarations0
+ioT_ArrowCommand "ioT_ExpressionLeft 1..1" *-- "ioT_ArrowCommand 0..1" ioT_ExpressionLeft : left57
+ioT_Comparison "ioT_OR 0..1" --* "ioT_Comparison77 1..1" ioT_OR : left76
+ioT_AND "ioT_Comparison82 1..1" *-- "ioT_AND 0..1" ioT_Comparison : left81
+ioT_Comparison "ioT_EQL 0..1" --* "ioT_Comparison87 1..1" ioT_EQL : left86
+ioT_ClearListAction "ioT_PyList 1..1" -- "ioT_ClearListAction 0..1" ioT_PyList : list56
+ioT_AddToList "ioT_PyList66 1..1" -- "ioT_AddToList 0..1" ioT_PyList : list65
+ioT_ListenStatement "ioT_Program16 0..9999" --* "ioT_ListenStatement 1..1" ioT_Program : listenStatements15
+ioT_Loop "ioT_Program18 0..9999" --* "ioT_Loop 1..1" ioT_Program : loops17
+ioT_ExternalDeclaration "ioT_ExternalOf 0..1" -- "ioT_ExternalDeclaration42 1..1" ioT_ExternalOf : method41
+ioT_ExternalDeclaration "ioT_ExternalRight 0..1" -- "ioT_ExternalDeclaration50 1..1" ioT_ExternalRight : method49
+ioT_ComparisonOp "ioT_EQL89 0..1" --* "ioT_ComparisonOp 1..1" ioT_EQL : op88
+ioT_Device "ioT_Program 1..1" *-- "ioT_Device8 0..1" ioT_Program : program7
+ioT_ArrowCommand "ioT_ExpressionRight60 1..1" *-- "ioT_ArrowCommand59 0..1" ioT_ExpressionRight : right58
+ioT_Comparison "ioT_OR79 0..1" --* "ioT_Comparison80 1..1" ioT_OR : right78
+ioT_AND "ioT_Comparison85 1..1" *-- "ioT_AND84 0..1" ioT_Comparison : right83
+ioT_Comparison "ioT_EQL91 0..1" --* "ioT_Comparison92 1..1" ioT_EQL : right90
+ioT_ReadSensor "ioT_SENSOR 1..1" *-- "ioT_ReadSensor 0..1" ioT_SENSOR : sensor46
+ioT_Device "ioT_ReadConnection 0..1" -- "ioT_Device40 1..1" ioT_ReadConnection : source39
+ioT_ExternalOf "ioT_VarOrList45 1..1" -- "ioT_ExternalOf44 0..1" ioT_VarOrList : target43
+ioT_Device "ioT_SendCommand 0..1" -- "ioT_Device68 1..1" ioT_SendCommand : target67
+ioT_Loop "ioT_TIMEUNIT 1..1" *-- "ioT_Loop34 0..1" ioT_TIMEUNIT : timeUnit33
+ioT_Expression "ioT_Loop32 0..1" --* "ioT_Expression 1..1" ioT_Loop : timeVal31
+ioT_Bool "ioT_BoolExpression 0..1" --* "ioT_Bool 1..1" ioT_BoolExpression : value37
+ioT_ReadVariable "ioT_Variable 1..1" -- "ioT_ReadVariable 0..1" ioT_Variable : value38
+ioT_Expression "ioT_Variable54 0..1" --* "ioT_Expression55 1..1" ioT_Variable : value53
+ioT_ItemVariable "ioT_Variable94 1..1" -- "ioT_ItemVariable 0..1" ioT_Variable : value93
+ioT_Bool "ioT_ItemBool 0..1" --* "ioT_Bool96 1..1" ioT_ItemBool : value95
+ioT_ToVar "ioT_Variable64 1..1" -- "ioT_ToVar 0..1" ioT_Variable : variable63
+ioT_VarAccess "ioT_VarOrList62 1..1" -- "ioT_VarAccess 0..1" ioT_VarOrList : variableName61
+ioT_Program "ioT_VarOrList 1..1" *-- "ioT_Program14 0..9999" ioT_VarOrList : variables13
+ioT_Program "ioT_WifiStatement 1..1" *-- "ioT_Program10 0..1" ioT_WifiStatement : wifiStatements9
 @enduml

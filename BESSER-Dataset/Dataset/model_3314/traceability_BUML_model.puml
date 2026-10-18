@@ -1,4 +1,8 @@
 @startuml
+' model: traceability
+' project: sampleModel
+' owner: User
+' description: New project
 class traceability_CPS2DeploymentTrace {
 }
 class traceability_CPSToDeployment {
@@ -11,9 +15,9 @@ class traceability_DeploymentElement {
 }
 class traceability_Identifiable {
 }
-traceability_CPSToDeployment "1..1" -- "0..1" traceability_CyberPhysicalSystem : cps0
-traceability_CPS2DeploymentTrace "1..1" -- "0..9999" traceability_Identifiable : cpsElements5
-traceability_CPSToDeployment "1..1" -- "0..1" traceability_Deployment : deployment1
-traceability_CPS2DeploymentTrace "1..1" -- "0..9999" traceability_DeploymentElement : deploymentElements7
-traceability_CPS2DeploymentTrace "0..9999" --* "1..1" traceability_CPSToDeployment : traces3
+traceability_CPSToDeployment "traceability_CyberPhysicalSystem 1..1" -- "traceability_CPSToDeployment 0..1" traceability_CyberPhysicalSystem : cps0
+traceability_CPS2DeploymentTrace "traceability_Identifiable 1..1" -- "traceability_CPS2DeploymentTrace6 0..9999" traceability_Identifiable : cpsElements5
+traceability_CPSToDeployment "traceability_Deployment 1..1" -- "traceability_CPSToDeployment2 0..1" traceability_Deployment : deployment1
+traceability_CPS2DeploymentTrace "traceability_DeploymentElement 1..1" -- "traceability_CPS2DeploymentTrace8 0..9999" traceability_DeploymentElement : deploymentElements7
+traceability_CPS2DeploymentTrace "traceability_CPSToDeployment4 0..9999" --* "traceability_CPS2DeploymentTrace 1..1" traceability_CPSToDeployment : traces3
 @enduml

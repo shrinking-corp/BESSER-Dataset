@@ -1,4 +1,8 @@
 @startuml
+' model: a814c805_643e_4546_a8c7_d6dee5ce2bf5
+' project: sampleModel
+' owner: User
+' description: New project
 class ADMIN {
   + id : str
   + password : str
@@ -40,21 +44,21 @@ class view_cumiliative_attendance_external {
 }
 class view_subject_wise_attendance_external {
 }
-ADMIN "1..1" -- "1..9999" FACULTY : FACULTY_ADMIN
-FACULTY "1..9999" -- "1..9999" STUDENT : FACULTY_STUDENT
-ADMIN "1..1" -- "1..9999" PARENT : PARENT_ADMIN
-ADMIN "1..1" -- "1..9999" STUDENT : STUDENT_ADMIN
-admin_Actor "0..1" -- "0..1" login_external : admin_login
-admin_Actor "0..1" -- "0..1" logout_external : admin_logout
-admin_Actor "0..1" -- "0..1" modify_list_of_students_external : admin_modify_list_of_students
-faculty_Actor "0..1" -- "0..1" generate_class_wise_attendance_report_external : faculty_generate_class_wise_attendance_report
-faculty_Actor "0..1" -- "0..1" take_attendance_call_external : faculty_give_attendance
-faculty_Actor "0..1" -- "0..1" login_external : faculty_login
-faculty_Actor "0..1" -- "0..1" logout_external : faculty_logout
-faculty_Actor "0..1" -- "0..1" post_attendance_external : faculty_post_attendance
-faculty_Actor "0..1" -- "0..1" view_cumiliative_attendance_external : faculty_view_cumiliative_attendance
-login_external "0..1" -- "0..1" student_Actor : student_login
-logout_external "0..1" -- "0..1" student_Actor : student_logout
-student_Actor "0..1" -- "0..1" view_cumiliative_attendance_external : student_view_cumiliative_attendance
-student_Actor "0..1" -- "0..1" view_subject_wise_attendance_external : student_view_subject_wise_attendance
+ADMIN "aDMIN28 1..1" -- "fACULTY29 1..9999" FACULTY : FACULTY_ADMIN
+FACULTY "fACULTY27 1..9999" -- "sTUDENT26 1..9999" STUDENT : FACULTY_STUDENT
+ADMIN "aDMIN32 1..1" -- "pARENT33 1..9999" PARENT : PARENT_ADMIN
+ADMIN "aDMIN30 1..1" -- "sTUDENT31 1..9999" STUDENT : STUDENT_ADMIN
+admin_Actor "admin19 0..1" -- "login18 0..1" login_external : admin_login
+admin_Actor "admin21 0..1" -- "logout20 0..1" logout_external : admin_logout
+admin_Actor "admin25 0..1" -- "modify_list_of_students24 0..1" modify_list_of_students_external : admin_modify_list_of_students
+faculty_Actor "faculty3 0..1" -- "generate_class_wise_attendance_report2 0..1" generate_class_wise_attendance_report_external : faculty_generate_class_wise_attendance_report
+faculty_Actor "faculty1 0..1" -- "give_attendance0 0..1" take_attendance_call_external : faculty_give_attendance
+faculty_Actor "faculty15 0..1" -- "login14 0..1" login_external : faculty_login
+faculty_Actor "faculty17 0..1" -- "logout16 0..1" logout_external : faculty_logout
+faculty_Actor "faculty5 0..1" -- "post_attendance4 0..1" post_attendance_external : faculty_post_attendance
+faculty_Actor "faculty23 0..1" -- "view_cumiliative_attendance22 0..1" view_cumiliative_attendance_external : faculty_view_cumiliative_attendance
+login_external "login10 0..1" -- "student11 0..1" student_Actor : student_login
+logout_external "logout12 0..1" -- "student13 0..1" student_Actor : student_logout
+student_Actor "student9 0..1" -- "view_cumiliative_attendance8 0..1" view_cumiliative_attendance_external : student_view_cumiliative_attendance
+student_Actor "student7 0..1" -- "view_subject_wise_attendance6 0..1" view_subject_wise_attendance_external : student_view_subject_wise_attendance
 @enduml

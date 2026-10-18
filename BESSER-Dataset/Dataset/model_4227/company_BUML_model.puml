@@ -1,4 +1,8 @@
 @startuml
+' model: company
+' project: sampleModel
+' owner: User
+' description: New project
 class NamedElement {
 }
 class company_Company {
@@ -18,7 +22,7 @@ class company_Person {
 NamedElement <|-- company_Company
 NamedElement <|-- company_Department
 NamedElement <|-- company_Person
-company_Company "1..1" *-- "0..9999" company_Department : department0
-company_Department "1..1" *-- "0..9999" company_Person : employee1
-company_Person "0..1" -- "1..1" company_Person : supervisor4
+company_Company "company_Department 1..1" *-- "company_Company 0..9999" company_Department : department0
+company_Department "company_Person 1..1" *-- "company_Department2 0..9999" company_Person : employee1
+company_Person "company_Person3 0..1" -- "company_Person5 1..1" company_Person : supervisor4
 @enduml

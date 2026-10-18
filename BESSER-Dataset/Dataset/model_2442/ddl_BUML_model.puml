@@ -1,4 +1,8 @@
 @startuml
+' model: ddl
+' project: sampleModel
+' owner: User
+' description: New project
 class DataElement {
 }
 class ddl_Column {
@@ -19,8 +23,8 @@ DataElement <|-- ddl_Column
 DataElement <|-- ddl_DataType
 DataElement <|-- ddl_Schema
 DataElement <|-- ddl_Table
-ddl_Column "0..9999" --* "1..1" ddl_Table : column3
-ddl_Schema "1..1" *-- "0..9999" ddl_Table : table0
-ddl_Column "1..1" -- "1..1" ddl_DataType : type5
-ddl_DataType "0..9999" --* "1..1" ddl_Schema : types1
+ddl_Column "ddl_Table4 0..9999" --* "ddl_Column 1..1" ddl_Table : column3
+ddl_Schema "ddl_Table 1..1" *-- "ddl_Schema 0..9999" ddl_Table : table0
+ddl_Column "ddl_DataType7 1..1" -- "ddl_Column6 1..1" ddl_DataType : type5
+ddl_DataType "ddl_Schema2 0..9999" --* "ddl_DataType 1..1" ddl_Schema : types1
 @enduml

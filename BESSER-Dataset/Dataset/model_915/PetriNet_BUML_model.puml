@@ -1,4 +1,8 @@
 @startuml
+' model: petrinet
+' project: sampleModel
+' owner: User
+' description: New project
 class Node {
 }
 class PetriNetElement {
@@ -24,10 +28,10 @@ Node <|-- petrinet_Place
 Node <|-- petrinet_Transition
 PetriNetElement <|-- petrinet_Arc
 PetriNetElement <|-- petrinet_Node
-petrinet_Arc "0..9999" -- "1..1" petrinet_Node : linksToPredecessor3
-petrinet_Arc "0..9999" -- "1..1" petrinet_Node : linksToSuccessor2
-petrinet_PetriNet "1..1" -- "1..1" petrinet_PetriNetElement : petriNet1
-petrinet_PetriNet "1..1" *-- "0..9999" petrinet_PetriNetElement : petriNetElements0
-petrinet_Arc "1..1" -- "1..1" petrinet_Node : predecessor5
-petrinet_Arc "1..1" -- "1..1" petrinet_Node : successor6
+petrinet_Arc "successor 0..9999" -- "Arc4 1..1" petrinet_Node : linksToPredecessor3
+petrinet_Arc "predecessor 0..9999" -- "Arc 1..1" petrinet_Node : linksToSuccessor2
+petrinet_PetriNet "petriNetElements 1..1" -- "PetriNet 1..1" petrinet_PetriNetElement : petriNet1
+petrinet_PetriNet "PetriNetElement 1..1" *-- "petriNet 0..9999" petrinet_PetriNetElement : petriNetElements0
+petrinet_Arc "Node 1..1" -- "linksToSuccessor 1..1" petrinet_Node : predecessor5
+petrinet_Arc "Node7 1..1" -- "linksToPredecessor 1..1" petrinet_Node : successor6
 @enduml

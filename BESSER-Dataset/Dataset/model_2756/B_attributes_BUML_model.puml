@@ -1,12 +1,16 @@
 @startuml
+' model: BAttributes
+' project: sampleModel
+' owner: User
+' description: New project
 class BAttributes_B {
 }
 class BAttributes_RootB {
 }
 class BAttributes_Y {
 }
-BAttributes_B "0..9999" --* "1..1" BAttributes_RootB : bs2
-BAttributes_B "1..1" -- "1..1" BAttributes_RootB : root0
-BAttributes_B "1..1" -- "1..1" BAttributes_Y : y1
-BAttributes_RootB "1..1" *-- "0..9999" BAttributes_Y : ys3
+BAttributes_B "root 0..9999" --* "B 1..1" BAttributes_RootB : bs2
+BAttributes_B "RootB 1..1" -- "bs 1..1" BAttributes_RootB : root0
+BAttributes_B "BAttributes_Y 1..1" -- "BAttributes_B 1..1" BAttributes_Y : y1
+BAttributes_RootB "BAttributes_Y4 1..1" *-- "BAttributes_RootB 0..9999" BAttributes_Y : ys3
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: sistedesMM
+' project: sampleModel
+' owner: User
+' description: New project
 class Person {
 }
 class Publication {
@@ -65,13 +69,13 @@ Person <|-- sistedesMM_SistedesMember
 Publication <|-- sistedesMM_Article
 Publication <|-- sistedesMM_Book
 Publication <|-- sistedesMM_InProceedings
-sistedesMM_Article "0..1" -- "1..1" sistedesMM_Journal : articles7
-sistedesMM_Edition "0..9999" -- "1..1" sistedesMM_SistedesMember : attendedTo10
-sistedesMM_Person "1..9999" -- "1..1" sistedesMM_Publication : authors2
-sistedesMM_Editor "0..9999" -- "1..1" sistedesMM_InProceedings : editors5
-sistedesMM_Article "1..1" -- "0..1" sistedesMM_Journal : journal3
-sistedesMM_Person "1..1" -- "0..9999" sistedesMM_Publication : publications1
-sistedesMM_InProceedings "1..1" -- "0..1" sistedesMM_Publisher : publisher4
-sistedesMM_Book "1..1" -- "0..1" sistedesMM_Publisher : publisher8
-sistedesMM_Person "1..1" -- "1..9999" sistedesMM_University : university0
+sistedesMM_Article "journal 0..1" -- "Article 1..1" sistedesMM_Journal : articles7
+sistedesMM_Edition "sistedesMM_SistedesMember 0..9999" -- "sistedesMM_Edition 1..1" sistedesMM_SistedesMember : attendedTo10
+sistedesMM_Person "publications 1..9999" -- "Person 1..1" sistedesMM_Publication : authors2
+sistedesMM_Editor "sistedesMM_InProceedings6 0..9999" -- "sistedesMM_Editor 1..1" sistedesMM_InProceedings : editors5
+sistedesMM_Article "Journal 1..1" -- "articles 0..1" sistedesMM_Journal : journal3
+sistedesMM_Person "Publication 1..1" -- "authors 0..9999" sistedesMM_Publication : publications1
+sistedesMM_InProceedings "sistedesMM_Publisher 1..1" -- "sistedesMM_InProceedings 0..1" sistedesMM_Publisher : publisher4
+sistedesMM_Book "sistedesMM_Publisher9 1..1" -- "sistedesMM_Book 0..1" sistedesMM_Publisher : publisher8
+sistedesMM_Person "sistedesMM_University 1..1" -- "sistedesMM_Person 1..9999" sistedesMM_University : university0
 @enduml

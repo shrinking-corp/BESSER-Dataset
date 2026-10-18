@@ -329,30 +329,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=hutn_ClassObjectSlot_strategy)
-@settings(max_examples=30)
-def test_hyp_hutn_classobjectslot_addclassobject_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.addClassObject(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.addClassObject).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'addClassObject' in hutn_ClassObjectSlot is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'addClassObject' in hutn_ClassObjectSlot did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'addClassObject' in hutn_ClassObjectSlot is not implemented or raised an error")
 
 import warnings
 import copy
@@ -360,30 +336,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=hutn_ClassObjectSlot_strategy)
-@settings(max_examples=30)
-def test_hyp_hutn_classobjectslot_setclassobjects_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.setClassObjects(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.setClassObjects).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'setClassObjects' in hutn_ClassObjectSlot is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'setClassObjects' in hutn_ClassObjectSlot did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'setClassObjects' in hutn_ClassObjectSlot is not implemented or raised an error")
 
 
 
@@ -414,30 +366,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=hutn_ClassObject_strategy)
-@settings(max_examples=30)
-def test_hyp_hutn_classobject_typecompatiblewith_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.typeCompatibleWith(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.typeCompatibleWith).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'typeCompatibleWith' in hutn_ClassObject is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'typeCompatibleWith' in hutn_ClassObject did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'typeCompatibleWith' in hutn_ClassObject is not implemented or raised an error")
 
 import warnings
 import copy
@@ -445,30 +373,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=hutn_ClassObject_strategy)
-@settings(max_examples=30)
-def test_hyp_hutn_classobject_findslot_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.findSlot(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.findSlot).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'findSlot' in hutn_ClassObject is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'findSlot' in hutn_ClassObject did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'findSlot' in hutn_ClassObject is not implemented or raised an error")
 
 import warnings
 import copy
@@ -476,30 +380,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=hutn_ClassObject_strategy)
-@settings(max_examples=30)
-def test_hyp_hutn_classobject_findorcreatereferenceslot_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.findOrCreateReferenceSlot(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.findOrCreateReferenceSlot).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'findOrCreateReferenceSlot' in hutn_ClassObject is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'findOrCreateReferenceSlot' in hutn_ClassObject did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'findOrCreateReferenceSlot' in hutn_ClassObject is not implemented or raised an error")
 
 import warnings
 import copy
@@ -507,30 +387,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=hutn_ClassObject_strategy)
-@settings(max_examples=30)
-def test_hyp_hutn_classobject_findorcreateattributeslot_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.findOrCreateAttributeSlot(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.findOrCreateAttributeSlot).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'findOrCreateAttributeSlot' in hutn_ClassObject is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'findOrCreateAttributeSlot' in hutn_ClassObject did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'findOrCreateAttributeSlot' in hutn_ClassObject is not implemented or raised an error")
 
 import warnings
 import copy
@@ -538,28 +394,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=hutn_ClassObject_strategy)
-@settings(max_examples=30)
-def test_hyp_hutn_classobject_haseclass_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.hasEClass()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.hasEClass).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'hasEClass' in hutn_ClassObject is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'hasEClass' in hutn_ClassObject did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'hasEClass' in hutn_ClassObject is not implemented or raised an error")
 
 import warnings
 import copy
@@ -567,30 +401,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=hutn_ClassObject_strategy)
-@settings(max_examples=30)
-def test_hyp_hutn_classobject_findorcreatecontainmentslot_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.findOrCreateContainmentSlot(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.findOrCreateContainmentSlot).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'findOrCreateContainmentSlot' in hutn_ClassObject is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'findOrCreateContainmentSlot' in hutn_ClassObject did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'findOrCreateContainmentSlot' in hutn_ClassObject is not implemented or raised an error")
 
 
 
@@ -633,30 +443,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=hutn_Slot_strategy)
-@settings(max_examples=30)
-def test_hyp_hutn_slot_multiplicitycompatiblewith_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.multiplicityCompatibleWith(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.multiplicityCompatibleWith).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'multiplicityCompatibleWith' in hutn_Slot is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'multiplicityCompatibleWith' in hutn_Slot did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'multiplicityCompatibleWith' in hutn_Slot is not implemented or raised an error")
 
 import warnings
 import copy
@@ -664,30 +450,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=hutn_Slot_strategy)
-@settings(max_examples=30)
-def test_hyp_hutn_slot_compatiblewith_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.compatibleWith(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.compatibleWith).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'compatibleWith' in hutn_Slot is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'compatibleWith' in hutn_Slot did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'compatibleWith' in hutn_Slot is not implemented or raised an error")
 
 import warnings
 import copy
@@ -695,30 +457,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=hutn_Slot_strategy)
-@settings(max_examples=30)
-def test_hyp_hutn_slot_typecompatiblewith_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.typeCompatibleWith(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.typeCompatibleWith).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'typeCompatibleWith' in hutn_Slot is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'typeCompatibleWith' in hutn_Slot did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'typeCompatibleWith' in hutn_Slot is not implemented or raised an error")
 
 import warnings
 import copy
@@ -726,28 +464,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=hutn_Slot_strategy)
-@settings(max_examples=30)
-def test_hyp_hutn_slot_hasestructuralfeature_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.hasEStructuralFeature()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.hasEStructuralFeature).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'hasEStructuralFeature' in hutn_Slot is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'hasEStructuralFeature' in hutn_Slot did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'hasEStructuralFeature' in hutn_Slot is not implemented or raised an error")
 
 import warnings
 import copy
@@ -755,30 +471,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=hutn_Slot_strategy)
-@settings(max_examples=30)
-def test_hyp_hutn_slot_setvalues_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.setValues(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.setValues).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'setValues' in hutn_Slot is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'setValues' in hutn_Slot did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'setValues' in hutn_Slot is not implemented or raised an error")
 
 
 
@@ -1318,9 +1010,9 @@ def test_assoc_classObjects8_stub_double():
     partner = hutn_ContainmentSlot()
     setattr(partner, 'hutn_ContainmentSlot', None)
     _safe_set(owner, 'hutn_ClassObject9', partner)
-    assert getattr(partner, 'hutn_ContainmentSlot') == owner
+    assert owner in getattr(partner, 'hutn_ContainmentSlot')
     _safe_set(owner, 'hutn_ClassObject9', None)
-    assert getattr(partner, 'hutn_ContainmentSlot') is None
+    assert owner not in getattr(partner, 'hutn_ContainmentSlot')
 
 
 def test_assoc_metamodel3_stub_double():
@@ -1353,12 +1045,10 @@ def test_hutn_ClassObjectSlot_setClassObjects():
 
 def test_hutn_ClassObjectSlot_addClassObject():
     assert hutn_ClassObjectSlot.addClassObject(hutn_ClassObjectSlot(), '') == None
-
 from python_code import hutn_ModelElement
 
 def test_hutn_ModelElement___init__():
     assert hutn_ModelElement.__init__(hutn_ModelElement(0, 0), 0, 0) == None
-
 from python_code import hutn_Object
 
 def test_hutn_Object___init__():

@@ -2031,28 +2031,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=room_Port_strategy)
-@settings(max_examples=30)
-def test_hyp_room_port_isreplicated_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isReplicated()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isReplicated).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isReplicated' in room_Port is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isReplicated' in room_Port did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isReplicated' in room_Port is not implemented or raised an error")
 
 
 
@@ -6291,9 +6269,9 @@ def test_assoc_attributes104_stub_double():
     partner = room_PortClass()
     setattr(partner, 'room_PortClass105', None)
     _safe_set(owner, 'room_Attribute106', partner)
-    assert getattr(partner, 'room_PortClass105') == owner
+    assert owner in getattr(partner, 'room_PortClass105')
     _safe_set(owner, 'room_Attribute106', None)
-    assert getattr(partner, 'room_PortClass105') is None
+    assert owner not in getattr(partner, 'room_PortClass105')
 
 
 def test_assoc_attributes48_stub_double():
@@ -6306,9 +6284,9 @@ def test_assoc_attributes48_stub_double():
     partner = room_DataClass()
     setattr(partner, 'room_DataClass49', None)
     _safe_set(owner, 'room_Attribute', partner)
-    assert getattr(partner, 'room_DataClass49') == owner
+    assert owner in getattr(partner, 'room_DataClass49')
     _safe_set(owner, 'room_Attribute', None)
-    assert getattr(partner, 'room_DataClass49') is None
+    assert owner not in getattr(partner, 'room_DataClass49')
 
 
 def test_assoc_base232_stub_double():
@@ -6336,9 +6314,9 @@ def test_assoc_chPoints228_stub_double():
     partner = room_StateGraph()
     setattr(partner, 'room_StateGraph229', None)
     _safe_set(owner, 'room_ChoicePoint', partner)
-    assert getattr(partner, 'room_StateGraph229') == owner
+    assert owner in getattr(partner, 'room_StateGraph229')
     _safe_set(owner, 'room_ChoicePoint', None)
-    assert getattr(partner, 'room_StateGraph229') is None
+    assert owner not in getattr(partner, 'room_StateGraph229')
 
 
 def test_assoc_condition249_stub_double():
@@ -6621,9 +6599,9 @@ def test_assoc_relayPorts174_stub_double():
     partner = room_SubSystemClass()
     setattr(partner, 'room_SubSystemClass175', None)
     _safe_set(owner, 'room_Port176', partner)
-    assert getattr(partner, 'room_SubSystemClass175') == owner
+    assert owner in getattr(partner, 'room_SubSystemClass175')
     _safe_set(owner, 'room_Port176', None)
-    assert getattr(partner, 'room_SubSystemClass175') is None
+    assert owner not in getattr(partner, 'room_SubSystemClass175')
 
 
 def test_assoc_semantics93_stub_double():
@@ -6726,9 +6704,9 @@ def test_assoc_states223_stub_double():
     partner = room_StateGraph()
     setattr(partner, 'room_StateGraph224', None)
     _safe_set(owner, 'room_State225', partner)
-    assert getattr(partner, 'room_StateGraph224') == owner
+    assert owner in getattr(partner, 'room_StateGraph224')
     _safe_set(owner, 'room_State225', None)
-    assert getattr(partner, 'room_StateGraph224') is None
+    assert owner not in getattr(partner, 'room_StateGraph224')
 
 
 def test_assoc_strSAPs141_stub_double():
@@ -6801,9 +6779,9 @@ def test_assoc_threads177_stub_double():
     partner = room_SubSystemClass()
     setattr(partner, 'room_SubSystemClass178', None)
     _safe_set(owner, 'room_LogicalThread', partner)
-    assert getattr(partner, 'room_SubSystemClass178') == owner
+    assert owner in getattr(partner, 'room_SubSystemClass178')
     _safe_set(owner, 'room_LogicalThread', None)
-    assert getattr(partner, 'room_SubSystemClass178') is None
+    assert owner not in getattr(partner, 'room_SubSystemClass178')
 
 
 def test_assoc_to236_stub_double():
@@ -6861,9 +6839,9 @@ def test_assoc_trPoints226_stub_double():
     partner = room_StateGraph()
     setattr(partner, 'room_StateGraph227', None)
     _safe_set(owner, 'room_TrPoint', partner)
-    assert getattr(partner, 'room_StateGraph227') == owner
+    assert owner in getattr(partner, 'room_StateGraph227')
     _safe_set(owner, 'room_TrPoint', None)
-    assert getattr(partner, 'room_StateGraph227') is None
+    assert owner not in getattr(partner, 'room_StateGraph227')
 
 
 def test_assoc_transitions230_stub_double():
@@ -6876,9 +6854,9 @@ def test_assoc_transitions230_stub_double():
     partner = room_StateGraph()
     setattr(partner, 'room_StateGraph231', None)
     _safe_set(owner, 'room_Transition', partner)
-    assert getattr(partner, 'room_StateGraph231') == owner
+    assert owner in getattr(partner, 'room_StateGraph231')
     _safe_set(owner, 'room_Transition', None)
-    assert getattr(partner, 'room_StateGraph231') is None
+    assert owner not in getattr(partner, 'room_StateGraph231')
 
 
 def test_assoc_type206_stub_double():
@@ -7018,50 +6996,10 @@ def test_assoc_userCode345_stub_double():
 
 
 
-from enum import Enum
 from python_code import ActorCommunicationType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ActorCommunicationType.DATA_DRIVEN, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ActorCommunicationType.SYNCHRONOUS, 0, '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ActorCommunicationType.SYNCHRONOUS, '', 0, 0) == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ActorCommunicationType.SYNCHRONOUS, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ActorCommunicationType.DATA_DRIVEN, 'DATA_DRIVEN') == ActorCommunicationType.DATA_DRIVEN
-
-from enum import Enum
 from python_code import CommunicationType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(CommunicationType.SYNCHRONOUS, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(CommunicationType.SYNCHRONOUS, 0, '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(CommunicationType.EVENT_DRIVEN, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(CommunicationType.SYNCHRONOUS, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(CommunicationType.SYNCHRONOUS, 'SYNCHRONOUS') == CommunicationType.SYNCHRONOUS
-
 from python_code import room_BaseState
 from python_code import room_RefinedState
 from python_code import room_StateTerminal
@@ -7069,13 +7007,11 @@ from python_code import room_SubStateTrPointTerminal
 
 def test_room_BaseState___init__():
     assert room_BaseState.__init__(room_BaseState('', room_BaseState252=room_StateTerminal(), room_BaseState259=room_SubStateTrPointTerminal(), room_BaseState=room_RefinedState()), '', room_BaseState252=room_StateTerminal(), room_BaseState259=room_SubStateTrPointTerminal(), room_BaseState=room_RefinedState()) == None
-
 from python_code import room_LogicalThread
 from python_code import room_SubSystemClass
 
 def test_room_LogicalThread___init__():
     assert room_LogicalThread.__init__(room_LogicalThread('\x00\x00', 0, room_LogicalThread180=set(), room_LogicalThread=room_SubSystemClass()), '', 0, room_LogicalThread180=set(), room_LogicalThread=room_SubSystemClass()) == None
-
 from python_code import room_StateGraphItem
 
 def test_room_StateGraphItem___init__():
@@ -7083,7 +7019,6 @@ def test_room_StateGraphItem___init__():
 
 def test_room_StateGraphItem_getName():
     assert room_StateGraphItem.getName(room_StateGraphItem()) == None
-
 from python_code import room_StateGraph
 from python_code import room_SubStateTrPointTerminal
 from python_code import room_TrPoint
@@ -7091,7 +7026,6 @@ from python_code import room_TrPointTerminal
 
 def test_room_TrPoint___init__():
     assert room_TrPoint.__init__(room_TrPoint('', room_TrPoint254=room_TrPointTerminal(), room_TrPoint256=room_SubStateTrPointTerminal(), room_TrPoint=room_StateGraph()), '', room_TrPoint254=room_TrPointTerminal(), room_TrPoint256=room_SubStateTrPointTerminal(), room_TrPoint=room_StateGraph()) == None
-
 from python_code import room_TransitionPoint
 
 def test_room_TransitionPoint___init__():

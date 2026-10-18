@@ -1,4 +1,8 @@
 @startuml
+' model: game
+' project: sampleModel
+' owner: User
+' description: New project
 class EntiteLieu {
 }
 class GameElement {
@@ -60,46 +64,67 @@ GameElement <|-- game_Chemin
 GameElement <|-- game_Connaissance
 GameElement <|-- game_Lieu
 GameElement <|-- game_Objet
-game_Chemin "0..9999" -- "1..1" game_Lieu : cheminsPossibles21
-game_Choix "1..1" *-- "0..1" game_Condition : choixFin100
-game_Action "1..1" -- "0..1" game_Choix : choixSuivant80
-game_Condition "0..1" --* "1..1" game_Texte : condition57
-game_Action "1..1" *-- "0..1" game_Condition : condition71
-game_Condition "0..1" --* "1..1" game_Recompense : conditionObtention66
-game_Chemin "1..1" *-- "0..1" game_Condition : conditionVisibilite28
-game_Condition "0..1" --* "1..1" game_EntiteLieu : conditionVisibilite9
-game_Condition "1..1" *-- "0..9999" game_Conjonction : conjonctions45
-game_Connaissance "0..1" -- "1..1" game_ConnaissanceLieu : connaissance11
-game_Connaissance "0..1" -- "1..1" game_Litteral : connaissance52
-game_Connaissance "0..1" -- "1..1" game_Recompense : connaissanceObtenue60
-game_Connaissance "0..9999" -- "1..1" game_Explorateur : connaissances14
-game_Chemin "1..1" *-- "0..9999" game_PackObjets : consommations42
-game_Action "1..1" *-- "0..9999" game_PackObjets : consommations77
-game_Description "0..1" --* "1..1" game_GameElement : description12
-game_Action "1..1" *-- "0..1" game_Description : description69
-game_Choix "1..1" *-- "0..1" game_Description : description97
-game_EntiteLieu "1..1" *-- "0..1" game_Personne : entite8
-game_EntiteLieu "0..9999" --* "1..1" game_Lieu : entiteLieu23
-game_Explorateur "0..1" --* "1..1" game_Game : explorateur0
-game_Game "1..1" *-- "0..9999" game_GameElement : gameElements6
-game_Interaction "0..1" --* "1..1" game_Personne : interaction19
-game_Explorateur "1..1" *-- "0..9999" game_PackObjets : inventaire17
-game_Chemin "1..1" -- "0..1" game_Lieu : lieu131
-game_Chemin "1..1" -- "0..1" game_Lieu : lieu234
-game_Game "1..1" -- "0..1" game_Lieu : lieuDepart1
-game_Game "1..1" -- "0..9999" game_Lieu : lieuxArrivee3
-game_Action "0..9999" --* "1..1" game_Choix : listeActions103
-game_Choix "0..9999" --* "1..1" game_Interaction : listeChoix94
-game_Choix "0..9999" -- "1..1" game_Interaction : listeChoixDebut85
-game_Condition "0..9999" --* "1..1" game_Interaction : listeConditionsDebut88
-game_Conjonction "1..1" *-- "0..9999" game_Litteral : litteraux47
-game_Objet "0..1" -- "1..1" game_PackObjets : objet26
-game_Litteral "1..1" -- "0..1" game_Objet : objet49
-game_PackObjets "0..1" --* "1..1" game_Recompense : objetsObtenus63
-game_Chemin "1..1" *-- "0..1" game_Condition : ouvert37
-game_Chemin "1..1" *-- "0..9999" game_Recompense : recompenses40
-game_Action "1..1" *-- "0..9999" game_Recompense : recompenses74
-game_Interaction "1..1" *-- "0..9999" game_Recompense : recompenses82
-game_Choix "0..1" -- "1..1" game_Interaction : seulChoixDebut91
-game_Description "1..1" *-- "0..9999" game_Texte : textes55
+game_Chemin "game_Lieu22 0..9999" -- "game_Chemin 1..1" game_Lieu : cheminsPossibles21
+game_Choix "game_Condition102 1..1" *-- "game_Choix101 0..1" game_Condition : choixFin100
+game_Action "game_Choix 1..1" -- "game_Action81 0..1" game_Choix : choixSuivant80
+game_Condition "game_Texte58 0..1" --* "game_Condition59 1..1" game_Texte : condition57
+game_Action "game_Condition73 1..1" *-- "game_Action72 0..1" game_Condition : condition71
+game_Condition "game_Recompense67 0..1" --* "game_Condition68 1..1" game_Recompense : conditionObtention66
+game_Chemin "game_Condition30 1..1" *-- "game_Chemin29 0..1" game_Condition : conditionVisibilite28
+game_Condition "game_EntiteLieu10 0..1" --* "game_Condition 1..1" game_EntiteLieu : conditionVisibilite9
+game_Condition "game_Conjonction 1..1" *-- "game_Condition46 0..9999" game_Conjonction : conjonctions45
+game_Connaissance "game_ConnaissanceLieu 0..1" -- "game_Connaissance 1..1" game_ConnaissanceLieu : connaissance11
+game_Connaissance "game_Litteral53 0..1" -- "game_Connaissance54 1..1" game_Litteral : connaissance52
+game_Connaissance "game_Recompense61 0..1" -- "game_Connaissance62 1..1" game_Recompense : connaissanceObtenue60
+game_Connaissance "game_Explorateur15 0..9999" -- "game_Connaissance16 1..1" game_Explorateur : connaissances14
+game_Chemin "game_PackObjets44 1..1" *-- "game_Chemin43 0..9999" game_PackObjets : consommations42
+game_Action "game_PackObjets79 1..1" *-- "game_Action78 0..9999" game_PackObjets : consommations77
+game_Description "game_GameElement13 0..1" --* "game_Description 1..1" game_GameElement : description12
+game_Action "game_Description70 1..1" *-- "game_Action 0..1" game_Description : description69
+game_Choix "game_Description99 1..1" *-- "game_Choix98 0..1" game_Description : description97
+game_EntiteLieu "game_Personne 1..1" *-- "game_EntiteLieu 0..1" game_Personne : entite8
+game_EntiteLieu "game_Lieu24 0..9999" --* "game_EntiteLieu25 1..1" game_Lieu : entiteLieu23
+game_Explorateur "game_Game 0..1" --* "game_Explorateur 1..1" game_Game : explorateur0
+game_Game "game_GameElement 1..1" *-- "game_Game7 0..9999" game_GameElement : gameElements6
+game_Interaction "game_Personne20 0..1" --* "game_Interaction 1..1" game_Personne : interaction19
+game_Explorateur "game_PackObjets 1..1" *-- "game_Explorateur18 0..9999" game_PackObjets : inventaire17
+game_Chemin "game_Lieu33 1..1" -- "game_Chemin32 0..1" game_Lieu : lieu131
+game_Chemin "game_Lieu36 1..1" -- "game_Chemin35 0..1" game_Lieu : lieu234
+game_Game "game_Lieu 1..1" -- "game_Game2 0..1" game_Lieu : lieuDepart1
+game_Game "game_Lieu5 1..1" -- "game_Game4 0..9999" game_Lieu : lieuxArrivee3
+game_Action "game_Choix104 0..9999" --* "game_Action105 1..1" game_Choix : listeActions103
+game_Choix "game_Interaction95 0..9999" --* "game_Choix96 1..1" game_Interaction : listeChoix94
+game_Choix "game_Interaction86 0..9999" -- "game_Choix87 1..1" game_Interaction : listeChoixDebut85
+game_Condition "game_Interaction89 0..9999" --* "game_Condition90 1..1" game_Interaction : listeConditionsDebut88
+game_Conjonction "game_Litteral 1..1" *-- "game_Conjonction48 0..9999" game_Litteral : litteraux47
+game_Objet "game_PackObjets27 0..1" -- "game_Objet 1..1" game_PackObjets : objet26
+game_Litteral "game_Objet51 1..1" -- "game_Litteral50 0..1" game_Objet : objet49
+game_PackObjets "game_Recompense64 0..1" --* "game_PackObjets65 1..1" game_Recompense : objetsObtenus63
+game_Chemin "game_Condition39 1..1" *-- "game_Chemin38 0..1" game_Condition : ouvert37
+game_Chemin "game_Recompense 1..1" *-- "game_Chemin41 0..9999" game_Recompense : recompenses40
+game_Action "game_Recompense76 1..1" *-- "game_Action75 0..9999" game_Recompense : recompenses74
+game_Interaction "game_Recompense84 1..1" *-- "game_Interaction83 0..9999" game_Recompense : recompenses82
+game_Choix "game_Interaction92 0..1" -- "game_Choix93 1..1" game_Interaction : seulChoixDebut91
+game_Description "game_Texte 1..1" *-- "game_Description56 0..9999" game_Texte : textes55
+note top of game_Choix
+  constraint nomNonNul5 (OCL): context Choix inv: self.name <> null
+end note
+note top of game_ConnaissanceLieu
+  constraint nomNonNul4 (OCL): context Connaissance inv: self.name <> null
+end note
+note top of game_Explorateur
+  constraint inventaireNonSurcharge (OCL): context Explorateur inv: let tailleTotale =(self.inventaire -> iterate(p: PackObjets; sum: Integer = 0 | sum + (p.objet.taille)*p.quantite))in tailleTotale <= self.tailleInventaire
+end note
+note top of game_Explorateur
+  constraint nomNonNul1 (OCL): context Explorateur inv: self.name <> null
+end note
+note top of game_Game
+  constraint nomNonNul (OCL): context Game inv: self.name <> null
+end note
+note top of game_Lieu
+  constraint nomNonNul2 (OCL): context Lieu inv: self.name <> null
+end note
+note top of game_Objet
+  constraint nomNonNul3 (OCL): context Objet inv: self.name <> null
+end note
 @enduml

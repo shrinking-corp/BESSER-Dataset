@@ -1,4 +1,8 @@
 @startuml
+' model: dXP
+' project: sampleModel
+' owner: User
+' description: New project
 class Base {
 }
 class Org {
@@ -70,16 +74,16 @@ Base <|-- dXP_Enrolment
 Base <|-- dXP_Org
 Base <|-- dXP_User
 Org <|-- dXP_OrgUnit
-dXP_AcademicSession "0..9999" --* "1..1" dXP_OneRoster : academicsession0
-dXP_Class "0..1" -- "1..1" dXP_Enrolment : class_19
-dXP_Class "0..9999" --* "1..1" dXP_Course : class_5
-dXP_AcademicSession "1..1" *-- "0..9999" dXP_Course : course7
-dXP_Enrolment "0..9999" --* "1..1" dXP_OneRoster : enrolment3
-dXP_Base "1..1" *-- "0..9999" dXP_Metadata : metadata6
-dXP_OneRoster "1..1" *-- "0..9999" dXP_Org : org1
-dXP_Org "1..1" *-- "0..9999" dXP_OrgUnit : orgunit14
-dXP_Enrolment "1..1" -- "0..1" dXP_OrgUnit : orgunit22
-dXP_AcademicSession "1..1" *-- "0..9999" dXP_User : user10
-dXP_Enrolment "1..1" -- "0..1" dXP_User : user16
-dXP_User "1..1" *-- "0..9999" dXP_UserId : userid12
+dXP_AcademicSession "dXP_OneRoster 0..9999" --* "dXP_AcademicSession 1..1" dXP_OneRoster : academicsession0
+dXP_Class "dXP_Enrolment20 0..1" -- "dXP_Class21 1..1" dXP_Enrolment : class_19
+dXP_Class "dXP_Course 0..9999" --* "dXP_Class 1..1" dXP_Course : class_5
+dXP_AcademicSession "dXP_Course9 1..1" *-- "dXP_AcademicSession8 0..9999" dXP_Course : course7
+dXP_Enrolment "dXP_OneRoster4 0..9999" --* "dXP_Enrolment 1..1" dXP_OneRoster : enrolment3
+dXP_Base "dXP_Metadata 1..1" *-- "dXP_Base 0..9999" dXP_Metadata : metadata6
+dXP_OneRoster "dXP_Org 1..1" *-- "dXP_OneRoster2 0..9999" dXP_Org : org1
+dXP_Org "dXP_OrgUnit 1..1" *-- "dXP_Org15 0..9999" dXP_OrgUnit : orgunit14
+dXP_Enrolment "dXP_OrgUnit24 1..1" -- "dXP_Enrolment23 0..1" dXP_OrgUnit : orgunit22
+dXP_AcademicSession "dXP_User 1..1" *-- "dXP_AcademicSession11 0..9999" dXP_User : user10
+dXP_Enrolment "dXP_User18 1..1" -- "dXP_Enrolment17 0..1" dXP_User : user16
+dXP_User "dXP_UserId 1..1" *-- "dXP_User13 0..9999" dXP_UserId : userid12
 @enduml

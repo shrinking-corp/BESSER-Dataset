@@ -1,4 +1,8 @@
 @startuml
+' model: cascadenotall
+' project: sampleModel
+' owner: User
+' description: New project
 enum BookCategory {
   Biography
   Mystery
@@ -15,8 +19,8 @@ class cascadenotall_Library {
 class cascadenotall_Writer {
   + name : str
 }
-cascadenotall_Book "1..1" -- "1..1" cascadenotall_Writer : author0
-cascadenotall_Book "0..9999" --* "1..1" cascadenotall_Library : books2
-cascadenotall_Book "0..9999" -- "1..1" cascadenotall_Writer : books4
-cascadenotall_Library "1..1" *-- "0..9999" cascadenotall_Writer : writers1
+cascadenotall_Book "Writer 1..1" -- "books 1..1" cascadenotall_Writer : author0
+cascadenotall_Book "cascadenotall_Library3 0..9999" --* "cascadenotall_Book 1..1" cascadenotall_Library : books2
+cascadenotall_Book "author 0..9999" -- "Book 1..1" cascadenotall_Writer : books4
+cascadenotall_Library "cascadenotall_Writer 1..1" *-- "cascadenotall_Library 0..9999" cascadenotall_Writer : writers1
 @enduml

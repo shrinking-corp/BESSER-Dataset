@@ -1,4 +1,8 @@
 @startuml
+' model: HSM
+' project: sampleModel
+' owner: User
+' description: New project
 class HSM_AbstractState {
 }
 abstract class HSM_HSM_AbstractState {
@@ -19,12 +23,12 @@ class HSM_HSM_Transition {
 HSM_AbstractState <|-- HSM_HSM_CompositeState
 HSM_AbstractState <|-- HSM_HSM_InitialState
 HSM_AbstractState <|-- HSM_HSM_RegularState
-HSM_HSM_AbstractState "1..1" -- "0..1" HSM_HSM_CompositeState : compositeState10
-HSM_HSM_AbstractState "1..1" -- "1..1" HSM_HSM_Transition : source4
-HSM_HSM_StateMachine "0..1" -- "1..1" HSM_HSM_Transition : stateMachine3
-HSM_HSM_AbstractState "1..1" -- "0..1" HSM_HSM_StateMachine : stateMachine8
-HSM_HSM_AbstractState "0..9999" --* "1..1" HSM_HSM_StateMachine : states1
-HSM_HSM_AbstractState "0..9999" -- "1..1" HSM_HSM_CompositeState : states12
-HSM_HSM_AbstractState "1..1" -- "1..1" HSM_HSM_Transition : target5
-HSM_HSM_StateMachine "1..1" *-- "0..9999" HSM_HSM_Transition : transitions0
+HSM_HSM_AbstractState "HSM_CompositeState 1..1" -- "states11 0..1" HSM_HSM_CompositeState : compositeState10
+HSM_HSM_AbstractState "HSM_HSM_Transition 1..1" -- "HSM_HSM_AbstractState 1..1" HSM_HSM_Transition : source4
+HSM_HSM_StateMachine "transitions 0..1" -- "HSM_StateMachine 1..1" HSM_HSM_Transition : stateMachine3
+HSM_HSM_AbstractState "HSM_StateMachine9 1..1" -- "states 0..1" HSM_HSM_StateMachine : stateMachine8
+HSM_HSM_AbstractState "stateMachine2 0..9999" --* "HSM_AbstractState 1..1" HSM_HSM_StateMachine : states1
+HSM_HSM_AbstractState "compositeState 0..9999" -- "HSM_AbstractState13 1..1" HSM_HSM_CompositeState : states12
+HSM_HSM_AbstractState "HSM_HSM_Transition6 1..1" -- "HSM_HSM_AbstractState7 1..1" HSM_HSM_Transition : target5
+HSM_HSM_StateMachine "HSM_Transition 1..1" *-- "stateMachine 0..9999" HSM_HSM_Transition : transitions0
 @enduml

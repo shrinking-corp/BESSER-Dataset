@@ -1,4 +1,8 @@
 @startuml
+' model: _lEv2gAbyEeqFfO0RhT_ZfA
+' project: sampleModel
+' owner: User
+' description: New project
 class Bill {
   + amount : float
   + billno : str
@@ -50,14 +54,14 @@ class nurse {
   + id : int
   + name : str
 }
-Bill "0..1" -- "0..1" medicine : Bill_medicine
-Doctor "1..9999" -- "1..9999" Patient : Doctor_Patient
-Doctor "0..1" -- "0..1" appointment : Doctor_appointment
-Doctor "0..1" -- "0..1" medicine : Doctor_medicine
-Bill "1..1" -- "1..1" Patient : Patient_Bill
-Patient "0..1" -- "0..1" Room : Patient_Room
-Patient "0..1" -- "0..1" appointment : Patient_appointment
-Bill "0..9999" -- "1..1" Receptionist : manages
-Room "0..1" -- "0..1" nurse : nurse_Room
-Patient "1..1" -- "1..1" Receptionist : receptions
+Bill "bill15 0..1" -- "medicine14 0..1" medicine : Bill_medicine
+Doctor "doctors1 1..9999" -- "patients0 1..9999" Patient : Doctor_Patient
+Doctor "doctor9 0..1" -- "appointment8 0..1" appointment : Doctor_appointment
+Doctor "doctor17 0..1" -- "medicine16 0..1" medicine : Doctor_medicine
+Bill "bill2 1..1" -- "pat3 1..1" Patient : Patient_Bill
+Patient "patient13 0..1" -- "room12 0..1" Room : Patient_Room
+Patient "patient11 0..1" -- "appointment10 0..1" appointment : Patient_appointment
+Bill "bill6 0..9999" -- "receptionist7 1..1" Receptionist : manages
+Room "room18 0..1" -- "nurse19 0..1" nurse : nurse_Room
+Patient "p5 1..1" -- "receptionist4 1..1" Receptionist : receptions
 @enduml

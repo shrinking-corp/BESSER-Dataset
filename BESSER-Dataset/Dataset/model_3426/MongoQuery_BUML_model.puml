@@ -1,4 +1,8 @@
 @startuml
+' model: mongoQuery
+' project: sampleModel
+' owner: User
+' description: New project
 class Query {
 }
 class mongoQuery_Array {
@@ -31,13 +35,13 @@ class mongoQuery_Selection {
 class mongoQuery_Selector {
 }
 Query <|-- mongoQuery_QueryObject
-mongoQuery_Array "0..1" --* "1..1" mongoQuery_Query : arrayValue10
-mongoQuery_JsonDate "0..1" --* "1..1" mongoQuery_Query : dateValue8
-mongoQuery_FieldSelection "0..9999" --* "1..1" mongoQuery_Selection : fields3
-mongoQuery_Query "0..9999" --* "1..1" mongoQuery_QueryObject : members18
-mongoQuery_Query "0..1" --* "1..1" mongoQuery_Query : objectValue13
-mongoQuery_Query "0..1" --* "1..1" mongoQuery_Selector : query0
-mongoQuery_Selection "0..1" --* "1..1" mongoQuery_Selector : selection1
-mongoQuery_Query "0..1" --* "1..1" mongoQuery_Query : value6
-mongoQuery_Array "1..1" *-- "0..9999" mongoQuery_Query : values15
+mongoQuery_Array "mongoQuery_Query11 0..1" --* "mongoQuery_Array 1..1" mongoQuery_Query : arrayValue10
+mongoQuery_JsonDate "mongoQuery_Query9 0..1" --* "mongoQuery_JsonDate 1..1" mongoQuery_Query : dateValue8
+mongoQuery_FieldSelection "mongoQuery_Selection4 0..9999" --* "mongoQuery_FieldSelection 1..1" mongoQuery_Selection : fields3
+mongoQuery_Query "mongoQuery_QueryObject 0..9999" --* "mongoQuery_Query19 1..1" mongoQuery_QueryObject : members18
+mongoQuery_Query "mongoQuery_Query12 0..1" --* "mongoQuery_Query14 1..1" mongoQuery_Query : objectValue13
+mongoQuery_Query "mongoQuery_Selector 0..1" --* "mongoQuery_Query 1..1" mongoQuery_Selector : query0
+mongoQuery_Selection "mongoQuery_Selector2 0..1" --* "mongoQuery_Selection 1..1" mongoQuery_Selector : selection1
+mongoQuery_Query "mongoQuery_Query5 0..1" --* "mongoQuery_Query7 1..1" mongoQuery_Query : value6
+mongoQuery_Array "mongoQuery_Query17 1..1" *-- "mongoQuery_Array16 0..9999" mongoQuery_Query : values15
 @enduml

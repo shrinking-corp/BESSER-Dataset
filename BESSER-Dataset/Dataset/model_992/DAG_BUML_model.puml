@@ -1,4 +1,8 @@
 @startuml
+' model: DAG
+' project: sampleModel
+' owner: User
+' description: New project
 class DAG_Edge {
   + ID : int
   + name : str
@@ -13,12 +17,12 @@ class DAG_Node {
 }
 class DAG_Revision {
 }
-DAG_Node "1..1" -- "0..9999" DAG_Node : children4
-DAG_Edge "1..1" -- "0..1" DAG_Node : from_11
-DAG_Edge "0..9999" -- "1..1" DAG_Node : incoming7
-DAG_Graph "1..1" *-- "0..9999" DAG_Node : nodes0
-DAG_Edge "0..9999" -- "1..1" DAG_Node : outgoing6
-DAG_Node "1..1" -- "0..9999" DAG_Node : parents2
-DAG_Node "1..1" -- "0..1" DAG_Revision : revision9
-DAG_Edge "1..1" -- "0..1" DAG_Node : to13
+DAG_Node "Node5 1..1" -- "parents 0..9999" DAG_Node : children4
+DAG_Edge "Node12 1..1" -- "outgoing 0..1" DAG_Node : from_11
+DAG_Edge "to 0..9999" -- "Edge8 1..1" DAG_Node : incoming7
+DAG_Graph "DAG_Node 1..1" *-- "DAG_Graph 0..9999" DAG_Node : nodes0
+DAG_Edge "from_ 0..9999" -- "Edge 1..1" DAG_Node : outgoing6
+DAG_Node "Node 1..1" -- "children 0..9999" DAG_Node : parents2
+DAG_Node "DAG_Revision 1..1" -- "DAG_Node10 0..1" DAG_Revision : revision9
+DAG_Edge "Node14 1..1" -- "incoming 0..1" DAG_Node : to13
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: library
+' project: sampleModel
+' owner: User
+' description: New project
 class Borrowable {
 }
 class library_Author {
@@ -23,12 +27,12 @@ class library_Magazine {
 Borrowable <|-- library_Book
 Borrowable <|-- library_CD
 Borrowable <|-- library_Magazine
-library_Author "0..9999" -- "1..1" library_Book : authors11
-library_Author "0..9999" --* "1..1" library_Library : authors2
-library_Borrowable "0..9999" --* "1..1" library_Library : borrowables0
-library_Borrowable "0..9999" -- "1..1" library_Customer : borrowed4
-library_Customer "0..9999" --* "1..1" library_Library : customers1
-library_Borrowable "1..1" -- "0..1" library_Library : library6
-library_Author "1..1" -- "0..1" library_Library : library8
-library_Author "1..1" -- "0..9999" library_Book : writtenBooks7
+library_Author "writtenBooks 0..9999" -- "Author12 1..1" library_Book : authors11
+library_Author "library3 0..9999" --* "Author 1..1" library_Library : authors2
+library_Borrowable "library 0..9999" --* "Borrowable 1..1" library_Library : borrowables0
+library_Borrowable "library_Customer5 0..9999" -- "library_Borrowable 1..1" library_Customer : borrowed4
+library_Customer "library_Library 0..9999" --* "library_Customer 1..1" library_Library : customers1
+library_Borrowable "Library 1..1" -- "borrowables 0..1" library_Library : library6
+library_Author "Library10 1..1" -- "authors9 0..1" library_Library : library8
+library_Author "Book 1..1" -- "authors 0..9999" library_Book : writtenBooks7
 @enduml

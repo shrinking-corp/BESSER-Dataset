@@ -308,28 +308,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=CarRental2_Car_strategy)
-@settings(max_examples=30)
-def test_hyp_carrental2_car_description_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.description()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.description).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'description' in CarRental2_Car is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'description' in CarRental2_Car did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'description' in CarRental2_Car is not implemented or raised an error")
 
 
 
@@ -346,28 +324,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=CarRental2_Branch_strategy)
-@settings(max_examples=30)
-def test_hyp_carrental2_branch_rentalsfordate_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.rentalsForDate()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.rentalsForDate).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'rentalsForDate' in CarRental2_Branch is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'rentalsForDate' in CarRental2_Branch did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'rentalsForDate' in CarRental2_Branch is not implemented or raised an error")
 
 
 
@@ -402,28 +358,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=CarRental2_Employee_strategy)
-@settings(max_examples=30)
-def test_hyp_carrental2_employee_raisesalary_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.raiseSalary()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.raiseSalary).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'raiseSalary' in CarRental2_Employee is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'raiseSalary' in CarRental2_Employee did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'raiseSalary' in CarRental2_Employee is not implemented or raised an error")
 
 
 
@@ -473,28 +407,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=CarRental2_Person_strategy)
-@settings(max_examples=30)
-def test_hyp_carrental2_person_fullname_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.fullname()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.fullname).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'fullname' in CarRental2_Person is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'fullname' in CarRental2_Person did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'fullname' in CarRental2_Person is not implemented or raised an error")
 
 
 # ----- SECTION B: test_structural_full.py (deterministic-first suite) -----
@@ -1580,7 +1492,6 @@ from python_code import CarRental2_Check
 
 def test_CarRental2_Check___init__():
     assert CarRental2_Check.__init__(CarRental2_Check(''), '') == None
-
 from python_code import CarRental2_Person
 
 def test_CarRental2_Person___init__():
@@ -1588,7 +1499,6 @@ def test_CarRental2_Person___init__():
 
 def test_CarRental2_Person_fullname():
     assert CarRental2_Person.fullname(CarRental2_Person('', '\x00', 0, False)) == None
-
 from python_code import CarRental2_ServiceDepot
 
 def test_CarRental2_ServiceDepot___init__():

@@ -1,4 +1,8 @@
 @startuml
+' model: uppaallite
+' project: sampleModel
+' owner: User
+' description: New project
 class uppaallite_LocationType {
   + committed : bool
   + cost : str
@@ -24,11 +28,11 @@ class uppaallite_UppaalDiagram {
   + declaration : str
   + resourceWeightDeclaration : str
 }
-uppaallite_TemplateType "0..9999" --* "1..1" uppaallite_UppaalDiagram : Template0
-uppaallite_LocationType "1..1" -- "1..1" uppaallite_TemplateType : container4
-uppaallite_TemplateType "1..1" -- "1..1" uppaallite_TransitionType : container9
-uppaallite_LocationType "0..9999" --* "1..1" uppaallite_TemplateType : location1
-uppaallite_LocationType "1..1" -- "1..1" uppaallite_TransitionType : source5
-uppaallite_LocationType "1..1" -- "1..1" uppaallite_TransitionType : target6
-uppaallite_TemplateType "1..1" *-- "0..9999" uppaallite_TransitionType : transition2
+uppaallite_TemplateType "uppaallite_UppaalDiagram 0..9999" --* "uppaallite_TemplateType 1..1" uppaallite_UppaalDiagram : Template0
+uppaallite_LocationType "TemplateType 1..1" -- "location 1..1" uppaallite_TemplateType : container4
+uppaallite_TemplateType "transition 1..1" -- "TemplateType10 1..1" uppaallite_TransitionType : container9
+uppaallite_LocationType "container 0..9999" --* "LocationType 1..1" uppaallite_TemplateType : location1
+uppaallite_LocationType "uppaallite_TransitionType 1..1" -- "uppaallite_LocationType 1..1" uppaallite_TransitionType : source5
+uppaallite_LocationType "uppaallite_TransitionType7 1..1" -- "uppaallite_LocationType8 1..1" uppaallite_TransitionType : target6
+uppaallite_TemplateType "TransitionType 1..1" *-- "container3 0..9999" uppaallite_TransitionType : transition2
 @enduml

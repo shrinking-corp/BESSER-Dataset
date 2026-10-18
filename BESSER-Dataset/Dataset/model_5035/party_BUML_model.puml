@@ -1,4 +1,8 @@
 @startuml
+' model: party
+' project: sampleModel
+' owner: User
+' description: New project
 class Address {
 }
 class ContactInfo {
@@ -93,16 +97,16 @@ Tagged <|-- party_DateEffectiveObject
 Tagged <|-- party_Party
 URL <|-- party_EMail
 URL <|-- party_Web
-party_Organization "1..1" *-- "0..9999" party_Party : children5
-party_ContactInfo "0..9999" --* "1..1" party_Party : contactInfo0
-party_Organization "1..1" -- "0..9999" party_Party : externalChildren7
-party_Identity "0..9999" --* "1..1" party_Party : identity1
-party_MatrixRelationship "0..9999" --* "1..1" party_Organization : matrixedChildren9
-party_CommonObject "0..1" -- "1..1" party_Role : owner13
-party_ContactInfo "1..1" -- "1..1" party_Party : owner4
-party_Organization "0..1" -- "1..1" party_Party : parent2
-party_Party "0..9999" -- "1..1" party_Role : party11
-party_CommonObject "1..1" *-- "0..9999" party_Role : roles14
-party_Tag "0..9999" --* "1..1" party_Tagged : tags3
-party_MatrixRelationship "1..1" -- "1..1" party_Party : target16
+party_Organization "Party6 1..1" *-- "parent 0..9999" party_Party : children5
+party_ContactInfo "owner 0..9999" --* "ContactInfo 1..1" party_Party : contactInfo0
+party_Organization "party_Party8 1..1" -- "party_Organization 0..9999" party_Party : externalChildren7
+party_Identity "party_Party 0..9999" --* "party_Identity 1..1" party_Party : identity1
+party_MatrixRelationship "party_Organization10 0..9999" --* "party_MatrixRelationship 1..1" party_Organization : matrixedChildren9
+party_CommonObject "roles 0..1" -- "CommonObject 1..1" party_Role : owner13
+party_ContactInfo "Party 1..1" -- "contactInfo 1..1" party_Party : owner4
+party_Organization "children 0..1" -- "Organization 1..1" party_Party : parent2
+party_Party "party_Role 0..9999" -- "party_Party12 1..1" party_Role : party11
+party_CommonObject "Role 1..1" *-- "owner15 0..9999" party_Role : roles14
+party_Tag "party_Tagged 0..9999" --* "party_Tag 1..1" party_Tagged : tags3
+party_MatrixRelationship "party_Party18 1..1" -- "party_MatrixRelationship17 1..1" party_Party : target16
 @enduml

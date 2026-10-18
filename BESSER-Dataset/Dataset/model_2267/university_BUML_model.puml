@@ -1,4 +1,8 @@
 @startuml
+' model: university
+' project: sampleModel
+' owner: User
+' description: New project
 class university_Certificate {
   + note : int
 }
@@ -19,14 +23,14 @@ class university_University {
   + name : str
   + numberOfStudents : int
 }
-university_Certificate "0..9999" --* "1..1" university_University : certificates8
-university_Certificate "1..1" -- "0..1" university_Course : course13
-university_Certificate "0..9999" -- "1..1" university_Course : courseCertificates1
-university_Course "0..9999" -- "1..1" university_Professor : courses2
-university_Course "0..9999" --* "1..1" university_University : courses4
-university_Course "1..1" -- "0..1" university_Professor : professor0
-university_Professor "0..9999" --* "1..1" university_University : professors3
-university_Certificate "1..1" -- "0..1" university_Student : student12
-university_Certificate "0..9999" -- "1..1" university_Student : studentCertificates10
-university_Student "0..9999" --* "1..1" university_University : students6
+university_Certificate "university_University9 0..9999" --* "university_Certificate 1..1" university_University : certificates8
+university_Certificate "Course14 1..1" -- "courseCertificates 0..1" university_Course : course13
+university_Certificate "course 0..9999" -- "Certificate 1..1" university_Course : courseCertificates1
+university_Course "professor 0..9999" -- "Course 1..1" university_Professor : courses2
+university_Course "university_University5 0..9999" --* "university_Course 1..1" university_University : courses4
+university_Course "Professor 1..1" -- "courses 0..1" university_Professor : professor0
+university_Professor "university_University 0..9999" --* "university_Professor 1..1" university_University : professors3
+university_Certificate "Student 1..1" -- "studentCertificates 0..1" university_Student : student12
+university_Certificate "student 0..9999" -- "Certificate11 1..1" university_Student : studentCertificates10
+university_Student "university_University7 0..9999" --* "university_Student 1..1" university_University : students6
 @enduml

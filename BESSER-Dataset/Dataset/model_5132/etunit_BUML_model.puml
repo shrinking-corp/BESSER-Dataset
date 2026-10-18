@@ -1,4 +1,8 @@
 @startuml
+' model: Etunit
+' project: sampleModel
+' owner: User
+' description: New project
 class Etunit_DocumentRoot {
   + mixed : str
 }
@@ -35,12 +39,12 @@ class Etunit_TestsuitesType {
 class Testsuite {
 }
 Testsuite <|-- Etunit_TestsuiteType
-Etunit_ErrorType "0..1" --* "1..1" Etunit_TestcaseType : error8
-Etunit_FailureType "0..1" --* "1..1" Etunit_TestcaseType : failure9
-Etunit_TestcaseType "0..9999" --* "1..1" Etunit_Testsuite : testcase11
-Etunit_TestsuiteType "0..9999" --* "1..1" Etunit_TestsuitesType : testsuite14
-Etunit_DocumentRoot "1..1" *-- "0..9999" Etunit_Testsuite : testsuite4
-Etunit_DocumentRoot "1..1" *-- "0..9999" Etunit_TestsuitesType : testsuites6
-Etunit_DocumentRoot "1..1" *-- "0..9999" Etunit_EStringToStringMapEntry : xMLNSPrefixMap0
-Etunit_DocumentRoot "1..1" *-- "0..9999" Etunit_EStringToStringMapEntry : xSISchemaLocation1
+Etunit_ErrorType "Etunit_TestcaseType 0..1" --* "Etunit_ErrorType 1..1" Etunit_TestcaseType : error8
+Etunit_FailureType "Etunit_TestcaseType10 0..1" --* "Etunit_FailureType 1..1" Etunit_TestcaseType : failure9
+Etunit_TestcaseType "Etunit_Testsuite12 0..9999" --* "Etunit_TestcaseType13 1..1" Etunit_Testsuite : testcase11
+Etunit_TestsuiteType "Etunit_TestsuitesType15 0..9999" --* "Etunit_TestsuiteType 1..1" Etunit_TestsuitesType : testsuite14
+Etunit_DocumentRoot "Etunit_Testsuite 1..1" *-- "Etunit_DocumentRoot5 0..9999" Etunit_Testsuite : testsuite4
+Etunit_DocumentRoot "Etunit_TestsuitesType 1..1" *-- "Etunit_DocumentRoot7 0..9999" Etunit_TestsuitesType : testsuites6
+Etunit_DocumentRoot "Etunit_EStringToStringMapEntry 1..1" *-- "Etunit_DocumentRoot 0..9999" Etunit_EStringToStringMapEntry : xMLNSPrefixMap0
+Etunit_DocumentRoot "Etunit_EStringToStringMapEntry3 1..1" *-- "Etunit_DocumentRoot2 0..9999" Etunit_EStringToStringMapEntry : xSISchemaLocation1
 @enduml

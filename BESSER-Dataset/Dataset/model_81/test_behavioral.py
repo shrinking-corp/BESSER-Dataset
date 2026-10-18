@@ -601,9 +601,9 @@ def test_assoc_comments40_stub_double():
     partner = java__ASTNode()
     setattr(partner, 'java__ASTNode', None)
     _safe_set(owner, 'java__Comment41', partner)
-    assert getattr(partner, 'java__ASTNode') == owner
+    assert owner in getattr(partner, 'java__ASTNode')
     _safe_set(owner, 'java__Comment41', None)
-    assert getattr(partner, 'java__ASTNode') is None
+    assert owner not in getattr(partner, 'java__ASTNode')
 
 
 def test_assoc_commentsAfterBody16_stub_double():
@@ -616,9 +616,9 @@ def test_assoc_commentsAfterBody16_stub_double():
     partner = java__AbstractTypeDeclaration()
     setattr(partner, 'java__AbstractTypeDeclaration17', None)
     _safe_set(owner, 'java__Comment18', partner)
-    assert getattr(partner, 'java__AbstractTypeDeclaration17') == owner
+    assert owner in getattr(partner, 'java__AbstractTypeDeclaration17')
     _safe_set(owner, 'java__Comment18', None)
-    assert getattr(partner, 'java__AbstractTypeDeclaration17') is None
+    assert owner not in getattr(partner, 'java__AbstractTypeDeclaration17')
 
 
 def test_assoc_commentsBeforeBody15_stub_double():
@@ -631,9 +631,9 @@ def test_assoc_commentsBeforeBody15_stub_double():
     partner = java__AbstractTypeDeclaration()
     setattr(partner, 'java__AbstractTypeDeclaration', None)
     _safe_set(owner, 'java__Comment', partner)
-    assert getattr(partner, 'java__AbstractTypeDeclaration') == owner
+    assert owner in getattr(partner, 'java__AbstractTypeDeclaration')
     _safe_set(owner, 'java__Comment', None)
-    assert getattr(partner, 'java__AbstractTypeDeclaration') is None
+    assert owner not in getattr(partner, 'java__AbstractTypeDeclaration')
 
 
 def test_assoc_elementType78_stub_double():
@@ -676,9 +676,9 @@ def test_assoc_entryAttributes208_stub_double():
     partner = java__Manifest()
     setattr(partner, 'java__Manifest209', None)
     _safe_set(owner, 'java__ManifestEntry', partner)
-    assert getattr(partner, 'java__Manifest209') == owner
+    assert owner in getattr(partner, 'java__Manifest209')
     _safe_set(owner, 'java__ManifestEntry', None)
-    assert getattr(partner, 'java__Manifest209') is None
+    assert owner not in getattr(partner, 'java__Manifest209')
 
 
 def test_assoc_exception99_stub_double():
@@ -796,9 +796,9 @@ def test_assoc_mainAttributes206_stub_double():
     partner = java__Manifest()
     setattr(partner, 'java__Manifest207', None)
     _safe_set(owner, 'java__ManifestAttribute', partner)
-    assert getattr(partner, 'java__Manifest207') == owner
+    assert owner in getattr(partner, 'java__Manifest207')
     _safe_set(owner, 'java__ManifestAttribute', None)
-    assert getattr(partner, 'java__Manifest207') is None
+    assert owner not in getattr(partner, 'java__Manifest207')
 
 
 def test_assoc_manifest33_stub_double():
@@ -1036,9 +1036,9 @@ def test_assoc_parameters1_stub_double():
     partner = java__AbstractMethodDeclaration()
     setattr(partner, 'methodDeclaration', None)
     _safe_set(owner, 'SingleVariableDeclaration', partner)
-    assert getattr(partner, 'methodDeclaration') == owner
+    assert owner in getattr(partner, 'methodDeclaration')
     _safe_set(owner, 'SingleVariableDeclaration', None)
-    assert getattr(partner, 'methodDeclaration') is None
+    assert owner not in getattr(partner, 'methodDeclaration')
 
 
 def test_assoc_parameters230_stub_double():
@@ -1051,9 +1051,9 @@ def test_assoc_parameters230_stub_double():
     partner = java__MethodRef()
     setattr(partner, 'java__MethodRef231', None)
     _safe_set(owner, 'java__MethodRefParameter', partner)
-    assert getattr(partner, 'java__MethodRef231') == owner
+    assert owner in getattr(partner, 'java__MethodRef231')
     _safe_set(owner, 'java__MethodRefParameter', None)
-    assert getattr(partner, 'java__MethodRef231') is None
+    assert owner not in getattr(partner, 'java__MethodRef231')
 
 
 def test_assoc_returnType217_stub_double():
@@ -1111,9 +1111,9 @@ def test_assoc_tags200_stub_double():
     partner = java__Javadoc()
     setattr(partner, 'java__Javadoc', None)
     _safe_set(owner, 'java__TagElement', partner)
-    assert getattr(partner, 'java__Javadoc') == owner
+    assert owner in getattr(partner, 'java__Javadoc')
     _safe_set(owner, 'java__TagElement', None)
-    assert getattr(partner, 'java__Javadoc') is None
+    assert owner not in getattr(partner, 'java__Javadoc')
 
 
 def test_assoc_type103_stub_double():

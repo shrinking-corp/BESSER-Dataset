@@ -1536,9 +1536,9 @@ def test_assoc_steps34_stub_double():
     partner = textualusecase_Statement()
     setattr(partner, 'statement', None)
     _safe_set(owner, 'Step35', partner)
-    assert getattr(partner, 'statement') == owner
+    assert owner in getattr(partner, 'statement')
     _safe_set(owner, 'Step35', None)
-    assert getattr(partner, 'statement') is None
+    assert owner not in getattr(partner, 'statement')
 
 
 def test_assoc_useCase0_stub_double():
@@ -1551,9 +1551,9 @@ def test_assoc_useCase0_stub_double():
     partner = textualusecase_UseCaseModel()
     setattr(partner, 'useCaseModel', None)
     _safe_set(owner, 'UseCase', partner)
-    assert getattr(partner, 'useCaseModel') == owner
+    assert owner in getattr(partner, 'useCaseModel')
     _safe_set(owner, 'UseCase', None)
-    assert getattr(partner, 'useCaseModel') is None
+    assert owner not in getattr(partner, 'useCaseModel')
 
 
 def test_assoc_useCase21_stub_double():
@@ -1596,9 +1596,9 @@ def test_assoc_useCase40_stub_double():
     partner = textualusecase_Actor()
     setattr(partner, 'actor41', None)
     _safe_set(owner, 'UseCase42', partner)
-    assert getattr(partner, 'actor41') == owner
+    assert owner in getattr(partner, 'actor41')
     _safe_set(owner, 'UseCase42', None)
-    assert getattr(partner, 'actor41') is None
+    assert owner not in getattr(partner, 'actor41')
 
 
 def test_assoc_useCase46_stub_double():

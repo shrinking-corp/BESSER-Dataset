@@ -1,4 +1,8 @@
 @startuml
+' model: py
+' project: sampleModel
+' owner: User
+' description: New project
 class py_Affect {
   + vars : str
 }
@@ -63,36 +67,36 @@ class py_Wh {
 }
 class py_While {
 }
-py_ExprAnd "1..1" *-- "0..1" py_ExprSimple : arg142
-py_ExprOr "1..1" *-- "0..1" py_ExprSimple : arg146
-py_Expr "0..1" --* "1..1" py_ExprNot : arg163
-py_ExprEq "1..1" *-- "0..1" py_ExprSimple : arg165
-py_Expr "0..1" --* "1..1" py_ExprAnd : arg243
-py_Expr "0..1" --* "1..1" py_ExprOr : arg248
-py_Expr "0..9999" --* "1..1" py_ExprSym : arg261
-py_Expr "0..1" --* "1..1" py_ExprEq : arg267
-py_Expr "0..9999" --* "1..1" py_ExprList : arg55
-py_Expr "0..1" --* "1..1" py_ExprHd : arg57
-py_Expr "0..1" --* "1..1" py_ExprTl : arg59
-py_Command "1..1" *-- "0..1" py_EObject : cmd13
-py_Commands "0..1" --* "1..1" py_Foreach : cmd31
-py_Commands "0..1" --* "1..1" py_For : cmds26
-py_Commands "0..1" --* "1..1" py_While : cmds36
-py_Command "0..9999" --* "1..1" py_Commands : commands11
-py_Commands "0..1" --* "1..1" py_If : commands116
-py_Commands "0..1" --* "1..1" py_If : commands219
-py_Commands "0..1" --* "1..1" py_Definition : commands7
-py_Definition "0..1" --* "1..1" py_FunctionP : definition3
-py_Program "0..1" --* "1..1" py_Wh : elements0
-py_Expr "0..1" --* "1..1" py_If : expr15
-py_Expr "0..1" --* "1..1" py_Foreach : expr229
-py_Expr "0..1" --* "1..1" py_For : expr24
-py_Expr "0..1" --* "1..1" py_While : expr34
-py_EObject "0..1" --* "1..1" py_Expr : expr39
-py_Affect "1..1" *-- "0..9999" py_Expr : exprs22
-py_FunctionP "0..9999" --* "1..1" py_Program : functions1
-py_Definition "1..1" *-- "0..1" py_Input : input5
-py_ExprCons "1..1" *-- "0..1" py_LExpr : lexpr51
-py_Expr "0..9999" --* "1..1" py_LExpr : lexpr52
-py_Definition "1..1" *-- "0..1" py_Output : output9
+py_ExprAnd "py_ExprSimple 1..1" *-- "py_ExprAnd 0..1" py_ExprSimple : arg142
+py_ExprOr "py_ExprSimple47 1..1" *-- "py_ExprOr 0..1" py_ExprSimple : arg146
+py_Expr "py_ExprNot 0..1" --* "py_Expr64 1..1" py_ExprNot : arg163
+py_ExprEq "py_ExprSimple66 1..1" *-- "py_ExprEq 0..1" py_ExprSimple : arg165
+py_Expr "py_ExprAnd44 0..1" --* "py_Expr45 1..1" py_ExprAnd : arg243
+py_Expr "py_ExprOr49 0..1" --* "py_Expr50 1..1" py_ExprOr : arg248
+py_Expr "py_ExprSym 0..9999" --* "py_Expr62 1..1" py_ExprSym : arg261
+py_Expr "py_ExprEq68 0..1" --* "py_Expr69 1..1" py_ExprEq : arg267
+py_Expr "py_ExprList 0..9999" --* "py_Expr56 1..1" py_ExprList : arg55
+py_Expr "py_ExprHd 0..1" --* "py_Expr58 1..1" py_ExprHd : arg57
+py_Expr "py_ExprTl 0..1" --* "py_Expr60 1..1" py_ExprTl : arg59
+py_Command "py_EObject 1..1" *-- "py_Command14 0..1" py_EObject : cmd13
+py_Commands "py_Foreach32 0..1" --* "py_Commands33 1..1" py_Foreach : cmd31
+py_Commands "py_For27 0..1" --* "py_Commands28 1..1" py_For : cmds26
+py_Commands "py_While37 0..1" --* "py_Commands38 1..1" py_While : cmds36
+py_Command "py_Commands12 0..9999" --* "py_Command 1..1" py_Commands : commands11
+py_Commands "py_If17 0..1" --* "py_Commands18 1..1" py_If : commands116
+py_Commands "py_If20 0..1" --* "py_Commands21 1..1" py_If : commands219
+py_Commands "py_Definition8 0..1" --* "py_Commands 1..1" py_Definition : commands7
+py_Definition "py_FunctionP4 0..1" --* "py_Definition 1..1" py_FunctionP : definition3
+py_Program "py_Wh 0..1" --* "py_Program 1..1" py_Wh : elements0
+py_Expr "py_If 0..1" --* "py_Expr 1..1" py_If : expr15
+py_Expr "py_Foreach 0..1" --* "py_Expr30 1..1" py_Foreach : expr229
+py_Expr "py_For 0..1" --* "py_Expr25 1..1" py_For : expr24
+py_Expr "py_While 0..1" --* "py_Expr35 1..1" py_While : expr34
+py_EObject "py_Expr40 0..1" --* "py_EObject41 1..1" py_Expr : expr39
+py_Affect "py_Expr23 1..1" *-- "py_Affect 0..9999" py_Expr : exprs22
+py_FunctionP "py_Program2 0..9999" --* "py_FunctionP 1..1" py_Program : functions1
+py_Definition "py_Input 1..1" *-- "py_Definition6 0..1" py_Input : input5
+py_ExprCons "py_LExpr 1..1" *-- "py_ExprCons 0..1" py_LExpr : lexpr51
+py_Expr "py_LExpr53 0..9999" --* "py_Expr54 1..1" py_LExpr : lexpr52
+py_Definition "py_Output 1..1" *-- "py_Definition10 0..1" py_Output : output9
 @enduml

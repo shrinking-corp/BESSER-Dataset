@@ -1,4 +1,8 @@
 @startuml
+' model: hfsm
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractState {
 }
 class NamedElement {
@@ -18,12 +22,12 @@ AbstractState <|-- hfsm_State
 NamedElement <|-- hfsm_AbstractState
 NamedElement <|-- hfsm_Region
 NamedElement <|-- hfsm_Transition
-hfsm_AbstractState "1..1" -- "0..9999" hfsm_Transition : incoming5
-hfsm_AbstractState "1..1" -- "0..9999" hfsm_Transition : outgoing6
-hfsm_Region "0..9999" --* "1..1" hfsm_State : ownedRegions0
-hfsm_AbstractState "1..1" -- "1..1" hfsm_Region : ownerRegion8
-hfsm_Region "1..1" -- "0..1" hfsm_State : ownerState1
-hfsm_AbstractState "1..1" -- "1..1" hfsm_Transition : source11
-hfsm_AbstractState "0..9999" --* "1..1" hfsm_Region : subvertex4
-hfsm_AbstractState "1..1" -- "1..1" hfsm_Transition : target9
+hfsm_AbstractState "Transition 1..1" -- "target 0..9999" hfsm_Transition : incoming5
+hfsm_AbstractState "Transition7 1..1" -- "source 0..9999" hfsm_Transition : outgoing6
+hfsm_Region "hfsm_State 0..9999" --* "hfsm_Region 1..1" hfsm_State : ownedRegions0
+hfsm_AbstractState "Region 1..1" -- "subvertex 1..1" hfsm_Region : ownerRegion8
+hfsm_Region "hfsm_State3 1..1" -- "hfsm_Region2 0..1" hfsm_State : ownerState1
+hfsm_AbstractState "outgoing 1..1" -- "AbstractState12 1..1" hfsm_Transition : source11
+hfsm_AbstractState "ownerRegion 0..9999" --* "AbstractState 1..1" hfsm_Region : subvertex4
+hfsm_AbstractState "incoming 1..1" -- "AbstractState10 1..1" hfsm_Transition : target9
 @enduml

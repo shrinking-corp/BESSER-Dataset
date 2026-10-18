@@ -1,4 +1,8 @@
 @startuml
+' model: fds
+' project: sampleModel
+' owner: User
+' description: New project
 class CandidateKey {
 }
 class NamedElement {
@@ -34,15 +38,15 @@ NamedElement <|-- fds_RestrictionColumn
 NamedElement <|-- fds_Table
 Restriction <|-- fds_CandidateKey
 Restriction <|-- fds_ForeignKey
-fds_Column "1..1" -- "1..1" fds_RestrictionColumn : column16
-fds_Column "0..9999" --* "1..1" fds_Table : columns1
-fds_Column "0..9999" -- "1..1" fds_FunctionalDependency : dependant12
-fds_Column "0..9999" -- "1..1" fds_FunctionalDependency : determinant9
-fds_FunctionalDependency "0..9999" --* "1..1" fds_Table : functionalDependencies3
-fds_RestrictionColumn "0..1" -- "1..1" fds_RestrictionColumn : pkRestrictionColumn19
-fds_ForeignKey "1..1" -- "1..1" fds_PrimaryKey : primaryKey8
-fds_Restriction "1..1" -- "1..1" fds_RestrictionColumn : restriction15
-fds_Restriction "0..9999" --* "1..1" fds_Table : restrictions5
-fds_Restriction "1..1" *-- "0..9999" fds_RestrictionColumn : restrictionsColumns7
-fds_Database "1..1" *-- "0..9999" fds_Table : tables0
+fds_Column "fds_RestrictionColumn 1..1" -- "fds_Column17 1..1" fds_RestrictionColumn : column16
+fds_Column "fds_Table2 0..9999" --* "fds_Column 1..1" fds_Table : columns1
+fds_Column "fds_FunctionalDependency13 0..9999" -- "fds_Column14 1..1" fds_FunctionalDependency : dependant12
+fds_Column "fds_FunctionalDependency10 0..9999" -- "fds_Column11 1..1" fds_FunctionalDependency : determinant9
+fds_FunctionalDependency "fds_Table4 0..9999" --* "fds_FunctionalDependency 1..1" fds_Table : functionalDependencies3
+fds_RestrictionColumn "fds_RestrictionColumn18 0..1" -- "fds_RestrictionColumn20 1..1" fds_RestrictionColumn : pkRestrictionColumn19
+fds_ForeignKey "fds_PrimaryKey 1..1" -- "fds_ForeignKey 1..1" fds_PrimaryKey : primaryKey8
+fds_Restriction "restrictionsColumns 1..1" -- "Restriction 1..1" fds_RestrictionColumn : restriction15
+fds_Restriction "fds_Table6 0..9999" --* "fds_Restriction 1..1" fds_Table : restrictions5
+fds_Restriction "RestrictionColumn 1..1" *-- "restriction 0..9999" fds_RestrictionColumn : restrictionsColumns7
+fds_Database "fds_Table 1..1" *-- "fds_Database 0..9999" fds_Table : tables0
 @enduml

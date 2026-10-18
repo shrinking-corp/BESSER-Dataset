@@ -819,9 +819,9 @@ def test_assoc_ChessBoard_Piece_stub_double():
     partner = ChessBoard()
     setattr(partner, 'piece0', None)
     _safe_set(owner, 'chessBoard1', partner)
-    assert getattr(partner, 'piece0') == owner
+    assert owner in getattr(partner, 'piece0')
     _safe_set(owner, 'chessBoard1', None)
-    assert getattr(partner, 'piece0') is None
+    assert owner not in getattr(partner, 'piece0')
 
 
 
@@ -830,18 +830,15 @@ from python_code import ChessGameController
 
 def test_ChessGameController___init__():
     assert ChessGameController.__init__(ChessGameController('', '\x00'), '\x00\x00', '') == None
-
 from python_code import ChessBoard
 from python_code import Piece
 
 def test_Piece___init__():
     assert Piece.__init__(Piece('', chessBoard1=ChessBoard()), '', chessBoard1=ChessBoard()) == None
-
 from python_code import Position
 
 def test_Position___init__():
     assert Position.__init__(Position(0, 0), 0, 0) == None
-
 from python_code import ChessBoard
 from python_code import Piece
 from python_code import Position

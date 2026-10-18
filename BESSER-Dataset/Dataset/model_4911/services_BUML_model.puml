@@ -1,4 +1,8 @@
 @startuml
+' model: services
+' project: sampleModel
+' owner: User
+' description: New project
 class Base {
 }
 class BaseResource {
@@ -86,30 +90,30 @@ Base <|-- services_ServiceUser
 BaseResource <|-- services_DerivedResource
 Service <|-- services_CFSService
 Service <|-- services_RFSService
-services_CIID "0..9999" --* "1..1" services_Service : cIID14
-services_DerivedResource "0..1" --* "1..1" services_DistributionEntry : distribution8
-services_DistributionEntry "0..9999" --* "1..1" services_ServiceDistribution : distributionEntries28
-services_Expression "0..1" -- "1..1" services_ServiceUser : expressionRef55
-services_Expression "0..9999" -- "1..1" services_ServiceDistribution : expressionRefs31
-services_DerivedResource "1..1" *-- "0..9999" services_Value : forecastValues1
-services_Lifecycle "0..1" --* "1..1" services_Service : lifecycle15
-services_Node "0..9999" -- "1..1" services_RFSService : nodes11
-services_DateTimeRange "0..1" --* "1..1" services_ServiceForecast : period33
-services_DateTimeRange "0..1" --* "1..1" services_ServiceMonitor : period45
-services_DerivedResource "0..9999" --* "1..1" services_ServiceProfile : profileResources50
-services_ResourceForecast "0..9999" --* "1..1" services_ServiceForecast : resourceForecasts37
-services_ResourceMonitor "0..9999" --* "1..1" services_ServiceMonitor : resourceMonitors48
-services_DistributionEntry "1..1" -- "0..1" services_NetXResource : resourceRef7
-services_Service "1..1" *-- "0..1" services_ServiceDistribution : serviceDistribution26
-services_ServiceForecast "1..1" *-- "0..9999" services_ServiceForecastUsers : serviceForecastUsers35
-services_Service "1..1" *-- "0..9999" services_ServiceForecast : serviceForecasts20
-services_Service "1..1" *-- "0..9999" services_ServiceMonitor : serviceMonitors22
-services_ServiceProfile "0..1" --* "1..1" services_ServiceUser : serviceProfile52
-services_ServiceForecastUsers "1..1" -- "0..1" services_ServiceUser : serviceUserRef42
-services_Service "1..1" -- "0..9999" services_ServiceUser : serviceUserRefs24
-services_Service "0..9999" --* "1..1" services_Service : services18
-services_RFSService "1..1" -- "0..9999" services_Tolerance : toleranceRefs12
-services_DerivedResource "1..1" *-- "0..9999" services_Value : trendedValues4
-services_ServiceForecastUsers "1..1" *-- "0..9999" services_Value : userValues39
-services_DerivedResource "1..1" *-- "0..9999" services_Value : values0
+services_CIID "services_Service 0..9999" --* "services_CIID 1..1" services_Service : cIID14
+services_DerivedResource "services_DistributionEntry9 0..1" --* "services_DerivedResource10 1..1" services_DistributionEntry : distribution8
+services_DistributionEntry "services_ServiceDistribution29 0..9999" --* "services_DistributionEntry30 1..1" services_ServiceDistribution : distributionEntries28
+services_Expression "services_ServiceUser56 0..1" -- "services_Expression57 1..1" services_ServiceUser : expressionRef55
+services_Expression "services_ServiceDistribution32 0..9999" -- "services_Expression 1..1" services_ServiceDistribution : expressionRefs31
+services_DerivedResource "services_Value3 1..1" *-- "services_DerivedResource2 0..9999" services_Value : forecastValues1
+services_Lifecycle "services_Service16 0..1" --* "services_Lifecycle 1..1" services_Service : lifecycle15
+services_Node "services_RFSService 0..9999" -- "services_Node 1..1" services_RFSService : nodes11
+services_DateTimeRange "services_ServiceForecast34 0..1" --* "services_DateTimeRange 1..1" services_ServiceForecast : period33
+services_DateTimeRange "services_ServiceMonitor46 0..1" --* "services_DateTimeRange47 1..1" services_ServiceMonitor : period45
+services_DerivedResource "services_ServiceProfile 0..9999" --* "services_DerivedResource51 1..1" services_ServiceProfile : profileResources50
+services_ResourceForecast "services_ServiceForecast38 0..9999" --* "services_ResourceForecast 1..1" services_ServiceForecast : resourceForecasts37
+services_ResourceMonitor "services_ServiceMonitor49 0..9999" --* "services_ResourceMonitor 1..1" services_ServiceMonitor : resourceMonitors48
+services_DistributionEntry "services_NetXResource 1..1" -- "services_DistributionEntry 0..1" services_NetXResource : resourceRef7
+services_Service "services_ServiceDistribution 1..1" *-- "services_Service27 0..1" services_ServiceDistribution : serviceDistribution26
+services_ServiceForecast "services_ServiceForecastUsers 1..1" *-- "services_ServiceForecast36 0..9999" services_ServiceForecastUsers : serviceForecastUsers35
+services_Service "services_ServiceForecast 1..1" *-- "services_Service21 0..9999" services_ServiceForecast : serviceForecasts20
+services_Service "services_ServiceMonitor 1..1" *-- "services_Service23 0..9999" services_ServiceMonitor : serviceMonitors22
+services_ServiceProfile "services_ServiceUser53 0..1" --* "services_ServiceProfile54 1..1" services_ServiceUser : serviceProfile52
+services_ServiceForecastUsers "services_ServiceUser44 1..1" -- "services_ServiceForecastUsers43 0..1" services_ServiceUser : serviceUserRef42
+services_Service "services_ServiceUser 1..1" -- "services_Service25 0..9999" services_ServiceUser : serviceUserRefs24
+services_Service "services_Service17 0..9999" --* "services_Service19 1..1" services_Service : services18
+services_RFSService "services_Tolerance 1..1" -- "services_RFSService13 0..9999" services_Tolerance : toleranceRefs12
+services_DerivedResource "services_Value6 1..1" *-- "services_DerivedResource5 0..9999" services_Value : trendedValues4
+services_ServiceForecastUsers "services_Value41 1..1" *-- "services_ServiceForecastUsers40 0..9999" services_Value : userValues39
+services_DerivedResource "services_Value 1..1" *-- "services_DerivedResource 0..9999" services_Value : values0
 @enduml

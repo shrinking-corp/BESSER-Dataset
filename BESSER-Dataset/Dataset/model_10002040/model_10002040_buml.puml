@@ -1,4 +1,8 @@
 @startuml
+' model: _kzQPIHleEemeYMb8Sxp8Zg
+' project: sampleModel
+' owner: User
+' description: New project
 class Appointment {
   + attribute : str
   + date : str
@@ -99,26 +103,26 @@ class diagnosis {
   + diagnoses : str
   + id : int
 }
-Corporation "0..1" -- "1..9999" Personel : Corporation_Personel
-Appointment "1..9999" -- "1..1" Doctor : Doctor_Appointment
-Doctor "0..1" -- "1..1" Personel : Doctor_Personel
-Appointment "1..1" -- "0..1" Examination : Examination_Appointment
-Examination "1..1" -- "1..9999" diagnosis : Examination_diagnosis
-Hospitals "0..1" -- "1..9999" Personel : Hospitals_Personel
-Appointment "1..9999" -- "1..1" Patient : Patient_Appointment
-Patient "0..1" -- "0..1" Personel : Patient_Doctor
-Patient "0..1" -- "0..1" Personel : Patient_Doctor2
-Medicine "1..9999" -- "1..1" Patient_Medicines : Patient_Medicines_Medicine
-Patient "0..1" -- "0..1" Patient_Medicines : Patient_Patient_Medicines
-Patient "1..1" -- "0..1" Patient_Prescription : Patient_Patient_Prescription
-Disease "0..1" -- "0..1" Patient_Prescription : Patient_Prescription_Disease
-Patient_Medicines "1..1" -- "1..9999" Patient_Prescription : Patient_Prescription_Patient_Medicines
-Corporation "0..1" -- "1..9999" Personel : Personel_Corporation
-Doctor "0..1" -- "1..1" Personel : Personel_Doctor
-Hospitals "0..1" -- "0..1" Personel : Personel_Hospitals
-Personel "1..1" -- "0..1" Receptionist : Personel_Receptionist
-Patient "1..1" -- "1..1" Receptionist : Receptionist_Patient
-Personel "1..1" -- "0..1" Receptionist : Receptionist_Personel
-Appointment "1..1" -- "1..1" Room : Room_Appointment
-Disease "1..9999" -- "1..1" diagnosis : diagnosis_Disease
+Corporation "corporation13 0..1" -- "personel12 1..9999" Personel : Corporation_Personel
+Appointment "appointment18 1..9999" -- "doctor19 1..1" Doctor : Doctor_Appointment
+Doctor "doctor5 0..1" -- "personel4 1..1" Personel : Doctor_Personel
+Appointment "appointment20 1..1" -- "examination21 0..1" Examination : Examination_Appointment
+Examination "examination25 1..1" -- "diagnosis24 1..9999" diagnosis : Examination_diagnosis
+Hospitals "hospitals15 0..1" -- "personel14 1..9999" Personel : Hospitals_Personel
+Appointment "appointment16 1..9999" -- "patient17 1..1" Patient : Patient_Appointment
+Patient "patient1 0..1" -- "doctor0 0..1" Personel : Patient_Doctor
+Patient "patient3 0..1" -- "doctor2 0..1" Personel : Patient_Doctor2
+Medicine "medicine34 1..9999" -- "patient_Medicines35 1..1" Patient_Medicines : Patient_Medicines_Medicine
+Patient "patient27 0..1" -- "patient_Medicines26 0..1" Patient_Medicines : Patient_Patient_Medicines
+Patient "patient29 1..1" -- "patient_Prescription28 0..1" Patient_Prescription : Patient_Patient_Prescription
+Disease "disease30 0..1" -- "patient_Prescription31 0..1" Patient_Prescription : Patient_Prescription_Disease
+Patient_Medicines "patient_Medicines32 1..1" -- "patient_Prescription33 1..9999" Patient_Prescription : Patient_Prescription_Patient_Medicines
+Corporation "corporation26 0..1" -- "personel7 1..9999" Personel : Personel_Corporation
+Doctor "doctor10 0..1" -- "personel11 1..1" Personel : Personel_Doctor
+Hospitals "hospitals8 0..1" -- "personel9 0..1" Personel : Personel_Hospitals
+Personel "personel43 1..1" -- "receptionist42 0..1" Receptionist : Personel_Receptionist
+Patient "patient40 1..1" -- "receptionist41 1..1" Receptionist : Receptionist_Patient
+Personel "personel38 1..1" -- "receptionist39 0..1" Receptionist : Receptionist_Personel
+Appointment "appointment22 1..1" -- "room23 1..1" Room : Room_Appointment
+Disease "disease36 1..9999" -- "diagnosis37 1..1" diagnosis : diagnosis_Disease
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: mindstorms
+' project: sampleModel
+' owner: User
+' description: New project
 class Action {
 }
 class Block {
@@ -51,8 +55,8 @@ Block <|-- mindstorms_Action
 Instruction <|-- mindstorms_Block
 Instruction <|-- mindstorms_Choreography
 NamedElement <|-- mindstorms_Instruction
-mindstorms_Choreography "1..1" *-- "0..9999" mindstorms_EdgeInstruction : edgeInstructions1
-mindstorms_Choreography "1..1" *-- "0..9999" mindstorms_Instruction : instructions0
-mindstorms_EdgeInstruction "1..1" -- "0..1" mindstorms_Instruction : source3
-mindstorms_EdgeInstruction "1..1" -- "0..1" mindstorms_Instruction : target6
+mindstorms_Choreography "mindstorms_EdgeInstruction 1..1" *-- "mindstorms_Choreography2 0..9999" mindstorms_EdgeInstruction : edgeInstructions1
+mindstorms_Choreography "mindstorms_Instruction 1..1" *-- "mindstorms_Choreography 0..9999" mindstorms_Instruction : instructions0
+mindstorms_EdgeInstruction "mindstorms_Instruction5 1..1" -- "mindstorms_EdgeInstruction4 0..1" mindstorms_Instruction : source3
+mindstorms_EdgeInstruction "mindstorms_Instruction8 1..1" -- "mindstorms_EdgeInstruction7 0..1" mindstorms_Instruction : target6
 @enduml

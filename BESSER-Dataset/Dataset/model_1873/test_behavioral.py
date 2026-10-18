@@ -888,9 +888,9 @@ def test_assoc_accountShares59_stub_double():
     partner = eTJ_ChargeSet()
     setattr(partner, 'eTJ_ChargeSet', None)
     _safe_set(owner, 'eTJ_AccountShare', partner)
-    assert getattr(partner, 'eTJ_ChargeSet') == owner
+    assert owner in getattr(partner, 'eTJ_ChargeSet')
     _safe_set(owner, 'eTJ_AccountShare', None)
-    assert getattr(partner, 'eTJ_ChargeSet') is None
+    assert owner not in getattr(partner, 'eTJ_ChargeSet')
 
 
 def test_assoc_attributes13_stub_double():
@@ -1203,9 +1203,9 @@ def test_assoc_columns60_stub_double():
     partner = eTJ_Columns()
     setattr(partner, 'eTJ_Columns', None)
     _safe_set(owner, 'eTJ_Column', partner)
-    assert getattr(partner, 'eTJ_Columns') == owner
+    assert owner in getattr(partner, 'eTJ_Columns')
     _safe_set(owner, 'eTJ_Column', None)
-    assert getattr(partner, 'eTJ_Columns') is None
+    assert owner not in getattr(partner, 'eTJ_Columns')
 
 
 def test_assoc_cost38_stub_double():
@@ -1278,9 +1278,9 @@ def test_assoc_dependency62_stub_double():
     partner = eTJ_Depends()
     setattr(partner, 'eTJ_Depends', None)
     _safe_set(owner, 'eTJ_TaskDependency', partner)
-    assert getattr(partner, 'eTJ_Depends') == owner
+    assert owner in getattr(partner, 'eTJ_Depends')
     _safe_set(owner, 'eTJ_TaskDependency', None)
-    assert getattr(partner, 'eTJ_Depends') is None
+    assert owner not in getattr(partner, 'eTJ_Depends')
 
 
 def test_assoc_details139_stub_double():
@@ -1308,9 +1308,9 @@ def test_assoc_details3_stub_double():
     partner = eTJ_Leaves()
     setattr(partner, 'eTJ_Leaves', None)
     _safe_set(owner, 'eTJ_LeaveDetails', partner)
-    assert getattr(partner, 'eTJ_Leaves') == owner
+    assert owner in getattr(partner, 'eTJ_Leaves')
     _safe_set(owner, 'eTJ_LeaveDetails', None)
-    assert getattr(partner, 'eTJ_Leaves') is None
+    assert owner not in getattr(partner, 'eTJ_Leaves')
 
 
 def test_assoc_duration102_stub_double():
@@ -1593,9 +1593,9 @@ def test_assoc_extends68_stub_double():
     partner = eTJ_ExtendResource()
     setattr(partner, 'eTJ_ExtendResource', None)
     _safe_set(owner, 'eTJ_Extend', partner)
-    assert getattr(partner, 'eTJ_ExtendResource') == owner
+    assert owner in getattr(partner, 'eTJ_ExtendResource')
     _safe_set(owner, 'eTJ_Extend', None)
-    assert getattr(partner, 'eTJ_ExtendResource') is None
+    assert owner not in getattr(partner, 'eTJ_ExtendResource')
 
 
 def test_assoc_extends71_stub_double():
@@ -1608,9 +1608,9 @@ def test_assoc_extends71_stub_double():
     partner = eTJ_ExtendTask()
     setattr(partner, 'eTJ_ExtendTask', None)
     _safe_set(owner, 'eTJ_Extend72', partner)
-    assert getattr(partner, 'eTJ_ExtendTask') == owner
+    assert owner in getattr(partner, 'eTJ_ExtendTask')
     _safe_set(owner, 'eTJ_Extend72', None)
-    assert getattr(partner, 'eTJ_ExtendTask') is None
+    assert owner not in getattr(partner, 'eTJ_ExtendTask')
 
 
 def test_assoc_extension292_stub_double():
@@ -1983,9 +1983,9 @@ def test_assoc_resources155_stub_double():
     partner = eTJ_Managers()
     setattr(partner, 'eTJ_Managers', None)
     _safe_set(owner, 'eTJ_Resource156', partner)
-    assert getattr(partner, 'eTJ_Managers') == owner
+    assert owner in getattr(partner, 'eTJ_Managers')
     _safe_set(owner, 'eTJ_Resource156', None)
-    assert getattr(partner, 'eTJ_Managers') is None
+    assert owner not in getattr(partner, 'eTJ_Managers')
 
 
 def test_assoc_resources177_stub_double():
@@ -1998,9 +1998,9 @@ def test_assoc_resources177_stub_double():
     partner = eTJ_Responsible()
     setattr(partner, 'eTJ_Responsible', None)
     _safe_set(owner, 'eTJ_Resource178', partner)
-    assert getattr(partner, 'eTJ_Responsible') == owner
+    assert owner in getattr(partner, 'eTJ_Responsible')
     _safe_set(owner, 'eTJ_Resource178', None)
-    assert getattr(partner, 'eTJ_Responsible') is None
+    assert owner not in getattr(partner, 'eTJ_Responsible')
 
 
 def test_assoc_resources312_stub_double():
@@ -2013,9 +2013,9 @@ def test_assoc_resources312_stub_double():
     partner = eTJ_LimitAttribute()
     setattr(partner, 'eTJ_LimitAttribute313', None)
     _safe_set(owner, 'eTJ_Resource314', partner)
-    assert getattr(partner, 'eTJ_LimitAttribute313') == owner
+    assert owner in getattr(partner, 'eTJ_LimitAttribute313')
     _safe_set(owner, 'eTJ_Resource314', None)
-    assert getattr(partner, 'eTJ_LimitAttribute313') is None
+    assert owner not in getattr(partner, 'eTJ_LimitAttribute313')
 
 
 def test_assoc_resources34_stub_double():
@@ -2028,9 +2028,9 @@ def test_assoc_resources34_stub_double():
     partner = eTJ_Alternative()
     setattr(partner, 'eTJ_Alternative', None)
     _safe_set(owner, 'eTJ_Resource35', partner)
-    assert getattr(partner, 'eTJ_Alternative') == owner
+    assert owner in getattr(partner, 'eTJ_Alternative')
     _safe_set(owner, 'eTJ_Resource35', None)
-    assert getattr(partner, 'eTJ_Alternative') is None
+    assert owner not in getattr(partner, 'eTJ_Alternative')
 
 
 def test_assoc_revenue40_stub_double():
@@ -2133,9 +2133,9 @@ def test_assoc_scenarios190_stub_double():
     partner = eTJ_Scenarios()
     setattr(partner, 'eTJ_Scenarios', None)
     _safe_set(owner, 'eTJ_Scenario191', partner)
-    assert getattr(partner, 'eTJ_Scenarios') == owner
+    assert owner in getattr(partner, 'eTJ_Scenarios')
     _safe_set(owner, 'eTJ_Scenario191', None)
-    assert getattr(partner, 'eTJ_Scenarios') is None
+    assert owner not in getattr(partner, 'eTJ_Scenarios')
 
 
 def test_assoc_shift198_stub_double():

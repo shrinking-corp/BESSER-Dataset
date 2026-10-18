@@ -1,4 +1,8 @@
 @startuml
+' model: PrimitiveTypes
+' project: sampleModel
+' owner: User
+' description: New project
 class Arc {
 }
 class Element {
@@ -62,28 +66,28 @@ LocatedElement <|-- PetriNet_NamedElement
 NamedElement <|-- PetriNet_Arc
 NamedElement <|-- PetriNet_Element
 NamedElement <|-- PetriNet_PetriNet
-Arc "0..9999" --* "1..1" PetriNet_PetriNet : arcs1
-Element "0..9999" --* "1..1" PetriNet_PetriNet : elements0
-Execution "1..1" -- "1..1" PetriNet_Marking : exec33
-Execution "1..1" -- "1..1" PetriNet_Movement : exec36
-Execution "0..9999" -- "1..1" PetriNet_PetriNet : execs3
-PetriNet_Movement "1..1" -- "1..1" Transition : fire38
-PetriNet_PlaceToTransition "1..1" -- "1..1" Place : from_16
-PetriNet_TransitionToPlace "1..1" -- "1..1" Transition : from_18
-PetriNet_Place "1..1" -- "0..9999" TransitionToPlace : incomingArc6
-PetriNet_Transition "1..1" -- "1..9999" PlaceToTransition : incomingArc8
-Marking "1..1" -- "1..1" PetriNet_Token : marking31
-Marking "0..9999" --* "1..1" PetriNet_Execution : markings26
-Movement "0..9999" --* "1..1" PetriNet_Execution : movements27
-PetriNet "1..1" -- "1..1" PetriNet_Arc : net14
-PetriNet "1..1" -- "1..1" PetriNet_Execution : net24
-PetriNet "1..1" -- "1..1" PetriNet_Element : net5
-PetriNet_Transition "1..1" -- "1..9999" TransitionToPlace : outgoingArc11
-PetriNet_Place "1..1" -- "0..9999" PlaceToTransition : outgoingArc7
-PetriNet_Token "1..1" -- "1..1" Place : placedAt29
-Marking "1..1" -- "1..1" PetriNet_Movement : source40
-Marking "1..1" -- "1..1" PetriNet_Movement : target43
-PetriNet_PlaceToTransition "1..1" -- "1..1" Transition : to17
-PetriNet_TransitionToPlace "1..1" -- "1..1" Place : to21
-PetriNet_Marking "1..1" *-- "0..9999" Token : tokens35
+Arc "net2 0..9999" --* "Arc 1..1" PetriNet_PetriNet : arcs1
+Element "net 0..9999" --* "Element 1..1" PetriNet_PetriNet : elements0
+Execution "markings 1..1" -- "Execution34 1..1" PetriNet_Marking : exec33
+Execution "movements 1..1" -- "Execution37 1..1" PetriNet_Movement : exec36
+Execution "net4 0..9999" -- "Execution 1..1" PetriNet_PetriNet : execs3
+PetriNet_Movement "Transition39 1..1" -- "PetriNet_Movement 1..1" Transition : fire38
+PetriNet_PlaceToTransition "Place 1..1" -- "outgoingArc 1..1" Place : from_16
+PetriNet_TransitionToPlace "Transition20 1..1" -- "outgoingArc19 1..1" Transition : from_18
+PetriNet_Place "TransitionToPlace 1..1" -- "to 0..9999" TransitionToPlace : incomingArc6
+PetriNet_Transition "PlaceToTransition10 1..1" -- "to9 1..9999" PlaceToTransition : incomingArc8
+Marking "tokens 1..1" -- "Marking32 1..1" PetriNet_Token : marking31
+Marking "exec 0..9999" --* "Marking 1..1" PetriNet_Execution : markings26
+Movement "exec28 0..9999" --* "Movement 1..1" PetriNet_Execution : movements27
+PetriNet "arcs 1..1" -- "PetriNet15 1..1" PetriNet_Arc : net14
+PetriNet "execs 1..1" -- "PetriNet25 1..1" PetriNet_Execution : net24
+PetriNet "elements 1..1" -- "PetriNet 1..1" PetriNet_Element : net5
+PetriNet_Transition "TransitionToPlace13 1..1" -- "from_12 1..9999" TransitionToPlace : outgoingArc11
+PetriNet_Place "PlaceToTransition 1..1" -- "from_ 0..9999" PlaceToTransition : outgoingArc7
+PetriNet_Token "Place30 1..1" -- "PetriNet_Token 1..1" Place : placedAt29
+Marking "PetriNet_Movement41 1..1" -- "Marking42 1..1" PetriNet_Movement : source40
+Marking "PetriNet_Movement44 1..1" -- "Marking45 1..1" PetriNet_Movement : target43
+PetriNet_PlaceToTransition "Transition 1..1" -- "incomingArc 1..1" Transition : to17
+PetriNet_TransitionToPlace "Place23 1..1" -- "incomingArc22 1..1" Place : to21
+PetriNet_Marking "Token 1..1" *-- "marking 0..9999" Token : tokens35
 @enduml

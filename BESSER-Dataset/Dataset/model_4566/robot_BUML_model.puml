@@ -1,4 +1,8 @@
 @startuml
+' model: robot
+' project: sampleModel
+' owner: User
+' description: New project
 enum AccessType {
   PRIVATE
   PUBLIC
@@ -231,19 +235,19 @@ Simulacra <|-- robot_Roboid
 Storable <|-- robot_Device
 Storable <|-- robot_Roboid
 Storable <|-- robot_Robot
-robot_Channel "0..9999" --* "1..1" robot_Control : channels13
-robot_Control "0..9999" --* "1..1" robot_Robot : controls1
-robot_Channel "1..1" -- "1..9999" robot_ChannelDevice : devices31
-robot_Device "0..9999" --* "1..1" robot_Roboid : devices8
-robot_Roboid "0..1" -- "1..1" robot_Roboid : hostRoboid11
-robot_Protocol "0..1" --* "1..1" robot_Roboid : protocol6
-robot_Sensor "1..1" -- "0..1" robot_Sensor : proxyFor16
-robot_Effector "0..1" -- "1..1" robot_Effector : proxyFor20
-robot_Command "1..1" -- "0..1" robot_Command : proxyFor23
-robot_Event "1..1" -- "0..1" robot_Event : proxyFor25
-robot_Port "1..1" -- "0..1" robot_Port : proxyFor30
-robot_Effector "0..9999" -- "1..1" robot_Sensor : receptors17
-robot_Command "0..9999" -- "1..1" robot_Event : receptors26
-robot_Roboid "1..9999" --* "1..1" robot_Robot : roboids0
-robot_Roboid "0..9999" --* "1..1" robot_Roboid : roboids4
+robot_Channel "robot_Control14 0..9999" --* "robot_Channel 1..1" robot_Control : channels13
+robot_Control "robot_Robot2 0..9999" --* "robot_Control 1..1" robot_Robot : controls1
+robot_Channel "robot_ChannelDevice 1..1" -- "robot_Channel32 1..9999" robot_ChannelDevice : devices31
+robot_Device "robot_Roboid9 0..9999" --* "robot_Device 1..1" robot_Roboid : devices8
+robot_Roboid "robot_Roboid10 0..1" -- "robot_Roboid12 1..1" robot_Roboid : hostRoboid11
+robot_Protocol "robot_Roboid7 0..1" --* "robot_Protocol 1..1" robot_Roboid : protocol6
+robot_Sensor "robot_Sensor 1..1" -- "robot_Sensor15 0..1" robot_Sensor : proxyFor16
+robot_Effector "robot_Effector19 0..1" -- "robot_Effector21 1..1" robot_Effector : proxyFor20
+robot_Command "robot_Command 1..1" -- "robot_Command22 0..1" robot_Command : proxyFor23
+robot_Event "robot_Event 1..1" -- "robot_Event24 0..1" robot_Event : proxyFor25
+robot_Port "robot_Port 1..1" -- "robot_Port29 0..1" robot_Port : proxyFor30
+robot_Effector "robot_Sensor18 0..9999" -- "robot_Effector 1..1" robot_Sensor : receptors17
+robot_Command "robot_Event27 0..9999" -- "robot_Command28 1..1" robot_Event : receptors26
+robot_Roboid "robot_Robot 1..9999" --* "robot_Roboid 1..1" robot_Robot : roboids0
+robot_Roboid "robot_Roboid3 0..9999" --* "robot_Roboid5 1..1" robot_Roboid : roboids4
 @enduml

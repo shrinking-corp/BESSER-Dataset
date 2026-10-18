@@ -1,4 +1,8 @@
 @startuml
+' model: mindstorms
+' project: sampleModel
+' owner: User
+' description: New project
 class Action {
 }
 enum Color {
@@ -109,11 +113,11 @@ Instruction <|-- mindstorms_Reuse
 Sensor <|-- mindstorms_ColorSensor
 Sensor <|-- mindstorms_TouchSensor
 Sensor <|-- mindstorms_UltrasonicSensor
-mindstorms_Choregraphy "0..1" -- "1..1" mindstorms_Reuse : choregraphy9
-mindstorms_Condition "0..1" --* "1..1" mindstorms_ConditionalFlow : condition10
-mindstorms_If "1..1" *-- "0..1" mindstorms_If : elsif12
-mindstorms_Flow "1..1" -- "0..1" mindstorms_Instruction : first5
-mindstorms_Flow "1..1" *-- "0..9999" mindstorms_Instruction : instructions6
-mindstorms_Instruction "1..1" -- "0..1" mindstorms_Instruction : next1
-mindstorms_Instruction "1..1" -- "0..1" mindstorms_Instruction : previous3
+mindstorms_Choregraphy "mindstorms_Reuse 0..1" -- "mindstorms_Choregraphy 1..1" mindstorms_Reuse : choregraphy9
+mindstorms_Condition "mindstorms_ConditionalFlow 0..1" --* "mindstorms_Condition 1..1" mindstorms_ConditionalFlow : condition10
+mindstorms_If "mindstorms_If 1..1" *-- "mindstorms_If11 0..1" mindstorms_If : elsif12
+mindstorms_Flow "mindstorms_Instruction 1..1" -- "mindstorms_Flow 0..1" mindstorms_Instruction : first5
+mindstorms_Flow "mindstorms_Instruction8 1..1" *-- "mindstorms_Flow7 0..9999" mindstorms_Instruction : instructions6
+mindstorms_Instruction "Instruction 1..1" -- "previous 0..1" mindstorms_Instruction : next1
+mindstorms_Instruction "Instruction4 1..1" -- "next 0..1" mindstorms_Instruction : previous3
 @enduml

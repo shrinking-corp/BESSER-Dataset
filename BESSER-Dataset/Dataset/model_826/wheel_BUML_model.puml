@@ -1,4 +1,8 @@
 @startuml
+' model: wheel
+' project: sampleModel
+' owner: User
+' description: New project
 class wheel_State {
   + name : str
 }
@@ -8,12 +12,12 @@ class wheel_Transition {
 }
 class wheel_WheelSM {
 }
-wheel_State "1..1" -- "1..1" wheel_Transition : Source12
-wheel_State "0..1" -- "1..1" wheel_WheelSM : finalState1
-wheel_State "1..1" -- "0..1" wheel_Transition : incomingTransition5
-wheel_State "0..1" -- "1..1" wheel_WheelSM : initialState0
-wheel_State "1..1" *-- "0..1" wheel_Transition : outgoingTransition7
-wheel_State "0..9999" --* "1..1" wheel_WheelSM : ownedState4
-wheel_State "1..1" -- "1..1" wheel_WheelSM : owningFSM8
-wheel_State "0..1" -- "1..1" wheel_Transition : target9
+wheel_State "outgoingTransition 1..1" -- "State13 1..1" wheel_Transition : Source12
+wheel_State "wheel_WheelSM2 0..1" -- "wheel_State3 1..1" wheel_WheelSM : finalState1
+wheel_State "wheel_Transition 1..1" -- "wheel_State6 0..1" wheel_Transition : incomingTransition5
+wheel_State "wheel_WheelSM 0..1" -- "wheel_State 1..1" wheel_WheelSM : initialState0
+wheel_State "Transition 1..1" *-- "Source 0..1" wheel_Transition : outgoingTransition7
+wheel_State "owningFSM 0..9999" --* "State 1..1" wheel_WheelSM : ownedState4
+wheel_State "WheelSM 1..1" -- "ownedState 1..1" wheel_WheelSM : owningFSM8
+wheel_State "wheel_Transition10 0..1" -- "wheel_State11 1..1" wheel_Transition : target9
 @enduml

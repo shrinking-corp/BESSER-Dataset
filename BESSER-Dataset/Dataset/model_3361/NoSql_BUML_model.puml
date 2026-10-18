@@ -1,4 +1,8 @@
 @startuml
+' model: nosql
+' project: sampleModel
+' owner: User
+' description: New project
 class ColumnFamily {
 }
 enum Type {
@@ -46,20 +50,20 @@ class nosql_PK {
 class nosql_Row {
 }
 ColumnFamily <|-- nosql_Row
-nosql_KeySpace "1..1" -- "0..1" nosql_Options : EReference03
-nosql_ColumnFamily "1..1" *-- "1..1" nosql_PK : PK18
-nosql_Column "1..9999" --* "1..1" nosql_Row : additionalColumns34
-nosql_Column "0..1" --* "1..1" nosql_Index : applyTo10
-nosql_Cell "1..9999" --* "1..1" nosql_Row : cells32
-nosql_Cell "1..1" -- "1..1" nosql_Column : column37
-nosql_Column "1..1" -- "0..1" nosql_ColumnFamily : columnFamily26
-nosql_Column "1..9999" --* "1..1" nosql_ColumnFamily : columns12
-nosql_Column "1..9999" -- "1..1" nosql_PK : columns29
-nosql_ColumnFamily "1..9999" --* "1..1" nosql_KeySpace : families1
-nosql_KeySpace "1..1" *-- "0..9999" nosql_PK : hasPK8
-nosql_Index "0..9999" --* "1..1" nosql_KeySpace : idexes0
-nosql_ColumnFamily "1..1" *-- "1..1" nosql_KeySpace : keyspace23
-nosql_ColumnFamily "1..1" *-- "0..9999" nosql_Options : options15
-nosql_KeySpace "1..1" *-- "0..9999" nosql_Options : options5
-nosql_ColumnFamily "1..1" -- "0..9999" nosql_Row : rows21
+nosql_KeySpace "nosql_Options 1..1" -- "nosql_KeySpace4 0..1" nosql_Options : EReference03
+nosql_ColumnFamily "nosql_PK20 1..1" *-- "nosql_ColumnFamily19 1..1" nosql_PK : PK18
+nosql_Column "nosql_Row35 1..9999" --* "nosql_Column36 1..1" nosql_Row : additionalColumns34
+nosql_Column "nosql_Index11 0..1" --* "nosql_Column 1..1" nosql_Index : applyTo10
+nosql_Cell "nosql_Row33 1..9999" --* "nosql_Cell 1..1" nosql_Row : cells32
+nosql_Cell "nosql_Column39 1..1" -- "nosql_Cell38 1..1" nosql_Column : column37
+nosql_Column "nosql_ColumnFamily28 1..1" -- "nosql_Column27 0..1" nosql_ColumnFamily : columnFamily26
+nosql_Column "nosql_ColumnFamily13 1..9999" --* "nosql_Column14 1..1" nosql_ColumnFamily : columns12
+nosql_Column "nosql_PK30 1..9999" -- "nosql_Column31 1..1" nosql_PK : columns29
+nosql_ColumnFamily "nosql_KeySpace2 1..9999" --* "nosql_ColumnFamily 1..1" nosql_KeySpace : families1
+nosql_KeySpace "nosql_PK 1..1" *-- "nosql_KeySpace9 0..9999" nosql_PK : hasPK8
+nosql_Index "nosql_KeySpace 0..9999" --* "nosql_Index 1..1" nosql_KeySpace : idexes0
+nosql_ColumnFamily "nosql_KeySpace25 1..1" *-- "nosql_ColumnFamily24 1..1" nosql_KeySpace : keyspace23
+nosql_ColumnFamily "nosql_Options17 1..1" *-- "nosql_ColumnFamily16 0..9999" nosql_Options : options15
+nosql_KeySpace "nosql_Options7 1..1" *-- "nosql_KeySpace6 0..9999" nosql_Options : options5
+nosql_ColumnFamily "nosql_Row 1..1" -- "nosql_ColumnFamily22 0..9999" nosql_Row : rows21
 @enduml

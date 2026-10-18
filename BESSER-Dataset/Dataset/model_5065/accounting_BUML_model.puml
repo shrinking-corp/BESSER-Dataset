@@ -1,4 +1,8 @@
 @startuml
+' model: accounting
+' project: sampleModel
+' owner: User
+' description: New project
 enum InvoiceState {
   Invoiced
   New
@@ -39,16 +43,16 @@ class accounting_Project {
 NamedElement <|-- accounting_Client
 NamedElement <|-- accounting_Employee
 NamedElement <|-- accounting_Project
-accounting_Employee "0..1" -- "1..1" accounting_Invoice : advisor5
-accounting_Client "1..1" -- "1..1" accounting_Project : client10
-accounting_Client "0..9999" --* "1..1" accounting_ClientDatabase : clients15
-accounting_Deliverable "0..9999" --* "1..1" accounting_Order : deliverables1
-accounting_Employee "0..9999" --* "1..1" accounting_EmployeeDatabase : employees16
-accounting_Invoice "0..9999" --* "1..1" accounting_Order : invoices2
-accounting_Employee "0..1" -- "1..1" accounting_Project : liason13
-accounting_Deliverable "1..1" -- "1..1" accounting_Order : order4
-accounting_Invoice "1..1" -- "1..1" accounting_Order : order6
-accounting_Order "0..9999" --* "1..1" accounting_Project : orders11
-accounting_Order "1..1" -- "1..1" accounting_Project : project0
-accounting_Client "1..1" *-- "1..9999" accounting_Project : projects8
+accounting_Employee "accounting_Invoice 0..1" -- "accounting_Employee 1..1" accounting_Invoice : advisor5
+accounting_Client "projects 1..1" -- "Client 1..1" accounting_Project : client10
+accounting_Client "accounting_ClientDatabase 0..9999" --* "accounting_Client 1..1" accounting_ClientDatabase : clients15
+accounting_Deliverable "order 0..9999" --* "Deliverable 1..1" accounting_Order : deliverables1
+accounting_Employee "accounting_EmployeeDatabase 0..9999" --* "accounting_Employee17 1..1" accounting_EmployeeDatabase : employees16
+accounting_Invoice "order3 0..9999" --* "Invoice 1..1" accounting_Order : invoices2
+accounting_Employee "accounting_Project 0..1" -- "accounting_Employee14 1..1" accounting_Project : liason13
+accounting_Deliverable "Order 1..1" -- "deliverables 1..1" accounting_Order : order4
+accounting_Invoice "Order7 1..1" -- "invoices 1..1" accounting_Order : order6
+accounting_Order "project 0..9999" --* "Order12 1..1" accounting_Project : orders11
+accounting_Order "Project 1..1" -- "orders 1..1" accounting_Project : project0
+accounting_Client "Project9 1..1" *-- "client 1..9999" accounting_Project : projects8
 @enduml

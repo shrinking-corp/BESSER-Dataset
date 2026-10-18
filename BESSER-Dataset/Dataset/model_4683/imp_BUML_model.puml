@@ -1,4 +1,8 @@
 @startuml
+' model: imp
+' project: sampleModel
+' owner: User
+' description: New project
 enum BinaryOp {
   ADD
   AND
@@ -82,20 +86,20 @@ Stmt <|-- imp_While
 Value <|-- imp_ArrayValue
 Value <|-- imp_BoolValue
 Value <|-- imp_IntValue
-imp_Stmt "1..1" --* "1..1" imp_While : body15
-imp_Expr "1..1" --* "1..1" imp_While : cond13
-imp_Expr "1..1" --* "1..1" imp_If : cond5
-imp_Assign "1..1" *-- "1..1" imp_Expr : exp0
-imp_Expr "1..1" --* "1..1" imp_Unary : expr20
-imp_Assign "1..1" *-- "0..1" imp_Expr : index1
-imp_Expr "0..1" --* "1..1" imp_Var : index18
-imp_Binary "1..1" *-- "1..1" imp_Expr : lhs22
-imp_If "1..1" *-- "1..1" imp_Stmt : lhs7
-imp_If "1..1" *-- "1..1" imp_Stmt : rhs10
-imp_Binary "1..1" *-- "1..1" imp_Expr : rhs24
-imp_Block "1..1" *-- "0..9999" imp_Stmt : stmts4
-imp_StringToValueMap "1..1" *-- "1..1" imp_Value : value28
-imp_Store "1..1" *-- "0..9999" imp_StringToValueMap : values27
-imp_ArrayValue "1..1" *-- "0..9999" imp_Value : values30
-imp_ArrayDecl "1..1" *-- "0..9999" imp_Expr : values32
+imp_Stmt "imp_While16 1..1" --* "imp_Stmt17 1..1" imp_While : body15
+imp_Expr "imp_While 1..1" --* "imp_Expr14 1..1" imp_While : cond13
+imp_Expr "imp_If 1..1" --* "imp_Expr6 1..1" imp_If : cond5
+imp_Assign "imp_Expr 1..1" *-- "imp_Assign 1..1" imp_Expr : exp0
+imp_Expr "imp_Unary 1..1" --* "imp_Expr21 1..1" imp_Unary : expr20
+imp_Assign "imp_Expr3 1..1" *-- "imp_Assign2 0..1" imp_Expr : index1
+imp_Expr "imp_Var 0..1" --* "imp_Expr19 1..1" imp_Var : index18
+imp_Binary "imp_Expr23 1..1" *-- "imp_Binary 1..1" imp_Expr : lhs22
+imp_If "imp_Stmt9 1..1" *-- "imp_If8 1..1" imp_Stmt : lhs7
+imp_If "imp_Stmt12 1..1" *-- "imp_If11 1..1" imp_Stmt : rhs10
+imp_Binary "imp_Expr26 1..1" *-- "imp_Binary25 1..1" imp_Expr : rhs24
+imp_Block "imp_Stmt 1..1" *-- "imp_Block 0..9999" imp_Stmt : stmts4
+imp_StringToValueMap "imp_Value 1..1" *-- "imp_StringToValueMap29 1..1" imp_Value : value28
+imp_Store "imp_StringToValueMap 1..1" *-- "imp_Store 0..9999" imp_StringToValueMap : values27
+imp_ArrayValue "imp_Value31 1..1" *-- "imp_ArrayValue 0..9999" imp_Value : values30
+imp_ArrayDecl "imp_Expr33 1..1" *-- "imp_ArrayDecl 0..9999" imp_Expr : values32
 @enduml

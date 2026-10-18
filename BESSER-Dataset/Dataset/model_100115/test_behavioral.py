@@ -172,9 +172,9 @@ def test_assoc_DbFK0_stub_double():
     partner = database_Database()
     setattr(partner, 'DbFkRoot', None)
     _safe_set(owner, 'ForeignKey', partner)
-    assert getattr(partner, 'DbFkRoot') == owner
+    assert owner in getattr(partner, 'DbFkRoot')
     _safe_set(owner, 'ForeignKey', None)
-    assert getattr(partner, 'DbFkRoot') is None
+    assert owner not in getattr(partner, 'DbFkRoot')
 
 
 def test_assoc_DbFkRoot15_stub_double():
@@ -202,9 +202,9 @@ def test_assoc_DbTable1_stub_double():
     partner = database_Database()
     setattr(partner, 'DbTableRoot', None)
     _safe_set(owner, 'Table', partner)
-    assert getattr(partner, 'DbTableRoot') == owner
+    assert owner in getattr(partner, 'DbTableRoot')
     _safe_set(owner, 'Table', None)
-    assert getattr(partner, 'DbTableRoot') is None
+    assert owner not in getattr(partner, 'DbTableRoot')
 
 
 def test_assoc_DbTableRoot2_stub_double():

@@ -1,4 +1,8 @@
 @startuml
+' model: familytree
+' project: sampleModel
+' owner: User
+' description: New project
 class Person {
 }
 enum RelationshipStatus {
@@ -27,9 +31,9 @@ class familytree_Woman {
 }
 Person <|-- familytree_Man
 Person <|-- familytree_Woman
-familytree_Person "1..1" -- "0..9999" familytree_Person : children1
-familytree_Person "1..1" -- "0..1" familytree_Person : inRelationTo9
-familytree_Person "1..1" -- "0..1" familytree_Person : inRelationWith6
-familytree_FamilyTree "1..1" *-- "0..9999" familytree_Person : members11
-familytree_Person "1..1" -- "0..2" familytree_Person : parents3
+familytree_Person "Person 1..1" -- "parents 0..9999" familytree_Person : children1
+familytree_Person "Person10 1..1" -- "inRelationWith 0..1" familytree_Person : inRelationTo9
+familytree_Person "Person7 1..1" -- "inRelationTo 0..1" familytree_Person : inRelationWith6
+familytree_FamilyTree "familytree_Person 1..1" *-- "familytree_FamilyTree 0..9999" familytree_Person : members11
+familytree_Person "Person4 1..1" -- "children 0..2" familytree_Person : parents3
 @enduml

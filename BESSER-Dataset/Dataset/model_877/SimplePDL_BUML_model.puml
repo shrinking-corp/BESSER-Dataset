@@ -1,4 +1,8 @@
 @startuml
+' model: simplepdl
+' project: sampleModel
+' owner: User
+' description: New project
 class ProcessElement {
 }
 enum WorkSequenceType {
@@ -35,13 +39,13 @@ ProcessElement <|-- simplepdl_RessourceDefinition
 ProcessElement <|-- simplepdl_RessourceInstance
 ProcessElement <|-- simplepdl_WorkDefinition
 ProcessElement <|-- simplepdl_WorkSequence
-simplepdl_RessourceInstance "1..1" -- "1..1" simplepdl_WorkDefinition : activity11
-simplepdl_Guidance "1..1" -- "0..9999" simplepdl_ProcessElement : element8
-simplepdl_WorkDefinition "1..1" -- "0..9999" simplepdl_WorkSequence : linksToPredecessors1
-simplepdl_RessourceInstance "0..9999" -- "1..1" simplepdl_WorkDefinition : linksToRessources4
-simplepdl_WorkDefinition "1..1" -- "0..9999" simplepdl_WorkSequence : linksToSuccessors2
-simplepdl_WorkDefinition "1..1" -- "1..1" simplepdl_WorkSequence : predecessor5
-simplepdl_Process "1..1" *-- "0..9999" simplepdl_ProcessElement : processElements0
-simplepdl_WorkDefinition "1..1" -- "1..1" simplepdl_WorkSequence : successor6
-simplepdl_RessourceDefinition "1..1" -- "1..1" simplepdl_RessourceInstance : type10
+simplepdl_RessourceInstance "WorkDefinition12 1..1" -- "linksToRessources 1..1" simplepdl_WorkDefinition : activity11
+simplepdl_Guidance "simplepdl_ProcessElement9 1..1" -- "simplepdl_Guidance 0..9999" simplepdl_ProcessElement : element8
+simplepdl_WorkDefinition "WorkSequence 1..1" -- "successor 0..9999" simplepdl_WorkSequence : linksToPredecessors1
+simplepdl_RessourceInstance "activity 0..9999" -- "RessourceInstance 1..1" simplepdl_WorkDefinition : linksToRessources4
+simplepdl_WorkDefinition "WorkSequence3 1..1" -- "predecessor 0..9999" simplepdl_WorkSequence : linksToSuccessors2
+simplepdl_WorkDefinition "linksToSuccessors 1..1" -- "WorkDefinition 1..1" simplepdl_WorkSequence : predecessor5
+simplepdl_Process "simplepdl_ProcessElement 1..1" *-- "simplepdl_Process 0..9999" simplepdl_ProcessElement : processElements0
+simplepdl_WorkDefinition "linksToPredecessors 1..1" -- "WorkDefinition7 1..1" simplepdl_WorkSequence : successor6
+simplepdl_RessourceDefinition "simplepdl_RessourceInstance 1..1" -- "simplepdl_RessourceDefinition 1..1" simplepdl_RessourceInstance : type10
 @enduml

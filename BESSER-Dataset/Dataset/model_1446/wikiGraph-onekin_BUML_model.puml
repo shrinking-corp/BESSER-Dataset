@@ -1,4 +1,8 @@
 @startuml
+' model: GraphWiki
+' project: sampleModel
+' owner: User
+' description: New project
 class Graph {
 }
 class GraphWiki_ArticleGraph {
@@ -35,18 +39,18 @@ Graph <|-- GraphWiki_ArticleGraph
 Graph <|-- GraphWiki_CategoryGraph
 Graph <|-- GraphWiki_ClassificationGraph
 Graph <|-- GraphWiki_IndexGraph
-GraphWiki_Edge "0..9999" -- "1..1" GraphWiki_Graph : edges15
-GraphWiki_Edge "0..9999" --* "1..1" GraphWiki_Wiki : edges9
-GraphWiki_Edge "1..1" -- "1..1" GraphWiki_Node : from_22
-GraphWiki_ArticleGraph "0..1" --* "1..1" GraphWiki_Wiki : graphArticles3
-GraphWiki_CategoryGraph "0..1" --* "1..1" GraphWiki_Wiki : graphCategories1
-GraphWiki_ClassificationGraph "0..1" --* "1..1" GraphWiki_Wiki : graphClassification5
-GraphWiki_IndexGraph "0..1" --* "1..1" GraphWiki_Wiki : graphIndex0
-GraphWiki_Node "1..1" -- "0..1" GraphWiki_Revision : lastRevision18
-GraphWiki_Node "0..1" -- "1..1" GraphWiki_Revision : node28
-GraphWiki_Graph "1..1" -- "0..9999" GraphWiki_Node : nodes13
-GraphWiki_Node "0..9999" --* "1..1" GraphWiki_Wiki : nodes7
-GraphWiki_Revision "0..9999" --* "1..1" GraphWiki_Wiki : revisions11
-GraphWiki_Node "1..1" -- "0..9999" GraphWiki_Revision : revisions21
-GraphWiki_Edge "1..1" -- "1..1" GraphWiki_Node : to25
+GraphWiki_Edge "GraphWiki_Graph16 0..9999" -- "GraphWiki_Edge17 1..1" GraphWiki_Graph : edges15
+GraphWiki_Edge "GraphWiki_Wiki10 0..9999" --* "GraphWiki_Edge 1..1" GraphWiki_Wiki : edges9
+GraphWiki_Edge "GraphWiki_Node24 1..1" -- "GraphWiki_Edge23 1..1" GraphWiki_Node : from_22
+GraphWiki_ArticleGraph "GraphWiki_Wiki4 0..1" --* "GraphWiki_ArticleGraph 1..1" GraphWiki_Wiki : graphArticles3
+GraphWiki_CategoryGraph "GraphWiki_Wiki2 0..1" --* "GraphWiki_CategoryGraph 1..1" GraphWiki_Wiki : graphCategories1
+GraphWiki_ClassificationGraph "GraphWiki_Wiki6 0..1" --* "GraphWiki_ClassificationGraph 1..1" GraphWiki_Wiki : graphClassification5
+GraphWiki_IndexGraph "GraphWiki_Wiki 0..1" --* "GraphWiki_IndexGraph 1..1" GraphWiki_Wiki : graphIndex0
+GraphWiki_Node "GraphWiki_Revision20 1..1" -- "GraphWiki_Node19 0..1" GraphWiki_Revision : lastRevision18
+GraphWiki_Node "revisions 0..1" -- "Node 1..1" GraphWiki_Revision : node28
+GraphWiki_Graph "GraphWiki_Node14 1..1" -- "GraphWiki_Graph 0..9999" GraphWiki_Node : nodes13
+GraphWiki_Node "GraphWiki_Wiki8 0..9999" --* "GraphWiki_Node 1..1" GraphWiki_Wiki : nodes7
+GraphWiki_Revision "GraphWiki_Wiki12 0..9999" --* "GraphWiki_Revision 1..1" GraphWiki_Wiki : revisions11
+GraphWiki_Node "Revision 1..1" -- "node 0..9999" GraphWiki_Revision : revisions21
+GraphWiki_Edge "GraphWiki_Node27 1..1" -- "GraphWiki_Edge26 1..1" GraphWiki_Node : to25
 @enduml

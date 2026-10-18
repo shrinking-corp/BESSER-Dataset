@@ -1,4 +1,8 @@
 @startuml
+' model: Library
+' project: sampleModel
+' owner: User
+' description: New project
 enum Category {
   ALL
   FICTION
@@ -19,10 +23,10 @@ class Library_Writer {
   + id : int
   + name : str
 }
-Library_Book "0..9999" --* "1..1" Library_Library : books3
-Library_Book "0..9999" -- "1..1" Library_Writer : books7
-Library_Book "1..1" -- "1..1" Library_Library : library1
-Library_Library "1..1" -- "1..1" Library_Writer : library9
-Library_Book "1..1" -- "1..1" Library_Writer : writer0
-Library_Library "1..1" *-- "0..9999" Library_Writer : writers4
+Library_Book "library 0..9999" --* "Book 1..1" Library_Library : books3
+Library_Book "writer 0..9999" -- "Book8 1..1" Library_Writer : books7
+Library_Book "Library 1..1" -- "books2 1..1" Library_Library : library1
+Library_Library "writers 1..1" -- "Library10 1..1" Library_Writer : library9
+Library_Book "Writer 1..1" -- "books 1..1" Library_Writer : writer0
+Library_Library "Writer6 1..1" *-- "library5 0..9999" Library_Writer : writers4
 @enduml

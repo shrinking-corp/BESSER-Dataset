@@ -678,9 +678,9 @@ def test_assoc_elements0_stub_double():
     partner = tExp_Domainmodel()
     setattr(partner, 'tExp_Domainmodel', None)
     _safe_set(owner, 'tExp_TraceExpression', partner)
-    assert getattr(partner, 'tExp_Domainmodel') == owner
+    assert owner in getattr(partner, 'tExp_Domainmodel')
     _safe_set(owner, 'tExp_TraceExpression', None)
-    assert getattr(partner, 'tExp_Domainmodel') is None
+    assert owner not in getattr(partner, 'tExp_Domainmodel')
 
 
 def test_assoc_filterExpr116_stub_double():
@@ -858,9 +858,9 @@ def test_assoc_roles78_stub_double():
     partner = tExp_Together()
     setattr(partner, 'tExp_Together79', None)
     _safe_set(owner, 'tExp_Role80', partner)
-    assert getattr(partner, 'tExp_Together79') == owner
+    assert owner in getattr(partner, 'tExp_Together79')
     _safe_set(owner, 'tExp_Role80', None)
-    assert getattr(partner, 'tExp_Together79') is None
+    assert owner not in getattr(partner, 'tExp_Together79')
 
 
 def test_assoc_seqExpr114_stub_double():

@@ -1,4 +1,8 @@
 @startuml
+' model: services
+' project: sampleModel
+' owner: User
+' description: New project
 enum InterrestKindType {
   Escallation
   FinancialManagement
@@ -113,18 +117,18 @@ class services_ServiceSupport {
 }
 Service <|-- services_CFSService
 Service <|-- services_RFSService
-services_CIID "0..1" --* "1..1" services_Service : ciID12
-services_CFSService "1..1" -- "0..9999" services_EObject : elements0
-services_EObject "0..9999" -- "1..1" services_RFSService : elements1
-services_Service "1..1" *-- "0..9999" services_ServiceContract : serviceContracts16
-services_Service "1..1" *-- "0..1" services_ServiceDescription : serviceDescription6
-services_Service "1..1" *-- "0..1" services_ServiceIncidentMgt : serviceIncidentMgt10
-services_Service "1..1" *-- "0..1" services_ServiceInterrest : serviceInterrest14
-services_Service "1..1" *-- "0..1" services_ServiceAdditional : serviceMisc20
-services_Service "1..1" *-- "0..1" services_ServiceName : serviceName5
-services_Parameter "0..9999" --* "1..1" services_ServiceProfile : serviceParameters25
-services_RFSService "1..1" *-- "0..1" services_ServiceProfile : serviceProfile3
-services_Service "1..1" *-- "0..1" services_ServiceSecurityMgt : serviceSecurityMgt8
-services_Service "1..1" *-- "0..1" services_ServiceSupport : serviceSupport18
-services_Service "0..9999" --* "1..1" services_Service : services23
+services_CIID "services_Service13 0..1" --* "services_CIID 1..1" services_Service : ciID12
+services_CFSService "services_EObject 1..1" -- "services_CFSService 0..9999" services_EObject : elements0
+services_EObject "services_RFSService 0..9999" -- "services_EObject2 1..1" services_RFSService : elements1
+services_Service "services_ServiceContract 1..1" *-- "services_Service17 0..9999" services_ServiceContract : serviceContracts16
+services_Service "services_ServiceDescription 1..1" *-- "services_Service7 0..1" services_ServiceDescription : serviceDescription6
+services_Service "services_ServiceIncidentMgt 1..1" *-- "services_Service11 0..1" services_ServiceIncidentMgt : serviceIncidentMgt10
+services_Service "services_ServiceInterrest 1..1" *-- "services_Service15 0..1" services_ServiceInterrest : serviceInterrest14
+services_Service "services_ServiceAdditional 1..1" *-- "services_Service21 0..1" services_ServiceAdditional : serviceMisc20
+services_Service "services_ServiceName 1..1" *-- "services_Service 0..1" services_ServiceName : serviceName5
+services_Parameter "services_ServiceProfile26 0..9999" --* "services_Parameter 1..1" services_ServiceProfile : serviceParameters25
+services_RFSService "services_ServiceProfile 1..1" *-- "services_RFSService4 0..1" services_ServiceProfile : serviceProfile3
+services_Service "services_ServiceSecurityMgt 1..1" *-- "services_Service9 0..1" services_ServiceSecurityMgt : serviceSecurityMgt8
+services_Service "services_ServiceSupport 1..1" *-- "services_Service19 0..1" services_ServiceSupport : serviceSupport18
+services_Service "services_Service22 0..9999" --* "services_Service24 1..1" services_Service : services23
 @enduml

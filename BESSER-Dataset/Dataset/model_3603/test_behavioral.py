@@ -893,9 +893,9 @@ def test_assoc_annotations255_stub_double():
     partner = thingML_ConfigPropertyAssign()
     setattr(partner, 'thingML_ConfigPropertyAssign256', None)
     _safe_set(owner, 'thingML_PlatformAnnotation257', partner)
-    assert getattr(partner, 'thingML_ConfigPropertyAssign256') == owner
+    assert owner in getattr(partner, 'thingML_ConfigPropertyAssign256')
     _safe_set(owner, 'thingML_PlatformAnnotation257', None)
-    assert getattr(partner, 'thingML_ConfigPropertyAssign256') is None
+    assert owner not in getattr(partner, 'thingML_ConfigPropertyAssign256')
 
 
 def test_assoc_annotations7_stub_double():
@@ -908,9 +908,9 @@ def test_assoc_annotations7_stub_double():
     partner = thingML_AnnotatedElement()
     setattr(partner, 'thingML_AnnotatedElement', None)
     _safe_set(owner, 'thingML_PlatformAnnotation', partner)
-    assert getattr(partner, 'thingML_AnnotatedElement') == owner
+    assert owner in getattr(partner, 'thingML_AnnotatedElement')
     _safe_set(owner, 'thingML_PlatformAnnotation', None)
-    assert getattr(partner, 'thingML_AnnotatedElement') is None
+    assert owner not in getattr(partner, 'thingML_AnnotatedElement')
 
 
 def test_assoc_assign26_stub_double():
@@ -968,9 +968,9 @@ def test_assoc_configs5_stub_double():
     partner = thingML_ThingMLModel()
     setattr(partner, 'thingML_ThingMLModel6', None)
     _safe_set(owner, 'thingML_Configuration', partner)
-    assert getattr(partner, 'thingML_ThingMLModel6') == owner
+    assert owner in getattr(partner, 'thingML_ThingMLModel6')
     _safe_set(owner, 'thingML_Configuration', None)
-    assert getattr(partner, 'thingML_ThingMLModel6') is None
+    assert owner not in getattr(partner, 'thingML_ThingMLModel6')
 
 
 def test_assoc_entry136_stub_double():
@@ -1073,9 +1073,9 @@ def test_assoc_imports0_stub_double():
     partner = thingML_ThingMLModel()
     setattr(partner, 'thingML_ThingMLModel', None)
     _safe_set(owner, 'thingML_Import', partner)
-    assert getattr(partner, 'thingML_ThingMLModel') == owner
+    assert owner in getattr(partner, 'thingML_ThingMLModel')
     _safe_set(owner, 'thingML_Import', None)
-    assert getattr(partner, 'thingML_ThingMLModel') is None
+    assert owner not in getattr(partner, 'thingML_ThingMLModel')
 
 
 def test_assoc_init169_stub_double():
@@ -1178,9 +1178,9 @@ def test_assoc_literals12_stub_double():
     partner = thingML_Enumeration()
     setattr(partner, 'thingML_Enumeration', None)
     _safe_set(owner, 'thingML_EnumerationLiteral', partner)
-    assert getattr(partner, 'thingML_Enumeration') == owner
+    assert owner in getattr(partner, 'thingML_Enumeration')
     _safe_set(owner, 'thingML_EnumerationLiteral', None)
-    assert getattr(partner, 'thingML_Enumeration') is None
+    assert owner not in getattr(partner, 'thingML_Enumeration')
 
 
 def test_assoc_message175_stub_double():
@@ -1403,9 +1403,9 @@ def test_assoc_protocols3_stub_double():
     partner = thingML_ThingMLModel()
     setattr(partner, 'thingML_ThingMLModel4', None)
     _safe_set(owner, 'thingML_Protocol', partner)
-    assert getattr(partner, 'thingML_ThingMLModel4') == owner
+    assert owner in getattr(partner, 'thingML_ThingMLModel4')
     _safe_set(owner, 'thingML_Protocol', None)
-    assert getattr(partner, 'thingML_ThingMLModel4') is None
+    assert owner not in getattr(partner, 'thingML_ThingMLModel4')
 
 
 def test_assoc_required260_stub_double():
@@ -1538,8 +1538,8 @@ def test_assoc_types1_stub_double():
     partner = thingML_ThingMLModel()
     setattr(partner, 'thingML_ThingMLModel2', None)
     _safe_set(owner, 'thingML_Type', partner)
-    assert getattr(partner, 'thingML_ThingMLModel2') == owner
+    assert owner in getattr(partner, 'thingML_ThingMLModel2')
     _safe_set(owner, 'thingML_Type', None)
-    assert getattr(partner, 'thingML_ThingMLModel2') is None
+    assert owner not in getattr(partner, 'thingML_ThingMLModel2')
 
 

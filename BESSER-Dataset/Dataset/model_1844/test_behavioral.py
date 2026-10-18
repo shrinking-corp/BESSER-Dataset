@@ -1583,9 +1583,9 @@ def test_assoc_examples86_stub_double():
     partner = rapidml_WithExamples()
     setattr(partner, 'rapidml_WithExamples', None)
     _safe_set(owner, 'rapidml_Example', partner)
-    assert getattr(partner, 'rapidml_WithExamples') == owner
+    assert owner in getattr(partner, 'rapidml_WithExamples')
     _safe_set(owner, 'rapidml_Example', None)
-    assert getattr(partner, 'rapidml_WithExamples') is None
+    assert owner not in getattr(partner, 'rapidml_WithExamples')
 
 
 def test_assoc_extensions124_stub_double():
@@ -1598,9 +1598,9 @@ def test_assoc_extensions124_stub_double():
     partner = rapidml_Extensible()
     setattr(partner, 'rapidml_Extensible', None)
     _safe_set(owner, 'rapidml_Extension', partner)
-    assert getattr(partner, 'rapidml_Extensible') == owner
+    assert owner in getattr(partner, 'rapidml_Extensible')
     _safe_set(owner, 'rapidml_Extension', None)
-    assert getattr(partner, 'rapidml_Extensible') is None
+    assert owner not in getattr(partner, 'rapidml_Extensible')
 
 
 def test_assoc_mediaTypes125_stub_double():
@@ -1613,9 +1613,9 @@ def test_assoc_mediaTypes125_stub_double():
     partner = rapidml_MediaTypesLibrary()
     setattr(partner, 'rapidml_MediaTypesLibrary126', None)
     _safe_set(owner, 'rapidml_MediaType127', partner)
-    assert getattr(partner, 'rapidml_MediaTypesLibrary126') == owner
+    assert owner in getattr(partner, 'rapidml_MediaTypesLibrary126')
     _safe_set(owner, 'rapidml_MediaType127', None)
-    assert getattr(partner, 'rapidml_MediaTypesLibrary126') is None
+    assert owner not in getattr(partner, 'rapidml_MediaTypesLibrary126')
 
 
 def test_assoc_mediaTypesLibrary38_stub_double():
@@ -1688,9 +1688,9 @@ def test_assoc_scopes110_stub_double():
     partner = rapidml_AuthenticationMethod()
     setattr(partner, 'rapidml_AuthenticationMethod111', None)
     _safe_set(owner, 'rapidml_SecurityScope112', partner)
-    assert getattr(partner, 'rapidml_AuthenticationMethod111') == owner
+    assert owner in getattr(partner, 'rapidml_AuthenticationMethod111')
     _safe_set(owner, 'rapidml_SecurityScope112', None)
-    assert getattr(partner, 'rapidml_AuthenticationMethod111') is None
+    assert owner not in getattr(partner, 'rapidml_AuthenticationMethod111')
 
 
 def test_assoc_segments82_stub_double():
@@ -1703,9 +1703,9 @@ def test_assoc_segments82_stub_double():
     partner = rapidml_URI()
     setattr(partner, 'rapidml_URI83', None)
     _safe_set(owner, 'rapidml_URISegment', partner)
-    assert getattr(partner, 'rapidml_URI83') == owner
+    assert owner in getattr(partner, 'rapidml_URI83')
     _safe_set(owner, 'rapidml_URISegment', None)
-    assert getattr(partner, 'rapidml_URI83') is None
+    assert owner not in getattr(partner, 'rapidml_URI83')
 
 
 def test_assoc_supertypes148_stub_double():
@@ -1733,9 +1733,9 @@ def test_assoc_uriParameters84_stub_double():
     partner = rapidml_URI()
     setattr(partner, 'containingURI', None)
     _safe_set(owner, 'URIParameter', partner)
-    assert getattr(partner, 'containingURI') == owner
+    assert owner in getattr(partner, 'containingURI')
     _safe_set(owner, 'URIParameter', None)
-    assert getattr(partner, 'containingURI') is None
+    assert owner not in getattr(partner, 'containingURI')
 
 
 def test_assoc_uriSegment26_stub_double():

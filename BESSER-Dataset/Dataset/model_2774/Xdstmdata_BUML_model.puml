@@ -1,4 +1,8 @@
 @startuml
+' model: xDstmdata
+' project: sampleModel
+' owner: User
+' description: New project
 class xDstmdata_cExtchannel {
   + name : str
   + tID : str
@@ -38,17 +42,17 @@ class xDstmdata_vVariable {
   + tID : str
   + tString : str
 }
-xDstmdata_cExtchannel "0..9999" --* "1..1" xDstmdata_tTypes : cExtchannel7
-xDstmdata_cIntchannel "0..9999" --* "1..1" xDstmdata_tTypes : cIntchannel5
-xDstmdata_composingtype "0..9999" --* "1..1" xDstmdata_tMultitype : composingtypes15
-xDstmdata_subtype "0..9999" --* "1..1" xDstmdata_tCompound : subtypes11
-xDstmdata_channel_specifier "0..1" --* "1..1" xDstmdata_subtype : tChn13
-xDstmdata_channel_specifier "0..1" --* "1..1" xDstmdata_composingtype : tChn17
-xDstmdata_cIntchannel "1..1" *-- "0..1" xDstmdata_channel_specifier : tChn20
-xDstmdata_cExtchannel "1..1" *-- "0..1" xDstmdata_channel_specifier : tChn23
-xDstmdata_channel_specifier "0..1" --* "1..1" xDstmdata_vVariable : tChn26
-xDstmdata_tCompound "0..9999" --* "1..1" xDstmdata_tTypes : tCompound1
-xDstmdata_tEnum "0..9999" --* "1..1" xDstmdata_tTypes : tEnum0
-xDstmdata_tMultitype "0..9999" --* "1..1" xDstmdata_tTypes : tMultitype3
-xDstmdata_tTypes "1..1" *-- "0..9999" xDstmdata_vVariable : vVariable9
+xDstmdata_cExtchannel "xDstmdata_tTypes8 0..9999" --* "xDstmdata_cExtchannel 1..1" xDstmdata_tTypes : cExtchannel7
+xDstmdata_cIntchannel "xDstmdata_tTypes6 0..9999" --* "xDstmdata_cIntchannel 1..1" xDstmdata_tTypes : cIntchannel5
+xDstmdata_composingtype "xDstmdata_tMultitype16 0..9999" --* "xDstmdata_composingtype 1..1" xDstmdata_tMultitype : composingtypes15
+xDstmdata_subtype "xDstmdata_tCompound12 0..9999" --* "xDstmdata_subtype 1..1" xDstmdata_tCompound : subtypes11
+xDstmdata_channel_specifier "xDstmdata_subtype14 0..1" --* "xDstmdata_channel_specifier 1..1" xDstmdata_subtype : tChn13
+xDstmdata_channel_specifier "xDstmdata_composingtype18 0..1" --* "xDstmdata_channel_specifier19 1..1" xDstmdata_composingtype : tChn17
+xDstmdata_cIntchannel "xDstmdata_channel_specifier22 1..1" *-- "xDstmdata_cIntchannel21 0..1" xDstmdata_channel_specifier : tChn20
+xDstmdata_cExtchannel "xDstmdata_channel_specifier25 1..1" *-- "xDstmdata_cExtchannel24 0..1" xDstmdata_channel_specifier : tChn23
+xDstmdata_channel_specifier "xDstmdata_vVariable27 0..1" --* "xDstmdata_channel_specifier28 1..1" xDstmdata_vVariable : tChn26
+xDstmdata_tCompound "xDstmdata_tTypes2 0..9999" --* "xDstmdata_tCompound 1..1" xDstmdata_tTypes : tCompound1
+xDstmdata_tEnum "xDstmdata_tTypes 0..9999" --* "xDstmdata_tEnum 1..1" xDstmdata_tTypes : tEnum0
+xDstmdata_tMultitype "xDstmdata_tTypes4 0..9999" --* "xDstmdata_tMultitype 1..1" xDstmdata_tTypes : tMultitype3
+xDstmdata_tTypes "xDstmdata_vVariable 1..1" *-- "xDstmdata_tTypes10 0..9999" xDstmdata_vVariable : vVariable9
 @enduml

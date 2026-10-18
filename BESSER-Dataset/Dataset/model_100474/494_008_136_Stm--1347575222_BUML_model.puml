@@ -1,4 +1,8 @@
 @startuml
+' model: stm
+' project: sampleModel
+' owner: User
+' description: New project
 class stm_Command {
   + name : str
 }
@@ -24,24 +28,24 @@ class stm_Statemachine {
 }
 class stm_Transition {
 }
-stm_Command "0..1" -- "1..1" stm_Transition : action34
-stm_Command "0..1" -- "1..1" stm_SelfEvent : action43
-stm_Command "0..9999" --* "1..1" stm_Statemachine : commands1
-stm_Command "0..1" -- "1..1" stm_State : doAction10
-stm_Command "0..9999" -- "1..1" stm_State : entryActions7
-stm_Event "0..1" -- "1..1" stm_Transition : event26
-stm_Event "0..1" -- "1..1" stm_SelfEvent : event37
-stm_Event "0..9999" --* "1..1" stm_Statemachine : events0
-stm_Command "0..9999" -- "1..1" stm_State : exitActions23
-stm_GuardCall "0..1" --* "1..1" stm_Transition : guard29
-stm_GuardCall "0..1" --* "1..1" stm_SelfEvent : guard40
-stm_Guard "0..1" -- "1..1" stm_GuardCall : guard46
-stm_Guard "0..9999" --* "1..1" stm_Statemachine : guards3
-stm_Guard "1..1" *-- "0..9999" stm_Parameter : parameters49
-stm_SelfEvent "0..9999" --* "1..1" stm_State : selfEvents19
-stm_State "0..1" -- "1..1" stm_Transition : state31
-stm_State "0..9999" --* "1..1" stm_State : states17
-stm_State "0..9999" --* "1..1" stm_Statemachine : states5
-stm_Command "0..1" -- "1..1" stm_State : stopAction13
-stm_State "1..1" *-- "0..9999" stm_Transition : transitions21
+stm_Command "stm_Transition35 0..1" -- "stm_Command36 1..1" stm_Transition : action34
+stm_Command "stm_SelfEvent44 0..1" -- "stm_Command45 1..1" stm_SelfEvent : action43
+stm_Command "stm_Statemachine2 0..9999" --* "stm_Command 1..1" stm_Statemachine : commands1
+stm_Command "stm_State11 0..1" -- "stm_Command12 1..1" stm_State : doAction10
+stm_Command "stm_State8 0..9999" -- "stm_Command9 1..1" stm_State : entryActions7
+stm_Event "stm_Transition27 0..1" -- "stm_Event28 1..1" stm_Transition : event26
+stm_Event "stm_SelfEvent38 0..1" -- "stm_Event39 1..1" stm_SelfEvent : event37
+stm_Event "stm_Statemachine 0..9999" --* "stm_Event 1..1" stm_Statemachine : events0
+stm_Command "stm_State24 0..9999" -- "stm_Command25 1..1" stm_State : exitActions23
+stm_GuardCall "stm_Transition30 0..1" --* "stm_GuardCall 1..1" stm_Transition : guard29
+stm_GuardCall "stm_SelfEvent41 0..1" --* "stm_GuardCall42 1..1" stm_SelfEvent : guard40
+stm_Guard "stm_GuardCall47 0..1" -- "stm_Guard48 1..1" stm_GuardCall : guard46
+stm_Guard "stm_Statemachine4 0..9999" --* "stm_Guard 1..1" stm_Statemachine : guards3
+stm_Guard "stm_Parameter 1..1" *-- "stm_Guard50 0..9999" stm_Parameter : parameters49
+stm_SelfEvent "stm_State20 0..9999" --* "stm_SelfEvent 1..1" stm_State : selfEvents19
+stm_State "stm_Transition32 0..1" -- "stm_State33 1..1" stm_Transition : state31
+stm_State "stm_State16 0..9999" --* "stm_State18 1..1" stm_State : states17
+stm_State "stm_Statemachine6 0..9999" --* "stm_State 1..1" stm_Statemachine : states5
+stm_Command "stm_State14 0..1" -- "stm_Command15 1..1" stm_State : stopAction13
+stm_State "stm_Transition 1..1" *-- "stm_State22 0..9999" stm_Transition : transitions21
 @enduml

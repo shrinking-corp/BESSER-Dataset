@@ -838,21 +838,19 @@ def _safe_set(obj, attr_name, value):
 
 
 
+import datetime as _ch_datetime
 from python_code import Answers
 
 def test_Answers___init__():
-    assert Answers.__init__(Answers(datetime.date(1, 1, 1), 0.0, '\x00'), datetime.date(1, 1, 1), 0.0, '') == None
-
+    assert Answers.__init__(Answers(_ch_datetime.date(1, 1, 1), 0.0, '\x00'), _ch_datetime.date(1, 1, 1), 0.0, '') == None
 from python_code import Choices
 
 def test_Choices___init__():
-    assert Choices.__init__(Choices(datetime.date(1, 1, 2)), datetime.date(1, 1, 1)) == None
-
+    assert Choices.__init__(Choices(_ch_datetime.date(1, 1, 2)), _ch_datetime.date(1, 1, 1)) == None
 from python_code import MCRightAnswer
 
 def test_MCRightAnswer___init__():
     assert MCRightAnswer.__init__(MCRightAnswer(0, 0.0), 0, 0.0) == None
-
 from python_code import NumericAnswers
 
 def test_NumericAnswers___init__():

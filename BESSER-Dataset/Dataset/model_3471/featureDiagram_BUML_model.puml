@@ -1,4 +1,8 @@
 @startuml
+' model: featureDiagram
+' project: sampleModel
+' owner: User
+' description: New project
 class Constraint {
 }
 class Feature {
@@ -46,17 +50,17 @@ Operator <|-- featureDiagram_Card
 Operator <|-- featureDiagram_Opt
 Operator <|-- featureDiagram_Or
 Operator <|-- featureDiagram_Xor
-featureDiagram_Feature "1..1" -- "0..9999" featureDiagram_Feature : children9
-featureDiagram_Constraint "0..1" --* "1..1" featureDiagram_ConstraintEdge : constraint17
-featureDiagram_ConstraintEdge "0..9999" --* "1..1" featureDiagram_FeatureDiagram : constraintEdges2
-featureDiagram_Feature "0..9999" --* "1..1" featureDiagram_FeatureDiagram : features0
-featureDiagram_Feature "1..1" *-- "0..9999" featureDiagram_Model : models6
-featureDiagram_Feature "1..1" *-- "0..1" featureDiagram_Operator : operator5
-featureDiagram_Constraint "1..1" -- "0..1" featureDiagram_ConstraintEdge : owningCE23
-featureDiagram_Feature "0..1" -- "1..1" featureDiagram_Operator : owningFeature21
-featureDiagram_Feature "1..1" -- "1..1" featureDiagram_FeatureDiagram : owningFeatureDiagram4
-featureDiagram_Feature "1..1" -- "0..9999" featureDiagram_Feature : parents12
-featureDiagram_Feature "1..1" -- "1..1" featureDiagram_FeatureDiagram : root1
-featureDiagram_ConstraintEdge "1..1" -- "0..1" featureDiagram_Feature : source18
-featureDiagram_ConstraintEdge "1..1" -- "0..1" featureDiagram_Feature : target14
+featureDiagram_Feature "Feature10 1..1" -- "parents 0..9999" featureDiagram_Feature : children9
+featureDiagram_Constraint "owningCE 0..1" --* "Constraint 1..1" featureDiagram_ConstraintEdge : constraint17
+featureDiagram_ConstraintEdge "featureDiagram_FeatureDiagram3 0..9999" --* "featureDiagram_ConstraintEdge 1..1" featureDiagram_FeatureDiagram : constraintEdges2
+featureDiagram_Feature "owningFeatureDiagram 0..9999" --* "Feature 1..1" featureDiagram_FeatureDiagram : features0
+featureDiagram_Feature "featureDiagram_Model 1..1" *-- "featureDiagram_Feature7 0..9999" featureDiagram_Model : models6
+featureDiagram_Feature "Operator 1..1" *-- "owningFeature 0..1" featureDiagram_Operator : operator5
+featureDiagram_Constraint "ConstraintEdge 1..1" -- "constraint 0..1" featureDiagram_ConstraintEdge : owningCE23
+featureDiagram_Feature "operator 0..1" -- "Feature22 1..1" featureDiagram_Operator : owningFeature21
+featureDiagram_Feature "FeatureDiagram 1..1" -- "features 1..1" featureDiagram_FeatureDiagram : owningFeatureDiagram4
+featureDiagram_Feature "Feature13 1..1" -- "children 0..9999" featureDiagram_Feature : parents12
+featureDiagram_Feature "featureDiagram_FeatureDiagram 1..1" -- "featureDiagram_Feature 1..1" featureDiagram_FeatureDiagram : root1
+featureDiagram_ConstraintEdge "featureDiagram_Feature20 1..1" -- "featureDiagram_ConstraintEdge19 0..1" featureDiagram_Feature : source18
+featureDiagram_ConstraintEdge "featureDiagram_Feature16 1..1" -- "featureDiagram_ConstraintEdge15 0..1" featureDiagram_Feature : target14
 @enduml

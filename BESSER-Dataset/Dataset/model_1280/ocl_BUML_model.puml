@@ -1,4 +1,8 @@
 @startuml
+' model: ocl
+' project: sampleModel
+' owner: User
+' description: New project
 class EAssociationEnd {
 }
 class EAttribute {
@@ -173,27 +177,27 @@ EOclExpression <|-- ocl_exp_EVariableExp
 EPrimitiveType <|-- ocl_exp_EBooleanLiteralExp
 EPrimitiveType <|-- ocl_exp_ENumericLiteralExp
 EPrimitiveType <|-- ocl_exp_EStringLiteralExp
-ECallExp "0..1" -- "1..1" ocl_exp_EOclExpression : appliedElement23
-EOclExpression "0..9999" --* "1..1" ocl_exp_EOperationCallExp : argument32
-EAttribute "0..9999" --* "1..1" ocl_dm_EEntity : attributes1
-EOclExpression "1..1" --* "1..1" ocl_exp_ELoopExp : body11
-EEntity "0..9999" --* "1..1" ocl_dm_EDataModel : classes7
-EClassifier "1..1" -- "1..1" ocl_type_ECollectionType : elementType35
-EAssociationEnd "0..9999" --* "1..1" ocl_dm_EEntity : ends0
-EOclExpression "0..1" --* "1..1" ocl_exp_EVariable : initExpression17
-EVariable "0..1" -- "1..1" ocl_exp_EOclExpression : initializedElement24
-EVariable "0..9999" --* "1..1" ocl_exp_ELoopExp : iterator12
-ELoopExp "0..1" -- "1..1" ocl_exp_EOclExpression : loopBodyOwner21
-ELoopExp "0..1" -- "1..1" ocl_exp_EVariable : loopExp16
-EAssociationEnd "1..1" -- "1..1" ocl_dm_EAssociationEnd : opp4
-EOperationCallExp "0..1" -- "1..1" ocl_exp_EOclExpression : parentCall26
-ENavigationCallExp "0..1" -- "1..1" ocl_exp_EOclExpression : parentNav27
-EOclExpression "0..9999" --* "1..1" ocl_exp_ENavigationCallExp : qualifier30
-EAssociationEnd "1..1" -- "1..1" ocl_exp_EAssociationClassCallExp : referredAssociationEnds14
-EAttribute "1..1" -- "1..1" ocl_exp_EPropertyCallExp : referredProperty19
-ESignal "0..1" -- "1..1" ocl_type_EMessageType : referredSignal34
-EClassifier "1..1" -- "1..1" ocl_exp_ETypeExp : referredType10
-EVariable "0..1" -- "1..1" ocl_exp_EVariableExp : referredVariable9
-EOclExpression "0..1" --* "1..1" ocl_exp_ECallExp : source28
-EEntity "1..1" -- "1..1" ocl_dm_EAssociationEnd : target3
+ECallExp "source 0..1" -- "ECallExp 1..1" ocl_exp_EOclExpression : appliedElement23
+EOclExpression "parentCall 0..9999" --* "EOclExpression33 1..1" ocl_exp_EOperationCallExp : argument32
+EAttribute "ocl_dm_EEntity2 0..9999" --* "EAttribute 1..1" ocl_dm_EEntity : attributes1
+EOclExpression "loopBodyOwner 1..1" --* "EOclExpression 1..1" ocl_exp_ELoopExp : body11
+EEntity "ocl_dm_EDataModel 0..9999" --* "EEntity8 1..1" ocl_dm_EDataModel : classes7
+EClassifier "ocl_type_ECollectionType 1..1" -- "EClassifier36 1..1" ocl_type_ECollectionType : elementType35
+EAssociationEnd "ocl_dm_EEntity 0..9999" --* "EAssociationEnd 1..1" ocl_dm_EEntity : ends0
+EOclExpression "initializedElement 0..1" --* "EOclExpression18 1..1" ocl_exp_EVariable : initExpression17
+EVariable "initExpression 0..1" -- "EVariable25 1..1" ocl_exp_EOclExpression : initializedElement24
+EVariable "loopExp 0..9999" --* "EVariable13 1..1" ocl_exp_ELoopExp : iterator12
+ELoopExp "body 0..1" -- "ELoopExp22 1..1" ocl_exp_EOclExpression : loopBodyOwner21
+ELoopExp "iterator 0..1" -- "ELoopExp 1..1" ocl_exp_EVariable : loopExp16
+EAssociationEnd "ocl_dm_EAssociationEnd5 1..1" -- "EAssociationEnd6 1..1" ocl_dm_EAssociationEnd : opp4
+EOperationCallExp "argument 0..1" -- "EOperationCallExp 1..1" ocl_exp_EOclExpression : parentCall26
+ENavigationCallExp "qualifier 0..1" -- "ENavigationCallExp 1..1" ocl_exp_EOclExpression : parentNav27
+EOclExpression "parentNav 0..9999" --* "EOclExpression31 1..1" ocl_exp_ENavigationCallExp : qualifier30
+EAssociationEnd "ocl_exp_EAssociationClassCallExp 1..1" -- "EAssociationEnd15 1..1" ocl_exp_EAssociationClassCallExp : referredAssociationEnds14
+EAttribute "ocl_exp_EPropertyCallExp 1..1" -- "EAttribute20 1..1" ocl_exp_EPropertyCallExp : referredProperty19
+ESignal "ocl_type_EMessageType 0..1" -- "ESignal 1..1" ocl_type_EMessageType : referredSignal34
+EClassifier "ocl_exp_ETypeExp 1..1" -- "EClassifier 1..1" ocl_exp_ETypeExp : referredType10
+EVariable "ocl_exp_EVariableExp 0..1" -- "EVariable 1..1" ocl_exp_EVariableExp : referredVariable9
+EOclExpression "appliedElement 0..1" --* "EOclExpression29 1..1" ocl_exp_ECallExp : source28
+EEntity "ocl_dm_EAssociationEnd 1..1" -- "EEntity 1..1" ocl_dm_EAssociationEnd : target3
 @enduml

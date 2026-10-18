@@ -1,4 +1,8 @@
 @startuml
+' model: simplepdl
+' project: sampleModel
+' owner: User
+' description: New project
 class ProcessElement {
 }
 enum WorkSequenceType {
@@ -24,10 +28,10 @@ class simplepdl_WorkSequence {
 ProcessElement <|-- simplepdl_Guidance
 ProcessElement <|-- simplepdl_WorkDefinition
 ProcessElement <|-- simplepdl_WorkSequence
-simplepdl_Guidance "1..1" -- "0..1" simplepdl_ProcessElement : element7
-simplepdl_Process "1..1" *-- "1..9999" simplepdl_ProcessElement : elements0
-simplepdl_WorkDefinition "1..1" -- "0..9999" simplepdl_WorkSequence : linksToPredecessors1
-simplepdl_WorkDefinition "1..1" -- "0..9999" simplepdl_WorkSequence : linksToSuccessors2
-simplepdl_WorkDefinition "1..1" -- "1..1" simplepdl_WorkSequence : predecessor4
-simplepdl_WorkDefinition "1..1" -- "1..1" simplepdl_WorkSequence : successor5
+simplepdl_Guidance "simplepdl_ProcessElement8 1..1" -- "simplepdl_Guidance 0..1" simplepdl_ProcessElement : element7
+simplepdl_Process "simplepdl_ProcessElement 1..1" *-- "simplepdl_Process 1..9999" simplepdl_ProcessElement : elements0
+simplepdl_WorkDefinition "WorkSequence 1..1" -- "successor 0..9999" simplepdl_WorkSequence : linksToPredecessors1
+simplepdl_WorkDefinition "WorkSequence3 1..1" -- "predecessor 0..9999" simplepdl_WorkSequence : linksToSuccessors2
+simplepdl_WorkDefinition "linksToSuccessors 1..1" -- "WorkDefinition 1..1" simplepdl_WorkSequence : predecessor4
+simplepdl_WorkDefinition "linksToPredecessors 1..1" -- "WorkDefinition6 1..1" simplepdl_WorkSequence : successor5
 @enduml

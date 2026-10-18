@@ -1,4 +1,8 @@
 @startuml
+' model: diagraph
+' project: sampleModel
+' owner: User
+' description: New project
 class DEdge {
 }
 class DGraphElement {
@@ -111,23 +115,23 @@ DOwnedElement <|-- diagraph_DNode
 DOwnedElement <|-- diagraph_DOwnedEdge
 DSimpleEdge <|-- diagraph_DLineEdge
 DSimpleEdge <|-- diagraph_DNavigationEdge
-diagraph_DLabel "1..1" -- "0..1" diagraph_EAttribute : attribute20
-diagraph_DContainment "0..9999" --* "1..1" diagraph_DNode : containments6
-diagraph_DLabel "0..9999" --* "1..1" diagraph_DLabeledElement : dlabels13
-diagraph_DLabeledElement "1..1" -- "0..1" diagraph_EClass : eClaz12
-diagraph_DContainment "1..1" -- "0..9999" diagraph_DNestedEdge : edges24
-diagraph_DGraph "1..1" *-- "0..9999" diagraph_DGraphElement : elements10
-diagraph_DGraph "0..1" -- "1..1" diagraph_DGraphElement : graph4
-diagraph_DNode "0..1" -- "1..1" diagraph_DViewNavigation : navigationSource19
-diagraph_DGraph "0..1" -- "1..1" diagraph_DViewNavigation : navigationTarget17
-diagraph_DContainment "1..1" -- "1..1" diagraph_DNode : node22
-diagraph_DNode "0..1" -- "1..1" diagraph_DOwnedElement : owner15
-diagraph_DGraph "1..1" -- "1..1" diagraph_DPointOfView : pointOfView11
-diagraph_DGraphElement "1..1" -- "0..1" diagraph_ENamedElement : semanticRole3
-diagraph_DNode "1..1" -- "1..1" diagraph_DSimpleEdge : source27
-diagraph_DContainment "1..1" -- "1..1" diagraph_DNestedEdge : source9
-diagraph_DLabeledEdge "1..1" -- "0..1" diagraph_EReference : sourceReference7
-diagraph_DEdge "1..1" -- "1..1" diagraph_DNode : target0
-diagraph_DEdge "1..1" -- "0..1" diagraph_EReference : targetReference1
-diagraph_DNode "1..1" *-- "0..1" diagraph_DViewNavigation : viewNavigation5
+diagraph_DLabel "diagraph_EAttribute 1..1" -- "diagraph_DLabel21 0..1" diagraph_EAttribute : attribute20
+diagraph_DContainment "node 0..9999" --* "DContainment 1..1" diagraph_DNode : containments6
+diagraph_DLabel "diagraph_DLabeledElement14 0..9999" --* "diagraph_DLabel 1..1" diagraph_DLabeledElement : dlabels13
+diagraph_DLabeledElement "diagraph_EClass 1..1" -- "diagraph_DLabeledElement 0..1" diagraph_EClass : eClaz12
+diagraph_DContainment "diagraph_DNestedEdge26 1..1" -- "diagraph_DContainment25 0..9999" diagraph_DNestedEdge : edges24
+diagraph_DGraph "DGraphElement 1..1" *-- "graph 0..9999" diagraph_DGraphElement : elements10
+diagraph_DGraph "elements 0..1" -- "DGraph 1..1" diagraph_DGraphElement : graph4
+diagraph_DNode "viewNavigation 0..1" -- "DNode 1..1" diagraph_DViewNavigation : navigationSource19
+diagraph_DGraph "diagraph_DViewNavigation 0..1" -- "diagraph_DGraph18 1..1" diagraph_DViewNavigation : navigationTarget17
+diagraph_DContainment "DNode23 1..1" -- "containments 1..1" diagraph_DNode : node22
+diagraph_DNode "diagraph_DOwnedElement 0..1" -- "diagraph_DNode16 1..1" diagraph_DOwnedElement : owner15
+diagraph_DGraph "diagraph_DPointOfView 1..1" -- "diagraph_DGraph 1..1" diagraph_DPointOfView : pointOfView11
+diagraph_DGraphElement "diagraph_ENamedElement 1..1" -- "diagraph_DGraphElement 0..1" diagraph_ENamedElement : semanticRole3
+diagraph_DNode "diagraph_DSimpleEdge 1..1" -- "diagraph_DNode28 1..1" diagraph_DSimpleEdge : source27
+diagraph_DContainment "diagraph_DNestedEdge 1..1" -- "diagraph_DContainment 1..1" diagraph_DNestedEdge : source9
+diagraph_DLabeledEdge "diagraph_EReference8 1..1" -- "diagraph_DLabeledEdge 0..1" diagraph_EReference : sourceReference7
+diagraph_DEdge "diagraph_DNode 1..1" -- "diagraph_DEdge 1..1" diagraph_DNode : target0
+diagraph_DEdge "diagraph_EReference 1..1" -- "diagraph_DEdge2 0..1" diagraph_EReference : targetReference1
+diagraph_DNode "DViewNavigation 1..1" *-- "navigationSource 0..1" diagraph_DViewNavigation : viewNavigation5
 @enduml

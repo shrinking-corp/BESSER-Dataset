@@ -1,4 +1,8 @@
 @startuml
+' model: Behaviour
+' project: sampleModel
+' owner: User
+' description: New project
 class Behaviour_Colour {
   + attribute : str
 }
@@ -60,27 +64,27 @@ Place <|-- Behaviour_StartPlace
 Place <|-- Behaviour_WaitingLine
 Transition <|-- Behaviour_ConditionalTransition
 Transition <|-- Behaviour_StochasticTransition
-Behaviour_Connection "0..9999" --* "1..1" Behaviour_Description : arrows32
-Behaviour_Colour "0..9999" --* "1..1" Behaviour_Token : attributes30
-Behaviour_Token "0..9999" --* "1..1" Behaviour_TransitionFunction : emittedToken46
-Behaviour_PreTransitionConnection "1..9999" -- "1..1" Behaviour_Transition : incommingEdges2
-Behaviour_PostTransitionConnection "0..9999" -- "1..1" Behaviour_Transition : outgoingEdges1
-Behaviour_Description "1..1" *-- "1..9999" Behaviour_Place : place34
-Behaviour_Connection "1..1" -- "1..1" Behaviour_Place : place4
-Behaviour_DefaultPlace "1..1" -- "1..9999" Behaviour_PostTransitionConnection : postTransitions11
-Behaviour_PostTransitionConnection "1..9999" -- "1..1" Behaviour_WaitingLine : postTransitions27
-Behaviour_PreTransitionConnection "1..1" -- "1..1" Behaviour_Server : preTransition23
-Behaviour_PreTransitionConnection "1..9999" -- "1..1" Behaviour_StartPlace : preTransitions17
-Behaviour_DefaultPlace "1..1" -- "1..9999" Behaviour_PreTransitionConnection : preTransitions9
-Behaviour_QueuePlace "1..1" *-- "1..1" Behaviour_Server : server14
-Behaviour_Server "1..1" -- "1..1" Behaviour_WaitingLine : server26
-Behaviour_Place "1..1" -- "0..9999" Behaviour_Token : token0
-Behaviour_Description "1..1" *-- "0..9999" Behaviour_Token : token40
-Behaviour_Description "1..1" *-- "1..9999" Behaviour_Transition : transition37
-Behaviour_Connection "1..1" -- "1..1" Behaviour_Transition : transition6
-Behaviour_PostTransitionConnection "1..1" -- "1..1" Behaviour_TransitionFunction : transitionConnection43
-Behaviour_ConditionalTransition "1..1" *-- "0..9999" Behaviour_TransitionFunction : transitionFunction19
-Behaviour_StochasticTransition "1..1" *-- "0..9999" Behaviour_TransitionFunction : transitionFunction20
-Behaviour_QueuePlace "1..1" *-- "1..1" Behaviour_WaitingLine : waitingLine15
-Behaviour_Server "1..1" -- "1..1" Behaviour_WaitingLine : waitingLine22
+Behaviour_Connection "Behaviour_Description 0..9999" --* "Behaviour_Connection33 1..1" Behaviour_Description : arrows32
+Behaviour_Colour "Behaviour_Token31 0..9999" --* "Behaviour_Colour 1..1" Behaviour_Token : attributes30
+Behaviour_Token "Behaviour_TransitionFunction47 0..9999" --* "Behaviour_Token48 1..1" Behaviour_TransitionFunction : emittedToken46
+Behaviour_PreTransitionConnection "Behaviour_Transition3 1..9999" -- "Behaviour_PreTransitionConnection 1..1" Behaviour_Transition : incommingEdges2
+Behaviour_PostTransitionConnection "Behaviour_Transition 0..9999" -- "Behaviour_PostTransitionConnection 1..1" Behaviour_Transition : outgoingEdges1
+Behaviour_Description "Behaviour_Place36 1..1" *-- "Behaviour_Description35 1..9999" Behaviour_Place : place34
+Behaviour_Connection "Behaviour_Place5 1..1" -- "Behaviour_Connection 1..1" Behaviour_Place : place4
+Behaviour_DefaultPlace "Behaviour_PostTransitionConnection13 1..1" -- "Behaviour_DefaultPlace12 1..9999" Behaviour_PostTransitionConnection : postTransitions11
+Behaviour_PostTransitionConnection "Behaviour_WaitingLine28 1..9999" -- "Behaviour_PostTransitionConnection29 1..1" Behaviour_WaitingLine : postTransitions27
+Behaviour_PreTransitionConnection "Behaviour_Server24 1..1" -- "Behaviour_PreTransitionConnection25 1..1" Behaviour_Server : preTransition23
+Behaviour_PreTransitionConnection "Behaviour_StartPlace 1..9999" -- "Behaviour_PreTransitionConnection18 1..1" Behaviour_StartPlace : preTransitions17
+Behaviour_DefaultPlace "Behaviour_PreTransitionConnection10 1..1" -- "Behaviour_DefaultPlace 1..9999" Behaviour_PreTransitionConnection : preTransitions9
+Behaviour_QueuePlace "Behaviour_Server 1..1" *-- "Behaviour_QueuePlace 1..1" Behaviour_Server : server14
+Behaviour_Server "waitingLine 1..1" -- "Server 1..1" Behaviour_WaitingLine : server26
+Behaviour_Place "Behaviour_Token 1..1" -- "Behaviour_Place 0..9999" Behaviour_Token : token0
+Behaviour_Description "Behaviour_Token42 1..1" *-- "Behaviour_Description41 0..9999" Behaviour_Token : token40
+Behaviour_Description "Behaviour_Transition39 1..1" *-- "Behaviour_Description38 1..9999" Behaviour_Transition : transition37
+Behaviour_Connection "Behaviour_Transition8 1..1" -- "Behaviour_Connection7 1..1" Behaviour_Transition : transition6
+Behaviour_PostTransitionConnection "Behaviour_TransitionFunction44 1..1" -- "Behaviour_PostTransitionConnection45 1..1" Behaviour_TransitionFunction : transitionConnection43
+Behaviour_ConditionalTransition "Behaviour_TransitionFunction 1..1" *-- "Behaviour_ConditionalTransition 0..9999" Behaviour_TransitionFunction : transitionFunction19
+Behaviour_StochasticTransition "Behaviour_TransitionFunction21 1..1" *-- "Behaviour_StochasticTransition 0..9999" Behaviour_TransitionFunction : transitionFunction20
+Behaviour_QueuePlace "Behaviour_WaitingLine 1..1" *-- "Behaviour_QueuePlace16 1..1" Behaviour_WaitingLine : waitingLine15
+Behaviour_Server "WaitingLine 1..1" -- "server 1..1" Behaviour_WaitingLine : waitingLine22
 @enduml

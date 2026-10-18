@@ -1,4 +1,8 @@
 @startuml
+' model: pDL2
+' project: sampleModel
+' owner: User
+' description: New project
 class ProcessElement {
 }
 class pDL2_DependanceFinish {
@@ -28,10 +32,10 @@ class pDL2_WorkSequenceKindStart {
 }
 ProcessElement <|-- pDL2_Guidance
 ProcessElement <|-- pDL2_WorkDefinition
-pDL2_DependanceStart "1..1" *-- "0..1" pDL2_WorkSequenceKindStart : link4
-pDL2_DependanceFinish "1..1" *-- "0..1" pDL2_WorkSequenceKindFinish : link8
-pDL2_EObject "0..9999" --* "1..1" pDL2_WorkDefinition : linksToPredecessors1
-pDL2_DependanceStart "1..1" -- "0..1" pDL2_WorkDefinition : predecessor2
-pDL2_DependanceFinish "1..1" -- "0..1" pDL2_WorkDefinition : predecessor6
-pDL2_Process "1..1" *-- "0..9999" pDL2_ProcessElement : processElements0
+pDL2_DependanceStart "pDL2_WorkSequenceKindStart 1..1" *-- "pDL2_DependanceStart5 0..1" pDL2_WorkSequenceKindStart : link4
+pDL2_DependanceFinish "pDL2_WorkSequenceKindFinish 1..1" *-- "pDL2_DependanceFinish9 0..1" pDL2_WorkSequenceKindFinish : link8
+pDL2_EObject "pDL2_WorkDefinition 0..9999" --* "pDL2_EObject 1..1" pDL2_WorkDefinition : linksToPredecessors1
+pDL2_DependanceStart "pDL2_WorkDefinition3 1..1" -- "pDL2_DependanceStart 0..1" pDL2_WorkDefinition : predecessor2
+pDL2_DependanceFinish "pDL2_WorkDefinition7 1..1" -- "pDL2_DependanceFinish 0..1" pDL2_WorkDefinition : predecessor6
+pDL2_Process "pDL2_ProcessElement 1..1" *-- "pDL2_Process 0..9999" pDL2_ProcessElement : processElements0
 @enduml

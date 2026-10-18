@@ -1,4 +1,8 @@
 @startuml
+' model: kmLogo
+' project: sampleModel
+' owner: User
+' description: New project
 class BinaryExp {
 }
 class ControlStructure {
@@ -96,23 +100,23 @@ Primitive <|-- kmLogo_Left
 Primitive <|-- kmLogo_PenDown
 Primitive <|-- kmLogo_PenUp
 Primitive <|-- kmLogo_Right
-kmLogo_Expression "0..9999" --* "1..1" kmLogo_ProcCall : actualArgs12
-kmLogo_Expression "0..1" --* "1..1" kmLogo_Left : angle3
-kmLogo_Expression "0..1" --* "1..1" kmLogo_Right : angle5
-kmLogo_Parameter "0..9999" --* "1..1" kmLogo_ProcDeclaration : args15
-kmLogo_Block "1..1" --* "1..1" kmLogo_Repeat : block28
-kmLogo_Block "1..1" --* "1..1" kmLogo_While : block30
-kmLogo_ControlStructure "1..1" *-- "0..1" kmLogo_Expression : condition26
-kmLogo_ProcCall "1..1" -- "1..1" kmLogo_ProcDeclaration : declaration14
-kmLogo_Block "0..1" --* "1..1" kmLogo_If : elsePart23
-kmLogo_Instruction "0..9999" --* "1..1" kmLogo_ProcDeclaration : instructions17
-kmLogo_Block "1..1" *-- "0..9999" kmLogo_Instruction : instructions19
-kmLogo_Instruction "0..9999" --* "1..1" kmLogo_LogoProgram : instructions34
-kmLogo_BinaryExp "1..1" *-- "1..1" kmLogo_Expression : lhs7
-kmLogo_Parameter "1..1" -- "1..1" kmLogo_ParameterCall : parameter32
-kmLogo_ProcCall "0..9999" -- "1..1" kmLogo_ProcDeclaration : procCall16
-kmLogo_BinaryExp "1..1" *-- "1..1" kmLogo_Expression : rhs9
-kmLogo_Back "1..1" *-- "1..1" kmLogo_Expression : steps0
-kmLogo_Expression "1..1" --* "1..1" kmLogo_Forward : steps1
-kmLogo_Block "1..1" --* "1..1" kmLogo_If : thenPart21
+kmLogo_Expression "kmLogo_ProcCall 0..9999" --* "kmLogo_Expression13 1..1" kmLogo_ProcCall : actualArgs12
+kmLogo_Expression "kmLogo_Left 0..1" --* "kmLogo_Expression4 1..1" kmLogo_Left : angle3
+kmLogo_Expression "kmLogo_Right 0..1" --* "kmLogo_Expression6 1..1" kmLogo_Right : angle5
+kmLogo_Parameter "kmLogo_ProcDeclaration 0..9999" --* "kmLogo_Parameter 1..1" kmLogo_ProcDeclaration : args15
+kmLogo_Block "kmLogo_Repeat 1..1" --* "kmLogo_Block29 1..1" kmLogo_Repeat : block28
+kmLogo_Block "kmLogo_While 1..1" --* "kmLogo_Block31 1..1" kmLogo_While : block30
+kmLogo_ControlStructure "kmLogo_Expression27 1..1" *-- "kmLogo_ControlStructure 0..1" kmLogo_Expression : condition26
+kmLogo_ProcCall "ProcDeclaration 1..1" -- "procCall 1..1" kmLogo_ProcDeclaration : declaration14
+kmLogo_Block "kmLogo_If24 0..1" --* "kmLogo_Block25 1..1" kmLogo_If : elsePart23
+kmLogo_Instruction "kmLogo_ProcDeclaration18 0..9999" --* "kmLogo_Instruction 1..1" kmLogo_ProcDeclaration : instructions17
+kmLogo_Block "kmLogo_Instruction20 1..1" *-- "kmLogo_Block 0..9999" kmLogo_Instruction : instructions19
+kmLogo_Instruction "kmLogo_LogoProgram 0..9999" --* "kmLogo_Instruction35 1..1" kmLogo_LogoProgram : instructions34
+kmLogo_BinaryExp "kmLogo_Expression8 1..1" *-- "kmLogo_BinaryExp 1..1" kmLogo_Expression : lhs7
+kmLogo_Parameter "kmLogo_ParameterCall 1..1" -- "kmLogo_Parameter33 1..1" kmLogo_ParameterCall : parameter32
+kmLogo_ProcCall "declaration 0..9999" -- "ProcCall 1..1" kmLogo_ProcDeclaration : procCall16
+kmLogo_BinaryExp "kmLogo_Expression11 1..1" *-- "kmLogo_BinaryExp10 1..1" kmLogo_Expression : rhs9
+kmLogo_Back "kmLogo_Expression 1..1" *-- "kmLogo_Back 1..1" kmLogo_Expression : steps0
+kmLogo_Expression "kmLogo_Forward 1..1" --* "kmLogo_Expression2 1..1" kmLogo_Forward : steps1
+kmLogo_Block "kmLogo_If 1..1" --* "kmLogo_Block22 1..1" kmLogo_If : thenPart21
 @enduml

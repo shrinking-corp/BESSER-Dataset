@@ -1,4 +1,8 @@
 @startuml
+' model: requirement
+' project: sampleModel
+' owner: User
+' description: New project
 class NamedElement {
 }
 enum RequirementType {
@@ -30,13 +34,13 @@ class requirement_Requirement {
 NamedElement <|-- requirement_Category
 NamedElement <|-- requirement_Repository
 NamedElement <|-- requirement_Requirement
-requirement_Category "0..1" -- "1..1" requirement_Requirement : category14
-requirement_Category "0..9999" --* "1..1" requirement_Repository : mainCategories0
-requirement_Category "1..1" -- "0..1" requirement_Category : parentCategory8
-requirement_EObject "0..9999" -- "1..1" requirement_Repository : referencedObject1
-requirement_Category "1..1" -- "0..9999" requirement_EObject : referencedObject10
-requirement_EObject "0..9999" -- "1..1" requirement_Requirement : referencedObject12
-requirement_Category "1..1" -- "0..1" requirement_Repository : repository6
-requirement_Category "1..1" *-- "0..9999" requirement_Requirement : requirements2
-requirement_Category "1..1" *-- "0..9999" requirement_Category : subCategories4
+requirement_Category "requirements 0..1" -- "Category15 1..1" requirement_Requirement : category14
+requirement_Category "repository 0..9999" --* "Category 1..1" requirement_Repository : mainCategories0
+requirement_Category "Category9 1..1" -- "subCategories 0..1" requirement_Category : parentCategory8
+requirement_EObject "requirement_Repository 0..9999" -- "requirement_EObject 1..1" requirement_Repository : referencedObject1
+requirement_Category "requirement_EObject11 1..1" -- "requirement_Category 0..9999" requirement_EObject : referencedObject10
+requirement_EObject "requirement_Requirement 0..9999" -- "requirement_EObject13 1..1" requirement_Requirement : referencedObject12
+requirement_Category "Repository 1..1" -- "mainCategories 0..1" requirement_Repository : repository6
+requirement_Category "Requirement 1..1" *-- "category 0..9999" requirement_Requirement : requirements2
+requirement_Category "Category5 1..1" *-- "parentCategory 0..9999" requirement_Category : subCategories4
 @enduml

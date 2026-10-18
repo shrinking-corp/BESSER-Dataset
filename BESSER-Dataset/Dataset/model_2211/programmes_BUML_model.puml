@@ -1,4 +1,8 @@
 @startuml
+' model: StudyProgrammes
+' project: sampleModel
+' owner: User
+' description: New project
 enum Access {
   M1A
   M2A
@@ -39,11 +43,11 @@ class StudyProgrammes_Specialization {
   + name : str
   + startSemester : int
 }
-StudyProgrammes_Course "1..1" -- "1..1" StudyProgrammes_CourseAccess : course12
-StudyProgrammes_CourseAccess "0..9999" --* "1..1" StudyProgrammes_Semester : courseAccesses10
-StudyProgrammes_Course "0..9999" --* "1..1" StudyProgrammes_Department : courses1
-StudyProgrammes_Department "1..1" *-- "0..9999" StudyProgrammes_Programme : programmes0
-StudyProgrammes_Programme "1..1" *-- "0..9999" StudyProgrammes_Semester : semesters5
-StudyProgrammes_Semester "0..9999" --* "1..1" StudyProgrammes_Specialization : semesters7
-StudyProgrammes_Programme "1..1" *-- "0..9999" StudyProgrammes_Specialization : specializations3
+StudyProgrammes_Course "StudyProgrammes_CourseAccess13 1..1" -- "StudyProgrammes_Course14 1..1" StudyProgrammes_CourseAccess : course12
+StudyProgrammes_CourseAccess "StudyProgrammes_Semester11 0..9999" --* "StudyProgrammes_CourseAccess 1..1" StudyProgrammes_Semester : courseAccesses10
+StudyProgrammes_Course "StudyProgrammes_Department2 0..9999" --* "StudyProgrammes_Course 1..1" StudyProgrammes_Department : courses1
+StudyProgrammes_Department "StudyProgrammes_Programme 1..1" *-- "StudyProgrammes_Department 0..9999" StudyProgrammes_Programme : programmes0
+StudyProgrammes_Programme "StudyProgrammes_Semester 1..1" *-- "StudyProgrammes_Programme6 0..9999" StudyProgrammes_Semester : semesters5
+StudyProgrammes_Semester "StudyProgrammes_Specialization8 0..9999" --* "StudyProgrammes_Semester9 1..1" StudyProgrammes_Specialization : semesters7
+StudyProgrammes_Programme "StudyProgrammes_Specialization 1..1" *-- "StudyProgrammes_Programme4 0..9999" StudyProgrammes_Specialization : specializations3
 @enduml

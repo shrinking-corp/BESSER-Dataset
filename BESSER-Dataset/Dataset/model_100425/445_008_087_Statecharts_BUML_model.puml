@@ -1,4 +1,8 @@
 @startuml
+' model: Statecharts
+' project: sampleModel
+' owner: User
+' description: New project
 class BooleanExpression {
 }
 class CompositeState {
@@ -35,23 +39,23 @@ class Transition {
 }
 State <|-- Statecharts_CompositeState
 StateVertex <|-- Statecharts_State
-Event "0..9999" -- "1..1" Statecharts_State : deferrableEvents5
-Statecharts_Event "1..1" -- "0..9999" Transition : evt_container26
-BooleanExpression "1..1" -- "1..1" Statecharts_Guard : expression25
-Statecharts_Guard "1..1" -- "1..1" Transition : gua_container23
-Guard "0..1" --* "1..1" Statecharts_Transition : guard13
-Statecharts_StateVertex "1..1" -- "0..9999" Transition : incoming21
-Statecharts_State "1..1" *-- "0..9999" Transition : internalTransitions3
-Statecharts_StateVertex "1..1" -- "0..9999" Transition : outgoing19
-StateVertex "1..1" -- "1..1" Statecharts_Transition : source14
-StateMachine "1..1" -- "1..1" Statecharts_State : state_container2
-StateVertex "0..9999" --* "1..1" Statecharts_CompositeState : subVertexes6
-CompositeState "0..1" -- "1..1" Statecharts_StateVertex : sv_container18
-StateVertex "1..1" -- "1..1" Statecharts_Transition : target16
-State "0..9999" -- "1..1" Statecharts_Event : targets28
-State "0..9999" --* "1..1" Statecharts_StateMachine : top1
-StateMachine "0..1" -- "1..1" Statecharts_Transition : transSM_container7
-State "0..1" -- "1..1" Statecharts_Transition : transS_container9
-Statecharts_StateMachine "1..1" *-- "0..9999" Transition : transitions0
-Event "0..1" --* "1..1" Statecharts_Transition : trigger11
+Event "targets 0..9999" -- "Event 1..1" Statecharts_State : deferrableEvents5
+Statecharts_Event "Transition27 1..1" -- "trigger 0..9999" Transition : evt_container26
+BooleanExpression "Statecharts_Guard 1..1" -- "BooleanExpression 1..1" Statecharts_Guard : expression25
+Statecharts_Guard "Transition24 1..1" -- "guard 1..1" Transition : gua_container23
+Guard "gua_container 0..1" --* "Guard 1..1" Statecharts_Transition : guard13
+Statecharts_StateVertex "Transition22 1..1" -- "target 0..9999" Transition : incoming21
+Statecharts_State "Transition4 1..1" *-- "transS_container 0..9999" Transition : internalTransitions3
+Statecharts_StateVertex "Transition20 1..1" -- "source 0..9999" Transition : outgoing19
+StateVertex "outgoing 1..1" -- "StateVertex15 1..1" Statecharts_Transition : source14
+StateMachine "top 1..1" -- "StateMachine 1..1" Statecharts_State : state_container2
+StateVertex "sv_container 0..9999" --* "StateVertex 1..1" Statecharts_CompositeState : subVertexes6
+CompositeState "subVertexes 0..1" -- "CompositeState 1..1" Statecharts_StateVertex : sv_container18
+StateVertex "incoming 1..1" -- "StateVertex17 1..1" Statecharts_Transition : target16
+State "deferrableEvents 0..9999" -- "State29 1..1" Statecharts_Event : targets28
+State "state_container 0..9999" --* "State 1..1" Statecharts_StateMachine : top1
+StateMachine "transitions 0..1" -- "StateMachine8 1..1" Statecharts_Transition : transSM_container7
+State "internalTransitions 0..1" -- "State10 1..1" Statecharts_Transition : transS_container9
+Statecharts_StateMachine "Transition 1..1" *-- "transSM_container 0..9999" Transition : transitions0
+Event "evt_container 0..1" --* "Event12 1..1" Statecharts_Transition : trigger11
 @enduml

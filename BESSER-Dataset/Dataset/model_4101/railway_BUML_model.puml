@@ -1,4 +1,8 @@
 @startuml
+' model: railway
+' project: sampleModel
+' owner: User
+' description: New project
 enum Position {
   DIVERGING
   FAILURE
@@ -46,23 +50,23 @@ RailwayElement <|-- railway_SwitchPosition
 RailwayElement <|-- railway_TrackElement
 TrackElement <|-- railway_Segment
 TrackElement <|-- railway_Switch
-railway_TrackElement "0..9999" -- "1..1" railway_TrackElement : connectsTo5
-railway_Region "1..1" *-- "0..9999" railway_TrackElement : elements32
-railway_Route "1..1" -- "1..1" railway_Semaphore : entry16
-railway_Route "1..1" -- "1..1" railway_Semaphore : exit20
-railway_Route "1..1" *-- "0..9999" railway_SwitchPosition : follows18
-railway_Switch "1..1" -- "1..1" railway_TrackElement : from_13
-railway_Route "1..1" -- "2..9999" railway_Sensor : gathers23
-railway_Switch "1..1" -- "1..1" railway_TrackElement : left8
-railway_Sensor "0..9999" -- "1..1" railway_TrackElement : monitoredBy3
-railway_Sensor "1..1" -- "0..9999" railway_TrackElement : monitors27
-railway_Segment "1..1" -- "2..2" railway_TrackElement : neighbors1
-railway_Switch "1..1" -- "0..9999" railway_SwitchPosition : positions7
-railway_RailwayContainer "1..1" *-- "0..9999" railway_Region : regions30
-railway_Switch "1..1" -- "1..1" railway_TrackElement : right10
-railway_Route "1..1" -- "1..1" railway_SwitchPosition : route26
-railway_RailwayContainer "1..1" *-- "0..9999" railway_Route : routes28
-railway_Segment "1..1" *-- "0..9999" railway_Semaphore : semaphores0
-railway_Region "1..1" *-- "0..9999" railway_Sensor : sensors35
-railway_Switch "1..1" -- "1..1" railway_SwitchPosition : target25
+railway_TrackElement "railway_TrackElement4 0..9999" -- "railway_TrackElement6 1..1" railway_TrackElement : connectsTo5
+railway_Region "railway_TrackElement34 1..1" *-- "railway_Region33 0..9999" railway_TrackElement : elements32
+railway_Route "railway_Semaphore17 1..1" -- "railway_Route 1..1" railway_Semaphore : entry16
+railway_Route "railway_Semaphore22 1..1" -- "railway_Route21 1..1" railway_Semaphore : exit20
+railway_Route "SwitchPosition19 1..1" *-- "route 0..9999" railway_SwitchPosition : follows18
+railway_Switch "railway_TrackElement15 1..1" -- "railway_Switch14 1..1" railway_TrackElement : from_13
+railway_Route "railway_Sensor 1..1" -- "railway_Route24 2..9999" railway_Sensor : gathers23
+railway_Switch "railway_TrackElement9 1..1" -- "railway_Switch 1..1" railway_TrackElement : left8
+railway_Sensor "monitors 0..9999" -- "Sensor 1..1" railway_TrackElement : monitoredBy3
+railway_Sensor "TrackElement 1..1" -- "monitoredBy 0..9999" railway_TrackElement : monitors27
+railway_Segment "railway_TrackElement 1..1" -- "railway_Segment2 2..2" railway_TrackElement : neighbors1
+railway_Switch "SwitchPosition 1..1" -- "target 0..9999" railway_SwitchPosition : positions7
+railway_RailwayContainer "railway_Region 1..1" *-- "railway_RailwayContainer31 0..9999" railway_Region : regions30
+railway_Switch "railway_TrackElement12 1..1" -- "railway_Switch11 1..1" railway_TrackElement : right10
+railway_Route "follows 1..1" -- "Route 1..1" railway_SwitchPosition : route26
+railway_RailwayContainer "railway_Route29 1..1" *-- "railway_RailwayContainer 0..9999" railway_Route : routes28
+railway_Segment "railway_Semaphore 1..1" *-- "railway_Segment 0..9999" railway_Semaphore : semaphores0
+railway_Region "railway_Sensor37 1..1" *-- "railway_Region36 0..9999" railway_Sensor : sensors35
+railway_Switch "positions 1..1" -- "Switch 1..1" railway_SwitchPosition : target25
 @enduml

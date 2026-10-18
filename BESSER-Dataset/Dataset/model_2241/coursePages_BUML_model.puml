@@ -1,4 +1,8 @@
 @startuml
+' model: coursePages
+' project: sampleModel
+' owner: User
+' description: New project
 enum CourseWorkType {
   Exercise
   Lab
@@ -85,25 +89,25 @@ enum personRoleType {
 }
 Person <|-- coursePages_Employee
 Person <|-- coursePages_Student
-coursePages_Department "1..1" -- "1..1" coursePages_StudyPrograms : belongsToDepartment8
-coursePages_Course "0..9999" -- "1..1" coursePages_Student : course1
-coursePages_Course "0..9999" -- "1..1" coursePages_StudyPrograms : course12
-coursePages_Course "1..1" -- "1..1" coursePages_Precondition : course34
-coursePages_Course "1..1" -- "1..1" coursePages_Reduction : course37
-coursePages_Course "0..9999" -- "1..1" coursePages_Department : course6
-coursePages_Course "1..1" *-- "0..9999" coursePages_CourseInstance : courseinstance16
-coursePages_CourseInstance "1..1" *-- "1..1" coursePages_CourseWork : coursework26
-coursePages_Course "1..1" *-- "0..9999" coursePages_CourseWorker : courseworker20
-coursePages_CourseWork "1..1" *-- "1..9999" coursePages_CourseWorkObject : courseworkobject15
-coursePages_Department "1..1" -- "1..1" coursePages_Employee : department2
-coursePages_Department "1..1" -- "0..9999" coursePages_Employee : employee3
-coursePages_CourseWorker "1..1" -- "0..1" coursePages_Employee : employee32
-coursePages_EvaluationObject "1..9999" --* "1..1" coursePages_Evaluations : evaluationobject14
-coursePages_CourseInstance "1..1" *-- "1..1" coursePages_Evaluations : evaluations29
-coursePages_Course "1..1" *-- "0..9999" coursePages_Precondition : precondition22
-coursePages_Course "1..1" *-- "0..9999" coursePages_Reduction : reduction24
-coursePages_Student "0..9999" -- "1..1" coursePages_StudyPrograms : student10
-coursePages_Student "1..1" -- "1..1" coursePages_StudyPrograms : studyprograms0
-coursePages_Course "1..1" -- "0..9999" coursePages_StudyPrograms : studyprograms18
-coursePages_Department "1..1" -- "0..9999" coursePages_StudyPrograms : studyprograms4
+coursePages_Department "studyprograms 1..1" -- "Department9 1..1" coursePages_StudyPrograms : belongsToDepartment8
+coursePages_Course "coursePages_Student 0..9999" -- "coursePages_Course 1..1" coursePages_Student : course1
+coursePages_Course "studyprograms13 0..9999" -- "Course 1..1" coursePages_StudyPrograms : course12
+coursePages_Course "coursePages_Precondition35 1..1" -- "coursePages_Course36 1..1" coursePages_Precondition : course34
+coursePages_Course "coursePages_Reduction38 1..1" -- "coursePages_Course39 1..1" coursePages_Reduction : course37
+coursePages_Course "coursePages_Department 0..9999" -- "coursePages_Course7 1..1" coursePages_Department : course6
+coursePages_Course "coursePages_CourseInstance 1..1" *-- "coursePages_Course17 0..9999" coursePages_CourseInstance : courseinstance16
+coursePages_CourseInstance "coursePages_CourseWork28 1..1" *-- "coursePages_CourseInstance27 1..1" coursePages_CourseWork : coursework26
+coursePages_Course "coursePages_CourseWorker 1..1" *-- "coursePages_Course21 0..9999" coursePages_CourseWorker : courseworker20
+coursePages_CourseWork "coursePages_CourseWorkObject 1..1" *-- "coursePages_CourseWork 1..9999" coursePages_CourseWorkObject : courseworkobject15
+coursePages_Department "employee 1..1" -- "Department 1..1" coursePages_Employee : department2
+coursePages_Department "Employee 1..1" -- "department 0..9999" coursePages_Employee : employee3
+coursePages_CourseWorker "coursePages_Employee 1..1" -- "coursePages_CourseWorker33 0..1" coursePages_Employee : employee32
+coursePages_EvaluationObject "coursePages_Evaluations 1..9999" --* "coursePages_EvaluationObject 1..1" coursePages_Evaluations : evaluationobject14
+coursePages_CourseInstance "coursePages_Evaluations31 1..1" *-- "coursePages_CourseInstance30 1..1" coursePages_Evaluations : evaluations29
+coursePages_Course "coursePages_Precondition 1..1" *-- "coursePages_Course23 0..9999" coursePages_Precondition : precondition22
+coursePages_Course "coursePages_Reduction 1..1" *-- "coursePages_Course25 0..9999" coursePages_Reduction : reduction24
+coursePages_Student "studyprograms11 0..9999" -- "Student 1..1" coursePages_StudyPrograms : student10
+coursePages_Student "StudyPrograms 1..1" -- "student 1..1" coursePages_StudyPrograms : studyprograms0
+coursePages_Course "StudyPrograms19 1..1" -- "course 0..9999" coursePages_StudyPrograms : studyprograms18
+coursePages_Department "StudyPrograms5 1..1" -- "belongsToDepartment 0..9999" coursePages_StudyPrograms : studyprograms4
 @enduml

@@ -54,9 +54,9 @@ def test_assoc_Home_Security_Camera_stub_double():
     partner = Home_Security()
     setattr(partner, 'camera2', None)
     _safe_set(owner, 'home_Security3', partner)
-    assert getattr(partner, 'camera2') == owner
+    assert owner in getattr(partner, 'camera2')
     _safe_set(owner, 'home_Security3', None)
-    assert getattr(partner, 'camera2') is None
+    assert owner not in getattr(partner, 'camera2')
 
 
 def test_assoc_Home_Security_Doors_stub_double():
@@ -84,9 +84,9 @@ def test_assoc_Home_Security_Event_Log_stub_double():
     partner = Home_Security()
     setattr(partner, 'event_Log4', None)
     _safe_set(owner, 'home_Security5', partner)
-    assert getattr(partner, 'event_Log4') == owner
+    assert owner in getattr(partner, 'event_Log4')
     _safe_set(owner, 'home_Security5', None)
-    assert getattr(partner, 'event_Log4') is None
+    assert owner not in getattr(partner, 'event_Log4')
 
 
 def test_assoc_Home_Security_Light_Sensor_stub_double():
@@ -99,9 +99,9 @@ def test_assoc_Home_Security_Light_Sensor_stub_double():
     partner = Home_Security()
     setattr(partner, 'light_Sensor6', None)
     _safe_set(owner, 'home_Security7', partner)
-    assert getattr(partner, 'light_Sensor6') == owner
+    assert owner in getattr(partner, 'light_Sensor6')
     _safe_set(owner, 'home_Security7', None)
-    assert getattr(partner, 'light_Sensor6') is None
+    assert owner not in getattr(partner, 'light_Sensor6')
 
 
 def test_assoc_Home_Security_Server_stub_double():
@@ -129,8 +129,8 @@ def test_assoc_Home_Security_Temperature_sensor_stub_double():
     partner = Home_Security()
     setattr(partner, 'temperature_sensor10', None)
     _safe_set(owner, 'home_Security11', partner)
-    assert getattr(partner, 'temperature_sensor10') == owner
+    assert owner in getattr(partner, 'temperature_sensor10')
     _safe_set(owner, 'home_Security11', None)
-    assert getattr(partner, 'temperature_sensor10') is None
+    assert owner not in getattr(partner, 'temperature_sensor10')
 
 

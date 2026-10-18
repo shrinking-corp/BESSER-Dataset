@@ -1,4 +1,8 @@
 @startuml
+' model: d3ql
+' project: sampleModel
+' owner: User
+' description: New project
 class Literal {
 }
 class Named {
@@ -46,15 +50,15 @@ Literal <|-- d3ql_IntegerLiteral
 Literal <|-- d3ql_StringLiteral
 Named <|-- d3ql_AggregateRoot
 Named <|-- d3ql_Alias
-d3ql_AggregateRoot "0..9999" --* "1..1" d3ql_FromStatement : aggregates3
-d3ql_Alias "0..1" --* "1..1" d3ql_SelectExpression : alias11
-d3ql_AggregateRoot "1..1" *-- "0..1" d3ql_Alias : alias5
-d3ql_FunctionArgument "0..9999" --* "1..1" d3ql_FunctionCall : arguments17
-d3ql_EObject "0..1" --* "1..1" d3ql_SelectExpression : expression9
-d3ql_SelectExpression "0..9999" --* "1..1" d3ql_SelectStatement : expressions7
-d3ql_FromStatement "0..1" --* "1..1" d3ql_Query : fromStatement0
-d3ql_Named "0..1" -- "1..1" d3ql_PathExpression : head14
-d3ql_Query "1..1" *-- "0..1" d3ql_SelectStatement : selectStatement1
-d3ql_PathElement "0..9999" --* "1..1" d3ql_PathExpression : tail15
-d3ql_EObject "0..1" --* "1..1" d3ql_FunctionArgument : value18
+d3ql_AggregateRoot "d3ql_FromStatement4 0..9999" --* "d3ql_AggregateRoot 1..1" d3ql_FromStatement : aggregates3
+d3ql_Alias "d3ql_SelectExpression12 0..1" --* "d3ql_Alias13 1..1" d3ql_SelectExpression : alias11
+d3ql_AggregateRoot "d3ql_Alias 1..1" *-- "d3ql_AggregateRoot6 0..1" d3ql_Alias : alias5
+d3ql_FunctionArgument "d3ql_FunctionCall 0..9999" --* "d3ql_FunctionArgument 1..1" d3ql_FunctionCall : arguments17
+d3ql_EObject "d3ql_SelectExpression10 0..1" --* "d3ql_EObject 1..1" d3ql_SelectExpression : expression9
+d3ql_SelectExpression "d3ql_SelectStatement8 0..9999" --* "d3ql_SelectExpression 1..1" d3ql_SelectStatement : expressions7
+d3ql_FromStatement "d3ql_Query 0..1" --* "d3ql_FromStatement 1..1" d3ql_Query : fromStatement0
+d3ql_Named "d3ql_PathExpression 0..1" -- "d3ql_Named 1..1" d3ql_PathExpression : head14
+d3ql_Query "d3ql_SelectStatement 1..1" *-- "d3ql_Query2 0..1" d3ql_SelectStatement : selectStatement1
+d3ql_PathElement "d3ql_PathExpression16 0..9999" --* "d3ql_PathElement 1..1" d3ql_PathExpression : tail15
+d3ql_EObject "d3ql_FunctionArgument19 0..1" --* "d3ql_EObject20 1..1" d3ql_FunctionArgument : value18
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: model
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractState {
 }
 class model_AbstractState {
@@ -25,11 +29,11 @@ class model_Transition {
 }
 AbstractState <|-- model_FiniteStateMachine
 AbstractState <|-- model_State
-model_AbstractState "0..1" -- "1..1" model_FiniteStateMachine : current4
-model_AbstractState "0..1" -- "1..1" model_FiniteStateMachine : initial2
-model_AbstractState "1..1" *-- "0..9999" model_Transition : outgoings1
-model_AbstractState "1..1" -- "0..1" model_FiniteStateMachine : parent0
-model_AbstractState "1..1" -- "1..1" model_Transition : source7
-model_AbstractState "0..9999" --* "1..1" model_FiniteStateMachine : states3
-model_AbstractState "1..1" -- "1..1" model_Transition : target9
+model_AbstractState "model_FiniteStateMachine5 0..1" -- "model_AbstractState6 1..1" model_FiniteStateMachine : current4
+model_AbstractState "model_FiniteStateMachine 0..1" -- "model_AbstractState 1..1" model_FiniteStateMachine : initial2
+model_AbstractState "Transition 1..1" *-- "source 0..9999" model_Transition : outgoings1
+model_AbstractState "FiniteStateMachine 1..1" -- "states 0..1" model_FiniteStateMachine : parent0
+model_AbstractState "outgoings 1..1" -- "AbstractState8 1..1" model_Transition : source7
+model_AbstractState "parent 0..9999" --* "AbstractState 1..1" model_FiniteStateMachine : states3
+model_AbstractState "model_Transition 1..1" -- "model_AbstractState10 1..1" model_Transition : target9
 @enduml

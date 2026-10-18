@@ -1,4 +1,8 @@
 @startuml
+' model: persistence
+' project: sampleModel
+' owner: User
+' description: New project
 class Association {
 }
 class Attribute {
@@ -192,35 +196,35 @@ PathElement <|-- persistence_DatePathElement
 PathElement <|-- persistence_StaticPathElement
 ResourceAttribute <|-- persistence_FileAttribute
 ResourceAttribute <|-- persistence_ImageAttribute
-persistence_Association "0..9999" -- "1..1" persistence_Entity : allAssociations40
-persistence_Entity "1..1" -- "0..9999" persistence_Feature : allFeatures37
-persistence_Association "1..1" -- "1..1" persistence_ModelLabelAssociation : association24
-persistence_Association "0..9999" -- "1..1" persistence_Entity : associationEnds36
-persistence_Association "0..9999" -- "1..1" persistence_Entity : associations33
-persistence_Attribute "1..1" -- "1..1" persistence_ModelLabelAttribute : attribute22
-persistence_Attribute "0..9999" -- "1..1" persistence_Entity : attributes30
-persistence_Entity "1..1" -- "0..9999" persistence_Feature : containerUnique51
-persistence_DataType "1..1" -- "1..1" persistence_DataTypeAttribute : dataType54
-persistence_DataType "0..9999" --* "1..1" persistence_Persistence : dataTypes1
-persistence_Attribute "1..1" *-- "0..1" persistence_Expression : defaultValue10
-persistence_ModelLabel "0..1" -- "1..1" persistence_ModelLabelAssociation : dynamicLabel25
-persistence_Entity "0..9999" --* "1..1" persistence_Persistence : entities3
-persistence_ModelLabel "1..1" *-- "0..9999" persistence_ModelLabelFeature : features17
-persistence_Entity "1..1" *-- "0..9999" persistence_Feature : features28
-persistence_Association "1..1" -- "1..1" persistence_AssociationKey : keyFor57
-persistence_Association "1..1" *-- "0..9999" persistence_AssociationKey : keys12
-persistence_Entity "1..1" -- "0..9999" persistence_Feature : keys43
-persistence_Entity "1..1" -- "1..1" persistence_ModelLabel : labelFor15
-persistence_Entity "1..1" *-- "0..9999" persistence_ModelLabel : labels46
-persistence_ModelLabel "1..1" -- "1..1" persistence_ModelLabelFeature : partOf20
-persistence_Entity "1..1" -- "1..1" persistence_Feature : partOf5
-persistence_Persistence "1..1" *-- "0..9999" persistence_SerializationGroup : serializationGroups0
-persistence_ModelLabel "1..1" -- "0..9999" persistence_SerializationGroup : serializationGroups18
-persistence_Feature "1..1" -- "0..9999" persistence_SerializationGroup : serializationGroups6
-persistence_Attribute "1..1" -- "0..9999" persistence_Attribute : slugFields9
-persistence_AssociationKey "1..1" -- "1..1" persistence_Feature : sourceFeature59
-persistence_Association "1..1" -- "1..1" persistence_Entity : targetEntity13
-persistence_AssociationKey "1..1" -- "0..1" persistence_Feature : targetFeature61
-persistence_Entity "1..1" -- "0..9999" persistence_Feature : unique48
-persistence_PathElement "0..9999" --* "1..1" persistence_ResourceAttribute : uploadPath56
+persistence_Association "persistence_Entity41 0..9999" -- "persistence_Association42 1..1" persistence_Entity : allAssociations40
+persistence_Entity "persistence_Feature39 1..1" -- "persistence_Entity38 0..9999" persistence_Feature : allFeatures37
+persistence_Association "persistence_ModelLabelAssociation 1..1" -- "persistence_Association 1..1" persistence_ModelLabelAssociation : association24
+persistence_Association "targetEntity 0..9999" -- "Association 1..1" persistence_Entity : associationEnds36
+persistence_Association "persistence_Entity34 0..9999" -- "persistence_Association35 1..1" persistence_Entity : associations33
+persistence_Attribute "persistence_ModelLabelAttribute 1..1" -- "persistence_Attribute23 1..1" persistence_ModelLabelAttribute : attribute22
+persistence_Attribute "persistence_Entity31 0..9999" -- "persistence_Attribute32 1..1" persistence_Entity : attributes30
+persistence_Entity "persistence_Feature53 1..1" -- "persistence_Entity52 0..9999" persistence_Feature : containerUnique51
+persistence_DataType "persistence_DataTypeAttribute 1..1" -- "persistence_DataType55 1..1" persistence_DataTypeAttribute : dataType54
+persistence_DataType "persistence_Persistence2 0..9999" --* "persistence_DataType 1..1" persistence_Persistence : dataTypes1
+persistence_Attribute "persistence_Expression 1..1" *-- "persistence_Attribute11 0..1" persistence_Expression : defaultValue10
+persistence_ModelLabel "persistence_ModelLabelAssociation26 0..1" -- "persistence_ModelLabel27 1..1" persistence_ModelLabelAssociation : dynamicLabel25
+persistence_Entity "persistence_Persistence4 0..9999" --* "persistence_Entity 1..1" persistence_Persistence : entities3
+persistence_ModelLabel "ModelLabelFeature 1..1" *-- "partOf 0..9999" persistence_ModelLabelFeature : features17
+persistence_Entity "Feature 1..1" *-- "partOf29 0..9999" persistence_Feature : features28
+persistence_Association "keys 1..1" -- "Association58 1..1" persistence_AssociationKey : keyFor57
+persistence_Association "AssociationKey 1..1" *-- "keyFor 0..9999" persistence_AssociationKey : keys12
+persistence_Entity "persistence_Feature45 1..1" -- "persistence_Entity44 0..9999" persistence_Feature : keys43
+persistence_Entity "labels 1..1" -- "Entity16 1..1" persistence_ModelLabel : labelFor15
+persistence_Entity "ModelLabel47 1..1" *-- "labelFor 0..9999" persistence_ModelLabel : labels46
+persistence_ModelLabel "features21 1..1" -- "ModelLabel 1..1" persistence_ModelLabelFeature : partOf20
+persistence_Entity "features 1..1" -- "Entity 1..1" persistence_Feature : partOf5
+persistence_Persistence "persistence_SerializationGroup 1..1" *-- "persistence_Persistence 0..9999" persistence_SerializationGroup : serializationGroups0
+persistence_ModelLabel "persistence_SerializationGroup19 1..1" -- "persistence_ModelLabel 0..9999" persistence_SerializationGroup : serializationGroups18
+persistence_Feature "persistence_SerializationGroup7 1..1" -- "persistence_Feature 0..9999" persistence_SerializationGroup : serializationGroups6
+persistence_Attribute "persistence_Attribute 1..1" -- "persistence_Attribute8 0..9999" persistence_Attribute : slugFields9
+persistence_AssociationKey "persistence_Feature60 1..1" -- "persistence_AssociationKey 1..1" persistence_Feature : sourceFeature59
+persistence_Association "Entity14 1..1" -- "associationEnds 1..1" persistence_Entity : targetEntity13
+persistence_AssociationKey "persistence_Feature63 1..1" -- "persistence_AssociationKey62 0..1" persistence_Feature : targetFeature61
+persistence_Entity "persistence_Feature50 1..1" -- "persistence_Entity49 0..9999" persistence_Feature : unique48
+persistence_PathElement "persistence_ResourceAttribute 0..9999" --* "persistence_PathElement 1..1" persistence_ResourceAttribute : uploadPath56
 @enduml

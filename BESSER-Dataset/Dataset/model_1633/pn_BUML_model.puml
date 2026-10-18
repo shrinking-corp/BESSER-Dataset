@@ -1,4 +1,8 @@
 @startuml
+' model: PN
+' project: sampleModel
+' owner: User
+' description: New project
 class PN_Net {
   + name : str
 }
@@ -8,10 +12,10 @@ class PN_Place {
 class PN_Transition {
   + input : str
 }
-PN_Place "0..9999" -- "1..1" PN_Transition : from_6
-PN_Place "1..1" -- "0..9999" PN_Transition : incoming3
-PN_Place "1..1" -- "0..9999" PN_Transition : outgoing4
-PN_Net "1..1" *-- "1..9999" PN_Place : places0
-PN_Place "0..9999" -- "1..1" PN_Transition : to7
-PN_Net "1..1" *-- "0..9999" PN_Transition : transitions1
+PN_Place "outgoing 0..9999" -- "Place 1..1" PN_Transition : from_6
+PN_Place "Transition 1..1" -- "to 0..9999" PN_Transition : incoming3
+PN_Place "Transition5 1..1" -- "from_ 0..9999" PN_Transition : outgoing4
+PN_Net "PN_Place 1..1" *-- "PN_Net 1..9999" PN_Place : places0
+PN_Place "incoming 0..9999" -- "Place8 1..1" PN_Transition : to7
+PN_Net "PN_Transition 1..1" *-- "PN_Net2 0..9999" PN_Transition : transitions1
 @enduml

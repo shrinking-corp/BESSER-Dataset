@@ -1,4 +1,8 @@
 @startuml
+' model: _79t5IGqZEeqghpCovSsunw
+' project: sampleModel
+' owner: User
+' description: New project
 class AppointmentDiagnose_external {
 }
 class Appointment_external {
@@ -76,14 +80,14 @@ class TreatmentList {
   + treatmentName : str
   + treatmentPrice : float
 }
-Appointment_external "1..1" -- "0..1" Bill : Appointment_Bill
-Diagnose_UseCase "0..1" -- "0..1" Doctor_Actor : Doctor_Diagnose
-Employee_Actor "0..1" -- "0..1" Logging_into_system_UseCase : Employee_Logging_into_system
-Bill "0..9999" -- "1..1" Nurse : Nurse_Bill
-Billing_UseCase "0..1" -- "0..1" Nurse_Actor : Nurse_Billing
-Billing_UseCase "0..1" -- "0..1" Patient_Actor : Patient_Billing
-Appointment_management_UseCase "0..1" -- "0..1" Patient_Actor : Patient_Create_appointment
-Appointment_external "0..9999" -- "0..1" Patient : Patient_DoctorSchedule
-Logging_into_system_UseCase "0..1" -- "0..1" Patient_Actor : Patient_Logging_into_system
-AppointmentDiagnose_external "0..9999" -- "1..1" TreatmentList : TreatmentList_AppointmentDiagnose
+Appointment_external "appointment12 1..1" -- "bill13 0..1" Bill : Appointment_Bill
+Diagnose_UseCase "diagnose17 0..1" -- "doctor16 0..1" Doctor_Actor : Doctor_Diagnose
+Employee_Actor "employee1 0..1" -- "logging_into_system0 0..1" Logging_into_system_UseCase : Employee_Logging_into_system
+Bill "bill15 0..9999" -- "nurse14 1..1" Nurse : Nurse_Bill
+Billing_UseCase "billing19 0..1" -- "nurse18 0..1" Nurse_Actor : Nurse_Billing
+Billing_UseCase "billing4 0..1" -- "patient5 0..1" Patient_Actor : Patient_Billing
+Appointment_management_UseCase "create_appointment2 0..1" -- "patient3 0..1" Patient_Actor : Patient_Create_appointment
+Appointment_external "appointment9 0..9999" -- "patient8 0..1" Patient : Patient_DoctorSchedule
+Logging_into_system_UseCase "logging_into_system6 0..1" -- "patient7 0..1" Patient_Actor : Patient_Logging_into_system
+AppointmentDiagnose_external "appointmentDiagnose11 0..9999" -- "treatmentList10 1..1" TreatmentList : TreatmentList_AppointmentDiagnose
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: basicfamily
+' project: sampleModel
+' owner: User
+' description: New project
 class Person {
 }
 class basicfamily_Family {
@@ -17,13 +21,13 @@ class basicfamily_Woman {
 }
 Person <|-- basicfamily_Man
 Person <|-- basicfamily_Woman
-basicfamily_Person "1..1" -- "0..9999" basicfamily_Person : children6
-basicfamily_Man "0..1" -- "1..1" basicfamily_Person : father10
-basicfamily_Family "1..1" *-- "0..9999" basicfamily_Person : members0
-basicfamily_Person "1..1" -- "0..1" basicfamily_Woman : mother8
-basicfamily_Person "1..1" -- "0..2" basicfamily_Person : parents4
-basicfamily_Person "1..1" -- "1..1" basicfamily_Relation : personA15
-basicfamily_Person "1..1" -- "1..1" basicfamily_Relation : personB18
-basicfamily_Family "1..1" *-- "0..9999" basicfamily_Relation : relations1
-basicfamily_Person "1..1" -- "0..9999" basicfamily_Relation : relations12
+basicfamily_Person "Person7 1..1" -- "parents 0..9999" basicfamily_Person : children6
+basicfamily_Man "basicfamily_Person11 0..1" -- "basicfamily_Man 1..1" basicfamily_Person : father10
+basicfamily_Family "basicfamily_Person 1..1" *-- "basicfamily_Family 0..9999" basicfamily_Person : members0
+basicfamily_Person "basicfamily_Woman 1..1" -- "basicfamily_Person9 0..1" basicfamily_Woman : mother8
+basicfamily_Person "Person 1..1" -- "children 0..2" basicfamily_Person : parents4
+basicfamily_Person "basicfamily_Relation16 1..1" -- "basicfamily_Person17 1..1" basicfamily_Relation : personA15
+basicfamily_Person "basicfamily_Relation19 1..1" -- "basicfamily_Person20 1..1" basicfamily_Relation : personB18
+basicfamily_Family "basicfamily_Relation 1..1" *-- "basicfamily_Family2 0..9999" basicfamily_Relation : relations1
+basicfamily_Person "basicfamily_Relation14 1..1" -- "basicfamily_Person13 0..9999" basicfamily_Relation : relations12
 @enduml

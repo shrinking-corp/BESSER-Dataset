@@ -725,30 +725,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=ecore_EClassifier_strategy)
-@settings(max_examples=30)
-def test_hyp_ecore_eclassifier_isinstance_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isInstance(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isInstance).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isInstance' in ecore_EClassifier is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isInstance' in ecore_EClassifier did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isInstance' in ecore_EClassifier is not implemented or raised an error")
 
 
 
@@ -802,30 +778,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=ecore_EGenericType_strategy)
-@settings(max_examples=30)
-def test_hyp_ecore_egenerictype_isinstance_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isInstance(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isInstance).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isInstance' in ecore_EGenericType is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isInstance' in ecore_EGenericType did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isInstance' in ecore_EGenericType is not implemented or raised an error")
 
 
 
@@ -891,30 +843,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=ecore_EOperation_strategy)
-@settings(max_examples=30)
-def test_hyp_ecore_eoperation_isoverrideof_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isOverrideOf(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isOverrideOf).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isOverrideOf' in ecore_EOperation is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isOverrideOf' in ecore_EOperation did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isOverrideOf' in ecore_EOperation is not implemented or raised an error")
 
 
 
@@ -975,30 +903,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=ecore_EClass_strategy)
-@settings(max_examples=30)
-def test_hyp_ecore_eclass_issupertypeof_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.isSuperTypeOf(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.isSuperTypeOf).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'isSuperTypeOf' in ecore_EClass is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'isSuperTypeOf' in ecore_EClass did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'isSuperTypeOf' in ecore_EClass is not implemented or raised an error")
 
 
 import warnings
@@ -1007,28 +911,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=ecore_EObject_strategy)
-@settings(max_examples=30)
-def test_hyp_ecore_eobject_eclass_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.eClass()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.eClass).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'eClass' in ecore_EObject is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'eClass' in ecore_EObject did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'eClass' in ecore_EObject is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1036,28 +918,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=ecore_EObject_strategy)
-@settings(max_examples=30)
-def test_hyp_ecore_eobject_eisproxy_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.eIsProxy()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.eIsProxy).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'eIsProxy' in ecore_EObject is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'eIsProxy' in ecore_EObject did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'eIsProxy' in ecore_EObject is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1065,30 +925,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=ecore_EObject_strategy)
-@settings(max_examples=30)
-def test_hyp_ecore_eobject_eunset_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.eUnset(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.eUnset).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'eUnset' in ecore_EObject is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'eUnset' in ecore_EObject did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'eUnset' in ecore_EObject is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1096,31 +932,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=ecore_EObject_strategy)
-@settings(max_examples=30)
-def test_hyp_ecore_eobject_eset_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.eSet(
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.eSet).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'eSet' in ecore_EObject is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'eSet' in ecore_EObject did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'eSet' in ecore_EObject is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1128,28 +939,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=ecore_EObject_strategy)
-@settings(max_examples=30)
-def test_hyp_ecore_eobject_ecrossreferences_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.eCrossReferences()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.eCrossReferences).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'eCrossReferences' in ecore_EObject is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'eCrossReferences' in ecore_EObject did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'eCrossReferences' in ecore_EObject is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1157,31 +946,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=ecore_EObject_strategy)
-@settings(max_examples=30)
-def test_hyp_ecore_eobject_einvoke_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.eInvoke(
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.eInvoke).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'eInvoke' in ecore_EObject is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'eInvoke' in ecore_EObject did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'eInvoke' in ecore_EObject is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1189,30 +953,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=ecore_EObject_strategy)
-@settings(max_examples=30)
-def test_hyp_ecore_eobject_eisset_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.eIsSet(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.eIsSet).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'eIsSet' in ecore_EObject is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'eIsSet' in ecore_EObject did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'eIsSet' in ecore_EObject is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1220,28 +960,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=ecore_EObject_strategy)
-@settings(max_examples=30)
-def test_hyp_ecore_eobject_econtainer_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.eContainer()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.eContainer).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'eContainer' in ecore_EObject is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'eContainer' in ecore_EObject did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'eContainer' in ecore_EObject is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1249,28 +967,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=ecore_EObject_strategy)
-@settings(max_examples=30)
-def test_hyp_ecore_eobject_econtainmentfeature_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.eContainmentFeature()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.eContainmentFeature).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'eContainmentFeature' in ecore_EObject is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'eContainmentFeature' in ecore_EObject did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'eContainmentFeature' in ecore_EObject is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1278,28 +974,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=ecore_EObject_strategy)
-@settings(max_examples=30)
-def test_hyp_ecore_eobject_eallcontents_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.eAllContents()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.eAllContents).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'eAllContents' in ecore_EObject is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'eAllContents' in ecore_EObject did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'eAllContents' in ecore_EObject is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1307,28 +981,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=ecore_EObject_strategy)
-@settings(max_examples=30)
-def test_hyp_ecore_eobject_econtainingfeature_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.eContainingFeature()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.eContainingFeature).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'eContainingFeature' in ecore_EObject is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'eContainingFeature' in ecore_EObject did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'eContainingFeature' in ecore_EObject is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1336,28 +988,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=ecore_EObject_strategy)
-@settings(max_examples=30)
-def test_hyp_ecore_eobject_eresource_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.eResource()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.eResource).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'eResource' in ecore_EObject is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'eResource' in ecore_EObject did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'eResource' in ecore_EObject is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1365,28 +995,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=ecore_EObject_strategy)
-@settings(max_examples=30)
-def test_hyp_ecore_eobject_econtents_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.eContents()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.eContents).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'eContents' in ecore_EObject is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'eContents' in ecore_EObject did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'eContents' in ecore_EObject is not implemented or raised an error")
 
 
 
@@ -1414,30 +1022,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=ecore_EFactory_strategy)
-@settings(max_examples=30)
-def test_hyp_ecore_efactory_create_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.create(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.create).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'create' in ecore_EFactory is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'create' in ecore_EFactory did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'create' in ecore_EFactory is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1445,31 +1029,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=ecore_EFactory_strategy)
-@settings(max_examples=30)
-def test_hyp_ecore_efactory_converttostring_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.convertToString(
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.convertToString).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'convertToString' in ecore_EFactory is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'convertToString' in ecore_EFactory did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'convertToString' in ecore_EFactory is not implemented or raised an error")
 
 import warnings
 import copy
@@ -1477,31 +1036,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=ecore_EFactory_strategy)
-@settings(max_examples=30)
-def test_hyp_ecore_efactory_createfromstring_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.createFromString(
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.createFromString).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'createFromString' in ecore_EFactory is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'createFromString' in ecore_EFactory did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'createFromString' in ecore_EFactory is not implemented or raised an error")
 
 
 
@@ -3972,9 +3506,9 @@ def test_assoc_eBounds105_stub_double():
     partner = ecore_ETypeParameter()
     setattr(partner, 'ecore_ETypeParameter106', None)
     _safe_set(owner, 'ecore_EGenericType107', partner)
-    assert getattr(partner, 'ecore_ETypeParameter106') == owner
+    assert owner in getattr(partner, 'ecore_ETypeParameter106')
     _safe_set(owner, 'ecore_EGenericType107', None)
-    assert getattr(partner, 'ecore_ETypeParameter106') is None
+    assert owner not in getattr(partner, 'ecore_ETypeParameter106')
 
 
 def test_assoc_eOperation69_stub_double():

@@ -1,4 +1,8 @@
 @startuml
+' model: timetrack
+' project: sampleModel
+' owner: User
+' description: New project
 class timetrack_Library {
 }
 class timetrack_Project {
@@ -20,9 +24,9 @@ class timetrack_User {
   + sap_name : str
   + sap_password : str
 }
-timetrack_Library "1..1" *-- "0..9999" timetrack_User : listBook3
-timetrack_Library "1..1" *-- "0..9999" timetrack_Project : listProject8
-timetrack_Library "1..1" *-- "0..9999" timetrack_TimeEntry : listTimeEntry5
-timetrack_Project "1..1" -- "1..1" timetrack_TimeEntry : project1
-timetrack_TimeEntry "1..1" -- "1..1" timetrack_User : user0
+timetrack_Library "timetrack_User4 1..1" *-- "timetrack_Library 0..9999" timetrack_User : listBook3
+timetrack_Library "timetrack_Project10 1..1" *-- "timetrack_Library9 0..9999" timetrack_Project : listProject8
+timetrack_Library "timetrack_TimeEntry7 1..1" *-- "timetrack_Library6 0..9999" timetrack_TimeEntry : listTimeEntry5
+timetrack_Project "timetrack_TimeEntry2 1..1" -- "timetrack_Project 1..1" timetrack_TimeEntry : project1
+timetrack_TimeEntry "timetrack_User 1..1" -- "timetrack_TimeEntry 1..1" timetrack_User : user0
 @enduml

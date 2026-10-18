@@ -1,4 +1,8 @@
 @startuml
+' model: _ZOfW4C_GEeqqcaoAsxFIeg
+' project: sampleModel
+' owner: User
+' description: New project
 class Admin {
   + ID_admin : int
   + attribute : str
@@ -82,21 +86,21 @@ class ReservasiKamar {
 }
 class hjb_Interface {
 }
-Admin_Actor "0..1" -- "0..1" Kirim_e_booking_email_UseCase : Admin_Kirim_e_booking_email
-Admin_Actor "0..1" -- "0..1" Mengirim_e_bukti_Bayar_UseCase : Admin_UseCase3
-Denda "0..9999" -- "1..1" ReservasiKamar : Denda_ReservasiKamar
-Kamar "0..1" -- "0..1" ReservasiKamar : Kamar_ReservasiKamar
-Melakukan_pembayaran_UseCase "0..1" -- "0..1" Melakukan_reservasi_kamar_UseCase : Melakukan_reservasi_kamar_Melakukan_pembayaran
-Melakukan_reservasi_kamar_UseCase "0..1" -- "0..1" Mengirim_e_bukti_Bayar_UseCase : Melakukan_reservasi_kamar_Mengirim_e_bukti_Bayar
-Pembayaran "1..1" -- "1..1" ReservasiKamar : Pembayaran_ReservasiKamar
-Check_Out_UseCase "0..1" -- "0..1" Pemesan_Actor : Pemesan_Check_Out
-Check_in_UseCase "0..1" -- "0..1" Pemesan_Actor : Pemesan_Check_in
-Login_UseCase "0..1" -- "0..1" Pemesan_Actor : Pemesan_Melakukan_reservasi_kamar
-Pemesan "1..1" -- "1..9999" ReservasiKamar : Pemesan_ReservasiKamar
-Melihat_Katalog_Kamar_UseCase "0..1" -- "0..1" Pemesan_Actor : Pemesan_UseCase2
-Check_Out_UseCase "0..1" -- "0..1" Pengunjung_Actor : Pengunjung_Check_Out
-Check_in_UseCase "0..1" -- "0..1" Pengunjung_Actor : Pengunjung_Check_in
-Pengunjung_Actor "0..1" -- "0..1" Register_UseCase : Pengunjung_Memasukkan_data_identitas
-Melihat_Katalog_Kamar_UseCase "0..1" -- "0..1" Pengunjung_Actor : Pengunjung_UseCase
-Admin "1..1" -- "1..9999" ReservasiKamar : ReservasiKamar_Admin
+Admin_Actor "admin15 0..1" -- "kirim_e_booking_email14 0..1" Kirim_e_booking_email_UseCase : Admin_Kirim_e_booking_email
+Admin_Actor "admin5 0..1" -- "useCase34 0..1" Mengirim_e_bukti_Bayar_UseCase : Admin_UseCase3
+Denda "denda31 0..9999" -- "reservasiKamar30 1..1" ReservasiKamar : Denda_ReservasiKamar
+Kamar "kamar29 0..1" -- "reservasiKamar28 0..1" ReservasiKamar : Kamar_ReservasiKamar
+Melakukan_pembayaran_UseCase "melakukan_pembayaran10 0..1" -- "melakukan_reservasi_kamar11 0..1" Melakukan_reservasi_kamar_UseCase : Melakukan_reservasi_kamar_Melakukan_pembayaran
+Melakukan_reservasi_kamar_UseCase "melakukan_reservasi_kamar13 0..1" -- "mengirim_e_bukti_Bayar12 0..1" Mengirim_e_bukti_Bayar_UseCase : Melakukan_reservasi_kamar_Mengirim_e_bukti_Bayar
+Pembayaran "pembayaran33 1..1" -- "reservasiKamar32 1..1" ReservasiKamar : Pembayaran_ReservasiKamar
+Check_Out_UseCase "check_Out22 0..1" -- "pemesan23 0..1" Pemesan_Actor : Pemesan_Check_Out
+Check_in_UseCase "check_in18 0..1" -- "pemesan19 0..1" Pemesan_Actor : Pemesan_Check_in
+Login_UseCase "melakukan_reservasi_kamar8 0..1" -- "pemesan9 0..1" Pemesan_Actor : Pemesan_Melakukan_reservasi_kamar
+Pemesan "pemesan25 1..1" -- "reservasiKamar24 1..9999" ReservasiKamar : Pemesan_ReservasiKamar
+Melihat_Katalog_Kamar_UseCase "useCase22 0..1" -- "pemesan3 0..1" Pemesan_Actor : Pemesan_UseCase2
+Check_Out_UseCase "check_Out16 0..1" -- "pengunjung17 0..1" Pengunjung_Actor : Pengunjung_Check_Out
+Check_in_UseCase "check_in20 0..1" -- "pengunjung21 0..1" Pengunjung_Actor : Pengunjung_Check_in
+Pengunjung_Actor "pengunjung7 0..1" -- "memasukkan_data_identitas6 0..1" Register_UseCase : Pengunjung_Memasukkan_data_identitas
+Melihat_Katalog_Kamar_UseCase "Melihat_Katalog_Kamar0 0..1" -- "pengunjung1 0..1" Pengunjung_Actor : Pengunjung_UseCase
+Admin "admin26 1..1" -- "reservasiKamar27 1..9999" ReservasiKamar : ReservasiKamar_Admin
 @enduml

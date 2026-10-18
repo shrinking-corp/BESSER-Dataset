@@ -1,4 +1,8 @@
 @startuml
+' model: assessment
+' project: sampleModel
+' owner: User
+' description: New project
 class Contents {
 }
 class GraphNode {
@@ -152,58 +156,58 @@ Notes <|-- assessment_Finding
 Notes <|-- assessment_Node
 Notes <|-- assessment_Resource
 Notes <|-- assessment_Task
-assessment_Accounts "0..1" --* "1..1" assessment_Application : accounts17
-assessment_Account "1..1" -- "0..1" assessment_Accounts : accounts45
-assessment_Account "0..9999" -- "1..1" assessment_Entitlement : accounts48
-assessment_Account "0..9999" --* "1..1" assessment_Accounts : accounts75
-assessment_Finding "1..1" -- "0..9999" assessment_Node : affects42
-assessment_Node "0..9999" -- "1..1" assessment_Task : affects53
-assessment_Application "0..1" -- "1..1" assessment_Resources : application104
-assessment_Application "0..1" -- "1..1" assessment_Scm : application56
-assessment_Accounts "1..1" -- "0..1" assessment_Application : application72
-assessment_Application "0..1" -- "1..1" assessment_Controllers : application78
-assessment_Application "0..1" -- "1..1" assessment_Entitlements : application83
-assessment_Application "0..1" -- "1..1" assessment_Models : application89
-assessment_Application "0..1" -- "1..1" assessment_Views : application94
-assessment_Application "0..1" -- "1..1" assessment_Sinks : application99
-assessment_Applications "0..1" --* "1..1" assessment_Assessment : applications12
-assessment_Application "1..1" -- "0..1" assessment_Applications : applications31
-assessment_Application "0..9999" --* "1..1" assessment_Applications : applications61
-assessment_Assessment "0..1" -- "1..1" assessment_Tasks : assessment110
-assessment_Applications "1..1" -- "0..1" assessment_Assessment : assessment64
-assessment_Assessment "0..1" -- "1..1" assessment_Findings : assessment69
-assessment_GraphNode "0..9999" --* "1..1" assessment_Node : children0
-assessment_Application "1..1" *-- "0..1" assessment_Controllers : controllers20
-assessment_Controller "1..1" -- "0..1" assessment_Controllers : controllers34
-assessment_Controller "0..9999" --* "1..1" assessment_Controllers : controllers81
-assessment_Application "1..1" *-- "0..1" assessment_Entitlements : entitlements18
-assessment_Account "1..1" -- "0..9999" assessment_Entitlement : entitlements46
-assessment_Entitlement "1..1" -- "0..1" assessment_Entitlements : entitlements49
-assessment_Entitlement "0..9999" --* "1..1" assessment_Entitlements : entitlements86
-assessment_Finding "0..9999" -- "1..1" assessment_Node : findings10
-assessment_Assessment "1..1" *-- "0..1" assessment_Findings : findings13
-assessment_Finding "1..1" -- "0..1" assessment_Findings : findings40
-assessment_Finding "0..9999" --* "1..1" assessment_Findings : findings66
-assessment_Application "1..1" *-- "0..1" assessment_Models : models21
-assessment_Model "1..1" -- "0..1" assessment_Models : models38
-assessment_Model "0..9999" --* "1..1" assessment_Models : models92
-assessment_Node "0..1" -- "1..1" assessment_Node : parent2
-assessment_Node "1..1" -- "0..9999" assessment_Node : referredBy7
-assessment_Node "1..1" -- "0..9999" assessment_Node : refersTo5
-assessment_Resource "0..1" -- "1..1" assessment_Snippet : resource57
-assessment_Resource "0..9999" --* "1..1" assessment_Resources : resources107
-assessment_Application "1..1" *-- "0..1" assessment_Resources : resources29
-assessment_Resource "1..1" -- "0..1" assessment_Resources : resources58
-assessment_Application "1..1" *-- "0..1" assessment_Scm : scm23
-assessment_Sink "0..9999" --* "1..1" assessment_Sinks : sinks102
-assessment_Application "1..1" *-- "0..1" assessment_Sinks : sinks27
-assessment_Sink "1..1" -- "0..1" assessment_Sinks : sinks33
-assessment_Resource "1..1" -- "0..9999" assessment_Snippet : snippets60
-assessment_Task "0..9999" --* "1..1" assessment_Tasks : tasks113
-assessment_Assessment "1..1" *-- "0..1" assessment_Tasks : tasks15
-assessment_Task "1..1" -- "0..1" assessment_Tasks : tasks51
-assessment_Node "1..1" -- "0..9999" assessment_Task : tasks9
-assessment_Application "1..1" *-- "0..1" assessment_Views : views25
-assessment_View "1..1" -- "0..1" assessment_Views : views36
-assessment_View "0..9999" --* "1..1" assessment_Views : views97
+assessment_Accounts "assessment_Application 0..1" --* "assessment_Accounts 1..1" assessment_Application : accounts17
+assessment_Account "Accounts 1..1" -- "accounts 0..1" assessment_Accounts : accounts45
+assessment_Account "entitlements 0..9999" -- "Account 1..1" assessment_Entitlement : accounts48
+assessment_Account "accounts76 0..9999" --* "Account77 1..1" assessment_Accounts : accounts75
+assessment_Finding "Node44 1..1" -- "findings43 0..9999" assessment_Node : affects42
+assessment_Node "tasks54 0..9999" -- "Node55 1..1" assessment_Task : affects53
+assessment_Application "resources105 0..1" -- "Application106 1..1" assessment_Resources : application104
+assessment_Application "scm 0..1" -- "Application 1..1" assessment_Scm : application56
+assessment_Accounts "assessment_Application74 1..1" -- "assessment_Accounts73 0..1" assessment_Application : application72
+assessment_Application "controllers79 0..1" -- "Application80 1..1" assessment_Controllers : application78
+assessment_Application "assessment_Entitlements84 0..1" -- "assessment_Application85 1..1" assessment_Entitlements : application83
+assessment_Application "models90 0..1" -- "Application91 1..1" assessment_Models : application89
+assessment_Application "views95 0..1" -- "Application96 1..1" assessment_Views : application94
+assessment_Application "assessment_Sinks100 0..1" -- "assessment_Application101 1..1" assessment_Sinks : application99
+assessment_Applications "assessment 0..1" --* "Applications 1..1" assessment_Assessment : applications12
+assessment_Application "Applications32 1..1" -- "applications 0..1" assessment_Applications : applications31
+assessment_Application "applications62 0..9999" --* "Application63 1..1" assessment_Applications : applications61
+assessment_Assessment "tasks111 0..1" -- "Assessment112 1..1" assessment_Tasks : assessment110
+assessment_Applications "Assessment 1..1" -- "applications65 0..1" assessment_Assessment : assessment64
+assessment_Assessment "findings70 0..1" -- "Assessment71 1..1" assessment_Findings : assessment69
+assessment_GraphNode "assessment_Node 0..9999" --* "assessment_GraphNode 1..1" assessment_Node : children0
+assessment_Application "Controllers 1..1" *-- "application 0..1" assessment_Controllers : controllers20
+assessment_Controller "Controllers35 1..1" -- "controllers 0..1" assessment_Controllers : controllers34
+assessment_Controller "controllers82 0..9999" --* "Controller 1..1" assessment_Controllers : controllers81
+assessment_Application "assessment_Entitlements 1..1" *-- "assessment_Application19 0..1" assessment_Entitlements : entitlements18
+assessment_Account "Entitlement 1..1" -- "accounts47 0..9999" assessment_Entitlement : entitlements46
+assessment_Entitlement "Entitlements 1..1" -- "entitlements50 0..1" assessment_Entitlements : entitlements49
+assessment_Entitlement "entitlements87 0..9999" --* "Entitlement88 1..1" assessment_Entitlements : entitlements86
+assessment_Finding "affects11 0..9999" -- "Finding 1..1" assessment_Node : findings10
+assessment_Assessment "Findings 1..1" *-- "assessment14 0..1" assessment_Findings : findings13
+assessment_Finding "Findings41 1..1" -- "findings 0..1" assessment_Findings : findings40
+assessment_Finding "findings67 0..9999" --* "Finding68 1..1" assessment_Findings : findings66
+assessment_Application "Models 1..1" *-- "application22 0..1" assessment_Models : models21
+assessment_Model "Models39 1..1" -- "models 0..1" assessment_Models : models38
+assessment_Model "models93 0..9999" --* "Model 1..1" assessment_Models : models92
+assessment_Node "assessment_Node1 0..1" -- "assessment_Node3 1..1" assessment_Node : parent2
+assessment_Node "Node8 1..1" -- "refersTo 0..9999" assessment_Node : referredBy7
+assessment_Node "Node 1..1" -- "referredBy 0..9999" assessment_Node : refersTo5
+assessment_Resource "snippets 0..1" -- "Resource 1..1" assessment_Snippet : resource57
+assessment_Resource "resources108 0..9999" --* "Resource109 1..1" assessment_Resources : resources107
+assessment_Application "Resources 1..1" *-- "application30 0..1" assessment_Resources : resources29
+assessment_Resource "Resources59 1..1" -- "resources 0..1" assessment_Resources : resources58
+assessment_Application "Scm 1..1" *-- "application24 0..1" assessment_Scm : scm23
+assessment_Sink "sinks103 0..9999" --* "Sink 1..1" assessment_Sinks : sinks102
+assessment_Application "assessment_Sinks 1..1" *-- "assessment_Application28 0..1" assessment_Sinks : sinks27
+assessment_Sink "Sinks 1..1" -- "sinks 0..1" assessment_Sinks : sinks33
+assessment_Resource "Snippet 1..1" -- "resource 0..9999" assessment_Snippet : snippets60
+assessment_Task "tasks114 0..9999" --* "Task115 1..1" assessment_Tasks : tasks113
+assessment_Assessment "Tasks 1..1" *-- "assessment16 0..1" assessment_Tasks : tasks15
+assessment_Task "Tasks52 1..1" -- "tasks 0..1" assessment_Tasks : tasks51
+assessment_Node "Task 1..1" -- "affects 0..9999" assessment_Task : tasks9
+assessment_Application "Views 1..1" *-- "application26 0..1" assessment_Views : views25
+assessment_View "Views37 1..1" -- "views 0..1" assessment_Views : views36
+assessment_View "views98 0..9999" --* "View 1..1" assessment_Views : views97
 @enduml

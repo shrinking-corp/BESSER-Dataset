@@ -1,4 +1,8 @@
 @startuml
+' model: _5f6bada8_2080_4085_802d_9419c0cdcb4d
+' project: sampleModel
+' owner: User
+' description: New project
 class Booking {
   + booking_id : int
   + contact_no : int
@@ -45,12 +49,12 @@ class Table {
 }
 class Waiter {
 }
-CustomerUI "0..9999" -- "1..1" ReservationManagementSystem : CustomerUI_ReservationManagementSystem
-Food "1..9999" -- "1..1" Order : Order_Food
-Booking "0..9999" -- "1..1" ReservationManagementSystem : ReservationManagementSystem_Booking
-Report "0..9999" -- "1..1" ReservationManagementSystem : ReservationManagementSystem_Report
-ReservationManagementSystem "1..1" -- "0..9999" Staff : Staff_ReservationManagementSystem
-Staff "0..9999" -- "0..9999" StaffUI : Staff_StaffUI
-Booking "1..1" -- "1..9999" Table : Table_Booking
-Order "1..1" -- "1..1" Table : Table_Order
+CustomerUI "interacts5 0..9999" -- "CustomerUI_ReservationManagementSystem_04 1..1" ReservationManagementSystem : CustomerUI_ReservationManagementSystem
+Food "orde14 1..9999" -- "has15 1..1" Order : Order_Food
+Booking "booking6 0..9999" -- "ReservationManagementSystem_Booking_17 1..1" ReservationManagementSystem : ReservationManagementSystem_Booking
+Report "generates8 0..9999" -- "reservationManagementSystem9 1..1" ReservationManagementSystem : ReservationManagementSystem_Report
+ReservationManagementSystem "reservationManagementSystem2 1..1" -- "interacts3 0..9999" Staff : Staff_ReservationManagementSystem
+Staff "accesses1 0..9999" -- "Staff_StaffUI_00 0..9999" StaffUI : Staff_StaffUI
+Booking "Table_Booking_012 1..1" -- "reservedBy13 1..9999" Table : Table_Booking
+Order "has10 1..1" -- "table11 1..1" Table : Table_Order
 @enduml

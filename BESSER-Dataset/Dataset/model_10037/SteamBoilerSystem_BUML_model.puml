@@ -1,4 +1,8 @@
 @startuml
+' model: SBCS
+' project: sampleModel
+' owner: User
+' description: New project
 enum Mode {
   Dameged
   Degraded
@@ -81,48 +85,48 @@ Transition <|-- SBCS_PumpController_ClosePump
 Transition <|-- SBCS_PumpController_OpenPump
 Transition <|-- SBCS_SteamBoiler_OpenValve
 Transition <|-- SBCS_WaterLevelMeaurementDevice_getLevel
-SBCS_Snapshot "1..1" -- "1..1" SBCS_Transition : AfterTrans16
-SBCS_Snapshot "1..1" -- "1..1" SBCS_Transition : AfterTrans42
-SBCS_Snapshot "1..1" -- "1..1" SBCS_Transition : BeforeTrans15
-SBCS_Snapshot "1..1" -- "1..1" SBCS_Transition : BeforeTrans39
-SBCS_ControlProgram "0..1" -- "1..1" SBCS_ControlProgram_Start : CPPost64
-SBCS_ControlProgram "0..1" -- "1..1" SBCS_ControlProgram_Start : CPPre63
-SBCS_ControlProgram "1..1" -- "1..1" SBCS_Pump : ControlProgramPump20
-SBCS_ControlProgram "1..1" -- "1..1" SBCS_PumpControler : ControlProgramPumpControler28
-SBCS_ControlProgram "1..1" -- "1..1" SBCS_SteamMeasurementDevice : ControlProgramSMD24
-SBCS_ControlProgram "1..1" -- "1..1" SBCS_Snapshot : ControlProgramSnapshot6
-SBCS_ControlProgram "1..1" -- "1..1" SBCS_SteamBoiler : ControlProgramSteamBoiler26
-SBCS_ControlProgram "1..1" -- "1..1" SBCS_WaterLevelMeasurementDevice : ControlProgramWLMD22
-SBCS_PumpControler "0..1" -- "1..1" SBCS_PumpController_ClosePump : PCPost76
-SBCS_PumpControler "0..1" -- "1..1" SBCS_PumpController_OpenPump : PCPost81
-SBCS_PumpControler "0..1" -- "1..1" SBCS_PumpController_ClosePump : PCPre75
-SBCS_PumpControler "0..1" -- "1..1" SBCS_PumpController_OpenPump : PCPre79
-SBCS_ControlProgram "1..1" -- "1..1" SBCS_Pump : PumpControlProgram33
-SBCS_PumpControler "1..1" -- "1..1" SBCS_Snapshot : PumpControlSnapshot14
-SBCS_ControlProgram "1..1" -- "1..1" SBCS_PumpControler : PumpControlerControlProgram47
-SBCS_Pump "1..1" -- "1..1" SBCS_PumpControler : PumpControlerPump49
-SBCS_Pump "1..1" -- "1..1" SBCS_PumpControler : PumpPumpControler35
-SBCS_Pump "1..1" -- "1..1" SBCS_Snapshot : PumpSnapshot30
-SBCS_Pump "1..1" -- "1..1" SBCS_Snapshot : PumpSnapshot8
-SBCS_Pump "1..1" -- "1..1" SBCS_SteamBoiler : PumpSteamBoiler37
-SBCS_SteamBoiler "0..1" -- "1..1" SBCS_SteamBoiler_OpenValve : SBPost72
-SBCS_SteamBoiler "0..1" -- "1..1" SBCS_SteamBoiler_OpenValve : SBPre71
-SBCS_ControlProgram "1..1" -- "1..1" SBCS_SteamMeasurementDevice : SMDControlProgram53
-SBCS_SteamBoiler "1..1" -- "1..1" SBCS_SteamMeasurementDevice : SMDSteamBoiler55
-SBCS_ControlProgram "1..1" -- "1..1" SBCS_Snapshot : SnapshotControlProgram18
-SBCS_PumpControler "1..1" -- "1..1" SBCS_Snapshot : SnapshotPumpControl45
-SBCS_Snapshot "1..1" -- "1..1" SBCS_SteamMeasurementDevice : SnapshotSBMD51
-SBCS_Snapshot "1..1" -- "1..1" SBCS_SteamBoiler : SnapshotSteamBoiler0
-SBCS_Snapshot "1..1" -- "1..1" SBCS_WaterLevelMeasurementDevice : SnapshotWLMD57
-SBCS_ControlProgram "1..1" -- "1..1" SBCS_SteamBoiler : SteamBoilerControlProgram1
-SBCS_Snapshot "1..1" -- "1..1" SBCS_SteamMeasurementDevice : SteamBoilerMeasurementDeviceSnapshot12
-SBCS_SteamBoiler "1..1" -- "1..1" SBCS_SteamMeasurementDevice : SteamBoilerSMD3
-SBCS_Snapshot "1..1" -- "0..1" SBCS_SteamBoiler : SteamBoilerSnapshot5
-SBCS_SteamBoiler "1..1" -- "1..1" SBCS_WaterLevelMeasurementDevice : SteamBoilerWLMD4
-SBCS_Pump "1..1" -- "1..1" SBCS_SteamBoiler : SteqmBoilerPump2
-SBCS_ControlProgram "1..1" -- "1..1" SBCS_WaterLevelMeasurementDevice : WLMDControlProgram59
-SBCS_Snapshot "1..1" -- "1..1" SBCS_WaterLevelMeasurementDevice : WLMDSnapshot10
-SBCS_SteamBoiler "1..1" -- "1..1" SBCS_WaterLevelMeasurementDevice : WLMDSteamBoiler61
-SBCS_WaterLevelMeasurementDevice "0..1" -- "1..1" SBCS_WaterLevelMeaurementDevice_getLevel : wlmdPost68
-SBCS_WaterLevelMeasurementDevice "0..1" -- "1..1" SBCS_WaterLevelMeaurementDevice_getLevel : wlmdPre67
+SBCS_Snapshot "Transition17 1..1" -- "AfterTrans 1..1" SBCS_Transition : AfterTrans16
+SBCS_Snapshot "AfterTrans43 1..1" -- "Snapshot44 1..1" SBCS_Transition : AfterTrans42
+SBCS_Snapshot "Transition 1..1" -- "BeforeTrans 1..1" SBCS_Transition : BeforeTrans15
+SBCS_Snapshot "BeforeTrans40 1..1" -- "Snapshot41 1..1" SBCS_Transition : BeforeTrans39
+SBCS_ControlProgram "SBCS_ControlProgram_Start65 0..1" -- "SBCS_ControlProgram66 1..1" SBCS_ControlProgram_Start : CPPost64
+SBCS_ControlProgram "SBCS_ControlProgram_Start 0..1" -- "SBCS_ControlProgram 1..1" SBCS_ControlProgram_Start : CPPre63
+SBCS_ControlProgram "Pump21 1..1" -- "PumpControlProgram 1..1" SBCS_Pump : ControlProgramPump20
+SBCS_ControlProgram "PumpControler29 1..1" -- "PumpControlerControlProgram 1..1" SBCS_PumpControler : ControlProgramPumpControler28
+SBCS_ControlProgram "SteamMeasurementDevice25 1..1" -- "SMDControlProgram 1..1" SBCS_SteamMeasurementDevice : ControlProgramSMD24
+SBCS_ControlProgram "SnapshotControlProgram 1..1" -- "ControlProgram7 1..1" SBCS_Snapshot : ControlProgramSnapshot6
+SBCS_ControlProgram "SteamBoiler27 1..1" -- "SteamBoilerControlProgram 1..1" SBCS_SteamBoiler : ControlProgramSteamBoiler26
+SBCS_ControlProgram "WaterLevelMeasurementDevice23 1..1" -- "WLMDControlProgram 1..1" SBCS_WaterLevelMeasurementDevice : ControlProgramWLMD22
+SBCS_PumpControler "SBCS_PumpController_ClosePump77 0..1" -- "SBCS_PumpControler78 1..1" SBCS_PumpController_ClosePump : PCPost76
+SBCS_PumpControler "SBCS_PumpController_OpenPump82 0..1" -- "SBCS_PumpControler83 1..1" SBCS_PumpController_OpenPump : PCPost81
+SBCS_PumpControler "SBCS_PumpController_ClosePump 0..1" -- "SBCS_PumpControler 1..1" SBCS_PumpController_ClosePump : PCPre75
+SBCS_PumpControler "SBCS_PumpController_OpenPump 0..1" -- "SBCS_PumpControler80 1..1" SBCS_PumpController_OpenPump : PCPre79
+SBCS_ControlProgram "ControlProgramPump 1..1" -- "ControlProgram34 1..1" SBCS_Pump : PumpControlProgram33
+SBCS_PumpControler "SnapshotPumpControl 1..1" -- "PumpControler 1..1" SBCS_Snapshot : PumpControlSnapshot14
+SBCS_ControlProgram "ControlProgramPumpControler 1..1" -- "ControlProgram48 1..1" SBCS_PumpControler : PumpControlerControlProgram47
+SBCS_Pump "PumpPumpControler 1..1" -- "Pump50 1..1" SBCS_PumpControler : PumpControlerPump49
+SBCS_Pump "PumpControler36 1..1" -- "PumpControlerPump 1..1" SBCS_PumpControler : PumpPumpControler35
+SBCS_Pump "Snapshot32 1..1" -- "PumpSnapshot31 1..1" SBCS_Snapshot : PumpSnapshot30
+SBCS_Pump "PumpSnapshot 1..1" -- "Pump9 1..1" SBCS_Snapshot : PumpSnapshot8
+SBCS_Pump "SteamBoiler38 1..1" -- "SteqmBoilerPump 1..1" SBCS_SteamBoiler : PumpSteamBoiler37
+SBCS_SteamBoiler "SBCS_SteamBoiler_OpenValve73 0..1" -- "SBCS_SteamBoiler74 1..1" SBCS_SteamBoiler_OpenValve : SBPost72
+SBCS_SteamBoiler "SBCS_SteamBoiler_OpenValve 0..1" -- "SBCS_SteamBoiler 1..1" SBCS_SteamBoiler_OpenValve : SBPre71
+SBCS_ControlProgram "ControlProgramSMD 1..1" -- "ControlProgram54 1..1" SBCS_SteamMeasurementDevice : SMDControlProgram53
+SBCS_SteamBoiler "SteamBoilerSMD 1..1" -- "SteamBoiler56 1..1" SBCS_SteamMeasurementDevice : SMDSteamBoiler55
+SBCS_ControlProgram "Snapshot19 1..1" -- "ControlProgramSnapshot 1..1" SBCS_Snapshot : SnapshotControlProgram18
+SBCS_PumpControler "Snapshot46 1..1" -- "PumpControlSnapshot 1..1" SBCS_Snapshot : SnapshotPumpControl45
+SBCS_Snapshot "SteamBoilerMeasurementDeviceSnapshot 1..1" -- "Snapshot52 1..1" SBCS_SteamMeasurementDevice : SnapshotSBMD51
+SBCS_Snapshot "SteamBoilerSnapshot 1..1" -- "Snapshot 1..1" SBCS_SteamBoiler : SnapshotSteamBoiler0
+SBCS_Snapshot "WLMDSnapshot 1..1" -- "Snapshot58 1..1" SBCS_WaterLevelMeasurementDevice : SnapshotWLMD57
+SBCS_ControlProgram "ControlProgramSteamBoiler 1..1" -- "ControlProgram 1..1" SBCS_SteamBoiler : SteamBoilerControlProgram1
+SBCS_Snapshot "SteamMeasurementDevice13 1..1" -- "SnapshotSBMD 1..1" SBCS_SteamMeasurementDevice : SteamBoilerMeasurementDeviceSnapshot12
+SBCS_SteamBoiler "SteamMeasurementDevice 1..1" -- "SMDSteamBoiler 1..1" SBCS_SteamMeasurementDevice : SteamBoilerSMD3
+SBCS_Snapshot "SteamBoiler 1..1" -- "SnapshotSteamBoiler 0..1" SBCS_SteamBoiler : SteamBoilerSnapshot5
+SBCS_SteamBoiler "WaterLevelMeasurementDevice 1..1" -- "WLMDSteamBoiler 1..1" SBCS_WaterLevelMeasurementDevice : SteamBoilerWLMD4
+SBCS_Pump "PumpSteamBoiler 1..1" -- "Pump 1..1" SBCS_SteamBoiler : SteqmBoilerPump2
+SBCS_ControlProgram "ControlProgramWLMD 1..1" -- "ControlProgram60 1..1" SBCS_WaterLevelMeasurementDevice : WLMDControlProgram59
+SBCS_Snapshot "WaterLevelMeasurementDevice11 1..1" -- "SnapshotWLMD 1..1" SBCS_WaterLevelMeasurementDevice : WLMDSnapshot10
+SBCS_SteamBoiler "SteamBoilerWLMD 1..1" -- "SteamBoiler62 1..1" SBCS_WaterLevelMeasurementDevice : WLMDSteamBoiler61
+SBCS_WaterLevelMeasurementDevice "SBCS_WaterLevelMeaurementDevice_getLevel69 0..1" -- "SBCS_WaterLevelMeasurementDevice70 1..1" SBCS_WaterLevelMeaurementDevice_getLevel : wlmdPost68
+SBCS_WaterLevelMeasurementDevice "SBCS_WaterLevelMeaurementDevice_getLevel 0..1" -- "SBCS_WaterLevelMeasurementDevice 1..1" SBCS_WaterLevelMeaurementDevice_getLevel : wlmdPre67
 @enduml

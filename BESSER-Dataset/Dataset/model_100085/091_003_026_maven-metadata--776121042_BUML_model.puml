@@ -1,4 +1,8 @@
 @startuml
+' model: metadata
+' project: sampleModel
+' owner: User
+' description: New project
 class metadata_DocumentRoot {
   + mixed : str
 }
@@ -17,9 +21,9 @@ class metadata_Versioning {
 class metadata_Versions {
   + version : str
 }
-metadata_DocumentRoot "1..1" *-- "0..9999" metadata_MetaData : metadata4
-metadata_MetaData "1..1" *-- "1..1" metadata_Versioning : versioning6
-metadata_Versioning "1..1" *-- "1..1" metadata_Versions : versions8
-metadata_DocumentRoot "1..1" *-- "0..9999" metadata_EStringToStringMapEntry : xMLNSPrefixMap0
-metadata_DocumentRoot "1..1" *-- "0..9999" metadata_EStringToStringMapEntry : xSISchemaLocation1
+metadata_DocumentRoot "metadata_MetaData 1..1" *-- "metadata_DocumentRoot5 0..9999" metadata_MetaData : metadata4
+metadata_MetaData "metadata_Versioning 1..1" *-- "metadata_MetaData7 1..1" metadata_Versioning : versioning6
+metadata_Versioning "metadata_Versions 1..1" *-- "metadata_Versioning9 1..1" metadata_Versions : versions8
+metadata_DocumentRoot "metadata_EStringToStringMapEntry 1..1" *-- "metadata_DocumentRoot 0..9999" metadata_EStringToStringMapEntry : xMLNSPrefixMap0
+metadata_DocumentRoot "metadata_EStringToStringMapEntry3 1..1" *-- "metadata_DocumentRoot2 0..9999" metadata_EStringToStringMapEntry : xSISchemaLocation1
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: StateMachine
+' project: sampleModel
+' owner: User
+' description: New project
 class Action {
 }
 class ActionExpression {
@@ -122,39 +126,39 @@ TriggerExpression <|-- StateMachine_SignalAllowedSpeedChanged
 TriggerExpression <|-- StateMachine_TrainHeadingSpeedChanged
 TriggerExpression <|-- StateMachine_TrainTrackElementChanged
 TriggerExpression <|-- StateMachine_TurnoutDirectionChanged
-StateMachine_Action "0..9999" -- "1..1" StateMachine_Transition : action28
-StateMachine_Action "0..9999" --* "1..1" StateMachine_StateMachine : actions9
-StateMachine_State "0..1" -- "1..1" StateMachine_StateMachine : activeState11
-StateMachine_TurnoutDesiredDirection "0..1" -- "1..1" StateMachine_TurnoutHasDesiredDirection : desiredDirection68
-StateMachine_Guard "0..9999" -- "1..1" StateMachine_Transition : guard25
-StateMachine_Guard "0..9999" --* "1..1" StateMachine_StateMachine : guards7
-StateMachine_State "1..1" -- "0..9999" StateMachine_Transition : incomingTransitions17
-StateMachine_ChangeTrainCurrentTrackElement "1..1" -- "0..2" StateMachine_TrackElement : newTrackElements38
-StateMachine_State "1..1" -- "0..9999" StateMachine_Transition : outgoingTransitions16
-StateMachine_RDMElement "0..1" -- "1..1" StateMachine_StateMachine : referredObject14
-StateMachine_NextTrackElementIs "1..1" -- "0..1" StateMachine_RouteElement : routeElement62
-StateMachine_ChangeSignalAllowedSpeed "1..1" -- "0..1" StateMachine_Signal : signal34
-StateMachine_Signal "0..1" -- "1..1" StateMachine_SignalCurrentAllowedSpeed : signal49
-StateMachine_Signal "0..1" -- "1..1" StateMachine_SignalAllowedSpeedChanged : signal58
-StateMachine_State "1..1" -- "1..1" StateMachine_Transition : sourceState19
-StateMachine_CompositeState "1..1" *-- "1..1" StateMachine_StateMachine : statemachine31
-StateMachine_StateMachine "0..9999" --* "1..1" StateMachine_StateMachineBehavioralModel : statemachines0
-StateMachine_State "0..9999" --* "1..1" StateMachine_StateMachine : states1
-StateMachine_State "1..1" -- "1..1" StateMachine_Transition : targetState20
-StateMachine_NextTrackElementIs "1..1" -- "0..1" StateMachine_TrackElement : trackElement63
-StateMachine_TrackElement "0..2" -- "1..1" StateMachine_TrainCurrentlyStandsOn : trackElements44
-StateMachine_TrackElement "0..2" -- "1..1" StateMachine_TrainTrackElementChanged : trackElements55
-StateMachine_ChangeTrainHeadingSpeed "1..1" -- "0..1" StateMachine_Train : train33
-StateMachine_ChangeTrainCurrentTrackElement "1..1" -- "0..1" StateMachine_Train : train36
-StateMachine_Train "0..1" -- "1..1" StateMachine_TrainCurrentHeadingSpeed : train40
-StateMachine_Train "0..1" -- "1..1" StateMachine_TrainCurrentlyStandsOn : train42
-StateMachine_Train "0..1" -- "1..1" StateMachine_TrainHeadingSpeedChanged : train51
-StateMachine_Train "0..1" -- "1..1" StateMachine_TrainTrackElementChanged : train53
-StateMachine_StateMachine "1..1" *-- "0..9999" StateMachine_Transition : transitions3
-StateMachine_Transition "1..1" -- "0..1" StateMachine_Trigger : trigger22
-StateMachine_StateMachine "1..1" *-- "0..9999" StateMachine_Trigger : triggers5
-StateMachine_ChangeTurnoutDirection "1..1" -- "0..1" StateMachine_Turnout : turnout35
-StateMachine_Turnout "0..1" -- "1..1" StateMachine_TurnoutCurrentDirection : turnout47
-StateMachine_Turnout "0..1" -- "1..1" StateMachine_TurnoutDirectionChanged : turnout60
-StateMachine_Turnout "0..1" -- "1..1" StateMachine_TurnoutHasDesiredDirection : turnout66
+StateMachine_Action "StateMachine_Transition29 0..9999" -- "StateMachine_Action30 1..1" StateMachine_Transition : action28
+StateMachine_Action "StateMachine_StateMachine10 0..9999" --* "StateMachine_Action 1..1" StateMachine_StateMachine : actions9
+StateMachine_State "StateMachine_StateMachine12 0..1" -- "StateMachine_State13 1..1" StateMachine_StateMachine : activeState11
+StateMachine_TurnoutDesiredDirection "StateMachine_TurnoutHasDesiredDirection69 0..1" -- "StateMachine_TurnoutDesiredDirection 1..1" StateMachine_TurnoutHasDesiredDirection : desiredDirection68
+StateMachine_Guard "StateMachine_Transition26 0..9999" -- "StateMachine_Guard27 1..1" StateMachine_Transition : guard25
+StateMachine_Guard "StateMachine_StateMachine8 0..9999" --* "StateMachine_Guard 1..1" StateMachine_StateMachine : guards7
+StateMachine_State "Transition18 1..1" -- "targetState 0..9999" StateMachine_Transition : incomingTransitions17
+StateMachine_ChangeTrainCurrentTrackElement "StateMachine_TrackElement 1..1" -- "StateMachine_ChangeTrainCurrentTrackElement39 0..2" StateMachine_TrackElement : newTrackElements38
+StateMachine_State "Transition 1..1" -- "sourceState 0..9999" StateMachine_Transition : outgoingTransitions16
+StateMachine_RDMElement "StateMachine_StateMachine15 0..1" -- "StateMachine_RDMElement 1..1" StateMachine_StateMachine : referredObject14
+StateMachine_NextTrackElementIs "StateMachine_RouteElement 1..1" -- "StateMachine_NextTrackElementIs 0..1" StateMachine_RouteElement : routeElement62
+StateMachine_ChangeSignalAllowedSpeed "StateMachine_Signal 1..1" -- "StateMachine_ChangeSignalAllowedSpeed 0..1" StateMachine_Signal : signal34
+StateMachine_Signal "StateMachine_SignalCurrentAllowedSpeed 0..1" -- "StateMachine_Signal50 1..1" StateMachine_SignalCurrentAllowedSpeed : signal49
+StateMachine_Signal "StateMachine_SignalAllowedSpeedChanged 0..1" -- "StateMachine_Signal59 1..1" StateMachine_SignalAllowedSpeedChanged : signal58
+StateMachine_State "outgoingTransitions 1..1" -- "State 1..1" StateMachine_Transition : sourceState19
+StateMachine_CompositeState "StateMachine_StateMachine32 1..1" *-- "StateMachine_CompositeState 1..1" StateMachine_StateMachine : statemachine31
+StateMachine_StateMachine "StateMachine_StateMachineBehavioralModel 0..9999" --* "StateMachine_StateMachine 1..1" StateMachine_StateMachineBehavioralModel : statemachines0
+StateMachine_State "StateMachine_StateMachine2 0..9999" --* "StateMachine_State 1..1" StateMachine_StateMachine : states1
+StateMachine_State "incomingTransitions 1..1" -- "State21 1..1" StateMachine_Transition : targetState20
+StateMachine_NextTrackElementIs "StateMachine_TrackElement65 1..1" -- "StateMachine_NextTrackElementIs64 0..1" StateMachine_TrackElement : trackElement63
+StateMachine_TrackElement "StateMachine_TrainCurrentlyStandsOn45 0..2" -- "StateMachine_TrackElement46 1..1" StateMachine_TrainCurrentlyStandsOn : trackElements44
+StateMachine_TrackElement "StateMachine_TrainTrackElementChanged56 0..2" -- "StateMachine_TrackElement57 1..1" StateMachine_TrainTrackElementChanged : trackElements55
+StateMachine_ChangeTrainHeadingSpeed "StateMachine_Train 1..1" -- "StateMachine_ChangeTrainHeadingSpeed 0..1" StateMachine_Train : train33
+StateMachine_ChangeTrainCurrentTrackElement "StateMachine_Train37 1..1" -- "StateMachine_ChangeTrainCurrentTrackElement 0..1" StateMachine_Train : train36
+StateMachine_Train "StateMachine_TrainCurrentHeadingSpeed 0..1" -- "StateMachine_Train41 1..1" StateMachine_TrainCurrentHeadingSpeed : train40
+StateMachine_Train "StateMachine_TrainCurrentlyStandsOn 0..1" -- "StateMachine_Train43 1..1" StateMachine_TrainCurrentlyStandsOn : train42
+StateMachine_Train "StateMachine_TrainHeadingSpeedChanged 0..1" -- "StateMachine_Train52 1..1" StateMachine_TrainHeadingSpeedChanged : train51
+StateMachine_Train "StateMachine_TrainTrackElementChanged 0..1" -- "StateMachine_Train54 1..1" StateMachine_TrainTrackElementChanged : train53
+StateMachine_StateMachine "StateMachine_Transition 1..1" *-- "StateMachine_StateMachine4 0..9999" StateMachine_Transition : transitions3
+StateMachine_Transition "StateMachine_Trigger24 1..1" -- "StateMachine_Transition23 0..1" StateMachine_Trigger : trigger22
+StateMachine_StateMachine "StateMachine_Trigger 1..1" *-- "StateMachine_StateMachine6 0..9999" StateMachine_Trigger : triggers5
+StateMachine_ChangeTurnoutDirection "StateMachine_Turnout 1..1" -- "StateMachine_ChangeTurnoutDirection 0..1" StateMachine_Turnout : turnout35
+StateMachine_Turnout "StateMachine_TurnoutCurrentDirection 0..1" -- "StateMachine_Turnout48 1..1" StateMachine_TurnoutCurrentDirection : turnout47
+StateMachine_Turnout "StateMachine_TurnoutDirectionChanged 0..1" -- "StateMachine_Turnout61 1..1" StateMachine_TurnoutDirectionChanged : turnout60
+StateMachine_Turnout "StateMachine_TurnoutHasDesiredDirection 0..1" -- "StateMachine_Turnout67 1..1" StateMachine_TurnoutHasDesiredDirection : turnout66
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: stateMachine
+' project: sampleModel
+' owner: User
+' description: New project
 enum EFieldState {
   EDITABLE
   HIDDEN
@@ -27,17 +31,17 @@ class stateMachine_Trans {
 }
 class stateMachine_TransSet {
 }
-stateMachine_Event "1..1" -- "1..1" stateMachine_Trans : event16
-stateMachine_Event "1..9999" --* "1..1" stateMachine_StateMachine : eventList0
-stateMachine_DocumentField "0..9999" --* "1..1" stateMachine_StateMachine : fieldList6
-stateMachine_DocumentField "1..1" -- "1..1" stateMachine_FieldState : fieldRef22
-stateMachine_FieldState "0..9999" --* "1..1" stateMachine_State : fieldState12
-stateMachine_Role "1..1" -- "1..1" stateMachine_TransSet : firedBy28
-stateMachine_State "1..1" -- "1..1" stateMachine_StateMachine : initial3
-stateMachine_Role "0..9999" --* "1..1" stateMachine_StateMachine : roleList8
-stateMachine_State "1..9999" --* "1..1" stateMachine_StateMachine : stateList1
-stateMachine_State "1..1" -- "1..1" stateMachine_Trans : target19
-stateMachine_State "1..1" *-- "0..9999" stateMachine_Trans : transList10
-stateMachine_Trans "0..9999" --* "1..1" stateMachine_TransSet : transList25
-stateMachine_State "1..1" *-- "0..9999" stateMachine_TransSet : transSetList14
+stateMachine_Event "stateMachine_Trans17 1..1" -- "stateMachine_Event18 1..1" stateMachine_Trans : event16
+stateMachine_Event "stateMachine_StateMachine 1..9999" --* "stateMachine_Event 1..1" stateMachine_StateMachine : eventList0
+stateMachine_DocumentField "stateMachine_StateMachine7 0..9999" --* "stateMachine_DocumentField 1..1" stateMachine_StateMachine : fieldList6
+stateMachine_DocumentField "stateMachine_FieldState23 1..1" -- "stateMachine_DocumentField24 1..1" stateMachine_FieldState : fieldRef22
+stateMachine_FieldState "stateMachine_State13 0..9999" --* "stateMachine_FieldState 1..1" stateMachine_State : fieldState12
+stateMachine_Role "stateMachine_TransSet29 1..1" -- "stateMachine_Role30 1..1" stateMachine_TransSet : firedBy28
+stateMachine_State "stateMachine_StateMachine4 1..1" -- "stateMachine_State5 1..1" stateMachine_StateMachine : initial3
+stateMachine_Role "stateMachine_StateMachine9 0..9999" --* "stateMachine_Role 1..1" stateMachine_StateMachine : roleList8
+stateMachine_State "stateMachine_StateMachine2 1..9999" --* "stateMachine_State 1..1" stateMachine_StateMachine : stateList1
+stateMachine_State "stateMachine_Trans20 1..1" -- "stateMachine_State21 1..1" stateMachine_Trans : target19
+stateMachine_State "stateMachine_Trans 1..1" *-- "stateMachine_State11 0..9999" stateMachine_Trans : transList10
+stateMachine_Trans "stateMachine_TransSet26 0..9999" --* "stateMachine_Trans27 1..1" stateMachine_TransSet : transList25
+stateMachine_State "stateMachine_TransSet 1..1" *-- "stateMachine_State15 0..9999" stateMachine_TransSet : transSetList14
 @enduml

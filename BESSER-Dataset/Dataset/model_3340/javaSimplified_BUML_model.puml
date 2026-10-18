@@ -1,4 +1,8 @@
 @startuml
+' model: JavaSimplified
+' project: sampleModel
+' owner: User
+' description: New project
 enum AssignmentOperatorType {
   ASSIGN
   PLUS_ASSIGN
@@ -133,37 +137,37 @@ StringElement <|-- JavaSimplified_Statement
 TypedElement <|-- JavaSimplified_Field
 TypedElement <|-- JavaSimplified_Parameter
 TypedElement <|-- JavaSimplified_VariableDeclarationStatement
-JavaSimplified_Expression "0..9999" --* "1..1" JavaSimplified_MethodCall : arguments53
-JavaSimplified_ClassInstanceCreation "1..1" *-- "0..9999" JavaSimplified_Expression : arguments8
-JavaSimplified_MethodCall "0..9999" --* "1..1" JavaSimplified_MethodCall : childCall56
-JavaSimplified_ClassInstanceCreation "1..1" -- "1..1" JavaSimplified_Type : className10
-JavaSimplified_JavaClass "0..9999" --* "1..1" JavaSimplified_JavaModel : classes40
-JavaSimplified_Comment "0..1" -- "1..1" JavaSimplified_CommentedElement : comment13
-JavaSimplified_Comment "1..1" --* "1..1" JavaSimplified_CommentStatement : comment14
-JavaSimplified_IfStatement "1..1" *-- "0..9999" JavaSimplified_Statement : elsest28
-JavaSimplified_Assignment "1..1" *-- "1..1" JavaSimplified_Expression : expr10
-JavaSimplified_Expression "1..1" --* "1..1" JavaSimplified_InfixExpression : expr131
-JavaSimplified_Expression "1..1" --* "1..1" JavaSimplified_ExpressionStatement : expr16
-JavaSimplified_Expression "0..1" --* "1..1" JavaSimplified_Field : expr18
-JavaSimplified_Expression "1..1" --* "1..1" JavaSimplified_FieldAccess : expr20
-JavaSimplified_Assignment "1..1" *-- "1..1" JavaSimplified_Expression : expr21
-JavaSimplified_Expression "1..1" --* "1..1" JavaSimplified_InfixExpression : expr233
-JavaSimplified_Expression "1..1" --* "1..1" JavaSimplified_IfStatement : expr24
-JavaSimplified_CastExpression "1..1" *-- "1..1" JavaSimplified_Expression : expr4
-JavaSimplified_Expression "1..1" --* "1..1" JavaSimplified_ReturnStatement : expr68
-JavaSimplified_Expression "0..1" --* "1..1" JavaSimplified_VariableDeclarationStatement : expr72
-JavaSimplified_Field "0..9999" --* "1..1" JavaSimplified_JavaClass : fields36
-JavaSimplified_IfStatement "1..1" *-- "1..9999" JavaSimplified_Statement : ifst26
-JavaSimplified_MethodCall "1..1" --* "1..1" JavaSimplified_MethodInvocation : method63
-JavaSimplified_MethodCall "1..1" *-- "1..1" JavaSimplified_Name : methodName58
-JavaSimplified_JavaClass "1..1" *-- "0..9999" JavaSimplified_Method : methods38
-JavaSimplified_FieldAccess "1..1" *-- "1..1" JavaSimplified_Name : name22
-JavaSimplified_Name "1..1" --* "1..1" JavaSimplified_NamedElement : name66
-JavaSimplified_MethodInvocation "1..1" *-- "0..1" JavaSimplified_Name : object61
-JavaSimplified_Method "1..1" *-- "0..9999" JavaSimplified_Parameter : parameters45
-JavaSimplified_Method "1..1" -- "0..1" JavaSimplified_Type : returnType50
-JavaSimplified_Method "1..1" *-- "0..9999" JavaSimplified_Statement : statements47
-JavaSimplified_CastExpression "1..1" -- "1..1" JavaSimplified_Type : type6
-JavaSimplified_Type "1..1" -- "1..1" JavaSimplified_TypedElement : type70
-JavaSimplified_JavaModel "1..1" *-- "0..9999" JavaSimplified_Type : types42
+JavaSimplified_Expression "JavaSimplified_MethodCall 0..9999" --* "JavaSimplified_Expression54 1..1" JavaSimplified_MethodCall : arguments53
+JavaSimplified_ClassInstanceCreation "JavaSimplified_Expression9 1..1" *-- "JavaSimplified_ClassInstanceCreation 0..9999" JavaSimplified_Expression : arguments8
+JavaSimplified_MethodCall "JavaSimplified_MethodCall55 0..9999" --* "JavaSimplified_MethodCall57 1..1" JavaSimplified_MethodCall : childCall56
+JavaSimplified_ClassInstanceCreation "JavaSimplified_Type12 1..1" -- "JavaSimplified_ClassInstanceCreation11 1..1" JavaSimplified_Type : className10
+JavaSimplified_JavaClass "JavaSimplified_JavaModel 0..9999" --* "JavaSimplified_JavaClass41 1..1" JavaSimplified_JavaModel : classes40
+JavaSimplified_Comment "JavaSimplified_CommentedElement 0..1" -- "JavaSimplified_Comment 1..1" JavaSimplified_CommentedElement : comment13
+JavaSimplified_Comment "JavaSimplified_CommentStatement 1..1" --* "JavaSimplified_Comment15 1..1" JavaSimplified_CommentStatement : comment14
+JavaSimplified_IfStatement "JavaSimplified_Statement30 1..1" *-- "JavaSimplified_IfStatement29 0..9999" JavaSimplified_Statement : elsest28
+JavaSimplified_Assignment "JavaSimplified_Expression 1..1" *-- "JavaSimplified_Assignment 1..1" JavaSimplified_Expression : expr10
+JavaSimplified_Expression "JavaSimplified_InfixExpression 1..1" --* "JavaSimplified_Expression32 1..1" JavaSimplified_InfixExpression : expr131
+JavaSimplified_Expression "JavaSimplified_ExpressionStatement 1..1" --* "JavaSimplified_Expression17 1..1" JavaSimplified_ExpressionStatement : expr16
+JavaSimplified_Expression "JavaSimplified_Field 0..1" --* "JavaSimplified_Expression19 1..1" JavaSimplified_Field : expr18
+JavaSimplified_Expression "JavaSimplified_FieldAccess 1..1" --* "JavaSimplified_Expression21 1..1" JavaSimplified_FieldAccess : expr20
+JavaSimplified_Assignment "JavaSimplified_Expression3 1..1" *-- "JavaSimplified_Assignment2 1..1" JavaSimplified_Expression : expr21
+JavaSimplified_Expression "JavaSimplified_InfixExpression34 1..1" --* "JavaSimplified_Expression35 1..1" JavaSimplified_InfixExpression : expr233
+JavaSimplified_Expression "JavaSimplified_IfStatement 1..1" --* "JavaSimplified_Expression25 1..1" JavaSimplified_IfStatement : expr24
+JavaSimplified_CastExpression "JavaSimplified_Expression5 1..1" *-- "JavaSimplified_CastExpression 1..1" JavaSimplified_Expression : expr4
+JavaSimplified_Expression "JavaSimplified_ReturnStatement 1..1" --* "JavaSimplified_Expression69 1..1" JavaSimplified_ReturnStatement : expr68
+JavaSimplified_Expression "JavaSimplified_VariableDeclarationStatement 0..1" --* "JavaSimplified_Expression73 1..1" JavaSimplified_VariableDeclarationStatement : expr72
+JavaSimplified_Field "JavaSimplified_JavaClass 0..9999" --* "JavaSimplified_Field37 1..1" JavaSimplified_JavaClass : fields36
+JavaSimplified_IfStatement "JavaSimplified_Statement 1..1" *-- "JavaSimplified_IfStatement27 1..9999" JavaSimplified_Statement : ifst26
+JavaSimplified_MethodCall "JavaSimplified_MethodInvocation64 1..1" --* "JavaSimplified_MethodCall65 1..1" JavaSimplified_MethodInvocation : method63
+JavaSimplified_MethodCall "JavaSimplified_Name60 1..1" *-- "JavaSimplified_MethodCall59 1..1" JavaSimplified_Name : methodName58
+JavaSimplified_JavaClass "JavaSimplified_Method 1..1" *-- "JavaSimplified_JavaClass39 0..9999" JavaSimplified_Method : methods38
+JavaSimplified_FieldAccess "JavaSimplified_Name 1..1" *-- "JavaSimplified_FieldAccess23 1..1" JavaSimplified_Name : name22
+JavaSimplified_Name "JavaSimplified_NamedElement 1..1" --* "JavaSimplified_Name67 1..1" JavaSimplified_NamedElement : name66
+JavaSimplified_MethodInvocation "JavaSimplified_Name62 1..1" *-- "JavaSimplified_MethodInvocation 0..1" JavaSimplified_Name : object61
+JavaSimplified_Method "JavaSimplified_Parameter 1..1" *-- "JavaSimplified_Method46 0..9999" JavaSimplified_Parameter : parameters45
+JavaSimplified_Method "JavaSimplified_Type52 1..1" -- "JavaSimplified_Method51 0..1" JavaSimplified_Type : returnType50
+JavaSimplified_Method "JavaSimplified_Statement49 1..1" *-- "JavaSimplified_Method48 0..9999" JavaSimplified_Statement : statements47
+JavaSimplified_CastExpression "JavaSimplified_Type 1..1" -- "JavaSimplified_CastExpression7 1..1" JavaSimplified_Type : type6
+JavaSimplified_Type "JavaSimplified_TypedElement 1..1" -- "JavaSimplified_Type71 1..1" JavaSimplified_TypedElement : type70
+JavaSimplified_JavaModel "JavaSimplified_Type44 1..1" *-- "JavaSimplified_JavaModel43 0..9999" JavaSimplified_Type : types42
 @enduml

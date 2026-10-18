@@ -1,4 +1,8 @@
 @startuml
+' model: test
+' project: sampleModel
+' owner: User
+' description: New project
 class test_A {
 }
 class test_B {
@@ -16,13 +20,13 @@ class test_EClassToAMap {
 class test_EClassToEStringMap {
   + value : str
 }
-test_A "1..1" *-- "0..1" test_B : b0
-test_B "1..1" *-- "0..1" test_C : c1
-test_B "1..1" -- "0..9999" test_C : cList3
-test_C "1..1" *-- "0..1" test_D : d6
-test_C "1..1" *-- "0..9999" test_EClassToAMap : eClassToA10
-test_C "1..1" *-- "0..9999" test_EClassToEStringMap : eClassToString8
-test_EClass "0..1" -- "1..1" test_EClassToEStringMap : key12
-test_EClass "0..1" -- "1..1" test_EClassToAMap : key14
-test_A "0..1" -- "1..1" test_EClassToAMap : value17
+test_A "test_B 1..1" *-- "test_A 0..1" test_B : b0
+test_B "test_C 1..1" *-- "test_B2 0..1" test_C : c1
+test_B "test_C5 1..1" -- "test_B4 0..9999" test_C : cList3
+test_C "test_D 1..1" *-- "test_C7 0..1" test_D : d6
+test_C "test_EClassToAMap 1..1" *-- "test_C11 0..9999" test_EClassToAMap : eClassToA10
+test_C "test_EClassToEStringMap 1..1" *-- "test_C9 0..9999" test_EClassToEStringMap : eClassToString8
+test_EClass "test_EClassToEStringMap13 0..1" -- "test_EClass 1..1" test_EClassToEStringMap : key12
+test_EClass "test_EClassToAMap15 0..1" -- "test_EClass16 1..1" test_EClassToAMap : key14
+test_A "test_EClassToAMap18 0..1" -- "test_A19 1..1" test_EClassToAMap : value17
 @enduml

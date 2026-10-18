@@ -1,4 +1,8 @@
 @startuml
+' model: iritpdl
+' project: sampleModel
+' owner: User
+' description: New project
 class ProcessElement {
 }
 enum WorkSequenceType {
@@ -37,19 +41,19 @@ class iritpdl_WorkSequence {
 }
 ProcessElement <|-- iritpdl_WorkDefinition
 ProcessElement <|-- iritpdl_WorkSequence
-iritpdl_ProcessElement "0..9999" --* "1..1" iritpdl_WorkDefinition : children9
-iritpdl_Guidance "0..9999" --* "1..1" iritpdl_Process : guidanceGFX1
-iritpdl_Guidance "0..9999" -- "1..1" iritpdl_ProcessElement : guides13
-iritpdl_WorkDefinition "1..1" -- "0..9999" iritpdl_WorkSequence : linksToPredecessors5
-iritpdl_WorkDefinition "1..1" -- "0..9999" iritpdl_WorkSequence : linksToSuccessors6
-iritpdl_Resource "0..9999" --* "1..1" iritpdl_ResourceConf : neededResources24
-iritpdl_ProcessElement "1..1" -- "0..1" iritpdl_WorkDefinition : parent16
-iritpdl_WorkDefinition "1..1" -- "1..1" iritpdl_WorkSequence : predecessor10
-iritpdl_Process "1..1" *-- "0..9999" iritpdl_ProcessElement : processElements0
-iritpdl_Resource "1..1" -- "1..1" iritpdl_ResourceConf : resourceConf20
-iritpdl_ResourceConf "1..9999" --* "1..1" iritpdl_WorkDefinition : resourceConf8
-iritpdl_Process "1..1" *-- "0..9999" iritpdl_ResourceType : resources3
-iritpdl_WorkDefinition "1..1" -- "1..1" iritpdl_WorkSequence : successor11
-iritpdl_Resource "1..1" -- "1..1" iritpdl_ResourceType : type18
-iritpdl_ResourceConf "1..1" -- "1..1" iritpdl_WorkDefinition : workDefinition22
+iritpdl_ProcessElement "parent 0..9999" --* "ProcessElement 1..1" iritpdl_WorkDefinition : children9
+iritpdl_Guidance "iritpdl_Process2 0..9999" --* "iritpdl_Guidance 1..1" iritpdl_Process : guidanceGFX1
+iritpdl_Guidance "iritpdl_ProcessElement14 0..9999" -- "iritpdl_Guidance15 1..1" iritpdl_ProcessElement : guides13
+iritpdl_WorkDefinition "WorkSequence 1..1" -- "successor 0..9999" iritpdl_WorkSequence : linksToPredecessors5
+iritpdl_WorkDefinition "WorkSequence7 1..1" -- "predecessor 0..9999" iritpdl_WorkSequence : linksToSuccessors6
+iritpdl_Resource "resourceConf25 0..9999" --* "Resource 1..1" iritpdl_ResourceConf : neededResources24
+iritpdl_ProcessElement "WorkDefinition17 1..1" -- "children 0..1" iritpdl_WorkDefinition : parent16
+iritpdl_WorkDefinition "linksToSuccessors 1..1" -- "WorkDefinition 1..1" iritpdl_WorkSequence : predecessor10
+iritpdl_Process "iritpdl_ProcessElement 1..1" *-- "iritpdl_Process 0..9999" iritpdl_ProcessElement : processElements0
+iritpdl_Resource "ResourceConf21 1..1" -- "neededResources 1..1" iritpdl_ResourceConf : resourceConf20
+iritpdl_ResourceConf "workDefinition 1..9999" --* "ResourceConf 1..1" iritpdl_WorkDefinition : resourceConf8
+iritpdl_Process "iritpdl_ResourceType 1..1" *-- "iritpdl_Process4 0..9999" iritpdl_ResourceType : resources3
+iritpdl_WorkDefinition "linksToPredecessors 1..1" -- "WorkDefinition12 1..1" iritpdl_WorkSequence : successor11
+iritpdl_Resource "iritpdl_ResourceType19 1..1" -- "iritpdl_Resource 1..1" iritpdl_ResourceType : type18
+iritpdl_ResourceConf "WorkDefinition23 1..1" -- "resourceConf 1..1" iritpdl_WorkDefinition : workDefinition22
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: extlibrary
+' project: sampleModel
+' owner: User
+' description: New project
 class Addressable {
 }
 class AudioVisualItem {
@@ -72,19 +76,19 @@ Lendable <|-- extlibrary_CirculatingItem
 Person <|-- extlibrary_Borrower
 Person <|-- extlibrary_Employee
 Person <|-- extlibrary_Writer
-extlibrary_Book "1..1" -- "1..1" extlibrary_Writer : author0
-extlibrary_BookOnTape "1..1" -- "0..1" extlibrary_Writer : author18
-extlibrary_Book "0..9999" -- "1..1" extlibrary_Writer : books15
-extlibrary_Book "0..9999" -- "1..1" extlibrary_Library : books8
-extlibrary_Borrower "1..1" -- "0..9999" extlibrary_Lendable : borrowed23
-extlibrary_Borrower "0..9999" -- "1..1" extlibrary_Lendable : borrowers16
-extlibrary_Borrower "0..9999" --* "1..1" extlibrary_Library : borrowers4
-extlibrary_Library "1..1" *-- "0..9999" extlibrary_Library : branches11
-extlibrary_Person "0..9999" -- "1..1" extlibrary_VideoCassette : cast21
-extlibrary_Employee "0..9999" --* "1..1" extlibrary_Library : employees2
-extlibrary_Employee "0..1" -- "1..1" extlibrary_Employee : manager25
-extlibrary_Library "1..1" -- "0..1" extlibrary_Library : parentBranch13
-extlibrary_BookOnTape "1..1" -- "0..1" extlibrary_Person : reader17
-extlibrary_Item "0..9999" --* "1..1" extlibrary_Library : stock6
-extlibrary_Library "1..1" *-- "0..9999" extlibrary_Writer : writers1
+extlibrary_Book "Writer 1..1" -- "books 1..1" extlibrary_Writer : author0
+extlibrary_BookOnTape "extlibrary_Writer20 1..1" -- "extlibrary_BookOnTape19 0..1" extlibrary_Writer : author18
+extlibrary_Book "author 0..9999" -- "Book 1..1" extlibrary_Writer : books15
+extlibrary_Book "extlibrary_Library9 0..9999" -- "extlibrary_Book 1..1" extlibrary_Library : books8
+extlibrary_Borrower "Lendable 1..1" -- "borrowers 0..9999" extlibrary_Lendable : borrowed23
+extlibrary_Borrower "borrowed 0..9999" -- "Borrower 1..1" extlibrary_Lendable : borrowers16
+extlibrary_Borrower "extlibrary_Library5 0..9999" --* "extlibrary_Borrower 1..1" extlibrary_Library : borrowers4
+extlibrary_Library "Library 1..1" *-- "parentBranch 0..9999" extlibrary_Library : branches11
+extlibrary_Person "extlibrary_VideoCassette 0..9999" -- "extlibrary_Person22 1..1" extlibrary_VideoCassette : cast21
+extlibrary_Employee "extlibrary_Library3 0..9999" --* "extlibrary_Employee 1..1" extlibrary_Library : employees2
+extlibrary_Employee "extlibrary_Employee24 0..1" -- "extlibrary_Employee26 1..1" extlibrary_Employee : manager25
+extlibrary_Library "Library14 1..1" -- "branches 0..1" extlibrary_Library : parentBranch13
+extlibrary_BookOnTape "extlibrary_Person 1..1" -- "extlibrary_BookOnTape 0..1" extlibrary_Person : reader17
+extlibrary_Item "extlibrary_Library7 0..9999" --* "extlibrary_Item 1..1" extlibrary_Library : stock6
+extlibrary_Library "extlibrary_Writer 1..1" *-- "extlibrary_Library 0..9999" extlibrary_Writer : writers1
 @enduml

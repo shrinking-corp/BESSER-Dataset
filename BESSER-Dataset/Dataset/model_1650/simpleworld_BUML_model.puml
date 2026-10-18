@@ -1,4 +1,8 @@
 @startuml
+' model: simpleworld
+' project: sampleModel
+' owner: User
+' description: New project
 class NamedElement {
 }
 abstract class simpleworld_NamedElement {
@@ -14,8 +18,8 @@ class simpleworld_World {
 }
 NamedElement <|-- simpleworld_RelatedTo
 NamedElement <|-- simpleworld_Thing
-simpleworld_RelatedTo "1..1" -- "0..1" simpleworld_Thing : fromThing2
-simpleworld_RelatedTo "0..9999" --* "1..1" simpleworld_Thing : relations1
-simpleworld_Thing "0..9999" --* "1..1" simpleworld_World : things0
-simpleworld_RelatedTo "1..1" -- "0..1" simpleworld_Thing : toThing3
+simpleworld_RelatedTo "Thing 1..1" -- "relations 0..1" simpleworld_Thing : fromThing2
+simpleworld_RelatedTo "fromThing 0..9999" --* "RelatedTo 1..1" simpleworld_Thing : relations1
+simpleworld_Thing "simpleworld_World 0..9999" --* "simpleworld_Thing 1..1" simpleworld_World : things0
+simpleworld_RelatedTo "simpleworld_Thing4 1..1" -- "simpleworld_RelatedTo 0..1" simpleworld_Thing : toThing3
 @enduml

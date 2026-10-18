@@ -1,4 +1,8 @@
 @startuml
+' model: simulink
+' project: sampleModel
+' owner: User
+' description: New project
 class Block {
 }
 class CompositeStateflowElement {
@@ -173,42 +177,42 @@ TruthTable <|-- simulink_ContainableTruthTable
 TruthTable <|-- simulink_TruthTableChart
 Vertex <|-- simulink_Junction
 Vertex <|-- simulink_State
-simulink_ActionEntry "1..9999" --* "1..1" simulink_ActionTable : actionEntries53
-simulink_ActionTable "1..1" --* "1..1" simulink_TruthTable : actionTable45
-simulink_Block "0..1" -- "1..1" simulink_Port : block2
-simulink_CompositeStateflowElement "1..1" *-- "0..9999" simulink_ContainableStateflowElement : children41
-simulink_Condition "1..1" -- "1..1" simulink_DecisionEntry : condition57
-simulink_ConditionTable "1..1" --* "1..1" simulink_TruthTable : conditionTable44
-simulink_Condition "1..9999" --* "1..1" simulink_ConditionTable : conditions51
-simulink_Connection "0..1" -- "1..1" simulink_InPort : connection4
-simulink_Connection "0..1" -- "1..1" simulink_OutPort : connection5
-simulink_Connection "0..9999" --* "1..1" simulink_SubSystem : connections9
-simulink_Data "0..9999" --* "1..1" simulink_TruthTable : data47
-simulink_Decision "1..1" *-- "1..9999" simulink_DecisionEntry : decisionEntries55
-simulink_ConditionTable "1..1" *-- "1..9999" simulink_Decision : decisions49
-simulink_Transition "1..1" -- "1..1" simulink_Vertex : destination24
-simulink_Action "0..9999" --* "1..1" simulink_State : duringActions19
-simulink_Action "0..9999" --* "1..1" simulink_State : entryActions18
-simulink_Action "0..9999" --* "1..1" simulink_State : exitActions21
-simulink_Connection "1..1" -- "0..1" simulink_OutPort : from_12
-simulink_SFWGuard "0..1" --* "1..1" simulink_Transition : guard26
-simulink_Transition "1..9999" -- "1..1" simulink_Vertex : incomingTransitions15
-simulink_Transition "0..9999" -- "1..1" simulink_Vertex : outgoingTransitions16
-simulink_Block "1..1" *-- "0..9999" simulink_Port : ownedPorts0
-simulink_Block "1..1" -- "0..1" simulink_SubSystem : parent1
-simulink_CompositeStateflowElement "0..1" -- "1..1" simulink_ContainableStateflowElement : parent43
-simulink_Port "0..1" -- "1..1" simulink_PortBlock : port10
-simulink_Port "1..1" -- "0..1" simulink_PortBlock : portBlock3
-simulink_Transition "1..1" -- "0..1" simulink_Vertex : source23
-simulink_Block "0..1" -- "1..1" simulink_Reference : sourceBlock62
-simulink_Action "1..1" -- "0..1" simulink_State : stateDuring37
-simulink_Action "1..1" -- "0..1" simulink_State : stateEntry36
-simulink_Action "1..1" -- "0..1" simulink_State : stateExit39
-simulink_Block "0..9999" --* "1..1" simulink_SubSystem : subBlocks7
-simulink_Connection "1..1" -- "0..1" simulink_InPort : to13
-simulink_SFWGuard "1..1" -- "0..1" simulink_Transition : transition32
-simulink_Action "1..1" -- "0..1" simulink_Transition : transition34
-simulink_SFWTrigger "1..1" -- "0..1" simulink_Transition : transition60
-simulink_SFWTrigger "0..1" --* "1..1" simulink_Transition : trigger30
-simulink_Action "0..9999" --* "1..1" simulink_Transition : triggeredActions27
+simulink_ActionEntry "simulink_ActionTable54 1..9999" --* "simulink_ActionEntry 1..1" simulink_ActionTable : actionEntries53
+simulink_ActionTable "simulink_TruthTable46 1..1" --* "simulink_ActionTable 1..1" simulink_TruthTable : actionTable45
+simulink_Block "ownedPorts 0..1" -- "Block 1..1" simulink_Port : block2
+simulink_CompositeStateflowElement "ContainableStateflowElement 1..1" *-- "parent42 0..9999" simulink_ContainableStateflowElement : children41
+simulink_Condition "simulink_DecisionEntry58 1..1" -- "simulink_Condition59 1..1" simulink_DecisionEntry : condition57
+simulink_ConditionTable "simulink_TruthTable 1..1" --* "simulink_ConditionTable 1..1" simulink_TruthTable : conditionTable44
+simulink_Condition "simulink_ConditionTable52 1..9999" --* "simulink_Condition 1..1" simulink_ConditionTable : conditions51
+simulink_Connection "to 0..1" -- "Connection 1..1" simulink_InPort : connection4
+simulink_Connection "from_ 0..1" -- "Connection6 1..1" simulink_OutPort : connection5
+simulink_Connection "simulink_SubSystem 0..9999" --* "simulink_Connection 1..1" simulink_SubSystem : connections9
+simulink_Data "simulink_TruthTable48 0..9999" --* "simulink_Data 1..1" simulink_TruthTable : data47
+simulink_Decision "simulink_DecisionEntry 1..1" *-- "simulink_Decision56 1..9999" simulink_DecisionEntry : decisionEntries55
+simulink_ConditionTable "simulink_Decision 1..1" *-- "simulink_ConditionTable50 1..9999" simulink_Decision : decisions49
+simulink_Transition "Vertex25 1..1" -- "incomingTransitions 1..1" simulink_Vertex : destination24
+simulink_Action "stateDuring 0..9999" --* "Action20 1..1" simulink_State : duringActions19
+simulink_Action "stateEntry 0..9999" --* "Action 1..1" simulink_State : entryActions18
+simulink_Action "stateExit 0..9999" --* "Action22 1..1" simulink_State : exitActions21
+simulink_Connection "OutPort 1..1" -- "connection 0..1" simulink_OutPort : from_12
+simulink_SFWGuard "transition 0..1" --* "SFWGuard 1..1" simulink_Transition : guard26
+simulink_Transition "destination 1..9999" -- "Transition 1..1" simulink_Vertex : incomingTransitions15
+simulink_Transition "source 0..9999" -- "Transition17 1..1" simulink_Vertex : outgoingTransitions16
+simulink_Block "Port 1..1" *-- "block 0..9999" simulink_Port : ownedPorts0
+simulink_Block "SubSystem 1..1" -- "subBlocks 0..1" simulink_SubSystem : parent1
+simulink_CompositeStateflowElement "children 0..1" -- "CompositeStateflowElement 1..1" simulink_ContainableStateflowElement : parent43
+simulink_Port "portBlock 0..1" -- "Port11 1..1" simulink_PortBlock : port10
+simulink_Port "PortBlock 1..1" -- "port 0..1" simulink_PortBlock : portBlock3
+simulink_Transition "Vertex 1..1" -- "outgoingTransitions 0..1" simulink_Vertex : source23
+simulink_Block "simulink_Reference 0..1" -- "simulink_Block 1..1" simulink_Reference : sourceBlock62
+simulink_Action "State38 1..1" -- "duringActions 0..1" simulink_State : stateDuring37
+simulink_Action "State 1..1" -- "entryActions 0..1" simulink_State : stateEntry36
+simulink_Action "State40 1..1" -- "exitActions 0..1" simulink_State : stateExit39
+simulink_Block "parent 0..9999" --* "Block8 1..1" simulink_SubSystem : subBlocks7
+simulink_Connection "InPort 1..1" -- "connection14 0..1" simulink_InPort : to13
+simulink_SFWGuard "Transition33 1..1" -- "guard 0..1" simulink_Transition : transition32
+simulink_Action "Transition35 1..1" -- "triggeredActions 0..1" simulink_Transition : transition34
+simulink_SFWTrigger "Transition61 1..1" -- "trigger 0..1" simulink_Transition : transition60
+simulink_SFWTrigger "transition31 0..1" --* "SFWTrigger 1..1" simulink_Transition : trigger30
+simulink_Action "transition28 0..9999" --* "Action29 1..1" simulink_Transition : triggeredActions27
 @enduml

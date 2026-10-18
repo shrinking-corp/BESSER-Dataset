@@ -1,4 +1,8 @@
 @startuml
+' model: Classes
+' project: sampleModel
+' owner: User
+' description: New project
 class Address {
 }
 class Booking {
@@ -120,31 +124,31 @@ class UserHandler {
 }
 User <|-- Classes_Buissnesslayer_Employee
 User <|-- Classes_Buissnesslayer_Guest
-Booking "1..1" -- "1..1" Classes_Buissnesslayer_BookingHandler : Bookings15
-Classes_Buissnesslayer_Booking "1..1" -- "0..9999" Room : Rooms10
-Classes_Buissnesslayer_BookingHandler "1..1" -- "1..9999" User : User18
-Address "1..1" -- "1..1" Classes_Buissnesslayer_User : address28
-Booking "1..1" -- "1..1" Classes_Buissnesslayer_BookingHandler : booking13
-Booking "0..9999" -- "1..1" Classes_Datalayer_Database : bookingDB4
-BookingHandler "1..1" -- "1..1" Classes_Buissnesslayer_User : bookinghandler30
-BookingHandler "1..1" -- "1..1" Classes_Interactionlayer_GUIController : bookinghandler41
-Classes_Interactionlayer_LoginController "1..1" -- "1..1" User : currentUser46
-Classes_Buissnesslayer_BookingHandler "1..1" -- "1..1" Database : database19
-Classes_Buissnesslayer_UserHandler "1..1" -- "1..1" Database : database32
-Classes_Interactionlayer_GUIController "1..1" -- "1..1" GUI : display38
-Classes_Datalayer_Database "1..1" -- "0..9999" Employee : employeeDB2
-Classes_Interactionlayer_GUI "1..1" -- "1..1" GUIController : guicontroller37
-Classes_Interactionlayer_LoginController "1..1" -- "1..1" GUIController : guicontroller44
-Classes_Buissnesslayer_User "1..1" -- "1..1" LoginController : logincontroller24
-Classes_Buissnesslayer_UserHandler "1..1" -- "1..1" LoginController : logincontroller34
-Classes_Interactionlayer_GUIController "1..1" -- "1..1" LoginController : logincontroller39
-Classes_Interactionlayer_LoginController "1..1" -- "1..1" PaymentHandler : paymenthandler48
-Classes_BuisnessLogicLayer_PaymentInfo "1..1" -- "1..1" PaymentHandler : paymenthandler53
-Classes_Buissnesslayer_Booking "1..1" -- "1..9999" Room : room8
-Classes_Datalayer_Database "1..1" -- "0..9999" Room : roomDB6
-Classes_Datalayer_Database "1..1" -- "0..9999" Guest : userDB0
-Classes_Datalayer_Database "1..1" -- "1..1" UserHandler : userhandler1
-Classes_Buissnesslayer_BookingHandler "1..1" -- "1..1" UserHandler : userhandler21
-Classes_Buissnesslayer_User "1..1" -- "1..1" UserHandler : userhandler25
-Classes_Interactionlayer_LoginController "1..1" -- "1..1" UserHandler : userhandler50
+Booking "Classes_Buissnesslayer_BookingHandler16 1..1" -- "Booking17 1..1" Classes_Buissnesslayer_BookingHandler : Bookings15
+Classes_Buissnesslayer_Booking "Room12 1..1" -- "Classes_Buissnesslayer_Booking11 0..9999" Room : Rooms10
+Classes_Buissnesslayer_BookingHandler "User 1..1" -- "bookinghandler 1..9999" User : User18
+Address "Classes_Buissnesslayer_User29 1..1" -- "Address 1..1" Classes_Buissnesslayer_User : address28
+Booking "Classes_Buissnesslayer_BookingHandler 1..1" -- "Booking14 1..1" Classes_Buissnesslayer_BookingHandler : booking13
+Booking "Classes_Datalayer_Database5 0..9999" -- "Booking 1..1" Classes_Datalayer_Database : bookingDB4
+BookingHandler "User31 1..1" -- "BookingHandler 1..1" Classes_Buissnesslayer_User : bookinghandler30
+BookingHandler "Classes_Interactionlayer_GUIController42 1..1" -- "BookingHandler43 1..1" Classes_Interactionlayer_GUIController : bookinghandler41
+Classes_Interactionlayer_LoginController "User47 1..1" -- "Classes_Interactionlayer_LoginController 1..1" User : currentUser46
+Classes_Buissnesslayer_BookingHandler "Database 1..1" -- "Classes_Buissnesslayer_BookingHandler20 1..1" Database : database19
+Classes_Buissnesslayer_UserHandler "Database33 1..1" -- "userhandler 1..1" Database : database32
+Classes_Interactionlayer_GUIController "GUI 1..1" -- "Classes_Interactionlayer_GUIController 1..1" GUI : display38
+Classes_Datalayer_Database "Employee 1..1" -- "Classes_Datalayer_Database3 0..9999" Employee : employeeDB2
+Classes_Interactionlayer_GUI "GUIController 1..1" -- "Classes_Interactionlayer_GUI 1..1" GUIController : guicontroller37
+Classes_Interactionlayer_LoginController "GUIController45 1..1" -- "logincontroller 1..1" GUIController : guicontroller44
+Classes_Buissnesslayer_User "LoginController 1..1" -- "Classes_Buissnesslayer_User 1..1" LoginController : logincontroller24
+Classes_Buissnesslayer_UserHandler "LoginController36 1..1" -- "userhandler35 1..1" LoginController : logincontroller34
+Classes_Interactionlayer_GUIController "LoginController40 1..1" -- "guicontroller 1..1" LoginController : logincontroller39
+Classes_Interactionlayer_LoginController "PaymentHandler 1..1" -- "Classes_Interactionlayer_LoginController49 1..1" PaymentHandler : paymenthandler48
+Classes_BuisnessLogicLayer_PaymentInfo "PaymentHandler54 1..1" -- "Classes_BuisnessLogicLayer_PaymentInfo 1..1" PaymentHandler : paymenthandler53
+Classes_Buissnesslayer_Booking "Room9 1..1" -- "Classes_Buissnesslayer_Booking 1..9999" Room : room8
+Classes_Datalayer_Database "Room 1..1" -- "Classes_Datalayer_Database7 0..9999" Room : roomDB6
+Classes_Datalayer_Database "Guest 1..1" -- "Classes_Datalayer_Database 0..9999" Guest : userDB0
+Classes_Datalayer_Database "UserHandler 1..1" -- "database 1..1" UserHandler : userhandler1
+Classes_Buissnesslayer_BookingHandler "UserHandler23 1..1" -- "Classes_Buissnesslayer_BookingHandler22 1..1" UserHandler : userhandler21
+Classes_Buissnesslayer_User "UserHandler27 1..1" -- "Classes_Buissnesslayer_User26 1..1" UserHandler : userhandler25
+Classes_Interactionlayer_LoginController "UserHandler52 1..1" -- "logincontroller51 1..1" UserHandler : userhandler50
 @enduml

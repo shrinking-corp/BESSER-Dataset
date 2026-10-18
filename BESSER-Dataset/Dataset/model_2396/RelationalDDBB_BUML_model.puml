@@ -1,4 +1,8 @@
 @startuml
+' model: rdpl
+' project: sampleModel
+' owner: User
+' description: New project
 enum BasicType {
   BOOL
   CHAR
@@ -26,15 +30,15 @@ class rdpl_Table {
 class rdpl_Type {
   + name : str
 }
-rdpl_Column "1..9999" -- "1..1" rdpl_ForeignKey : columns15
-rdpl_Column "0..9999" --* "1..1" rdpl_Table : columns3
-rdpl_Record "0..9999" --* "1..1" rdpl_Table : content8
-rdpl_Record "1..1" *-- "0..9999" rdpl_RecordElement : elements18
-rdpl_ForeignKey "0..9999" --* "1..1" rdpl_Table : foreignKeys10
-rdpl_Column "0..9999" -- "1..1" rdpl_Table : keyColumns5
-rdpl_ForeignKey "1..1" -- "1..1" rdpl_Table : references12
-rdpl_Schema "1..1" *-- "0..9999" rdpl_Table : tables0
-rdpl_Column "1..1" -- "1..1" rdpl_RecordElement : type20
-rdpl_Column "1..1" -- "1..1" rdpl_Type : type23
-rdpl_Schema "1..1" *-- "0..9999" rdpl_Type : types1
+rdpl_Column "rdpl_ForeignKey16 1..9999" -- "rdpl_Column17 1..1" rdpl_ForeignKey : columns15
+rdpl_Column "rdpl_Table4 0..9999" --* "rdpl_Column 1..1" rdpl_Table : columns3
+rdpl_Record "rdpl_Table9 0..9999" --* "rdpl_Record 1..1" rdpl_Table : content8
+rdpl_Record "rdpl_RecordElement 1..1" *-- "rdpl_Record19 0..9999" rdpl_RecordElement : elements18
+rdpl_ForeignKey "rdpl_Table11 0..9999" --* "rdpl_ForeignKey 1..1" rdpl_Table : foreignKeys10
+rdpl_Column "rdpl_Table6 0..9999" -- "rdpl_Column7 1..1" rdpl_Table : keyColumns5
+rdpl_ForeignKey "rdpl_Table14 1..1" -- "rdpl_ForeignKey13 1..1" rdpl_Table : references12
+rdpl_Schema "rdpl_Table 1..1" *-- "rdpl_Schema 0..9999" rdpl_Table : tables0
+rdpl_Column "rdpl_RecordElement21 1..1" -- "rdpl_Column22 1..1" rdpl_RecordElement : type20
+rdpl_Column "rdpl_Type25 1..1" -- "rdpl_Column24 1..1" rdpl_Type : type23
+rdpl_Schema "rdpl_Type 1..1" *-- "rdpl_Schema2 0..9999" rdpl_Type : types1
 @enduml

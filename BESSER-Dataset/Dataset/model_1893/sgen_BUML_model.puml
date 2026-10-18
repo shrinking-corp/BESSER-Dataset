@@ -1,4 +1,8 @@
 @startuml
+' model: sgen
+' project: sampleModel
+' owner: User
+' description: New project
 class DeprecatableElement {
 }
 class Literal {
@@ -67,17 +71,17 @@ Literal <|-- sgen_RealLiteral
 Literal <|-- sgen_StringLiteral
 NamedElement <|-- sgen_FeatureParameter
 NamedElement <|-- sgen_FeatureType
-sgen_FeatureConfiguration "0..9999" --* "1..1" sgen_GeneratorConfiguration : configurations1
-sgen_EObject "0..1" -- "1..1" sgen_GeneratorEntry : elementRef9
-sgen_GeneratorEntry "0..9999" --* "1..1" sgen_GeneratorModel : entries0
-sgen_FeatureParameterValue "1..1" *-- "0..1" sgen_Literal : expression16
-sgen_FeatureConfiguration "0..1" -- "1..1" sgen_FeatureParameterValue : featureConfiguration15
-sgen_FeatureParameter "1..1" -- "0..1" sgen_FeatureType : featureType4
-sgen_FeatureConfiguration "0..9999" --* "1..1" sgen_GeneratorEntry : features11
-sgen_FeatureType "1..1" -- "1..1" sgen_FeatureTypeLibrary : library3
-sgen_FeatureParameter "0..1" -- "1..1" sgen_FeatureParameterValue : parameter14
-sgen_FeatureConfiguration "1..1" *-- "0..9999" sgen_FeatureParameterValue : parameterValues8
-sgen_FeatureParameter "0..9999" --* "1..1" sgen_FeatureType : parameters2
-sgen_FeatureConfiguration "1..1" -- "0..1" sgen_FeatureType : type5
-sgen_FeatureType "0..9999" --* "1..1" sgen_FeatureTypeLibrary : types18
+sgen_FeatureConfiguration "sgen_GeneratorConfiguration 0..9999" --* "sgen_FeatureConfiguration 1..1" sgen_GeneratorConfiguration : configurations1
+sgen_EObject "sgen_GeneratorEntry10 0..1" -- "sgen_EObject 1..1" sgen_GeneratorEntry : elementRef9
+sgen_GeneratorEntry "sgen_GeneratorModel 0..9999" --* "sgen_GeneratorEntry 1..1" sgen_GeneratorModel : entries0
+sgen_FeatureParameterValue "sgen_Literal 1..1" *-- "sgen_FeatureParameterValue17 0..1" sgen_Literal : expression16
+sgen_FeatureConfiguration "parameterValues 0..1" -- "FeatureConfiguration 1..1" sgen_FeatureParameterValue : featureConfiguration15
+sgen_FeatureParameter "FeatureType 1..1" -- "parameters 0..1" sgen_FeatureType : featureType4
+sgen_FeatureConfiguration "sgen_GeneratorEntry12 0..9999" --* "sgen_FeatureConfiguration13 1..1" sgen_GeneratorEntry : features11
+sgen_FeatureType "sgen_FeatureTypeLibrary 1..1" -- "sgen_FeatureType 1..1" sgen_FeatureTypeLibrary : library3
+sgen_FeatureParameter "sgen_FeatureParameterValue 0..1" -- "sgen_FeatureParameter 1..1" sgen_FeatureParameterValue : parameter14
+sgen_FeatureConfiguration "FeatureParameterValue 1..1" *-- "featureConfiguration 0..9999" sgen_FeatureParameterValue : parameterValues8
+sgen_FeatureParameter "featureType 0..9999" --* "FeatureParameter 1..1" sgen_FeatureType : parameters2
+sgen_FeatureConfiguration "sgen_FeatureType7 1..1" -- "sgen_FeatureConfiguration6 0..1" sgen_FeatureType : type5
+sgen_FeatureType "sgen_FeatureTypeLibrary19 0..9999" --* "sgen_FeatureType20 1..1" sgen_FeatureTypeLibrary : types18
 @enduml

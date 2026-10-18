@@ -1,4 +1,8 @@
 @startuml
+' model: petri
+' project: sampleModel
+' owner: User
+' description: New project
 class Edge {
 }
 class petri_Edge {
@@ -18,10 +22,10 @@ class petri_Transition {
 }
 Edge <|-- petri_EdgeToPlace
 Edge <|-- petri_EdgeToTransition
-petri_EdgeToTransition "1..1" -- "1..1" petri_Transition : in_10
-petri_EdgeToPlace "1..1" -- "1..1" petri_Place : in_7
-petri_EdgeToTransition "0..9999" --* "1..1" petri_Place : out3
-petri_EdgeToPlace "1..9999" --* "1..1" petri_Transition : out5
-petri_PetriNet "1..1" *-- "0..9999" petri_Place : places1
-petri_PetriNet "1..1" *-- "0..9999" petri_Transition : transitions0
+petri_EdgeToTransition "petri_Transition12 1..1" -- "petri_EdgeToTransition11 1..1" petri_Transition : in_10
+petri_EdgeToPlace "petri_Place9 1..1" -- "petri_EdgeToPlace8 1..1" petri_Place : in_7
+petri_EdgeToTransition "petri_Place4 0..9999" --* "petri_EdgeToTransition 1..1" petri_Place : out3
+petri_EdgeToPlace "petri_Transition6 1..9999" --* "petri_EdgeToPlace 1..1" petri_Transition : out5
+petri_PetriNet "petri_Place 1..1" *-- "petri_PetriNet2 0..9999" petri_Place : places1
+petri_PetriNet "petri_Transition 1..1" *-- "petri_PetriNet 0..9999" petri_Transition : transitions0
 @enduml

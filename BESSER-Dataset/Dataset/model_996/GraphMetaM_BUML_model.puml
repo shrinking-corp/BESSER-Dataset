@@ -1,4 +1,8 @@
 @startuml
+' model: GraphMetaM
+' project: sampleModel
+' owner: User
+' description: New project
 class GraphMetaM_Edge {
   + async_ : bool
   + localPriority : int
@@ -25,11 +29,11 @@ enum Type {
   and_
   or_
 }
-GraphMetaM_Edge "0..9999" --* "1..1" GraphMetaM_Graph : edge1
-GraphMetaM_Graph "0..9999" --* "1..1" GraphMetaM_Model : graph9
-GraphMetaM_Edge "0..9999" -- "1..1" GraphMetaM_Vertex : incoming6
-GraphMetaM_Edge "0..9999" -- "1..1" GraphMetaM_Vertex : outgoing7
-GraphMetaM_Edge "1..1" -- "1..1" GraphMetaM_Vertex : source4
-GraphMetaM_Edge "1..1" -- "1..1" GraphMetaM_Vertex : target3
-GraphMetaM_Graph "1..1" *-- "0..9999" GraphMetaM_Vertex : vertex0
+GraphMetaM_Edge "GraphMetaM_Graph2 0..9999" --* "GraphMetaM_Edge 1..1" GraphMetaM_Graph : edge1
+GraphMetaM_Graph "GraphMetaM_Model 0..9999" --* "GraphMetaM_Graph10 1..1" GraphMetaM_Model : graph9
+GraphMetaM_Edge "target 0..9999" -- "Edge 1..1" GraphMetaM_Vertex : incoming6
+GraphMetaM_Edge "source 0..9999" -- "Edge8 1..1" GraphMetaM_Vertex : outgoing7
+GraphMetaM_Edge "Vertex5 1..1" -- "outgoing 1..1" GraphMetaM_Vertex : source4
+GraphMetaM_Edge "Vertex 1..1" -- "incoming 1..1" GraphMetaM_Vertex : target3
+GraphMetaM_Graph "GraphMetaM_Vertex 1..1" *-- "GraphMetaM_Graph 0..9999" GraphMetaM_Vertex : vertex0
 @enduml

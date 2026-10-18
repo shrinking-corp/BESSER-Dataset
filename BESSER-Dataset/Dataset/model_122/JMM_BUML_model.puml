@@ -1,4 +1,8 @@
 @startuml
+' model: JMM
+' project: sampleModel
+' owner: User
+' description: New project
 class ASTNode {
 }
 class AbstractMethodDeclaration {
@@ -89,12 +93,12 @@ NamespaceAccess <|-- JMM_TypeAccess
 Type <|-- JMM_AbstractTypeDeclaration
 TypeDeclaration <|-- JMM_ClassDeclaration
 TypeDeclaration <|-- JMM_InterfaceDeclaration
-JMM_AbstractTypeDeclaration "1..1" *-- "0..9999" JMM_BodyDeclaration : bodyDeclarations9
-JMM_BodyDeclaration "1..1" *-- "0..1" JMM_Modifier : modifier14
-JMM_Model "1..1" *-- "0..9999" JMM_Package : ownedElements0
-JMM_AbstractTypeDeclaration "0..9999" --* "1..1" JMM_Package : ownedElements7
-JMM_Package "0..9999" --* "1..1" JMM_Package : ownedPackages5
-JMM_ClassDeclaration "1..1" *-- "0..1" JMM_TypeAccess : superClass1
-JMM_AbstractTypeDeclaration "1..1" *-- "0..9999" JMM_TypeAccess : superInterfaces11
-JMM_Type "1..1" -- "1..1" JMM_TypeAccess : type2
+JMM_AbstractTypeDeclaration "JMM_BodyDeclaration 1..1" *-- "JMM_AbstractTypeDeclaration10 0..9999" JMM_BodyDeclaration : bodyDeclarations9
+JMM_BodyDeclaration "JMM_Modifier 1..1" *-- "JMM_BodyDeclaration15 0..1" JMM_Modifier : modifier14
+JMM_Model "JMM_Package 1..1" *-- "JMM_Model 0..9999" JMM_Package : ownedElements0
+JMM_AbstractTypeDeclaration "JMM_Package8 0..9999" --* "JMM_AbstractTypeDeclaration 1..1" JMM_Package : ownedElements7
+JMM_Package "JMM_Package4 0..9999" --* "JMM_Package6 1..1" JMM_Package : ownedPackages5
+JMM_ClassDeclaration "JMM_TypeAccess 1..1" *-- "JMM_ClassDeclaration 0..1" JMM_TypeAccess : superClass1
+JMM_AbstractTypeDeclaration "JMM_TypeAccess13 1..1" *-- "JMM_AbstractTypeDeclaration12 0..9999" JMM_TypeAccess : superInterfaces11
+JMM_Type "JMM_TypeAccess3 1..1" -- "JMM_Type 1..1" JMM_TypeAccess : type2
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: model
+' project: sampleModel
+' owner: User
+' description: New project
 class AnnotationSupport {
 }
 class BooleanSelectionSupport {
@@ -870,26 +874,26 @@ overrides_Reference <|-- model_overrides_Delete
 overrides_Reference <|-- model_overrides_Move
 overrides_Reference <|-- model_overrides_WidgetOverrides
 overrides_WidgetContainerOverrides <|-- model_overrides_WidgetOverrides
-StringToStringMap "0..9999" --* "1..1" model_overrides_WidgetOverrides : attributes24
-model_Widget "1..1" -- "0..1" model_WidgetContainer : container8
-model_Widget "1..1" -- "0..1" model_WidgetDescriptor : descriptor9
-model_Font "1..1" --* "1..1" model_FontSupport : font17
-FontOverrides "0..1" --* "1..1" model_overrides_WidgetOverrides : font25
-model_Screen "1..1" *-- "0..1" model_ScreenFont : font4
-model_RulerGuide "0..9999" --* "1..1" model_ScreenRuler : guides6
-model_Screen "1..1" *-- "1..1" model_ScreenRuler : hRuler0
-model_Master "1..1" *-- "0..1" model_WidgetContainer : instance14
-Operation "0..9999" --* "1..1" model_overrides_WidgetOverrides : itemChanges29
-model_Item "0..9999" --* "1..1" model_ItemSupport : items18
-ItemOverrides "0..9999" --* "1..1" model_overrides_WidgetOverrides : items27
-model_overrides_Insert "1..1" *-- "0..1" overrides_model_EObject : object31
-Overrides "0..1" --* "1..1" model_Master : overrides12
-Panel "0..9999" --* "1..1" model_story_Storyboard : panels19
-model_Master "1..1" -- "0..1" model_WidgetContainer : screen11
-model_story_Panel "1..1" -- "0..1" story_model_Screen : screen20
-Storyboard "0..1" -- "1..1" model_story_Panel : story21
-model_Screen "1..1" *-- "1..1" model_ScreenRuler : vRuler1
-Operation "0..9999" --* "1..1" model_overrides_WidgetContainerOverrides : widgetChanges32
-model_Widget "0..9999" --* "1..1" model_WidgetContainer : widgets10
-WidgetOverrides "0..9999" --* "1..1" model_overrides_Overrides : widgets23
+StringToStringMap "model_overrides_WidgetOverrides 0..9999" --* "StringToStringMap 1..1" model_overrides_WidgetOverrides : attributes24
+model_Widget "WidgetContainer 1..1" -- "widgets 0..1" model_WidgetContainer : container8
+model_Widget "model_WidgetDescriptor 1..1" -- "model_Widget 0..1" model_WidgetDescriptor : descriptor9
+model_Font "model_FontSupport 1..1" --* "model_Font 1..1" model_FontSupport : font17
+FontOverrides "model_overrides_WidgetOverrides26 0..1" --* "FontOverrides 1..1" model_overrides_WidgetOverrides : font25
+model_Screen "model_ScreenFont 1..1" *-- "model_Screen5 0..1" model_ScreenFont : font4
+model_RulerGuide "model_ScreenRuler7 0..9999" --* "model_RulerGuide 1..1" model_ScreenRuler : guides6
+model_Screen "model_ScreenRuler 1..1" *-- "model_Screen 1..1" model_ScreenRuler : hRuler0
+model_Master "model_WidgetContainer16 1..1" *-- "model_Master15 0..1" model_WidgetContainer : instance14
+Operation "model_overrides_WidgetOverrides30 0..9999" --* "Operation 1..1" model_overrides_WidgetOverrides : itemChanges29
+model_Item "model_ItemSupport 0..9999" --* "model_Item 1..1" model_ItemSupport : items18
+ItemOverrides "model_overrides_WidgetOverrides28 0..9999" --* "ItemOverrides 1..1" model_overrides_WidgetOverrides : items27
+model_overrides_Insert "overrides_model_EObject 1..1" *-- "model_overrides_Insert 0..1" overrides_model_EObject : object31
+Overrides "model_Master13 0..1" --* "Overrides 1..1" model_Master : overrides12
+Panel "model_story_Storyboard 0..9999" --* "Panel 1..1" model_story_Storyboard : panels19
+model_Master "model_WidgetContainer 1..1" -- "model_Master 0..1" model_WidgetContainer : screen11
+model_story_Panel "story_model_Screen 1..1" -- "model_story_Panel 0..1" story_model_Screen : screen20
+Storyboard "model_story_Panel22 0..1" -- "Storyboard 1..1" model_story_Panel : story21
+model_Screen "model_ScreenRuler3 1..1" *-- "model_Screen2 1..1" model_ScreenRuler : vRuler1
+Operation "model_overrides_WidgetContainerOverrides 0..9999" --* "Operation33 1..1" model_overrides_WidgetContainerOverrides : widgetChanges32
+model_Widget "container 0..9999" --* "Widget 1..1" model_WidgetContainer : widgets10
+WidgetOverrides "model_overrides_Overrides 0..9999" --* "WidgetOverrides 1..1" model_overrides_Overrides : widgets23
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: rdbms
+' project: sampleModel
+' owner: User
+' description: New project
 class rdbms_Column {
   + name : str
   + type : str
@@ -10,12 +14,12 @@ class rdbms_RDBMSModel {
 class rdbms_Table {
   + name : str
 }
-rdbms_Column "1..9999" -- "1..1" rdbms_ForeignKey : columns17
-rdbms_Column "1..9999" --* "1..1" rdbms_Table : columns8
-rdbms_Column "1..9999" --* "1..1" rdbms_RDBMSModel : containsColumns1
-rdbms_ForeignKey "1..9999" --* "1..1" rdbms_RDBMSModel : containsForeignKeys3
-rdbms_RDBMSModel "1..1" *-- "1..9999" rdbms_Table : containsTables0
-rdbms_ForeignKey "0..9999" --* "1..1" rdbms_Table : foreignKeys5
-rdbms_Column "1..9999" -- "1..1" rdbms_Table : primaryKey11
-rdbms_ForeignKey "1..1" -- "1..1" rdbms_Table : references14
+rdbms_Column "rdbms_ForeignKey18 1..9999" -- "rdbms_Column19 1..1" rdbms_ForeignKey : columns17
+rdbms_Column "rdbms_Table9 1..9999" --* "rdbms_Column10 1..1" rdbms_Table : columns8
+rdbms_Column "rdbms_RDBMSModel2 1..9999" --* "rdbms_Column 1..1" rdbms_RDBMSModel : containsColumns1
+rdbms_ForeignKey "rdbms_RDBMSModel4 1..9999" --* "rdbms_ForeignKey 1..1" rdbms_RDBMSModel : containsForeignKeys3
+rdbms_RDBMSModel "rdbms_Table 1..1" *-- "rdbms_RDBMSModel 1..9999" rdbms_Table : containsTables0
+rdbms_ForeignKey "rdbms_Table6 0..9999" --* "rdbms_ForeignKey7 1..1" rdbms_Table : foreignKeys5
+rdbms_Column "rdbms_Table12 1..9999" -- "rdbms_Column13 1..1" rdbms_Table : primaryKey11
+rdbms_ForeignKey "rdbms_Table16 1..1" -- "rdbms_ForeignKey15 1..1" rdbms_Table : references14
 @enduml

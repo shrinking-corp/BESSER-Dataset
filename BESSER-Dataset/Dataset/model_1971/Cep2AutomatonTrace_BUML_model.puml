@@ -1,4 +1,8 @@
 @startuml
+' model: trace
+' project: sampleModel
+' owner: User
+' description: New project
 class trace_Automaton {
 }
 class trace_EventPattern {
@@ -13,10 +17,10 @@ class trace_TraceModel {
 }
 class trace_Transition {
 }
-trace_Automaton "1..1" -- "1..1" trace_Trace : automaton5
-trace_EventPattern "1..1" -- "1..1" trace_Trace : eventPattern3
-trace_TimedZone "1..1" -- "1..1" trace_TimedZoneTrace : timedZone7
-trace_TimedZoneTrace "0..9999" -- "1..1" trace_TraceModel : timedZoneTraces1
-trace_Trace "0..9999" --* "1..1" trace_TraceModel : traces0
-trace_TimedZoneTrace "1..1" -- "1..1" trace_Transition : transition9
+trace_Automaton "trace_Trace6 1..1" -- "trace_Automaton 1..1" trace_Trace : automaton5
+trace_EventPattern "trace_Trace4 1..1" -- "trace_EventPattern 1..1" trace_Trace : eventPattern3
+trace_TimedZone "trace_TimedZoneTrace8 1..1" -- "trace_TimedZone 1..1" trace_TimedZoneTrace : timedZone7
+trace_TimedZoneTrace "trace_TraceModel2 0..9999" -- "trace_TimedZoneTrace 1..1" trace_TraceModel : timedZoneTraces1
+trace_Trace "trace_TraceModel 0..9999" --* "trace_Trace 1..1" trace_TraceModel : traces0
+trace_TimedZoneTrace "trace_Transition 1..1" -- "trace_TimedZoneTrace10 1..1" trace_Transition : transition9
 @enduml

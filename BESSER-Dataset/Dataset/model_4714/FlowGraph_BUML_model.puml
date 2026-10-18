@@ -1,4 +1,8 @@
 @startuml
+' model: flowgraph
+' project: sampleModel
+' owner: User
+' description: New project
 class Block {
 }
 class Conditional {
@@ -75,22 +79,22 @@ Stmt <|-- flowgraph_Label
 Stmt <|-- flowgraph_Return
 Stmt <|-- flowgraph_SimpleStmt
 Var <|-- flowgraph_Param
-flowgraph_Loop "1..1" *-- "1..1" flowgraph_Stmt : body8
-flowgraph_FlowInstr "1..1" -- "0..9999" flowgraph_FlowInstr : cfNext13
-flowgraph_FlowInstr "1..1" -- "0..9999" flowgraph_FlowInstr : cfPrev15
-flowgraph_FlowInstr "1..1" -- "0..9999" flowgraph_Var : def_17
-flowgraph_FlowInstr "0..9999" -- "1..1" flowgraph_Var : definers23
-flowgraph_FlowInstr "1..1" -- "0..9999" flowgraph_FlowInstr : dfNext22
-flowgraph_If "1..1" *-- "0..1" flowgraph_Stmt : else_3
-flowgraph_Exit "1..1" --* "1..1" flowgraph_Method : exit6
-flowgraph_Conditional "1..1" *-- "1..1" flowgraph_Expr : expr10
-flowgraph_JumpStmt "0..9999" -- "1..1" flowgraph_Label : jumps30
-flowgraph_JumpStmt "1..1" -- "0..1" flowgraph_Label : label11
-flowgraph_Method "0..1" -- "1..1" flowgraph_Var : method27
-flowgraph_Label "1..1" *-- "1..1" flowgraph_Stmt : stmt28
-flowgraph_Block "1..1" *-- "0..9999" flowgraph_Stmt : stmts0
-flowgraph_If "1..1" *-- "1..1" flowgraph_Stmt : then1
-flowgraph_FlowInstr "1..1" -- "0..9999" flowgraph_Var : use19
-flowgraph_FlowInstr "0..9999" -- "1..1" flowgraph_Var : users25
-flowgraph_Method "1..1" *-- "0..9999" flowgraph_Var : vars7
+flowgraph_Loop "flowgraph_Stmt9 1..1" *-- "flowgraph_Loop 1..1" flowgraph_Stmt : body8
+flowgraph_FlowInstr "FlowInstr 1..1" -- "cfPrev 0..9999" flowgraph_FlowInstr : cfNext13
+flowgraph_FlowInstr "FlowInstr16 1..1" -- "cfNext 0..9999" flowgraph_FlowInstr : cfPrev15
+flowgraph_FlowInstr "Var18 1..1" -- "definers 0..9999" flowgraph_Var : def_17
+flowgraph_FlowInstr "def_ 0..9999" -- "FlowInstr24 1..1" flowgraph_Var : definers23
+flowgraph_FlowInstr "flowgraph_FlowInstr 1..1" -- "flowgraph_FlowInstr21 0..9999" flowgraph_FlowInstr : dfNext22
+flowgraph_If "flowgraph_Stmt5 1..1" *-- "flowgraph_If4 0..1" flowgraph_Stmt : else_3
+flowgraph_Exit "flowgraph_Method 1..1" --* "flowgraph_Exit 1..1" flowgraph_Method : exit6
+flowgraph_Conditional "flowgraph_Expr 1..1" *-- "flowgraph_Conditional 1..1" flowgraph_Expr : expr10
+flowgraph_JumpStmt "label 0..9999" -- "JumpStmt 1..1" flowgraph_Label : jumps30
+flowgraph_JumpStmt "Label 1..1" -- "jumps 0..1" flowgraph_Label : label11
+flowgraph_Method "vars 0..1" -- "Method 1..1" flowgraph_Var : method27
+flowgraph_Label "flowgraph_Stmt29 1..1" *-- "flowgraph_Label 1..1" flowgraph_Stmt : stmt28
+flowgraph_Block "flowgraph_Stmt 1..1" *-- "flowgraph_Block 0..9999" flowgraph_Stmt : stmts0
+flowgraph_If "flowgraph_Stmt2 1..1" *-- "flowgraph_If 1..1" flowgraph_Stmt : then1
+flowgraph_FlowInstr "Var20 1..1" -- "users 0..9999" flowgraph_Var : use19
+flowgraph_FlowInstr "use 0..9999" -- "FlowInstr26 1..1" flowgraph_Var : users25
+flowgraph_Method "Var 1..1" *-- "method 0..9999" flowgraph_Var : vars7
 @enduml

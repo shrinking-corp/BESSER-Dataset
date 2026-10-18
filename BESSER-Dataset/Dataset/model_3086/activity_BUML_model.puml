@@ -1,4 +1,8 @@
 @startuml
+' model: activity
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractAction {
 }
 class AbstractBehavior {
@@ -83,17 +87,17 @@ ObjectNode <|-- activity_Pin
 Pin <|-- activity_InputPin
 Pin <|-- activity_OutputPin
 TraceableElement <|-- activity_AbstractActivity
-activity_ActivityEdge "1..1" *-- "0..1" activity_ValueSpecification : guard9
-activity_IState "0..9999" -- "1..1" activity_ObjectNode : inState26
-activity_ActivityEdge "0..9999" -- "1..1" activity_ActivityNode : incoming18
-activity_AbstractAction "1..1" *-- "0..9999" activity_InputPin : inputs21
-activity_ActivityEdge "0..9999" -- "1..1" activity_ActivityNode : outgoing15
-activity_AbstractAction "1..1" *-- "0..9999" activity_OutputPin : outputs22
-activity_ActivityEdge "1..1" *-- "0..1" activity_ValueSpecification : probability1
-activity_ActivityEdge "1..1" *-- "0..1" activity_ValueSpecification : rate0
-activity_AbstractBehavior "0..1" -- "1..1" activity_ObjectNode : selection28
-activity_ActivityEdge "1..1" -- "1..1" activity_ActivityNode : source6
-activity_ActivityEdge "1..1" -- "1..1" activity_ActivityNode : target4
-activity_ObjectNode "1..1" *-- "0..1" activity_ValueSpecification : upperBound24
-activity_ActivityEdge "1..1" *-- "0..1" activity_ValueSpecification : weight12
+activity_ActivityEdge "activity_ValueSpecification11 1..1" *-- "activity_ActivityEdge10 0..1" activity_ValueSpecification : guard9
+activity_IState "activity_ObjectNode27 0..9999" -- "activity_IState 1..1" activity_ObjectNode : inState26
+activity_ActivityEdge "activity_ActivityNode19 0..9999" -- "activity_ActivityEdge20 1..1" activity_ActivityNode : incoming18
+activity_AbstractAction "activity_InputPin 1..1" *-- "activity_AbstractAction 0..9999" activity_InputPin : inputs21
+activity_ActivityEdge "activity_ActivityNode16 0..9999" -- "activity_ActivityEdge17 1..1" activity_ActivityNode : outgoing15
+activity_AbstractAction "activity_OutputPin 1..1" *-- "activity_AbstractAction23 0..9999" activity_OutputPin : outputs22
+activity_ActivityEdge "activity_ValueSpecification3 1..1" *-- "activity_ActivityEdge2 0..1" activity_ValueSpecification : probability1
+activity_ActivityEdge "activity_ValueSpecification 1..1" *-- "activity_ActivityEdge 0..1" activity_ValueSpecification : rate0
+activity_AbstractBehavior "activity_ObjectNode29 0..1" -- "activity_AbstractBehavior 1..1" activity_ObjectNode : selection28
+activity_ActivityEdge "activity_ActivityNode8 1..1" -- "activity_ActivityEdge7 1..1" activity_ActivityNode : source6
+activity_ActivityEdge "activity_ActivityNode 1..1" -- "activity_ActivityEdge5 1..1" activity_ActivityNode : target4
+activity_ObjectNode "activity_ValueSpecification25 1..1" *-- "activity_ObjectNode 0..1" activity_ValueSpecification : upperBound24
+activity_ActivityEdge "activity_ValueSpecification14 1..1" *-- "activity_ActivityEdge13 0..1" activity_ValueSpecification : weight12
 @enduml

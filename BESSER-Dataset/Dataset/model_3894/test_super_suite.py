@@ -5577,9 +5577,9 @@ def test_assoc_arcs25_stub_double():
     partner = workflow_PetriNet()
     setattr(partner, 'workflow_PetriNet', None)
     _safe_set(owner, 'workflow_Arc', partner)
-    assert getattr(partner, 'workflow_PetriNet') == owner
+    assert owner in getattr(partner, 'workflow_PetriNet')
     _safe_set(owner, 'workflow_Arc', None)
-    assert getattr(partner, 'workflow_PetriNet') is None
+    assert owner not in getattr(partner, 'workflow_PetriNet')
 
 
 def test_assoc_aspects10_stub_double():
@@ -5682,9 +5682,9 @@ def test_assoc_caseDocuments83_stub_double():
     partner = workflow_CaseI()
     setattr(partner, 'workflow_CaseI', None)
     _safe_set(owner, 'workflow_String2DocumentMap', partner)
-    assert getattr(partner, 'workflow_CaseI') == owner
+    assert owner in getattr(partner, 'workflow_CaseI')
     _safe_set(owner, 'workflow_String2DocumentMap', None)
-    assert getattr(partner, 'workflow_CaseI') is None
+    assert owner not in getattr(partner, 'workflow_CaseI')
 
 
 def test_assoc_cases114_stub_double():
@@ -5697,9 +5697,9 @@ def test_assoc_cases114_stub_double():
     partner = workflow_RuntimeCoreModel()
     setattr(partner, 'runtimeCoreModel', None)
     _safe_set(owner, 'Case115', partner)
-    assert getattr(partner, 'runtimeCoreModel') == owner
+    assert owner in getattr(partner, 'runtimeCoreModel')
     _safe_set(owner, 'Case115', None)
-    assert getattr(partner, 'runtimeCoreModel') is None
+    assert owner not in getattr(partner, 'runtimeCoreModel')
 
 
 def test_assoc_core87_stub_double():
@@ -5787,9 +5787,9 @@ def test_assoc_coreModels57_stub_double():
     partner = workflow_ModelRegistry()
     setattr(partner, 'modelRegistry58', None)
     _safe_set(owner, 'CoreModel', partner)
-    assert getattr(partner, 'modelRegistry58') == owner
+    assert owner in getattr(partner, 'modelRegistry58')
     _safe_set(owner, 'CoreModel', None)
-    assert getattr(partner, 'modelRegistry58') is None
+    assert owner not in getattr(partner, 'modelRegistry58')
 
 
 def test_assoc_descriptor145_stub_double():
@@ -5862,9 +5862,9 @@ def test_assoc_enumFields128_stub_double():
     partner = workflow_DefaultDocumentType()
     setattr(partner, 'workflow_DefaultDocumentType129', None)
     _safe_set(owner, 'workflow_EnumField', partner)
-    assert getattr(partner, 'workflow_DefaultDocumentType129') == owner
+    assert owner in getattr(partner, 'workflow_DefaultDocumentType129')
     _safe_set(owner, 'workflow_EnumField', None)
-    assert getattr(partner, 'workflow_DefaultDocumentType129') is None
+    assert owner not in getattr(partner, 'workflow_DefaultDocumentType129')
 
 
 def test_assoc_enumLiteral164_stub_double():
@@ -5922,9 +5922,9 @@ def test_assoc_fields127_stub_double():
     partner = workflow_DefaultDocumentType()
     setattr(partner, 'workflow_DefaultDocumentType', None)
     _safe_set(owner, 'workflow_Field', partner)
-    assert getattr(partner, 'workflow_DefaultDocumentType') == owner
+    assert owner in getattr(partner, 'workflow_DefaultDocumentType')
     _safe_set(owner, 'workflow_Field', None)
-    assert getattr(partner, 'workflow_DefaultDocumentType') is None
+    assert owner not in getattr(partner, 'workflow_DefaultDocumentType')
 
 
 def test_assoc_finish31_stub_double():
@@ -5952,9 +5952,9 @@ def test_assoc_finish68_stub_double():
     partner = workflow_TaskI()
     setattr(partner, 'workflow_TaskI69', None)
     _safe_set(owner, 'workflow_DocumentCondition70', partner)
-    assert getattr(partner, 'workflow_TaskI69') == owner
+    assert owner in getattr(partner, 'workflow_TaskI69')
     _safe_set(owner, 'workflow_DocumentCondition70', None)
-    assert getattr(partner, 'workflow_TaskI69') is None
+    assert owner not in getattr(partner, 'workflow_TaskI69')
 
 
 def test_assoc_in_35_stub_double():
@@ -5967,9 +5967,9 @@ def test_assoc_in_35_stub_double():
     partner = workflow_Transition()
     setattr(partner, 'targetTransition', None)
     _safe_set(owner, 'Arc36', partner)
-    assert getattr(partner, 'targetTransition') == owner
+    assert owner in getattr(partner, 'targetTransition')
     _safe_set(owner, 'Arc36', None)
-    assert getattr(partner, 'targetTransition') is None
+    assert owner not in getattr(partner, 'targetTransition')
 
 
 def test_assoc_in_62_stub_double():
@@ -5982,9 +5982,9 @@ def test_assoc_in_62_stub_double():
     partner = workflow_TaskI()
     setattr(partner, 'workflow_TaskI', None)
     _safe_set(owner, 'workflow_DocumentDescriptor', partner)
-    assert getattr(partner, 'workflow_TaskI') == owner
+    assert owner in getattr(partner, 'workflow_TaskI')
     _safe_set(owner, 'workflow_DocumentDescriptor', None)
-    assert getattr(partner, 'workflow_TaskI') is None
+    assert owner not in getattr(partner, 'workflow_TaskI')
 
 
 def test_assoc_in_76_stub_double():
@@ -5997,9 +5997,9 @@ def test_assoc_in_76_stub_double():
     partner = workflow_ActivityI()
     setattr(partner, 'workflow_ActivityI', None)
     _safe_set(owner, 'workflow_Document', partner)
-    assert getattr(partner, 'workflow_ActivityI') == owner
+    assert owner in getattr(partner, 'workflow_ActivityI')
     _safe_set(owner, 'workflow_Document', None)
-    assert getattr(partner, 'workflow_ActivityI') is None
+    assert owner not in getattr(partner, 'workflow_ActivityI')
 
 
 def test_assoc_involved125_stub_double():
@@ -6012,9 +6012,9 @@ def test_assoc_involved125_stub_double():
     partner = workflow_ProcessO()
     setattr(partner, 'workflow_ProcessO', None)
     _safe_set(owner, 'workflow_Role126', partner)
-    assert getattr(partner, 'workflow_ProcessO') == owner
+    assert owner in getattr(partner, 'workflow_ProcessO')
     _safe_set(owner, 'workflow_Role126', None)
-    assert getattr(partner, 'workflow_ProcessO') is None
+    assert owner not in getattr(partner, 'workflow_ProcessO')
 
 
 def test_assoc_involved136_stub_double():
@@ -6027,9 +6027,9 @@ def test_assoc_involved136_stub_double():
     partner = workflow_CaseO()
     setattr(partner, 'workflow_CaseO', None)
     _safe_set(owner, 'workflow_Agent137', partner)
-    assert getattr(partner, 'workflow_CaseO') == owner
+    assert owner in getattr(partner, 'workflow_CaseO')
     _safe_set(owner, 'workflow_Agent137', None)
-    assert getattr(partner, 'workflow_CaseO') is None
+    assert owner not in getattr(partner, 'workflow_CaseO')
 
 
 def test_assoc_modelRegistry103_stub_double():
@@ -6057,9 +6057,9 @@ def test_assoc_out34_stub_double():
     partner = workflow_Transition()
     setattr(partner, 'sourceTransition', None)
     _safe_set(owner, 'Arc', partner)
-    assert getattr(partner, 'sourceTransition') == owner
+    assert owner in getattr(partner, 'sourceTransition')
     _safe_set(owner, 'Arc', None)
-    assert getattr(partner, 'sourceTransition') is None
+    assert owner not in getattr(partner, 'sourceTransition')
 
 
 def test_assoc_out63_stub_double():
@@ -6072,9 +6072,9 @@ def test_assoc_out63_stub_double():
     partner = workflow_TaskI()
     setattr(partner, 'workflow_TaskI64', None)
     _safe_set(owner, 'workflow_DocumentDescriptor65', partner)
-    assert getattr(partner, 'workflow_TaskI64') == owner
+    assert owner in getattr(partner, 'workflow_TaskI64')
     _safe_set(owner, 'workflow_DocumentDescriptor65', None)
-    assert getattr(partner, 'workflow_TaskI64') is None
+    assert owner not in getattr(partner, 'workflow_TaskI64')
 
 
 def test_assoc_out77_stub_double():
@@ -6087,9 +6087,9 @@ def test_assoc_out77_stub_double():
     partner = workflow_ActivityI()
     setattr(partner, 'workflow_ActivityI78', None)
     _safe_set(owner, 'workflow_Document79', partner)
-    assert getattr(partner, 'workflow_ActivityI78') == owner
+    assert owner in getattr(partner, 'workflow_ActivityI78')
     _safe_set(owner, 'workflow_Document79', None)
-    assert getattr(partner, 'workflow_ActivityI78') is None
+    assert owner not in getattr(partner, 'workflow_ActivityI78')
 
 
 def test_assoc_place53_stub_double():
@@ -6117,9 +6117,9 @@ def test_assoc_places26_stub_double():
     partner = workflow_PetriNet()
     setattr(partner, 'workflow_PetriNet27', None)
     _safe_set(owner, 'workflow_Place', partner)
-    assert getattr(partner, 'workflow_PetriNet27') == owner
+    assert owner in getattr(partner, 'workflow_PetriNet27')
     _safe_set(owner, 'workflow_Place', None)
-    assert getattr(partner, 'workflow_PetriNet27') is None
+    assert owner not in getattr(partner, 'workflow_PetriNet27')
 
 
 def test_assoc_processDocuments61_stub_double():
@@ -6132,9 +6132,9 @@ def test_assoc_processDocuments61_stub_double():
     partner = workflow_Information()
     setattr(partner, 'workflow_Information', None)
     _safe_set(owner, 'workflow_ProcessDocument', partner)
-    assert getattr(partner, 'workflow_Information') == owner
+    assert owner in getattr(partner, 'workflow_Information')
     _safe_set(owner, 'workflow_ProcessDocument', None)
-    assert getattr(partner, 'workflow_Information') is None
+    assert owner not in getattr(partner, 'workflow_Information')
 
 
 def test_assoc_runtimeCoreModel9_stub_double():
@@ -6192,9 +6192,9 @@ def test_assoc_start66_stub_double():
     partner = workflow_TaskI()
     setattr(partner, 'workflow_TaskI67', None)
     _safe_set(owner, 'workflow_DocumentCondition', partner)
-    assert getattr(partner, 'workflow_TaskI67') == owner
+    assert owner in getattr(partner, 'workflow_TaskI67')
     _safe_set(owner, 'workflow_DocumentCondition', None)
-    assert getattr(partner, 'workflow_TaskI67') is None
+    assert owner not in getattr(partner, 'workflow_TaskI67')
 
 
 def test_assoc_targetTransition42_stub_double():
@@ -6218,33 +6218,27 @@ from python_code import workflow_AgentContainer
 
 def test_workflow_AgentContainer___init__():
     assert workflow_AgentContainer.__init__(workflow_AgentContainer('', workflow_AgentContainer=set()), '', workflow_AgentContainer=set()) == None
-
 from python_code import workflow_ConstantAtom
 
 def test_workflow_ConstantAtom___init__():
     assert workflow_ConstantAtom.__init__(workflow_ConstantAtom(''), '') == None
-
 from python_code import workflow_DefaultDocument
 
 def test_workflow_DefaultDocument___init__():
     assert workflow_DefaultDocument.__init__(workflow_DefaultDocument(False, workflow_DefaultDocument=set(), workflow_DefaultDocument132=set()), False, workflow_DefaultDocument=set(), workflow_DefaultDocument132=set()) == None
-
 from python_code import workflow_DocumentCondition
 from python_code import workflow_TaskI
 
 def test_workflow_DocumentCondition___init__():
     assert workflow_DocumentCondition.__init__(workflow_DocumentCondition('', workflow_DocumentCondition=workflow_TaskI(), workflow_DocumentCondition70=workflow_TaskI()), '', workflow_DocumentCondition=workflow_TaskI(), workflow_DocumentCondition70=workflow_TaskI()) == None
-
 from python_code import workflow_DocumentTypeContainer
 
 def test_workflow_DocumentTypeContainer___init__():
     assert workflow_DocumentTypeContainer.__init__(workflow_DocumentTypeContainer('', workflow_DocumentTypeContainer=set()), '', workflow_DocumentTypeContainer=set()) == None
-
 from python_code import workflow_RuntimeInformation
 
 def test_workflow_RuntimeInformation___init__():
     assert workflow_RuntimeInformation.__init__(workflow_RuntimeInformation(''), '') == None
-
 from python_code import workflow_TaskC
 
 def test_workflow_TaskC___init__():

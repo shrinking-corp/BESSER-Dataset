@@ -1,4 +1,8 @@
 @startuml
+' model: company
+' project: sampleModel
+' owner: User
+' description: New project
 class Employee {
 }
 class company_Company {
@@ -30,20 +34,20 @@ class company_Student {
 }
 Employee <|-- company_Freelance
 Employee <|-- company_Student
-company_Department "1..1" -- "0..1" company_Employee : boss9
-company_Company "0..1" -- "1..1" company_Division : company26
-company_Department "0..9999" --* "1..1" company_Division : department19
-company_Division "0..1" -- "1..1" company_Employee : directed3
-company_Division "1..1" *-- "0..1" company_Employee : director21
-company_Company "1..1" -- "0..1" company_Division : division27
-company_Company "1..1" -- "0..1" company_Employee : divisionDirector29
-company_Department "1..1" *-- "0..9999" company_Employee : employee8
-company_Department "1..1" -- "0..9999" company_Employee : employeeOfTheMonth17
-company_Division "1..1" -- "0..9999" company_Employee : employeesOfTheMonth23
-company_Department "0..1" -- "1..1" company_Employee : employer0
-company_Employee "1..1" -- "0..1" company_Student : intern6
-company_Department "0..1" -- "1..1" company_Employee : managed1
-company_Department "1..1" -- "0..1" company_Department : parentDepartment15
-company_Employee "1..1" *-- "0..1" company_Employee : secretary5
-company_Department "1..1" *-- "0..9999" company_Department : subDepartment12
+company_Department "Employee10 1..1" -- "managed 0..1" company_Employee : boss9
+company_Company "division 0..1" -- "Company 1..1" company_Division : company26
+company_Department "company_Division 0..9999" --* "company_Department20 1..1" company_Division : department19
+company_Division "director 0..1" -- "Division 1..1" company_Employee : directed3
+company_Division "Employee22 1..1" *-- "directed 0..1" company_Employee : director21
+company_Company "Division28 1..1" -- "company 0..1" company_Division : division27
+company_Company "company_Employee30 1..1" -- "company_Company 0..1" company_Employee : divisionDirector29
+company_Department "Employee 1..1" *-- "employer 0..9999" company_Employee : employee8
+company_Department "company_Employee18 1..1" -- "company_Department 0..9999" company_Employee : employeeOfTheMonth17
+company_Division "company_Employee25 1..1" -- "company_Division24 0..9999" company_Employee : employeesOfTheMonth23
+company_Department "employee 0..1" -- "Department 1..1" company_Employee : employer0
+company_Employee "company_Student 1..1" -- "company_Employee7 0..1" company_Student : intern6
+company_Department "boss 0..1" -- "Department2 1..1" company_Employee : managed1
+company_Department "Department16 1..1" -- "subDepartment 0..1" company_Department : parentDepartment15
+company_Employee "company_Employee 1..1" *-- "company_Employee4 0..1" company_Employee : secretary5
+company_Department "Department13 1..1" *-- "parentDepartment 0..9999" company_Department : subDepartment12
 @enduml

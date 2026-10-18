@@ -1,4 +1,8 @@
 @startuml
+' model: types
+' project: sampleModel
+' owner: User
+' description: New project
 class AnnotatableElement {
 }
 class Declaration {
@@ -112,24 +116,24 @@ TypeSpecifier <|-- types_ArrayTypeSpecifier
 TypedElement <|-- types_Declaration
 TypedElement <|-- types_Parameter
 TypedElement <|-- types_TypeAlias
-types_AnnotatableElement "1..1" -- "0..9999" types_Annotation : annotations34
-types_PrimitiveType "1..1" -- "0..1" types_PrimitiveType : baseType21
-types_Type "0..1" -- "1..1" types_TypeParameter : bound27
-types_Type "1..1" *-- "0..9999" types_TypeConstraint : constraint6
-types_Domain "0..1" --* "1..1" types_Package : domain1
-types_EnumerationType "1..1" *-- "0..9999" types_Enumerator : enumerator19
-types_ComplexType "1..1" *-- "0..9999" types_Declaration : features22
-types_Package "0..9999" -- "1..1" types_Package : import_4
-types_Package "1..1" *-- "0..9999" types_PackageMember : member0
-types_EnumerationType "0..1" -- "1..1" types_Enumerator : owningEnumeration26
-types_Operation "0..1" -- "1..1" types_Parameter : owningOperation8
-types_ParameterizedType "1..1" *-- "0..9999" types_TypeParameter : parameter29
-types_Operation "1..1" *-- "0..9999" types_Parameter : parameters7
-types_Annotation "1..1" *-- "0..9999" types_Property : properties31
-types_ComplexType "0..9999" -- "1..1" types_ComplexType : superTypes24
-types_Annotation "1..1" -- "0..9999" types_EObject : targets32
-types_Type "0..1" -- "1..1" types_TypeSpecifier : type13
-types_Type "0..1" -- "1..1" types_TypedElement : type9
-types_TypeSpecifier "0..9999" --* "1..1" types_TypeSpecifier : typeArguments17
-types_TypeSpecifier "0..1" --* "1..1" types_TypedElement : typeSpecifier11
+types_AnnotatableElement "types_Annotation35 1..1" -- "types_AnnotatableElement 0..9999" types_Annotation : annotations34
+types_PrimitiveType "types_PrimitiveType 1..1" -- "types_PrimitiveType20 0..1" types_PrimitiveType : baseType21
+types_Type "types_TypeParameter 0..1" -- "types_Type28 1..1" types_TypeParameter : bound27
+types_Type "types_TypeConstraint 1..1" *-- "types_Type 0..9999" types_TypeConstraint : constraint6
+types_Domain "types_Package2 0..1" --* "types_Domain 1..1" types_Package : domain1
+types_EnumerationType "Enumerator 1..1" *-- "owningEnumeration 0..9999" types_Enumerator : enumerator19
+types_ComplexType "types_Declaration 1..1" *-- "types_ComplexType 0..9999" types_Declaration : features22
+types_Package "types_Package3 0..9999" -- "types_Package5 1..1" types_Package : import_4
+types_Package "types_PackageMember 1..1" *-- "types_Package 0..9999" types_PackageMember : member0
+types_EnumerationType "enumerator 0..1" -- "EnumerationType 1..1" types_Enumerator : owningEnumeration26
+types_Operation "parameters 0..1" -- "Operation 1..1" types_Parameter : owningOperation8
+types_ParameterizedType "types_TypeParameter30 1..1" *-- "types_ParameterizedType 0..9999" types_TypeParameter : parameter29
+types_Operation "Parameter 1..1" *-- "owningOperation 0..9999" types_Parameter : parameters7
+types_Annotation "types_Property 1..1" *-- "types_Annotation 0..9999" types_Property : properties31
+types_ComplexType "types_ComplexType23 0..9999" -- "types_ComplexType25 1..1" types_ComplexType : superTypes24
+types_Annotation "types_EObject 1..1" -- "types_Annotation33 0..9999" types_EObject : targets32
+types_Type "types_TypeSpecifier14 0..1" -- "types_Type15 1..1" types_TypeSpecifier : type13
+types_Type "types_TypedElement 0..1" -- "types_Type10 1..1" types_TypedElement : type9
+types_TypeSpecifier "types_TypeSpecifier16 0..9999" --* "types_TypeSpecifier18 1..1" types_TypeSpecifier : typeArguments17
+types_TypeSpecifier "types_TypedElement12 0..1" --* "types_TypeSpecifier 1..1" types_TypedElement : typeSpecifier11
 @enduml

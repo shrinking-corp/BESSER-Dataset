@@ -1,4 +1,8 @@
 @startuml
+' model: imdb
+' project: sampleModel
+' owner: User
+' description: New project
 enum Genre {
   Adventure
   SciFi
@@ -40,14 +44,14 @@ class imdb_db {
   + bestOf2014 : str
   + sam() : str
 }
-imdb_Movie "1..1" -- "0..9999" imdb_Person : actors4
-imdb_Person "0..9999" --* "1..1" imdb_db : allActors12
-imdb_Person "0..9999" --* "1..1" imdb_db : allDirectors7
-imdb_Movie "0..9999" --* "1..1" imdb_db : allMovies15
-imdb_StaffList "0..9999" --* "1..1" imdb_db : allStaffLists18
-imdb_User "0..9999" --* "1..1" imdb_db : allUsers20
-imdb_Person "0..9999" --* "1..1" imdb_db : allWriters9
-imdb_Movie "1..1" -- "0..1" imdb_Person : director0
-imdb_StaffList "1..1" -- "0..1" imdb_User : user22
-imdb_Movie "1..1" -- "0..9999" imdb_Person : writers1
+imdb_Movie "imdb_Person6 1..1" -- "imdb_Movie5 0..9999" imdb_Person : actors4
+imdb_Person "imdb_db13 0..9999" --* "imdb_Person14 1..1" imdb_db : allActors12
+imdb_Person "imdb_db 0..9999" --* "imdb_Person8 1..1" imdb_db : allDirectors7
+imdb_Movie "imdb_db16 0..9999" --* "imdb_Movie17 1..1" imdb_db : allMovies15
+imdb_StaffList "imdb_db19 0..9999" --* "imdb_StaffList 1..1" imdb_db : allStaffLists18
+imdb_User "imdb_db21 0..9999" --* "imdb_User 1..1" imdb_db : allUsers20
+imdb_Person "imdb_db10 0..9999" --* "imdb_Person11 1..1" imdb_db : allWriters9
+imdb_Movie "imdb_Person 1..1" -- "imdb_Movie 0..1" imdb_Person : director0
+imdb_StaffList "imdb_User24 1..1" -- "imdb_StaffList23 0..1" imdb_User : user22
+imdb_Movie "imdb_Person3 1..1" -- "imdb_Movie2 0..9999" imdb_Person : writers1
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: tp5
+' project: sampleModel
+' owner: User
+' description: New project
 class tp5_Collaboration {
   + ratio : int
 }
@@ -23,16 +27,16 @@ class tp5_Researcher {
 class tp5_Skill {
   + description : str
 }
-tp5_Paper "1..1" -- "0..9999" tp5_Researcher : authors7
-tp5_Paper "1..1" -- "0..1" tp5_Paper : citedBy9
-tp5_Collaboration "1..1" -- "0..1" tp5_Paper : col_paper22
-tp5_Collaboration "0..9999" --* "1..1" tp5_Researcher : collaborations4
-tp5_Paper "0..9999" --* "1..1" tp5_PublicationStructure : papers13
-tp5_Paper "1..1" *-- "0..9999" tp5_Paragraph : paragraphs6
-tp5_Position "0..1" -- "1..1" tp5_Position : parent20
-tp5_Position "0..9999" --* "1..1" tp5_PublicationStructure : positions16
-tp5_Paper "0..9999" -- "1..1" tp5_Researcher : res_papers0
-tp5_Position "0..1" -- "1..1" tp5_Researcher : res_position2
-tp5_PublicationStructure "1..1" *-- "0..9999" tp5_Researcher : researchers11
-tp5_Researcher "1..1" *-- "0..9999" tp5_Skill : skills1
+tp5_Paper "Researcher 1..1" -- "res_papers 0..9999" tp5_Researcher : authors7
+tp5_Paper "tp5_Paper10 1..1" -- "tp5_Paper8 0..1" tp5_Paper : citedBy9
+tp5_Collaboration "tp5_Paper24 1..1" -- "tp5_Collaboration23 0..1" tp5_Paper : col_paper22
+tp5_Collaboration "tp5_Researcher5 0..9999" --* "tp5_Collaboration 1..1" tp5_Researcher : collaborations4
+tp5_Paper "tp5_PublicationStructure14 0..9999" --* "tp5_Paper15 1..1" tp5_PublicationStructure : papers13
+tp5_Paper "tp5_Paragraph 1..1" *-- "tp5_Paper 0..9999" tp5_Paragraph : paragraphs6
+tp5_Position "tp5_Position19 0..1" -- "tp5_Position21 1..1" tp5_Position : parent20
+tp5_Position "tp5_PublicationStructure17 0..9999" --* "tp5_Position18 1..1" tp5_PublicationStructure : positions16
+tp5_Paper "authors 0..9999" -- "Paper 1..1" tp5_Researcher : res_papers0
+tp5_Position "tp5_Researcher3 0..1" -- "tp5_Position 1..1" tp5_Researcher : res_position2
+tp5_PublicationStructure "tp5_Researcher12 1..1" *-- "tp5_PublicationStructure 0..9999" tp5_Researcher : researchers11
+tp5_Researcher "tp5_Skill 1..1" *-- "tp5_Researcher 0..9999" tp5_Skill : skills1
 @enduml

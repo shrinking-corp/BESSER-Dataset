@@ -1,4 +1,8 @@
 @startuml
+' model: gv
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractGraph {
 }
 class Attributable {
@@ -106,19 +110,19 @@ Statement <|-- gv_AttributeStatement
 Statement <|-- gv_EdgeStatement
 Statement <|-- gv_NodeStatement
 StrictIdentifiable <|-- gv_NodeID
-gv_AList "1..1" *-- "1..1" gv_Attribute : attribute1
-gv_AttributeList "1..1" --* "1..1" gv_AttributeStatement : attributes12
-gv_Attributable "1..1" *-- "0..1" gv_AttributeList : attributes5
-gv_AList "1..1" --* "1..1" gv_AttributeList : list6
-gv_AttributeList "1..1" *-- "0..1" gv_AttributeList : next10
-gv_Target "0..1" --* "1..1" gv_Target : next_target26
-gv_NodeID "1..1" --* "1..1" gv_NodeStatement : node_id17
-gv_NodeID "1..1" *-- "0..1" gv_Port : port18
-gv_Connectable "1..1" --* "1..1" gv_EdgeStatement : source14
-gv_Statement "1..1" --* "1..1" gv_StatementList : statement20
-gv_AbstractGraph "1..1" *-- "0..1" gv_StatementList : statements0
-gv_StatementList "0..1" --* "1..1" gv_StatementList : tail23
-gv_AList "0..1" --* "1..1" gv_AList : tail3
-gv_EdgeStatement "1..1" *-- "1..1" gv_Target : target15
-gv_Connectable "1..1" --* "1..1" gv_Target : target28
+gv_AList "gv_Attribute 1..1" *-- "gv_AList 1..1" gv_Attribute : attribute1
+gv_AttributeList "gv_AttributeStatement 1..1" --* "gv_AttributeList13 1..1" gv_AttributeStatement : attributes12
+gv_Attributable "gv_AttributeList 1..1" *-- "gv_Attributable 0..1" gv_AttributeList : attributes5
+gv_AList "gv_AttributeList7 1..1" --* "gv_AList8 1..1" gv_AttributeList : list6
+gv_AttributeList "gv_AttributeList11 1..1" *-- "gv_AttributeList9 0..1" gv_AttributeList : next10
+gv_Target "gv_Target25 0..1" --* "gv_Target27 1..1" gv_Target : next_target26
+gv_NodeID "gv_NodeStatement 1..1" --* "gv_NodeID 1..1" gv_NodeStatement : node_id17
+gv_NodeID "gv_Port 1..1" *-- "gv_NodeID19 0..1" gv_Port : port18
+gv_Connectable "gv_EdgeStatement 1..1" --* "gv_Connectable 1..1" gv_EdgeStatement : source14
+gv_Statement "gv_StatementList21 1..1" --* "gv_Statement 1..1" gv_StatementList : statement20
+gv_AbstractGraph "gv_StatementList 1..1" *-- "gv_AbstractGraph 0..1" gv_StatementList : statements0
+gv_StatementList "gv_StatementList22 0..1" --* "gv_StatementList24 1..1" gv_StatementList : tail23
+gv_AList "gv_AList2 0..1" --* "gv_AList4 1..1" gv_AList : tail3
+gv_EdgeStatement "gv_Target 1..1" *-- "gv_EdgeStatement16 1..1" gv_Target : target15
+gv_Connectable "gv_Target29 1..1" --* "gv_Connectable30 1..1" gv_Target : target28
 @enduml

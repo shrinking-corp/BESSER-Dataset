@@ -1,4 +1,8 @@
 @startuml
+' model: fmp
+' project: sampleModel
+' owner: User
+' description: New project
 class Clonable {
 }
 enum ConfigState {
@@ -47,20 +51,20 @@ Clonable <|-- fmp_Feature
 Clonable <|-- fmp_Reference
 Node <|-- fmp_Clonable
 Node <|-- fmp_FeatureGroup
-fmp_Node "1..1" *-- "0..9999" fmp_Node : children15
-fmp_Clonable "1..1" -- "0..9999" fmp_Clonable : clones31
-fmp_Feature "1..1" *-- "0..9999" fmp_Feature : configurations1
-fmp_Node "1..1" -- "0..9999" fmp_Node : confs9
-fmp_Constraint "0..9999" --* "1..1" fmp_Feature : constraints6
-fmp_Feature "1..1" -- "0..1" fmp_Node : describedNode5
-fmp_Feature "0..1" -- "1..1" fmp_Reference : feature17
-fmp_Feature "0..1" -- "1..1" fmp_TypedValue : featureValue27
-fmp_Feature "0..1" --* "1..1" fmp_Project : metaMetaModel24
-fmp_Feature "0..1" --* "1..1" fmp_Project : metaModel21
-fmp_Feature "0..1" --* "1..1" fmp_Project : model19
-fmp_Node "1..1" -- "0..1" fmp_Node : origin12
-fmp_Feature "0..1" -- "1..1" fmp_Node : properties16
-fmp_Clonable "1..1" -- "0..1" fmp_Clonable : prototype33
-fmp_Feature "1..1" -- "0..9999" fmp_Reference : references2
-fmp_Feature "1..1" *-- "0..1" fmp_TypedValue : typedValue3
+fmp_Node "fmp_Node 1..1" *-- "fmp_Node14 0..9999" fmp_Node : children15
+fmp_Clonable "Clonable 1..1" -- "prototype 0..9999" fmp_Clonable : clones31
+fmp_Feature "fmp_Feature 1..1" *-- "fmp_Feature0 0..9999" fmp_Feature : configurations1
+fmp_Node "Node10 1..1" -- "origin 0..9999" fmp_Node : confs9
+fmp_Constraint "fmp_Feature7 0..9999" --* "fmp_Constraint 1..1" fmp_Feature : constraints6
+fmp_Feature "Node 1..1" -- "properties 0..1" fmp_Node : describedNode5
+fmp_Feature "references 0..1" -- "Feature18 1..1" fmp_Reference : feature17
+fmp_Feature "fmp_TypedValue28 0..1" -- "fmp_Feature29 1..1" fmp_TypedValue : featureValue27
+fmp_Feature "fmp_Project25 0..1" --* "fmp_Feature26 1..1" fmp_Project : metaMetaModel24
+fmp_Feature "fmp_Project22 0..1" --* "fmp_Feature23 1..1" fmp_Project : metaModel21
+fmp_Feature "fmp_Project 0..1" --* "fmp_Feature20 1..1" fmp_Project : model19
+fmp_Node "Node13 1..1" -- "confs 0..1" fmp_Node : origin12
+fmp_Feature "describedNode 0..1" -- "Feature 1..1" fmp_Node : properties16
+fmp_Clonable "Clonable34 1..1" -- "clones 0..1" fmp_Clonable : prototype33
+fmp_Feature "Reference 1..1" -- "feature 0..9999" fmp_Reference : references2
+fmp_Feature "fmp_TypedValue 1..1" *-- "fmp_Feature4 0..1" fmp_TypedValue : typedValue3
 @enduml

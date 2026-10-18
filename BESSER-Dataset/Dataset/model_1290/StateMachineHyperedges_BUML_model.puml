@@ -1,4 +1,8 @@
 @startuml
+' model: StateMachineHyperedges
+' project: sampleModel
+' owner: User
+' description: New project
 class StateMachineHyperedges_Event {
 }
 class StateMachineHyperedges_FinalState {
@@ -20,11 +24,11 @@ class StateVertex {
 StateVertex <|-- StateMachineHyperedges_FinalState
 StateVertex <|-- StateMachineHyperedges_InitialState
 StateVertex <|-- StateMachineHyperedges_SimpleState
-StateMachineHyperedges_StateVertex "1..1" -- "0..9999" StateMachineHyperedges_Transition : incoming4
-StateMachineHyperedges_StateVertex "1..1" -- "0..9999" StateMachineHyperedges_Transition : outgoing3
-StateMachineHyperedges_StateVertex "0..9999" -- "1..1" StateMachineHyperedges_Transition : sources8
-StateMachineHyperedges_StateMachine "1..1" *-- "0..9999" StateMachineHyperedges_StateVertex : states0
-StateMachineHyperedges_StateVertex "0..9999" -- "1..1" StateMachineHyperedges_Transition : targets9
-StateMachineHyperedges_StateMachine "1..1" *-- "0..9999" StateMachineHyperedges_Transition : transitions1
-StateMachineHyperedges_Event "0..1" -- "1..1" StateMachineHyperedges_Transition : trigger6
+StateMachineHyperedges_StateVertex "Transition5 1..1" -- "targets 0..9999" StateMachineHyperedges_Transition : incoming4
+StateMachineHyperedges_StateVertex "Transition 1..1" -- "sources 0..9999" StateMachineHyperedges_Transition : outgoing3
+StateMachineHyperedges_StateVertex "outgoing 0..9999" -- "StateVertex 1..1" StateMachineHyperedges_Transition : sources8
+StateMachineHyperedges_StateMachine "StateMachineHyperedges_StateVertex 1..1" *-- "StateMachineHyperedges_StateMachine 0..9999" StateMachineHyperedges_StateVertex : states0
+StateMachineHyperedges_StateVertex "incoming 0..9999" -- "StateVertex10 1..1" StateMachineHyperedges_Transition : targets9
+StateMachineHyperedges_StateMachine "StateMachineHyperedges_Transition 1..1" *-- "StateMachineHyperedges_StateMachine2 0..9999" StateMachineHyperedges_Transition : transitions1
+StateMachineHyperedges_Event "StateMachineHyperedges_Transition7 0..1" -- "StateMachineHyperedges_Event 1..1" StateMachineHyperedges_Transition : trigger6
 @enduml

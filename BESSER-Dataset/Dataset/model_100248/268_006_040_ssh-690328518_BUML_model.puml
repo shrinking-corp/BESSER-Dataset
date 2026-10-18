@@ -1,4 +1,8 @@
 @startuml
+' model: spreadsheet
+' project: sampleModel
+' owner: User
+' description: New project
 class ContentElement {
 }
 class DocumentModel {
@@ -38,18 +42,18 @@ class spreadsheet_Title {
 ContentElement <|-- spreadsheet_Cell
 ContentElement <|-- spreadsheet_Title
 DocumentModel <|-- spreadsheet_SpreadsheetFile
-spreadsheet_Cell "1..9999" --* "1..1" spreadsheet_Header : cell24
-spreadsheet_Cell "1..9999" --* "1..1" spreadsheet_Row : cell29
-spreadsheet_Header "1..9999" --* "1..1" spreadsheet_Table : header17
-spreadsheet_Image "0..9999" --* "1..1" spreadsheet_Sheet : image3
-spreadsheet_Image "1..1" -- "1..1" spreadsheet_Point : imagePos12
-spreadsheet_Cell "1..1" -- "1..1" spreadsheet_Point : posCell26
-spreadsheet_Row "1..9999" --* "1..1" spreadsheet_Table : row19
-spreadsheet_Sheet "1..9999" --* "1..1" spreadsheet_SpreadsheetFile : sheet0
-spreadsheet_Sheet "1..1" *-- "0..9999" spreadsheet_Table : table5
-spreadsheet_Point "1..1" -- "1..1" spreadsheet_Table : tablePos21
-spreadsheet_Sheet "1..1" *-- "0..9999" spreadsheet_Text : text1
-spreadsheet_Table "1..1" *-- "0..9999" spreadsheet_Title : title14
-spreadsheet_Text "1..1" -- "1..1" spreadsheet_Title : title7
-spreadsheet_Image "1..1" -- "1..1" spreadsheet_Title : title9
+spreadsheet_Cell "spreadsheet_Header25 1..9999" --* "spreadsheet_Cell 1..1" spreadsheet_Header : cell24
+spreadsheet_Cell "spreadsheet_Row30 1..9999" --* "spreadsheet_Cell31 1..1" spreadsheet_Row : cell29
+spreadsheet_Header "spreadsheet_Table18 1..9999" --* "spreadsheet_Header 1..1" spreadsheet_Table : header17
+spreadsheet_Image "spreadsheet_Sheet4 0..9999" --* "spreadsheet_Image 1..1" spreadsheet_Sheet : image3
+spreadsheet_Image "spreadsheet_Point 1..1" -- "spreadsheet_Image13 1..1" spreadsheet_Point : imagePos12
+spreadsheet_Cell "spreadsheet_Point28 1..1" -- "spreadsheet_Cell27 1..1" spreadsheet_Point : posCell26
+spreadsheet_Row "spreadsheet_Table20 1..9999" --* "spreadsheet_Row 1..1" spreadsheet_Table : row19
+spreadsheet_Sheet "spreadsheet_SpreadsheetFile 1..9999" --* "spreadsheet_Sheet 1..1" spreadsheet_SpreadsheetFile : sheet0
+spreadsheet_Sheet "spreadsheet_Table 1..1" *-- "spreadsheet_Sheet6 0..9999" spreadsheet_Table : table5
+spreadsheet_Point "spreadsheet_Table22 1..1" -- "spreadsheet_Point23 1..1" spreadsheet_Table : tablePos21
+spreadsheet_Sheet "spreadsheet_Text 1..1" *-- "spreadsheet_Sheet2 0..9999" spreadsheet_Text : text1
+spreadsheet_Table "spreadsheet_Title16 1..1" *-- "spreadsheet_Table15 0..9999" spreadsheet_Title : title14
+spreadsheet_Text "spreadsheet_Title 1..1" -- "spreadsheet_Text8 1..1" spreadsheet_Title : title7
+spreadsheet_Image "spreadsheet_Title11 1..1" -- "spreadsheet_Image10 1..1" spreadsheet_Title : title9
 @enduml

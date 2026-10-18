@@ -1,4 +1,8 @@
 @startuml
+' model: school
+' project: sampleModel
+' owner: User
+' description: New project
 class Course {
 }
 class school_Course {
@@ -28,23 +32,23 @@ class school_Year {
   + weightOfRegularCourses : int
 }
 Course <|-- school_SpecialisationCourse
-school_Course "0..9999" -- "1..1" school_SchoolClass : courses17
-school_Course "0..9999" -- "1..1" school_Teacher : courses27
-school_Course "0..9999" --* "1..1" school_School : courses9
-school_Course "0..9999" -- "1..1" school_SchoolClass : homeroomCourses22
-school_SchoolClass "1..1" -- "0..1" school_Teacher : homeroomTeacher20
-school_SchoolClass "0..1" -- "1..1" school_Teacher : homeroomedClass29
-school_School "1..1" -- "0..1" school_Year : lastYear12
-school_Course "1..1" -- "0..1" school_School : school0
-school_School "0..1" -- "1..1" school_Teacher : school25
-school_School "0..1" -- "1..1" school_Year : school31
-school_SchoolClass "0..1" -- "1..1" school_Student : schoolClass23
-school_Course "1..1" -- "0..1" school_SchoolClass : schoolClass3
-school_SchoolClass "0..9999" --* "1..1" school_Year : schoolClasses33
-school_SchoolClass "1..1" *-- "0..9999" school_Student : students16
-school_Course "1..1" -- "0..1" school_Teacher : teacher1
-school_School "1..1" *-- "0..9999" school_Teacher : teachers6
-school_School "1..1" -- "0..9999" school_Teacher : teachersWithMostCourses11
-school_SchoolClass "1..1" -- "0..1" school_Year : year14
-school_School "1..1" *-- "0..9999" school_Year : years5
+school_Course "schoolClass18 0..9999" -- "Course19 1..1" school_SchoolClass : courses17
+school_Course "teacher 0..9999" -- "Course28 1..1" school_Teacher : courses27
+school_Course "school10 0..9999" --* "Course 1..1" school_School : courses9
+school_Course "school_SchoolClass 0..9999" -- "school_Course 1..1" school_SchoolClass : homeroomCourses22
+school_SchoolClass "Teacher21 1..1" -- "homeroomedClass 0..1" school_Teacher : homeroomTeacher20
+school_SchoolClass "homeroomTeacher 0..1" -- "SchoolClass30 1..1" school_Teacher : homeroomedClass29
+school_School "school_Year 1..1" -- "school_School13 0..1" school_Year : lastYear12
+school_Course "School 1..1" -- "courses 0..1" school_School : school0
+school_School "teachers 0..1" -- "School26 1..1" school_Teacher : school25
+school_School "years 0..1" -- "School32 1..1" school_Year : school31
+school_SchoolClass "students 0..1" -- "SchoolClass24 1..1" school_Student : schoolClass23
+school_Course "SchoolClass 1..1" -- "courses4 0..1" school_SchoolClass : schoolClass3
+school_SchoolClass "year 0..9999" --* "SchoolClass34 1..1" school_Year : schoolClasses33
+school_SchoolClass "Student 1..1" *-- "schoolClass 0..9999" school_Student : students16
+school_Course "Teacher 1..1" -- "courses2 0..1" school_Teacher : teacher1
+school_School "Teacher8 1..1" *-- "school7 0..9999" school_Teacher : teachers6
+school_School "school_Teacher 1..1" -- "school_School 0..9999" school_Teacher : teachersWithMostCourses11
+school_SchoolClass "Year15 1..1" -- "schoolClasses 0..1" school_Year : year14
+school_School "Year 1..1" *-- "school 0..9999" school_Year : years5
 @enduml

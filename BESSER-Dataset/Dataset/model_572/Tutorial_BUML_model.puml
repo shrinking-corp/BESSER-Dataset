@@ -1,4 +1,8 @@
 @startuml
+' model: tutorial
+' project: sampleModel
+' owner: User
+' description: New project
 class tutorial_Book {
   + copies : str
   + name : str
@@ -14,12 +18,12 @@ class tutorial_Loan {
 class tutorial_Member {
   + name : str
 }
-tutorial_Book "1..1" -- "1..1" tutorial_Loan : book9
-tutorial_Book "0..9999" --* "1..1" tutorial_Library : books0
-tutorial_Book "1..1" -- "0..1" tutorial_Library : library4
-tutorial_Library "0..1" -- "1..1" tutorial_Member : library7
-tutorial_Library "1..1" *-- "0..9999" tutorial_Loan : loans1
-tutorial_Book "1..1" -- "0..9999" tutorial_Loan : loans5
-tutorial_Loan "1..1" -- "1..1" tutorial_Member : member12
-tutorial_Library "1..1" *-- "0..9999" tutorial_Member : members2
+tutorial_Book "tutorial_Loan10 1..1" -- "tutorial_Book11 1..1" tutorial_Loan : book9
+tutorial_Book "library 0..9999" --* "Book 1..1" tutorial_Library : books0
+tutorial_Book "Library 1..1" -- "books 0..1" tutorial_Library : library4
+tutorial_Library "members 0..1" -- "Library8 1..1" tutorial_Member : library7
+tutorial_Library "tutorial_Loan 1..1" *-- "tutorial_Library 0..9999" tutorial_Loan : loans1
+tutorial_Book "tutorial_Loan6 1..1" -- "tutorial_Book 0..9999" tutorial_Loan : loans5
+tutorial_Loan "tutorial_Member 1..1" -- "tutorial_Loan13 1..1" tutorial_Member : member12
+tutorial_Library "Member 1..1" *-- "library3 0..9999" tutorial_Member : members2
 @enduml

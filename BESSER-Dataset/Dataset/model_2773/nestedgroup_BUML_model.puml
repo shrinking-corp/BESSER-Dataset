@@ -1,4 +1,8 @@
 @startuml
+' model: nestedgroup
+' project: sampleModel
+' owner: User
+' description: New project
 class nestedgroup_A {
   + b : str
   + group : str
@@ -13,7 +17,7 @@ class nestedgroup_Element {
   + name : str
   + true : str
 }
-nestedgroup_A "1..1" *-- "0..9999" nestedgroup_CType : c0
-nestedgroup_CType "1..9999" --* "1..1" nestedgroup_Element : c1
-nestedgroup_Element "1..1" --* "1..1" nestedgroup_Element : recursive4
+nestedgroup_A "nestedgroup_CType 1..1" *-- "nestedgroup_A 0..9999" nestedgroup_CType : c0
+nestedgroup_CType "nestedgroup_Element 1..9999" --* "nestedgroup_CType2 1..1" nestedgroup_Element : c1
+nestedgroup_Element "nestedgroup_Element3 1..1" --* "nestedgroup_Element5 1..1" nestedgroup_Element : recursive4
 @enduml

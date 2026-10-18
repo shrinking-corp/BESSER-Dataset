@@ -1,4 +1,8 @@
 @startuml
+' model: StateMachine
+' project: sampleModel
+' owner: User
+' description: New project
 class State {
 }
 class StateMachine_NamedState {
@@ -19,9 +23,9 @@ class StateMachine_WashingMachine {
 }
 State <|-- StateMachine_NamedState
 State <|-- StateMachine_UnNamedState
-StateMachine_State "1..1" -- "0..9999" StateMachine_Transition : outgoings0
-StateMachine_State "1..1" -- "1..1" StateMachine_Transition : source1
-StateMachine_State "0..9999" --* "1..1" StateMachine_WashingMachine : states7
-StateMachine_State "1..1" -- "1..1" StateMachine_Transition : target4
-StateMachine_Transition "0..9999" --* "1..1" StateMachine_WashingMachine : transitions9
+StateMachine_State "StateMachine_Transition 1..1" -- "StateMachine_State 0..9999" StateMachine_Transition : outgoings0
+StateMachine_State "StateMachine_Transition2 1..1" -- "StateMachine_State3 1..1" StateMachine_Transition : source1
+StateMachine_State "StateMachine_WashingMachine 0..9999" --* "StateMachine_State8 1..1" StateMachine_WashingMachine : states7
+StateMachine_State "StateMachine_Transition5 1..1" -- "StateMachine_State6 1..1" StateMachine_Transition : target4
+StateMachine_Transition "StateMachine_WashingMachine10 0..9999" --* "StateMachine_Transition11 1..1" StateMachine_WashingMachine : transitions9
 @enduml

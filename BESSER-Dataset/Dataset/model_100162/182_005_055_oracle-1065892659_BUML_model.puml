@@ -1,4 +1,8 @@
 @startuml
+' model: oracle
+' project: sampleModel
+' owner: User
+' description: New project
 class DatabaseResourceData {
 }
 class ExtensibleModel {
@@ -85,9 +89,9 @@ ExtensibleModel <|-- oracle_OraclePrivilege
 ExtensibleModel <|-- oracle_OracleUser
 ExtensibleModel <|-- oracle_TableSpace
 ExtensibleModel <|-- oracle_TableSpaceRelation
-oracle_OraclePrivilege "0..9999" --* "1..1" oracle_OracleUserResourceData : privileges4
-oracle_OraclePrivilege "0..9999" -- "1..1" oracle_OracleUser : privileges6
-oracle_OracleSpaceResourceData "1..1" *-- "0..9999" oracle_TableSpaceRelation : relations1
-oracle_OracleSpaceResourceData "1..1" *-- "0..9999" oracle_TableSpace : spaces0
-oracle_OracleUser "0..9999" --* "1..1" oracle_OracleUserResourceData : users3
+oracle_OraclePrivilege "oracle_OracleUserResourceData5 0..9999" --* "oracle_OraclePrivilege 1..1" oracle_OracleUserResourceData : privileges4
+oracle_OraclePrivilege "oracle_OracleUser7 0..9999" -- "oracle_OraclePrivilege8 1..1" oracle_OracleUser : privileges6
+oracle_OracleSpaceResourceData "oracle_TableSpaceRelation 1..1" *-- "oracle_OracleSpaceResourceData2 0..9999" oracle_TableSpaceRelation : relations1
+oracle_OracleSpaceResourceData "oracle_TableSpace 1..1" *-- "oracle_OracleSpaceResourceData 0..9999" oracle_TableSpace : spaces0
+oracle_OracleUser "oracle_OracleUserResourceData 0..9999" --* "oracle_OracleUser 1..1" oracle_OracleUserResourceData : users3
 @enduml

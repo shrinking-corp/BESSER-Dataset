@@ -104,9 +104,9 @@ def test_assoc_classes8_stub_double():
     partner = swml_ContentLayer()
     setattr(partner, 'swml_ContentLayer9', None)
     _safe_set(owner, 'swml_Class', partner)
-    assert getattr(partner, 'swml_ContentLayer9') == owner
+    assert owner in getattr(partner, 'swml_ContentLayer9')
     _safe_set(owner, 'swml_Class', None)
-    assert getattr(partner, 'swml_ContentLayer9') is None
+    assert owner not in getattr(partner, 'swml_ContentLayer9')
 
 
 def test_assoc_content1_stub_double():
@@ -194,9 +194,9 @@ def test_assoc_pages3_stub_double():
     partner = swml_HypertextLayer()
     setattr(partner, 'swml_HypertextLayer4', None)
     _safe_set(owner, 'swml_Page', partner)
-    assert getattr(partner, 'swml_HypertextLayer4') == owner
+    assert owner in getattr(partner, 'swml_HypertextLayer4')
     _safe_set(owner, 'swml_Page', None)
-    assert getattr(partner, 'swml_HypertextLayer4') is None
+    assert owner not in getattr(partner, 'swml_HypertextLayer4')
 
 
 def test_assoc_target19_stub_double():

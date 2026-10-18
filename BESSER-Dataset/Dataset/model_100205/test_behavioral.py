@@ -452,9 +452,9 @@ def test_assoc_columns134_stub_double():
     partner = sqls_TriggerUpdate()
     setattr(partner, 'sqls_TriggerUpdate', None)
     _safe_set(owner, 'sqls_Column135', partner)
-    assert getattr(partner, 'sqls_TriggerUpdate') == owner
+    assert owner in getattr(partner, 'sqls_TriggerUpdate')
     _safe_set(owner, 'sqls_Column135', None)
-    assert getattr(partner, 'sqls_TriggerUpdate') is None
+    assert owner not in getattr(partner, 'sqls_TriggerUpdate')
 
 
 def test_assoc_columns74_stub_double():
@@ -467,9 +467,9 @@ def test_assoc_columns74_stub_double():
     partner = sqls_InsertStatement()
     setattr(partner, 'sqls_InsertStatement75', None)
     _safe_set(owner, 'sqls_Column76', partner)
-    assert getattr(partner, 'sqls_InsertStatement75') == owner
+    assert owner in getattr(partner, 'sqls_InsertStatement75')
     _safe_set(owner, 'sqls_Column76', None)
-    assert getattr(partner, 'sqls_InsertStatement75') is None
+    assert owner not in getattr(partner, 'sqls_InsertStatement75')
 
 
 def test_assoc_constraints23_stub_double():
@@ -512,9 +512,9 @@ def test_assoc_elements111_stub_double():
     partner = sqls_Enum()
     setattr(partner, 'sqls_Enum', None)
     _safe_set(owner, 'sqls_EnumElement', partner)
-    assert getattr(partner, 'sqls_Enum') == owner
+    assert owner in getattr(partner, 'sqls_Enum')
     _safe_set(owner, 'sqls_EnumElement', None)
-    assert getattr(partner, 'sqls_Enum') is None
+    assert owner not in getattr(partner, 'sqls_Enum')
 
 
 def test_assoc_enums3_stub_double():
@@ -647,9 +647,9 @@ def test_assoc_resultColumns45_stub_double():
     partner = sqls_SelectList()
     setattr(partner, 'sqls_SelectList', None)
     _safe_set(owner, 'sqls_ResultColumn46', partner)
-    assert getattr(partner, 'sqls_SelectList') == owner
+    assert owner in getattr(partner, 'sqls_SelectList')
     _safe_set(owner, 'sqls_ResultColumn46', None)
-    assert getattr(partner, 'sqls_SelectList') is None
+    assert owner not in getattr(partner, 'sqls_SelectList')
 
 
 def test_assoc_right116_stub_double():

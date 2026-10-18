@@ -1,4 +1,8 @@
 @startuml
+' model: Grafcet
+' project: sampleModel
+' owner: User
+' description: New project
 class Connection {
 }
 class Element {
@@ -49,16 +53,16 @@ LocatedElement <|-- Grafcet_NamedElement
 NamedElement <|-- Grafcet_Connection
 NamedElement <|-- Grafcet_Element
 NamedElement <|-- Grafcet_Grafcet
-Connection "0..9999" --* "1..1" Grafcet_Grafcet : connections1
-Element "0..9999" --* "1..1" Grafcet_Grafcet : elements0
-Grafcet_StepToTransition "1..1" -- "1..1" Step : from_14
-Grafcet_TransitionToStep "1..1" -- "1..1" Transition : from_16
-Grafcet "1..1" -- "1..1" Grafcet_Connection : grafcet12
-Grafcet "1..1" -- "1..1" Grafcet_Element : grafcet3
-Grafcet_Step "1..1" -- "0..9999" TransitionToStep : incomingConnections4
-Grafcet_Transition "1..1" -- "0..9999" StepToTransition : incomingConnections6
-Grafcet_Step "1..1" -- "0..9999" StepToTransition : outgoingConnections5
-Grafcet_Transition "1..1" -- "0..9999" TransitionToStep : outgoingConnections9
-Grafcet_StepToTransition "1..1" -- "1..1" Transition : to15
-Grafcet_TransitionToStep "1..1" -- "1..1" Step : to19
+Connection "grafcet2 0..9999" --* "Connection 1..1" Grafcet_Grafcet : connections1
+Element "grafcet 0..9999" --* "Element 1..1" Grafcet_Grafcet : elements0
+Grafcet_StepToTransition "Step 1..1" -- "outgoingConnections 1..1" Step : from_14
+Grafcet_TransitionToStep "Transition18 1..1" -- "outgoingConnections17 1..1" Transition : from_16
+Grafcet "connections 1..1" -- "Grafcet13 1..1" Grafcet_Connection : grafcet12
+Grafcet "elements 1..1" -- "Grafcet 1..1" Grafcet_Element : grafcet3
+Grafcet_Step "TransitionToStep 1..1" -- "to 0..9999" TransitionToStep : incomingConnections4
+Grafcet_Transition "StepToTransition8 1..1" -- "to7 0..9999" StepToTransition : incomingConnections6
+Grafcet_Step "StepToTransition 1..1" -- "from_ 0..9999" StepToTransition : outgoingConnections5
+Grafcet_Transition "TransitionToStep11 1..1" -- "from_10 0..9999" TransitionToStep : outgoingConnections9
+Grafcet_StepToTransition "Transition 1..1" -- "incomingConnections 1..1" Transition : to15
+Grafcet_TransitionToStep "Step21 1..1" -- "incomingConnections20 1..1" Step : to19
 @enduml

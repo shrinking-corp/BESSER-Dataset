@@ -1,4 +1,8 @@
 @startuml
+' model: trace
+' project: sampleModel
+' owner: User
+' description: New project
 class EModelElement {
 }
 class Event {
@@ -102,16 +106,16 @@ ValueChangeEvent <|-- trace_DataSizeValueChangeEvent
 ValueChangeEvent <|-- trace_DurationValueChangeEvent
 ValueChangeEvent <|-- trace_NumberValueChangeEvent
 ValueChangeEvent <|-- trace_ObjectValueChangeEvent
-trace_Event "1..1" -- "0..9999" trace_Slice : about3
-trace_Event "0..9999" --* "1..1" trace_Trace : events0
-trace_Event "0..9999" -- "1..1" trace_Slice : events5
-trace_EObject "0..1" -- "1..1" trace_ValueChangeEvent : object19
-trace_Slice "1..1" *-- "0..9999" trace_Slice : ownedSubSlices9
-trace_Slice "1..1" -- "0..1" trace_Slice : parent11
-trace_Properties "0..1" --* "1..1" trace_Slice : properties13
-trace_EStructuralFeature "1..1" -- "1..1" trace_ValueChangeEvent : property18
-trace_Slice "0..9999" --* "1..1" trace_Trace : slices1
-trace_Slice "0..9999" -- "1..1" trace_Slice : subSlices16
-trace_Event "1..1" -- "1..1" trace_Trace : trace2
-trace_EObject "1..1" -- "1..1" trace_ObjectValueChangeEvent : value21
+trace_Event "trace_Slice4 1..1" -- "trace_Event 0..9999" trace_Slice : about3
+trace_Event "trace 0..9999" --* "Event 1..1" trace_Trace : events0
+trace_Event "trace_Slice6 0..9999" -- "trace_Event7 1..1" trace_Slice : events5
+trace_EObject "trace_ValueChangeEvent20 0..1" -- "trace_EObject 1..1" trace_ValueChangeEvent : object19
+trace_Slice "Slice 1..1" *-- "parent 0..9999" trace_Slice : ownedSubSlices9
+trace_Slice "Slice12 1..1" -- "ownedSubSlices 0..1" trace_Slice : parent11
+trace_Properties "trace_Slice14 0..1" --* "trace_Properties 1..1" trace_Slice : properties13
+trace_EStructuralFeature "trace_ValueChangeEvent 1..1" -- "trace_EStructuralFeature 1..1" trace_ValueChangeEvent : property18
+trace_Slice "trace_Trace 0..9999" --* "trace_Slice 1..1" trace_Trace : slices1
+trace_Slice "trace_Slice15 0..9999" -- "trace_Slice17 1..1" trace_Slice : subSlices16
+trace_Event "Trace 1..1" -- "events 1..1" trace_Trace : trace2
+trace_EObject "trace_ObjectValueChangeEvent 1..1" -- "trace_EObject22 1..1" trace_ObjectValueChangeEvent : value21
 @enduml

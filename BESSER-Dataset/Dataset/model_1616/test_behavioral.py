@@ -725,9 +725,9 @@ def test_assoc_measures109_stub_double():
     partner = ptnet_EvaluationList()
     setattr(partner, 'ptnet_EvaluationList110', None)
     _safe_set(owner, 'ptnet_Measure', partner)
-    assert getattr(partner, 'ptnet_EvaluationList110') == owner
+    assert owner in getattr(partner, 'ptnet_EvaluationList110')
     _safe_set(owner, 'ptnet_Measure', None)
-    assert getattr(partner, 'ptnet_EvaluationList110') is None
+    assert owner not in getattr(partner, 'ptnet_EvaluationList110')
 
 
 def test_assoc_objects8_stub_double():
@@ -740,9 +740,9 @@ def test_assoc_objects8_stub_double():
     partner = ptnet_Page()
     setattr(partner, 'containerPage', None)
     _safe_set(owner, 'PnObject', partner)
-    assert getattr(partner, 'containerPage') == owner
+    assert owner in getattr(partner, 'containerPage')
     _safe_set(owner, 'PnObject', None)
-    assert getattr(partner, 'containerPage') is None
+    assert owner not in getattr(partner, 'containerPage')
 
 
 def test_assoc_pages3_stub_double():
@@ -785,9 +785,9 @@ def test_assoc_studies108_stub_double():
     partner = ptnet_EvaluationList()
     setattr(partner, 'ptnet_EvaluationList', None)
     _safe_set(owner, 'ptnet_Study', partner)
-    assert getattr(partner, 'ptnet_EvaluationList') == owner
+    assert owner in getattr(partner, 'ptnet_EvaluationList')
     _safe_set(owner, 'ptnet_Study', None)
-    assert getattr(partner, 'ptnet_EvaluationList') is None
+    assert owner not in getattr(partner, 'ptnet_EvaluationList')
 
 
 def test_assoc_toolInfoModel31_stub_double():
@@ -815,9 +815,9 @@ def test_assoc_toolspecifics32_stub_double():
     partner = ptnet_Label()
     setattr(partner, 'containerLabel', None)
     _safe_set(owner, 'ToolInfo33', partner)
-    assert getattr(partner, 'containerLabel') == owner
+    assert owner in getattr(partner, 'containerLabel')
     _safe_set(owner, 'ToolInfo33', None)
-    assert getattr(partner, 'containerLabel') is None
+    assert owner not in getattr(partner, 'containerLabel')
 
 
 def test_assoc_variable158_stub_double():

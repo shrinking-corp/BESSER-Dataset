@@ -1,4 +1,8 @@
 @startuml
+' model: timeBasedRouting
+' project: sampleModel
+' owner: User
+' description: New project
 class ActionStep {
 }
 class CaseItem {
@@ -66,7 +70,7 @@ CaseItem <|-- timeBasedRouting_TimeItem
 OccursModel <|-- timeBasedRouting_DailyOccursModel
 OccursModel <|-- timeBasedRouting_MonthlyOccursModel
 OccursModel <|-- timeBasedRouting_WeeklyOccursModel
-timeBasedRouting_OccursModel "0..1" --* "1..1" timeBasedRouting_TimeRange : occursModel3
-timeBasedRouting_TimeBasedRouting "1..1" *-- "0..9999" timeBasedRouting_TimeItem : times1
-DynamicValue "0..1" --* "1..1" timeBasedRouting_TimeBasedRouting : value0
+timeBasedRouting_OccursModel "timeBasedRouting_TimeRange 0..1" --* "timeBasedRouting_OccursModel 1..1" timeBasedRouting_TimeRange : occursModel3
+timeBasedRouting_TimeBasedRouting "timeBasedRouting_TimeItem 1..1" *-- "timeBasedRouting_TimeBasedRouting2 0..9999" timeBasedRouting_TimeItem : times1
+DynamicValue "timeBasedRouting_TimeBasedRouting 0..1" --* "DynamicValue 1..1" timeBasedRouting_TimeBasedRouting : value0
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: rules_core
+' project: sampleModel
+' owner: User
+' description: New project
 class BinaryExp {
 }
 class Expression {
@@ -46,10 +50,10 @@ BinaryExp <|-- rules_core_Plus
 Expression <|-- rules_core_BinaryExp
 Expression <|-- rules_core_Constant
 Expression <|-- rules_core_If
-rules_core_Expression "1..1" --* "1..1" rules_core_Rule : condition0
-rules_core_Expression "0..1" --* "1..1" rules_core_If : condition6
-rules_core_Expression "0..1" --* "1..1" rules_core_If : elsePart11
-rules_core_BinaryExp "1..1" *-- "1..1" rules_core_Expression : lhs3
-rules_core_BinaryExp "1..1" *-- "1..1" rules_core_Expression : rhs1
-rules_core_Expression "0..1" --* "1..1" rules_core_If : thenPart8
+rules_core_Expression "rules_core_Rule 1..1" --* "rules_core_Expression 1..1" rules_core_Rule : condition0
+rules_core_Expression "rules_core_If 0..1" --* "rules_core_Expression7 1..1" rules_core_If : condition6
+rules_core_Expression "rules_core_If12 0..1" --* "rules_core_Expression13 1..1" rules_core_If : elsePart11
+rules_core_BinaryExp "rules_core_Expression5 1..1" *-- "rules_core_BinaryExp4 1..1" rules_core_Expression : lhs3
+rules_core_BinaryExp "rules_core_Expression2 1..1" *-- "rules_core_BinaryExp 1..1" rules_core_Expression : rhs1
+rules_core_Expression "rules_core_If9 0..1" --* "rules_core_Expression10 1..1" rules_core_If : thenPart8
 @enduml

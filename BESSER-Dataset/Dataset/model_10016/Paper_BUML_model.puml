@@ -1,4 +1,8 @@
 @startuml
+' model: Paper
+' project: sampleModel
+' owner: User
+' description: New project
 class Operation {
 }
 class Paper_Execute {
@@ -49,26 +53,26 @@ enum Sex {
 Operation <|-- Paper_Execute
 Operation <|-- Paper_Read
 Operation <|-- Paper_Write
-Paper_Location "0..9999" -- "1..1" Paper_Role : AssignLoc8
-Paper_Role "1..1" -- "0..9999" Paper_User : AssignUser6
-Paper_Role "0..9999" -- "1..1" Paper_User : AssignedRoles1
-Paper_Location "1..1" -- "0..9999" Paper_Role : LocAssign15
-Paper_Location "1..1" -- "0..9999" Paper_Object : LocObj17
-Paper_Location "1..1" -- "0..9999" Paper_User : LocUser13
-Paper_Location "1..1" -- "1..1" Paper_Object : ObjLoc31
-Paper_Location "1..1" -- "1..1" Paper_Permission : ObjLocPerm29
-Paper_Object "1..1" -- "0..9999" Paper_Permission : ObjPerm33
-Paper_Operation "1..1" -- "0..9999" Paper_Permission : OperPerm35
-Paper_Object "1..1" -- "1..1" Paper_Permission : PermObj23
-Paper_Location "1..1" -- "0..9999" Paper_Permission : PermObjLoc20
-Paper_Operation "1..1" -- "1..1" Paper_Permission : PermOper22
-Paper_Permission "1..1" -- "1..1" Paper_Role : PermRole25
-Paper_Location "1..1" -- "0..9999" Paper_Permission : PermRoleLoc18
-Paper_Location "1..1" -- "1..1" Paper_Permission : RoleLocPerm27
-Paper_Permission "0..9999" -- "1..1" Paper_Role : RolePerm12
-Paper_Role "1..1" -- "0..9999" Paper_Session : RoleSess10
-Paper_Role "0..9999" -- "1..1" Paper_Session : SessRole3
-Paper_Session "1..1" -- "1..1" Paper_User : SessUser5
-Paper_Location "1..1" -- "1..1" Paper_User : UserLoc2
-Paper_Session "0..9999" -- "1..1" Paper_User : UserSess0
+Paper_Location "LocAssign 0..9999" -- "Location9 1..1" Paper_Role : AssignLoc8
+Paper_Role "User7 1..1" -- "AssignedRoles 0..9999" Paper_User : AssignUser6
+Paper_Role "AssignUser 0..9999" -- "Role 1..1" Paper_User : AssignedRoles1
+Paper_Location "Role16 1..1" -- "AssignLoc 0..9999" Paper_Role : LocAssign15
+Paper_Location "Object 1..1" -- "ObjLoc 0..9999" Paper_Object : LocObj17
+Paper_Location "User14 1..1" -- "UserLoc 0..9999" Paper_User : LocUser13
+Paper_Location "LocObj 1..1" -- "Location32 1..1" Paper_Object : ObjLoc31
+Paper_Location "PermObjLoc 1..1" -- "Location30 1..1" Paper_Permission : ObjLocPerm29
+Paper_Object "Permission34 1..1" -- "PermObj 0..9999" Paper_Permission : ObjPerm33
+Paper_Operation "Permission36 1..1" -- "PermOper 0..9999" Paper_Permission : OperPerm35
+Paper_Object "ObjPerm 1..1" -- "Object24 1..1" Paper_Permission : PermObj23
+Paper_Location "Permission21 1..1" -- "ObjLocPerm 0..9999" Paper_Permission : PermObjLoc20
+Paper_Operation "OperPerm 1..1" -- "Operation 1..1" Paper_Permission : PermOper22
+Paper_Permission "Role26 1..1" -- "RolePerm 1..1" Paper_Role : PermRole25
+Paper_Location "Permission19 1..1" -- "RoleLocPerm 0..9999" Paper_Permission : PermRoleLoc18
+Paper_Location "PermRoleLoc 1..1" -- "Location28 1..1" Paper_Permission : RoleLocPerm27
+Paper_Permission "PermRole 0..9999" -- "Permission 1..1" Paper_Role : RolePerm12
+Paper_Role "Session11 1..1" -- "SessRole 0..9999" Paper_Session : RoleSess10
+Paper_Role "RoleSess 0..9999" -- "Role4 1..1" Paper_Session : SessRole3
+Paper_Session "User 1..1" -- "UserSess 1..1" Paper_User : SessUser5
+Paper_Location "LocUser 1..1" -- "Location 1..1" Paper_User : UserLoc2
+Paper_Session "SessUser 0..9999" -- "Session 1..1" Paper_User : UserSess0
 @enduml

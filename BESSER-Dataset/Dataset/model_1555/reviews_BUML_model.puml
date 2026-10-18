@@ -1,4 +1,8 @@
 @startuml
+' model: reviews
+' project: sampleModel
+' owner: User
+' description: New project
 class Change {
 }
 class CommentContainer {
@@ -117,41 +121,41 @@ Location <|-- reviews_LineLocation
 ReviewItem <|-- reviews_FileItem
 ReviewItem <|-- reviews_FileVersion
 ReviewItem <|-- reviews_ReviewItemSet
-reviews_Repository "1..1" -- "1..1" reviews_User : account41
-reviews_ReviewItem "1..1" -- "1..1" reviews_User : addedBy32
-reviews_Comment "0..9999" -- "1..1" reviews_CommentContainer : allComments0
-reviews_Comment "0..9999" -- "1..1" reviews_CommentContainer : allDrafts2
-reviews_ApprovalType "0..9999" --* "1..1" reviews_Repository : approvalTypes40
-reviews_ApprovalValueMap "0..9999" --* "1..1" reviews_ReviewerEntry : approvals66
-reviews_Comment "1..1" -- "1..1" reviews_User : author20
-reviews_FileItem "1..1" *-- "0..1" reviews_FileVersion : base48
-reviews_RequirementEntry "1..1" -- "0..1" reviews_User : by71
-reviews_Change "0..9999" --* "1..1" reviews_Review : children13
-reviews_Comment "0..9999" --* "1..1" reviews_CommentContainer : comments1
-reviews_ReviewItem "1..1" -- "1..1" reviews_User : committedBy34
-reviews_Comment "0..9999" --* "1..1" reviews_CommentContainer : drafts5
-reviews_FileItem "0..1" -- "1..1" reviews_FileVersion : file58
-reviews_Comment "1..1" -- "0..1" reviews_CommentContainer : item31
-reviews_FileItem "0..9999" --* "1..1" reviews_ReviewItemSet : items54
-reviews_User "1..1" -- "1..1" reviews_UserApprovalsMap : key61
-reviews_ApprovalType "1..1" -- "1..1" reviews_ApprovalValueMap : key68
-reviews_ApprovalType "1..1" -- "1..1" reviews_ReviewRequirementsMap : key73
-reviews_Comment "1..1" *-- "0..9999" reviews_Location : locations26
-reviews_Change "1..1" -- "0..1" reviews_User : owner8
-reviews_Review "1..1" -- "1..1" reviews_ReviewItemSet : parentReview55
-reviews_Change "0..9999" --* "1..1" reviews_Review : parents11
-reviews_LineLocation "1..1" *-- "0..9999" reviews_LineRange : ranges57
-reviews_Comment "0..9999" -- "1..1" reviews_Comment : replies24
-reviews_Repository "1..1" -- "1..1" reviews_Review : repository10
-reviews_Review "1..1" *-- "0..9999" reviews_ReviewRequirementsMap : requirements18
-reviews_Comment "1..1" -- "1..1" reviews_Review : review28
-reviews_Review "1..1" -- "1..1" reviews_ReviewItem : review37
-reviews_Review "1..1" *-- "0..9999" reviews_UserApprovalsMap : reviewerApprovals16
-reviews_Repository "1..1" *-- "0..9999" reviews_Review : reviews44
-reviews_FileItem "1..1" -- "0..1" reviews_ReviewItemSet : set52
-reviews_Review "1..1" *-- "0..9999" reviews_ReviewItemSet : sets9
-reviews_FileItem "1..1" *-- "0..1" reviews_FileVersion : target49
-reviews_Repository "1..1" *-- "0..9999" reviews_User : users45
-reviews_ReviewerEntry "1..1" --* "1..1" reviews_UserApprovalsMap : value64
-reviews_RequirementEntry "1..1" --* "1..1" reviews_ReviewRequirementsMap : value76
+reviews_Repository "reviews_User43 1..1" -- "reviews_Repository42 1..1" reviews_User : account41
+reviews_ReviewItem "reviews_User33 1..1" -- "reviews_ReviewItem 1..1" reviews_User : addedBy32
+reviews_Comment "reviews_CommentContainer 0..9999" -- "reviews_Comment 1..1" reviews_CommentContainer : allComments0
+reviews_Comment "reviews_CommentContainer3 0..9999" -- "reviews_Comment4 1..1" reviews_CommentContainer : allDrafts2
+reviews_ApprovalType "reviews_Repository 0..9999" --* "reviews_ApprovalType 1..1" reviews_Repository : approvalTypes40
+reviews_ApprovalValueMap "reviews_ReviewerEntry67 0..9999" --* "reviews_ApprovalValueMap 1..1" reviews_ReviewerEntry : approvals66
+reviews_Comment "reviews_User22 1..1" -- "reviews_Comment21 1..1" reviews_User : author20
+reviews_FileItem "reviews_FileVersion 1..1" *-- "reviews_FileItem 0..1" reviews_FileVersion : base48
+reviews_RequirementEntry "reviews_User72 1..1" -- "reviews_RequirementEntry 0..1" reviews_User : by71
+reviews_Change "reviews_Review14 0..9999" --* "reviews_Change15 1..1" reviews_Review : children13
+reviews_Comment "item 0..9999" --* "Comment 1..1" reviews_CommentContainer : comments1
+reviews_ReviewItem "reviews_User36 1..1" -- "reviews_ReviewItem35 1..1" reviews_User : committedBy34
+reviews_Comment "reviews_CommentContainer6 0..9999" --* "reviews_Comment7 1..1" reviews_CommentContainer : drafts5
+reviews_FileItem "reviews_FileVersion59 0..1" -- "reviews_FileItem60 1..1" reviews_FileVersion : file58
+reviews_Comment "CommentContainer 1..1" -- "comments 0..1" reviews_CommentContainer : item31
+reviews_FileItem "set 0..9999" --* "FileItem 1..1" reviews_ReviewItemSet : items54
+reviews_User "reviews_UserApprovalsMap62 1..1" -- "reviews_User63 1..1" reviews_UserApprovalsMap : key61
+reviews_ApprovalType "reviews_ApprovalValueMap69 1..1" -- "reviews_ApprovalType70 1..1" reviews_ApprovalValueMap : key68
+reviews_ApprovalType "reviews_ReviewRequirementsMap74 1..1" -- "reviews_ApprovalType75 1..1" reviews_ReviewRequirementsMap : key73
+reviews_Comment "reviews_Location 1..1" *-- "reviews_Comment27 0..9999" reviews_Location : locations26
+reviews_Change "reviews_User 1..1" -- "reviews_Change 0..1" reviews_User : owner8
+reviews_Review "sets 1..1" -- "Review56 1..1" reviews_ReviewItemSet : parentReview55
+reviews_Change "reviews_Review 0..9999" --* "reviews_Change12 1..1" reviews_Review : parents11
+reviews_LineLocation "reviews_LineRange 1..1" *-- "reviews_LineLocation 0..9999" reviews_LineRange : ranges57
+reviews_Comment "reviews_Comment23 0..9999" -- "reviews_Comment25 1..1" reviews_Comment : replies24
+reviews_Repository "reviews 1..1" -- "Repository 1..1" reviews_Review : repository10
+reviews_Review "reviews_ReviewRequirementsMap 1..1" *-- "reviews_Review19 0..9999" reviews_ReviewRequirementsMap : requirements18
+reviews_Comment "reviews_Review30 1..1" -- "reviews_Comment29 1..1" reviews_Review : review28
+reviews_Review "reviews_ReviewItem38 1..1" -- "reviews_Review39 1..1" reviews_ReviewItem : review37
+reviews_Review "reviews_UserApprovalsMap 1..1" *-- "reviews_Review17 0..9999" reviews_UserApprovalsMap : reviewerApprovals16
+reviews_Repository "Review 1..1" *-- "repository 0..9999" reviews_Review : reviews44
+reviews_FileItem "ReviewItemSet53 1..1" -- "items 0..1" reviews_ReviewItemSet : set52
+reviews_Review "ReviewItemSet 1..1" *-- "parentReview 0..9999" reviews_ReviewItemSet : sets9
+reviews_FileItem "reviews_FileVersion51 1..1" *-- "reviews_FileItem50 0..1" reviews_FileVersion : target49
+reviews_Repository "reviews_User47 1..1" *-- "reviews_Repository46 0..9999" reviews_User : users45
+reviews_ReviewerEntry "reviews_UserApprovalsMap65 1..1" --* "reviews_ReviewerEntry 1..1" reviews_UserApprovalsMap : value64
+reviews_RequirementEntry "reviews_ReviewRequirementsMap77 1..1" --* "reviews_RequirementEntry78 1..1" reviews_ReviewRequirementsMap : value76
 @enduml

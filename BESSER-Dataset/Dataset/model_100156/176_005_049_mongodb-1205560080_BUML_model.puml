@@ -1,4 +1,8 @@
 @startuml
+' model: mongodb
+' project: sampleModel
+' owner: User
+' description: New project
 class IValue {
 }
 enum Type {
@@ -39,10 +43,10 @@ class mongodb_ValueList {
 IValue <|-- mongodb_SubDocument
 IValue <|-- mongodb_Value
 IValue <|-- mongodb_ValueList
-mongodb_Collection "0..9999" --* "1..1" mongodb_Database : collections0
-mongodb_Collection "1..1" *-- "0..9999" mongodb_Document : documents1
-mongodb_Document "1..1" *-- "1..9999" mongodb_Field : fields3
-mongodb_Field "1..9999" -- "1..1" mongodb_SubDocument : fields9
-mongodb_Field "1..1" -- "1..1" mongodb_IValue : value5
-mongodb_IValue "1..9999" -- "1..1" mongodb_ValueList : values7
+mongodb_Collection "mongodb_Database 0..9999" --* "mongodb_Collection 1..1" mongodb_Database : collections0
+mongodb_Collection "mongodb_Document 1..1" *-- "mongodb_Collection2 0..9999" mongodb_Document : documents1
+mongodb_Document "mongodb_Field 1..1" *-- "mongodb_Document4 1..9999" mongodb_Field : fields3
+mongodb_Field "mongodb_SubDocument 1..9999" -- "mongodb_Field10 1..1" mongodb_SubDocument : fields9
+mongodb_Field "mongodb_IValue 1..1" -- "mongodb_Field6 1..1" mongodb_IValue : value5
+mongodb_IValue "mongodb_ValueList 1..9999" -- "mongodb_IValue8 1..1" mongodb_ValueList : values7
 @enduml

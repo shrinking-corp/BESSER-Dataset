@@ -1,4 +1,8 @@
 @startuml
+' model: model
+' project: sampleModel
+' owner: User
+' description: New project
 class Ball {
 }
 enum BallType {
@@ -65,21 +69,21 @@ class model_WicketBall {
 }
 Ball <|-- model_ExtraBall
 Ball <|-- model_WicketBall
-model_Player "1..1" -- "1..1" model_WicketBall : assists27
-model_Ball "0..9999" --* "1..1" model_Over : balls15
-model_Ball "0..9999" -- "1..1" model_Player : ballsFaced20
-model_Ball "1..1" -- "1..1" model_Player : batsman18
-model_Innings "1..1" -- "1..1" model_Team : battingSide4
-model_Over "1..1" -- "1..1" model_Player : bowler17
-model_Innings "1..1" -- "1..1" model_Team : bowlingSide7
-model_Innings "1..1" -- "1..1" model_Player : facingBat10
-model_Game "1..1" *-- "1..9999" model_Innings : innings0
-model_Innings "1..1" -- "1..1" model_Over : innings16
-model_Innings "1..1" -- "1..1" model_Player : nonFacingBat12
-model_Innings "1..1" *-- "0..9999" model_Over : overs3
-model_Over "0..9999" -- "1..1" model_Player : oversBowled21
-model_Player "1..1" -- "1..1" model_WicketBall : playerOut29
-model_Player "0..9999" --* "1..1" model_Team : players24
-model_Game "1..1" *-- "1..9999" model_Team : team1
-model_Player "1..1" -- "0..1" model_WicketBall : wicketball23
+model_Player "model_WicketBall 1..1" -- "model_Player28 1..1" model_WicketBall : assists27
+model_Ball "model_Over 0..9999" --* "model_Ball 1..1" model_Over : balls15
+model_Ball "batsman 0..9999" -- "Ball 1..1" model_Player : ballsFaced20
+model_Ball "Player19 1..1" -- "ballsFaced 1..1" model_Player : batsman18
+model_Innings "model_Team6 1..1" -- "model_Innings5 1..1" model_Team : battingSide4
+model_Over "Player 1..1" -- "oversBowled 1..1" model_Player : bowler17
+model_Innings "model_Team9 1..1" -- "model_Innings8 1..1" model_Team : bowlingSide7
+model_Innings "model_Player 1..1" -- "model_Innings11 1..1" model_Player : facingBat10
+model_Game "model_Innings 1..1" *-- "model_Game 1..9999" model_Innings : innings0
+model_Innings "overs 1..1" -- "Innings 1..1" model_Over : innings16
+model_Innings "model_Player14 1..1" -- "model_Innings13 1..1" model_Player : nonFacingBat12
+model_Innings "Over 1..1" *-- "innings 0..9999" model_Over : overs3
+model_Over "bowler 0..9999" -- "Over22 1..1" model_Player : oversBowled21
+model_Player "wicketball 1..1" -- "Player30 1..1" model_WicketBall : playerOut29
+model_Player "model_Team25 0..9999" --* "model_Player26 1..1" model_Team : players24
+model_Game "model_Team 1..1" *-- "model_Game2 1..9999" model_Team : team1
+model_Player "WicketBall 1..1" -- "playerOut 0..1" model_WicketBall : wicketball23
 @enduml

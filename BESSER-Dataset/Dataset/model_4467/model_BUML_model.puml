@@ -1,4 +1,8 @@
 @startuml
+' model: RobotProjectModel
+' project: sampleModel
+' owner: User
+' description: New project
 class Amount {
 }
 class Angle {
@@ -90,14 +94,14 @@ Instruction <|-- RobotProjectModel_TimedInstruction
 TimedInstruction <|-- RobotProjectModel_MoveStraight
 TimedInstruction <|-- RobotProjectModel_Turn
 TimedInstruction <|-- RobotProjectModel_Wait
-RobotProjectModel_Angle "1..1" --* "1..1" RobotProjectModel_Turn : angle3
-RobotProjectModel_Condition "1..1" --* "1..1" RobotProjectModel_If : condition7
-RobotProjectModel_Call "1..1" -- "1..1" RobotProjectModel_Function : destination5
-RobotProjectModel_Distance "0..1" --* "1..1" RobotProjectModel_MoveStraight : distance0
-RobotProjectModel_Duration "1..1" --* "1..1" RobotProjectModel_TimedInstruction : duration2
-RobotProjectModel_If "1..1" *-- "0..1" RobotProjectModel_InstructionBlock : falseBlock8
-RobotProjectModel_Function "1..1" *-- "0..1" RobotProjectModel_InstructionBlock : instructionBlock4
-RobotProjectModel_Instruction "0..9999" --* "1..1" RobotProjectModel_Robot : instructions1
-RobotProjectModel_Instruction "1..9999" --* "1..1" RobotProjectModel_InstructionBlock : instructions14
-RobotProjectModel_If "1..1" *-- "1..1" RobotProjectModel_InstructionBlock : trueBlock11
+RobotProjectModel_Angle "RobotProjectModel_Turn 1..1" --* "RobotProjectModel_Angle 1..1" RobotProjectModel_Turn : angle3
+RobotProjectModel_Condition "RobotProjectModel_If 1..1" --* "RobotProjectModel_Condition 1..1" RobotProjectModel_If : condition7
+RobotProjectModel_Call "RobotProjectModel_Function6 1..1" -- "RobotProjectModel_Call 1..1" RobotProjectModel_Function : destination5
+RobotProjectModel_Distance "RobotProjectModel_MoveStraight 0..1" --* "RobotProjectModel_Distance 1..1" RobotProjectModel_MoveStraight : distance0
+RobotProjectModel_Duration "RobotProjectModel_TimedInstruction 1..1" --* "RobotProjectModel_Duration 1..1" RobotProjectModel_TimedInstruction : duration2
+RobotProjectModel_If "RobotProjectModel_InstructionBlock10 1..1" *-- "RobotProjectModel_If9 0..1" RobotProjectModel_InstructionBlock : falseBlock8
+RobotProjectModel_Function "RobotProjectModel_InstructionBlock 1..1" *-- "RobotProjectModel_Function 0..1" RobotProjectModel_InstructionBlock : instructionBlock4
+RobotProjectModel_Instruction "RobotProjectModel_Robot 0..9999" --* "RobotProjectModel_Instruction 1..1" RobotProjectModel_Robot : instructions1
+RobotProjectModel_Instruction "RobotProjectModel_InstructionBlock15 1..9999" --* "RobotProjectModel_Instruction16 1..1" RobotProjectModel_InstructionBlock : instructions14
+RobotProjectModel_If "RobotProjectModel_InstructionBlock13 1..1" *-- "RobotProjectModel_If12 1..1" RobotProjectModel_InstructionBlock : trueBlock11
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: family
+' project: sampleModel
+' owner: User
+' description: New project
 class FNamedElement {
 }
 class Person {
@@ -27,14 +31,14 @@ FNamedElement <|-- family_Person
 Person <|-- family_Child
 Person <|-- family_Father
 Person <|-- family_Mother
-family_Child "0..9999" -- "1..1" family_Family : children5
-family_Child "0..9999" -- "1..1" family_Father : children7
-family_Child "0..9999" -- "1..1" family_Mother : children9
-family_Family "1..1" -- "0..1" family_Father : father1
-family_Child "1..1" -- "0..1" family_Father : father14
-family_Father "0..1" -- "1..1" family_Mother : husband11
-family_Family "1..1" *-- "1..9999" family_Person : members0
-family_Child "1..1" -- "0..1" family_Mother : mother12
-family_Family "1..1" -- "0..1" family_Mother : mother3
-family_Father "1..1" -- "0..1" family_Mother : wife8
+family_Child "family_Family6 0..9999" -- "family_Child 1..1" family_Family : children5
+family_Child "father 0..9999" -- "Child 1..1" family_Father : children7
+family_Child "mother 0..9999" -- "Child10 1..1" family_Mother : children9
+family_Family "family_Father 1..1" -- "family_Family2 0..1" family_Father : father1
+family_Child "Father16 1..1" -- "children15 0..1" family_Father : father14
+family_Father "wife 0..1" -- "Father 1..1" family_Mother : husband11
+family_Family "family_Person 1..1" *-- "family_Family 1..9999" family_Person : members0
+family_Child "Mother13 1..1" -- "children 0..1" family_Mother : mother12
+family_Family "family_Mother 1..1" -- "family_Family4 0..1" family_Mother : mother3
+family_Father "Mother 1..1" -- "husband 0..1" family_Mother : wife8
 @enduml

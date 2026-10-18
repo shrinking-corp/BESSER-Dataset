@@ -1,4 +1,8 @@
 @startuml
+' model: remember
+' project: sampleModel
+' owner: User
+' description: New project
 class Node {
 }
 class remember_Customer {
@@ -57,26 +61,26 @@ class remember_Years {
 }
 Node <|-- remember_Folder
 Node <|-- remember_Task
-remember_Folder "1..1" -- "0..9999" remember_Task : Tasks0
-remember_Customer "0..1" -- "1..1" remember_Node : customer11
-remember_Customer "1..1" -- "1..1" remember_Project : customer19
-remember_Customer "0..9999" -- "1..1" remember_Customers : customers23
-remember_Folder "1..1" -- "0..9999" remember_Folder : folders2
-remember_InvoiceSpecification "1..1" -- "1..1" remember_TimeSpent : invoiceSpecification28
-remember_InvoiceSpecification "0..9999" -- "1..1" remember_Year : invoiceSpecifications30
-remember_KeyIdPair "0..9999" --* "1..1" remember_KeyManager : keyIdPairs14
-remember_Customer "1..1" -- "0..9999" remember_Node : nodes17
-remember_Node "0..9999" -- "1..1" remember_Project : nodes21
-remember_Folder "1..1" -- "0..1" remember_Folder : parent5
-remember_Folder "0..1" -- "1..1" remember_Task : parent8
-remember_Node "1..1" -- "0..1" remember_Project : project12
-remember_Project "0..1" -- "1..1" remember_TimeSpent : project25
-remember_Customer "1..1" -- "0..9999" remember_Project : projects15
-remember_Task "1..1" -- "1..1" remember_TimeSpent : task26
-remember_Task "1..1" -- "0..9999" remember_TimeSpent : timeSpent10
-remember_InvoiceSpecification "1..1" -- "0..9999" remember_TimeSpent : timeSpent34
-remember_Customers "0..1" -- "1..1" remember_Folder : workspace7
-remember_InvoiceSpecification "1..1" -- "1..1" remember_Year : year36
-remember_Year "0..9999" -- "1..1" remember_Years : year37
-remember_Year "1..1" -- "1..1" remember_Years : years32
+remember_Folder "Task 1..1" -- "parent 0..9999" remember_Task : Tasks0
+remember_Customer "nodes 0..1" -- "Customer 1..1" remember_Node : customer11
+remember_Customer "projects 1..1" -- "Customer20 1..1" remember_Project : customer19
+remember_Customer "remember_Customers24 0..9999" -- "remember_Customer 1..1" remember_Customers : customers23
+remember_Folder "Folder 1..1" -- "parent3 0..9999" remember_Folder : folders2
+remember_InvoiceSpecification "timeSpent29 1..1" -- "InvoiceSpecification 1..1" remember_TimeSpent : invoiceSpecification28
+remember_InvoiceSpecification "year 0..9999" -- "InvoiceSpecification31 1..1" remember_Year : invoiceSpecifications30
+remember_KeyIdPair "remember_KeyManager 0..9999" --* "remember_KeyIdPair 1..1" remember_KeyManager : keyIdPairs14
+remember_Customer "Node 1..1" -- "customer18 0..9999" remember_Node : nodes17
+remember_Node "project 0..9999" -- "Node22 1..1" remember_Project : nodes21
+remember_Folder "Folder6 1..1" -- "folders 0..1" remember_Folder : parent5
+remember_Folder "Tasks 0..1" -- "Folder9 1..1" remember_Task : parent8
+remember_Node "Project 1..1" -- "nodes13 0..1" remember_Project : project12
+remember_Project "remember_TimeSpent 0..1" -- "remember_Project 1..1" remember_TimeSpent : project25
+remember_Customer "Project16 1..1" -- "customer 0..9999" remember_Project : projects15
+remember_Task "timeSpent 1..1" -- "Task27 1..1" remember_TimeSpent : task26
+remember_Task "TimeSpent 1..1" -- "task 0..9999" remember_TimeSpent : timeSpent10
+remember_InvoiceSpecification "TimeSpent35 1..1" -- "invoiceSpecification 0..9999" remember_TimeSpent : timeSpent34
+remember_Customers "remember_Folder 0..1" -- "remember_Customers 1..1" remember_Folder : workspace7
+remember_InvoiceSpecification "Year 1..1" -- "invoiceSpecifications 1..1" remember_Year : year36
+remember_Year "years 0..9999" -- "Year38 1..1" remember_Years : year37
+remember_Year "Years 1..1" -- "year33 1..1" remember_Years : years32
 @enduml

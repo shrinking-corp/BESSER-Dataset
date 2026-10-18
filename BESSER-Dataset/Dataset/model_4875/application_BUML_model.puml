@@ -1,4 +1,8 @@
 @startuml
+' model: application
+' project: sampleModel
+' owner: User
+' description: New project
 class ConfigurableElement {
 }
 class Interface {
@@ -201,25 +205,25 @@ Property <|-- application_OCLRestrictedProperty
 Security <|-- application_ApplicationKeyConfig
 Security <|-- application_OAuthConfig
 Source <|-- application_Mashup
-application_OAuthAdmin "0..9999" --* "1..1" application_OAuthConfig : admins28
-application_MashupAdmin "0..9999" --* "1..1" application_MashupContainer : allMashupAdmins12
-application_OAuthClientConfig "1..1" *-- "0..1" application_OAuthClientScope : clientScope30
-application_OAuthClientConfig "0..9999" --* "1..1" application_OAuthConfig : clients27
-application_Mashup "0..9999" -- "1..1" application_MashupAdmin : configurableMashups32
-application_ConfigurableElement "1..1" *-- "1..1" application_Configuration : configuration34
-application_DataSet "0..1" -- "1..1" application_Source : dataSet1
-application_Mashup "0..9999" --* "1..1" application_MashupContainer : defaultMashups14
-application_Interface "0..1" -- "1..1" application_Security : interface25
-application_Interface "0..9999" --* "1..1" application_MashupContainer : interfaceConfigurations20
-application_Interface "0..9999" --* "1..1" application_Mashup : interfaces6
-application_MappingRule "0..9999" --* "1..1" application_Mashup : mappingRules4
-application_Interface "1..1" -- "0..1" application_Mashup : mashup23
-application_Mashup "0..1" -- "1..1" application_Source : mashup3
-application_Mashup "1..1" -- "0..9999" application_MashupAdmin : mashupAdmins8
-application_Mashup "0..9999" --* "1..1" application_MashupContainer : mashups10
-application_Persistency "0..1" --* "1..1" application_Source : persistency0
-application_Configuration "1..1" *-- "0..9999" application_Property : properties9
-application_Interface "1..1" *-- "0..1" application_Security : security22
-application_Mashup "0..9999" --* "1..1" application_MashupContainer : sourceConfigurations17
-application_Mashup "1..1" *-- "0..9999" application_Source : sources5
+application_OAuthAdmin "application_OAuthConfig29 0..9999" --* "application_OAuthAdmin 1..1" application_OAuthConfig : admins28
+application_MashupAdmin "application_MashupContainer13 0..9999" --* "application_MashupAdmin 1..1" application_MashupContainer : allMashupAdmins12
+application_OAuthClientConfig "application_OAuthClientScope 1..1" *-- "application_OAuthClientConfig31 0..1" application_OAuthClientScope : clientScope30
+application_OAuthClientConfig "application_OAuthConfig 0..9999" --* "application_OAuthClientConfig 1..1" application_OAuthConfig : clients27
+application_Mashup "mashupAdmins 0..9999" -- "Mashup33 1..1" application_MashupAdmin : configurableMashups32
+application_ConfigurableElement "application_Configuration35 1..1" *-- "application_ConfigurableElement 1..1" application_Configuration : configuration34
+application_DataSet "application_Source2 0..1" -- "application_DataSet 1..1" application_Source : dataSet1
+application_Mashup "application_MashupContainer15 0..9999" --* "application_Mashup16 1..1" application_MashupContainer : defaultMashups14
+application_Interface "security 0..1" -- "Interface26 1..1" application_Security : interface25
+application_Interface "application_MashupContainer21 0..9999" --* "application_Interface 1..1" application_MashupContainer : interfaceConfigurations20
+application_Interface "mashup7 0..9999" --* "Interface 1..1" application_Mashup : interfaces6
+application_MappingRule "application_Mashup 0..9999" --* "application_MappingRule 1..1" application_Mashup : mappingRules4
+application_Interface "Mashup24 1..1" -- "interfaces 0..1" application_Mashup : mashup23
+application_Mashup "sources 0..1" -- "Mashup 1..1" application_Source : mashup3
+application_Mashup "MashupAdmin 1..1" -- "configurableMashups 0..9999" application_MashupAdmin : mashupAdmins8
+application_Mashup "application_MashupContainer 0..9999" --* "application_Mashup11 1..1" application_MashupContainer : mashups10
+application_Persistency "application_Source 0..1" --* "application_Persistency 1..1" application_Source : persistency0
+application_Configuration "application_Property 1..1" *-- "application_Configuration 0..9999" application_Property : properties9
+application_Interface "Security 1..1" *-- "interface 0..1" application_Security : security22
+application_Mashup "application_MashupContainer18 0..9999" --* "application_Mashup19 1..1" application_MashupContainer : sourceConfigurations17
+application_Mashup "Source 1..1" *-- "mashup 0..9999" application_Source : sources5
 @enduml

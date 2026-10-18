@@ -1,4 +1,8 @@
 @startuml
+' model: school
+' project: sampleModel
+' owner: User
+' description: New project
 class school_ClassGroup {
   + name : str
 }
@@ -23,12 +27,12 @@ class school_Teacher {
 class school_store {
   + lastIn : str
 }
-school_ClassGroup "0..9999" --* "1..1" school_SchoolYear : ecole10
-school_ClassGroup "1..1" -- "0..9999" school_Student : eleves0
-school_SchoolYear "1..1" *-- "0..9999" school_Student : eleves12
-school_ClassLevel "0..9999" --* "1..1" school_SchoolYear : niveau15
-school_ClassGroup "1..1" -- "1..1" school_ClassLevel : niveau3
-school_ClassGroup "1..1" -- "0..9999" school_Teacher : prof1
-school_Room "0..1" -- "1..1" school_Teacher : room7
-school_ClassGroup "1..1" -- "0..1" school_Room : salle5
+school_ClassGroup "school_SchoolYear 0..9999" --* "school_ClassGroup11 1..1" school_SchoolYear : ecole10
+school_ClassGroup "school_Student 1..1" -- "school_ClassGroup 0..9999" school_Student : eleves0
+school_SchoolYear "school_Student14 1..1" *-- "school_SchoolYear13 0..9999" school_Student : eleves12
+school_ClassLevel "school_SchoolYear16 0..9999" --* "school_ClassLevel17 1..1" school_SchoolYear : niveau15
+school_ClassGroup "school_ClassLevel 1..1" -- "school_ClassGroup4 1..1" school_ClassLevel : niveau3
+school_ClassGroup "school_Teacher 1..1" -- "school_ClassGroup2 0..9999" school_Teacher : prof1
+school_Room "school_Teacher8 0..1" -- "school_Room9 1..1" school_Teacher : room7
+school_ClassGroup "school_Room 1..1" -- "school_ClassGroup6 0..1" school_Room : salle5
 @enduml

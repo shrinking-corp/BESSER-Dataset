@@ -1,4 +1,8 @@
 @startuml
+' model: data
+' project: sampleModel
+' owner: User
+' description: New project
 class Attachment {
 }
 class Classification {
@@ -418,61 +422,61 @@ MetaInformation <|-- data_WebSite
 Ranking <|-- data_StarRanking
 Ranking <|-- data_ThumbRanking
 Ranking <|-- data_ViewRanking
-data_Content "1..1" -- "0..1" data_Person : author29
-data_Content "0..9999" -- "1..1" data_Person : authored3
-data_Binary "0..9999" -- "1..1" data_InformationObject : binaries20
-data_Category "1..1" -- "0..9999" data_Category : categories63
-data_Category "0..9999" -- "1..1" data_InformationObject : categories9
-data_Category "1..1" -- "0..9999" data_InformationObject : categorized57
-data_Connection "0..9999" -- "1..1" data_InformationObject : connectedBy18
-data_Connection "0..9999" -- "1..1" data_InformationObject : connectedTo17
-data_Content "1..1" -- "0..9999" data_Content : contents26
-data_Content "0..9999" -- "1..1" data_Person : contributed4
-data_Content "1..1" -- "0..9999" data_Person : contributors28
-data_DataSet "0..1" -- "1..1" data_Item : dataSet42
-data_Item "1..1" -- "0..9999" data_Item : deleteOnDelete46
-data_Item "1..1" -- "0..9999" data_Item : deletedIfDeleted49
-data_Content "1..1" -- "0..9999" data_Document : documents31
-data_Item "1..1" -- "0..9999" data_Item : forcedDeleteOnDelete52
-data_Item "1..1" -- "0..9999" data_Item : forcedDeletedIfDeleted55
-data_Connection "1..1" -- "0..1" data_InformationObject : from_92
-data_Identifier "1..1" -- "1..1" data_Item : identified106
-data_Identifier "0..9999" -- "1..1" data_Item : identifiedBy44
-data_Image "0..9999" -- "1..1" data_InformationObject : images11
-data_IndoorLocation "1..1" -- "0..9999" data_IndoorLocation : indoorLocations104
-data_IndoorLocation "0..9999" -- "1..1" data_Location : indoorLocations83
-data_InformationObject "0..9999" -- "1..1" data_MetaInformation : informationObjects96
-data_DataSet "1..1" *-- "0..9999" data_Item : items38
-data_DataSet "1..1" *-- "0..9999" data_DeletedItem : itemsDeleted40
-data_Organisation "1..1" -- "0..1" data_Person : leader72
-data_Organisation "0..9999" -- "1..1" data_Person : leaderOf0
-data_IndoorLocation "1..1" -- "0..1" data_Location : location98
-data_Category "1..1" -- "0..9999" data_InformationObject : mainCategorized65
-data_Category "0..1" -- "1..1" data_InformationObject : mainCategory22
-data_InformationObject "1..1" -- "0..9999" data_MetaInformation : metaInformations24
-data_Item "0..9999" -- "1..1" data_MetaTag : metaTagged79
-data_Item "1..1" -- "0..9999" data_MetaTag : metaTags43
-data_Organisation "1..1" -- "0..9999" data_Organisation : organisations77
-data_Category "1..1" -- "0..1" data_Category : parentCategory59
-data_Content "1..1" -- "0..1" data_Content : parentContent33
-data_IndoorLocation "1..1" -- "0..1" data_IndoorLocation : parentIndoorLocation100
-data_Organisation "1..1" -- "0..1" data_Organisation : parentOrganisation70
-data_Organisation "1..1" -- "0..9999" data_Person : participants74
-data_Organisation "0..9999" -- "1..1" data_Person : participates1
-data_Person "1..1" -- "0..9999" data_Person : persons7
-data_Person "1..1" -- "0..9999" data_Ranking : ranked8
-data_InformationObject "0..1" -- "1..1" data_StarRanking : rankedInformationObject84
-data_InformationObject "0..1" -- "1..1" data_ViewRanking : rankedInformationObject86
-data_InformationObject "0..1" -- "1..1" data_ThumbRanking : rankedInformationObject88
-data_Person "0..1" -- "1..1" data_Ranking : ranker81
-data_DataSet "1..1" -- "0..1" data_Mashup : setUp39
-data_InformationObject "1..1" -- "0..9999" data_StarRanking : starRankings12
-data_InformationObject "0..9999" -- "1..1" data_Tag : tagged67
-data_InformationObject "1..1" -- "0..9999" data_Tag : tags10
-data_InformationObject "1..1" -- "0..9999" data_ThumbRanking : thumbRankings13
-data_Connection "1..1" -- "0..1" data_InformationObject : to94
-data_Content "1..1" -- "0..9999" data_Transformation : transformations35
-data_Content "0..9999" -- "1..1" data_Transformation : transformed90
-data_Content "1..1" -- "0..9999" data_Video : videos36
-data_InformationObject "1..1" -- "0..9999" data_ViewRanking : viewRankings15
+data_Content "Person30 1..1" -- "authored 0..1" data_Person : author29
+data_Content "author 0..9999" -- "Content 1..1" data_Person : authored3
+data_Binary "data_InformationObject21 0..9999" -- "data_Binary 1..1" data_InformationObject : binaries20
+data_Category "Category64 1..1" -- "parentCategory 0..9999" data_Category : categories63
+data_Category "categorized 0..9999" -- "Category 1..1" data_InformationObject : categories9
+data_Category "InformationObject 1..1" -- "categories 0..9999" data_InformationObject : categorized57
+data_Connection "to 0..9999" -- "Connection19 1..1" data_InformationObject : connectedBy18
+data_Connection "from_ 0..9999" -- "Connection 1..1" data_InformationObject : connectedTo17
+data_Content "Content27 1..1" -- "parentContent 0..9999" data_Content : contents26
+data_Content "contributors 0..9999" -- "Content5 1..1" data_Person : contributed4
+data_Content "Person 1..1" -- "contributed 0..9999" data_Person : contributors28
+data_DataSet "items 0..1" -- "DataSet 1..1" data_Item : dataSet42
+data_Item "Item47 1..1" -- "deletedIfDeleted 0..9999" data_Item : deleteOnDelete46
+data_Item "Item50 1..1" -- "deleteOnDelete 0..9999" data_Item : deletedIfDeleted49
+data_Content "data_Document 1..1" -- "data_Content 0..9999" data_Document : documents31
+data_Item "Item53 1..1" -- "forcedDeletedIfDeleted 0..9999" data_Item : forcedDeleteOnDelete52
+data_Item "Item56 1..1" -- "forcedDeleteOnDelete 0..9999" data_Item : forcedDeletedIfDeleted55
+data_Connection "InformationObject93 1..1" -- "connectedTo 0..1" data_InformationObject : from_92
+data_Identifier "Item107 1..1" -- "identifiedBy 1..1" data_Item : identified106
+data_Identifier "identified 0..9999" -- "Identifier 1..1" data_Item : identifiedBy44
+data_Image "data_InformationObject 0..9999" -- "data_Image 1..1" data_InformationObject : images11
+data_IndoorLocation "IndoorLocation105 1..1" -- "parentIndoorLocation 0..9999" data_IndoorLocation : indoorLocations104
+data_IndoorLocation "location 0..9999" -- "IndoorLocation 1..1" data_Location : indoorLocations83
+data_InformationObject "metaInformations 0..9999" -- "InformationObject97 1..1" data_MetaInformation : informationObjects96
+data_DataSet "Item 1..1" *-- "dataSet 0..9999" data_Item : items38
+data_DataSet "data_DeletedItem 1..1" *-- "data_DataSet41 0..9999" data_DeletedItem : itemsDeleted40
+data_Organisation "Person73 1..1" -- "leaderOf 0..1" data_Person : leader72
+data_Organisation "leader 0..9999" -- "Organisation 1..1" data_Person : leaderOf0
+data_IndoorLocation "Location 1..1" -- "indoorLocations 0..1" data_Location : location98
+data_Category "InformationObject66 1..1" -- "mainCategory 0..9999" data_InformationObject : mainCategorized65
+data_Category "mainCategorized 0..1" -- "Category23 1..1" data_InformationObject : mainCategory22
+data_InformationObject "MetaInformation 1..1" -- "informationObjects 0..9999" data_MetaInformation : metaInformations24
+data_Item "metaTags 0..9999" -- "Item80 1..1" data_MetaTag : metaTagged79
+data_Item "MetaTag 1..1" -- "metaTagged 0..9999" data_MetaTag : metaTags43
+data_Organisation "Organisation78 1..1" -- "parentOrganisation 0..9999" data_Organisation : organisations77
+data_Category "Category61 1..1" -- "categories60 0..1" data_Category : parentCategory59
+data_Content "Content34 1..1" -- "contents 0..1" data_Content : parentContent33
+data_IndoorLocation "IndoorLocation102 1..1" -- "indoorLocations101 0..1" data_IndoorLocation : parentIndoorLocation100
+data_Organisation "Organisation71 1..1" -- "organisations 0..1" data_Organisation : parentOrganisation70
+data_Organisation "Person75 1..1" -- "participates 0..9999" data_Person : participants74
+data_Organisation "participants 0..9999" -- "Organisation2 1..1" data_Person : participates1
+data_Person "data_Person 1..1" -- "data_Person6 0..9999" data_Person : persons7
+data_Person "Ranking 1..1" -- "ranker 0..9999" data_Ranking : ranked8
+data_InformationObject "starRankings 0..1" -- "InformationObject85 1..1" data_StarRanking : rankedInformationObject84
+data_InformationObject "viewRankings 0..1" -- "InformationObject87 1..1" data_ViewRanking : rankedInformationObject86
+data_InformationObject "thumbRankings 0..1" -- "InformationObject89 1..1" data_ThumbRanking : rankedInformationObject88
+data_Person "ranked 0..1" -- "Person82 1..1" data_Ranking : ranker81
+data_DataSet "data_Mashup 1..1" -- "data_DataSet 0..1" data_Mashup : setUp39
+data_InformationObject "StarRanking 1..1" -- "rankedInformationObject 0..9999" data_StarRanking : starRankings12
+data_InformationObject "tags 0..9999" -- "InformationObject68 1..1" data_Tag : tagged67
+data_InformationObject "Tag 1..1" -- "tagged 0..9999" data_Tag : tags10
+data_InformationObject "ThumbRanking 1..1" -- "rankedInformationObject14 0..9999" data_ThumbRanking : thumbRankings13
+data_Connection "InformationObject95 1..1" -- "connectedBy 0..1" data_InformationObject : to94
+data_Content "Transformation 1..1" -- "transformed 0..9999" data_Transformation : transformations35
+data_Content "transformations 0..9999" -- "Content91 1..1" data_Transformation : transformed90
+data_Content "data_Video 1..1" -- "data_Content37 0..9999" data_Video : videos36
+data_InformationObject "ViewRanking 1..1" -- "rankedInformationObject16 0..9999" data_ViewRanking : viewRankings15
 @enduml

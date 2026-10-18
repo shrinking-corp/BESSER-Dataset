@@ -1,4 +1,8 @@
 @startuml
+' model: core
+' project: sampleModel
+' owner: User
+' description: New project
 class AnnotableElement {
 }
 class Annotation {
@@ -250,55 +254,55 @@ TypeExpression <|-- core_ClassUse
 TypeExpression <|-- core_TraceUse
 Variable <|-- core_ClosureParameter
 Variable <|-- core_DefineVariable
-core_AnnotableElement "0..1" -- "1..1" core_Annotation : annotatedElement2
-core_AnnotableElement "1..1" -- "0..9999" core_Annotation : annotatedWith0
-core_ImplicitlyAnnotableElement "1..1" *-- "0..9999" core_SingleAnnotation : annotations1
-core_Annotation "0..9999" --* "1..1" core_TransformationDefinition : annotations12
-core_InlineClass "0..9999" --* "1..1" core_InlineModel : classes79
-core_Expression "0..1" --* "1..1" core_IfBranch : condition62
-core_TraceDefinition "0..9999" --* "1..1" core_TraceInterface : definitions73
-core_TraceDefinition "1..1" *-- "1..9999" core_TraceElement : elements75
-core_IfBranch "0..1" --* "1..1" core_IfExpr : else_59
-core_IfBranch "0..9999" --* "1..1" core_IfExpr : elsifs56
-core_Expression "1..1" --* "1..1" core_ResolveLink : expr50
-core_Expression "1..1" --* "1..1" core_TraceCompareExpression : expr93
-core_DefineVariable "1..1" *-- "1..1" core_Expression : expression23
-core_Expression "1..1" --* "1..1" core_PropertyWrite : expression25
-core_InlineClass "1..1" *-- "0..9999" core_InlineFeature : features81
-core_ClosureDeclaration "1..1" *-- "0..9999" core_ClosureParameter : formalParameters48
-core_ImportedModel "0..9999" --* "1..1" core_TransformationDefinition : importedModels8
-core_TransformationDefinition "1..1" *-- "0..9999" core_TransformationDefinitionParameter : inModels4
-core_InlineModel "0..9999" --* "1..1" core_TransformationDefinition : inlineModels10
-core_BinaryExpr "1..1" *-- "1..1" core_Expression : left42
-core_RepresentModel "1..1" -- "1..1" core_RequireModelParameter : model22
-core_ClassUse "1..1" -- "1..1" core_RepresentModel : model68
-core_ResolveLink "1..1" -- "0..1" core_UseDeclaration : module52
-core_TransformationDefinition "1..1" *-- "0..9999" core_TransformationDefinitionParameter : outModels5
-core_RequireDeclaration "1..1" *-- "0..9999" core_RequireParameter : parameters20
-core_AnnotationParameter "1..9999" --* "1..1" core_GenericAnnotation : parameters3
-core_Expression "0..9999" --* "1..1" core_MethodCall : parameters32
-core_KeywordMethodCall "1..1" *-- "0..9999" core_KeywordParameter : parameters37
-core_PutTrace "1..1" *-- "0..9999" core_PutTraceParameter : parameters98
-core_PropertyWrite "1..1" -- "1..1" core_Variable : receptor24
-core_Expression "1..1" --* "1..1" core_MethodCall : receptor30
-core_Expression "1..1" --* "1..1" core_KeywordMethodCall : receptor35
-core_RequireDeclaration "0..9999" --* "1..1" core_TransformationDefinition : requires16
-core_BinaryExpr "1..1" *-- "1..1" core_Expression : right44
-core_ClosureDeclaration "1..1" *-- "0..9999" core_Statement : statements47
-core_IfBranch "1..1" *-- "0..9999" core_Statement : statements65
-core_IfBranch "1..1" --* "1..1" core_IfExpr : then55
-core_TraceDefinition "1..1" -- "1..1" core_TraceUse : trace70
-core_MatchTrace "1..1" -- "1..1" core_TraceDefinition : trace86
-core_PutTrace "1..1" -- "1..1" core_TraceDefinition : trace96
-core_MatchTrace "1..1" *-- "1..1" core_TraceCompareExpression : traceExpr88
-core_PutTraceParameter "1..1" -- "1..1" core_TraceElement : traceVar103
-core_TraceCompareExpression "1..1" -- "1..1" core_TraceElement : traceVar90
-core_EclecticTransformationDefinition "1..1" *-- "0..9999" core_TransformationDefinition : transformations18
-core_TraceElement "1..1" *-- "1..1" core_TypeExpression : type77
-core_InlineFeature "1..1" *-- "1..1" core_TypeExpression : type83
-core_ClassUse "1..1" --* "1..1" core_TypedWithClass : type_71
-core_TransformationDefinition "1..1" *-- "0..9999" core_UseDeclaration : uses14
-core_Expression "1..1" --* "1..1" core_PutTraceParameter : value100
-core_Expression "1..1" --* "1..1" core_KeywordParameter : value39
-core_Variable "1..1" -- "1..1" core_VariableReference : variable28
+core_AnnotableElement "annotatedWith 0..1" -- "AnnotableElement 1..1" core_Annotation : annotatedElement2
+core_AnnotableElement "Annotation 1..1" -- "annotatedElement 0..9999" core_Annotation : annotatedWith0
+core_ImplicitlyAnnotableElement "core_SingleAnnotation 1..1" *-- "core_ImplicitlyAnnotableElement 0..9999" core_SingleAnnotation : annotations1
+core_Annotation "core_TransformationDefinition13 0..9999" --* "core_Annotation 1..1" core_TransformationDefinition : annotations12
+core_InlineClass "core_InlineModel80 0..9999" --* "core_InlineClass 1..1" core_InlineModel : classes79
+core_Expression "core_IfBranch63 0..1" --* "core_Expression64 1..1" core_IfBranch : condition62
+core_TraceDefinition "core_TraceInterface 0..9999" --* "core_TraceDefinition74 1..1" core_TraceInterface : definitions73
+core_TraceDefinition "core_TraceElement 1..1" *-- "core_TraceDefinition76 1..9999" core_TraceElement : elements75
+core_IfBranch "core_IfExpr60 0..1" --* "core_IfBranch61 1..1" core_IfExpr : else_59
+core_IfBranch "core_IfExpr57 0..9999" --* "core_IfBranch58 1..1" core_IfExpr : elsifs56
+core_Expression "core_ResolveLink 1..1" --* "core_Expression51 1..1" core_ResolveLink : expr50
+core_Expression "core_TraceCompareExpression94 1..1" --* "core_Expression95 1..1" core_TraceCompareExpression : expr93
+core_DefineVariable "core_Expression 1..1" *-- "core_DefineVariable 1..1" core_Expression : expression23
+core_Expression "core_PropertyWrite26 1..1" --* "core_Expression27 1..1" core_PropertyWrite : expression25
+core_InlineClass "core_InlineFeature 1..1" *-- "core_InlineClass82 0..9999" core_InlineFeature : features81
+core_ClosureDeclaration "core_ClosureParameter 1..1" *-- "core_ClosureDeclaration49 0..9999" core_ClosureParameter : formalParameters48
+core_ImportedModel "core_TransformationDefinition9 0..9999" --* "core_ImportedModel 1..1" core_TransformationDefinition : importedModels8
+core_TransformationDefinition "core_TransformationDefinitionParameter 1..1" *-- "core_TransformationDefinition 0..9999" core_TransformationDefinitionParameter : inModels4
+core_InlineModel "core_TransformationDefinition11 0..9999" --* "core_InlineModel 1..1" core_TransformationDefinition : inlineModels10
+core_BinaryExpr "core_Expression43 1..1" *-- "core_BinaryExpr 1..1" core_Expression : left42
+core_RepresentModel "core_RequireModelParameter 1..1" -- "core_RepresentModel 1..1" core_RequireModelParameter : model22
+core_ClassUse "core_RepresentModel69 1..1" -- "core_ClassUse 1..1" core_RepresentModel : model68
+core_ResolveLink "core_UseDeclaration54 1..1" -- "core_ResolveLink53 0..1" core_UseDeclaration : module52
+core_TransformationDefinition "core_TransformationDefinitionParameter7 1..1" *-- "core_TransformationDefinition6 0..9999" core_TransformationDefinitionParameter : outModels5
+core_RequireDeclaration "core_RequireParameter 1..1" *-- "core_RequireDeclaration21 0..9999" core_RequireParameter : parameters20
+core_AnnotationParameter "core_GenericAnnotation 1..9999" --* "core_AnnotationParameter 1..1" core_GenericAnnotation : parameters3
+core_Expression "core_MethodCall33 0..9999" --* "core_Expression34 1..1" core_MethodCall : parameters32
+core_KeywordMethodCall "core_KeywordParameter 1..1" *-- "core_KeywordMethodCall38 0..9999" core_KeywordParameter : parameters37
+core_PutTrace "core_PutTraceParameter 1..1" *-- "core_PutTrace99 0..9999" core_PutTraceParameter : parameters98
+core_PropertyWrite "core_Variable 1..1" -- "core_PropertyWrite 1..1" core_Variable : receptor24
+core_Expression "core_MethodCall 1..1" --* "core_Expression31 1..1" core_MethodCall : receptor30
+core_Expression "core_KeywordMethodCall 1..1" --* "core_Expression36 1..1" core_KeywordMethodCall : receptor35
+core_RequireDeclaration "core_TransformationDefinition17 0..9999" --* "core_RequireDeclaration 1..1" core_TransformationDefinition : requires16
+core_BinaryExpr "core_Expression46 1..1" *-- "core_BinaryExpr45 1..1" core_Expression : right44
+core_ClosureDeclaration "core_Statement 1..1" *-- "core_ClosureDeclaration 0..9999" core_Statement : statements47
+core_IfBranch "core_Statement67 1..1" *-- "core_IfBranch66 0..9999" core_Statement : statements65
+core_IfBranch "core_IfExpr 1..1" --* "core_IfBranch 1..1" core_IfExpr : then55
+core_TraceDefinition "core_TraceUse 1..1" -- "core_TraceDefinition 1..1" core_TraceUse : trace70
+core_MatchTrace "core_TraceDefinition87 1..1" -- "core_MatchTrace 1..1" core_TraceDefinition : trace86
+core_PutTrace "core_TraceDefinition97 1..1" -- "core_PutTrace 1..1" core_TraceDefinition : trace96
+core_MatchTrace "core_TraceCompareExpression 1..1" *-- "core_MatchTrace89 1..1" core_TraceCompareExpression : traceExpr88
+core_PutTraceParameter "core_TraceElement105 1..1" -- "core_PutTraceParameter104 1..1" core_TraceElement : traceVar103
+core_TraceCompareExpression "core_TraceElement92 1..1" -- "core_TraceCompareExpression91 1..1" core_TraceElement : traceVar90
+core_EclecticTransformationDefinition "core_TransformationDefinition19 1..1" *-- "core_EclecticTransformationDefinition 0..9999" core_TransformationDefinition : transformations18
+core_TraceElement "core_TypeExpression 1..1" *-- "core_TraceElement78 1..1" core_TypeExpression : type77
+core_InlineFeature "core_TypeExpression85 1..1" *-- "core_InlineFeature84 1..1" core_TypeExpression : type83
+core_ClassUse "core_TypedWithClass 1..1" --* "core_ClassUse72 1..1" core_TypedWithClass : type_71
+core_TransformationDefinition "core_UseDeclaration 1..1" *-- "core_TransformationDefinition15 0..9999" core_UseDeclaration : uses14
+core_Expression "core_PutTraceParameter101 1..1" --* "core_Expression102 1..1" core_PutTraceParameter : value100
+core_Expression "core_KeywordParameter40 1..1" --* "core_Expression41 1..1" core_KeywordParameter : value39
+core_Variable "core_VariableReference 1..1" -- "core_Variable29 1..1" core_VariableReference : variable28
 @enduml

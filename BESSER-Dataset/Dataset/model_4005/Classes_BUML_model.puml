@@ -1,4 +1,8 @@
 @startuml
+' model: classes
+' project: sampleModel
+' owner: User
+' description: New project
 class NamedElement {
 }
 class Namespace {
@@ -17,8 +21,8 @@ class classes_Root {
 NamedElement <|-- classes_Class
 NamedElement <|-- classes_Package
 Namespace <|-- classes_Package
-classes_Class "0..9999" --* "1..1" classes_Package : ownedClasses0
-classes_Package "0..9999" --* "1..1" classes_Package : ownedPackages2
-classes_Package "0..9999" --* "1..1" classes_Root : ownedPackages7
-classes_Class "0..1" -- "1..1" classes_Class : superClass5
+classes_Class "classes_Package 0..9999" --* "classes_Class 1..1" classes_Package : ownedClasses0
+classes_Package "classes_Package1 0..9999" --* "classes_Package3 1..1" classes_Package : ownedPackages2
+classes_Package "classes_Root 0..9999" --* "classes_Package8 1..1" classes_Root : ownedPackages7
+classes_Class "classes_Class4 0..1" -- "classes_Class6 1..1" classes_Class : superClass5
 @enduml

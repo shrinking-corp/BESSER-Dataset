@@ -1,4 +1,8 @@
 @startuml
+' model: music
+' project: sampleModel
+' owner: User
+' description: New project
 enum MediaType {
   CD
   MP3
@@ -18,7 +22,7 @@ class music_Work {
   + notes : str
   + whenMade : str
 }
-music_Artist "0..9999" --* "1..1" music_MusicLibrary : artists1
-music_Artist "1..1" -- "1..1" music_Work : performer2
-music_Artist "1..1" *-- "0..9999" music_Work : works0
+music_Artist "music_MusicLibrary 0..9999" --* "music_Artist 1..1" music_MusicLibrary : artists1
+music_Artist "works 1..1" -- "Artist 1..1" music_Work : performer2
+music_Artist "Work 1..1" *-- "performer 0..9999" music_Work : works0
 @enduml

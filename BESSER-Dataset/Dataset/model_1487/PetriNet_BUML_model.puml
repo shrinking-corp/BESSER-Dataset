@@ -1,4 +1,8 @@
 @startuml
+' model: petriNet
+' project: sampleModel
+' owner: User
+' description: New project
 class GenericPlace {
 }
 abstract class petriNet_GenericPlace {
@@ -24,12 +28,12 @@ class petriNet_Transition {
 }
 GenericPlace <|-- petriNet_Place
 GenericPlace <|-- petriNet_Resource
-petriNet_GenericPlace "0..1" -- "1..1" petriNet_InputArc : InputArcFromPlace7
-petriNet_InputArc "1..1" -- "0..1" petriNet_Transition : InputArcToTransition10
-petriNet_OutputArc "1..1" -- "0..1" petriNet_Transition : OutputArcFromTransition13
-petriNet_GenericPlace "0..1" -- "1..1" petriNet_OutputArc : OutputArcToPlace16
-petriNet_GenericPlace "0..9999" --* "1..1" petriNet_PetriNet : containsGenericPlaces0
-petriNet_InputArc "0..9999" --* "1..1" petriNet_PetriNet : containsInputArcs3
-petriNet_OutputArc "0..9999" --* "1..1" petriNet_PetriNet : containsOutputArcs5
-petriNet_PetriNet "1..1" *-- "0..9999" petriNet_Transition : containsTransitions1
+petriNet_GenericPlace "petriNet_InputArc8 0..1" -- "petriNet_GenericPlace9 1..1" petriNet_InputArc : InputArcFromPlace7
+petriNet_InputArc "petriNet_Transition12 1..1" -- "petriNet_InputArc11 0..1" petriNet_Transition : InputArcToTransition10
+petriNet_OutputArc "petriNet_Transition15 1..1" -- "petriNet_OutputArc14 0..1" petriNet_Transition : OutputArcFromTransition13
+petriNet_GenericPlace "petriNet_OutputArc17 0..1" -- "petriNet_GenericPlace18 1..1" petriNet_OutputArc : OutputArcToPlace16
+petriNet_GenericPlace "petriNet_PetriNet 0..9999" --* "petriNet_GenericPlace 1..1" petriNet_PetriNet : containsGenericPlaces0
+petriNet_InputArc "petriNet_PetriNet4 0..9999" --* "petriNet_InputArc 1..1" petriNet_PetriNet : containsInputArcs3
+petriNet_OutputArc "petriNet_PetriNet6 0..9999" --* "petriNet_OutputArc 1..1" petriNet_PetriNet : containsOutputArcs5
+petriNet_PetriNet "petriNet_Transition 1..1" *-- "petriNet_PetriNet2 0..9999" petriNet_Transition : containsTransitions1
 @enduml

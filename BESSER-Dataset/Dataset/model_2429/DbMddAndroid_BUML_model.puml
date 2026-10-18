@@ -1,4 +1,8 @@
 @startuml
+' model: DbMddAndroid
+' project: sampleModel
+' owner: User
+' description: New project
 class DbMddAndroid_Column {
   + type : str
 }
@@ -20,12 +24,12 @@ class NamedElement {
 NamedElement <|-- DbMddAndroid_Column
 NamedElement <|-- DbMddAndroid_DBScheme
 NamedElement <|-- DbMddAndroid_Table
-DbMddAndroid_Column "0..9999" --* "1..1" DbMddAndroid_Table : columns3
-DbMddAndroid_Relation "0..9999" -- "1..1" DbMddAndroid_Table : inRelation9
-DbMddAndroid_Relation "0..9999" --* "1..1" DbMddAndroid_Table : outRelation8
-DbMddAndroid_Column "0..1" -- "1..1" DbMddAndroid_Table : primaryKey5
-DbMddAndroid_DBScheme "1..1" -- "0..9999" DbMddAndroid_Relation : relations1
-DbMddAndroid_Relation "1..1" -- "1..1" DbMddAndroid_Table : source11
-DbMddAndroid_DBScheme "1..1" *-- "0..9999" DbMddAndroid_Table : tables0
-DbMddAndroid_Relation "1..1" -- "1..1" DbMddAndroid_Table : target12
+DbMddAndroid_Column "DbMddAndroid_Table4 0..9999" --* "DbMddAndroid_Column 1..1" DbMddAndroid_Table : columns3
+DbMddAndroid_Relation "target 0..9999" -- "Relation10 1..1" DbMddAndroid_Table : inRelation9
+DbMddAndroid_Relation "source 0..9999" --* "Relation 1..1" DbMddAndroid_Table : outRelation8
+DbMddAndroid_Column "DbMddAndroid_Table6 0..1" -- "DbMddAndroid_Column7 1..1" DbMddAndroid_Table : primaryKey5
+DbMddAndroid_DBScheme "DbMddAndroid_Relation 1..1" -- "DbMddAndroid_DBScheme2 0..9999" DbMddAndroid_Relation : relations1
+DbMddAndroid_Relation "Table 1..1" -- "outRelation 1..1" DbMddAndroid_Table : source11
+DbMddAndroid_DBScheme "DbMddAndroid_Table 1..1" *-- "DbMddAndroid_DBScheme 0..9999" DbMddAndroid_Table : tables0
+DbMddAndroid_Relation "Table13 1..1" -- "inRelation 1..1" DbMddAndroid_Table : target12
 @enduml

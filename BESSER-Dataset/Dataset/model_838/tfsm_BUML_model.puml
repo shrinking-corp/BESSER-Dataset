@@ -1,4 +1,8 @@
 @startuml
+' model: tfsm
+' project: sampleModel
+' owner: User
+' description: New project
 class Guard {
 }
 class NamedElement {
@@ -39,22 +43,22 @@ NamedElement <|-- tfsm_State
 NamedElement <|-- tfsm_TFSM
 NamedElement <|-- tfsm_TimedSystem
 NamedElement <|-- tfsm_Transition
-tfsm_FSMEvent "0..9999" -- "1..1" tfsm_Transition : generatedEvents18
-tfsm_FSMClock "0..9999" --* "1..1" tfsm_TimedSystem : globalClocks30
-tfsm_FSMEvent "0..9999" --* "1..1" tfsm_TimedSystem : globalEvents33
-tfsm_State "1..1" -- "0..9999" tfsm_Transition : incomingTransitions10
-tfsm_State "1..1" -- "1..1" tfsm_TFSM : initialState1
-tfsm_FSMClock "1..1" --* "1..1" tfsm_TFSM : localClock4
-tfsm_FSMEvent "0..9999" --* "1..1" tfsm_TFSM : localEvents2
-tfsm_FSMClock "1..1" -- "1..1" tfsm_TemporalGuard : onClock21
-tfsm_State "1..1" -- "0..9999" tfsm_Transition : outgoingTransitions9
-tfsm_Guard "1..1" --* "1..1" tfsm_Transition : ownedGuard16
-tfsm_State "0..9999" --* "1..1" tfsm_TFSM : ownedStates0
-tfsm_TFSM "1..1" *-- "0..9999" tfsm_Transition : ownedTransitions6
-tfsm_State "1..1" -- "1..1" tfsm_TFSM : owningFSM8
-tfsm_FSMEvent "1..1" -- "0..9999" tfsm_Transition : sollicitingTransitions25
-tfsm_State "1..1" -- "1..1" tfsm_Transition : source12
-tfsm_State "1..1" -- "1..1" tfsm_Transition : target14
-tfsm_TFSM "0..9999" --* "1..1" tfsm_TimedSystem : tfsms28
-tfsm_EventGuard "1..1" -- "1..1" tfsm_FSMEvent : triggeringEvent23
+tfsm_FSMEvent "tfsm_Transition19 0..9999" -- "tfsm_FSMEvent20 1..1" tfsm_Transition : generatedEvents18
+tfsm_FSMClock "tfsm_TimedSystem31 0..9999" --* "tfsm_FSMClock32 1..1" tfsm_TimedSystem : globalClocks30
+tfsm_FSMEvent "tfsm_TimedSystem34 0..9999" --* "tfsm_FSMEvent35 1..1" tfsm_TimedSystem : globalEvents33
+tfsm_State "Transition11 1..1" -- "target 0..9999" tfsm_Transition : incomingTransitions10
+tfsm_State "tfsm_TFSM 1..1" -- "tfsm_State 1..1" tfsm_TFSM : initialState1
+tfsm_FSMClock "tfsm_TFSM5 1..1" --* "tfsm_FSMClock 1..1" tfsm_TFSM : localClock4
+tfsm_FSMEvent "tfsm_TFSM3 0..9999" --* "tfsm_FSMEvent 1..1" tfsm_TFSM : localEvents2
+tfsm_FSMClock "tfsm_TemporalGuard 1..1" -- "tfsm_FSMClock22 1..1" tfsm_TemporalGuard : onClock21
+tfsm_State "Transition 1..1" -- "source 0..9999" tfsm_Transition : outgoingTransitions9
+tfsm_Guard "tfsm_Transition17 1..1" --* "tfsm_Guard 1..1" tfsm_Transition : ownedGuard16
+tfsm_State "owningFSM 0..9999" --* "State 1..1" tfsm_TFSM : ownedStates0
+tfsm_TFSM "tfsm_Transition 1..1" *-- "tfsm_TFSM7 0..9999" tfsm_Transition : ownedTransitions6
+tfsm_State "TFSM 1..1" -- "ownedStates 1..1" tfsm_TFSM : owningFSM8
+tfsm_FSMEvent "tfsm_Transition27 1..1" -- "tfsm_FSMEvent26 0..9999" tfsm_Transition : sollicitingTransitions25
+tfsm_State "outgoingTransitions 1..1" -- "State13 1..1" tfsm_Transition : source12
+tfsm_State "incomingTransitions 1..1" -- "State15 1..1" tfsm_Transition : target14
+tfsm_TFSM "tfsm_TimedSystem 0..9999" --* "tfsm_TFSM29 1..1" tfsm_TimedSystem : tfsms28
+tfsm_EventGuard "tfsm_FSMEvent24 1..1" -- "tfsm_EventGuard 1..1" tfsm_FSMEvent : triggeringEvent23
 @enduml

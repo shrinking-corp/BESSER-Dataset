@@ -1,4 +1,8 @@
 @startuml
+' model: dbschema
+' project: sampleModel
+' owner: User
+' description: New project
 class Column {
 }
 enum ColumnType {
@@ -62,7 +66,7 @@ Column <|-- dbschema_ForeignKeyColumn
 NamedElement <|-- dbschema_Column
 NamedElement <|-- dbschema_DBSchema
 NamedElement <|-- dbschema_Table
-dbschema_Column "0..9999" --* "1..1" dbschema_Table : columns1
-dbschema_AttributeColumn "1..1" -- "1..1" dbschema_ForeignKeyColumn : referencedColumn3
-dbschema_DBSchema "1..1" *-- "0..9999" dbschema_Table : tables0
+dbschema_Column "dbschema_Table2 0..9999" --* "dbschema_Column 1..1" dbschema_Table : columns1
+dbschema_AttributeColumn "dbschema_ForeignKeyColumn 1..1" -- "dbschema_AttributeColumn 1..1" dbschema_ForeignKeyColumn : referencedColumn3
+dbschema_DBSchema "dbschema_Table 1..1" *-- "dbschema_DBSchema 0..9999" dbschema_Table : tables0
 @enduml

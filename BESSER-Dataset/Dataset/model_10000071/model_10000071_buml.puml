@@ -1,4 +1,8 @@
 @startuml
+' model: _09e67711_ca1a_4860_80bb_1d4f1a7ca9a1
+' project: sampleModel
+' owner: User
+' description: New project
 class Ar_Condicionado {
   + book_id : int
   + borrowed_date : str
@@ -61,14 +65,14 @@ class admin {
 class lecturer {
   + module : str
 }
-Borrowed "0..9999" -- "0..9999" Retro_Projetor : Books_Borrowed
-Reserved "0..9999" -- "0..9999" Retro_Projetor : Books_Reserved
-Borrowed "0..9999" -- "0..9999" Members : Borrowed_Member
-Ar_Condicionado "0..9999" -- "1..1" Members : Fine_Member
-Quado_Branco "0..9999" -- "0..9999" Retro_Projetor : Librarian_Books
-Ar_Condicionado "0..9999" -- "0..9999" Quado_Branco : Librarian_Fine
-Members "0..9999" -- "0..9999" Quado_Branco : Member_Librarian
-Staff "0..1" -- "0..1" admin : Registar_Staff2
-Members "0..9999" -- "0..9999" Reserved : Reserved_Member
-Staff "0..1" -- "0..1" lecturer : Staff_Professor2
+Borrowed "borrowed0 0..9999" -- "books1 0..9999" Retro_Projetor : Books_Borrowed
+Reserved "reserved4 0..9999" -- "books5 0..9999" Retro_Projetor : Books_Reserved
+Borrowed "borrowed3 0..9999" -- "member2 0..9999" Members : Borrowed_Member
+Ar_Condicionado "fine13 0..9999" -- "member12 1..1" Members : Fine_Member
+Quado_Branco "librarian9 0..9999" -- "books8 0..9999" Retro_Projetor : Librarian_Books
+Ar_Condicionado "fine10 0..9999" -- "librarian11 0..9999" Quado_Branco : Librarian_Fine
+Members "member15 0..9999" -- "librarian14 0..9999" Quado_Branco : Member_Librarian
+Staff "staff16 0..1" -- "registar17 0..1" admin : Registar_Staff2
+Members "member6 0..9999" -- "reserved7 0..9999" Reserved : Reserved_Member
+Staff "staff19 0..1" -- "professor18 0..1" lecturer : Staff_Professor2
 @enduml

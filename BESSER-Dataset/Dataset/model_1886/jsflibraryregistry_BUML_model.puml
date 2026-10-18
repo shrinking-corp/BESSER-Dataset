@@ -1,4 +1,8 @@
 @startuml
+' model: jsflibraryregistry
+' project: sampleModel
+' owner: User
+' description: New project
 class JSFLibrary {
 }
 enum JSFVersion {
@@ -47,8 +51,8 @@ class jsflibraryregistry_PluginProvidedJSFLibrary {
   + pluginID : str
 }
 JSFLibrary <|-- jsflibraryregistry_PluginProvidedJSFLibrary
-jsflibraryregistry_ArchiveFile "0..9999" --* "1..1" jsflibraryregistry_JSFLibrary : ArchiveFiles3
-jsflibraryregistry_JSFLibrary "0..9999" --* "1..1" jsflibraryregistry_JSFLibraryRegistry : JSFLibraries0
-jsflibraryregistry_ArchiveFile "1..1" -- "1..1" jsflibraryregistry_JSFLibrary : JSFLibrary4
-jsflibraryregistry_JSFLibraryRegistry "1..1" *-- "0..9999" jsflibraryregistry_PluginProvidedJSFLibrary : PluginProvidedJSFLibraries1
+jsflibraryregistry_ArchiveFile "JSFLibrary 0..9999" --* "ArchiveFile 1..1" jsflibraryregistry_JSFLibrary : ArchiveFiles3
+jsflibraryregistry_JSFLibrary "jsflibraryregistry_JSFLibraryRegistry 0..9999" --* "jsflibraryregistry_JSFLibrary 1..1" jsflibraryregistry_JSFLibraryRegistry : JSFLibraries0
+jsflibraryregistry_ArchiveFile "JSFLibrary5 1..1" -- "ArchiveFiles 1..1" jsflibraryregistry_JSFLibrary : JSFLibrary4
+jsflibraryregistry_JSFLibraryRegistry "jsflibraryregistry_PluginProvidedJSFLibrary 1..1" *-- "jsflibraryregistry_JSFLibraryRegistry2 0..9999" jsflibraryregistry_PluginProvidedJSFLibrary : PluginProvidedJSFLibraries1
 @enduml

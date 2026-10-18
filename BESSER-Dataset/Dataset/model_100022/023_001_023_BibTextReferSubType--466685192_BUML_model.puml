@@ -1,4 +1,8 @@
 @startuml
+' model: BibText
+' project: sampleModel
+' owner: User
+' description: New project
 class Attribute {
 }
 class BibTextEntry {
@@ -28,8 +32,8 @@ BibTextEntry <|-- BibText_Article
 BibTextEntry <|-- BibText_Author
 LocatedElement <|-- BibText_Attribute
 LocatedElement <|-- BibText_BibTextEntry
-BibText_Article "0..9999" --* "1..1" BibText_Author : articles4
-BibText_Attribute "0..5" --* "1..1" BibText_BibTextEntry : attributes1
-BibText_Article "1..1" -- "1..1" BibText_BibTextEntry : author3
-BibText_BibTextEntry "0..9999" --* "1..1" BibText_BibTextFile : entries0
+BibText_Article "author 0..9999" --* "Article 1..1" BibText_Author : articles4
+BibText_Attribute "BibText_BibTextEntry2 0..5" --* "BibText_Attribute 1..1" BibText_BibTextEntry : attributes1
+BibText_Article "Author 1..1" -- "articles 1..1" BibText_BibTextEntry : author3
+BibText_BibTextEntry "BibText_BibTextFile 0..9999" --* "BibText_BibTextEntry 1..1" BibText_BibTextFile : entries0
 @enduml

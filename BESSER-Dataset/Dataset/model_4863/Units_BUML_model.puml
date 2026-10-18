@@ -1,4 +1,8 @@
 @startuml
+' model: units
+' project: sampleModel
+' owner: User
+' description: New project
 class Unit {
 }
 enum UnitNames {
@@ -27,10 +31,10 @@ Unit <|-- units_BaseUnit
 Unit <|-- units_UnitDivision
 Unit <|-- units_UnitMultiplication
 Unit <|-- units_UnitPower
-units_Unit "1..1" --* "1..1" units_UnitDivision : dividend6
-units_Unit "1..1" --* "1..1" units_UnitDivision : divisor8
-units_Unit "0..1" --* "1..1" units_UnitCarryingElement : unit0
-units_Unit "1..1" --* "1..1" units_UnitPower : unit4
-units_BaseUnit "0..9999" --* "1..1" units_UnitRepository : units1
-units_Unit "1..9999" --* "1..1" units_UnitMultiplication : units2
+units_Unit "units_UnitDivision 1..1" --* "units_Unit7 1..1" units_UnitDivision : dividend6
+units_Unit "units_UnitDivision9 1..1" --* "units_Unit10 1..1" units_UnitDivision : divisor8
+units_Unit "units_UnitCarryingElement 0..1" --* "units_Unit 1..1" units_UnitCarryingElement : unit0
+units_Unit "units_UnitPower 1..1" --* "units_Unit5 1..1" units_UnitPower : unit4
+units_BaseUnit "units_UnitRepository 0..9999" --* "units_BaseUnit 1..1" units_UnitRepository : units1
+units_Unit "units_UnitMultiplication 1..9999" --* "units_Unit3 1..1" units_UnitMultiplication : units2
 @enduml

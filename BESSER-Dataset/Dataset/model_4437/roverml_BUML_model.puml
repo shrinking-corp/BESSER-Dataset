@@ -1,4 +1,8 @@
 @startuml
+' model: roverml
+' project: sampleModel
+' owner: User
+' description: New project
 class Actuator {
 }
 enum AngleUnit {
@@ -145,22 +149,22 @@ SingleQuantity <|-- roverml_Length
 SingleQuantity <|-- roverml_Time
 SingleQuantity <|-- roverml_Velocity
 Transition <|-- roverml_TriggeredTransition
-roverml_Angle "1..1" --* "1..1" roverml_Rotate : angle11
-roverml_Block "1..1" --* "1..1" roverml_RoverProgram : block0
-roverml_Block "1..1" *-- "0..9999" roverml_Command : commands15
-roverml_Component "0..9999" --* "1..1" roverml_Rover : components13
-roverml_Length "0..1" --* "1..1" roverml_Move : distance8
-roverml_Time "1..1" --* "1..1" roverml_Wait : duration12
-roverml_Command "1..1" -- "0..9999" roverml_Transition : incoming3
-roverml_Light "1..9999" -- "1..1" roverml_SetLightColor : lights10
-roverml_Command "1..1" -- "0..9999" roverml_Transition : outgoing4
-roverml_Rover "1..1" -- "1..1" roverml_RoverProgram : rover1
-roverml_RoverProgram "0..9999" --* "1..1" roverml_RoverSystem : roverPrograms29
-roverml_Rover "0..9999" --* "1..1" roverml_RoverSystem : rovers27
-roverml_Command "1..1" -- "1..1" roverml_Transition : source21
-roverml_Move "1..1" *-- "1..1" roverml_Velocity : speed7
-roverml_Command "1..1" -- "1..1" roverml_Transition : target24
-roverml_Block "1..1" *-- "0..9999" roverml_Transition : transitions18
-roverml_Length "1..1" --* "1..1" roverml_Position : x32
-roverml_Length "1..1" --* "1..1" roverml_Position : y34
+roverml_Angle "roverml_Rotate 1..1" --* "roverml_Angle 1..1" roverml_Rotate : angle11
+roverml_Block "roverml_RoverProgram 1..1" --* "roverml_Block 1..1" roverml_RoverProgram : block0
+roverml_Block "roverml_Command17 1..1" *-- "roverml_Block16 0..9999" roverml_Command : commands15
+roverml_Component "roverml_Rover14 0..9999" --* "roverml_Component 1..1" roverml_Rover : components13
+roverml_Length "roverml_Move9 0..1" --* "roverml_Length 1..1" roverml_Move : distance8
+roverml_Time "roverml_Wait 1..1" --* "roverml_Time 1..1" roverml_Wait : duration12
+roverml_Command "roverml_Transition 1..1" -- "roverml_Command 0..9999" roverml_Transition : incoming3
+roverml_Light "roverml_SetLightColor 1..9999" -- "roverml_Light 1..1" roverml_SetLightColor : lights10
+roverml_Command "roverml_Transition6 1..1" -- "roverml_Command5 0..9999" roverml_Transition : outgoing4
+roverml_Rover "roverml_RoverProgram2 1..1" -- "roverml_Rover 1..1" roverml_RoverProgram : rover1
+roverml_RoverProgram "roverml_RoverSystem30 0..9999" --* "roverml_RoverProgram31 1..1" roverml_RoverSystem : roverPrograms29
+roverml_Rover "roverml_RoverSystem 0..9999" --* "roverml_Rover28 1..1" roverml_RoverSystem : rovers27
+roverml_Command "roverml_Transition22 1..1" -- "roverml_Command23 1..1" roverml_Transition : source21
+roverml_Move "roverml_Velocity 1..1" *-- "roverml_Move 1..1" roverml_Velocity : speed7
+roverml_Command "roverml_Transition25 1..1" -- "roverml_Command26 1..1" roverml_Transition : target24
+roverml_Block "roverml_Transition20 1..1" *-- "roverml_Block19 0..9999" roverml_Transition : transitions18
+roverml_Length "roverml_Position 1..1" --* "roverml_Length33 1..1" roverml_Position : x32
+roverml_Length "roverml_Position35 1..1" --* "roverml_Length36 1..1" roverml_Position : y34
 @enduml

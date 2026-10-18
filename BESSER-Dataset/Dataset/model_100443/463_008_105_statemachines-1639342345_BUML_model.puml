@@ -1,4 +1,8 @@
 @startuml
+' model: statemachines
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractExtension {
 }
 class AbstractNode {
@@ -65,17 +69,17 @@ EventBElement <|-- statemachines_AbstractNode
 EventBNamed <|-- statemachines_State
 EventBNamedCommentedDataElaborationElement <|-- statemachines_Statemachine
 StatemachineOwner <|-- statemachines_State
-statemachines_AbstractNode "1..1" -- "0..9999" statemachines_Transition : incoming18
-statemachines_EventBNamedCommentedElement "0..1" -- "1..1" statemachines_Statemachine : instances6
-Invariant "0..9999" --* "1..1" statemachines_State : invariants23
-statemachines_AbstractNode "0..9999" --* "1..1" statemachines_Statemachine : nodes2
-statemachines_AbstractNode "1..1" -- "0..9999" statemachines_Transition : outgoing19
-statemachines_Statemachine "1..1" -- "0..1" statemachines_Statemachine : refines1
-statemachines_State "1..1" -- "0..1" statemachines_State : refines22
-statemachines_AbstractNode "1..1" -- "1..1" statemachines_Transition : source11
-statemachines_EventBElement "0..1" -- "1..1" statemachines_Transition : sourceContainer13
-statemachines_Statemachine "0..9999" --* "1..1" statemachines_StatemachineOwner : statemachines8
-statemachines_AbstractNode "1..1" -- "1..1" statemachines_Transition : target10
-statemachines_EventBElement "0..1" -- "1..1" statemachines_Transition : targetContainer15
-statemachines_Statemachine "1..1" *-- "0..9999" statemachines_Transition : transitions4
+statemachines_AbstractNode "Transition 1..1" -- "target 0..9999" statemachines_Transition : incoming18
+statemachines_EventBNamedCommentedElement "statemachines_Statemachine7 0..1" -- "statemachines_EventBNamedCommentedElement 1..1" statemachines_Statemachine : instances6
+Invariant "statemachines_State24 0..9999" --* "Invariant 1..1" statemachines_State : invariants23
+statemachines_AbstractNode "statemachines_Statemachine3 0..9999" --* "statemachines_AbstractNode 1..1" statemachines_Statemachine : nodes2
+statemachines_AbstractNode "Transition20 1..1" -- "source 0..9999" statemachines_Transition : outgoing19
+statemachines_Statemachine "statemachines_Statemachine 1..1" -- "statemachines_Statemachine0 0..1" statemachines_Statemachine : refines1
+statemachines_State "statemachines_State 1..1" -- "statemachines_State21 0..1" statemachines_State : refines22
+statemachines_AbstractNode "outgoing 1..1" -- "AbstractNode12 1..1" statemachines_Transition : source11
+statemachines_EventBElement "statemachines_Transition14 0..1" -- "statemachines_EventBElement 1..1" statemachines_Transition : sourceContainer13
+statemachines_Statemachine "statemachines_StatemachineOwner 0..9999" --* "statemachines_Statemachine9 1..1" statemachines_StatemachineOwner : statemachines8
+statemachines_AbstractNode "incoming 1..1" -- "AbstractNode 1..1" statemachines_Transition : target10
+statemachines_EventBElement "statemachines_Transition16 0..1" -- "statemachines_EventBElement17 1..1" statemachines_Transition : targetContainer15
+statemachines_Statemachine "statemachines_Transition 1..1" *-- "statemachines_Statemachine5 0..9999" statemachines_Transition : transitions4
 @enduml

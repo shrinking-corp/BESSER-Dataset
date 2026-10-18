@@ -1,4 +1,8 @@
 @startuml
+' model: CWMRelationalData
+' project: sampleModel
+' owner: User
+' description: New project
 class CWMRelationalData_CheckConstraint {
 }
 class CWMRelationalData_Column {
@@ -71,20 +75,20 @@ NamedColumnSet <|-- CWMRelationalData_Table
 NamedColumnSet <|-- CWMRelationalData_View
 SQLDataType <|-- CWMRelationalData_SQLDistinctType
 SQLDataType <|-- CWMRelationalData_SQLSimpleType
-CWMRelationalData_Column "1..1" -- "0..9999" CheckConstraint : column_constraints2
-CWMRelationalData_CheckConstraint "1..1" -- "0..9999" Table : constrainedElements1
-CWMRelationalData_CheckConstraint "1..1" -- "0..9999" Column : constraintElements0
-CWMRelationalData_ColumnSet "1..1" *-- "0..9999" Column : features6
-CWMRelationalData_Trigger "1..1" -- "1..1" NamedColumnSet : namedColumnSet16
-CWMRelationalData_NamedColumnSet "1..1" -- "1..1" Column : optionScopeColumn8
-CWMRelationalData_Column "1..1" -- "0..1" NamedColumnSet : optionScopeColumnSet5
-CWMRelationalData_Column "1..1" -- "0..1" ColumnSet : owner4
-CWMRelationalData_QueryColumnSet "1..1" *-- "1..1" QueryExpression : query11
-CWMRelationalData_View "1..1" *-- "1..1" QueryExpression : queryExpression14
-CWMRelationalData_SQLSimpleType "1..1" -- "0..9999" SQLDistinctType : sqlDistinctTypes21
-CWMRelationalData_SQLDistinctType "1..1" -- "1..1" SQLSimpleType : sqlSimpleType20
-CWMRelationalData_SQLDataType "1..1" -- "0..9999" Column : structuralFeatures18
-CWMRelationalData_Table "1..1" -- "0..9999" CheckConstraint : table_constraints12
-CWMRelationalData_NamedColumnSet "1..1" -- "0..9999" Trigger : triggers10
-CWMRelationalData_Column "1..1" -- "1..1" SQLDataType : type3
+CWMRelationalData_Column "CheckConstraint 1..1" -- "constraintElements 0..9999" CheckConstraint : column_constraints2
+CWMRelationalData_CheckConstraint "Table 1..1" -- "table_constraints 0..9999" Table : constrainedElements1
+CWMRelationalData_CheckConstraint "Column 1..1" -- "column_constraints 0..9999" Column : constraintElements0
+CWMRelationalData_ColumnSet "Column7 1..1" *-- "owner 0..9999" Column : features6
+CWMRelationalData_Trigger "NamedColumnSet17 1..1" -- "triggers 1..1" NamedColumnSet : namedColumnSet16
+CWMRelationalData_NamedColumnSet "Column9 1..1" -- "optionScopeColumnSet 1..1" Column : optionScopeColumn8
+CWMRelationalData_Column "NamedColumnSet 1..1" -- "optionScopeColumn 0..1" NamedColumnSet : optionScopeColumnSet5
+CWMRelationalData_Column "ColumnSet 1..1" -- "features 0..1" ColumnSet : owner4
+CWMRelationalData_QueryColumnSet "QueryExpression 1..1" *-- "CWMRelationalData_QueryColumnSet 1..1" QueryExpression : query11
+CWMRelationalData_View "QueryExpression15 1..1" *-- "CWMRelationalData_View 1..1" QueryExpression : queryExpression14
+CWMRelationalData_SQLSimpleType "SQLDistinctType 1..1" -- "sqlSimpleType 0..9999" SQLDistinctType : sqlDistinctTypes21
+CWMRelationalData_SQLDistinctType "SQLSimpleType 1..1" -- "sqlDistinctTypes 1..1" SQLSimpleType : sqlSimpleType20
+CWMRelationalData_SQLDataType "Column19 1..1" -- "type 0..9999" Column : structuralFeatures18
+CWMRelationalData_Table "CheckConstraint13 1..1" -- "constrainedElements 0..9999" CheckConstraint : table_constraints12
+CWMRelationalData_NamedColumnSet "Trigger 1..1" -- "namedColumnSet 0..9999" Trigger : triggers10
+CWMRelationalData_Column "SQLDataType 1..1" -- "structuralFeatures 1..1" SQLDataType : type3
 @enduml

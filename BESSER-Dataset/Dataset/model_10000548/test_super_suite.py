@@ -184,15 +184,15 @@ def test_hyp_subject_constructor_args():
 
 
 
-def test_hyp_department_is_not_abstract():
+def test_hyp_department_is_not_abstract__2():
     assert not inspect.isabstract(department)
 
 
-def test_hyp_department_constructor_exists():
+def test_hyp_department_constructor_exists__2():
     assert callable(department.__init__)
 
 
-def test_hyp_department_constructor_args():
+def test_hyp_department_constructor_args__2():
     sig = inspect.signature(department.__init__)
     params = list(sig.parameters.keys())
     assert "director" in params, "Missing parameter 'director'"
@@ -244,15 +244,15 @@ def test_hyp_admin_constructor_args():
 
 
 
-def test_hyp_subject_is_not_abstract():
+def test_hyp_subject_is_not_abstract__2():
     assert not inspect.isabstract(Subject)
 
 
-def test_hyp_subject_constructor_exists():
+def test_hyp_subject_constructor_exists__2():
     assert callable(Subject.__init__)
 
 
-def test_hyp_subject_constructor_args():
+def test_hyp_subject_constructor_args__2():
     sig = inspect.signature(Subject.__init__)
     params = list(sig.parameters.keys())
     assert "name" in params, "Missing parameter 'name'"
@@ -967,9 +967,9 @@ def test_assoc_Admin_Student_stub_double():
     partner = Admin()
     setattr(partner, 'student12', None)
     _safe_set(owner, 'admin13', partner)
-    assert getattr(partner, 'student12') == owner
+    assert owner in getattr(partner, 'student12')
     _safe_set(owner, 'admin13', None)
-    assert getattr(partner, 'student12') is None
+    assert owner not in getattr(partner, 'student12')
 
 
 def test_assoc_Student_Access_Information_stub_double():
@@ -989,16 +989,15 @@ def test_assoc_Student_Access_Information_stub_double():
 
 
 
+import datetime as _ch_datetime
 from python_code import department
 
 def test_department___init__():
     assert department.__init__(department('\x00\x00', '', '', ''), '', '', '', '') == None
-
 from python_code import students
 
 def test_students___init__():
-    assert students.__init__(students('\x00\x00', '', datetime.date(1, 1, 1), '', ''), '', '', datetime.date(1, 1, 1), '', '') == None
-
+    assert students.__init__(students('\x00\x00', '', _ch_datetime.date(1, 1, 1), '', ''), '', '', _ch_datetime.date(1, 1, 1), '', '') == None
 from python_code import subject
 
 def test_subject___init__():

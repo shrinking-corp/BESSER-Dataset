@@ -1,4 +1,8 @@
 @startuml
+' model: myDsl
+' project: sampleModel
+' owner: User
+' description: New project
 class Type {
 }
 class myDsl_Association {
@@ -23,12 +27,12 @@ class myDsl_Type {
 Type <|-- myDsl_Association
 Type <|-- myDsl_DataType
 Type <|-- myDsl_Entity
-myDsl_Association "1..1" *-- "0..9999" myDsl_Attribute : attribute1
-myDsl_Attribute "0..9999" --* "1..1" myDsl_Entity : attribute6
-myDsl_Domainmodel "1..1" *-- "0..9999" myDsl_Type : elements0
-myDsl_Association "1..1" *-- "0..9999" myDsl_Role : role2
-myDsl_Entity "1..1" *-- "0..9999" myDsl_Role : role9
-myDsl_Entity "1..1" -- "0..1" myDsl_Entity : superType5
-myDsl_Attribute "1..1" -- "0..1" myDsl_Type : type12
-myDsl_Role "1..1" -- "0..1" myDsl_Type : type15
+myDsl_Association "myDsl_Attribute 1..1" *-- "myDsl_Association 0..9999" myDsl_Attribute : attribute1
+myDsl_Attribute "myDsl_Entity7 0..9999" --* "myDsl_Attribute8 1..1" myDsl_Entity : attribute6
+myDsl_Domainmodel "myDsl_Type 1..1" *-- "myDsl_Domainmodel 0..9999" myDsl_Type : elements0
+myDsl_Association "myDsl_Role 1..1" *-- "myDsl_Association3 0..9999" myDsl_Role : role2
+myDsl_Entity "myDsl_Role11 1..1" *-- "myDsl_Entity10 0..9999" myDsl_Role : role9
+myDsl_Entity "myDsl_Entity 1..1" -- "myDsl_Entity4 0..1" myDsl_Entity : superType5
+myDsl_Attribute "myDsl_Type14 1..1" -- "myDsl_Attribute13 0..1" myDsl_Type : type12
+myDsl_Role "myDsl_Type17 1..1" -- "myDsl_Role16 0..1" myDsl_Type : type15
 @enduml

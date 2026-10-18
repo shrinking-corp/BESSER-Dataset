@@ -1,4 +1,8 @@
 @startuml
+' model: newP
+' project: sampleModel
+' owner: User
+' description: New project
 class BinaryOperator {
 }
 class Dependency {
@@ -81,17 +85,17 @@ Term <|-- newP_RequirementTerm
 Term <|-- newP_UnaryOperator
 UnaryOperator <|-- newP_BinaryOperator
 UnaryOperator <|-- newP_NotOperator
-newP_BinaryOperator "1..1" *-- "1..1" newP_Term : LHS22
-newP_Term "1..1" --* "1..1" newP_UnaryOperator : RHS18
-newP_Requires "1..1" *-- "1..1" newP_Term : RHS19
-newP_RequirementTerm "1..1" --* "1..1" newP_SimpleDependency : RHS21
-newP_Category "0..9999" -- "1..1" newP_Person : categories12
-newP_Category "0..9999" --* "1..1" newP_Specification : category8
-newP_Category "0..9999" --* "1..1" newP_Category : children6
-newP_Dependency "0..9999" --* "1..1" newP_Requirement : dependency1
-newP_Description "0..9999" --* "1..1" newP_Requirement : description0
-newP_Person "0..9999" --* "1..1" newP_Specification : person10
-newP_Requirement "1..1" -- "1..1" newP_RequirementTerm : requirement24
-newP_Category "1..1" *-- "0..9999" newP_Requirement : requirement3
-newP_Person "1..1" -- "0..9999" newP_Requirement : requirements15
+newP_BinaryOperator "newP_Term23 1..1" *-- "newP_BinaryOperator 1..1" newP_Term : LHS22
+newP_Term "newP_UnaryOperator 1..1" --* "newP_Term 1..1" newP_UnaryOperator : RHS18
+newP_Requires "newP_Term20 1..1" *-- "newP_Requires 1..1" newP_Term : RHS19
+newP_RequirementTerm "newP_SimpleDependency 1..1" --* "newP_RequirementTerm 1..1" newP_SimpleDependency : RHS21
+newP_Category "newP_Person13 0..9999" -- "newP_Category14 1..1" newP_Person : categories12
+newP_Category "newP_Specification 0..9999" --* "newP_Category9 1..1" newP_Specification : category8
+newP_Category "newP_Category5 0..9999" --* "newP_Category7 1..1" newP_Category : children6
+newP_Dependency "newP_Requirement2 0..9999" --* "newP_Dependency 1..1" newP_Requirement : dependency1
+newP_Description "newP_Requirement 0..9999" --* "newP_Description 1..1" newP_Requirement : description0
+newP_Person "newP_Specification11 0..9999" --* "newP_Person 1..1" newP_Specification : person10
+newP_Requirement "newP_RequirementTerm25 1..1" -- "newP_Requirement26 1..1" newP_RequirementTerm : requirement24
+newP_Category "newP_Requirement4 1..1" *-- "newP_Category 0..9999" newP_Requirement : requirement3
+newP_Person "newP_Requirement17 1..1" -- "newP_Person16 0..9999" newP_Requirement : requirements15
 @enduml

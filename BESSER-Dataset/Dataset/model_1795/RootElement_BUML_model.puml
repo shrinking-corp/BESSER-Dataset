@@ -1,4 +1,8 @@
 @startuml
+' model: RootElement
+' project: sampleModel
+' owner: User
+' description: New project
 enum BookingStatus {
   BOOKED
   CHECKED_IN
@@ -233,29 +237,29 @@ SupportTicketWriter <|-- RootElement_Guest
 SupportTicketWriter <|-- RootElement_Staff
 SupportTicketWriter <|-- RootElement_SupportTicketHandler
 SysAdmin <|-- RootElement_Manager
-RootElement_Booking "0..9999" -- "1..1" RootElement_BookingHandler : booking32
-RootElement_Cleaning "1..1" -- "1..1" RootElement_Staff : cleaning17
-RootElement_Feedback "0..9999" -- "1..1" RootElement_FeedbackHandler : feedback44
-RootElement_FeedbackReader "1..1" -- "1..1" RootElement_Manager : feedbackReader31
-RootElement_FeedbackWriter "1..1" -- "1..1" RootElement_Guest : feedbackWriter3
-RootElement_Booking "1..1" -- "1..1" RootElement_Guest : guest6
-RootElement_Guest "1..1" -- "1..1" RootElement_MakeBooking : makeBooking1
-RootElement_Clerk "1..1" -- "1..1" RootElement_MakeBooking : makeBooking26
-RootElement_Clerk "1..1" -- "1..1" RootElement_Payment : payment29
-RootElement_Clerk "1..1" -- "1..1" RootElement_ReceptionHandling : receptionHandling23
-RootElement_Room "1..1" -- "1..1" RootElement_RoomBooking : room11
-RootElement_RoomAttribute "0..9999" -- "1..1" RootElement_RoomType : roomAttributes15
-RootElement_RoomAttribute "0..9999" -- "1..1" RootElement_RoomStructure : roomAttributes41
-RootElement_BookingHandler "1..1" -- "1..1" RootElement_RoomFetcher : roomFetcher34
-RootElement_CleaningHandler "1..1" -- "1..1" RootElement_RoomFetcher : roomFetcher46
-RootElement_Room "1..1" -- "1..1" RootElement_RoomType : roomType13
-RootElement_RoomStructure "1..1" -- "0..9999" RootElement_RoomType : roomTypes38
-RootElement_Booking "1..1" -- "0..9999" RootElement_RoomBooking : roombooking5
-RootElement_Room "0..9999" -- "1..1" RootElement_RoomStructure : rooms36
-RootElement_Clerk "1..1" -- "1..1" RootElement_ServiceItemHandling : serviceItemHandling24
-RootElement_Booking "1..1" -- "0..9999" RootElement_ServiceItem : serviceitem9
-RootElement_Staff "1..1" -- "1..1" RootElement_SupportTicketReader : supportTicketReader18
-RootElement_Guest "1..1" -- "1..1" RootElement_SupportTicketWriter : supportTicketWriter0
-RootElement_Staff "1..1" -- "1..1" RootElement_SupportTicketWriter : supportTicketWriter20
-RootElement_SupportTicket "0..9999" -- "1..1" RootElement_SupportTicketHandler : supportticket45
+RootElement_Booking "RootElement_BookingHandler 0..9999" -- "RootElement_Booking33 1..1" RootElement_BookingHandler : booking32
+RootElement_Cleaning "RootElement_Staff 1..1" -- "RootElement_Cleaning 1..1" RootElement_Staff : cleaning17
+RootElement_Feedback "RootElement_FeedbackHandler 0..9999" -- "RootElement_Feedback 1..1" RootElement_FeedbackHandler : feedback44
+RootElement_FeedbackReader "RootElement_Manager 1..1" -- "RootElement_FeedbackReader 1..1" RootElement_Manager : feedbackReader31
+RootElement_FeedbackWriter "RootElement_Guest4 1..1" -- "RootElement_FeedbackWriter 1..1" RootElement_Guest : feedbackWriter3
+RootElement_Booking "RootElement_Guest8 1..1" -- "RootElement_Booking7 1..1" RootElement_Guest : guest6
+RootElement_Guest "RootElement_MakeBooking 1..1" -- "RootElement_Guest2 1..1" RootElement_MakeBooking : makeBooking1
+RootElement_Clerk "RootElement_MakeBooking28 1..1" -- "RootElement_Clerk27 1..1" RootElement_MakeBooking : makeBooking26
+RootElement_Clerk "RootElement_Payment 1..1" -- "RootElement_Clerk30 1..1" RootElement_Payment : payment29
+RootElement_Clerk "RootElement_ReceptionHandling 1..1" -- "RootElement_Clerk 1..1" RootElement_ReceptionHandling : receptionHandling23
+RootElement_Room "RootElement_RoomBooking12 1..1" -- "RootElement_Room 1..1" RootElement_RoomBooking : room11
+RootElement_RoomAttribute "RootElement_RoomType16 0..9999" -- "RootElement_RoomAttribute 1..1" RootElement_RoomType : roomAttributes15
+RootElement_RoomAttribute "RootElement_RoomStructure42 0..9999" -- "RootElement_RoomAttribute43 1..1" RootElement_RoomStructure : roomAttributes41
+RootElement_BookingHandler "RootElement_RoomFetcher 1..1" -- "RootElement_BookingHandler35 1..1" RootElement_RoomFetcher : roomFetcher34
+RootElement_CleaningHandler "RootElement_RoomFetcher47 1..1" -- "RootElement_CleaningHandler 1..1" RootElement_RoomFetcher : roomFetcher46
+RootElement_Room "RootElement_RoomType 1..1" -- "RootElement_Room14 1..1" RootElement_RoomType : roomType13
+RootElement_RoomStructure "RootElement_RoomType40 1..1" -- "RootElement_RoomStructure39 0..9999" RootElement_RoomType : roomTypes38
+RootElement_Booking "RootElement_RoomBooking 1..1" -- "RootElement_Booking 0..9999" RootElement_RoomBooking : roombooking5
+RootElement_Room "RootElement_RoomStructure 0..9999" -- "RootElement_Room37 1..1" RootElement_RoomStructure : rooms36
+RootElement_Clerk "RootElement_ServiceItemHandling 1..1" -- "RootElement_Clerk25 1..1" RootElement_ServiceItemHandling : serviceItemHandling24
+RootElement_Booking "RootElement_ServiceItem 1..1" -- "RootElement_Booking10 0..9999" RootElement_ServiceItem : serviceitem9
+RootElement_Staff "RootElement_SupportTicketReader 1..1" -- "RootElement_Staff19 1..1" RootElement_SupportTicketReader : supportTicketReader18
+RootElement_Guest "RootElement_SupportTicketWriter 1..1" -- "RootElement_Guest 1..1" RootElement_SupportTicketWriter : supportTicketWriter0
+RootElement_Staff "RootElement_SupportTicketWriter22 1..1" -- "RootElement_Staff21 1..1" RootElement_SupportTicketWriter : supportTicketWriter20
+RootElement_SupportTicket "RootElement_SupportTicketHandler 0..9999" -- "RootElement_SupportTicket 1..1" RootElement_SupportTicketHandler : supportticket45
 @enduml

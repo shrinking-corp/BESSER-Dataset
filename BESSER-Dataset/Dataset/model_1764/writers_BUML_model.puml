@@ -1,4 +1,8 @@
 @startuml
+' model: writers
+' project: sampleModel
+' owner: User
+' description: New project
 class writers_Book {
 }
 class writers_Catalog {
@@ -6,6 +10,6 @@ class writers_Catalog {
 class writers_Writer {
   + name : str
 }
-writers_Book "0..9999" -- "1..1" writers_Writer : books1
-writers_Catalog "1..1" *-- "0..9999" writers_Writer : writers0
+writers_Book "authors 0..9999" -- "books.ecoreBook 1..1" writers_Writer : books1
+writers_Catalog "writers_Writer 1..1" *-- "writers_Catalog 0..9999" writers_Writer : writers0
 @enduml

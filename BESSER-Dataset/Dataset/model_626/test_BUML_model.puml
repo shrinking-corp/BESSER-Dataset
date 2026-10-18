@@ -1,4 +1,8 @@
 @startuml
+' model: model
+' project: sampleModel
+' owner: User
+' description: New project
 class TableContent {
 }
 class model_Book {
@@ -55,16 +59,16 @@ class model_Writer {
 }
 TableContent <|-- model_TableContentWithValidation
 TableContent <|-- model_TableContentWithoutValidation
-model_Book "0..9999" --* "1..1" model_Library : books1
-model_Book "0..9999" -- "1..1" model_Writer : books4
-model_TableContent "1..9999" --* "1..1" model_TableWithMultiplicity : content13
-model_TableContent "0..9999" --* "1..1" model_TableWithoutMultiplicity : content14
-model_TableContent "0..9999" --* "1..1" model_TableWithUnique : content16
-model_Container "1..1" *-- "0..9999" model_Content : contents12
-model_Librarian "0..1" --* "1..1" model_Library : librarian2
-model_Library "0..1" -- "1..1" model_Writer : library5
-model_Computer "1..1" *-- "0..1" model_Mainboard : mainboard9
-model_Computer "1..1" *-- "0..1" model_PowerBlock : powerBlock10
-model_Library "1..1" *-- "1..9999" model_Writer : writers0
-model_Book "1..1" -- "0..1" model_Writer : writers7
+model_Book "model_Library 0..9999" --* "model_Book 1..1" model_Library : books1
+model_Book "writers 0..9999" -- "Book 1..1" model_Writer : books4
+model_TableContent "model_TableWithMultiplicity 1..9999" --* "model_TableContent 1..1" model_TableWithMultiplicity : content13
+model_TableContent "model_TableWithoutMultiplicity 0..9999" --* "model_TableContent15 1..1" model_TableWithoutMultiplicity : content14
+model_TableContent "model_TableWithUnique 0..9999" --* "model_TableContent17 1..1" model_TableWithUnique : content16
+model_Container "model_Content 1..1" *-- "model_Container 0..9999" model_Content : contents12
+model_Librarian "model_Library3 0..1" --* "model_Librarian 1..1" model_Library : librarian2
+model_Library "writers6 0..1" -- "Library 1..1" model_Writer : library5
+model_Computer "model_Mainboard 1..1" *-- "model_Computer 0..1" model_Mainboard : mainboard9
+model_Computer "model_PowerBlock 1..1" *-- "model_Computer11 0..1" model_PowerBlock : powerBlock10
+model_Library "Writer 1..1" *-- "library 1..9999" model_Writer : writers0
+model_Book "Writer8 1..1" -- "books 0..1" model_Writer : writers7
 @enduml

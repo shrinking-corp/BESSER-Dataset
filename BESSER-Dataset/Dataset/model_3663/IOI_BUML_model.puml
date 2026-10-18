@@ -1,4 +1,8 @@
 @startuml
+' model: iOI
+' project: sampleModel
+' owner: User
+' description: New project
 class Employee {
 }
 class iOI_Company {
@@ -20,11 +24,11 @@ class iOI_Position {
   + name : str
 }
 Employee <|-- iOI_Manager
-iOI_Company "0..9999" --* "1..1" iOI_Model : companies0
-iOI_Company "1..1" *-- "0..9999" iOI_Department : departments5
-iOI_Department "1..1" *-- "0..9999" iOI_Employee : employees9
-iOI_Department "1..1" *-- "0..1" iOI_Manager : manager7
-iOI_Company "1..1" *-- "0..9999" iOI_Position : positions2
-iOI_Department "0..1" --* "1..1" iOI_Department : sub_department13
-iOI_Employee "1..1" -- "0..1" iOI_Position : works_on1
+iOI_Company "iOI_Model 0..9999" --* "iOI_Company 1..1" iOI_Model : companies0
+iOI_Company "iOI_Department 1..1" *-- "iOI_Company6 0..9999" iOI_Department : departments5
+iOI_Department "iOI_Employee11 1..1" *-- "iOI_Department10 0..9999" iOI_Employee : employees9
+iOI_Department "iOI_Manager 1..1" *-- "iOI_Department8 0..1" iOI_Manager : manager7
+iOI_Company "iOI_Position4 1..1" *-- "iOI_Company3 0..9999" iOI_Position : positions2
+iOI_Department "iOI_Department12 0..1" --* "iOI_Department14 1..1" iOI_Department : sub_department13
+iOI_Employee "iOI_Position 1..1" -- "iOI_Employee 0..1" iOI_Position : works_on1
 @enduml

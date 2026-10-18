@@ -1,4 +1,8 @@
 @startuml
+' model: _3HAuoPXGEemEXt2Xl4w_3Q
+' project: sampleModel
+' owner: User
+' description: New project
 class Farmer {
   + _address : str
   + _email : str
@@ -42,11 +46,11 @@ class _Shipment {
   + orderId : int
   + shipmentNumber : int
 }
-Farmer "1..1" -- "0..9999" _ProductType : Farmer__ProductType
-_Product "0..9999" -- "1..1" _ProductType : ProductType_Product
-Farmer "1..1" -- "0..9999" _Shipment : Ratings_Customer
-Farmer "1..1" -- "1..1" _LoginCredential : WebUser_Customer
-Farmer "1..1" -- "1..9999" _OrderDetail : _Customer__OrderDetails
-_OrderDetail "1..1" -- "1..1" _PaymentInfo : _PaymentInfo__OrderDetail
-_OrderDetail "0..9999" -- "0..9999" _Product : _Product__OrderDetails
+Farmer "farmer13 1..1" -- "_Add_Product_Type12 0..9999" _ProductType : Farmer__ProductType
+_Product "_has_products4 0..9999" -- "_type_of5 1..1" _ProductType : ProductType_Product
+Farmer "_Delivers2 1..1" -- "_ships3 0..9999" _Shipment : Ratings_Customer
+Farmer "_for0 1..1" -- "_logs_in_with1 1..1" _LoginCredential : WebUser_Customer
+Farmer "receives9 1..1" -- "_orders8 1..9999" _OrderDetail : _Customer__OrderDetails
+_OrderDetail "_OrderDetail10 1..1" -- "_PaymentInfo11 1..1" _PaymentInfo : _PaymentInfo__OrderDetail
+_OrderDetail "_is_in6 0..9999" -- "_contains7 0..9999" _Product : _Product__OrderDetails
 @enduml

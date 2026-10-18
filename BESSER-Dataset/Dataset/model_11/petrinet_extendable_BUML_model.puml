@@ -1,4 +1,8 @@
 @startuml
+' model: petrinet
+' project: sampleModel
+' owner: User
+' description: New project
 class Node {
 }
 class RefArcs {
@@ -39,9 +43,9 @@ RefArcs <|-- petrinet_Arc
 RefNodes <|-- petrinet_Node
 RefPetriNets <|-- petrinet_PetriNet
 RefTokens <|-- petrinet_Token
-petrinet_PetriNet "1..1" *-- "0..9999" petrinet_RefArcs : arcs1
-petrinet_Place "1..1" *-- "0..9999" petrinet_RefTokens : marking8
-petrinet_PetriNet "1..1" *-- "0..9999" petrinet_RefNodes : nodes0
-petrinet_Arc "1..1" -- "1..1" petrinet_RefNodes : source5
-petrinet_Arc "1..1" -- "1..1" petrinet_RefNodes : target3
+petrinet_PetriNet "petrinet_RefArcs 1..1" *-- "petrinet_PetriNet2 0..9999" petrinet_RefArcs : arcs1
+petrinet_Place "petrinet_RefTokens 1..1" *-- "petrinet_Place 0..9999" petrinet_RefTokens : marking8
+petrinet_PetriNet "petrinet_RefNodes 1..1" *-- "petrinet_PetriNet 0..9999" petrinet_RefNodes : nodes0
+petrinet_Arc "petrinet_RefNodes7 1..1" -- "petrinet_Arc6 1..1" petrinet_RefNodes : source5
+petrinet_Arc "petrinet_RefNodes4 1..1" -- "petrinet_Arc 1..1" petrinet_RefNodes : target3
 @enduml

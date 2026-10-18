@@ -1,4 +1,8 @@
 @startuml
+' model: service
+' project: sampleModel
+' owner: User
+' description: New project
 class FormalParameterList {
 }
 class NamedDisplayElement {
@@ -69,28 +73,28 @@ Order <|-- service_Asc
 Order <|-- service_Desc
 Variable <|-- service_ConstantReference
 Variable <|-- service_ServiceFeatureReference
-service_Predicate "0..1" --* "1..1" service_Selection : condition23
-service_Filter "1..1" *-- "1..1" service_Predicate : condition42
-service_Constant "0..9999" --* "1..1" service_Service : constants1
-service_Constant "1..1" -- "1..1" service_Service : definedBy15
-service_BusinessOperation "1..1" -- "0..1" service_Service : definedBy36
-service_Feature "1..1" -- "1..1" service_ServiceFeatureReference : feature34
-service_Feature "0..9999" -- "1..1" service_Selection : fields19
-service_Filter "0..9999" --* "1..1" service_Selection : filters25
-service_Selection "0..1" -- "1..1" service_Service : findAll5
-service_Selection "0..1" -- "1..1" service_Service : findOne7
-service_Association "0..9999" -- "1..1" service_Selection : joins21
-service_BusinessOperation "0..9999" --* "1..1" service_Service : operations10
-service_Order "0..9999" --* "1..1" service_Selection : ordering26
-service_Order "1..1" *-- "1..1" service_Variable : path30
-service_EntityAssociation "0..9999" -- "1..1" service_Selection : selectPath28
-service_Filter "1..1" -- "0..1" service_Selection : selection40
-service_Selection "0..9999" --* "1..1" service_Service : selections4
-service_EntityOrView "0..1" -- "1..1" service_Service : serves2
-service_Service "0..9999" --* "1..1" service_Services : services0
-service_Selection "1..1" -- "1..1" service_Service : usedBy17
-service_Service "0..9999" -- "1..1" service_Service : uses13
-service_BusinessOperation "1..1" -- "0..9999" service_Service : uses38
-service_Constant "1..1" *-- "0..1" service_Expression : value16
-service_Constant "1..1" -- "1..1" service_ConstantReference : value32
+service_Predicate "service_Selection24 0..1" --* "service_Predicate 1..1" service_Selection : condition23
+service_Filter "service_Predicate43 1..1" *-- "service_Filter 1..1" service_Predicate : condition42
+service_Constant "definedBy 0..9999" --* "Constant 1..1" service_Service : constants1
+service_Constant "Service 1..1" -- "constants 1..1" service_Service : definedBy15
+service_BusinessOperation "Service37 1..1" -- "operations 0..1" service_Service : definedBy36
+service_Feature "service_ServiceFeatureReference 1..1" -- "service_Feature35 1..1" service_ServiceFeatureReference : feature34
+service_Feature "service_Selection20 0..9999" -- "service_Feature 1..1" service_Selection : fields19
+service_Filter "selection 0..9999" --* "Filter 1..1" service_Selection : filters25
+service_Selection "service_Service6 0..1" -- "service_Selection 1..1" service_Service : findAll5
+service_Selection "service_Service8 0..1" -- "service_Selection9 1..1" service_Service : findOne7
+service_Association "service_Selection22 0..9999" -- "service_Association 1..1" service_Selection : joins21
+service_BusinessOperation "definedBy11 0..9999" --* "BusinessOperation 1..1" service_Service : operations10
+service_Order "service_Selection27 0..9999" --* "service_Order 1..1" service_Selection : ordering26
+service_Order "service_Variable 1..1" *-- "service_Order31 1..1" service_Variable : path30
+service_EntityAssociation "service_Selection29 0..9999" -- "service_EntityAssociation 1..1" service_Selection : selectPath28
+service_Filter "Selection41 1..1" -- "filters 0..1" service_Selection : selection40
+service_Selection "usedBy 0..9999" --* "Selection 1..1" service_Service : selections4
+service_EntityOrView "service_Service3 0..1" -- "service_EntityOrView 1..1" service_Service : serves2
+service_Service "service_Services 0..9999" --* "service_Service 1..1" service_Services : services0
+service_Selection "Service18 1..1" -- "selections 1..1" service_Service : usedBy17
+service_Service "service_Service12 0..9999" -- "service_Service14 1..1" service_Service : uses13
+service_BusinessOperation "service_Service39 1..1" -- "service_BusinessOperation 0..9999" service_Service : uses38
+service_Constant "service_Expression 1..1" *-- "service_Constant 0..1" service_Expression : value16
+service_Constant "service_ConstantReference 1..1" -- "service_Constant33 1..1" service_ConstantReference : value32
 @enduml

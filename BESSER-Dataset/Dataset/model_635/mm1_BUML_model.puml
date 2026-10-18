@@ -1,4 +1,8 @@
 @startuml
+' model: mm1
+' project: sampleModel
+' owner: User
+' description: New project
 class mm1_Book {
   + name : str
 }
@@ -8,7 +12,7 @@ class mm1_Library {
 class mm1_Member {
   + name : str
 }
-mm1_Book "0..9999" --* "1..1" mm1_Library : books1
-mm1_Book "0..9999" -- "1..1" mm1_Member : loans3
-mm1_Library "1..1" *-- "0..9999" mm1_Member : members0
+mm1_Book "mm1_Library2 0..9999" --* "mm1_Book 1..1" mm1_Library : books1
+mm1_Book "mm1_Member4 0..9999" -- "mm1_Book5 1..1" mm1_Member : loans3
+mm1_Library "mm1_Member 1..1" *-- "mm1_Library 0..9999" mm1_Member : members0
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: Model
+' project: sampleModel
+' owner: User
+' description: New project
 class DEVS {
 }
 class Model_AtomicDEVS {
@@ -51,34 +55,34 @@ PhaseTransition <|-- Model_ExtTrans
 PhaseTransition <|-- Model_IntTransition
 Port <|-- Model_IPort
 Port <|-- Model_OPort
-Model_DEVS "1..1" -- "0..1" Model_DEVS : container1
-Model_AtomicDEVS "1..1" *-- "0..9999" Model_ConfTrans : deltaConf7
-Model_AtomicDEVS "1..1" *-- "0..9999" Model_ExtTrans : deltaExt9
-Model_AtomicDEVS "1..1" *-- "0..9999" Model_IntTransition : deltaInt6
-Model_EClassifier "1..1" -- "1..1" Model_Variable : domain70
-Model_CoupledDEVS "1..1" *-- "0..9999" Model_EIC : eics17
-Model_CoupledDEVS "1..1" *-- "0..9999" Model_EOC : eocs21
-Model_CoupledDEVS "1..1" *-- "0..9999" Model_IC : ics19
-Model_EIC "1..1" -- "1..1" Model_IPort : influencee30
-Model_IC "1..1" -- "0..1" Model_IPort : influencee36
-Model_EOC "1..1" -- "0..1" Model_OPort : influencee42
-Model_EIC "1..1" -- "1..1" Model_IPort : influencer27
-Model_IC "1..1" -- "0..1" Model_OPort : influencer33
-Model_EOC "1..1" -- "0..1" Model_OPort : influencer39
-Model_ConfTrans "1..1" -- "0..9999" Model_Event : inputs50
-Model_Event "0..9999" -- "1..1" Model_ExtTrans : inputs53
-Model_DEVS "1..1" *-- "0..9999" Model_IPort : iports2
-Model_DEVS "1..1" *-- "0..9999" Model_OPort : oports4
-Model_Event "0..9999" -- "1..1" Model_IntTransition : outputs45
-Model_ConfTrans "1..1" -- "0..9999" Model_Event : outputs47
-Model_DEVS "1..1" -- "1..1" Model_Port : owner23
-Model_AtomicDEVS "1..1" *-- "1..9999" Model_Phase : phases11
-Model_EClassifier "1..1" -- "1..1" Model_Port : portType25
-Model_Phase "1..1" -- "1..9999" Model_Variable : predicates62
-Model_Phase "1..1" -- "1..1" Model_PhaseTransition : sourcePhase65
-Model_AtomicDEVS "1..1" *-- "0..9999" Model_Variable : stateVars13
-Model_CoupledDEVS "1..1" *-- "1..9999" Model_DEVS : subModels15
-Model_Phase "1..1" -- "1..1" Model_PhaseTransition : targetPhase67
-Model_Event "1..1" -- "1..1" Model_Port : targetPort56
-Model_EClassifier "1..1" -- "1..1" Model_Event : value59
+Model_DEVS "Model_DEVS 1..1" -- "Model_DEVS0 0..1" Model_DEVS : container1
+Model_AtomicDEVS "Model_ConfTrans 1..1" *-- "Model_AtomicDEVS8 0..9999" Model_ConfTrans : deltaConf7
+Model_AtomicDEVS "Model_ExtTrans 1..1" *-- "Model_AtomicDEVS10 0..9999" Model_ExtTrans : deltaExt9
+Model_AtomicDEVS "Model_IntTransition 1..1" *-- "Model_AtomicDEVS 0..9999" Model_IntTransition : deltaInt6
+Model_EClassifier "Model_Variable71 1..1" -- "Model_EClassifier72 1..1" Model_Variable : domain70
+Model_CoupledDEVS "Model_EIC 1..1" *-- "Model_CoupledDEVS18 0..9999" Model_EIC : eics17
+Model_CoupledDEVS "Model_EOC 1..1" *-- "Model_CoupledDEVS22 0..9999" Model_EOC : eocs21
+Model_CoupledDEVS "Model_IC 1..1" *-- "Model_CoupledDEVS20 0..9999" Model_IC : ics19
+Model_EIC "Model_IPort32 1..1" -- "Model_EIC31 1..1" Model_IPort : influencee30
+Model_IC "Model_IPort38 1..1" -- "Model_IC37 0..1" Model_IPort : influencee36
+Model_EOC "Model_OPort44 1..1" -- "Model_EOC43 0..1" Model_OPort : influencee42
+Model_EIC "Model_IPort29 1..1" -- "Model_EIC28 1..1" Model_IPort : influencer27
+Model_IC "Model_OPort35 1..1" -- "Model_IC34 0..1" Model_OPort : influencer33
+Model_EOC "Model_OPort41 1..1" -- "Model_EOC40 0..1" Model_OPort : influencer39
+Model_ConfTrans "Model_Event52 1..1" -- "Model_ConfTrans51 0..9999" Model_Event : inputs50
+Model_Event "Model_ExtTrans54 0..9999" -- "Model_Event55 1..1" Model_ExtTrans : inputs53
+Model_DEVS "Model_IPort 1..1" *-- "Model_DEVS3 0..9999" Model_IPort : iports2
+Model_DEVS "Model_OPort 1..1" *-- "Model_DEVS5 0..9999" Model_OPort : oports4
+Model_Event "Model_IntTransition46 0..9999" -- "Model_Event 1..1" Model_IntTransition : outputs45
+Model_ConfTrans "Model_Event49 1..1" -- "Model_ConfTrans48 0..9999" Model_Event : outputs47
+Model_DEVS "Model_Port 1..1" -- "Model_DEVS24 1..1" Model_Port : owner23
+Model_AtomicDEVS "Model_Phase 1..1" *-- "Model_AtomicDEVS12 1..9999" Model_Phase : phases11
+Model_EClassifier "Model_Port26 1..1" -- "Model_EClassifier 1..1" Model_Port : portType25
+Model_Phase "Model_Variable64 1..1" -- "Model_Phase63 1..9999" Model_Variable : predicates62
+Model_Phase "Model_PhaseTransition 1..1" -- "Model_Phase66 1..1" Model_PhaseTransition : sourcePhase65
+Model_AtomicDEVS "Model_Variable 1..1" *-- "Model_AtomicDEVS14 0..9999" Model_Variable : stateVars13
+Model_CoupledDEVS "Model_DEVS16 1..1" *-- "Model_CoupledDEVS 1..9999" Model_DEVS : subModels15
+Model_Phase "Model_PhaseTransition68 1..1" -- "Model_Phase69 1..1" Model_PhaseTransition : targetPhase67
+Model_Event "Model_Port58 1..1" -- "Model_Event57 1..1" Model_Port : targetPort56
+Model_EClassifier "Model_Event60 1..1" -- "Model_EClassifier61 1..1" Model_Event : value59
 @enduml

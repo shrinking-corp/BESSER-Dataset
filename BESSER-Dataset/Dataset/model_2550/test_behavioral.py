@@ -579,9 +579,9 @@ def test_assoc_s1_stub_double():
     partner = dml_D()
     setattr(partner, 'dml_D2', None)
     _safe_set(owner, 'dml_S', partner)
-    assert getattr(partner, 'dml_D2') == owner
+    assert owner in getattr(partner, 'dml_D2')
     _safe_set(owner, 'dml_S', None)
-    assert getattr(partner, 'dml_D2') is None
+    assert owner not in getattr(partner, 'dml_D2')
 
 
 def test_assoc_s10_stub_double():
@@ -594,9 +594,9 @@ def test_assoc_s10_stub_double():
     partner = dml_F()
     setattr(partner, 'dml_F11', None)
     _safe_set(owner, 'dml_S12', partner)
-    assert getattr(partner, 'dml_F11') == owner
+    assert owner in getattr(partner, 'dml_F11')
     _safe_set(owner, 'dml_S12', None)
-    assert getattr(partner, 'dml_F11') is None
+    assert owner not in getattr(partner, 'dml_F11')
 
 
 def test_assoc_s29_stub_double():
@@ -624,9 +624,9 @@ def test_assoc_s56_stub_double():
     partner = dml_BS()
     setattr(partner, 'dml_BS57', None)
     _safe_set(owner, 'dml_S58', partner)
-    assert getattr(partner, 'dml_BS57') == owner
+    assert owner in getattr(partner, 'dml_BS57')
     _safe_set(owner, 'dml_S58', None)
-    assert getattr(partner, 'dml_BS57') is None
+    assert owner not in getattr(partner, 'dml_BS57')
 
 
 def test_assoc_singleS53_stub_double():
@@ -654,9 +654,9 @@ def test_assoc_spkv13_stub_double():
     partner = dml_F()
     setattr(partner, 'dml_F14', None)
     _safe_set(owner, 'dml_SPKV', partner)
-    assert getattr(partner, 'dml_F14') == owner
+    assert owner in getattr(partner, 'dml_F14')
     _safe_set(owner, 'dml_SPKV', None)
-    assert getattr(partner, 'dml_F14') is None
+    assert owner not in getattr(partner, 'dml_F14')
 
 
 def test_assoc_t181_stub_double():
@@ -684,8 +684,8 @@ def test_assoc_t79_stub_double():
     partner = dml_PL()
     setattr(partner, 'dml_PL80', None)
     _safe_set(owner, 'dml_TAN', partner)
-    assert getattr(partner, 'dml_PL80') == owner
+    assert owner in getattr(partner, 'dml_PL80')
     _safe_set(owner, 'dml_TAN', None)
-    assert getattr(partner, 'dml_PL80') is None
+    assert owner not in getattr(partner, 'dml_PL80')
 
 

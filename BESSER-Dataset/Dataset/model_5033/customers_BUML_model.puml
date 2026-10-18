@@ -1,4 +1,8 @@
 @startuml
+' model: customers
+' project: sampleModel
+' owner: User
+' description: New project
 class Address {
 }
 enum CanadaProvinces {
@@ -47,8 +51,8 @@ class customers_USAddress {
 }
 Address <|-- customers_CanadaAddress
 Address <|-- customers_USAddress
-customers_Address "1..1" --* "1..1" customers_Customer : address1
-customers_CreditCard "0..9999" --* "1..1" customers_Customer : creditCard0
-customers_Customer "0..9999" --* "1..1" customers_CustomersDB : customers3
-customers_CreditCard "1..1" -- "1..1" customers_Customer : holder2
+customers_Address "customers_Customer 1..1" --* "customers_Address 1..1" customers_Customer : address1
+customers_CreditCard "holder 0..9999" --* "CreditCard 1..1" customers_Customer : creditCard0
+customers_Customer "customers_CustomersDB 0..9999" --* "customers_Customer4 1..1" customers_CustomersDB : customers3
+customers_CreditCard "Customer 1..1" -- "creditCard 1..1" customers_Customer : holder2
 @enduml

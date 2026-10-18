@@ -98,9 +98,9 @@ def test_assoc_realizes3_stub_double():
     partner = core_COREModel()
     setattr(partner, 'realizedBy', None)
     _safe_set(owner, 'COREFeature', partner)
-    assert getattr(partner, 'realizedBy') == owner
+    assert owner in getattr(partner, 'realizedBy')
     _safe_set(owner, 'COREFeature', None)
-    assert getattr(partner, 'realizedBy') is None
+    assert owner not in getattr(partner, 'realizedBy')
 
 
 def test_assoc_selectable24_stub_double():
@@ -113,9 +113,9 @@ def test_assoc_selectable24_stub_double():
     partner = core_COREInterface()
     setattr(partner, 'core_COREInterface25', None)
     _safe_set(owner, 'core_COREFeature26', partner)
-    assert getattr(partner, 'core_COREInterface25') == owner
+    assert owner in getattr(partner, 'core_COREInterface25')
     _safe_set(owner, 'core_COREFeature26', None)
-    assert getattr(partner, 'core_COREInterface25') is None
+    assert owner not in getattr(partner, 'core_COREInterface25')
 
 
 def test_assoc_selected41_stub_double():
@@ -128,9 +128,9 @@ def test_assoc_selected41_stub_double():
     partner = core_COREReuse()
     setattr(partner, 'core_COREReuse42', None)
     _safe_set(owner, 'core_COREFeature43', partner)
-    assert getattr(partner, 'core_COREReuse42') == owner
+    assert owner in getattr(partner, 'core_COREReuse42')
     _safe_set(owner, 'core_COREFeature43', None)
-    assert getattr(partner, 'core_COREReuse42') is None
+    assert owner not in getattr(partner, 'core_COREReuse42')
 
 
 def test_assoc_selected47_stub_double():
@@ -143,9 +143,9 @@ def test_assoc_selected47_stub_double():
     partner = core_COREConfiguration()
     setattr(partner, 'core_COREConfiguration48', None)
     _safe_set(owner, 'core_COREFeature49', partner)
-    assert getattr(partner, 'core_COREConfiguration48') == owner
+    assert owner in getattr(partner, 'core_COREConfiguration48')
     _safe_set(owner, 'core_COREFeature49', None)
-    assert getattr(partner, 'core_COREConfiguration48') is None
+    assert owner not in getattr(partner, 'core_COREConfiguration48')
 
 
 def test_assoc_strategies9_stub_double():

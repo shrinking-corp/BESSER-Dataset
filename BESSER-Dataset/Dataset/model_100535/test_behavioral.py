@@ -509,9 +509,9 @@ def test_assoc_packages1_stub_double():
     partner = useCases_UseCasesModel()
     setattr(partner, 'useCases_UseCasesModel2', None)
     _safe_set(owner, 'useCases_PackageDeclaration', partner)
-    assert getattr(partner, 'useCases_UseCasesModel2') == owner
+    assert owner in getattr(partner, 'useCases_UseCasesModel2')
     _safe_set(owner, 'useCases_PackageDeclaration', None)
-    assert getattr(partner, 'useCases_UseCasesModel2') is None
+    assert owner not in getattr(partner, 'useCases_UseCasesModel2')
 
 
 def test_assoc_pages33_stub_double():

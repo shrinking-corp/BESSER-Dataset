@@ -1,4 +1,8 @@
 @startuml
+' model: ast
+' project: sampleModel
+' owner: User
+' description: New project
 enum ArithmeticOperator {
   Add
   Divide
@@ -29,10 +33,10 @@ Expression <|-- ast_Operand
 Expression <|-- ast_Operator
 Operand <|-- ast_Number
 Operand <|-- ast_Variable
-ast_Expression "0..1" --* "1..1" ast_Model : expr0
-ast_Expression "0..1" --* "1..1" ast_Operator : left5
-ast_Expression "1..1" -- "0..1" ast_Operator : leftInverse2
-ast_Expression "1..1" -- "0..1" ast_Model : model1
-ast_Expression "0..1" --* "1..1" ast_Operator : right7
-ast_Expression "1..1" -- "0..1" ast_Operator : rightInverse3
+ast_Expression "model 0..1" --* "Expression 1..1" ast_Model : expr0
+ast_Expression "leftInverse 0..1" --* "Expression6 1..1" ast_Operator : left5
+ast_Expression "Operator 1..1" -- "left 0..1" ast_Operator : leftInverse2
+ast_Expression "Model 1..1" -- "expr 0..1" ast_Model : model1
+ast_Expression "rightInverse 0..1" --* "Expression8 1..1" ast_Operator : right7
+ast_Expression "Operator4 1..1" -- "right 0..1" ast_Operator : rightInverse3
 @enduml

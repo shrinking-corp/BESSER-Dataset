@@ -1,4 +1,8 @@
 @startuml
+' model: bpmn
+' project: sampleModel
+' owner: User
+' description: New project
 class Activity {
 }
 enum ActivityType {
@@ -145,34 +149,34 @@ NamedBpmnObject <|-- bpmn_MessageVertex
 NamedBpmnObject <|-- bpmn_MessagingEdge
 NamedBpmnObject <|-- bpmn_SequenceEdge
 Vertex <|-- bpmn_Activity
-bpmn_Activity "0..9999" -- "1..1" bpmn_Group : activities19
-bpmn_Activity "0..9999" -- "1..1" bpmn_Lane : activities20
-bpmn_Artifact "0..9999" --* "1..1" bpmn_ArtifactsContainer : artifacts6
-bpmn_Artifact "1..1" -- "0..1" bpmn_ArtifactsContainer : artifactsContainer5
-bpmn_Association "0..9999" -- "1..1" bpmn_AssociationTarget : associations11
-bpmn_Artifact "1..1" *-- "0..9999" bpmn_Association : associations4
-bpmn_BpmnDiagram "0..1" -- "1..1" bpmn_MessagingEdge : bpmnDiagram34
-bpmn_BpmnDiagram "0..1" -- "1..1" bpmn_Pool : bpmnDiagram37
-bpmn_Activity "1..1" -- "0..1" bpmn_SubProcess : eventHandlerFor3
-bpmn_Activity "0..9999" --* "1..1" bpmn_SubProcess : eventHandlers44
-bpmn_Graph "0..1" -- "1..1" bpmn_SequenceEdge : graph43
-bpmn_Graph "0..1" -- "1..1" bpmn_Vertex : graph52
-bpmn_Activity "1..1" -- "0..9999" bpmn_Group : groups0
-bpmn_SequenceEdge "0..9999" -- "1..1" bpmn_Vertex : incomingEdges49
-bpmn_MessageVertex "1..1" -- "0..9999" bpmn_MessagingEdge : incomingMessages25
-bpmn_Activity "1..1" -- "0..9999" bpmn_Lane : lanes1
-bpmn_Lane "0..9999" --* "1..1" bpmn_Pool : lanes35
-bpmn_BpmnDiagram "1..1" *-- "0..9999" bpmn_MessagingEdge : messages14
-bpmn_SequenceEdge "0..9999" -- "1..1" bpmn_Vertex : outgoingEdges46
-bpmn_MessageVertex "1..1" -- "0..9999" bpmn_MessagingEdge : outgoingMessages28
-bpmn_Lane "1..1" -- "0..1" bpmn_Pool : pool22
-bpmn_BpmnDiagram "1..1" *-- "0..9999" bpmn_Pool : pools13
-bpmn_Graph "1..1" *-- "0..9999" bpmn_SequenceEdge : sequenceEdges17
-bpmn_MessageVertex "0..1" -- "1..1" bpmn_MessagingEdge : source31
-bpmn_SequenceEdge "1..1" -- "0..1" bpmn_Vertex : source39
-bpmn_Artifact "0..1" -- "1..1" bpmn_Association : source7
-bpmn_MessageVertex "0..1" -- "1..1" bpmn_MessagingEdge : target32
-bpmn_SequenceEdge "1..1" -- "0..1" bpmn_Vertex : target41
-bpmn_Association "1..1" -- "0..1" bpmn_AssociationTarget : target9
-bpmn_Graph "1..1" *-- "0..9999" bpmn_Vertex : vertices16
+bpmn_Activity "groups 0..9999" -- "Activity 1..1" bpmn_Group : activities19
+bpmn_Activity "lanes 0..9999" -- "Activity21 1..1" bpmn_Lane : activities20
+bpmn_Artifact "artifactsContainer 0..9999" --* "Artifact 1..1" bpmn_ArtifactsContainer : artifacts6
+bpmn_Artifact "ArtifactsContainer 1..1" -- "artifacts 0..1" bpmn_ArtifactsContainer : artifactsContainer5
+bpmn_Association "target 0..9999" -- "Association12 1..1" bpmn_AssociationTarget : associations11
+bpmn_Artifact "Association 1..1" *-- "source 0..9999" bpmn_Association : associations4
+bpmn_BpmnDiagram "messages 0..1" -- "BpmnDiagram 1..1" bpmn_MessagingEdge : bpmnDiagram34
+bpmn_BpmnDiagram "pools 0..1" -- "BpmnDiagram38 1..1" bpmn_Pool : bpmnDiagram37
+bpmn_Activity "SubProcess 1..1" -- "eventHandlers 0..1" bpmn_SubProcess : eventHandlerFor3
+bpmn_Activity "eventHandlerFor 0..9999" --* "Activity45 1..1" bpmn_SubProcess : eventHandlers44
+bpmn_Graph "sequenceEdges 0..1" -- "Graph 1..1" bpmn_SequenceEdge : graph43
+bpmn_Graph "vertices 0..1" -- "Graph53 1..1" bpmn_Vertex : graph52
+bpmn_Activity "Group 1..1" -- "activities 0..9999" bpmn_Group : groups0
+bpmn_SequenceEdge "target50 0..9999" -- "SequenceEdge51 1..1" bpmn_Vertex : incomingEdges49
+bpmn_MessageVertex "MessagingEdge27 1..1" -- "target26 0..9999" bpmn_MessagingEdge : incomingMessages25
+bpmn_Activity "Lane 1..1" -- "activities2 0..9999" bpmn_Lane : lanes1
+bpmn_Lane "pool 0..9999" --* "Lane36 1..1" bpmn_Pool : lanes35
+bpmn_BpmnDiagram "MessagingEdge 1..1" *-- "bpmnDiagram15 0..9999" bpmn_MessagingEdge : messages14
+bpmn_SequenceEdge "source47 0..9999" -- "SequenceEdge48 1..1" bpmn_Vertex : outgoingEdges46
+bpmn_MessageVertex "MessagingEdge30 1..1" -- "source29 0..9999" bpmn_MessagingEdge : outgoingMessages28
+bpmn_Lane "Pool24 1..1" -- "lanes23 0..1" bpmn_Pool : pool22
+bpmn_BpmnDiagram "Pool 1..1" *-- "bpmnDiagram 0..9999" bpmn_Pool : pools13
+bpmn_Graph "SequenceEdge 1..1" *-- "graph18 0..9999" bpmn_SequenceEdge : sequenceEdges17
+bpmn_MessageVertex "outgoingMessages 0..1" -- "MessageVertex 1..1" bpmn_MessagingEdge : source31
+bpmn_SequenceEdge "Vertex40 1..1" -- "outgoingEdges 0..1" bpmn_Vertex : source39
+bpmn_Artifact "associations 0..1" -- "Artifact8 1..1" bpmn_Association : source7
+bpmn_MessageVertex "incomingMessages 0..1" -- "MessageVertex33 1..1" bpmn_MessagingEdge : target32
+bpmn_SequenceEdge "Vertex42 1..1" -- "incomingEdges 0..1" bpmn_Vertex : target41
+bpmn_Association "AssociationTarget 1..1" -- "associations10 0..1" bpmn_AssociationTarget : target9
+bpmn_Graph "Vertex 1..1" *-- "graph 0..9999" bpmn_Vertex : vertices16
 @enduml

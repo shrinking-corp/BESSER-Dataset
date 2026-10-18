@@ -1,4 +1,8 @@
 @startuml
+' model: web
+' project: sampleModel
+' owner: User
+' description: New project
 class Container {
 }
 class Content {
@@ -93,20 +97,20 @@ Content <|-- web_ReleaseSection
 Content <|-- web_SocialBar
 Page <|-- web_ContentPage
 Page <|-- web_NewsFeedPage
-web_Author "1..1" -- "1..1" web_NewsEntry : author13
-web_Author "0..9999" --* "1..1" web_Site : author4
-web_Container "1..1" *-- "0..9999" web_Content : content16
-web_FooterEntry "0..9999" --* "1..1" web_Site : footer1
-web_Gallery "0..9999" --* "1..1" web_Site : galleries10
-web_Gallery "1..1" -- "1..1" web_GalleryContent : gallery22
-web_Gallery "1..1" *-- "0..9999" web_Image : images20
-web_SocialBar "1..1" *-- "0..1" web_SocialInformation : information24
-web_Link "0..9999" --* "1..1" web_Site : links6
-web_NewsEntry "0..9999" --* "1..1" web_Site : news2
-web_Page "0..9999" --* "1..1" web_Site : pages0
-web_Release "0..1" -- "1..1" web_ReleaseSection : release18
-web_Release "0..9999" --* "1..1" web_Version : releases19
-web_Page "1..1" -- "0..1" web_Site : site12
-web_Release "1..1" -- "0..1" web_Version : version17
-web_Site "1..1" *-- "0..9999" web_Version : versions8
+web_Author "web_NewsEntry14 1..1" -- "web_Author15 1..1" web_NewsEntry : author13
+web_Author "web_Site5 0..9999" --* "web_Author 1..1" web_Site : author4
+web_Container "web_Content 1..1" *-- "web_Container 0..9999" web_Content : content16
+web_FooterEntry "web_Site 0..9999" --* "web_FooterEntry 1..1" web_Site : footer1
+web_Gallery "web_Site11 0..9999" --* "web_Gallery 1..1" web_Site : galleries10
+web_Gallery "web_GalleryContent 1..1" -- "web_Gallery23 1..1" web_GalleryContent : gallery22
+web_Gallery "web_Image 1..1" *-- "web_Gallery21 0..9999" web_Image : images20
+web_SocialBar "web_SocialInformation 1..1" *-- "web_SocialBar 0..1" web_SocialInformation : information24
+web_Link "web_Site7 0..9999" --* "web_Link 1..1" web_Site : links6
+web_NewsEntry "web_Site3 0..9999" --* "web_NewsEntry 1..1" web_Site : news2
+web_Page "site 0..9999" --* "Page 1..1" web_Site : pages0
+web_Release "web_ReleaseSection 0..1" -- "web_Release 1..1" web_ReleaseSection : release18
+web_Release "version 0..9999" --* "Release 1..1" web_Version : releases19
+web_Page "Site 1..1" -- "pages 0..1" web_Site : site12
+web_Release "Version 1..1" -- "releases 0..1" web_Version : version17
+web_Site "web_Version 1..1" *-- "web_Site9 0..9999" web_Version : versions8
 @enduml

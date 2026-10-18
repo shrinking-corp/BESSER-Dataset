@@ -1,4 +1,8 @@
 @startuml
+' model: llp
+' project: sampleModel
+' owner: User
+' description: New project
 class CacheInstruction {
 }
 class ControlFlowInstruction {
@@ -64,16 +68,16 @@ IOInstruction <|-- llp_ReadInstruction
 IOInstruction <|-- llp_WriteInstruction
 SynchronisationInstruction <|-- llp_LockInstruction
 SynchronisationInstruction <|-- llp_UnlockInstruction
-llp_Block "1..1" --* "1..1" llp_RepetitionInstruction : block18
-llp_Block "1..1" --* "1..1" llp_ParenthesisInstruction : block22
-llp_Block "1..1" --* "1..1" llp_Task : block3
-llp_Block "1..1" *-- "0..9999" llp_DataAccessPattern : dataAccessPatterns6
-llp_Block "1..1" --* "1..1" llp_ControlFlowBranchingInstruction : leftHandSideBlock13
-llp_Block "1..1" --* "1..1" llp_LowLevelProgram : mainBlock1
-llp_MemoryReference "1..1" --* "1..1" llp_SynchronisationInstruction : memoryReference20
-llp_IOInstruction "1..1" *-- "1..1" llp_MemoryReference : memoryReference8
-llp_CommitInstruction "1..1" *-- "0..1" llp_MemoryReference : memoryReference9
-llp_Block "1..1" --* "1..1" llp_ControlFlowBranchingInstruction : rightHandSideBlock15
-llp_SpawnInstruction "1..1" -- "1..1" llp_Task : task11
-llp_LowLevelProgram "1..1" *-- "0..9999" llp_Task : tasks0
+llp_Block "llp_RepetitionInstruction 1..1" --* "llp_Block19 1..1" llp_RepetitionInstruction : block18
+llp_Block "llp_ParenthesisInstruction 1..1" --* "llp_Block23 1..1" llp_ParenthesisInstruction : block22
+llp_Block "llp_Task4 1..1" --* "llp_Block5 1..1" llp_Task : block3
+llp_Block "llp_DataAccessPattern 1..1" *-- "llp_Block7 0..9999" llp_DataAccessPattern : dataAccessPatterns6
+llp_Block "llp_ControlFlowBranchingInstruction 1..1" --* "llp_Block14 1..1" llp_ControlFlowBranchingInstruction : leftHandSideBlock13
+llp_Block "llp_LowLevelProgram2 1..1" --* "llp_Block 1..1" llp_LowLevelProgram : mainBlock1
+llp_MemoryReference "llp_SynchronisationInstruction 1..1" --* "llp_MemoryReference21 1..1" llp_SynchronisationInstruction : memoryReference20
+llp_IOInstruction "llp_MemoryReference 1..1" *-- "llp_IOInstruction 1..1" llp_MemoryReference : memoryReference8
+llp_CommitInstruction "llp_MemoryReference10 1..1" *-- "llp_CommitInstruction 0..1" llp_MemoryReference : memoryReference9
+llp_Block "llp_ControlFlowBranchingInstruction16 1..1" --* "llp_Block17 1..1" llp_ControlFlowBranchingInstruction : rightHandSideBlock15
+llp_SpawnInstruction "llp_Task12 1..1" -- "llp_SpawnInstruction 1..1" llp_Task : task11
+llp_LowLevelProgram "llp_Task 1..1" *-- "llp_LowLevelProgram 0..9999" llp_Task : tasks0
 @enduml

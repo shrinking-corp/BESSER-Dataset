@@ -1,4 +1,8 @@
 @startuml
+' model: model
+' project: sampleModel
+' owner: User
+' description: New project
 class Column {
 }
 class ColumnConstraint {
@@ -143,36 +147,36 @@ TableConstraint <|-- model_table_CheckTableConstraint
 TableConstraint <|-- model_table_ForeignKeyTableConstraint
 TableConstraint <|-- model_table_PrimaryKeyTableConstraint
 TableConstraint <|-- model_table_UniqueTableConstraint
-Column "1..1" -- "1..1" model_column_IndexedColumn : column48
-Column "1..1" -- "1..1" model_column_ColumnConstraint : column50
-ColumnMapping "0..1" --* "1..1" model_DatabaseVersion : columnMapping10
-Column "0..9999" --* "1..1" model_table_Table : columns28
-IndexedColumn "1..1" --* "1..1" model_table_PrimaryKeyTableConstraint : columns33
-IndexedColumn "1..1" --* "1..1" model_table_UniqueTableConstraint : columns34
-Column "1..9999" -- "1..1" model_table_ForeignKeyTableConstraint : columns37
-TableConstraint "0..9999" --* "1..1" model_table_Table : constraints29
-ColumnConstraint "0..9999" --* "1..1" model_column_Column : constraints47
-StringToTableMappingEntryMap "0..9999" --* "1..1" model_common_TableMapping : curr2entryMap20
-StringToColumnMappingEntryMap "0..9999" --* "1..1" model_common_ColumnMapping : curr2entryMap24
-model_Database "1..1" --* "1..1" model_DatabaseVersion : database1
-model_table_Table "1..1" -- "1..1" table_model_Database : database27
-model_view_View "1..1" -- "1..1" view_model_Database : database55
-index_model_Database "1..1" -- "1..1" model_index_Index : database57
-model_trigger_Trigger "1..1" -- "1..1" trigger_model_Database : database59
-Expression "1..1" --* "1..1" model_table_CheckTableConstraint : expression36
-Expression "1..1" -- "1..1" model_column_CheckColumnConstraint : expression53
-Column "1..9999" -- "1..1" model_table_ForeignKeyTableConstraint : foreignColumns42
-Table "1..1" -- "1..1" model_table_ForeignKeyTableConstraint : foreignTable39
-Index "0..9999" --* "1..1" model_Database : indexes17
-model_DatabaseVersion "1..1" -- "0..1" model_DatabaseVersion : nextVersion6
-StringToTableMappingEntryMap "0..9999" --* "1..1" model_common_TableMapping : prev2entryMap19
-StringToColumnMappingEntryMap "0..9999" --* "1..1" model_common_ColumnMapping : prev2entryMap23
-model_DatabaseVersion "1..1" -- "0..1" model_DatabaseVersion : previousVersion4
-Table "1..1" -- "1..1" model_table_TableConstraint : table31
-Table "1..1" -- "1..1" model_column_Column : table45
-TableMapping "0..1" --* "1..1" model_DatabaseVersion : tableMapping8
-Table "0..9999" --* "1..1" model_Database : tables12
-Trigger "0..9999" --* "1..1" model_Database : triggers15
-model_DatabaseVersion "1..9999" --* "1..1" model_DatabaseVersions : versions0
-View "0..9999" --* "1..1" model_Database : views13
+Column "model_column_IndexedColumn 1..1" -- "Column49 1..1" model_column_IndexedColumn : column48
+Column "constraints51 1..1" -- "Column52 1..1" model_column_ColumnConstraint : column50
+ColumnMapping "model_DatabaseVersion11 0..1" --* "ColumnMapping 1..1" model_DatabaseVersion : columnMapping10
+Column "table 0..9999" --* "Column 1..1" model_table_Table : columns28
+IndexedColumn "model_table_PrimaryKeyTableConstraint 1..1" --* "IndexedColumn 1..1" model_table_PrimaryKeyTableConstraint : columns33
+IndexedColumn "model_table_UniqueTableConstraint 1..1" --* "IndexedColumn35 1..1" model_table_UniqueTableConstraint : columns34
+Column "model_table_ForeignKeyTableConstraint 1..9999" -- "Column38 1..1" model_table_ForeignKeyTableConstraint : columns37
+TableConstraint "table30 0..9999" --* "TableConstraint 1..1" model_table_Table : constraints29
+ColumnConstraint "column 0..9999" --* "ColumnConstraint 1..1" model_column_Column : constraints47
+StringToTableMappingEntryMap "model_common_TableMapping21 0..9999" --* "StringToTableMappingEntryMap22 1..1" model_common_TableMapping : curr2entryMap20
+StringToColumnMappingEntryMap "model_common_ColumnMapping25 0..9999" --* "StringToColumnMappingEntryMap26 1..1" model_common_ColumnMapping : curr2entryMap24
+model_Database "model_DatabaseVersion2 1..1" --* "model_Database 1..1" model_DatabaseVersion : database1
+model_table_Table "Database 1..1" -- "tables 1..1" table_model_Database : database27
+model_view_View "Database56 1..1" -- "views 1..1" view_model_Database : database55
+index_model_Database "indexes 1..1" -- "Database58 1..1" model_index_Index : database57
+model_trigger_Trigger "Database60 1..1" -- "triggers 1..1" trigger_model_Database : database59
+Expression "model_table_CheckTableConstraint 1..1" --* "Expression 1..1" model_table_CheckTableConstraint : expression36
+Expression "model_column_CheckColumnConstraint 1..1" -- "Expression54 1..1" model_column_CheckColumnConstraint : expression53
+Column "model_table_ForeignKeyTableConstraint43 1..9999" -- "Column44 1..1" model_table_ForeignKeyTableConstraint : foreignColumns42
+Table "model_table_ForeignKeyTableConstraint40 1..1" -- "Table41 1..1" model_table_ForeignKeyTableConstraint : foreignTable39
+Index "database18 0..9999" --* "Index 1..1" model_Database : indexes17
+model_DatabaseVersion "DatabaseVersion7 1..1" -- "previousVersion 0..1" model_DatabaseVersion : nextVersion6
+StringToTableMappingEntryMap "model_common_TableMapping 0..9999" --* "StringToTableMappingEntryMap 1..1" model_common_TableMapping : prev2entryMap19
+StringToColumnMappingEntryMap "model_common_ColumnMapping 0..9999" --* "StringToColumnMappingEntryMap 1..1" model_common_ColumnMapping : prev2entryMap23
+model_DatabaseVersion "DatabaseVersion 1..1" -- "nextVersion 0..1" model_DatabaseVersion : previousVersion4
+Table "constraints 1..1" -- "Table32 1..1" model_table_TableConstraint : table31
+Table "columns 1..1" -- "Table46 1..1" model_column_Column : table45
+TableMapping "model_DatabaseVersion9 0..1" --* "TableMapping 1..1" model_DatabaseVersion : tableMapping8
+Table "database 0..9999" --* "Table 1..1" model_Database : tables12
+Trigger "database16 0..9999" --* "Trigger 1..1" model_Database : triggers15
+model_DatabaseVersion "model_DatabaseVersions 1..9999" --* "model_DatabaseVersion 1..1" model_DatabaseVersions : versions0
+View "database14 0..9999" --* "View 1..1" model_Database : views13
 @enduml

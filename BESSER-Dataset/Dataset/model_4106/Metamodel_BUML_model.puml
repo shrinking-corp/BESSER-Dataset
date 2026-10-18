@@ -1,4 +1,8 @@
 @startuml
+' model: Concept
+' project: sampleModel
+' owner: User
+' description: New project
 class Concept_IndividualContainer {
 }
 class Concept_Route {
@@ -43,15 +47,15 @@ Thing <|-- Concept_SwitchPosition
 Thing <|-- Concept_Trackelement
 Trackelement <|-- Concept_Segment
 Trackelement <|-- Concept_Switch
-Concept_Route "1..1" -- "1..1" Concept_Signal : Route_entry4
-Concept_Route "1..1" -- "1..1" Concept_Signal : Route_exit7
-Concept_Route "1..1" -- "2..9999" Concept_Sensor : Route_routeDefinition10
-Concept_Route "1..1" -- "0..9999" Concept_SwitchPosition : Route_switchPosition5
-Concept_Sensor "1..1" -- "0..9999" Concept_Trackelement : Sensor_trackElement14
-Concept_Route "1..1" -- "1..1" Concept_SwitchPosition : SwitchPosition_route13
-Concept_Switch "1..1" -- "1..1" Concept_SwitchPosition : SwitchPosition_switch12
-Concept_Switch "1..1" -- "0..9999" Concept_SwitchPosition : Switch_switchPosition3
-Concept_Trackelement "1..1" -- "0..9999" Concept_Trackelement : TrackElement_connectsTo2
-Concept_Sensor "0..9999" -- "1..1" Concept_Trackelement : TrackElement_sensor0
-Concept_IndividualContainer "1..1" *-- "0..9999" Concept_Thing : contains15
+Concept_Route "Concept_Signal 1..1" -- "Concept_Route 1..1" Concept_Signal : Route_entry4
+Concept_Route "Concept_Signal9 1..1" -- "Concept_Route8 1..1" Concept_Signal : Route_exit7
+Concept_Route "Concept_Sensor 1..1" -- "Concept_Route11 2..9999" Concept_Sensor : Route_routeDefinition10
+Concept_Route "SwitchPosition6 1..1" -- "SwitchPosition_route 0..9999" Concept_SwitchPosition : Route_switchPosition5
+Concept_Sensor "Trackelement 1..1" -- "TrackElement_sensor 0..9999" Concept_Trackelement : Sensor_trackElement14
+Concept_Route "Route_switchPosition 1..1" -- "Route 1..1" Concept_SwitchPosition : SwitchPosition_route13
+Concept_Switch "Switch_switchPosition 1..1" -- "Switch 1..1" Concept_SwitchPosition : SwitchPosition_switch12
+Concept_Switch "SwitchPosition 1..1" -- "SwitchPosition_switch 0..9999" Concept_SwitchPosition : Switch_switchPosition3
+Concept_Trackelement "Concept_Trackelement 1..1" -- "Concept_Trackelement1 0..9999" Concept_Trackelement : TrackElement_connectsTo2
+Concept_Sensor "Sensor_trackElement 0..9999" -- "Sensor 1..1" Concept_Trackelement : TrackElement_sensor0
+Concept_IndividualContainer "Concept_Thing 1..1" *-- "Concept_IndividualContainer 0..9999" Concept_Thing : contains15
 @enduml

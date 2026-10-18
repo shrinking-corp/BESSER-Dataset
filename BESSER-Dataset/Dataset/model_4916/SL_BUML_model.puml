@@ -1,4 +1,8 @@
 @startuml
+' model: service
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractProcessModel {
 }
 class Agent {
@@ -257,97 +261,97 @@ ServiceParameter <|-- service_semantics_ServiceInput
 ServiceParameter <|-- service_semantics_ServiceOutput
 architecture_ServiceMatchmaker <|-- service_architecture_ServiceTemplateMatchmaker
 architecture_TemplateMatchmaker <|-- service_architecture_ServiceTemplateMatchmaker
-ServiceParameter "1..1" -- "1..1" service_template_BoundTemplateParameter : abstract102
-AbstractProcessModel "1..1" -- "1..1" service_template_BoundProcessModel : abstract107
-GroundTemplate "0..1" -- "1..1" service_Service : adaptedBy6
-BoundProcessModel "0..9999" --* "1..1" service_template_GroundTemplate : bindProcessModel98
-BoundTemplateParameter "0..9999" --* "1..1" service_template_GroundTemplate : bindTemplateParameter96
-Binding "0..9999" -- "1..1" service_syntax_InterfaceDescription : binding24
-Binding "1..1" --* "1..1" service_syntax_Endpoint : binding40
-service_template_TemplateConstraint "1..1" *-- "0..9999" template_service_Antecedent : body112
-ControlConstructBag "1..1" --* "1..1" service_template_AnyOrder : components114
-ControlConstructBag "1..1" --* "1..1" service_template_Choice : components115
-ControlConstructList "1..1" --* "1..1" service_template_Sequence : components146
-ControlConstructBag "1..1" --* "1..1" service_template_Split : components147
-ControlConstructBag "0..1" --* "1..1" service_template_SplitJoin : components149
-ControlConstruct "0..9999" --* "1..1" service_template_TemplateFlow : composedOf94
-ServiceParameter "1..1" -- "1..1" service_template_BoundTemplateParameter : concrete104
-ProcessModel "1..1" -- "1..1" service_template_BoundProcessModel : concrete109
-TemplateConstraint "0..9999" --* "1..1" service_template_ServiceTemplate : constraints92
-service_SL "1..1" *-- "0..9999" service_ServiceConsumer : consumers18
-ExecutionFramework "1..1" -- "1..1" service_architecture_DeployedService : deploy187
-DeployedService "0..9999" --* "1..1" service_architecture_ExecutionFramework : deployedService185
-DeployedService "0..1" -- "1..1" service_syntax_Endpoint : deployedService44
-ProcessModel "0..1" --* "1..1" service_Service : describedBy5
-semantics_service_Service "0..1" -- "1..1" service_semantics_ProcessModel : describes68
-service_syntax_Message "1..1" -- "0..1" syntax_service_TopLevelElement : element38
-ControlConstruct "0..1" -- "1..1" service_template_IfThenElse : else_122
-Endpoint "0..9999" --* "1..1" service_Service : endpoint0
-Endpoint "0..9999" -- "1..1" service_architecture_ServiceDirectory : endpoint177
-ExecutionFramework "0..1" --* "1..1" service_architecture_ServiceFramework : execution162
-service_template_GroundTemplate "1..1" -- "1..1" template_service_Service : expose100
-AbstractProcessModel "1..1" --* "1..1" service_template_ServiceTemplate : expose90
-service_Service "1..9999" -- "1..1" service_ServiceProvider : exposes7
-semantics_service_Antecedent "0..1" --* "1..1" service_semantics_ServiceCondition : expression71
-semantics_service_Antecedent "0..1" --* "1..1" service_semantics_ServiceResult : expression72
-Message "0..9999" --* "1..1" service_syntax_OperationDescription : fault31
-ControlConstruct "0..1" --* "1..1" service_template_ControlConstructList : first151
-ControlConstruct "0..1" --* "1..1" service_template_ControlConstructBag : first156
-TemplateFlow "0..1" --* "1..1" service_template_ServiceTemplate : flow87
-ServiceFramework "0..1" --* "1..1" service_SL : framework21
-GroundTemplate "0..9999" --* "1..1" service_architecture_TemplateRepository : groundTemplate170
-ServiceCondition "0..9999" -- "1..1" service_semantics_ServiceProfile : hasCondition59
-ServiceCondition "0..9999" --* "1..1" service_semantics_IOEP : hasCondition78
-AbstractProcessModel "0..1" -- "1..1" service_template_Perform : hasDataFromProcess127
-ServiceTemplate "0..1" -- "1..1" service_template_Perform : hasDataFromTemplate133
-ServiceInput "0..9999" -- "1..1" service_semantics_ServiceProfile : hasInput53
-ServiceInput "0..9999" --* "1..1" service_semantics_IOEP : hasInput76
-ServiceOutput "0..9999" -- "1..1" service_semantics_ServiceProfile : hasOutput55
-ServiceOutput "0..9999" --* "1..1" service_semantics_IOEP : hasOutput81
-ProcessModel "0..1" -- "1..1" service_semantics_ServiceProfile : hasProcess49
-ServiceResult "0..9999" -- "1..1" service_semantics_ServiceProfile : hasResult57
-ServiceResult "0..9999" --* "1..1" service_semantics_IOEP : hasResult84
-service_template_IfThenElse "1..1" -- "1..1" template_service_Antecedent : ifCondition117
-ServiceTemplate "0..1" -- "1..1" service_template_GroundTemplate : implement95
-service_syntax_Endpoint "1..1" -- "0..1" syntax_service_ServiceImplemetation : implementation42
-service_ServiceImplemetation "0..9999" --* "1..1" service_ServiceProvider : implementation9
-service_syntax_InterfaceDescription "1..1" *-- "0..1" syntax_service_SchemaType : inLineSchema25
-Message "0..9999" --* "1..1" service_syntax_OperationDescription : input30
-InterfaceDescription "1..1" --* "1..1" service_Service : interface1
-InterfaceDescription "0..9999" -- "1..1" service_architecture_ServiceDirectory : interface182
-InterfaceDescription "0..1" -- "1..1" service_semantics_ServiceGrounding : interface65
-service_Service "1..9999" -- "1..1" service_ServiceConsumer : invokes11
-ServiceTemplateMatchmaker "1..9999" --* "1..1" service_architecture_ServiceFramework : matchmaker161
-OperationDescription "1..9999" --* "1..1" service_syntax_InterfaceDescription : operation23
-service_syntax_InterfaceDescription "1..1" -- "0..9999" syntax_service_SchemaType : outLineSchema27
-Message "0..9999" --* "1..1" service_syntax_OperationDescription : output34
-AbstractProcessModel "1..1" --* "1..1" service_template_Perform : partnerProcess125
-semantics_service_Service "0..1" -- "1..1" service_semantics_ServiceProfile : presentedBy48
-ServiceProfile "0..1" --* "1..1" service_Service : presents3
-ProcessModel "0..1" -- "1..1" service_semantics_ServiceGrounding : processModel63
-service_SL "1..1" *-- "0..9999" service_ServiceProvider : providers15
-ControlConstructList "0..1" --* "1..1" service_template_ControlConstructList : rest153
-ControlConstructBag "0..1" --* "1..1" service_template_ControlConstructBag : rest158
-semantics_service_Consequent "0..1" -- "1..1" service_semantics_ServiceResult : result74
-ServiceProfile "0..1" -- "1..1" service_architecture_ServiceDirectory : semantic179
-ServiceCategory "0..1" --* "1..1" service_semantics_ServiceProfile : serviceCategory51
-ServiceDirectory "1..9999" --* "1..1" service_architecture_ServiceFramework : serviceDirectory164
-ServiceDirectory "1..9999" -- "1..1" service_architecture_ServiceMatchmaker : serviceDirectory175
-service_SL "1..1" *-- "0..9999" service_Service : services13
-semantics_service_Service "0..1" -- "1..1" service_semantics_ServiceGrounding : supportedBy61
-ServiceGrounding "0..9999" --* "1..1" service_Service : supports4
-ServiceTemplate "0..9999" --* "1..1" service_architecture_TemplateRepository : template168
-ServiceParameter "0..9999" --* "1..1" service_template_ServiceTemplate : templateParameter88
-TemplateRepository "1..1" --* "1..1" service_architecture_ServiceFramework : templateRepository166
-TemplateRepository "1..1" -- "1..1" service_architecture_TemplateMatchmaker : templateRepository173
-ControlConstruct "1..1" -- "1..1" service_template_IfThenElse : then119
-IntervalThing "0..1" --* "1..1" service_template_ControlConstruct : timeout113
-service_syntax_Message "1..1" -- "0..1" syntax_service_TopLevelComplexType : type37
-InterfaceDescription "1..1" -- "1..1" service_syntax_Binding : type46
-semantics_service_EObject "0..1" -- "1..1" service_semantics_ServiceParameter : type70
-service_template_RepeatUntil "1..1" -- "1..1" template_service_Antecedent : untilCondition136
-ControlConstruct "1..1" -- "1..1" service_template_RepeatUntil : untilProcess138
-ServiceParameter "0..1" -- "1..1" service_template_Perform : valueData130
-service_template_RepeatWhile "1..1" -- "1..1" template_service_Antecedent : whileCondition141
-ControlConstruct "1..1" -- "1..1" service_template_RepeatWhile : whileProcess143
+ServiceParameter "service_template_BoundTemplateParameter 1..1" -- "ServiceParameter103 1..1" service_template_BoundTemplateParameter : abstract102
+AbstractProcessModel "service_template_BoundProcessModel 1..1" -- "AbstractProcessModel108 1..1" service_template_BoundProcessModel : abstract107
+GroundTemplate "expose 0..1" -- "GroundTemplate 1..1" service_Service : adaptedBy6
+BoundProcessModel "service_template_GroundTemplate99 0..9999" --* "BoundProcessModel 1..1" service_template_GroundTemplate : bindProcessModel98
+BoundTemplateParameter "service_template_GroundTemplate97 0..9999" --* "BoundTemplateParameter 1..1" service_template_GroundTemplate : bindTemplateParameter96
+Binding "type 0..9999" -- "Binding 1..1" service_syntax_InterfaceDescription : binding24
+Binding "service_syntax_Endpoint 1..1" --* "Binding41 1..1" service_syntax_Endpoint : binding40
+service_template_TemplateConstraint "template_service_Antecedent 1..1" *-- "service_template_TemplateConstraint 0..9999" template_service_Antecedent : body112
+ControlConstructBag "service_template_AnyOrder 1..1" --* "ControlConstructBag 1..1" service_template_AnyOrder : components114
+ControlConstructBag "service_template_Choice 1..1" --* "ControlConstructBag116 1..1" service_template_Choice : components115
+ControlConstructList "service_template_Sequence 1..1" --* "ControlConstructList 1..1" service_template_Sequence : components146
+ControlConstructBag "service_template_Split 1..1" --* "ControlConstructBag148 1..1" service_template_Split : components147
+ControlConstructBag "service_template_SplitJoin 0..1" --* "ControlConstructBag150 1..1" service_template_SplitJoin : components149
+ControlConstruct "service_template_TemplateFlow 0..9999" --* "ControlConstruct 1..1" service_template_TemplateFlow : composedOf94
+ServiceParameter "service_template_BoundTemplateParameter105 1..1" -- "ServiceParameter106 1..1" service_template_BoundTemplateParameter : concrete104
+ProcessModel "service_template_BoundProcessModel110 1..1" -- "ProcessModel111 1..1" service_template_BoundProcessModel : concrete109
+TemplateConstraint "service_template_ServiceTemplate93 0..9999" --* "TemplateConstraint 1..1" service_template_ServiceTemplate : constraints92
+service_SL "service_ServiceConsumer20 1..1" *-- "service_SL19 0..9999" service_ServiceConsumer : consumers18
+ExecutionFramework "deployedService 1..1" -- "ExecutionFramework188 1..1" service_architecture_DeployedService : deploy187
+DeployedService "deploy 0..9999" --* "DeployedService186 1..1" service_architecture_ExecutionFramework : deployedService185
+DeployedService "service_syntax_Endpoint45 0..1" -- "DeployedService 1..1" service_syntax_Endpoint : deployedService44
+ProcessModel "describes 0..1" --* "ProcessModel 1..1" service_Service : describedBy5
+semantics_service_Service "describedBy 0..1" -- "Service69 1..1" service_semantics_ProcessModel : describes68
+service_syntax_Message "syntax_service_TopLevelElement 1..1" -- "service_syntax_Message39 0..1" syntax_service_TopLevelElement : element38
+ControlConstruct "service_template_IfThenElse123 0..1" -- "ControlConstruct124 1..1" service_template_IfThenElse : else_122
+Endpoint "service_Service 0..9999" --* "Endpoint 1..1" service_Service : endpoint0
+Endpoint "service_architecture_ServiceDirectory 0..9999" -- "Endpoint178 1..1" service_architecture_ServiceDirectory : endpoint177
+ExecutionFramework "service_architecture_ServiceFramework163 0..1" --* "ExecutionFramework 1..1" service_architecture_ServiceFramework : execution162
+service_template_GroundTemplate "Service101 1..1" -- "adaptedBy 1..1" template_service_Service : expose100
+AbstractProcessModel "service_template_ServiceTemplate91 1..1" --* "AbstractProcessModel 1..1" service_template_ServiceTemplate : expose90
+service_Service "service_ServiceProvider 1..9999" -- "service_Service8 1..1" service_ServiceProvider : exposes7
+semantics_service_Antecedent "service_semantics_ServiceCondition 0..1" --* "semantics_service_Antecedent 1..1" service_semantics_ServiceCondition : expression71
+semantics_service_Antecedent "service_semantics_ServiceResult 0..1" --* "semantics_service_Antecedent73 1..1" service_semantics_ServiceResult : expression72
+Message "service_syntax_OperationDescription32 0..9999" --* "Message33 1..1" service_syntax_OperationDescription : fault31
+ControlConstruct "service_template_ControlConstructList 0..1" --* "ControlConstruct152 1..1" service_template_ControlConstructList : first151
+ControlConstruct "service_template_ControlConstructBag 0..1" --* "ControlConstruct157 1..1" service_template_ControlConstructBag : first156
+TemplateFlow "service_template_ServiceTemplate 0..1" --* "TemplateFlow 1..1" service_template_ServiceTemplate : flow87
+ServiceFramework "service_SL22 0..1" --* "ServiceFramework 1..1" service_SL : framework21
+GroundTemplate "service_architecture_TemplateRepository171 0..9999" --* "GroundTemplate172 1..1" service_architecture_TemplateRepository : groundTemplate170
+ServiceCondition "service_semantics_ServiceProfile60 0..9999" -- "ServiceCondition 1..1" service_semantics_ServiceProfile : hasCondition59
+ServiceCondition "service_semantics_IOEP79 0..9999" --* "ServiceCondition80 1..1" service_semantics_IOEP : hasCondition78
+AbstractProcessModel "service_template_Perform128 0..1" -- "AbstractProcessModel129 1..1" service_template_Perform : hasDataFromProcess127
+ServiceTemplate "service_template_Perform134 0..1" -- "ServiceTemplate135 1..1" service_template_Perform : hasDataFromTemplate133
+ServiceInput "service_semantics_ServiceProfile54 0..9999" -- "ServiceInput 1..1" service_semantics_ServiceProfile : hasInput53
+ServiceInput "service_semantics_IOEP 0..9999" --* "ServiceInput77 1..1" service_semantics_IOEP : hasInput76
+ServiceOutput "service_semantics_ServiceProfile56 0..9999" -- "ServiceOutput 1..1" service_semantics_ServiceProfile : hasOutput55
+ServiceOutput "service_semantics_IOEP82 0..9999" --* "ServiceOutput83 1..1" service_semantics_IOEP : hasOutput81
+ProcessModel "service_semantics_ServiceProfile 0..1" -- "ProcessModel50 1..1" service_semantics_ServiceProfile : hasProcess49
+ServiceResult "service_semantics_ServiceProfile58 0..9999" -- "ServiceResult 1..1" service_semantics_ServiceProfile : hasResult57
+ServiceResult "service_semantics_IOEP85 0..9999" --* "ServiceResult86 1..1" service_semantics_IOEP : hasResult84
+service_template_IfThenElse "template_service_Antecedent118 1..1" -- "service_template_IfThenElse 1..1" template_service_Antecedent : ifCondition117
+ServiceTemplate "service_template_GroundTemplate 0..1" -- "ServiceTemplate 1..1" service_template_GroundTemplate : implement95
+service_syntax_Endpoint "syntax_service_ServiceImplemetation 1..1" -- "service_syntax_Endpoint43 0..1" syntax_service_ServiceImplemetation : implementation42
+service_ServiceImplemetation "service_ServiceProvider10 0..9999" --* "service_ServiceImplemetation 1..1" service_ServiceProvider : implementation9
+service_syntax_InterfaceDescription "syntax_service_SchemaType 1..1" *-- "service_syntax_InterfaceDescription26 0..1" syntax_service_SchemaType : inLineSchema25
+Message "service_syntax_OperationDescription 0..9999" --* "Message 1..1" service_syntax_OperationDescription : input30
+InterfaceDescription "service_Service2 1..1" --* "InterfaceDescription 1..1" service_Service : interface1
+InterfaceDescription "service_architecture_ServiceDirectory183 0..9999" -- "InterfaceDescription184 1..1" service_architecture_ServiceDirectory : interface182
+InterfaceDescription "service_semantics_ServiceGrounding66 0..1" -- "InterfaceDescription67 1..1" service_semantics_ServiceGrounding : interface65
+service_Service "service_ServiceConsumer 1..9999" -- "service_Service12 1..1" service_ServiceConsumer : invokes11
+ServiceTemplateMatchmaker "service_architecture_ServiceFramework 1..9999" --* "ServiceTemplateMatchmaker 1..1" service_architecture_ServiceFramework : matchmaker161
+OperationDescription "service_syntax_InterfaceDescription 1..9999" --* "OperationDescription 1..1" service_syntax_InterfaceDescription : operation23
+service_syntax_InterfaceDescription "syntax_service_SchemaType29 1..1" -- "service_syntax_InterfaceDescription28 0..9999" syntax_service_SchemaType : outLineSchema27
+Message "service_syntax_OperationDescription35 0..9999" --* "Message36 1..1" service_syntax_OperationDescription : output34
+AbstractProcessModel "service_template_Perform 1..1" --* "AbstractProcessModel126 1..1" service_template_Perform : partnerProcess125
+semantics_service_Service "presents 0..1" -- "Service 1..1" service_semantics_ServiceProfile : presentedBy48
+ServiceProfile "presentedBy 0..1" --* "ServiceProfile 1..1" service_Service : presents3
+ProcessModel "service_semantics_ServiceGrounding 0..1" -- "ProcessModel64 1..1" service_semantics_ServiceGrounding : processModel63
+service_SL "service_ServiceProvider17 1..1" *-- "service_SL16 0..9999" service_ServiceProvider : providers15
+ControlConstructList "service_template_ControlConstructList154 0..1" --* "ControlConstructList155 1..1" service_template_ControlConstructList : rest153
+ControlConstructBag "service_template_ControlConstructBag159 0..1" --* "ControlConstructBag160 1..1" service_template_ControlConstructBag : rest158
+semantics_service_Consequent "service_semantics_ServiceResult75 0..1" -- "semantics_service_Consequent 1..1" service_semantics_ServiceResult : result74
+ServiceProfile "service_architecture_ServiceDirectory180 0..1" -- "ServiceProfile181 1..1" service_architecture_ServiceDirectory : semantic179
+ServiceCategory "service_semantics_ServiceProfile52 0..1" --* "ServiceCategory 1..1" service_semantics_ServiceProfile : serviceCategory51
+ServiceDirectory "service_architecture_ServiceFramework165 1..9999" --* "ServiceDirectory 1..1" service_architecture_ServiceFramework : serviceDirectory164
+ServiceDirectory "service_architecture_ServiceMatchmaker 1..9999" -- "ServiceDirectory176 1..1" service_architecture_ServiceMatchmaker : serviceDirectory175
+service_SL "service_Service14 1..1" *-- "service_SL 0..9999" service_Service : services13
+semantics_service_Service "supports 0..1" -- "Service62 1..1" service_semantics_ServiceGrounding : supportedBy61
+ServiceGrounding "supportedBy 0..9999" --* "ServiceGrounding 1..1" service_Service : supports4
+ServiceTemplate "service_architecture_TemplateRepository 0..9999" --* "ServiceTemplate169 1..1" service_architecture_TemplateRepository : template168
+ServiceParameter "service_template_ServiceTemplate89 0..9999" --* "ServiceParameter 1..1" service_template_ServiceTemplate : templateParameter88
+TemplateRepository "service_architecture_ServiceFramework167 1..1" --* "TemplateRepository 1..1" service_architecture_ServiceFramework : templateRepository166
+TemplateRepository "service_architecture_TemplateMatchmaker 1..1" -- "TemplateRepository174 1..1" service_architecture_TemplateMatchmaker : templateRepository173
+ControlConstruct "service_template_IfThenElse120 1..1" -- "ControlConstruct121 1..1" service_template_IfThenElse : then119
+IntervalThing "service_template_ControlConstruct 0..1" --* "IntervalThing 1..1" service_template_ControlConstruct : timeout113
+service_syntax_Message "syntax_service_TopLevelComplexType 1..1" -- "service_syntax_Message 0..1" syntax_service_TopLevelComplexType : type37
+InterfaceDescription "binding 1..1" -- "InterfaceDescription47 1..1" service_syntax_Binding : type46
+semantics_service_EObject "service_semantics_ServiceParameter 0..1" -- "semantics_service_EObject 1..1" service_semantics_ServiceParameter : type70
+service_template_RepeatUntil "template_service_Antecedent137 1..1" -- "service_template_RepeatUntil 1..1" template_service_Antecedent : untilCondition136
+ControlConstruct "service_template_RepeatUntil139 1..1" -- "ControlConstruct140 1..1" service_template_RepeatUntil : untilProcess138
+ServiceParameter "service_template_Perform131 0..1" -- "ServiceParameter132 1..1" service_template_Perform : valueData130
+service_template_RepeatWhile "template_service_Antecedent142 1..1" -- "service_template_RepeatWhile 1..1" template_service_Antecedent : whileCondition141
+ControlConstruct "service_template_RepeatWhile144 1..1" -- "ControlConstruct145 1..1" service_template_RepeatWhile : whileProcess143
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: Classes
+' project: sampleModel
+' owner: User
+' description: New project
 enum ChargeType {
   Breakfast
   CancellationFee
@@ -121,25 +125,25 @@ IFinance <|-- Classes_IFinanceImpl
 IHotelManager <|-- Classes_IHotelManagerImpl
 IPerson <|-- Classes_Customer
 IPerson <|-- Classes_StaffMember
-Classes_Bill "1..1" -- "1..1" Classes_Booking : bill8
-Classes_Booking "0..9999" -- "1..1" Classes_Customer : booking11
-Classes_Booking "0..9999" -- "1..1" Classes_IBookingManagementImpl : bookingHistory21
-Classes_Booking "0..9999" -- "1..1" Classes_Room : bookings1
-Classes_Bill "1..1" -- "1..9999" Classes_Charge : charge35
-Classes_Booking "0..9999" -- "1..1" Classes_IBookingManagementImpl : confirmedBookings26
-Classes_Customer "0..9999" -- "1..1" Classes_IBookingManagementImpl : customer13
-Classes_Booking "1..1" -- "1..1" Classes_Customer : customer5
-Classes_CustomerProvides "1..1" -- "1..1" Classes_IFinanceImpl : customerProvides32
-Classes_IBookingManagementImpl "1..1" -- "1..1" Classes_Room : iBookingManagementImpl2
-Classes_IBookingManagementImpl "1..1" -- "1..1" Classes_IHotelManagerImpl : iBookingManagementImpl30
-Classes_IBookingManagementImpl "1..1" -- "1..1" Classes_IFinanceImpl : iBookingManagementImpl33
-Classes_Booking "1..1" -- "1..1" Classes_IBookingManagementImpl : iBookingManagementImpl6
-Classes_IBookingManagementImpl "1..1" -- "1..1" Classes_IFinanceImpl : iFinanceImpl24
-Classes_IBookingManagementImpl "1..1" -- "1..1" Classes_IHotelManagerImpl : iHotelManagerImpl19
-Classes_Booking "0..9999" -- "1..1" Classes_IBookingManagementImpl : pendingBookings16
-Classes_IBookingManagementImpl "1..1" -- "0..9999" Classes_Room : room14
-Classes_Room "0..9999" -- "1..1" Classes_RoomType : room4
-Classes_Room "1..1" -- "1..1" Classes_RoomType : roomType0
-Classes_Booking "1..1" -- "0..9999" Classes_Room : rooms9
-Classes_IHotelManagerImpl "1..1" -- "0..9999" Classes_StaffMember : staff29
+Classes_Bill "Classes_Booking 1..1" -- "Classes_Bill 1..1" Classes_Booking : bill8
+Classes_Booking "customer 0..9999" -- "Booking12 1..1" Classes_Customer : booking11
+Classes_Booking "Classes_IBookingManagementImpl22 0..9999" -- "Classes_Booking23 1..1" Classes_IBookingManagementImpl : bookingHistory21
+Classes_Booking "rooms 0..9999" -- "Booking 1..1" Classes_Room : bookings1
+Classes_Bill "Classes_Charge 1..1" -- "Classes_Bill36 1..9999" Classes_Charge : charge35
+Classes_Booking "iBookingManagementImpl27 0..9999" -- "Booking28 1..1" Classes_IBookingManagementImpl : confirmedBookings26
+Classes_Customer "Classes_IBookingManagementImpl 0..9999" -- "Classes_Customer 1..1" Classes_IBookingManagementImpl : customer13
+Classes_Booking "Customer 1..1" -- "booking 1..1" Classes_Customer : customer5
+Classes_CustomerProvides "Classes_IFinanceImpl 1..1" -- "Classes_CustomerProvides 1..1" Classes_IFinanceImpl : customerProvides32
+Classes_IBookingManagementImpl "room3 1..1" -- "IBookingManagementImpl 1..1" Classes_Room : iBookingManagementImpl2
+Classes_IBookingManagementImpl "iHotelManagerImpl 1..1" -- "IBookingManagementImpl31 1..1" Classes_IHotelManagerImpl : iBookingManagementImpl30
+Classes_IBookingManagementImpl "iFinanceImpl 1..1" -- "IBookingManagementImpl34 1..1" Classes_IFinanceImpl : iBookingManagementImpl33
+Classes_Booking "IBookingManagementImpl7 1..1" -- "confirmedBookings 1..1" Classes_IBookingManagementImpl : iBookingManagementImpl6
+Classes_IBookingManagementImpl "IFinanceImpl 1..1" -- "iBookingManagementImpl25 1..1" Classes_IFinanceImpl : iFinanceImpl24
+Classes_IBookingManagementImpl "IHotelManagerImpl 1..1" -- "iBookingManagementImpl20 1..1" Classes_IHotelManagerImpl : iHotelManagerImpl19
+Classes_Booking "Classes_IBookingManagementImpl17 0..9999" -- "Classes_Booking18 1..1" Classes_IBookingManagementImpl : pendingBookings16
+Classes_IBookingManagementImpl "Room15 1..1" -- "iBookingManagementImpl 0..9999" Classes_Room : room14
+Classes_Room "roomType 0..9999" -- "Room 1..1" Classes_RoomType : room4
+Classes_Room "RoomType 1..1" -- "room 1..1" Classes_RoomType : roomType0
+Classes_Booking "Room10 1..1" -- "bookings 0..9999" Classes_Room : rooms9
+Classes_IHotelManagerImpl "Classes_StaffMember 1..1" -- "Classes_IHotelManagerImpl 0..9999" Classes_StaffMember : staff29
 @enduml

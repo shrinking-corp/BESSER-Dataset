@@ -1,4 +1,8 @@
 @startuml
+' model: PyDslRep
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractDataMove {
 }
 class DataMove {
@@ -62,14 +66,14 @@ Entity <|-- PyDslRep_Robot
 Entity <|-- PyDslRep_Sensor
 Entity <|-- PyDslRep_TypeSensor
 Entity <|-- PyDslRep_Wheel
-PyDslRep_Entity "0..9999" --* "1..1" PyDslRep_Model : environment0
-PyDslRep_Environment "1..1" -- "0..1" PyDslRep_IP : ip1
-PyDslRep_AbstractDataMove "0..9999" --* "1..1" PyDslRep_MoveCollection : moves11
-PyDslRep_Environment "1..1" -- "0..9999" PyDslRep_MoveCollection : moves4
-PyDslRep_MoveCollection "1..1" -- "0..1" PyDslRep_Robot : robot8
-PyDslRep_Environment "1..1" -- "0..9999" PyDslRep_Robot : robots2
-PyDslRep_Sensor "1..1" *-- "0..1" PyDslRep_TypeSensor : type16
-PyDslRep_AbstractMove "1..1" *-- "0..1" PyDslRep_DataMove : typeM13
-PyDslRep_AbstractCrossMove "1..1" -- "0..1" PyDslRep_DataMove : typeM14
-PyDslRep_Robot "1..1" -- "0..9999" PyDslRep_Wheel : wheels6
+PyDslRep_Entity "PyDslRep_Model 0..9999" --* "PyDslRep_Entity 1..1" PyDslRep_Model : environment0
+PyDslRep_Environment "PyDslRep_IP 1..1" -- "PyDslRep_Environment 0..1" PyDslRep_IP : ip1
+PyDslRep_AbstractDataMove "PyDslRep_MoveCollection12 0..9999" --* "PyDslRep_AbstractDataMove 1..1" PyDslRep_MoveCollection : moves11
+PyDslRep_Environment "PyDslRep_MoveCollection 1..1" -- "PyDslRep_Environment5 0..9999" PyDslRep_MoveCollection : moves4
+PyDslRep_MoveCollection "PyDslRep_Robot10 1..1" -- "PyDslRep_MoveCollection9 0..1" PyDslRep_Robot : robot8
+PyDslRep_Environment "PyDslRep_Robot 1..1" -- "PyDslRep_Environment3 0..9999" PyDslRep_Robot : robots2
+PyDslRep_Sensor "PyDslRep_TypeSensor 1..1" *-- "PyDslRep_Sensor 0..1" PyDslRep_TypeSensor : type16
+PyDslRep_AbstractMove "PyDslRep_DataMove 1..1" *-- "PyDslRep_AbstractMove 0..1" PyDslRep_DataMove : typeM13
+PyDslRep_AbstractCrossMove "PyDslRep_DataMove15 1..1" -- "PyDslRep_AbstractCrossMove 0..1" PyDslRep_DataMove : typeM14
+PyDslRep_Robot "PyDslRep_Wheel 1..1" -- "PyDslRep_Robot7 0..9999" PyDslRep_Wheel : wheels6
 @enduml

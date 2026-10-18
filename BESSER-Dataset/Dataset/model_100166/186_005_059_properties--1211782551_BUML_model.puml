@@ -1,4 +1,8 @@
 @startuml
+' model: properties
+' project: sampleModel
+' owner: User
+' description: New project
 enum DBMS {
   HSQLDB
   MSAccess
@@ -91,19 +95,19 @@ class properties_SqlQuery {
 }
 Sql <|-- properties_SqlFile
 Sql <|-- properties_SqlQuery
-properties_DatabaseProperties "1..1" *-- "0..9999" properties_Property : additionalProperties1
-properties_DatabaseAlias "0..9999" --* "1..1" properties_DatabasePropertiesListType : databaseAlias5
-properties_DatabaseProperties "0..9999" --* "1..1" properties_DatabasePropertiesListType : databaseProperties3
-properties_DatabasePropertiesListType "0..9999" --* "1..1" properties_DocumentRoot : databasePropertiesList11
-properties_Sql "1..1" *-- "0..9999" properties_SqlParameter : parameters20
-properties_SpecificDBMSProperties "0..9999" --* "1..1" properties_SqlGroup : specificDBMSProperties26
-properties_SpecificDBMSProperties "1..1" *-- "0..9999" properties_SqlFile : sqlFile18
-properties_SqlFile "0..9999" --* "1..1" properties_SqlGroup : sqlFile23
-properties_SqlGroup "1..9999" --* "1..1" properties_SqlProperties : sqlGroup29
-properties_DatabaseProperties "1..1" *-- "0..1" properties_SqlProperties : sqlProperties0
-properties_DocumentRoot "1..1" *-- "0..9999" properties_SqlProperties : sqlProperties14
-properties_SpecificDBMSProperties "1..1" *-- "0..9999" properties_SqlQuery : sqlQuery17
-properties_SqlGroup "1..1" *-- "0..9999" properties_SqlQuery : sqlQuery21
-properties_DocumentRoot "1..1" *-- "0..9999" properties_EStringToStringMapEntry : xMLNSPrefixMap7
-properties_DocumentRoot "1..1" *-- "0..9999" properties_EStringToStringMapEntry : xSISchemaLocation8
+properties_DatabaseProperties "properties_Property 1..1" *-- "properties_DatabaseProperties2 0..9999" properties_Property : additionalProperties1
+properties_DatabaseAlias "properties_DatabasePropertiesListType6 0..9999" --* "properties_DatabaseAlias 1..1" properties_DatabasePropertiesListType : databaseAlias5
+properties_DatabaseProperties "properties_DatabasePropertiesListType 0..9999" --* "properties_DatabaseProperties4 1..1" properties_DatabasePropertiesListType : databaseProperties3
+properties_DatabasePropertiesListType "properties_DocumentRoot12 0..9999" --* "properties_DatabasePropertiesListType13 1..1" properties_DocumentRoot : databasePropertiesList11
+properties_Sql "properties_SqlParameter 1..1" *-- "properties_Sql 0..9999" properties_SqlParameter : parameters20
+properties_SpecificDBMSProperties "properties_SqlGroup27 0..9999" --* "properties_SpecificDBMSProperties28 1..1" properties_SqlGroup : specificDBMSProperties26
+properties_SpecificDBMSProperties "properties_SqlFile 1..1" *-- "properties_SpecificDBMSProperties19 0..9999" properties_SqlFile : sqlFile18
+properties_SqlFile "properties_SqlGroup24 0..9999" --* "properties_SqlFile25 1..1" properties_SqlGroup : sqlFile23
+properties_SqlGroup "properties_SqlProperties30 1..9999" --* "properties_SqlGroup31 1..1" properties_SqlProperties : sqlGroup29
+properties_DatabaseProperties "properties_SqlProperties 1..1" *-- "properties_DatabaseProperties 0..1" properties_SqlProperties : sqlProperties0
+properties_DocumentRoot "properties_SqlProperties16 1..1" *-- "properties_DocumentRoot15 0..9999" properties_SqlProperties : sqlProperties14
+properties_SpecificDBMSProperties "properties_SqlQuery 1..1" *-- "properties_SpecificDBMSProperties 0..9999" properties_SqlQuery : sqlQuery17
+properties_SqlGroup "properties_SqlQuery22 1..1" *-- "properties_SqlGroup 0..9999" properties_SqlQuery : sqlQuery21
+properties_DocumentRoot "properties_EStringToStringMapEntry 1..1" *-- "properties_DocumentRoot 0..9999" properties_EStringToStringMapEntry : xMLNSPrefixMap7
+properties_DocumentRoot "properties_EStringToStringMapEntry10 1..1" *-- "properties_DocumentRoot9 0..9999" properties_EStringToStringMapEntry : xSISchemaLocation8
 @enduml

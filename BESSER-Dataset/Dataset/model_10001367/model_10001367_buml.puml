@@ -1,4 +1,8 @@
 @startuml
+' model: _2e3C4M6bEeeMV96X50GAvA
+' project: sampleModel
+' owner: User
+' description: New project
 class Adres {
   + bijvoegsel : str
   + huisnummer : int
@@ -51,17 +55,17 @@ class Product {
   + prijs : int
   + voorraad : int
 }
-Beheerder "0..9999" -- "0..9999" Product : beheert
-Klant "0..9999" -- "0..9999" Product : bekijkt
-Beheerder "0..9999" -- "0..9999" Contactformulier : bekijkt1
-Factuur "0..9999" -- "1..1" Klant : betaalt
-Beheerder "1..1" -- "0..9999" Factuur : bevestigt
-Adres "1..1" -- "1..9999" Klant : heeft
-Afbeelding "0..1" -- "0..9999" Product : heeft1
-Bestelregel "1..9999" -- "1..1" Factuur : heeft2
-Afbeelding "0..1" -- "0..9999" Nieuwsbericht : heeft3
-Hoofdbeheerder "1..1" -- "0..9999" Nieuwsbericht : maakt
-Bestelregel "0..9999" -- "1..1" Product : staat_in
-Categorie "1..9999" -- "0..9999" Product : staat_in1
-Contactformulier "0..9999" -- "1..1" Klant : vult_in
+Beheerder "beheerder15 0..9999" -- "product14 0..9999" Product : beheert
+Klant "klant1 0..9999" -- "product0 0..9999" Product : bekijkt
+Beheerder "beheerder19 0..9999" -- "contactformulier18 0..9999" Contactformulier : bekijkt1
+Factuur "bestelregel22 0..9999" -- "klant23 1..1" Klant : betaalt
+Beheerder "beheerder12 1..1" -- "factuur13 0..9999" Factuur : bevestigt
+Adres "adres3 1..1" -- "klant2 1..9999" Klant : heeft
+Afbeelding "afbeelding11 0..1" -- "product10 0..9999" Product : heeft1
+Bestelregel "bestelregel20 1..9999" -- "factuur21 1..1" Factuur : heeft2
+Afbeelding "afbeelding25 0..1" -- "nieuwsbericht24 0..9999" Nieuwsbericht : heeft3
+Hoofdbeheerder "hoofdbeheerder8 1..1" -- "post9 0..9999" Nieuwsbericht : maakt
+Bestelregel "bestelregel5 0..9999" -- "product4 1..1" Product : staat_in
+Categorie "categorie7 1..9999" -- "product6 0..9999" Product : staat_in1
+Contactformulier "contactformulier16 0..9999" -- "klant17 1..1" Klant : vult_in
 @enduml

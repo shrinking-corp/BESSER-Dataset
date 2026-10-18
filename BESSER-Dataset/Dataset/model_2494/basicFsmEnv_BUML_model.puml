@@ -1,4 +1,8 @@
 @startuml
+' model: basicFsmEnv
+' project: sampleModel
+' owner: User
+' description: New project
 class State {
 }
 abstract class basicFsmEnv_Action {
@@ -21,13 +25,13 @@ class basicFsmEnv_VarDecl {
   + value : str
 }
 State <|-- basicFsmEnv_InitialState
-basicFsmEnv_Action "0..1" -- "1..1" basicFsmEnv_Trans : action13
-basicFsmEnv_State "1..1" *-- "0..9999" basicFsmEnv_VarDecl : decls6
-basicFsmEnv_Guard "0..1" -- "1..1" basicFsmEnv_Trans : guard11
-basicFsmEnv_State "1..1" -- "0..9999" basicFsmEnv_Trans : in_3
-basicFsmEnv_State "1..1" -- "0..9999" basicFsmEnv_Trans : out4
-basicFsmEnv_State "1..1" -- "1..1" basicFsmEnv_Trans : src9
-basicFsmEnv_Machine "1..1" *-- "0..9999" basicFsmEnv_State : states0
-basicFsmEnv_State "1..1" -- "1..1" basicFsmEnv_Trans : tgt8
-basicFsmEnv_Machine "1..1" *-- "0..9999" basicFsmEnv_Trans : trans1
+basicFsmEnv_Action "basicFsmEnv_Trans14 0..1" -- "basicFsmEnv_Action 1..1" basicFsmEnv_Trans : action13
+basicFsmEnv_State "basicFsmEnv_VarDecl 1..1" *-- "basicFsmEnv_State7 0..9999" basicFsmEnv_VarDecl : decls6
+basicFsmEnv_Guard "basicFsmEnv_Trans12 0..1" -- "basicFsmEnv_Guard 1..1" basicFsmEnv_Trans : guard11
+basicFsmEnv_State "Trans 1..1" -- "tgt 0..9999" basicFsmEnv_Trans : in_3
+basicFsmEnv_State "Trans5 1..1" -- "src 0..9999" basicFsmEnv_Trans : out4
+basicFsmEnv_State "out 1..1" -- "State10 1..1" basicFsmEnv_Trans : src9
+basicFsmEnv_Machine "basicFsmEnv_State 1..1" *-- "basicFsmEnv_Machine 0..9999" basicFsmEnv_State : states0
+basicFsmEnv_State "in_ 1..1" -- "State 1..1" basicFsmEnv_Trans : tgt8
+basicFsmEnv_Machine "basicFsmEnv_Trans 1..1" *-- "basicFsmEnv_Machine2 0..9999" basicFsmEnv_Trans : trans1
 @enduml

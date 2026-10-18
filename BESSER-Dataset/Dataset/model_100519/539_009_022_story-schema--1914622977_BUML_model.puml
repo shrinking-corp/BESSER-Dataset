@@ -1,4 +1,8 @@
 @startuml
+' model: schema
+' project: sampleModel
+' owner: User
+' description: New project
 enum ActionTypeStatus {
   resolved
   unresolved
@@ -51,11 +55,11 @@ NameContainer <|-- schema_TargetTypeRef
 NsPrefixable <|-- schema_StorySchemaCatalog
 NsPrefixable <|-- schema_TargetTypeRef
 ResourceAware <|-- schema_StorySchemaCatalog
-schema_ActionType "0..9999" --* "1..1" schema_StorySchemaCatalog : actionTypes1
-schema_AggregationType "0..9999" --* "1..1" schema_StorySchemaCatalog : aggregationTypes3
-schema_EFactory "0..1" -- "1..1" schema_StorySchemaCatalog : eFactory7
-schema_EPackage "0..1" -- "1..1" schema_StorySchemaCatalog : ePackage5
-schema_ActionType "1..1" -- "0..9999" schema_TargetType : resolvedSubjectTypes9
-schema_StorySchemaCatalog "1..1" *-- "0..9999" schema_StoryType : storyTypes0
-schema_ActionType "1..1" *-- "0..9999" schema_TargetTypeRef : subjectTypes11
+schema_ActionType "schema_StorySchemaCatalog2 0..9999" --* "schema_ActionType 1..1" schema_StorySchemaCatalog : actionTypes1
+schema_AggregationType "schema_StorySchemaCatalog4 0..9999" --* "schema_AggregationType 1..1" schema_StorySchemaCatalog : aggregationTypes3
+schema_EFactory "schema_StorySchemaCatalog8 0..1" -- "schema_EFactory 1..1" schema_StorySchemaCatalog : eFactory7
+schema_EPackage "schema_StorySchemaCatalog6 0..1" -- "schema_EPackage 1..1" schema_StorySchemaCatalog : ePackage5
+schema_ActionType "schema_TargetType 1..1" -- "schema_ActionType10 0..9999" schema_TargetType : resolvedSubjectTypes9
+schema_StorySchemaCatalog "schema_StoryType 1..1" *-- "schema_StorySchemaCatalog 0..9999" schema_StoryType : storyTypes0
+schema_ActionType "schema_TargetTypeRef 1..1" *-- "schema_ActionType12 0..9999" schema_TargetTypeRef : subjectTypes11
 @enduml

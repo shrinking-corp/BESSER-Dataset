@@ -1,4 +1,8 @@
 @startuml
+' model: itm
+' project: sampleModel
+' owner: User
+' description: New project
 enum DependencyType {
   END_END
   END_START
@@ -65,20 +69,20 @@ class itm_Version {
   + name : str
   + status : str
 }
-itm_Issue "1..1" -- "0..1" itm_IssueCategory : category20
-itm_Issue "1..1" *-- "0..9999" itm_IssueDependency : dependencies18
-itm_Issue "1..1" -- "1..1" itm_IssueDependency : dependentTask29
-itm_IssueCategory "0..9999" --* "1..1" itm_Project : issueCategories9
-itm_Issue "0..9999" --* "1..1" itm_Version : issues13
-itm_Member "0..9999" --* "1..1" itm_Project : members11
-itm_Issue "1..1" -- "1..1" itm_Member : owner23
-itm_IssueTrackingDatabase "1..1" *-- "0..9999" itm_Project : projects0
-itm_Issue "1..1" -- "1..1" itm_Member : responsible26
-itm_Member "1..1" -- "1..1" itm_Role : role35
-itm_IssueTrackingDatabase "1..1" *-- "1..9999" itm_Role : roles3
-itm_Issue "1..1" -- "1..1" itm_Tracker : tracker15
-itm_IssueTrackingDatabase "1..1" *-- "1..9999" itm_Tracker : trackers1
-itm_Member "1..1" -- "1..1" itm_User : user32
-itm_IssueTrackingDatabase "1..1" *-- "1..9999" itm_User : users5
-itm_Project "1..1" *-- "1..9999" itm_Version : versions7
+itm_Issue "itm_IssueCategory22 1..1" -- "itm_Issue21 0..1" itm_IssueCategory : category20
+itm_Issue "itm_IssueDependency 1..1" *-- "itm_Issue19 0..9999" itm_IssueDependency : dependencies18
+itm_Issue "itm_IssueDependency30 1..1" -- "itm_Issue31 1..1" itm_IssueDependency : dependentTask29
+itm_IssueCategory "itm_Project10 0..9999" --* "itm_IssueCategory 1..1" itm_Project : issueCategories9
+itm_Issue "itm_Version14 0..9999" --* "itm_Issue 1..1" itm_Version : issues13
+itm_Member "itm_Project12 0..9999" --* "itm_Member 1..1" itm_Project : members11
+itm_Issue "itm_Member25 1..1" -- "itm_Issue24 1..1" itm_Member : owner23
+itm_IssueTrackingDatabase "itm_Project 1..1" *-- "itm_IssueTrackingDatabase 0..9999" itm_Project : projects0
+itm_Issue "itm_Member28 1..1" -- "itm_Issue27 1..1" itm_Member : responsible26
+itm_Member "itm_Role37 1..1" -- "itm_Member36 1..1" itm_Role : role35
+itm_IssueTrackingDatabase "itm_Role 1..1" *-- "itm_IssueTrackingDatabase4 1..9999" itm_Role : roles3
+itm_Issue "itm_Tracker17 1..1" -- "itm_Issue16 1..1" itm_Tracker : tracker15
+itm_IssueTrackingDatabase "itm_Tracker 1..1" *-- "itm_IssueTrackingDatabase2 1..9999" itm_Tracker : trackers1
+itm_Member "itm_User34 1..1" -- "itm_Member33 1..1" itm_User : user32
+itm_IssueTrackingDatabase "itm_User 1..1" *-- "itm_IssueTrackingDatabase6 1..9999" itm_User : users5
+itm_Project "itm_Version 1..1" *-- "itm_Project8 1..9999" itm_Version : versions7
 @enduml

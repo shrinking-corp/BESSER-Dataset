@@ -716,28 +716,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=statesml_Event_strategy)
-@settings(max_examples=30)
-def test_hyp_statesml_event_eventoccured_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.eventOccured()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.eventOccured).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'eventOccured' in statesml_Event is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'eventOccured' in statesml_Event did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'eventOccured' in statesml_Event is not implemented or raised an error")
 
 
 
@@ -794,30 +772,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=statesml_Trigger_strategy)
-@settings(max_examples=30)
-def test_hyp_statesml_trigger_fire_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.fire(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.fire).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'fire' in statesml_Trigger is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'fire' in statesml_Trigger did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'fire' in statesml_Trigger is not implemented or raised an error")
 
 
 
@@ -1862,9 +1816,9 @@ def test_assoc_calls22_stub_double():
     partner = statesml_RegularState()
     setattr(partner, 'statesml_RegularState', None)
     _safe_set(owner, 'statesml_Function', partner)
-    assert getattr(partner, 'statesml_RegularState') == owner
+    assert owner in getattr(partner, 'statesml_RegularState')
     _safe_set(owner, 'statesml_Function', None)
-    assert getattr(partner, 'statesml_RegularState') is None
+    assert owner not in getattr(partner, 'statesml_RegularState')
 
 
 def test_assoc_edges3_stub_double():
@@ -1877,9 +1831,9 @@ def test_assoc_edges3_stub_double():
     partner = statesml_StatesMLModel()
     setattr(partner, 'statesml_StatesMLModel4', None)
     _safe_set(owner, 'statesml_Edge', partner)
-    assert getattr(partner, 'statesml_StatesMLModel4') == owner
+    assert owner in getattr(partner, 'statesml_StatesMLModel4')
     _safe_set(owner, 'statesml_Edge', None)
-    assert getattr(partner, 'statesml_StatesMLModel4') is None
+    assert owner not in getattr(partner, 'statesml_StatesMLModel4')
 
 
 def test_assoc_inputParams29_stub_double():
@@ -1907,9 +1861,9 @@ def test_assoc_node7_stub_double():
     partner = statesml_Transition()
     setattr(partner, 'transition', None)
     _safe_set(owner, 'Node', partner)
-    assert getattr(partner, 'transition') == owner
+    assert owner in getattr(partner, 'transition')
     _safe_set(owner, 'Node', None)
-    assert getattr(partner, 'transition') is None
+    assert owner not in getattr(partner, 'transition')
 
 
 def test_assoc_nodes0_stub_double():
@@ -1922,9 +1876,9 @@ def test_assoc_nodes0_stub_double():
     partner = statesml_StatesMLModel()
     setattr(partner, 'statesml_StatesMLModel', None)
     _safe_set(owner, 'statesml_Node', partner)
-    assert getattr(partner, 'statesml_StatesMLModel') == owner
+    assert owner in getattr(partner, 'statesml_StatesMLModel')
     _safe_set(owner, 'statesml_Node', None)
-    assert getattr(partner, 'statesml_StatesMLModel') is None
+    assert owner not in getattr(partner, 'statesml_StatesMLModel')
 
 
 def test_assoc_outputParams31_stub_double():
@@ -1952,9 +1906,9 @@ def test_assoc_systemunits1_stub_double():
     partner = statesml_StatesMLModel()
     setattr(partner, 'statesml_StatesMLModel2', None)
     _safe_set(owner, 'statesml_SystemUnit', partner)
-    assert getattr(partner, 'statesml_StatesMLModel2') == owner
+    assert owner in getattr(partner, 'statesml_StatesMLModel2')
     _safe_set(owner, 'statesml_SystemUnit', None)
-    assert getattr(partner, 'statesml_StatesMLModel2') is None
+    assert owner not in getattr(partner, 'statesml_StatesMLModel2')
 
 
 def test_assoc_transition9_stub_double():
@@ -1982,32 +1936,13 @@ def test_assoc_trigger8_stub_double():
     partner = statesml_Transition()
     setattr(partner, 'statesml_Transition', None)
     _safe_set(owner, 'statesml_Trigger', partner)
-    assert getattr(partner, 'statesml_Transition') == owner
+    assert owner in getattr(partner, 'statesml_Transition')
     _safe_set(owner, 'statesml_Trigger', None)
-    assert getattr(partner, 'statesml_Transition') is None
+    assert owner not in getattr(partner, 'statesml_Transition')
 
 
 
 
-from enum import Enum
 from python_code import NewEnum1
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(NewEnum1.LITERAL2, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(NewEnum1.LITERAL0, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(NewEnum1.LITERAL0, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(NewEnum1.LITERAL2, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(NewEnum1.LITERAL2, 'LITERAL2') == NewEnum1.LITERAL2
 

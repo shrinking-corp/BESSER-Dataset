@@ -1,4 +1,8 @@
 @startuml
+' model: model
+' project: sampleModel
+' owner: User
+' description: New project
 class BasicCode {
 }
 class BasicNotificationDefinition {
@@ -90,15 +94,15 @@ BasicNotificationDefinition <|-- model_NotificationDefinition
 BasicObject <|-- model_Attachment
 BasicObject <|-- model_BasicNotificationDefinition
 BasicObject <|-- model_TreeNode
-model_BasicNotificationDefinition "1..1" *-- "0..9999" model_NotificationParticipant : bccReceivers17
-model_BasicNotificationDefinition "1..1" *-- "0..9999" model_NotificationParticipant : ccReceivers14
-model_TreeNode "1..1" *-- "0..9999" model_TreeNodeChild : childs0
-model_BasicNotificationDefinition "1..1" -- "0..1" model_Code : delivery20
-model_BasicCode "1..1" *-- "0..9999" model_CodeEntry : entries5
-model_ObjectRef "0..1" -- "1..1" model_TreeNode : object1
-model_NotificationParticipant "1..1" -- "0..1" model_ObjectRef : objectRef7
-model_TreeNode "0..1" -- "1..1" model_TreeNodeChild : parent2
-model_BasicCode "1..1" -- "0..1" model_BasicCode : parent4
-model_BasicNotificationDefinition "1..1" *-- "0..9999" model_NotificationParticipant : receivers11
-model_BasicNotificationDefinition "1..1" *-- "0..1" model_NotificationParticipant : sender9
+model_BasicNotificationDefinition "model_NotificationParticipant19 1..1" *-- "model_BasicNotificationDefinition18 0..9999" model_NotificationParticipant : bccReceivers17
+model_BasicNotificationDefinition "model_NotificationParticipant16 1..1" *-- "model_BasicNotificationDefinition15 0..9999" model_NotificationParticipant : ccReceivers14
+model_TreeNode "TreeNodeChild 1..1" *-- "parent 0..9999" model_TreeNodeChild : childs0
+model_BasicNotificationDefinition "model_Code 1..1" -- "model_BasicNotificationDefinition21 0..1" model_Code : delivery20
+model_BasicCode "model_CodeEntry 1..1" *-- "model_BasicCode6 0..9999" model_CodeEntry : entries5
+model_ObjectRef "model_TreeNode 0..1" -- "model_ObjectRef 1..1" model_TreeNode : object1
+model_NotificationParticipant "model_ObjectRef8 1..1" -- "model_NotificationParticipant 0..1" model_ObjectRef : objectRef7
+model_TreeNode "childs 0..1" -- "TreeNode 1..1" model_TreeNodeChild : parent2
+model_BasicCode "model_BasicCode 1..1" -- "model_BasicCode3 0..1" model_BasicCode : parent4
+model_BasicNotificationDefinition "model_NotificationParticipant13 1..1" *-- "model_BasicNotificationDefinition12 0..9999" model_NotificationParticipant : receivers11
+model_BasicNotificationDefinition "model_NotificationParticipant10 1..1" *-- "model_BasicNotificationDefinition 0..1" model_NotificationParticipant : sender9
 @enduml

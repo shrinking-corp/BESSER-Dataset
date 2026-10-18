@@ -1,4 +1,8 @@
 @startuml
+' model: features
+' project: sampleModel
+' owner: User
+' description: New project
 class FeatureDescriptor {
 }
 class FeatureSetDescriptor {
@@ -29,8 +33,8 @@ abstract class features_FeatureVersionDescriptor {
 FeatureDescriptor <|-- features_Feature
 FeatureSetDescriptor <|-- features_FeatureSet
 FeatureVersionDescriptor <|-- features_FeatureVersion
-features_Feature "1..1" -- "1..1" features_FeatureVersion : feature3
-features_Feature "1..1" -- "1..1" features_FeatureSet : featureSet1
-features_Feature "1..1" *-- "0..9999" features_FeatureVersion : featureVersions2
-features_Feature "0..9999" --* "1..1" features_FeatureSet : features0
+features_Feature "featureVersions 1..1" -- "Feature4 1..1" features_FeatureVersion : feature3
+features_Feature "FeatureSet 1..1" -- "features 1..1" features_FeatureSet : featureSet1
+features_Feature "FeatureVersion 1..1" *-- "feature 0..9999" features_FeatureVersion : featureVersions2
+features_Feature "featureSet 0..9999" --* "Feature 1..1" features_FeatureSet : features0
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: grammarSql
+' project: sampleModel
+' owner: User
+' description: New project
 class grammarSql_Column {
   + isNotNull : bool
   + name : str
@@ -17,11 +21,11 @@ class grammarSql_Reference {
 class grammarSql_Table {
   + name : str
 }
-grammarSql_Column "0..9999" -- "1..1" grammarSql_PrimaryKey : col3
-grammarSql_EObject "0..9999" --* "1..1" grammarSql_Table : elements1
-grammarSql_Column "0..9999" -- "1..1" grammarSql_Reference : fromC11
-grammarSql_Reference "1..1" -- "0..9999" grammarSql_Table : fromT8
-grammarSql_Column "0..9999" -- "1..1" grammarSql_ForeignKey : localColumns4
-grammarSql_ForeignKey "1..1" *-- "0..1" grammarSql_Reference : ref6
-grammarSql_Model "1..1" *-- "0..9999" grammarSql_Table : tables0
+grammarSql_Column "grammarSql_PrimaryKey 0..9999" -- "grammarSql_Column 1..1" grammarSql_PrimaryKey : col3
+grammarSql_EObject "grammarSql_Table2 0..9999" --* "grammarSql_EObject 1..1" grammarSql_Table : elements1
+grammarSql_Column "grammarSql_Reference12 0..9999" -- "grammarSql_Column13 1..1" grammarSql_Reference : fromC11
+grammarSql_Reference "grammarSql_Table10 1..1" -- "grammarSql_Reference9 0..9999" grammarSql_Table : fromT8
+grammarSql_Column "grammarSql_ForeignKey 0..9999" -- "grammarSql_Column5 1..1" grammarSql_ForeignKey : localColumns4
+grammarSql_ForeignKey "grammarSql_Reference 1..1" *-- "grammarSql_ForeignKey7 0..1" grammarSql_Reference : ref6
+grammarSql_Model "grammarSql_Table 1..1" *-- "grammarSql_Model 0..9999" grammarSql_Table : tables0
 @enduml

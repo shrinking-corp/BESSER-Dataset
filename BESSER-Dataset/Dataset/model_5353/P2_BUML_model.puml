@@ -1,4 +1,8 @@
 @startuml
+' model: p2
+' project: sampleModel
+' owner: User
+' description: New project
 class ModelElement {
 }
 enum RepositoryType {
@@ -49,7 +53,7 @@ ModelElement <|-- p2_ProfileDefinition
 ModelElement <|-- p2_Repository
 ModelElement <|-- p2_RepositoryList
 ModelElement <|-- p2_Requirement
-p2_ProfileDefinition "1..1" *-- "0..9999" p2_Repository : repositories1
-p2_Repository "0..9999" --* "1..1" p2_RepositoryList : repositories3
-p2_ProfileDefinition "1..1" *-- "0..9999" p2_Requirement : requirements0
+p2_ProfileDefinition "p2_Repository 1..1" *-- "p2_ProfileDefinition2 0..9999" p2_Repository : repositories1
+p2_Repository "p2_RepositoryList 0..9999" --* "p2_Repository4 1..1" p2_RepositoryList : repositories3
+p2_ProfileDefinition "p2_Requirement 1..1" *-- "p2_ProfileDefinition 0..9999" p2_Requirement : requirements0
 @enduml

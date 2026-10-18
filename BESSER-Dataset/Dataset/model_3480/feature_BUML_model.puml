@@ -1,4 +1,8 @@
 @startuml
+' model: feature
+' project: sampleModel
+' owner: User
+' description: New project
 class feature_Attribute {
   + name : str
   + type : str
@@ -23,14 +27,14 @@ class feature_Group {
   + maxCardinality : int
   + minCardinality : int
 }
-feature_Attribute "0..9999" --* "1..1" feature_Feature : attributes8
-feature_Feature "1..9999" --* "1..1" feature_Group : childFeatures13
-feature_FeatureModel "1..1" *-- "0..9999" feature_FeatureModel : children4
-feature_Constraint "0..9999" --* "1..1" feature_FeatureModel : constraints0
-feature_Attribute "1..1" -- "1..1" feature_Feature : feature15
-feature_Feature "1..1" *-- "0..9999" feature_Group : groups9
-feature_FeatureModel "1..1" -- "0..1" feature_FeatureModel : parent6
-feature_Feature "1..1" -- "1..1" feature_Group : parentFeature12
-feature_Feature "1..1" -- "0..1" feature_Group : parentGroup10
-feature_Feature "0..1" --* "1..1" feature_FeatureModel : root1
+feature_Attribute "feature 0..9999" --* "Attribute 1..1" feature_Feature : attributes8
+feature_Feature "parentGroup 1..9999" --* "Feature14 1..1" feature_Group : childFeatures13
+feature_FeatureModel "FeatureModel 1..1" *-- "parent 0..9999" feature_FeatureModel : children4
+feature_Constraint "feature_FeatureModel 0..9999" --* "feature_Constraint 1..1" feature_FeatureModel : constraints0
+feature_Attribute "Feature16 1..1" -- "attributes 1..1" feature_Feature : feature15
+feature_Feature "Group 1..1" *-- "parentFeature 0..9999" feature_Group : groups9
+feature_FeatureModel "FeatureModel7 1..1" -- "children 0..1" feature_FeatureModel : parent6
+feature_Feature "groups 1..1" -- "Feature 1..1" feature_Group : parentFeature12
+feature_Feature "Group11 1..1" -- "childFeatures 0..1" feature_Group : parentGroup10
+feature_Feature "feature_FeatureModel2 0..1" --* "feature_Feature 1..1" feature_FeatureModel : root1
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: fopramodel
+' project: sampleModel
+' owner: User
+' description: New project
 enum AuxiliaryKind {
   Method
   ProgrammingLanguage
@@ -55,21 +59,21 @@ Person <|-- fopramodel_Associate
 Person <|-- fopramodel_ExternalAdvisor
 Person <|-- fopramodel_Professor
 Person <|-- fopramodel_Student
-fopramodel_ExternalAdvisor "0..9999" -- "1..1" fopramodel_FoPra : advisor5
-fopramodel_Associate "0..9999" -- "1..1" fopramodel_ResearchGroup : associate21
-fopramodel_Auxiliary "0..9999" --* "1..1" fopramodel_FoPraManagementSystem : auxiliaries12
-fopramodel_Auxiliary "1..9999" -- "1..1" fopramodel_FoPra : auxiliaries7
-fopramodel_FoPra "0..9999" -- "1..1" fopramodel_Student : fopras14
-fopramodel_FoPra "0..9999" -- "1..1" fopramodel_ResearchGroup : fopras17
-fopramodel_Associate "1..1" -- "0..9999" fopramodel_FoPra : fopras26
-fopramodel_ExternalAdvisor "1..1" -- "0..9999" fopramodel_FoPra : fopras28
-fopramodel_Auxiliary "1..1" -- "0..9999" fopramodel_FoPra : fopras30
-fopramodel_FoPra "0..9999" --* "1..1" fopramodel_FoPraManagementSystem : fopras9
-fopramodel_FoPraManagementSystem "1..1" *-- "0..9999" fopramodel_Person : persons10
-fopramodel_Professor "1..1" -- "1..1" fopramodel_ResearchGroup : professor19
-fopramodel_FoPra "1..1" -- "1..1" fopramodel_ResearchGroup : rg1
-fopramodel_Professor "1..1" *-- "1..1" fopramodel_ResearchGroup : rg15
-fopramodel_Associate "1..1" -- "1..1" fopramodel_ResearchGroup : rg24
-fopramodel_FoPra "1..1" -- "1..9999" fopramodel_Student : students0
-fopramodel_Associate "0..1" -- "1..1" fopramodel_FoPra : supervisor3
+fopramodel_ExternalAdvisor "fopras6 0..9999" -- "ExternalAdvisor 1..1" fopramodel_FoPra : advisor5
+fopramodel_Associate "rg22 0..9999" -- "Associate23 1..1" fopramodel_ResearchGroup : associate21
+fopramodel_Auxiliary "fopramodel_FoPraManagementSystem13 0..9999" --* "fopramodel_Auxiliary 1..1" fopramodel_FoPraManagementSystem : auxiliaries12
+fopramodel_Auxiliary "fopras8 1..9999" -- "Auxiliary 1..1" fopramodel_FoPra : auxiliaries7
+fopramodel_FoPra "students 0..9999" -- "FoPra 1..1" fopramodel_Student : fopras14
+fopramodel_FoPra "rg 0..9999" -- "FoPra18 1..1" fopramodel_ResearchGroup : fopras17
+fopramodel_Associate "FoPra27 1..1" -- "supervisor 0..9999" fopramodel_FoPra : fopras26
+fopramodel_ExternalAdvisor "FoPra29 1..1" -- "advisor 0..9999" fopramodel_FoPra : fopras28
+fopramodel_Auxiliary "FoPra31 1..1" -- "auxiliaries 0..9999" fopramodel_FoPra : fopras30
+fopramodel_FoPra "fopramodel_FoPraManagementSystem 0..9999" --* "fopramodel_FoPra 1..1" fopramodel_FoPraManagementSystem : fopras9
+fopramodel_FoPraManagementSystem "fopramodel_Person 1..1" *-- "fopramodel_FoPraManagementSystem11 0..9999" fopramodel_Person : persons10
+fopramodel_Professor "rg20 1..1" -- "Professor 1..1" fopramodel_ResearchGroup : professor19
+fopramodel_FoPra "ResearchGroup 1..1" -- "fopras2 1..1" fopramodel_ResearchGroup : rg1
+fopramodel_Professor "ResearchGroup16 1..1" *-- "professor 1..1" fopramodel_ResearchGroup : rg15
+fopramodel_Associate "ResearchGroup25 1..1" -- "associate 1..1" fopramodel_ResearchGroup : rg24
+fopramodel_FoPra "Student 1..1" -- "fopras 1..9999" fopramodel_Student : students0
+fopramodel_Associate "fopras4 0..1" -- "Associate 1..1" fopramodel_FoPra : supervisor3
 @enduml

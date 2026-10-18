@@ -1,4 +1,8 @@
 @startuml
+' model: school
+' project: sampleModel
+' owner: User
+' description: New project
 class Matter {
 }
 class school_Academy {
@@ -27,13 +31,13 @@ class school_Teacher {
   + evaluate(school_student : str) : str
 }
 Matter <|-- school_Math
-school_ClassRoom "1..1" -- "1..9999" school_Student : children16
-school_Notation "0..9999" --* "1..1" school_Student : notations19
-school_ClassRoom "1..9999" --* "1..1" school_School : rooms5
-school_Academy "1..1" *-- "1..9999" school_School : schools3
-school_Academy "1..1" *-- "1..9999" school_Student : students1
-school_School "1..1" -- "1..9999" school_Student : students10
-school_ClassRoom "1..1" -- "1..1" school_Teacher : teacher13
-school_Academy "1..1" *-- "1..9999" school_Teacher : teachers0
-school_School "1..1" -- "1..9999" school_Teacher : teachers7
+school_ClassRoom "school_Student18 1..1" -- "school_ClassRoom17 1..9999" school_Student : children16
+school_Notation "school_Student20 0..9999" --* "school_Notation 1..1" school_Student : notations19
+school_ClassRoom "school_School6 1..9999" --* "school_ClassRoom 1..1" school_School : rooms5
+school_Academy "school_School 1..1" *-- "school_Academy4 1..9999" school_School : schools3
+school_Academy "school_Student 1..1" *-- "school_Academy2 1..9999" school_Student : students1
+school_School "school_Student12 1..1" -- "school_School11 1..9999" school_Student : students10
+school_ClassRoom "school_Teacher15 1..1" -- "school_ClassRoom14 1..1" school_Teacher : teacher13
+school_Academy "school_Teacher 1..1" *-- "school_Academy 1..9999" school_Teacher : teachers0
+school_School "school_Teacher9 1..1" -- "school_School8 1..9999" school_Teacher : teachers7
 @enduml

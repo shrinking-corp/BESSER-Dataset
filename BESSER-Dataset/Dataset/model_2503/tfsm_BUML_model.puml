@@ -1,4 +1,8 @@
 @startuml
+' model: tfsm
+' project: sampleModel
+' owner: User
+' description: New project
 class BinaryClockConstraint {
 }
 class ClockConstraint {
@@ -67,12 +71,12 @@ State <|-- tfsm_TimedState
 TimedState <|-- tfsm_TimedFinalState
 TimedState <|-- tfsm_TimedInitialState
 Transition <|-- tfsm_TimedTransition
-tfsm_Clock "1..1" -- "1..1" tfsm_ClockConstraint : clock6
-tfsm_Clock "1..1" -- "1..1" tfsm_ClockReset : clock8
-tfsm_ClockReset "0..9999" --* "1..1" tfsm_TimedTransition : clockresets2
-tfsm_Clock "0..9999" --* "1..1" tfsm_TimedFSM : clocks0
-tfsm_BinaryClockConstraint "1..1" *-- "1..1" tfsm_ClockConstraintOperation : left11
-tfsm_BinaryClockConstraint "1..1" *-- "1..1" tfsm_ClockConstraintOperation : right13
-tfsm_ClockConstraintOperation "0..1" --* "1..1" tfsm_TimedState : stateguard1
-tfsm_ClockConstraintOperation "0..1" --* "1..1" tfsm_TimedTransition : transitionguard3
+tfsm_Clock "tfsm_ClockConstraint 1..1" -- "tfsm_Clock7 1..1" tfsm_ClockConstraint : clock6
+tfsm_Clock "tfsm_ClockReset9 1..1" -- "tfsm_Clock10 1..1" tfsm_ClockReset : clock8
+tfsm_ClockReset "tfsm_TimedTransition 0..9999" --* "tfsm_ClockReset 1..1" tfsm_TimedTransition : clockresets2
+tfsm_Clock "tfsm_TimedFSM 0..9999" --* "tfsm_Clock 1..1" tfsm_TimedFSM : clocks0
+tfsm_BinaryClockConstraint "tfsm_ClockConstraintOperation12 1..1" *-- "tfsm_BinaryClockConstraint 1..1" tfsm_ClockConstraintOperation : left11
+tfsm_BinaryClockConstraint "tfsm_ClockConstraintOperation15 1..1" *-- "tfsm_BinaryClockConstraint14 1..1" tfsm_ClockConstraintOperation : right13
+tfsm_ClockConstraintOperation "tfsm_TimedState 0..1" --* "tfsm_ClockConstraintOperation 1..1" tfsm_TimedState : stateguard1
+tfsm_ClockConstraintOperation "tfsm_TimedTransition4 0..1" --* "tfsm_ClockConstraintOperation5 1..1" tfsm_TimedTransition : transitionguard3
 @enduml

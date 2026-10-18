@@ -79,9 +79,9 @@ def test_assoc_elements0_stub_double():
     partner = wh_Wh()
     setattr(partner, 'wh_Wh', None)
     _safe_set(owner, 'wh_Program', partner)
-    assert getattr(partner, 'wh_Wh') == owner
+    assert owner in getattr(partner, 'wh_Wh')
     _safe_set(owner, 'wh_Program', None)
-    assert getattr(partner, 'wh_Wh') is None
+    assert owner not in getattr(partner, 'wh_Wh')
 
 
 def test_assoc_input3_stub_double():

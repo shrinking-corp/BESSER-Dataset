@@ -1,4 +1,8 @@
 @startuml
+' model: metaCompo
+' project: sampleModel
+' owner: User
+' description: New project
 enum mIO {
   in_
   inout
@@ -29,24 +33,24 @@ class metaCompo_mVariable {
   + name : str
   + type : str
 }
-metaCompo_mComp "1..1" *-- "1..9999" metaCompo_mFSM : FSMs4
-metaCompo_mComp "1..1" *-- "0..9999" metaCompo_mVariable : compVar5
-metaCompo_mComp "1..1" -- "1..1" metaCompo_mFSM : component13
-metaCompo_mPort "1..1" -- "0..1" metaCompo_mVariable : connToVar10
-metaCompo_mPort "0..1" -- "1..1" metaCompo_mPort : connectedTo8
-metaCompo_mState "1..1" -- "1..1" metaCompo_mTransition : destination35
-metaCompo_mFSM "1..1" -- "0..1" metaCompo_mState : finalState19
-metaCompo_mFSM "1..1" *-- "0..9999" metaCompo_mVariable : fsmVar14
-metaCompo_mState "1..1" -- "0..9999" metaCompo_mTransition : incomingTransitions28
-metaCompo_mFSM "1..1" -- "1..1" metaCompo_mState : initialState17
-metaCompo_mState "1..1" *-- "0..9999" metaCompo_mTransition : outgoingTransitions27
-metaCompo_mFSM "1..1" -- "1..1" metaCompo_mState : owningFSM22
-metaCompo_mComp "1..1" *-- "0..9999" metaCompo_mPort : ports2
-metaCompo_mState "1..1" -- "1..1" metaCompo_mTransition : source33
-metaCompo_mState "1..1" *-- "0..9999" metaCompo_mVariable : stateVar24
-metaCompo_mFSM "1..1" *-- "0..9999" metaCompo_mState : states16
-metaCompo_mComp "1..1" *-- "0..9999" metaCompo_mComp : subComps1
-metaCompo_mState "0..9999" --* "1..1" metaCompo_mState : subStates31
-metaCompo_mTransition "1..1" -- "0..9999" metaCompo_mVariable : trigerringVar37
-metaCompo_mPort "0..9999" -- "1..1" metaCompo_mTransition : triggeringPort39
+metaCompo_mComp "mFSM 1..1" *-- "component 1..9999" metaCompo_mFSM : FSMs4
+metaCompo_mComp "metaCompo_mVariable 1..1" *-- "metaCompo_mComp6 0..9999" metaCompo_mVariable : compVar5
+metaCompo_mComp "FSMs 1..1" -- "mComp 1..1" metaCompo_mFSM : component13
+metaCompo_mPort "metaCompo_mVariable12 1..1" -- "metaCompo_mPort11 0..1" metaCompo_mVariable : connToVar10
+metaCompo_mPort "metaCompo_mPort7 0..1" -- "metaCompo_mPort9 1..1" metaCompo_mPort : connectedTo8
+metaCompo_mState "incomingTransitions 1..1" -- "mState36 1..1" metaCompo_mTransition : destination35
+metaCompo_mFSM "metaCompo_mState21 1..1" -- "metaCompo_mFSM20 0..1" metaCompo_mState : finalState19
+metaCompo_mFSM "metaCompo_mVariable15 1..1" *-- "metaCompo_mFSM 0..9999" metaCompo_mVariable : fsmVar14
+metaCompo_mState "mTransition29 1..1" -- "destination 0..9999" metaCompo_mTransition : incomingTransitions28
+metaCompo_mFSM "metaCompo_mState 1..1" -- "metaCompo_mFSM18 1..1" metaCompo_mState : initialState17
+metaCompo_mState "mTransition 1..1" *-- "source 0..9999" metaCompo_mTransition : outgoingTransitions27
+metaCompo_mFSM "states 1..1" -- "mFSM23 1..1" metaCompo_mState : owningFSM22
+metaCompo_mComp "metaCompo_mPort 1..1" *-- "metaCompo_mComp3 0..9999" metaCompo_mPort : ports2
+metaCompo_mState "outgoingTransitions 1..1" -- "mState34 1..1" metaCompo_mTransition : source33
+metaCompo_mState "metaCompo_mVariable26 1..1" *-- "metaCompo_mState25 0..9999" metaCompo_mVariable : stateVar24
+metaCompo_mFSM "mState 1..1" *-- "owningFSM 0..9999" metaCompo_mState : states16
+metaCompo_mComp "metaCompo_mComp 1..1" *-- "metaCompo_mComp0 0..9999" metaCompo_mComp : subComps1
+metaCompo_mState "metaCompo_mState30 0..9999" --* "metaCompo_mState32 1..1" metaCompo_mState : subStates31
+metaCompo_mTransition "metaCompo_mVariable38 1..1" -- "metaCompo_mTransition 0..9999" metaCompo_mVariable : trigerringVar37
+metaCompo_mPort "metaCompo_mTransition40 0..9999" -- "metaCompo_mPort41 1..1" metaCompo_mTransition : triggeringPort39
 @enduml

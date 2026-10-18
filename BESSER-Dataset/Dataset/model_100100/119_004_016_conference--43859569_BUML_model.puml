@@ -1,4 +1,8 @@
 @startuml
+' model: conference
+' project: sampleModel
+' owner: User
+' description: New project
 enum Attitude {
   cool
   disgraceful
@@ -53,25 +57,25 @@ class conference_makingOf_Task {
 }
 class makingOf_conference_Person {
 }
-conference_Person "0..9999" -- "1..1" conference_Track : animators20
-conference_Day "0..1" -- "1..1" conference_Talk : day11
-conference_Conference "1..1" *-- "0..9999" conference_Day : days3
-Day "0..9999" --* "1..1" conference_makingOf_Story : days32
-Task "0..9999" --* "1..1" conference_makingOf_Day : ideas27
-Participant "0..9999" -- "1..1" conference_makingOf_Task : isInvolved34
-conference_Location "0..1" -- "1..1" conference_Talk : location13
-conference_Conference "1..1" *-- "0..9999" conference_Location : locations5
-Story "0..9999" --* "1..1" conference_Talk : makingOfStories9
-Participant "0..9999" --* "1..1" conference_makingOf_Day : participants30
-conference_makingOf_Participant "1..1" -- "0..1" makingOf_conference_Person : person36
-conference_Conference "1..1" *-- "0..9999" conference_Person : speakers1
-conference_Person "0..9999" -- "1..1" conference_Talk : speakers7
-conference_Subject "0..9999" --* "1..1" conference_Talk : subjects8
-conference_Person "1..1" -- "0..9999" conference_Talk : talks15
-conference_Talk "0..9999" --* "1..1" conference_Track : talks17
-conference_Day "1..1" -- "0..9999" conference_Talk : talks22
-conference_Location "1..1" -- "0..9999" conference_Talk : talks24
-Task "0..9999" --* "1..1" conference_makingOf_Day : tasks26
-conference_Conference "1..1" *-- "0..9999" conference_Track : tracks0
-conference_Person "1..1" -- "0..9999" conference_Track : tracks16
+conference_Person "tracks 0..9999" -- "Person21 1..1" conference_Track : animators20
+conference_Day "talks12 0..1" -- "Day 1..1" conference_Talk : day11
+conference_Conference "conference_Day 1..1" *-- "conference_Conference4 0..9999" conference_Day : days3
+Day "conference_makingOf_Story 0..9999" --* "Day33 1..1" conference_makingOf_Story : days32
+Task "conference_makingOf_Day28 0..9999" --* "Task29 1..1" conference_makingOf_Day : ideas27
+Participant "conference_makingOf_Task 0..9999" -- "Participant35 1..1" conference_makingOf_Task : isInvolved34
+conference_Location "talks14 0..1" -- "Location 1..1" conference_Talk : location13
+conference_Conference "conference_Location 1..1" *-- "conference_Conference6 0..9999" conference_Location : locations5
+Story "conference_Talk10 0..9999" --* "Story 1..1" conference_Talk : makingOfStories9
+Participant "conference_makingOf_Day31 0..9999" --* "Participant 1..1" conference_makingOf_Day : participants30
+conference_makingOf_Participant "makingOf_conference_Person 1..1" -- "conference_makingOf_Participant 0..1" makingOf_conference_Person : person36
+conference_Conference "conference_Person 1..1" *-- "conference_Conference2 0..9999" conference_Person : speakers1
+conference_Person "talks 0..9999" -- "Person 1..1" conference_Talk : speakers7
+conference_Subject "conference_Talk 0..9999" --* "conference_Subject 1..1" conference_Talk : subjects8
+conference_Person "Talk 1..1" -- "speakers 0..9999" conference_Talk : talks15
+conference_Talk "conference_Track18 0..9999" --* "conference_Talk19 1..1" conference_Track : talks17
+conference_Day "Talk23 1..1" -- "day 0..9999" conference_Talk : talks22
+conference_Location "Talk25 1..1" -- "location 0..9999" conference_Talk : talks24
+Task "conference_makingOf_Day 0..9999" --* "Task 1..1" conference_makingOf_Day : tasks26
+conference_Conference "conference_Track 1..1" *-- "conference_Conference 0..9999" conference_Track : tracks0
+conference_Person "Track 1..1" -- "animators 0..9999" conference_Track : tracks16
 @enduml

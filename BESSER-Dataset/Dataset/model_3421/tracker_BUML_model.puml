@@ -1,4 +1,8 @@
 @startuml
+' model: tracker
+' project: sampleModel
+' owner: User
+' description: New project
 class Animal {
 }
 enum BeefBreed {
@@ -341,12 +345,12 @@ Event <|-- tracker_TagAllocated
 Event <|-- tracker_TagApplied
 Event <|-- tracker_TagRetired
 Event <|-- tracker_WeighIn
-tracker_Animal "1..1" *-- "1..1" tracker_AnimalId : ain0
-tracker_AnimalId "1..1" -- "1..1" tracker_Event : ain1
-tracker_AnimalId "0..9999" --* "1..1" tracker_UnAppliedTags : ain14
-tracker_Animal "1..9999" --* "1..1" tracker_Animals : animal11
-tracker_Animals "1..1" --* "1..1" tracker_Premises : animals3
-tracker_EventHistory "1..1" --* "1..1" tracker_Premises : eventHistory4
-tracker_Event "1..9999" --* "1..1" tracker_EventHistory : events8
-tracker_Premises "1..1" *-- "0..1" tracker_UnAppliedTags : unAppliedTags6
+tracker_Animal "tracker_AnimalId 1..1" *-- "tracker_Animal 1..1" tracker_AnimalId : ain0
+tracker_AnimalId "tracker_Event 1..1" -- "tracker_AnimalId2 1..1" tracker_Event : ain1
+tracker_AnimalId "tracker_UnAppliedTags15 0..9999" --* "tracker_AnimalId16 1..1" tracker_UnAppliedTags : ain14
+tracker_Animal "tracker_Animals12 1..9999" --* "tracker_Animal13 1..1" tracker_Animals : animal11
+tracker_Animals "tracker_Premises 1..1" --* "tracker_Animals 1..1" tracker_Premises : animals3
+tracker_EventHistory "tracker_Premises5 1..1" --* "tracker_EventHistory 1..1" tracker_Premises : eventHistory4
+tracker_Event "tracker_EventHistory9 1..9999" --* "tracker_Event10 1..1" tracker_EventHistory : events8
+tracker_Premises "tracker_UnAppliedTags 1..1" *-- "tracker_Premises7 0..1" tracker_UnAppliedTags : unAppliedTags6
 @enduml

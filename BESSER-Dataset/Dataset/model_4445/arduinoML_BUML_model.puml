@@ -1,4 +1,8 @@
 @startuml
+' model: arduinoML
+' project: sampleModel
+' owner: User
+' description: New project
 class Brick {
 }
 enum Compare {
@@ -64,20 +68,20 @@ NamedElement <|-- arduinoML_Mode
 NamedElement <|-- arduinoML_State
 Transition <|-- arduinoML_TransitionMode
 Transition <|-- arduinoML_TransitionState
-arduinoML_Action "1..9999" --* "1..1" arduinoML_State : actions6
-arduinoML_Action "1..1" -- "1..1" arduinoML_Actuator : actuator8
-arduinoML_Analog "0..9999" -- "1..1" arduinoML_Transition : analogs11
-arduinoML_Brick "0..9999" --* "1..1" arduinoML_Mode : bricks13
-arduinoML_App "1..1" *-- "1..9999" arduinoML_Brick : bricks4
-arduinoML_Digital "0..9999" -- "1..1" arduinoML_Transition : digitals10
-arduinoML_Mode "1..1" -- "1..1" arduinoML_State : initial19
-arduinoML_App "1..1" -- "0..1" arduinoML_Mode : initial_mode0
-arduinoML_Mode "1..1" -- "1..1" arduinoML_TransitionMode : mode26
-arduinoML_App "1..1" *-- "1..9999" arduinoML_Mode : modes1
-arduinoML_Mode "1..1" -- "1..1" arduinoML_TransitionMode : next_mode27
-arduinoML_State "1..1" -- "1..1" arduinoML_TransitionState : next_state23
-arduinoML_State "1..1" -- "1..1" arduinoML_TransitionState : state25
-arduinoML_Mode "1..1" *-- "1..9999" arduinoML_State : states16
-arduinoML_Mode "1..1" *-- "1..9999" arduinoML_TransitionMode : transitions_mode22
-arduinoML_State "1..1" *-- "1..9999" arduinoML_TransitionState : transitions_state7
+arduinoML_Action "arduinoML_State 1..9999" --* "arduinoML_Action 1..1" arduinoML_State : actions6
+arduinoML_Action "arduinoML_Actuator 1..1" -- "arduinoML_Action9 1..1" arduinoML_Actuator : actuator8
+arduinoML_Analog "arduinoML_Transition12 0..9999" -- "arduinoML_Analog 1..1" arduinoML_Transition : analogs11
+arduinoML_Brick "arduinoML_Mode14 0..9999" --* "arduinoML_Brick15 1..1" arduinoML_Mode : bricks13
+arduinoML_App "arduinoML_Brick 1..1" *-- "arduinoML_App5 1..9999" arduinoML_Brick : bricks4
+arduinoML_Digital "arduinoML_Transition 0..9999" -- "arduinoML_Digital 1..1" arduinoML_Transition : digitals10
+arduinoML_Mode "arduinoML_State21 1..1" -- "arduinoML_Mode20 1..1" arduinoML_State : initial19
+arduinoML_App "arduinoML_Mode 1..1" -- "arduinoML_App 0..1" arduinoML_Mode : initial_mode0
+arduinoML_Mode "transitions_mode 1..1" -- "Mode 1..1" arduinoML_TransitionMode : mode26
+arduinoML_App "arduinoML_Mode3 1..1" *-- "arduinoML_App2 1..9999" arduinoML_Mode : modes1
+arduinoML_Mode "arduinoML_TransitionMode 1..1" -- "arduinoML_Mode28 1..1" arduinoML_TransitionMode : next_mode27
+arduinoML_State "arduinoML_TransitionState 1..1" -- "arduinoML_State24 1..1" arduinoML_TransitionState : next_state23
+arduinoML_State "transitions_state 1..1" -- "State 1..1" arduinoML_TransitionState : state25
+arduinoML_Mode "arduinoML_State18 1..1" *-- "arduinoML_Mode17 1..9999" arduinoML_State : states16
+arduinoML_Mode "TransitionMode 1..1" *-- "mode 1..9999" arduinoML_TransitionMode : transitions_mode22
+arduinoML_State "TransitionState 1..1" *-- "state 1..9999" arduinoML_TransitionState : transitions_state7
 @enduml

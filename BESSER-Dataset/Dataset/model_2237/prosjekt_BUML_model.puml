@@ -1,4 +1,8 @@
 @startuml
+' model: prosjekt
+' project: sampleModel
+' owner: User
+' description: New project
 class prosjekt_Course {
   + code : str
   + name : str
@@ -27,15 +31,15 @@ class prosjekt_University {
   + name : str
   + shortName : str
 }
-prosjekt_Course "0..1" -- "1..1" prosjekt_CourseCoordinator : course13
-prosjekt_Course "0..9999" --* "1..1" prosjekt_Department : course2
-prosjekt_Course "0..1" -- "1..1" prosjekt_Semester : course8
-prosjekt_Course "1..1" -- "1..1" prosjekt_Department : department4
-prosjekt_Department "0..9999" --* "1..1" prosjekt_University : departments0
-prosjekt_CourseCoordinator "1..1" -- "0..1" prosjekt_Person : person14
-prosjekt_CourseCoordinator "0..9999" --* "1..1" prosjekt_Person : roles12
-prosjekt_Course "1..1" *-- "0..9999" prosjekt_Semester : semester6
-prosjekt_Department "1..1" *-- "0..9999" prosjekt_Person : staff3
-prosjekt_Department "1..1" -- "1..1" prosjekt_University : university1
-prosjekt_Department "0..1" -- "1..1" prosjekt_Person : worksForDepartment10
+prosjekt_Course "prosjekt_CourseCoordinator 0..1" -- "prosjekt_Course 1..1" prosjekt_CourseCoordinator : course13
+prosjekt_Course "department 0..9999" --* "Course 1..1" prosjekt_Department : course2
+prosjekt_Course "semester 0..1" -- "Course9 1..1" prosjekt_Semester : course8
+prosjekt_Course "Department5 1..1" -- "course 1..1" prosjekt_Department : department4
+prosjekt_Department "university 0..9999" --* "Department 1..1" prosjekt_University : departments0
+prosjekt_CourseCoordinator "Person15 1..1" -- "roles 0..1" prosjekt_Person : person14
+prosjekt_CourseCoordinator "person 0..9999" --* "CourseCoordinator 1..1" prosjekt_Person : roles12
+prosjekt_Course "Semester 1..1" *-- "course7 0..9999" prosjekt_Semester : semester6
+prosjekt_Department "Person 1..1" *-- "worksForDepartment 0..9999" prosjekt_Person : staff3
+prosjekt_Department "University 1..1" -- "departments 1..1" prosjekt_University : university1
+prosjekt_Department "staff 0..1" -- "Department11 1..1" prosjekt_Person : worksForDepartment10
 @enduml

@@ -443,31 +443,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=core_COREFeature_strategy)
-@settings(max_examples=30)
-def test_hyp_core_corefeature_changeparent_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.changeParent(
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.changeParent).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'changeParent' in core_COREFeature is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'changeParent' in core_COREFeature did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'changeParent' in core_COREFeature is not implemented or raised an error")
 
 import warnings
 import copy
@@ -475,30 +450,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=core_COREFeature_strategy)
-@settings(max_examples=30)
-def test_hyp_core_corefeature_rename_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.rename(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.rename).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'rename' in core_COREFeature is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'rename' in core_COREFeature did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'rename' in core_COREFeature is not implemented or raised an error")
 
 import warnings
 import copy
@@ -506,28 +457,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=core_COREFeature_strategy)
-@settings(max_examples=30)
-def test_hyp_core_corefeature_delete_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.delete()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.delete).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'delete' in core_COREFeature is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'delete' in core_COREFeature did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'delete' in core_COREFeature is not implemented or raised an error")
 
 import warnings
 import copy
@@ -535,30 +464,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=core_COREFeature_strategy)
-@settings(max_examples=30)
-def test_hyp_core_corefeature_removeconstraint_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.removeConstraint(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.removeConstraint).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'removeConstraint' in core_COREFeature is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'removeConstraint' in core_COREFeature did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'removeConstraint' in core_COREFeature is not implemented or raised an error")
 
 import warnings
 import copy
@@ -566,30 +471,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=core_COREFeature_strategy)
-@settings(max_examples=30)
-def test_hyp_core_corefeature_changelink_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.changeLink(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.changeLink).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'changeLink' in core_COREFeature is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'changeLink' in core_COREFeature did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'changeLink' in core_COREFeature is not implemented or raised an error")
 
 import warnings
 import copy
@@ -597,31 +478,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=core_COREFeature_strategy)
-@settings(max_examples=30)
-def test_hyp_core_corefeature_addfeature_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.addFeature(
-            "test", 
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.addFeature).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'addFeature' in core_COREFeature is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'addFeature' in core_COREFeature did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'addFeature' in core_COREFeature is not implemented or raised an error")
 
 import warnings
 import copy
@@ -629,30 +485,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=core_COREFeature_strategy)
-@settings(max_examples=30)
-def test_hyp_core_corefeature_excludes_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.excludes(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.excludes).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'excludes' in core_COREFeature is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'excludes' in core_COREFeature did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'excludes' in core_COREFeature is not implemented or raised an error")
 
 import warnings
 import copy
@@ -660,30 +492,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=core_COREFeature_strategy)
-@settings(max_examples=30)
-def test_hyp_core_corefeature_requires_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.requires(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.requires).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'requires' in core_COREFeature is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'requires' in core_COREFeature did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'requires' in core_COREFeature is not implemented or raised an error")
 
 import warnings
 import copy
@@ -691,30 +499,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=core_COREFeature_strategy)
-@settings(max_examples=30)
-def test_hyp_core_corefeature_addrealizedby_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.addRealizedBy(
-            "test"
-        )
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.addRealizedBy).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'addRealizedBy' in core_COREFeature is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'addRealizedBy' in core_COREFeature did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'addRealizedBy' in core_COREFeature is not implemented or raised an error")
 
 
 
@@ -1234,9 +1018,9 @@ def test_assoc_realizes3_stub_double():
     partner = core_COREModel()
     setattr(partner, 'realizedBy', None)
     _safe_set(owner, 'COREFeature', partner)
-    assert getattr(partner, 'realizedBy') == owner
+    assert owner in getattr(partner, 'realizedBy')
     _safe_set(owner, 'COREFeature', None)
-    assert getattr(partner, 'realizedBy') is None
+    assert owner not in getattr(partner, 'realizedBy')
 
 
 def test_assoc_selectable24_stub_double():
@@ -1249,9 +1033,9 @@ def test_assoc_selectable24_stub_double():
     partner = core_COREInterface()
     setattr(partner, 'core_COREInterface25', None)
     _safe_set(owner, 'core_COREFeature26', partner)
-    assert getattr(partner, 'core_COREInterface25') == owner
+    assert owner in getattr(partner, 'core_COREInterface25')
     _safe_set(owner, 'core_COREFeature26', None)
-    assert getattr(partner, 'core_COREInterface25') is None
+    assert owner not in getattr(partner, 'core_COREInterface25')
 
 
 def test_assoc_selected41_stub_double():
@@ -1264,9 +1048,9 @@ def test_assoc_selected41_stub_double():
     partner = core_COREReuse()
     setattr(partner, 'core_COREReuse42', None)
     _safe_set(owner, 'core_COREFeature43', partner)
-    assert getattr(partner, 'core_COREReuse42') == owner
+    assert owner in getattr(partner, 'core_COREReuse42')
     _safe_set(owner, 'core_COREFeature43', None)
-    assert getattr(partner, 'core_COREReuse42') is None
+    assert owner not in getattr(partner, 'core_COREReuse42')
 
 
 def test_assoc_selected47_stub_double():
@@ -1279,9 +1063,9 @@ def test_assoc_selected47_stub_double():
     partner = core_COREConfiguration()
     setattr(partner, 'core_COREConfiguration48', None)
     _safe_set(owner, 'core_COREFeature49', partner)
-    assert getattr(partner, 'core_COREConfiguration48') == owner
+    assert owner in getattr(partner, 'core_COREConfiguration48')
     _safe_set(owner, 'core_COREFeature49', None)
-    assert getattr(partner, 'core_COREConfiguration48') is None
+    assert owner not in getattr(partner, 'core_COREConfiguration48')
 
 
 def test_assoc_strategies9_stub_double():
@@ -1301,28 +1085,8 @@ def test_assoc_strategies9_stub_double():
 
 
 
-from enum import Enum
 from python_code import COREFeatureRelationshipType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(COREFeatureRelationshipType.XOR, 0, '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(COREFeatureRelationshipType.OR, 0, '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(COREFeatureRelationshipType.OR, '', 0, 0) == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(COREFeatureRelationshipType.OR, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(COREFeatureRelationshipType.OR, 'OR') == COREFeatureRelationshipType.OR
-
 from python_code import core_COREFeatureModel
 
 def test_core_COREFeatureModel___init__():
@@ -1333,7 +1097,6 @@ def test_core_COREFeatureModel_getLocalRoot():
 
 def test_core_COREFeatureModel_getGlobalRoot():
     assert core_COREFeatureModel.getGlobalRoot(core_COREFeatureModel()) == None
-
 from python_code import core_CORENamedElement
 
 def test_core_CORENamedElement___init__():

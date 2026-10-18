@@ -13910,9 +13910,9 @@ def test_assoc_conversationNodes391_stub_double():
     partner = bpmn2_SubConversation()
     setattr(partner, 'bpmn2_SubConversation', None)
     _safe_set(owner, 'bpmn2_ConversationNode392', partner)
-    assert getattr(partner, 'bpmn2_SubConversation') == owner
+    assert owner in getattr(partner, 'bpmn2_SubConversation')
     _safe_set(owner, 'bpmn2_ConversationNode392', None)
-    assert getattr(partner, 'bpmn2_SubConversation') is None
+    assert owner not in getattr(partner, 'bpmn2_SubConversation')
 
 
 def test_assoc_correlationKeyRef258_stub_double():
@@ -14000,9 +14000,9 @@ def test_assoc_dataInputs346_stub_double():
     partner = bpmn2_ThrowEvent()
     setattr(partner, 'bpmn2_ThrowEvent347', None)
     _safe_set(owner, 'bpmn2_DataInput348', partner)
-    assert getattr(partner, 'bpmn2_ThrowEvent347') == owner
+    assert owner in getattr(partner, 'bpmn2_ThrowEvent347')
     _safe_set(owner, 'bpmn2_DataInput348', None)
-    assert getattr(partner, 'bpmn2_ThrowEvent347') is None
+    assert owner not in getattr(partner, 'bpmn2_ThrowEvent347')
 
 
 def test_assoc_dataInputs49_stub_double():
@@ -14015,9 +14015,9 @@ def test_assoc_dataInputs49_stub_double():
     partner = bpmn2_InputOutputSpecification()
     setattr(partner, 'bpmn2_InputOutputSpecification50', None)
     _safe_set(owner, 'bpmn2_DataInput', partner)
-    assert getattr(partner, 'bpmn2_InputOutputSpecification50') == owner
+    assert owner in getattr(partner, 'bpmn2_InputOutputSpecification50')
     _safe_set(owner, 'bpmn2_DataInput', None)
-    assert getattr(partner, 'bpmn2_InputOutputSpecification50') is None
+    assert owner not in getattr(partner, 'bpmn2_InputOutputSpecification50')
 
 
 def test_assoc_dataObjectRef385_stub_double():
@@ -14075,9 +14075,9 @@ def test_assoc_dataOutputs51_stub_double():
     partner = bpmn2_InputOutputSpecification()
     setattr(partner, 'bpmn2_InputOutputSpecification52', None)
     _safe_set(owner, 'bpmn2_DataOutput', partner)
-    assert getattr(partner, 'bpmn2_InputOutputSpecification52') == owner
+    assert owner in getattr(partner, 'bpmn2_InputOutputSpecification52')
     _safe_set(owner, 'bpmn2_DataOutput', None)
-    assert getattr(partner, 'bpmn2_InputOutputSpecification52') is None
+    assert owner not in getattr(partner, 'bpmn2_InputOutputSpecification52')
 
 
 def test_assoc_dataPath263_stub_double():
@@ -14300,9 +14300,9 @@ def test_assoc_flowElements133_stub_double():
     partner = bpmn2_FlowElementsContainer()
     setattr(partner, 'bpmn2_FlowElementsContainer', None)
     _safe_set(owner, 'bpmn2_FlowElement', partner)
-    assert getattr(partner, 'bpmn2_FlowElementsContainer') == owner
+    assert owner in getattr(partner, 'bpmn2_FlowElementsContainer')
     _safe_set(owner, 'bpmn2_FlowElement', None)
-    assert getattr(partner, 'bpmn2_FlowElementsContainer') is None
+    assert owner not in getattr(partner, 'bpmn2_FlowElementsContainer')
 
 
 def test_assoc_flowNodeRefs152_stub_double():
@@ -14360,9 +14360,9 @@ def test_assoc_incoming157_stub_double():
     partner = bpmn2_FlowNode()
     setattr(partner, 'targetRef', None)
     _safe_set(owner, 'SequenceFlow158', partner)
-    assert getattr(partner, 'targetRef') == owner
+    assert owner in getattr(partner, 'targetRef')
     _safe_set(owner, 'SequenceFlow158', None)
-    assert getattr(partner, 'targetRef') is None
+    assert owner not in getattr(partner, 'targetRef')
 
 
 def test_assoc_incomingConversationLinks203_stub_double():
@@ -14375,9 +14375,9 @@ def test_assoc_incomingConversationLinks203_stub_double():
     partner = bpmn2_InteractionNode()
     setattr(partner, 'targetRef204', None)
     _safe_set(owner, 'ConversationLink', partner)
-    assert getattr(partner, 'targetRef204') == owner
+    assert owner in getattr(partner, 'targetRef204')
     _safe_set(owner, 'ConversationLink', None)
-    assert getattr(partner, 'targetRef204') is None
+    assert owner not in getattr(partner, 'targetRef204')
 
 
 def test_assoc_initiatingParticipantRef414_stub_double():
@@ -14465,9 +14465,9 @@ def test_assoc_inputSets45_stub_double():
     partner = bpmn2_InputOutputSpecification()
     setattr(partner, 'bpmn2_InputOutputSpecification46', None)
     _safe_set(owner, 'bpmn2_InputSet', partner)
-    assert getattr(partner, 'bpmn2_InputOutputSpecification46') == owner
+    assert owner in getattr(partner, 'bpmn2_InputOutputSpecification46')
     _safe_set(owner, 'bpmn2_InputSet', None)
-    assert getattr(partner, 'bpmn2_InputOutputSpecification46') is None
+    assert owner not in getattr(partner, 'bpmn2_InputOutputSpecification46')
 
 
 def test_assoc_ioSpecification279_stub_double():
@@ -14525,9 +14525,9 @@ def test_assoc_laneSets134_stub_double():
     partner = bpmn2_FlowElementsContainer()
     setattr(partner, 'bpmn2_FlowElementsContainer135', None)
     _safe_set(owner, 'bpmn2_LaneSet', partner)
-    assert getattr(partner, 'bpmn2_FlowElementsContainer135') == owner
+    assert owner in getattr(partner, 'bpmn2_FlowElementsContainer135')
     _safe_set(owner, 'bpmn2_LaneSet', None)
-    assert getattr(partner, 'bpmn2_FlowElementsContainer135') is None
+    assert owner not in getattr(partner, 'bpmn2_FlowElementsContainer135')
 
 
 def test_assoc_lanes159_stub_double():
@@ -14540,9 +14540,9 @@ def test_assoc_lanes159_stub_double():
     partner = bpmn2_FlowNode()
     setattr(partner, 'flowNodeRefs', None)
     _safe_set(owner, 'Lane', partner)
-    assert getattr(partner, 'flowNodeRefs') == owner
+    assert owner in getattr(partner, 'flowNodeRefs')
     _safe_set(owner, 'Lane', None)
-    assert getattr(partner, 'flowNodeRefs') is None
+    assert owner not in getattr(partner, 'flowNodeRefs')
 
 
 def test_assoc_loopCardinality428_stub_double():
@@ -14660,9 +14660,9 @@ def test_assoc_messageFlowRef412_stub_double():
     partner = bpmn2_ChoreographyTask()
     setattr(partner, 'bpmn2_ChoreographyTask', None)
     _safe_set(owner, 'bpmn2_MessageFlow413', partner)
-    assert getattr(partner, 'bpmn2_ChoreographyTask') == owner
+    assert owner in getattr(partner, 'bpmn2_ChoreographyTask')
     _safe_set(owner, 'bpmn2_MessageFlow413', None)
-    assert getattr(partner, 'bpmn2_ChoreographyTask') is None
+    assert owner not in getattr(partner, 'bpmn2_ChoreographyTask')
 
 
 def test_assoc_messagePath247_stub_double():
@@ -14840,9 +14840,9 @@ def test_assoc_outgoing156_stub_double():
     partner = bpmn2_FlowNode()
     setattr(partner, 'sourceRef', None)
     _safe_set(owner, 'SequenceFlow', partner)
-    assert getattr(partner, 'sourceRef') == owner
+    assert owner in getattr(partner, 'sourceRef')
     _safe_set(owner, 'SequenceFlow', None)
-    assert getattr(partner, 'sourceRef') is None
+    assert owner not in getattr(partner, 'sourceRef')
 
 
 def test_assoc_outgoingConversationLinks205_stub_double():
@@ -14855,9 +14855,9 @@ def test_assoc_outgoingConversationLinks205_stub_double():
     partner = bpmn2_InteractionNode()
     setattr(partner, 'sourceRef206', None)
     _safe_set(owner, 'ConversationLink207', partner)
-    assert getattr(partner, 'sourceRef206') == owner
+    assert owner in getattr(partner, 'sourceRef206')
     _safe_set(owner, 'ConversationLink207', None)
-    assert getattr(partner, 'sourceRef206') is None
+    assert owner not in getattr(partner, 'sourceRef206')
 
 
 def test_assoc_outputSets47_stub_double():
@@ -14870,9 +14870,9 @@ def test_assoc_outputSets47_stub_double():
     partner = bpmn2_InputOutputSpecification()
     setattr(partner, 'bpmn2_InputOutputSpecification48', None)
     _safe_set(owner, 'bpmn2_OutputSet', partner)
-    assert getattr(partner, 'bpmn2_InputOutputSpecification48') == owner
+    assert owner in getattr(partner, 'bpmn2_InputOutputSpecification48')
     _safe_set(owner, 'bpmn2_OutputSet', None)
-    assert getattr(partner, 'bpmn2_InputOutputSpecification48') is None
+    assert owner not in getattr(partner, 'bpmn2_InputOutputSpecification48')
 
 
 def test_assoc_participantAssociations171_stub_double():
@@ -14900,9 +14900,9 @@ def test_assoc_properties301_stub_double():
     partner = bpmn2_Event()
     setattr(partner, 'bpmn2_Event', None)
     _safe_set(owner, 'bpmn2_Property302', partner)
-    assert getattr(partner, 'bpmn2_Event') == owner
+    assert owner in getattr(partner, 'bpmn2_Event')
     _safe_set(owner, 'bpmn2_Property302', None)
-    assert getattr(partner, 'bpmn2_Event') is None
+    assert owner not in getattr(partner, 'bpmn2_Event')
 
 
 def test_assoc_renderings319_stub_double():
@@ -14945,9 +14945,9 @@ def test_assoc_resources38_stub_double():
     partner = bpmn2_GlobalTask()
     setattr(partner, 'bpmn2_GlobalTask', None)
     _safe_set(owner, 'bpmn2_ResourceRole', partner)
-    assert getattr(partner, 'bpmn2_GlobalTask') == owner
+    assert owner in getattr(partner, 'bpmn2_GlobalTask')
     _safe_set(owner, 'bpmn2_ResourceRole', None)
-    assert getattr(partner, 'bpmn2_GlobalTask') is None
+    assert owner not in getattr(partner, 'bpmn2_GlobalTask')
 
 
 def test_assoc_rootElements485_stub_double():
@@ -15162,253 +15162,64 @@ def test_assoc_valueRef10_stub_double():
 
 
 
-from enum import Enum
 from python_code import AdHocOrdering
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(AdHocOrdering.Parallel, '', 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(AdHocOrdering.Parallel, '', 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(AdHocOrdering.Parallel, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(AdHocOrdering.Parallel, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(AdHocOrdering.Parallel, 'Parallel') == AdHocOrdering.Parallel
-
-from enum import Enum
 from python_code import AssociationDirection
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(AssociationDirection.Both, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(AssociationDirection.Both, 0, '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(AssociationDirection.None_, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(AssociationDirection.One, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(AssociationDirection.One, 'One') == AssociationDirection.One
-
-from enum import Enum
 from python_code import ChoreographyLoopType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ChoreographyLoopType.Standard, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ChoreographyLoopType.None_, '', '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ChoreographyLoopType.None_, '', '', '') == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ChoreographyLoopType.None_, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ChoreographyLoopType.None_, 'None_') == ChoreographyLoopType.None_
-
-from enum import Enum
 from python_code import EventBasedGatewayType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(EventBasedGatewayType.Exclusive, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(EventBasedGatewayType.Exclusive, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(EventBasedGatewayType.Parallel, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(EventBasedGatewayType.Parallel, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(EventBasedGatewayType.Parallel, 'Parallel') == EventBasedGatewayType.Parallel
-
-from enum import Enum
 from python_code import GatewayDirection
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(GatewayDirection.Diverging, 0, '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(GatewayDirection.Mixed, 0, '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(GatewayDirection.Mixed, '', 0, 0) == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(GatewayDirection.Mixed, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(GatewayDirection.Mixed, 'Mixed') == GatewayDirection.Mixed
-
-from enum import Enum
 from python_code import ItemKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ItemKind.Physical, '', 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ItemKind.Physical, '', 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ItemKind.Physical, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ItemKind.Physical, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ItemKind.Physical, 'Physical') == ItemKind.Physical
-
-from enum import Enum
 from python_code import MultiInstanceBehavior
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(MultiInstanceBehavior.All, 0, '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(MultiInstanceBehavior.One, '', 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(MultiInstanceBehavior.One, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(MultiInstanceBehavior.One, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(MultiInstanceBehavior.One, 'One') == MultiInstanceBehavior.One
-
-from enum import Enum
 from python_code import ProcessType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ProcessType.None_, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ProcessType.None_, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ProcessType.None_, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ProcessType.None_, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ProcessType.None_, 'None_') == ProcessType.None_
-
-from enum import Enum
 from python_code import RelationshipDirection
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(RelationshipDirection.Forward, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(RelationshipDirection.Both, 0, '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(RelationshipDirection.Both, '', 0, 0) == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(RelationshipDirection.Both, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(RelationshipDirection.Both, 'Both') == RelationshipDirection.Both
-
 from python_code import bpmn2_AdHocSubProcess
 from python_code import bpmn2_Expression
 
 def test_bpmn2_AdHocSubProcess___init__():
     assert bpmn2_AdHocSubProcess.__init__(bpmn2_AdHocSubProcess('', False, bpmn2_AdHocSubProcess=bpmn2_Expression()), '', False, bpmn2_AdHocSubProcess=bpmn2_Expression()) == None
-
 from python_code import bpmn2_BusinessRuleTask
 
 def test_bpmn2_BusinessRuleTask___init__():
     assert bpmn2_BusinessRuleTask.__init__(bpmn2_BusinessRuleTask(''), '') == None
-
 from python_code import bpmn2_DataObject
 from python_code import bpmn2_DataObjectReference
 
 def test_bpmn2_DataObject___init__():
     assert bpmn2_DataObject.__init__(bpmn2_DataObject(True, bpmn2_DataObject=bpmn2_DataObjectReference()), False, bpmn2_DataObject=bpmn2_DataObjectReference()) == None
-
 from python_code import bpmn2_DataState
 from python_code import bpmn2_ItemAwareElement
 
 def test_bpmn2_DataState___init__():
     assert bpmn2_DataState.__init__(bpmn2_DataState('', bpmn2_DataState=bpmn2_ItemAwareElement()), '', bpmn2_DataState=bpmn2_ItemAwareElement()) == None
-
 from python_code import bpmn2_DataStore
 from python_code import bpmn2_DataStoreReference
 
 def test_bpmn2_DataStore___init__():
     assert bpmn2_DataStore.__init__(bpmn2_DataStore(0, False, '\x00\x00', bpmn2_DataStore=bpmn2_DataStoreReference()), 0, False, '', bpmn2_DataStore=bpmn2_DataStoreReference()) == None
-
 from python_code import bpmn2_EventBasedGateway
 
 def test_bpmn2_EventBasedGateway___init__():
     assert bpmn2_EventBasedGateway.__init__(bpmn2_EventBasedGateway(False, '\x00'), False, '\x00') == None
-
 from python_code import bpmn2_Gateway
 
 def test_bpmn2_Gateway___init__():
     assert bpmn2_Gateway.__init__(bpmn2_Gateway(''), '') == None
-
 from python_code import bpmn2_GlobalBusinessRuleTask
 
 def test_bpmn2_GlobalBusinessRuleTask___init__():
     assert bpmn2_GlobalBusinessRuleTask.__init__(bpmn2_GlobalBusinessRuleTask(''), '') == None
-
 from python_code import bpmn2_GlobalScriptTask
 
 def test_bpmn2_GlobalScriptTask___init__():
     assert bpmn2_GlobalScriptTask.__init__(bpmn2_GlobalScriptTask('', '\x00'), '\x00\x00', '') == None
-
 from python_code import bpmn2_GlobalUserTask
 
 def test_bpmn2_GlobalUserTask___init__():

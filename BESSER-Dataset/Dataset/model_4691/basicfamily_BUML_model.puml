@@ -1,4 +1,8 @@
 @startuml
+' model: basicfamily
+' project: sampleModel
+' owner: User
+' description: New project
 class Person {
 }
 class basicfamily_Family {
@@ -13,9 +17,9 @@ class basicfamily_Woman {
 }
 Person <|-- basicfamily_Man
 Person <|-- basicfamily_Woman
-basicfamily_Person "1..1" -- "0..9999" basicfamily_Person : Children2
-basicfamily_Man "0..1" -- "1..1" basicfamily_Person : father6
-basicfamily_Family "1..1" *-- "0..9999" basicfamily_Person : mermbers0
-basicfamily_Person "1..1" -- "0..1" basicfamily_Woman : mother8
-basicfamily_Person "0..2" -- "1..1" basicfamily_Person : parents4
+basicfamily_Person "Person 1..1" -- "parents 0..9999" basicfamily_Person : Children2
+basicfamily_Man "basicfamily_Person7 0..1" -- "basicfamily_Man 1..1" basicfamily_Person : father6
+basicfamily_Family "basicfamily_Person 1..1" *-- "basicfamily_Family 0..9999" basicfamily_Person : mermbers0
+basicfamily_Person "basicfamily_Woman 1..1" -- "basicfamily_Person9 0..1" basicfamily_Woman : mother8
+basicfamily_Person "Children 0..2" -- "Person5 1..1" basicfamily_Person : parents4
 @enduml

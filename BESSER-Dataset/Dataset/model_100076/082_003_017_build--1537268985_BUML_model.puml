@@ -1,4 +1,8 @@
 @startuml
+' model: build
+' project: sampleModel
+' owner: User
+' description: New project
 class Instance {
 }
 class OptionBinding {
@@ -19,18 +23,18 @@ class build_OptionInstance {
 }
 Instance <|-- build_ModuleInstance
 OptionBinding <|-- build_OptionInstance
-build_ModuleInstance "0..9999" -- "1..1" build_ModuleInstance : afterDepends21
-build_ModuleInstance "1..1" -- "0..9999" build_ModuleType : allTypes4
-build_Build "0..1" -- "1..1" build_ModuleInstance : build2
-build_Build "1..1" -- "0..1" build_Configuration : configuration0
-build_ModuleInstance "1..1" -- "0..1" build_ModuleInstance : container17
-build_ModuleInstance "1..1" -- "0..9999" build_ModuleInstance : contents14
-build_ModuleInstance "1..1" -- "0..9999" build_ModuleInstance : dependent8
-build_ModuleInstance "1..1" -- "0..9999" build_ModuleInstance : depends11
-build_Include "0..1" -- "1..1" build_ModuleInstance : includeMember23
-build_ModuleInstance "0..1" -- "1..1" build_OptionInstance : module27
-build_Build "1..1" *-- "0..9999" build_ModuleInstance : modules1
-build_ModuleInstance "1..1" *-- "0..9999" build_OptionInstance : options19
-build_FileName "0..9999" -- "1..1" build_ModuleInstance : sources25
-build_ModuleInstance "1..1" -- "0..1" build_ModuleType : type3
+build_ModuleInstance "build_ModuleInstance20 0..9999" -- "build_ModuleInstance22 1..1" build_ModuleInstance : afterDepends21
+build_ModuleInstance "build_ModuleType6 1..1" -- "build_ModuleInstance5 0..9999" build_ModuleType : allTypes4
+build_Build "modules 0..1" -- "Build 1..1" build_ModuleInstance : build2
+build_Build "build_Configuration 1..1" -- "build_Build 0..1" build_Configuration : configuration0
+build_ModuleInstance "ModuleInstance18 1..1" -- "contents 0..1" build_ModuleInstance : container17
+build_ModuleInstance "ModuleInstance15 1..1" -- "container 0..9999" build_ModuleInstance : contents14
+build_ModuleInstance "ModuleInstance9 1..1" -- "depends 0..9999" build_ModuleInstance : dependent8
+build_ModuleInstance "ModuleInstance12 1..1" -- "dependent 0..9999" build_ModuleInstance : depends11
+build_Include "build_ModuleInstance24 0..1" -- "build_Include 1..1" build_ModuleInstance : includeMember23
+build_ModuleInstance "options 0..1" -- "ModuleInstance28 1..1" build_OptionInstance : module27
+build_Build "ModuleInstance 1..1" *-- "build 0..9999" build_ModuleInstance : modules1
+build_ModuleInstance "OptionInstance 1..1" *-- "module 0..9999" build_OptionInstance : options19
+build_FileName "build_ModuleInstance26 0..9999" -- "build_FileName 1..1" build_ModuleInstance : sources25
+build_ModuleInstance "build_ModuleType 1..1" -- "build_ModuleInstance 0..1" build_ModuleType : type3
 @enduml

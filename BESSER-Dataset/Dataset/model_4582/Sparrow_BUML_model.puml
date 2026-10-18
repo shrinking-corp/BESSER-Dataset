@@ -1,4 +1,8 @@
 @startuml
+' model: sparrow
+' project: sampleModel
+' owner: User
+' description: New project
 class Action {
 }
 class sparrow_Action {
@@ -138,12 +142,12 @@ Action <|-- sparrow_TrelloGET
 Action <|-- sparrow_TrelloPUT
 Action <|-- sparrow_Updatedaudit
 Action <|-- sparrow_WriteCsv
-sparrow_Action "0..9999" --* "1..1" sparrow_Catch : action10
-sparrow_Action "0..9999" --* "1..1" sparrow_Try : action5
-sparrow_Action "0..9999" --* "1..1" sparrow_Finally : action7
-sparrow_Catch "0..1" --* "1..1" sparrow_Process : catch1
-sparrow_Action "1..1" *-- "0..1" sparrow_Expression : condition13
-sparrow_Finally "0..1" --* "1..1" sparrow_Process : finally_3
-sparrow_Rest "1..1" *-- "0..9999" sparrow_RestPart : parts15
-sparrow_Process "1..1" *-- "0..1" sparrow_Try : try_0
+sparrow_Action "sparrow_Catch11 0..9999" --* "sparrow_Action12 1..1" sparrow_Catch : action10
+sparrow_Action "sparrow_Try6 0..9999" --* "sparrow_Action 1..1" sparrow_Try : action5
+sparrow_Action "sparrow_Finally8 0..9999" --* "sparrow_Action9 1..1" sparrow_Finally : action7
+sparrow_Catch "sparrow_Process2 0..1" --* "sparrow_Catch 1..1" sparrow_Process : catch1
+sparrow_Action "sparrow_Expression 1..1" *-- "sparrow_Action14 0..1" sparrow_Expression : condition13
+sparrow_Finally "sparrow_Process4 0..1" --* "sparrow_Finally 1..1" sparrow_Process : finally_3
+sparrow_Rest "sparrow_RestPart 1..1" *-- "sparrow_Rest 0..9999" sparrow_RestPart : parts15
+sparrow_Process "sparrow_Try 1..1" *-- "sparrow_Process 0..1" sparrow_Try : try_0
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: rcl
+' project: sampleModel
+' owner: User
+' description: New project
 class Action {
 }
 enum BooleanOperator {
@@ -172,23 +176,23 @@ Statement <|-- rcl_VarAssignment
 Statement <|-- rcl_VarRef
 StringValue <|-- rcl_MessageQuery
 StringValue <|-- rcl_VarRef
-rcl_RclBlock "0..1" --* "1..1" rcl_RoverProgram : block1
-rcl_Loop "1..1" *-- "0..1" rcl_RclBlock : block14
-rcl_Conditional "1..1" *-- "0..1" rcl_RclBlock : condFalse9
-rcl_Conditional "1..1" *-- "0..1" rcl_RclBlock : condTrue6
-rcl_NumberValue "0..1" --* "1..1" rcl_TurnDegAction : degrees34
-rcl_ForwardMinAction "1..1" *-- "0..1" rcl_NumberValue : distance30
-rcl_BackwardMinAction "1..1" *-- "0..1" rcl_NumberValue : distance32
-rcl_RclBlock "0..1" -- "1..1" rcl_Statement : enclosing3
-rcl_Loop "1..1" *-- "0..1" rcl_RoverExpression : expr12
-rcl_Conditional "1..1" *-- "0..1" rcl_RoverExpression : expr5
-rcl_NumberValue "0..1" --* "1..1" rcl_NumericExpression : lhs18
-rcl_StringExpression "1..1" *-- "0..1" rcl_StringValue : lhs22
-rcl_BooleanExpression "1..1" *-- "0..1" rcl_BooleanValue : lhs26
-rcl_Param "0..9999" --* "1..1" rcl_RoverProgram : params0
-rcl_NumberValue "0..1" --* "1..1" rcl_NumericExpression : rhs19
-rcl_StringExpression "1..1" *-- "0..1" rcl_StringValue : rhs23
-rcl_BooleanExpression "1..1" *-- "0..1" rcl_BooleanValue : rhs27
-rcl_RclBlock "1..1" *-- "0..9999" rcl_Statement : stmts17
-rcl_RoverValue "0..1" --* "1..1" rcl_VarAssignment : value4
+rcl_RclBlock "rcl_RoverProgram2 0..1" --* "rcl_RclBlock 1..1" rcl_RoverProgram : block1
+rcl_Loop "rcl_RclBlock16 1..1" *-- "rcl_Loop15 0..1" rcl_RclBlock : block14
+rcl_Conditional "rcl_RclBlock11 1..1" *-- "rcl_Conditional10 0..1" rcl_RclBlock : condFalse9
+rcl_Conditional "rcl_RclBlock8 1..1" *-- "rcl_Conditional7 0..1" rcl_RclBlock : condTrue6
+rcl_NumberValue "rcl_TurnDegAction 0..1" --* "rcl_NumberValue35 1..1" rcl_TurnDegAction : degrees34
+rcl_ForwardMinAction "rcl_NumberValue31 1..1" *-- "rcl_ForwardMinAction 0..1" rcl_NumberValue : distance30
+rcl_BackwardMinAction "rcl_NumberValue33 1..1" *-- "rcl_BackwardMinAction 0..1" rcl_NumberValue : distance32
+rcl_RclBlock "stmts 0..1" -- "RclBlock 1..1" rcl_Statement : enclosing3
+rcl_Loop "rcl_RoverExpression13 1..1" *-- "rcl_Loop 0..1" rcl_RoverExpression : expr12
+rcl_Conditional "rcl_RoverExpression 1..1" *-- "rcl_Conditional 0..1" rcl_RoverExpression : expr5
+rcl_NumberValue "rcl_NumericExpression 0..1" --* "rcl_NumberValue 1..1" rcl_NumericExpression : lhs18
+rcl_StringExpression "rcl_StringValue 1..1" *-- "rcl_StringExpression 0..1" rcl_StringValue : lhs22
+rcl_BooleanExpression "rcl_BooleanValue 1..1" *-- "rcl_BooleanExpression 0..1" rcl_BooleanValue : lhs26
+rcl_Param "rcl_RoverProgram 0..9999" --* "rcl_Param 1..1" rcl_RoverProgram : params0
+rcl_NumberValue "rcl_NumericExpression20 0..1" --* "rcl_NumberValue21 1..1" rcl_NumericExpression : rhs19
+rcl_StringExpression "rcl_StringValue25 1..1" *-- "rcl_StringExpression24 0..1" rcl_StringValue : rhs23
+rcl_BooleanExpression "rcl_BooleanValue29 1..1" *-- "rcl_BooleanExpression28 0..1" rcl_BooleanValue : rhs27
+rcl_RclBlock "Statement 1..1" *-- "enclosing 0..9999" rcl_Statement : stmts17
+rcl_RoverValue "rcl_VarAssignment 0..1" --* "rcl_RoverValue 1..1" rcl_VarAssignment : value4
 @enduml

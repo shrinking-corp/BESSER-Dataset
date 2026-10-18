@@ -1,4 +1,8 @@
 @startuml
+' model: PrimitiveTypes
+' project: sampleModel
+' owner: User
+' description: New project
 class Call {
 }
 class Index {
@@ -21,9 +25,9 @@ class Trace_Level {
 class Trace_Trace {
   + name : str
 }
-Call "0..9999" --* "1..1" Trace_Level : calls2
-Index "1..9999" --* "1..1" Trace_Call : indexes5
-Level "1..1" -- "1..1" Trace_Call : level3
-Level "0..9999" --* "1..1" Trace_Trace : levels0
-Trace "1..1" -- "1..1" Trace_Level : trace1
+Call "level 0..9999" --* "Call 1..1" Trace_Level : calls2
+Index "Trace_Call 1..9999" --* "Index 1..1" Trace_Call : indexes5
+Level "calls 1..1" -- "Level4 1..1" Trace_Call : level3
+Level "trace 0..9999" --* "Level 1..1" Trace_Trace : levels0
+Trace "levels 1..1" -- "Trace 1..1" Trace_Level : trace1
 @enduml

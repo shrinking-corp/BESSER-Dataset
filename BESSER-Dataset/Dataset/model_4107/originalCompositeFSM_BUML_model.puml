@@ -1,4 +1,8 @@
 @startuml
+' model: compositestates
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractState {
 }
 class NamedElement {
@@ -25,12 +29,12 @@ class compositestates_Transition {
 AbstractState <|-- compositestates_Pseudostate
 AbstractState <|-- compositestates_State
 NamedElement <|-- compositestates_Region
-compositestates_AbstractState "1..1" -- "0..9999" compositestates_Transition : incoming3
-compositestates_AbstractState "1..1" -- "0..9999" compositestates_Transition : outgoing4
-compositestates_Region "0..9999" --* "1..1" compositestates_State : ownedRegions2
-compositestates_AbstractState "1..1" -- "1..1" compositestates_Region : ownerRegion6
-compositestates_Region "1..1" -- "0..1" compositestates_State : ownerState1
-compositestates_AbstractState "1..1" -- "1..1" compositestates_Transition : source8
-compositestates_AbstractState "0..9999" --* "1..1" compositestates_Region : subvertex0
-compositestates_AbstractState "1..1" -- "1..1" compositestates_Transition : target10
+compositestates_AbstractState "Transition 1..1" -- "target 0..9999" compositestates_Transition : incoming3
+compositestates_AbstractState "Transition5 1..1" -- "source 0..9999" compositestates_Transition : outgoing4
+compositestates_Region "ownerState 0..9999" --* "Region 1..1" compositestates_State : ownedRegions2
+compositestates_AbstractState "Region7 1..1" -- "subvertex 1..1" compositestates_Region : ownerRegion6
+compositestates_Region "State 1..1" -- "ownedRegions 0..1" compositestates_State : ownerState1
+compositestates_AbstractState "outgoing 1..1" -- "AbstractState9 1..1" compositestates_Transition : source8
+compositestates_AbstractState "ownerRegion 0..9999" --* "AbstractState 1..1" compositestates_Region : subvertex0
+compositestates_AbstractState "incoming 1..1" -- "AbstractState11 1..1" compositestates_Transition : target10
 @enduml

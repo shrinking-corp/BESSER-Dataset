@@ -1,4 +1,8 @@
 @startuml
+' model: FSM
+' project: sampleModel
+' owner: User
+' description: New project
 class FAbstractState {
 }
 abstract class FSM_FAbstractState {
@@ -16,10 +20,10 @@ class FSM_FTransition {
 }
 FAbstractState <|-- FSM_FInitialState
 FAbstractState <|-- FSM_FRegularState
-FSM_FAbstractState "1..1" -- "1..1" FSM_FTransition : source4
-FSM_FStateMachine "0..1" -- "1..1" FSM_FTransition : stateMachine3
-FSM_FAbstractState "1..1" -- "0..1" FSM_FStateMachine : stateMachine8
-FSM_FAbstractState "0..9999" --* "1..1" FSM_FStateMachine : states1
-FSM_FAbstractState "1..1" -- "1..1" FSM_FTransition : target5
-FSM_FStateMachine "1..1" *-- "0..9999" FSM_FTransition : transitions0
+FSM_FAbstractState "FSM_FTransition 1..1" -- "FSM_FAbstractState 1..1" FSM_FTransition : source4
+FSM_FStateMachine "transitions 0..1" -- "FStateMachine 1..1" FSM_FTransition : stateMachine3
+FSM_FAbstractState "FStateMachine9 1..1" -- "states 0..1" FSM_FStateMachine : stateMachine8
+FSM_FAbstractState "stateMachine2 0..9999" --* "FAbstractState 1..1" FSM_FStateMachine : states1
+FSM_FAbstractState "FSM_FTransition6 1..1" -- "FSM_FAbstractState7 1..1" FSM_FTransition : target5
+FSM_FStateMachine "FTransition 1..1" *-- "stateMachine 0..9999" FSM_FTransition : transitions0
 @enduml

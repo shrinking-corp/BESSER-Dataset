@@ -1,4 +1,8 @@
 @startuml
+' model: rm
+' project: sampleModel
+' owner: User
+' description: New project
 class rm_Device {
   + cacheSize : int
 }
@@ -15,8 +19,8 @@ class rm_VariableReference {
   + memoryCellIndex : int
   + variable : str
 }
-rm_Device "1..9999" --* "1..1" rm_ResourceModel : devices0
-rm_Device "1..1" *-- "0..1" rm_MemoryCellReference : localMemoryCellReference3
-rm_Memory "1..1" --* "1..1" rm_ResourceModel : memory1
-rm_Memory "1..1" *-- "0..9999" rm_VariableReference : variableReferences5
+rm_Device "rm_ResourceModel 1..9999" --* "rm_Device 1..1" rm_ResourceModel : devices0
+rm_Device "rm_MemoryCellReference 1..1" *-- "rm_Device4 0..1" rm_MemoryCellReference : localMemoryCellReference3
+rm_Memory "rm_ResourceModel2 1..1" --* "rm_Memory 1..1" rm_ResourceModel : memory1
+rm_Memory "rm_VariableReference 1..1" *-- "rm_Memory6 0..9999" rm_VariableReference : variableReferences5
 @enduml

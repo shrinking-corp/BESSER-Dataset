@@ -1,4 +1,8 @@
 @startuml
+' model: dtmc
+' project: sampleModel
+' owner: User
+' description: New project
 class NamedEntity {
 }
 class Transition {
@@ -36,17 +40,17 @@ Transition <|-- dtmc_CallTransition
 Transition <|-- dtmc_InvokedTransition
 Transition <|-- dtmc_StandardTransition
 Transition <|-- dtmc_SynchronizedTransition
-dtmc_Node "0..1" -- "1..1" dtmc_Transition : _from5
-dtmc_Node "0..1" -- "1..1" dtmc_Transition : _to6
-dtmc_CallTransition "1..1" -- "1..1" dtmc_InvokedTransition : callTransition21
-dtmc_Node "1..1" -- "0..9999" dtmc_Transition : inTransitions3
-dtmc_CallTransition "1..1" -- "1..1" dtmc_InvokedTransition : invokedTransition20
-dtmc_Module "1..1" -- "1..1" dtmc_Node : module1
-dtmc_Module "1..1" -- "1..1" dtmc_Transition : module8
-dtmc_Dtmc "1..1" *-- "1..9999" dtmc_Module : modules0
-dtmc_Module "1..1" *-- "1..9999" dtmc_Node : nodes15
-dtmc_Node "1..1" -- "0..9999" dtmc_Transition : outTransitions2
-dtmc_SynchronizedTransition "1..1" -- "1..9999" dtmc_SynchronizedTransition : syncWith11
-dtmc_SynchronizedTransition "1..1" -- "1..9999" dtmc_SynchronizedTransition : synchedWith13
-dtmc_Module "1..1" *-- "0..9999" dtmc_Transition : transitions17
+dtmc_Node "outTransitions 0..1" -- "Node 1..1" dtmc_Transition : _from5
+dtmc_Node "inTransitions 0..1" -- "Node7 1..1" dtmc_Transition : _to6
+dtmc_CallTransition "invokedTransition 1..1" -- "CallTransition 1..1" dtmc_InvokedTransition : callTransition21
+dtmc_Node "Transition4 1..1" -- "_to 0..9999" dtmc_Transition : inTransitions3
+dtmc_CallTransition "InvokedTransition 1..1" -- "callTransition 1..1" dtmc_InvokedTransition : invokedTransition20
+dtmc_Module "nodes 1..1" -- "Module 1..1" dtmc_Node : module1
+dtmc_Module "transitions 1..1" -- "Module9 1..1" dtmc_Transition : module8
+dtmc_Dtmc "dtmc_Module 1..1" *-- "dtmc_Dtmc 1..9999" dtmc_Module : modules0
+dtmc_Module "Node16 1..1" *-- "module 1..9999" dtmc_Node : nodes15
+dtmc_Node "Transition 1..1" -- "_from 0..9999" dtmc_Transition : outTransitions2
+dtmc_SynchronizedTransition "SynchronizedTransition 1..1" -- "synchedWith 1..9999" dtmc_SynchronizedTransition : syncWith11
+dtmc_SynchronizedTransition "SynchronizedTransition14 1..1" -- "syncWith 1..9999" dtmc_SynchronizedTransition : synchedWith13
+dtmc_Module "Transition19 1..1" *-- "module18 0..9999" dtmc_Transition : transitions17
 @enduml

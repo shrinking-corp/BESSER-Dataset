@@ -1,4 +1,8 @@
 @startuml
+' model: exo1
+' project: sampleModel
+' owner: User
+' description: New project
 class exo1_Company {
 }
 class exo1_Departement {
@@ -14,13 +18,13 @@ class exo1_Project {
   + budget : int
   + name : str
 }
-exo1_Departement "1..1" -- "1..1" exo1_Project : departement2
-exo1_Company "1..1" *-- "0..9999" exo1_Departement : departements14
-exo1_Departement "1..9999" -- "1..1" exo1_Employee : departements8
-exo1_Departement "1..1" -- "0..9999" exo1_Employee : employees1
-exo1_Company "1..1" *-- "0..9999" exo1_Employee : employees11
-exo1_Employee "0..9999" -- "1..1" exo1_Project : employees3
-exo1_Departement "1..1" -- "0..9999" exo1_Project : projects0
-exo1_Employee "1..1" -- "0..9999" exo1_Project : projects6
-exo1_Company "1..1" *-- "0..9999" exo1_Project : projets12
+exo1_Departement "projects 1..1" -- "Departement 1..1" exo1_Project : departement2
+exo1_Company "exo1_Departement 1..1" *-- "exo1_Company15 0..9999" exo1_Departement : departements14
+exo1_Departement "employees9 1..9999" -- "Departement10 1..1" exo1_Employee : departements8
+exo1_Departement "Employee 1..1" -- "departements 0..9999" exo1_Employee : employees1
+exo1_Company "exo1_Employee 1..1" *-- "exo1_Company 0..9999" exo1_Employee : employees11
+exo1_Employee "projects4 0..9999" -- "Employee5 1..1" exo1_Project : employees3
+exo1_Departement "Project 1..1" -- "departement 0..9999" exo1_Project : projects0
+exo1_Employee "Project7 1..1" -- "employees 0..9999" exo1_Project : projects6
+exo1_Company "exo1_Project 1..1" *-- "exo1_Company13 0..9999" exo1_Project : projets12
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: MRPTrace
+' project: sampleModel
+' owner: User
+' description: New project
 class MRPTrace_Event {
   + time : str
 }
@@ -28,9 +32,9 @@ enum TimeUnit {
 }
 NamedElement <|-- MRPTrace_Event
 NamedElement <|-- MRPTrace_Trace
-MRPTrace_RDMElement "0..9999" -- "1..1" MRPTrace_TraceEntry : affectedRDMElements6
-MRPTrace_Event "1..1" --* "1..1" MRPTrace_TraceEntry : cause8
-MRPTrace_Trace "1..1" *-- "0..9999" MRPTrace_TraceEntry : consistsOf1
-MRPTrace_TraceEntry "0..1" -- "1..1" MRPTrace_TraceEntry : nextEntry4
-MRPTrace_Trace "1..1" --* "1..1" MRPTrace_TraceModel : trace0
+MRPTrace_RDMElement "MRPTrace_TraceEntry7 0..9999" -- "MRPTrace_RDMElement 1..1" MRPTrace_TraceEntry : affectedRDMElements6
+MRPTrace_Event "MRPTrace_TraceEntry9 1..1" --* "MRPTrace_Event 1..1" MRPTrace_TraceEntry : cause8
+MRPTrace_Trace "MRPTrace_TraceEntry 1..1" *-- "MRPTrace_Trace2 0..9999" MRPTrace_TraceEntry : consistsOf1
+MRPTrace_TraceEntry "MRPTrace_TraceEntry3 0..1" -- "MRPTrace_TraceEntry5 1..1" MRPTrace_TraceEntry : nextEntry4
+MRPTrace_Trace "MRPTrace_TraceModel 1..1" --* "MRPTrace_Trace 1..1" MRPTrace_TraceModel : trace0
 @enduml

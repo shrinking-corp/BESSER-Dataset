@@ -1,4 +1,8 @@
 @startuml
+' model: petriNet
+' project: sampleModel
+' owner: User
+' description: New project
 enum ArcDirection {
   P2T
   T2P
@@ -24,11 +28,11 @@ class petriNet_Transition {
 PetriElement <|-- petriNet_Arc
 PetriElement <|-- petriNet_Place
 PetriElement <|-- petriNet_Transition
-petriNet_Arc "1..9999" -- "1..1" petriNet_Transition : arcEntrants1
-petriNet_Arc "0..9999" -- "1..1" petriNet_Place : arcEntrants4
-petriNet_Arc "1..9999" -- "1..1" petriNet_Transition : arcSortants0
-petriNet_Arc "0..9999" -- "1..1" petriNet_Place : arcSortants6
-petriNet_PetriElement "0..9999" --* "1..1" petriNet_PetriNetwork : petrielement15
-petriNet_Arc "1..1" -- "1..1" petriNet_Place : place12
-petriNet_Arc "1..1" -- "1..1" petriNet_Transition : transition9
+petriNet_Arc "petriNet_Transition2 1..9999" -- "petriNet_Arc3 1..1" petriNet_Transition : arcEntrants1
+petriNet_Arc "petriNet_Place 0..9999" -- "petriNet_Arc5 1..1" petriNet_Place : arcEntrants4
+petriNet_Arc "petriNet_Transition 1..9999" -- "petriNet_Arc 1..1" petriNet_Transition : arcSortants0
+petriNet_Arc "petriNet_Place7 0..9999" -- "petriNet_Arc8 1..1" petriNet_Place : arcSortants6
+petriNet_PetriElement "petriNet_PetriNetwork 0..9999" --* "petriNet_PetriElement 1..1" petriNet_PetriNetwork : petrielement15
+petriNet_Arc "petriNet_Place14 1..1" -- "petriNet_Arc13 1..1" petriNet_Place : place12
+petriNet_Arc "petriNet_Transition11 1..1" -- "petriNet_Arc10 1..1" petriNet_Transition : transition9
 @enduml

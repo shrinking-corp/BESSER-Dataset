@@ -1,4 +1,8 @@
 @startuml
+' model: Books
+' project: sampleModel
+' owner: User
+' description: New project
 class Books_Author {
   + name : str
 }
@@ -12,10 +16,10 @@ class Books_Chapter {
 class Books_System {
   + name : str
 }
-Books_Author "0..9999" --* "1..1" Books_System : authors1
-Books_Author "0..9999" -- "1..1" Books_Book : auths4
-Books_Book "0..9999" --* "1..1" Books_System : books0
-Books_Book "1..1" *-- "0..9999" Books_Chapter : chaps3
-Books_Book "1..1" -- "1..1" Books_Chapter : itsbook5
-Books_Author "1..1" -- "0..9999" Books_Book : mybs6
+Books_Author "Books_System2 0..9999" --* "Books_Author 1..1" Books_System : authors1
+Books_Author "mybs 0..9999" -- "Author 1..1" Books_Book : auths4
+Books_Book "Books_System 0..9999" --* "Books_Book 1..1" Books_System : books0
+Books_Book "Chapter 1..1" *-- "itsbook 0..9999" Books_Chapter : chaps3
+Books_Book "chaps 1..1" -- "Book 1..1" Books_Chapter : itsbook5
+Books_Author "Book7 1..1" -- "auths 0..9999" Books_Book : mybs6
 @enduml

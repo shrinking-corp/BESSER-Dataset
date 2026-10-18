@@ -1,4 +1,8 @@
 @startuml
+' model: _QG1SwNCOEeirsuDAiyq68g
+' project: sampleModel
+' owner: User
+' description: New project
 class Card {
   + cardNumber : int
   + cardSN : int
@@ -69,19 +73,19 @@ class customerDatabase {
   + customerName : str
   + paymentHistory : str
 }
-Manager "0..1" -- "0..1" Menu : Manager_Menu
-Menu "1..1" -- "1..9999" Product : Menu_Product
-Order "1..1" -- "1..1" Payment : Payment_Order
-Product "1..1" -- "1..1" Sales_Line_Item : Product_Sales_Line_Item
-Register "1..1" -- "1..1" Sale : Register_Sale
-Register "1..1" -- "1..1" Store : Register_Store
-Card "0..1" -- "0..9999" SUID : SUID_Card
-Payment "0..1" -- "0..9999" SUID : SUID_Payment
-CardReader "1..1" -- "1..1" Sale : Sale_CardReader
-Payment "1..1" -- "1..1" Sale : Sale_Payment
-Sale "1..1" -- "1..9999" Sales_Line_Item : Sale_Sales_Line_Item
-Drink "0..9999" -- "1..1" Sales_Line_Item : Sales_Line_Item_Drink
-Food "0..9999" -- "1..1" Sales_Line_Item : Sales_Line_Item_Food
-Menu "1..1" -- "1..1" Store : Store_Menu
-Card "1..9999" -- "0..1" customerDatabase : customerDatabase_Card
+Manager "manager29 0..1" -- "menu28 0..1" Menu : Manager_Menu
+Menu "menu5 1..1" -- "product4 1..9999" Product : Menu_Product
+Order "order12 1..1" -- "payment13 1..1" Payment : Payment_Order
+Product "product27 1..1" -- "sales_Line_Item26 1..1" Sales_Line_Item : Product_Sales_Line_Item
+Register "register7 1..1" -- "sale6 1..1" Sale : Register_Sale
+Register "register1 1..1" -- "store0 1..1" Store : Register_Store
+Card "card22 0..1" -- "sUID23 0..9999" SUID : SUID_Card
+Payment "payment24 0..1" -- "sUID25 0..9999" SUID : SUID_Payment
+CardReader "cardReader18 1..1" -- "sale19 1..1" Sale : Sale_CardReader
+Payment "payment8 1..1" -- "sale9 1..1" Sale : Sale_Payment
+Sale "sale11 1..1" -- "sales_Line_Item10 1..9999" Sales_Line_Item : Sale_Sales_Line_Item
+Drink "drink16 0..9999" -- "sales_Line_Item17 1..1" Sales_Line_Item : Sales_Line_Item_Drink
+Food "food14 0..9999" -- "sales_Line_Item15 1..1" Sales_Line_Item : Sales_Line_Item_Food
+Menu "menu2 1..1" -- "store3 1..1" Store : Store_Menu
+Card "card20 1..9999" -- "customerDatabase21 0..1" customerDatabase : customerDatabase_Card
 @enduml

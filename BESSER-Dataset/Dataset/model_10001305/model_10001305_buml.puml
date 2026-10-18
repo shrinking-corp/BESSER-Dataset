@@ -1,4 +1,8 @@
 @startuml
+' model: _9fb1c050_67b9_46aa_81c9_cfeefe6f47e2
+' project: sampleModel
+' owner: User
+' description: New project
 class OrderProcess {
   + IsMember : int
   + MemberShipPayment : int
@@ -65,12 +69,12 @@ class Vendor {
   + Name : str
   + VendorID : int
 }
-UserName "0..1" -- "0..1" User_Account : Customer_ShoppingCart
-ShoppingCart "1..9999" -- "1..1" User_Account : Order_Regular_Members
-Premium_Members "1..1" -- "0..1" Promos : Premium_Members_Promos
-Product "1..9999" -- "1..1" Vendor : Product_Vendor
-Promos "0..1" -- "0..9999" ShoppingCart : Promos_ShoppingCart
-OrderProcess "0..1" -- "1..1" ShoppingCart : ShoppingCart_Order
-OrderProcess "0..9999" -- "1..1" User_Account : User_Account_OrderProcess
-UserAddress "0..1" -- "0..1" User_Account : User_Account_UserAddress
+UserName "Customer_ShoppingCart_00 0..1" -- "Customer_ShoppingCart_11 0..1" User_Account : Customer_ShoppingCart
+ShoppingCart "Order_Regular_Members_15 1..9999" -- "Order_Regular_Members_04 1..1" User_Account : Order_Regular_Members
+Premium_Members "Premium_Members_Promos_113 1..1" -- "Premium_Members_Promos_012 0..1" Promos : Premium_Members_Promos
+Product "Product_Vendor_115 1..9999" -- "Product_Vendor_014 1..1" Vendor : Product_Vendor
+Promos "promos9 0..1" -- "shoppingCart8 0..9999" ShoppingCart : Promos_ShoppingCart
+OrderProcess "ShoppingCart_Order_02 0..1" -- "ShoppingCart_Order_13 1..1" ShoppingCart : ShoppingCart_Order
+OrderProcess "orderProcess6 0..9999" -- "user_Account7 1..1" User_Account : User_Account_OrderProcess
+UserAddress "userAddress10 0..1" -- "user_Account11 0..1" User_Account : User_Account_UserAddress
 @enduml

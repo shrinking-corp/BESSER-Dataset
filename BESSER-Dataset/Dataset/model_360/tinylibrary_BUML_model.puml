@@ -1,4 +1,8 @@
 @startuml
+' model: tinylibrary
+' project: sampleModel
+' owner: User
+' description: New project
 enum BookCategory {
   Biography
   Computing
@@ -28,11 +32,11 @@ class tinylibrary_Writer {
 }
 Person <|-- tinylibrary_Employee
 Person <|-- tinylibrary_Writer
-tinylibrary_Book "1..1" -- "1..9999" tinylibrary_Writer : authors11
-tinylibrary_Book "0..9999" --* "1..1" tinylibrary_Library : books0
-tinylibrary_Book "0..9999" -- "1..1" tinylibrary_Writer : books5
-tinylibrary_Employee "0..9999" --* "1..1" tinylibrary_Library : employees1
-tinylibrary_Employee "1..1" -- "0..9999" tinylibrary_Employee : managed9
-tinylibrary_Employee "1..1" -- "0..1" tinylibrary_Employee : manager7
-tinylibrary_Library "1..1" *-- "0..9999" tinylibrary_Writer : writers3
+tinylibrary_Book "Writer 1..1" -- "books 1..9999" tinylibrary_Writer : authors11
+tinylibrary_Book "tinylibrary_Library 0..9999" --* "tinylibrary_Book 1..1" tinylibrary_Library : books0
+tinylibrary_Book "authors 0..9999" -- "Book 1..1" tinylibrary_Writer : books5
+tinylibrary_Employee "tinylibrary_Library2 0..9999" --* "tinylibrary_Employee 1..1" tinylibrary_Library : employees1
+tinylibrary_Employee "Employee10 1..1" -- "manager 0..9999" tinylibrary_Employee : managed9
+tinylibrary_Employee "Employee 1..1" -- "managed 0..1" tinylibrary_Employee : manager7
+tinylibrary_Library "tinylibrary_Writer 1..1" *-- "tinylibrary_Library4 0..9999" tinylibrary_Writer : writers3
 @enduml

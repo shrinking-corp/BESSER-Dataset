@@ -1,4 +1,8 @@
 @startuml
+' model: digraph
+' project: sampleModel
+' owner: User
+' description: New project
 class GraphElement {
 }
 class digraph_Edge {
@@ -13,10 +17,10 @@ class digraph_Node {
 }
 GraphElement <|-- digraph_Edge
 GraphElement <|-- digraph_Node
-digraph_Graph "1..1" *-- "0..9999" digraph_GraphElement : contents0
-digraph_Graph "0..1" -- "1..1" digraph_GraphElement : graph1
-digraph_Edge "0..9999" -- "1..1" digraph_Node : incoming3
-digraph_Edge "0..9999" -- "1..1" digraph_Node : outgoing2
-digraph_Edge "1..1" -- "0..1" digraph_Node : source5
-digraph_Edge "1..1" -- "0..1" digraph_Node : target6
+digraph_Graph "GraphElement 1..1" *-- "graph 0..9999" digraph_GraphElement : contents0
+digraph_Graph "contents 0..1" -- "Graph 1..1" digraph_GraphElement : graph1
+digraph_Edge "target 0..9999" -- "Edge4 1..1" digraph_Node : incoming3
+digraph_Edge "source 0..9999" -- "Edge 1..1" digraph_Node : outgoing2
+digraph_Edge "Node 1..1" -- "outgoing 0..1" digraph_Node : source5
+digraph_Edge "Node7 1..1" -- "incoming 0..1" digraph_Node : target6
 @enduml

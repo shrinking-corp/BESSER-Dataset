@@ -1,4 +1,8 @@
 @startuml
+' model: stylesheets
+' project: sampleModel
+' owner: User
+' description: New project
 class EModelElement {
 }
 class StyleSheet {
@@ -25,7 +29,7 @@ EModelElement <|-- stylesheets_ModelStyleSheets
 EModelElement <|-- stylesheets_WorkspaceThemes
 StyleSheet <|-- stylesheets_EmbeddedStyleSheet
 StyleSheet <|-- stylesheets_StyleSheetReference
-stylesheets_ModelStyleSheets "1..1" *-- "0..9999" stylesheets_StyleSheet : stylesheets0
-stylesheets_StyleSheet "0..9999" --* "1..1" stylesheets_Theme : stylesheets2
-stylesheets_Theme "0..9999" --* "1..1" stylesheets_WorkspaceThemes : themes1
+stylesheets_ModelStyleSheets "stylesheets_StyleSheet 1..1" *-- "stylesheets_ModelStyleSheets 0..9999" stylesheets_StyleSheet : stylesheets0
+stylesheets_StyleSheet "stylesheets_Theme3 0..9999" --* "stylesheets_StyleSheet4 1..1" stylesheets_Theme : stylesheets2
+stylesheets_Theme "stylesheets_WorkspaceThemes 0..9999" --* "stylesheets_Theme 1..1" stylesheets_WorkspaceThemes : themes1
 @enduml

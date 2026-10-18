@@ -1,4 +1,8 @@
 @startuml
+' model: list
+' project: sampleModel
+' owner: User
+' description: New project
 class ProductSpaceElement {
 }
 class UUIDElement {
@@ -21,17 +25,17 @@ ProductSpaceElement <|-- list_VersionedListEdge
 ProductSpaceElement <|-- list_VersionedListStartReference
 ProductSpaceElement <|-- list_VersionedListVertex
 UUIDElement <|-- list_VersionedListVertex
-list_VersionedList "1..1" *-- "0..9999" list_VersionedListEdge : edges1
-list_ProductSpaceElement "0..1" -- "1..1" list_VersionedListVertex : element5
-list_VersionedListEdge "0..9999" -- "1..1" list_VersionedListVertex : incomingEdges6
-list_VersionedList "0..1" -- "1..1" list_VersionedListVertex : list10
-list_VersionedList "0..1" -- "1..1" list_VersionedListEdge : list17
-list_VersionedList "0..1" -- "1..1" list_VersionedListStartReference : list21
-list_VersionedListEdge "0..9999" -- "1..1" list_VersionedListVertex : outgoingEdges8
-list_VersionedListEdge "1..1" -- "0..1" list_VersionedListVertex : sink15
-list_VersionedListEdge "1..1" -- "0..1" list_VersionedListVertex : source13
-list_VersionedListStartReference "0..1" -- "1..1" list_VersionedListVertex : startRef11
-list_VersionedList "1..1" *-- "0..9999" list_VersionedListStartReference : startVertices3
-list_VersionedListStartReference "1..1" -- "0..1" list_VersionedListVertex : vertex19
-list_VersionedList "1..1" *-- "0..9999" list_VersionedListVertex : vertices0
+list_VersionedList "VersionedListEdge 1..1" *-- "list2 0..9999" list_VersionedListEdge : edges1
+list_ProductSpaceElement "list_VersionedListVertex 0..1" -- "list_ProductSpaceElement 1..1" list_VersionedListVertex : element5
+list_VersionedListEdge "sink 0..9999" -- "VersionedListEdge7 1..1" list_VersionedListVertex : incomingEdges6
+list_VersionedList "vertices 0..1" -- "VersionedList 1..1" list_VersionedListVertex : list10
+list_VersionedList "edges 0..1" -- "VersionedList18 1..1" list_VersionedListEdge : list17
+list_VersionedList "startVertices 0..1" -- "VersionedList22 1..1" list_VersionedListStartReference : list21
+list_VersionedListEdge "source 0..9999" -- "VersionedListEdge9 1..1" list_VersionedListVertex : outgoingEdges8
+list_VersionedListEdge "VersionedListVertex16 1..1" -- "incomingEdges 0..1" list_VersionedListVertex : sink15
+list_VersionedListEdge "VersionedListVertex14 1..1" -- "outgoingEdges 0..1" list_VersionedListVertex : source13
+list_VersionedListStartReference "vertex 0..1" -- "VersionedListStartReference12 1..1" list_VersionedListVertex : startRef11
+list_VersionedList "VersionedListStartReference 1..1" *-- "list4 0..9999" list_VersionedListStartReference : startVertices3
+list_VersionedListStartReference "VersionedListVertex20 1..1" -- "startRef 0..1" list_VersionedListVertex : vertex19
+list_VersionedList "VersionedListVertex 1..1" *-- "list 0..9999" list_VersionedListVertex : vertices0
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: ER
+' project: sampleModel
+' owner: User
+' description: New project
 class ER_Column {
   + name : str
   + type : str
@@ -15,20 +19,20 @@ class ER_Schema {
 class ER_Table {
   + name : str
 }
-ER_Column "1..9999" -- "1..1" ER_Key : column12
-ER_Column "1..9999" -- "1..1" ER_ForeignKey : column27
-ER_Column "0..9999" --* "1..1" ER_Table : column5
-ER_ForeignKey "0..9999" --* "1..1" ER_Schema : foreignKey1
-ER_Column "1..1" -- "0..9999" ER_ForeignKey : hasForeignKey20
-ER_ForeignKey "0..9999" -- "1..1" ER_Table : hasForeignKey7
-ER_Column "1..1" -- "0..9999" ER_Key : hasKey17
-ER_Key "0..1" --* "1..1" ER_Table : hasKey4
-ER_Key "1..1" -- "1..1" ER_Table : owner10
-ER_Column "1..1" -- "1..1" ER_Table : owner15
-ER_ForeignKey "1..1" -- "1..1" ER_Table : owner25
-ER_ForeignKey "0..9999" -- "1..1" ER_Key : referedBy13
-ER_ForeignKey "1..1" -- "0..9999" ER_Key : refersTo30
-ER_ForeignKey "1..1" -- "1..1" ER_Schema : schema23
-ER_Schema "1..1" -- "1..1" ER_Table : schema3
-ER_Schema "1..1" *-- "0..9999" ER_Table : table0
+ER_Column "ER_Key 1..9999" -- "ER_Column 1..1" ER_Key : column12
+ER_Column "hasForeignKey28 1..9999" -- "Column29 1..1" ER_ForeignKey : column27
+ER_Column "owner6 0..9999" --* "Column 1..1" ER_Table : column5
+ER_ForeignKey "schema2 0..9999" --* "ForeignKey 1..1" ER_Schema : foreignKey1
+ER_Column "ForeignKey22 1..1" -- "column21 0..9999" ER_ForeignKey : hasForeignKey20
+ER_ForeignKey "owner8 0..9999" -- "ForeignKey9 1..1" ER_Table : hasForeignKey7
+ER_Column "ER_Key19 1..1" -- "ER_Column18 0..9999" ER_Key : hasKey17
+ER_Key "owner 0..1" --* "Key 1..1" ER_Table : hasKey4
+ER_Key "Table11 1..1" -- "hasKey 1..1" ER_Table : owner10
+ER_Column "Table16 1..1" -- "column 1..1" ER_Table : owner15
+ER_ForeignKey "Table26 1..1" -- "hasForeignKey 1..1" ER_Table : owner25
+ER_ForeignKey "ER_Key14 0..9999" -- "ER_ForeignKey 1..1" ER_Key : referedBy13
+ER_ForeignKey "ER_Key32 1..1" -- "ER_ForeignKey31 0..9999" ER_Key : refersTo30
+ER_ForeignKey "Schema24 1..1" -- "foreignKey 1..1" ER_Schema : schema23
+ER_Schema "table 1..1" -- "Schema 1..1" ER_Table : schema3
+ER_Schema "Table 1..1" *-- "schema 0..9999" ER_Table : table0
 @enduml

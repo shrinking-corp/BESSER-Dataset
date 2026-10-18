@@ -1,4 +1,8 @@
 @startuml
+' model: relationaldatabase
+' project: sampleModel
+' owner: User
+' description: New project
 class NamedElement {
 }
 class relationaldatabase_Column {
@@ -15,15 +19,15 @@ class relationaldatabase_Table {
 NamedElement <|-- relationaldatabase_Column
 NamedElement <|-- relationaldatabase_ForeignKey
 NamedElement <|-- relationaldatabase_Table
-relationaldatabase_Column "1..9999" --* "1..1" relationaldatabase_Table : columns1
-relationaldatabase_Column "1..1" -- "1..1" relationaldatabase_ForeignKey : foreignColumn15
-relationaldatabase_ForeignKey "0..9999" --* "1..1" relationaldatabase_Table : foreignKeys4
-relationaldatabase_Column "1..1" -- "0..9999" relationaldatabase_ForeignKey : foreignKeysAsColumn9
-relationaldatabase_Column "1..1" -- "0..9999" relationaldatabase_ForeignKey : foreignKeysAsForeignColumn11
-relationaldatabase_Column "1..1" -- "1..1" relationaldatabase_Table : primaryKey2
-relationaldatabase_ForeignKey "1..1" -- "1..1" relationaldatabase_Table : table17
-relationaldatabase_Column "1..1" -- "1..1" relationaldatabase_Table : table6
-relationaldatabase_Column "1..1" -- "0..1" relationaldatabase_Table : tableAsPrimaryKey7
-relationaldatabase_Column "1..1" -- "1..1" relationaldatabase_ForeignKey : tableColumn13
-relationaldatabase_RelationalDatabase "1..1" *-- "0..9999" relationaldatabase_Table : tables0
+relationaldatabase_Column "table 1..9999" --* "Column 1..1" relationaldatabase_Table : columns1
+relationaldatabase_Column "foreignKeysAsForeignColumn 1..1" -- "Column16 1..1" relationaldatabase_ForeignKey : foreignColumn15
+relationaldatabase_ForeignKey "table5 0..9999" --* "ForeignKey 1..1" relationaldatabase_Table : foreignKeys4
+relationaldatabase_Column "ForeignKey10 1..1" -- "tableColumn 0..9999" relationaldatabase_ForeignKey : foreignKeysAsColumn9
+relationaldatabase_Column "ForeignKey12 1..1" -- "foreignColumn 0..9999" relationaldatabase_ForeignKey : foreignKeysAsForeignColumn11
+relationaldatabase_Column "tableAsPrimaryKey 1..1" -- "Column3 1..1" relationaldatabase_Table : primaryKey2
+relationaldatabase_ForeignKey "Table18 1..1" -- "foreignKeys 1..1" relationaldatabase_Table : table17
+relationaldatabase_Column "Table 1..1" -- "columns 1..1" relationaldatabase_Table : table6
+relationaldatabase_Column "Table8 1..1" -- "primaryKey 0..1" relationaldatabase_Table : tableAsPrimaryKey7
+relationaldatabase_Column "foreignKeysAsColumn 1..1" -- "Column14 1..1" relationaldatabase_ForeignKey : tableColumn13
+relationaldatabase_RelationalDatabase "relationaldatabase_Table 1..1" *-- "relationaldatabase_RelationalDatabase 0..9999" relationaldatabase_Table : tables0
 @enduml

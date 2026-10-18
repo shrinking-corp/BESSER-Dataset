@@ -1,4 +1,8 @@
 @startuml
+' model: ardurobotml
+' project: sampleModel
+' owner: User
+' description: New project
 class Action {
 }
 class Condition {
@@ -147,28 +151,28 @@ NamedElement <|-- ardurobotml_TimedSystem
 NamedElement <|-- ardurobotml_Transition
 RegionContainer <|-- ardurobotml_State
 RegionContainer <|-- ardurobotml_TFSM
-ardurobotml_Action "0..9999" --* "1..1" ardurobotml_State : actions22
-ardurobotml_Action "0..9999" --* "1..1" ardurobotml_ActionSequence : actions46
-ardurobotml_Condition "1..1" --* "1..1" ardurobotml_EvaluateGuard : condition41
-ardurobotml_State "0..1" -- "1..1" ardurobotml_TFSM : currentState15
-ardurobotml_FSMEvent "0..9999" -- "1..1" ardurobotml_Transition : generatedEvents31
-ardurobotml_FSMClock "0..9999" --* "1..1" ardurobotml_TimedSystem : globalClocks1
-ardurobotml_FSMEvent "0..9999" --* "1..1" ardurobotml_TimedSystem : globalEvents3
-ardurobotml_State "1..1" -- "0..9999" ardurobotml_Transition : incomingTransitions20
-ardurobotml_State "1..1" -- "1..1" ardurobotml_TFSM : initialState5
-ardurobotml_FSMClock "1..1" --* "1..1" ardurobotml_TFSM : localClock10
-ardurobotml_FSMEvent "0..9999" --* "1..1" ardurobotml_TFSM : localEvents7
-ardurobotml_FSMClock "1..1" -- "1..1" ardurobotml_TemporalGuard : onClock34
-ardurobotml_State "1..1" -- "0..9999" ardurobotml_Transition : outgoingTransitions19
-ardurobotml_Guard "1..1" --* "1..1" ardurobotml_Transition : ownedGuard29
-ardurobotml_Region "0..9999" --* "1..1" ardurobotml_RegionContainer : ownedRegions44
-ardurobotml_State "0..9999" -- "1..1" ardurobotml_TFSM : ownedStates18
-ardurobotml_Region "1..1" *-- "0..9999" ardurobotml_State : ownedStates42
-ardurobotml_TFSM "1..1" *-- "0..9999" ardurobotml_Transition : ownedTransitions13
-ardurobotml_State "1..1" -- "1..1" ardurobotml_TFSM : owningFSM24
-ardurobotml_FSMEvent "1..1" -- "0..9999" ardurobotml_Transition : sollicitingTransitions38
-ardurobotml_State "1..1" -- "1..1" ardurobotml_Transition : source25
-ardurobotml_State "1..1" -- "1..1" ardurobotml_Transition : target27
-ardurobotml_TFSM "0..9999" --* "1..1" ardurobotml_TimedSystem : tfsms0
-ardurobotml_EventGuard "1..1" -- "1..1" ardurobotml_FSMEvent : triggeringEvent36
+ardurobotml_Action "ardurobotml_State23 0..9999" --* "ardurobotml_Action 1..1" ardurobotml_State : actions22
+ardurobotml_Action "ardurobotml_ActionSequence 0..9999" --* "ardurobotml_Action47 1..1" ardurobotml_ActionSequence : actions46
+ardurobotml_Condition "ardurobotml_EvaluateGuard 1..1" --* "ardurobotml_Condition 1..1" ardurobotml_EvaluateGuard : condition41
+ardurobotml_State "ardurobotml_TFSM16 0..1" -- "ardurobotml_State17 1..1" ardurobotml_TFSM : currentState15
+ardurobotml_FSMEvent "ardurobotml_Transition32 0..9999" -- "ardurobotml_FSMEvent33 1..1" ardurobotml_Transition : generatedEvents31
+ardurobotml_FSMClock "ardurobotml_TimedSystem2 0..9999" --* "ardurobotml_FSMClock 1..1" ardurobotml_TimedSystem : globalClocks1
+ardurobotml_FSMEvent "ardurobotml_TimedSystem4 0..9999" --* "ardurobotml_FSMEvent 1..1" ardurobotml_TimedSystem : globalEvents3
+ardurobotml_State "Transition21 1..1" -- "target 0..9999" ardurobotml_Transition : incomingTransitions20
+ardurobotml_State "ardurobotml_TFSM6 1..1" -- "ardurobotml_State 1..1" ardurobotml_TFSM : initialState5
+ardurobotml_FSMClock "ardurobotml_TFSM11 1..1" --* "ardurobotml_FSMClock12 1..1" ardurobotml_TFSM : localClock10
+ardurobotml_FSMEvent "ardurobotml_TFSM8 0..9999" --* "ardurobotml_FSMEvent9 1..1" ardurobotml_TFSM : localEvents7
+ardurobotml_FSMClock "ardurobotml_TemporalGuard 1..1" -- "ardurobotml_FSMClock35 1..1" ardurobotml_TemporalGuard : onClock34
+ardurobotml_State "Transition 1..1" -- "source 0..9999" ardurobotml_Transition : outgoingTransitions19
+ardurobotml_Guard "ardurobotml_Transition30 1..1" --* "ardurobotml_Guard 1..1" ardurobotml_Transition : ownedGuard29
+ardurobotml_Region "ardurobotml_RegionContainer 0..9999" --* "ardurobotml_Region45 1..1" ardurobotml_RegionContainer : ownedRegions44
+ardurobotml_State "owningFSM 0..9999" -- "State 1..1" ardurobotml_TFSM : ownedStates18
+ardurobotml_Region "ardurobotml_State43 1..1" *-- "ardurobotml_Region 0..9999" ardurobotml_State : ownedStates42
+ardurobotml_TFSM "ardurobotml_Transition 1..1" *-- "ardurobotml_TFSM14 0..9999" ardurobotml_Transition : ownedTransitions13
+ardurobotml_State "TFSM 1..1" -- "ownedStates 1..1" ardurobotml_TFSM : owningFSM24
+ardurobotml_FSMEvent "ardurobotml_Transition40 1..1" -- "ardurobotml_FSMEvent39 0..9999" ardurobotml_Transition : sollicitingTransitions38
+ardurobotml_State "outgoingTransitions 1..1" -- "State26 1..1" ardurobotml_Transition : source25
+ardurobotml_State "incomingTransitions 1..1" -- "State28 1..1" ardurobotml_Transition : target27
+ardurobotml_TFSM "ardurobotml_TimedSystem 0..9999" --* "ardurobotml_TFSM 1..1" ardurobotml_TimedSystem : tfsms0
+ardurobotml_EventGuard "ardurobotml_FSMEvent37 1..1" -- "ardurobotml_EventGuard 1..1" ardurobotml_FSMEvent : triggeringEvent36
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: course_desc
+' project: sampleModel
+' owner: User
+' description: New project
 enum CourseWorkType {
   LABHOUR
   LECTURE
@@ -15,7 +19,7 @@ enum StudyProgramCode {
   BIT
   MIT
   MTDT
-  MTIØT
+  MTIÃ˜T
 }
 class course_desc_Course {
   + Code : str
@@ -84,32 +88,32 @@ Evaluation <|-- course_desc_Exam
 PersonRole <|-- course_desc_CourseCoordinator
 PersonRole <|-- course_desc_Lecturer
 PersonRole <|-- course_desc_Student
-course_desc_Department "1..1" -- "1..1" course_desc_StudyProgram : belongs26
-course_desc_CourseInstance "0..1" -- "1..1" course_desc_Evaluation : belongsTo13
-course_desc_Course "1..1" -- "1..1" course_desc_CoursePreconditions : belongsTo20
-course_desc_CourseInstance "0..1" -- "1..1" course_desc_Lecturer : belongsTo32
-course_desc_CourseCoordinator "1..1" -- "0..1" course_desc_CourseInstance : belongsTo35
-course_desc_Exam "0..9999" -- "1..1" course_desc_Student : finishedExams31
-course_desc_CourseCoordinator "0..9999" --* "1..1" course_desc_CourseInstance : hasCourseCoordinator8
-course_desc_CourseWork "0..9999" --* "1..1" course_desc_Timetable : hasCourseWork16
-course_desc_Course "0..9999" --* "1..1" course_desc_Univ : hasCourses39
-course_desc_Department "0..9999" --* "1..1" course_desc_Univ : hasDepartment38
-course_desc_CourseInstance "1..1" *-- "1..9999" course_desc_Evaluation : hasEvaluations4
-course_desc_Exam "0..9999" -- "1..1" course_desc_Student : hasExams30
-course_desc_Course "1..1" -- "0..9999" course_desc_CourseInstance : hasInstance0
-course_desc_CourseInstance "1..1" *-- "0..9999" course_desc_Lecturer : hasLecturers6
-course_desc_Person "0..9999" --* "1..1" course_desc_Univ : hasPersons42
-course_desc_CoursePreconditions "0..9999" --* "1..1" course_desc_Univ : hasPrecond44
-course_desc_Course "1..1" -- "0..9999" course_desc_CoursePreconditions : hasPrecondition1
-course_desc_Exam "1..1" -- "0..9999" course_desc_Student : hasRegisteredStudents15
-course_desc_Person "1..1" -- "0..9999" course_desc_PersonRole : hasRole28
-course_desc_Student "0..9999" --* "1..1" course_desc_Univ : hasStudents47
-course_desc_CourseInstance "1..1" *-- "1..9999" course_desc_Timetable : hasTimetable2
-course_desc_Course "1..1" -- "1..1" course_desc_CourseInstance : instanceOfCourse3
-course_desc_CourseInstance "1..1" -- "1..1" course_desc_Department : isInstanceOf5
-course_desc_Person "0..1" -- "1..1" course_desc_PersonRole : linkedTo29
-course_desc_Department "1..1" *-- "1..9999" course_desc_StudyProgram : manages12
-course_desc_Course "0..9999" -- "1..1" course_desc_StudyProgram : offers23
-course_desc_StudyProgram "0..9999" -- "1..1" course_desc_Timetable : programs18
-course_desc_CourseInstance "0..9999" --* "1..1" course_desc_Department : responsible10
+course_desc_Department "manages 1..1" -- "Department27 1..1" course_desc_StudyProgram : belongs26
+course_desc_CourseInstance "hasEvaluations 0..1" -- "CourseInstance14 1..1" course_desc_Evaluation : belongsTo13
+course_desc_Course "course_desc_CoursePreconditions21 1..1" -- "course_desc_Course22 1..1" course_desc_CoursePreconditions : belongsTo20
+course_desc_CourseInstance "course_desc_Lecturer33 0..1" -- "course_desc_CourseInstance34 1..1" course_desc_Lecturer : belongsTo32
+course_desc_CourseCoordinator "course_desc_CourseInstance37 1..1" -- "course_desc_CourseCoordinator36 0..1" course_desc_CourseInstance : belongsTo35
+course_desc_Exam "course_desc_Student 0..9999" -- "course_desc_Exam 1..1" course_desc_Student : finishedExams31
+course_desc_CourseCoordinator "course_desc_CourseInstance9 0..9999" --* "course_desc_CourseCoordinator 1..1" course_desc_CourseInstance : hasCourseCoordinator8
+course_desc_CourseWork "course_desc_Timetable17 0..9999" --* "course_desc_CourseWork 1..1" course_desc_Timetable : hasCourseWork16
+course_desc_Course "course_desc_Univ40 0..9999" --* "course_desc_Course41 1..1" course_desc_Univ : hasCourses39
+course_desc_Department "course_desc_Univ 0..9999" --* "course_desc_Department 1..1" course_desc_Univ : hasDepartment38
+course_desc_CourseInstance "Evaluation 1..1" *-- "belongsTo 1..9999" course_desc_Evaluation : hasEvaluations4
+course_desc_Exam "hasRegisteredStudents 0..9999" -- "Exam 1..1" course_desc_Student : hasExams30
+course_desc_Course "CourseInstance 1..1" -- "instanceOfCourse 0..9999" course_desc_CourseInstance : hasInstance0
+course_desc_CourseInstance "course_desc_Lecturer 1..1" *-- "course_desc_CourseInstance7 0..9999" course_desc_Lecturer : hasLecturers6
+course_desc_Person "course_desc_Univ43 0..9999" --* "course_desc_Person 1..1" course_desc_Univ : hasPersons42
+course_desc_CoursePreconditions "course_desc_Univ45 0..9999" --* "course_desc_CoursePreconditions46 1..1" course_desc_Univ : hasPrecond44
+course_desc_Course "course_desc_CoursePreconditions 1..1" -- "course_desc_Course 0..9999" course_desc_CoursePreconditions : hasPrecondition1
+course_desc_Exam "Student 1..1" -- "hasExams 0..9999" course_desc_Student : hasRegisteredStudents15
+course_desc_Person "PersonRole 1..1" -- "linkedTo 0..9999" course_desc_PersonRole : hasRole28
+course_desc_Student "course_desc_Univ48 0..9999" --* "course_desc_Student49 1..1" course_desc_Univ : hasStudents47
+course_desc_CourseInstance "course_desc_Timetable 1..1" *-- "course_desc_CourseInstance 1..9999" course_desc_Timetable : hasTimetable2
+course_desc_Course "hasInstance 1..1" -- "Course 1..1" course_desc_CourseInstance : instanceOfCourse3
+course_desc_CourseInstance "Department 1..1" -- "responsible 1..1" course_desc_Department : isInstanceOf5
+course_desc_Person "hasRole 0..1" -- "Person 1..1" course_desc_PersonRole : linkedTo29
+course_desc_Department "StudyProgram 1..1" *-- "belongs 1..9999" course_desc_StudyProgram : manages12
+course_desc_Course "course_desc_StudyProgram24 0..9999" -- "course_desc_Course25 1..1" course_desc_StudyProgram : offers23
+course_desc_StudyProgram "course_desc_Timetable19 0..9999" -- "course_desc_StudyProgram 1..1" course_desc_Timetable : programs18
+course_desc_CourseInstance "isInstanceOf 0..9999" --* "CourseInstance11 1..1" course_desc_Department : responsible10
 @enduml

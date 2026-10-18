@@ -1,4 +1,8 @@
 @startuml
+' model: lazy
+' project: sampleModel
+' owner: User
+' description: New project
 enum BookCategory {
   Biography
   Mystery
@@ -15,8 +19,8 @@ class lazy_Library {
 class lazy_Writer {
   + name : str
 }
-lazy_Book "1..1" -- "1..1" lazy_Writer : author0
-lazy_Book "0..9999" --* "1..1" lazy_Library : books2
-lazy_Book "0..9999" -- "1..1" lazy_Writer : books4
-lazy_Library "1..1" *-- "0..9999" lazy_Writer : writers1
+lazy_Book "Writer 1..1" -- "books 1..1" lazy_Writer : author0
+lazy_Book "lazy_Library3 0..9999" --* "lazy_Book 1..1" lazy_Library : books2
+lazy_Book "author 0..9999" -- "Book 1..1" lazy_Writer : books4
+lazy_Library "lazy_Writer 1..1" *-- "lazy_Library 0..9999" lazy_Writer : writers1
 @enduml

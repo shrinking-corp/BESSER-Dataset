@@ -1,4 +1,8 @@
 @startuml
+' model: a28a49ec_9d9c_4570_a38b_07d4c23d2cb0
+' project: sampleModel
+' owner: User
+' description: New project
 class Account {
   + billingAddress : str
   + closed : date
@@ -51,15 +55,15 @@ class WebUser {
 }
 class Webuser_Actor {
 }
-Account "1..1" -- "0..9999" Order : Account_Order
-Account "1..1" -- "0..9999" Payment : Account_Payment
-Account "1..1" -- "1..1" ShoppingCart : Account_ShoppingCart
-Account "1..1" -- "1..1" Customer : Customer_Account
-LineItem "0..9999" -- "1..1" Product : LineItem_Product
-LineItem "1..9999" -- "0..1" Order : Order_LineItem
-Order "1..1" -- "0..1" Payment : Payment_Order
-LineItem "0..9999" -- "1..1" ShoppingCart : ShoppingCart_LineItem
-Customer "1..1" -- "1..1" WebUser : WebUser_Customer
-ShoppingCart "1..1" -- "1..1" WebUser : WebUser_ShoppingCart
-Admin_Actor "0..1" -- "0..1" AjoutProduit_UseCase : association2
+Account "accnt17 1..1" -- "order16 0..9999" Order : Account_Order
+Account "account19 1..1" -- "payment18 0..9999" Payment : Account_Payment
+Account "account5 1..1" -- "cart4 1..1" ShoppingCart : Account_ShoppingCart
+Account "acc12 1..1" -- "customer13 1..1" Customer : Customer_Account
+LineItem "item7 0..9999" -- "product6 1..1" Product : LineItem_Product
+LineItem "items14 1..9999" -- "order15 0..1" Order : Order_LineItem
+Order "order20 1..1" -- "payment21 0..1" Payment : Payment_Order
+LineItem "items2 0..9999" -- "sc3 1..1" ShoppingCart : ShoppingCart_LineItem
+Customer "customer10 1..1" -- "webUser11 1..1" WebUser : WebUser_Customer
+ShoppingCart "shoppingCart8 1..1" -- "webUser9 1..1" WebUser : WebUser_ShoppingCart
+Admin_Actor "admin0 0..1" -- "ajoutproduit1 0..1" AjoutProduit_UseCase : association2
 @enduml

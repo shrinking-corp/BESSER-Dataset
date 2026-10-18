@@ -1,4 +1,8 @@
 @startuml
+' model: semlink
+' project: sampleModel
+' owner: User
+' description: New project
 class NamedElement {
 }
 class semlink_A {
@@ -16,11 +20,11 @@ NamedElement <|-- semlink_A
 NamedElement <|-- semlink_B
 NamedElement <|-- semlink_C
 NamedElement <|-- semlink_G
-semlink_A "0..1" -- "1..1" semlink_B : a11
-semlink_A "0..9999" --* "1..1" semlink_G : as_2
-semlink_A "1..1" *-- "0..9999" semlink_B : bs9
-semlink_B "1..1" -- "0..1" semlink_C : c14
-semlink_C "0..9999" --* "1..1" semlink_G : cs4
-semlink_A "1..1" -- "0..9999" semlink_C : cs6
-semlink_G "1..1" *-- "0..9999" semlink_G : subgs1
+semlink_A "semlink_B12 0..1" -- "semlink_A13 1..1" semlink_B : a11
+semlink_A "semlink_G3 0..9999" --* "semlink_A 1..1" semlink_G : as_2
+semlink_A "semlink_B 1..1" *-- "semlink_A10 0..9999" semlink_B : bs9
+semlink_B "semlink_C16 1..1" -- "semlink_B15 0..1" semlink_C : c14
+semlink_C "semlink_G5 0..9999" --* "semlink_C 1..1" semlink_G : cs4
+semlink_A "semlink_C8 1..1" -- "semlink_A7 0..9999" semlink_C : cs6
+semlink_G "semlink_G 1..1" *-- "semlink_G0 0..9999" semlink_G : subgs1
 @enduml

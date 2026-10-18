@@ -983,9 +983,9 @@ def test_assoc_documents151_stub_double():
     partner = ric_ContentRegion()
     setattr(partner, 'ric_ContentRegion152', None)
     _safe_set(owner, 'ric_Document153', partner)
-    assert getattr(partner, 'ric_ContentRegion152') == owner
+    assert owner in getattr(partner, 'ric_ContentRegion152')
     _safe_set(owner, 'ric_Document153', None)
-    assert getattr(partner, 'ric_ContentRegion152') is None
+    assert owner not in getattr(partner, 'ric_ContentRegion152')
 
 
 def test_assoc_events0_stub_double():
@@ -998,9 +998,9 @@ def test_assoc_events0_stub_double():
     partner = ric_EventComponent()
     setattr(partner, 'ric_EventComponent', None)
     _safe_set(owner, 'ric_Event', partner)
-    assert getattr(partner, 'ric_EventComponent') == owner
+    assert owner in getattr(partner, 'ric_EventComponent')
     _safe_set(owner, 'ric_Event', None)
-    assert getattr(partner, 'ric_EventComponent') is None
+    assert owner not in getattr(partner, 'ric_EventComponent')
 
 
 def test_assoc_footerRegion110_stub_double():
@@ -1028,9 +1028,9 @@ def test_assoc_forms145_stub_double():
     partner = ric_ContextualNavigationRegion()
     setattr(partner, 'ric_ContextualNavigationRegion146', None)
     _safe_set(owner, 'ric_Form147', partner)
-    assert getattr(partner, 'ric_ContextualNavigationRegion146') == owner
+    assert owner in getattr(partner, 'ric_ContextualNavigationRegion146')
     _safe_set(owner, 'ric_Form147', None)
-    assert getattr(partner, 'ric_ContextualNavigationRegion146') is None
+    assert owner not in getattr(partner, 'ric_ContextualNavigationRegion146')
 
 
 def test_assoc_forms148_stub_double():
@@ -1043,9 +1043,9 @@ def test_assoc_forms148_stub_double():
     partner = ric_SearchRegion()
     setattr(partner, 'ric_SearchRegion149', None)
     _safe_set(owner, 'ric_Form150', partner)
-    assert getattr(partner, 'ric_SearchRegion149') == owner
+    assert owner in getattr(partner, 'ric_SearchRegion149')
     _safe_set(owner, 'ric_Form150', None)
-    assert getattr(partner, 'ric_SearchRegion149') is None
+    assert owner not in getattr(partner, 'ric_SearchRegion149')
 
 
 def test_assoc_headerRegion101_stub_double():
@@ -1088,9 +1088,9 @@ def test_assoc_inlineComponents117_stub_double():
     partner = ric_HeaderRegion()
     setattr(partner, 'ric_HeaderRegion118', None)
     _safe_set(owner, 'ric_InlineComponent119', partner)
-    assert getattr(partner, 'ric_HeaderRegion118') == owner
+    assert owner in getattr(partner, 'ric_HeaderRegion118')
     _safe_set(owner, 'ric_InlineComponent119', None)
-    assert getattr(partner, 'ric_HeaderRegion118') is None
+    assert owner not in getattr(partner, 'ric_HeaderRegion118')
 
 
 def test_assoc_inlineComponents127_stub_double():
@@ -1103,9 +1103,9 @@ def test_assoc_inlineComponents127_stub_double():
     partner = ric_ContextualNavigationRegion()
     setattr(partner, 'ric_ContextualNavigationRegion128', None)
     _safe_set(owner, 'ric_InlineComponent129', partner)
-    assert getattr(partner, 'ric_ContextualNavigationRegion128') == owner
+    assert owner in getattr(partner, 'ric_ContextualNavigationRegion128')
     _safe_set(owner, 'ric_InlineComponent129', None)
-    assert getattr(partner, 'ric_ContextualNavigationRegion128') is None
+    assert owner not in getattr(partner, 'ric_ContextualNavigationRegion128')
 
 
 def test_assoc_inlineComponents175_stub_double():
@@ -1118,9 +1118,9 @@ def test_assoc_inlineComponents175_stub_double():
     partner = ric_FooterRegion()
     setattr(partner, 'ric_FooterRegion176', None)
     _safe_set(owner, 'ric_InlineComponent177', partner)
-    assert getattr(partner, 'ric_FooterRegion176') == owner
+    assert owner in getattr(partner, 'ric_FooterRegion176')
     _safe_set(owner, 'ric_InlineComponent177', None)
-    assert getattr(partner, 'ric_FooterRegion176') is None
+    assert owner not in getattr(partner, 'ric_FooterRegion176')
 
 
 def test_assoc_inlineComponents48_stub_double():
@@ -1133,9 +1133,9 @@ def test_assoc_inlineComponents48_stub_double():
     partner = ric_BlockLevelComponent()
     setattr(partner, 'ric_BlockLevelComponent49', None)
     _safe_set(owner, 'ric_InlineComponent50', partner)
-    assert getattr(partner, 'ric_BlockLevelComponent49') == owner
+    assert owner in getattr(partner, 'ric_BlockLevelComponent49')
     _safe_set(owner, 'ric_InlineComponent50', None)
-    assert getattr(partner, 'ric_BlockLevelComponent49') is None
+    assert owner not in getattr(partner, 'ric_BlockLevelComponent49')
 
 
 def test_assoc_lineBreaks163_stub_double():
@@ -1283,9 +1283,9 @@ def test_assoc_objectComponents133_stub_double():
     partner = ric_ContextualNavigationRegion()
     setattr(partner, 'ric_ContextualNavigationRegion134', None)
     _safe_set(owner, 'ric_ObjectComponent135', partner)
-    assert getattr(partner, 'ric_ContextualNavigationRegion134') == owner
+    assert owner in getattr(partner, 'ric_ContextualNavigationRegion134')
     _safe_set(owner, 'ric_ObjectComponent135', None)
-    assert getattr(partner, 'ric_ContextualNavigationRegion134') is None
+    assert owner not in getattr(partner, 'ric_ContextualNavigationRegion134')
 
 
 def test_assoc_objectComponents181_stub_double():
@@ -1298,9 +1298,9 @@ def test_assoc_objectComponents181_stub_double():
     partner = ric_FooterRegion()
     setattr(partner, 'ric_FooterRegion182', None)
     _safe_set(owner, 'ric_ObjectComponent183', partner)
-    assert getattr(partner, 'ric_FooterRegion182') == owner
+    assert owner in getattr(partner, 'ric_FooterRegion182')
     _safe_set(owner, 'ric_ObjectComponent183', None)
-    assert getattr(partner, 'ric_FooterRegion182') is None
+    assert owner not in getattr(partner, 'ric_FooterRegion182')
 
 
 def test_assoc_requiredFieldConstraint8_stub_double():
@@ -1403,9 +1403,9 @@ def test_assoc_sections78_stub_double():
     partner = ric_AccordionPanel()
     setattr(partner, 'ric_AccordionPanel', None)
     _safe_set(owner, 'ric_Section', partner)
-    assert getattr(partner, 'ric_AccordionPanel') == owner
+    assert owner in getattr(partner, 'ric_AccordionPanel')
     _safe_set(owner, 'ric_Section', None)
-    assert getattr(partner, 'ric_AccordionPanel') is None
+    assert owner not in getattr(partner, 'ric_AccordionPanel')
 
 
 def test_assoc_subsiteNavigation114_stub_double():
@@ -1433,8 +1433,8 @@ def test_assoc_tabs56_stub_double():
     partner = ric_TabbedPanel()
     setattr(partner, 'ric_TabbedPanel', None)
     _safe_set(owner, 'ric_Tab', partner)
-    assert getattr(partner, 'ric_TabbedPanel') == owner
+    assert owner in getattr(partner, 'ric_TabbedPanel')
     _safe_set(owner, 'ric_Tab', None)
-    assert getattr(partner, 'ric_TabbedPanel') is None
+    assert owner not in getattr(partner, 'ric_TabbedPanel')
 
 

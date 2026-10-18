@@ -1,4 +1,8 @@
 @startuml
+' model: resourcePetriNet
+' project: sampleModel
+' owner: User
+' description: New project
 class GenericPlace {
 }
 abstract class resourcePetriNet_GenericPlace {
@@ -24,12 +28,12 @@ class resourcePetriNet_Transition {
 }
 GenericPlace <|-- resourcePetriNet_Place
 GenericPlace <|-- resourcePetriNet_Resource
-resourcePetriNet_GenericPlace "0..1" -- "1..1" resourcePetriNet_InputArc : InputArcFromPlace7
-resourcePetriNet_InputArc "1..1" -- "0..1" resourcePetriNet_Transition : InputArcToTransition10
-resourcePetriNet_OutputArc "1..1" -- "0..1" resourcePetriNet_Transition : OutputArcFromTransition13
-resourcePetriNet_GenericPlace "0..1" -- "1..1" resourcePetriNet_OutputArc : OutputArcToPlace16
-resourcePetriNet_GenericPlace "0..9999" --* "1..1" resourcePetriNet_PetriNet : containsGenericPlaces0
-resourcePetriNet_InputArc "0..9999" --* "1..1" resourcePetriNet_PetriNet : containsInputArcs3
-resourcePetriNet_OutputArc "0..9999" --* "1..1" resourcePetriNet_PetriNet : containsOutputArcs5
-resourcePetriNet_PetriNet "1..1" *-- "0..9999" resourcePetriNet_Transition : containsTransitions1
+resourcePetriNet_GenericPlace "resourcePetriNet_InputArc8 0..1" -- "resourcePetriNet_GenericPlace9 1..1" resourcePetriNet_InputArc : InputArcFromPlace7
+resourcePetriNet_InputArc "resourcePetriNet_Transition12 1..1" -- "resourcePetriNet_InputArc11 0..1" resourcePetriNet_Transition : InputArcToTransition10
+resourcePetriNet_OutputArc "resourcePetriNet_Transition15 1..1" -- "resourcePetriNet_OutputArc14 0..1" resourcePetriNet_Transition : OutputArcFromTransition13
+resourcePetriNet_GenericPlace "resourcePetriNet_OutputArc17 0..1" -- "resourcePetriNet_GenericPlace18 1..1" resourcePetriNet_OutputArc : OutputArcToPlace16
+resourcePetriNet_GenericPlace "resourcePetriNet_PetriNet 0..9999" --* "resourcePetriNet_GenericPlace 1..1" resourcePetriNet_PetriNet : containsGenericPlaces0
+resourcePetriNet_InputArc "resourcePetriNet_PetriNet4 0..9999" --* "resourcePetriNet_InputArc 1..1" resourcePetriNet_PetriNet : containsInputArcs3
+resourcePetriNet_OutputArc "resourcePetriNet_PetriNet6 0..9999" --* "resourcePetriNet_OutputArc 1..1" resourcePetriNet_PetriNet : containsOutputArcs5
+resourcePetriNet_PetriNet "resourcePetriNet_Transition 1..1" *-- "resourcePetriNet_PetriNet2 0..9999" resourcePetriNet_Transition : containsTransitions1
 @enduml

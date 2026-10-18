@@ -1,4 +1,8 @@
 @startuml
+' model: bibTeX
+' project: sampleModel
+' owner: User
+' description: New project
 class AuthoredEntry {
 }
 class BibTeXEntry {
@@ -98,6 +102,6 @@ TitledEntry <|-- bibTeX_Proceedings
 TitledEntry <|-- bibTeX_TechReport
 TitledEntry <|-- bibTeX_ThesisEntry
 TitledEntry <|-- bibTeX_Unpublished
-bibTeX_Author "1..9999" --* "1..1" bibTeX_AuthoredEntry : authors1
-bibTeX_BibTeXEntry "0..9999" --* "1..1" bibTeX_BibTeXFile : entries0
+bibTeX_Author "bibTeX_AuthoredEntry 1..9999" --* "bibTeX_Author 1..1" bibTeX_AuthoredEntry : authors1
+bibTeX_BibTeXEntry "bibTeX_BibTeXFile 0..9999" --* "bibTeX_BibTeXEntry 1..1" bibTeX_BibTeXFile : entries0
 @enduml

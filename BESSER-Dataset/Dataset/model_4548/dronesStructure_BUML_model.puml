@@ -1,4 +1,8 @@
 @startuml
+' model: dronesStructure
+' project: sampleModel
+' owner: User
+' description: New project
 class AABB {
 }
 class Capability {
@@ -79,31 +83,31 @@ NamedElement <|-- dronesStructure_Role
 NamedElement <|-- dronesStructure_Scenario
 NamedElement <|-- dronesStructure_Task
 Region <|-- dronesStructure_Charger
-dronesStructure_CooperativeAction "0..1" -- "1..1" dronesStructure_Task : actionToPerform48
-dronesStructure_Scenario "1..1" *-- "1..1" dronesStructure_ScenarioBounds : allowedBounds9
-dronesStructure_Capability "0..9999" --* "1..1" dronesStructure_DronesStructure : capabilities5
-dronesStructure_Capability "1..1" -- "1..1" dronesStructure_ProvidedCapability : capability25
-dronesStructure_Capability "1..1" -- "1..1" dronesStructure_RequiredCapability : capability32
-dronesStructure_CooperativeAction "1..1" -- "1..1" dronesStructure_Role : cooperativeAction31
-dronesStructure_CooperativeAction "0..9999" --* "1..1" dronesStructure_DronesStructure : cooperativeActions3
-dronesStructure_Dimension "1..1" --* "1..1" dronesStructure_DroneType : dimension20
-dronesStructure_AABB "1..1" *-- "1..1" dronesStructure_Dimension : dimension43
-dronesStructure_DroneType "1..1" -- "1..1" dronesStructure_ProvidedCapability : droneType28
-dronesStructure_DroneType "0..9999" --* "1..1" dronesStructure_DronesStructure : droneTypes1
-dronesStructure_Drone "0..9999" --* "1..1" dronesStructure_Scenario : drones7
-dronesStructure_Drone "1..1" -- "1..1" dronesStructure_DroneType : dronetype38
-dronesStructure_DroneType "1..1" -- "0..1" dronesStructure_ProvidedCapability : movementCapability18
-dronesStructure_Obstacle "0..9999" --* "1..1" dronesStructure_Scenario : obstacles11
-dronesStructure_AABB "1..1" *-- "1..1" dronesStructure_Position : position41
-dronesStructure_DroneType "1..1" *-- "0..9999" dronesStructure_ProvidedCapability : providedCapabilities17
-dronesStructure_Region "1..1" -- "1..1" dronesStructure_Task : region47
-dronesStructure_Region "0..9999" --* "1..1" dronesStructure_Scenario : regions13
-dronesStructure_RequiredCapability "0..9999" --* "1..1" dronesStructure_Role : requiredCapabilities30
-dronesStructure_RequiredCapability "1..1" -- "1..1" dronesStructure_Role : role34
-dronesStructure_CooperativeAction "1..1" *-- "1..9999" dronesStructure_Role : roles29
-dronesStructure_DroneType "1..1" -- "0..1" dronesStructure_ProvidedCapability : scanningCapability22
-dronesStructure_DronesStructure "1..1" *-- "0..9999" dronesStructure_Scenario : scenarios0
-dronesStructure_Drone "1..1" *-- "1..1" dronesStructure_Position : startPosition36
-dronesStructure_Scenario "1..1" *-- "0..9999" dronesStructure_Task : tasks15
-dronesStructure_Region "1..1" -- "0..9999" dronesStructure_Task : tasks46
+dronesStructure_CooperativeAction "dronesStructure_Task49 0..1" -- "dronesStructure_CooperativeAction50 1..1" dronesStructure_Task : actionToPerform48
+dronesStructure_Scenario "dronesStructure_ScenarioBounds 1..1" *-- "dronesStructure_Scenario10 1..1" dronesStructure_ScenarioBounds : allowedBounds9
+dronesStructure_Capability "dronesStructure_DronesStructure6 0..9999" --* "dronesStructure_Capability 1..1" dronesStructure_DronesStructure : capabilities5
+dronesStructure_Capability "dronesStructure_ProvidedCapability26 1..1" -- "dronesStructure_Capability27 1..1" dronesStructure_ProvidedCapability : capability25
+dronesStructure_Capability "dronesStructure_RequiredCapability 1..1" -- "dronesStructure_Capability33 1..1" dronesStructure_RequiredCapability : capability32
+dronesStructure_CooperativeAction "roles 1..1" -- "CooperativeAction 1..1" dronesStructure_Role : cooperativeAction31
+dronesStructure_CooperativeAction "dronesStructure_DronesStructure4 0..9999" --* "dronesStructure_CooperativeAction 1..1" dronesStructure_DronesStructure : cooperativeActions3
+dronesStructure_Dimension "dronesStructure_DroneType21 1..1" --* "dronesStructure_Dimension 1..1" dronesStructure_DroneType : dimension20
+dronesStructure_AABB "dronesStructure_Dimension45 1..1" *-- "dronesStructure_AABB44 1..1" dronesStructure_Dimension : dimension43
+dronesStructure_DroneType "providedCapabilities 1..1" -- "DroneType 1..1" dronesStructure_ProvidedCapability : droneType28
+dronesStructure_DroneType "dronesStructure_DronesStructure2 0..9999" --* "dronesStructure_DroneType 1..1" dronesStructure_DronesStructure : droneTypes1
+dronesStructure_Drone "dronesStructure_Scenario8 0..9999" --* "dronesStructure_Drone 1..1" dronesStructure_Scenario : drones7
+dronesStructure_Drone "dronesStructure_DroneType40 1..1" -- "dronesStructure_Drone39 1..1" dronesStructure_DroneType : dronetype38
+dronesStructure_DroneType "dronesStructure_ProvidedCapability 1..1" -- "dronesStructure_DroneType19 0..1" dronesStructure_ProvidedCapability : movementCapability18
+dronesStructure_Obstacle "dronesStructure_Scenario12 0..9999" --* "dronesStructure_Obstacle 1..1" dronesStructure_Scenario : obstacles11
+dronesStructure_AABB "dronesStructure_Position42 1..1" *-- "dronesStructure_AABB 1..1" dronesStructure_Position : position41
+dronesStructure_DroneType "ProvidedCapability 1..1" *-- "droneType 0..9999" dronesStructure_ProvidedCapability : providedCapabilities17
+dronesStructure_Region "tasks 1..1" -- "Region 1..1" dronesStructure_Task : region47
+dronesStructure_Region "dronesStructure_Scenario14 0..9999" --* "dronesStructure_Region 1..1" dronesStructure_Scenario : regions13
+dronesStructure_RequiredCapability "role 0..9999" --* "RequiredCapability 1..1" dronesStructure_Role : requiredCapabilities30
+dronesStructure_RequiredCapability "Role35 1..1" -- "requiredCapabilities 1..1" dronesStructure_Role : role34
+dronesStructure_CooperativeAction "Role 1..1" *-- "cooperativeAction 1..9999" dronesStructure_Role : roles29
+dronesStructure_DroneType "dronesStructure_ProvidedCapability24 1..1" -- "dronesStructure_DroneType23 0..1" dronesStructure_ProvidedCapability : scanningCapability22
+dronesStructure_DronesStructure "dronesStructure_Scenario 1..1" *-- "dronesStructure_DronesStructure 0..9999" dronesStructure_Scenario : scenarios0
+dronesStructure_Drone "dronesStructure_Position 1..1" *-- "dronesStructure_Drone37 1..1" dronesStructure_Position : startPosition36
+dronesStructure_Scenario "dronesStructure_Task 1..1" *-- "dronesStructure_Scenario16 0..9999" dronesStructure_Task : tasks15
+dronesStructure_Region "Task 1..1" -- "region 0..9999" dronesStructure_Task : tasks46
 @enduml

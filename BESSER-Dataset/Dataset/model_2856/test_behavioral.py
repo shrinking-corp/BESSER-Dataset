@@ -295,9 +295,9 @@ def test_assoc_actions16_stub_double():
     partner = ir_Actor()
     setattr(partner, 'ir_Actor', None)
     _safe_set(owner, 'ir_Action', partner)
-    assert getattr(partner, 'ir_Actor') == owner
+    assert owner in getattr(partner, 'ir_Actor')
     _safe_set(owner, 'ir_Action', None)
-    assert getattr(partner, 'ir_Actor') is None
+    assert owner not in getattr(partner, 'ir_Actor')
 
 
 def test_assoc_actor46_stub_double():
@@ -340,9 +340,9 @@ def test_assoc_actualParameters41_stub_double():
     partner = ir_ActorInstance()
     setattr(partner, 'ir_ActorInstance42', None)
     _safe_set(owner, 'ir_TaggedExpression', partner)
-    assert getattr(partner, 'ir_ActorInstance42') == owner
+    assert owner in getattr(partner, 'ir_ActorInstance42')
     _safe_set(owner, 'ir_TaggedExpression', None)
-    assert getattr(partner, 'ir_ActorInstance42') is None
+    assert owner not in getattr(partner, 'ir_ActorInstance42')
 
 
 def test_assoc_attributes94_stub_double():
@@ -355,9 +355,9 @@ def test_assoc_attributes94_stub_double():
     partner = ir_Connection()
     setattr(partner, 'ir_Connection95', None)
     _safe_set(owner, 'ir_TaggedExpression96', partner)
-    assert getattr(partner, 'ir_Connection95') == owner
+    assert owner in getattr(partner, 'ir_Connection95')
     _safe_set(owner, 'ir_TaggedExpression96', None)
-    assert getattr(partner, 'ir_Connection95') is None
+    assert owner not in getattr(partner, 'ir_Connection95')
 
 
 def test_assoc_connections43_stub_double():
@@ -430,9 +430,9 @@ def test_assoc_declarations0_stub_double():
     partner = ir_Scope()
     setattr(partner, 'ir_Scope', None)
     _safe_set(owner, 'ir_Declaration', partner)
-    assert getattr(partner, 'ir_Scope') == owner
+    assert owner in getattr(partner, 'ir_Scope')
     _safe_set(owner, 'ir_Declaration', None)
-    assert getattr(partner, 'ir_Scope') is None
+    assert owner not in getattr(partner, 'ir_Scope')
 
 
 def test_assoc_expression54_stub_double():
@@ -505,9 +505,9 @@ def test_assoc_initializers17_stub_double():
     partner = ir_Actor()
     setattr(partner, 'ir_Actor18', None)
     _safe_set(owner, 'ir_Action19', partner)
-    assert getattr(partner, 'ir_Actor18') == owner
+    assert owner in getattr(partner, 'ir_Actor18')
     _safe_set(owner, 'ir_Action19', None)
-    assert getattr(partner, 'ir_Actor18') is None
+    assert owner not in getattr(partner, 'ir_Actor18')
 
 
 def test_assoc_inputPorts9_stub_double():
@@ -520,9 +520,9 @@ def test_assoc_inputPorts9_stub_double():
     partner = ir_AbstractActor()
     setattr(partner, 'ir_AbstractActor10', None)
     _safe_set(owner, 'ir_Port', partner)
-    assert getattr(partner, 'ir_AbstractActor10') == owner
+    assert owner in getattr(partner, 'ir_AbstractActor10')
     _safe_set(owner, 'ir_Port', None)
-    assert getattr(partner, 'ir_AbstractActor10') is None
+    assert owner not in getattr(partner, 'ir_AbstractActor10')
 
 
 def test_assoc_inputs29_stub_double():
@@ -550,9 +550,9 @@ def test_assoc_inputs36_stub_double():
     partner = ir_ActorInstance()
     setattr(partner, 'ir_ActorInstance37', None)
     _safe_set(owner, 'ir_PortInstance', partner)
-    assert getattr(partner, 'ir_ActorInstance37') == owner
+    assert owner in getattr(partner, 'ir_ActorInstance37')
     _safe_set(owner, 'ir_PortInstance', None)
-    assert getattr(partner, 'ir_ActorInstance37') is None
+    assert owner not in getattr(partner, 'ir_ActorInstance37')
 
 
 def test_assoc_member117_stub_double():
@@ -565,9 +565,9 @@ def test_assoc_member117_stub_double():
     partner = ir_VariableReference()
     setattr(partner, 'ir_VariableReference118', None)
     _safe_set(owner, 'ir_Member119', partner)
-    assert getattr(partner, 'ir_VariableReference118') == owner
+    assert owner in getattr(partner, 'ir_VariableReference118')
     _safe_set(owner, 'ir_Member119', None)
-    assert getattr(partner, 'ir_VariableReference118') is None
+    assert owner not in getattr(partner, 'ir_VariableReference118')
 
 
 def test_assoc_member62_stub_double():
@@ -580,9 +580,9 @@ def test_assoc_member62_stub_double():
     partner = ir_VariableExpression()
     setattr(partner, 'ir_VariableExpression63', None)
     _safe_set(owner, 'ir_Member', partner)
-    assert getattr(partner, 'ir_VariableExpression63') == owner
+    assert owner in getattr(partner, 'ir_VariableExpression63')
     _safe_set(owner, 'ir_Member', None)
-    assert getattr(partner, 'ir_VariableExpression63') is None
+    assert owner not in getattr(partner, 'ir_VariableExpression63')
 
 
 def test_assoc_members223_stub_double():
@@ -595,9 +595,9 @@ def test_assoc_members223_stub_double():
     partner = ir_TypeRecord()
     setattr(partner, 'ir_TypeRecord', None)
     _safe_set(owner, 'ir_Variable224', partner)
-    assert getattr(partner, 'ir_TypeRecord') == owner
+    assert owner in getattr(partner, 'ir_TypeRecord')
     _safe_set(owner, 'ir_Variable224', None)
-    assert getattr(partner, 'ir_TypeRecord') is None
+    assert owner not in getattr(partner, 'ir_TypeRecord')
 
 
 def test_assoc_operand177_stub_double():
@@ -655,9 +655,9 @@ def test_assoc_outputPorts11_stub_double():
     partner = ir_AbstractActor()
     setattr(partner, 'ir_AbstractActor12', None)
     _safe_set(owner, 'ir_Port13', partner)
-    assert getattr(partner, 'ir_AbstractActor12') == owner
+    assert owner in getattr(partner, 'ir_AbstractActor12')
     _safe_set(owner, 'ir_Port13', None)
-    assert getattr(partner, 'ir_AbstractActor12') is None
+    assert owner not in getattr(partner, 'ir_AbstractActor12')
 
 
 def test_assoc_outputs195_stub_double():
@@ -670,9 +670,9 @@ def test_assoc_outputs195_stub_double():
     partner = ir_ProcExpression()
     setattr(partner, 'ir_ProcExpression196', None)
     _safe_set(owner, 'ir_Variable197', partner)
-    assert getattr(partner, 'ir_ProcExpression196') == owner
+    assert owner in getattr(partner, 'ir_ProcExpression196')
     _safe_set(owner, 'ir_Variable197', None)
-    assert getattr(partner, 'ir_ProcExpression196') is None
+    assert owner not in getattr(partner, 'ir_ProcExpression196')
 
 
 def test_assoc_outputs27_stub_double():
@@ -700,9 +700,9 @@ def test_assoc_outputs38_stub_double():
     partner = ir_ActorInstance()
     setattr(partner, 'ir_ActorInstance39', None)
     _safe_set(owner, 'ir_PortInstance40', partner)
-    assert getattr(partner, 'ir_ActorInstance39') == owner
+    assert owner in getattr(partner, 'ir_ActorInstance39')
     _safe_set(owner, 'ir_PortInstance40', None)
-    assert getattr(partner, 'ir_ActorInstance39') is None
+    assert owner not in getattr(partner, 'ir_ActorInstance39')
 
 
 def test_assoc_parameters14_stub_double():
@@ -715,9 +715,9 @@ def test_assoc_parameters14_stub_double():
     partner = ir_AbstractActor()
     setattr(partner, 'ir_AbstractActor15', None)
     _safe_set(owner, 'ir_Variable', partner)
-    assert getattr(partner, 'ir_AbstractActor15') == owner
+    assert owner in getattr(partner, 'ir_AbstractActor15')
     _safe_set(owner, 'ir_Variable', None)
-    assert getattr(partner, 'ir_AbstractActor15') is None
+    assert owner not in getattr(partner, 'ir_AbstractActor15')
 
 
 def test_assoc_parameters188_stub_double():
@@ -730,9 +730,9 @@ def test_assoc_parameters188_stub_double():
     partner = ir_LambdaExpression()
     setattr(partner, 'ir_LambdaExpression', None)
     _safe_set(owner, 'ir_Variable189', partner)
-    assert getattr(partner, 'ir_LambdaExpression') == owner
+    assert owner in getattr(partner, 'ir_LambdaExpression')
     _safe_set(owner, 'ir_Variable189', None)
-    assert getattr(partner, 'ir_LambdaExpression') is None
+    assert owner not in getattr(partner, 'ir_LambdaExpression')
 
 
 def test_assoc_parameters193_stub_double():
@@ -745,9 +745,9 @@ def test_assoc_parameters193_stub_double():
     partner = ir_ProcExpression()
     setattr(partner, 'ir_ProcExpression', None)
     _safe_set(owner, 'ir_Variable194', partner)
-    assert getattr(partner, 'ir_ProcExpression') == owner
+    assert owner in getattr(partner, 'ir_ProcExpression')
     _safe_set(owner, 'ir_Variable194', None)
-    assert getattr(partner, 'ir_ProcExpression') is None
+    assert owner not in getattr(partner, 'ir_ProcExpression')
 
 
 def test_assoc_parameters238_stub_double():
@@ -760,9 +760,9 @@ def test_assoc_parameters238_stub_double():
     partner = ir_TypeConstructor()
     setattr(partner, 'ir_TypeConstructor239', None)
     _safe_set(owner, 'ir_Variable240', partner)
-    assert getattr(partner, 'ir_TypeConstructor239') == owner
+    assert owner in getattr(partner, 'ir_TypeConstructor239')
     _safe_set(owner, 'ir_Variable240', None)
-    assert getattr(partner, 'ir_TypeConstructor239') is None
+    assert owner not in getattr(partner, 'ir_TypeConstructor239')
 
 
 def test_assoc_parameters89_stub_double():
@@ -790,9 +790,9 @@ def test_assoc_peeks209_stub_double():
     partner = ir_Guard()
     setattr(partner, 'ir_Guard210', None)
     _safe_set(owner, 'ir_PortPeek211', partner)
-    assert getattr(partner, 'ir_Guard210') == owner
+    assert owner in getattr(partner, 'ir_Guard210')
     _safe_set(owner, 'ir_PortPeek211', None)
-    assert getattr(partner, 'ir_Guard210') is None
+    assert owner not in getattr(partner, 'ir_Guard210')
 
 
 def test_assoc_port158_stub_double():

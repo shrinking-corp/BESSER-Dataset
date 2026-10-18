@@ -1,4 +1,8 @@
 @startuml
+' model: arithmetic
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractDefinition {
 }
 class Expression {
@@ -51,21 +55,21 @@ Expression <|-- arithmetic_Plus
 Expression <|-- arithmetic_SumExpression
 Statement <|-- arithmetic_Definition
 Statement <|-- arithmetic_Evaluation
-arithmetic_DeclaredParameter "0..9999" --* "1..1" arithmetic_Definition : args6
-arithmetic_Expression "0..1" --* "1..1" arithmetic_SumExpression : expr13
-arithmetic_Definition "1..1" *-- "0..1" arithmetic_Expression : expr7
-arithmetic_Evaluation "1..1" *-- "0..1" arithmetic_Expression : expression9
-arithmetic_AbstractDefinition "0..1" -- "1..1" arithmetic_FunctionCall : func36
-arithmetic_Import "0..9999" --* "1..1" arithmetic_Module : imports0
-arithmetic_DeclaredParameter "0..1" --* "1..1" arithmetic_SumExpression : indexVariable11
-arithmetic_Expression "0..1" --* "1..1" arithmetic_Plus : left16
-arithmetic_Expression "0..1" --* "1..1" arithmetic_Minus : left21
-arithmetic_Expression "0..1" --* "1..1" arithmetic_Multi : left26
-arithmetic_Div "1..1" *-- "0..1" arithmetic_Expression : left31
-arithmetic_Import "1..1" -- "0..1" arithmetic_Module : module3
-arithmetic_Expression "0..1" --* "1..1" arithmetic_Plus : right18
-arithmetic_Expression "0..1" --* "1..1" arithmetic_Minus : right23
-arithmetic_Expression "0..1" --* "1..1" arithmetic_Multi : right28
-arithmetic_Div "1..1" *-- "0..1" arithmetic_Expression : right33
-arithmetic_Module "1..1" *-- "0..9999" arithmetic_Statement : statements1
+arithmetic_DeclaredParameter "arithmetic_Definition 0..9999" --* "arithmetic_DeclaredParameter 1..1" arithmetic_Definition : args6
+arithmetic_Expression "arithmetic_SumExpression14 0..1" --* "arithmetic_Expression15 1..1" arithmetic_SumExpression : expr13
+arithmetic_Definition "arithmetic_Expression 1..1" *-- "arithmetic_Definition8 0..1" arithmetic_Expression : expr7
+arithmetic_Evaluation "arithmetic_Expression10 1..1" *-- "arithmetic_Evaluation 0..1" arithmetic_Expression : expression9
+arithmetic_AbstractDefinition "arithmetic_FunctionCall 0..1" -- "arithmetic_AbstractDefinition 1..1" arithmetic_FunctionCall : func36
+arithmetic_Import "arithmetic_Module 0..9999" --* "arithmetic_Import 1..1" arithmetic_Module : imports0
+arithmetic_DeclaredParameter "arithmetic_SumExpression 0..1" --* "arithmetic_DeclaredParameter12 1..1" arithmetic_SumExpression : indexVariable11
+arithmetic_Expression "arithmetic_Plus 0..1" --* "arithmetic_Expression17 1..1" arithmetic_Plus : left16
+arithmetic_Expression "arithmetic_Minus 0..1" --* "arithmetic_Expression22 1..1" arithmetic_Minus : left21
+arithmetic_Expression "arithmetic_Multi 0..1" --* "arithmetic_Expression27 1..1" arithmetic_Multi : left26
+arithmetic_Div "arithmetic_Expression32 1..1" *-- "arithmetic_Div 0..1" arithmetic_Expression : left31
+arithmetic_Import "arithmetic_Module5 1..1" -- "arithmetic_Import4 0..1" arithmetic_Module : module3
+arithmetic_Expression "arithmetic_Plus19 0..1" --* "arithmetic_Expression20 1..1" arithmetic_Plus : right18
+arithmetic_Expression "arithmetic_Minus24 0..1" --* "arithmetic_Expression25 1..1" arithmetic_Minus : right23
+arithmetic_Expression "arithmetic_Multi29 0..1" --* "arithmetic_Expression30 1..1" arithmetic_Multi : right28
+arithmetic_Div "arithmetic_Expression35 1..1" *-- "arithmetic_Div34 0..1" arithmetic_Expression : right33
+arithmetic_Module "arithmetic_Statement 1..1" *-- "arithmetic_Module2 0..9999" arithmetic_Statement : statements1
 @enduml

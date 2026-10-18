@@ -1,4 +1,8 @@
 @startuml
+' model: FSM
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractState {
 }
 abstract class FSM_AbstractState {
@@ -19,12 +23,12 @@ class FSM_Transition {
 AbstractState <|-- FSM_EndState
 AbstractState <|-- FSM_StartState
 AbstractState <|-- FSM_State
-FSM_AbstractState "1..1" -- "0..9999" FSM_Transition : source3
-FSM_AbstractState "1..1" -- "1..1" FSM_Transition : src8
-FSM_StateMachine "1..1" -- "1..1" FSM_Transition : statemachine12
-FSM_AbstractState "1..1" -- "1..1" FSM_StateMachine : statemachine7
-FSM_AbstractState "1..9999" --* "1..1" FSM_StateMachine : states0
-FSM_AbstractState "1..1" -- "1..1" FSM_Transition : tar10
-FSM_AbstractState "1..1" -- "0..9999" FSM_Transition : target5
-FSM_StateMachine "1..1" *-- "1..9999" FSM_Transition : transitions1
+FSM_AbstractState "Transition4 1..1" -- "src 0..9999" FSM_Transition : source3
+FSM_AbstractState "source 1..1" -- "AbstractState9 1..1" FSM_Transition : src8
+FSM_StateMachine "transitions 1..1" -- "StateMachine13 1..1" FSM_Transition : statemachine12
+FSM_AbstractState "StateMachine 1..1" -- "states 1..1" FSM_StateMachine : statemachine7
+FSM_AbstractState "statemachine 1..9999" --* "AbstractState 1..1" FSM_StateMachine : states0
+FSM_AbstractState "target 1..1" -- "AbstractState11 1..1" FSM_Transition : tar10
+FSM_AbstractState "Transition6 1..1" -- "tar 0..9999" FSM_Transition : target5
+FSM_StateMachine "Transition 1..1" *-- "statemachine2 1..9999" FSM_Transition : transitions1
 @enduml

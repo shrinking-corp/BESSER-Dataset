@@ -1,4 +1,8 @@
 @startuml
+' model: universityStudies
+' project: sampleModel
+' owner: User
+' description: New project
 class CourseSlot {
 }
 enum Credits {
@@ -11,7 +15,7 @@ enum ProgrammeType {
   Bachelor
   IntegrertMaster
   Master
-  Årsstudie
+  Ã…rsstudie
 }
 enum Seasons {
   Fall
@@ -46,15 +50,15 @@ class universityStudies_Specialization {
 }
 CourseSlot <|-- universityStudies_ElectiveCourseSlot
 CourseSlot <|-- universityStudies_MandatoryCourseSlot
-universityStudies_Course "0..9999" --* "1..1" universityStudies_Department : Courses14
-universityStudies_Department "0..1" -- "1..1" universityStudies_Programme : Department5
-universityStudies_Department "1..1" *-- "0..1" universityStudies_Programme : Programmes16
-universityStudies_Course "0..1" -- "1..1" universityStudies_CourseSlot : course18
-universityStudies_CourseSlot "1..9999" --* "1..1" universityStudies_Semester : courseSlots12
-universityStudies_Specialization "0..9999" --* "1..1" universityStudies_Specialization : furtherSpecializations7
-universityStudies_Course "0..9999" -- "1..1" universityStudies_ElectiveCourseSlot : optionalCourses21
-universityStudies_Course "1..1" *-- "0..9999" universityStudies_Programme : programmes0
-universityStudies_Programme "1..1" *-- "0..10" universityStudies_Semester : semesters3
-universityStudies_Semester "0..9999" --* "1..1" universityStudies_Specialization : semesters9
-universityStudies_Programme "1..1" *-- "0..9999" universityStudies_Specialization : specializations1
+universityStudies_Course "universityStudies_Department 0..9999" --* "universityStudies_Course15 1..1" universityStudies_Department : Courses14
+universityStudies_Department "Programmes 0..1" -- "Department 1..1" universityStudies_Programme : Department5
+universityStudies_Department "Programme 1..1" *-- "Department17 0..1" universityStudies_Programme : Programmes16
+universityStudies_Course "universityStudies_CourseSlot19 0..1" -- "universityStudies_Course20 1..1" universityStudies_CourseSlot : course18
+universityStudies_CourseSlot "universityStudies_Semester13 1..9999" --* "universityStudies_CourseSlot 1..1" universityStudies_Semester : courseSlots12
+universityStudies_Specialization "universityStudies_Specialization6 0..9999" --* "universityStudies_Specialization8 1..1" universityStudies_Specialization : furtherSpecializations7
+universityStudies_Course "universityStudies_ElectiveCourseSlot 0..9999" -- "universityStudies_Course22 1..1" universityStudies_ElectiveCourseSlot : optionalCourses21
+universityStudies_Course "universityStudies_Programme 1..1" *-- "universityStudies_Course 0..9999" universityStudies_Programme : programmes0
+universityStudies_Programme "universityStudies_Semester 1..1" *-- "universityStudies_Programme4 0..10" universityStudies_Semester : semesters3
+universityStudies_Semester "universityStudies_Specialization10 0..9999" --* "universityStudies_Semester11 1..1" universityStudies_Specialization : semesters9
+universityStudies_Programme "universityStudies_Specialization 1..1" *-- "universityStudies_Programme2 0..9999" universityStudies_Specialization : specializations1
 @enduml

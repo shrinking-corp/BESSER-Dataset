@@ -1,4 +1,8 @@
 @startuml
+' model: docbook
+' project: sampleModel
+' owner: User
+' description: New project
 class Para {
 }
 class ParaMixedContent {
@@ -84,34 +88,34 @@ XMLElement <|-- docbook_Book
 XMLElement <|-- docbook_Bookinfo
 XMLElement <|-- docbook_Chapter
 XMLElement <|-- docbook_Section
-docbook_Author "0..9999" --* "1..1" docbook_Bookinfo : author6
-docbook_Book "0..1" -- "1..1" docbook_Chapter : book12
-docbook_Book "0..1" -- "1..1" docbook_Bookinfo : book3
-docbook_Book "1..1" *-- "0..1" docbook_Bookinfo : bookinfo0
-docbook_Bookinfo "0..1" -- "1..1" docbook_Subtitle : bookinfo10
-docbook_Author "1..1" -- "0..1" docbook_Bookinfo : bookinfo8
-docbook_Book "1..1" *-- "0..9999" docbook_Chapter : chapter1
-docbook_Chapter "0..1" -- "1..1" docbook_SectionMixedContent : chapter22
-docbook_ParaMixedContent "0..9999" --* "1..1" docbook_Title : content17
-docbook_Para "1..1" *-- "0..9999" docbook_ParaMixedContent : content18
-docbook_Section "1..1" *-- "0..9999" docbook_SectionMixedContent : content20
-docbook_Figure "1..1" *-- "0..1" docbook_MediaObject : content37
-docbook_Emphasis "1..1" *-- "0..9999" docbook_ParaMixedContent : content38
-docbook_Link "1..1" *-- "0..9999" docbook_ParaMixedContent : content40
-docbook_ParaMixedContent "0..9999" --* "1..1" docbook_Ulink : content42
-docbook_ImageObject "0..1" --* "1..1" docbook_MediaObject : content46
-docbook_ImageData "0..1" --* "1..1" docbook_ImageObject : content50
-docbook_Emphasis "0..1" -- "1..1" docbook_ParaMixedContent : emphasis31
-docbook_Figure "0..1" -- "1..1" docbook_MediaObject : figure44
-docbook_ImageData "1..1" -- "0..1" docbook_ImageObject : imageObject51
-docbook_Link "0..1" -- "1..1" docbook_ParaMixedContent : link35
-docbook_ImageObject "1..1" -- "0..1" docbook_MediaObject : mediaObject47
-docbook_Chapter "1..1" *-- "0..9999" docbook_SectionMixedContent : mixedContent14
-docbook_Para "0..1" -- "1..1" docbook_ParaMixedContent : para26
-docbook_Section "0..1" -- "1..1" docbook_SectionMixedContent : section24
-docbook_Bookinfo "1..1" *-- "0..1" docbook_Subtitle : subtitle4
-docbook_Title "0..1" --* "1..1" docbook_TitledElement : title25
-docbook_ParaMixedContent "1..1" -- "0..1" docbook_Title : titleElement28
-docbook_Title "1..1" -- "0..1" docbook_TitledElement : titledElement16
-docbook_ParaMixedContent "1..1" -- "0..1" docbook_Ulink : ulink33
+docbook_Author "bookinfo7 0..9999" --* "Author 1..1" docbook_Bookinfo : author6
+docbook_Book "chapter 0..1" -- "Book13 1..1" docbook_Chapter : book12
+docbook_Book "bookinfo 0..1" -- "Book 1..1" docbook_Bookinfo : book3
+docbook_Book "Bookinfo 1..1" *-- "book 0..1" docbook_Bookinfo : bookinfo0
+docbook_Bookinfo "subtitle 0..1" -- "Bookinfo11 1..1" docbook_Subtitle : bookinfo10
+docbook_Author "Bookinfo9 1..1" -- "author 0..1" docbook_Bookinfo : bookinfo8
+docbook_Book "Chapter 1..1" *-- "book2 0..9999" docbook_Chapter : chapter1
+docbook_Chapter "mixedContent 0..1" -- "Chapter23 1..1" docbook_SectionMixedContent : chapter22
+docbook_ParaMixedContent "titleElement 0..9999" --* "ParaMixedContent 1..1" docbook_Title : content17
+docbook_Para "ParaMixedContent19 1..1" *-- "para 0..9999" docbook_ParaMixedContent : content18
+docbook_Section "SectionMixedContent21 1..1" *-- "section 0..9999" docbook_SectionMixedContent : content20
+docbook_Figure "MediaObject 1..1" *-- "figure 0..1" docbook_MediaObject : content37
+docbook_Emphasis "ParaMixedContent39 1..1" *-- "emphasis 0..9999" docbook_ParaMixedContent : content38
+docbook_Link "ParaMixedContent41 1..1" *-- "link 0..9999" docbook_ParaMixedContent : content40
+docbook_ParaMixedContent "ulink 0..9999" --* "ParaMixedContent43 1..1" docbook_Ulink : content42
+docbook_ImageObject "mediaObject 0..1" --* "ImageObject 1..1" docbook_MediaObject : content46
+docbook_ImageData "imageObject 0..1" --* "ImageData 1..1" docbook_ImageObject : content50
+docbook_Emphasis "content32 0..1" -- "Emphasis 1..1" docbook_ParaMixedContent : emphasis31
+docbook_Figure "content45 0..1" -- "Figure 1..1" docbook_MediaObject : figure44
+docbook_ImageData "ImageObject53 1..1" -- "content52 0..1" docbook_ImageObject : imageObject51
+docbook_Link "content36 0..1" -- "Link 1..1" docbook_ParaMixedContent : link35
+docbook_ImageObject "MediaObject49 1..1" -- "content48 0..1" docbook_MediaObject : mediaObject47
+docbook_Chapter "SectionMixedContent 1..1" *-- "chapter15 0..9999" docbook_SectionMixedContent : mixedContent14
+docbook_Para "content27 0..1" -- "Para 1..1" docbook_ParaMixedContent : para26
+docbook_Section "content 0..1" -- "Section 1..1" docbook_SectionMixedContent : section24
+docbook_Bookinfo "Subtitle 1..1" *-- "bookinfo5 0..1" docbook_Subtitle : subtitle4
+docbook_Title "titledElement 0..1" --* "Title 1..1" docbook_TitledElement : title25
+docbook_ParaMixedContent "Title30 1..1" -- "content29 0..1" docbook_Title : titleElement28
+docbook_Title "TitledElement 1..1" -- "title 0..1" docbook_TitledElement : titledElement16
+docbook_ParaMixedContent "Ulink 1..1" -- "content34 0..1" docbook_Ulink : ulink33
 @enduml

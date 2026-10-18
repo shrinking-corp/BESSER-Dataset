@@ -1,4 +1,8 @@
 @startuml
+' model: metamodel
+' project: sampleModel
+' owner: User
+' description: New project
 class Feature {
 }
 class Relation {
@@ -51,18 +55,18 @@ Type <|-- metamodel_AssociationEntity
 Type <|-- metamodel_Datatype
 Type <|-- metamodel_Entity
 Type <|-- metamodel_Relation
-metamodel_AssociationEntity "0..1" -- "1..1" metamodel_Relation : associates21
-metamodel_Entity "1..1" -- "0..9999" metamodel_Entity : bequeathesTo12
-metamodel_DatabaseConnection "0..1" --* "1..1" metamodel_Model : connector1
-metamodel_AssociationEntity "1..1" *-- "0..9999" metamodel_Feature : features22
-metamodel_Entity "1..1" *-- "0..9999" metamodel_Feature : features3
-metamodel_Entity "1..1" *-- "1..1" metamodel_idFeature : featuresId7
-metamodel_Entity "1..1" -- "0..1" metamodel_Entity : inherits10
-metamodel_Entity "1..1" -- "0..9999" metamodel_Relation : ownedBy5
-metamodel_Entity "1..1" -- "1..1" metamodel_Relation : owner17
-metamodel_Entity "1..1" -- "0..9999" metamodel_Relation : owns4
-metamodel_AssociationEntity "1..1" -- "1..1" metamodel_Relation : relation24
-metamodel_Entity "1..1" -- "1..1" metamodel_Relation : slave19
-metamodel_Feature "1..1" -- "0..1" metamodel_Type : type14
-metamodel_Model "1..1" *-- "0..9999" metamodel_Type : types0
+metamodel_AssociationEntity "relation 0..1" -- "AssociationEntity 1..1" metamodel_Relation : associates21
+metamodel_Entity "Entity13 1..1" -- "inherits 0..9999" metamodel_Entity : bequeathesTo12
+metamodel_DatabaseConnection "metamodel_Model2 0..1" --* "metamodel_DatabaseConnection 1..1" metamodel_Model : connector1
+metamodel_AssociationEntity "metamodel_Feature23 1..1" *-- "metamodel_AssociationEntity 0..9999" metamodel_Feature : features22
+metamodel_Entity "metamodel_Feature 1..1" *-- "metamodel_Entity 0..9999" metamodel_Feature : features3
+metamodel_Entity "metamodel_idFeature 1..1" *-- "metamodel_Entity8 1..1" metamodel_idFeature : featuresId7
+metamodel_Entity "Entity 1..1" -- "bequeathesTo 0..1" metamodel_Entity : inherits10
+metamodel_Entity "Relation6 1..1" -- "slave 0..9999" metamodel_Relation : ownedBy5
+metamodel_Entity "owns 1..1" -- "Entity18 1..1" metamodel_Relation : owner17
+metamodel_Entity "Relation 1..1" -- "owner 0..9999" metamodel_Relation : owns4
+metamodel_AssociationEntity "Relation25 1..1" -- "associates 1..1" metamodel_Relation : relation24
+metamodel_Entity "ownedBy 1..1" -- "Entity20 1..1" metamodel_Relation : slave19
+metamodel_Feature "metamodel_Type16 1..1" -- "metamodel_Feature15 0..1" metamodel_Type : type14
+metamodel_Model "metamodel_Type 1..1" *-- "metamodel_Model 0..9999" metamodel_Type : types0
 @enduml

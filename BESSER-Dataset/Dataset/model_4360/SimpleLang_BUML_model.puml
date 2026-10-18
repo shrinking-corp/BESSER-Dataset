@@ -1,4 +1,8 @@
 @startuml
+' model: simple_lang
+' project: sampleModel
+' owner: User
+' description: New project
 class BinaryExpression {
 }
 class Expression {
@@ -50,18 +54,18 @@ Statement <|-- simple_lang_AssignmentStatement
 Statement <|-- simple_lang_ExpressionStatement
 Statement <|-- simple_lang_IfStatement
 Statement <|-- simple_lang_WhileStatement
-simple_lang_Expression "0..9999" --* "1..1" simple_lang_MethodCallExpression : arguments9
-simple_lang_Expression "1..1" --* "1..1" simple_lang_IfStatement : condition13
-simple_lang_Expression "1..1" --* "1..1" simple_lang_WhileStatement : condition21
-simple_lang_IfStatement "1..1" *-- "0..9999" simple_lang_Statement : elseBody18
-simple_lang_Expression "1..1" --* "1..1" simple_lang_ExpressionStatement : expression11
-simple_lang_IfStatement "1..1" *-- "1..9999" simple_lang_Statement : ifBody15
-simple_lang_BinaryExpression "1..1" *-- "1..1" simple_lang_Expression : lhs2
-simple_lang_AssignmentStatement "1..1" *-- "1..1" simple_lang_Expression : lhs26
-simple_lang_AssignmentStatement "1..1" *-- "1..1" simple_lang_Expression : rhs28
-simple_lang_BinaryExpression "1..1" *-- "1..1" simple_lang_Expression : rhs4
-simple_lang_Statement "1..9999" --* "1..1" simple_lang_WhileStatement : statement23
-simple_lang_SimpleLang "1..1" *-- "0..9999" simple_lang_Statement : statements0
-simple_lang_Expression "0..1" --* "1..1" simple_lang_FeatureCallExpression : target7
-simple_lang_Expression "1..1" *-- "1..1" simple_lang_Type : type1
+simple_lang_Expression "simple_lang_MethodCallExpression 0..9999" --* "simple_lang_Expression10 1..1" simple_lang_MethodCallExpression : arguments9
+simple_lang_Expression "simple_lang_IfStatement 1..1" --* "simple_lang_Expression14 1..1" simple_lang_IfStatement : condition13
+simple_lang_Expression "simple_lang_WhileStatement 1..1" --* "simple_lang_Expression22 1..1" simple_lang_WhileStatement : condition21
+simple_lang_IfStatement "simple_lang_Statement20 1..1" *-- "simple_lang_IfStatement19 0..9999" simple_lang_Statement : elseBody18
+simple_lang_Expression "simple_lang_ExpressionStatement 1..1" --* "simple_lang_Expression12 1..1" simple_lang_ExpressionStatement : expression11
+simple_lang_IfStatement "simple_lang_Statement17 1..1" *-- "simple_lang_IfStatement16 1..9999" simple_lang_Statement : ifBody15
+simple_lang_BinaryExpression "simple_lang_Expression3 1..1" *-- "simple_lang_BinaryExpression 1..1" simple_lang_Expression : lhs2
+simple_lang_AssignmentStatement "simple_lang_Expression27 1..1" *-- "simple_lang_AssignmentStatement 1..1" simple_lang_Expression : lhs26
+simple_lang_AssignmentStatement "simple_lang_Expression30 1..1" *-- "simple_lang_AssignmentStatement29 1..1" simple_lang_Expression : rhs28
+simple_lang_BinaryExpression "simple_lang_Expression6 1..1" *-- "simple_lang_BinaryExpression5 1..1" simple_lang_Expression : rhs4
+simple_lang_Statement "simple_lang_WhileStatement24 1..9999" --* "simple_lang_Statement25 1..1" simple_lang_WhileStatement : statement23
+simple_lang_SimpleLang "simple_lang_Statement 1..1" *-- "simple_lang_SimpleLang 0..9999" simple_lang_Statement : statements0
+simple_lang_Expression "simple_lang_FeatureCallExpression 0..1" --* "simple_lang_Expression8 1..1" simple_lang_FeatureCallExpression : target7
+simple_lang_Expression "simple_lang_Type 1..1" *-- "simple_lang_Expression 1..1" simple_lang_Type : type1
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: DB
+' project: sampleModel
+' owner: User
+' description: New project
 class DB_Column {
   + notNull : bool
   + type : str
@@ -29,11 +33,11 @@ DatabaseElement <|-- DB_Column
 DatabaseElement <|-- DB_ForeignKey
 DatabaseElement <|-- DB_Table
 NamedElement <|-- DB_DatabaseElement
-DB_Column "0..1" -- "1..1" DB_ForeignKey : child7
-DB_Column "0..9999" --* "1..1" DB_Table : columns2
-DB_Database "1..1" *-- "0..9999" DB_DatabaseElement : contents0
-DB_Database "0..1" -- "1..1" DB_DatabaseElement : database1
-DB_Column "0..1" -- "1..1" DB_ForeignKey : parent5
-DB_Column "0..9999" -- "1..1" DB_Table : primaryKeys3
-DB_Column "1..1" -- "0..1" DB_Table : table4
+DB_Column "DB_ForeignKey8 0..1" -- "DB_Column9 1..1" DB_ForeignKey : child7
+DB_Column "table 0..9999" --* "Column 1..1" DB_Table : columns2
+DB_Database "DatabaseElement 1..1" *-- "database 0..9999" DB_DatabaseElement : contents0
+DB_Database "contents 0..1" -- "Database 1..1" DB_DatabaseElement : database1
+DB_Column "DB_ForeignKey 0..1" -- "DB_Column6 1..1" DB_ForeignKey : parent5
+DB_Column "DB_Table 0..9999" -- "DB_Column 1..1" DB_Table : primaryKeys3
+DB_Column "Table 1..1" -- "columns 0..1" DB_Table : table4
 @enduml

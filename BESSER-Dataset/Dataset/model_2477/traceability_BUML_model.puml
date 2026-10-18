@@ -1,4 +1,8 @@
 @startuml
+' model: traceability
+' project: sampleModel
+' owner: User
+' description: New project
 class traceability_Category {
   + name : str
 }
@@ -40,20 +44,20 @@ class traceability_Traces {
   + uriMap : str
   + username : str
 }
-traceability_Trace "1..1" *-- "0..9999" traceability_Trace : children5
-traceability_LogEntry "1..1" *-- "0..9999" traceability_TraceComment : comments13
-traceability_TraceComment "0..9999" --* "1..1" traceability_TraceDiff : comments26
-traceability_Trace "1..1" *-- "0..9999" traceability_TraceComment : comments9
-traceability_TraceDiffs "1..1" -- "0..9999" traceability_Traces : comparedTraces31
-traceability_Category "1..1" *-- "0..9999" traceability_EObject : contents33
-traceability_DiffCategory "1..1" *-- "0..9999" traceability_TraceDiff : diffs29
-traceability_EObject "0..1" -- "1..1" traceability_TraceComment : narrowDown35
-traceability_Trace "1..1" -- "0..1" traceability_Trace : parent7
-traceability_EObject "0..9999" -- "1..1" traceability_LogEntry : participants11
-traceability_EObject "0..9999" -- "1..1" traceability_TraceDiff : participants24
-traceability_EObject "0..9999" -- "1..1" traceability_Trace : source0
-traceability_EObject "0..1" -- "1..1" traceability_Traces : sourceModel16
-traceability_EObject "0..9999" -- "1..1" traceability_Trace : target1
-traceability_EObject "0..1" -- "1..1" traceability_Traces : targetModel18
-traceability_EObject "0..9999" --* "1..1" traceability_Traces : traces21
+traceability_Trace "Trace 1..1" *-- "parent 0..9999" traceability_Trace : children5
+traceability_LogEntry "traceability_TraceComment15 1..1" *-- "traceability_LogEntry14 0..9999" traceability_TraceComment : comments13
+traceability_TraceComment "traceability_TraceDiff27 0..9999" --* "traceability_TraceComment28 1..1" traceability_TraceDiff : comments26
+traceability_Trace "traceability_TraceComment 1..1" *-- "traceability_Trace10 0..9999" traceability_TraceComment : comments9
+traceability_TraceDiffs "traceability_Traces32 1..1" -- "traceability_TraceDiffs 0..9999" traceability_Traces : comparedTraces31
+traceability_Category "traceability_EObject34 1..1" *-- "traceability_Category 0..9999" traceability_EObject : contents33
+traceability_DiffCategory "traceability_TraceDiff30 1..1" *-- "traceability_DiffCategory 0..9999" traceability_TraceDiff : diffs29
+traceability_EObject "traceability_TraceComment36 0..1" -- "traceability_EObject37 1..1" traceability_TraceComment : narrowDown35
+traceability_Trace "Trace8 1..1" -- "children 0..1" traceability_Trace : parent7
+traceability_EObject "traceability_LogEntry 0..9999" -- "traceability_EObject12 1..1" traceability_LogEntry : participants11
+traceability_EObject "traceability_TraceDiff 0..9999" -- "traceability_EObject25 1..1" traceability_TraceDiff : participants24
+traceability_EObject "traceability_Trace 0..9999" -- "traceability_EObject 1..1" traceability_Trace : source0
+traceability_EObject "traceability_Traces 0..1" -- "traceability_EObject17 1..1" traceability_Traces : sourceModel16
+traceability_EObject "traceability_Trace2 0..9999" -- "traceability_EObject3 1..1" traceability_Trace : target1
+traceability_EObject "traceability_Traces19 0..1" -- "traceability_EObject20 1..1" traceability_Traces : targetModel18
+traceability_EObject "traceability_Traces22 0..9999" --* "traceability_EObject23 1..1" traceability_Traces : traces21
 @enduml

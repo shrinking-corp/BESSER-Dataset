@@ -1,4 +1,8 @@
 @startuml
+' model: notation
+' project: sampleModel
+' owner: User
+' description: New project
 class LayoutConstraint {
 }
 class Location {
@@ -54,12 +58,12 @@ NotationElement <|-- notation_View
 View <|-- notation_Diagram
 View <|-- notation_Edge
 View <|-- notation_Node
-notation_EObject "0..1" -- "1..1" notation_View : diagrammableElement1
-notation_Bounds "0..1" --* "1..1" notation_Node : layoutConstraint6
-notation_Node "0..9999" --* "1..1" notation_View : persistentChildren0
-notation_Diagram "1..1" *-- "0..9999" notation_Edge : persistentEdges11
-notation_Edge "1..1" -- "0..1" notation_View : source8
-notation_Edge "0..9999" -- "1..1" notation_View : sourceEdges3
-notation_Edge "1..1" -- "0..1" notation_View : target9
-notation_Edge "0..9999" -- "1..1" notation_View : targetEdges4
+notation_EObject "notation_View2 0..1" -- "notation_EObject 1..1" notation_View : diagrammableElement1
+notation_Bounds "notation_Node7 0..1" --* "notation_Bounds 1..1" notation_Node : layoutConstraint6
+notation_Node "notation_View 0..9999" --* "notation_Node 1..1" notation_View : persistentChildren0
+notation_Diagram "notation_Edge 1..1" *-- "notation_Diagram 0..9999" notation_Edge : persistentEdges11
+notation_Edge "View 1..1" -- "sourceEdges 0..1" notation_View : source8
+notation_Edge "source 0..9999" -- "Edge 1..1" notation_View : sourceEdges3
+notation_Edge "View10 1..1" -- "targetEdges 0..1" notation_View : target9
+notation_Edge "target 0..9999" -- "Edge5 1..1" notation_View : targetEdges4
 @enduml

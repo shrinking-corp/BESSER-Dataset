@@ -1,4 +1,8 @@
 @startuml
+' model: petrinetv3
+' project: sampleModel
+' owner: User
+' description: New project
 class petrinetv3_Net {
 }
 class petrinetv3_Place {
@@ -13,10 +17,10 @@ class petrinetv3_Transition {
   + tmax : int
   + tmin : int
 }
-petrinetv3_Place "1..9999" -- "1..1" petrinetv3_Transition : input2
-petrinetv3_Place "1..9999" -- "1..1" petrinetv3_Transition : output4
-petrinetv3_Net "1..1" -- "1..1" petrinetv3_Transition : parentNet7
-petrinetv3_Net "1..1" *-- "0..9999" petrinetv3_Place : places0
-petrinetv3_Place "1..1" *-- "0..9999" petrinetv3_Token : tokens8
-petrinetv3_Net "1..1" *-- "0..9999" petrinetv3_Transition : transitions1
+petrinetv3_Place "petrinetv3_Transition 1..9999" -- "petrinetv3_Place3 1..1" petrinetv3_Transition : input2
+petrinetv3_Place "petrinetv3_Transition5 1..9999" -- "petrinetv3_Place6 1..1" petrinetv3_Transition : output4
+petrinetv3_Net "transitions 1..1" -- "Net 1..1" petrinetv3_Transition : parentNet7
+petrinetv3_Net "petrinetv3_Place 1..1" *-- "petrinetv3_Net 0..9999" petrinetv3_Place : places0
+petrinetv3_Place "petrinetv3_Token 1..1" *-- "petrinetv3_Place9 0..9999" petrinetv3_Token : tokens8
+petrinetv3_Net "Transition 1..1" *-- "parentNet 0..9999" petrinetv3_Transition : transitions1
 @enduml

@@ -67,8 +67,8 @@ def test_assoc_ChessBoard_Piece_stub_double():
     partner = ChessBoard()
     setattr(partner, 'piece0', None)
     _safe_set(owner, 'chessBoard1', partner)
-    assert getattr(partner, 'piece0') == owner
+    assert owner in getattr(partner, 'piece0')
     _safe_set(owner, 'chessBoard1', None)
-    assert getattr(partner, 'piece0') is None
+    assert owner not in getattr(partner, 'piece0')
 
 

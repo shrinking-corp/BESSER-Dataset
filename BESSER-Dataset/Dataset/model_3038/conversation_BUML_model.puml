@@ -1,4 +1,8 @@
 @startuml
+' model: conversation
+' project: sampleModel
+' owner: User
+' description: New project
 enum ConnectionType {
   dependent
   independent
@@ -110,36 +114,36 @@ State <|-- conversation_Join
 SubscribableByMe <|-- conversation_PrivatePubSub
 SubscribableByMe <|-- conversation_PubliclyPublishable
 SubscribableByOthers <|-- conversation_PubliclySubscribable
-conversation_Agent "0..1" -- "1..1" conversation_AgentImport : agent51
-conversation_Agent "0..9999" --* "1..1" conversation_Conversation : agents0
-conversation_PrivatePubSub "0..1" --* "1..1" conversation_Transition : causedBy41
-conversation_Conversation "1..1" *-- "0..9999" conversation_Projection : definedTypes1
-conversation_Agent "1..1" *-- "0..9999" conversation_Projection : definedTypes12
-conversation_SubscribableByOthers "0..1" -- "1..1" conversation_Transition : exCausedBy39
-conversation_PublishableByOthers "0..1" -- "1..1" conversation_Transition : exTriggers42
-conversation_ProjectionField "0..1" -- "1..1" conversation_Transition : fieldMapping46
-conversation_Junction "1..1" -- "0..1" conversation_ProjectionField : fieldMapping61
-conversation_AgentImport "0..9999" --* "1..1" conversation_Conversation : importedAgents8
-conversation_Conversation "1..1" *-- "0..9999" conversation_TypeImport : importedTypes6
-conversation_State "0..1" -- "1..1" conversation_StateMachine : initialState22
-conversation_StateMachine "1..1" *-- "0..1" conversation_Transition : initialTransition27
-conversation_Join "1..1" *-- "1..9999" conversation_Junction : joins57
-conversation_Junction "1..1" -- "1..1" conversation_SubscribableByOthers : message58
-conversation_Agent "1..1" -- "0..1" conversation_Conversation : parent18
-conversation_Agent "0..1" -- "1..1" conversation_StateMachine : parent25
-conversation_State "1..1" -- "0..1" conversation_StateMachine : parent34
-conversation_Agent "0..1" -- "1..1" conversation_PubliclySubscribable : parent48
-conversation_Agent "1..1" -- "0..1" conversation_Projection : projection19
-conversation_Event "1..1" -- "0..1" conversation_Projection : refType29
-conversation_Conversation "1..1" *-- "0..9999" conversation_RestService : restServices2
-conversation_Agent "1..1" *-- "0..9999" conversation_PubliclySubscribable : sendables16
-conversation_Conversation "1..1" *-- "0..9999" conversation_Service : services4
-conversation_Agent "1..1" *-- "1..1" conversation_StateMachine : stateMachine14
-conversation_State "1..9999" --* "1..1" conversation_StateMachine : states23
-conversation_State "1..1" -- "1..1" conversation_Transition : toState36
-conversation_PrivatePubSub "1..1" -- "0..1" conversation_Transition : transition50
-conversation_State "1..1" *-- "0..9999" conversation_Transition : transitions31
-conversation_PublishableByMe "0..1" -- "1..1" conversation_Transition : triggers44
-conversation_Projection "0..1" -- "1..1" conversation_TypeImport : type54
-conversation_Conversation "1..1" *-- "0..9999" conversation_View : views10
+conversation_Agent "conversation_AgentImport52 0..1" -- "conversation_Agent53 1..1" conversation_AgentImport : agent51
+conversation_Agent "parent 0..9999" --* "Agent 1..1" conversation_Conversation : agents0
+conversation_PrivatePubSub "transition 0..1" --* "PrivatePubSub 1..1" conversation_Transition : causedBy41
+conversation_Conversation "conversation_Projection 1..1" *-- "conversation_Conversation 0..9999" conversation_Projection : definedTypes1
+conversation_Agent "conversation_Projection13 1..1" *-- "conversation_Agent 0..9999" conversation_Projection : definedTypes12
+conversation_SubscribableByOthers "conversation_Transition40 0..1" -- "conversation_SubscribableByOthers 1..1" conversation_Transition : exCausedBy39
+conversation_PublishableByOthers "conversation_Transition43 0..1" -- "conversation_PublishableByOthers 1..1" conversation_Transition : exTriggers42
+conversation_ProjectionField "conversation_Transition47 0..1" -- "conversation_ProjectionField 1..1" conversation_Transition : fieldMapping46
+conversation_Junction "conversation_ProjectionField63 1..1" -- "conversation_Junction62 0..1" conversation_ProjectionField : fieldMapping61
+conversation_AgentImport "conversation_Conversation9 0..9999" --* "conversation_AgentImport 1..1" conversation_Conversation : importedAgents8
+conversation_Conversation "conversation_TypeImport 1..1" *-- "conversation_Conversation7 0..9999" conversation_TypeImport : importedTypes6
+conversation_State "conversation_StateMachine 0..1" -- "conversation_State 1..1" conversation_StateMachine : initialState22
+conversation_StateMachine "conversation_Transition 1..1" *-- "conversation_StateMachine28 0..1" conversation_Transition : initialTransition27
+conversation_Join "conversation_Junction 1..1" *-- "conversation_Join 1..9999" conversation_Junction : joins57
+conversation_Junction "conversation_SubscribableByOthers60 1..1" -- "conversation_Junction59 1..1" conversation_SubscribableByOthers : message58
+conversation_Agent "Conversation 1..1" -- "agents 0..1" conversation_Conversation : parent18
+conversation_Agent "stateMachine 0..1" -- "Agent26 1..1" conversation_StateMachine : parent25
+conversation_State "StateMachine35 1..1" -- "states 0..1" conversation_StateMachine : parent34
+conversation_Agent "sendables 0..1" -- "Agent49 1..1" conversation_PubliclySubscribable : parent48
+conversation_Agent "conversation_Projection21 1..1" -- "conversation_Agent20 0..1" conversation_Projection : projection19
+conversation_Event "conversation_Projection30 1..1" -- "conversation_Event 0..1" conversation_Projection : refType29
+conversation_Conversation "conversation_RestService 1..1" *-- "conversation_Conversation3 0..9999" conversation_RestService : restServices2
+conversation_Agent "PubliclySubscribable 1..1" *-- "parent17 0..9999" conversation_PubliclySubscribable : sendables16
+conversation_Conversation "conversation_Service 1..1" *-- "conversation_Conversation5 0..9999" conversation_Service : services4
+conversation_Agent "StateMachine 1..1" *-- "parent15 1..1" conversation_StateMachine : stateMachine14
+conversation_State "parent24 1..9999" --* "State 1..1" conversation_StateMachine : states23
+conversation_State "conversation_Transition37 1..1" -- "conversation_State38 1..1" conversation_Transition : toState36
+conversation_PrivatePubSub "Transition 1..1" -- "causedBy 0..1" conversation_Transition : transition50
+conversation_State "conversation_Transition33 1..1" *-- "conversation_State32 0..9999" conversation_Transition : transitions31
+conversation_PublishableByMe "conversation_Transition45 0..1" -- "conversation_PublishableByMe 1..1" conversation_Transition : triggers44
+conversation_Projection "conversation_TypeImport55 0..1" -- "conversation_Projection56 1..1" conversation_TypeImport : type54
+conversation_Conversation "conversation_View 1..1" *-- "conversation_Conversation11 0..9999" conversation_View : views10
 @enduml

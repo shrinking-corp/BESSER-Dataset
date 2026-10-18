@@ -1,4 +1,8 @@
 @startuml
+' model: yyb
+' project: sampleModel
+' owner: User
+' description: New project
 class NamedElement {
 }
 class yyb_Alias {
@@ -15,7 +19,7 @@ class yyb_Thing {
 }
 NamedElement <|-- yyb_RelatedTo
 NamedElement <|-- yyb_Thing
-yyb_Alias "0..9999" --* "1..1" yyb_RelatedTo : aliases2
-yyb_RelatedTo "1..1" -- "0..1" yyb_Thing : fromThing1
-yyb_RelatedTo "0..9999" --* "1..1" yyb_Thing : relations0
+yyb_Alias "yyb_RelatedTo 0..9999" --* "yyb_Alias 1..1" yyb_RelatedTo : aliases2
+yyb_RelatedTo "Thing 1..1" -- "relations 0..1" yyb_Thing : fromThing1
+yyb_RelatedTo "fromThing 0..9999" --* "RelatedTo 1..1" yyb_Thing : relations0
 @enduml

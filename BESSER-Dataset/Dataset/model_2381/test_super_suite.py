@@ -2195,9 +2195,9 @@ def test_assoc_assertions7_stub_double():
     partner = relational_Schema()
     setattr(partner, 'schema8', None)
     _safe_set(owner, 'Assertion', partner)
-    assert getattr(partner, 'schema8') == owner
+    assert owner in getattr(partner, 'schema8')
     _safe_set(owner, 'Assertion', None)
-    assert getattr(partner, 'schema8') is None
+    assert owner not in getattr(partner, 'schema8')
 
 
 def test_assoc_columns23_stub_double():
@@ -2210,9 +2210,9 @@ def test_assoc_columns23_stub_double():
     partner = relational_Table()
     setattr(partner, 'table24', None)
     _safe_set(owner, 'Column', partner)
-    assert getattr(partner, 'table24') == owner
+    assert owner in getattr(partner, 'table24')
     _safe_set(owner, 'Column', None)
-    assert getattr(partner, 'table24') is None
+    assert owner not in getattr(partner, 'table24')
 
 
 def test_assoc_foreignKey41_stub_double():
@@ -2225,9 +2225,9 @@ def test_assoc_foreignKey41_stub_double():
     partner = relational_UniqueConstraint()
     setattr(partner, 'uniqueConstraint', None)
     _safe_set(owner, 'ForeignKey42', partner)
-    assert getattr(partner, 'uniqueConstraint') == owner
+    assert owner in getattr(partner, 'uniqueConstraint')
     _safe_set(owner, 'ForeignKey42', None)
-    assert getattr(partner, 'uniqueConstraint') is None
+    assert owner not in getattr(partner, 'uniqueConstraint')
 
 
 def test_assoc_members33_stub_double():
@@ -2240,9 +2240,9 @@ def test_assoc_members33_stub_double():
     partner = relational_ReferenceConstraint()
     setattr(partner, 'referenceConstraint', None)
     _safe_set(owner, 'Column34', partner)
-    assert getattr(partner, 'referenceConstraint') == owner
+    assert owner in getattr(partner, 'referenceConstraint')
     _safe_set(owner, 'Column34', None)
-    assert getattr(partner, 'referenceConstraint') is None
+    assert owner not in getattr(partner, 'referenceConstraint')
 
 
 def test_assoc_referenceConstraint27_stub_double():
@@ -2300,9 +2300,9 @@ def test_assoc_referencingForeignKeys29_stub_double():
     partner = relational_BaseTable()
     setattr(partner, 'referencedTable', None)
     _safe_set(owner, 'ForeignKey30', partner)
-    assert getattr(partner, 'referencedTable') == owner
+    assert owner in getattr(partner, 'referencedTable')
     _safe_set(owner, 'ForeignKey30', None)
-    assert getattr(partner, 'referencedTable') is None
+    assert owner not in getattr(partner, 'referencedTable')
 
 
 def test_assoc_schema11_stub_double():
@@ -2390,9 +2390,9 @@ def test_assoc_triggers19_stub_double():
     partner = relational_Table()
     setattr(partner, 'table', None)
     _safe_set(owner, 'Trigger20', partner)
-    assert getattr(partner, 'table') == owner
+    assert owner in getattr(partner, 'table')
     _safe_set(owner, 'Trigger20', None)
-    assert getattr(partner, 'table') is None
+    assert owner not in getattr(partner, 'table')
 
 
 def test_assoc_triggers5_stub_double():
@@ -2405,9 +2405,9 @@ def test_assoc_triggers5_stub_double():
     partner = relational_Schema()
     setattr(partner, 'schema6', None)
     _safe_set(owner, 'Trigger', partner)
-    assert getattr(partner, 'schema6') == owner
+    assert owner in getattr(partner, 'schema6')
     _safe_set(owner, 'Trigger', None)
-    assert getattr(partner, 'schema6') is None
+    assert owner not in getattr(partner, 'schema6')
 
 
 def test_assoc_triggersConstrainted21_stub_double():
@@ -2420,9 +2420,9 @@ def test_assoc_triggersConstrainted21_stub_double():
     partner = relational_Table()
     setattr(partner, 'triggerTables', None)
     _safe_set(owner, 'Trigger22', partner)
-    assert getattr(partner, 'triggerTables') == owner
+    assert owner in getattr(partner, 'triggerTables')
     _safe_set(owner, 'Trigger22', None)
-    assert getattr(partner, 'triggerTables') is None
+    assert owner not in getattr(partner, 'triggerTables')
 
 
 def test_assoc_uniqueConstraint37_stub_double():
@@ -2442,83 +2442,21 @@ def test_assoc_uniqueConstraint37_stub_double():
 
 
 
-from enum import Enum
 from python_code import ActionGranularityType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ActionGranularityType.ROW, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ActionGranularityType.ROW, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ActionGranularityType.ROW, '', '', 0) == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ActionGranularityType.ROW, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ActionGranularityType.ROW, 'ROW') == ActionGranularityType.ROW
-
-from enum import Enum
 from python_code import ActionTimeType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ActionTimeType.AFTER, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ActionTimeType.AFTER, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ActionTimeType.AFTER, 0, '', 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ActionTimeType.AFTER, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ActionTimeType.AFTER, 'AFTER') == ActionTimeType.AFTER
-
-from enum import Enum
 from python_code import ReferentialActionType
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(ReferentialActionType.RESTRICT, '', 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(ReferentialActionType.CASCADE, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(ReferentialActionType.CASCADE, '', 0, 0) == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(ReferentialActionType.CASCADE, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(ReferentialActionType.CASCADE, 'CASCADE') == ReferentialActionType.CASCADE
-
 from python_code import relational_Assertion
 from python_code import relational_Schema
 
 def test_relational_Assertion___init__():
     assert relational_Assertion.__init__(relational_Assertion('', assertions=relational_Schema(), Assertion=relational_Schema()), '', assertions=relational_Schema(), Assertion=relational_Schema()) == None
-
 from python_code import relational_ENamedElement
 
 def test_relational_ENamedElement___init__():
     assert relational_ENamedElement.__init__(relational_ENamedElement(''), '') == None
-
 from python_code import relational_Schema
 from python_code import relational_Table
 from python_code import relational_Trigger

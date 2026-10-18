@@ -1,4 +1,8 @@
 @startuml
+' model: JAVA
+' project: sampleModel
+' owner: User
+' description: New project
 class ASTNode {
 }
 class AbstractTypeDeclaration {
@@ -51,10 +55,10 @@ NamedElement <|-- JAVA_Type
 Type <|-- JAVA_AbstractTypeDeclaration
 TypeDeclaration <|-- JAVA_ClassDeclaration
 TypeDeclaration <|-- JAVA_InterfaceDeclaration
-JAVA_ClassDeclaration "1..1" *-- "0..9999" JAVA_FieldDeclaration : fields1
-JAVA_AbstractTypeDeclaration "0..9999" --* "1..1" JAVA_Package : ownedElements5
-JAVA_ClassDeclaration "1..1" *-- "0..1" JAVA_TypeAccess : superClass0
-JAVA_AbstractTypeDeclaration "1..1" *-- "0..9999" JAVA_TypeAccess : superInterfaces6
-JAVA_TypeAccess "1..1" -- "1..1" JAVA_TypeDeclaration : type3
-JAVA_FieldDeclaration "1..1" *-- "1..1" JAVA_TypeAccess : typeAccess9
+JAVA_ClassDeclaration "JAVA_FieldDeclaration 1..1" *-- "JAVA_ClassDeclaration2 0..9999" JAVA_FieldDeclaration : fields1
+JAVA_AbstractTypeDeclaration "JAVA_Package 0..9999" --* "JAVA_AbstractTypeDeclaration 1..1" JAVA_Package : ownedElements5
+JAVA_ClassDeclaration "JAVA_TypeAccess 1..1" *-- "JAVA_ClassDeclaration 0..1" JAVA_TypeAccess : superClass0
+JAVA_AbstractTypeDeclaration "JAVA_TypeAccess8 1..1" *-- "JAVA_AbstractTypeDeclaration7 0..9999" JAVA_TypeAccess : superInterfaces6
+JAVA_TypeAccess "JAVA_TypeDeclaration 1..1" -- "JAVA_TypeAccess4 1..1" JAVA_TypeDeclaration : type3
+JAVA_FieldDeclaration "JAVA_TypeAccess11 1..1" *-- "JAVA_FieldDeclaration10 1..1" JAVA_TypeAccess : typeAccess9
 @enduml

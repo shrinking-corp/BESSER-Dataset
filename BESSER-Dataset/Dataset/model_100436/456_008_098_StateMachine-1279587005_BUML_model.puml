@@ -1,4 +1,8 @@
 @startuml
+' model: stateMachine
+' project: sampleModel
+' owner: User
+' description: New project
 class Action {
 }
 class Branch {
@@ -150,18 +154,18 @@ Transition <|-- stateMachine_IVREvent
 Transition <|-- stateMachine_NoneEvent
 Transition <|-- stateMachine_SMSReceived
 Transition <|-- stateMachine_Timer
-stateMachine_Action "0..9999" --* "1..1" stateMachine_Transition : action12
-stateMachine_Action "0..9999" --* "1..1" stateMachine_Branch : action24
-stateMachine_Branch "0..9999" --* "1..1" stateMachine_Collected : branches20
-stateMachine_State "1..1" *-- "0..9999" stateMachine_State : children5
-stateMachine_State "0..1" -- "1..1" stateMachine_Transition : defaultTar15
-stateMachine_Branch "1..1" -- "0..1" stateMachine_State : out21
-stateMachine_State "1..1" *-- "0..9999" stateMachine_Transition : outs3
-stateMachine_State "1..1" -- "0..1" stateMachine_State : parent7
-stateMachine_Properties "0..1" --* "1..1" stateMachine_StateMachine : properties1
-stateMachine_CompositeState "1..1" -- "0..1" stateMachine_StateMachine : sm9
-stateMachine_SMS "0..1" --* "1..1" stateMachine_SendSms : sms11
-stateMachine_SMS "0..1" --* "1..1" stateMachine_SMSReceived : sms18
-stateMachine_State "0..1" -- "1..1" stateMachine_Transition : src13
-stateMachine_State "0..9999" --* "1..1" stateMachine_StateMachine : states0
+stateMachine_Action "stateMachine_Transition 0..9999" --* "stateMachine_Action 1..1" stateMachine_Transition : action12
+stateMachine_Action "stateMachine_Branch25 0..9999" --* "stateMachine_Action26 1..1" stateMachine_Branch : action24
+stateMachine_Branch "stateMachine_Collected 0..9999" --* "stateMachine_Branch 1..1" stateMachine_Collected : branches20
+stateMachine_State "State 1..1" *-- "parent 0..9999" stateMachine_State : children5
+stateMachine_State "stateMachine_Transition16 0..1" -- "stateMachine_State17 1..1" stateMachine_Transition : defaultTar15
+stateMachine_Branch "stateMachine_State23 1..1" -- "stateMachine_Branch22 0..1" stateMachine_State : out21
+stateMachine_State "Transition 1..1" *-- "src 0..9999" stateMachine_Transition : outs3
+stateMachine_State "State8 1..1" -- "children 0..1" stateMachine_State : parent7
+stateMachine_Properties "stateMachine_StateMachine2 0..1" --* "stateMachine_Properties 1..1" stateMachine_StateMachine : properties1
+stateMachine_CompositeState "stateMachine_StateMachine10 1..1" -- "stateMachine_CompositeState 0..1" stateMachine_StateMachine : sm9
+stateMachine_SMS "stateMachine_SendSms 0..1" --* "stateMachine_SMS 1..1" stateMachine_SendSms : sms11
+stateMachine_SMS "stateMachine_SMSReceived 0..1" --* "stateMachine_SMS19 1..1" stateMachine_SMSReceived : sms18
+stateMachine_State "outs 0..1" -- "State14 1..1" stateMachine_Transition : src13
+stateMachine_State "stateMachine_StateMachine 0..9999" --* "stateMachine_State 1..1" stateMachine_StateMachine : states0
 @enduml

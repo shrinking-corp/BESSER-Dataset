@@ -1,4 +1,8 @@
 @startuml
+' model: TUWien
+' project: sampleModel
+' owner: User
+' description: New project
 class TUWien_Course {
   + id : str
   + name : str
@@ -10,8 +14,8 @@ class TUWien_Student {
 class TUWien_University {
   + name : str
 }
-TUWien_Course "1..9999" -- "1..1" TUWien_Student : course3
-TUWien_Course "1..9999" --* "1..1" TUWien_University : courses0
-TUWien_Course "1..1" -- "5..9999" TUWien_Student : student4
-TUWien_Student "1..9999" --* "1..1" TUWien_University : students1
+TUWien_Course "student 1..9999" -- "Course 1..1" TUWien_Student : course3
+TUWien_Course "TUWien_University 1..9999" --* "TUWien_Course 1..1" TUWien_University : courses0
+TUWien_Course "Student 1..1" -- "course 5..9999" TUWien_Student : student4
+TUWien_Student "TUWien_University2 1..9999" --* "TUWien_Student 1..1" TUWien_University : students1
 @enduml

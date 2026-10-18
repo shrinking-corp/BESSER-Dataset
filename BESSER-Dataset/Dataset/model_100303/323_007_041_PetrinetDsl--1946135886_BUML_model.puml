@@ -1,4 +1,8 @@
 @startuml
+' model: petrinetDsl
+' project: sampleModel
+' owner: User
+' description: New project
 class petrinetDsl_AssureStatement {
   + count : int
 }
@@ -23,18 +27,18 @@ class petrinetDsl_TakeStatement {
 class petrinetDsl_Transaction {
   + name : str
 }
-petrinetDsl_AssureStatement "0..9999" --* "1..1" petrinetDsl_Transaction : assureStatements10
-petrinetDsl_AssureStatement "1..1" -- "0..1" petrinetDsl_Place : placeRef19
-petrinetDsl_Place "0..1" -- "1..1" petrinetDsl_TakeStatement : placeRef25
-petrinetDsl_Place "0..1" -- "1..1" petrinetDsl_PutStatement : placeRef31
-petrinetDsl_PetriNet "1..1" *-- "0..9999" petrinetDsl_Place : places1
-petrinetDsl_PutStatement "0..9999" --* "1..1" petrinetDsl_Transaction : putStatements14
-petrinetDsl_AssureStatement "1..1" -- "0..1" petrinetDsl_Resource : resourceRef16
-petrinetDsl_Resource "0..1" -- "1..1" petrinetDsl_TakeStatement : resourceRef22
-petrinetDsl_PutStatement "1..1" -- "0..1" petrinetDsl_Resource : resourceRef28
-petrinetDsl_Resource "0..1" -- "1..1" petrinetDsl_Storage : resourceRef7
-petrinetDsl_PetriNet "1..1" *-- "0..9999" petrinetDsl_Resource : resources0
-petrinetDsl_Place "1..1" *-- "0..9999" petrinetDsl_Storage : storages5
-petrinetDsl_TakeStatement "0..9999" --* "1..1" petrinetDsl_Transaction : takeStatements12
-petrinetDsl_PetriNet "1..1" *-- "0..9999" petrinetDsl_Transaction : transactions3
+petrinetDsl_AssureStatement "petrinetDsl_Transaction11 0..9999" --* "petrinetDsl_AssureStatement 1..1" petrinetDsl_Transaction : assureStatements10
+petrinetDsl_AssureStatement "petrinetDsl_Place21 1..1" -- "petrinetDsl_AssureStatement20 0..1" petrinetDsl_Place : placeRef19
+petrinetDsl_Place "petrinetDsl_TakeStatement26 0..1" -- "petrinetDsl_Place27 1..1" petrinetDsl_TakeStatement : placeRef25
+petrinetDsl_Place "petrinetDsl_PutStatement32 0..1" -- "petrinetDsl_Place33 1..1" petrinetDsl_PutStatement : placeRef31
+petrinetDsl_PetriNet "petrinetDsl_Place 1..1" *-- "petrinetDsl_PetriNet2 0..9999" petrinetDsl_Place : places1
+petrinetDsl_PutStatement "petrinetDsl_Transaction15 0..9999" --* "petrinetDsl_PutStatement 1..1" petrinetDsl_Transaction : putStatements14
+petrinetDsl_AssureStatement "petrinetDsl_Resource18 1..1" -- "petrinetDsl_AssureStatement17 0..1" petrinetDsl_Resource : resourceRef16
+petrinetDsl_Resource "petrinetDsl_TakeStatement23 0..1" -- "petrinetDsl_Resource24 1..1" petrinetDsl_TakeStatement : resourceRef22
+petrinetDsl_PutStatement "petrinetDsl_Resource30 1..1" -- "petrinetDsl_PutStatement29 0..1" petrinetDsl_Resource : resourceRef28
+petrinetDsl_Resource "petrinetDsl_Storage8 0..1" -- "petrinetDsl_Resource9 1..1" petrinetDsl_Storage : resourceRef7
+petrinetDsl_PetriNet "petrinetDsl_Resource 1..1" *-- "petrinetDsl_PetriNet 0..9999" petrinetDsl_Resource : resources0
+petrinetDsl_Place "petrinetDsl_Storage 1..1" *-- "petrinetDsl_Place6 0..9999" petrinetDsl_Storage : storages5
+petrinetDsl_TakeStatement "petrinetDsl_Transaction13 0..9999" --* "petrinetDsl_TakeStatement 1..1" petrinetDsl_Transaction : takeStatements12
+petrinetDsl_PetriNet "petrinetDsl_Transaction 1..1" *-- "petrinetDsl_PetriNet4 0..9999" petrinetDsl_Transaction : transactions3
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: jPQL
+' project: sampleModel
+' owner: User
+' description: New project
 class Expression {
 }
 class ExpressionTerm {
@@ -215,54 +219,54 @@ Value <|-- jPQL_StringExpression
 Variable <|-- jPQL_AliasAttributeExpression
 Variable <|-- jPQL_ParameterExpression
 Variable <|-- jPQL_Value
-jPQL_AliasAttributeExpression "0..1" --* "1..1" jPQL_UpdateItem : alias22
-jPQL_AliasAttributeExpression "1..1" -- "0..1" jPQL_VariableDeclaration : alias95
-jPQL_DeleteClause "0..1" --* "1..1" jPQL_DeleteStatement : deleteClause26
-jPQL_Expression "0..9999" --* "1..1" jPQL_OrExpression : entries100
-jPQL_AndExpression "1..1" *-- "0..9999" jPQL_Expression : entries102
-jPQL_SelectClause "1..1" *-- "0..9999" jPQL_SelectExpression : expressions34
-jPQL_DeleteClause "1..1" *-- "0..1" jPQL_FromClause : fromClause27
-jPQL_FromClause "0..1" --* "1..1" jPQL_SelectFromClause : fromClause31
-jPQL_FromEntry "0..9999" --* "1..1" jPQL_UpdateClause : fromEntries17
-jPQL_FromClause "1..1" *-- "0..9999" jPQL_FromEntry : fromEntries40
-jPQL_HavingClause "0..1" --* "1..1" jPQL_SelectStatement : having4
-jPQL_Expression "0..1" --* "1..1" jPQL_HavingClause : having8
-jPQL_AliasAttributeExpression "0..1" --* "1..1" jPQL_SelectAggregateExpression : item36
-jPQL_SetClause "1..1" *-- "0..9999" jPQL_UpdateItem : items20
-jPQL_AliasAttributeExpression "0..9999" --* "1..1" jPQL_SelectConstructorExpression : items38
-jPQL_InSeqExpression "1..1" *-- "0..9999" jPQL_Variable : items83
-jPQL_FromClass "1..1" *-- "0..9999" jPQL_FromJoin : joins46
-jPQL_OperatorExpression "1..1" *-- "0..1" jPQL_Variable : lhs59
-jPQL_CollectionExpression "1..1" *-- "0..1" jPQL_Variable : lhs70
-jPQL_NullComparisonExpression "1..1" *-- "0..1" jPQL_Variable : lhs75
-jPQL_EmptyComparisonExpression "1..1" *-- "0..1" jPQL_Variable : lhs77
-jPQL_LikeExpression "1..1" *-- "0..1" jPQL_Variable : lhs79
-jPQL_InExpression "1..1" *-- "0..1" jPQL_Variable : lhs81
-jPQL_BetweenExpression "1..1" *-- "0..1" jPQL_Variable : lhs87
-jPQL_BetweenExpression "1..1" *-- "0..1" jPQL_Value : max92
-jPQL_BetweenExpression "1..1" *-- "0..1" jPQL_Value : min89
-jPQL_OrderClause "0..1" --* "1..1" jPQL_SelectStatement : order6
-jPQL_OrderClause "1..1" *-- "0..9999" jPQL_OrderItem : ordering10
-jPQL_Function "1..1" *-- "0..9999" jPQL_Variable : params98
-jPQL_AliasAttributeExpression "0..1" --* "1..1" jPQL_FromCollection : path48
-jPQL_AliasAttributeExpression "0..1" --* "1..1" jPQL_FromJoin : path50
-jPQL_Query "0..9999" --* "1..1" jPQL_QueryModule : queries0
-jPQL_ExistsExpression "1..1" *-- "0..1" jPQL_SelectStatement : query62
-jPQL_AllExpression "1..1" *-- "0..1" jPQL_SelectStatement : query64
-jPQL_AnyExpression "1..1" *-- "0..1" jPQL_SelectStatement : query66
-jPQL_SelectStatement "0..1" --* "1..1" jPQL_SomeExpression : query68
-jPQL_InQueryExpression "1..1" *-- "0..1" jPQL_SelectStatement : query85
-jPQL_ExpressionTerm "0..1" --* "1..1" jPQL_OperatorExpression : rhs60
-jPQL_AliasAttributeExpression "0..1" --* "1..1" jPQL_CollectionExpression : rhs72
-jPQL_SelectClause "0..1" --* "1..1" jPQL_SelectFromClause : selectClause29
-jPQL_SelectFromClause "0..1" --* "1..1" jPQL_SelectStatement : selectFromClause3
-jPQL_SetClause "0..1" --* "1..1" jPQL_UpdateStatement : setClause15
-jPQL_FromClass "1..1" -- "0..1" jPQL_JvmType : type45
-jPQL_UpdateClause "0..1" --* "1..1" jPQL_UpdateStatement : updateClause14
-jPQL_UpdateItem "1..1" *-- "0..1" jPQL_Value : value24
-jPQL_FromEntry "0..1" -- "1..1" jPQL_OrderItem : var12
-jPQL_FromEntry "1..1" *-- "0..1" jPQL_VariableDeclaration : variable43
-jPQL_FromJoin "1..1" *-- "0..1" jPQL_VariableDeclaration : variable53
-jPQL_Query "1..1" *-- "0..1" jPQL_WhereClause : whereClause1
-jPQL_Expression "0..1" --* "1..1" jPQL_WhereClause : whereEntry56
+jPQL_AliasAttributeExpression "jPQL_UpdateItem23 0..1" --* "jPQL_AliasAttributeExpression 1..1" jPQL_UpdateItem : alias22
+jPQL_AliasAttributeExpression "jPQL_VariableDeclaration97 1..1" -- "jPQL_AliasAttributeExpression96 0..1" jPQL_VariableDeclaration : alias95
+jPQL_DeleteClause "jPQL_DeleteStatement 0..1" --* "jPQL_DeleteClause 1..1" jPQL_DeleteStatement : deleteClause26
+jPQL_Expression "jPQL_OrExpression 0..9999" --* "jPQL_Expression101 1..1" jPQL_OrExpression : entries100
+jPQL_AndExpression "jPQL_Expression103 1..1" *-- "jPQL_AndExpression 0..9999" jPQL_Expression : entries102
+jPQL_SelectClause "jPQL_SelectExpression 1..1" *-- "jPQL_SelectClause35 0..9999" jPQL_SelectExpression : expressions34
+jPQL_DeleteClause "jPQL_FromClause 1..1" *-- "jPQL_DeleteClause28 0..1" jPQL_FromClause : fromClause27
+jPQL_FromClause "jPQL_SelectFromClause32 0..1" --* "jPQL_FromClause33 1..1" jPQL_SelectFromClause : fromClause31
+jPQL_FromEntry "jPQL_UpdateClause18 0..9999" --* "jPQL_FromEntry19 1..1" jPQL_UpdateClause : fromEntries17
+jPQL_FromClause "jPQL_FromEntry42 1..1" *-- "jPQL_FromClause41 0..9999" jPQL_FromEntry : fromEntries40
+jPQL_HavingClause "jPQL_SelectStatement5 0..1" --* "jPQL_HavingClause 1..1" jPQL_SelectStatement : having4
+jPQL_Expression "jPQL_HavingClause9 0..1" --* "jPQL_Expression 1..1" jPQL_HavingClause : having8
+jPQL_AliasAttributeExpression "jPQL_SelectAggregateExpression 0..1" --* "jPQL_AliasAttributeExpression37 1..1" jPQL_SelectAggregateExpression : item36
+jPQL_SetClause "jPQL_UpdateItem 1..1" *-- "jPQL_SetClause21 0..9999" jPQL_UpdateItem : items20
+jPQL_AliasAttributeExpression "jPQL_SelectConstructorExpression 0..9999" --* "jPQL_AliasAttributeExpression39 1..1" jPQL_SelectConstructorExpression : items38
+jPQL_InSeqExpression "jPQL_Variable84 1..1" *-- "jPQL_InSeqExpression 0..9999" jPQL_Variable : items83
+jPQL_FromClass "jPQL_FromJoin 1..1" *-- "jPQL_FromClass47 0..9999" jPQL_FromJoin : joins46
+jPQL_OperatorExpression "jPQL_Variable 1..1" *-- "jPQL_OperatorExpression 0..1" jPQL_Variable : lhs59
+jPQL_CollectionExpression "jPQL_Variable71 1..1" *-- "jPQL_CollectionExpression 0..1" jPQL_Variable : lhs70
+jPQL_NullComparisonExpression "jPQL_Variable76 1..1" *-- "jPQL_NullComparisonExpression 0..1" jPQL_Variable : lhs75
+jPQL_EmptyComparisonExpression "jPQL_Variable78 1..1" *-- "jPQL_EmptyComparisonExpression 0..1" jPQL_Variable : lhs77
+jPQL_LikeExpression "jPQL_Variable80 1..1" *-- "jPQL_LikeExpression 0..1" jPQL_Variable : lhs79
+jPQL_InExpression "jPQL_Variable82 1..1" *-- "jPQL_InExpression 0..1" jPQL_Variable : lhs81
+jPQL_BetweenExpression "jPQL_Variable88 1..1" *-- "jPQL_BetweenExpression 0..1" jPQL_Variable : lhs87
+jPQL_BetweenExpression "jPQL_Value94 1..1" *-- "jPQL_BetweenExpression93 0..1" jPQL_Value : max92
+jPQL_BetweenExpression "jPQL_Value91 1..1" *-- "jPQL_BetweenExpression90 0..1" jPQL_Value : min89
+jPQL_OrderClause "jPQL_SelectStatement7 0..1" --* "jPQL_OrderClause 1..1" jPQL_SelectStatement : order6
+jPQL_OrderClause "jPQL_OrderItem 1..1" *-- "jPQL_OrderClause11 0..9999" jPQL_OrderItem : ordering10
+jPQL_Function "jPQL_Variable99 1..1" *-- "jPQL_Function 0..9999" jPQL_Variable : params98
+jPQL_AliasAttributeExpression "jPQL_FromCollection 0..1" --* "jPQL_AliasAttributeExpression49 1..1" jPQL_FromCollection : path48
+jPQL_AliasAttributeExpression "jPQL_FromJoin51 0..1" --* "jPQL_AliasAttributeExpression52 1..1" jPQL_FromJoin : path50
+jPQL_Query "jPQL_QueryModule 0..9999" --* "jPQL_Query 1..1" jPQL_QueryModule : queries0
+jPQL_ExistsExpression "jPQL_SelectStatement63 1..1" *-- "jPQL_ExistsExpression 0..1" jPQL_SelectStatement : query62
+jPQL_AllExpression "jPQL_SelectStatement65 1..1" *-- "jPQL_AllExpression 0..1" jPQL_SelectStatement : query64
+jPQL_AnyExpression "jPQL_SelectStatement67 1..1" *-- "jPQL_AnyExpression 0..1" jPQL_SelectStatement : query66
+jPQL_SelectStatement "jPQL_SomeExpression 0..1" --* "jPQL_SelectStatement69 1..1" jPQL_SomeExpression : query68
+jPQL_InQueryExpression "jPQL_SelectStatement86 1..1" *-- "jPQL_InQueryExpression 0..1" jPQL_SelectStatement : query85
+jPQL_ExpressionTerm "jPQL_OperatorExpression61 0..1" --* "jPQL_ExpressionTerm 1..1" jPQL_OperatorExpression : rhs60
+jPQL_AliasAttributeExpression "jPQL_CollectionExpression73 0..1" --* "jPQL_AliasAttributeExpression74 1..1" jPQL_CollectionExpression : rhs72
+jPQL_SelectClause "jPQL_SelectFromClause30 0..1" --* "jPQL_SelectClause 1..1" jPQL_SelectFromClause : selectClause29
+jPQL_SelectFromClause "jPQL_SelectStatement 0..1" --* "jPQL_SelectFromClause 1..1" jPQL_SelectStatement : selectFromClause3
+jPQL_SetClause "jPQL_UpdateStatement16 0..1" --* "jPQL_SetClause 1..1" jPQL_UpdateStatement : setClause15
+jPQL_FromClass "jPQL_JvmType 1..1" -- "jPQL_FromClass 0..1" jPQL_JvmType : type45
+jPQL_UpdateClause "jPQL_UpdateStatement 0..1" --* "jPQL_UpdateClause 1..1" jPQL_UpdateStatement : updateClause14
+jPQL_UpdateItem "jPQL_Value 1..1" *-- "jPQL_UpdateItem25 0..1" jPQL_Value : value24
+jPQL_FromEntry "jPQL_OrderItem13 0..1" -- "jPQL_FromEntry 1..1" jPQL_OrderItem : var12
+jPQL_FromEntry "jPQL_VariableDeclaration 1..1" *-- "jPQL_FromEntry44 0..1" jPQL_VariableDeclaration : variable43
+jPQL_FromJoin "jPQL_VariableDeclaration55 1..1" *-- "jPQL_FromJoin54 0..1" jPQL_VariableDeclaration : variable53
+jPQL_Query "jPQL_WhereClause 1..1" *-- "jPQL_Query2 0..1" jPQL_WhereClause : whereClause1
+jPQL_Expression "jPQL_WhereClause57 0..1" --* "jPQL_Expression58 1..1" jPQL_WhereClause : whereEntry56
 @enduml

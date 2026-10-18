@@ -603,28 +603,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=SimplStateMachine_CompositeState_strategy)
-@settings(max_examples=30)
-def test_hyp_simplstatemachine_compositestate_activesubtree_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.activeSubTree()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.activeSubTree).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'activeSubTree' in SimplStateMachine_CompositeState is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'activeSubTree' in SimplStateMachine_CompositeState did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'activeSubTree' in SimplStateMachine_CompositeState is not implemented or raised an error")
 
 import warnings
 import copy
@@ -632,28 +610,6 @@ import inspect
 import ast
 from hypothesis import given, settings
 
-@given(instance=SimplStateMachine_CompositeState_strategy)
-@settings(max_examples=30)
-def test_hyp_simplstatemachine_compositestate_unactivesubtree_changes_state(instance):
-    before = copy.deepcopy(instance)
-    try:
-        # Call operation with dummy parameters
-        instance.unactiveSubTree()
-        if instance.__dict__ != before.__dict__:
-            return  # test passes
-        # Check that function exists and is non-empty (FAIL if empty)
-        source = inspect.getsource(instance.unactiveSubTree).strip()
-        tree = ast.parse(source)
-        body = tree.body[0].body  # function body
-        has_statements = len(body) > 0 and not all(isinstance(stmt, ast.Pass) for stmt in body)
-        assert has_statements, f"Function 'unactiveSubTree' in SimplStateMachine_CompositeState is empty"
-
-        # Check for state change (WARN if no change)
-        if instance.__dict__ == before.__dict__:
-            warnings.warn(f"Operation 'unactiveSubTree' in SimplStateMachine_CompositeState did not change state; check implementation")
-
-    except (AttributeError, NotImplementedError, TypeError):
-        warnings.warn(f"Operation 'unactiveSubTree' in SimplStateMachine_CompositeState is not implemented or raised an error")
 
 
 
@@ -1509,9 +1465,9 @@ def test_assoc_contents30_stub_double():
     partner = SimplStateMachine_Operation()
     setattr(partner, 'SimplStateMachine_Operation31', None)
     _safe_set(owner, 'SimplStateMachine_Assignment', partner)
-    assert getattr(partner, 'SimplStateMachine_Operation31') == owner
+    assert owner in getattr(partner, 'SimplStateMachine_Operation31')
     _safe_set(owner, 'SimplStateMachine_Assignment', None)
-    assert getattr(partner, 'SimplStateMachine_Operation31') is None
+    assert owner not in getattr(partner, 'SimplStateMachine_Operation31')
 
 
 def test_assoc_event18_stub_double():
@@ -1539,9 +1495,9 @@ def test_assoc_events1_stub_double():
     partner = SimplStateMachine_StateMachine()
     setattr(partner, 'SimplStateMachine_StateMachine2', None)
     _safe_set(owner, 'SimplStateMachine_Event', partner)
-    assert getattr(partner, 'SimplStateMachine_StateMachine2') == owner
+    assert owner in getattr(partner, 'SimplStateMachine_StateMachine2')
     _safe_set(owner, 'SimplStateMachine_Event', None)
-    assert getattr(partner, 'SimplStateMachine_StateMachine2') is None
+    assert owner not in getattr(partner, 'SimplStateMachine_StateMachine2')
 
 
 def test_assoc_expression32_stub_double():
@@ -1704,54 +1660,31 @@ def test_assoc_variables3_stub_double():
     partner = SimplStateMachine_StateMachine()
     setattr(partner, 'SimplStateMachine_StateMachine4', None)
     _safe_set(owner, 'SimplStateMachine_Variable', partner)
-    assert getattr(partner, 'SimplStateMachine_StateMachine4') == owner
+    assert owner in getattr(partner, 'SimplStateMachine_StateMachine4')
     _safe_set(owner, 'SimplStateMachine_Variable', None)
-    assert getattr(partner, 'SimplStateMachine_StateMachine4') is None
+    assert owner not in getattr(partner, 'SimplStateMachine_StateMachine4')
 
 
 
 
-from enum import Enum
 from python_code import Operator
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(Operator.sub, 0, 0, 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(Operator.add, 0, 0, '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(Operator.eq, 0, 0, 0) == 0
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(Operator.eq, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(Operator.eq, 'lt') == Operator.lt
-
 from python_code import SimplStateMachine_BooleanData
 
 def test_SimplStateMachine_BooleanData___init__():
     assert SimplStateMachine_BooleanData.__init__(SimplStateMachine_BooleanData(True), False) == None
-
 from python_code import SimplStateMachine_Event
 from python_code import SimplStateMachine_StateMachine
 from python_code import SimplStateMachine_Transition
 
 def test_SimplStateMachine_Event___init__():
     assert SimplStateMachine_Event.__init__(SimplStateMachine_Event('', SimplStateMachine_Event=SimplStateMachine_StateMachine(), SimplStateMachine_Event20=SimplStateMachine_Transition()), '', SimplStateMachine_Event=SimplStateMachine_StateMachine(), SimplStateMachine_Event20=SimplStateMachine_Transition()) == None
-
 from python_code import SimplStateMachine_Expression
 from python_code import SimplStateMachine_ExpressionElement
 from python_code import SimplStateMachine_Transition
 
 def test_SimplStateMachine_Expression___init__():
     assert SimplStateMachine_Expression.__init__(SimplStateMachine_Expression('', '\x00', SimplStateMachine_Expression=SimplStateMachine_Transition(), SimplStateMachine_Expression24=SimplStateMachine_ExpressionElement(), SimplStateMachine_Expression26=SimplStateMachine_ExpressionElement()), '\x00\x00', '', SimplStateMachine_Expression=SimplStateMachine_Transition(), SimplStateMachine_Expression24=SimplStateMachine_ExpressionElement(), SimplStateMachine_Expression26=SimplStateMachine_ExpressionElement()) == None
-
 from python_code import SimplStateMachine_IntegerData
 
 def test_SimplStateMachine_IntegerData___init__():

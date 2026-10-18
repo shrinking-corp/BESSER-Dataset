@@ -1,4 +1,8 @@
 @startuml
+' model: a44355a0_4d3b_4718_97e2_7a541255c15f
+' project: sampleModel
+' owner: User
+' description: New project
 class AdminPanel {
   + UserID : int
   + UserLevel : int
@@ -51,13 +55,13 @@ class Users {
 class ViewOrder {
   + getUser : int
 }
-AdminPanel "0..1" -- "0..1" Menu : AdminPanel_Menu
-BookedTables "1..9999" -- "1..1" Table : BookedTables_Table
-Membership_Card "1..1" -- "1..9999" Order : Membership_Card_Order
-Order "1..1" -- "1..9999" OrderItem : OrderItem_Order
-Menu "0..1" -- "0..1" Order : Order_Menu
-Order "1..9999" -- "1..1" Table : Order_Table
-Order "1..9999" -- "1..1" Users : Order_Users
-BookedTables "1..9999" -- "1..1" Bookings : Table_Bookings
-OrderItem "1..9999" -- "1..1" ViewOrder : ViewOrder_OrderItem
+AdminPanel "adminPanel9 0..1" -- "menu8 0..1" Menu : AdminPanel_Menu
+BookedTables "bookedTables17 1..9999" -- "table16 1..1" Table : BookedTables_Table
+Membership_Card "membership_Card1 1..1" -- "order0 1..9999" Order : Membership_Card_Order
+Order "order12 1..1" -- "orderItem13 1..9999" OrderItem : OrderItem_Order
+Menu "menu6 0..1" -- "order7 0..1" Order : Order_Menu
+Order "order3 1..9999" -- "table2 1..1" Table : Order_Table
+Order "order15 1..9999" -- "users14 1..1" Users : Order_Users
+BookedTables "table5 1..9999" -- "bookings4 1..1" Bookings : Table_Bookings
+OrderItem "orderItem10 1..9999" -- "viewOrder11 1..1" ViewOrder : ViewOrder_OrderItem
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: statemachine
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractCondition {
 }
 class AbstractState {
@@ -80,14 +84,14 @@ AbstractTransition <|-- statemachine_Transition
 Named <|-- statemachine_AbstractState
 Named <|-- statemachine_AbstractTransition
 Named <|-- statemachine_Statemachine
-statemachine_AbstractCondition "0..9999" --* "1..1" statemachine_ConditionalState : condition10
-statemachine_AbstractState "0..1" -- "1..1" statemachine_AbstractTransition : state3
-statemachine_StateAttribute "0..9999" --* "1..1" statemachine_StateChange : stateAttribute11
-statemachine_AttributeCondition "1..1" *-- "0..9999" statemachine_StateAttribute : stateAttribute19
-statemachine_StateAttribute "1..1" *-- "0..9999" statemachine_StateAttribute : stateAttributeQuery9
-statemachine_AbstractTransition "1..1" *-- "0..9999" statemachine_StateChange : stateChange6
-statemachine_StateChange "1..1" *-- "0..1" statemachine_StateValue : stateValue14
-statemachine_AbstractCondition "1..1" *-- "0..1" statemachine_StateValue : stateValue16
-statemachine_AbstractState "0..9999" --* "1..1" statemachine_Statemachine : states0
-statemachine_AbstractState "1..1" *-- "0..9999" statemachine_AbstractTransition : transitions1
+statemachine_AbstractCondition "statemachine_ConditionalState 0..9999" --* "statemachine_AbstractCondition 1..1" statemachine_ConditionalState : condition10
+statemachine_AbstractState "statemachine_AbstractTransition4 0..1" -- "statemachine_AbstractState5 1..1" statemachine_AbstractTransition : state3
+statemachine_StateAttribute "statemachine_StateChange12 0..9999" --* "statemachine_StateAttribute13 1..1" statemachine_StateChange : stateAttribute11
+statemachine_AttributeCondition "statemachine_StateAttribute20 1..1" *-- "statemachine_AttributeCondition 0..9999" statemachine_StateAttribute : stateAttribute19
+statemachine_StateAttribute "statemachine_StateAttribute 1..1" *-- "statemachine_StateAttribute8 0..9999" statemachine_StateAttribute : stateAttributeQuery9
+statemachine_AbstractTransition "statemachine_StateChange 1..1" *-- "statemachine_AbstractTransition7 0..9999" statemachine_StateChange : stateChange6
+statemachine_StateChange "statemachine_StateValue 1..1" *-- "statemachine_StateChange15 0..1" statemachine_StateValue : stateValue14
+statemachine_AbstractCondition "statemachine_StateValue18 1..1" *-- "statemachine_AbstractCondition17 0..1" statemachine_StateValue : stateValue16
+statemachine_AbstractState "statemachine_Statemachine 0..9999" --* "statemachine_AbstractState 1..1" statemachine_Statemachine : states0
+statemachine_AbstractState "statemachine_AbstractTransition 1..1" *-- "statemachine_AbstractState2 0..9999" statemachine_AbstractTransition : transitions1
 @enduml

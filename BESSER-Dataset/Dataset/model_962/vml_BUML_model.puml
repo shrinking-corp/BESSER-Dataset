@@ -1,4 +1,8 @@
 @startuml
+' model: vml
+' project: sampleModel
+' owner: User
+' description: New project
 class vml_Diagram {
   + title : str
 }
@@ -22,14 +26,14 @@ class vml_Slice {
   + title : str
   + value : int
 }
-vml_Diagram "0..9999" --* "1..1" vml_Model : diagrams0
-vml_Edge "0..9999" --* "1..1" vml_Graph : edges9
-vml_Diagram "1..1" *-- "0..9999" vml_Graph : graph3
-vml_Edge "0..9999" -- "1..1" vml_Node : incoming12
-vml_Graph "1..1" *-- "0..9999" vml_Node : nodes7
-vml_Edge "0..9999" -- "1..1" vml_Node : outgoing11
-vml_Diagram "1..1" *-- "0..9999" vml_Pie : pies1
-vml_Pie "1..1" *-- "0..9999" vml_Slice : slices5
-vml_Edge "1..1" -- "0..1" vml_Node : source14
-vml_Edge "1..1" -- "0..1" vml_Node : target15
+vml_Diagram "vml_Model 0..9999" --* "vml_Diagram 1..1" vml_Model : diagrams0
+vml_Edge "vml_Graph10 0..9999" --* "vml_Edge 1..1" vml_Graph : edges9
+vml_Diagram "vml_Graph 1..1" *-- "vml_Diagram4 0..9999" vml_Graph : graph3
+vml_Edge "target 0..9999" -- "Edge13 1..1" vml_Node : incoming12
+vml_Graph "vml_Node 1..1" *-- "vml_Graph8 0..9999" vml_Node : nodes7
+vml_Edge "source 0..9999" -- "Edge 1..1" vml_Node : outgoing11
+vml_Diagram "vml_Pie 1..1" *-- "vml_Diagram2 0..9999" vml_Pie : pies1
+vml_Pie "vml_Slice 1..1" *-- "vml_Pie6 0..9999" vml_Slice : slices5
+vml_Edge "Node 1..1" -- "outgoing 0..1" vml_Node : source14
+vml_Edge "Node16 1..1" -- "incoming 0..1" vml_Node : target15
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: codemodel
+' project: sampleModel
+' owner: User
+' description: New project
 class CMElement {
 }
 class Expression {
@@ -44,14 +48,14 @@ Expression <|-- codemodel_expressions_BinExp
 Expression <|-- codemodel_expressions_VarExp
 Statement <|-- codemodel_statements_AsgnStmt
 Statement <|-- codemodel_statements_CompStmt
-codemodel_CMElement "0..9999" --* "1..1" codemodel_Root : elements4
-Expression "1..1" --* "1..1" codemodel_expressions_BinExp : left6
-Expression "1..1" --* "1..1" codemodel_statements_AsgnStmt : leftExp10
-codemodel_D "1..1" -- "0..9999" codemodel_E : refE3
-Expression "1..1" --* "1..1" codemodel_expressions_BinExp : right7
-Expression "1..1" --* "1..1" codemodel_statements_AsgnStmt : rightExp12
-Statement "0..9999" --* "1..1" codemodel_statements_CompStmt : statements15
-Statement "0..9999" --* "1..1" codemodel_CodeModel : stmts1
-codemodel_expressions_VarExp "1..1" -- "1..1" expressions_codemodel_Variable : variable5
-codemodel_CodeModel "1..1" *-- "0..9999" codemodel_Variable : vars0
+codemodel_CMElement "codemodel_Root 0..9999" --* "codemodel_CMElement 1..1" codemodel_Root : elements4
+Expression "codemodel_expressions_BinExp 1..1" --* "Expression 1..1" codemodel_expressions_BinExp : left6
+Expression "codemodel_statements_AsgnStmt 1..1" --* "Expression11 1..1" codemodel_statements_AsgnStmt : leftExp10
+codemodel_D "codemodel_E 1..1" -- "codemodel_D 0..9999" codemodel_E : refE3
+Expression "codemodel_expressions_BinExp8 1..1" --* "Expression9 1..1" codemodel_expressions_BinExp : right7
+Expression "codemodel_statements_AsgnStmt13 1..1" --* "Expression14 1..1" codemodel_statements_AsgnStmt : rightExp12
+Statement "codemodel_statements_CompStmt 0..9999" --* "Statement16 1..1" codemodel_statements_CompStmt : statements15
+Statement "codemodel_CodeModel2 0..9999" --* "Statement 1..1" codemodel_CodeModel : stmts1
+codemodel_expressions_VarExp "expressions_codemodel_Variable 1..1" -- "codemodel_expressions_VarExp 1..1" expressions_codemodel_Variable : variable5
+codemodel_CodeModel "codemodel_Variable 1..1" *-- "codemodel_CodeModel 0..9999" codemodel_Variable : vars0
 @enduml

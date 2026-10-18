@@ -1,4 +1,8 @@
 @startuml
+' model: model
+' project: sampleModel
+' owner: User
+' description: New project
 enum SemesterKind {
   AUTUMN
   SPRING
@@ -31,17 +35,17 @@ class model_Semester {
   + kind : str
   + year : str
 }
-model_CourseAllocation "0..9999" --* "1..1" model_CourseInstance : allocations15
-model_CourseAllocation "0..9999" -- "1..1" model_Person : allocations7
-model_Course "0..1" -- "1..1" model_CourseInstance : course12
-model_CourseAllocation "1..1" -- "0..1" model_CourseInstance : course20
-model_Course "0..9999" --* "1..1" model_Department : courses1
-model_CourseInstance "0..9999" --* "1..1" model_Semester : courses11
-model_Department "1..1" *-- "0..9999" model_Person : employees0
-model_CourseAllocation "1..1" -- "0..1" model_Person : person17
-model_Course "1..1" -- "0..9999" model_Role : requiredRoles8
-model_CourseAllocation "1..1" -- "0..1" model_Role : role18
-model_Department "1..1" *-- "0..9999" model_Role : roles3
-model_CourseInstance "1..1" -- "0..1" model_Semester : semester14
-model_Department "1..1" *-- "0..9999" model_Semester : semesters5
+model_CourseAllocation "course 0..9999" --* "CourseAllocation16 1..1" model_CourseInstance : allocations15
+model_CourseAllocation "person 0..9999" -- "CourseAllocation 1..1" model_Person : allocations7
+model_Course "model_CourseInstance 0..1" -- "model_Course13 1..1" model_CourseInstance : course12
+model_CourseAllocation "CourseInstance22 1..1" -- "allocations21 0..1" model_CourseInstance : course20
+model_Course "model_Department2 0..9999" --* "model_Course 1..1" model_Department : courses1
+model_CourseInstance "semester 0..9999" --* "CourseInstance 1..1" model_Semester : courses11
+model_Department "model_Person 1..1" *-- "model_Department 0..9999" model_Person : employees0
+model_CourseAllocation "Person 1..1" -- "allocations 0..1" model_Person : person17
+model_Course "model_Role10 1..1" -- "model_Course9 0..9999" model_Role : requiredRoles8
+model_CourseAllocation "model_Role19 1..1" -- "model_CourseAllocation 0..1" model_Role : role18
+model_Department "model_Role 1..1" *-- "model_Department4 0..9999" model_Role : roles3
+model_CourseInstance "Semester 1..1" -- "courses 0..1" model_Semester : semester14
+model_Department "model_Semester 1..1" *-- "model_Department6 0..9999" model_Semester : semesters5
 @enduml

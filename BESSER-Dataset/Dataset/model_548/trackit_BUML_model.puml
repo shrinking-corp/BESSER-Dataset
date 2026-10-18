@@ -1,4 +1,8 @@
 @startuml
+' model: trackit
+' project: sampleModel
+' owner: User
+' description: New project
 class Identifiable {
 }
 enum IssueStatus {
@@ -54,27 +58,27 @@ Identifiable <|-- trackit_Member
 Identifiable <|-- trackit_Product
 Identifiable <|-- trackit_Team
 Identifiable <|-- trackit_Version
-trackit_Issue "1..1" -- "0..9999" trackit_Member : assignedTo26
-trackit_Issue "1..1" -- "0..1" trackit_Member : author22
-trackit_Comment "1..1" -- "0..1" trackit_Member : author42
-trackit_Issue "1..1" -- "0..9999" trackit_Issue : blockers24
-trackit_Issue "1..1" -- "0..9999" trackit_Issue : blocking38
-trackit_Comment "0..9999" --* "1..1" trackit_Issue : comments28
-trackit_Comment "0..9999" -- "1..1" trackit_Member : comments8
-trackit_Issue "0..9999" -- "1..1" trackit_Issue : dependencies34
-trackit_Issue "0..9999" -- "1..1" trackit_Issue : duplicateOf31
-trackit_Comment "1..1" -- "0..1" trackit_Issue : issue40
-trackit_Issue "0..9999" -- "1..1" trackit_Version : issues20
-trackit_Issue "0..9999" --* "1..1" trackit_IssueTracker : issues3
-trackit_Issue "0..9999" -- "1..1" trackit_Member : issuesAssigned10
-trackit_Issue "0..9999" -- "1..1" trackit_Member : issuesCreated7
-trackit_Member "1..9999" -- "1..1" trackit_Team : members12
-trackit_IssueTracker "1..1" *-- "1..9999" trackit_Member : members5
-trackit_Comment "1..1" -- "0..1" trackit_Comment : parent46
-trackit_Product "0..1" -- "1..1" trackit_Version : product17
-trackit_IssueTracker "1..1" *-- "1..9999" trackit_Product : products1
-trackit_Comment "1..1" *-- "0..9999" trackit_Comment : replies49
-trackit_IssueTracker "1..1" *-- "1..9999" trackit_Team : teams0
-trackit_Product "1..1" *-- "1..9999" trackit_Version : version15
-trackit_Issue "1..1" -- "1..9999" trackit_Version : versionsAffected36
+trackit_Issue "Member27 1..1" -- "issuesAssigned 0..9999" trackit_Member : assignedTo26
+trackit_Issue "Member 1..1" -- "issuesCreated 0..1" trackit_Member : author22
+trackit_Comment "Member44 1..1" -- "comments43 0..1" trackit_Member : author42
+trackit_Issue "Issue25 1..1" -- "blocking 0..9999" trackit_Issue : blockers24
+trackit_Issue "Issue39 1..1" -- "blockers 0..9999" trackit_Issue : blocking38
+trackit_Comment "issue 0..9999" --* "Comment29 1..1" trackit_Issue : comments28
+trackit_Comment "author9 0..9999" -- "Comment 1..1" trackit_Member : comments8
+trackit_Issue "trackit_Issue33 0..9999" -- "trackit_Issue35 1..1" trackit_Issue : dependencies34
+trackit_Issue "trackit_Issue30 0..9999" -- "trackit_Issue32 1..1" trackit_Issue : duplicateOf31
+trackit_Comment "Issue41 1..1" -- "comments 0..1" trackit_Issue : issue40
+trackit_Issue "versionsAffected 0..9999" -- "Issue21 1..1" trackit_Version : issues20
+trackit_Issue "trackit_IssueTracker4 0..9999" --* "trackit_Issue 1..1" trackit_IssueTracker : issues3
+trackit_Issue "assignedTo 0..9999" -- "Issue11 1..1" trackit_Member : issuesAssigned10
+trackit_Issue "author 0..9999" -- "Issue 1..1" trackit_Member : issuesCreated7
+trackit_Member "trackit_Team13 1..9999" -- "trackit_Member14 1..1" trackit_Team : members12
+trackit_IssueTracker "trackit_Member 1..1" *-- "trackit_IssueTracker6 1..9999" trackit_Member : members5
+trackit_Comment "Comment47 1..1" -- "replies 0..1" trackit_Comment : parent46
+trackit_Product "trackit_Version18 0..1" -- "trackit_Product19 1..1" trackit_Version : product17
+trackit_IssueTracker "trackit_Product 1..1" *-- "trackit_IssueTracker2 1..9999" trackit_Product : products1
+trackit_Comment "Comment50 1..1" *-- "parent 0..9999" trackit_Comment : replies49
+trackit_IssueTracker "trackit_Team 1..1" *-- "trackit_IssueTracker 1..9999" trackit_Team : teams0
+trackit_Product "trackit_Version 1..1" *-- "trackit_Product16 1..9999" trackit_Version : version15
+trackit_Issue "Version 1..1" -- "issues 1..9999" trackit_Version : versionsAffected36
 @enduml

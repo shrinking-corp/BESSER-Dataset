@@ -1,4 +1,8 @@
 @startuml
+' model: PrimitiveTypes
+' project: sampleModel
+' owner: User
+' description: New project
 class BlockLevelChunkElt {
 }
 class BlockLevelElt {
@@ -283,49 +287,49 @@ ValueType <|-- WordprocessingMLBasicDef_BooleanValue
 ValueType <|-- WordprocessingMLBasicDef_DateTimeTypeValue
 ValueType <|-- WordprocessingMLBasicDef_FloatValue
 ValueType <|-- WordprocessingMLBasicDef_StringValue
-WordDocument "1..1" -- "1..1" WordprocessingMLBasicDef_BodyElt : be_wordDocument37
-BodyElt "1..1" -- "1..1" WordprocessingMLBasicDef_BlockLevelElt : ble_bodyElt41
-NoteElt "1..1" -- "1..1" WordprocessingMLBasicDef_BlockLevelElt : ble_note43
-BlockLevelElt "0..9999" --* "1..1" WordprocessingMLBasicDef_BodyElt : blockLevelElts39
-BodyElt "1..1" --* "1..1" WordprocessingMLBasicDef_WordDocument : body34
-WordDocument "1..1" -- "1..1" WordprocessingMLBasicDef_CustomDocumentPropertiesCollection : cdp_wordDocument12
-StringType "1..1" --* "1..1" WordprocessingMLBasicDef_SymElt : char57
-DateTimeType "0..1" --* "1..1" WordprocessingMLBasicDef_DocumentPropertiesCollection : created6
-CustomDocumentProperty "1..9999" --* "1..1" WordprocessingMLBasicDef_CustomDocumentPropertiesCollection : customDocumentProperties14
-CustomDocumentPropertiesCollection "1..1" -- "1..1" WordprocessingMLBasicDef_CustomDocumentProperty : customDocumentProperty_cdpe15
-DocPrElt "0..1" --* "1..1" WordprocessingMLBasicDef_WordDocument : docPr33
-WordDocument "1..1" -- "1..1" WordprocessingMLBasicDef_DocumentPropertiesCollection : dp_wordDocument1
-WordDocument "1..1" -- "1..1" WordprocessingMLBasicDef_DocPrElt : dpe_wordDocument35
-StringType "0..1" --* "1..1" WordprocessingMLBasicDef_FldCharElt : fldData60
-WordDocument "1..1" -- "1..1" WordprocessingMLBasicDef_FontsListElt : fle_wordDocument62
-StringType "1..1" --* "1..1" WordprocessingMLBasicDef_SymElt : font56
-FontsListElt "0..1" --* "1..1" WordprocessingMLBasicDef_WordDocument : fonts30
-StringProperty "0..1" --* "1..1" WordprocessingMLBasicDef_WordDocument : ignoreElements27
-StringProperty "0..1" --* "1..1" WordprocessingMLBasicDef_WordDocument : ignoreSubtree26
-DateTimeType "0..1" --* "1..1" WordprocessingMLBasicDef_DocumentPropertiesCollection : lastPrinted3
-DateTimeType "0..1" --* "1..1" WordprocessingMLBasicDef_DocumentPropertiesCollection : lastSaved9
-WordDocument "1..1" -- "1..1" WordprocessingMLBasicDef_ListsElt : le_wordDocument64
-ListsElt "0..1" --* "1..1" WordprocessingMLBasicDef_WordDocument : lists31
-BlockLevelElt "1..9999" --* "1..1" WordprocessingMLBasicDef_NoteElt : n_blockLevelElts54
-ParaContentElt "0..9999" --* "1..1" WordprocessingMLBasicDef_ParaElt : pContentElts45
-ParaPrElt "0..1" --* "1..1" WordprocessingMLBasicDef_ParaElt : pPr44
-ParaElt "1..1" -- "1..1" WordprocessingMLBasicDef_ParaContentElt : pce_pElt47
-ParaElt "1..1" -- "1..1" WordprocessingMLBasicDef_ParaPrElt : ppe_pElt46
-RunContentElt "0..9999" --* "1..1" WordprocessingMLBasicDef_RunElt : rContentElts50
-RunPrElt "0..1" --* "1..1" WordprocessingMLBasicDef_RunElt : rPr49
-RunElt "1..1" -- "1..1" WordprocessingMLBasicDef_RunContentElt : rce_rElt52
-RunElt "1..1" -- "1..1" WordprocessingMLBasicDef_RunPrElt : rpe_rElt51
-WordDocument "1..1" -- "1..1" WordprocessingMLBasicDef_StylesElt : se_wordDocument66
-SectPrElt "0..1" --* "1..1" WordprocessingMLBasicDef_BodyElt : sectPr40
-SmartTagsCollection "1..1" -- "1..1" WordprocessingMLBasicDef_SmartTagType : smartTagType_ste17
-SmartTagType "0..9999" --* "1..1" WordprocessingMLBasicDef_SmartTagsCollection : smartTagTypes20
-BodyElt "1..1" -- "1..1" WordprocessingMLBasicDef_SectPrElt : spe_bodyElt68
-WordDocument "1..1" -- "1..1" WordprocessingMLBasicDef_SmartTagsCollection : st_wordDocument18
-StylesElt "0..1" --* "1..1" WordprocessingMLBasicDef_WordDocument : styles32
-DateTimeType "1..1" -- "1..1" WordprocessingMLBasicDef_DateTimeTypeValue : value0
-ValueType "1..1" --* "1..1" WordprocessingMLBasicDef_CustomDocumentProperty : value16
-VersionType "0..1" --* "1..1" WordprocessingMLBasicDef_DocumentPropertiesCollection : version2
-CustomDocumentPropertiesCollection "0..1" --* "1..1" WordprocessingMLBasicDef_WordDocument : wd_customDocProperties24
-DocumentPropertiesCollection "0..1" --* "1..1" WordprocessingMLBasicDef_WordDocument : wd_docProperties23
-SmartTagsCollection "0..1" --* "1..1" WordprocessingMLBasicDef_WordDocument : wd_smartTags21
+WordDocument "body 1..1" -- "WordDocument38 1..1" WordprocessingMLBasicDef_BodyElt : be_wordDocument37
+BodyElt "blockLevelElts 1..1" -- "BodyElt42 1..1" WordprocessingMLBasicDef_BlockLevelElt : ble_bodyElt41
+NoteElt "n_blockLevelElts 1..1" -- "NoteElt 1..1" WordprocessingMLBasicDef_BlockLevelElt : ble_note43
+BlockLevelElt "ble_bodyElt 0..9999" --* "BlockLevelElt 1..1" WordprocessingMLBasicDef_BodyElt : blockLevelElts39
+BodyElt "be_wordDocument 1..1" --* "BodyElt 1..1" WordprocessingMLBasicDef_WordDocument : body34
+WordDocument "wd_customDocProperties 1..1" -- "WordDocument13 1..1" WordprocessingMLBasicDef_CustomDocumentPropertiesCollection : cdp_wordDocument12
+StringType "WordprocessingMLBasicDef_SymElt58 1..1" --* "StringType59 1..1" WordprocessingMLBasicDef_SymElt : char57
+DateTimeType "WordprocessingMLBasicDef_DocumentPropertiesCollection7 0..1" --* "DateTimeType8 1..1" WordprocessingMLBasicDef_DocumentPropertiesCollection : created6
+CustomDocumentProperty "customDocumentProperty_cdpe 1..9999" --* "CustomDocumentProperty 1..1" WordprocessingMLBasicDef_CustomDocumentPropertiesCollection : customDocumentProperties14
+CustomDocumentPropertiesCollection "customDocumentProperties 1..1" -- "CustomDocumentPropertiesCollection 1..1" WordprocessingMLBasicDef_CustomDocumentProperty : customDocumentProperty_cdpe15
+DocPrElt "dpe_wordDocument 0..1" --* "DocPrElt 1..1" WordprocessingMLBasicDef_WordDocument : docPr33
+WordDocument "wd_docProperties 1..1" -- "WordDocument 1..1" WordprocessingMLBasicDef_DocumentPropertiesCollection : dp_wordDocument1
+WordDocument "docPr 1..1" -- "WordDocument36 1..1" WordprocessingMLBasicDef_DocPrElt : dpe_wordDocument35
+StringType "WordprocessingMLBasicDef_FldCharElt 0..1" --* "StringType61 1..1" WordprocessingMLBasicDef_FldCharElt : fldData60
+WordDocument "fonts 1..1" -- "WordDocument63 1..1" WordprocessingMLBasicDef_FontsListElt : fle_wordDocument62
+StringType "WordprocessingMLBasicDef_SymElt 1..1" --* "StringType 1..1" WordprocessingMLBasicDef_SymElt : font56
+FontsListElt "fle_wordDocument 0..1" --* "FontsListElt 1..1" WordprocessingMLBasicDef_WordDocument : fonts30
+StringProperty "WordprocessingMLBasicDef_WordDocument28 0..1" --* "StringProperty29 1..1" WordprocessingMLBasicDef_WordDocument : ignoreElements27
+StringProperty "WordprocessingMLBasicDef_WordDocument 0..1" --* "StringProperty 1..1" WordprocessingMLBasicDef_WordDocument : ignoreSubtree26
+DateTimeType "WordprocessingMLBasicDef_DocumentPropertiesCollection4 0..1" --* "DateTimeType5 1..1" WordprocessingMLBasicDef_DocumentPropertiesCollection : lastPrinted3
+DateTimeType "WordprocessingMLBasicDef_DocumentPropertiesCollection10 0..1" --* "DateTimeType11 1..1" WordprocessingMLBasicDef_DocumentPropertiesCollection : lastSaved9
+WordDocument "lists 1..1" -- "WordDocument65 1..1" WordprocessingMLBasicDef_ListsElt : le_wordDocument64
+ListsElt "le_wordDocument 0..1" --* "ListsElt 1..1" WordprocessingMLBasicDef_WordDocument : lists31
+BlockLevelElt "ble_note 1..9999" --* "BlockLevelElt55 1..1" WordprocessingMLBasicDef_NoteElt : n_blockLevelElts54
+ParaContentElt "pce_pElt 0..9999" --* "ParaContentElt 1..1" WordprocessingMLBasicDef_ParaElt : pContentElts45
+ParaPrElt "ppe_pElt 0..1" --* "ParaPrElt 1..1" WordprocessingMLBasicDef_ParaElt : pPr44
+ParaElt "pContentElts 1..1" -- "ParaElt48 1..1" WordprocessingMLBasicDef_ParaContentElt : pce_pElt47
+ParaElt "pPr 1..1" -- "ParaElt 1..1" WordprocessingMLBasicDef_ParaPrElt : ppe_pElt46
+RunContentElt "rce_rElt 0..9999" --* "RunContentElt 1..1" WordprocessingMLBasicDef_RunElt : rContentElts50
+RunPrElt "rpe_rElt 0..1" --* "RunPrElt 1..1" WordprocessingMLBasicDef_RunElt : rPr49
+RunElt "rContentElts 1..1" -- "RunElt53 1..1" WordprocessingMLBasicDef_RunContentElt : rce_rElt52
+RunElt "rPr 1..1" -- "RunElt 1..1" WordprocessingMLBasicDef_RunPrElt : rpe_rElt51
+WordDocument "styles 1..1" -- "WordDocument67 1..1" WordprocessingMLBasicDef_StylesElt : se_wordDocument66
+SectPrElt "spe_bodyElt 0..1" --* "SectPrElt 1..1" WordprocessingMLBasicDef_BodyElt : sectPr40
+SmartTagsCollection "smartTagTypes 1..1" -- "SmartTagsCollection 1..1" WordprocessingMLBasicDef_SmartTagType : smartTagType_ste17
+SmartTagType "smartTagType_ste 0..9999" --* "SmartTagType 1..1" WordprocessingMLBasicDef_SmartTagsCollection : smartTagTypes20
+BodyElt "sectPr 1..1" -- "BodyElt69 1..1" WordprocessingMLBasicDef_SectPrElt : spe_bodyElt68
+WordDocument "wd_smartTags 1..1" -- "WordDocument19 1..1" WordprocessingMLBasicDef_SmartTagsCollection : st_wordDocument18
+StylesElt "se_wordDocument 0..1" --* "StylesElt 1..1" WordprocessingMLBasicDef_WordDocument : styles32
+DateTimeType "WordprocessingMLBasicDef_DateTimeTypeValue 1..1" -- "DateTimeType 1..1" WordprocessingMLBasicDef_DateTimeTypeValue : value0
+ValueType "WordprocessingMLBasicDef_CustomDocumentProperty 1..1" --* "ValueType 1..1" WordprocessingMLBasicDef_CustomDocumentProperty : value16
+VersionType "WordprocessingMLBasicDef_DocumentPropertiesCollection 0..1" --* "VersionType 1..1" WordprocessingMLBasicDef_DocumentPropertiesCollection : version2
+CustomDocumentPropertiesCollection "cdp_wordDocument 0..1" --* "CustomDocumentPropertiesCollection25 1..1" WordprocessingMLBasicDef_WordDocument : wd_customDocProperties24
+DocumentPropertiesCollection "dp_wordDocument 0..1" --* "DocumentPropertiesCollection 1..1" WordprocessingMLBasicDef_WordDocument : wd_docProperties23
+SmartTagsCollection "st_wordDocument 0..1" --* "SmartTagsCollection22 1..1" WordprocessingMLBasicDef_WordDocument : wd_smartTags21
 @enduml

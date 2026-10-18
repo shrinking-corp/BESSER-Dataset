@@ -1,4 +1,8 @@
 @startuml
+' model: connection
+' project: sampleModel
+' owner: User
+' description: New project
 class AbstractMetadataObject {
 }
 class Connection {
@@ -369,40 +373,40 @@ SAPFunctionParameterTable <|-- connection_OutputSAPFunctionParameterTable
 SAPFunctionParameterTable <|-- connection_SAPTestInputParameterTable
 TdTable <|-- connection_Concept
 TdTable <|-- connection_SubscriberTable
-connection_SAPConnection "1..1" *-- "0..9999" connection_SAPFunctionUnit : Funtions12
-connection_InputSAPFunctionParameterTable "0..1" --* "1..1" connection_SAPFunctionUnit : InputParameterTable14
-connection_MetadataTable "0..1" --* "1..1" connection_SAPFunctionUnit : MetadataTable17
-connection_OutputSAPFunctionParameterTable "0..1" --* "1..1" connection_SAPFunctionUnit : OutputParameterTable15
-connection_SAPFunctionParameterColumn "1..1" -- "0..1" connection_SAPFunctionParameterTable : ParameterTable25
-connection_SAPFunctionUnit "1..1" *-- "0..1" connection_SAPTestInputParameterTable : TestInputParameterTable23
-connection_CDCConnection "0..1" -- "1..1" connection_CDCType : cdcConnection47
-connection_CDCConnection "0..1" --* "1..1" connection_DatabaseConnection : cdcConns10
-connection_CDCConnection "1..1" *-- "0..9999" connection_CDCType : cdcTypes44
-connection_SAPFunctionParameterColumn "0..9999" --* "1..1" connection_SAPFunctionParameterTable : columns26
-connection_MetadataColumn "0..9999" -- "1..1" connection_MetadataTable : columns3
-connection_Concept "1..1" *-- "0..9999" connection_ConceptTarget : conceptTargets52
-connection_SAPConnection "0..1" -- "1..1" connection_SAPFunctionUnit : connection19
-connection_Connection "0..1" -- "1..1" connection_QueriesConnection : connection35
-connection_XmlFileConnection "0..1" -- "1..1" connection_XmlXPathLoopDescriptor : connection40
-connection_CDCConnection "1..1" -- "0..1" connection_DatabaseConnection : connection43
-connection_Connection "0..1" -- "1..1" connection_MetadataTable : connection6
-connection_Connection "0..9999" --* "1..1" connection_Metadata : connections0
-connection_InputSAPFunctionParameterTable "1..1" -- "0..1" connection_SAPFunctionUnit : functionUnit27
-connection_OutputSAPFunctionParameterTable "1..1" -- "0..1" connection_SAPFunctionUnit : functionUnit29
-connection_SAPFunctionUnit "0..1" -- "1..1" connection_SAPTestInputParameterTable : functionUnit50
-connection_xml_TdXMLElement "1..1" -- "0..1" xml_TdXMLDocument : ownedDocument56
-connection_Connection "1..1" *-- "0..1" connection_QueriesConnection : queries1
-connection_QueriesConnection "0..1" -- "1..1" connection_Query : queries38
-connection_QueriesConnection "1..1" *-- "0..9999" connection_Query : query36
-connection_XmlFileConnection "1..1" *-- "0..9999" connection_XmlXPathLoopDescriptor : schema31
-connection_SchemaTarget "1..1" -- "0..1" connection_XmlXPathLoopDescriptor : schema33
-connection_Concept "0..1" -- "1..1" connection_ConceptTarget : schema54
-connection_SchemaTarget "0..9999" --* "1..1" connection_XmlXPathLoopDescriptor : schemaTargets41
-connection_Concept "0..9999" --* "1..1" connection_MDMConnection : schemas9
-connection_relational_TdColumn "1..1" *-- "0..1" relational_TdSqlDataType : sqlDataType55
-connection_CDCType "1..1" *-- "0..9999" connection_SubscriberTable : subscribers45
-connection_MetadataColumn "1..1" -- "0..1" connection_MetadataTable : table2
-connection_MetadataTable "0..9999" --* "1..1" connection_SAPFunctionUnit : tables20
-connection_xml_TdXMLElement "1..1" *-- "0..1" xml_TdXMLContent : xmlContent57
-connection_xml_TdXMLContent "1..1" *-- "0..9999" xml_TdXMLElement : xmlElements59
+connection_SAPConnection "SAPFunctionUnit 1..1" *-- "connection13 0..9999" connection_SAPFunctionUnit : Funtions12
+connection_InputSAPFunctionParameterTable "functionUnit 0..1" --* "InputSAPFunctionParameterTable 1..1" connection_SAPFunctionUnit : InputParameterTable14
+connection_MetadataTable "connection_SAPFunctionUnit 0..1" --* "connection_MetadataTable18 1..1" connection_SAPFunctionUnit : MetadataTable17
+connection_OutputSAPFunctionParameterTable "functionUnit16 0..1" --* "OutputSAPFunctionParameterTable 1..1" connection_SAPFunctionUnit : OutputParameterTable15
+connection_SAPFunctionParameterColumn "SAPFunctionParameterTable 1..1" -- "columns 0..1" connection_SAPFunctionParameterTable : ParameterTable25
+connection_SAPFunctionUnit "SAPTestInputParameterTable 1..1" *-- "functionUnit24 0..1" connection_SAPTestInputParameterTable : TestInputParameterTable23
+connection_CDCConnection "connection_CDCType48 0..1" -- "connection_CDCConnection49 1..1" connection_CDCType : cdcConnection47
+connection_CDCConnection "connection11 0..1" --* "CDCConnection 1..1" connection_DatabaseConnection : cdcConns10
+connection_CDCConnection "connection_CDCType 1..1" *-- "connection_CDCConnection 0..9999" connection_CDCType : cdcTypes44
+connection_SAPFunctionParameterColumn "ParameterTable 0..9999" --* "SAPFunctionParameterColumn 1..1" connection_SAPFunctionParameterTable : columns26
+connection_MetadataColumn "connection_MetadataTable4 0..9999" -- "connection_MetadataColumn5 1..1" connection_MetadataTable : columns3
+connection_Concept "ConceptTarget 1..1" *-- "schema53 0..9999" connection_ConceptTarget : conceptTargets52
+connection_SAPConnection "Funtions 0..1" -- "SAPConnection 1..1" connection_SAPFunctionUnit : connection19
+connection_Connection "queries 0..1" -- "Connection 1..1" connection_QueriesConnection : connection35
+connection_XmlFileConnection "schema 0..1" -- "XmlFileConnection 1..1" connection_XmlXPathLoopDescriptor : connection40
+connection_CDCConnection "DatabaseConnection 1..1" -- "cdcConns 0..1" connection_DatabaseConnection : connection43
+connection_Connection "connection_MetadataTable7 0..1" -- "connection_Connection8 1..1" connection_MetadataTable : connection6
+connection_Connection "connection_Metadata 0..9999" --* "connection_Connection 1..1" connection_Metadata : connections0
+connection_InputSAPFunctionParameterTable "SAPFunctionUnit28 1..1" -- "InputParameterTable 0..1" connection_SAPFunctionUnit : functionUnit27
+connection_OutputSAPFunctionParameterTable "SAPFunctionUnit30 1..1" -- "OutputParameterTable 0..1" connection_SAPFunctionUnit : functionUnit29
+connection_SAPFunctionUnit "TestInputParameterTable 0..1" -- "SAPFunctionUnit51 1..1" connection_SAPTestInputParameterTable : functionUnit50
+connection_xml_TdXMLElement "xml_TdXMLDocument 1..1" -- "connection_xml_TdXMLElement 0..1" xml_TdXMLDocument : ownedDocument56
+connection_Connection "QueriesConnection 1..1" *-- "connection 0..1" connection_QueriesConnection : queries1
+connection_QueriesConnection "query 0..1" -- "QueriesConnection39 1..1" connection_Query : queries38
+connection_QueriesConnection "Query 1..1" *-- "queries37 0..9999" connection_Query : query36
+connection_XmlFileConnection "XmlXPathLoopDescriptor 1..1" *-- "connection32 0..9999" connection_XmlXPathLoopDescriptor : schema31
+connection_SchemaTarget "XmlXPathLoopDescriptor34 1..1" -- "schemaTargets 0..1" connection_XmlXPathLoopDescriptor : schema33
+connection_Concept "conceptTargets 0..1" -- "Concept 1..1" connection_ConceptTarget : schema54
+connection_SchemaTarget "schema42 0..9999" --* "SchemaTarget 1..1" connection_XmlXPathLoopDescriptor : schemaTargets41
+connection_Concept "connection_MDMConnection 0..9999" --* "connection_Concept 1..1" connection_MDMConnection : schemas9
+connection_relational_TdColumn "relational_TdSqlDataType 1..1" *-- "connection_relational_TdColumn 0..1" relational_TdSqlDataType : sqlDataType55
+connection_CDCType "connection_SubscriberTable 1..1" *-- "connection_CDCType46 0..9999" connection_SubscriberTable : subscribers45
+connection_MetadataColumn "connection_MetadataTable 1..1" -- "connection_MetadataColumn 0..1" connection_MetadataTable : table2
+connection_MetadataTable "connection_SAPFunctionUnit21 0..9999" --* "connection_MetadataTable22 1..1" connection_SAPFunctionUnit : tables20
+connection_xml_TdXMLElement "xml_TdXMLContent 1..1" *-- "connection_xml_TdXMLElement58 0..1" xml_TdXMLContent : xmlContent57
+connection_xml_TdXMLContent "xml_TdXMLElement 1..1" *-- "connection_xml_TdXMLContent 0..9999" xml_TdXMLElement : xmlElements59
 @enduml

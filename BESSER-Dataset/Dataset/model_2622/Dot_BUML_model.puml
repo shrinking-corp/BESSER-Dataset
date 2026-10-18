@@ -1,4 +1,8 @@
 @startuml
+' model: Dot
+' project: sampleModel
+' owner: User
+' description: New project
 class Dot_DirectedArc {
 }
 class Dot_Graph {
@@ -22,8 +26,8 @@ GraphElement <|-- Dot_DirectedArc
 GraphElement <|-- Dot_Node
 NamedElement <|-- Dot_Graph
 NamedElement <|-- Dot_GraphElement
-Dot_Graph "1..1" *-- "0..9999" Dot_GraphElement : contents0
-Dot_Graph "0..1" -- "1..1" Dot_GraphElement : graph1
-Dot_DirectedArc "1..1" -- "0..1" Dot_Node : sourceNode2
-Dot_DirectedArc "1..1" -- "0..1" Dot_Node : targetNode3
+Dot_Graph "GraphElement 1..1" *-- "graph 0..9999" Dot_GraphElement : contents0
+Dot_Graph "contents 0..1" -- "Graph 1..1" Dot_GraphElement : graph1
+Dot_DirectedArc "Dot_Node 1..1" -- "Dot_DirectedArc 0..1" Dot_Node : sourceNode2
+Dot_DirectedArc "Dot_Node5 1..1" -- "Dot_DirectedArc4 0..1" Dot_Node : targetNode3
 @enduml

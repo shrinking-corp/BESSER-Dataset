@@ -1,4 +1,8 @@
 @startuml
+' model: expressions
+' project: sampleModel
+' owner: User
+' description: New project
 enum AddType {
   ADDITION
   SUBTRACTION
@@ -95,19 +99,19 @@ Expression <|-- expressions_WideCharacterLiteral
 Expression <|-- expressions_WideStringLiteral
 Expression <|-- expressions_XOrExpression
 FileRegion <|-- expressions_Expression
-expressions_Expression "0..1" --* "1..1" expressions_UnaryExpression : expr31
-expressions_ConstExpression "1..1" *-- "0..1" expressions_Expression : expression0
-expressions_Expression "0..1" --* "1..1" expressions_OrExpression : left1
-expressions_AndExpression "1..1" *-- "0..1" expressions_Expression : left11
-expressions_Expression "0..1" --* "1..1" expressions_ShiftExpression : left16
-expressions_AddExpression "1..1" *-- "0..1" expressions_Expression : left21
-expressions_Expression "0..1" --* "1..1" expressions_MultExpression : left26
-expressions_Expression "0..1" --* "1..1" expressions_XOrExpression : left6
-expressions_AndExpression "1..1" *-- "0..1" expressions_Expression : right13
-expressions_Expression "0..1" --* "1..1" expressions_ShiftExpression : right18
-expressions_AddExpression "1..1" *-- "0..1" expressions_Expression : right23
-expressions_Expression "0..1" --* "1..1" expressions_MultExpression : right28
-expressions_Expression "0..1" --* "1..1" expressions_OrExpression : right3
-expressions_Expression "0..1" --* "1..1" expressions_XOrExpression : right8
-expressions_IdlTypeDcl "0..1" -- "1..1" expressions_ScopeLiteral : value33
+expressions_Expression "expressions_UnaryExpression 0..1" --* "expressions_Expression32 1..1" expressions_UnaryExpression : expr31
+expressions_ConstExpression "expressions_Expression 1..1" *-- "expressions_ConstExpression 0..1" expressions_Expression : expression0
+expressions_Expression "expressions_OrExpression 0..1" --* "expressions_Expression2 1..1" expressions_OrExpression : left1
+expressions_AndExpression "expressions_Expression12 1..1" *-- "expressions_AndExpression 0..1" expressions_Expression : left11
+expressions_Expression "expressions_ShiftExpression 0..1" --* "expressions_Expression17 1..1" expressions_ShiftExpression : left16
+expressions_AddExpression "expressions_Expression22 1..1" *-- "expressions_AddExpression 0..1" expressions_Expression : left21
+expressions_Expression "expressions_MultExpression 0..1" --* "expressions_Expression27 1..1" expressions_MultExpression : left26
+expressions_Expression "expressions_XOrExpression 0..1" --* "expressions_Expression7 1..1" expressions_XOrExpression : left6
+expressions_AndExpression "expressions_Expression15 1..1" *-- "expressions_AndExpression14 0..1" expressions_Expression : right13
+expressions_Expression "expressions_ShiftExpression19 0..1" --* "expressions_Expression20 1..1" expressions_ShiftExpression : right18
+expressions_AddExpression "expressions_Expression25 1..1" *-- "expressions_AddExpression24 0..1" expressions_Expression : right23
+expressions_Expression "expressions_MultExpression29 0..1" --* "expressions_Expression30 1..1" expressions_MultExpression : right28
+expressions_Expression "expressions_OrExpression4 0..1" --* "expressions_Expression5 1..1" expressions_OrExpression : right3
+expressions_Expression "expressions_XOrExpression9 0..1" --* "expressions_Expression10 1..1" expressions_XOrExpression : right8
+expressions_IdlTypeDcl "expressions_ScopeLiteral 0..1" -- "expressions_IdlTypeDcl 1..1" expressions_ScopeLiteral : value33
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: library
+' project: sampleModel
+' owner: User
+' description: New project
 class Addressable {
 }
 class AudioVisualItem {
@@ -72,19 +76,19 @@ Lendable <|-- library_CirculatingItem
 Person <|-- library_Borrower
 Person <|-- library_Employee
 Person <|-- library_Writer
-library_Book "1..1" -- "1..1" library_Writer : author0
-library_BookOnTape "1..1" -- "0..1" library_Writer : author18
-library_Book "0..9999" -- "1..1" library_Writer : books15
-library_Book "0..9999" --* "1..1" library_Library : books8
-library_Borrower "1..1" -- "0..9999" library_Lendable : borrowed23
-library_Borrower "0..9999" -- "1..1" library_Lendable : borrowers16
-library_Borrower "0..9999" --* "1..1" library_Library : borrowers4
-library_Library "1..1" *-- "0..9999" library_Library : branches11
-library_Person "0..9999" -- "1..1" library_VideoCassette : cast21
-library_Employee "0..9999" --* "1..1" library_Library : employees2
-library_Employee "0..1" -- "1..1" library_Employee : manager25
-library_Library "1..1" -- "0..1" library_Library : parentBranch13
-library_BookOnTape "1..1" -- "0..1" library_Person : reader17
-library_Item "0..9999" --* "1..1" library_Library : stock6
-library_Library "1..1" *-- "0..9999" library_Writer : writers1
+library_Book "Writer 1..1" -- "books 1..1" library_Writer : author0
+library_BookOnTape "library_Writer20 1..1" -- "library_BookOnTape19 0..1" library_Writer : author18
+library_Book "author 0..9999" -- "Book 1..1" library_Writer : books15
+library_Book "library_Library9 0..9999" --* "library_Book 1..1" library_Library : books8
+library_Borrower "Lendable 1..1" -- "borrowers 0..9999" library_Lendable : borrowed23
+library_Borrower "borrowed 0..9999" -- "Borrower 1..1" library_Lendable : borrowers16
+library_Borrower "library_Library5 0..9999" --* "library_Borrower 1..1" library_Library : borrowers4
+library_Library "Library 1..1" *-- "parentBranch 0..9999" library_Library : branches11
+library_Person "library_VideoCassette 0..9999" -- "library_Person22 1..1" library_VideoCassette : cast21
+library_Employee "library_Library3 0..9999" --* "library_Employee 1..1" library_Library : employees2
+library_Employee "library_Employee24 0..1" -- "library_Employee26 1..1" library_Employee : manager25
+library_Library "Library14 1..1" -- "branches 0..1" library_Library : parentBranch13
+library_BookOnTape "library_Person 1..1" -- "library_BookOnTape 0..1" library_Person : reader17
+library_Item "library_Library7 0..9999" --* "library_Item 1..1" library_Library : stock6
+library_Library "library_Writer 1..1" *-- "library_Library 0..9999" library_Writer : writers1
 @enduml

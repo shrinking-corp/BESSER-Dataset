@@ -1,4 +1,8 @@
 @startuml
+' model: statemachine
+' project: sampleModel
+' owner: User
+' description: New project
 class DataElement {
 }
 enum DataTypes {
@@ -75,11 +79,11 @@ DataElement <|-- statemachine_Variable
 Node <|-- statemachine_Pseudostate
 Node <|-- statemachine_State
 State <|-- statemachine_FinalState
-statemachine_DataElement "0..9999" --* "1..1" statemachine_Statechart : dataElement8
-statemachine_Region "0..9999" --* "1..1" statemachine_State : region6
-statemachine_Region "1..9999" --* "1..1" statemachine_Statechart : region9
-statemachine_Node "1..1" -- "1..1" statemachine_Transition : sourceNode3
-statemachine_Node "0..9999" --* "1..1" statemachine_Region : state0
-statemachine_Node "1..1" -- "1..1" statemachine_Transition : targetNode1
-statemachine_Statechart "1..1" *-- "0..9999" statemachine_Transition : transition12
+statemachine_DataElement "statemachine_Statechart 0..9999" --* "statemachine_DataElement 1..1" statemachine_Statechart : dataElement8
+statemachine_Region "statemachine_State 0..9999" --* "statemachine_Region7 1..1" statemachine_State : region6
+statemachine_Region "statemachine_Statechart10 1..9999" --* "statemachine_Region11 1..1" statemachine_Statechart : region9
+statemachine_Node "statemachine_Transition4 1..1" -- "statemachine_Node5 1..1" statemachine_Transition : sourceNode3
+statemachine_Node "statemachine_Region 0..9999" --* "statemachine_Node 1..1" statemachine_Region : state0
+statemachine_Node "statemachine_Transition 1..1" -- "statemachine_Node2 1..1" statemachine_Transition : targetNode1
+statemachine_Statechart "statemachine_Transition14 1..1" *-- "statemachine_Statechart13 0..9999" statemachine_Transition : transition12
 @enduml

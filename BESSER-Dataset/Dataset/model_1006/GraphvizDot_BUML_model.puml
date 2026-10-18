@@ -1,4 +1,8 @@
 @startuml
+' model: dot
+' project: sampleModel
+' owner: User
+' description: New project
 enum AttributeType {
   edge
   graph
@@ -52,16 +56,16 @@ Statement <|-- dot_AttributeStatement
 Statement <|-- dot_EdgeStatement
 Statement <|-- dot_NodeStatement
 Statement <|-- dot_Subgraph
-dot_Attribute "0..9999" --* "1..1" dot_EdgeStatement : attributes12
-dot_Attribute "0..9999" --* "1..1" dot_AttributeStatement : attributes20
-dot_Attribute "0..9999" --* "1..1" dot_NodeStatement : attributes4
-dot_EdgeStatement "1..1" *-- "0..9999" dot_EdgeTarget : edgeTargets10
-dot_Graph "0..9999" --* "1..1" dot_GraphvizModel : graphs0
-dot_Node "0..1" --* "1..1" dot_NodeStatement : node3
-dot_Node "1..1" *-- "0..1" dot_Port : port6
-dot_EdgeStatement "1..1" *-- "0..1" dot_Node : sourceNode8
-dot_Graph "1..1" *-- "0..9999" dot_Statement : statements1
-dot_Statement "0..9999" --* "1..1" dot_Subgraph : statements22
-dot_EdgeTarget "1..1" *-- "0..1" dot_Subgraph : targetSubgraph15
-dot_EdgeTarget "1..1" *-- "0..1" dot_Node : targetnode17
+dot_Attribute "dot_EdgeStatement13 0..9999" --* "dot_Attribute14 1..1" dot_EdgeStatement : attributes12
+dot_Attribute "dot_AttributeStatement 0..9999" --* "dot_Attribute21 1..1" dot_AttributeStatement : attributes20
+dot_Attribute "dot_NodeStatement5 0..9999" --* "dot_Attribute 1..1" dot_NodeStatement : attributes4
+dot_EdgeStatement "dot_EdgeTarget 1..1" *-- "dot_EdgeStatement11 0..9999" dot_EdgeTarget : edgeTargets10
+dot_Graph "dot_GraphvizModel 0..9999" --* "dot_Graph 1..1" dot_GraphvizModel : graphs0
+dot_Node "dot_NodeStatement 0..1" --* "dot_Node 1..1" dot_NodeStatement : node3
+dot_Node "dot_Port 1..1" *-- "dot_Node7 0..1" dot_Port : port6
+dot_EdgeStatement "dot_Node9 1..1" *-- "dot_EdgeStatement 0..1" dot_Node : sourceNode8
+dot_Graph "dot_Statement 1..1" *-- "dot_Graph2 0..9999" dot_Statement : statements1
+dot_Statement "dot_Subgraph23 0..9999" --* "dot_Statement24 1..1" dot_Subgraph : statements22
+dot_EdgeTarget "dot_Subgraph 1..1" *-- "dot_EdgeTarget16 0..1" dot_Subgraph : targetSubgraph15
+dot_EdgeTarget "dot_Node19 1..1" *-- "dot_EdgeTarget18 0..1" dot_Node : targetnode17
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: reservationsystem
+' project: sampleModel
+' owner: User
+' description: New project
 class Booking {
 }
 class Crew {
@@ -93,26 +97,26 @@ Crew <|-- reservationsystem_Attendant
 Crew <|-- reservationsystem_Pilot
 Person <|-- reservationsystem_Crew
 Person <|-- reservationsystem_Passenger
-reservationsystem_Crew "1..1" -- "1..1" reservationsystem_Crew : Leader2
-reservationsystem_Airport "0..9999" -- "1..1" reservationsystem_City : airport33
-reservationsystem_Person "1..1" -- "1..1" reservationsystem_User : belongsTo0
-reservationsystem_Booking "1..1" -- "1..1" reservationsystem_Seat : book36
-reservationsystem_Booking "0..9999" -- "1..1" reservationsystem_SpecificFlight : booking24
-reservationsystem_Booking "1..1" -- "1..1" reservationsystem_Passenger : booking5
-reservationsystem_Airport "1..1" -- "1..1" reservationsystem_City : city32
-reservationsystem_Crew "1..9999" -- "1..1" reservationsystem_SpecificFlight : crew22
-reservationsystem_Airport "1..1" -- "1..1" reservationsystem_GeneralFlight : from_15
-reservationsystem_GeneralFlight "1..1" -- "1..1" reservationsystem_SpecificFlight : generalFlight19
-reservationsystem_Booking "0..1" -- "1..1" reservationsystem_Passenger : passenger4
-reservationsystem_Booking "1..1" -- "1..9999" reservationsystem_Passenger : passenger8
-reservationsystem_Booking "1..1" -- "0..9999" reservationsystem_PaymentInfo : paymentInfo6
-reservationsystem_Plane "1..1" -- "1..1" reservationsystem_SpecificFlight : plane20
-reservationsystem_Plane "1..1" -- "1..1" reservationsystem_Seat : plane34
-reservationsystem_Booking "1..1" -- "1..9999" reservationsystem_Seat : seats12
-reservationsystem_Plane "1..1" -- "1..9999" reservationsystem_Seat : seats29
-reservationsystem_GeneralFlight "1..1" -- "1..9999" reservationsystem_SpecificFlight : specificFlight13
-reservationsystem_Plane "1..1" -- "0..9999" reservationsystem_SpecificFlight : specificFlight27
-reservationsystem_Crew "1..1" -- "0..9999" reservationsystem_SpecificFlight : specificFlight3
-reservationsystem_Booking "1..1" -- "1..9999" reservationsystem_SpecificFlight : specificFlight9
-reservationsystem_Airport "1..1" -- "1..1" reservationsystem_GeneralFlight : to16
+reservationsystem_Crew "reservationsystem_Crew 1..1" -- "reservationsystem_Crew1 1..1" reservationsystem_Crew : Leader2
+reservationsystem_Airport "city 0..9999" -- "Airport 1..1" reservationsystem_City : airport33
+reservationsystem_Person "reservationsystem_User 1..1" -- "reservationsystem_Person 1..1" reservationsystem_User : belongsTo0
+reservationsystem_Booking "seats37 1..1" -- "Booking38 1..1" reservationsystem_Seat : book36
+reservationsystem_Booking "specificFlight25 0..9999" -- "Booking26 1..1" reservationsystem_SpecificFlight : booking24
+reservationsystem_Booking "passenger 1..1" -- "Booking 1..1" reservationsystem_Passenger : booking5
+reservationsystem_Airport "City 1..1" -- "airport 1..1" reservationsystem_City : city32
+reservationsystem_Crew "specificFlight23 1..9999" -- "Crew 1..1" reservationsystem_SpecificFlight : crew22
+reservationsystem_Airport "reservationsystem_GeneralFlight 1..1" -- "reservationsystem_Airport 1..1" reservationsystem_GeneralFlight : from_15
+reservationsystem_GeneralFlight "specificFlight 1..1" -- "GeneralFlight 1..1" reservationsystem_SpecificFlight : generalFlight19
+reservationsystem_Booking "reservationsystem_Passenger 0..1" -- "reservationsystem_Booking 1..1" reservationsystem_Passenger : passenger4
+reservationsystem_Booking "Passenger 1..1" -- "booking 1..9999" reservationsystem_Passenger : passenger8
+reservationsystem_Booking "reservationsystem_PaymentInfo 1..1" -- "reservationsystem_Booking7 0..9999" reservationsystem_PaymentInfo : paymentInfo6
+reservationsystem_Plane "specificFlight21 1..1" -- "Plane 1..1" reservationsystem_SpecificFlight : plane20
+reservationsystem_Plane "seats 1..1" -- "Plane35 1..1" reservationsystem_Seat : plane34
+reservationsystem_Booking "Seat 1..1" -- "book 1..9999" reservationsystem_Seat : seats12
+reservationsystem_Plane "Seat31 1..1" -- "plane30 1..9999" reservationsystem_Seat : seats29
+reservationsystem_GeneralFlight "SpecificFlight14 1..1" -- "generalFlight 1..9999" reservationsystem_SpecificFlight : specificFlight13
+reservationsystem_Plane "SpecificFlight28 1..1" -- "plane 0..9999" reservationsystem_SpecificFlight : specificFlight27
+reservationsystem_Crew "SpecificFlight 1..1" -- "crew 0..9999" reservationsystem_SpecificFlight : specificFlight3
+reservationsystem_Booking "SpecificFlight11 1..1" -- "booking10 1..9999" reservationsystem_SpecificFlight : specificFlight9
+reservationsystem_Airport "reservationsystem_GeneralFlight17 1..1" -- "reservationsystem_Airport18 1..1" reservationsystem_GeneralFlight : to16
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: types
+' project: sampleModel
+' owner: User
+' description: New project
 class Type {
 }
 class TypeReference {
@@ -34,14 +38,14 @@ Type <|-- types_UserType
 TypeReference <|-- types_ArrayType
 UserType <|-- types_ClassType
 UserType <|-- types_ServiceType
-types_Property "0..9999" --* "1..1" types_ServiceType : configurations11
-types_EObject "0..1" --* "1..1" types_Operation : expression21
-types_Operation "0..9999" --* "1..1" types_ServiceType : operations13
-types_Operation "1..1" *-- "0..9999" types_Property : parameters18
-types_ClassType "1..1" -- "0..1" types_ClassType : parent1
-types_ClassType "1..1" *-- "0..9999" types_Property : properties2
-types_TypeReference "1..1" *-- "0..1" types_TypeReference : remainder9
-types_Operation "1..1" *-- "1..1" types_TypeReference : type15
-types_Property "1..1" *-- "1..1" types_TypeReference : type4
-types_Type "0..1" -- "1..1" types_TypeReference : type6
+types_Property "types_ServiceType 0..9999" --* "types_Property12 1..1" types_ServiceType : configurations11
+types_EObject "types_Operation22 0..1" --* "types_EObject 1..1" types_Operation : expression21
+types_Operation "types_ServiceType14 0..9999" --* "types_Operation 1..1" types_ServiceType : operations13
+types_Operation "types_Property20 1..1" *-- "types_Operation19 0..9999" types_Property : parameters18
+types_ClassType "types_ClassType 1..1" -- "types_ClassType0 0..1" types_ClassType : parent1
+types_ClassType "types_Property 1..1" *-- "types_ClassType3 0..9999" types_Property : properties2
+types_TypeReference "types_TypeReference10 1..1" *-- "types_TypeReference8 0..1" types_TypeReference : remainder9
+types_Operation "types_TypeReference17 1..1" *-- "types_Operation16 1..1" types_TypeReference : type15
+types_Property "types_TypeReference 1..1" *-- "types_Property5 1..1" types_TypeReference : type4
+types_Type "types_TypeReference7 0..1" -- "types_Type 1..1" types_TypeReference : type6
 @enduml

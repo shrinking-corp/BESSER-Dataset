@@ -1,4 +1,8 @@
 @startuml
+' model: cloudml
+' project: sampleModel
+' owner: User
+' description: New project
 class ArtefactPort {
 }
 class ArtefactPortInstance {
@@ -96,32 +100,32 @@ WithProperties <|-- cloudml_Node
 WithProperties <|-- cloudml_NodeInstance
 WithProperties <|-- cloudml_Provider
 WithProperties <|-- cloudml_Resource
-cloudml_ArtefactInstance "0..9999" --* "1..1" cloudml_DeploymentModel : artefactInstances9
-cloudml_Artefact "0..9999" --* "1..1" cloudml_DeploymentModel : artefactTypes3
-cloudml_BindingInstance "0..9999" --* "1..1" cloudml_DeploymentModel : bindingInstances13
-cloudml_Binding "0..9999" --* "1..1" cloudml_DeploymentModel : bindingTypes7
-cloudml_Binding "1..1" -- "0..1" cloudml_ClientPort : client44
-cloudml_BindingInstance "1..1" -- "0..1" cloudml_ClientPortInstance : client59
-cloudml_Binding "1..1" *-- "0..1" cloudml_Resource : clientResource50
-cloudml_Node "1..1" -- "1..1" cloudml_Provider : cloudProvider24
-cloudml_ArtefactInstance "0..9999" --* "1..1" cloudml_Composite : containedArtefacts42
-cloudml_Artefact "1..1" -- "0..1" cloudml_ArtefactPort : destination15
-cloudml_ArtefactInstance "1..1" -- "0..1" cloudml_NodeInstance : destination32
-cloudml_DeploymentModel "1..1" *-- "0..9999" cloudml_NodeInstance : nodeInstances11
-cloudml_DeploymentModel "1..1" *-- "0..9999" cloudml_Node : nodeTypes5
-cloudml_Property "0..9999" --* "1..1" cloudml_WithProperties : properties0
-cloudml_Artefact "1..1" *-- "0..9999" cloudml_ServerPort : provided20
-cloudml_ArtefactInstance "1..1" *-- "0..9999" cloudml_ServerPortInstance : provided35
-cloudml_DeploymentModel "1..1" *-- "0..9999" cloudml_Provider : providers2
-cloudml_Artefact "1..1" *-- "0..9999" cloudml_ClientPort : required22
-cloudml_ArtefactInstance "1..1" *-- "0..9999" cloudml_ClientPortInstance : required37
-cloudml_Artefact "1..1" *-- "0..1" cloudml_Resource : resource17
-cloudml_Binding "1..1" -- "0..1" cloudml_ServerPort : server47
-cloudml_BindingInstance "1..1" -- "0..1" cloudml_ServerPortInstance : server62
-cloudml_Binding "1..1" *-- "0..1" cloudml_Resource : serverResource53
-cloudml_ArtefactPort "1..1" -- "1..1" cloudml_ArtefactPortInstance : type27
-cloudml_Artefact "1..1" -- "1..1" cloudml_ArtefactInstance : type29
-cloudml_Node "1..1" -- "1..1" cloudml_NodeInstance : type39
-cloudml_Binding "1..1" -- "1..1" cloudml_BindingInstance : type56
-cloudml_Resource "1..1" *-- "0..9999" cloudml_UploadCommand : uploadCommand1
+cloudml_ArtefactInstance "cloudml_DeploymentModel10 0..9999" --* "cloudml_ArtefactInstance 1..1" cloudml_DeploymentModel : artefactInstances9
+cloudml_Artefact "cloudml_DeploymentModel4 0..9999" --* "cloudml_Artefact 1..1" cloudml_DeploymentModel : artefactTypes3
+cloudml_BindingInstance "cloudml_DeploymentModel14 0..9999" --* "cloudml_BindingInstance 1..1" cloudml_DeploymentModel : bindingInstances13
+cloudml_Binding "cloudml_DeploymentModel8 0..9999" --* "cloudml_Binding 1..1" cloudml_DeploymentModel : bindingTypes7
+cloudml_Binding "cloudml_ClientPort46 1..1" -- "cloudml_Binding45 0..1" cloudml_ClientPort : client44
+cloudml_BindingInstance "cloudml_ClientPortInstance61 1..1" -- "cloudml_BindingInstance60 0..1" cloudml_ClientPortInstance : client59
+cloudml_Binding "cloudml_Resource52 1..1" *-- "cloudml_Binding51 0..1" cloudml_Resource : clientResource50
+cloudml_Node "cloudml_Provider26 1..1" -- "cloudml_Node25 1..1" cloudml_Provider : cloudProvider24
+cloudml_ArtefactInstance "cloudml_Composite 0..9999" --* "cloudml_ArtefactInstance43 1..1" cloudml_Composite : containedArtefacts42
+cloudml_Artefact "cloudml_ArtefactPort 1..1" -- "cloudml_Artefact16 0..1" cloudml_ArtefactPort : destination15
+cloudml_ArtefactInstance "cloudml_NodeInstance34 1..1" -- "cloudml_ArtefactInstance33 0..1" cloudml_NodeInstance : destination32
+cloudml_DeploymentModel "cloudml_NodeInstance 1..1" *-- "cloudml_DeploymentModel12 0..9999" cloudml_NodeInstance : nodeInstances11
+cloudml_DeploymentModel "cloudml_Node 1..1" *-- "cloudml_DeploymentModel6 0..9999" cloudml_Node : nodeTypes5
+cloudml_Property "cloudml_WithProperties 0..9999" --* "cloudml_Property 1..1" cloudml_WithProperties : properties0
+cloudml_Artefact "cloudml_ServerPort 1..1" *-- "cloudml_Artefact21 0..9999" cloudml_ServerPort : provided20
+cloudml_ArtefactInstance "cloudml_ServerPortInstance 1..1" *-- "cloudml_ArtefactInstance36 0..9999" cloudml_ServerPortInstance : provided35
+cloudml_DeploymentModel "cloudml_Provider 1..1" *-- "cloudml_DeploymentModel 0..9999" cloudml_Provider : providers2
+cloudml_Artefact "cloudml_ClientPort 1..1" *-- "cloudml_Artefact23 0..9999" cloudml_ClientPort : required22
+cloudml_ArtefactInstance "cloudml_ClientPortInstance 1..1" *-- "cloudml_ArtefactInstance38 0..9999" cloudml_ClientPortInstance : required37
+cloudml_Artefact "cloudml_Resource19 1..1" *-- "cloudml_Artefact18 0..1" cloudml_Resource : resource17
+cloudml_Binding "cloudml_ServerPort49 1..1" -- "cloudml_Binding48 0..1" cloudml_ServerPort : server47
+cloudml_BindingInstance "cloudml_ServerPortInstance64 1..1" -- "cloudml_BindingInstance63 0..1" cloudml_ServerPortInstance : server62
+cloudml_Binding "cloudml_Resource55 1..1" *-- "cloudml_Binding54 0..1" cloudml_Resource : serverResource53
+cloudml_ArtefactPort "cloudml_ArtefactPortInstance 1..1" -- "cloudml_ArtefactPort28 1..1" cloudml_ArtefactPortInstance : type27
+cloudml_Artefact "cloudml_ArtefactInstance30 1..1" -- "cloudml_Artefact31 1..1" cloudml_ArtefactInstance : type29
+cloudml_Node "cloudml_NodeInstance40 1..1" -- "cloudml_Node41 1..1" cloudml_NodeInstance : type39
+cloudml_Binding "cloudml_BindingInstance57 1..1" -- "cloudml_Binding58 1..1" cloudml_BindingInstance : type56
+cloudml_Resource "cloudml_UploadCommand 1..1" *-- "cloudml_Resource 0..9999" cloudml_UploadCommand : uploadCommand1
 @enduml

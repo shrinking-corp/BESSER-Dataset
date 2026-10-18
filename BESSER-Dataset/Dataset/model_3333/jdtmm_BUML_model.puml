@@ -1,4 +1,8 @@
 @startuml
+' model: jdtmm
+' project: sampleModel
+' owner: User
+' description: New project
 class JDTJavaElement {
 }
 class JDTMember {
@@ -125,36 +129,36 @@ JDTType <|-- jdtmm_JDTClass
 JDTType <|-- jdtmm_JDTEnum
 JDTType <|-- jdtmm_JDTInterface
 JDTTypeRoot <|-- jdtmm_JDTCompilationUnit
-jdtmm_JDTMethod "1..1" *-- "0..9999" jdtmm_JDTMethodBody : bodies6
-jdtmm_JDTJavaElement "0..9999" -- "1..1" jdtmm_JDTParent : children10
-jdtmm_JDTCompilationUnit "0..1" -- "1..1" jdtmm_JDTType : compilationUnit18
-jdtmm_JDTCompilationUnit "0..9999" --* "1..1" jdtmm_JDTPackageFragment : compilationUnits41
-jdtmm_JDTMember "0..1" -- "1..1" jdtmm_JDTTypeParameter : declaringMember12
-jdtmm_JDTMethod "1..1" -- "0..9999" jdtmm_JDTType : exceptions5
-jdtmm_JDTMember "1..1" -- "0..9999" jdtmm_JDTType : explicitRequiredImports8
-jdtmm_JDTField "0..9999" --* "1..1" jdtmm_JDTType : fields16
-jdtmm_JDTJavaModel "0..1" -- "1..1" jdtmm_JDTJavaProject : javaModel46
-jdtmm_JDTJavaProject "0..1" -- "1..1" jdtmm_JDTPackageFragmentRoot : javaProject43
-jdtmm_JDTJavaModel "1..1" *-- "0..9999" jdtmm_JDTJavaProject : javaProject50
-jdtmm_JDTMethod "0..9999" --* "1..1" jdtmm_JDTType : methods13
-jdtmm_JDTMethod "1..1" -- "1..1" jdtmm_JDTMethodBody : owner0
-jdtmm_JDTMethod "1..1" -- "1..1" jdtmm_JDTType : owner1
-jdtmm_JDTType "1..1" -- "0..1" jdtmm_JDTType : owner24
-jdtmm_JDTField "1..1" -- "1..1" jdtmm_JDTType : owner35
-jdtmm_JDTCompilationUnit "1..1" -- "0..1" jdtmm_JDTPackageFragment : packageFragment37
-jdtmm_JDTPackageFragment "1..1" -- "0..1" jdtmm_JDTPackageFragmentRoot : packageFragmentRoot40
-jdtmm_JDTJavaProject "1..1" *-- "0..9999" jdtmm_JDTPackageFragmentRoot : packageFragmentRoots47
-jdtmm_JDTPackageFragment "0..9999" --* "1..1" jdtmm_JDTPackageFragmentRoot : packageFragments44
-jdtmm_JDTMethod "0..1" -- "1..1" jdtmm_JDTParameter : parameterOwner52
-jdtmm_JDTMethod "1..1" *-- "0..9999" jdtmm_JDTParameter : parameters3
-jdtmm_JDTJavaElement "1..1" -- "0..1" jdtmm_JDTParent : parent11
-jdtmm_JDTMethod "0..1" -- "1..1" jdtmm_JDTParameter : returnOwner56
-jdtmm_JDTMethod "1..1" *-- "0..1" jdtmm_JDTParameter : returnType2
-jdtmm_JDTType "0..1" -- "1..1" jdtmm_JDTType : superClass31
-jdtmm_JDTType "0..9999" -- "1..1" jdtmm_JDTType : superInterfaces28
-jdtmm_JDTField "1..1" -- "0..1" jdtmm_JDTType : type33
-jdtmm_JDTParameter "1..1" -- "0..1" jdtmm_JDTType : type54
-jdtmm_JDTMember "1..1" *-- "0..9999" jdtmm_JDTTypeParameter : typeParameters7
-jdtmm_JDTType "1..1" *-- "0..9999" jdtmm_JDTType : types20
-jdtmm_JDTCompilationUnit "1..1" *-- "0..9999" jdtmm_JDTType : types38
+jdtmm_JDTMethod "JDTMethodBody 1..1" *-- "owner 0..9999" jdtmm_JDTMethodBody : bodies6
+jdtmm_JDTJavaElement "parent 0..9999" -- "JDTJavaElement 1..1" jdtmm_JDTParent : children10
+jdtmm_JDTCompilationUnit "types 0..1" -- "JDTCompilationUnit 1..1" jdtmm_JDTType : compilationUnit18
+jdtmm_JDTCompilationUnit "packageFragment 0..9999" --* "JDTCompilationUnit42 1..1" jdtmm_JDTPackageFragment : compilationUnits41
+jdtmm_JDTMember "typeParameters 0..1" -- "JDTMember 1..1" jdtmm_JDTTypeParameter : declaringMember12
+jdtmm_JDTMethod "jdtmm_JDTType 1..1" -- "jdtmm_JDTMethod 0..9999" jdtmm_JDTType : exceptions5
+jdtmm_JDTMember "jdtmm_JDTType9 1..1" -- "jdtmm_JDTMember 0..9999" jdtmm_JDTType : explicitRequiredImports8
+jdtmm_JDTField "owner17 0..9999" --* "JDTField 1..1" jdtmm_JDTType : fields16
+jdtmm_JDTJavaModel "javaProject 0..1" -- "JDTJavaModel 1..1" jdtmm_JDTJavaProject : javaModel46
+jdtmm_JDTJavaProject "packageFragmentRoots 0..1" -- "JDTJavaProject 1..1" jdtmm_JDTPackageFragmentRoot : javaProject43
+jdtmm_JDTJavaModel "JDTJavaProject51 1..1" *-- "javaModel 0..9999" jdtmm_JDTJavaProject : javaProject50
+jdtmm_JDTMethod "owner14 0..9999" --* "JDTMethod15 1..1" jdtmm_JDTType : methods13
+jdtmm_JDTMethod "bodies 1..1" -- "JDTMethod 1..1" jdtmm_JDTMethodBody : owner0
+jdtmm_JDTMethod "JDTType 1..1" -- "methods 1..1" jdtmm_JDTType : owner1
+jdtmm_JDTType "JDTType26 1..1" -- "types25 0..1" jdtmm_JDTType : owner24
+jdtmm_JDTField "JDTType36 1..1" -- "fields 1..1" jdtmm_JDTType : owner35
+jdtmm_JDTCompilationUnit "JDTPackageFragment 1..1" -- "compilationUnits 0..1" jdtmm_JDTPackageFragment : packageFragment37
+jdtmm_JDTPackageFragment "JDTPackageFragmentRoot 1..1" -- "packageFragments 0..1" jdtmm_JDTPackageFragmentRoot : packageFragmentRoot40
+jdtmm_JDTJavaProject "JDTPackageFragmentRoot49 1..1" *-- "javaProject48 0..9999" jdtmm_JDTPackageFragmentRoot : packageFragmentRoots47
+jdtmm_JDTPackageFragment "packageFragmentRoot 0..9999" --* "JDTPackageFragment45 1..1" jdtmm_JDTPackageFragmentRoot : packageFragments44
+jdtmm_JDTMethod "parameters 0..1" -- "JDTMethod53 1..1" jdtmm_JDTParameter : parameterOwner52
+jdtmm_JDTMethod "JDTParameter4 1..1" *-- "parameterOwner 0..9999" jdtmm_JDTParameter : parameters3
+jdtmm_JDTJavaElement "JDTParent 1..1" -- "children 0..1" jdtmm_JDTParent : parent11
+jdtmm_JDTMethod "returnType 0..1" -- "JDTMethod57 1..1" jdtmm_JDTParameter : returnOwner56
+jdtmm_JDTMethod "JDTParameter 1..1" *-- "returnOwner 0..1" jdtmm_JDTParameter : returnType2
+jdtmm_JDTType "jdtmm_JDTType30 0..1" -- "jdtmm_JDTType32 1..1" jdtmm_JDTType : superClass31
+jdtmm_JDTType "jdtmm_JDTType27 0..9999" -- "jdtmm_JDTType29 1..1" jdtmm_JDTType : superInterfaces28
+jdtmm_JDTField "jdtmm_JDTType34 1..1" -- "jdtmm_JDTField 0..1" jdtmm_JDTType : type33
+jdtmm_JDTParameter "jdtmm_JDTType55 1..1" -- "jdtmm_JDTParameter 0..1" jdtmm_JDTType : type54
+jdtmm_JDTMember "JDTTypeParameter 1..1" *-- "declaringMember 0..9999" jdtmm_JDTTypeParameter : typeParameters7
+jdtmm_JDTType "JDTType22 1..1" *-- "owner21 0..9999" jdtmm_JDTType : types20
+jdtmm_JDTCompilationUnit "JDTType39 1..1" *-- "compilationUnit 0..9999" jdtmm_JDTType : types38
 @enduml

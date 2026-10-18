@@ -1,4 +1,8 @@
 @startuml
+' model: DBLP
+' project: sampleModel
+' owner: User
+' description: New project
 class DBLP_Article {
   + fromPage : int
   + month : str
@@ -90,21 +94,21 @@ Record <|-- DBLP_MastersThesis
 Record <|-- DBLP_PhDThesis
 Record <|-- DBLP_Proceedings
 Record <|-- DBLP_Www
-DBLP_Article "0..9999" -- "1..1" DBLP_Journal : articles3
-DBLP_Author "0..9999" -- "1..1" DBLP_Record : authors0
-DBLP_Editor "0..9999" -- "1..1" DBLP_InProceedings : editors11
-DBLP_Editor "0..9999" -- "1..1" DBLP_Proceedings : editors20
-DBLP_Editor "0..9999" -- "1..1" DBLP_Www : editors30
-DBLP_Editor "0..9999" -- "1..1" DBLP_InCollection : editors5
-DBLP_Article "1..1" -- "0..1" DBLP_Journal : journal1
-DBLP_InProceedings "1..1" -- "0..1" DBLP_Organization : organization13
-DBLP_InProceedings "1..1" -- "0..1" DBLP_Publisher : publisher16
-DBLP_Proceedings "1..1" -- "0..1" DBLP_Publisher : publisher22
-DBLP_Book "1..1" -- "0..1" DBLP_Publisher : publisher4
-DBLP_InCollection "1..1" -- "0..1" DBLP_Publisher : publisher8
-DBLP_Author "1..1" -- "0..9999" DBLP_Record : records2
-DBLP_MastersThesis "1..1" -- "0..1" DBLP_School : school19
-DBLP_PhDThesis "1..1" -- "0..1" DBLP_School : school28
-DBLP_Organization "0..9999" -- "1..1" DBLP_Proceedings : sponsoredBy25
-DBLP_InCollection "1..1" -- "0..1" DBLP_Organization : sponsoredBy6
+DBLP_Article "journal 0..9999" -- "DBLP.ecoreArticle 1..1" DBLP_Journal : articles3
+DBLP_Author "records 0..9999" -- "DBLP.ecoreAuthor 1..1" DBLP_Record : authors0
+DBLP_Editor "DBLP_InProceedings 0..9999" -- "DBLP_Editor12 1..1" DBLP_InProceedings : editors11
+DBLP_Editor "DBLP_Proceedings 0..9999" -- "DBLP_Editor21 1..1" DBLP_Proceedings : editors20
+DBLP_Editor "DBLP_Www 0..9999" -- "DBLP_Editor31 1..1" DBLP_Www : editors30
+DBLP_Editor "DBLP_InCollection 0..9999" -- "DBLP_Editor 1..1" DBLP_InCollection : editors5
+DBLP_Article "DBLP.ecoreJournal 1..1" -- "articles 0..1" DBLP_Journal : journal1
+DBLP_InProceedings "DBLP_Organization15 1..1" -- "DBLP_InProceedings14 0..1" DBLP_Organization : organization13
+DBLP_InProceedings "DBLP_Publisher18 1..1" -- "DBLP_InProceedings17 0..1" DBLP_Publisher : publisher16
+DBLP_Proceedings "DBLP_Publisher24 1..1" -- "DBLP_Proceedings23 0..1" DBLP_Publisher : publisher22
+DBLP_Book "DBLP_Publisher 1..1" -- "DBLP_Book 0..1" DBLP_Publisher : publisher4
+DBLP_InCollection "DBLP_Publisher10 1..1" -- "DBLP_InCollection9 0..1" DBLP_Publisher : publisher8
+DBLP_Author "DBLP.ecoreRecord 1..1" -- "authors 0..9999" DBLP_Record : records2
+DBLP_MastersThesis "DBLP_School 1..1" -- "DBLP_MastersThesis 0..1" DBLP_School : school19
+DBLP_PhDThesis "DBLP_School29 1..1" -- "DBLP_PhDThesis 0..1" DBLP_School : school28
+DBLP_Organization "DBLP_Proceedings26 0..9999" -- "DBLP_Organization27 1..1" DBLP_Proceedings : sponsoredBy25
+DBLP_InCollection "DBLP_Organization 1..1" -- "DBLP_InCollection7 0..1" DBLP_Organization : sponsoredBy6
 @enduml

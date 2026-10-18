@@ -1,4 +1,8 @@
 @startuml
+' model: farmbot_modeling
+' project: sampleModel
+' owner: User
+' description: New project
 class BooleanExpression {
 }
 class Command {
@@ -115,9 +119,9 @@ SequenceCommand <|-- farmbot_modeling_TurnOnDigital
 SequenceCommand <|-- farmbot_modeling_Wait
 SequenceInstruction <|-- farmbot_modeling_If
 SequenceInstruction <|-- farmbot_modeling_SequenceCommand
-farmbot_modeling_BooleanExpression "1..1" --* "1..1" farmbot_modeling_If : booleanExpression2
-farmbot_modeling_ExecuteSequence "0..1" --* "1..1" farmbot_modeling_If : else_5
-farmbot_modeling_Farmbot "1..1" *-- "0..9999" farmbot_modeling_Instruction : instructions0
-farmbot_modeling_Sequence "1..1" *-- "0..9999" farmbot_modeling_SequenceInstruction : sequenceInstructions1
-farmbot_modeling_ExecuteSequence "0..1" --* "1..1" farmbot_modeling_If : then3
+farmbot_modeling_BooleanExpression "farmbot_modeling_If 1..1" --* "farmbot_modeling_BooleanExpression 1..1" farmbot_modeling_If : booleanExpression2
+farmbot_modeling_ExecuteSequence "farmbot_modeling_If6 0..1" --* "farmbot_modeling_ExecuteSequence7 1..1" farmbot_modeling_If : else_5
+farmbot_modeling_Farmbot "farmbot_modeling_Instruction 1..1" *-- "farmbot_modeling_Farmbot 0..9999" farmbot_modeling_Instruction : instructions0
+farmbot_modeling_Sequence "farmbot_modeling_SequenceInstruction 1..1" *-- "farmbot_modeling_Sequence 0..9999" farmbot_modeling_SequenceInstruction : sequenceInstructions1
+farmbot_modeling_ExecuteSequence "farmbot_modeling_If4 0..1" --* "farmbot_modeling_ExecuteSequence 1..1" farmbot_modeling_If : then3
 @enduml

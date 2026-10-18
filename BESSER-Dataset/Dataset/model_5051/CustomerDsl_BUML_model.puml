@@ -1,4 +1,8 @@
 @startuml
+' model: customerDsl
+' project: sampleModel
+' owner: User
+' description: New project
 class Address {
 }
 enum OrderChannel {
@@ -33,10 +37,10 @@ class customerDsl_StreetAddress {
 }
 Address <|-- customerDsl_POBox
 Address <|-- customerDsl_StreetAddress
-customerDsl_Address "0..1" -- "1..1" customerDsl_Order : address10
-customerDsl_Address "0..9999" --* "1..1" customerDsl_Customer : addresses5
-customerDsl_Customer "0..1" -- "1..1" customerDsl_Order : customer7
-customerDsl_Customer "0..9999" --* "1..1" customerDsl_CustomerDb : customers0
-customerDsl_CustomerDb "1..1" *-- "0..9999" customerDsl_Order : orders1
-customerDsl_CustomerDb "1..1" *-- "0..9999" customerDsl_Product : products3
+customerDsl_Address "customerDsl_Order11 0..1" -- "customerDsl_Address12 1..1" customerDsl_Order : address10
+customerDsl_Address "customerDsl_Customer6 0..9999" --* "customerDsl_Address 1..1" customerDsl_Customer : addresses5
+customerDsl_Customer "customerDsl_Order8 0..1" -- "customerDsl_Customer9 1..1" customerDsl_Order : customer7
+customerDsl_Customer "customerDsl_CustomerDb 0..9999" --* "customerDsl_Customer 1..1" customerDsl_CustomerDb : customers0
+customerDsl_CustomerDb "customerDsl_Order 1..1" *-- "customerDsl_CustomerDb2 0..9999" customerDsl_Order : orders1
+customerDsl_CustomerDb "customerDsl_Product 1..1" *-- "customerDsl_CustomerDb4 0..9999" customerDsl_Product : products3
 @enduml

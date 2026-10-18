@@ -1,4 +1,8 @@
 @startuml
+' model: mission
+' project: sampleModel
+' owner: User
+' description: New project
 class ControlTask {
 }
 class NamedElement {
@@ -48,17 +52,17 @@ Task <|-- mission_ControlTask
 Task <|-- mission_LineTask
 Task <|-- mission_PointTask
 Task <|-- mission_PolygonTask
-mission_Drone "1..9999" --* "1..1" mission_Swarm : drones5
-mission_Task "1..1" -- "1..1" mission_TaskDependency : from_11
-mission_Coordinate "1..1" --* "1..1" mission_Drone : home7
-mission_Coordinate "1..1" --* "1..1" mission_PolygonTask : initialPosition19
-mission_Coordinate "1..1" --* "1..1" mission_LineTask : initialPosition26
-mission_Coordinate "1..1" --* "1..1" mission_PointTask : point22
-mission_Coordinate "1..9999" --* "1..1" mission_LineTask : points24
-mission_ControlTask "1..1" *-- "0..1" mission_Coordinate : referencePosition9
-mission_Coordinate "3..9999" --* "1..1" mission_PolygonTask : shell17
-mission_Mission "1..1" *-- "1..1" mission_Swarm : swarm3
-mission_Mission "1..1" *-- "0..9999" mission_TaskDependency : taskDependencies1
-mission_Mission "1..1" *-- "1..9999" mission_Task : tasks0
-mission_Task "1..1" -- "1..1" mission_TaskDependency : to14
+mission_Drone "mission_Swarm6 1..9999" --* "mission_Drone 1..1" mission_Swarm : drones5
+mission_Task "mission_TaskDependency12 1..1" -- "mission_Task13 1..1" mission_TaskDependency : from_11
+mission_Coordinate "mission_Drone8 1..1" --* "mission_Coordinate 1..1" mission_Drone : home7
+mission_Coordinate "mission_PolygonTask20 1..1" --* "mission_Coordinate21 1..1" mission_PolygonTask : initialPosition19
+mission_Coordinate "mission_LineTask27 1..1" --* "mission_Coordinate28 1..1" mission_LineTask : initialPosition26
+mission_Coordinate "mission_PointTask 1..1" --* "mission_Coordinate23 1..1" mission_PointTask : point22
+mission_Coordinate "mission_LineTask 1..9999" --* "mission_Coordinate25 1..1" mission_LineTask : points24
+mission_ControlTask "mission_Coordinate10 1..1" *-- "mission_ControlTask 0..1" mission_Coordinate : referencePosition9
+mission_Coordinate "mission_PolygonTask 3..9999" --* "mission_Coordinate18 1..1" mission_PolygonTask : shell17
+mission_Mission "mission_Swarm 1..1" *-- "mission_Mission4 1..1" mission_Swarm : swarm3
+mission_Mission "mission_TaskDependency 1..1" *-- "mission_Mission2 0..9999" mission_TaskDependency : taskDependencies1
+mission_Mission "mission_Task 1..1" *-- "mission_Mission 1..9999" mission_Task : tasks0
+mission_Task "mission_TaskDependency15 1..1" -- "mission_Task16 1..1" mission_TaskDependency : to14
 @enduml

@@ -3254,9 +3254,9 @@ def test_assoc_client14_stub_double():
     partner = uml_Dependency()
     setattr(partner, 'clientDependency', None)
     _safe_set(owner, 'NamedElement', partner)
-    assert getattr(partner, 'clientDependency') == owner
+    assert owner in getattr(partner, 'clientDependency')
     _safe_set(owner, 'NamedElement', None)
-    assert getattr(partner, 'clientDependency') is None
+    assert owner not in getattr(partner, 'clientDependency')
 
 
 def test_assoc_clientDependency11_stub_double():
@@ -3314,9 +3314,9 @@ def test_assoc_elementImport22_stub_double():
     partner = uml_Namespace()
     setattr(partner, 'importingNamespace', None)
     _safe_set(owner, 'ElementImport', partner)
-    assert getattr(partner, 'importingNamespace') == owner
+    assert owner in getattr(partner, 'importingNamespace')
     _safe_set(owner, 'ElementImport', None)
-    assert getattr(partner, 'importingNamespace') is None
+    assert owner not in getattr(partner, 'importingNamespace')
 
 
 def test_assoc_endType46_stub_double():
@@ -3389,9 +3389,9 @@ def test_assoc_member25_stub_double():
     partner = uml_Namespace()
     setattr(partner, 'uml_Namespace', None)
     _safe_set(owner, 'uml_NamedElement26', partner)
-    assert getattr(partner, 'uml_Namespace') == owner
+    assert owner in getattr(partner, 'uml_Namespace')
     _safe_set(owner, 'uml_NamedElement26', None)
-    assert getattr(partner, 'uml_Namespace') is None
+    assert owner not in getattr(partner, 'uml_Namespace')
 
 
 def test_assoc_namespace12_stub_double():
@@ -3419,9 +3419,9 @@ def test_assoc_ownedComment6_stub_double():
     partner = uml_Element()
     setattr(partner, 'uml_Element7', None)
     _safe_set(owner, 'uml_Comment8', partner)
-    assert getattr(partner, 'uml_Element7') == owner
+    assert owner in getattr(partner, 'uml_Element7')
     _safe_set(owner, 'uml_Comment8', None)
-    assert getattr(partner, 'uml_Element7') is None
+    assert owner not in getattr(partner, 'uml_Element7')
 
 
 def test_assoc_ownedMember30_stub_double():
@@ -3434,9 +3434,9 @@ def test_assoc_ownedMember30_stub_double():
     partner = uml_Namespace()
     setattr(partner, 'namespace', None)
     _safe_set(owner, 'NamedElement31', partner)
-    assert getattr(partner, 'namespace') == owner
+    assert owner in getattr(partner, 'namespace')
     _safe_set(owner, 'NamedElement31', None)
-    assert getattr(partner, 'namespace') is None
+    assert owner not in getattr(partner, 'namespace')
 
 
 def test_assoc_ownedType9_stub_double():
@@ -3479,9 +3479,9 @@ def test_assoc_packageImport23_stub_double():
     partner = uml_Namespace()
     setattr(partner, 'importingNamespace24', None)
     _safe_set(owner, 'PackageImport', partner)
-    assert getattr(partner, 'importingNamespace24') == owner
+    assert owner in getattr(partner, 'importingNamespace24')
     _safe_set(owner, 'PackageImport', None)
-    assert getattr(partner, 'importingNamespace24') is None
+    assert owner not in getattr(partner, 'importingNamespace24')
 
 
 def test_assoc_packagedElement10_stub_double():
@@ -3569,53 +3569,30 @@ def test_assoc_supplier13_stub_double():
     partner = uml_Dependency()
     setattr(partner, 'uml_Dependency', None)
     _safe_set(owner, 'uml_NamedElement', partner)
-    assert getattr(partner, 'uml_Dependency') == owner
+    assert owner in getattr(partner, 'uml_Dependency')
     _safe_set(owner, 'uml_NamedElement', None)
-    assert getattr(partner, 'uml_Dependency') is None
+    assert owner not in getattr(partner, 'uml_Dependency')
 
 
 
 
-from enum import Enum
 from python_code import VisibilityKind
 import pytest
-
-def test_Enum__generate_next_value_():
-    with pytest.raises(TypeError, match="'SymbolicBoundedInt'\\ object\\ is\\ not\\ reversible"):
-        Enum._generate_next_value_(VisibilityKind.private, '', '', 2)
-
-def test_Enum__generate_next_value__2():
-    with pytest.raises(AttributeError, match="'LazyIntSymbolicStr'\\ object\\ has\\ no\\ attribute\\ 'sort'"):
-        Enum._generate_next_value_(VisibilityKind.public, '', '', '\x00')
-
-def test_Enum__generate_next_value__3():
-    assert Enum._generate_next_value_(VisibilityKind.package, '', 0, 0) == ''
-
-def test_Enum___new__():
-    with pytest.raises(TypeError, match='issubclass\\(\\)\\ arg\\ 2\\ must\\ be\\ a\\ class,\\ a\\ tuple\\ of\\ classes,\\ or\\ a\\ union'):
-        Enum.__new__(VisibilityKind.public, 0)
-
-def test_Enum___new___2():
-    assert Enum.__new__(VisibilityKind.public, 'public') == VisibilityKind.public
-
 from python_code import uml_BehavioralFeature
 
 def test_uml_BehavioralFeature___init__():
     assert uml_BehavioralFeature.__init__(uml_BehavioralFeature('', uml_BehavioralFeature=set(), uml_BehavioralFeature82=set()), '', uml_BehavioralFeature=set(), uml_BehavioralFeature82=set()) == None
-
 from python_code import uml_Comment
 from python_code import uml_Element
 
 def test_uml_Comment___init__():
     assert uml_Comment.__init__(uml_Comment('', uml_Comment=set(), uml_Comment8=uml_Element()), '', uml_Comment=set(), uml_Comment8=uml_Element()) == None
-
 from python_code import uml_ElementImport
 from python_code import uml_Namespace
 from python_code import uml_PackageableElement
 
 def test_uml_ElementImport___init__():
     assert uml_ElementImport.__init__(uml_ElementImport('', '\x00', ElementImport=uml_Namespace(), uml_ElementImport=uml_PackageableElement(), elementImport=uml_Namespace()), '\x00\x00', '', ElementImport=uml_Namespace(), uml_ElementImport=uml_PackageableElement(), elementImport=uml_Namespace()) == None
-
 from python_code import uml_Model
 
 def test_uml_Model___init__():

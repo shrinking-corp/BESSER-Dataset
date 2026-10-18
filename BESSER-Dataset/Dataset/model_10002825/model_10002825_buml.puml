@@ -1,4 +1,8 @@
 @startuml
+' model: df5ac426_cbc0_47e2_ad97_4211978b5484
+' project: sampleModel
+' owner: User
+' description: New project
 class Administrator_Actor {
 }
 class Booking {
@@ -49,19 +53,19 @@ class RoomType {
   + name : str
   + pricePerNight : str
 }
-Administrator_Actor "0..1" -- "0..1" Manage_Hotels_UseCase : Add_delete_Hotels_Administrator
-Booking "0..9999" -- "1..1" Hotel : Booking_Hotel
-Booking "0..9999" -- "1..9999" Guest : Guest_Booking
-Cancel_Booking_UseCase "0..1" -- "0..1" Guest_Actor : Guest_Cancel_Booking
-Guest_Actor "0..1" -- "0..1" Make_Booking_UseCase : Guest_Make_Booking
-Guest "0..9999" -- "0..1" Room : Guest_Room
-Hotel "1..9999" -- "1..1" HotelBusiness : HotelBusiness_Hotel
-Hotel "1..1" -- "1..9999" RoomType : Hotel_RoomType
-Manage_Room_Types_UseCase "0..1" -- "0..1" Manager_Actor : Manager_Add_delete_Room_Types
-Manage_Rooms_UseCase "0..1" -- "0..1" Manager_Actor : Manager_Add_delete_Rooms
-Cancel_Booking_UseCase "0..1" -- "0..1" Receptionist_Actor : Receptionist_Cancel_Booking
-Guest_Check_in_UseCase "0..1" -- "0..1" Receptionist_Actor : Receptionist_Guest_Check_in
-Guest_Check_out_UseCase "0..1" -- "0..1" Receptionist_Actor : Receptionist_Guest_Check_out
-Make_Booking_UseCase "0..1" -- "0..1" Receptionist_Actor : Receptionist_Make_Booking
-Room "0..9999" -- "1..1" RoomType : RoomType_Room
+Administrator_Actor "administrator12 0..1" -- "add_delete_Hotels13 0..1" Manage_Hotels_UseCase : Add_delete_Hotels_Administrator
+Booking "booking9 0..9999" -- "hotel8 1..1" Hotel : Booking_Hotel
+Booking "booking10 0..9999" -- "guest11 1..9999" Guest : Guest_Booking
+Cancel_Booking_UseCase "cancel_Booking20 0..1" -- "guest21 0..1" Guest_Actor : Guest_Cancel_Booking
+Guest_Actor "guest19 0..1" -- "make_Booking18 0..1" Make_Booking_UseCase : Guest_Make_Booking
+Guest "occupant7 0..9999" -- "occupied6 0..1" Room : Guest_Room
+Hotel "hotel0 1..9999" -- "hotelBusiness1 1..1" HotelBusiness : HotelBusiness_Hotel
+Hotel "hotel3 1..1" -- "roomType2 1..9999" RoomType : Hotel_RoomType
+Manage_Room_Types_UseCase "add_delete_Room_Types14 0..1" -- "manager15 0..1" Manager_Actor : Manager_Add_delete_Room_Types
+Manage_Rooms_UseCase "add_delete_Rooms16 0..1" -- "manager17 0..1" Manager_Actor : Manager_Add_delete_Rooms
+Cancel_Booking_UseCase "cancel_Booking24 0..1" -- "receptionist25 0..1" Receptionist_Actor : Receptionist_Cancel_Booking
+Guest_Check_in_UseCase "guest_Check_in26 0..1" -- "receptionist27 0..1" Receptionist_Actor : Receptionist_Guest_Check_in
+Guest_Check_out_UseCase "guest_Check_out28 0..1" -- "receptionist29 0..1" Receptionist_Actor : Receptionist_Guest_Check_out
+Make_Booking_UseCase "make_Booking22 0..1" -- "receptionist23 0..1" Receptionist_Actor : Receptionist_Make_Booking
+Room "room4 0..9999" -- "roomType5 1..1" RoomType : RoomType_Room
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: graph
+' project: sampleModel
+' owner: User
+' description: New project
 enum FitPolicy {
   AUTO
   CUSTOM
@@ -15,6 +19,6 @@ class graph_ResourcePlot {
   + name : str
   + rgb : str
 }
-graph_ResourceGraph "0..9999" --* "1..1" graph_ResourceGraphs : graphs0
-graph_ResourceGraph "1..1" *-- "0..9999" graph_ResourcePlot : plots1
+graph_ResourceGraph "graph_ResourceGraphs 0..9999" --* "graph_ResourceGraph 1..1" graph_ResourceGraphs : graphs0
+graph_ResourceGraph "graph_ResourcePlot 1..1" *-- "graph_ResourceGraph2 0..9999" graph_ResourcePlot : plots1
 @enduml

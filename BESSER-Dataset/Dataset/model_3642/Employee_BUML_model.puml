@@ -1,4 +1,8 @@
 @startuml
+' model: employee
+' project: sampleModel
+' owner: User
+' description: New project
 class employee_Company {
   + name : str
 }
@@ -14,13 +18,13 @@ class employee_Employee {
   + reportingChain() : str
   + reportsTo(employee_mgr : str) : bool
 }
-employee_Company "0..1" -- "1..1" employee_Employee : company15
-employee_Company "0..1" -- "1..1" employee_Department : company6
-employee_Department "0..1" -- "1..1" employee_Employee : department7
-employee_Company "1..1" *-- "0..9999" employee_Department : departments1
-employee_Employee "1..1" -- "0..9999" employee_Employee : directReports13
-employee_Company "1..1" *-- "0..9999" employee_Employee : employees0
-employee_Department "1..1" -- "0..9999" employee_Employee : employees4
-employee_Employee "1..1" -- "0..1" employee_Employee : manager10
-employee_Department "1..1" -- "0..1" employee_Employee : manager3
+employee_Company "employees16 0..1" -- "Company17 1..1" employee_Employee : company15
+employee_Company "departments 0..1" -- "Company 1..1" employee_Department : company6
+employee_Department "employees 0..1" -- "Department8 1..1" employee_Employee : department7
+employee_Company "Department 1..1" *-- "company2 0..9999" employee_Department : departments1
+employee_Employee "Employee14 1..1" -- "manager 0..9999" employee_Employee : directReports13
+employee_Company "Employee 1..1" *-- "company 0..9999" employee_Employee : employees0
+employee_Department "Employee5 1..1" -- "department 0..9999" employee_Employee : employees4
+employee_Employee "Employee11 1..1" -- "directReports 0..1" employee_Employee : manager10
+employee_Department "employee_Employee 1..1" -- "employee_Department 0..1" employee_Employee : manager3
 @enduml

@@ -1,4 +1,8 @@
 @startuml
+' model: model
+' project: sampleModel
+' owner: User
+' description: New project
 class model_Course {
   + ID : int
   + name : str
@@ -24,13 +28,13 @@ class model_Student {
 }
 class model_root {
 }
-model_Exercise "1..1" -- "0..9999" model_Student : assignedTo13
-model_Course "0..9999" -- "1..1" model_Student : attends5
-model_Course "1..1" *-- "0..9999" model_Exercise : contains16
-model_Course "0..9999" --* "1..1" model_root : containsCourse1
-model_Delivery "0..9999" --* "1..1" model_root : containsDelivery3
-model_Student "0..9999" --* "1..1" model_root : containsStudent0
-model_Delivery "1..1" *-- "0..1" model_Response : evaluates19
-model_Delivery "0..9999" -- "1..1" model_Exercise : hasSubmitted11
-model_Delivery "0..9999" -- "1..1" model_Student : submits8
+model_Exercise "model_Student15 1..1" -- "model_Exercise14 0..9999" model_Student : assignedTo13
+model_Course "model_Student6 0..9999" -- "model_Course7 1..1" model_Student : attends5
+model_Course "model_Exercise18 1..1" *-- "model_Course17 0..9999" model_Exercise : contains16
+model_Course "model_root2 0..9999" --* "model_Course 1..1" model_root : containsCourse1
+model_Delivery "model_root4 0..9999" --* "model_Delivery 1..1" model_root : containsDelivery3
+model_Student "model_root 0..9999" --* "model_Student 1..1" model_root : containsStudent0
+model_Delivery "model_Response 1..1" *-- "model_Delivery20 0..1" model_Response : evaluates19
+model_Delivery "model_Exercise 0..9999" -- "model_Delivery12 1..1" model_Exercise : hasSubmitted11
+model_Delivery "model_Student9 0..9999" -- "model_Delivery10 1..1" model_Student : submits8
 @enduml

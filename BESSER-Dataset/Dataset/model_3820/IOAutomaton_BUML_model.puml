@@ -1,4 +1,8 @@
 @startuml
+' model: ioAutomaton
+' project: sampleModel
+' owner: User
+' description: New project
 class State {
 }
 class ioAutomaton_Actor {
@@ -20,22 +24,22 @@ class ioAutomaton_SystemActor {
 class ioAutomaton_Transition {
 }
 State <|-- ioAutomaton_State
-ioAutomaton_Automaton "0..9999" --* "1..1" ioAutomaton_AutomatonCollection : automaton0
-ioAutomaton_Automaton "1..1" -- "1..1" ioAutomaton_Transition : automaton15
-ioAutomaton_Automaton "1..1" -- "1..1" ioAutomaton_State : automaton9
-ioAutomaton_Automaton "1..1" -- "1..1" ioAutomaton_AutomatonCollection : collection5
-ioAutomaton_State "1..1" -- "0..9999" ioAutomaton_Transition : incomingTransition13
-ioAutomaton_Automaton "1..1" *-- "1..1" ioAutomaton_SystemActor : mainActor1
-ioAutomaton_Operation "1..1" --* "1..1" ioAutomaton_Transition : operation19
-ioAutomaton_Operation "1..1" --* "1..1" ioAutomaton_OutMessage : operation26
-ioAutomaton_OutMessage "0..9999" --* "1..1" ioAutomaton_Transition : outMessage20
-ioAutomaton_State "1..1" -- "0..9999" ioAutomaton_Transition : outgoingTransition11
-ioAutomaton_State "1..1" -- "1..1" ioAutomaton_Transition : postState24
-ioAutomaton_State "1..1" -- "1..1" ioAutomaton_Transition : preState17
-ioAutomaton_Actor "1..1" --* "1..1" ioAutomaton_OutMessage : receiver29
-ioAutomaton_Return "1..1" --* "1..1" ioAutomaton_Transition : returnValue22
-ioAutomaton_OutMessage "1..1" *-- "1..1" ioAutomaton_Return : returnValue31
-ioAutomaton_Automaton "1..1" -- "1..1" ioAutomaton_State : startState7
-ioAutomaton_Automaton "1..1" *-- "0..9999" ioAutomaton_State : state2
-ioAutomaton_Automaton "1..1" *-- "0..9999" ioAutomaton_Transition : transition3
+ioAutomaton_Automaton "collection 0..9999" --* "Automaton 1..1" ioAutomaton_AutomatonCollection : automaton0
+ioAutomaton_Automaton "transition 1..1" -- "Automaton16 1..1" ioAutomaton_Transition : automaton15
+ioAutomaton_Automaton "state 1..1" -- "Automaton10 1..1" ioAutomaton_State : automaton9
+ioAutomaton_Automaton "AutomatonCollection 1..1" -- "automaton6 1..1" ioAutomaton_AutomatonCollection : collection5
+ioAutomaton_State "Transition14 1..1" -- "postState 0..9999" ioAutomaton_Transition : incomingTransition13
+ioAutomaton_Automaton "ioAutomaton_SystemActor 1..1" *-- "ioAutomaton_Automaton 1..1" ioAutomaton_SystemActor : mainActor1
+ioAutomaton_Operation "ioAutomaton_Transition 1..1" --* "ioAutomaton_Operation 1..1" ioAutomaton_Transition : operation19
+ioAutomaton_Operation "ioAutomaton_OutMessage27 1..1" --* "ioAutomaton_Operation28 1..1" ioAutomaton_OutMessage : operation26
+ioAutomaton_OutMessage "ioAutomaton_Transition21 0..9999" --* "ioAutomaton_OutMessage 1..1" ioAutomaton_Transition : outMessage20
+ioAutomaton_State "Transition12 1..1" -- "preState 0..9999" ioAutomaton_Transition : outgoingTransition11
+ioAutomaton_State "incomingTransition 1..1" -- "State25 1..1" ioAutomaton_Transition : postState24
+ioAutomaton_State "outgoingTransition 1..1" -- "State18 1..1" ioAutomaton_Transition : preState17
+ioAutomaton_Actor "ioAutomaton_OutMessage30 1..1" --* "ioAutomaton_Actor 1..1" ioAutomaton_OutMessage : receiver29
+ioAutomaton_Return "ioAutomaton_Transition23 1..1" --* "ioAutomaton_Return 1..1" ioAutomaton_Transition : returnValue22
+ioAutomaton_OutMessage "ioAutomaton_Return33 1..1" *-- "ioAutomaton_OutMessage32 1..1" ioAutomaton_Return : returnValue31
+ioAutomaton_Automaton "ioAutomaton_State 1..1" -- "ioAutomaton_Automaton8 1..1" ioAutomaton_State : startState7
+ioAutomaton_Automaton "State 1..1" *-- "automaton 0..9999" ioAutomaton_State : state2
+ioAutomaton_Automaton "Transition 1..1" *-- "automaton4 0..9999" ioAutomaton_Transition : transition3
 @enduml

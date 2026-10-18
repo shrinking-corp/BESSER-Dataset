@@ -1,4 +1,8 @@
 @startuml
+' model: Univerity
+' project: sampleModel
+' owner: User
+' description: New project
 class ModelElement {
 }
 enum OperatorType {
@@ -73,20 +77,20 @@ uncertainty_aPerson <|-- Univerity_Person
 uncertainty_aPerson <|-- Univerity_uncertainty_uPerson
 uncertainty_aUniversity <|-- Univerity_University
 uncertainty_aUniversity <|-- Univerity_uncertainty_uUniversity
-Univerity_University "1..1" *-- "0..9999" aCourses : Courses8
-Univerity_Courses "1..1" *-- "0..1" aPerson : Professor1
-Univerity_Courses "1..1" *-- "0..9999" aPerson : Student3
-ModelElement "0..9999" -- "1..1" Univerity_uncertainty_ModelElement : exclude11
-ModelElement "0..9999" -- "1..1" Univerity_uncertainty_ModelElement : include10
-Univerity_Courses "1..1" -- "0..9999" aCourses : links0
-Univerity_Person "1..1" -- "0..1" aPerson : relatives6
-Univerity_uncertainty_uCourses "1..1" *-- "0..9999" uncertainty_Univerity_Courses : uleft14
-Univerity_uncertainty_uPerson "1..1" *-- "0..9999" uncertainty_Univerity_Person : uleft20
-Univerity_uncertainty_uUniversity "1..1" *-- "0..9999" uncertainty_Univerity_University : uleft26
-Univerity_uncertainty_uCourses "1..1" *-- "0..9999" uCourses : upoint18
-Univerity_uncertainty_uPerson "1..1" *-- "0..9999" uPerson : upoint24
-Univerity_uncertainty_uUniversity "1..1" *-- "0..9999" uUniversity : upoint30
-Univerity_uncertainty_uCourses "1..1" *-- "0..9999" uncertainty_Univerity_Courses : uright15
-Univerity_uncertainty_uPerson "1..1" *-- "0..9999" uncertainty_Univerity_Person : uright21
-Univerity_uncertainty_uUniversity "1..1" *-- "0..9999" uncertainty_Univerity_University : uright27
+Univerity_University "aCourses9 1..1" *-- "Univerity_University 0..9999" aCourses : Courses8
+Univerity_Courses "aPerson 1..1" *-- "Univerity_Courses2 0..1" aPerson : Professor1
+Univerity_Courses "aPerson5 1..1" *-- "Univerity_Courses4 0..9999" aPerson : Student3
+ModelElement "Univerity_uncertainty_ModelElement12 0..9999" -- "ModelElement13 1..1" Univerity_uncertainty_ModelElement : exclude11
+ModelElement "Univerity_uncertainty_ModelElement 0..9999" -- "ModelElement 1..1" Univerity_uncertainty_ModelElement : include10
+Univerity_Courses "aCourses 1..1" -- "Univerity_Courses 0..9999" aCourses : links0
+Univerity_Person "aPerson7 1..1" -- "Univerity_Person 0..1" aPerson : relatives6
+Univerity_uncertainty_uCourses "uncertainty_Univerity_Courses 1..1" *-- "Univerity_uncertainty_uCourses 0..9999" uncertainty_Univerity_Courses : uleft14
+Univerity_uncertainty_uPerson "uncertainty_Univerity_Person 1..1" *-- "Univerity_uncertainty_uPerson 0..9999" uncertainty_Univerity_Person : uleft20
+Univerity_uncertainty_uUniversity "uncertainty_Univerity_University 1..1" *-- "Univerity_uncertainty_uUniversity 0..9999" uncertainty_Univerity_University : uleft26
+Univerity_uncertainty_uCourses "uCourses 1..1" *-- "Univerity_uncertainty_uCourses19 0..9999" uCourses : upoint18
+Univerity_uncertainty_uPerson "uPerson 1..1" *-- "Univerity_uncertainty_uPerson25 0..9999" uPerson : upoint24
+Univerity_uncertainty_uUniversity "uUniversity 1..1" *-- "Univerity_uncertainty_uUniversity31 0..9999" uUniversity : upoint30
+Univerity_uncertainty_uCourses "uncertainty_Univerity_Courses17 1..1" *-- "Univerity_uncertainty_uCourses16 0..9999" uncertainty_Univerity_Courses : uright15
+Univerity_uncertainty_uPerson "uncertainty_Univerity_Person23 1..1" *-- "Univerity_uncertainty_uPerson22 0..9999" uncertainty_Univerity_Person : uright21
+Univerity_uncertainty_uUniversity "uncertainty_Univerity_University29 1..1" *-- "Univerity_uncertainty_uUniversity28 0..9999" uncertainty_Univerity_University : uright27
 @enduml

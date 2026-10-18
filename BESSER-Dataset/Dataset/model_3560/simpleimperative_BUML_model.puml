@@ -1,4 +1,8 @@
 @startuml
+' model: simpleimperative
+' project: sampleModel
+' owner: User
+' description: New project
 class ConsoleOutput {
 }
 class Expression {
@@ -43,12 +47,12 @@ Statement <|-- simpleimperative_ConsoleOutput
 Statement <|-- simpleimperative_Loop
 Statement <|-- simpleimperative_VarDecl
 Statement <|-- simpleimperative_Wait
-simpleimperative_Conditional "1..1" *-- "0..9999" simpleimperative_Statement : body2
-simpleimperative_Loop "1..1" *-- "0..9999" simpleimperative_Statement : body7
-simpleimperative_Conditional "1..1" *-- "1..1" simpleimperative_Expression : condition1
-simpleimperative_Expression "1..1" --* "1..1" simpleimperative_VarDecl : expr10
-simpleimperative_Assignation "1..1" *-- "1..1" simpleimperative_Expression : expression14
-simpleimperative_Expression "1..1" --* "1..1" simpleimperative_Loop : guard5
-simpleimperative_Program "1..1" *-- "0..9999" simpleimperative_Statement : statements0
-simpleimperative_Assignation "1..1" -- "1..1" simpleimperative_VarDecl : varRef12
+simpleimperative_Conditional "simpleimperative_Statement4 1..1" *-- "simpleimperative_Conditional3 0..9999" simpleimperative_Statement : body2
+simpleimperative_Loop "simpleimperative_Statement9 1..1" *-- "simpleimperative_Loop8 0..9999" simpleimperative_Statement : body7
+simpleimperative_Conditional "simpleimperative_Expression 1..1" *-- "simpleimperative_Conditional 1..1" simpleimperative_Expression : condition1
+simpleimperative_Expression "simpleimperative_VarDecl 1..1" --* "simpleimperative_Expression11 1..1" simpleimperative_VarDecl : expr10
+simpleimperative_Assignation "simpleimperative_Expression16 1..1" *-- "simpleimperative_Assignation15 1..1" simpleimperative_Expression : expression14
+simpleimperative_Expression "simpleimperative_Loop 1..1" --* "simpleimperative_Expression6 1..1" simpleimperative_Loop : guard5
+simpleimperative_Program "simpleimperative_Statement 1..1" *-- "simpleimperative_Program 0..9999" simpleimperative_Statement : statements0
+simpleimperative_Assignation "simpleimperative_VarDecl13 1..1" -- "simpleimperative_Assignation 1..1" simpleimperative_VarDecl : varRef12
 @enduml

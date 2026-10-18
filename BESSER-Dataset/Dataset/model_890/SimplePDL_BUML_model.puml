@@ -1,4 +1,8 @@
 @startuml
+' model: simplepdl
+' project: sampleModel
+' owner: User
+' description: New project
 class ProcessElement {
 }
 enum WorkSequenceType {
@@ -33,14 +37,14 @@ ProcessElement <|-- simplepdl_Resource
 ProcessElement <|-- simplepdl_UseResources
 ProcessElement <|-- simplepdl_WorkDefinition
 ProcessElement <|-- simplepdl_WorkSequence
-simplepdl_UseResources "1..1" -- "1..1" simplepdl_WorkDefinition : associatedWD15
-simplepdl_Guidance "1..1" -- "0..9999" simplepdl_ProcessElement : element11
-simplepdl_WorkDefinition "1..1" -- "0..9999" simplepdl_WorkSequence : linksToPredecessors4
-simplepdl_WorkDefinition "1..1" -- "0..9999" simplepdl_WorkSequence : linksToSuccessors5
-simplepdl_WorkDefinition "1..1" -- "1..1" simplepdl_WorkSequence : predecessor8
-simplepdl_Process "1..1" -- "1..1" simplepdl_ProcessElement : process1
-simplepdl_Process "1..1" *-- "0..9999" simplepdl_ProcessElement : processElements0
-simplepdl_WorkDefinition "1..1" -- "1..1" simplepdl_WorkSequence : successor9
-simplepdl_Resource "1..1" -- "1..1" simplepdl_UseResources : usedResource13
-simplepdl_UseResources "1..9999" --* "1..1" simplepdl_WorkDefinition : uses7
+simplepdl_UseResources "simplepdl_WorkDefinition17 1..1" -- "simplepdl_UseResources16 1..1" simplepdl_WorkDefinition : associatedWD15
+simplepdl_Guidance "simplepdl_ProcessElement12 1..1" -- "simplepdl_Guidance 0..9999" simplepdl_ProcessElement : element11
+simplepdl_WorkDefinition "WorkSequence 1..1" -- "successor 0..9999" simplepdl_WorkSequence : linksToPredecessors4
+simplepdl_WorkDefinition "WorkSequence6 1..1" -- "predecessor 0..9999" simplepdl_WorkSequence : linksToSuccessors5
+simplepdl_WorkDefinition "linksToSuccessors 1..1" -- "WorkDefinition 1..1" simplepdl_WorkSequence : predecessor8
+simplepdl_Process "simplepdl_ProcessElement2 1..1" -- "simplepdl_Process3 1..1" simplepdl_ProcessElement : process1
+simplepdl_Process "simplepdl_ProcessElement 1..1" *-- "simplepdl_Process 0..9999" simplepdl_ProcessElement : processElements0
+simplepdl_WorkDefinition "linksToPredecessors 1..1" -- "WorkDefinition10 1..1" simplepdl_WorkSequence : successor9
+simplepdl_Resource "simplepdl_UseResources14 1..1" -- "simplepdl_Resource 1..1" simplepdl_UseResources : usedResource13
+simplepdl_UseResources "simplepdl_WorkDefinition 1..9999" --* "simplepdl_UseResources 1..1" simplepdl_WorkDefinition : uses7
 @enduml
