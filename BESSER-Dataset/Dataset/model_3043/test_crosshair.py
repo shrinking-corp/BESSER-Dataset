@@ -1,0 +1,98 @@
+from python_code import ArgListsExpression
+from python_code import Multiplicity_
+from python_code import behavioral_elements_activity_graphs_ActionState
+
+def test_behavioral_elements_activity_graphs_ActionState___init__():
+    assert behavioral_elements_activity_graphs_ActionState.__init__(behavioral_elements_activity_graphs_ActionState('', behavioral_elements_activity_graphs_ActionState=ArgListsExpression(), behavioral_elements_activity_graphs_ActionState260=Multiplicity_()), '', behavioral_elements_activity_graphs_ActionState=ArgListsExpression(), behavioral_elements_activity_graphs_ActionState260=Multiplicity_()) == None
+
+
+from python_code import Classifier
+from python_code import behavioral_elements_activity_graphs_ObjectFlowState
+
+def test_behavioral_elements_activity_graphs_ObjectFlowState___init__():
+    assert behavioral_elements_activity_graphs_ObjectFlowState.__init__(behavioral_elements_activity_graphs_ObjectFlowState('', behavioral_elements_activity_graphs_ObjectFlowState=set(), behavioral_elements_activity_graphs_ObjectFlowState265=Classifier()), '', behavioral_elements_activity_graphs_ObjectFlowState=set(), behavioral_elements_activity_graphs_ObjectFlowState265=Classifier()) == None
+
+
+from python_code import ArgListsExpression
+from python_code import Multiplicity_
+from python_code import behavioral_elements_activity_graphs_SubactivityState
+from python_code import behavioral_elements_state_machines_StateMachine
+
+def test_behavioral_elements_activity_graphs_SubactivityState___init__():
+    assert behavioral_elements_activity_graphs_SubactivityState.__init__(behavioral_elements_activity_graphs_SubactivityState('', behavioral_elements_activity_graphs_SubactivityState=ArgListsExpression(), behavioral_elements_activity_graphs_SubactivityState255=Multiplicity_(), SubmachineState=behavioral_elements_state_machines_StateMachine()), '', behavioral_elements_activity_graphs_SubactivityState=ArgListsExpression(), behavioral_elements_activity_graphs_SubactivityState255=Multiplicity_(), SubmachineState=behavioral_elements_state_machines_StateMachine()) == None
+
+
+from python_code import ActionExpression
+from python_code import ActionSequence
+from python_code import IterationExpression
+from python_code import ObjectSetExpression
+from python_code import Transition
+from python_code import behavioral_elements_activity_graphs_Partition
+from python_code import behavioral_elements_collaborations_ClassifierRole
+from python_code import behavioral_elements_collaborations_Collaboration
+from python_code import behavioral_elements_collaborations_CollaborationInstanceSet
+from python_code import behavioral_elements_common_behavior_Action
+from python_code import behavioral_elements_state_machines_StateMachine
+
+def test_behavioral_elements_common_behavior_Action___init__():
+    assert behavioral_elements_common_behavior_Action.__init__(behavioral_elements_common_behavior_Action('', behavioral_elements_common_behavior_Action=IterationExpression(), behavioral_elements_common_behavior_Action19=ObjectSetExpression(), behavioral_elements_common_behavior_Action21=ActionExpression(), action=set(), action24=ActionSequence(), dispatchAction=set(), effect=Transition(), ModelElement251=behavioral_elements_activity_graphs_Partition(), ModelElement=behavioral_elements_state_machines_StateMachine(), ModelElement179=behavioral_elements_collaborations_ClassifierRole(), ModelElement248=behavioral_elements_collaborations_CollaborationInstanceSet(), ModelElement163=behavioral_elements_collaborations_Collaboration()), '', behavioral_elements_common_behavior_Action=IterationExpression(), behavioral_elements_common_behavior_Action19=ObjectSetExpression(), behavioral_elements_common_behavior_Action21=ActionExpression(), action=set(), action24=ActionSequence(), dispatchAction=set(), effect=Transition(), ModelElement251=behavioral_elements_activity_graphs_Partition(), ModelElement=behavioral_elements_state_machines_StateMachine(), ModelElement179=behavioral_elements_collaborations_ClassifierRole(), ModelElement248=behavioral_elements_collaborations_CollaborationInstanceSet(), ModelElement163=behavioral_elements_collaborations_Collaboration()) == None
+
+
+from python_code import Signal
+from python_code import behavioral_elements_common_behavior_Reception
+from python_code import behavioral_elements_common_behavior_Signal
+
+def test_behavioral_elements_common_behavior_Reception___init__():
+    assert behavioral_elements_common_behavior_Reception.__init__(behavioral_elements_common_behavior_Reception('', '', '', '', reception=Signal(), BehavioralFeature=behavioral_elements_common_behavior_Signal()), '', '', '\x00', '', reception=Signal(), BehavioralFeature=behavioral_elements_common_behavior_Signal()) == None
+
+
+from python_code import behavioral_elements_activity_graphs_ClassifierInState
+from python_code import behavioral_elements_state_machines_CompositeState
+from python_code import behavioral_elements_state_machines_StateMachine
+from python_code import behavioral_elements_state_machines_Transition
+
+def test_behavioral_elements_state_machines_CompositeState___init__():
+    assert behavioral_elements_state_machines_CompositeState.__init__(behavioral_elements_state_machines_CompositeState('\x00', container=set(), State=behavioral_elements_state_machines_StateMachine(), State140=behavioral_elements_state_machines_Transition(), State271=behavioral_elements_activity_graphs_ClassifierInState()), '', container=set(), State=behavioral_elements_state_machines_StateMachine(), State140=behavioral_elements_state_machines_Transition(), State271=behavioral_elements_activity_graphs_ClassifierInState()) == None
+
+
+from python_code import behavioral_elements_activity_graphs_ClassifierInState
+from python_code import behavioral_elements_state_machines_CompositeState
+from python_code import behavioral_elements_state_machines_Pseudostate
+from python_code import behavioral_elements_state_machines_StateMachine
+from python_code import behavioral_elements_state_machines_Transition
+
+def test_behavioral_elements_state_machines_Pseudostate___init__():
+    assert behavioral_elements_state_machines_Pseudostate.__init__(behavioral_elements_state_machines_Pseudostate('\x00\x00', StateVertex148=behavioral_elements_state_machines_Transition(), StateVertex=behavioral_elements_state_machines_Transition(), StateVertex150=behavioral_elements_state_machines_CompositeState('', container=set(), State=behavioral_elements_state_machines_StateMachine(), State140=behavioral_elements_state_machines_Transition(), State271=behavioral_elements_activity_graphs_ClassifierInState())), '', StateVertex148=behavioral_elements_state_machines_Transition(), StateVertex=behavioral_elements_state_machines_Transition(), StateVertex150=behavioral_elements_state_machines_CompositeState('', container=set(), State=behavioral_elements_state_machines_StateMachine(), State140=behavioral_elements_state_machines_Transition(), State271=behavioral_elements_activity_graphs_ClassifierInState())) == None
+
+
+from python_code import behavioral_elements_activity_graphs_ClassifierInState
+from python_code import behavioral_elements_state_machines_CompositeState
+from python_code import behavioral_elements_state_machines_StateMachine
+from python_code import behavioral_elements_state_machines_StubState
+from python_code import behavioral_elements_state_machines_Transition
+
+def test_behavioral_elements_state_machines_StubState___init__():
+    assert behavioral_elements_state_machines_StubState.__init__(behavioral_elements_state_machines_StubState('\x00\x00', StateVertex148=behavioral_elements_state_machines_Transition(), StateVertex=behavioral_elements_state_machines_Transition(), StateVertex150=behavioral_elements_state_machines_CompositeState('', container=set(), State=behavioral_elements_state_machines_StateMachine(), State140=behavioral_elements_state_machines_Transition(), State271=behavioral_elements_activity_graphs_ClassifierInState())), '', StateVertex148=behavioral_elements_state_machines_Transition(), StateVertex=behavioral_elements_state_machines_Transition(), StateVertex150=behavioral_elements_state_machines_CompositeState('', container=set(), State=behavioral_elements_state_machines_StateMachine(), State140=behavioral_elements_state_machines_Transition(), State271=behavioral_elements_activity_graphs_ClassifierInState())) == None
+
+
+from python_code import behavioral_elements_activity_graphs_ClassifierInState
+from python_code import behavioral_elements_state_machines_CompositeState
+from python_code import behavioral_elements_state_machines_StateMachine
+from python_code import behavioral_elements_state_machines_SynchState
+from python_code import behavioral_elements_state_machines_Transition
+
+def test_behavioral_elements_state_machines_SynchState___init__():
+    assert behavioral_elements_state_machines_SynchState.__init__(behavioral_elements_state_machines_SynchState('\x00\x00', StateVertex148=behavioral_elements_state_machines_Transition(), StateVertex=behavioral_elements_state_machines_Transition(), StateVertex150=behavioral_elements_state_machines_CompositeState('', container=set(), State=behavioral_elements_state_machines_StateMachine(), State140=behavioral_elements_state_machines_Transition(), State271=behavioral_elements_activity_graphs_ClassifierInState())), '', StateVertex148=behavioral_elements_state_machines_Transition(), StateVertex=behavioral_elements_state_machines_Transition(), StateVertex150=behavioral_elements_state_machines_CompositeState('', container=set(), State=behavioral_elements_state_machines_StateMachine(), State140=behavioral_elements_state_machines_Transition(), State271=behavioral_elements_activity_graphs_ClassifierInState())) == None
+
+
+from python_code import UseCase
+from python_code import behavioral_elements_activity_graphs_Partition
+from python_code import behavioral_elements_collaborations_ClassifierRole
+from python_code import behavioral_elements_collaborations_Collaboration
+from python_code import behavioral_elements_collaborations_CollaborationInstanceSet
+from python_code import behavioral_elements_state_machines_StateMachine
+from python_code import behavioral_elements_use_cases_ExtensionPoint
+
+def test_behavioral_elements_use_cases_ExtensionPoint___init__():
+    assert behavioral_elements_use_cases_ExtensionPoint.__init__(behavioral_elements_use_cases_ExtensionPoint('', extensionPoint=UseCase(), extensionPoint100=set(), ModelElement251=behavioral_elements_activity_graphs_Partition(), ModelElement=behavioral_elements_state_machines_StateMachine(), ModelElement179=behavioral_elements_collaborations_ClassifierRole(), ModelElement248=behavioral_elements_collaborations_CollaborationInstanceSet(), ModelElement163=behavioral_elements_collaborations_Collaboration()), '', extensionPoint=UseCase(), extensionPoint100=set(), ModelElement251=behavioral_elements_activity_graphs_Partition(), ModelElement=behavioral_elements_state_machines_StateMachine(), ModelElement179=behavioral_elements_collaborations_ClassifierRole(), ModelElement248=behavioral_elements_collaborations_CollaborationInstanceSet(), ModelElement163=behavioral_elements_collaborations_Collaboration()) == None
+

@@ -120,6 +120,14 @@ Then the same command without `--limit 100`, then again with
 `baseline_failed` should be 0 in both reports, because both suites are green.
 If it isn't, stop and look at those models before continuing.
 
+**Run the two mutation jobs one after the other, never alongside each other
+or any other heavy job.** cosmic-ray counts a mutant whose test run exceeds
+the per-mutant timeout (90 s) as KILLED (`cosmic_ray/testing.py`). On an
+overloaded machine a slow run can therefore turn into a fake kill. The
+report shows these as "Kills that were only a per-mutant timeout"; if that
+number is more than a handful, rerun the affected models on an idle machine.
+Keep `--workers` at least two below the core count.
+
 ## 8. Split and export (after the train ratio is agreed)
 
 This step only needs step 5 (the super suite), so the export can be handed

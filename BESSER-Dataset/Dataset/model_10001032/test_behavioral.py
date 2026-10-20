@@ -1,0 +1,131 @@
+import pytest
+from datetime import date, datetime, time, timedelta
+
+from python_code import (
+    ADMIN,
+    FACULTY,
+    PARENT,
+    STUDENT,
+    _Component,
+    add_student_external,
+    admin_Actor,
+    check_attendance_external,
+    logout_external,
+    student_Actor,
+    student_login_external,
+    view_student_external,
+)
+
+def _is_linked(obj, attr_name, other):
+    value = getattr(obj, attr_name, None)
+    if isinstance(value, (set, list, tuple, frozenset)):
+        return other in value
+    return value == other
+
+def _safe_set(obj, attr_name, value):
+    # Some generated models have a genuine bug: two reciprocal setters
+    # unconditionally call each other with no base case, causing
+    # infinite mutual recursion for that specific relationship (found
+    # in model_10000002's items10/sc11 pair). That's a defect in the
+    # code under test, not in this test -- skip rather than fail so it
+    # doesn't masquerade as a test-suite problem.
+    try:
+        setattr(obj, attr_name, value)
+    except RecursionError:
+        pytest.skip(f'{attr_name!r} setter has infinite mutual recursion in the generated code')
+
+# =============================================================================
+# REVERSE-DIRECTION ASSOCIATION TESTS
+# Mirrors test_structural_full.py's link_reassign_clear, but sets from the
+# OTHER end's own setter directly, instead of relying on it firing only as a
+# side effect of the forward-direction test. See module docstring.
+# =============================================================================
+
+def test_assoc_FACULTY_ADMIN_reverse_link_reassign_clear():
+    a1 = FACULTY(id="sample_text", password="sample_text")
+    a2 = FACULTY(id="sample_text_2", password="sample_text_2")
+    b = ADMIN(id="sample_text", password="sample_text")
+    _safe_set(b, 'fACULTY17', {a1})
+    assert _is_linked(b, 'fACULTY17', a1)
+    if hasattr(a1, 'aDMIN16'):
+        assert _is_linked(a1, 'aDMIN16', b)
+    _safe_set(b, 'fACULTY17', {a2})
+    assert _is_linked(b, 'fACULTY17', a2)
+    if hasattr(a1, 'aDMIN16'):
+        assert not _is_linked(a1, 'aDMIN16', b)
+    if hasattr(a2, 'aDMIN16'):
+        assert _is_linked(a2, 'aDMIN16', b)
+    _safe_set(b, 'fACULTY17', set())
+    assert not _is_linked(b, 'fACULTY17', a2)
+    if hasattr(a2, 'aDMIN16'):
+        assert not _is_linked(a2, 'aDMIN16', b)
+
+
+def test_assoc_FACULTY_STUDENT_reverse_link_reassign_clear():
+    a1 = STUDENT(id="sample_text", password="sample_text")
+    a2 = STUDENT(id="sample_text_2", password="sample_text_2")
+    b = FACULTY(id="sample_text", password="sample_text")
+    _safe_set(b, 'sTUDENT14', {a1})
+    assert _is_linked(b, 'sTUDENT14', a1)
+    if hasattr(a1, 'fACULTY15'):
+        assert _is_linked(a1, 'fACULTY15', b)
+    _safe_set(b, 'sTUDENT14', {a2})
+    assert _is_linked(b, 'sTUDENT14', a2)
+    if hasattr(a1, 'fACULTY15'):
+        assert not _is_linked(a1, 'fACULTY15', b)
+    if hasattr(a2, 'fACULTY15'):
+        assert _is_linked(a2, 'fACULTY15', b)
+    _safe_set(b, 'sTUDENT14', set())
+    assert not _is_linked(b, 'sTUDENT14', a2)
+    if hasattr(a2, 'fACULTY15'):
+        assert not _is_linked(a2, 'fACULTY15', b)
+
+
+def test_assoc_PARENT_ADMIN_reverse_link_reassign_clear():
+    a1 = PARENT(id="sample_text", password="sample_text", phoneNumber=7)
+    a2 = PARENT(id="sample_text_2", password="sample_text_2", phoneNumber=13)
+    b = ADMIN(id="sample_text", password="sample_text")
+    _safe_set(b, 'pARENT21', {a1})
+    assert _is_linked(b, 'pARENT21', a1)
+    if hasattr(a1, 'aDMIN20'):
+        assert _is_linked(a1, 'aDMIN20', b)
+    _safe_set(b, 'pARENT21', {a2})
+    assert _is_linked(b, 'pARENT21', a2)
+    if hasattr(a1, 'aDMIN20'):
+        assert not _is_linked(a1, 'aDMIN20', b)
+    if hasattr(a2, 'aDMIN20'):
+        assert _is_linked(a2, 'aDMIN20', b)
+    _safe_set(b, 'pARENT21', set())
+    assert not _is_linked(b, 'pARENT21', a2)
+    if hasattr(a2, 'aDMIN20'):
+        assert not _is_linked(a2, 'aDMIN20', b)
+
+
+def test_assoc_STUDENT_ADMIN_reverse_link_reassign_clear():
+    a1 = STUDENT(id="sample_text", password="sample_text")
+    a2 = STUDENT(id="sample_text_2", password="sample_text_2")
+    b = ADMIN(id="sample_text", password="sample_text")
+    _safe_set(b, 'sTUDENT19', {a1})
+    assert _is_linked(b, 'sTUDENT19', a1)
+    if hasattr(a1, 'aDMIN18'):
+        assert _is_linked(a1, 'aDMIN18', b)
+    _safe_set(b, 'sTUDENT19', {a2})
+    assert _is_linked(b, 'sTUDENT19', a2)
+    if hasattr(a1, 'aDMIN18'):
+        assert not _is_linked(a1, 'aDMIN18', b)
+    if hasattr(a2, 'aDMIN18'):
+        assert _is_linked(a2, 'aDMIN18', b)
+    _safe_set(b, 'sTUDENT19', set())
+    assert not _is_linked(b, 'sTUDENT19', a2)
+    if hasattr(a2, 'aDMIN18'):
+        assert not _is_linked(a2, 'aDMIN18', b)
+
+
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+

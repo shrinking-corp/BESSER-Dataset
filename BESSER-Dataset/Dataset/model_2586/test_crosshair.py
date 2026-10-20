@@ -1,0 +1,6 @@
+from python_code import TestPackage_TestClass
+from python_code import TestPackage_TestInterface
+
+def test_TestPackage_TestInterface___init__():
+    assert TestPackage_TestInterface.__init__(TestPackage_TestInterface('', TestPackage_TestInterface23=TestPackage_TestClass(), TestPackage_TestInterface26=TestPackage_TestClass(), TestPackage_TestInterface=TestPackage_TestClass(), TestPackage_TestInterface5=TestPackage_TestClass(), TestPackage_TestInterface8=TestPackage_TestClass(), TestPackage_TestInterface11=TestPackage_TestClass(), TestPackage_TestInterface14=TestPackage_TestClass(), TestPackage_TestInterface17=TestPackage_TestClass(), TestPackage_TestInterface20=TestPackage_TestClass(), TestPackage_TestInterface29=TestPackage_TestClass()), '', TestPackage_TestInterface23=TestPackage_TestClass(), TestPackage_TestInterface26=TestPackage_TestClass(), TestPackage_TestInterface=TestPackage_TestClass(), TestPackage_TestInterface5=TestPackage_TestClass(), TestPackage_TestInterface8=TestPackage_TestClass(), TestPackage_TestInterface11=TestPackage_TestClass(), TestPackage_TestInterface14=TestPackage_TestClass(), TestPackage_TestInterface17=TestPackage_TestClass(), TestPackage_TestInterface20=TestPackage_TestClass(), TestPackage_TestInterface29=TestPackage_TestClass()) == None
+

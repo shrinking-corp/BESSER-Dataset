@@ -254,7 +254,13 @@ def read_results(session_path: Path) -> dict:
         outcomes = {(row[0] or "none"): row[1] for row in cur.fetchall()}
         cur.execute("SELECT COUNT(*) FROM work_results")
         total_run = cur.fetchone()[0]
-        return {"outcomes": outcomes, "total_run": total_run}
+        # cosmic-ray records a test run that exceeds its timeout as KILLED with
+        # output "timeout" (cosmic_ray/testing.py). A genuinely looping mutant
+        # is a real kill, but on an overloaded machine a slow run is not, so
+        # these are counted separately to make that inflation visible.
+        cur.execute("SELECT COUNT(*) FROM work_results WHERE test_outcome = 'KILLED' AND output = 'timeout'")
+        killed_by_timeout = cur.fetchone()[0]
+        return {"outcomes": outcomes, "total_run": total_run, "killed_by_timeout": killed_by_timeout}
     finally:
         con.close()
 
@@ -281,6 +287,7 @@ def validate_model(
         "total_mutants_generated": None,
         "mutants_run": None,
         "killed": None,
+        "killed_by_timeout": None,
         "survived": None,
         "other_outcomes": {},
         "mutation_score": None,
@@ -384,6 +391,7 @@ name = "local"
                 stats = read_results(session_path)
                 result["mutants_run"] = stats["total_run"]
                 result["killed"] = stats["outcomes"].get("KILLED", 0)
+                result["killed_by_timeout"] = stats["killed_by_timeout"]
                 result["survived"] = stats["outcomes"].get("SURVIVED", 0)
                 result["other_outcomes"] = {k: v for k, v in stats["outcomes"].items() if k not in ("KILLED", "SURVIVED")}
                 if export_surviving_dir is not None:
@@ -401,6 +409,7 @@ name = "local"
         stats = read_results(session_path)
         result["mutants_run"] = stats["total_run"]
         result["killed"] = stats["outcomes"].get("KILLED", 0)
+        result["killed_by_timeout"] = stats["killed_by_timeout"]
         result["survived"] = stats["outcomes"].get("SURVIVED", 0)
         result["other_outcomes"] = {k: v for k, v in stats["outcomes"].items() if k not in ("KILLED", "SURVIVED")}
         if stats["total_run"] > 0:
@@ -440,6 +449,7 @@ def write_metadata(model_dir: Path, result: dict) -> bool:
         "total_mutants_generated": result["total_mutants_generated"],
         "mutants_run": result["mutants_run"],
         "killed": result["killed"],
+        "killed_by_timeout": result.get("killed_by_timeout"),
         "survived": result["survived"],
         "mutation_score": result["mutation_score"],
     })
@@ -483,6 +493,8 @@ def build_report(results: list[dict]) -> dict:
         "total_mutants_in_file_sum": sum(r["total_mutants_in_file"] or 0 for r in results),
         "total_mutants_in_properties_sum": sum(r["total_mutants_in_properties"] or 0 for r in results),
         "total_mutants_run_sum": sum(r["mutants_run"] or 0 for r in results),
+        "killed_by_timeout_sum": sum(r.get("killed_by_timeout") or 0 for r in measured),
+        "models_with_timeout_kills": sum(1 for r in measured if r.get("killed_by_timeout")),
         "duration_stats_s": {
             "p50": pct(durations, 50),
             "p90": pct(durations, 90),
@@ -511,6 +523,8 @@ def render_markdown_report(report: dict) -> str:
         f"- **Total mutants in-file (uncapped) across sample:** {report['total_mutants_in_file_sum']}",
         f"- **Total mutants in-properties (uncapped) across sample:** {report['total_mutants_in_properties_sum']}",
         f"- **Total mutants actually run (post-cap):** {report['total_mutants_run_sum']}",
+        f"- **Kills that were only a per-mutant timeout:** {report['killed_by_timeout_sum']} "
+        f"(in {report['models_with_timeout_kills']} measured models)",
         "",
         "## Per-model duration (init+exec, seconds)",
         "",
@@ -627,7 +641,8 @@ def main() -> None:
             already_done=skipped, total=total, describe=describe_result,
             error_fields={"test_file": TEST_FILENAME, "mutation_score": None, "total_mutants_in_file": None,
                           "total_mutants_in_properties": None, "total_mutants_generated": None,
-                          "mutants_run": None, "killed": None, "survived": None, "other_outcomes": {},
+                          "mutants_run": None, "killed": None, "killed_by_timeout": None,
+                          "survived": None, "other_outcomes": {},
                           "init_duration_s": None, "exec_duration_s": None,
                           "surviving_mutants_exported": None},
         )

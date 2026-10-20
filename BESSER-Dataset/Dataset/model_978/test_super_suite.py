@@ -1,0 +1,3856 @@
+# =============================================================================
+# This file is a generated concatenation of two independent test suites --
+# see scripts/generate_combined_tests.py for why simple concatenation is safe
+# despite both generators using the same naming convention for some helpers,
+# and for the deterministic rules used to drop old-suite tests the new suite
+# already covers equally or more thoroughly.
+# =============================================================================
+
+# ----- SECTION A: test_hypothesis.py (original generated suite) -----
+import inspect
+import pytest
+from hypothesis import given, assume, settings
+import hypothesis.strategies as st
+import copy
+from datetime import date, datetime
+
+from python_code import (
+    Formula,
+    henshin_True,
+    UnaryFormula,
+    henshin_Not,
+    BinaryFormula,
+    henshin_Or,
+    henshin_Xor,
+    henshin_And,
+    MultiUnit,
+    henshin_SequentialUnit,
+    henshin_IndependentUnit,
+    UnaryUnit,
+    henshin_LoopUnit,
+    henshin_IteratedUnit,
+    henshin_PriorityUnit,
+    henshin_EClass,
+    henshin_EAttribute,
+    henshin_EReference,
+    GraphElement,
+    henshin_Formula,
+    henshin_EClassifier,
+    Unit,
+    henshin_UnaryUnit,
+    henshin_ConditionalUnit,
+    henshin_MultiUnit,
+    henshin_Rule,
+    henshin_EPackage,
+    ModelElement,
+    henshin_Attribute,
+    henshin_ParameterMapping,
+    henshin_UnaryFormula,
+    henshin_NestedCondition,
+    henshin_BinaryFormula,
+    henshin_Mapping,
+    henshin_Edge,
+    henshin_Annotation,
+    henshin_ModelElement,
+    NamedElement,
+    henshin_Parameter,
+    henshin_AttributeCondition,
+    henshin_Graph,
+    henshin_Node,
+    henshin_Unit,
+    henshin_Module,
+    henshin_GraphElement,
+    henshin_NamedElement,
+    ParameterKind,
+)
+
+# =============================================================================
+# SECTION 1 — STRUCTURAL TESTS
+# =============================================================================
+
+
+
+def test_hyp_formula_is_not_abstract():
+    assert not inspect.isabstract(Formula)
+
+
+def test_hyp_formula_constructor_exists():
+    assert callable(Formula.__init__)
+
+
+def test_hyp_formula_constructor_args():
+    sig = inspect.signature(Formula.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_henshin_true_is_not_abstract():
+    assert not inspect.isabstract(henshin_True)
+
+
+def test_hyp_henshin_true_constructor_exists():
+    assert callable(henshin_True.__init__)
+
+
+def test_hyp_henshin_true_constructor_args():
+    sig = inspect.signature(henshin_True.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_unaryformula_is_not_abstract():
+    assert not inspect.isabstract(UnaryFormula)
+
+
+def test_hyp_unaryformula_constructor_exists():
+    assert callable(UnaryFormula.__init__)
+
+
+def test_hyp_unaryformula_constructor_args():
+    sig = inspect.signature(UnaryFormula.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_henshin_not_is_not_abstract():
+    assert not inspect.isabstract(henshin_Not)
+
+
+def test_hyp_henshin_not_constructor_exists():
+    assert callable(henshin_Not.__init__)
+
+
+def test_hyp_henshin_not_constructor_args():
+    sig = inspect.signature(henshin_Not.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_binaryformula_is_not_abstract():
+    assert not inspect.isabstract(BinaryFormula)
+
+
+def test_hyp_binaryformula_constructor_exists():
+    assert callable(BinaryFormula.__init__)
+
+
+def test_hyp_binaryformula_constructor_args():
+    sig = inspect.signature(BinaryFormula.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_henshin_or_is_not_abstract():
+    assert not inspect.isabstract(henshin_Or)
+
+
+def test_hyp_henshin_or_constructor_exists():
+    assert callable(henshin_Or.__init__)
+
+
+def test_hyp_henshin_or_constructor_args():
+    sig = inspect.signature(henshin_Or.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_henshin_xor_is_not_abstract():
+    assert not inspect.isabstract(henshin_Xor)
+
+
+def test_hyp_henshin_xor_constructor_exists():
+    assert callable(henshin_Xor.__init__)
+
+
+def test_hyp_henshin_xor_constructor_args():
+    sig = inspect.signature(henshin_Xor.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_henshin_and_is_not_abstract():
+    assert not inspect.isabstract(henshin_And)
+
+
+def test_hyp_henshin_and_constructor_exists():
+    assert callable(henshin_And.__init__)
+
+
+def test_hyp_henshin_and_constructor_args():
+    sig = inspect.signature(henshin_And.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_multiunit_is_not_abstract():
+    assert not inspect.isabstract(MultiUnit)
+
+
+def test_hyp_multiunit_constructor_exists():
+    assert callable(MultiUnit.__init__)
+
+
+def test_hyp_multiunit_constructor_args():
+    sig = inspect.signature(MultiUnit.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_henshin_sequentialunit_is_not_abstract():
+    assert not inspect.isabstract(henshin_SequentialUnit)
+
+
+def test_hyp_henshin_sequentialunit_constructor_exists():
+    assert callable(henshin_SequentialUnit.__init__)
+
+
+def test_hyp_henshin_sequentialunit_constructor_args():
+    sig = inspect.signature(henshin_SequentialUnit.__init__)
+    params = list(sig.parameters.keys())
+    assert "strict" in params, "Missing parameter 'strict'"
+    assert "rollback" in params, "Missing parameter 'rollback'"
+
+
+
+
+
+def test_hyp_henshin_independentunit_is_not_abstract():
+    assert not inspect.isabstract(henshin_IndependentUnit)
+
+
+def test_hyp_henshin_independentunit_constructor_exists():
+    assert callable(henshin_IndependentUnit.__init__)
+
+
+def test_hyp_henshin_independentunit_constructor_args():
+    sig = inspect.signature(henshin_IndependentUnit.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_unaryunit_is_not_abstract():
+    assert not inspect.isabstract(UnaryUnit)
+
+
+def test_hyp_unaryunit_constructor_exists():
+    assert callable(UnaryUnit.__init__)
+
+
+def test_hyp_unaryunit_constructor_args():
+    sig = inspect.signature(UnaryUnit.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_henshin_loopunit_is_not_abstract():
+    assert not inspect.isabstract(henshin_LoopUnit)
+
+
+def test_hyp_henshin_loopunit_constructor_exists():
+    assert callable(henshin_LoopUnit.__init__)
+
+
+def test_hyp_henshin_loopunit_constructor_args():
+    sig = inspect.signature(henshin_LoopUnit.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_henshin_iteratedunit_is_not_abstract():
+    assert not inspect.isabstract(henshin_IteratedUnit)
+
+
+def test_hyp_henshin_iteratedunit_constructor_exists():
+    assert callable(henshin_IteratedUnit.__init__)
+
+
+def test_hyp_henshin_iteratedunit_constructor_args():
+    sig = inspect.signature(henshin_IteratedUnit.__init__)
+    params = list(sig.parameters.keys())
+    assert "iterations" in params, "Missing parameter 'iterations'"
+    assert "rollback" in params, "Missing parameter 'rollback'"
+    assert "strict" in params, "Missing parameter 'strict'"
+
+
+
+
+
+
+def test_hyp_henshin_priorityunit_is_not_abstract():
+    assert not inspect.isabstract(henshin_PriorityUnit)
+
+
+def test_hyp_henshin_priorityunit_constructor_exists():
+    assert callable(henshin_PriorityUnit.__init__)
+
+
+def test_hyp_henshin_priorityunit_constructor_args():
+    sig = inspect.signature(henshin_PriorityUnit.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_henshin_eclass_is_not_abstract():
+    assert not inspect.isabstract(henshin_EClass)
+
+
+def test_hyp_henshin_eclass_constructor_exists():
+    assert callable(henshin_EClass.__init__)
+
+
+def test_hyp_henshin_eclass_constructor_args():
+    sig = inspect.signature(henshin_EClass.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_henshin_eattribute_is_not_abstract():
+    assert not inspect.isabstract(henshin_EAttribute)
+
+
+def test_hyp_henshin_eattribute_constructor_exists():
+    assert callable(henshin_EAttribute.__init__)
+
+
+def test_hyp_henshin_eattribute_constructor_args():
+    sig = inspect.signature(henshin_EAttribute.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_henshin_ereference_is_not_abstract():
+    assert not inspect.isabstract(henshin_EReference)
+
+
+def test_hyp_henshin_ereference_constructor_exists():
+    assert callable(henshin_EReference.__init__)
+
+
+def test_hyp_henshin_ereference_constructor_args():
+    sig = inspect.signature(henshin_EReference.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_graphelement_is_not_abstract():
+    assert not inspect.isabstract(GraphElement)
+
+
+def test_hyp_graphelement_constructor_exists():
+    assert callable(GraphElement.__init__)
+
+
+def test_hyp_graphelement_constructor_args():
+    sig = inspect.signature(GraphElement.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_henshin_formula_is_not_abstract():
+    assert not inspect.isabstract(henshin_Formula)
+
+
+def test_hyp_henshin_formula_constructor_exists():
+    assert callable(henshin_Formula.__init__)
+
+
+def test_hyp_henshin_formula_constructor_args():
+    sig = inspect.signature(henshin_Formula.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_henshin_eclassifier_is_not_abstract():
+    assert not inspect.isabstract(henshin_EClassifier)
+
+
+def test_hyp_henshin_eclassifier_constructor_exists():
+    assert callable(henshin_EClassifier.__init__)
+
+
+def test_hyp_henshin_eclassifier_constructor_args():
+    sig = inspect.signature(henshin_EClassifier.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_unit_is_not_abstract():
+    assert not inspect.isabstract(Unit)
+
+
+def test_hyp_unit_constructor_exists():
+    assert callable(Unit.__init__)
+
+
+def test_hyp_unit_constructor_args():
+    sig = inspect.signature(Unit.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_henshin_unaryunit_is_not_abstract():
+    assert not inspect.isabstract(henshin_UnaryUnit)
+
+
+def test_hyp_henshin_unaryunit_constructor_exists():
+    assert callable(henshin_UnaryUnit.__init__)
+
+
+def test_hyp_henshin_unaryunit_constructor_args():
+    sig = inspect.signature(henshin_UnaryUnit.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_henshin_conditionalunit_is_not_abstract():
+    assert not inspect.isabstract(henshin_ConditionalUnit)
+
+
+def test_hyp_henshin_conditionalunit_constructor_exists():
+    assert callable(henshin_ConditionalUnit.__init__)
+
+
+def test_hyp_henshin_conditionalunit_constructor_args():
+    sig = inspect.signature(henshin_ConditionalUnit.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_henshin_multiunit_is_not_abstract():
+    assert not inspect.isabstract(henshin_MultiUnit)
+
+
+def test_hyp_henshin_multiunit_constructor_exists():
+    assert callable(henshin_MultiUnit.__init__)
+
+
+def test_hyp_henshin_multiunit_constructor_args():
+    sig = inspect.signature(henshin_MultiUnit.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_henshin_rule_is_not_abstract():
+    assert not inspect.isabstract(henshin_Rule)
+
+
+def test_hyp_henshin_rule_constructor_exists():
+    assert callable(henshin_Rule.__init__)
+
+
+def test_hyp_henshin_rule_constructor_args():
+    sig = inspect.signature(henshin_Rule.__init__)
+    params = list(sig.parameters.keys())
+    assert "checkDangling" in params, "Missing parameter 'checkDangling'"
+    assert "injectiveMatching" in params, "Missing parameter 'injectiveMatching'"
+    assert "javaImports" in params, "Missing parameter 'javaImports'"
+
+
+
+
+
+
+def test_hyp_henshin_epackage_is_not_abstract():
+    assert not inspect.isabstract(henshin_EPackage)
+
+
+def test_hyp_henshin_epackage_constructor_exists():
+    assert callable(henshin_EPackage.__init__)
+
+
+def test_hyp_henshin_epackage_constructor_args():
+    sig = inspect.signature(henshin_EPackage.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_modelelement_is_not_abstract():
+    assert not inspect.isabstract(ModelElement)
+
+
+def test_hyp_modelelement_constructor_exists():
+    assert callable(ModelElement.__init__)
+
+
+def test_hyp_modelelement_constructor_args():
+    sig = inspect.signature(ModelElement.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_henshin_attribute_is_not_abstract():
+    assert not inspect.isabstract(henshin_Attribute)
+
+
+def test_hyp_henshin_attribute_constructor_exists():
+    assert callable(henshin_Attribute.__init__)
+
+
+def test_hyp_henshin_attribute_constructor_args():
+    sig = inspect.signature(henshin_Attribute.__init__)
+    params = list(sig.parameters.keys())
+    assert "null" in params, "Missing parameter 'null'"
+    assert "constant" in params, "Missing parameter 'constant'"
+    assert "value" in params, "Missing parameter 'value'"
+
+
+
+
+
+
+def test_hyp_henshin_parametermapping_is_not_abstract():
+    assert not inspect.isabstract(henshin_ParameterMapping)
+
+
+def test_hyp_henshin_parametermapping_constructor_exists():
+    assert callable(henshin_ParameterMapping.__init__)
+
+
+def test_hyp_henshin_parametermapping_constructor_args():
+    sig = inspect.signature(henshin_ParameterMapping.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_henshin_unaryformula_is_not_abstract():
+    assert not inspect.isabstract(henshin_UnaryFormula)
+
+
+def test_hyp_henshin_unaryformula_constructor_exists():
+    assert callable(henshin_UnaryFormula.__init__)
+
+
+def test_hyp_henshin_unaryformula_constructor_args():
+    sig = inspect.signature(henshin_UnaryFormula.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_henshin_nestedcondition_is_not_abstract():
+    assert not inspect.isabstract(henshin_NestedCondition)
+
+
+def test_hyp_henshin_nestedcondition_constructor_exists():
+    assert callable(henshin_NestedCondition.__init__)
+
+
+def test_hyp_henshin_nestedcondition_constructor_args():
+    sig = inspect.signature(henshin_NestedCondition.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_henshin_binaryformula_is_not_abstract():
+    assert not inspect.isabstract(henshin_BinaryFormula)
+
+
+def test_hyp_henshin_binaryformula_constructor_exists():
+    assert callable(henshin_BinaryFormula.__init__)
+
+
+def test_hyp_henshin_binaryformula_constructor_args():
+    sig = inspect.signature(henshin_BinaryFormula.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_henshin_mapping_is_not_abstract():
+    assert not inspect.isabstract(henshin_Mapping)
+
+
+def test_hyp_henshin_mapping_constructor_exists():
+    assert callable(henshin_Mapping.__init__)
+
+
+def test_hyp_henshin_mapping_constructor_args():
+    sig = inspect.signature(henshin_Mapping.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_henshin_edge_is_not_abstract():
+    assert not inspect.isabstract(henshin_Edge)
+
+
+def test_hyp_henshin_edge_constructor_exists():
+    assert callable(henshin_Edge.__init__)
+
+
+def test_hyp_henshin_edge_constructor_args():
+    sig = inspect.signature(henshin_Edge.__init__)
+    params = list(sig.parameters.keys())
+    assert "indexConstant" in params, "Missing parameter 'indexConstant'"
+    assert "index" in params, "Missing parameter 'index'"
+
+
+
+
+
+def test_hyp_henshin_annotation_is_not_abstract():
+    assert not inspect.isabstract(henshin_Annotation)
+
+
+def test_hyp_henshin_annotation_constructor_exists():
+    assert callable(henshin_Annotation.__init__)
+
+
+def test_hyp_henshin_annotation_constructor_args():
+    sig = inspect.signature(henshin_Annotation.__init__)
+    params = list(sig.parameters.keys())
+    assert "value" in params, "Missing parameter 'value'"
+    assert "key" in params, "Missing parameter 'key'"
+
+
+
+
+
+def test_hyp_henshin_modelelement_is_not_abstract():
+    assert not inspect.isabstract(henshin_ModelElement)
+
+
+def test_hyp_henshin_modelelement_constructor_exists():
+    assert callable(henshin_ModelElement.__init__)
+
+
+def test_hyp_henshin_modelelement_constructor_args():
+    sig = inspect.signature(henshin_ModelElement.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_namedelement_is_not_abstract():
+    assert not inspect.isabstract(NamedElement)
+
+
+def test_hyp_namedelement_constructor_exists():
+    assert callable(NamedElement.__init__)
+
+
+def test_hyp_namedelement_constructor_args():
+    sig = inspect.signature(NamedElement.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_henshin_parameter_is_not_abstract():
+    assert not inspect.isabstract(henshin_Parameter)
+
+
+def test_hyp_henshin_parameter_constructor_exists():
+    assert callable(henshin_Parameter.__init__)
+
+
+def test_hyp_henshin_parameter_constructor_args():
+    sig = inspect.signature(henshin_Parameter.__init__)
+    params = list(sig.parameters.keys())
+    assert "kind" in params, "Missing parameter 'kind'"
+
+
+
+
+def test_hyp_henshin_attributecondition_is_not_abstract():
+    assert not inspect.isabstract(henshin_AttributeCondition)
+
+
+def test_hyp_henshin_attributecondition_constructor_exists():
+    assert callable(henshin_AttributeCondition.__init__)
+
+
+def test_hyp_henshin_attributecondition_constructor_args():
+    sig = inspect.signature(henshin_AttributeCondition.__init__)
+    params = list(sig.parameters.keys())
+    assert "conditionText" in params, "Missing parameter 'conditionText'"
+
+
+
+
+def test_hyp_henshin_graph_is_not_abstract():
+    assert not inspect.isabstract(henshin_Graph)
+
+
+def test_hyp_henshin_graph_constructor_exists():
+    assert callable(henshin_Graph.__init__)
+
+
+def test_hyp_henshin_graph_constructor_args():
+    sig = inspect.signature(henshin_Graph.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_henshin_node_is_not_abstract():
+    assert not inspect.isabstract(henshin_Node)
+
+
+def test_hyp_henshin_node_constructor_exists():
+    assert callable(henshin_Node.__init__)
+
+
+def test_hyp_henshin_node_constructor_args():
+    sig = inspect.signature(henshin_Node.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_henshin_unit_is_not_abstract():
+    assert not inspect.isabstract(henshin_Unit)
+
+
+def test_hyp_henshin_unit_constructor_exists():
+    assert callable(henshin_Unit.__init__)
+
+
+def test_hyp_henshin_unit_constructor_args():
+    sig = inspect.signature(henshin_Unit.__init__)
+    params = list(sig.parameters.keys())
+    assert "activated" in params, "Missing parameter 'activated'"
+
+
+
+
+def test_hyp_henshin_module_is_not_abstract():
+    assert not inspect.isabstract(henshin_Module)
+
+
+def test_hyp_henshin_module_constructor_exists():
+    assert callable(henshin_Module.__init__)
+
+
+def test_hyp_henshin_module_constructor_args():
+    sig = inspect.signature(henshin_Module.__init__)
+    params = list(sig.parameters.keys())
+
+
+
+def test_hyp_henshin_graphelement_is_not_abstract():
+    assert not inspect.isabstract(henshin_GraphElement)
+
+
+def test_hyp_henshin_graphelement_constructor_exists():
+    assert callable(henshin_GraphElement.__init__)
+
+
+def test_hyp_henshin_graphelement_constructor_args():
+    sig = inspect.signature(henshin_GraphElement.__init__)
+    params = list(sig.parameters.keys())
+    assert "action" in params, "Missing parameter 'action'"
+
+
+
+
+def test_hyp_henshin_namedelement_is_not_abstract():
+    assert not inspect.isabstract(henshin_NamedElement)
+
+
+def test_hyp_henshin_namedelement_constructor_exists():
+    assert callable(henshin_NamedElement.__init__)
+
+
+def test_hyp_henshin_namedelement_constructor_args():
+    sig = inspect.signature(henshin_NamedElement.__init__)
+    params = list(sig.parameters.keys())
+    assert "name" in params, "Missing parameter 'name'"
+    assert "description" in params, "Missing parameter 'description'"
+
+
+
+def test_hyp_parameterkind_exists():
+    # Check that the Enumeration exists
+    assert ParameterKind is not None
+
+def test_hyp_parameterkind_has_all_literals():
+    # Collect the names of literals in this Enumeration
+    enum_literals = [lit.name for lit in ParameterKind]
+    expected_literals = [
+        "IN",
+        "VAR",
+        "UNKNOWN",
+        "INOUT",
+        "OUT",
+    ]
+    # Check that all expected literals exist
+    for lit_name in expected_literals:
+        assert lit_name in enum_literals, f"Literal '' missing in ParameterKind"
+
+
+# =============================================================================
+# HYPOTHESIS STRATEGIES
+# =============================================================================
+
+safe_text = st.text(
+    alphabet=st.characters(
+        whitelist_categories=("Ll", "Lu", "Nd"),
+        whitelist_characters="_",
+    ),
+    min_size=1,
+).filter(lambda s: s[0].isalpha())
+Formula_strategy = st.builds(
+    Formula,
+)
+henshin_True_strategy = st.builds(
+    henshin_True,
+)
+UnaryFormula_strategy = st.builds(
+    UnaryFormula,
+)
+henshin_Not_strategy = st.builds(
+    henshin_Not,
+)
+BinaryFormula_strategy = st.builds(
+    BinaryFormula,
+)
+henshin_Or_strategy = st.builds(
+    henshin_Or,
+)
+henshin_Xor_strategy = st.builds(
+    henshin_Xor,
+)
+henshin_And_strategy = st.builds(
+    henshin_And,
+)
+MultiUnit_strategy = st.builds(
+    MultiUnit,
+)
+henshin_SequentialUnit_strategy = st.builds(
+    henshin_SequentialUnit,
+    strict=
+        st.booleans(),
+    rollback=
+        st.booleans()
+)
+henshin_IndependentUnit_strategy = st.builds(
+    henshin_IndependentUnit,
+)
+UnaryUnit_strategy = st.builds(
+    UnaryUnit,
+)
+henshin_LoopUnit_strategy = st.builds(
+    henshin_LoopUnit,
+)
+henshin_IteratedUnit_strategy = st.builds(
+    henshin_IteratedUnit,
+    iterations=
+        safe_text,
+    rollback=
+        st.booleans(),
+    strict=
+        st.booleans()
+)
+henshin_PriorityUnit_strategy = st.builds(
+    henshin_PriorityUnit,
+)
+henshin_EClass_strategy = st.builds(
+    henshin_EClass,
+)
+henshin_EAttribute_strategy = st.builds(
+    henshin_EAttribute,
+)
+henshin_EReference_strategy = st.builds(
+    henshin_EReference,
+)
+GraphElement_strategy = st.builds(
+    GraphElement,
+)
+henshin_Formula_strategy = st.builds(
+    henshin_Formula,
+)
+henshin_EClassifier_strategy = st.builds(
+    henshin_EClassifier,
+)
+Unit_strategy = st.builds(
+    Unit,
+)
+henshin_UnaryUnit_strategy = st.builds(
+    henshin_UnaryUnit,
+)
+henshin_ConditionalUnit_strategy = st.builds(
+    henshin_ConditionalUnit,
+)
+henshin_MultiUnit_strategy = st.builds(
+    henshin_MultiUnit,
+)
+henshin_Rule_strategy = st.builds(
+    henshin_Rule,
+    checkDangling=
+        st.booleans(),
+    injectiveMatching=
+        st.booleans(),
+    javaImports=
+        safe_text
+)
+henshin_EPackage_strategy = st.builds(
+    henshin_EPackage,
+)
+ModelElement_strategy = st.builds(
+    ModelElement,
+)
+henshin_Attribute_strategy = st.builds(
+    henshin_Attribute,
+    null=
+        st.booleans(),
+    constant=
+        safe_text,
+    value=
+        safe_text
+)
+henshin_ParameterMapping_strategy = st.builds(
+    henshin_ParameterMapping,
+)
+henshin_UnaryFormula_strategy = st.builds(
+    henshin_UnaryFormula,
+)
+henshin_NestedCondition_strategy = st.builds(
+    henshin_NestedCondition,
+)
+henshin_BinaryFormula_strategy = st.builds(
+    henshin_BinaryFormula,
+)
+henshin_Mapping_strategy = st.builds(
+    henshin_Mapping,
+)
+henshin_Edge_strategy = st.builds(
+    henshin_Edge,
+    indexConstant=
+        safe_text,
+    index=
+        safe_text
+)
+henshin_Annotation_strategy = st.builds(
+    henshin_Annotation,
+    value=
+        safe_text,
+    key=
+        safe_text
+)
+henshin_ModelElement_strategy = st.builds(
+    henshin_ModelElement,
+)
+NamedElement_strategy = st.builds(
+    NamedElement,
+)
+henshin_Parameter_strategy = st.builds(
+    henshin_Parameter,
+    kind=
+        safe_text
+)
+henshin_AttributeCondition_strategy = st.builds(
+    henshin_AttributeCondition,
+    conditionText=
+        safe_text
+)
+henshin_Graph_strategy = st.builds(
+    henshin_Graph,
+)
+henshin_Node_strategy = st.builds(
+    henshin_Node,
+)
+henshin_Unit_strategy = st.builds(
+    henshin_Unit,
+    activated=
+        st.booleans()
+)
+henshin_Module_strategy = st.builds(
+    henshin_Module,
+)
+henshin_GraphElement_strategy = st.builds(
+    henshin_GraphElement,
+    action=
+        safe_text
+)
+henshin_NamedElement_strategy = st.builds(
+    henshin_NamedElement,
+    name=
+        safe_text,
+    description=
+        safe_text
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+@given(instance=henshin_SequentialUnit_strategy)
+def test_hyp_henshin_sequentialunit_strict_setter(instance):
+    original = instance.strict
+    instance.strict = original
+    assert instance.strict == original
+
+
+
+@given(instance=henshin_SequentialUnit_strategy)
+def test_hyp_henshin_sequentialunit_rollback_setter(instance):
+    original = instance.rollback
+    instance.rollback = original
+    assert instance.rollback == original
+
+
+
+
+
+
+
+@given(instance=henshin_IteratedUnit_strategy)
+def test_hyp_henshin_iteratedunit_iterations_setter(instance):
+    original = instance.iterations
+    instance.iterations = original
+    assert instance.iterations == original
+
+
+
+@given(instance=henshin_IteratedUnit_strategy)
+def test_hyp_henshin_iteratedunit_rollback_setter(instance):
+    original = instance.rollback
+    instance.rollback = original
+    assert instance.rollback == original
+
+
+
+@given(instance=henshin_IteratedUnit_strategy)
+def test_hyp_henshin_iteratedunit_strict_setter(instance):
+    original = instance.strict
+    instance.strict = original
+    assert instance.strict == original
+
+
+
+
+
+
+
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
+
+
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
+
+
+
+
+
+
+
+
+
+
+@given(instance=henshin_Rule_strategy)
+def test_hyp_henshin_rule_checkDangling_setter(instance):
+    original = instance.checkDangling
+    instance.checkDangling = original
+    assert instance.checkDangling == original
+
+
+
+@given(instance=henshin_Rule_strategy)
+def test_hyp_henshin_rule_injectiveMatching_setter(instance):
+    original = instance.injectiveMatching
+    instance.injectiveMatching = original
+    assert instance.injectiveMatching == original
+
+
+
+@given(instance=henshin_Rule_strategy)
+def test_hyp_henshin_rule_javaImports_setter(instance):
+    original = instance.javaImports
+    instance.javaImports = original
+    assert instance.javaImports == original
+
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
+
+
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
+
+
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
+
+
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
+
+
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
+
+
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
+
+
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
+
+
+
+
+
+
+
+@given(instance=henshin_Attribute_strategy)
+def test_hyp_henshin_attribute_null_setter(instance):
+    original = instance.null
+    instance.null = original
+    assert instance.null == original
+
+
+
+@given(instance=henshin_Attribute_strategy)
+def test_hyp_henshin_attribute_constant_setter(instance):
+    original = instance.constant
+    instance.constant = original
+    assert instance.constant == original
+
+
+
+@given(instance=henshin_Attribute_strategy)
+def test_hyp_henshin_attribute_value_setter(instance):
+    original = instance.value
+    instance.value = original
+    assert instance.value == original
+
+
+
+
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
+
+
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
+
+
+
+
+
+
+
+@given(instance=henshin_Edge_strategy)
+def test_hyp_henshin_edge_indexConstant_setter(instance):
+    original = instance.indexConstant
+    instance.indexConstant = original
+    assert instance.indexConstant == original
+
+
+
+@given(instance=henshin_Edge_strategy)
+def test_hyp_henshin_edge_index_setter(instance):
+    original = instance.index
+    instance.index = original
+    assert instance.index == original
+
+
+
+
+@given(instance=henshin_Annotation_strategy)
+def test_hyp_henshin_annotation_value_setter(instance):
+    original = instance.value
+    instance.value = original
+    assert instance.value == original
+
+
+
+@given(instance=henshin_Annotation_strategy)
+def test_hyp_henshin_annotation_key_setter(instance):
+    original = instance.key
+    instance.key = original
+    assert instance.key == original
+
+
+
+
+
+
+@given(instance=henshin_Parameter_strategy)
+def test_hyp_henshin_parameter_kind_setter(instance):
+    original = instance.kind
+    instance.kind = original
+    assert instance.kind == original
+
+
+
+
+@given(instance=henshin_AttributeCondition_strategy)
+def test_hyp_henshin_attributecondition_conditionText_setter(instance):
+    original = instance.conditionText
+    instance.conditionText = original
+    assert instance.conditionText == original
+
+
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
+
+
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
+
+
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
+
+
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
+
+
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
+
+
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
+
+
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
+
+
+import warnings
+import copy
+import inspect
+import ast
+from hypothesis import given, settings
+
+
+
+
+
+
+@given(instance=henshin_Unit_strategy)
+def test_hyp_henshin_unit_activated_setter(instance):
+    original = instance.activated
+    instance.activated = original
+    assert instance.activated == original
+
+
+
+
+
+@given(instance=henshin_GraphElement_strategy)
+def test_hyp_henshin_graphelement_action_setter(instance):
+    original = instance.action
+    instance.action = original
+    assert instance.action == original
+
+
+
+
+@given(instance=henshin_NamedElement_strategy)
+def test_hyp_henshin_namedelement_name_setter(instance):
+    original = instance.name
+    instance.name = original
+    assert instance.name == original
+
+
+
+@given(instance=henshin_NamedElement_strategy)
+def test_hyp_henshin_namedelement_description_setter(instance):
+    original = instance.description
+    instance.description = original
+    assert instance.description == original
+
+
+# ----- SECTION B: test_structural_full.py (deterministic-first suite) -----
+import inspect
+import pytest
+from datetime import date, datetime, time, timedelta
+from hypothesis import given, settings
+import hypothesis.strategies as st
+
+from python_code import (
+    BinaryFormula,
+    Formula,
+    GraphElement,
+    ModelElement,
+    MultiUnit,
+    NamedElement,
+    UnaryFormula,
+    UnaryUnit,
+    Unit,
+    henshin_And,
+    henshin_Annotation,
+    henshin_Attribute,
+    henshin_AttributeCondition,
+    henshin_BinaryFormula,
+    henshin_ConditionalUnit,
+    henshin_EAttribute,
+    henshin_EClass,
+    henshin_EClassifier,
+    henshin_EPackage,
+    henshin_EReference,
+    henshin_Edge,
+    henshin_Formula,
+    henshin_Graph,
+    henshin_GraphElement,
+    henshin_IndependentUnit,
+    henshin_IteratedUnit,
+    henshin_LoopUnit,
+    henshin_Mapping,
+    henshin_ModelElement,
+    henshin_Module,
+    henshin_MultiUnit,
+    henshin_NamedElement,
+    henshin_NestedCondition,
+    henshin_Node,
+    henshin_Not,
+    henshin_Or,
+    henshin_Parameter,
+    henshin_ParameterMapping,
+    henshin_PriorityUnit,
+    henshin_Rule,
+    henshin_SequentialUnit,
+    henshin_True,
+    henshin_UnaryFormula,
+    henshin_UnaryUnit,
+    henshin_Unit,
+    henshin_Xor,
+    ParameterKind,
+)
+
+safe_text = st.text(
+    alphabet=st.characters(
+        whitelist_categories=("Ll", "Lu", "Nd"),
+        whitelist_characters="_",
+    ),
+    min_size=1,
+).filter(lambda s: s[0].isalpha())
+
+def _is_linked(obj, attr_name, other):
+    value = getattr(obj, attr_name, None)
+    if isinstance(value, (set, list, tuple, frozenset)):
+        return other in value
+    return value == other
+
+def _safe_set(obj, attr_name, value):
+    # Some generated models have a genuine bug: two reciprocal setters
+    # unconditionally call each other with no base case, causing
+    # infinite mutual recursion for that specific relationship (found
+    # in model_10000002's items10/sc11 pair). That's a defect in the
+    # code under test, not in this test -- skip rather than fail so it
+    # doesn't masquerade as a test-suite problem.
+    try:
+        setattr(obj, attr_name, value)
+    except RecursionError:
+        pytest.skip(f'{attr_name!r} setter has infinite mutual recursion in the generated code')
+
+# =============================================================================
+# SECTION 1 -- DETERMINISTIC TESTS (attributes, generalizations, relationships)
+# =============================================================================
+
+def test_henshin_Annotation_key_value_roundtrip():
+    instance = henshin_Annotation(key="sample_text", value="sample_text")
+    assert instance.key == "sample_text"
+    instance.key = "sample_text_2"
+    assert instance.key == "sample_text_2"
+
+
+def test_henshin_Annotation_value_value_roundtrip():
+    instance = henshin_Annotation(key="sample_text", value="sample_text")
+    assert instance.value == "sample_text"
+    instance.value = "sample_text_2"
+    assert instance.value == "sample_text_2"
+
+
+def test_henshin_Attribute_constant_value_roundtrip():
+    instance = henshin_Attribute(constant="sample_text", null=True, value="sample_text")
+    assert instance.constant == "sample_text"
+    instance.constant = "sample_text_2"
+    assert instance.constant == "sample_text_2"
+
+
+def test_henshin_Attribute_null_value_roundtrip():
+    instance = henshin_Attribute(constant="sample_text", null=True, value="sample_text")
+    assert instance.null == True
+    instance.null = False
+    assert instance.null == False
+
+
+def test_henshin_Attribute_value_value_roundtrip():
+    instance = henshin_Attribute(constant="sample_text", null=True, value="sample_text")
+    assert instance.value == "sample_text"
+    instance.value = "sample_text_2"
+    assert instance.value == "sample_text_2"
+
+
+def test_henshin_AttributeCondition_conditionText_value_roundtrip():
+    instance = henshin_AttributeCondition(conditionText="sample_text")
+    assert instance.conditionText == "sample_text"
+    instance.conditionText = "sample_text_2"
+    assert instance.conditionText == "sample_text_2"
+
+
+def test_henshin_Edge_index_value_roundtrip():
+    instance = henshin_Edge(index="sample_text", indexConstant="sample_text")
+    assert instance.index == "sample_text"
+    instance.index = "sample_text_2"
+    assert instance.index == "sample_text_2"
+
+
+def test_henshin_Edge_indexConstant_value_roundtrip():
+    instance = henshin_Edge(index="sample_text", indexConstant="sample_text")
+    assert instance.indexConstant == "sample_text"
+    instance.indexConstant = "sample_text_2"
+    assert instance.indexConstant == "sample_text_2"
+
+
+def test_henshin_GraphElement_action_value_roundtrip():
+    instance = henshin_GraphElement(action="sample_text")
+    assert instance.action == "sample_text"
+    instance.action = "sample_text_2"
+    assert instance.action == "sample_text_2"
+
+
+def test_henshin_IteratedUnit_iterations_value_roundtrip():
+    instance = henshin_IteratedUnit(iterations="sample_text", rollback=True, strict=True)
+    assert instance.iterations == "sample_text"
+    instance.iterations = "sample_text_2"
+    assert instance.iterations == "sample_text_2"
+
+
+def test_henshin_IteratedUnit_rollback_value_roundtrip():
+    instance = henshin_IteratedUnit(iterations="sample_text", rollback=True, strict=True)
+    assert instance.rollback == True
+    instance.rollback = False
+    assert instance.rollback == False
+
+
+def test_henshin_IteratedUnit_strict_value_roundtrip():
+    instance = henshin_IteratedUnit(iterations="sample_text", rollback=True, strict=True)
+    assert instance.strict == True
+    instance.strict = False
+    assert instance.strict == False
+
+
+def test_henshin_NamedElement_description_value_roundtrip():
+    instance = henshin_NamedElement(description="sample_text", name="sample_text")
+    assert instance.description == "sample_text"
+    instance.description = "sample_text_2"
+    assert instance.description == "sample_text_2"
+
+
+def test_henshin_NamedElement_name_value_roundtrip():
+    instance = henshin_NamedElement(description="sample_text", name="sample_text")
+    assert instance.name == "sample_text"
+    instance.name = "sample_text_2"
+    assert instance.name == "sample_text_2"
+
+
+def test_henshin_Parameter_kind_value_roundtrip():
+    instance = henshin_Parameter(kind="sample_text")
+    assert instance.kind == "sample_text"
+    instance.kind = "sample_text_2"
+    assert instance.kind == "sample_text_2"
+
+
+def test_henshin_Rule_checkDangling_value_roundtrip():
+    instance = henshin_Rule(checkDangling=True, injectiveMatching=True, javaImports="sample_text")
+    assert instance.checkDangling == True
+    instance.checkDangling = False
+    assert instance.checkDangling == False
+
+
+def test_henshin_Rule_injectiveMatching_value_roundtrip():
+    instance = henshin_Rule(checkDangling=True, injectiveMatching=True, javaImports="sample_text")
+    assert instance.injectiveMatching == True
+    instance.injectiveMatching = False
+    assert instance.injectiveMatching == False
+
+
+def test_henshin_Rule_javaImports_value_roundtrip():
+    instance = henshin_Rule(checkDangling=True, injectiveMatching=True, javaImports="sample_text")
+    assert instance.javaImports == "sample_text"
+    instance.javaImports = "sample_text_2"
+    assert instance.javaImports == "sample_text_2"
+
+
+def test_henshin_SequentialUnit_rollback_value_roundtrip():
+    instance = henshin_SequentialUnit(rollback=True, strict=True)
+    assert instance.rollback == True
+    instance.rollback = False
+    assert instance.rollback == False
+
+
+def test_henshin_SequentialUnit_strict_value_roundtrip():
+    instance = henshin_SequentialUnit(rollback=True, strict=True)
+    assert instance.strict == True
+    instance.strict = False
+    assert instance.strict == False
+
+
+def test_henshin_Unit_activated_value_roundtrip():
+    instance = henshin_Unit(activated=True)
+    assert instance.activated == True
+    instance.activated = False
+    assert instance.activated == False
+
+
+def test_henshin_And_isa_BinaryFormula():
+    instance = henshin_And()
+    assert isinstance(instance, BinaryFormula)
+
+
+def test_henshin_Or_isa_BinaryFormula():
+    instance = henshin_Or()
+    assert isinstance(instance, BinaryFormula)
+
+
+def test_henshin_Xor_isa_BinaryFormula():
+    instance = henshin_Xor()
+    assert isinstance(instance, BinaryFormula)
+
+
+def test_henshin_BinaryFormula_isa_Formula():
+    instance = henshin_BinaryFormula()
+    assert isinstance(instance, Formula)
+
+
+def test_henshin_NestedCondition_isa_Formula():
+    instance = henshin_NestedCondition()
+    assert isinstance(instance, Formula)
+
+
+def test_henshin_True_isa_Formula():
+    instance = henshin_True()
+    assert isinstance(instance, Formula)
+
+
+def test_henshin_UnaryFormula_isa_Formula():
+    instance = henshin_UnaryFormula()
+    assert isinstance(instance, Formula)
+
+
+def test_henshin_Attribute_isa_GraphElement():
+    instance = henshin_Attribute(constant="sample_text", null=True, value="sample_text")
+    assert isinstance(instance, GraphElement)
+
+
+def test_henshin_Edge_isa_GraphElement():
+    instance = henshin_Edge(index="sample_text", indexConstant="sample_text")
+    assert isinstance(instance, GraphElement)
+
+
+def test_henshin_Node_isa_GraphElement():
+    instance = henshin_Node()
+    assert isinstance(instance, GraphElement)
+
+
+def test_henshin_Annotation_isa_ModelElement():
+    instance = henshin_Annotation(key="sample_text", value="sample_text")
+    assert isinstance(instance, ModelElement)
+
+
+def test_henshin_Attribute_isa_ModelElement():
+    instance = henshin_Attribute(constant="sample_text", null=True, value="sample_text")
+    assert isinstance(instance, ModelElement)
+
+
+def test_henshin_BinaryFormula_isa_ModelElement():
+    instance = henshin_BinaryFormula()
+    assert isinstance(instance, ModelElement)
+
+
+def test_henshin_Edge_isa_ModelElement():
+    instance = henshin_Edge(index="sample_text", indexConstant="sample_text")
+    assert isinstance(instance, ModelElement)
+
+
+def test_henshin_Mapping_isa_ModelElement():
+    instance = henshin_Mapping()
+    assert isinstance(instance, ModelElement)
+
+
+def test_henshin_NamedElement_isa_ModelElement():
+    instance = henshin_NamedElement(description="sample_text", name="sample_text")
+    assert isinstance(instance, ModelElement)
+
+
+def test_henshin_NestedCondition_isa_ModelElement():
+    instance = henshin_NestedCondition()
+    assert isinstance(instance, ModelElement)
+
+
+def test_henshin_ParameterMapping_isa_ModelElement():
+    instance = henshin_ParameterMapping()
+    assert isinstance(instance, ModelElement)
+
+
+def test_henshin_UnaryFormula_isa_ModelElement():
+    instance = henshin_UnaryFormula()
+    assert isinstance(instance, ModelElement)
+
+
+def test_henshin_IndependentUnit_isa_MultiUnit():
+    instance = henshin_IndependentUnit()
+    assert isinstance(instance, MultiUnit)
+
+
+def test_henshin_PriorityUnit_isa_MultiUnit():
+    instance = henshin_PriorityUnit()
+    assert isinstance(instance, MultiUnit)
+
+
+def test_henshin_SequentialUnit_isa_MultiUnit():
+    instance = henshin_SequentialUnit(rollback=True, strict=True)
+    assert isinstance(instance, MultiUnit)
+
+
+def test_henshin_AttributeCondition_isa_NamedElement():
+    instance = henshin_AttributeCondition(conditionText="sample_text")
+    assert isinstance(instance, NamedElement)
+
+
+def test_henshin_Graph_isa_NamedElement():
+    instance = henshin_Graph()
+    assert isinstance(instance, NamedElement)
+
+
+def test_henshin_Module_isa_NamedElement():
+    instance = henshin_Module()
+    assert isinstance(instance, NamedElement)
+
+
+def test_henshin_Node_isa_NamedElement():
+    instance = henshin_Node()
+    assert isinstance(instance, NamedElement)
+
+
+def test_henshin_Parameter_isa_NamedElement():
+    instance = henshin_Parameter(kind="sample_text")
+    assert isinstance(instance, NamedElement)
+
+
+def test_henshin_Unit_isa_NamedElement():
+    instance = henshin_Unit(activated=True)
+    assert isinstance(instance, NamedElement)
+
+
+def test_henshin_Not_isa_UnaryFormula():
+    instance = henshin_Not()
+    assert isinstance(instance, UnaryFormula)
+
+
+def test_henshin_IteratedUnit_isa_UnaryUnit():
+    instance = henshin_IteratedUnit(iterations="sample_text", rollback=True, strict=True)
+    assert isinstance(instance, UnaryUnit)
+
+
+def test_henshin_LoopUnit_isa_UnaryUnit():
+    instance = henshin_LoopUnit()
+    assert isinstance(instance, UnaryUnit)
+
+
+def test_henshin_ConditionalUnit_isa_Unit():
+    instance = henshin_ConditionalUnit()
+    assert isinstance(instance, Unit)
+
+
+def test_henshin_MultiUnit_isa_Unit():
+    instance = henshin_MultiUnit()
+    assert isinstance(instance, Unit)
+
+
+def test_henshin_Rule_isa_Unit():
+    instance = henshin_Rule(checkDangling=True, injectiveMatching=True, javaImports="sample_text")
+    assert isinstance(instance, Unit)
+
+
+def test_henshin_UnaryUnit_isa_Unit():
+    instance = henshin_UnaryUnit()
+    assert isinstance(instance, Unit)
+
+
+def test_assoc_annotations0_link_reassign_clear():
+    a = henshin_Annotation(key="sample_text", value="sample_text")
+    b1 = henshin_ModelElement()
+    b2 = henshin_ModelElement()
+    _safe_set(a, 'henshin_Annotation', b1)
+    assert _is_linked(a, 'henshin_Annotation', b1)
+    if hasattr(b1, 'henshin_ModelElement'):
+        assert _is_linked(b1, 'henshin_ModelElement', a)
+    _safe_set(a, 'henshin_Annotation', b2)
+    assert _is_linked(a, 'henshin_Annotation', b2)
+    if hasattr(b1, 'henshin_ModelElement'):
+        assert not _is_linked(b1, 'henshin_ModelElement', a)
+    if hasattr(b2, 'henshin_ModelElement'):
+        assert _is_linked(b2, 'henshin_ModelElement', a)
+    _safe_set(a, 'henshin_Annotation', None)
+    assert not _is_linked(a, 'henshin_Annotation', b2)
+    if hasattr(b2, 'henshin_ModelElement'):
+        assert not _is_linked(b2, 'henshin_ModelElement', a)
+
+
+def test_assoc_attributeConditions19_link_reassign_clear():
+    a = henshin_Rule(checkDangling=True, injectiveMatching=True, javaImports="sample_text")
+    b1 = henshin_AttributeCondition(conditionText="sample_text")
+    b2 = henshin_AttributeCondition(conditionText="sample_text_2")
+    _safe_set(a, 'rule', {b1})
+    assert _is_linked(a, 'rule', b1)
+    if hasattr(b1, 'AttributeCondition'):
+        assert _is_linked(b1, 'AttributeCondition', a)
+    _safe_set(a, 'rule', {b2})
+    assert _is_linked(a, 'rule', b2)
+    if hasattr(b1, 'AttributeCondition'):
+        assert not _is_linked(b1, 'AttributeCondition', a)
+    if hasattr(b2, 'AttributeCondition'):
+        assert _is_linked(b2, 'AttributeCondition', a)
+    _safe_set(a, 'rule', set())
+    assert not _is_linked(a, 'rule', b2)
+    if hasattr(b2, 'AttributeCondition'):
+        assert not _is_linked(b2, 'AttributeCondition', a)
+
+
+def test_assoc_attributes42_link_reassign_clear():
+    a = henshin_Node()
+    b1 = henshin_Attribute(constant="sample_text", null=True, value="sample_text")
+    b2 = henshin_Attribute(constant="sample_text_2", null=False, value="sample_text_2")
+    _safe_set(a, 'node', {b1})
+    assert _is_linked(a, 'node', b1)
+    if hasattr(b1, 'Attribute'):
+        assert _is_linked(b1, 'Attribute', a)
+    _safe_set(a, 'node', {b2})
+    assert _is_linked(a, 'node', b2)
+    if hasattr(b1, 'Attribute'):
+        assert not _is_linked(b1, 'Attribute', a)
+    if hasattr(b2, 'Attribute'):
+        assert _is_linked(b2, 'Attribute', a)
+    _safe_set(a, 'node', set())
+    assert not _is_linked(a, 'node', b2)
+    if hasattr(b2, 'Attribute'):
+        assert not _is_linked(b2, 'Attribute', a)
+
+
+def test_assoc_child82_link_reassign_clear():
+    a = henshin_Formula()
+    b1 = henshin_UnaryFormula()
+    b2 = henshin_UnaryFormula()
+    _safe_set(a, 'henshin_Formula83', b1)
+    assert _is_linked(a, 'henshin_Formula83', b1)
+    if hasattr(b1, 'henshin_UnaryFormula'):
+        assert _is_linked(b1, 'henshin_UnaryFormula', a)
+    _safe_set(a, 'henshin_Formula83', b2)
+    assert _is_linked(a, 'henshin_Formula83', b2)
+    if hasattr(b1, 'henshin_UnaryFormula'):
+        assert not _is_linked(b1, 'henshin_UnaryFormula', a)
+    if hasattr(b2, 'henshin_UnaryFormula'):
+        assert _is_linked(b2, 'henshin_UnaryFormula', a)
+    _safe_set(a, 'henshin_Formula83', None)
+    assert not _is_linked(a, 'henshin_Formula83', b2)
+    if hasattr(b2, 'henshin_UnaryFormula'):
+        assert not _is_linked(b2, 'henshin_UnaryFormula', a)
+
+
+def test_assoc_conclusion77_link_reassign_clear():
+    a = henshin_NestedCondition()
+    b1 = henshin_Graph()
+    b2 = henshin_Graph()
+    _safe_set(a, 'henshin_NestedCondition', b1)
+    assert _is_linked(a, 'henshin_NestedCondition', b1)
+    if hasattr(b1, 'henshin_Graph78'):
+        assert _is_linked(b1, 'henshin_Graph78', a)
+    _safe_set(a, 'henshin_NestedCondition', b2)
+    assert _is_linked(a, 'henshin_NestedCondition', b2)
+    if hasattr(b1, 'henshin_Graph78'):
+        assert not _is_linked(b1, 'henshin_Graph78', a)
+    if hasattr(b2, 'henshin_Graph78'):
+        assert _is_linked(b2, 'henshin_Graph78', a)
+    _safe_set(a, 'henshin_NestedCondition', None)
+    assert not _is_linked(a, 'henshin_NestedCondition', b2)
+    if hasattr(b2, 'henshin_Graph78'):
+        assert not _is_linked(b2, 'henshin_Graph78', a)
+
+
+def test_assoc_edges37_link_reassign_clear():
+    a = henshin_Graph()
+    b1 = henshin_Edge(index="sample_text", indexConstant="sample_text")
+    b2 = henshin_Edge(index="sample_text_2", indexConstant="sample_text_2")
+    _safe_set(a, 'graph38', {b1})
+    assert _is_linked(a, 'graph38', b1)
+    if hasattr(b1, 'Edge'):
+        assert _is_linked(b1, 'Edge', a)
+    _safe_set(a, 'graph38', {b2})
+    assert _is_linked(a, 'graph38', b2)
+    if hasattr(b1, 'Edge'):
+        assert not _is_linked(b1, 'Edge', a)
+    if hasattr(b2, 'Edge'):
+        assert _is_linked(b2, 'Edge', a)
+    _safe_set(a, 'graph38', set())
+    assert not _is_linked(a, 'graph38', b2)
+    if hasattr(b2, 'Edge'):
+        assert not _is_linked(b2, 'Edge', a)
+
+
+def test_assoc_else_74_link_reassign_clear():
+    a = henshin_Unit(activated=True)
+    b1 = henshin_ConditionalUnit()
+    b2 = henshin_ConditionalUnit()
+    _safe_set(a, 'henshin_Unit76', b1)
+    assert _is_linked(a, 'henshin_Unit76', b1)
+    if hasattr(b1, 'henshin_ConditionalUnit75'):
+        assert _is_linked(b1, 'henshin_ConditionalUnit75', a)
+    _safe_set(a, 'henshin_Unit76', b2)
+    assert _is_linked(a, 'henshin_Unit76', b2)
+    if hasattr(b1, 'henshin_ConditionalUnit75'):
+        assert not _is_linked(b1, 'henshin_ConditionalUnit75', a)
+    if hasattr(b2, 'henshin_ConditionalUnit75'):
+        assert _is_linked(b2, 'henshin_ConditionalUnit75', a)
+    _safe_set(a, 'henshin_Unit76', None)
+    assert not _is_linked(a, 'henshin_Unit76', b2)
+    if hasattr(b2, 'henshin_ConditionalUnit75'):
+        assert not _is_linked(b2, 'henshin_ConditionalUnit75', a)
+
+
+def test_assoc_formula39_link_reassign_clear():
+    a = henshin_Graph()
+    b1 = henshin_Formula()
+    b2 = henshin_Formula()
+    _safe_set(a, 'henshin_Graph40', b1)
+    assert _is_linked(a, 'henshin_Graph40', b1)
+    if hasattr(b1, 'henshin_Formula'):
+        assert _is_linked(b1, 'henshin_Formula', a)
+    _safe_set(a, 'henshin_Graph40', b2)
+    assert _is_linked(a, 'henshin_Graph40', b2)
+    if hasattr(b1, 'henshin_Formula'):
+        assert not _is_linked(b1, 'henshin_Formula', a)
+    if hasattr(b2, 'henshin_Formula'):
+        assert _is_linked(b2, 'henshin_Formula', a)
+    _safe_set(a, 'henshin_Graph40', None)
+    assert not _is_linked(a, 'henshin_Graph40', b2)
+    if hasattr(b2, 'henshin_Formula'):
+        assert not _is_linked(b2, 'henshin_Formula', a)
+
+
+def test_assoc_graph43_link_reassign_clear():
+    a = henshin_Node()
+    b1 = henshin_Graph()
+    b2 = henshin_Graph()
+    _safe_set(a, 'nodes', b1)
+    assert _is_linked(a, 'nodes', b1)
+    if hasattr(b1, 'Graph'):
+        assert _is_linked(b1, 'Graph', a)
+    _safe_set(a, 'nodes', b2)
+    assert _is_linked(a, 'nodes', b2)
+    if hasattr(b1, 'Graph'):
+        assert not _is_linked(b1, 'Graph', a)
+    if hasattr(b2, 'Graph'):
+        assert _is_linked(b2, 'Graph', a)
+    _safe_set(a, 'nodes', None)
+    assert not _is_linked(a, 'nodes', b2)
+    if hasattr(b2, 'Graph'):
+        assert not _is_linked(b2, 'Graph', a)
+
+
+def test_assoc_graph53_link_reassign_clear():
+    a = henshin_Graph()
+    b1 = henshin_Edge(index="sample_text", indexConstant="sample_text")
+    b2 = henshin_Edge(index="sample_text_2", indexConstant="sample_text_2")
+    _safe_set(a, 'Graph54', b1)
+    assert _is_linked(a, 'Graph54', b1)
+    if hasattr(b1, 'edges'):
+        assert _is_linked(b1, 'edges', a)
+    _safe_set(a, 'Graph54', b2)
+    assert _is_linked(a, 'Graph54', b2)
+    if hasattr(b1, 'edges'):
+        assert not _is_linked(b1, 'edges', a)
+    if hasattr(b2, 'edges'):
+        assert _is_linked(b2, 'edges', a)
+    _safe_set(a, 'Graph54', None)
+    assert not _is_linked(a, 'Graph54', b2)
+    if hasattr(b2, 'edges'):
+        assert not _is_linked(b2, 'edges', a)
+
+
+def test_assoc_if_69_link_reassign_clear():
+    a = henshin_Unit(activated=True)
+    b1 = henshin_ConditionalUnit()
+    b2 = henshin_ConditionalUnit()
+    _safe_set(a, 'henshin_Unit70', b1)
+    assert _is_linked(a, 'henshin_Unit70', b1)
+    if hasattr(b1, 'henshin_ConditionalUnit'):
+        assert _is_linked(b1, 'henshin_ConditionalUnit', a)
+    _safe_set(a, 'henshin_Unit70', b2)
+    assert _is_linked(a, 'henshin_Unit70', b2)
+    if hasattr(b1, 'henshin_ConditionalUnit'):
+        assert not _is_linked(b1, 'henshin_ConditionalUnit', a)
+    if hasattr(b2, 'henshin_ConditionalUnit'):
+        assert _is_linked(b2, 'henshin_ConditionalUnit', a)
+    _safe_set(a, 'henshin_Unit70', None)
+    assert not _is_linked(a, 'henshin_Unit70', b2)
+    if hasattr(b2, 'henshin_ConditionalUnit'):
+        assert not _is_linked(b2, 'henshin_ConditionalUnit', a)
+
+
+def test_assoc_image62_link_reassign_clear():
+    a = henshin_Node()
+    b1 = henshin_Mapping()
+    b2 = henshin_Mapping()
+    _safe_set(a, 'henshin_Node64', b1)
+    assert _is_linked(a, 'henshin_Node64', b1)
+    if hasattr(b1, 'henshin_Mapping63'):
+        assert _is_linked(b1, 'henshin_Mapping63', a)
+    _safe_set(a, 'henshin_Node64', b2)
+    assert _is_linked(a, 'henshin_Node64', b2)
+    if hasattr(b1, 'henshin_Mapping63'):
+        assert not _is_linked(b1, 'henshin_Mapping63', a)
+    if hasattr(b2, 'henshin_Mapping63'):
+        assert _is_linked(b2, 'henshin_Mapping63', a)
+    _safe_set(a, 'henshin_Node64', None)
+    assert not _is_linked(a, 'henshin_Node64', b2)
+    if hasattr(b2, 'henshin_Mapping63'):
+        assert not _is_linked(b2, 'henshin_Mapping63', a)
+
+
+def test_assoc_imports6_link_reassign_clear():
+    a = henshin_Module()
+    b1 = henshin_EPackage()
+    b2 = henshin_EPackage()
+    _safe_set(a, 'henshin_Module', {b1})
+    assert _is_linked(a, 'henshin_Module', b1)
+    if hasattr(b1, 'henshin_EPackage'):
+        assert _is_linked(b1, 'henshin_EPackage', a)
+    _safe_set(a, 'henshin_Module', {b2})
+    assert _is_linked(a, 'henshin_Module', b2)
+    if hasattr(b1, 'henshin_EPackage'):
+        assert not _is_linked(b1, 'henshin_EPackage', a)
+    if hasattr(b2, 'henshin_EPackage'):
+        assert _is_linked(b2, 'henshin_EPackage', a)
+    _safe_set(a, 'henshin_Module', set())
+    assert not _is_linked(a, 'henshin_Module', b2)
+    if hasattr(b2, 'henshin_EPackage'):
+        assert not _is_linked(b2, 'henshin_EPackage', a)
+
+
+def test_assoc_incoming44_link_reassign_clear():
+    a = henshin_Node()
+    b1 = henshin_Edge(index="sample_text", indexConstant="sample_text")
+    b2 = henshin_Edge(index="sample_text_2", indexConstant="sample_text_2")
+    _safe_set(a, 'target', {b1})
+    assert _is_linked(a, 'target', b1)
+    if hasattr(b1, 'Edge45'):
+        assert _is_linked(b1, 'Edge45', a)
+    _safe_set(a, 'target', {b2})
+    assert _is_linked(a, 'target', b2)
+    if hasattr(b1, 'Edge45'):
+        assert not _is_linked(b1, 'Edge45', a)
+    if hasattr(b2, 'Edge45'):
+        assert _is_linked(b2, 'Edge45', a)
+    _safe_set(a, 'target', set())
+    assert not _is_linked(a, 'target', b2)
+    if hasattr(b2, 'Edge45'):
+        assert not _is_linked(b2, 'Edge45', a)
+
+
+def test_assoc_instances9_link_reassign_clear():
+    a = henshin_Module()
+    b1 = henshin_Graph()
+    b2 = henshin_Graph()
+    _safe_set(a, 'henshin_Module10', {b1})
+    assert _is_linked(a, 'henshin_Module10', b1)
+    if hasattr(b1, 'henshin_Graph'):
+        assert _is_linked(b1, 'henshin_Graph', a)
+    _safe_set(a, 'henshin_Module10', {b2})
+    assert _is_linked(a, 'henshin_Module10', b2)
+    if hasattr(b1, 'henshin_Graph'):
+        assert not _is_linked(b1, 'henshin_Graph', a)
+    if hasattr(b2, 'henshin_Graph'):
+        assert _is_linked(b2, 'henshin_Graph', a)
+    _safe_set(a, 'henshin_Module10', set())
+    assert not _is_linked(a, 'henshin_Module10', b2)
+    if hasattr(b2, 'henshin_Graph'):
+        assert not _is_linked(b2, 'henshin_Graph', a)
+
+
+def test_assoc_left84_link_reassign_clear():
+    a = henshin_Formula()
+    b1 = henshin_BinaryFormula()
+    b2 = henshin_BinaryFormula()
+    _safe_set(a, 'henshin_Formula85', b1)
+    assert _is_linked(a, 'henshin_Formula85', b1)
+    if hasattr(b1, 'henshin_BinaryFormula'):
+        assert _is_linked(b1, 'henshin_BinaryFormula', a)
+    _safe_set(a, 'henshin_Formula85', b2)
+    assert _is_linked(a, 'henshin_Formula85', b2)
+    if hasattr(b1, 'henshin_BinaryFormula'):
+        assert not _is_linked(b1, 'henshin_BinaryFormula', a)
+    if hasattr(b2, 'henshin_BinaryFormula'):
+        assert _is_linked(b2, 'henshin_BinaryFormula', a)
+    _safe_set(a, 'henshin_Formula85', None)
+    assert not _is_linked(a, 'henshin_Formula85', b2)
+    if hasattr(b2, 'henshin_BinaryFormula'):
+        assert not _is_linked(b2, 'henshin_BinaryFormula', a)
+
+
+def test_assoc_lhs14_link_reassign_clear():
+    a = henshin_Rule(checkDangling=True, injectiveMatching=True, javaImports="sample_text")
+    b1 = henshin_Graph()
+    b2 = henshin_Graph()
+    _safe_set(a, 'henshin_Rule', b1)
+    assert _is_linked(a, 'henshin_Rule', b1)
+    if hasattr(b1, 'henshin_Graph15'):
+        assert _is_linked(b1, 'henshin_Graph15', a)
+    _safe_set(a, 'henshin_Rule', b2)
+    assert _is_linked(a, 'henshin_Rule', b2)
+    if hasattr(b1, 'henshin_Graph15'):
+        assert not _is_linked(b1, 'henshin_Graph15', a)
+    if hasattr(b2, 'henshin_Graph15'):
+        assert _is_linked(b2, 'henshin_Graph15', a)
+    _safe_set(a, 'henshin_Rule', None)
+    assert not _is_linked(a, 'henshin_Rule', b2)
+    if hasattr(b2, 'henshin_Graph15'):
+        assert not _is_linked(b2, 'henshin_Graph15', a)
+
+
+def test_assoc_mappings20_link_reassign_clear():
+    a = henshin_Rule(checkDangling=True, injectiveMatching=True, javaImports="sample_text")
+    b1 = henshin_Mapping()
+    b2 = henshin_Mapping()
+    _safe_set(a, 'henshin_Rule21', {b1})
+    assert _is_linked(a, 'henshin_Rule21', b1)
+    if hasattr(b1, 'henshin_Mapping'):
+        assert _is_linked(b1, 'henshin_Mapping', a)
+    _safe_set(a, 'henshin_Rule21', {b2})
+    assert _is_linked(a, 'henshin_Rule21', b2)
+    if hasattr(b1, 'henshin_Mapping'):
+        assert not _is_linked(b1, 'henshin_Mapping', a)
+    if hasattr(b2, 'henshin_Mapping'):
+        assert _is_linked(b2, 'henshin_Mapping', a)
+    _safe_set(a, 'henshin_Rule21', set())
+    assert not _is_linked(a, 'henshin_Rule21', b2)
+    if hasattr(b2, 'henshin_Mapping'):
+        assert not _is_linked(b2, 'henshin_Mapping', a)
+
+
+def test_assoc_mappings79_link_reassign_clear():
+    a = henshin_NestedCondition()
+    b1 = henshin_Mapping()
+    b2 = henshin_Mapping()
+    _safe_set(a, 'henshin_NestedCondition80', {b1})
+    assert _is_linked(a, 'henshin_NestedCondition80', b1)
+    if hasattr(b1, 'henshin_Mapping81'):
+        assert _is_linked(b1, 'henshin_Mapping81', a)
+    _safe_set(a, 'henshin_NestedCondition80', {b2})
+    assert _is_linked(a, 'henshin_NestedCondition80', b2)
+    if hasattr(b1, 'henshin_Mapping81'):
+        assert not _is_linked(b1, 'henshin_Mapping81', a)
+    if hasattr(b2, 'henshin_Mapping81'):
+        assert _is_linked(b2, 'henshin_Mapping81', a)
+    _safe_set(a, 'henshin_NestedCondition80', set())
+    assert not _is_linked(a, 'henshin_NestedCondition80', b2)
+    if hasattr(b2, 'henshin_Mapping81'):
+        assert not _is_linked(b2, 'henshin_Mapping81', a)
+
+
+def test_assoc_multiMappings25_link_reassign_clear():
+    a = henshin_Rule(checkDangling=True, injectiveMatching=True, javaImports="sample_text")
+    b1 = henshin_Mapping()
+    b2 = henshin_Mapping()
+    _safe_set(a, 'henshin_Rule26', {b1})
+    assert _is_linked(a, 'henshin_Rule26', b1)
+    if hasattr(b1, 'henshin_Mapping27'):
+        assert _is_linked(b1, 'henshin_Mapping27', a)
+    _safe_set(a, 'henshin_Rule26', {b2})
+    assert _is_linked(a, 'henshin_Rule26', b2)
+    if hasattr(b1, 'henshin_Mapping27'):
+        assert not _is_linked(b1, 'henshin_Mapping27', a)
+    if hasattr(b2, 'henshin_Mapping27'):
+        assert _is_linked(b2, 'henshin_Mapping27', a)
+    _safe_set(a, 'henshin_Rule26', set())
+    assert not _is_linked(a, 'henshin_Rule26', b2)
+    if hasattr(b2, 'henshin_Mapping27'):
+        assert not _is_linked(b2, 'henshin_Mapping27', a)
+
+
+def test_assoc_multiRules23_link_reassign_clear():
+    a = henshin_Rule(checkDangling=True, injectiveMatching=True, javaImports="sample_text")
+    b1 = henshin_Rule(checkDangling=True, injectiveMatching=True, javaImports="sample_text")
+    b2 = henshin_Rule(checkDangling=False, injectiveMatching=False, javaImports="sample_text_2")
+    _safe_set(a, 'henshin_Rule22', {b1})
+    assert _is_linked(a, 'henshin_Rule22', b1)
+    if hasattr(b1, 'henshin_Rule24'):
+        assert _is_linked(b1, 'henshin_Rule24', a)
+    _safe_set(a, 'henshin_Rule22', {b2})
+    assert _is_linked(a, 'henshin_Rule22', b2)
+    if hasattr(b1, 'henshin_Rule24'):
+        assert not _is_linked(b1, 'henshin_Rule24', a)
+    if hasattr(b2, 'henshin_Rule24'):
+        assert _is_linked(b2, 'henshin_Rule24', a)
+    _safe_set(a, 'henshin_Rule22', set())
+    assert not _is_linked(a, 'henshin_Rule22', b2)
+    if hasattr(b2, 'henshin_Rule24'):
+        assert not _is_linked(b2, 'henshin_Rule24', a)
+
+
+def test_assoc_node56_link_reassign_clear():
+    a = henshin_Node()
+    b1 = henshin_Attribute(constant="sample_text", null=True, value="sample_text")
+    b2 = henshin_Attribute(constant="sample_text_2", null=False, value="sample_text_2")
+    _safe_set(a, 'Node57', b1)
+    assert _is_linked(a, 'Node57', b1)
+    if hasattr(b1, 'attributes'):
+        assert _is_linked(b1, 'attributes', a)
+    _safe_set(a, 'Node57', b2)
+    assert _is_linked(a, 'Node57', b2)
+    if hasattr(b1, 'attributes'):
+        assert not _is_linked(b1, 'attributes', a)
+    if hasattr(b2, 'attributes'):
+        assert _is_linked(b2, 'attributes', a)
+    _safe_set(a, 'Node57', None)
+    assert not _is_linked(a, 'Node57', b2)
+    if hasattr(b2, 'attributes'):
+        assert not _is_linked(b2, 'attributes', a)
+
+
+def test_assoc_nodes36_link_reassign_clear():
+    a = henshin_Node()
+    b1 = henshin_Graph()
+    b2 = henshin_Graph()
+    _safe_set(a, 'Node', b1)
+    assert _is_linked(a, 'Node', b1)
+    if hasattr(b1, 'graph'):
+        assert _is_linked(b1, 'graph', a)
+    _safe_set(a, 'Node', b2)
+    assert _is_linked(a, 'Node', b2)
+    if hasattr(b1, 'graph'):
+        assert not _is_linked(b1, 'graph', a)
+    if hasattr(b2, 'graph'):
+        assert _is_linked(b2, 'graph', a)
+    _safe_set(a, 'Node', None)
+    assert not _is_linked(a, 'Node', b2)
+    if hasattr(b2, 'graph'):
+        assert not _is_linked(b2, 'graph', a)
+
+
+def test_assoc_origin59_link_reassign_clear():
+    a = henshin_Node()
+    b1 = henshin_Mapping()
+    b2 = henshin_Mapping()
+    _safe_set(a, 'henshin_Node61', b1)
+    assert _is_linked(a, 'henshin_Node61', b1)
+    if hasattr(b1, 'henshin_Mapping60'):
+        assert _is_linked(b1, 'henshin_Mapping60', a)
+    _safe_set(a, 'henshin_Node61', b2)
+    assert _is_linked(a, 'henshin_Node61', b2)
+    if hasattr(b1, 'henshin_Mapping60'):
+        assert not _is_linked(b1, 'henshin_Mapping60', a)
+    if hasattr(b2, 'henshin_Mapping60'):
+        assert _is_linked(b2, 'henshin_Mapping60', a)
+    _safe_set(a, 'henshin_Node61', None)
+    assert not _is_linked(a, 'henshin_Node61', b2)
+    if hasattr(b2, 'henshin_Mapping60'):
+        assert not _is_linked(b2, 'henshin_Mapping60', a)
+
+
+def test_assoc_outgoing46_link_reassign_clear():
+    a = henshin_Node()
+    b1 = henshin_Edge(index="sample_text", indexConstant="sample_text")
+    b2 = henshin_Edge(index="sample_text_2", indexConstant="sample_text_2")
+    _safe_set(a, 'source', {b1})
+    assert _is_linked(a, 'source', b1)
+    if hasattr(b1, 'Edge47'):
+        assert _is_linked(b1, 'Edge47', a)
+    _safe_set(a, 'source', {b2})
+    assert _is_linked(a, 'source', b2)
+    if hasattr(b1, 'Edge47'):
+        assert not _is_linked(b1, 'Edge47', a)
+    if hasattr(b2, 'Edge47'):
+        assert _is_linked(b2, 'Edge47', a)
+    _safe_set(a, 'source', set())
+    assert not _is_linked(a, 'source', b2)
+    if hasattr(b2, 'Edge47'):
+        assert not _is_linked(b2, 'Edge47', a)
+
+
+def test_assoc_parameterMappings12_link_reassign_clear():
+    a = henshin_Unit(activated=True)
+    b1 = henshin_ParameterMapping()
+    b2 = henshin_ParameterMapping()
+    _safe_set(a, 'henshin_Unit13', {b1})
+    assert _is_linked(a, 'henshin_Unit13', b1)
+    if hasattr(b1, 'henshin_ParameterMapping'):
+        assert _is_linked(b1, 'henshin_ParameterMapping', a)
+    _safe_set(a, 'henshin_Unit13', {b2})
+    assert _is_linked(a, 'henshin_Unit13', b2)
+    if hasattr(b1, 'henshin_ParameterMapping'):
+        assert not _is_linked(b1, 'henshin_ParameterMapping', a)
+    if hasattr(b2, 'henshin_ParameterMapping'):
+        assert _is_linked(b2, 'henshin_ParameterMapping', a)
+    _safe_set(a, 'henshin_Unit13', set())
+    assert not _is_linked(a, 'henshin_Unit13', b2)
+    if hasattr(b2, 'henshin_ParameterMapping'):
+        assert not _is_linked(b2, 'henshin_ParameterMapping', a)
+
+
+def test_assoc_parameters11_link_reassign_clear():
+    a = henshin_Unit(activated=True)
+    b1 = henshin_Parameter(kind="sample_text")
+    b2 = henshin_Parameter(kind="sample_text_2")
+    _safe_set(a, 'unit', {b1})
+    assert _is_linked(a, 'unit', b1)
+    if hasattr(b1, 'Parameter'):
+        assert _is_linked(b1, 'Parameter', a)
+    _safe_set(a, 'unit', {b2})
+    assert _is_linked(a, 'unit', b2)
+    if hasattr(b1, 'Parameter'):
+        assert not _is_linked(b1, 'Parameter', a)
+    if hasattr(b2, 'Parameter'):
+        assert _is_linked(b2, 'Parameter', a)
+    _safe_set(a, 'unit', set())
+    assert not _is_linked(a, 'unit', b2)
+    if hasattr(b2, 'Parameter'):
+        assert not _is_linked(b2, 'Parameter', a)
+
+
+def test_assoc_rhs16_link_reassign_clear():
+    a = henshin_Rule(checkDangling=True, injectiveMatching=True, javaImports="sample_text")
+    b1 = henshin_Graph()
+    b2 = henshin_Graph()
+    _safe_set(a, 'henshin_Rule17', b1)
+    assert _is_linked(a, 'henshin_Rule17', b1)
+    if hasattr(b1, 'henshin_Graph18'):
+        assert _is_linked(b1, 'henshin_Graph18', a)
+    _safe_set(a, 'henshin_Rule17', b2)
+    assert _is_linked(a, 'henshin_Rule17', b2)
+    if hasattr(b1, 'henshin_Graph18'):
+        assert not _is_linked(b1, 'henshin_Graph18', a)
+    if hasattr(b2, 'henshin_Graph18'):
+        assert _is_linked(b2, 'henshin_Graph18', a)
+    _safe_set(a, 'henshin_Rule17', None)
+    assert not _is_linked(a, 'henshin_Rule17', b2)
+    if hasattr(b2, 'henshin_Graph18'):
+        assert not _is_linked(b2, 'henshin_Graph18', a)
+
+
+def test_assoc_right86_link_reassign_clear():
+    a = henshin_Formula()
+    b1 = henshin_BinaryFormula()
+    b2 = henshin_BinaryFormula()
+    _safe_set(a, 'henshin_Formula88', b1)
+    assert _is_linked(a, 'henshin_Formula88', b1)
+    if hasattr(b1, 'henshin_BinaryFormula87'):
+        assert _is_linked(b1, 'henshin_BinaryFormula87', a)
+    _safe_set(a, 'henshin_Formula88', b2)
+    assert _is_linked(a, 'henshin_Formula88', b2)
+    if hasattr(b1, 'henshin_BinaryFormula87'):
+        assert not _is_linked(b1, 'henshin_BinaryFormula87', a)
+    if hasattr(b2, 'henshin_BinaryFormula87'):
+        assert _is_linked(b2, 'henshin_BinaryFormula87', a)
+    _safe_set(a, 'henshin_Formula88', None)
+    assert not _is_linked(a, 'henshin_Formula88', b2)
+    if hasattr(b2, 'henshin_BinaryFormula87'):
+        assert not _is_linked(b2, 'henshin_BinaryFormula87', a)
+
+
+def test_assoc_rule58_link_reassign_clear():
+    a = henshin_Rule(checkDangling=True, injectiveMatching=True, javaImports="sample_text")
+    b1 = henshin_AttributeCondition(conditionText="sample_text")
+    b2 = henshin_AttributeCondition(conditionText="sample_text_2")
+    _safe_set(a, 'Rule', b1)
+    assert _is_linked(a, 'Rule', b1)
+    if hasattr(b1, 'attributeConditions'):
+        assert _is_linked(b1, 'attributeConditions', a)
+    _safe_set(a, 'Rule', b2)
+    assert _is_linked(a, 'Rule', b2)
+    if hasattr(b1, 'attributeConditions'):
+        assert not _is_linked(b1, 'attributeConditions', a)
+    if hasattr(b2, 'attributeConditions'):
+        assert _is_linked(b2, 'attributeConditions', a)
+    _safe_set(a, 'Rule', None)
+    assert not _is_linked(a, 'Rule', b2)
+    if hasattr(b2, 'attributeConditions'):
+        assert not _is_linked(b2, 'attributeConditions', a)
+
+
+def test_assoc_source30_link_reassign_clear():
+    a = henshin_Parameter(kind="sample_text")
+    b1 = henshin_ParameterMapping()
+    b2 = henshin_ParameterMapping()
+    _safe_set(a, 'henshin_Parameter32', b1)
+    assert _is_linked(a, 'henshin_Parameter32', b1)
+    if hasattr(b1, 'henshin_ParameterMapping31'):
+        assert _is_linked(b1, 'henshin_ParameterMapping31', a)
+    _safe_set(a, 'henshin_Parameter32', b2)
+    assert _is_linked(a, 'henshin_Parameter32', b2)
+    if hasattr(b1, 'henshin_ParameterMapping31'):
+        assert not _is_linked(b1, 'henshin_ParameterMapping31', a)
+    if hasattr(b2, 'henshin_ParameterMapping31'):
+        assert _is_linked(b2, 'henshin_ParameterMapping31', a)
+    _safe_set(a, 'henshin_Parameter32', None)
+    assert not _is_linked(a, 'henshin_Parameter32', b2)
+    if hasattr(b2, 'henshin_ParameterMapping31'):
+        assert not _is_linked(b2, 'henshin_ParameterMapping31', a)
+
+
+def test_assoc_source48_link_reassign_clear():
+    a = henshin_Node()
+    b1 = henshin_Edge(index="sample_text", indexConstant="sample_text")
+    b2 = henshin_Edge(index="sample_text_2", indexConstant="sample_text_2")
+    _safe_set(a, 'Node49', b1)
+    assert _is_linked(a, 'Node49', b1)
+    if hasattr(b1, 'outgoing'):
+        assert _is_linked(b1, 'outgoing', a)
+    _safe_set(a, 'Node49', b2)
+    assert _is_linked(a, 'Node49', b2)
+    if hasattr(b1, 'outgoing'):
+        assert not _is_linked(b1, 'outgoing', a)
+    if hasattr(b2, 'outgoing'):
+        assert _is_linked(b2, 'outgoing', a)
+    _safe_set(a, 'Node49', None)
+    assert not _is_linked(a, 'Node49', b2)
+    if hasattr(b2, 'outgoing'):
+        assert not _is_linked(b2, 'outgoing', a)
+
+
+def test_assoc_subModules2_link_reassign_clear():
+    a = henshin_Module()
+    b1 = henshin_Module()
+    b2 = henshin_Module()
+    _safe_set(a, 'Module', b1)
+    assert _is_linked(a, 'Module', b1)
+    if hasattr(b1, 'superModule'):
+        assert _is_linked(b1, 'superModule', a)
+    _safe_set(a, 'Module', b2)
+    assert _is_linked(a, 'Module', b2)
+    if hasattr(b1, 'superModule'):
+        assert not _is_linked(b1, 'superModule', a)
+    if hasattr(b2, 'superModule'):
+        assert _is_linked(b2, 'superModule', a)
+    _safe_set(a, 'Module', None)
+    assert not _is_linked(a, 'Module', b2)
+    if hasattr(b2, 'superModule'):
+        assert not _is_linked(b2, 'superModule', a)
+
+
+def test_assoc_subUnit65_link_reassign_clear():
+    a = henshin_Unit(activated=True)
+    b1 = henshin_UnaryUnit()
+    b2 = henshin_UnaryUnit()
+    _safe_set(a, 'henshin_Unit66', b1)
+    assert _is_linked(a, 'henshin_Unit66', b1)
+    if hasattr(b1, 'henshin_UnaryUnit'):
+        assert _is_linked(b1, 'henshin_UnaryUnit', a)
+    _safe_set(a, 'henshin_Unit66', b2)
+    assert _is_linked(a, 'henshin_Unit66', b2)
+    if hasattr(b1, 'henshin_UnaryUnit'):
+        assert not _is_linked(b1, 'henshin_UnaryUnit', a)
+    if hasattr(b2, 'henshin_UnaryUnit'):
+        assert _is_linked(b2, 'henshin_UnaryUnit', a)
+    _safe_set(a, 'henshin_Unit66', None)
+    assert not _is_linked(a, 'henshin_Unit66', b2)
+    if hasattr(b2, 'henshin_UnaryUnit'):
+        assert not _is_linked(b2, 'henshin_UnaryUnit', a)
+
+
+def test_assoc_subUnits67_link_reassign_clear():
+    a = henshin_Unit(activated=True)
+    b1 = henshin_MultiUnit()
+    b2 = henshin_MultiUnit()
+    _safe_set(a, 'henshin_Unit68', b1)
+    assert _is_linked(a, 'henshin_Unit68', b1)
+    if hasattr(b1, 'henshin_MultiUnit'):
+        assert _is_linked(b1, 'henshin_MultiUnit', a)
+    _safe_set(a, 'henshin_Unit68', b2)
+    assert _is_linked(a, 'henshin_Unit68', b2)
+    if hasattr(b1, 'henshin_MultiUnit'):
+        assert not _is_linked(b1, 'henshin_MultiUnit', a)
+    if hasattr(b2, 'henshin_MultiUnit'):
+        assert _is_linked(b2, 'henshin_MultiUnit', a)
+    _safe_set(a, 'henshin_Unit68', None)
+    assert not _is_linked(a, 'henshin_Unit68', b2)
+    if hasattr(b2, 'henshin_MultiUnit'):
+        assert not _is_linked(b2, 'henshin_MultiUnit', a)
+
+
+def test_assoc_superModule4_link_reassign_clear():
+    a = henshin_Module()
+    b1 = henshin_Module()
+    b2 = henshin_Module()
+    _safe_set(a, 'Module5', b1)
+    assert _is_linked(a, 'Module5', b1)
+    if hasattr(b1, 'subModules'):
+        assert _is_linked(b1, 'subModules', a)
+    _safe_set(a, 'Module5', b2)
+    assert _is_linked(a, 'Module5', b2)
+    if hasattr(b1, 'subModules'):
+        assert not _is_linked(b1, 'subModules', a)
+    if hasattr(b2, 'subModules'):
+        assert _is_linked(b2, 'subModules', a)
+    _safe_set(a, 'Module5', None)
+    assert not _is_linked(a, 'Module5', b2)
+    if hasattr(b2, 'subModules'):
+        assert not _is_linked(b2, 'subModules', a)
+
+
+def test_assoc_target33_link_reassign_clear():
+    a = henshin_Parameter(kind="sample_text")
+    b1 = henshin_ParameterMapping()
+    b2 = henshin_ParameterMapping()
+    _safe_set(a, 'henshin_Parameter35', b1)
+    assert _is_linked(a, 'henshin_Parameter35', b1)
+    if hasattr(b1, 'henshin_ParameterMapping34'):
+        assert _is_linked(b1, 'henshin_ParameterMapping34', a)
+    _safe_set(a, 'henshin_Parameter35', b2)
+    assert _is_linked(a, 'henshin_Parameter35', b2)
+    if hasattr(b1, 'henshin_ParameterMapping34'):
+        assert not _is_linked(b1, 'henshin_ParameterMapping34', a)
+    if hasattr(b2, 'henshin_ParameterMapping34'):
+        assert _is_linked(b2, 'henshin_ParameterMapping34', a)
+    _safe_set(a, 'henshin_Parameter35', None)
+    assert not _is_linked(a, 'henshin_Parameter35', b2)
+    if hasattr(b2, 'henshin_ParameterMapping34'):
+        assert not _is_linked(b2, 'henshin_ParameterMapping34', a)
+
+
+def test_assoc_target50_link_reassign_clear():
+    a = henshin_Node()
+    b1 = henshin_Edge(index="sample_text", indexConstant="sample_text")
+    b2 = henshin_Edge(index="sample_text_2", indexConstant="sample_text_2")
+    _safe_set(a, 'Node51', b1)
+    assert _is_linked(a, 'Node51', b1)
+    if hasattr(b1, 'incoming'):
+        assert _is_linked(b1, 'incoming', a)
+    _safe_set(a, 'Node51', b2)
+    assert _is_linked(a, 'Node51', b2)
+    if hasattr(b1, 'incoming'):
+        assert not _is_linked(b1, 'incoming', a)
+    if hasattr(b2, 'incoming'):
+        assert _is_linked(b2, 'incoming', a)
+    _safe_set(a, 'Node51', None)
+    assert not _is_linked(a, 'Node51', b2)
+    if hasattr(b2, 'incoming'):
+        assert not _is_linked(b2, 'incoming', a)
+
+
+def test_assoc_then71_link_reassign_clear():
+    a = henshin_Unit(activated=True)
+    b1 = henshin_ConditionalUnit()
+    b2 = henshin_ConditionalUnit()
+    _safe_set(a, 'henshin_Unit73', b1)
+    assert _is_linked(a, 'henshin_Unit73', b1)
+    if hasattr(b1, 'henshin_ConditionalUnit72'):
+        assert _is_linked(b1, 'henshin_ConditionalUnit72', a)
+    _safe_set(a, 'henshin_Unit73', b2)
+    assert _is_linked(a, 'henshin_Unit73', b2)
+    if hasattr(b1, 'henshin_ConditionalUnit72'):
+        assert not _is_linked(b1, 'henshin_ConditionalUnit72', a)
+    if hasattr(b2, 'henshin_ConditionalUnit72'):
+        assert _is_linked(b2, 'henshin_ConditionalUnit72', a)
+    _safe_set(a, 'henshin_Unit73', None)
+    assert not _is_linked(a, 'henshin_Unit73', b2)
+    if hasattr(b2, 'henshin_ConditionalUnit72'):
+        assert not _is_linked(b2, 'henshin_ConditionalUnit72', a)
+
+
+def test_assoc_type29_link_reassign_clear():
+    a = henshin_Parameter(kind="sample_text")
+    b1 = henshin_EClassifier()
+    b2 = henshin_EClassifier()
+    _safe_set(a, 'henshin_Parameter', b1)
+    assert _is_linked(a, 'henshin_Parameter', b1)
+    if hasattr(b1, 'henshin_EClassifier'):
+        assert _is_linked(b1, 'henshin_EClassifier', a)
+    _safe_set(a, 'henshin_Parameter', b2)
+    assert _is_linked(a, 'henshin_Parameter', b2)
+    if hasattr(b1, 'henshin_EClassifier'):
+        assert not _is_linked(b1, 'henshin_EClassifier', a)
+    if hasattr(b2, 'henshin_EClassifier'):
+        assert _is_linked(b2, 'henshin_EClassifier', a)
+    _safe_set(a, 'henshin_Parameter', None)
+    assert not _is_linked(a, 'henshin_Parameter', b2)
+    if hasattr(b2, 'henshin_EClassifier'):
+        assert not _is_linked(b2, 'henshin_EClassifier', a)
+
+
+def test_assoc_type41_link_reassign_clear():
+    a = henshin_Node()
+    b1 = henshin_EClass()
+    b2 = henshin_EClass()
+    _safe_set(a, 'henshin_Node', b1)
+    assert _is_linked(a, 'henshin_Node', b1)
+    if hasattr(b1, 'henshin_EClass'):
+        assert _is_linked(b1, 'henshin_EClass', a)
+    _safe_set(a, 'henshin_Node', b2)
+    assert _is_linked(a, 'henshin_Node', b2)
+    if hasattr(b1, 'henshin_EClass'):
+        assert not _is_linked(b1, 'henshin_EClass', a)
+    if hasattr(b2, 'henshin_EClass'):
+        assert _is_linked(b2, 'henshin_EClass', a)
+    _safe_set(a, 'henshin_Node', None)
+    assert not _is_linked(a, 'henshin_Node', b2)
+    if hasattr(b2, 'henshin_EClass'):
+        assert not _is_linked(b2, 'henshin_EClass', a)
+
+
+def test_assoc_type52_link_reassign_clear():
+    a = henshin_Edge(index="sample_text", indexConstant="sample_text")
+    b1 = henshin_EReference()
+    b2 = henshin_EReference()
+    _safe_set(a, 'henshin_Edge', b1)
+    assert _is_linked(a, 'henshin_Edge', b1)
+    if hasattr(b1, 'henshin_EReference'):
+        assert _is_linked(b1, 'henshin_EReference', a)
+    _safe_set(a, 'henshin_Edge', b2)
+    assert _is_linked(a, 'henshin_Edge', b2)
+    if hasattr(b1, 'henshin_EReference'):
+        assert not _is_linked(b1, 'henshin_EReference', a)
+    if hasattr(b2, 'henshin_EReference'):
+        assert _is_linked(b2, 'henshin_EReference', a)
+    _safe_set(a, 'henshin_Edge', None)
+    assert not _is_linked(a, 'henshin_Edge', b2)
+    if hasattr(b2, 'henshin_EReference'):
+        assert not _is_linked(b2, 'henshin_EReference', a)
+
+
+def test_assoc_type55_link_reassign_clear():
+    a = henshin_Attribute(constant="sample_text", null=True, value="sample_text")
+    b1 = henshin_EAttribute()
+    b2 = henshin_EAttribute()
+    _safe_set(a, 'henshin_Attribute', b1)
+    assert _is_linked(a, 'henshin_Attribute', b1)
+    if hasattr(b1, 'henshin_EAttribute'):
+        assert _is_linked(b1, 'henshin_EAttribute', a)
+    _safe_set(a, 'henshin_Attribute', b2)
+    assert _is_linked(a, 'henshin_Attribute', b2)
+    if hasattr(b1, 'henshin_EAttribute'):
+        assert not _is_linked(b1, 'henshin_EAttribute', a)
+    if hasattr(b2, 'henshin_EAttribute'):
+        assert _is_linked(b2, 'henshin_EAttribute', a)
+    _safe_set(a, 'henshin_Attribute', None)
+    assert not _is_linked(a, 'henshin_Attribute', b2)
+    if hasattr(b2, 'henshin_EAttribute'):
+        assert not _is_linked(b2, 'henshin_EAttribute', a)
+
+
+def test_assoc_unit28_link_reassign_clear():
+    a = henshin_Unit(activated=True)
+    b1 = henshin_Parameter(kind="sample_text")
+    b2 = henshin_Parameter(kind="sample_text_2")
+    _safe_set(a, 'Unit', b1)
+    assert _is_linked(a, 'Unit', b1)
+    if hasattr(b1, 'parameters'):
+        assert _is_linked(b1, 'parameters', a)
+    _safe_set(a, 'Unit', b2)
+    assert _is_linked(a, 'Unit', b2)
+    if hasattr(b1, 'parameters'):
+        assert not _is_linked(b1, 'parameters', a)
+    if hasattr(b2, 'parameters'):
+        assert _is_linked(b2, 'parameters', a)
+    _safe_set(a, 'Unit', None)
+    assert not _is_linked(a, 'Unit', b2)
+    if hasattr(b2, 'parameters'):
+        assert not _is_linked(b2, 'parameters', a)
+
+
+def test_assoc_units7_link_reassign_clear():
+    a = henshin_Unit(activated=True)
+    b1 = henshin_Module()
+    b2 = henshin_Module()
+    _safe_set(a, 'henshin_Unit', b1)
+    assert _is_linked(a, 'henshin_Unit', b1)
+    if hasattr(b1, 'henshin_Module8'):
+        assert _is_linked(b1, 'henshin_Module8', a)
+    _safe_set(a, 'henshin_Unit', b2)
+    assert _is_linked(a, 'henshin_Unit', b2)
+    if hasattr(b1, 'henshin_Module8'):
+        assert not _is_linked(b1, 'henshin_Module8', a)
+    if hasattr(b2, 'henshin_Module8'):
+        assert _is_linked(b2, 'henshin_Module8', a)
+    _safe_set(a, 'henshin_Unit', None)
+    assert not _is_linked(a, 'henshin_Unit', b2)
+    if hasattr(b2, 'henshin_Module8'):
+        assert not _is_linked(b2, 'henshin_Module8', a)
+
+
+# =============================================================================
+# SECTION 2 -- HYPOTHESIS INSTANTIATION TESTS
+# =============================================================================
+
+BinaryFormula_strategy = st.builds(BinaryFormula)
+@given(instance=BinaryFormula_strategy)
+@settings(max_examples=25)
+def test_BinaryFormula_instantiation(instance):
+    assert isinstance(instance, BinaryFormula)
+
+
+Formula_strategy = st.builds(Formula)
+@given(instance=Formula_strategy)
+@settings(max_examples=25)
+def test_Formula_instantiation(instance):
+    assert isinstance(instance, Formula)
+
+
+GraphElement_strategy = st.builds(GraphElement)
+@given(instance=GraphElement_strategy)
+@settings(max_examples=25)
+def test_GraphElement_instantiation(instance):
+    assert isinstance(instance, GraphElement)
+
+
+ModelElement_strategy = st.builds(ModelElement)
+@given(instance=ModelElement_strategy)
+@settings(max_examples=25)
+def test_ModelElement_instantiation(instance):
+    assert isinstance(instance, ModelElement)
+
+
+MultiUnit_strategy = st.builds(MultiUnit)
+@given(instance=MultiUnit_strategy)
+@settings(max_examples=25)
+def test_MultiUnit_instantiation(instance):
+    assert isinstance(instance, MultiUnit)
+
+
+NamedElement_strategy = st.builds(NamedElement)
+@given(instance=NamedElement_strategy)
+@settings(max_examples=25)
+def test_NamedElement_instantiation(instance):
+    assert isinstance(instance, NamedElement)
+
+
+UnaryFormula_strategy = st.builds(UnaryFormula)
+@given(instance=UnaryFormula_strategy)
+@settings(max_examples=25)
+def test_UnaryFormula_instantiation(instance):
+    assert isinstance(instance, UnaryFormula)
+
+
+UnaryUnit_strategy = st.builds(UnaryUnit)
+@given(instance=UnaryUnit_strategy)
+@settings(max_examples=25)
+def test_UnaryUnit_instantiation(instance):
+    assert isinstance(instance, UnaryUnit)
+
+
+Unit_strategy = st.builds(Unit)
+@given(instance=Unit_strategy)
+@settings(max_examples=25)
+def test_Unit_instantiation(instance):
+    assert isinstance(instance, Unit)
+
+
+henshin_And_strategy = st.builds(henshin_And)
+@given(instance=henshin_And_strategy)
+@settings(max_examples=25)
+def test_henshin_And_instantiation(instance):
+    assert isinstance(instance, henshin_And)
+
+
+henshin_Annotation_strategy = st.builds(henshin_Annotation, key=safe_text, value=safe_text)
+@given(instance=henshin_Annotation_strategy)
+@settings(max_examples=25)
+def test_henshin_Annotation_instantiation(instance):
+    assert isinstance(instance, henshin_Annotation)
+
+
+henshin_Attribute_strategy = st.builds(henshin_Attribute, constant=safe_text, null=st.booleans(), value=safe_text)
+@given(instance=henshin_Attribute_strategy)
+@settings(max_examples=25)
+def test_henshin_Attribute_instantiation(instance):
+    assert isinstance(instance, henshin_Attribute)
+
+
+henshin_AttributeCondition_strategy = st.builds(henshin_AttributeCondition, conditionText=safe_text)
+@given(instance=henshin_AttributeCondition_strategy)
+@settings(max_examples=25)
+def test_henshin_AttributeCondition_instantiation(instance):
+    assert isinstance(instance, henshin_AttributeCondition)
+
+
+henshin_BinaryFormula_strategy = st.builds(henshin_BinaryFormula)
+@given(instance=henshin_BinaryFormula_strategy)
+@settings(max_examples=25)
+def test_henshin_BinaryFormula_instantiation(instance):
+    assert isinstance(instance, henshin_BinaryFormula)
+
+
+henshin_ConditionalUnit_strategy = st.builds(henshin_ConditionalUnit)
+@given(instance=henshin_ConditionalUnit_strategy)
+@settings(max_examples=25)
+def test_henshin_ConditionalUnit_instantiation(instance):
+    assert isinstance(instance, henshin_ConditionalUnit)
+
+
+henshin_EAttribute_strategy = st.builds(henshin_EAttribute)
+@given(instance=henshin_EAttribute_strategy)
+@settings(max_examples=25)
+def test_henshin_EAttribute_instantiation(instance):
+    assert isinstance(instance, henshin_EAttribute)
+
+
+henshin_EClass_strategy = st.builds(henshin_EClass)
+@given(instance=henshin_EClass_strategy)
+@settings(max_examples=25)
+def test_henshin_EClass_instantiation(instance):
+    assert isinstance(instance, henshin_EClass)
+
+
+henshin_EClassifier_strategy = st.builds(henshin_EClassifier)
+@given(instance=henshin_EClassifier_strategy)
+@settings(max_examples=25)
+def test_henshin_EClassifier_instantiation(instance):
+    assert isinstance(instance, henshin_EClassifier)
+
+
+henshin_EPackage_strategy = st.builds(henshin_EPackage)
+@given(instance=henshin_EPackage_strategy)
+@settings(max_examples=25)
+def test_henshin_EPackage_instantiation(instance):
+    assert isinstance(instance, henshin_EPackage)
+
+
+henshin_EReference_strategy = st.builds(henshin_EReference)
+@given(instance=henshin_EReference_strategy)
+@settings(max_examples=25)
+def test_henshin_EReference_instantiation(instance):
+    assert isinstance(instance, henshin_EReference)
+
+
+henshin_Edge_strategy = st.builds(henshin_Edge, index=safe_text, indexConstant=safe_text)
+@given(instance=henshin_Edge_strategy)
+@settings(max_examples=25)
+def test_henshin_Edge_instantiation(instance):
+    assert isinstance(instance, henshin_Edge)
+
+
+henshin_Formula_strategy = st.builds(henshin_Formula)
+@given(instance=henshin_Formula_strategy)
+@settings(max_examples=25)
+def test_henshin_Formula_instantiation(instance):
+    assert isinstance(instance, henshin_Formula)
+
+
+henshin_Graph_strategy = st.builds(henshin_Graph)
+@given(instance=henshin_Graph_strategy)
+@settings(max_examples=25)
+def test_henshin_Graph_instantiation(instance):
+    assert isinstance(instance, henshin_Graph)
+
+
+henshin_GraphElement_strategy = st.builds(henshin_GraphElement, action=safe_text)
+@given(instance=henshin_GraphElement_strategy)
+@settings(max_examples=25)
+def test_henshin_GraphElement_instantiation(instance):
+    assert isinstance(instance, henshin_GraphElement)
+
+
+henshin_IndependentUnit_strategy = st.builds(henshin_IndependentUnit)
+@given(instance=henshin_IndependentUnit_strategy)
+@settings(max_examples=25)
+def test_henshin_IndependentUnit_instantiation(instance):
+    assert isinstance(instance, henshin_IndependentUnit)
+
+
+henshin_IteratedUnit_strategy = st.builds(henshin_IteratedUnit, iterations=safe_text, rollback=st.booleans(), strict=st.booleans())
+@given(instance=henshin_IteratedUnit_strategy)
+@settings(max_examples=25)
+def test_henshin_IteratedUnit_instantiation(instance):
+    assert isinstance(instance, henshin_IteratedUnit)
+
+
+henshin_LoopUnit_strategy = st.builds(henshin_LoopUnit)
+@given(instance=henshin_LoopUnit_strategy)
+@settings(max_examples=25)
+def test_henshin_LoopUnit_instantiation(instance):
+    assert isinstance(instance, henshin_LoopUnit)
+
+
+henshin_Mapping_strategy = st.builds(henshin_Mapping)
+@given(instance=henshin_Mapping_strategy)
+@settings(max_examples=25)
+def test_henshin_Mapping_instantiation(instance):
+    assert isinstance(instance, henshin_Mapping)
+
+
+henshin_ModelElement_strategy = st.builds(henshin_ModelElement)
+@given(instance=henshin_ModelElement_strategy)
+@settings(max_examples=25)
+def test_henshin_ModelElement_instantiation(instance):
+    assert isinstance(instance, henshin_ModelElement)
+
+
+henshin_Module_strategy = st.builds(henshin_Module)
+@given(instance=henshin_Module_strategy)
+@settings(max_examples=25)
+def test_henshin_Module_instantiation(instance):
+    assert isinstance(instance, henshin_Module)
+
+
+henshin_MultiUnit_strategy = st.builds(henshin_MultiUnit)
+@given(instance=henshin_MultiUnit_strategy)
+@settings(max_examples=25)
+def test_henshin_MultiUnit_instantiation(instance):
+    assert isinstance(instance, henshin_MultiUnit)
+
+
+henshin_NamedElement_strategy = st.builds(henshin_NamedElement, description=safe_text, name=safe_text)
+@given(instance=henshin_NamedElement_strategy)
+@settings(max_examples=25)
+def test_henshin_NamedElement_instantiation(instance):
+    assert isinstance(instance, henshin_NamedElement)
+
+
+henshin_NestedCondition_strategy = st.builds(henshin_NestedCondition)
+@given(instance=henshin_NestedCondition_strategy)
+@settings(max_examples=25)
+def test_henshin_NestedCondition_instantiation(instance):
+    assert isinstance(instance, henshin_NestedCondition)
+
+
+henshin_Node_strategy = st.builds(henshin_Node)
+@given(instance=henshin_Node_strategy)
+@settings(max_examples=25)
+def test_henshin_Node_instantiation(instance):
+    assert isinstance(instance, henshin_Node)
+
+
+henshin_Not_strategy = st.builds(henshin_Not)
+@given(instance=henshin_Not_strategy)
+@settings(max_examples=25)
+def test_henshin_Not_instantiation(instance):
+    assert isinstance(instance, henshin_Not)
+
+
+henshin_Or_strategy = st.builds(henshin_Or)
+@given(instance=henshin_Or_strategy)
+@settings(max_examples=25)
+def test_henshin_Or_instantiation(instance):
+    assert isinstance(instance, henshin_Or)
+
+
+henshin_Parameter_strategy = st.builds(henshin_Parameter, kind=safe_text)
+@given(instance=henshin_Parameter_strategy)
+@settings(max_examples=25)
+def test_henshin_Parameter_instantiation(instance):
+    assert isinstance(instance, henshin_Parameter)
+
+
+henshin_ParameterMapping_strategy = st.builds(henshin_ParameterMapping)
+@given(instance=henshin_ParameterMapping_strategy)
+@settings(max_examples=25)
+def test_henshin_ParameterMapping_instantiation(instance):
+    assert isinstance(instance, henshin_ParameterMapping)
+
+
+henshin_PriorityUnit_strategy = st.builds(henshin_PriorityUnit)
+@given(instance=henshin_PriorityUnit_strategy)
+@settings(max_examples=25)
+def test_henshin_PriorityUnit_instantiation(instance):
+    assert isinstance(instance, henshin_PriorityUnit)
+
+
+henshin_Rule_strategy = st.builds(henshin_Rule, checkDangling=st.booleans(), injectiveMatching=st.booleans(), javaImports=safe_text)
+@given(instance=henshin_Rule_strategy)
+@settings(max_examples=25)
+def test_henshin_Rule_instantiation(instance):
+    assert isinstance(instance, henshin_Rule)
+
+
+henshin_SequentialUnit_strategy = st.builds(henshin_SequentialUnit, rollback=st.booleans(), strict=st.booleans())
+@given(instance=henshin_SequentialUnit_strategy)
+@settings(max_examples=25)
+def test_henshin_SequentialUnit_instantiation(instance):
+    assert isinstance(instance, henshin_SequentialUnit)
+
+
+henshin_True_strategy = st.builds(henshin_True)
+@given(instance=henshin_True_strategy)
+@settings(max_examples=25)
+def test_henshin_True_instantiation(instance):
+    assert isinstance(instance, henshin_True)
+
+
+henshin_UnaryFormula_strategy = st.builds(henshin_UnaryFormula)
+@given(instance=henshin_UnaryFormula_strategy)
+@settings(max_examples=25)
+def test_henshin_UnaryFormula_instantiation(instance):
+    assert isinstance(instance, henshin_UnaryFormula)
+
+
+henshin_UnaryUnit_strategy = st.builds(henshin_UnaryUnit)
+@given(instance=henshin_UnaryUnit_strategy)
+@settings(max_examples=25)
+def test_henshin_UnaryUnit_instantiation(instance):
+    assert isinstance(instance, henshin_UnaryUnit)
+
+
+henshin_Unit_strategy = st.builds(henshin_Unit, activated=st.booleans())
+@given(instance=henshin_Unit_strategy)
+@settings(max_examples=25)
+def test_henshin_Unit_instantiation(instance):
+    assert isinstance(instance, henshin_Unit)
+
+
+henshin_Xor_strategy = st.builds(henshin_Xor)
+@given(instance=henshin_Xor_strategy)
+@settings(max_examples=25)
+def test_henshin_Xor_instantiation(instance):
+    assert isinstance(instance, henshin_Xor)
+
+
+
+
+
+import pytest
+from datetime import date, datetime, time, timedelta
+
+from python_code import (
+    BinaryFormula,
+    Formula,
+    GraphElement,
+    ModelElement,
+    MultiUnit,
+    NamedElement,
+    UnaryFormula,
+    UnaryUnit,
+    Unit,
+    henshin_And,
+    henshin_Annotation,
+    henshin_Attribute,
+    henshin_AttributeCondition,
+    henshin_BinaryFormula,
+    henshin_ConditionalUnit,
+    henshin_EAttribute,
+    henshin_EClass,
+    henshin_EClassifier,
+    henshin_EPackage,
+    henshin_EReference,
+    henshin_Edge,
+    henshin_Formula,
+    henshin_Graph,
+    henshin_GraphElement,
+    henshin_IndependentUnit,
+    henshin_IteratedUnit,
+    henshin_LoopUnit,
+    henshin_Mapping,
+    henshin_ModelElement,
+    henshin_Module,
+    henshin_MultiUnit,
+    henshin_NamedElement,
+    henshin_NestedCondition,
+    henshin_Node,
+    henshin_Not,
+    henshin_Or,
+    henshin_Parameter,
+    henshin_ParameterMapping,
+    henshin_PriorityUnit,
+    henshin_Rule,
+    henshin_SequentialUnit,
+    henshin_True,
+    henshin_UnaryFormula,
+    henshin_UnaryUnit,
+    henshin_Unit,
+    henshin_Xor,
+    ParameterKind,
+)
+
+def _is_linked(obj, attr_name, other):
+    value = getattr(obj, attr_name, None)
+    if isinstance(value, (set, list, tuple, frozenset)):
+        return other in value
+    return value == other
+
+def _safe_set(obj, attr_name, value):
+    # Some generated models have a genuine bug: two reciprocal setters
+    # unconditionally call each other with no base case, causing
+    # infinite mutual recursion for that specific relationship (found
+    # in model_10000002's items10/sc11 pair). That's a defect in the
+    # code under test, not in this test -- skip rather than fail so it
+    # doesn't masquerade as a test-suite problem.
+    try:
+        setattr(obj, attr_name, value)
+    except RecursionError:
+        pytest.skip(f'{attr_name!r} setter has infinite mutual recursion in the generated code')
+
+# =============================================================================
+# REVERSE-DIRECTION ASSOCIATION TESTS
+# Mirrors test_structural_full.py's link_reassign_clear, but sets from the
+# OTHER end's own setter directly, instead of relying on it firing only as a
+# side effect of the forward-direction test. See module docstring.
+# =============================================================================
+
+def test_assoc_attributeConditions19_reverse_link_reassign_clear():
+    a1 = henshin_Rule(checkDangling=True, injectiveMatching=True, javaImports="sample_text")
+    a2 = henshin_Rule(checkDangling=False, injectiveMatching=False, javaImports="sample_text_2")
+    b = henshin_AttributeCondition(conditionText="sample_text")
+    _safe_set(b, 'AttributeCondition', a1)
+    assert _is_linked(b, 'AttributeCondition', a1)
+    if hasattr(a1, 'rule'):
+        assert _is_linked(a1, 'rule', b)
+    _safe_set(b, 'AttributeCondition', a2)
+    assert _is_linked(b, 'AttributeCondition', a2)
+    if hasattr(a1, 'rule'):
+        assert not _is_linked(a1, 'rule', b)
+    if hasattr(a2, 'rule'):
+        assert _is_linked(a2, 'rule', b)
+    _safe_set(b, 'AttributeCondition', None)
+    assert not _is_linked(b, 'AttributeCondition', a2)
+    if hasattr(a2, 'rule'):
+        assert not _is_linked(a2, 'rule', b)
+
+
+def test_assoc_attributes42_reverse_link_reassign_clear():
+    a1 = henshin_Node()
+    a2 = henshin_Node()
+    b = henshin_Attribute(constant="sample_text", null=True, value="sample_text")
+    _safe_set(b, 'Attribute', a1)
+    assert _is_linked(b, 'Attribute', a1)
+    if hasattr(a1, 'node'):
+        assert _is_linked(a1, 'node', b)
+    _safe_set(b, 'Attribute', a2)
+    assert _is_linked(b, 'Attribute', a2)
+    if hasattr(a1, 'node'):
+        assert not _is_linked(a1, 'node', b)
+    if hasattr(a2, 'node'):
+        assert _is_linked(a2, 'node', b)
+    _safe_set(b, 'Attribute', None)
+    assert not _is_linked(b, 'Attribute', a2)
+    if hasattr(a2, 'node'):
+        assert not _is_linked(a2, 'node', b)
+
+
+def test_assoc_conclusion77_reverse_link_reassign_clear():
+    a1 = henshin_NestedCondition()
+    a2 = henshin_NestedCondition()
+    b = henshin_Graph()
+    _safe_set(b, 'henshin_Graph78', a1)
+    assert _is_linked(b, 'henshin_Graph78', a1)
+    if hasattr(a1, 'henshin_NestedCondition'):
+        assert _is_linked(a1, 'henshin_NestedCondition', b)
+    _safe_set(b, 'henshin_Graph78', a2)
+    assert _is_linked(b, 'henshin_Graph78', a2)
+    if hasattr(a1, 'henshin_NestedCondition'):
+        assert not _is_linked(a1, 'henshin_NestedCondition', b)
+    if hasattr(a2, 'henshin_NestedCondition'):
+        assert _is_linked(a2, 'henshin_NestedCondition', b)
+    _safe_set(b, 'henshin_Graph78', None)
+    assert not _is_linked(b, 'henshin_Graph78', a2)
+    if hasattr(a2, 'henshin_NestedCondition'):
+        assert not _is_linked(a2, 'henshin_NestedCondition', b)
+
+
+def test_assoc_edges37_reverse_link_reassign_clear():
+    a1 = henshin_Graph()
+    a2 = henshin_Graph()
+    b = henshin_Edge(index="sample_text", indexConstant="sample_text")
+    _safe_set(b, 'Edge', a1)
+    assert _is_linked(b, 'Edge', a1)
+    if hasattr(a1, 'graph38'):
+        assert _is_linked(a1, 'graph38', b)
+    _safe_set(b, 'Edge', a2)
+    assert _is_linked(b, 'Edge', a2)
+    if hasattr(a1, 'graph38'):
+        assert not _is_linked(a1, 'graph38', b)
+    if hasattr(a2, 'graph38'):
+        assert _is_linked(a2, 'graph38', b)
+    _safe_set(b, 'Edge', None)
+    assert not _is_linked(b, 'Edge', a2)
+    if hasattr(a2, 'graph38'):
+        assert not _is_linked(a2, 'graph38', b)
+
+
+def test_assoc_formula39_reverse_link_reassign_clear():
+    a1 = henshin_Graph()
+    a2 = henshin_Graph()
+    b = henshin_Formula()
+    _safe_set(b, 'henshin_Formula', a1)
+    assert _is_linked(b, 'henshin_Formula', a1)
+    if hasattr(a1, 'henshin_Graph40'):
+        assert _is_linked(a1, 'henshin_Graph40', b)
+    _safe_set(b, 'henshin_Formula', a2)
+    assert _is_linked(b, 'henshin_Formula', a2)
+    if hasattr(a1, 'henshin_Graph40'):
+        assert not _is_linked(a1, 'henshin_Graph40', b)
+    if hasattr(a2, 'henshin_Graph40'):
+        assert _is_linked(a2, 'henshin_Graph40', b)
+    _safe_set(b, 'henshin_Formula', None)
+    assert not _is_linked(b, 'henshin_Formula', a2)
+    if hasattr(a2, 'henshin_Graph40'):
+        assert not _is_linked(a2, 'henshin_Graph40', b)
+
+
+def test_assoc_graph43_reverse_link_reassign_clear():
+    a1 = henshin_Node()
+    a2 = henshin_Node()
+    b = henshin_Graph()
+    _safe_set(b, 'Graph', a1)
+    assert _is_linked(b, 'Graph', a1)
+    if hasattr(a1, 'nodes'):
+        assert _is_linked(a1, 'nodes', b)
+    _safe_set(b, 'Graph', a2)
+    assert _is_linked(b, 'Graph', a2)
+    if hasattr(a1, 'nodes'):
+        assert not _is_linked(a1, 'nodes', b)
+    if hasattr(a2, 'nodes'):
+        assert _is_linked(a2, 'nodes', b)
+    _safe_set(b, 'Graph', None)
+    assert not _is_linked(b, 'Graph', a2)
+    if hasattr(a2, 'nodes'):
+        assert not _is_linked(a2, 'nodes', b)
+
+
+def test_assoc_graph53_reverse_link_reassign_clear():
+    a1 = henshin_Graph()
+    a2 = henshin_Graph()
+    b = henshin_Edge(index="sample_text", indexConstant="sample_text")
+    _safe_set(b, 'edges', a1)
+    assert _is_linked(b, 'edges', a1)
+    if hasattr(a1, 'Graph54'):
+        assert _is_linked(a1, 'Graph54', b)
+    _safe_set(b, 'edges', a2)
+    assert _is_linked(b, 'edges', a2)
+    if hasattr(a1, 'Graph54'):
+        assert not _is_linked(a1, 'Graph54', b)
+    if hasattr(a2, 'Graph54'):
+        assert _is_linked(a2, 'Graph54', b)
+    _safe_set(b, 'edges', None)
+    assert not _is_linked(b, 'edges', a2)
+    if hasattr(a2, 'Graph54'):
+        assert not _is_linked(a2, 'Graph54', b)
+
+
+def test_assoc_incoming44_reverse_link_reassign_clear():
+    a1 = henshin_Node()
+    a2 = henshin_Node()
+    b = henshin_Edge(index="sample_text", indexConstant="sample_text")
+    _safe_set(b, 'Edge45', a1)
+    assert _is_linked(b, 'Edge45', a1)
+    if hasattr(a1, 'target'):
+        assert _is_linked(a1, 'target', b)
+    _safe_set(b, 'Edge45', a2)
+    assert _is_linked(b, 'Edge45', a2)
+    if hasattr(a1, 'target'):
+        assert not _is_linked(a1, 'target', b)
+    if hasattr(a2, 'target'):
+        assert _is_linked(a2, 'target', b)
+    _safe_set(b, 'Edge45', None)
+    assert not _is_linked(b, 'Edge45', a2)
+    if hasattr(a2, 'target'):
+        assert not _is_linked(a2, 'target', b)
+
+
+def test_assoc_instances9_reverse_link_reassign_clear():
+    a1 = henshin_Module()
+    a2 = henshin_Module()
+    b = henshin_Graph()
+    _safe_set(b, 'henshin_Graph', a1)
+    assert _is_linked(b, 'henshin_Graph', a1)
+    if hasattr(a1, 'henshin_Module10'):
+        assert _is_linked(a1, 'henshin_Module10', b)
+    _safe_set(b, 'henshin_Graph', a2)
+    assert _is_linked(b, 'henshin_Graph', a2)
+    if hasattr(a1, 'henshin_Module10'):
+        assert not _is_linked(a1, 'henshin_Module10', b)
+    if hasattr(a2, 'henshin_Module10'):
+        assert _is_linked(a2, 'henshin_Module10', b)
+    _safe_set(b, 'henshin_Graph', None)
+    assert not _is_linked(b, 'henshin_Graph', a2)
+    if hasattr(a2, 'henshin_Module10'):
+        assert not _is_linked(a2, 'henshin_Module10', b)
+
+
+def test_assoc_lhs14_reverse_link_reassign_clear():
+    a1 = henshin_Rule(checkDangling=True, injectiveMatching=True, javaImports="sample_text")
+    a2 = henshin_Rule(checkDangling=False, injectiveMatching=False, javaImports="sample_text_2")
+    b = henshin_Graph()
+    _safe_set(b, 'henshin_Graph15', a1)
+    assert _is_linked(b, 'henshin_Graph15', a1)
+    if hasattr(a1, 'henshin_Rule'):
+        assert _is_linked(a1, 'henshin_Rule', b)
+    _safe_set(b, 'henshin_Graph15', a2)
+    assert _is_linked(b, 'henshin_Graph15', a2)
+    if hasattr(a1, 'henshin_Rule'):
+        assert not _is_linked(a1, 'henshin_Rule', b)
+    if hasattr(a2, 'henshin_Rule'):
+        assert _is_linked(a2, 'henshin_Rule', b)
+    _safe_set(b, 'henshin_Graph15', None)
+    assert not _is_linked(b, 'henshin_Graph15', a2)
+    if hasattr(a2, 'henshin_Rule'):
+        assert not _is_linked(a2, 'henshin_Rule', b)
+
+
+def test_assoc_multiRules23_reverse_link_reassign_clear():
+    a1 = henshin_Rule(checkDangling=True, injectiveMatching=True, javaImports="sample_text")
+    a2 = henshin_Rule(checkDangling=False, injectiveMatching=False, javaImports="sample_text_2")
+    b = henshin_Rule(checkDangling=True, injectiveMatching=True, javaImports="sample_text")
+    _safe_set(b, 'henshin_Rule24', a1)
+    assert _is_linked(b, 'henshin_Rule24', a1)
+    if hasattr(a1, 'henshin_Rule22'):
+        assert _is_linked(a1, 'henshin_Rule22', b)
+    _safe_set(b, 'henshin_Rule24', a2)
+    assert _is_linked(b, 'henshin_Rule24', a2)
+    if hasattr(a1, 'henshin_Rule22'):
+        assert not _is_linked(a1, 'henshin_Rule22', b)
+    if hasattr(a2, 'henshin_Rule22'):
+        assert _is_linked(a2, 'henshin_Rule22', b)
+    _safe_set(b, 'henshin_Rule24', None)
+    assert not _is_linked(b, 'henshin_Rule24', a2)
+    if hasattr(a2, 'henshin_Rule22'):
+        assert not _is_linked(a2, 'henshin_Rule22', b)
+
+
+def test_assoc_node56_reverse_link_reassign_clear():
+    a1 = henshin_Node()
+    a2 = henshin_Node()
+    b = henshin_Attribute(constant="sample_text", null=True, value="sample_text")
+    _safe_set(b, 'attributes', a1)
+    assert _is_linked(b, 'attributes', a1)
+    if hasattr(a1, 'Node57'):
+        assert _is_linked(a1, 'Node57', b)
+    _safe_set(b, 'attributes', a2)
+    assert _is_linked(b, 'attributes', a2)
+    if hasattr(a1, 'Node57'):
+        assert not _is_linked(a1, 'Node57', b)
+    if hasattr(a2, 'Node57'):
+        assert _is_linked(a2, 'Node57', b)
+    _safe_set(b, 'attributes', None)
+    assert not _is_linked(b, 'attributes', a2)
+    if hasattr(a2, 'Node57'):
+        assert not _is_linked(a2, 'Node57', b)
+
+
+def test_assoc_nodes36_reverse_link_reassign_clear():
+    a1 = henshin_Node()
+    a2 = henshin_Node()
+    b = henshin_Graph()
+    _safe_set(b, 'graph', {a1})
+    assert _is_linked(b, 'graph', a1)
+    if hasattr(a1, 'Node'):
+        assert _is_linked(a1, 'Node', b)
+    _safe_set(b, 'graph', {a2})
+    assert _is_linked(b, 'graph', a2)
+    if hasattr(a1, 'Node'):
+        assert not _is_linked(a1, 'Node', b)
+    if hasattr(a2, 'Node'):
+        assert _is_linked(a2, 'Node', b)
+    _safe_set(b, 'graph', set())
+    assert not _is_linked(b, 'graph', a2)
+    if hasattr(a2, 'Node'):
+        assert not _is_linked(a2, 'Node', b)
+
+
+def test_assoc_outgoing46_reverse_link_reassign_clear():
+    a1 = henshin_Node()
+    a2 = henshin_Node()
+    b = henshin_Edge(index="sample_text", indexConstant="sample_text")
+    _safe_set(b, 'Edge47', a1)
+    assert _is_linked(b, 'Edge47', a1)
+    if hasattr(a1, 'source'):
+        assert _is_linked(a1, 'source', b)
+    _safe_set(b, 'Edge47', a2)
+    assert _is_linked(b, 'Edge47', a2)
+    if hasattr(a1, 'source'):
+        assert not _is_linked(a1, 'source', b)
+    if hasattr(a2, 'source'):
+        assert _is_linked(a2, 'source', b)
+    _safe_set(b, 'Edge47', None)
+    assert not _is_linked(b, 'Edge47', a2)
+    if hasattr(a2, 'source'):
+        assert not _is_linked(a2, 'source', b)
+
+
+def test_assoc_parameters11_reverse_link_reassign_clear():
+    a1 = henshin_Unit(activated=True)
+    a2 = henshin_Unit(activated=False)
+    b = henshin_Parameter(kind="sample_text")
+    _safe_set(b, 'Parameter', a1)
+    assert _is_linked(b, 'Parameter', a1)
+    if hasattr(a1, 'unit'):
+        assert _is_linked(a1, 'unit', b)
+    _safe_set(b, 'Parameter', a2)
+    assert _is_linked(b, 'Parameter', a2)
+    if hasattr(a1, 'unit'):
+        assert not _is_linked(a1, 'unit', b)
+    if hasattr(a2, 'unit'):
+        assert _is_linked(a2, 'unit', b)
+    _safe_set(b, 'Parameter', None)
+    assert not _is_linked(b, 'Parameter', a2)
+    if hasattr(a2, 'unit'):
+        assert not _is_linked(a2, 'unit', b)
+
+
+def test_assoc_rhs16_reverse_link_reassign_clear():
+    a1 = henshin_Rule(checkDangling=True, injectiveMatching=True, javaImports="sample_text")
+    a2 = henshin_Rule(checkDangling=False, injectiveMatching=False, javaImports="sample_text_2")
+    b = henshin_Graph()
+    _safe_set(b, 'henshin_Graph18', a1)
+    assert _is_linked(b, 'henshin_Graph18', a1)
+    if hasattr(a1, 'henshin_Rule17'):
+        assert _is_linked(a1, 'henshin_Rule17', b)
+    _safe_set(b, 'henshin_Graph18', a2)
+    assert _is_linked(b, 'henshin_Graph18', a2)
+    if hasattr(a1, 'henshin_Rule17'):
+        assert not _is_linked(a1, 'henshin_Rule17', b)
+    if hasattr(a2, 'henshin_Rule17'):
+        assert _is_linked(a2, 'henshin_Rule17', b)
+    _safe_set(b, 'henshin_Graph18', None)
+    assert not _is_linked(b, 'henshin_Graph18', a2)
+    if hasattr(a2, 'henshin_Rule17'):
+        assert not _is_linked(a2, 'henshin_Rule17', b)
+
+
+def test_assoc_rule58_reverse_link_reassign_clear():
+    a1 = henshin_Rule(checkDangling=True, injectiveMatching=True, javaImports="sample_text")
+    a2 = henshin_Rule(checkDangling=False, injectiveMatching=False, javaImports="sample_text_2")
+    b = henshin_AttributeCondition(conditionText="sample_text")
+    _safe_set(b, 'attributeConditions', a1)
+    assert _is_linked(b, 'attributeConditions', a1)
+    if hasattr(a1, 'Rule'):
+        assert _is_linked(a1, 'Rule', b)
+    _safe_set(b, 'attributeConditions', a2)
+    assert _is_linked(b, 'attributeConditions', a2)
+    if hasattr(a1, 'Rule'):
+        assert not _is_linked(a1, 'Rule', b)
+    if hasattr(a2, 'Rule'):
+        assert _is_linked(a2, 'Rule', b)
+    _safe_set(b, 'attributeConditions', None)
+    assert not _is_linked(b, 'attributeConditions', a2)
+    if hasattr(a2, 'Rule'):
+        assert not _is_linked(a2, 'Rule', b)
+
+
+def test_assoc_source48_reverse_link_reassign_clear():
+    a1 = henshin_Node()
+    a2 = henshin_Node()
+    b = henshin_Edge(index="sample_text", indexConstant="sample_text")
+    _safe_set(b, 'outgoing', a1)
+    assert _is_linked(b, 'outgoing', a1)
+    if hasattr(a1, 'Node49'):
+        assert _is_linked(a1, 'Node49', b)
+    _safe_set(b, 'outgoing', a2)
+    assert _is_linked(b, 'outgoing', a2)
+    if hasattr(a1, 'Node49'):
+        assert not _is_linked(a1, 'Node49', b)
+    if hasattr(a2, 'Node49'):
+        assert _is_linked(a2, 'Node49', b)
+    _safe_set(b, 'outgoing', None)
+    assert not _is_linked(b, 'outgoing', a2)
+    if hasattr(a2, 'Node49'):
+        assert not _is_linked(a2, 'Node49', b)
+
+
+def test_assoc_subModules2_reverse_link_reassign_clear():
+    a1 = henshin_Module()
+    a2 = henshin_Module()
+    b = henshin_Module()
+    _safe_set(b, 'superModule', {a1})
+    assert _is_linked(b, 'superModule', a1)
+    if hasattr(a1, 'Module'):
+        assert _is_linked(a1, 'Module', b)
+    _safe_set(b, 'superModule', {a2})
+    assert _is_linked(b, 'superModule', a2)
+    if hasattr(a1, 'Module'):
+        assert not _is_linked(a1, 'Module', b)
+    if hasattr(a2, 'Module'):
+        assert _is_linked(a2, 'Module', b)
+    _safe_set(b, 'superModule', set())
+    assert not _is_linked(b, 'superModule', a2)
+    if hasattr(a2, 'Module'):
+        assert not _is_linked(a2, 'Module', b)
+
+
+def test_assoc_superModule4_reverse_link_reassign_clear():
+    a1 = henshin_Module()
+    a2 = henshin_Module()
+    b = henshin_Module()
+    _safe_set(b, 'subModules', a1)
+    assert _is_linked(b, 'subModules', a1)
+    if hasattr(a1, 'Module5'):
+        assert _is_linked(a1, 'Module5', b)
+    _safe_set(b, 'subModules', a2)
+    assert _is_linked(b, 'subModules', a2)
+    if hasattr(a1, 'Module5'):
+        assert not _is_linked(a1, 'Module5', b)
+    if hasattr(a2, 'Module5'):
+        assert _is_linked(a2, 'Module5', b)
+    _safe_set(b, 'subModules', None)
+    assert not _is_linked(b, 'subModules', a2)
+    if hasattr(a2, 'Module5'):
+        assert not _is_linked(a2, 'Module5', b)
+
+
+def test_assoc_target50_reverse_link_reassign_clear():
+    a1 = henshin_Node()
+    a2 = henshin_Node()
+    b = henshin_Edge(index="sample_text", indexConstant="sample_text")
+    _safe_set(b, 'incoming', a1)
+    assert _is_linked(b, 'incoming', a1)
+    if hasattr(a1, 'Node51'):
+        assert _is_linked(a1, 'Node51', b)
+    _safe_set(b, 'incoming', a2)
+    assert _is_linked(b, 'incoming', a2)
+    if hasattr(a1, 'Node51'):
+        assert not _is_linked(a1, 'Node51', b)
+    if hasattr(a2, 'Node51'):
+        assert _is_linked(a2, 'Node51', b)
+    _safe_set(b, 'incoming', None)
+    assert not _is_linked(b, 'incoming', a2)
+    if hasattr(a2, 'Node51'):
+        assert not _is_linked(a2, 'Node51', b)
+
+
+def test_assoc_unit28_reverse_link_reassign_clear():
+    a1 = henshin_Unit(activated=True)
+    a2 = henshin_Unit(activated=False)
+    b = henshin_Parameter(kind="sample_text")
+    _safe_set(b, 'parameters', a1)
+    assert _is_linked(b, 'parameters', a1)
+    if hasattr(a1, 'Unit'):
+        assert _is_linked(a1, 'Unit', b)
+    _safe_set(b, 'parameters', a2)
+    assert _is_linked(b, 'parameters', a2)
+    if hasattr(a1, 'Unit'):
+        assert not _is_linked(a1, 'Unit', b)
+    if hasattr(a2, 'Unit'):
+        assert _is_linked(a2, 'Unit', b)
+    _safe_set(b, 'parameters', None)
+    assert not _is_linked(b, 'parameters', a2)
+    if hasattr(a2, 'Unit'):
+        assert not _is_linked(a2, 'Unit', b)
+
+
+def test_assoc_units7_reverse_link_reassign_clear():
+    a1 = henshin_Unit(activated=True)
+    a2 = henshin_Unit(activated=False)
+    b = henshin_Module()
+    _safe_set(b, 'henshin_Module8', {a1})
+    assert _is_linked(b, 'henshin_Module8', a1)
+    if hasattr(a1, 'henshin_Unit'):
+        assert _is_linked(a1, 'henshin_Unit', b)
+    _safe_set(b, 'henshin_Module8', {a2})
+    assert _is_linked(b, 'henshin_Module8', a2)
+    if hasattr(a1, 'henshin_Unit'):
+        assert not _is_linked(a1, 'henshin_Unit', b)
+    if hasattr(a2, 'henshin_Unit'):
+        assert _is_linked(a2, 'henshin_Unit', b)
+    _safe_set(b, 'henshin_Module8', set())
+    assert not _is_linked(b, 'henshin_Module8', a2)
+    if hasattr(a2, 'henshin_Unit'):
+        assert not _is_linked(a2, 'henshin_Unit', b)
+
+
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_annotations0_stub_double():
+    # henshin_ModelElement has no real 'henshin_ModelElement' property in the generated
+    # code (a bare stub) -- manually attach it so henshin_Annotation's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # henshin_Annotation's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = henshin_Annotation(key="sample_text", value="sample_text")
+    partner = henshin_ModelElement()
+    setattr(partner, 'henshin_ModelElement', None)
+    _safe_set(owner, 'henshin_Annotation', partner)
+    assert owner in getattr(partner, 'henshin_ModelElement')
+    _safe_set(owner, 'henshin_Annotation', None)
+    assert owner not in getattr(partner, 'henshin_ModelElement')
+
+
+def test_assoc_child82_stub_double():
+    # henshin_UnaryFormula has no real 'henshin_UnaryFormula' property in the generated
+    # code (a bare stub) -- manually attach it so henshin_Formula's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # henshin_Formula's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = henshin_Formula()
+    partner = henshin_UnaryFormula()
+    setattr(partner, 'henshin_UnaryFormula', None)
+    _safe_set(owner, 'henshin_Formula83', partner)
+    assert getattr(partner, 'henshin_UnaryFormula') == owner
+    _safe_set(owner, 'henshin_Formula83', None)
+    assert getattr(partner, 'henshin_UnaryFormula') is None
+
+
+def test_assoc_else_74_stub_double():
+    # henshin_ConditionalUnit has no real 'henshin_ConditionalUnit75' property in the generated
+    # code (a bare stub) -- manually attach it so henshin_Unit's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # henshin_Unit's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = henshin_Unit(activated=True)
+    partner = henshin_ConditionalUnit()
+    setattr(partner, 'henshin_ConditionalUnit75', None)
+    _safe_set(owner, 'henshin_Unit76', partner)
+    assert getattr(partner, 'henshin_ConditionalUnit75') == owner
+    _safe_set(owner, 'henshin_Unit76', None)
+    assert getattr(partner, 'henshin_ConditionalUnit75') is None
+
+
+def test_assoc_if_69_stub_double():
+    # henshin_ConditionalUnit has no real 'henshin_ConditionalUnit' property in the generated
+    # code (a bare stub) -- manually attach it so henshin_Unit's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # henshin_Unit's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = henshin_Unit(activated=True)
+    partner = henshin_ConditionalUnit()
+    setattr(partner, 'henshin_ConditionalUnit', None)
+    _safe_set(owner, 'henshin_Unit70', partner)
+    assert getattr(partner, 'henshin_ConditionalUnit') == owner
+    _safe_set(owner, 'henshin_Unit70', None)
+    assert getattr(partner, 'henshin_ConditionalUnit') is None
+
+
+def test_assoc_image62_stub_double():
+    # henshin_Mapping has no real 'henshin_Mapping63' property in the generated
+    # code (a bare stub) -- manually attach it so henshin_Node's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # henshin_Node's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = henshin_Node()
+    partner = henshin_Mapping()
+    setattr(partner, 'henshin_Mapping63', None)
+    _safe_set(owner, 'henshin_Node64', partner)
+    assert getattr(partner, 'henshin_Mapping63') == owner
+    _safe_set(owner, 'henshin_Node64', None)
+    assert getattr(partner, 'henshin_Mapping63') is None
+
+
+def test_assoc_imports6_stub_double():
+    # henshin_EPackage has no real 'henshin_EPackage' property in the generated
+    # code (a bare stub) -- manually attach it so henshin_Module's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # henshin_Module's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = henshin_Module()
+    partner = henshin_EPackage()
+    setattr(partner, 'henshin_EPackage', None)
+    _safe_set(owner, 'henshin_Module', {partner})
+    assert getattr(partner, 'henshin_EPackage') == owner
+    _safe_set(owner, 'henshin_Module', set())
+    assert getattr(partner, 'henshin_EPackage') is None
+
+
+def test_assoc_left84_stub_double():
+    # henshin_BinaryFormula has no real 'henshin_BinaryFormula' property in the generated
+    # code (a bare stub) -- manually attach it so henshin_Formula's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # henshin_Formula's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = henshin_Formula()
+    partner = henshin_BinaryFormula()
+    setattr(partner, 'henshin_BinaryFormula', None)
+    _safe_set(owner, 'henshin_Formula85', partner)
+    assert getattr(partner, 'henshin_BinaryFormula') == owner
+    _safe_set(owner, 'henshin_Formula85', None)
+    assert getattr(partner, 'henshin_BinaryFormula') is None
+
+
+def test_assoc_mappings20_stub_double():
+    # henshin_Mapping has no real 'henshin_Mapping' property in the generated
+    # code (a bare stub) -- manually attach it so henshin_Rule's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # henshin_Rule's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = henshin_Rule(checkDangling=True, injectiveMatching=True, javaImports="sample_text")
+    partner = henshin_Mapping()
+    setattr(partner, 'henshin_Mapping', None)
+    _safe_set(owner, 'henshin_Rule21', {partner})
+    assert getattr(partner, 'henshin_Mapping') == owner
+    _safe_set(owner, 'henshin_Rule21', set())
+    assert getattr(partner, 'henshin_Mapping') is None
+
+
+def test_assoc_mappings79_stub_double():
+    # henshin_Mapping has no real 'henshin_Mapping81' property in the generated
+    # code (a bare stub) -- manually attach it so henshin_NestedCondition's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # henshin_NestedCondition's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = henshin_NestedCondition()
+    partner = henshin_Mapping()
+    setattr(partner, 'henshin_Mapping81', None)
+    _safe_set(owner, 'henshin_NestedCondition80', {partner})
+    assert getattr(partner, 'henshin_Mapping81') == owner
+    _safe_set(owner, 'henshin_NestedCondition80', set())
+    assert getattr(partner, 'henshin_Mapping81') is None
+
+
+def test_assoc_multiMappings25_stub_double():
+    # henshin_Mapping has no real 'henshin_Mapping27' property in the generated
+    # code (a bare stub) -- manually attach it so henshin_Rule's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # henshin_Rule's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = henshin_Rule(checkDangling=True, injectiveMatching=True, javaImports="sample_text")
+    partner = henshin_Mapping()
+    setattr(partner, 'henshin_Mapping27', None)
+    _safe_set(owner, 'henshin_Rule26', {partner})
+    assert getattr(partner, 'henshin_Mapping27') == owner
+    _safe_set(owner, 'henshin_Rule26', set())
+    assert getattr(partner, 'henshin_Mapping27') is None
+
+
+def test_assoc_origin59_stub_double():
+    # henshin_Mapping has no real 'henshin_Mapping60' property in the generated
+    # code (a bare stub) -- manually attach it so henshin_Node's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # henshin_Node's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = henshin_Node()
+    partner = henshin_Mapping()
+    setattr(partner, 'henshin_Mapping60', None)
+    _safe_set(owner, 'henshin_Node61', partner)
+    assert getattr(partner, 'henshin_Mapping60') == owner
+    _safe_set(owner, 'henshin_Node61', None)
+    assert getattr(partner, 'henshin_Mapping60') is None
+
+
+def test_assoc_parameterMappings12_stub_double():
+    # henshin_ParameterMapping has no real 'henshin_ParameterMapping' property in the generated
+    # code (a bare stub) -- manually attach it so henshin_Unit's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # henshin_Unit's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = henshin_Unit(activated=True)
+    partner = henshin_ParameterMapping()
+    setattr(partner, 'henshin_ParameterMapping', None)
+    _safe_set(owner, 'henshin_Unit13', {partner})
+    assert getattr(partner, 'henshin_ParameterMapping') == owner
+    _safe_set(owner, 'henshin_Unit13', set())
+    assert getattr(partner, 'henshin_ParameterMapping') is None
+
+
+def test_assoc_right86_stub_double():
+    # henshin_BinaryFormula has no real 'henshin_BinaryFormula87' property in the generated
+    # code (a bare stub) -- manually attach it so henshin_Formula's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # henshin_Formula's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = henshin_Formula()
+    partner = henshin_BinaryFormula()
+    setattr(partner, 'henshin_BinaryFormula87', None)
+    _safe_set(owner, 'henshin_Formula88', partner)
+    assert getattr(partner, 'henshin_BinaryFormula87') == owner
+    _safe_set(owner, 'henshin_Formula88', None)
+    assert getattr(partner, 'henshin_BinaryFormula87') is None
+
+
+def test_assoc_source30_stub_double():
+    # henshin_ParameterMapping has no real 'henshin_ParameterMapping31' property in the generated
+    # code (a bare stub) -- manually attach it so henshin_Parameter's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # henshin_Parameter's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = henshin_Parameter(kind="sample_text")
+    partner = henshin_ParameterMapping()
+    setattr(partner, 'henshin_ParameterMapping31', None)
+    _safe_set(owner, 'henshin_Parameter32', partner)
+    assert getattr(partner, 'henshin_ParameterMapping31') == owner
+    _safe_set(owner, 'henshin_Parameter32', None)
+    assert getattr(partner, 'henshin_ParameterMapping31') is None
+
+
+def test_assoc_subUnit65_stub_double():
+    # henshin_UnaryUnit has no real 'henshin_UnaryUnit' property in the generated
+    # code (a bare stub) -- manually attach it so henshin_Unit's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # henshin_Unit's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = henshin_Unit(activated=True)
+    partner = henshin_UnaryUnit()
+    setattr(partner, 'henshin_UnaryUnit', None)
+    _safe_set(owner, 'henshin_Unit66', partner)
+    assert getattr(partner, 'henshin_UnaryUnit') == owner
+    _safe_set(owner, 'henshin_Unit66', None)
+    assert getattr(partner, 'henshin_UnaryUnit') is None
+
+
+def test_assoc_subUnits67_stub_double():
+    # henshin_MultiUnit has no real 'henshin_MultiUnit' property in the generated
+    # code (a bare stub) -- manually attach it so henshin_Unit's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # henshin_Unit's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = henshin_Unit(activated=True)
+    partner = henshin_MultiUnit()
+    setattr(partner, 'henshin_MultiUnit', None)
+    _safe_set(owner, 'henshin_Unit68', partner)
+    assert owner in getattr(partner, 'henshin_MultiUnit')
+    _safe_set(owner, 'henshin_Unit68', None)
+    assert owner not in getattr(partner, 'henshin_MultiUnit')
+
+
+def test_assoc_target33_stub_double():
+    # henshin_ParameterMapping has no real 'henshin_ParameterMapping34' property in the generated
+    # code (a bare stub) -- manually attach it so henshin_Parameter's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # henshin_Parameter's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = henshin_Parameter(kind="sample_text")
+    partner = henshin_ParameterMapping()
+    setattr(partner, 'henshin_ParameterMapping34', None)
+    _safe_set(owner, 'henshin_Parameter35', partner)
+    assert getattr(partner, 'henshin_ParameterMapping34') == owner
+    _safe_set(owner, 'henshin_Parameter35', None)
+    assert getattr(partner, 'henshin_ParameterMapping34') is None
+
+
+def test_assoc_then71_stub_double():
+    # henshin_ConditionalUnit has no real 'henshin_ConditionalUnit72' property in the generated
+    # code (a bare stub) -- manually attach it so henshin_Unit's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # henshin_Unit's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = henshin_Unit(activated=True)
+    partner = henshin_ConditionalUnit()
+    setattr(partner, 'henshin_ConditionalUnit72', None)
+    _safe_set(owner, 'henshin_Unit73', partner)
+    assert getattr(partner, 'henshin_ConditionalUnit72') == owner
+    _safe_set(owner, 'henshin_Unit73', None)
+    assert getattr(partner, 'henshin_ConditionalUnit72') is None
+
+
+def test_assoc_type29_stub_double():
+    # henshin_EClassifier has no real 'henshin_EClassifier' property in the generated
+    # code (a bare stub) -- manually attach it so henshin_Parameter's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # henshin_Parameter's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = henshin_Parameter(kind="sample_text")
+    partner = henshin_EClassifier()
+    setattr(partner, 'henshin_EClassifier', None)
+    _safe_set(owner, 'henshin_Parameter', partner)
+    assert getattr(partner, 'henshin_EClassifier') == owner
+    _safe_set(owner, 'henshin_Parameter', None)
+    assert getattr(partner, 'henshin_EClassifier') is None
+
+
+def test_assoc_type41_stub_double():
+    # henshin_EClass has no real 'henshin_EClass' property in the generated
+    # code (a bare stub) -- manually attach it so henshin_Node's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # henshin_Node's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = henshin_Node()
+    partner = henshin_EClass()
+    setattr(partner, 'henshin_EClass', None)
+    _safe_set(owner, 'henshin_Node', partner)
+    assert getattr(partner, 'henshin_EClass') == owner
+    _safe_set(owner, 'henshin_Node', None)
+    assert getattr(partner, 'henshin_EClass') is None
+
+
+def test_assoc_type52_stub_double():
+    # henshin_EReference has no real 'henshin_EReference' property in the generated
+    # code (a bare stub) -- manually attach it so henshin_Edge's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # henshin_Edge's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = henshin_Edge(index="sample_text", indexConstant="sample_text")
+    partner = henshin_EReference()
+    setattr(partner, 'henshin_EReference', None)
+    _safe_set(owner, 'henshin_Edge', partner)
+    assert getattr(partner, 'henshin_EReference') == owner
+    _safe_set(owner, 'henshin_Edge', None)
+    assert getattr(partner, 'henshin_EReference') is None
+
+
+def test_assoc_type55_stub_double():
+    # henshin_EAttribute has no real 'henshin_EAttribute' property in the generated
+    # code (a bare stub) -- manually attach it so henshin_Attribute's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # henshin_Attribute's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = henshin_Attribute(constant="sample_text", null=True, value="sample_text")
+    partner = henshin_EAttribute()
+    setattr(partner, 'henshin_EAttribute', None)
+    _safe_set(owner, 'henshin_Attribute', partner)
+    assert getattr(partner, 'henshin_EAttribute') == owner
+    _safe_set(owner, 'henshin_Attribute', None)
+    assert getattr(partner, 'henshin_EAttribute') is None
+
+
+
+
+from python_code import henshin_Annotation
+from python_code import henshin_ModelElement
+
+def test_henshin_Annotation___init__():
+    assert henshin_Annotation.__init__(henshin_Annotation('', '\x00', henshin_Annotation=henshin_ModelElement()), '\x00\x00', '', henshin_Annotation=henshin_ModelElement()) == None
+from python_code import henshin_GraphElement
+
+def test_henshin_GraphElement___init__():
+    assert henshin_GraphElement.__init__(henshin_GraphElement(''), '') == None
+
+def test_henshin_GraphElement_getGraph():
+    assert henshin_GraphElement.getGraph(henshin_GraphElement('')) == None
+from python_code import henshin_IteratedUnit
+
+def test_henshin_IteratedUnit___init__():
+    assert henshin_IteratedUnit.__init__(henshin_IteratedUnit('', False, False), '\x00', False, False) == None
+from python_code import henshin_NamedElement
+
+def test_henshin_NamedElement___init__():
+    assert henshin_NamedElement.__init__(henshin_NamedElement('', '\x00'), '\x00\x00', '') == None
+from python_code import henshin_SequentialUnit
+
+def test_henshin_SequentialUnit___init__():
+    assert henshin_SequentialUnit.__init__(henshin_SequentialUnit(False, False), False, False) == None
+

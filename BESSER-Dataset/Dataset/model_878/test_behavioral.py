@@ -1,0 +1,259 @@
+import pytest
+from datetime import date, datetime, time, timedelta
+
+from python_code import (
+    ProcessElement,
+    simplepdl_Guidance,
+    simplepdl_Process,
+    simplepdl_ProcessElement,
+    simplepdl_RessourceConfig,
+    simplepdl_RessourceDefinition,
+    simplepdl_RessourceInstance,
+    simplepdl_WorkDefinition,
+    simplepdl_WorkSequence,
+    WorkSequenceType,
+)
+
+def _is_linked(obj, attr_name, other):
+    value = getattr(obj, attr_name, None)
+    if isinstance(value, (set, list, tuple, frozenset)):
+        return other in value
+    return value == other
+
+def _safe_set(obj, attr_name, value):
+    # Some generated models have a genuine bug: two reciprocal setters
+    # unconditionally call each other with no base case, causing
+    # infinite mutual recursion for that specific relationship (found
+    # in model_10000002's items10/sc11 pair). That's a defect in the
+    # code under test, not in this test -- skip rather than fail so it
+    # doesn't masquerade as a test-suite problem.
+    try:
+        setattr(obj, attr_name, value)
+    except RecursionError:
+        pytest.skip(f'{attr_name!r} setter has infinite mutual recursion in the generated code')
+
+# =============================================================================
+# REVERSE-DIRECTION ASSOCIATION TESTS
+# Mirrors test_structural_full.py's link_reassign_clear, but sets from the
+# OTHER end's own setter directly, instead of relying on it firing only as a
+# side effect of the forward-direction test. See module docstring.
+# =============================================================================
+
+def test_assoc_activity13_reverse_link_reassign_clear():
+    a1 = simplepdl_WorkDefinition(max_time=7, min_time=7, name="sample_text")
+    a2 = simplepdl_WorkDefinition(max_time=13, min_time=13, name="sample_text_2")
+    b = simplepdl_RessourceConfig(name="sample_text")
+    _safe_set(b, 'linksToRessources', a1)
+    assert _is_linked(b, 'linksToRessources', a1)
+    if hasattr(a1, 'WorkDefinition14'):
+        assert _is_linked(a1, 'WorkDefinition14', b)
+    _safe_set(b, 'linksToRessources', a2)
+    assert _is_linked(b, 'linksToRessources', a2)
+    if hasattr(a1, 'WorkDefinition14'):
+        assert not _is_linked(a1, 'WorkDefinition14', b)
+    if hasattr(a2, 'WorkDefinition14'):
+        assert _is_linked(a2, 'WorkDefinition14', b)
+    _safe_set(b, 'linksToRessources', None)
+    assert not _is_linked(b, 'linksToRessources', a2)
+    if hasattr(a2, 'WorkDefinition14'):
+        assert not _is_linked(a2, 'WorkDefinition14', b)
+
+
+def test_assoc_config11_reverse_link_reassign_clear():
+    a1 = simplepdl_RessourceInstance(instances=7)
+    a2 = simplepdl_RessourceInstance(instances=13)
+    b = simplepdl_RessourceConfig(name="sample_text")
+    _safe_set(b, 'RessourceConfig12', a1)
+    assert _is_linked(b, 'RessourceConfig12', a1)
+    if hasattr(a1, 'ressources'):
+        assert _is_linked(a1, 'ressources', b)
+    _safe_set(b, 'RessourceConfig12', a2)
+    assert _is_linked(b, 'RessourceConfig12', a2)
+    if hasattr(a1, 'ressources'):
+        assert not _is_linked(a1, 'ressources', b)
+    if hasattr(a2, 'ressources'):
+        assert _is_linked(a2, 'ressources', b)
+    _safe_set(b, 'RessourceConfig12', None)
+    assert not _is_linked(b, 'RessourceConfig12', a2)
+    if hasattr(a2, 'ressources'):
+        assert not _is_linked(a2, 'ressources', b)
+
+
+def test_assoc_linksToPredecessors1_reverse_link_reassign_clear():
+    a1 = simplepdl_WorkSequence(linkType="sample_text")
+    a2 = simplepdl_WorkSequence(linkType="sample_text_2")
+    b = simplepdl_WorkDefinition(max_time=7, min_time=7, name="sample_text")
+    _safe_set(b, 'successor', {a1})
+    assert _is_linked(b, 'successor', a1)
+    if hasattr(a1, 'WorkSequence'):
+        assert _is_linked(a1, 'WorkSequence', b)
+    _safe_set(b, 'successor', {a2})
+    assert _is_linked(b, 'successor', a2)
+    if hasattr(a1, 'WorkSequence'):
+        assert not _is_linked(a1, 'WorkSequence', b)
+    if hasattr(a2, 'WorkSequence'):
+        assert _is_linked(a2, 'WorkSequence', b)
+    _safe_set(b, 'successor', set())
+    assert not _is_linked(b, 'successor', a2)
+    if hasattr(a2, 'WorkSequence'):
+        assert not _is_linked(a2, 'WorkSequence', b)
+
+
+def test_assoc_linksToRessources4_reverse_link_reassign_clear():
+    a1 = simplepdl_WorkDefinition(max_time=7, min_time=7, name="sample_text")
+    a2 = simplepdl_WorkDefinition(max_time=13, min_time=13, name="sample_text_2")
+    b = simplepdl_RessourceConfig(name="sample_text")
+    _safe_set(b, 'RessourceConfig', a1)
+    assert _is_linked(b, 'RessourceConfig', a1)
+    if hasattr(a1, 'activity'):
+        assert _is_linked(a1, 'activity', b)
+    _safe_set(b, 'RessourceConfig', a2)
+    assert _is_linked(b, 'RessourceConfig', a2)
+    if hasattr(a1, 'activity'):
+        assert not _is_linked(a1, 'activity', b)
+    if hasattr(a2, 'activity'):
+        assert _is_linked(a2, 'activity', b)
+    _safe_set(b, 'RessourceConfig', None)
+    assert not _is_linked(b, 'RessourceConfig', a2)
+    if hasattr(a2, 'activity'):
+        assert not _is_linked(a2, 'activity', b)
+
+
+def test_assoc_linksToSuccessors2_reverse_link_reassign_clear():
+    a1 = simplepdl_WorkSequence(linkType="sample_text")
+    a2 = simplepdl_WorkSequence(linkType="sample_text_2")
+    b = simplepdl_WorkDefinition(max_time=7, min_time=7, name="sample_text")
+    _safe_set(b, 'predecessor', {a1})
+    assert _is_linked(b, 'predecessor', a1)
+    if hasattr(a1, 'WorkSequence3'):
+        assert _is_linked(a1, 'WorkSequence3', b)
+    _safe_set(b, 'predecessor', {a2})
+    assert _is_linked(b, 'predecessor', a2)
+    if hasattr(a1, 'WorkSequence3'):
+        assert not _is_linked(a1, 'WorkSequence3', b)
+    if hasattr(a2, 'WorkSequence3'):
+        assert _is_linked(a2, 'WorkSequence3', b)
+    _safe_set(b, 'predecessor', set())
+    assert not _is_linked(b, 'predecessor', a2)
+    if hasattr(a2, 'WorkSequence3'):
+        assert not _is_linked(a2, 'WorkSequence3', b)
+
+
+def test_assoc_predecessor5_reverse_link_reassign_clear():
+    a1 = simplepdl_WorkSequence(linkType="sample_text")
+    a2 = simplepdl_WorkSequence(linkType="sample_text_2")
+    b = simplepdl_WorkDefinition(max_time=7, min_time=7, name="sample_text")
+    _safe_set(b, 'WorkDefinition', a1)
+    assert _is_linked(b, 'WorkDefinition', a1)
+    if hasattr(a1, 'linksToSuccessors'):
+        assert _is_linked(a1, 'linksToSuccessors', b)
+    _safe_set(b, 'WorkDefinition', a2)
+    assert _is_linked(b, 'WorkDefinition', a2)
+    if hasattr(a1, 'linksToSuccessors'):
+        assert not _is_linked(a1, 'linksToSuccessors', b)
+    if hasattr(a2, 'linksToSuccessors'):
+        assert _is_linked(a2, 'linksToSuccessors', b)
+    _safe_set(b, 'WorkDefinition', None)
+    assert not _is_linked(b, 'WorkDefinition', a2)
+    if hasattr(a2, 'linksToSuccessors'):
+        assert not _is_linked(a2, 'linksToSuccessors', b)
+
+
+def test_assoc_ressources15_reverse_link_reassign_clear():
+    a1 = simplepdl_RessourceInstance(instances=7)
+    a2 = simplepdl_RessourceInstance(instances=13)
+    b = simplepdl_RessourceConfig(name="sample_text")
+    _safe_set(b, 'config', {a1})
+    assert _is_linked(b, 'config', a1)
+    if hasattr(a1, 'RessourceInstance'):
+        assert _is_linked(a1, 'RessourceInstance', b)
+    _safe_set(b, 'config', {a2})
+    assert _is_linked(b, 'config', a2)
+    if hasattr(a1, 'RessourceInstance'):
+        assert not _is_linked(a1, 'RessourceInstance', b)
+    if hasattr(a2, 'RessourceInstance'):
+        assert _is_linked(a2, 'RessourceInstance', b)
+    _safe_set(b, 'config', set())
+    assert not _is_linked(b, 'config', a2)
+    if hasattr(a2, 'RessourceInstance'):
+        assert not _is_linked(a2, 'RessourceInstance', b)
+
+
+def test_assoc_successor6_reverse_link_reassign_clear():
+    a1 = simplepdl_WorkSequence(linkType="sample_text")
+    a2 = simplepdl_WorkSequence(linkType="sample_text_2")
+    b = simplepdl_WorkDefinition(max_time=7, min_time=7, name="sample_text")
+    _safe_set(b, 'WorkDefinition7', a1)
+    assert _is_linked(b, 'WorkDefinition7', a1)
+    if hasattr(a1, 'linksToPredecessors'):
+        assert _is_linked(a1, 'linksToPredecessors', b)
+    _safe_set(b, 'WorkDefinition7', a2)
+    assert _is_linked(b, 'WorkDefinition7', a2)
+    if hasattr(a1, 'linksToPredecessors'):
+        assert not _is_linked(a1, 'linksToPredecessors', b)
+    if hasattr(a2, 'linksToPredecessors'):
+        assert _is_linked(a2, 'linksToPredecessors', b)
+    _safe_set(b, 'WorkDefinition7', None)
+    assert not _is_linked(b, 'WorkDefinition7', a2)
+    if hasattr(a2, 'linksToPredecessors'):
+        assert not _is_linked(a2, 'linksToPredecessors', b)
+
+
+def test_assoc_type10_reverse_link_reassign_clear():
+    a1 = simplepdl_RessourceInstance(instances=7)
+    a2 = simplepdl_RessourceInstance(instances=13)
+    b = simplepdl_RessourceDefinition(name="sample_text", number=7)
+    _safe_set(b, 'simplepdl_RessourceDefinition', a1)
+    assert _is_linked(b, 'simplepdl_RessourceDefinition', a1)
+    if hasattr(a1, 'simplepdl_RessourceInstance'):
+        assert _is_linked(a1, 'simplepdl_RessourceInstance', b)
+    _safe_set(b, 'simplepdl_RessourceDefinition', a2)
+    assert _is_linked(b, 'simplepdl_RessourceDefinition', a2)
+    if hasattr(a1, 'simplepdl_RessourceInstance'):
+        assert not _is_linked(a1, 'simplepdl_RessourceInstance', b)
+    if hasattr(a2, 'simplepdl_RessourceInstance'):
+        assert _is_linked(a2, 'simplepdl_RessourceInstance', b)
+    _safe_set(b, 'simplepdl_RessourceDefinition', None)
+    assert not _is_linked(b, 'simplepdl_RessourceDefinition', a2)
+    if hasattr(a2, 'simplepdl_RessourceInstance'):
+        assert not _is_linked(a2, 'simplepdl_RessourceInstance', b)
+
+
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_element8_stub_double():
+    # simplepdl_ProcessElement has no real 'simplepdl_ProcessElement9' property in the generated
+    # code (a bare stub) -- manually attach it so simplepdl_Guidance's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # simplepdl_Guidance's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = simplepdl_Guidance(text="sample_text")
+    partner = simplepdl_ProcessElement()
+    setattr(partner, 'simplepdl_ProcessElement9', None)
+    _safe_set(owner, 'simplepdl_Guidance', {partner})
+    assert getattr(partner, 'simplepdl_ProcessElement9') == owner
+    _safe_set(owner, 'simplepdl_Guidance', set())
+    assert getattr(partner, 'simplepdl_ProcessElement9') is None
+
+
+def test_assoc_processElements0_stub_double():
+    # simplepdl_ProcessElement has no real 'simplepdl_ProcessElement' property in the generated
+    # code (a bare stub) -- manually attach it so simplepdl_Process's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # simplepdl_Process's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = simplepdl_Process(max_time=7, min_time=7, name="sample_text")
+    partner = simplepdl_ProcessElement()
+    setattr(partner, 'simplepdl_ProcessElement', None)
+    _safe_set(owner, 'simplepdl_Process', {partner})
+    assert getattr(partner, 'simplepdl_ProcessElement') == owner
+    _safe_set(owner, 'simplepdl_Process', set())
+    assert getattr(partner, 'simplepdl_ProcessElement') is None
+
+

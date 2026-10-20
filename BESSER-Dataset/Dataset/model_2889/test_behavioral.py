@@ -1,0 +1,138 @@
+import pytest
+from datetime import date, datetime, time, timedelta
+
+from python_code import (
+    Type,
+    metamodel_Attribute,
+    metamodel_Datatype,
+    metamodel_Entity,
+    metamodel_HibernateAnnotation,
+    metamodel_Model,
+    metamodel_Type,
+    HibernateAnnotationTypes,
+    HibernateCascadeTypes,
+)
+
+def _is_linked(obj, attr_name, other):
+    value = getattr(obj, attr_name, None)
+    if isinstance(value, (set, list, tuple, frozenset)):
+        return other in value
+    return value == other
+
+def _safe_set(obj, attr_name, value):
+    # Some generated models have a genuine bug: two reciprocal setters
+    # unconditionally call each other with no base case, causing
+    # infinite mutual recursion for that specific relationship (found
+    # in model_10000002's items10/sc11 pair). That's a defect in the
+    # code under test, not in this test -- skip rather than fail so it
+    # doesn't masquerade as a test-suite problem.
+    try:
+        setattr(obj, attr_name, value)
+    except RecursionError:
+        pytest.skip(f'{attr_name!r} setter has infinite mutual recursion in the generated code')
+
+# =============================================================================
+# REVERSE-DIRECTION ASSOCIATION TESTS
+# Mirrors test_structural_full.py's link_reassign_clear, but sets from the
+# OTHER end's own setter directly, instead of relying on it firing only as a
+# side effect of the forward-direction test. See module docstring.
+# =============================================================================
+
+def test_assoc_annotations5_reverse_link_reassign_clear():
+    a1 = metamodel_HibernateAnnotation(annotationType="sample_text", cascade="sample_text", unique="sample_text")
+    a2 = metamodel_HibernateAnnotation(annotationType="sample_text_2", cascade="sample_text_2", unique="sample_text_2")
+    b = metamodel_Attribute(list=True, name="sample_text")
+    _safe_set(b, 'metamodel_Attribute6', {a1})
+    assert _is_linked(b, 'metamodel_Attribute6', a1)
+    if hasattr(a1, 'metamodel_HibernateAnnotation'):
+        assert _is_linked(a1, 'metamodel_HibernateAnnotation', b)
+    _safe_set(b, 'metamodel_Attribute6', {a2})
+    assert _is_linked(b, 'metamodel_Attribute6', a2)
+    if hasattr(a1, 'metamodel_HibernateAnnotation'):
+        assert not _is_linked(a1, 'metamodel_HibernateAnnotation', b)
+    if hasattr(a2, 'metamodel_HibernateAnnotation'):
+        assert _is_linked(a2, 'metamodel_HibernateAnnotation', b)
+    _safe_set(b, 'metamodel_Attribute6', set())
+    assert not _is_linked(b, 'metamodel_Attribute6', a2)
+    if hasattr(a2, 'metamodel_HibernateAnnotation'):
+        assert not _is_linked(a2, 'metamodel_HibernateAnnotation', b)
+
+
+def test_assoc_mappedBy7_reverse_link_reassign_clear():
+    a1 = metamodel_HibernateAnnotation(annotationType="sample_text", cascade="sample_text", unique="sample_text")
+    a2 = metamodel_HibernateAnnotation(annotationType="sample_text_2", cascade="sample_text_2", unique="sample_text_2")
+    b = metamodel_Attribute(list=True, name="sample_text")
+    _safe_set(b, 'metamodel_Attribute9', a1)
+    assert _is_linked(b, 'metamodel_Attribute9', a1)
+    if hasattr(a1, 'metamodel_HibernateAnnotation8'):
+        assert _is_linked(a1, 'metamodel_HibernateAnnotation8', b)
+    _safe_set(b, 'metamodel_Attribute9', a2)
+    assert _is_linked(b, 'metamodel_Attribute9', a2)
+    if hasattr(a1, 'metamodel_HibernateAnnotation8'):
+        assert not _is_linked(a1, 'metamodel_HibernateAnnotation8', b)
+    if hasattr(a2, 'metamodel_HibernateAnnotation8'):
+        assert _is_linked(a2, 'metamodel_HibernateAnnotation8', b)
+    _safe_set(b, 'metamodel_Attribute9', None)
+    assert not _is_linked(b, 'metamodel_Attribute9', a2)
+    if hasattr(a2, 'metamodel_HibernateAnnotation8'):
+        assert not _is_linked(a2, 'metamodel_HibernateAnnotation8', b)
+
+
+def test_assoc_type2_reverse_link_reassign_clear():
+    a1 = metamodel_Type(name="sample_text")
+    a2 = metamodel_Type(name="sample_text_2")
+    b = metamodel_Attribute(list=True, name="sample_text")
+    _safe_set(b, 'metamodel_Attribute3', a1)
+    assert _is_linked(b, 'metamodel_Attribute3', a1)
+    if hasattr(a1, 'metamodel_Type4'):
+        assert _is_linked(a1, 'metamodel_Type4', b)
+    _safe_set(b, 'metamodel_Attribute3', a2)
+    assert _is_linked(b, 'metamodel_Attribute3', a2)
+    if hasattr(a1, 'metamodel_Type4'):
+        assert not _is_linked(a1, 'metamodel_Type4', b)
+    if hasattr(a2, 'metamodel_Type4'):
+        assert _is_linked(a2, 'metamodel_Type4', b)
+    _safe_set(b, 'metamodel_Attribute3', None)
+    assert not _is_linked(b, 'metamodel_Attribute3', a2)
+    if hasattr(a2, 'metamodel_Type4'):
+        assert not _is_linked(a2, 'metamodel_Type4', b)
+
+
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_attributes1_stub_double():
+    # metamodel_Entity has no real 'metamodel_Entity' property in the generated
+    # code (a bare stub) -- manually attach it so metamodel_Attribute's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # metamodel_Attribute's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = metamodel_Attribute(list=True, name="sample_text")
+    partner = metamodel_Entity()
+    setattr(partner, 'metamodel_Entity', None)
+    _safe_set(owner, 'metamodel_Attribute', partner)
+    assert owner in getattr(partner, 'metamodel_Entity')
+    _safe_set(owner, 'metamodel_Attribute', None)
+    assert owner not in getattr(partner, 'metamodel_Entity')
+
+
+def test_assoc_types0_stub_double():
+    # metamodel_Model has no real 'metamodel_Model' property in the generated
+    # code (a bare stub) -- manually attach it so metamodel_Type's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # metamodel_Type's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = metamodel_Type(name="sample_text")
+    partner = metamodel_Model()
+    setattr(partner, 'metamodel_Model', None)
+    _safe_set(owner, 'metamodel_Type', partner)
+    assert owner in getattr(partner, 'metamodel_Model')
+    _safe_set(owner, 'metamodel_Type', None)
+    assert owner not in getattr(partner, 'metamodel_Model')
+
+

@@ -1,0 +1,5 @@
+from python_code import uml_15_to_20_associationEndToProperty_StructuralFeature
+
+def test_uml_15_to_20_associationEndToProperty_StructuralFeature___init__():
+    assert uml_15_to_20_associationEndToProperty_StructuralFeature.__init__(uml_15_to_20_associationEndToProperty_StructuralFeature(True), False) == None
+

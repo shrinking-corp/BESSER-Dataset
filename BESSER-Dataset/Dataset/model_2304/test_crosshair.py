@@ -1,0 +1,6 @@
+from python_code import PersonsModel
+from python_code import Persons_Person
+
+def test_Persons_Person___init__():
+    assert Persons_Person.__init__(Persons_Person('', Persons_Person=PersonsModel()), '', Persons_Person=PersonsModel()) == None
+

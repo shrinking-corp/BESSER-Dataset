@@ -1,0 +1,19 @@
+from python_code import grammar_features_ClassWithAttributes
+
+def test_grammar_features_ClassWithAttributes___init__():
+    assert grammar_features_ClassWithAttributes.__init__(grammar_features_ClassWithAttributes('', False), '', False) == None
+
+
+from python_code import grammar_features_MandatoryContainment
+from python_code import grammar_features_MandatoryNonContainment
+from python_code import grammar_features_OptionalContainment
+from python_code import grammar_features_OptionalNonContainment
+from python_code import grammar_features_PlusContainment
+from python_code import grammar_features_PlusNonContainment
+from python_code import grammar_features_StarContainment
+from python_code import grammar_features_StarNonContainment
+from python_code import grammar_features_X
+
+def test_grammar_features_X___init__():
+    assert grammar_features_X.__init__(grammar_features_X('', grammar_features_X=grammar_features_OptionalContainment(), grammar_features_X3=grammar_features_MandatoryContainment(), grammar_features_X5=grammar_features_PlusContainment(), grammar_features_X7=grammar_features_StarContainment(), grammar_features_X9=grammar_features_OptionalNonContainment(), grammar_features_X11=grammar_features_MandatoryNonContainment(), grammar_features_X13=grammar_features_PlusNonContainment(), grammar_features_X15=grammar_features_StarNonContainment()), '', grammar_features_X=grammar_features_OptionalContainment(), grammar_features_X3=grammar_features_MandatoryContainment(), grammar_features_X5=grammar_features_PlusContainment(), grammar_features_X7=grammar_features_StarContainment(), grammar_features_X9=grammar_features_OptionalNonContainment(), grammar_features_X11=grammar_features_MandatoryNonContainment(), grammar_features_X13=grammar_features_PlusNonContainment(), grammar_features_X15=grammar_features_StarNonContainment()) == None
+

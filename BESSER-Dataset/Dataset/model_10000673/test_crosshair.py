@@ -1,0 +1,17 @@
+from python_code import Entertainment
+
+def test_Entertainment___init__():
+    assert Entertainment.__init__(Entertainment(0, tV23=set(), speakers25=set(), homeTheatre27=set()), 0, tV23=set(), speakers25=set(), homeTheatre27=set()) == None
+
+
+from python_code import FireAlarm_Sensor
+
+def test_FireAlarm_Sensor___init__():
+    assert FireAlarm_Sensor.__init__(FireAlarm_Sensor(True), False) == None
+
+
+from python_code import Light
+
+def test_Light___init__():
+    assert Light.__init__(Light(''), '') == None
+

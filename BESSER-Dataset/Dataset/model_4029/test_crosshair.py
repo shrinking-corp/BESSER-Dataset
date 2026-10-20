@@ -1,0 +1,14 @@
+from python_code import uml_15_to_20_associationEndToProperty_Association
+from python_code import uml_15_to_20_associationEndToProperty_AssociationEnd
+from python_code import uml_15_to_20_associationEndToProperty_Class
+
+def test_uml_15_to_20_associationEndToProperty_AssociationEnd___init__():
+    assert uml_15_to_20_associationEndToProperty_AssociationEnd.__init__(uml_15_to_20_associationEndToProperty_AssociationEnd(True, AssociationEnd7=uml_15_to_20_associationEndToProperty_Association(), associations=uml_15_to_20_associationEndToProperty_Class(), AssociationEnd=uml_15_to_20_associationEndToProperty_Class(), connections=uml_15_to_20_associationEndToProperty_Association()), False, AssociationEnd7=uml_15_to_20_associationEndToProperty_Association(), associations=uml_15_to_20_associationEndToProperty_Class(), AssociationEnd=uml_15_to_20_associationEndToProperty_Class(), connections=uml_15_to_20_associationEndToProperty_Association()) == None
+
+
+from python_code import uml_15_to_20_associationEndToProperty_Class
+from python_code import uml_15_to_20_associationEndToProperty_StructuralFeature
+
+def test_uml_15_to_20_associationEndToProperty_StructuralFeature___init__():
+    assert uml_15_to_20_associationEndToProperty_StructuralFeature.__init__(uml_15_to_20_associationEndToProperty_StructuralFeature('', '\x00', uml_15_to_20_associationEndToProperty_StructuralFeature=uml_15_to_20_associationEndToProperty_Class()), '\x00\x00', '', uml_15_to_20_associationEndToProperty_StructuralFeature=uml_15_to_20_associationEndToProperty_Class()) == None
+

@@ -1,0 +1,186 @@
+from python_code import backtrackingContentAssistTest_Body
+from python_code import backtrackingContentAssistTest_Expression
+from python_code import backtrackingContentAssistTest_OperationContextDecl
+
+def test_backtrackingContentAssistTest_Body___init__():
+    assert backtrackingContentAssistTest_Body.__init__(backtrackingContentAssistTest_Body('', backtrackingContentAssistTest_Body=backtrackingContentAssistTest_Expression(), backtrackingContentAssistTest_Body36=backtrackingContentAssistTest_OperationContextDecl()), '', backtrackingContentAssistTest_Body=backtrackingContentAssistTest_Expression(), backtrackingContentAssistTest_Body36=backtrackingContentAssistTest_OperationContextDecl()) == None
+
+
+from python_code import backtrackingContentAssistTest_BooleanLiteralExp
+
+def test_backtrackingContentAssistTest_BooleanLiteralExp___init__():
+    assert backtrackingContentAssistTest_BooleanLiteralExp.__init__(backtrackingContentAssistTest_BooleanLiteralExp(True), False) == None
+
+
+from python_code import backtrackingContentAssistTest_ClassifierContextDecl
+from python_code import backtrackingContentAssistTest_ClassifierRef
+
+def test_backtrackingContentAssistTest_ClassifierContextDecl___init__():
+    assert backtrackingContentAssistTest_ClassifierContextDecl.__init__(backtrackingContentAssistTest_ClassifierContextDecl('', backtrackingContentAssistTest_ClassifierContextDecl=backtrackingContentAssistTest_ClassifierRef(), backtrackingContentAssistTest_ClassifierContextDecl6=set(), backtrackingContentAssistTest_ClassifierContextDecl8=set()), '', backtrackingContentAssistTest_ClassifierContextDecl=backtrackingContentAssistTest_ClassifierRef(), backtrackingContentAssistTest_ClassifierContextDecl6=set(), backtrackingContentAssistTest_ClassifierContextDecl8=set()) == None
+
+
+from python_code import backtrackingContentAssistTest_CollectionType
+
+def test_backtrackingContentAssistTest_CollectionType___init__():
+    assert backtrackingContentAssistTest_CollectionType.__init__(backtrackingContentAssistTest_CollectionType(''), '') == None
+
+
+from python_code import backtrackingContentAssistTest_Expression
+from python_code import backtrackingContentAssistTest_InfixExp
+from python_code import backtrackingContentAssistTest_NavigatingExp
+
+def test_backtrackingContentAssistTest_InfixExp___init__():
+    assert backtrackingContentAssistTest_InfixExp.__init__(backtrackingContentAssistTest_InfixExp('', backtrackingContentAssistTest_InfixExp=backtrackingContentAssistTest_Expression(), backtrackingContentAssistTest_InfixExp135=backtrackingContentAssistTest_NavigatingExp()), '', backtrackingContentAssistTest_InfixExp=backtrackingContentAssistTest_Expression(), backtrackingContentAssistTest_InfixExp135=backtrackingContentAssistTest_NavigatingExp()) == None
+
+
+from python_code import backtrackingContentAssistTest_Expression
+from python_code import backtrackingContentAssistTest_LetExp
+from python_code import backtrackingContentAssistTest_LetVariable
+from python_code import backtrackingContentAssistTest_TypeExp
+
+def test_backtrackingContentAssistTest_LetVariable___init__():
+    assert backtrackingContentAssistTest_LetVariable.__init__(backtrackingContentAssistTest_LetVariable('', backtrackingContentAssistTest_LetVariable=backtrackingContentAssistTest_LetExp(), backtrackingContentAssistTest_LetVariable127=backtrackingContentAssistTest_TypeExp(), backtrackingContentAssistTest_LetVariable130=backtrackingContentAssistTest_Expression()), '', backtrackingContentAssistTest_LetVariable=backtrackingContentAssistTest_LetExp(), backtrackingContentAssistTest_LetVariable127=backtrackingContentAssistTest_TypeExp(), backtrackingContentAssistTest_LetVariable130=backtrackingContentAssistTest_Expression()) == None
+
+
+from python_code import backtrackingContentAssistTest_NumberLiteralExp
+
+def test_backtrackingContentAssistTest_NumberLiteralExp___init__():
+    assert backtrackingContentAssistTest_NumberLiteralExp.__init__(backtrackingContentAssistTest_NumberLiteralExp(''), '') == None
+
+
+from python_code import backtrackingContentAssistTest_Expression
+from python_code import backtrackingContentAssistTest_OclMessage
+
+def test_backtrackingContentAssistTest_OclMessage___init__():
+    assert backtrackingContentAssistTest_OclMessage.__init__(backtrackingContentAssistTest_OclMessage('\x00\x00', '', backtrackingContentAssistTest_OclMessage=backtrackingContentAssistTest_Expression(), backtrackingContentAssistTest_OclMessage139=set()), '', '', backtrackingContentAssistTest_OclMessage=backtrackingContentAssistTest_Expression(), backtrackingContentAssistTest_OclMessage139=set()) == None
+
+
+from python_code import backtrackingContentAssistTest_NameExp
+from python_code import backtrackingContentAssistTest_PathNameExp
+
+def test_backtrackingContentAssistTest_PathNameExp___init__():
+    assert backtrackingContentAssistTest_PathNameExp.__init__(backtrackingContentAssistTest_PathNameExp('', backtrackingContentAssistTest_PathNameExp=backtrackingContentAssistTest_NameExp()), '', backtrackingContentAssistTest_PathNameExp=backtrackingContentAssistTest_NameExp()) == None
+
+
+from python_code import backtrackingContentAssistTest_Expression
+from python_code import backtrackingContentAssistTest_OperationContextDecl
+from python_code import backtrackingContentAssistTest_Post
+
+def test_backtrackingContentAssistTest_Post___init__():
+    assert backtrackingContentAssistTest_Post.__init__(backtrackingContentAssistTest_Post('', backtrackingContentAssistTest_Post=backtrackingContentAssistTest_OperationContextDecl(), backtrackingContentAssistTest_Post46=backtrackingContentAssistTest_Expression()), '', backtrackingContentAssistTest_Post=backtrackingContentAssistTest_OperationContextDecl(), backtrackingContentAssistTest_Post46=backtrackingContentAssistTest_Expression()) == None
+
+
+from python_code import backtrackingContentAssistTest_Expression
+from python_code import backtrackingContentAssistTest_OperationContextDecl
+from python_code import backtrackingContentAssistTest_Pre
+
+def test_backtrackingContentAssistTest_Pre___init__():
+    assert backtrackingContentAssistTest_Pre.__init__(backtrackingContentAssistTest_Pre('', backtrackingContentAssistTest_Pre49=backtrackingContentAssistTest_Expression(), backtrackingContentAssistTest_Pre=backtrackingContentAssistTest_OperationContextDecl()), '', backtrackingContentAssistTest_Pre49=backtrackingContentAssistTest_Expression(), backtrackingContentAssistTest_Pre=backtrackingContentAssistTest_OperationContextDecl()) == None
+
+
+from python_code import backtrackingContentAssistTest_Expression
+from python_code import backtrackingContentAssistTest_PrefixExp
+
+def test_backtrackingContentAssistTest_PrefixExp___init__():
+    assert backtrackingContentAssistTest_PrefixExp.__init__(backtrackingContentAssistTest_PrefixExp('', backtrackingContentAssistTest_PrefixExp=backtrackingContentAssistTest_Expression()), '', backtrackingContentAssistTest_PrefixExp=backtrackingContentAssistTest_Expression()) == None
+
+
+from python_code import backtrackingContentAssistTest_PrimitiveType
+
+def test_backtrackingContentAssistTest_PrimitiveType___init__():
+    assert backtrackingContentAssistTest_PrimitiveType.__init__(backtrackingContentAssistTest_PrimitiveType(''), '') == None
+
+
+from python_code import backtrackingContentAssistTest_ClassifierRef
+from python_code import backtrackingContentAssistTest_QualifiedClassifierRef
+
+def test_backtrackingContentAssistTest_QualifiedClassifierRef___init__():
+    assert backtrackingContentAssistTest_QualifiedClassifierRef.__init__(backtrackingContentAssistTest_QualifiedClassifierRef('', backtrackingContentAssistTest_QualifiedClassifierRef=backtrackingContentAssistTest_ClassifierRef()), '', backtrackingContentAssistTest_QualifiedClassifierRef=backtrackingContentAssistTest_ClassifierRef()) == None
+
+
+from python_code import backtrackingContentAssistTest_OperationRef
+from python_code import backtrackingContentAssistTest_QualifiedOperationRef
+
+def test_backtrackingContentAssistTest_QualifiedOperationRef___init__():
+    assert backtrackingContentAssistTest_QualifiedOperationRef.__init__(backtrackingContentAssistTest_QualifiedOperationRef('', backtrackingContentAssistTest_QualifiedOperationRef=backtrackingContentAssistTest_OperationRef()), '', backtrackingContentAssistTest_QualifiedOperationRef=backtrackingContentAssistTest_OperationRef()) == None
+
+
+from python_code import backtrackingContentAssistTest_PackageRef
+from python_code import backtrackingContentAssistTest_QualifiedPackageRef
+
+def test_backtrackingContentAssistTest_QualifiedPackageRef___init__():
+    assert backtrackingContentAssistTest_QualifiedPackageRef.__init__(backtrackingContentAssistTest_QualifiedPackageRef('', backtrackingContentAssistTest_QualifiedPackageRef=backtrackingContentAssistTest_PackageRef()), '', backtrackingContentAssistTest_QualifiedPackageRef=backtrackingContentAssistTest_PackageRef()) == None
+
+
+from python_code import backtrackingContentAssistTest_PropertyRef
+from python_code import backtrackingContentAssistTest_QualifiedPropertyRef
+
+def test_backtrackingContentAssistTest_QualifiedPropertyRef___init__():
+    assert backtrackingContentAssistTest_QualifiedPropertyRef.__init__(backtrackingContentAssistTest_QualifiedPropertyRef('', backtrackingContentAssistTest_QualifiedPropertyRef=backtrackingContentAssistTest_PropertyRef()), '', backtrackingContentAssistTest_QualifiedPropertyRef=backtrackingContentAssistTest_PropertyRef()) == None
+
+
+from python_code import backtrackingContentAssistTest_SimpleClassifierRef
+
+def test_backtrackingContentAssistTest_SimpleClassifierRef___init__():
+    assert backtrackingContentAssistTest_SimpleClassifierRef.__init__(backtrackingContentAssistTest_SimpleClassifierRef(''), '') == None
+
+
+from python_code import backtrackingContentAssistTest_SimpleNameExp
+
+def test_backtrackingContentAssistTest_SimpleNameExp___init__():
+    assert backtrackingContentAssistTest_SimpleNameExp.__init__(backtrackingContentAssistTest_SimpleNameExp(''), '') == None
+
+
+from python_code import backtrackingContentAssistTest_SimpleOperationRef
+
+def test_backtrackingContentAssistTest_SimpleOperationRef___init__():
+    assert backtrackingContentAssistTest_SimpleOperationRef.__init__(backtrackingContentAssistTest_SimpleOperationRef(''), '') == None
+
+
+from python_code import backtrackingContentAssistTest_SimplePackageRef
+
+def test_backtrackingContentAssistTest_SimplePackageRef___init__():
+    assert backtrackingContentAssistTest_SimplePackageRef.__init__(backtrackingContentAssistTest_SimplePackageRef(''), '') == None
+
+
+from python_code import backtrackingContentAssistTest_SimplePropertyRef
+
+def test_backtrackingContentAssistTest_SimplePropertyRef___init__():
+    assert backtrackingContentAssistTest_SimplePropertyRef.__init__(backtrackingContentAssistTest_SimplePropertyRef(''), '') == None
+
+
+from python_code import backtrackingContentAssistTest_NameExp
+from python_code import backtrackingContentAssistTest_SquareBracketExp
+
+def test_backtrackingContentAssistTest_SquareBracketExp___init__():
+    assert backtrackingContentAssistTest_SquareBracketExp.__init__(backtrackingContentAssistTest_SquareBracketExp(False, backtrackingContentAssistTest_SquareBracketExp=backtrackingContentAssistTest_NameExp(), backtrackingContentAssistTest_SquareBracketExp108=set()), False, backtrackingContentAssistTest_SquareBracketExp=backtrackingContentAssistTest_NameExp(), backtrackingContentAssistTest_SquareBracketExp108=set()) == None
+
+
+from python_code import backtrackingContentAssistTest_StringLiteralExp
+
+def test_backtrackingContentAssistTest_StringLiteralExp___init__():
+    assert backtrackingContentAssistTest_StringLiteralExp.__init__(backtrackingContentAssistTest_StringLiteralExp(''), '') == None
+
+
+from python_code import backtrackingContentAssistTest_Expression
+from python_code import backtrackingContentAssistTest_TupleLiteralExp
+from python_code import backtrackingContentAssistTest_TupleLiteralPart
+from python_code import backtrackingContentAssistTest_TypeExp
+
+def test_backtrackingContentAssistTest_TupleLiteralPart___init__():
+    assert backtrackingContentAssistTest_TupleLiteralPart.__init__(backtrackingContentAssistTest_TupleLiteralPart('', backtrackingContentAssistTest_TupleLiteralPart=backtrackingContentAssistTest_TupleLiteralExp(), backtrackingContentAssistTest_TupleLiteralPart84=backtrackingContentAssistTest_TypeExp(), backtrackingContentAssistTest_TupleLiteralPart87=backtrackingContentAssistTest_Expression()), '', backtrackingContentAssistTest_TupleLiteralPart=backtrackingContentAssistTest_TupleLiteralExp(), backtrackingContentAssistTest_TupleLiteralPart84=backtrackingContentAssistTest_TypeExp(), backtrackingContentAssistTest_TupleLiteralPart87=backtrackingContentAssistTest_Expression()) == None
+
+
+from python_code import backtrackingContentAssistTest_TupleType
+
+def test_backtrackingContentAssistTest_TupleType___init__():
+    assert backtrackingContentAssistTest_TupleType.__init__(backtrackingContentAssistTest_TupleType('\x00', backtrackingContentAssistTest_TupleType=set()), '', backtrackingContentAssistTest_TupleType=set()) == None
+
+
+from python_code import backtrackingContentAssistTest_Expression
+from python_code import backtrackingContentAssistTest_TypeExp
+from python_code import backtrackingContentAssistTest_iteratorAccumulator
+
+def test_backtrackingContentAssistTest_iteratorAccumulator___init__():
+    assert backtrackingContentAssistTest_iteratorAccumulator.__init__(backtrackingContentAssistTest_iteratorAccumulator('', backtrackingContentAssistTest_iteratorAccumulator94=backtrackingContentAssistTest_Expression(), backtrackingContentAssistTest_iteratorAccumulator=backtrackingContentAssistTest_TypeExp()), '', backtrackingContentAssistTest_iteratorAccumulator94=backtrackingContentAssistTest_Expression(), backtrackingContentAssistTest_iteratorAccumulator=backtrackingContentAssistTest_TypeExp()) == None
+

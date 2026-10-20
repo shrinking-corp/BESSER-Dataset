@@ -1,0 +1,11 @@
+from python_code import bowling_SpecialPlayer
+
+def test_bowling_SpecialPlayer___init__():
+    assert bowling_SpecialPlayer.__init__(bowling_SpecialPlayer(0), 0) == None
+
+
+from python_code import bowling_Tournament
+
+def test_bowling_Tournament___init__():
+    assert bowling_Tournament.__init__(bowling_Tournament('', bowling_Tournament=set()), '', bowling_Tournament=set()) == None
+

@@ -1,0 +1,5 @@
+from python_code import qvtimperativecs_ImperativePredicateOrAssignmentCS
+
+def test_qvtimperativecs_ImperativePredicateOrAssignmentCS___init__():
+    assert qvtimperativecs_ImperativePredicateOrAssignmentCS.__init__(qvtimperativecs_ImperativePredicateOrAssignmentCS(True), False) == None
+

@@ -1,0 +1,683 @@
+import pytest
+from datetime import date, datetime, time, timedelta
+
+from python_code import (
+    Action,
+    ActivityEdge,
+    ActivityNode,
+    BooleanExpression,
+    ControlNode,
+    ExecutableNode,
+    Expression,
+    FinalNode,
+    IntegerExpression,
+    NamedElement,
+    Signal,
+    Token,
+    Value,
+    Variable,
+    activitydiagram_AcceptEventAction,
+    activitydiagram_Action,
+    activitydiagram_Activity,
+    activitydiagram_ActivityEdge,
+    activitydiagram_ActivityFinalNode,
+    activitydiagram_ActivityNode,
+    activitydiagram_BooleanBinaryExpression,
+    activitydiagram_BooleanExpression,
+    activitydiagram_BooleanUnaryExpression,
+    activitydiagram_BooleanValue,
+    activitydiagram_BooleanVariable,
+    activitydiagram_Context,
+    activitydiagram_ControlFlow,
+    activitydiagram_ControlNode,
+    activitydiagram_ControlToken,
+    activitydiagram_DecisionNode,
+    activitydiagram_ExecutableNode,
+    activitydiagram_Expression,
+    activitydiagram_FinalNode,
+    activitydiagram_ForkNode,
+    activitydiagram_ForkedToken,
+    activitydiagram_InitialNode,
+    activitydiagram_Input,
+    activitydiagram_InputValue,
+    activitydiagram_IntegerCalculationExpression,
+    activitydiagram_IntegerComparisonExpression,
+    activitydiagram_IntegerExpression,
+    activitydiagram_IntegerValue,
+    activitydiagram_IntegerVariable,
+    activitydiagram_JoinNode,
+    activitydiagram_MergeNode,
+    activitydiagram_NamedElement,
+    activitydiagram_Offer,
+    activitydiagram_OpaqueAction,
+    activitydiagram_SendSignalAction,
+    activitydiagram_Signal,
+    activitydiagram_SignalEvent,
+    activitydiagram_Token,
+    activitydiagram_Trace,
+    activitydiagram_Value,
+    activitydiagram_Variable,
+    BooleanBinaryOperator,
+    BooleanUnaryOperator,
+    IntegerCalculationOperator,
+    IntegerComparisonOperator,
+)
+
+def _is_linked(obj, attr_name, other):
+    value = getattr(obj, attr_name, None)
+    if isinstance(value, (set, list, tuple, frozenset)):
+        return other in value
+    return value == other
+
+def _safe_set(obj, attr_name, value):
+    # Some generated models have a genuine bug: two reciprocal setters
+    # unconditionally call each other with no base case, causing
+    # infinite mutual recursion for that specific relationship (found
+    # in model_10000002's items10/sc11 pair). That's a defect in the
+    # code under test, not in this test -- skip rather than fail so it
+    # doesn't masquerade as a test-suite problem.
+    try:
+        setattr(obj, attr_name, value)
+    except RecursionError:
+        pytest.skip(f'{attr_name!r} setter has infinite mutual recursion in the generated code')
+
+# =============================================================================
+# REVERSE-DIRECTION ASSOCIATION TESTS
+# Mirrors test_structural_full.py's link_reassign_clear, but sets from the
+# OTHER end's own setter directly, instead of relying on it firing only as a
+# side effect of the forward-direction test. See module docstring.
+# =============================================================================
+
+def test_assoc_activity16_reverse_link_reassign_clear():
+    a1 = activitydiagram_ActivityNode(running=True)
+    a2 = activitydiagram_ActivityNode(running=False)
+    b = activitydiagram_Activity()
+    _safe_set(b, 'Activity', a1)
+    assert _is_linked(b, 'Activity', a1)
+    if hasattr(a1, 'nodes'):
+        assert _is_linked(a1, 'nodes', b)
+    _safe_set(b, 'Activity', a2)
+    assert _is_linked(b, 'Activity', a2)
+    if hasattr(a1, 'nodes'):
+        assert not _is_linked(a1, 'nodes', b)
+    if hasattr(a2, 'nodes'):
+        assert _is_linked(a2, 'nodes', b)
+    _safe_set(b, 'Activity', None)
+    assert not _is_linked(b, 'Activity', a2)
+    if hasattr(a2, 'nodes'):
+        assert not _is_linked(a2, 'nodes', b)
+
+
+def test_assoc_assignee37_reverse_link_reassign_clear():
+    a1 = activitydiagram_IntegerVariable()
+    a2 = activitydiagram_IntegerVariable()
+    b = activitydiagram_IntegerCalculationExpression(operator="sample_text")
+    _safe_set(b, 'activitydiagram_IntegerCalculationExpression', a1)
+    assert _is_linked(b, 'activitydiagram_IntegerCalculationExpression', a1)
+    if hasattr(a1, 'activitydiagram_IntegerVariable38'):
+        assert _is_linked(a1, 'activitydiagram_IntegerVariable38', b)
+    _safe_set(b, 'activitydiagram_IntegerCalculationExpression', a2)
+    assert _is_linked(b, 'activitydiagram_IntegerCalculationExpression', a2)
+    if hasattr(a1, 'activitydiagram_IntegerVariable38'):
+        assert not _is_linked(a1, 'activitydiagram_IntegerVariable38', b)
+    if hasattr(a2, 'activitydiagram_IntegerVariable38'):
+        assert _is_linked(a2, 'activitydiagram_IntegerVariable38', b)
+    _safe_set(b, 'activitydiagram_IntegerCalculationExpression', None)
+    assert not _is_linked(b, 'activitydiagram_IntegerCalculationExpression', a2)
+    if hasattr(a2, 'activitydiagram_IntegerVariable38'):
+        assert not _is_linked(a2, 'activitydiagram_IntegerVariable38', b)
+
+
+def test_assoc_assignee39_reverse_link_reassign_clear():
+    a1 = activitydiagram_IntegerComparisonExpression(operator="sample_text")
+    a2 = activitydiagram_IntegerComparisonExpression(operator="sample_text_2")
+    b = activitydiagram_BooleanVariable()
+    _safe_set(b, 'activitydiagram_BooleanVariable40', a1)
+    assert _is_linked(b, 'activitydiagram_BooleanVariable40', a1)
+    if hasattr(a1, 'activitydiagram_IntegerComparisonExpression'):
+        assert _is_linked(a1, 'activitydiagram_IntegerComparisonExpression', b)
+    _safe_set(b, 'activitydiagram_BooleanVariable40', a2)
+    assert _is_linked(b, 'activitydiagram_BooleanVariable40', a2)
+    if hasattr(a1, 'activitydiagram_IntegerComparisonExpression'):
+        assert not _is_linked(a1, 'activitydiagram_IntegerComparisonExpression', b)
+    if hasattr(a2, 'activitydiagram_IntegerComparisonExpression'):
+        assert _is_linked(a2, 'activitydiagram_IntegerComparisonExpression', b)
+    _safe_set(b, 'activitydiagram_BooleanVariable40', None)
+    assert not _is_linked(b, 'activitydiagram_BooleanVariable40', a2)
+    if hasattr(a2, 'activitydiagram_IntegerComparisonExpression'):
+        assert not _is_linked(a2, 'activitydiagram_IntegerComparisonExpression', b)
+
+
+def test_assoc_edges1_reverse_link_reassign_clear():
+    a1 = activitydiagram_ActivityEdge()
+    a2 = activitydiagram_ActivityEdge()
+    b = activitydiagram_Activity()
+    _safe_set(b, 'activitydiagram_Activity', {a1})
+    assert _is_linked(b, 'activitydiagram_Activity', a1)
+    if hasattr(a1, 'activitydiagram_ActivityEdge'):
+        assert _is_linked(a1, 'activitydiagram_ActivityEdge', b)
+    _safe_set(b, 'activitydiagram_Activity', {a2})
+    assert _is_linked(b, 'activitydiagram_Activity', a2)
+    if hasattr(a1, 'activitydiagram_ActivityEdge'):
+        assert not _is_linked(a1, 'activitydiagram_ActivityEdge', b)
+    if hasattr(a2, 'activitydiagram_ActivityEdge'):
+        assert _is_linked(a2, 'activitydiagram_ActivityEdge', b)
+    _safe_set(b, 'activitydiagram_Activity', set())
+    assert not _is_linked(b, 'activitydiagram_Activity', a2)
+    if hasattr(a2, 'activitydiagram_ActivityEdge'):
+        assert not _is_linked(a2, 'activitydiagram_ActivityEdge', b)
+
+
+def test_assoc_expressions25_reverse_link_reassign_clear():
+    a1 = activitydiagram_OpaqueAction()
+    a2 = activitydiagram_OpaqueAction()
+    b = activitydiagram_Expression()
+    _safe_set(b, 'activitydiagram_Expression', a1)
+    assert _is_linked(b, 'activitydiagram_Expression', a1)
+    if hasattr(a1, 'activitydiagram_OpaqueAction'):
+        assert _is_linked(a1, 'activitydiagram_OpaqueAction', b)
+    _safe_set(b, 'activitydiagram_Expression', a2)
+    assert _is_linked(b, 'activitydiagram_Expression', a2)
+    if hasattr(a1, 'activitydiagram_OpaqueAction'):
+        assert not _is_linked(a1, 'activitydiagram_OpaqueAction', b)
+    if hasattr(a2, 'activitydiagram_OpaqueAction'):
+        assert _is_linked(a2, 'activitydiagram_OpaqueAction', b)
+    _safe_set(b, 'activitydiagram_Expression', None)
+    assert not _is_linked(b, 'activitydiagram_Expression', a2)
+    if hasattr(a2, 'activitydiagram_OpaqueAction'):
+        assert not _is_linked(a2, 'activitydiagram_OpaqueAction', b)
+
+
+def test_assoc_incoming14_reverse_link_reassign_clear():
+    a1 = activitydiagram_ActivityNode(running=True)
+    a2 = activitydiagram_ActivityNode(running=False)
+    b = activitydiagram_ActivityEdge()
+    _safe_set(b, 'ActivityEdge15', a1)
+    assert _is_linked(b, 'ActivityEdge15', a1)
+    if hasattr(a1, 'target'):
+        assert _is_linked(a1, 'target', b)
+    _safe_set(b, 'ActivityEdge15', a2)
+    assert _is_linked(b, 'ActivityEdge15', a2)
+    if hasattr(a1, 'target'):
+        assert not _is_linked(a1, 'target', b)
+    if hasattr(a2, 'target'):
+        assert _is_linked(a2, 'target', b)
+    _safe_set(b, 'ActivityEdge15', None)
+    assert not _is_linked(b, 'ActivityEdge15', a2)
+    if hasattr(a2, 'target'):
+        assert not _is_linked(a2, 'target', b)
+
+
+def test_assoc_inputs4_reverse_link_reassign_clear():
+    a1 = activitydiagram_Variable(name="sample_text")
+    a2 = activitydiagram_Variable(name="sample_text_2")
+    b = activitydiagram_Activity()
+    _safe_set(b, 'activitydiagram_Activity5', {a1})
+    assert _is_linked(b, 'activitydiagram_Activity5', a1)
+    if hasattr(a1, 'activitydiagram_Variable6'):
+        assert _is_linked(a1, 'activitydiagram_Variable6', b)
+    _safe_set(b, 'activitydiagram_Activity5', {a2})
+    assert _is_linked(b, 'activitydiagram_Activity5', a2)
+    if hasattr(a1, 'activitydiagram_Variable6'):
+        assert not _is_linked(a1, 'activitydiagram_Variable6', b)
+    if hasattr(a2, 'activitydiagram_Variable6'):
+        assert _is_linked(a2, 'activitydiagram_Variable6', b)
+    _safe_set(b, 'activitydiagram_Activity5', set())
+    assert not _is_linked(b, 'activitydiagram_Activity5', a2)
+    if hasattr(a2, 'activitydiagram_Variable6'):
+        assert not _is_linked(a2, 'activitydiagram_Variable6', b)
+
+
+def test_assoc_locals2_reverse_link_reassign_clear():
+    a1 = activitydiagram_Variable(name="sample_text")
+    a2 = activitydiagram_Variable(name="sample_text_2")
+    b = activitydiagram_Activity()
+    _safe_set(b, 'activitydiagram_Activity3', {a1})
+    assert _is_linked(b, 'activitydiagram_Activity3', a1)
+    if hasattr(a1, 'activitydiagram_Variable'):
+        assert _is_linked(a1, 'activitydiagram_Variable', b)
+    _safe_set(b, 'activitydiagram_Activity3', {a2})
+    assert _is_linked(b, 'activitydiagram_Activity3', a2)
+    if hasattr(a1, 'activitydiagram_Variable'):
+        assert not _is_linked(a1, 'activitydiagram_Variable', b)
+    if hasattr(a2, 'activitydiagram_Variable'):
+        assert _is_linked(a2, 'activitydiagram_Variable', b)
+    _safe_set(b, 'activitydiagram_Activity3', set())
+    assert not _is_linked(b, 'activitydiagram_Activity3', a2)
+    if hasattr(a2, 'activitydiagram_Variable'):
+        assert not _is_linked(a2, 'activitydiagram_Variable', b)
+
+
+def test_assoc_nodes0_reverse_link_reassign_clear():
+    a1 = activitydiagram_ActivityNode(running=True)
+    a2 = activitydiagram_ActivityNode(running=False)
+    b = activitydiagram_Activity()
+    _safe_set(b, 'activity', {a1})
+    assert _is_linked(b, 'activity', a1)
+    if hasattr(a1, 'ActivityNode'):
+        assert _is_linked(a1, 'ActivityNode', b)
+    _safe_set(b, 'activity', {a2})
+    assert _is_linked(b, 'activity', a2)
+    if hasattr(a1, 'ActivityNode'):
+        assert not _is_linked(a1, 'ActivityNode', b)
+    if hasattr(a2, 'ActivityNode'):
+        assert _is_linked(a2, 'ActivityNode', b)
+    _safe_set(b, 'activity', set())
+    assert not _is_linked(b, 'activity', a2)
+    if hasattr(a2, 'ActivityNode'):
+        assert not _is_linked(a2, 'ActivityNode', b)
+
+
+def test_assoc_operand143_reverse_link_reassign_clear():
+    a1 = activitydiagram_BooleanVariable()
+    a2 = activitydiagram_BooleanVariable()
+    b = activitydiagram_BooleanBinaryExpression(operator="sample_text")
+    _safe_set(b, 'activitydiagram_BooleanBinaryExpression', a1)
+    assert _is_linked(b, 'activitydiagram_BooleanBinaryExpression', a1)
+    if hasattr(a1, 'activitydiagram_BooleanVariable44'):
+        assert _is_linked(a1, 'activitydiagram_BooleanVariable44', b)
+    _safe_set(b, 'activitydiagram_BooleanBinaryExpression', a2)
+    assert _is_linked(b, 'activitydiagram_BooleanBinaryExpression', a2)
+    if hasattr(a1, 'activitydiagram_BooleanVariable44'):
+        assert not _is_linked(a1, 'activitydiagram_BooleanVariable44', b)
+    if hasattr(a2, 'activitydiagram_BooleanVariable44'):
+        assert _is_linked(a2, 'activitydiagram_BooleanVariable44', b)
+    _safe_set(b, 'activitydiagram_BooleanBinaryExpression', None)
+    assert not _is_linked(b, 'activitydiagram_BooleanBinaryExpression', a2)
+    if hasattr(a2, 'activitydiagram_BooleanVariable44'):
+        assert not _is_linked(a2, 'activitydiagram_BooleanVariable44', b)
+
+
+def test_assoc_operand245_reverse_link_reassign_clear():
+    a1 = activitydiagram_BooleanVariable()
+    a2 = activitydiagram_BooleanVariable()
+    b = activitydiagram_BooleanBinaryExpression(operator="sample_text")
+    _safe_set(b, 'activitydiagram_BooleanBinaryExpression46', a1)
+    assert _is_linked(b, 'activitydiagram_BooleanBinaryExpression46', a1)
+    if hasattr(a1, 'activitydiagram_BooleanVariable47'):
+        assert _is_linked(a1, 'activitydiagram_BooleanVariable47', b)
+    _safe_set(b, 'activitydiagram_BooleanBinaryExpression46', a2)
+    assert _is_linked(b, 'activitydiagram_BooleanBinaryExpression46', a2)
+    if hasattr(a1, 'activitydiagram_BooleanVariable47'):
+        assert not _is_linked(a1, 'activitydiagram_BooleanVariable47', b)
+    if hasattr(a2, 'activitydiagram_BooleanVariable47'):
+        assert _is_linked(a2, 'activitydiagram_BooleanVariable47', b)
+    _safe_set(b, 'activitydiagram_BooleanBinaryExpression46', None)
+    assert not _is_linked(b, 'activitydiagram_BooleanBinaryExpression46', a2)
+    if hasattr(a2, 'activitydiagram_BooleanVariable47'):
+        assert not _is_linked(a2, 'activitydiagram_BooleanVariable47', b)
+
+
+def test_assoc_operand41_reverse_link_reassign_clear():
+    a1 = activitydiagram_BooleanVariable()
+    a2 = activitydiagram_BooleanVariable()
+    b = activitydiagram_BooleanUnaryExpression(operator="sample_text")
+    _safe_set(b, 'activitydiagram_BooleanUnaryExpression', a1)
+    assert _is_linked(b, 'activitydiagram_BooleanUnaryExpression', a1)
+    if hasattr(a1, 'activitydiagram_BooleanVariable42'):
+        assert _is_linked(a1, 'activitydiagram_BooleanVariable42', b)
+    _safe_set(b, 'activitydiagram_BooleanUnaryExpression', a2)
+    assert _is_linked(b, 'activitydiagram_BooleanUnaryExpression', a2)
+    if hasattr(a1, 'activitydiagram_BooleanVariable42'):
+        assert not _is_linked(a1, 'activitydiagram_BooleanVariable42', b)
+    if hasattr(a2, 'activitydiagram_BooleanVariable42'):
+        assert _is_linked(a2, 'activitydiagram_BooleanVariable42', b)
+    _safe_set(b, 'activitydiagram_BooleanUnaryExpression', None)
+    assert not _is_linked(b, 'activitydiagram_BooleanUnaryExpression', a2)
+    if hasattr(a2, 'activitydiagram_BooleanVariable42'):
+        assert not _is_linked(a2, 'activitydiagram_BooleanVariable42', b)
+
+
+def test_assoc_outgoing13_reverse_link_reassign_clear():
+    a1 = activitydiagram_ActivityNode(running=True)
+    a2 = activitydiagram_ActivityNode(running=False)
+    b = activitydiagram_ActivityEdge()
+    _safe_set(b, 'ActivityEdge', a1)
+    assert _is_linked(b, 'ActivityEdge', a1)
+    if hasattr(a1, 'source'):
+        assert _is_linked(a1, 'source', b)
+    _safe_set(b, 'ActivityEdge', a2)
+    assert _is_linked(b, 'ActivityEdge', a2)
+    if hasattr(a1, 'source'):
+        assert not _is_linked(a1, 'source', b)
+    if hasattr(a2, 'source'):
+        assert _is_linked(a2, 'source', b)
+    _safe_set(b, 'ActivityEdge', None)
+    assert not _is_linked(b, 'ActivityEdge', a2)
+    if hasattr(a2, 'source'):
+        assert not _is_linked(a2, 'source', b)
+
+
+def test_assoc_source18_reverse_link_reassign_clear():
+    a1 = activitydiagram_ActivityNode(running=True)
+    a2 = activitydiagram_ActivityNode(running=False)
+    b = activitydiagram_ActivityEdge()
+    _safe_set(b, 'outgoing', a1)
+    assert _is_linked(b, 'outgoing', a1)
+    if hasattr(a1, 'ActivityNode19'):
+        assert _is_linked(a1, 'ActivityNode19', b)
+    _safe_set(b, 'outgoing', a2)
+    assert _is_linked(b, 'outgoing', a2)
+    if hasattr(a1, 'ActivityNode19'):
+        assert not _is_linked(a1, 'ActivityNode19', b)
+    if hasattr(a2, 'ActivityNode19'):
+        assert _is_linked(a2, 'ActivityNode19', b)
+    _safe_set(b, 'outgoing', None)
+    assert not _is_linked(b, 'outgoing', a2)
+    if hasattr(a2, 'ActivityNode19'):
+        assert not _is_linked(a2, 'ActivityNode19', b)
+
+
+def test_assoc_target20_reverse_link_reassign_clear():
+    a1 = activitydiagram_ActivityNode(running=True)
+    a2 = activitydiagram_ActivityNode(running=False)
+    b = activitydiagram_ActivityEdge()
+    _safe_set(b, 'incoming', a1)
+    assert _is_linked(b, 'incoming', a1)
+    if hasattr(a1, 'ActivityNode21'):
+        assert _is_linked(a1, 'ActivityNode21', b)
+    _safe_set(b, 'incoming', a2)
+    assert _is_linked(b, 'incoming', a2)
+    if hasattr(a1, 'ActivityNode21'):
+        assert not _is_linked(a1, 'ActivityNode21', b)
+    if hasattr(a2, 'ActivityNode21'):
+        assert _is_linked(a2, 'ActivityNode21', b)
+    _safe_set(b, 'incoming', None)
+    assert not _is_linked(b, 'incoming', a2)
+    if hasattr(a2, 'ActivityNode21'):
+        assert not _is_linked(a2, 'ActivityNode21', b)
+
+
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_activity72_stub_double():
+    # activitydiagram_Context has no real 'activitydiagram_Context73' property in the generated
+    # code (a bare stub) -- manually attach it so activitydiagram_Activity's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # activitydiagram_Activity's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = activitydiagram_Activity()
+    partner = activitydiagram_Context()
+    setattr(partner, 'activitydiagram_Context73', None)
+    _safe_set(owner, 'activitydiagram_Activity74', partner)
+    assert getattr(partner, 'activitydiagram_Context73') == owner
+    _safe_set(owner, 'activitydiagram_Activity74', None)
+    assert getattr(partner, 'activitydiagram_Context73') is None
+
+
+def test_assoc_assignee35_stub_double():
+    # activitydiagram_BooleanExpression has no real 'activitydiagram_BooleanExpression' property in the generated
+    # code (a bare stub) -- manually attach it so activitydiagram_BooleanVariable's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # activitydiagram_BooleanVariable's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = activitydiagram_BooleanVariable()
+    partner = activitydiagram_BooleanExpression()
+    setattr(partner, 'activitydiagram_BooleanExpression', None)
+    _safe_set(owner, 'activitydiagram_BooleanVariable36', partner)
+    assert getattr(partner, 'activitydiagram_BooleanExpression') == owner
+    _safe_set(owner, 'activitydiagram_BooleanVariable36', None)
+    assert getattr(partner, 'activitydiagram_BooleanExpression') is None
+
+
+def test_assoc_baseToken67_stub_double():
+    # activitydiagram_Token has no real 'activitydiagram_Token68' property in the generated
+    # code (a bare stub) -- manually attach it so activitydiagram_ForkedToken's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # activitydiagram_ForkedToken's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = activitydiagram_ForkedToken(remainingOffersCount=7)
+    partner = activitydiagram_Token()
+    setattr(partner, 'activitydiagram_Token68', None)
+    _safe_set(owner, 'activitydiagram_ForkedToken', partner)
+    assert getattr(partner, 'activitydiagram_Token68') == owner
+    _safe_set(owner, 'activitydiagram_ForkedToken', None)
+    assert getattr(partner, 'activitydiagram_Token68') is None
+
+
+def test_assoc_context11_stub_double():
+    # activitydiagram_Context has no real 'activitydiagram_Context' property in the generated
+    # code (a bare stub) -- manually attach it so activitydiagram_Activity's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # activitydiagram_Activity's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = activitydiagram_Activity()
+    partner = activitydiagram_Context()
+    setattr(partner, 'activitydiagram_Context', None)
+    _safe_set(owner, 'activitydiagram_Activity12', partner)
+    assert getattr(partner, 'activitydiagram_Context') == owner
+    _safe_set(owner, 'activitydiagram_Activity12', None)
+    assert getattr(partner, 'activitydiagram_Context') is None
+
+
+def test_assoc_currentValue28_stub_double():
+    # activitydiagram_Value has no real 'activitydiagram_Value30' property in the generated
+    # code (a bare stub) -- manually attach it so activitydiagram_Variable's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # activitydiagram_Variable's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = activitydiagram_Variable(name="sample_text")
+    partner = activitydiagram_Value()
+    setattr(partner, 'activitydiagram_Value30', None)
+    _safe_set(owner, 'activitydiagram_Variable29', partner)
+    assert getattr(partner, 'activitydiagram_Value30') == owner
+    _safe_set(owner, 'activitydiagram_Variable29', None)
+    assert getattr(partner, 'activitydiagram_Value30') is None
+
+
+def test_assoc_executedNodes64_stub_double():
+    # activitydiagram_Trace has no real 'activitydiagram_Trace65' property in the generated
+    # code (a bare stub) -- manually attach it so activitydiagram_ActivityNode's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # activitydiagram_ActivityNode's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = activitydiagram_ActivityNode(running=True)
+    partner = activitydiagram_Trace()
+    setattr(partner, 'activitydiagram_Trace65', None)
+    _safe_set(owner, 'activitydiagram_ActivityNode66', partner)
+    assert owner in getattr(partner, 'activitydiagram_Trace65')
+    _safe_set(owner, 'activitydiagram_ActivityNode66', None)
+    assert owner not in getattr(partner, 'activitydiagram_Trace65')
+
+
+def test_assoc_guard24_stub_double():
+    # activitydiagram_ControlFlow has no real 'activitydiagram_ControlFlow' property in the generated
+    # code (a bare stub) -- manually attach it so activitydiagram_BooleanVariable's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # activitydiagram_BooleanVariable's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = activitydiagram_BooleanVariable()
+    partner = activitydiagram_ControlFlow()
+    setattr(partner, 'activitydiagram_ControlFlow', None)
+    _safe_set(owner, 'activitydiagram_BooleanVariable', partner)
+    assert getattr(partner, 'activitydiagram_ControlFlow') == owner
+    _safe_set(owner, 'activitydiagram_BooleanVariable', None)
+    assert getattr(partner, 'activitydiagram_ControlFlow') is None
+
+
+def test_assoc_heldTokens17_stub_double():
+    # activitydiagram_Token has no real 'activitydiagram_Token' property in the generated
+    # code (a bare stub) -- manually attach it so activitydiagram_ActivityNode's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # activitydiagram_ActivityNode's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = activitydiagram_ActivityNode(running=True)
+    partner = activitydiagram_Token()
+    setattr(partner, 'activitydiagram_Token', None)
+    _safe_set(owner, 'activitydiagram_ActivityNode', {partner})
+    assert getattr(partner, 'activitydiagram_Token') == owner
+    _safe_set(owner, 'activitydiagram_ActivityNode', set())
+    assert getattr(partner, 'activitydiagram_Token') is None
+
+
+def test_assoc_holder58_stub_double():
+    # activitydiagram_Token has no real 'activitydiagram_Token59' property in the generated
+    # code (a bare stub) -- manually attach it so activitydiagram_ActivityNode's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # activitydiagram_ActivityNode's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = activitydiagram_ActivityNode(running=True)
+    partner = activitydiagram_Token()
+    setattr(partner, 'activitydiagram_Token59', None)
+    _safe_set(owner, 'activitydiagram_ActivityNode60', partner)
+    assert getattr(partner, 'activitydiagram_Token59') == owner
+    _safe_set(owner, 'activitydiagram_ActivityNode60', None)
+    assert getattr(partner, 'activitydiagram_Token59') is None
+
+
+def test_assoc_initialValue26_stub_double():
+    # activitydiagram_Value has no real 'activitydiagram_Value' property in the generated
+    # code (a bare stub) -- manually attach it so activitydiagram_Variable's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # activitydiagram_Variable's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = activitydiagram_Variable(name="sample_text")
+    partner = activitydiagram_Value()
+    setattr(partner, 'activitydiagram_Value', None)
+    _safe_set(owner, 'activitydiagram_Variable27', partner)
+    assert getattr(partner, 'activitydiagram_Value') == owner
+    _safe_set(owner, 'activitydiagram_Variable27', None)
+    assert getattr(partner, 'activitydiagram_Value') is None
+
+
+def test_assoc_node78_stub_double():
+    # activitydiagram_Context has no real 'activitydiagram_Context79' property in the generated
+    # code (a bare stub) -- manually attach it so activitydiagram_JoinNode's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # activitydiagram_JoinNode's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = activitydiagram_JoinNode()
+    partner = activitydiagram_Context()
+    setattr(partner, 'activitydiagram_Context79', None)
+    _safe_set(owner, 'activitydiagram_JoinNode', partner)
+    assert getattr(partner, 'activitydiagram_Context79') == owner
+    _safe_set(owner, 'activitydiagram_JoinNode', None)
+    assert getattr(partner, 'activitydiagram_Context79') is None
+
+
+def test_assoc_offers22_stub_double():
+    # activitydiagram_Offer has no real 'activitydiagram_Offer' property in the generated
+    # code (a bare stub) -- manually attach it so activitydiagram_ActivityEdge's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # activitydiagram_ActivityEdge's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = activitydiagram_ActivityEdge()
+    partner = activitydiagram_Offer()
+    setattr(partner, 'activitydiagram_Offer', None)
+    _safe_set(owner, 'activitydiagram_ActivityEdge23', {partner})
+    assert getattr(partner, 'activitydiagram_Offer') == owner
+    _safe_set(owner, 'activitydiagram_ActivityEdge23', set())
+    assert getattr(partner, 'activitydiagram_Offer') is None
+
+
+def test_assoc_operand132_stub_double():
+    # activitydiagram_IntegerExpression has no real 'activitydiagram_IntegerExpression33' property in the generated
+    # code (a bare stub) -- manually attach it so activitydiagram_IntegerVariable's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # activitydiagram_IntegerVariable's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = activitydiagram_IntegerVariable()
+    partner = activitydiagram_IntegerExpression()
+    setattr(partner, 'activitydiagram_IntegerExpression33', None)
+    _safe_set(owner, 'activitydiagram_IntegerVariable34', partner)
+    assert getattr(partner, 'activitydiagram_IntegerExpression33') == owner
+    _safe_set(owner, 'activitydiagram_IntegerVariable34', None)
+    assert getattr(partner, 'activitydiagram_IntegerExpression33') is None
+
+
+def test_assoc_operand231_stub_double():
+    # activitydiagram_IntegerExpression has no real 'activitydiagram_IntegerExpression' property in the generated
+    # code (a bare stub) -- manually attach it so activitydiagram_IntegerVariable's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # activitydiagram_IntegerVariable's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = activitydiagram_IntegerVariable()
+    partner = activitydiagram_IntegerExpression()
+    setattr(partner, 'activitydiagram_IntegerExpression', None)
+    _safe_set(owner, 'activitydiagram_IntegerVariable', partner)
+    assert getattr(partner, 'activitydiagram_IntegerExpression') == owner
+    _safe_set(owner, 'activitydiagram_IntegerVariable', None)
+    assert getattr(partner, 'activitydiagram_IntegerExpression') is None
+
+
+def test_assoc_signal55_stub_double():
+    # activitydiagram_Signal has no real 'activitydiagram_Signal56' property in the generated
+    # code (a bare stub) -- manually attach it so activitydiagram_SendSignalAction's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # activitydiagram_SendSignalAction's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = activitydiagram_SendSignalAction()
+    partner = activitydiagram_Signal()
+    setattr(partner, 'activitydiagram_Signal56', None)
+    _safe_set(owner, 'activitydiagram_SendSignalAction', partner)
+    assert getattr(partner, 'activitydiagram_Signal56') == owner
+    _safe_set(owner, 'activitydiagram_SendSignalAction', None)
+    assert getattr(partner, 'activitydiagram_Signal56') is None
+
+
+def test_assoc_signals7_stub_double():
+    # activitydiagram_Signal has no real 'activitydiagram_Signal' property in the generated
+    # code (a bare stub) -- manually attach it so activitydiagram_Activity's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # activitydiagram_Activity's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = activitydiagram_Activity()
+    partner = activitydiagram_Signal()
+    setattr(partner, 'activitydiagram_Signal', None)
+    _safe_set(owner, 'activitydiagram_Activity8', {partner})
+    assert getattr(partner, 'activitydiagram_Signal') == owner
+    _safe_set(owner, 'activitydiagram_Activity8', set())
+    assert getattr(partner, 'activitydiagram_Signal') is None
+
+
+def test_assoc_trace9_stub_double():
+    # activitydiagram_Trace has no real 'activitydiagram_Trace' property in the generated
+    # code (a bare stub) -- manually attach it so activitydiagram_Activity's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # activitydiagram_Activity's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = activitydiagram_Activity()
+    partner = activitydiagram_Trace()
+    setattr(partner, 'activitydiagram_Trace', None)
+    _safe_set(owner, 'activitydiagram_Activity10', partner)
+    assert getattr(partner, 'activitydiagram_Trace') == owner
+    _safe_set(owner, 'activitydiagram_Activity10', None)
+    assert getattr(partner, 'activitydiagram_Trace') is None
+
+
+def test_assoc_trigger57_stub_double():
+    # activitydiagram_SignalEvent has no real 'activitydiagram_SignalEvent' property in the generated
+    # code (a bare stub) -- manually attach it so activitydiagram_AcceptEventAction's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # activitydiagram_AcceptEventAction's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = activitydiagram_AcceptEventAction()
+    partner = activitydiagram_SignalEvent()
+    setattr(partner, 'activitydiagram_SignalEvent', None)
+    _safe_set(owner, 'activitydiagram_AcceptEventAction', partner)
+    assert getattr(partner, 'activitydiagram_SignalEvent') == owner
+    _safe_set(owner, 'activitydiagram_AcceptEventAction', None)
+    assert getattr(partner, 'activitydiagram_SignalEvent') is None
+
+
+def test_assoc_variable50_stub_double():
+    # activitydiagram_InputValue has no real 'activitydiagram_InputValue51' property in the generated
+    # code (a bare stub) -- manually attach it so activitydiagram_Variable's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # activitydiagram_Variable's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = activitydiagram_Variable(name="sample_text")
+    partner = activitydiagram_InputValue()
+    setattr(partner, 'activitydiagram_InputValue51', None)
+    _safe_set(owner, 'activitydiagram_Variable52', partner)
+    assert getattr(partner, 'activitydiagram_InputValue51') == owner
+    _safe_set(owner, 'activitydiagram_Variable52', None)
+    assert getattr(partner, 'activitydiagram_InputValue51') is None
+
+

@@ -1,0 +1,26 @@
+from python_code import activitydiagram_TracedActivityNode
+from python_code import traceSystem_States_ActivityNode_running_State
+
+def test_traceSystem_States_ActivityNode_running_State___init__():
+    assert traceSystem_States_ActivityNode_running_State.__init__(traceSystem_States_ActivityNode_running_State(False, runningTrace=activitydiagram_TracedActivityNode(), activityNode_running_States=set()), False, runningTrace=activitydiagram_TracedActivityNode(), activityNode_running_States=set()) == None
+
+
+from python_code import activitydiagramConfiguration_TracedForkedToken
+from python_code import traceSystem_States_ForkedToken_baseTokenIsWithdrawn_State
+
+def test_traceSystem_States_ForkedToken_baseTokenIsWithdrawn_State___init__():
+    assert traceSystem_States_ForkedToken_baseTokenIsWithdrawn_State.__init__(traceSystem_States_ForkedToken_baseTokenIsWithdrawn_State(False, baseTokenIsWithdrawnTrace=activitydiagramConfiguration_TracedForkedToken(), forkedToken_baseTokenIsWithdrawn_States=set()), False, baseTokenIsWithdrawnTrace=activitydiagramConfiguration_TracedForkedToken(), forkedToken_baseTokenIsWithdrawn_States=set()) == None
+
+
+from python_code import activitydiagramConfiguration_TracedForkedToken
+from python_code import traceSystem_States_ForkedToken_remainingOffersCount_State
+
+def test_traceSystem_States_ForkedToken_remainingOffersCount_State___init__():
+    assert traceSystem_States_ForkedToken_remainingOffersCount_State.__init__(traceSystem_States_ForkedToken_remainingOffersCount_State(0, remainingOffersCountTrace=activitydiagramConfiguration_TracedForkedToken(), forkedToken_remainingOffersCount_States=set()), 0, remainingOffersCountTrace=activitydiagramConfiguration_TracedForkedToken(), forkedToken_remainingOffersCount_States=set()) == None
+
+
+from python_code import traceSystem_activitydiagram_TracedNamedElement
+
+def test_traceSystem_activitydiagram_TracedNamedElement___init__():
+    assert traceSystem_activitydiagram_TracedNamedElement.__init__(traceSystem_activitydiagram_TracedNamedElement(''), '') == None
+

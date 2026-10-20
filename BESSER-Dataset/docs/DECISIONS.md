@@ -14,6 +14,48 @@ different, non-overlapping reasons).
 
 ---
 
+## 2026-10-20 — Full regeneration on the 5,264 unique models: super suite 75.61% vs green baseline 35.60% (+40.01 pts), no model worse
+
+**What was run** (`docs/RUNBOOK-full-regeneration.md`, every model in `reports/unique_models.txt`):
+- Behavioral tests regenerated with the fixed generator: 5,264/5,264, 66,543 tests.
+- CrossHair for the 5,064 models outside the 200 sample (same settings as the sample: 30 s per class, 5 s per condition, 300 s per model). 4,106 got tests, 958 none (classes with only properties), 0 errors. The sample models kept the CrossHair files their published results were measured with.
+- Super suite and green baseline: **5,264/5,264 green** each (super suite 1,023,139 tests, baseline 931,579). The first pass timed out on 8 / 7 very large models because both jobs ran at once; a retry with `--timeout 1200` made them green. The rebuilt suites of the two affected sample models (`model_713`, `model_3260`) are byte-identical to the committed ones. Removed tests: 6,250 in 650 models (super suite) and 6,210 in 649 (baseline), almost all the dataset's own empty-method checks. Dataset-wide this concerns **~650 unique models**, not the "~940" counted with copies. 12 behavioral stub-double tests were also removed (`'Property' object is not callable`).
+- Mutation testing, both suites: `validate_mutation_properties.py`, 40 mutants per model, `--hypothesis-seed 0`, baseline guard on, `--workers 24 --overall-timeout 3600`, per-mutant timeout 90 s (default). 5,264/5,264 measured in both, 0 `baseline_failed`, the same 190,966 mutants run (same count per model in both runs).
+
+**Result** (`scripts/compare_mutation_runs.py` → `reports/full_mutation_comparison.*`):
+
+| | Baseline (`test_combined_green`) | Super suite |
+|---|---:|---:|
+| Mean property mutation score | **35.60%** | **75.61%** |
+| Perfect scores | 8 | 21 |
+| Zero scores | 2 | 0 |
+
+**Lift +40.01 pts. Per model: 4,640 improved, 0 worse, 624 unchanged.** On the 200-model sample it was +43.03 pts (188 / 0 / 12); the sample over-represents logic-heavy models, which gain more (see below).
+
+By difficulty bucket (refit PC1+PC2 score):
+
+| Bucket | Models | Baseline | Super suite | Lift (pts) | Improved / worse / unchanged |
+|---|---:|---:|---:|---:|---|
+| 0-10 | 363 | 0.394 | 0.696 | +30.1 | 237 / 0 / 126 |
+| 10-20 | 1,239 | 0.385 | 0.764 | +37.9 | 1,096 / 0 / 143 |
+| 20-30 | 1,294 | 0.379 | 0.744 | +36.5 | 1,112 / 0 / 182 |
+| 30-40 | 1,002 | 0.352 | 0.741 | +38.8 | 880 / 0 / 122 |
+| 40-50 | 647 | 0.319 | 0.765 | +44.5 | 611 / 0 / 36 |
+| 50-60 | 336 | 0.296 | 0.800 | +50.4 | 326 / 0 / 10 |
+| 60-70 | 188 | 0.265 | 0.812 | +54.7 | 185 / 0 / 3 |
+| 70-80 | 127 | 0.298 | 0.818 | +52.0 | 125 / 0 / 2 |
+| 80-90 | 59 | 0.261 | 0.833 | +57.1 | 59 / 0 / 0 |
+| 90-100 | 9 | 0.231 | 0.842 | +61.1 | 9 / 0 / 0 |
+
+- The original suites get weaker as models get harder (baseline 0.39 → 0.23), while the super suite gets stronger (0.70 → 0.84). The lift therefore grows with difficulty, from +30 to +61 pts. This is also independent evidence that the difficulty score tracks something real: the dataset's own tests cover hard models worst.
+- Unchanged models are concentrated in the easy buckets (126 of 363 in 0-10): small models with few or no bidirectional associations and nothing for CrossHair, where the baseline already kills what the super suite kills.
+
+**Timeout kills.** cosmic-ray counts a mutant whose test run exceeds the per-mutant timeout as KILLED (`cosmic_ray/testing.py`); `validate_mutation_properties.py` now counts these separately (`killed_by_timeout`). Baseline 44 in 35 models, super suite 54 in 39, out of 190,966 mutants each. Counting every one of them as survived gives baseline 0.3558, super suite 0.7558, **lift +40.00 pts**, so they don't affect the result. They also sit in the same models with mostly the same counts in both runs (e.g. `model_10000238` 3 / 3, `model_100209` 3 / 3), which fits mutants that really hang (the same mutants are selected in both runs) more than random load. Decided not to rerun them in isolation.
+
+**For the article.** Report the full-dataset numbers (5,264 unique models), not the sample's: 35.60% → 75.61%, +40.01 pts, no model worse, lift rising with difficulty. Mention the worst case with timeout kills counted as survived (+40.00 pts) and that every suite was pruned to tests passing on the original code before measuring (the baseline guard, 0 `baseline_failed`).
+
+---
+
 ## 2026-10-18 — Only exact copies are removed; similar models stay
 
 **Question.** Should near-duplicates, such as forks of one metamodel with an extra attribute or a renamed class, also be removed or kept on one side of the train/test split?
@@ -205,16 +247,34 @@ This supersedes "pass `reports/usable_models.txt`" in the PCA entry below. `make
 
 **Decision: keep PC1+PC2.** PC3 passes the statistical retention tests, but in practice it changes the score in the wrong direction for a code-generation difficulty measure. It mostly rewards enum count in small models and pulls down the largest models, and it does not give methods more weight.
 
-**How to defend it (for the article).** The argument, in order:
-1. *Why PC1.* It is the dominant component (46.7% of variance) and every loading is positive, so it reads as overall size and complexity.
-2. *Why PC2.* It is a second, interpretable axis (data-schema-heavy vs. hierarchy-heavy). Kaiser and parallel analysis both retain it. Its 10 most extreme models on both ends are above-average size. Over its 5% tails, one end is big hierarchies and the other is average-sized, attribute-rich flat models: a real difference in style, not tiny models drifting to one end.
+**Refit on the 5,264 unique models (the final numbers; use these in the article).** The fit above counted copied models many times. Refit with `--models-file reports/unique_models.txt` (`reports/difficulty_score_pca_experiment_report.*`):
+
+| | PC1 | PC2 | PC3 | PC4 |
+|---|---:|---:|---:|---:|
+| Eigenvalue | 5.36 | 1.50 | 1.13 | 0.89 |
+| Variance | 48.8% | 13.7% | 10.2% | 8.1% |
+| Random-data 95th pct (parallel analysis) | 1.09 | 1.07 | 1.05 | 1.04 |
+| Spearman vs article, PC1..PCk | 0.9164 | 0.9165 | 0.9036 | 0.9030 |
+
+- Retained: unchanged, **Kaiser 3, parallel analysis 3, broken stick 1.** PC1+PC2 explain 62.4%; point budgets 78.1 / 21.9.
+- Extremes, mean PC1: PC2 top/bottom 10 = +0.71 / +1.04, 5% tails = −0.38 / +1.04; PC3 top/bottom 10 = +5.43 / +3.57, 5% tails = +2.66 / +2.34. Same pattern as before.
+- Adding PC3 (experiment 6): Spearman **0.988** with the PC1+PC2 score; median |change| 1.73, 90th pct 5.21, extremes +11.2 / −12.0; 23.4% of models change bucket (4 of them by two). Risers are again small enum-heavy models (`model_4314`, 5 classes, 4 enums, +11.2), fallers the largest (271-341 classes, −11 to −12). Models with methods now fall *more* than models without (−1.28, n=699, vs −0.74), so PC3 is even further from rewarding methods.
+- Without the copies, PC2 costs nothing in article agreement: PC1 alone 0.9164, PC1+PC2 0.9165. On the 8,336 set it cost 0.019; that gap was produced by the copies.
+- Clip: 6 models above 100 and 1 below 0 before clipping (max 107.2), Spearman change −0.0004. Without the 992 zero-has_logic models: 0.9217.
+- Bucket sizes (PC1+PC2): 363 / 1,239 / 1,294 / 1,002 / 647 / 336 / 188 / 127 / 59 / 9 for 0-10 … 90-100.
+
+**Decision unchanged: PC1+PC2.**
+
+**How to defend it (for the article).** The argument, in order (numbers from the 5,264-model refit):
+1. *Why PC1.* It is the dominant component (48.8% of variance) and every loading is positive, so it reads as overall size and complexity.
+2. *Why PC2.* It is a second, interpretable axis (data-schema-heavy vs. hierarchy-heavy). Kaiser and parallel analysis both retain it. Its 10 most extreme models on both ends are above-average size. Over its 5% tails, one end is big hierarchies and the other is attribute-rich flat models of slightly below-average size: a real difference in style, not tiny models drifting to one end.
 3. *Why not PC3, although the tests also retain it.* Retention rules say how many components carry more than noise; they do not say which ones improve a difficulty score for a given purpose. We therefore measured PC3's effect directly:
-   - It barely changes the ranking (Spearman 0.986 with the PC1+PC2 score).
-   - Where it does change scores, it moves small enum-heavy models up by up to 10.7 points and the largest models down by about 12.
-   - It leaves models with methods unaffected.
+   - It barely changes the ranking (Spearman 0.988 with the PC1+PC2 score).
+   - Where it does change scores, it moves small enum-heavy models up by up to 11.2 points and the largest models down by about 12.
+   - Models with methods fall more than models without, so it does not give methods more weight despite its +0.30 loading.
 
    That adds noise for our purpose rather than signal. Report the retention tests in full and present PC1+PC2 as a deliberate, measured choice, not as what the tests alone dictate.
-4. *Why not PC1 alone.* It agrees best with the article (0.893), but only because the article measures size alone. PC2 adds a real second kind of structure at a small cost in agreement (0.874).
+4. *Why not PC1 alone.* It captures size only. PC2 adds a real second kind of structure at no cost in article agreement (0.9164 vs 0.9165).
 5. *Why variance-proportional weights and |PC2|.* See the 2026-09-28 explainer and the method entry further down: the weights are not hand-chosen, and the sign of PC2 is arbitrary.
 
 ---

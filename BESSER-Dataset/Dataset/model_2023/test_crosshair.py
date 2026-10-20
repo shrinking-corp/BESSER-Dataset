@@ -1,0 +1,76 @@
+from python_code import BasicActions_TracedActionActivation
+from python_code import umlTrace_Values_ActionActivation_firing_Value
+
+def test_umlTrace_Values_ActionActivation_firing_Value___init__():
+    assert umlTrace_Values_ActionActivation_firing_Value.__init__(umlTrace_Values_ActionActivation_firing_Value(False, firingTrace=BasicActions_TracedActionActivation(), actionActivation_firing_Values=set()), False, firingTrace=BasicActions_TracedActionActivation(), actionActivation_firing_Values=set()) == None
+
+
+from python_code import IntermediateActivities_TracedActivityNodeActivation
+from python_code import umlTrace_Values_ActivityNodeActivation_isRunning_Value
+
+def test_umlTrace_Values_ActivityNodeActivation_isRunning_Value___init__():
+    assert umlTrace_Values_ActivityNodeActivation_isRunning_Value.__init__(umlTrace_Values_ActivityNodeActivation_isRunning_Value(False, isRunningTrace=IntermediateActivities_TracedActivityNodeActivation(), activityNodeActivation_isRunning_Values=set()), False, isRunningTrace=IntermediateActivities_TracedActivityNodeActivation(), activityNodeActivation_isRunning_Values=set()) == None
+
+
+from python_code import IntermediateActivities_TracedActivityNodeActivation
+from python_code import umlTrace_Values_ActivityNodeActivation_running_Value
+
+def test_umlTrace_Values_ActivityNodeActivation_running_Value___init__():
+    assert umlTrace_Values_ActivityNodeActivation_running_Value.__init__(umlTrace_Values_ActivityNodeActivation_running_Value(False, runningTrace=IntermediateActivities_TracedActivityNodeActivation(), activityNodeActivation_running_Values=set()), False, runningTrace=IntermediateActivities_TracedActivityNodeActivation(), activityNodeActivation_running_Values=set()) == None
+
+
+from python_code import Kernel_TracedBooleanValue
+from python_code import umlTrace_Values_BooleanValue_value_BooleanValue_Value
+
+def test_umlTrace_Values_BooleanValue_value_BooleanValue_Value___init__():
+    assert umlTrace_Values_BooleanValue_value_BooleanValue_Value.__init__(umlTrace_Values_BooleanValue_value_BooleanValue_Value(False, booleanValue_value_BooleanValue_Values=set(), value_BooleanValueTrace=Kernel_TracedBooleanValue()), False, booleanValue_value_BooleanValue_Values=set(), value_BooleanValueTrace=Kernel_TracedBooleanValue()) == None
+
+
+from python_code import Kernel_TracedFeatureValue
+from python_code import umlTrace_Values_FeatureValue_position_Value
+
+def test_umlTrace_Values_FeatureValue_position_Value___init__():
+    assert umlTrace_Values_FeatureValue_position_Value.__init__(umlTrace_Values_FeatureValue_position_Value(0, featureValue_position_Values=set(), positionTrace=Kernel_TracedFeatureValue()), 0, featureValue_position_Values=set(), positionTrace=Kernel_TracedFeatureValue()) == None
+
+
+from python_code import IntermediateActivities_TracedForkedToken
+from python_code import umlTrace_Values_ForkedToken_baseTokenIsWithdrawn_Value
+
+def test_umlTrace_Values_ForkedToken_baseTokenIsWithdrawn_Value___init__():
+    assert umlTrace_Values_ForkedToken_baseTokenIsWithdrawn_Value.__init__(umlTrace_Values_ForkedToken_baseTokenIsWithdrawn_Value(False, baseTokenIsWithdrawnTrace=IntermediateActivities_TracedForkedToken(), forkedToken_baseTokenIsWithdrawn_Values=set()), False, baseTokenIsWithdrawnTrace=IntermediateActivities_TracedForkedToken(), forkedToken_baseTokenIsWithdrawn_Values=set()) == None
+
+
+from python_code import IntermediateActivities_TracedForkedToken
+from python_code import umlTrace_Values_ForkedToken_remainingOffersCount_Value
+
+def test_umlTrace_Values_ForkedToken_remainingOffersCount_Value___init__():
+    assert umlTrace_Values_ForkedToken_remainingOffersCount_Value.__init__(umlTrace_Values_ForkedToken_remainingOffersCount_Value(0, remainingOffersCountTrace=IntermediateActivities_TracedForkedToken(), forkedToken_remainingOffersCount_Values=set()), 0, remainingOffersCountTrace=IntermediateActivities_TracedForkedToken(), forkedToken_remainingOffersCount_Values=set()) == None
+
+
+from python_code import Input_TracedInputParameterValues
+from python_code import umlTrace_Values_InputParameterValues_name_Value
+
+def test_umlTrace_Values_InputParameterValues_name_Value___init__():
+    assert umlTrace_Values_InputParameterValues_name_Value.__init__(umlTrace_Values_InputParameterValues_name_Value('', nameTrace=Input_TracedInputParameterValues(), inputParameterValues_name_Values=set()), '', nameTrace=Input_TracedInputParameterValues(), inputParameterValues_name_Values=set()) == None
+
+
+from python_code import Kernel_TracedIntegerValue
+from python_code import umlTrace_Values_IntegerValue_value_IntegerValue_Value
+
+def test_umlTrace_Values_IntegerValue_value_IntegerValue_Value___init__():
+    assert umlTrace_Values_IntegerValue_value_IntegerValue_Value.__init__(umlTrace_Values_IntegerValue_value_IntegerValue_Value(0, value_IntegerValueTrace=Kernel_TracedIntegerValue(), integerValue_value_IntegerValue_Values=set()), 0, value_IntegerValueTrace=Kernel_TracedIntegerValue(), integerValue_value_IntegerValue_Values=set()) == None
+
+
+from python_code import IntermediateActivities_TracedObjectNodeActivation
+from python_code import umlTrace_Values_ObjectNodeActivation_offeredTokenCount_Value
+
+def test_umlTrace_Values_ObjectNodeActivation_offeredTokenCount_Value___init__():
+    assert umlTrace_Values_ObjectNodeActivation_offeredTokenCount_Value.__init__(umlTrace_Values_ObjectNodeActivation_offeredTokenCount_Value(0, offeredTokenCountTrace=IntermediateActivities_TracedObjectNodeActivation(), objectNodeActivation_offeredTokenCount_Values=set()), 0, offeredTokenCountTrace=IntermediateActivities_TracedObjectNodeActivation(), objectNodeActivation_offeredTokenCount_Values=set()) == None
+
+
+from python_code import BasicActions_TracedPinActivation
+from python_code import umlTrace_Values_PinActivation_count_temp_Value
+
+def test_umlTrace_Values_PinActivation_count_temp_Value___init__():
+    assert umlTrace_Values_PinActivation_count_temp_Value.__init__(umlTrace_Values_PinActivation_count_temp_Value(0, count_tempTrace=BasicActions_TracedPinActivation(), pinActivation_count_temp_Values=set()), 0, count_tempTrace=BasicActions_TracedPinActivation(), pinActivation_count_temp_Values=set()) == None
+

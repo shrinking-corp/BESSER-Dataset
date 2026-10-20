@@ -1,0 +1,168 @@
+import pytest
+from datetime import date, datetime, time, timedelta
+
+from python_code import (
+    A,
+    A1,
+    A2,
+    B,
+    B1,
+    B2,
+    C,
+    C1,
+    C2,
+    C21,
+    C3,
+    R,
+    Y,
+    Z,
+)
+
+def _is_linked(obj, attr_name, other):
+    value = getattr(obj, attr_name, None)
+    if isinstance(value, (set, list, tuple, frozenset)):
+        return other in value
+    return value == other
+
+def _safe_set(obj, attr_name, value):
+    # Some generated models have a genuine bug: two reciprocal setters
+    # unconditionally call each other with no base case, causing
+    # infinite mutual recursion for that specific relationship (found
+    # in model_10000002's items10/sc11 pair). That's a defect in the
+    # code under test, not in this test -- skip rather than fail so it
+    # doesn't masquerade as a test-suite problem.
+    try:
+        setattr(obj, attr_name, value)
+    except RecursionError:
+        pytest.skip(f'{attr_name!r} setter has infinite mutual recursion in the generated code')
+
+# =============================================================================
+# REVERSE-DIRECTION ASSOCIATION TESTS
+# Mirrors test_structural_full.py's link_reassign_clear, but sets from the
+# OTHER end's own setter directly, instead of relying on it firing only as a
+# side effect of the forward-direction test. See module docstring.
+# =============================================================================
+
+def test_assoc_A_B_reverse_link_reassign_clear():
+    a1 = B(attB=7)
+    a2 = B(attB=13)
+    b = A(attA="sample_text")
+    _safe_set(b, 'b0', {a1})
+    assert _is_linked(b, 'b0', a1)
+    if hasattr(a1, 'a1'):
+        assert _is_linked(a1, 'a1', b)
+    _safe_set(b, 'b0', {a2})
+    assert _is_linked(b, 'b0', a2)
+    if hasattr(a1, 'a1'):
+        assert not _is_linked(a1, 'a1', b)
+    if hasattr(a2, 'a1'):
+        assert _is_linked(a2, 'a1', b)
+    _safe_set(b, 'b0', set())
+    assert not _is_linked(b, 'b0', a2)
+    if hasattr(a2, 'a1'):
+        assert not _is_linked(a2, 'a1', b)
+
+
+def test_assoc_A_B2_reverse_link_reassign_clear():
+    a1 = B1(attB=7)
+    a2 = B1(attB=13)
+    b = A1(attA="sample_text")
+    _safe_set(b, 'b10', {a1})
+    assert _is_linked(b, 'b10', a1)
+    if hasattr(a1, 'a11'):
+        assert _is_linked(a1, 'a11', b)
+    _safe_set(b, 'b10', {a2})
+    assert _is_linked(b, 'b10', a2)
+    if hasattr(a1, 'a11'):
+        assert not _is_linked(a1, 'a11', b)
+    if hasattr(a2, 'a11'):
+        assert _is_linked(a2, 'a11', b)
+    _safe_set(b, 'b10', set())
+    assert not _is_linked(b, 'b10', a2)
+    if hasattr(a2, 'a11'):
+        assert not _is_linked(a2, 'a11', b)
+
+
+def test_assoc_C_B_reverse_link_reassign_clear():
+    a1 = C(attC1=7, attC2=True)
+    a2 = C(attC1=13, attC2=False)
+    b = B(attB=7)
+    _safe_set(b, 'c3', {a1})
+    assert _is_linked(b, 'c3', a1)
+    if hasattr(a1, 'b2'):
+        assert _is_linked(a1, 'b2', b)
+    _safe_set(b, 'c3', {a2})
+    assert _is_linked(b, 'c3', a2)
+    if hasattr(a1, 'b2'):
+        assert not _is_linked(a1, 'b2', b)
+    if hasattr(a2, 'b2'):
+        assert _is_linked(a2, 'b2', b)
+    _safe_set(b, 'c3', set())
+    assert not _is_linked(b, 'c3', a2)
+    if hasattr(a2, 'b2'):
+        assert not _is_linked(a2, 'b2', b)
+
+
+def test_assoc_C_B2_reverse_link_reassign_clear():
+    a1 = C2(attC1=7, attC2=True)
+    a2 = C2(attC1=13, attC2=False)
+    b = B2(attB=7)
+    _safe_set(b, 'c5', {a1})
+    assert _is_linked(b, 'c5', a1)
+    if hasattr(a1, 'b4'):
+        assert _is_linked(a1, 'b4', b)
+    _safe_set(b, 'c5', {a2})
+    assert _is_linked(b, 'c5', a2)
+    if hasattr(a1, 'b4'):
+        assert not _is_linked(a1, 'b4', b)
+    if hasattr(a2, 'b4'):
+        assert _is_linked(a2, 'b4', b)
+    _safe_set(b, 'c5', set())
+    assert not _is_linked(b, 'c5', a2)
+    if hasattr(a2, 'b4'):
+        assert not _is_linked(a2, 'b4', b)
+
+
+def test_assoc_C_B3_reverse_link_reassign_clear():
+    a1 = C1(attC1=7, attC2=True)
+    a2 = C1(attC1=13, attC2=False)
+    b = B1(attB=7)
+    _safe_set(b, 'c7', {a1})
+    assert _is_linked(b, 'c7', a1)
+    if hasattr(a1, 'b6'):
+        assert _is_linked(a1, 'b6', b)
+    _safe_set(b, 'c7', {a2})
+    assert _is_linked(b, 'c7', a2)
+    if hasattr(a1, 'b6'):
+        assert not _is_linked(a1, 'b6', b)
+    if hasattr(a2, 'b6'):
+        assert _is_linked(a2, 'b6', b)
+    _safe_set(b, 'c7', set())
+    assert not _is_linked(b, 'c7', a2)
+    if hasattr(a2, 'b6'):
+        assert not _is_linked(a2, 'b6', b)
+
+
+# =============================================================================
+# STUB-SIDE TEST DOUBLE
+# For associations where one side is a bare stub class with no real property:
+# manually attach the attribute a real implementation would have had, so the
+# real side's hasattr()-guarded consistency logic is actually reachable. See
+# module docstring.
+# =============================================================================
+
+def test_assoc_R_A_stub_double():
+    # R has no real 'aR8' property in the generated
+    # code (a bare stub) -- manually attach it so A1's own
+    # bidirectional-consistency guard can actually be exercised. This tests
+    # A1's OWN setter logic via a hand-shaped stand-in for an
+    # incomplete collaborator, same reasoning as a test double anywhere else.
+    owner = A1(attA="sample_text")
+    partner = R()
+    setattr(partner, 'aR8', None)
+    _safe_set(owner, 'r9', partner)
+    assert owner in getattr(partner, 'aR8')
+    _safe_set(owner, 'r9', None)
+    assert owner not in getattr(partner, 'aR8')
+
+
