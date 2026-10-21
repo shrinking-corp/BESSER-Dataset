@@ -8393,10 +8393,10 @@ def test_javaMM_ClassDeclaration___init__():
     assert javaMM_ClassDeclaration.__init__(javaMM_ClassDeclaration(javaMM_ClassDeclaration=javaMM_TypeAccess()), javaMM_ClassDeclaration=javaMM_TypeAccess()) == None
 
 def test_javaMM_ClassDeclaration_getPublicMethods():
-    assert javaMM_ClassDeclaration.getPublicMethods(javaMM_ClassDeclaration(javaMM_ClassDeclaration=javaMM_TypeAccess())) == None
+    javaMM_ClassDeclaration.getPublicMethods(javaMM_ClassDeclaration(javaMM_ClassDeclaration=javaMM_TypeAccess()))
 
 def test_javaMM_ClassDeclaration_hasHashcode():
-    assert javaMM_ClassDeclaration.hasHashcode(javaMM_ClassDeclaration(javaMM_ClassDeclaration=javaMM_TypeAccess())) == None
+    javaMM_ClassDeclaration.hasHashcode(javaMM_ClassDeclaration(javaMM_ClassDeclaration=javaMM_TypeAccess()))
 from python_code import javaMM_Expression
 from python_code import javaMM_InfixExpression
 

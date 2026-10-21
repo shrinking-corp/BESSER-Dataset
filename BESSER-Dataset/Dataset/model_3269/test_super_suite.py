@@ -8118,14 +8118,14 @@ def test_ISO20022_BusinessProcessCatalogue___init__():
     assert ISO20022_BusinessProcessCatalogue.__init__(ISO20022_BusinessProcessCatalogue(businessProcessCatalogue56=ISO20022_Repository(), BusinessProcessCatalogue59=ISO20022_TopLevelCatalogueEntry(), BusinessProcessCatalogue=ISO20022_Repository(), businessProcessCatalogue=set()), businessProcessCatalogue56=ISO20022_Repository(), BusinessProcessCatalogue59=ISO20022_TopLevelCatalogueEntry(), BusinessProcessCatalogue=ISO20022_Repository(), businessProcessCatalogue=set()) == None
 
 def test_ISO20022_BusinessProcessCatalogue_EntriesHaveUniqueName():
-    assert ISO20022_BusinessProcessCatalogue.EntriesHaveUniqueName(ISO20022_BusinessProcessCatalogue(businessProcessCatalogue56=ISO20022_Repository(), BusinessProcessCatalogue59=ISO20022_TopLevelCatalogueEntry(), BusinessProcessCatalogue=ISO20022_Repository(), businessProcessCatalogue=set()), 0, '\x00\x00') == None
+    ISO20022_BusinessProcessCatalogue.EntriesHaveUniqueName(ISO20022_BusinessProcessCatalogue(businessProcessCatalogue56=ISO20022_Repository(), BusinessProcessCatalogue59=ISO20022_TopLevelCatalogueEntry(), BusinessProcessCatalogue=ISO20022_Repository(), businessProcessCatalogue=set()), 0, '\x00\x00')
 from python_code import ISO20022_ChoiceComponent
 
 def test_ISO20022_ChoiceComponent___init__():
     assert ISO20022_ChoiceComponent.__init__(ISO20022_ChoiceComponent()) == None
 
 def test_ISO20022_ChoiceComponent_AtLeastOneProperty():
-    assert ISO20022_ChoiceComponent.AtLeastOneProperty(ISO20022_ChoiceComponent(), '', '') == None
+    ISO20022_ChoiceComponent.AtLeastOneProperty(ISO20022_ChoiceComponent(), '', '')
 from python_code import ISO20022_DataDictionary
 from python_code import ISO20022_Repository
 from python_code import ISO20022_TopLevelDictionaryEntry
@@ -8134,7 +8134,7 @@ def test_ISO20022_DataDictionary___init__():
     assert ISO20022_DataDictionary.__init__(ISO20022_DataDictionary(dataDictionary=ISO20022_Repository(), dataDictionary47=set(), DataDictionary53=ISO20022_Repository(), DataDictionary=ISO20022_TopLevelDictionaryEntry()), dataDictionary=ISO20022_Repository(), dataDictionary47=set(), DataDictionary53=ISO20022_Repository(), DataDictionary=ISO20022_TopLevelDictionaryEntry()) == None
 
 def test_ISO20022_DataDictionary_EntriesHaveUniqueName():
-    assert ISO20022_DataDictionary.EntriesHaveUniqueName(ISO20022_DataDictionary(dataDictionary=ISO20022_Repository(), dataDictionary47=set(), DataDictionary53=ISO20022_Repository(), DataDictionary=ISO20022_TopLevelDictionaryEntry()), 0, '\x00\x00') == None
+    ISO20022_DataDictionary.EntriesHaveUniqueName(ISO20022_DataDictionary(dataDictionary=ISO20022_Repository(), dataDictionary47=set(), DataDictionary53=ISO20022_Repository(), DataDictionary=ISO20022_TopLevelDictionaryEntry()), 0, '\x00\x00')
 from python_code import ISO20022_ExternalSchema
 
 def test_ISO20022_ExternalSchema___init__():

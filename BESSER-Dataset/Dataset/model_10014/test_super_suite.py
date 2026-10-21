@@ -818,13 +818,13 @@ def test_OclTest_Apple___init__():
     assert OclTest_Apple.__init__(OclTest_Apple('', OclTest_Apple=OclTest_Stem()), '', OclTest_Apple=OclTest_Stem()) == None
 
 def test_OclTest_Apple_label():
-    assert OclTest_Apple.label(OclTest_Apple('', OclTest_Apple=OclTest_Stem()), 0) == None
+    OclTest_Apple.label(OclTest_Apple('', OclTest_Apple=OclTest_Stem()), 0)
 
 def test_OclTest_Apple_preferredLabel():
-    assert OclTest_Apple.preferredLabel(OclTest_Apple('', OclTest_Apple=OclTest_Stem()), 0) == None
+    OclTest_Apple.preferredLabel(OclTest_Apple('', OclTest_Apple=OclTest_Stem()), 0)
 
 def test_OclTest_Apple_newApple():
-    assert OclTest_Apple.newApple(OclTest_Apple('', OclTest_Apple=OclTest_Stem())) == None
+    OclTest_Apple.newApple(OclTest_Apple('', OclTest_Apple=OclTest_Stem()))
 from python_code import OclTest_Tree
 
 def test_OclTest_Tree___init__():

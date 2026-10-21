@@ -2544,14 +2544,14 @@ def test_dsml_web_Form___init__():
     assert dsml_web_Form.__init__(dsml_web_Form('', dsml_web_Form=set(), dsml_web_Form12=Success(), dsml_web_Form14=Error()), '', dsml_web_Form=set(), dsml_web_Form12=Success(), dsml_web_Form14=Error()) == None
 
 def test_dsml_web_Form_accept():
-    assert dsml_web_Form.accept(dsml_web_Form('', dsml_web_Form=set(), dsml_web_Form12=Success(), dsml_web_Form14=Error()), '') == None
+    dsml_web_Form.accept(dsml_web_Form('', dsml_web_Form=set(), dsml_web_Form12=Success(), dsml_web_Form14=Error()), '')
 from python_code import dsml_web_FormElement
 
 def test_dsml_web_FormElement___init__():
     assert dsml_web_FormElement.__init__(dsml_web_FormElement('', '\x00'), '\x00\x00', '') == None
 
 def test_dsml_web_FormElement_accept():
-    assert dsml_web_FormElement.accept(dsml_web_FormElement('', ''), '') == None
+    dsml_web_FormElement.accept(dsml_web_FormElement('', ''), '')
 from python_code import dsml_web_Field
 from python_code import dsml_web_GreaterThanValidator
 
@@ -2573,7 +2573,7 @@ def test_dsml_web_Link___init__():
     assert dsml_web_Link.__init__(dsml_web_Link('', dsml_web_Link=Page()), '', dsml_web_Link=Page()) == None
 
 def test_dsml_web_Link_accept():
-    assert dsml_web_Link.accept(dsml_web_Link('', dsml_web_Link=Page()), 0) == None
+    dsml_web_Link.accept(dsml_web_Link('', dsml_web_Link=Page()), 0)
 from python_code import Form
 from python_code import dsml_web_Page
 
@@ -2603,7 +2603,7 @@ def test_dsml_web_Text___init__():
     assert dsml_web_Text.__init__(dsml_web_Text(''), '') == None
 
 def test_dsml_web_Text_accept():
-    assert dsml_web_Text.accept(dsml_web_Text(''), 0) == None
+    dsml_web_Text.accept(dsml_web_Text(''), 0)
 from python_code import dsml_web_TextArea
 
 def test_dsml_web_TextArea___init__():
@@ -2623,7 +2623,7 @@ def test_dsml_web_Validator___init__():
     assert dsml_web_Validator.__init__(dsml_web_Validator()) == None
 
 def test_dsml_web_Validator_accept():
-    assert dsml_web_Validator.accept(dsml_web_Validator(), '') == None
+    dsml_web_Validator.accept(dsml_web_Validator(), '')
 from python_code import dsml_web_Website
 
 def test_dsml_web_Website___init__():

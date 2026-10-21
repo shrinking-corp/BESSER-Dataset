@@ -589,5 +589,5 @@ def test_genericsGoCrazy_MyClass___init__():
     assert genericsGoCrazy_MyClass.__init__(genericsGoCrazy_MyClass('', '', '', '', ''), '', '', '', '', '') == None
 
 def test_genericsGoCrazy_MyClass_bar():
-    assert genericsGoCrazy_MyClass.bar(genericsGoCrazy_MyClass('\x00', '\x00\x00', '', '', ''), '', '', '') == None
+    genericsGoCrazy_MyClass.bar(genericsGoCrazy_MyClass('\x00', '\x00\x00', '', '', ''), '', '', '')
 

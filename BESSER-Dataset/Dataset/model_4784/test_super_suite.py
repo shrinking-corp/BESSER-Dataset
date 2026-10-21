@@ -1511,7 +1511,7 @@ def test_types_RangeConstraint___init__():
     assert types_RangeConstraint.__init__(types_RangeConstraint('', '\x00'), '\x00\x00', '') == None
 
 def test_types_RangeConstraint_assignableTo():
-    assert types_RangeConstraint.assignableTo(types_RangeConstraint('', ''), '') == None
+    types_RangeConstraint.assignableTo(types_RangeConstraint('', ''), '')
 from python_code import types_Type
 from python_code import types_TypeParameter
 from python_code import types_TypedElement

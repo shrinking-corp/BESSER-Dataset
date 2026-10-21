@@ -8177,10 +8177,10 @@ def test_smif_mapping_ComputedFacade___init__():
     assert smif_mapping_ComputedFacade.__init__(smif_mapping_ComputedFacade()) == None
 
 def test_smif_mapping_ComputedFacade_push():
-    assert smif_mapping_ComputedFacade.push(smif_mapping_ComputedFacade()) == None
+    smif_mapping_ComputedFacade.push(smif_mapping_ComputedFacade())
 
 def test_smif_mapping_ComputedFacade_pull():
-    assert smif_mapping_ComputedFacade.pull(smif_mapping_ComputedFacade()) == None
+    smif_mapping_ComputedFacade.pull(smif_mapping_ComputedFacade())
 from python_code import PatternVariable
 from python_code import smif_mapping_Mapping
 

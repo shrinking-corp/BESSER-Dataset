@@ -5989,10 +5989,10 @@ def test_setup_ScopeRoot___init__():
     assert setup_ScopeRoot.__init__(setup_ScopeRoot()) == None
 
 def test_setup_ScopeRoot_getScope():
-    assert setup_ScopeRoot.getScope(setup_ScopeRoot()) == None
+    setup_ScopeRoot.getScope(setup_ScopeRoot())
 
 def test_setup_ScopeRoot_getParentScopeRoot():
-    assert setup_ScopeRoot.getParentScopeRoot(setup_ScopeRoot()) == None
+    setup_ScopeRoot.getParentScopeRoot(setup_ScopeRoot())
 from python_code import setup_TargetPlatformTask
 
 def test_setup_TargetPlatformTask___init__():

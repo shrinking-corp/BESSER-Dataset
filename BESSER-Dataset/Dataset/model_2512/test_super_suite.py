@@ -371,7 +371,7 @@ def test_test_A___init__():
     assert test_A.__init__(test_A()) == None
 
 def test_test_A_op1():
-    assert test_A.op1(test_A()) == None
+    test_A.op1(test_A())
 from python_code import test_D
 
 def test_test_D___init__():

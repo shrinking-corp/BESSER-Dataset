@@ -1831,7 +1831,7 @@ def test_xpdl_ExternalPackages___init__():
     assert xpdl_ExternalPackages.__init__(xpdl_ExternalPackages(xpdl_ExternalPackages=set()), xpdl_ExternalPackages=set()) == None
 
 def test_xpdl_ExternalPackages_getExternalPackage():
-    assert xpdl_ExternalPackages.getExternalPackage(xpdl_ExternalPackages(xpdl_ExternalPackages=set()), 0) == None
+    xpdl_ExternalPackages.getExternalPackage(xpdl_ExternalPackages(xpdl_ExternalPackages=set()), 0)
 from python_code import xpdl_ScriptType
 
 def test_xpdl_ScriptType___init__():

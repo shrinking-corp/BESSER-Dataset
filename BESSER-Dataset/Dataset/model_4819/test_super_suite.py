@@ -5307,10 +5307,10 @@ def test_gestionmodelosconsultas_ModelFactory___init__():
     assert gestionmodelosconsultas_ModelFactory.__init__(gestionmodelosconsultas_ModelFactory(ModelFactory=factoryrules_RulesFactory(), ModelFactory2=FactoryModeloConsulta(), ModelFactory4=DiagramEntity()), ModelFactory=factoryrules_RulesFactory(), ModelFactory2=FactoryModeloConsulta(), ModelFactory4=DiagramEntity()) == None
 
 def test_gestionmodelosconsultas_ModelFactory_salvar():
-    assert gestionmodelosconsultas_ModelFactory.salvar(gestionmodelosconsultas_ModelFactory(ModelFactory=factoryrules_RulesFactory(), ModelFactory2=FactoryModeloConsulta(), ModelFactory4=DiagramEntity())) == None
+    gestionmodelosconsultas_ModelFactory.salvar(gestionmodelosconsultas_ModelFactory(ModelFactory=factoryrules_RulesFactory(), ModelFactory2=FactoryModeloConsulta(), ModelFactory4=DiagramEntity()))
 
 def test_gestionmodelosconsultas_ModelFactory_cargar():
-    assert gestionmodelosconsultas_ModelFactory.cargar(gestionmodelosconsultas_ModelFactory(ModelFactory=factoryrules_RulesFactory(), ModelFactory2=FactoryModeloConsulta(), ModelFactory4=DiagramEntity())) == None
+    gestionmodelosconsultas_ModelFactory.cargar(gestionmodelosconsultas_ModelFactory(ModelFactory=factoryrules_RulesFactory(), ModelFactory2=FactoryModeloConsulta(), ModelFactory4=DiagramEntity()))
 from python_code import Entity
 from python_code import gestionmodelosconsultas_entitymodel_Attribute
 

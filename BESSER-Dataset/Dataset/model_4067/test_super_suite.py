@@ -1145,7 +1145,7 @@ def test_simpleuml_Model___init__():
     assert simpleuml_Model.__init__(simpleuml_Model()) == None
 
 def test_simpleuml_Model_getCustomProperty():
-    assert simpleuml_Model.getCustomProperty(simpleuml_Model(), '') == None
+    simpleuml_Model.getCustomProperty(simpleuml_Model(), '')
 from python_code import simpleuml_ModelElement
 
 def test_simpleuml_ModelElement___init__():

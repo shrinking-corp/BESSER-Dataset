@@ -4153,5 +4153,5 @@ def test_tracker_WeighIn___init__():
     assert tracker_WeighIn.__init__(tracker_WeighIn('', '\x00'), '\x00\x00', '') == None
 
 def test_tracker_WeighIn_previousWeighIn():
-    assert tracker_WeighIn.previousWeighIn(tracker_WeighIn('', '')) == None
+    tracker_WeighIn.previousWeighIn(tracker_WeighIn('', ''))
 

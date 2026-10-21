@@ -2524,5 +2524,5 @@ def test_gx10_Print___init__():
     assert gx10_Print.__init__(gx10_Print(gx10_Print=gx10_Expression()), gx10_Print=gx10_Expression()) == None
 
 def test_gx10_Print_print():
-    assert gx10_Print.print(gx10_Print(gx10_Print=gx10_Expression())) == None
+    gx10_Print.print(gx10_Print(gx10_Print=gx10_Expression()))
 

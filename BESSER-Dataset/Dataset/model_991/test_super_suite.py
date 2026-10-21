@@ -899,14 +899,14 @@ def test_dfs_DepthFirstSearch___init__():
     assert dfs_DepthFirstSearch.__init__(dfs_DepthFirstSearch(0, 0), 0, 0) == None
 
 def test_dfs_DepthFirstSearch_processEdge():
-    assert dfs_DepthFirstSearch.processEdge(dfs_DepthFirstSearch(0, 0), '') == None
+    dfs_DepthFirstSearch.processEdge(dfs_DepthFirstSearch(0, 0), '')
 
 def test_dfs_DepthFirstSearch_incrementPreTraversalCounter():
-    assert dfs_DepthFirstSearch.incrementPreTraversalCounter(dfs_DepthFirstSearch(0, 0)) == None
+    dfs_DepthFirstSearch.incrementPreTraversalCounter(dfs_DepthFirstSearch(0, 0))
 
 def test_dfs_DepthFirstSearch_incrementPostTraversalCounter():
-    assert dfs_DepthFirstSearch.incrementPostTraversalCounter(dfs_DepthFirstSearch(0, 0)) == None
+    dfs_DepthFirstSearch.incrementPostTraversalCounter(dfs_DepthFirstSearch(0, 0))
 
 def test_dfs_DepthFirstSearch_processNode():
-    assert dfs_DepthFirstSearch.processNode(dfs_DepthFirstSearch(0, 0), '') == None
+    dfs_DepthFirstSearch.processNode(dfs_DepthFirstSearch(0, 0), '')
 

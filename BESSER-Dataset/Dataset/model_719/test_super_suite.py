@@ -5785,7 +5785,7 @@ def test_kermeta_structure_Class___init__():
     assert kermeta_structure_Class.__init__(kermeta_structure_Class('', '', kermeta_structure_Class=set(), kermeta_structure_Class61=set(), kermeta_structure_Class64=set()), '', '', kermeta_structure_Class=set(), kermeta_structure_Class61=set(), kermeta_structure_Class64=set()) == None
 
 def test_kermeta_structure_Class__new():
-    assert kermeta_structure_Class._new(kermeta_structure_Class('\x00\x00', '', kermeta_structure_Class=set(), kermeta_structure_Class61=set(), kermeta_structure_Class64=set())) == None
+    kermeta_structure_Class._new(kermeta_structure_Class('\x00\x00', '', kermeta_structure_Class=set(), kermeta_structure_Class61=set(), kermeta_structure_Class64=set()))
 from python_code import kermeta_structure_ClassDefinition
 from python_code import kermeta_structure_ParameterizedType
 from python_code import kermeta_structure_Type

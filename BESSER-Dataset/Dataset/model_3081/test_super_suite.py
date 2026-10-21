@@ -2240,10 +2240,10 @@ def test_caltrop_ActionPattern___init__():
     assert caltrop_ActionPattern.__init__(caltrop_ActionPattern()) == None
 
 def test_caltrop_ActionPattern_getGuardExpression():
-    assert caltrop_ActionPattern.getGuardExpression(caltrop_ActionPattern()) == None
+    caltrop_ActionPattern.getGuardExpression(caltrop_ActionPattern())
 
 def test_caltrop_ActionPattern_getPatternVariables():
-    assert caltrop_ActionPattern.getPatternVariables(caltrop_ActionPattern()) == None
+    caltrop_ActionPattern.getPatternVariables(caltrop_ActionPattern())
 from python_code import caltrop_ConversionRelation
 from python_code import caltrop_XExpression
 
@@ -2270,7 +2270,7 @@ def test_caltrop_OutputAction___init__():
     assert caltrop_OutputAction.__init__(caltrop_OutputAction(caltrop_OutputAction=caltrop_CaltropActorImpl(), caltrop_OutputAction11=caltrop_XExpression(), caltrop_OutputAction13=set(), caltrop_OutputAction15=caltrop_XExpression(), caltrop_OutputAction18=caltrop_XExpression(), caltrop_OutputAction21=caltrop_XExpression()), caltrop_OutputAction=caltrop_CaltropActorImpl(), caltrop_OutputAction11=caltrop_XExpression(), caltrop_OutputAction13=set(), caltrop_OutputAction15=caltrop_XExpression(), caltrop_OutputAction18=caltrop_XExpression(), caltrop_OutputAction21=caltrop_XExpression()) == None
 
 def test_caltrop_OutputAction_getInputPatterns():
-    assert caltrop_OutputAction.getInputPatterns(caltrop_OutputAction(caltrop_OutputAction=caltrop_CaltropActorImpl(), caltrop_OutputAction11=caltrop_XExpression(), caltrop_OutputAction13=set(), caltrop_OutputAction15=caltrop_XExpression(), caltrop_OutputAction18=caltrop_XExpression(), caltrop_OutputAction21=caltrop_XExpression())) == None
+    caltrop_OutputAction.getInputPatterns(caltrop_OutputAction(caltrop_OutputAction=caltrop_CaltropActorImpl(), caltrop_OutputAction11=caltrop_XExpression(), caltrop_OutputAction13=set(), caltrop_OutputAction15=caltrop_XExpression(), caltrop_OutputAction18=caltrop_XExpression(), caltrop_OutputAction21=caltrop_XExpression()))
 from python_code import caltrop_ChannelSelector
 from python_code import caltrop_Port
 from python_code import caltrop_PortPattern
@@ -2280,7 +2280,7 @@ def test_caltrop_PortPattern___init__():
     assert caltrop_PortPattern.__init__(caltrop_PortPattern(caltrop_PortPattern=caltrop_XExpression(), caltrop_PortPattern26=caltrop_ChannelSelector(), caltrop_PortPattern28=caltrop_Port(), caltrop_PortPattern30=caltrop_XExpression()), caltrop_PortPattern=caltrop_XExpression(), caltrop_PortPattern26=caltrop_ChannelSelector(), caltrop_PortPattern28=caltrop_Port(), caltrop_PortPattern30=caltrop_XExpression()) == None
 
 def test_caltrop_PortPattern_size():
-    assert caltrop_PortPattern.size(caltrop_PortPattern(caltrop_PortPattern=caltrop_XExpression(), caltrop_PortPattern26=caltrop_ChannelSelector(), caltrop_PortPattern28=caltrop_Port(), caltrop_PortPattern30=caltrop_XExpression())) == None
+    caltrop_PortPattern.size(caltrop_PortPattern(caltrop_PortPattern=caltrop_XExpression(), caltrop_PortPattern26=caltrop_ChannelSelector(), caltrop_PortPattern28=caltrop_Port(), caltrop_PortPattern30=caltrop_XExpression()))
 from python_code import caltrop_State
 from python_code import caltrop_Transition
 

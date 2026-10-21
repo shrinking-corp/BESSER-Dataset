@@ -8038,7 +8038,7 @@ def test_asmeta_basicterms_Term___init__():
     assert asmeta_basicterms_Term.__init__(asmeta_basicterms_Term(asmeta_basicterms_Term=domains_Domain(), term=set()), asmeta_basicterms_Term=domains_Domain(), term=set()) == None
 
 def test_asmeta_basicterms_Term_compatible():
-    assert asmeta_basicterms_Term.compatible(asmeta_basicterms_Term(asmeta_basicterms_Term=domains_Domain(), term=set())) == None
+    asmeta_basicterms_Term.compatible(asmeta_basicterms_Term(asmeta_basicterms_Term=domains_Domain(), term=set()))
 from python_code import asmeta_basicterms_TupleTerm
 
 def test_asmeta_basicterms_TupleTerm___init__():
@@ -8110,7 +8110,7 @@ def test_asmeta_domains_Domain___init__():
     assert asmeta_domains_Domain.__init__(asmeta_domains_Domain(constrainedDomain=set(), domain=Signature()), constrainedDomain=set(), domain=Signature()) == None
 
 def test_asmeta_domains_Domain_compatible():
-    assert asmeta_domains_Domain.compatible(asmeta_domains_Domain(constrainedDomain=set(), domain=Signature())) == None
+    asmeta_domains_Domain.compatible(asmeta_domains_Domain(constrainedDomain=set(), domain=Signature()))
 from python_code import asmeta_domains_EnumElement
 
 def test_asmeta_domains_EnumElement___init__():

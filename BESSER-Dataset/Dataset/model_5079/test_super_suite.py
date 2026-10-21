@@ -253,5 +253,5 @@ def test_test_Output___init__():
     assert test_Output.__init__(test_Output(''), '') == None
 
 def test_test_Output_test():
-    assert test_Output.test(test_Output('')) == None
+    test_Output.test(test_Output(''))
 

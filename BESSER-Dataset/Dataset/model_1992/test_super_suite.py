@@ -918,11 +918,11 @@ def test_trace_MatchingTrace___init__():
     assert trace_MatchingTrace.__init__(trace_MatchingTrace(''), '') == None
 
 def test_trace_MatchingTrace_getEClassComparision():
-    assert trace_MatchingTrace.getEClassComparision(trace_MatchingTrace(''), 0, '\x00\x00') == None
+    trace_MatchingTrace.getEClassComparision(trace_MatchingTrace(''), 0, '\x00\x00')
 
 def test_trace_MatchingTrace_getQueryContext():
-    assert trace_MatchingTrace.getQueryContext(trace_MatchingTrace('')) == None
+    trace_MatchingTrace.getQueryContext(trace_MatchingTrace(''))
 
 def test_trace_MatchingTrace_getEStructuralFeatureComparison():
-    assert trace_MatchingTrace.getEStructuralFeatureComparison(trace_MatchingTrace(''), 0, '\x00\x00') == None
+    trace_MatchingTrace.getEStructuralFeatureComparison(trace_MatchingTrace(''), 0, '\x00\x00')
 

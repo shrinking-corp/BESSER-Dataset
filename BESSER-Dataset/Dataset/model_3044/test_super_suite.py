@@ -5845,16 +5845,16 @@ def test_behavioral_actions_Block___init__():
     assert behavioral_actions_Block.__init__(behavioral_actions_Block(block=set(), owner=set(), nestedBlocks=StatementWithNestedBlocks()), block=set(), owner=set(), nestedBlocks=StatementWithNestedBlocks()) == None
 
 def test_behavioral_actions_Block_getNamedValuesInScope():
-    assert behavioral_actions_Block.getNamedValuesInScope(behavioral_actions_Block(block=set(), owner=set(), nestedBlocks=StatementWithNestedBlocks())) == None
+    behavioral_actions_Block.getNamedValuesInScope(behavioral_actions_Block(block=set(), owner=set(), nestedBlocks=StatementWithNestedBlocks()))
 
 def test_behavioral_actions_Block_getOutermostBlock():
-    assert behavioral_actions_Block.getOutermostBlock(behavioral_actions_Block(block=set(), owner=set(), nestedBlocks=StatementWithNestedBlocks())) == None
+    behavioral_actions_Block.getOutermostBlock(behavioral_actions_Block(block=set(), owner=set(), nestedBlocks=StatementWithNestedBlocks()))
 
 def test_behavioral_actions_Block_getOwningClass():
-    assert behavioral_actions_Block.getOwningClass(behavioral_actions_Block(block=set(), owner=set(), nestedBlocks=StatementWithNestedBlocks())) == None
+    behavioral_actions_Block.getOwningClass(behavioral_actions_Block(block=set(), owner=set(), nestedBlocks=StatementWithNestedBlocks()))
 
 def test_behavioral_actions_Block_localIsSideEffectFree():
-    assert behavioral_actions_Block.localIsSideEffectFree(behavioral_actions_Block(block=set(), owner=set(), nestedBlocks=StatementWithNestedBlocks())) == None
+    behavioral_actions_Block.localIsSideEffectFree(behavioral_actions_Block(block=set(), owner=set(), nestedBlocks=StatementWithNestedBlocks()))
 from python_code import Expression
 from python_code import Iterator
 from python_code import behavioral_actions_Foreach
@@ -5867,10 +5867,10 @@ def test_behavioral_actions_IfElse___init__():
     assert behavioral_actions_IfElse.__init__(behavioral_actions_IfElse()) == None
 
 def test_behavioral_actions_IfElse_getElseBlock():
-    assert behavioral_actions_IfElse.getElseBlock(behavioral_actions_IfElse()) == None
+    behavioral_actions_IfElse.getElseBlock(behavioral_actions_IfElse())
 
 def test_behavioral_actions_IfElse_getIfBlock():
-    assert behavioral_actions_IfElse.getIfBlock(behavioral_actions_IfElse()) == None
+    behavioral_actions_IfElse.getIfBlock(behavioral_actions_IfElse())
 from python_code import Association
 from python_code import StatementWithNestedBlocks
 from python_code import behavioral_actions_Block
@@ -5885,19 +5885,19 @@ def test_behavioral_actions_Statement___init__():
     assert behavioral_actions_Statement.__init__(behavioral_actions_Statement(statements=Block()), statements=Block()) == None
 
 def test_behavioral_actions_Statement_getOutermostBlock():
-    assert behavioral_actions_Statement.getOutermostBlock(behavioral_actions_Statement(statements=Block())) == None
+    behavioral_actions_Statement.getOutermostBlock(behavioral_actions_Statement(statements=Block()))
 
 def test_behavioral_actions_Statement_isSideEffectFree():
-    assert behavioral_actions_Statement.isSideEffectFree(behavioral_actions_Statement(statements=Block())) == None
+    behavioral_actions_Statement.isSideEffectFree(behavioral_actions_Statement(statements=Block()))
 
 def test_behavioral_actions_Statement_getOwningClass():
-    assert behavioral_actions_Statement.getOwningClass(behavioral_actions_Statement(statements=Block())) == None
+    behavioral_actions_Statement.getOwningClass(behavioral_actions_Statement(statements=Block()))
 
 def test_behavioral_actions_Statement_getNamedValuesInScope():
-    assert behavioral_actions_Statement.getNamedValuesInScope(behavioral_actions_Statement(statements=Block())) == None
+    behavioral_actions_Statement.getNamedValuesInScope(behavioral_actions_Statement(statements=Block()))
 
 def test_behavioral_actions_Statement_isSideEffectFreeForBlock():
-    assert behavioral_actions_Statement.isSideEffectFreeForBlock(behavioral_actions_Statement(statements=Block()), '') == None
+    behavioral_actions_Statement.isSideEffectFreeForBlock(behavioral_actions_Statement(statements=Block()), '')
 from python_code import behavioral_actions_NamedValueDeclaration
 from python_code import behavioral_actions_Variable
 
@@ -5905,14 +5905,14 @@ def test_behavioral_actions_Variable___init__():
     assert behavioral_actions_Variable.__init__(behavioral_actions_Variable(assignTo=set(), NamedValueWithOptionalInitExpression=behavioral_actions_NamedValueDeclaration()), assignTo=set(), NamedValueWithOptionalInitExpression=behavioral_actions_NamedValueDeclaration()) == None
 
 def test_behavioral_actions_Variable_getCommonTypeOfAssignments():
-    assert behavioral_actions_Variable.getCommonTypeOfAssignments(behavioral_actions_Variable(assignTo=set(), NamedValueWithOptionalInitExpression=behavioral_actions_NamedValueDeclaration())) == None
+    behavioral_actions_Variable.getCommonTypeOfAssignments(behavioral_actions_Variable(assignTo=set(), NamedValueWithOptionalInitExpression=behavioral_actions_NamedValueDeclaration()))
 from python_code import behavioral_actions_WhileLoop
 
 def test_behavioral_actions_WhileLoop___init__():
     assert behavioral_actions_WhileLoop.__init__(behavioral_actions_WhileLoop()) == None
 
 def test_behavioral_actions_WhileLoop_getLoopBody():
-    assert behavioral_actions_WhileLoop.getLoopBody(behavioral_actions_WhileLoop()) == None
+    behavioral_actions_WhileLoop.getLoopBody(behavioral_actions_WhileLoop())
 from python_code import behavioral_design_AbstractAction
 
 def test_behavioral_design_AbstractAction___init__():

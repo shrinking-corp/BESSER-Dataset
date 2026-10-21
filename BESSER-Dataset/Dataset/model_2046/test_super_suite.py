@@ -7892,7 +7892,7 @@ def test_room_InterfaceItem___init__():
     assert room_InterfaceItem.__init__(room_InterfaceItem('', room_InterfaceItem=room_MessageFromIf()), '', room_InterfaceItem=room_MessageFromIf()) == None
 
 def test_room_InterfaceItem_getGeneralProtocol():
-    assert room_InterfaceItem.getGeneralProtocol(room_InterfaceItem('', room_InterfaceItem=room_MessageFromIf())) == None
+    room_InterfaceItem.getGeneralProtocol(room_InterfaceItem('', room_InterfaceItem=room_MessageFromIf()))
 from python_code import room_LogicalThread
 from python_code import room_SubSystemClass
 
@@ -7908,7 +7908,7 @@ def test_room_StateGraphItem___init__():
     assert room_StateGraphItem.__init__(room_StateGraphItem()) == None
 
 def test_room_StateGraphItem_getName():
-    assert room_StateGraphItem.getName(room_StateGraphItem()) == None
+    room_StateGraphItem.getName(room_StateGraphItem())
 from python_code import room_BindingEndPoint
 from python_code import room_CompoundProtocolClass
 from python_code import room_GeneralProtocolClass

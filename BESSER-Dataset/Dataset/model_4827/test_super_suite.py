@@ -7500,10 +7500,10 @@ def test_model_Adapter___init__():
     assert model_Adapter.__init__(model_Adapter()) == None
 
 def test_model_Adapter_getAdapter():
-    assert model_Adapter.getAdapter(model_Adapter(), '') == None
+    model_Adapter.getAdapter(model_Adapter(), '')
 
 def test_model_Adapter_setAdapter():
-    assert model_Adapter.setAdapter(model_Adapter(), '', '') == None
+    model_Adapter.setAdapter(model_Adapter(), '', '')
 from python_code import model_ArchimateDiagramModel
 
 def test_model_ArchimateDiagramModel___init__():
@@ -7515,26 +7515,26 @@ def test_model_ArchimateModel___init__():
     assert model_ArchimateModel.__init__(model_ArchimateModel('', '', '\x00\x00', model_ArchimateModel=model_Metadata()), '', '', '', model_ArchimateModel=model_Metadata()) == None
 
 def test_model_ArchimateModel_setDefaults():
-    assert model_ArchimateModel.setDefaults(model_ArchimateModel('', '', '\x00', model_ArchimateModel=model_Metadata())) == None
+    model_ArchimateModel.setDefaults(model_ArchimateModel('', '', '\x00', model_ArchimateModel=model_Metadata()))
 
 def test_model_ArchimateModel_getFolder():
-    assert model_ArchimateModel.getFolder(model_ArchimateModel('', '', '\x00', model_ArchimateModel=model_Metadata()), '') == None
+    model_ArchimateModel.getFolder(model_ArchimateModel('', '', '\x00', model_ArchimateModel=model_Metadata()), '')
 
 def test_model_ArchimateModel_getDefaultDiagramModel():
-    assert model_ArchimateModel.getDefaultDiagramModel(model_ArchimateModel('', '', '\x00', model_ArchimateModel=model_Metadata())) == None
+    model_ArchimateModel.getDefaultDiagramModel(model_ArchimateModel('', '', '\x00', model_ArchimateModel=model_Metadata()))
 
 def test_model_ArchimateModel_getDiagramModels():
-    assert model_ArchimateModel.getDiagramModels(model_ArchimateModel('', '', '\x00', model_ArchimateModel=model_Metadata())) == None
+    model_ArchimateModel.getDiagramModels(model_ArchimateModel('', '', '\x00', model_ArchimateModel=model_Metadata()))
 
 def test_model_ArchimateModel_getDefaultFolderForObject():
-    assert model_ArchimateModel.getDefaultFolderForObject(model_ArchimateModel('', '', '\x00', model_ArchimateModel=model_Metadata()), '') == None
+    model_ArchimateModel.getDefaultFolderForObject(model_ArchimateModel('', '', '\x00', model_ArchimateModel=model_Metadata()), '')
 from python_code import model_ArchimateModelObject
 
 def test_model_ArchimateModelObject___init__():
     assert model_ArchimateModelObject.__init__(model_ArchimateModelObject()) == None
 
 def test_model_ArchimateModelObject_getArchimateModel():
-    assert model_ArchimateModelObject.getArchimateModel(model_ArchimateModelObject()) == None
+    model_ArchimateModelObject.getArchimateModel(model_ArchimateModelObject())
 from python_code import model_ArchimateConcept
 from python_code import model_ArchimateRelationship
 from python_code import model_DiagramModelArchimateConnection
@@ -7543,13 +7543,13 @@ def test_model_ArchimateRelationship___init__():
     assert model_ArchimateRelationship.__init__(model_ArchimateRelationship(model_ArchimateRelationship=model_ArchimateConcept(), model_ArchimateRelationship8=model_ArchimateConcept(), model_ArchimateRelationship30=model_DiagramModelArchimateConnection()), model_ArchimateRelationship=model_ArchimateConcept(), model_ArchimateRelationship8=model_ArchimateConcept(), model_ArchimateRelationship30=model_DiagramModelArchimateConnection()) == None
 
 def test_model_ArchimateRelationship_reconnect():
-    assert model_ArchimateRelationship.reconnect(model_ArchimateRelationship(model_ArchimateRelationship=model_ArchimateConcept(), model_ArchimateRelationship8=model_ArchimateConcept(), model_ArchimateRelationship30=model_DiagramModelArchimateConnection())) == None
+    model_ArchimateRelationship.reconnect(model_ArchimateRelationship(model_ArchimateRelationship=model_ArchimateConcept(), model_ArchimateRelationship8=model_ArchimateConcept(), model_ArchimateRelationship30=model_DiagramModelArchimateConnection()))
 
 def test_model_ArchimateRelationship_connect():
-    assert model_ArchimateRelationship.connect(model_ArchimateRelationship(model_ArchimateRelationship=model_ArchimateConcept(), model_ArchimateRelationship8=model_ArchimateConcept(), model_ArchimateRelationship30=model_DiagramModelArchimateConnection()), '', '') == None
+    model_ArchimateRelationship.connect(model_ArchimateRelationship(model_ArchimateRelationship=model_ArchimateConcept(), model_ArchimateRelationship8=model_ArchimateConcept(), model_ArchimateRelationship30=model_DiagramModelArchimateConnection()), '', '')
 
 def test_model_ArchimateRelationship_disconnect():
-    assert model_ArchimateRelationship.disconnect(model_ArchimateRelationship(model_ArchimateRelationship=model_ArchimateConcept(), model_ArchimateRelationship8=model_ArchimateConcept(), model_ArchimateRelationship30=model_DiagramModelArchimateConnection())) == None
+    model_ArchimateRelationship.disconnect(model_ArchimateRelationship(model_ArchimateRelationship=model_ArchimateConcept(), model_ArchimateRelationship8=model_ArchimateConcept(), model_ArchimateRelationship30=model_DiagramModelArchimateConnection()))
 from python_code import model_BorderObject
 
 def test_model_BorderObject___init__():
@@ -7560,7 +7560,7 @@ def test_model_Cloneable___init__():
     assert model_Cloneable.__init__(model_Cloneable()) == None
 
 def test_model_Cloneable_getCopy():
-    assert model_Cloneable.getCopy(model_Cloneable()) == None
+    model_Cloneable.getCopy(model_Cloneable())
 from python_code import model_DiagramModel
 from python_code import model_DiagramModelReference
 
@@ -7572,16 +7572,16 @@ def test_model_DiagramModelArchimateComponent___init__():
     assert model_DiagramModelArchimateComponent.__init__(model_DiagramModelArchimateComponent()) == None
 
 def test_model_DiagramModelArchimateComponent_getArchimateConcept():
-    assert model_DiagramModelArchimateComponent.getArchimateConcept(model_DiagramModelArchimateComponent()) == None
+    model_DiagramModelArchimateComponent.getArchimateConcept(model_DiagramModelArchimateComponent())
 
 def test_model_DiagramModelArchimateComponent_removeArchimateConceptFromModel():
-    assert model_DiagramModelArchimateComponent.removeArchimateConceptFromModel(model_DiagramModelArchimateComponent()) == None
+    model_DiagramModelArchimateComponent.removeArchimateConceptFromModel(model_DiagramModelArchimateComponent())
 
 def test_model_DiagramModelArchimateComponent_setArchimateConcept():
-    assert model_DiagramModelArchimateComponent.setArchimateConcept(model_DiagramModelArchimateComponent(), '') == None
+    model_DiagramModelArchimateComponent.setArchimateConcept(model_DiagramModelArchimateComponent(), '')
 
 def test_model_DiagramModelArchimateComponent_addArchimateConceptToModel():
-    assert model_DiagramModelArchimateComponent.addArchimateConceptToModel(model_DiagramModelArchimateComponent(), '') == None
+    model_DiagramModelArchimateComponent.addArchimateConceptToModel(model_DiagramModelArchimateComponent(), '')
 from python_code import model_ArchimateElement
 from python_code import model_DiagramModelArchimateObject
 
@@ -7593,7 +7593,7 @@ def test_model_DiagramModelComponent___init__():
     assert model_DiagramModelComponent.__init__(model_DiagramModelComponent()) == None
 
 def test_model_DiagramModelComponent_getDiagramModel():
-    assert model_DiagramModelComponent.getDiagramModel(model_DiagramModelComponent()) == None
+    model_DiagramModelComponent.getDiagramModel(model_DiagramModelComponent())
 from python_code import model_DiagramModelImageProvider
 
 def test_model_DiagramModelImageProvider___init__():

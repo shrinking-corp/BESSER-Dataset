@@ -7803,7 +7803,7 @@ def test_model_datasources_QueryResults___init__():
     assert model_datasources_QueryResults.__init__(model_datasources_QueryResults('\x00\x00', '', model_datasources_QueryResults=set()), '', '', model_datasources_QueryResults=set()) == None
 
 def test_model_datasources_QueryResults_getValue():
-    assert model_datasources_QueryResults.getValue(model_datasources_QueryResults('', '\x00', model_datasources_QueryResults=set()), '', '') == None
+    model_datasources_QueryResults.getValue(model_datasources_QueryResults('', '\x00', model_datasources_QueryResults=set()), '', '')
 from python_code import model_datasources_RunnableQuery
 
 def test_model_datasources_RunnableQuery___init__():

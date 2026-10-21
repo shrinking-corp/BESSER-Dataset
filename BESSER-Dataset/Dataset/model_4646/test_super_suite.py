@@ -6256,10 +6256,10 @@ def test_notation_SingleValueStyle___init__():
     assert notation_SingleValueStyle.__init__(notation_SingleValueStyle(''), '') == None
 
 def test_notation_SingleValueStyle_getValue():
-    assert notation_SingleValueStyle.getValue(notation_SingleValueStyle('')) == None
+    notation_SingleValueStyle.getValue(notation_SingleValueStyle(''))
 
 def test_notation_SingleValueStyle_setValue():
-    assert notation_SingleValueStyle.setValue(notation_SingleValueStyle(''), 0) == None
+    notation_SingleValueStyle.setValue(notation_SingleValueStyle(''), 0)
 from python_code import notation_Size
 
 def test_notation_Size___init__():
@@ -6278,10 +6278,10 @@ def test_notation_StringObjectConverter___init__():
     assert notation_StringObjectConverter.__init__(notation_StringObjectConverter()) == None
 
 def test_notation_StringObjectConverter_getObjectFromString():
-    assert notation_StringObjectConverter.getObjectFromString(notation_StringObjectConverter(), '') == None
+    notation_StringObjectConverter.getObjectFromString(notation_StringObjectConverter(), '')
 
 def test_notation_StringObjectConverter_getStringFromObject():
-    assert notation_StringObjectConverter.getStringFromObject(notation_StringObjectConverter(), '') == None
+    notation_StringObjectConverter.getStringFromObject(notation_StringObjectConverter(), '')
 from python_code import notation_StringValueStyle
 
 def test_notation_StringValueStyle___init__():

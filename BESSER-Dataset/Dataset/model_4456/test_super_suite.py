@@ -901,14 +901,14 @@ def test_arduinoml_Off___init__():
     assert arduinoml_Off.__init__(arduinoml_Off()) == None
 
 def test_arduinoml_Off_turnOff():
-    assert arduinoml_Off.turnOff(arduinoml_Off()) == None
+    arduinoml_Off.turnOff(arduinoml_Off())
 from python_code import arduinoml_On
 
 def test_arduinoml_On___init__():
     assert arduinoml_On.__init__(arduinoml_On()) == None
 
 def test_arduinoml_On_turnOn():
-    assert arduinoml_On.turnOn(arduinoml_On()) == None
+    arduinoml_On.turnOn(arduinoml_On())
 from python_code import arduinoml_Board
 from python_code import arduinoml_State
 from python_code import arduinoml_Transition

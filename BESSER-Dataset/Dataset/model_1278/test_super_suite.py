@@ -2541,13 +2541,13 @@ def test_essentialoclcs_AbstractNameExpCS___init__():
     assert essentialoclcs_AbstractNameExpCS.__init__(essentialoclcs_AbstractNameExpCS()) == None
 
 def test_essentialoclcs_AbstractNameExpCS_getNamedElement():
-    assert essentialoclcs_AbstractNameExpCS.getNamedElement(essentialoclcs_AbstractNameExpCS()) == None
+    essentialoclcs_AbstractNameExpCS.getNamedElement(essentialoclcs_AbstractNameExpCS())
 
 def test_essentialoclcs_AbstractNameExpCS_getNameExp():
-    assert essentialoclcs_AbstractNameExpCS.getNameExp(essentialoclcs_AbstractNameExpCS()) == None
+    essentialoclcs_AbstractNameExpCS.getNameExp(essentialoclcs_AbstractNameExpCS())
 
 def test_essentialoclcs_AbstractNameExpCS_getPathName():
-    assert essentialoclcs_AbstractNameExpCS.getPathName(essentialoclcs_AbstractNameExpCS()) == None
+    essentialoclcs_AbstractNameExpCS.getPathName(essentialoclcs_AbstractNameExpCS())
 from python_code import essentialoclcs_BooleanLiteralExpCS
 
 def test_essentialoclcs_BooleanLiteralExpCS___init__():

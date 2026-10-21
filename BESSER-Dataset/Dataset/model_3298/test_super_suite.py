@@ -3937,58 +3937,58 @@ def test_standard_DiseaseModel___init__():
     assert standard_DiseaseModel.__init__(standard_DiseaseModel(0.0, '', '', '', 0.0, False, False, 0.0), 0.0, '', '', '\x00', 0.0, False, False, 0.0) == None
 
 def test_standard_DiseaseModel_initializeDiseaseState():
-    assert standard_DiseaseModel.initializeDiseaseState(standard_DiseaseModel(0.0, '', '', '', 0.0, False, False, 0.0), '') == None
+    standard_DiseaseModel.initializeDiseaseState(standard_DiseaseModel(0.0, '', '', '', 0.0, False, False, 0.0), '')
 
 def test_standard_DiseaseModel_createDiseaseModelLabel():
-    assert standard_DiseaseModel.createDiseaseModelLabel(standard_DiseaseModel(0.0, '', '', '', 0.0, False, False, 0.0)) == None
+    standard_DiseaseModel.createDiseaseModelLabel(standard_DiseaseModel(0.0, '', '', '', 0.0, False, False, 0.0))
 
 def test_standard_DiseaseModel_getAdjustedBackgroundMortalityRate():
-    assert standard_DiseaseModel.getAdjustedBackgroundMortalityRate(standard_DiseaseModel(0.0, '', '', '', 0.0, False, False, 0.0), '') == None
+    standard_DiseaseModel.getAdjustedBackgroundMortalityRate(standard_DiseaseModel(0.0, '', '', '', 0.0, False, False, 0.0), '')
 
 def test_standard_DiseaseModel_createDiseaseModelLabelValue():
-    assert standard_DiseaseModel.createDiseaseModelLabelValue(standard_DiseaseModel(0.0, '', '', '', 0.0, False, False, 0.0)) == None
+    standard_DiseaseModel.createDiseaseModelLabelValue(standard_DiseaseModel(0.0, '', '', '', 0.0, False, False, 0.0))
 
 def test_standard_DiseaseModel_getAdjustedBackgroundBirthRate():
-    assert standard_DiseaseModel.getAdjustedBackgroundBirthRate(standard_DiseaseModel(0.0, '', '', '', 0.0, False, False, 0.0), '') == None
+    standard_DiseaseModel.getAdjustedBackgroundBirthRate(standard_DiseaseModel(0.0, '', '', '', 0.0, False, False, 0.0), '')
 
 def test_standard_DiseaseModel_createInfector():
-    assert standard_DiseaseModel.createInfector(standard_DiseaseModel(0.0, '', '', '', 0.0, False, False, 0.0)) == None
+    standard_DiseaseModel.createInfector(standard_DiseaseModel(0.0, '', '', '', 0.0, False, False, 0.0))
 
 def test_standard_DiseaseModel_createDiseaseModelState():
-    assert standard_DiseaseModel.createDiseaseModelState(standard_DiseaseModel(0.0, '', '', '', 0.0, False, False, 0.0)) == None
+    standard_DiseaseModel.createDiseaseModelState(standard_DiseaseModel(0.0, '', '', '', 0.0, False, False, 0.0))
 from python_code import standard_DiseaseModelLabelValue
 
 def test_standard_DiseaseModelLabelValue___init__():
     assert standard_DiseaseModelLabelValue.__init__(standard_DiseaseModelLabelValue(0.0, 0.0, 0.0), 0.0, 0.0, 0.0) == None
 
 def test_standard_DiseaseModelLabelValue_add():
-    assert standard_DiseaseModelLabelValue.add(standard_DiseaseModelLabelValue(0.0, 0.0, 0.0), '') == None
+    standard_DiseaseModelLabelValue.add(standard_DiseaseModelLabelValue(0.0, 0.0, 0.0), '')
 
 def test_standard_DiseaseModelLabelValue_set():
-    assert standard_DiseaseModelLabelValue.set(standard_DiseaseModelLabelValue(0.0, 0.0, 0.0), '') == None
+    standard_DiseaseModelLabelValue.set(standard_DiseaseModelLabelValue(0.0, 0.0, 0.0), '')
 
 def test_standard_DiseaseModelLabelValue_sub():
-    assert standard_DiseaseModelLabelValue.sub(standard_DiseaseModelLabelValue(0.0, 0.0, 0.0), '') == None
+    standard_DiseaseModelLabelValue.sub(standard_DiseaseModelLabelValue(0.0, 0.0, 0.0), '')
 
 def test_standard_DiseaseModelLabelValue_scale():
-    assert standard_DiseaseModelLabelValue.scale(standard_DiseaseModelLabelValue(0.0, 0.0, 0.0), '') == None
+    standard_DiseaseModelLabelValue.scale(standard_DiseaseModelLabelValue(0.0, 0.0, 0.0), '')
 
 def test_standard_DiseaseModelLabelValue_zeroOutPopulationCount():
-    assert standard_DiseaseModelLabelValue.zeroOutPopulationCount(standard_DiseaseModelLabelValue(0.0, 0.0, 0.0)) == None
+    standard_DiseaseModelLabelValue.zeroOutPopulationCount(standard_DiseaseModelLabelValue(0.0, 0.0, 0.0))
 from python_code import standard_IntegrationDecorator
 
 def test_standard_IntegrationDecorator___init__():
     assert standard_IntegrationDecorator.__init__(standard_IntegrationDecorator()) == None
 
 def test_standard_IntegrationDecorator_isDeterministic():
-    assert standard_IntegrationDecorator.isDeterministic(standard_IntegrationDecorator()) == None
+    standard_IntegrationDecorator.isDeterministic(standard_IntegrationDecorator())
 from python_code import standard_SEIR
 
 def test_standard_SEIR___init__():
     assert standard_SEIR.__init__(standard_SEIR(0.0), 0.0) == None
 
 def test_standard_SEIR_getAdjustedIncubationRate():
-    assert standard_SEIR.getAdjustedIncubationRate(standard_SEIR(0.0), '') == None
+    standard_SEIR.getAdjustedIncubationRate(standard_SEIR(0.0), '')
 from python_code import standard_SEIRLabel
 from python_code import standard_SEIRLabelValue
 
@@ -4009,7 +4009,7 @@ def test_standard_SIR___init__():
     assert standard_SIR.__init__(standard_SIR(0.0), 0.0) == None
 
 def test_standard_SIR_getAdjustedImmunityLossRate():
-    assert standard_SIR.getAdjustedImmunityLossRate(standard_SIR(0.0), '') == None
+    standard_SIR.getAdjustedImmunityLossRate(standard_SIR(0.0), '')
 from python_code import standard_SIRInoculator
 
 def test_standard_SIRInoculator___init__():
@@ -4033,7 +4033,7 @@ def test_standard_StandardStochasticDiseaseModel___init__():
     assert standard_StandardStochasticDiseaseModel.__init__(standard_StandardStochasticDiseaseModel(0.0), 0.0) == None
 
 def test_standard_StandardStochasticDiseaseModel_computeNoise():
-    assert standard_StandardStochasticDiseaseModel.computeNoise(standard_StandardStochasticDiseaseModel(0.0)) == None
+    standard_StandardStochasticDiseaseModel.computeNoise(standard_StandardStochasticDiseaseModel(0.0))
 from python_code import standard_StochasticDiseaseModel
 
 def test_standard_StochasticDiseaseModel___init__():

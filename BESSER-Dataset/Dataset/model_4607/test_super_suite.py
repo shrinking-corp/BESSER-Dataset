@@ -6660,10 +6660,10 @@ def test_gmfgraph_Pin___init__():
     assert gmfgraph_Pin.__init__(gmfgraph_Pin(gmfgraph_Pin=gmfgraph_PinOwner()), gmfgraph_Pin=gmfgraph_PinOwner()) == None
 
 def test_gmfgraph_Pin_getOperationType():
-    assert gmfgraph_Pin.getOperationType(gmfgraph_Pin(gmfgraph_Pin=gmfgraph_PinOwner())) == None
+    gmfgraph_Pin.getOperationType(gmfgraph_Pin(gmfgraph_Pin=gmfgraph_PinOwner()))
 
 def test_gmfgraph_Pin_getOperationName():
-    assert gmfgraph_Pin.getOperationName(gmfgraph_Pin(gmfgraph_Pin=gmfgraph_PinOwner())) == None
+    gmfgraph_Pin.getOperationName(gmfgraph_Pin(gmfgraph_Pin=gmfgraph_PinOwner()))
 from python_code import gmfgraph_Figure
 from python_code import gmfgraph_Point
 from python_code import gmfgraph_Polyline

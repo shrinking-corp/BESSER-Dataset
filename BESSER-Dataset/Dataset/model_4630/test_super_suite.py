@@ -5006,7 +5006,7 @@ def test_sequence_ordering_CompoundEventEnd___init__():
     assert sequence_ordering_CompoundEventEnd.__init__(sequence_ordering_CompoundEventEnd(sequence_ordering_CompoundEventEnd=set(), EventEnd=sequence_ordering_EventEndsOrdering()), sequence_ordering_CompoundEventEnd=set(), EventEnd=sequence_ordering_EventEndsOrdering()) == None
 
 def test_sequence_ordering_CompoundEventEnd_getSemanticEvents():
-    assert sequence_ordering_CompoundEventEnd.getSemanticEvents(sequence_ordering_CompoundEventEnd(sequence_ordering_CompoundEventEnd=set(), EventEnd=sequence_ordering_EventEndsOrdering())) == None
+    sequence_ordering_CompoundEventEnd.getSemanticEvents(sequence_ordering_CompoundEventEnd(sequence_ordering_CompoundEventEnd=set(), EventEnd=sequence_ordering_EventEndsOrdering()))
 from python_code import ordering_sequence_EObject
 from python_code import sequence_ordering_EventEndsOrdering
 from python_code import sequence_ordering_SingleEventEnd

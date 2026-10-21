@@ -16055,7 +16055,7 @@ def test_esmodel_accesscontrol_ACOrgUnit___init__():
     assert esmodel_accesscontrol_ACOrgUnit.__init__(esmodel_accesscontrol_ACOrgUnit('', '', esmodel_accesscontrol_ACOrgUnit=set(), esmodel_accesscontrol_ACOrgUnit441=set()), '', '', esmodel_accesscontrol_ACOrgUnit=set(), esmodel_accesscontrol_ACOrgUnit441=set()) == None
 
 def test_esmodel_accesscontrol_ACOrgUnit_getId():
-    assert esmodel_accesscontrol_ACOrgUnit.getId(esmodel_accesscontrol_ACOrgUnit('', '', esmodel_accesscontrol_ACOrgUnit=set(), esmodel_accesscontrol_ACOrgUnit441=set())) == None
+    esmodel_accesscontrol_ACOrgUnit.getId(esmodel_accesscontrol_ACOrgUnit('', '', esmodel_accesscontrol_ACOrgUnit=set(), esmodel_accesscontrol_ACOrgUnit441=set()))
 from python_code import esmodel_accesscontrol_ACUser
 
 def test_esmodel_accesscontrol_ACUser___init__():

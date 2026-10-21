@@ -5291,10 +5291,10 @@ def test_table_description_CellUpdater___init__():
     assert table_description_CellUpdater.__init__(table_description_CellUpdater('', table_description_CellUpdater=LabelEditTool()), '', table_description_CellUpdater=LabelEditTool()) == None
 
 def test_table_description_CellUpdater_getCreateCell():
-    assert table_description_CellUpdater.getCreateCell(table_description_CellUpdater('', table_description_CellUpdater=LabelEditTool())) == None
+    table_description_CellUpdater.getCreateCell(table_description_CellUpdater('', table_description_CellUpdater=LabelEditTool()))
 
 def test_table_description_CellUpdater_getLabelComputationExpression():
-    assert table_description_CellUpdater.getLabelComputationExpression(table_description_CellUpdater('', table_description_CellUpdater=LabelEditTool())) == None
+    table_description_CellUpdater.getLabelComputationExpression(table_description_CellUpdater('', table_description_CellUpdater=LabelEditTool()))
 from python_code import table_DCellStyle
 from python_code import table_DTableElement
 from python_code import table_description_ColumnMapping

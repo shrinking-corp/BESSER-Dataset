@@ -6349,7 +6349,7 @@ def test_build_filter_IFilter___init__():
     assert build_filter_IFilter.__init__(build_filter_IFilter()) == None
 
 def test_build_filter_IFilter_match():
-    assert build_filter_IFilter.match(build_filter_IFilter(), '', '') == None
+    build_filter_IFilter.match(build_filter_IFilter(), '', '')
 from python_code import IFilter
 from python_code import build_IClosure
 from python_code import build_command_AdviceGroup
@@ -6371,7 +6371,7 @@ def test_build_properties_IExpr___init__():
     assert build_properties_IExpr.__init__(build_properties_IExpr()) == None
 
 def test_build_properties_IExpr_eval():
-    assert build_properties_IExpr.eval(build_properties_IExpr(), '') == None
+    build_properties_IExpr.eval(build_properties_IExpr(), '')
 from python_code import IExpr
 from python_code import build_properties_IFunction
 from python_code import build_properties_Literal
@@ -6393,21 +6393,21 @@ def test_build_resolver_IEFSBasedAccess___init__():
     assert build_resolver_IEFSBasedAccess.__init__(build_resolver_IEFSBasedAccess()) == None
 
 def test_build_resolver_IEFSBasedAccess_getFileStore():
-    assert build_resolver_IEFSBasedAccess.getFileStore(build_resolver_IEFSBasedAccess()) == None
+    build_resolver_IEFSBasedAccess.getFileStore(build_resolver_IEFSBasedAccess())
 from python_code import build_resolver_IMetaDataTranslator
 
 def test_build_resolver_IMetaDataTranslator___init__():
     assert build_resolver_IMetaDataTranslator.__init__(build_resolver_IMetaDataTranslator()) == None
 
 def test_build_resolver_IMetaDataTranslator_resolve():
-    assert build_resolver_IMetaDataTranslator.resolve(build_resolver_IMetaDataTranslator(), '') == None
+    build_resolver_IMetaDataTranslator.resolve(build_resolver_IMetaDataTranslator(), '')
 from python_code import build_resolver_IMetaDataTranslatorFactory
 
 def test_build_resolver_IMetaDataTranslatorFactory___init__():
     assert build_resolver_IMetaDataTranslatorFactory.__init__(build_resolver_IMetaDataTranslatorFactory()) == None
 
 def test_build_resolver_IMetaDataTranslatorFactory_getTranslator():
-    assert build_resolver_IMetaDataTranslatorFactory.getTranslator(build_resolver_IMetaDataTranslatorFactory(), '', '') == None
+    build_resolver_IMetaDataTranslatorFactory.getTranslator(build_resolver_IMetaDataTranslatorFactory(), '', '')
 from python_code import IExpr
 from python_code import build_resolver_IResolver
 
@@ -6415,14 +6415,14 @@ def test_build_resolver_IResolver___init__():
     assert build_resolver_IResolver.__init__(build_resolver_IResolver(False, '', build_resolver_IResolver=IExpr()), False, '', build_resolver_IResolver=IExpr()) == None
 
 def test_build_resolver_IResolver_resolve():
-    assert build_resolver_IResolver.resolve(build_resolver_IResolver(False, '', build_resolver_IResolver=IExpr()), '\x00\x00') == None
+    build_resolver_IResolver.resolve(build_resolver_IResolver(False, '', build_resolver_IResolver=IExpr()), '\x00\x00')
 from python_code import build_resolver_IResourceMap
 
 def test_build_resolver_IResourceMap___init__():
     assert build_resolver_IResourceMap.__init__(build_resolver_IResourceMap()) == None
 
 def test_build_resolver_IResourceMap_lookup():
-    assert build_resolver_IResourceMap.lookup(build_resolver_IResourceMap(), '') == None
+    build_resolver_IResourceMap.lookup(build_resolver_IResourceMap(), '')
 from python_code import build_command_BuildUnitCommand
 from python_code import build_context_IBuildContext
 from python_code import build_resolver_P2Resolver
@@ -6433,7 +6433,7 @@ def test_build_resolver_P2Resolver___init__():
     assert build_resolver_P2Resolver.__init__(build_resolver_P2Resolver(IResolver72=build_resolver_ResolverGroup(), IResolver84=build_command_BuildUnitCommand(), IResolver69=build_runtime_ResolverExtension(), IResolver=build_context_IBuildContext()), IResolver72=build_resolver_ResolverGroup(), IResolver84=build_command_BuildUnitCommand(), IResolver69=build_runtime_ResolverExtension(), IResolver=build_context_IBuildContext()) == None
 
 def test_build_resolver_P2Resolver_resolve():
-    assert build_resolver_P2Resolver.resolve(build_resolver_P2Resolver(IResolver72=build_resolver_ResolverGroup(), IResolver84=build_command_BuildUnitCommand(), IResolver69=build_runtime_ResolverExtension(), IResolver=build_context_IBuildContext()), '') == None
+    build_resolver_P2Resolver.resolve(build_resolver_P2Resolver(IResolver72=build_resolver_ResolverGroup(), IResolver84=build_command_BuildUnitCommand(), IResolver69=build_runtime_ResolverExtension(), IResolver=build_context_IBuildContext()), '')
 from python_code import build_runtime_IHumanSelectable
 
 def test_build_runtime_IHumanSelectable___init__():

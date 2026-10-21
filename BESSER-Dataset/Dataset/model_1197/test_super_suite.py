@@ -3354,10 +3354,10 @@ def test_essentialocl_expressions_OclExpression___init__():
     assert essentialocl_expressions_OclExpression.__init__(essentialocl_expressions_OclExpression(essentialocl_expressions_OclExpression=OclLibrary()), essentialocl_expressions_OclExpression=OclLibrary()) == None
 
 def test_essentialocl_expressions_OclExpression_withAsSet():
-    assert essentialocl_expressions_OclExpression.withAsSet(essentialocl_expressions_OclExpression(essentialocl_expressions_OclExpression=OclLibrary())) == None
+    essentialocl_expressions_OclExpression.withAsSet(essentialocl_expressions_OclExpression(essentialocl_expressions_OclExpression=OclLibrary()))
 
 def test_essentialocl_expressions_OclExpression_withAtPre():
-    assert essentialocl_expressions_OclExpression.withAtPre(essentialocl_expressions_OclExpression(essentialocl_expressions_OclExpression=OclLibrary())) == None
+    essentialocl_expressions_OclExpression.withAtPre(essentialocl_expressions_OclExpression(essentialocl_expressions_OclExpression=OclLibrary()))
 from python_code import essentialocl_expressions_RealLiteralExp
 
 def test_essentialocl_expressions_RealLiteralExp___init__():
@@ -3378,10 +3378,10 @@ def test_essentialocl_expressions_Variable___init__():
     assert essentialocl_expressions_Variable.__init__(essentialocl_expressions_Variable(essentialocl_expressions_Variable43=OclExpression(), essentialocl_expressions_Variable=expressions_essentialocl_Parameter()), essentialocl_expressions_Variable43=OclExpression(), essentialocl_expressions_Variable=expressions_essentialocl_Parameter()) == None
 
 def test_essentialocl_expressions_Variable_asParameter():
-    assert essentialocl_expressions_Variable.asParameter(essentialocl_expressions_Variable(essentialocl_expressions_Variable43=OclExpression(), essentialocl_expressions_Variable=expressions_essentialocl_Parameter())) == None
+    essentialocl_expressions_Variable.asParameter(essentialocl_expressions_Variable(essentialocl_expressions_Variable43=OclExpression(), essentialocl_expressions_Variable=expressions_essentialocl_Parameter()))
 
 def test_essentialocl_expressions_Variable_asProperty():
-    assert essentialocl_expressions_Variable.asProperty(essentialocl_expressions_Variable(essentialocl_expressions_Variable43=OclExpression(), essentialocl_expressions_Variable=expressions_essentialocl_Parameter())) == None
+    essentialocl_expressions_Variable.asProperty(essentialocl_expressions_Variable(essentialocl_expressions_Variable43=OclExpression(), essentialocl_expressions_Variable=expressions_essentialocl_Parameter()))
 from python_code import OclLibrary
 from python_code import essentialocl_types_CollectionType
 from python_code import types_essentialocl_Type

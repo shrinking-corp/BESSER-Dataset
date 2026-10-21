@@ -4210,7 +4210,7 @@ def test_core_TraceModelElementReference___init__():
     assert core_TraceModelElementReference.__init__(core_TraceModelElementReference(True), False) == None
 
 def test_core_TraceModelElementReference_merge():
-    assert core_TraceModelElementReference.merge(core_TraceModelElementReference(False), 0) == None
+    core_TraceModelElementReference.merge(core_TraceModelElementReference(False), 0)
 from python_code import core_VerifiableElement
 
 def test_core_VerifiableElement___init__():

@@ -8658,16 +8658,16 @@ def test_javaMM_ClassDeclaration___init__():
     assert javaMM_ClassDeclaration.__init__(javaMM_ClassDeclaration(javaMM_ClassDeclaration=javaMM_TypeAccess()), javaMM_ClassDeclaration=javaMM_TypeAccess()) == None
 
 def test_javaMM_ClassDeclaration_hasCompareTo():
-    assert javaMM_ClassDeclaration.hasCompareTo(javaMM_ClassDeclaration(javaMM_ClassDeclaration=javaMM_TypeAccess())) == None
+    javaMM_ClassDeclaration.hasCompareTo(javaMM_ClassDeclaration(javaMM_ClassDeclaration=javaMM_TypeAccess()))
 
 def test_javaMM_ClassDeclaration_hasHashcode():
-    assert javaMM_ClassDeclaration.hasHashcode(javaMM_ClassDeclaration(javaMM_ClassDeclaration=javaMM_TypeAccess())) == None
+    javaMM_ClassDeclaration.hasHashcode(javaMM_ClassDeclaration(javaMM_ClassDeclaration=javaMM_TypeAccess()))
 
 def test_javaMM_ClassDeclaration_hasEquals():
-    assert javaMM_ClassDeclaration.hasEquals(javaMM_ClassDeclaration(javaMM_ClassDeclaration=javaMM_TypeAccess())) == None
+    javaMM_ClassDeclaration.hasEquals(javaMM_ClassDeclaration(javaMM_ClassDeclaration=javaMM_TypeAccess()))
 
 def test_javaMM_ClassDeclaration_getMethods():
-    assert javaMM_ClassDeclaration.getMethods(javaMM_ClassDeclaration(javaMM_ClassDeclaration=javaMM_TypeAccess())) == None
+    javaMM_ClassDeclaration.getMethods(javaMM_ClassDeclaration(javaMM_ClassDeclaration=javaMM_TypeAccess()))
 from python_code import javaMM_Expression
 from python_code import javaMM_InfixExpression
 
@@ -8675,7 +8675,7 @@ def test_javaMM_InfixExpression___init__():
     assert javaMM_InfixExpression.__init__(javaMM_InfixExpression('', javaMM_InfixExpression=javaMM_Expression(), javaMM_InfixExpression188=javaMM_Expression(), javaMM_InfixExpression191=set()), '', javaMM_InfixExpression=javaMM_Expression(), javaMM_InfixExpression188=javaMM_Expression(), javaMM_InfixExpression191=set()) == None
 
 def test_javaMM_InfixExpression_operatorIsEquality():
-    assert javaMM_InfixExpression.operatorIsEquality(javaMM_InfixExpression('', javaMM_InfixExpression=javaMM_Expression(), javaMM_InfixExpression188=javaMM_Expression(), javaMM_InfixExpression191=set())) == None
+    javaMM_InfixExpression.operatorIsEquality(javaMM_InfixExpression('', javaMM_InfixExpression=javaMM_Expression(), javaMM_InfixExpression188=javaMM_Expression(), javaMM_InfixExpression191=set()))
 from python_code import javaMM_Manifest
 from python_code import javaMM_ManifestEntry
 

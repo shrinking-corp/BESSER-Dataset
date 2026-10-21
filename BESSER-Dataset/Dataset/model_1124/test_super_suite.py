@@ -4620,7 +4620,7 @@ def test_simulink_Element___init__():
     assert simulink_Element.__init__(simulink_Element('', simulink_Element=set()), '', simulink_Element=set()) == None
 
 def test_simulink_Element_getParameter():
-    assert simulink_Element.getParameter(simulink_Element('', simulink_Element=set()), '') == None
+    simulink_Element.getParameter(simulink_Element('', simulink_Element=set()), '')
 from python_code import simulink_EmbeddedMatlabFunction
 
 def test_simulink_EmbeddedMatlabFunction___init__():

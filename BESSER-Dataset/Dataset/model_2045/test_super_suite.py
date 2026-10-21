@@ -7018,7 +7018,7 @@ def test_room_StateGraphItem___init__():
     assert room_StateGraphItem.__init__(room_StateGraphItem()) == None
 
 def test_room_StateGraphItem_getName():
-    assert room_StateGraphItem.getName(room_StateGraphItem()) == None
+    room_StateGraphItem.getName(room_StateGraphItem())
 from python_code import room_StateGraph
 from python_code import room_SubStateTrPointTerminal
 from python_code import room_TrPoint

@@ -3723,8 +3723,8 @@ def test_smm_SmmRelationship___init__():
     assert smm_SmmRelationship.__init__(smm_SmmRelationship()) == None
 
 def test_smm_SmmRelationship_getFrom():
-    assert smm_SmmRelationship.getFrom(smm_SmmRelationship()) == None
+    smm_SmmRelationship.getFrom(smm_SmmRelationship())
 
 def test_smm_SmmRelationship_getTo():
-    assert smm_SmmRelationship.getTo(smm_SmmRelationship()) == None
+    smm_SmmRelationship.getTo(smm_SmmRelationship())
 

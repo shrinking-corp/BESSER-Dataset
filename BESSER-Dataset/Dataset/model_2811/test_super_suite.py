@@ -4544,18 +4544,18 @@ def test_krendering_KXPosition___init__():
     assert krendering_KXPosition.__init__(krendering_KXPosition(0.0, 0.0), 0.0, 0.0) == None
 
 def test_krendering_KXPosition_equals():
-    assert krendering_KXPosition.equals(krendering_KXPosition(0.0, 0.0), 0) == None
+    krendering_KXPosition.equals(krendering_KXPosition(0.0, 0.0), 0)
 
 def test_krendering_KXPosition_setPosition():
-    assert krendering_KXPosition.setPosition(krendering_KXPosition(0.0, 0.0), '', '') == None
+    krendering_KXPosition.setPosition(krendering_KXPosition(0.0, 0.0), '', '')
 from python_code import krendering_KYPosition
 
 def test_krendering_KYPosition___init__():
     assert krendering_KYPosition.__init__(krendering_KYPosition(0.0, 0.0), 0.0, 0.0) == None
 
 def test_krendering_KYPosition_setPosition():
-    assert krendering_KYPosition.setPosition(krendering_KYPosition(0.0, 0.0), '', '') == None
+    krendering_KYPosition.setPosition(krendering_KYPosition(0.0, 0.0), '', '')
 
 def test_krendering_KYPosition_equals():
-    assert krendering_KYPosition.equals(krendering_KYPosition(0.0, 0.0), 0) == None
+    krendering_KYPosition.equals(krendering_KYPosition(0.0, 0.0), 0)
 

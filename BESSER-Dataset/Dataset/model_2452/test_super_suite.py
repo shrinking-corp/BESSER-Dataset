@@ -3791,5 +3791,5 @@ def test_scxml_XObject___init__():
     assert scxml_XObject.__init__(scxml_XObject('', '', False, scxml_XObject=scxml_EClass()), '\x00', '', False, scxml_XObject=scxml_EClass()) == None
 
 def test_scxml_XObject_registerAdapter():
-    assert scxml_XObject.registerAdapter(scxml_XObject('', '', False, scxml_XObject=scxml_EClass())) == None
+    scxml_XObject.registerAdapter(scxml_XObject('', '', False, scxml_XObject=scxml_EClass()))
 

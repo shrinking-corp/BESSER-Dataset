@@ -11907,10 +11907,10 @@ def test_gmf_all_gmfgraph_Pin___init__():
     assert gmf_all_gmfgraph_Pin.__init__(gmf_all_gmfgraph_Pin()) == None
 
 def test_gmf_all_gmfgraph_Pin_getOperationType():
-    assert gmf_all_gmfgraph_Pin.getOperationType(gmf_all_gmfgraph_Pin()) == None
+    gmf_all_gmfgraph_Pin.getOperationType(gmf_all_gmfgraph_Pin())
 
 def test_gmf_all_gmfgraph_Pin_getOperationName():
-    assert gmf_all_gmfgraph_Pin.getOperationName(gmf_all_gmfgraph_Pin()) == None
+    gmf_all_gmfgraph_Pin.getOperationName(gmf_all_gmfgraph_Pin())
 from python_code import gmf_all_gmfgraph_Point
 
 def test_gmf_all_gmfgraph_Point___init__():

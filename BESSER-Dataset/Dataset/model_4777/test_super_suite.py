@@ -1898,5 +1898,5 @@ def test_typesystem_UnitProduct___init__():
     assert typesystem_UnitProduct.__init__(typesystem_UnitProduct(typesystem_UnitProduct=set()), typesystem_UnitProduct=set()) == None
 
 def test_typesystem_UnitProduct_getFactor():
-    assert typesystem_UnitProduct.getFactor(typesystem_UnitProduct(typesystem_UnitProduct=set()), 0) == None
+    typesystem_UnitProduct.getFactor(typesystem_UnitProduct(typesystem_UnitProduct=set()), 0)
 

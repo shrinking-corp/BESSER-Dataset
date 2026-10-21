@@ -9358,7 +9358,7 @@ def test_connection_MDMConnection___init__():
     assert connection_MDMConnection.__init__(connection_MDMConnection('\x00', '', '', '', '', '', '', '', '', connection_MDMConnection=set()), '', '\x00', '', '', '', '', '', '', '', connection_MDMConnection=set()) == None
 
 def test_connection_MDMConnection_getConnectionString():
-    assert connection_MDMConnection.getConnectionString(connection_MDMConnection('', '', '', '', '', '', '', '', '', connection_MDMConnection=set())) == None
+    connection_MDMConnection.getConnectionString(connection_MDMConnection('', '', '', '', '', '', '', '', '', connection_MDMConnection=set()))
 from python_code import connection_QueriesConnection
 from python_code import connection_Query
 
@@ -9375,7 +9375,7 @@ def test_connection_SAPFunctionParameterColumn___init__():
     assert connection_SAPFunctionParameterColumn.__init__(connection_SAPFunctionParameterColumn('', '', '', '', '', SAPFunctionParameterColumn=connection_SAPFunctionParameterTable(), columns=connection_SAPFunctionParameterTable()), '', '', '', '', '', SAPFunctionParameterColumn=connection_SAPFunctionParameterTable(), columns=connection_SAPFunctionParameterTable()) == None
 
 def test_connection_SAPFunctionParameterColumn_setDescription():
-    assert connection_SAPFunctionParameterColumn.setDescription(connection_SAPFunctionParameterColumn('\x00', '\x00\x00', '', '', '', SAPFunctionParameterColumn=connection_SAPFunctionParameterTable(), columns=connection_SAPFunctionParameterTable()), '') == None
+    connection_SAPFunctionParameterColumn.setDescription(connection_SAPFunctionParameterColumn('\x00', '\x00\x00', '', '', '', SAPFunctionParameterColumn=connection_SAPFunctionParameterTable(), columns=connection_SAPFunctionParameterTable()), '')
 from python_code import connection_SalesforceSchemaConnection
 
 def test_connection_SalesforceSchemaConnection___init__():
@@ -9387,13 +9387,13 @@ def test_connection_relational_TdColumn___init__():
     assert connection_relational_TdColumn.__init__(connection_relational_TdColumn(connection_relational_TdColumn=relational_TdSqlDataType()), connection_relational_TdColumn=relational_TdSqlDataType()) == None
 
 def test_connection_relational_TdColumn_getContentType():
-    assert connection_relational_TdColumn.getContentType(connection_relational_TdColumn(connection_relational_TdColumn=relational_TdSqlDataType())) == None
+    connection_relational_TdColumn.getContentType(connection_relational_TdColumn(connection_relational_TdColumn=relational_TdSqlDataType()))
 
 def test_connection_relational_TdColumn_setContentType():
-    assert connection_relational_TdColumn.setContentType(connection_relational_TdColumn(connection_relational_TdColumn=relational_TdSqlDataType()), '') == None
+    connection_relational_TdColumn.setContentType(connection_relational_TdColumn(connection_relational_TdColumn=relational_TdSqlDataType()), '')
 
 def test_connection_relational_TdColumn_getJavaType():
-    assert connection_relational_TdColumn.getJavaType(connection_relational_TdColumn(connection_relational_TdColumn=relational_TdSqlDataType())) == None
+    connection_relational_TdColumn.getJavaType(connection_relational_TdColumn(connection_relational_TdColumn=relational_TdSqlDataType()))
 from python_code import connection_relational_TdSqlDataType
 
 def test_connection_relational_TdSqlDataType___init__():
@@ -9407,10 +9407,10 @@ def test_connection_xml_TdXmlElementType___init__():
     assert connection_xml_TdXmlElementType.__init__(connection_xml_TdXmlElementType('', connection_xml_TdXmlElementType85=xml_TdXmlContent(), connection_xml_TdXmlElementType=xml_connection_EObject(), connection_xml_TdXmlElementType83=xml_TdXmlSchema()), '', connection_xml_TdXmlElementType85=xml_TdXmlContent(), connection_xml_TdXmlElementType=xml_connection_EObject(), connection_xml_TdXmlElementType83=xml_TdXmlSchema()) == None
 
 def test_connection_xml_TdXmlElementType_setContentType():
-    assert connection_xml_TdXmlElementType.setContentType(connection_xml_TdXmlElementType('', connection_xml_TdXmlElementType85=xml_TdXmlContent(), connection_xml_TdXmlElementType=xml_connection_EObject(), connection_xml_TdXmlElementType83=xml_TdXmlSchema()), 0) == None
+    connection_xml_TdXmlElementType.setContentType(connection_xml_TdXmlElementType('', connection_xml_TdXmlElementType85=xml_TdXmlContent(), connection_xml_TdXmlElementType=xml_connection_EObject(), connection_xml_TdXmlElementType83=xml_TdXmlSchema()), 0)
 
 def test_connection_xml_TdXmlElementType_getContentType():
-    assert connection_xml_TdXmlElementType.getContentType(connection_xml_TdXmlElementType('', connection_xml_TdXmlElementType85=xml_TdXmlContent(), connection_xml_TdXmlElementType=xml_connection_EObject(), connection_xml_TdXmlElementType83=xml_TdXmlSchema())) == None
+    connection_xml_TdXmlElementType.getContentType(connection_xml_TdXmlElementType('', connection_xml_TdXmlElementType85=xml_TdXmlContent(), connection_xml_TdXmlElementType=xml_connection_EObject(), connection_xml_TdXmlElementType83=xml_TdXmlSchema()))
 from python_code import connection_xml_TdXmlSchema
 
 def test_connection_xml_TdXmlSchema___init__():

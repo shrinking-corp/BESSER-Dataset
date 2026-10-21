@@ -1510,10 +1510,10 @@ def test_CarRental_Person___init__():
     assert CarRental_Person.__init__(CarRental_Person('\x00\x00', '', 0, True), '', '', 0, False) == None
 
 def test_CarRental_Person_email():
-    assert CarRental_Person.email(CarRental_Person('', '\x00', 0, False)) == None
+    CarRental_Person.email(CarRental_Person('', '\x00', 0, False))
 
 def test_CarRental_Person_updateAge():
-    assert CarRental_Person.updateAge(CarRental_Person('', '\x00', 0, False), 0) == None
+    CarRental_Person.updateAge(CarRental_Person('', '\x00', 0, False), 0)
 from python_code import CarRental_ServiceDepot
 
 def test_CarRental_ServiceDepot___init__():

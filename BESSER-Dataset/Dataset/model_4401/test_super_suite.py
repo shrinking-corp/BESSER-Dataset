@@ -2144,7 +2144,7 @@ def test_mt_core_ASTNode___init__():
     assert mt_core_ASTNode.__init__(mt_core_ASTNode(0, 0), 0, 0) == None
 
 def test_mt_core_ASTNode_getTemplate():
-    assert mt_core_ASTNode.getTemplate(mt_core_ASTNode(0, 0)) == None
+    mt_core_ASTNode.getTemplate(mt_core_ASTNode(0, 0))
 from python_code import mt_core_Metamodel
 
 def test_mt_core_Metamodel___init__():

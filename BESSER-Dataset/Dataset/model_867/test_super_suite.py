@@ -2479,10 +2479,10 @@ def test_statemachines_StateMachine___init__():
     assert statemachines_StateMachine.__init__(statemachines_StateMachine(statemachines_StateMachine=statemachines_CustomSystem(), stateMachine=set(), StateMachine=statemachines_Region()), statemachines_StateMachine=statemachines_CustomSystem(), stateMachine=set(), StateMachine=statemachines_Region()) == None
 
 def test_statemachines_StateMachine_run():
-    assert statemachines_StateMachine.run(statemachines_StateMachine(statemachines_StateMachine=statemachines_CustomSystem(), stateMachine=set(), StateMachine=statemachines_Region())) == None
+    statemachines_StateMachine.run(statemachines_StateMachine(statemachines_StateMachine=statemachines_CustomSystem(), stateMachine=set(), StateMachine=statemachines_Region()))
 
 def test_statemachines_StateMachine_eventOccurrenceReceived():
-    assert statemachines_StateMachine.eventOccurrenceReceived(statemachines_StateMachine(statemachines_StateMachine=statemachines_CustomSystem(), stateMachine=set(), StateMachine=statemachines_Region()), 0) == None
+    statemachines_StateMachine.eventOccurrenceReceived(statemachines_StateMachine(statemachines_StateMachine=statemachines_CustomSystem(), stateMachine=set(), StateMachine=statemachines_Region()), 0)
 from python_code import statemachines_StringAttribute
 from python_code import statemachines_StringAttributeValue
 
@@ -2497,5 +2497,5 @@ def test_statemachines_Transition___init__():
     assert statemachines_Transition.__init__(statemachines_Transition('', Transition=statemachines_Region(), Transition31=statemachines_Vertex(), Transition33=statemachines_Vertex(), outgoingTransitions=statemachines_Vertex(), incomingTransitions=statemachines_Vertex(), statemachines_Transition=set(), transitions=statemachines_Region(), statemachines_Transition58=statemachines_Behavior()), '', Transition=statemachines_Region(), Transition31=statemachines_Vertex(), Transition33=statemachines_Vertex(), outgoingTransitions=statemachines_Vertex(), incomingTransitions=statemachines_Vertex(), statemachines_Transition=set(), transitions=statemachines_Region(), statemachines_Transition58=statemachines_Behavior()) == None
 
 def test_statemachines_Transition_fire():
-    assert statemachines_Transition.fire(statemachines_Transition('', Transition=statemachines_Region(), Transition31=statemachines_Vertex(), Transition33=statemachines_Vertex(), outgoingTransitions=statemachines_Vertex(), incomingTransitions=statemachines_Vertex(), statemachines_Transition=set(), transitions=statemachines_Region(), statemachines_Transition58=statemachines_Behavior()), '') == None
+    statemachines_Transition.fire(statemachines_Transition('', Transition=statemachines_Region(), Transition31=statemachines_Vertex(), Transition33=statemachines_Vertex(), outgoingTransitions=statemachines_Vertex(), incomingTransitions=statemachines_Vertex(), statemachines_Transition=set(), transitions=statemachines_Region(), statemachines_Transition58=statemachines_Behavior()), '')
 

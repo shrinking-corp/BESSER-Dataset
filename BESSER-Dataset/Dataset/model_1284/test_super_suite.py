@@ -5746,5 +5746,5 @@ def test_morel_Unit___init__():
     assert morel_Unit.__init__(morel_Unit(morel_Unit41=set(), morel_Unit=set()), morel_Unit41=set(), morel_Unit=set()) == None
 
 def test_morel_Unit_getTypedModel():
-    assert morel_Unit.getTypedModel(morel_Unit(morel_Unit41=set(), morel_Unit=set()), 0) == None
+    morel_Unit.getTypedModel(morel_Unit(morel_Unit41=set(), morel_Unit=set()), 0)
 

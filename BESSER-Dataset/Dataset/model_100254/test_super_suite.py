@@ -5470,17 +5470,17 @@ def test_table_DTableElementSynchronizer___init__():
     assert table_DTableElementSynchronizer.__init__(table_DTableElementSynchronizer()) == None
 
 def test_table_DTableElementSynchronizer_refresh():
-    assert table_DTableElementSynchronizer.refresh(table_DTableElementSynchronizer(), '') == None
+    table_DTableElementSynchronizer.refresh(table_DTableElementSynchronizer(), '')
 from python_code import table_DTableElementUpdater
 
 def test_table_DTableElementUpdater___init__():
     assert table_DTableElementUpdater.__init__(table_DTableElementUpdater()) == None
 
 def test_table_DTableElementUpdater_deactivate():
-    assert table_DTableElementUpdater.deactivate(table_DTableElementUpdater()) == None
+    table_DTableElementUpdater.deactivate(table_DTableElementUpdater())
 
 def test_table_DTableElementUpdater_activate():
-    assert table_DTableElementUpdater.activate(table_DTableElementUpdater(), '') == None
+    table_DTableElementUpdater.activate(table_DTableElementUpdater(), '')
 from python_code import BackgroundStyleDescription
 from python_code import table_description_BackgroundConditionalStyle
 
@@ -5493,10 +5493,10 @@ def test_table_description_CellUpdater___init__():
     assert table_description_CellUpdater.__init__(table_description_CellUpdater('', table_description_CellUpdater=LabelEditTool()), '', table_description_CellUpdater=LabelEditTool()) == None
 
 def test_table_description_CellUpdater_getCreateCell():
-    assert table_description_CellUpdater.getCreateCell(table_description_CellUpdater('', table_description_CellUpdater=LabelEditTool())) == None
+    table_description_CellUpdater.getCreateCell(table_description_CellUpdater('', table_description_CellUpdater=LabelEditTool()))
 
 def test_table_description_CellUpdater_getLabelComputationExpression():
-    assert table_description_CellUpdater.getLabelComputationExpression(table_description_CellUpdater('', table_description_CellUpdater=LabelEditTool())) == None
+    table_description_CellUpdater.getLabelComputationExpression(table_description_CellUpdater('', table_description_CellUpdater=LabelEditTool()))
 from python_code import table_DCellStyle
 from python_code import table_DTableElement
 from python_code import table_description_ColumnMapping

@@ -2094,7 +2094,7 @@ def test_libsys_BarCodeScanner___init__():
     assert libsys_BarCodeScanner.__init__(libsys_BarCodeScanner()) == None
 
 def test_libsys_BarCodeScanner_readUserNumber():
-    assert libsys_BarCodeScanner.readUserNumber(libsys_BarCodeScanner()) == None
+    libsys_BarCodeScanner.readUserNumber(libsys_BarCodeScanner())
 from python_code import libsys_Book
 
 def test_libsys_Book___init__():
@@ -2121,7 +2121,7 @@ def test_libsys_UserAdministration___init__():
     assert libsys_UserAdministration.__init__(libsys_UserAdministration(libsys_UserAdministration=set()), libsys_UserAdministration=set()) == None
 
 def test_libsys_UserAdministration_manageUserAccount():
-    assert libsys_UserAdministration.manageUserAccount(libsys_UserAdministration(libsys_UserAdministration=set())) == None
+    libsys_UserAdministration.manageUserAccount(libsys_UserAdministration(libsys_UserAdministration=set()))
 from python_code import libsys_Video
 
 def test_libsys_Video___init__():

@@ -1690,7 +1690,7 @@ def test_cwm_relational_TdCatalog___init__():
     assert cwm_relational_TdCatalog.__init__(cwm_relational_TdCatalog()) == None
 
 def test_cwm_relational_TdCatalog_addSchema():
-    assert cwm_relational_TdCatalog.addSchema(cwm_relational_TdCatalog(), '') == None
+    cwm_relational_TdCatalog.addSchema(cwm_relational_TdCatalog(), '')
 from python_code import TdSqlDataType
 from python_code import cwm_relational_TdColumn
 
@@ -1698,10 +1698,10 @@ def test_cwm_relational_TdColumn___init__():
     assert cwm_relational_TdColumn.__init__(cwm_relational_TdColumn(0, cwm_relational_TdColumn=TdSqlDataType()), 0, cwm_relational_TdColumn=TdSqlDataType()) == None
 
 def test_cwm_relational_TdColumn_setContentType():
-    assert cwm_relational_TdColumn.setContentType(cwm_relational_TdColumn(0, cwm_relational_TdColumn=TdSqlDataType()), 0) == None
+    cwm_relational_TdColumn.setContentType(cwm_relational_TdColumn(0, cwm_relational_TdColumn=TdSqlDataType()), 0)
 
 def test_cwm_relational_TdColumn_getContentType():
-    assert cwm_relational_TdColumn.getContentType(cwm_relational_TdColumn(0, cwm_relational_TdColumn=TdSqlDataType())) == None
+    cwm_relational_TdColumn.getContentType(cwm_relational_TdColumn(0, cwm_relational_TdColumn=TdSqlDataType()))
 from python_code import cwm_relational_TdSqlDataType
 
 def test_cwm_relational_TdSqlDataType___init__():
@@ -1723,8 +1723,8 @@ def test_cwm_xml_TdXMLElement___init__():
     assert cwm_xml_TdXMLElement.__init__(cwm_xml_TdXMLElement('', cwm_xml_TdXMLElement=xml_cwm_EObject(), cwm_xml_TdXMLElement3=TdXMLDocument(), cwm_xml_TdXMLElement5=TdXMLContent()), '', cwm_xml_TdXMLElement=xml_cwm_EObject(), cwm_xml_TdXMLElement3=TdXMLDocument(), cwm_xml_TdXMLElement5=TdXMLContent()) == None
 
 def test_cwm_xml_TdXMLElement_setContentType():
-    assert cwm_xml_TdXMLElement.setContentType(cwm_xml_TdXMLElement('', cwm_xml_TdXMLElement=xml_cwm_EObject(), cwm_xml_TdXMLElement3=TdXMLDocument(), cwm_xml_TdXMLElement5=TdXMLContent()), 0) == None
+    cwm_xml_TdXMLElement.setContentType(cwm_xml_TdXMLElement('', cwm_xml_TdXMLElement=xml_cwm_EObject(), cwm_xml_TdXMLElement3=TdXMLDocument(), cwm_xml_TdXMLElement5=TdXMLContent()), 0)
 
 def test_cwm_xml_TdXMLElement_getContentType():
-    assert cwm_xml_TdXMLElement.getContentType(cwm_xml_TdXMLElement('', cwm_xml_TdXMLElement=xml_cwm_EObject(), cwm_xml_TdXMLElement3=TdXMLDocument(), cwm_xml_TdXMLElement5=TdXMLContent())) == None
+    cwm_xml_TdXMLElement.getContentType(cwm_xml_TdXMLElement('', cwm_xml_TdXMLElement=xml_cwm_EObject(), cwm_xml_TdXMLElement3=TdXMLDocument(), cwm_xml_TdXMLElement5=TdXMLContent()))
 

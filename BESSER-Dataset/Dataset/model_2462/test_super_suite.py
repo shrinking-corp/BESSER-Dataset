@@ -456,8 +456,8 @@ def test_operators_Type___init__():
     assert operators_Type.__init__(operators_Type(operators_Type=operators_OclExpression()), operators_Type=operators_OclExpression()) == None
 
 def test_operators_Type_isSameType():
-    assert operators_Type.isSameType(operators_Type(operators_Type=operators_OclExpression()), '') == None
+    operators_Type.isSameType(operators_Type(operators_Type=operators_OclExpression()), '')
 
 def test_operators_Type_isSuperTypeOf():
-    assert operators_Type.isSuperTypeOf(operators_Type(operators_Type=operators_OclExpression()), '') == None
+    operators_Type.isSuperTypeOf(operators_Type(operators_Type=operators_OclExpression()), '')
 

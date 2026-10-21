@@ -4484,50 +4484,50 @@ def test_classes_LiteralBoolean___init__():
     assert classes_LiteralBoolean.__init__(classes_LiteralBoolean(True), False) == None
 
 def test_classes_LiteralBoolean_booleanValue():
-    assert classes_LiteralBoolean.booleanValue(classes_LiteralBoolean(False)) == None
+    classes_LiteralBoolean.booleanValue(classes_LiteralBoolean(False))
 
 def test_classes_LiteralBoolean_isComputable():
-    assert classes_LiteralBoolean.isComputable(classes_LiteralBoolean(False)) == None
+    classes_LiteralBoolean.isComputable(classes_LiteralBoolean(False))
 from python_code import classes_LiteralInteger
 
 def test_classes_LiteralInteger___init__():
     assert classes_LiteralInteger.__init__(classes_LiteralInteger(0), 0) == None
 
 def test_classes_LiteralInteger_isComputable():
-    assert classes_LiteralInteger.isComputable(classes_LiteralInteger(0)) == None
+    classes_LiteralInteger.isComputable(classes_LiteralInteger(0))
 
 def test_classes_LiteralInteger_integerValue():
-    assert classes_LiteralInteger.integerValue(classes_LiteralInteger(0)) == None
+    classes_LiteralInteger.integerValue(classes_LiteralInteger(0))
 from python_code import classes_LiteralNull
 
 def test_classes_LiteralNull___init__():
     assert classes_LiteralNull.__init__(classes_LiteralNull()) == None
 
 def test_classes_LiteralNull_isComputable():
-    assert classes_LiteralNull.isComputable(classes_LiteralNull()) == None
+    classes_LiteralNull.isComputable(classes_LiteralNull())
 
 def test_classes_LiteralNull_isNull():
-    assert classes_LiteralNull.isNull(classes_LiteralNull()) == None
+    classes_LiteralNull.isNull(classes_LiteralNull())
 from python_code import classes_LiteralString
 
 def test_classes_LiteralString___init__():
     assert classes_LiteralString.__init__(classes_LiteralString(''), '') == None
 
 def test_classes_LiteralString_stringValue():
-    assert classes_LiteralString.stringValue(classes_LiteralString('')) == None
+    classes_LiteralString.stringValue(classes_LiteralString(''))
 
 def test_classes_LiteralString_isComputable():
-    assert classes_LiteralString.isComputable(classes_LiteralString('')) == None
+    classes_LiteralString.isComputable(classes_LiteralString(''))
 from python_code import classes_LiteralUnlimitedNatural
 
 def test_classes_LiteralUnlimitedNatural___init__():
     assert classes_LiteralUnlimitedNatural.__init__(classes_LiteralUnlimitedNatural(0), 0) == None
 
 def test_classes_LiteralUnlimitedNatural_unlimitedValue():
-    assert classes_LiteralUnlimitedNatural.unlimitedValue(classes_LiteralUnlimitedNatural(0)) == None
+    classes_LiteralUnlimitedNatural.unlimitedValue(classes_LiteralUnlimitedNatural(0))
 
 def test_classes_LiteralUnlimitedNatural_isComputable():
-    assert classes_LiteralUnlimitedNatural.isComputable(classes_LiteralUnlimitedNatural(0)) == None
+    classes_LiteralUnlimitedNatural.isComputable(classes_LiteralUnlimitedNatural(0))
 from python_code import classes_Namespace
 from python_code import classes_Package
 from python_code import classes_PackageImport

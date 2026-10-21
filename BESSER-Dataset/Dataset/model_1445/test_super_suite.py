@@ -1846,27 +1846,27 @@ def test_graph_ElkShape___init__():
     assert graph_ElkShape.__init__(graph_ElkShape(0.0, 0.0, 0.0, 0.0), 0.0, 0.0, 0.0, 0.0) == None
 
 def test_graph_ElkShape_setDimensions():
-    assert graph_ElkShape.setDimensions(graph_ElkShape(0.0, 0.0, 0.0, 0.0), 0, 0) == None
+    graph_ElkShape.setDimensions(graph_ElkShape(0.0, 0.0, 0.0, 0.0), 0, 0)
 
 def test_graph_ElkShape_setLocation():
-    assert graph_ElkShape.setLocation(graph_ElkShape(0.0, 0.0, 0.0, 0.0), 0, 0) == None
+    graph_ElkShape.setLocation(graph_ElkShape(0.0, 0.0, 0.0, 0.0), 0, 0)
 from python_code import graph_IPropertyHolder
 
 def test_graph_IPropertyHolder___init__():
     assert graph_IPropertyHolder.__init__(graph_IPropertyHolder()) == None
 
 def test_graph_IPropertyHolder_setProperty():
-    assert graph_IPropertyHolder.setProperty(graph_IPropertyHolder(), '', '') == None
+    graph_IPropertyHolder.setProperty(graph_IPropertyHolder(), '', '')
 
 def test_graph_IPropertyHolder_hasProperty():
-    assert graph_IPropertyHolder.hasProperty(graph_IPropertyHolder(), '') == None
+    graph_IPropertyHolder.hasProperty(graph_IPropertyHolder(), '')
 
 def test_graph_IPropertyHolder_getProperty():
-    assert graph_IPropertyHolder.getProperty(graph_IPropertyHolder(), '') == None
+    graph_IPropertyHolder.getProperty(graph_IPropertyHolder(), '')
 
 def test_graph_IPropertyHolder_getAllProperties():
-    assert graph_IPropertyHolder.getAllProperties(graph_IPropertyHolder()) == None
+    graph_IPropertyHolder.getAllProperties(graph_IPropertyHolder())
 
 def test_graph_IPropertyHolder_copyProperties():
-    assert graph_IPropertyHolder.copyProperties(graph_IPropertyHolder(), '') == None
+    graph_IPropertyHolder.copyProperties(graph_IPropertyHolder(), '')
 

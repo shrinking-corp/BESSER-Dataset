@@ -2695,7 +2695,7 @@ def test_doc_map_ExcludePatternRule___init__():
     assert doc_map_ExcludePatternRule.__init__(doc_map_ExcludePatternRule()) == None
 
 def test_doc_map_ExcludePatternRule_checkRule():
-    assert doc_map_ExcludePatternRule.checkRule(doc_map_ExcludePatternRule(), '') == None
+    doc_map_ExcludePatternRule.checkRule(doc_map_ExcludePatternRule(), '')
 from python_code import ResourceFactory
 from python_code import doc_map_ExtensionMappingEntry
 
@@ -2715,14 +2715,14 @@ def test_doc_map_IncludePatternRule___init__():
     assert doc_map_IncludePatternRule.__init__(doc_map_IncludePatternRule()) == None
 
 def test_doc_map_IncludePatternRule_checkRule():
-    assert doc_map_IncludePatternRule.checkRule(doc_map_IncludePatternRule(), '') == None
+    doc_map_IncludePatternRule.checkRule(doc_map_IncludePatternRule(), '')
 from python_code import doc_map_Map
 
 def test_doc_map_Map___init__():
     assert doc_map_Map.__init__(doc_map_Map(doc_map_Map=set()), doc_map_Map=set()) == None
 
 def test_doc_map_Map_visit():
-    assert doc_map_Map.visit(doc_map_Map(doc_map_Map=set()), 0) == None
+    doc_map_Map.visit(doc_map_Map(doc_map_Map=set()), 0)
 from python_code import doc_map_MapContainer
 
 def test_doc_map_MapContainer___init__():
@@ -2733,7 +2733,7 @@ def test_doc_map_MapElement___init__():
     assert doc_map_MapElement.__init__(doc_map_MapElement()) == None
 
 def test_doc_map_MapElement_visit():
-    assert doc_map_MapElement.visit(doc_map_MapElement(), '') == None
+    doc_map_MapElement.visit(doc_map_MapElement(), '')
 from python_code import doc_map_MapSection
 
 def test_doc_map_MapSection___init__():
@@ -2744,7 +2744,7 @@ def test_doc_map_NameRule___init__():
     assert doc_map_NameRule.__init__(doc_map_NameRule()) == None
 
 def test_doc_map_NameRule_checkRule():
-    assert doc_map_NameRule.checkRule(doc_map_NameRule(), '') == None
+    doc_map_NameRule.checkRule(doc_map_NameRule(), '')
 from python_code import doc_map_Feature
 from python_code import doc_map_PatternRule
 

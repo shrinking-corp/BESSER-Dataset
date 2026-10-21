@@ -18773,7 +18773,7 @@ def test_aadl2_BehavioredImplementation___init__():
     assert aadl2_BehavioredImplementation.__init__(aadl2_BehavioredImplementation(aadl2_BehavioredImplementation=set(), aadl2_BehavioredImplementation401=set()), aadl2_BehavioredImplementation=set(), aadl2_BehavioredImplementation401=set()) == None
 
 def test_aadl2_BehavioredImplementation_subprogramCalls():
-    assert aadl2_BehavioredImplementation.subprogramCalls(aadl2_BehavioredImplementation(aadl2_BehavioredImplementation=set(), aadl2_BehavioredImplementation401=set())) == None
+    aadl2_BehavioredImplementation.subprogramCalls(aadl2_BehavioredImplementation(aadl2_BehavioredImplementation=set(), aadl2_BehavioredImplementation401=set()))
 from python_code import aadl2_BooleanLiteral
 
 def test_aadl2_BooleanLiteral___init__():

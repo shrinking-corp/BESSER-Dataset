@@ -2593,7 +2593,7 @@ def test_xpdl2_ExternalPackages___init__():
     assert xpdl2_ExternalPackages.__init__(xpdl2_ExternalPackages(xpdl2_ExternalPackages=set()), xpdl2_ExternalPackages=set()) == None
 
 def test_xpdl2_ExternalPackages_getExternalPackage():
-    assert xpdl2_ExternalPackages.getExternalPackage(xpdl2_ExternalPackages(xpdl2_ExternalPackages=set()), 0) == None
+    xpdl2_ExternalPackages.getExternalPackage(xpdl2_ExternalPackages(xpdl2_ExternalPackages=set()), 0)
 from python_code import xpdl2_ScriptType
 
 def test_xpdl2_ScriptType___init__():

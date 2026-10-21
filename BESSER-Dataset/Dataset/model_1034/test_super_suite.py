@@ -705,7 +705,7 @@ def test_fsm_Constraint___init__():
     assert fsm_Constraint.__init__(fsm_Constraint(fsm_Constraint=fsm_Transition()), fsm_Constraint=fsm_Transition()) == None
 
 def test_fsm_Constraint_eval():
-    assert fsm_Constraint.eval(fsm_Constraint(fsm_Constraint=fsm_Transition()), '') == None
+    fsm_Constraint.eval(fsm_Constraint(fsm_Constraint=fsm_Transition()), '')
 from python_code import fsm_NamedElement
 
 def test_fsm_NamedElement___init__():

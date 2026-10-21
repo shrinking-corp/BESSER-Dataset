@@ -9834,10 +9834,10 @@ def test_query_SQLQueryObject___init__():
     assert query_SQLQueryObject.__init__(query_SQLQueryObject()) == None
 
 def test_query_SQLQueryObject_setSQL():
-    assert query_SQLQueryObject.setSQL(query_SQLQueryObject(), '') == None
+    query_SQLQueryObject.setSQL(query_SQLQueryObject(), '')
 
 def test_query_SQLQueryObject_getSQL():
-    assert query_SQLQueryObject.getSQL(query_SQLQueryObject()) == None
+    query_SQLQueryObject.getSQL(query_SQLQueryObject())
 from python_code import query_SuperGroup
 from python_code import query_SuperGroupElement
 

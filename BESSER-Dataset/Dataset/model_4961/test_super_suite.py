@@ -3230,10 +3230,10 @@ def test_crom_l1_composed_Relation___init__():
     assert crom_l1_composed_Relation.__init__(crom_l1_composed_Relation(crom_l1_composed_Relation=crom_l1_composed_Model(), crom_l1_composed_Relation78=crom_l1_composed_RelationTarget(), crom_l1_composed_Relation81=crom_l1_composed_RelationTarget()), crom_l1_composed_Relation=crom_l1_composed_Model(), crom_l1_composed_Relation78=crom_l1_composed_RelationTarget(), crom_l1_composed_Relation81=crom_l1_composed_RelationTarget()) == None
 
 def test_crom_l1_composed_Relation_getTarget():
-    assert crom_l1_composed_Relation.getTarget(crom_l1_composed_Relation(crom_l1_composed_Relation=crom_l1_composed_Model(), crom_l1_composed_Relation78=crom_l1_composed_RelationTarget(), crom_l1_composed_Relation81=crom_l1_composed_RelationTarget())) == None
+    crom_l1_composed_Relation.getTarget(crom_l1_composed_Relation(crom_l1_composed_Relation=crom_l1_composed_Model(), crom_l1_composed_Relation78=crom_l1_composed_RelationTarget(), crom_l1_composed_Relation81=crom_l1_composed_RelationTarget()))
 
 def test_crom_l1_composed_Relation_getSource():
-    assert crom_l1_composed_Relation.getSource(crom_l1_composed_Relation(crom_l1_composed_Relation=crom_l1_composed_Model(), crom_l1_composed_Relation78=crom_l1_composed_RelationTarget(), crom_l1_composed_Relation81=crom_l1_composed_RelationTarget())) == None
+    crom_l1_composed_Relation.getSource(crom_l1_composed_Relation(crom_l1_composed_Relation=crom_l1_composed_Model(), crom_l1_composed_Relation78=crom_l1_composed_RelationTarget(), crom_l1_composed_Relation81=crom_l1_composed_RelationTarget()))
 from python_code import crom_l1_composed_RoleGroup
 
 def test_crom_l1_composed_RoleGroup___init__():

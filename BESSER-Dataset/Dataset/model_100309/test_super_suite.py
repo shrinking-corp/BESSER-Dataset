@@ -1387,26 +1387,26 @@ def test_petrinetv3Trace_Steps_Petrinetv3_Net_Initialize___init__():
     assert petrinetv3Trace_Steps_Petrinetv3_Net_Initialize.__init__(petrinetv3Trace_Steps_Petrinetv3_Net_Initialize()) == None
 
 def test_petrinetv3Trace_Steps_Petrinetv3_Net_Initialize_getCaller():
-    assert petrinetv3Trace_Steps_Petrinetv3_Net_Initialize.getCaller(petrinetv3Trace_Steps_Petrinetv3_Net_Initialize()) == None
+    petrinetv3Trace_Steps_Petrinetv3_Net_Initialize.getCaller(petrinetv3Trace_Steps_Petrinetv3_Net_Initialize())
 from python_code import petrinetv3Trace_Steps_Petrinetv3_Net_Run
 
 def test_petrinetv3Trace_Steps_Petrinetv3_Net_Run___init__():
     assert petrinetv3Trace_Steps_Petrinetv3_Net_Run.__init__(petrinetv3Trace_Steps_Petrinetv3_Net_Run(petrinetv3Trace_Steps_Petrinetv3_Net_Run=set()), petrinetv3Trace_Steps_Petrinetv3_Net_Run=set()) == None
 
 def test_petrinetv3Trace_Steps_Petrinetv3_Net_Run_getCaller():
-    assert petrinetv3Trace_Steps_Petrinetv3_Net_Run.getCaller(petrinetv3Trace_Steps_Petrinetv3_Net_Run(petrinetv3Trace_Steps_Petrinetv3_Net_Run=set())) == None
+    petrinetv3Trace_Steps_Petrinetv3_Net_Run.getCaller(petrinetv3Trace_Steps_Petrinetv3_Net_Run(petrinetv3Trace_Steps_Petrinetv3_Net_Run=set()))
 from python_code import petrinetv3Trace_Steps_Petrinetv3_Net_TickEnabledTransitions
 
 def test_petrinetv3Trace_Steps_Petrinetv3_Net_TickEnabledTransitions___init__():
     assert petrinetv3Trace_Steps_Petrinetv3_Net_TickEnabledTransitions.__init__(petrinetv3Trace_Steps_Petrinetv3_Net_TickEnabledTransitions()) == None
 
 def test_petrinetv3Trace_Steps_Petrinetv3_Net_TickEnabledTransitions_getCaller():
-    assert petrinetv3Trace_Steps_Petrinetv3_Net_TickEnabledTransitions.getCaller(petrinetv3Trace_Steps_Petrinetv3_Net_TickEnabledTransitions()) == None
+    petrinetv3Trace_Steps_Petrinetv3_Net_TickEnabledTransitions.getCaller(petrinetv3Trace_Steps_Petrinetv3_Net_TickEnabledTransitions())
 from python_code import petrinetv3Trace_Steps_Petrinetv3_Transition_Fire
 
 def test_petrinetv3Trace_Steps_Petrinetv3_Transition_Fire___init__():
     assert petrinetv3Trace_Steps_Petrinetv3_Transition_Fire.__init__(petrinetv3Trace_Steps_Petrinetv3_Transition_Fire()) == None
 
 def test_petrinetv3Trace_Steps_Petrinetv3_Transition_Fire_getCaller():
-    assert petrinetv3Trace_Steps_Petrinetv3_Transition_Fire.getCaller(petrinetv3Trace_Steps_Petrinetv3_Transition_Fire()) == None
+    petrinetv3Trace_Steps_Petrinetv3_Transition_Fire.getCaller(petrinetv3Trace_Steps_Petrinetv3_Transition_Fire())
 

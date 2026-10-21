@@ -674,15 +674,15 @@ def test_petrinet_Place___init__():
     assert petrinet_Place.__init__(petrinet_Place(0, petrinet_Place=set()), 0, petrinet_Place=set()) == None
 
 def test_petrinet_Place_hasCapacity():
-    assert petrinet_Place.hasCapacity(petrinet_Place(0, petrinet_Place=set()), '') == None
+    petrinet_Place.hasCapacity(petrinet_Place(0, petrinet_Place=set()), '')
 from python_code import petrinet_Transition
 
 def test_petrinet_Transition___init__():
     assert petrinet_Transition.__init__(petrinet_Transition()) == None
 
 def test_petrinet_Transition_isEnabled():
-    assert petrinet_Transition.isEnabled(petrinet_Transition()) == None
+    petrinet_Transition.isEnabled(petrinet_Transition())
 
 def test_petrinet_Transition_fire():
-    assert petrinet_Transition.fire(petrinet_Transition()) == None
+    petrinet_Transition.fire(petrinet_Transition())
 

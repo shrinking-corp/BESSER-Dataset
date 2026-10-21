@@ -12393,7 +12393,7 @@ def test_connection_MDMConnection___init__():
     assert connection_MDMConnection.__init__(connection_MDMConnection('', '', '', '', '', '', '', '', '', '', connection_MDMConnection=set()), '\x00', '', '', '', '', '', '', '', '', '', connection_MDMConnection=set()) == None
 
 def test_connection_MDMConnection_getConnectionString():
-    assert connection_MDMConnection.getConnectionString(connection_MDMConnection('', '', '', '', '', '', '', '', '', '', connection_MDMConnection=set())) == None
+    connection_MDMConnection.getConnectionString(connection_MDMConnection('', '', '', '', '', '', '', '', '', '', connection_MDMConnection=set()))
 from python_code import connection_QueriesConnection
 from python_code import connection_Query
 
@@ -12414,7 +12414,7 @@ def test_connection_SAPFunctionParameterColumn___init__():
     assert connection_SAPFunctionParameterColumn.__init__(connection_SAPFunctionParameterColumn('', '', '', '', '', columns=connection_SAPFunctionParameterTable(), SAPFunctionParameterColumn=connection_SAPFunctionParameterTable()), '', '', '', '', '', columns=connection_SAPFunctionParameterTable(), SAPFunctionParameterColumn=connection_SAPFunctionParameterTable()) == None
 
 def test_connection_SAPFunctionParameterColumn_setDescription():
-    assert connection_SAPFunctionParameterColumn.setDescription(connection_SAPFunctionParameterColumn('\x00', '\x00\x00', '', '', '', columns=connection_SAPFunctionParameterTable(), SAPFunctionParameterColumn=connection_SAPFunctionParameterTable()), '') == None
+    connection_SAPFunctionParameterColumn.setDescription(connection_SAPFunctionParameterColumn('\x00', '\x00\x00', '', '', '', columns=connection_SAPFunctionParameterTable(), SAPFunctionParameterColumn=connection_SAPFunctionParameterTable()), '')
 from python_code import connection_SAPTable
 
 def test_connection_SAPTable___init__():

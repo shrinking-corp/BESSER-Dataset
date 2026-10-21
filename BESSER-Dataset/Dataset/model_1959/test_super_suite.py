@@ -6817,7 +6817,7 @@ def test_shadowrun_AbstrakRaumKoerper___init__():
     assert shadowrun_AbstrakRaumKoerper.__init__(shadowrun_AbstrakRaumKoerper(shadowrun_AbstrakRaumKoerper=shadowrun_RaumKoordinate()), shadowrun_AbstrakRaumKoerper=shadowrun_RaumKoordinate()) == None
 
 def test_shadowrun_AbstrakRaumKoerper_ProcessWorldTick():
-    assert shadowrun_AbstrakRaumKoerper.ProcessWorldTick(shadowrun_AbstrakRaumKoerper(shadowrun_AbstrakRaumKoerper=shadowrun_RaumKoordinate())) == None
+    shadowrun_AbstrakRaumKoerper.ProcessWorldTick(shadowrun_AbstrakRaumKoerper(shadowrun_AbstrakRaumKoerper=shadowrun_RaumKoordinate()))
 from python_code import shadowrun_AbstrakteRuestung
 
 def test_shadowrun_AbstrakteRuestung___init__():

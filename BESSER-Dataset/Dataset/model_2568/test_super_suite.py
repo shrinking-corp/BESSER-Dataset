@@ -392,5 +392,5 @@ def test_TestPackage_TestClass1___init__():
     assert TestPackage_TestClass1.__init__(TestPackage_TestClass1(''), '') == None
 
 def test_TestPackage_TestClass1_testOperation():
-    assert TestPackage_TestClass1.testOperation(TestPackage_TestClass1(''), 0) == None
+    TestPackage_TestClass1.testOperation(TestPackage_TestClass1(''), 0)
 

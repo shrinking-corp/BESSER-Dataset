@@ -4682,7 +4682,7 @@ def test_basecs_EnumerationCS___init__():
     assert basecs_EnumerationCS.__init__(basecs_EnumerationCS(basecs_EnumerationCS=set()), basecs_EnumerationCS=set()) == None
 
 def test_basecs_EnumerationCS_ast():
-    assert basecs_EnumerationCS.ast(basecs_EnumerationCS(basecs_EnumerationCS=set())) == None
+    basecs_EnumerationCS.ast(basecs_EnumerationCS(basecs_EnumerationCS=set()))
 from python_code import basecs_LambdaTypeCS
 from python_code import basecs_TypedRefCS
 
@@ -4704,10 +4704,10 @@ def test_basecs_MultiplicityCS___init__():
     assert basecs_MultiplicityCS.__init__(basecs_MultiplicityCS(basecs_MultiplicityCS=basecs_TypedRefCS()), basecs_MultiplicityCS=basecs_TypedRefCS()) == None
 
 def test_basecs_MultiplicityCS_getUpper():
-    assert basecs_MultiplicityCS.getUpper(basecs_MultiplicityCS(basecs_MultiplicityCS=basecs_TypedRefCS())) == None
+    basecs_MultiplicityCS.getUpper(basecs_MultiplicityCS(basecs_MultiplicityCS=basecs_TypedRefCS()))
 
 def test_basecs_MultiplicityCS_getLower():
-    assert basecs_MultiplicityCS.getLower(basecs_MultiplicityCS(basecs_MultiplicityCS=basecs_TypedRefCS())) == None
+    basecs_MultiplicityCS.getLower(basecs_MultiplicityCS(basecs_MultiplicityCS=basecs_TypedRefCS()))
 from python_code import basecs_MultiplicityStringCS
 
 def test_basecs_MultiplicityStringCS___init__():

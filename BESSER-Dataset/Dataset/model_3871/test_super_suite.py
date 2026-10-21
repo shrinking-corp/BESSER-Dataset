@@ -4385,27 +4385,27 @@ def test_ram_RAny___init__():
     assert ram_RAny.__init__(ram_RAny()) == None
 
 def test_ram_RAny_getName():
-    assert ram_RAny.getName(ram_RAny()) == None
+    ram_RAny.getName(ram_RAny())
 from python_code import ram_RBoolean
 
 def test_ram_RBoolean___init__():
     assert ram_RBoolean.__init__(ram_RBoolean()) == None
 
 def test_ram_RBoolean_getInstanceClassName():
-    assert ram_RBoolean.getInstanceClassName(ram_RBoolean()) == None
+    ram_RBoolean.getInstanceClassName(ram_RBoolean())
 
 def test_ram_RBoolean_getName():
-    assert ram_RBoolean.getName(ram_RBoolean()) == None
+    ram_RBoolean.getName(ram_RBoolean())
 from python_code import ram_RChar
 
 def test_ram_RChar___init__():
     assert ram_RChar.__init__(ram_RChar()) == None
 
 def test_ram_RChar_getInstanceClassName():
-    assert ram_RChar.getInstanceClassName(ram_RChar()) == None
+    ram_RChar.getInstanceClassName(ram_RChar())
 
 def test_ram_RChar_getName():
-    assert ram_RChar.getName(ram_RChar()) == None
+    ram_RChar.getName(ram_RChar())
 from python_code import ram_ObjectType
 from python_code import ram_RCollection
 
@@ -4413,34 +4413,34 @@ def test_ram_RCollection___init__():
     assert ram_RCollection.__init__(ram_RCollection(ram_RCollection=ram_ObjectType()), ram_RCollection=ram_ObjectType()) == None
 
 def test_ram_RCollection_getName():
-    assert ram_RCollection.getName(ram_RCollection(ram_RCollection=ram_ObjectType())) == None
+    ram_RCollection.getName(ram_RCollection(ram_RCollection=ram_ObjectType()))
 from python_code import ram_RInt
 
 def test_ram_RInt___init__():
     assert ram_RInt.__init__(ram_RInt()) == None
 
 def test_ram_RInt_getInstanceClassName():
-    assert ram_RInt.getInstanceClassName(ram_RInt()) == None
+    ram_RInt.getInstanceClassName(ram_RInt())
 
 def test_ram_RInt_getName():
-    assert ram_RInt.getName(ram_RInt()) == None
+    ram_RInt.getName(ram_RInt())
 from python_code import ram_RString
 
 def test_ram_RString___init__():
     assert ram_RString.__init__(ram_RString()) == None
 
 def test_ram_RString_getInstanceClassName():
-    assert ram_RString.getInstanceClassName(ram_RString()) == None
+    ram_RString.getInstanceClassName(ram_RString())
 
 def test_ram_RString_getName():
-    assert ram_RString.getName(ram_RString()) == None
+    ram_RString.getName(ram_RString())
 from python_code import ram_RVoid
 
 def test_ram_RVoid___init__():
     assert ram_RVoid.__init__(ram_RVoid()) == None
 
 def test_ram_RVoid_getName():
-    assert ram_RVoid.getName(ram_RVoid()) == None
+    ram_RVoid.getName(ram_RVoid())
 from python_code import ram_Lifeline
 from python_code import ram_TypedElement
 
@@ -4448,5 +4448,5 @@ def test_ram_TypedElement___init__():
     assert ram_TypedElement.__init__(ram_TypedElement(ram_TypedElement=ram_Lifeline()), ram_TypedElement=ram_Lifeline()) == None
 
 def test_ram_TypedElement_getType():
-    assert ram_TypedElement.getType(ram_TypedElement(ram_TypedElement=ram_Lifeline())) == None
+    ram_TypedElement.getType(ram_TypedElement(ram_TypedElement=ram_Lifeline()))
 

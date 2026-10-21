@@ -14098,7 +14098,7 @@ def test_viewpoint_DMappingBased___init__():
     assert viewpoint_DMappingBased.__init__(viewpoint_DMappingBased()) == None
 
 def test_viewpoint_DMappingBased_getMapping():
-    assert viewpoint_DMappingBased.getMapping(viewpoint_DMappingBased()) == None
+    viewpoint_DMappingBased.getMapping(viewpoint_DMappingBased())
 from python_code import viewpoint_DResource
 from python_code import viewpoint_DResourceContainer
 
@@ -14110,7 +14110,7 @@ def test_viewpoint_DStylizable___init__():
     assert viewpoint_DStylizable.__init__(viewpoint_DStylizable()) == None
 
 def test_viewpoint_DStylizable_getStyle():
-    assert viewpoint_DStylizable.getStyle(viewpoint_DStylizable()) == None
+    viewpoint_DStylizable.getStyle(viewpoint_DStylizable())
 from python_code import viewpoint_IdentifiedElement
 
 def test_viewpoint_IdentifiedElement___init__():
@@ -14132,7 +14132,7 @@ def test_viewpoint_audit_InformationSection___init__():
     assert viewpoint_audit_InformationSection.__init__(viewpoint_audit_InformationSection()) == None
 
 def test_viewpoint_audit_InformationSection_getContent():
-    assert viewpoint_audit_InformationSection.getContent(viewpoint_audit_InformationSection(), '') == None
+    viewpoint_audit_InformationSection.getContent(viewpoint_audit_InformationSection(), '')
 from python_code import viewpoint_audit_TemplateInformationSection
 
 def test_viewpoint_audit_TemplateInformationSection___init__():
@@ -14165,7 +14165,7 @@ def test_viewpoint_description_ConditionalStyleDescription___init__():
     assert viewpoint_description_ConditionalStyleDescription.__init__(viewpoint_description_ConditionalStyleDescription(''), '') == None
 
 def test_viewpoint_description_ConditionalStyleDescription_checkPredicate():
-    assert viewpoint_description_ConditionalStyleDescription.checkPredicate(viewpoint_description_ConditionalStyleDescription(''), 0, '\x00\x00', '') == None
+    viewpoint_description_ConditionalStyleDescription.checkPredicate(viewpoint_description_ConditionalStyleDescription(''), 0, '\x00\x00', '')
 from python_code import viewpoint_description_DAnnotation
 
 def test_viewpoint_description_DAnnotation___init__():
@@ -14180,7 +14180,7 @@ def test_viewpoint_description_DModelElement___init__():
     assert viewpoint_description_DModelElement.__init__(viewpoint_description_DModelElement(viewpoint_description_DModelElement=set()), viewpoint_description_DModelElement=set()) == None
 
 def test_viewpoint_description_DModelElement_getDAnnotation():
-    assert viewpoint_description_DModelElement.getDAnnotation(viewpoint_description_DModelElement(viewpoint_description_DModelElement=set()), 0) == None
+    viewpoint_description_DModelElement.getDAnnotation(viewpoint_description_DModelElement(viewpoint_description_DModelElement=set()), 0)
 from python_code import viewpoint_description_DecorationDescription
 
 def test_viewpoint_description_DecorationDescription___init__():

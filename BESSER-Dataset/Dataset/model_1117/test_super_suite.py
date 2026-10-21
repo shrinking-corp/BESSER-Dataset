@@ -2665,10 +2665,10 @@ def test_rtsc_CoordinationProtocol___init__():
     assert rtsc_CoordinationProtocol.__init__(rtsc_CoordinationProtocol(rtsc_CoordinationProtocol=set(), rtsc_CoordinationProtocol57=rtsc_Connector(), rtsc_CoordinationProtocol65=rtsc_System()), rtsc_CoordinationProtocol=set(), rtsc_CoordinationProtocol57=rtsc_Connector(), rtsc_CoordinationProtocol65=rtsc_System()) == None
 
 def test_rtsc_CoordinationProtocol_main():
-    assert rtsc_CoordinationProtocol.main(rtsc_CoordinationProtocol(rtsc_CoordinationProtocol=set(), rtsc_CoordinationProtocol57=rtsc_Connector(), rtsc_CoordinationProtocol65=rtsc_System())) == None
+    rtsc_CoordinationProtocol.main(rtsc_CoordinationProtocol(rtsc_CoordinationProtocol=set(), rtsc_CoordinationProtocol57=rtsc_Connector(), rtsc_CoordinationProtocol65=rtsc_System()))
 
 def test_rtsc_CoordinationProtocol_initialize():
-    assert rtsc_CoordinationProtocol.initialize(rtsc_CoordinationProtocol(rtsc_CoordinationProtocol=set(), rtsc_CoordinationProtocol57=rtsc_Connector(), rtsc_CoordinationProtocol65=rtsc_System()), 0) == None
+    rtsc_CoordinationProtocol.initialize(rtsc_CoordinationProtocol(rtsc_CoordinationProtocol=set(), rtsc_CoordinationProtocol57=rtsc_Connector(), rtsc_CoordinationProtocol65=rtsc_System()), 0)
 from python_code import rtsc_MessageBuffer
 from python_code import rtsc_Port
 
@@ -2676,13 +2676,13 @@ def test_rtsc_MessageBuffer___init__():
     assert rtsc_MessageBuffer.__init__(rtsc_MessageBuffer(MessageBuffer=rtsc_Port(), incomingBuffer=rtsc_Port(), rtsc_MessageBuffer=set(), rtsc_MessageBuffer51=set()), MessageBuffer=rtsc_Port(), incomingBuffer=rtsc_Port(), rtsc_MessageBuffer=set(), rtsc_MessageBuffer51=set()) == None
 
 def test_rtsc_MessageBuffer_getMessage():
-    assert rtsc_MessageBuffer.getMessage(rtsc_MessageBuffer(MessageBuffer=rtsc_Port(), incomingBuffer=rtsc_Port(), rtsc_MessageBuffer=set(), rtsc_MessageBuffer51=set()), 0) == None
+    rtsc_MessageBuffer.getMessage(rtsc_MessageBuffer(MessageBuffer=rtsc_Port(), incomingBuffer=rtsc_Port(), rtsc_MessageBuffer=set(), rtsc_MessageBuffer51=set()), 0)
 
 def test_rtsc_MessageBuffer_addMessage():
-    assert rtsc_MessageBuffer.addMessage(rtsc_MessageBuffer(MessageBuffer=rtsc_Port(), incomingBuffer=rtsc_Port(), rtsc_MessageBuffer=set(), rtsc_MessageBuffer51=set()), 0) == None
+    rtsc_MessageBuffer.addMessage(rtsc_MessageBuffer(MessageBuffer=rtsc_Port(), incomingBuffer=rtsc_Port(), rtsc_MessageBuffer=set(), rtsc_MessageBuffer51=set()), 0)
 
 def test_rtsc_MessageBuffer_hasMessage():
-    assert rtsc_MessageBuffer.hasMessage(rtsc_MessageBuffer(MessageBuffer=rtsc_Port(), incomingBuffer=rtsc_Port(), rtsc_MessageBuffer=set(), rtsc_MessageBuffer51=set()), 0) == None
+    rtsc_MessageBuffer.hasMessage(rtsc_MessageBuffer(MessageBuffer=rtsc_Port(), incomingBuffer=rtsc_Port(), rtsc_MessageBuffer=set(), rtsc_MessageBuffer51=set()), 0)
 from python_code import rtsc_MessageEvent
 from python_code import rtsc_MessageType
 
@@ -2690,7 +2690,7 @@ def test_rtsc_MessageEvent___init__():
     assert rtsc_MessageEvent.__init__(rtsc_MessageEvent(rtsc_MessageEvent=rtsc_MessageType()), rtsc_MessageEvent=rtsc_MessageType()) == None
 
 def test_rtsc_MessageEvent_execute():
-    assert rtsc_MessageEvent.execute(rtsc_MessageEvent(rtsc_MessageEvent=rtsc_MessageType())) == None
+    rtsc_MessageEvent.execute(rtsc_MessageEvent(rtsc_MessageEvent=rtsc_MessageType()))
 from python_code import rtsc_NamedElement
 
 def test_rtsc_NamedElement___init__():

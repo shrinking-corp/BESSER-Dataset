@@ -1038,13 +1038,13 @@ def test_hutn_ClassObjectSlot___init__():
     assert hutn_ClassObjectSlot.__init__(hutn_ClassObjectSlot()) == None
 
 def test_hutn_ClassObjectSlot_getClassObjects():
-    assert hutn_ClassObjectSlot.getClassObjects(hutn_ClassObjectSlot()) == None
+    hutn_ClassObjectSlot.getClassObjects(hutn_ClassObjectSlot())
 
 def test_hutn_ClassObjectSlot_setClassObjects():
-    assert hutn_ClassObjectSlot.setClassObjects(hutn_ClassObjectSlot(), '') == None
+    hutn_ClassObjectSlot.setClassObjects(hutn_ClassObjectSlot(), '')
 
 def test_hutn_ClassObjectSlot_addClassObject():
-    assert hutn_ClassObjectSlot.addClassObject(hutn_ClassObjectSlot(), '') == None
+    hutn_ClassObjectSlot.addClassObject(hutn_ClassObjectSlot(), '')
 from python_code import hutn_ModelElement
 
 def test_hutn_ModelElement___init__():

@@ -5620,7 +5620,7 @@ def test_rdal_TraceDesignElementRef___init__():
     assert rdal_TraceDesignElementRef.__init__(rdal_TraceDesignElementRef(True), False) == None
 
 def test_rdal_TraceDesignElementRef_merge():
-    assert rdal_TraceDesignElementRef.merge(rdal_TraceDesignElementRef(False), 0) == None
+    rdal_TraceDesignElementRef.merge(rdal_TraceDesignElementRef(False), 0)
 from python_code import rdal_VerifiableElement
 
 def test_rdal_VerifiableElement___init__():

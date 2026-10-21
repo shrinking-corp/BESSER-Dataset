@@ -3783,7 +3783,7 @@ def test_types_JvmArrayType___init__():
     assert types_JvmArrayType.__init__(types_JvmArrayType(JvmArrayType=types_JvmComponentType(), arrayType=types_JvmComponentType()), JvmArrayType=types_JvmComponentType(), arrayType=types_JvmComponentType()) == None
 
 def test_types_JvmArrayType_getDimensions():
-    assert types_JvmArrayType.getDimensions(types_JvmArrayType(JvmArrayType=types_JvmComponentType(), arrayType=types_JvmComponentType())) == None
+    types_JvmArrayType.getDimensions(types_JvmArrayType(JvmArrayType=types_JvmComponentType(), arrayType=types_JvmComponentType()))
 from python_code import types_JvmBooleanAnnotationValue
 
 def test_types_JvmBooleanAnnotationValue___init__():
@@ -3812,7 +3812,7 @@ def test_types_JvmEnumerationLiteral___init__():
     assert types_JvmEnumerationLiteral.__init__(types_JvmEnumerationLiteral(types_JvmEnumerationLiteral47=types_JvmEnumAnnotationValue(), types_JvmEnumerationLiteral=types_JvmEnumerationType()), types_JvmEnumerationLiteral47=types_JvmEnumAnnotationValue(), types_JvmEnumerationLiteral=types_JvmEnumerationType()) == None
 
 def test_types_JvmEnumerationLiteral_getEnumType():
-    assert types_JvmEnumerationLiteral.getEnumType(types_JvmEnumerationLiteral(types_JvmEnumerationLiteral47=types_JvmEnumAnnotationValue(), types_JvmEnumerationLiteral=types_JvmEnumerationType())) == None
+    types_JvmEnumerationLiteral.getEnumType(types_JvmEnumerationLiteral(types_JvmEnumerationLiteral47=types_JvmEnumAnnotationValue(), types_JvmEnumerationLiteral=types_JvmEnumerationType()))
 from python_code import types_JvmFloatAnnotationValue
 
 def test_types_JvmFloatAnnotationValue___init__():
@@ -3823,29 +3823,29 @@ def test_types_JvmGenericType___init__():
     assert types_JvmGenericType.__init__(types_JvmGenericType(True), False) == None
 
 def test_types_JvmGenericType_isInstantiateable():
-    assert types_JvmGenericType.isInstantiateable(types_JvmGenericType(False)) == None
+    types_JvmGenericType.isInstantiateable(types_JvmGenericType(False))
 
 def test_types_JvmGenericType_getExtendedClass():
-    assert types_JvmGenericType.getExtendedClass(types_JvmGenericType(False)) == None
+    types_JvmGenericType.getExtendedClass(types_JvmGenericType(False))
 
 def test_types_JvmGenericType_getExtendedInterfaces():
-    assert types_JvmGenericType.getExtendedInterfaces(types_JvmGenericType(False)) == None
+    types_JvmGenericType.getExtendedInterfaces(types_JvmGenericType(False))
 
 def test_types_JvmGenericType_getDeclaredConstructors():
-    assert types_JvmGenericType.getDeclaredConstructors(types_JvmGenericType(False)) == None
+    types_JvmGenericType.getDeclaredConstructors(types_JvmGenericType(False))
 from python_code import types_JvmIdentifiableElement
 
 def test_types_JvmIdentifiableElement___init__():
     assert types_JvmIdentifiableElement.__init__(types_JvmIdentifiableElement()) == None
 
 def test_types_JvmIdentifiableElement_getSimpleName():
-    assert types_JvmIdentifiableElement.getSimpleName(types_JvmIdentifiableElement()) == None
+    types_JvmIdentifiableElement.getSimpleName(types_JvmIdentifiableElement())
 
 def test_types_JvmIdentifiableElement_getQualifiedName():
-    assert types_JvmIdentifiableElement.getQualifiedName(types_JvmIdentifiableElement(), '') == None
+    types_JvmIdentifiableElement.getQualifiedName(types_JvmIdentifiableElement(), '')
 
 def test_types_JvmIdentifiableElement_getIdentifier():
-    assert types_JvmIdentifiableElement.getIdentifier(types_JvmIdentifiableElement()) == None
+    types_JvmIdentifiableElement.getIdentifier(types_JvmIdentifiableElement())
 from python_code import types_JvmIntAnnotationValue
 
 def test_types_JvmIntAnnotationValue___init__():

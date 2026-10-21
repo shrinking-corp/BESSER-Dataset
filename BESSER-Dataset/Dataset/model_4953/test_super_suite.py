@@ -1276,8 +1276,8 @@ def test_webApplication_data_Entity___init__():
     assert webApplication_data_Entity.__init__(webApplication_data_Entity('', webApplication_data_Entity=set(), webApplication_data_Entity9=set(), webApplication_data_Entity11=set()), '', webApplication_data_Entity=set(), webApplication_data_Entity9=set(), webApplication_data_Entity11=set()) == None
 
 def test_webApplication_data_Entity_getPKRelated():
-    assert webApplication_data_Entity.getPKRelated(webApplication_data_Entity('', webApplication_data_Entity=set(), webApplication_data_Entity9=set(), webApplication_data_Entity11=set())) == None
+    webApplication_data_Entity.getPKRelated(webApplication_data_Entity('', webApplication_data_Entity=set(), webApplication_data_Entity9=set(), webApplication_data_Entity11=set()))
 
 def test_webApplication_data_Entity_getPK():
-    assert webApplication_data_Entity.getPK(webApplication_data_Entity('', webApplication_data_Entity=set(), webApplication_data_Entity9=set(), webApplication_data_Entity11=set())) == None
+    webApplication_data_Entity.getPK(webApplication_data_Entity('', webApplication_data_Entity=set(), webApplication_data_Entity9=set(), webApplication_data_Entity11=set()))
 

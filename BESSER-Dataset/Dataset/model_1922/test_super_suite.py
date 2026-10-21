@@ -7134,13 +7134,13 @@ def test_libraryElement_AdapterFB___init__():
     assert libraryElement_AdapterFB.__init__(libraryElement_AdapterFB(AdapterFB=libraryElement_AdapterDeclaration(), adapterFB=libraryElement_AdapterDeclaration()), AdapterFB=libraryElement_AdapterDeclaration(), adapterFB=libraryElement_AdapterDeclaration()) == None
 
 def test_libraryElement_AdapterFB_isSocket():
-    assert libraryElement_AdapterFB.isSocket(libraryElement_AdapterFB(AdapterFB=libraryElement_AdapterDeclaration(), adapterFB=libraryElement_AdapterDeclaration())) == None
+    libraryElement_AdapterFB.isSocket(libraryElement_AdapterFB(AdapterFB=libraryElement_AdapterDeclaration(), adapterFB=libraryElement_AdapterDeclaration()))
 
 def test_libraryElement_AdapterFB_isPlug():
-    assert libraryElement_AdapterFB.isPlug(libraryElement_AdapterFB(AdapterFB=libraryElement_AdapterDeclaration(), adapterFB=libraryElement_AdapterDeclaration())) == None
+    libraryElement_AdapterFB.isPlug(libraryElement_AdapterFB(AdapterFB=libraryElement_AdapterDeclaration(), adapterFB=libraryElement_AdapterDeclaration()))
 
 def test_libraryElement_AdapterFB_getType():
-    assert libraryElement_AdapterFB.getType(libraryElement_AdapterFB(AdapterFB=libraryElement_AdapterDeclaration(), adapterFB=libraryElement_AdapterDeclaration())) == None
+    libraryElement_AdapterFB.getType(libraryElement_AdapterFB(AdapterFB=libraryElement_AdapterDeclaration(), adapterFB=libraryElement_AdapterDeclaration()))
 from python_code import libraryElement_AdapterFBType
 from python_code import libraryElement_AdapterType
 
@@ -7148,13 +7148,13 @@ def test_libraryElement_AdapterType___init__():
     assert libraryElement_AdapterType.__init__(libraryElement_AdapterType(libraryElement_AdapterType=libraryElement_AdapterFBType(), libraryElement_AdapterType157=libraryElement_AdapterFBType()), libraryElement_AdapterType=libraryElement_AdapterFBType(), libraryElement_AdapterType157=libraryElement_AdapterFBType()) == None
 
 def test_libraryElement_AdapterType_getInterfaceList():
-    assert libraryElement_AdapterType.getInterfaceList(libraryElement_AdapterType(libraryElement_AdapterType=libraryElement_AdapterFBType(), libraryElement_AdapterType157=libraryElement_AdapterFBType())) == None
+    libraryElement_AdapterType.getInterfaceList(libraryElement_AdapterType(libraryElement_AdapterType=libraryElement_AdapterFBType(), libraryElement_AdapterType157=libraryElement_AdapterFBType()))
 
 def test_libraryElement_AdapterType_getPlugType():
-    assert libraryElement_AdapterType.getPlugType(libraryElement_AdapterType(libraryElement_AdapterType=libraryElement_AdapterFBType(), libraryElement_AdapterType157=libraryElement_AdapterFBType())) == None
+    libraryElement_AdapterType.getPlugType(libraryElement_AdapterType(libraryElement_AdapterType=libraryElement_AdapterFBType(), libraryElement_AdapterType157=libraryElement_AdapterFBType()))
 
 def test_libraryElement_AdapterType_getSocketType():
-    assert libraryElement_AdapterType.getSocketType(libraryElement_AdapterType(libraryElement_AdapterType=libraryElement_AdapterFBType(), libraryElement_AdapterType157=libraryElement_AdapterFBType())) == None
+    libraryElement_AdapterType.getSocketType(libraryElement_AdapterType(libraryElement_AdapterType=libraryElement_AdapterFBType(), libraryElement_AdapterType157=libraryElement_AdapterFBType()))
 from python_code import libraryElement_Color
 from python_code import libraryElement_ColorizableElement
 
@@ -7171,33 +7171,33 @@ def test_libraryElement_ConfigurableObject___init__():
     assert libraryElement_ConfigurableObject.__init__(libraryElement_ConfigurableObject(libraryElement_ConfigurableObject=set()), libraryElement_ConfigurableObject=set()) == None
 
 def test_libraryElement_ConfigurableObject_getParameter():
-    assert libraryElement_ConfigurableObject.getParameter(libraryElement_ConfigurableObject(libraryElement_ConfigurableObject=set()), 0) == None
+    libraryElement_ConfigurableObject.getParameter(libraryElement_ConfigurableObject(libraryElement_ConfigurableObject=set()), 0)
 
 def test_libraryElement_ConfigurableObject_setParameter():
-    assert libraryElement_ConfigurableObject.setParameter(libraryElement_ConfigurableObject(libraryElement_ConfigurableObject=set()), 0, '\x00\x00') == None
+    libraryElement_ConfigurableObject.setParameter(libraryElement_ConfigurableObject(libraryElement_ConfigurableObject=set()), 0, '\x00\x00')
 from python_code import libraryElement_FB
 
 def test_libraryElement_FB___init__():
     assert libraryElement_FB.__init__(libraryElement_FB()) == None
 
 def test_libraryElement_FB_getType():
-    assert libraryElement_FB.getType(libraryElement_FB()) == None
+    libraryElement_FB.getType(libraryElement_FB())
 
 def test_libraryElement_FB_isResourceTypeFB():
-    assert libraryElement_FB.isResourceTypeFB(libraryElement_FB()) == None
+    libraryElement_FB.isResourceTypeFB(libraryElement_FB())
 
 def test_libraryElement_FB_isResourceFB():
-    assert libraryElement_FB.isResourceFB(libraryElement_FB()) == None
+    libraryElement_FB.isResourceFB(libraryElement_FB())
 from python_code import libraryElement_I4DIACElement
 
 def test_libraryElement_I4DIACElement___init__():
     assert libraryElement_I4DIACElement.__init__(libraryElement_I4DIACElement(libraryElement_I4DIACElement=set()), libraryElement_I4DIACElement=set()) == None
 
 def test_libraryElement_I4DIACElement_createAnnotation():
-    assert libraryElement_I4DIACElement.createAnnotation(libraryElement_I4DIACElement(libraryElement_I4DIACElement=set()), 0) == None
+    libraryElement_I4DIACElement.createAnnotation(libraryElement_I4DIACElement(libraryElement_I4DIACElement=set()), 0)
 
 def test_libraryElement_I4DIACElement_removeAnnotation():
-    assert libraryElement_I4DIACElement.removeAnnotation(libraryElement_I4DIACElement(libraryElement_I4DIACElement=set()), 0) == None
+    libraryElement_I4DIACElement.removeAnnotation(libraryElement_I4DIACElement(libraryElement_I4DIACElement=set()), 0)
 from python_code import libraryElement_INamedElement
 
 def test_libraryElement_INamedElement___init__():
@@ -7226,7 +7226,7 @@ def test_libraryElement_ResourceTypeFB___init__():
     assert libraryElement_ResourceTypeFB.__init__(libraryElement_ResourceTypeFB()) == None
 
 def test_libraryElement_ResourceTypeFB_isResourceTypeFB():
-    assert libraryElement_ResourceTypeFB.isResourceTypeFB(libraryElement_ResourceTypeFB()) == None
+    libraryElement_ResourceTypeFB.isResourceTypeFB(libraryElement_ResourceTypeFB())
 from python_code import libraryElement_Service
 from python_code import libraryElement_ServiceSequence
 
@@ -7243,10 +7243,10 @@ def test_libraryElement_TypedConfigureableObject___init__():
     assert libraryElement_TypedConfigureableObject.__init__(libraryElement_TypedConfigureableObject(libraryElement_TypedConfigureableObject=libraryElement_PaletteEntry()), libraryElement_TypedConfigureableObject=libraryElement_PaletteEntry()) == None
 
 def test_libraryElement_TypedConfigureableObject_getType():
-    assert libraryElement_TypedConfigureableObject.getType(libraryElement_TypedConfigureableObject(libraryElement_TypedConfigureableObject=libraryElement_PaletteEntry())) == None
+    libraryElement_TypedConfigureableObject.getType(libraryElement_TypedConfigureableObject(libraryElement_TypedConfigureableObject=libraryElement_PaletteEntry()))
 
 def test_libraryElement_TypedConfigureableObject_getTypeName():
-    assert libraryElement_TypedConfigureableObject.getTypeName(libraryElement_TypedConfigureableObject(libraryElement_TypedConfigureableObject=libraryElement_PaletteEntry())) == None
+    libraryElement_TypedConfigureableObject.getTypeName(libraryElement_TypedConfigureableObject(libraryElement_TypedConfigureableObject=libraryElement_PaletteEntry()))
 from python_code import libraryElement_LibraryElement
 from python_code import libraryElement_VersionInfo
 

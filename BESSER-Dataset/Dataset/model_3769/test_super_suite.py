@@ -415,7 +415,7 @@ def test_d_X___init__():
     assert d_X.__init__(d_X()) == None
 
 def test_d_X_baz():
-    assert d_X.baz(d_X(), '') == None
+    d_X.baz(d_X(), '')
 from python_code import d_Y
 
 def test_d_Y___init__():

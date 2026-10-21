@@ -13062,10 +13062,10 @@ def test_carnot_IMetaType___init__():
     assert carnot_IMetaType.__init__(carnot_IMetaType(''), '') == None
 
 def test_carnot_IMetaType_getTypedElements():
-    assert carnot_IMetaType.getTypedElements(carnot_IMetaType('')) == None
+    carnot_IMetaType.getTypedElements(carnot_IMetaType(''))
 
 def test_carnot_IMetaType_getExtensionPointId():
-    assert carnot_IMetaType.getExtensionPointId(carnot_IMetaType('')) == None
+    carnot_IMetaType.getExtensionPointId(carnot_IMetaType(''))
 from python_code import carnot_IModelElement
 from python_code import carnot_ViewableType
 
@@ -13077,10 +13077,10 @@ def test_carnot_IModelElementNodeSymbol___init__():
     assert carnot_IModelElementNodeSymbol.__init__(carnot_IModelElementNodeSymbol()) == None
 
 def test_carnot_IModelElementNodeSymbol_getModelElement():
-    assert carnot_IModelElementNodeSymbol.getModelElement(carnot_IModelElementNodeSymbol()) == None
+    carnot_IModelElementNodeSymbol.getModelElement(carnot_IModelElementNodeSymbol())
 
 def test_carnot_IModelElementNodeSymbol_setModelElement():
-    assert carnot_IModelElementNodeSymbol.setModelElement(carnot_IModelElementNodeSymbol(), '') == None
+    carnot_IModelElementNodeSymbol.setModelElement(carnot_IModelElementNodeSymbol(), '')
 from python_code import carnot_GenericLinkConnectionType
 from python_code import carnot_INodeSymbol
 
@@ -13088,10 +13088,10 @@ def test_carnot_INodeSymbol___init__():
     assert carnot_INodeSymbol.__init__(carnot_INodeSymbol('', '', '', '', '\x00', targetSymbol=set(), sourceSymbol=set(), INodeSymbol=carnot_GenericLinkConnectionType(), INodeSymbol199=carnot_GenericLinkConnectionType()), '', '', '', '', '', targetSymbol=set(), sourceSymbol=set(), INodeSymbol=carnot_GenericLinkConnectionType(), INodeSymbol199=carnot_GenericLinkConnectionType()) == None
 
 def test_carnot_INodeSymbol_getOutConnectionFeatures():
-    assert carnot_INodeSymbol.getOutConnectionFeatures(carnot_INodeSymbol('\x00', '', '', '', '', targetSymbol=set(), sourceSymbol=set(), INodeSymbol=carnot_GenericLinkConnectionType(), INodeSymbol199=carnot_GenericLinkConnectionType())) == None
+    carnot_INodeSymbol.getOutConnectionFeatures(carnot_INodeSymbol('\x00', '', '', '', '', targetSymbol=set(), sourceSymbol=set(), INodeSymbol=carnot_GenericLinkConnectionType(), INodeSymbol199=carnot_GenericLinkConnectionType()))
 
 def test_carnot_INodeSymbol_getInConnectionFeatures():
-    assert carnot_INodeSymbol.getInConnectionFeatures(carnot_INodeSymbol('\x00', '', '', '', '', targetSymbol=set(), sourceSymbol=set(), INodeSymbol=carnot_GenericLinkConnectionType(), INodeSymbol199=carnot_GenericLinkConnectionType())) == None
+    carnot_INodeSymbol.getInConnectionFeatures(carnot_INodeSymbol('\x00', '', '', '', '', targetSymbol=set(), sourceSymbol=set(), INodeSymbol=carnot_GenericLinkConnectionType(), INodeSymbol199=carnot_GenericLinkConnectionType()))
 from python_code import carnot_IModelParticipant
 from python_code import carnot_ISwimlaneSymbol
 from python_code import carnot_LaneSymbol

@@ -2914,7 +2914,7 @@ def test_ftp_Port___init__():
     assert ftp_Port.__init__(ftp_Port('', '\x00', ftp_Port=ftp_Connection(), ftp_Port17=ftp_Connection(), ftp_Port24=ftp_PortValue(), ftp_Port21=ftp_ComposedComponent()), '\x00\x00', '', ftp_Port=ftp_Connection(), ftp_Port17=ftp_Connection(), ftp_Port24=ftp_PortValue(), ftp_Port21=ftp_ComposedComponent()) == None
 
 def test_ftp_Port_newPortValue():
-    assert ftp_Port.newPortValue(ftp_Port('', '', ftp_Port=ftp_Connection(), ftp_Port17=ftp_Connection(), ftp_Port24=ftp_PortValue(), ftp_Port21=ftp_ComposedComponent())) == None
+    ftp_Port.newPortValue(ftp_Port('', '', ftp_Port=ftp_Connection(), ftp_Port17=ftp_Connection(), ftp_Port24=ftp_PortValue(), ftp_Port21=ftp_ComposedComponent()))
 from python_code import ftp_ElectricalPort
 from python_code import ftp_Resistor
 

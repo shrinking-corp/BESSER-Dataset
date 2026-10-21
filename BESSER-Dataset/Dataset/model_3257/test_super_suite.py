@@ -8944,14 +8944,14 @@ def test_iso20022_BusinessProcessCatalogue___init__():
     assert iso20022_BusinessProcessCatalogue.__init__(iso20022_BusinessProcessCatalogue(BusinessProcessCatalogue=iso20022_TopLevelCatalogueEntry(), businessProcessCatalogue=iso20022_Repository(), businessProcessCatalogue36=set(), BusinessProcessCatalogue40=iso20022_Repository()), BusinessProcessCatalogue=iso20022_TopLevelCatalogueEntry(), businessProcessCatalogue=iso20022_Repository(), businessProcessCatalogue36=set(), BusinessProcessCatalogue40=iso20022_Repository()) == None
 
 def test_iso20022_BusinessProcessCatalogue_EntriesHaveUniqueName():
-    assert iso20022_BusinessProcessCatalogue.EntriesHaveUniqueName(iso20022_BusinessProcessCatalogue(BusinessProcessCatalogue=iso20022_TopLevelCatalogueEntry(), businessProcessCatalogue=iso20022_Repository(), businessProcessCatalogue36=set(), BusinessProcessCatalogue40=iso20022_Repository()), 0, '\x00\x00') == None
+    iso20022_BusinessProcessCatalogue.EntriesHaveUniqueName(iso20022_BusinessProcessCatalogue(BusinessProcessCatalogue=iso20022_TopLevelCatalogueEntry(), businessProcessCatalogue=iso20022_Repository(), businessProcessCatalogue36=set(), BusinessProcessCatalogue40=iso20022_Repository()), 0, '\x00\x00')
 from python_code import iso20022_ChoiceComponent
 
 def test_iso20022_ChoiceComponent___init__():
     assert iso20022_ChoiceComponent.__init__(iso20022_ChoiceComponent()) == None
 
 def test_iso20022_ChoiceComponent_AtLeastOneProperty():
-    assert iso20022_ChoiceComponent.AtLeastOneProperty(iso20022_ChoiceComponent(), '', '') == None
+    iso20022_ChoiceComponent.AtLeastOneProperty(iso20022_ChoiceComponent(), '', '')
 from python_code import iso20022_DataDictionary
 from python_code import iso20022_Repository
 from python_code import iso20022_TopLevelDictionaryEntry
@@ -8960,7 +8960,7 @@ def test_iso20022_DataDictionary___init__():
     assert iso20022_DataDictionary.__init__(iso20022_DataDictionary(DataDictionary=iso20022_Repository(), dataDictionary=set(), dataDictionary43=iso20022_Repository(), DataDictionary46=iso20022_TopLevelDictionaryEntry()), DataDictionary=iso20022_Repository(), dataDictionary=set(), dataDictionary43=iso20022_Repository(), DataDictionary46=iso20022_TopLevelDictionaryEntry()) == None
 
 def test_iso20022_DataDictionary_EntriesHaveUniqueName():
-    assert iso20022_DataDictionary.EntriesHaveUniqueName(iso20022_DataDictionary(DataDictionary=iso20022_Repository(), dataDictionary=set(), dataDictionary43=iso20022_Repository(), DataDictionary46=iso20022_TopLevelDictionaryEntry()), 0, '\x00\x00') == None
+    iso20022_DataDictionary.EntriesHaveUniqueName(iso20022_DataDictionary(DataDictionary=iso20022_Repository(), dataDictionary=set(), dataDictionary43=iso20022_Repository(), DataDictionary46=iso20022_TopLevelDictionaryEntry()), 0, '\x00\x00')
 from python_code import iso20022_Decimal
 
 def test_iso20022_Decimal___init__():
@@ -9010,7 +9010,7 @@ def test_iso20022_TransportMessage___init__():
     assert iso20022_TransportMessage.__init__(iso20022_TransportMessage(transportMessage=iso20022_MessageInstance(), receivedMessage=set(), TransportMessage=iso20022_MessagingEndpoint(), TransportMessage11=iso20022_MessagingEndpoint(), sentMessage=iso20022_MessagingEndpoint(), TransportMessage24=iso20022_MessageInstance()), transportMessage=iso20022_MessageInstance(), receivedMessage=set(), TransportMessage=iso20022_MessagingEndpoint(), TransportMessage11=iso20022_MessagingEndpoint(), sentMessage=iso20022_MessagingEndpoint(), TransportMessage24=iso20022_MessageInstance()) == None
 
 def test_iso20022_TransportMessage_sameMessageTransportSystem():
-    assert iso20022_TransportMessage.sameMessageTransportSystem(iso20022_TransportMessage(transportMessage=iso20022_MessageInstance(), receivedMessage=set(), TransportMessage=iso20022_MessagingEndpoint(), TransportMessage11=iso20022_MessagingEndpoint(), sentMessage=iso20022_MessagingEndpoint(), TransportMessage24=iso20022_MessageInstance()), 0, '\x00\x00') == None
+    iso20022_TransportMessage.sameMessageTransportSystem(iso20022_TransportMessage(transportMessage=iso20022_MessageInstance(), receivedMessage=set(), TransportMessage=iso20022_MessagingEndpoint(), TransportMessage11=iso20022_MessagingEndpoint(), sentMessage=iso20022_MessagingEndpoint(), TransportMessage24=iso20022_MessageInstance()), 0, '\x00\x00')
 from python_code import iso20022_UserDefined
 
 def test_iso20022_UserDefined___init__():

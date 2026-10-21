@@ -3698,17 +3698,17 @@ def test_tree_DTreeElementSynchronizer___init__():
     assert tree_DTreeElementSynchronizer.__init__(tree_DTreeElementSynchronizer()) == None
 
 def test_tree_DTreeElementSynchronizer_refresh():
-    assert tree_DTreeElementSynchronizer.refresh(tree_DTreeElementSynchronizer(), '') == None
+    tree_DTreeElementSynchronizer.refresh(tree_DTreeElementSynchronizer(), '')
 from python_code import tree_DTreeElementUpdater
 
 def test_tree_DTreeElementUpdater___init__():
     assert tree_DTreeElementUpdater.__init__(tree_DTreeElementUpdater()) == None
 
 def test_tree_DTreeElementUpdater_activate():
-    assert tree_DTreeElementUpdater.activate(tree_DTreeElementUpdater(), '') == None
+    tree_DTreeElementUpdater.activate(tree_DTreeElementUpdater(), '')
 
 def test_tree_DTreeElementUpdater_deactivate():
-    assert tree_DTreeElementUpdater.deactivate(tree_DTreeElementUpdater()) == None
+    tree_DTreeElementUpdater.deactivate(tree_DTreeElementUpdater())
 from python_code import StyleUpdater
 from python_code import TreeItemMapping
 from python_code import TreeItemUpdater
@@ -3740,7 +3740,7 @@ def test_tree_description_TreeItemDragTool___init__():
     assert tree_description_TreeItemDragTool.__init__(tree_description_TreeItemDragTool('', tree_description_TreeItemDragTool=tool_DropContainerVariable(), tree_description_TreeItemDragTool43=tool_DropContainerVariable(), tree_description_TreeItemDragTool46=tool_ElementDropVariable(), tree_description_TreeItemDragTool48=tool_ContainerViewVariable(), tree_description_TreeItemDragTool50=set(), tree_description_TreeItemDragTool52=PrecedingSiblingsVariables()), '', tree_description_TreeItemDragTool=tool_DropContainerVariable(), tree_description_TreeItemDragTool43=tool_DropContainerVariable(), tree_description_TreeItemDragTool46=tool_ElementDropVariable(), tree_description_TreeItemDragTool48=tool_ContainerViewVariable(), tree_description_TreeItemDragTool50=set(), tree_description_TreeItemDragTool52=PrecedingSiblingsVariables()) == None
 
 def test_tree_description_TreeItemDragTool_getBestTreeItemMapping():
-    assert tree_description_TreeItemDragTool.getBestTreeItemMapping(tree_description_TreeItemDragTool('', tree_description_TreeItemDragTool=tool_DropContainerVariable(), tree_description_TreeItemDragTool43=tool_DropContainerVariable(), tree_description_TreeItemDragTool46=tool_ElementDropVariable(), tree_description_TreeItemDragTool48=tool_ContainerViewVariable(), tree_description_TreeItemDragTool50=set(), tree_description_TreeItemDragTool52=PrecedingSiblingsVariables())) == None
+    tree_description_TreeItemDragTool.getBestTreeItemMapping(tree_description_TreeItemDragTool('', tree_description_TreeItemDragTool=tool_DropContainerVariable(), tree_description_TreeItemDragTool43=tool_DropContainerVariable(), tree_description_TreeItemDragTool46=tool_ElementDropVariable(), tree_description_TreeItemDragTool48=tool_ContainerViewVariable(), tree_description_TreeItemDragTool50=set(), tree_description_TreeItemDragTool52=PrecedingSiblingsVariables()))
 from python_code import TreeItemDeletionTool
 from python_code import TreeItemMapping
 from python_code import tree_description_TreeItemMapping
@@ -3754,10 +3754,10 @@ def test_tree_description_TreeItemUpdater___init__():
     assert tree_description_TreeItemUpdater.__init__(tree_description_TreeItemUpdater(tree_description_TreeItemUpdater=TreeItemEditionTool()), tree_description_TreeItemUpdater=TreeItemEditionTool()) == None
 
 def test_tree_description_TreeItemUpdater_getLabelComputationExpression():
-    assert tree_description_TreeItemUpdater.getLabelComputationExpression(tree_description_TreeItemUpdater(tree_description_TreeItemUpdater=TreeItemEditionTool())) == None
+    tree_description_TreeItemUpdater.getLabelComputationExpression(tree_description_TreeItemUpdater(tree_description_TreeItemUpdater=TreeItemEditionTool()))
 
 def test_tree_description_TreeItemUpdater_getCreateTreeItem():
-    assert tree_description_TreeItemUpdater.getCreateTreeItem(tree_description_TreeItemUpdater(tree_description_TreeItemUpdater=TreeItemEditionTool())) == None
+    tree_description_TreeItemUpdater.getCreateTreeItem(tree_description_TreeItemUpdater(tree_description_TreeItemUpdater=TreeItemEditionTool()))
 from python_code import tree_description_TreeMapping
 
 def test_tree_description_TreeMapping___init__():

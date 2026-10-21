@@ -516,5 +516,5 @@ def test_g_X___init__():
     assert g_X.__init__(g_X(g_X=set()), g_X=set()) == None
 
 def test_g_X_foo():
-    assert g_X.foo(g_X(g_X=set())) == None
+    g_X.foo(g_X(g_X=set()))
 

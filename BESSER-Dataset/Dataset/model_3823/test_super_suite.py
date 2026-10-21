@@ -1862,7 +1862,7 @@ def test_types_ArrayTypeSpecifier___init__():
     assert types_ArrayTypeSpecifier.__init__(types_ArrayTypeSpecifier(0), 0) == None
 
 def test_types_ArrayTypeSpecifier_getElementType():
-    assert types_ArrayTypeSpecifier.getElementType(types_ArrayTypeSpecifier(0)) == None
+    types_ArrayTypeSpecifier.getElementType(types_ArrayTypeSpecifier(0))
 from python_code import types_Domain
 from python_code import types_Package
 
@@ -1900,5 +1900,5 @@ def test_types_Type___init__():
     assert types_Type.__init__(types_Type(False, False, types_Type10=types_TypedElement(), types_Type15=types_TypeSpecifier(), types_Type=set(), types_Type28=types_TypeParameter()), False, False, types_Type10=types_TypedElement(), types_Type15=types_TypeSpecifier(), types_Type=set(), types_Type28=types_TypeParameter()) == None
 
 def test_types_Type_getOriginType():
-    assert types_Type.getOriginType(types_Type(False, False, types_Type10=types_TypedElement(), types_Type15=types_TypeSpecifier(), types_Type=set(), types_Type28=types_TypeParameter())) == None
+    types_Type.getOriginType(types_Type(False, False, types_Type10=types_TypedElement(), types_Type15=types_TypeSpecifier(), types_Type=set(), types_Type28=types_TypeParameter()))
 

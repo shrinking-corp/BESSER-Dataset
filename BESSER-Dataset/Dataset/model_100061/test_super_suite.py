@@ -6723,7 +6723,7 @@ def test_aggregator_IdentificationProvider___init__():
     assert aggregator_IdentificationProvider.__init__(aggregator_IdentificationProvider()) == None
 
 def test_aggregator_IdentificationProvider_getIdentification():
-    assert aggregator_IdentificationProvider.getIdentification(aggregator_IdentificationProvider()) == None
+    aggregator_IdentificationProvider.getIdentification(aggregator_IdentificationProvider())
 from python_code import aggregator_InfosProvider
 
 def test_aggregator_InfosProvider___init__():
@@ -6735,16 +6735,16 @@ def test_aggregator_InstallableUnitRequest___init__():
     assert aggregator_InstallableUnitRequest.__init__(aggregator_InstallableUnitRequest('\x00\x00', '', InstallableUnitRequest=aggregator_AvailableVersionsHeader(), installableUnitRequest=aggregator_AvailableVersionsHeader(), aggregator_InstallableUnitRequest=set()), '', '', InstallableUnitRequest=aggregator_AvailableVersionsHeader(), installableUnitRequest=aggregator_AvailableVersionsHeader(), aggregator_InstallableUnitRequest=set()) == None
 
 def test_aggregator_InstallableUnitRequest_resolveAvailableVersions():
-    assert aggregator_InstallableUnitRequest.resolveAvailableVersions(aggregator_InstallableUnitRequest('', '\x00', InstallableUnitRequest=aggregator_AvailableVersionsHeader(), installableUnitRequest=aggregator_AvailableVersionsHeader(), aggregator_InstallableUnitRequest=set()), '') == None
+    aggregator_InstallableUnitRequest.resolveAvailableVersions(aggregator_InstallableUnitRequest('', '\x00', InstallableUnitRequest=aggregator_AvailableVersionsHeader(), installableUnitRequest=aggregator_AvailableVersionsHeader(), aggregator_InstallableUnitRequest=set()), '')
 
 def test_aggregator_InstallableUnitRequest_isMappedRepositoryBroken():
-    assert aggregator_InstallableUnitRequest.isMappedRepositoryBroken(aggregator_InstallableUnitRequest('', '\x00', InstallableUnitRequest=aggregator_AvailableVersionsHeader(), installableUnitRequest=aggregator_AvailableVersionsHeader(), aggregator_InstallableUnitRequest=set())) == None
+    aggregator_InstallableUnitRequest.isMappedRepositoryBroken(aggregator_InstallableUnitRequest('', '\x00', InstallableUnitRequest=aggregator_AvailableVersionsHeader(), installableUnitRequest=aggregator_AvailableVersionsHeader(), aggregator_InstallableUnitRequest=set()))
 
 def test_aggregator_InstallableUnitRequest_isBranchEnabled():
-    assert aggregator_InstallableUnitRequest.isBranchEnabled(aggregator_InstallableUnitRequest('', '\x00', InstallableUnitRequest=aggregator_AvailableVersionsHeader(), installableUnitRequest=aggregator_AvailableVersionsHeader(), aggregator_InstallableUnitRequest=set())) == None
+    aggregator_InstallableUnitRequest.isBranchEnabled(aggregator_InstallableUnitRequest('', '\x00', InstallableUnitRequest=aggregator_AvailableVersionsHeader(), installableUnitRequest=aggregator_AvailableVersionsHeader(), aggregator_InstallableUnitRequest=set()))
 
 def test_aggregator_InstallableUnitRequest_resolveAsSingleton():
-    assert aggregator_InstallableUnitRequest.resolveAsSingleton(aggregator_InstallableUnitRequest('', '\x00', InstallableUnitRequest=aggregator_AvailableVersionsHeader(), installableUnitRequest=aggregator_AvailableVersionsHeader(), aggregator_InstallableUnitRequest=set()), '') == None
+    aggregator_InstallableUnitRequest.resolveAsSingleton(aggregator_InstallableUnitRequest('', '\x00', InstallableUnitRequest=aggregator_AvailableVersionsHeader(), installableUnitRequest=aggregator_AvailableVersionsHeader(), aggregator_InstallableUnitRequest=set()), '')
 from python_code import aggregator_LabelProvider
 
 def test_aggregator_LabelProvider___init__():
@@ -6771,13 +6771,13 @@ def test_aggregator_p2view_Feature___init__():
     assert aggregator_p2view_Feature.__init__(aggregator_p2view_Feature(aggregator_p2view_Feature=Features(), aggregator_p2view_Feature66=Bundles(), aggregator_p2view_Feature69=Fragments()), aggregator_p2view_Feature=Features(), aggregator_p2view_Feature66=Bundles(), aggregator_p2view_Feature69=Fragments()) == None
 
 def test_aggregator_p2view_Feature_getNotNullFragmentContainer():
-    assert aggregator_p2view_Feature.getNotNullFragmentContainer(aggregator_p2view_Feature(aggregator_p2view_Feature=Features(), aggregator_p2view_Feature66=Bundles(), aggregator_p2view_Feature69=Fragments())) == None
+    aggregator_p2view_Feature.getNotNullFragmentContainer(aggregator_p2view_Feature(aggregator_p2view_Feature=Features(), aggregator_p2view_Feature66=Bundles(), aggregator_p2view_Feature69=Fragments()))
 
 def test_aggregator_p2view_Feature_getNotNullBundleContainer():
-    assert aggregator_p2view_Feature.getNotNullBundleContainer(aggregator_p2view_Feature(aggregator_p2view_Feature=Features(), aggregator_p2view_Feature66=Bundles(), aggregator_p2view_Feature69=Fragments())) == None
+    aggregator_p2view_Feature.getNotNullBundleContainer(aggregator_p2view_Feature(aggregator_p2view_Feature=Features(), aggregator_p2view_Feature66=Bundles(), aggregator_p2view_Feature69=Fragments()))
 
 def test_aggregator_p2view_Feature_getNotNullFeatureContainer():
-    assert aggregator_p2view_Feature.getNotNullFeatureContainer(aggregator_p2view_Feature(aggregator_p2view_Feature=Features(), aggregator_p2view_Feature66=Bundles(), aggregator_p2view_Feature69=Fragments())) == None
+    aggregator_p2view_Feature.getNotNullFeatureContainer(aggregator_p2view_Feature(aggregator_p2view_Feature=Features(), aggregator_p2view_Feature66=Bundles(), aggregator_p2view_Feature69=Fragments()))
 from python_code import aggregator_p2view_IUPresentation
 from python_code import p2view_aggregator_IInstallableUnit
 
@@ -6804,13 +6804,13 @@ def test_aggregator_p2view_Product___init__():
     assert aggregator_p2view_Product.__init__(aggregator_p2view_Product(aggregator_p2view_Product120=Bundles(), aggregator_p2view_Product123=Fragments(), aggregator_p2view_Product=Features()), aggregator_p2view_Product120=Bundles(), aggregator_p2view_Product123=Fragments(), aggregator_p2view_Product=Features()) == None
 
 def test_aggregator_p2view_Product_getNotNullFeatureContainer():
-    assert aggregator_p2view_Product.getNotNullFeatureContainer(aggregator_p2view_Product(aggregator_p2view_Product120=Bundles(), aggregator_p2view_Product123=Fragments(), aggregator_p2view_Product=Features())) == None
+    aggregator_p2view_Product.getNotNullFeatureContainer(aggregator_p2view_Product(aggregator_p2view_Product120=Bundles(), aggregator_p2view_Product123=Fragments(), aggregator_p2view_Product=Features()))
 
 def test_aggregator_p2view_Product_getNotNullBundleContainer():
-    assert aggregator_p2view_Product.getNotNullBundleContainer(aggregator_p2view_Product(aggregator_p2view_Product120=Bundles(), aggregator_p2view_Product123=Fragments(), aggregator_p2view_Product=Features())) == None
+    aggregator_p2view_Product.getNotNullBundleContainer(aggregator_p2view_Product(aggregator_p2view_Product120=Bundles(), aggregator_p2view_Product123=Fragments(), aggregator_p2view_Product=Features()))
 
 def test_aggregator_p2view_Product_getNotNullFragmentContainer():
-    assert aggregator_p2view_Product.getNotNullFragmentContainer(aggregator_p2view_Product(aggregator_p2view_Product120=Bundles(), aggregator_p2view_Product123=Fragments(), aggregator_p2view_Product=Features())) == None
+    aggregator_p2view_Product.getNotNullFragmentContainer(aggregator_p2view_Product(aggregator_p2view_Product120=Bundles(), aggregator_p2view_Product123=Fragments(), aggregator_p2view_Product=Features()))
 from python_code import aggregator_p2view_RepositoryBrowser
 
 def test_aggregator_p2view_RepositoryBrowser___init__():

@@ -1453,22 +1453,22 @@ def test_testmodel_A___init__():
     assert testmodel_A.__init__(testmodel_A(''), '') == None
 
 def test_testmodel_A_aOp():
-    assert testmodel_A.aOp(testmodel_A('')) == None
+    testmodel_A.aOp(testmodel_A(''))
 from python_code import testmodel_B
 
 def test_testmodel_B___init__():
     assert testmodel_B.__init__(testmodel_B(''), '') == None
 
 def test_testmodel_B_bOp():
-    assert testmodel_B.bOp(testmodel_B('')) == None
+    testmodel_B.bOp(testmodel_B(''))
 from python_code import testmodel_C
 
 def test_testmodel_C___init__():
     assert testmodel_C.__init__(testmodel_C(''), '') == None
 
 def test_testmodel_C_aOp():
-    assert testmodel_C.aOp(testmodel_C('')) == None
+    testmodel_C.aOp(testmodel_C(''))
 
 def test_testmodel_C_bOp():
-    assert testmodel_C.bOp(testmodel_C('')) == None
+    testmodel_C.bOp(testmodel_C(''))
 

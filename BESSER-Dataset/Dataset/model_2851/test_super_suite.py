@@ -6221,7 +6221,7 @@ def test_mitra_BooleanLiteral___init__():
     assert mitra_BooleanLiteral.__init__(mitra_BooleanLiteral(True), False) == None
 
 def test_mitra_BooleanLiteral_toString():
-    assert mitra_BooleanLiteral.toString(mitra_BooleanLiteral(False)) == None
+    mitra_BooleanLiteral.toString(mitra_BooleanLiteral(False))
 from python_code import mitra_CollectionType
 from python_code import mitra_Type
 
@@ -6229,7 +6229,7 @@ def test_mitra_CollectionType___init__():
     assert mitra_CollectionType.__init__(mitra_CollectionType('', mitra_CollectionType=mitra_Type()), '', mitra_CollectionType=mitra_Type()) == None
 
 def test_mitra_CollectionType_toString():
-    assert mitra_CollectionType.toString(mitra_CollectionType('', mitra_CollectionType=mitra_Type())) == None
+    mitra_CollectionType.toString(mitra_CollectionType('', mitra_CollectionType=mitra_Type()))
 from python_code import mitra_EqualityExpression
 from python_code import mitra_Expression
 
@@ -6241,7 +6241,7 @@ def test_mitra_IntLiteral___init__():
     assert mitra_IntLiteral.__init__(mitra_IntLiteral(0), 0) == None
 
 def test_mitra_IntLiteral_toString():
-    assert mitra_IntLiteral.toString(mitra_IntLiteral(0)) == None
+    mitra_IntLiteral.toString(mitra_IntLiteral(0))
 from python_code import mitra_Expression
 from python_code import mitra_MathExpression
 

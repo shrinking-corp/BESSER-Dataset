@@ -2476,7 +2476,7 @@ def test_model_Label___init__():
     assert model_Label.__init__(model_Label(Label=model_HasLabel(), label=model_HasLabel()), Label=model_HasLabel(), label=model_HasLabel()) == None
 
 def test_model_Label_asString():
-    assert model_Label.asString(model_Label(Label=model_HasLabel(), label=model_HasLabel())) == None
+    model_Label.asString(model_Label(Label=model_HasLabel(), label=model_HasLabel()))
 from python_code import model_FusionGroup
 from python_code import model_Page
 from python_code import model_PetriNet

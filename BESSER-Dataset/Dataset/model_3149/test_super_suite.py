@@ -6967,7 +6967,7 @@ def test_ccore_ExportedContent___init__():
     assert ccore_ExportedContent.__init__(ccore_ExportedContent()) == None
 
 def test_ccore_ExportedContent_hasChildren():
-    assert ccore_ExportedContent.hasChildren(ccore_ExportedContent()) == None
+    ccore_ExportedContent.hasChildren(ccore_ExportedContent())
 from python_code import ccore_GenInformation
 
 def test_ccore_GenInformation___init__():

@@ -1776,7 +1776,7 @@ def test_model_BasicObject___init__():
     assert model_BasicObject.__init__(model_BasicObject('', 0, '\x00\x00'), '', 0, '') == None
 
 def test_model_BasicObject_toString():
-    assert model_BasicObject.toString(model_BasicObject('', 0, '\x00')) == None
+    model_BasicObject.toString(model_BasicObject('', 0, '\x00'))
 from python_code import model_Category
 
 def test_model_Category___init__():
@@ -1787,5 +1787,5 @@ def test_model_NotificationDefinition___init__():
     assert model_NotificationDefinition.__init__(model_NotificationDefinition('', '', False), '\x00', '', False) == None
 
 def test_model_NotificationDefinition_toString():
-    assert model_NotificationDefinition.toString(model_NotificationDefinition('', '', False)) == None
+    model_NotificationDefinition.toString(model_NotificationDefinition('', '', False))
 

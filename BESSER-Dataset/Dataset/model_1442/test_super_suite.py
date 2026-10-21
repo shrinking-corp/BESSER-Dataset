@@ -983,32 +983,32 @@ def test_GraphOperations_ConstantUtils___init__():
     assert GraphOperations_ConstantUtils.__init__(GraphOperations_ConstantUtils()) == None
 
 def test_GraphOperations_ConstantUtils_getDouble():
-    assert GraphOperations_ConstantUtils.getDouble(GraphOperations_ConstantUtils()) == None
+    GraphOperations_ConstantUtils.getDouble(GraphOperations_ConstantUtils())
 
 def test_GraphOperations_ConstantUtils_getFloat():
-    assert GraphOperations_ConstantUtils.getFloat(GraphOperations_ConstantUtils()) == None
+    GraphOperations_ConstantUtils.getFloat(GraphOperations_ConstantUtils())
 
 def test_GraphOperations_ConstantUtils_getLong():
-    assert GraphOperations_ConstantUtils.getLong(GraphOperations_ConstantUtils()) == None
+    GraphOperations_ConstantUtils.getLong(GraphOperations_ConstantUtils())
 
 def test_GraphOperations_ConstantUtils_getString():
-    assert GraphOperations_ConstantUtils.getString(GraphOperations_ConstantUtils()) == None
+    GraphOperations_ConstantUtils.getString(GraphOperations_ConstantUtils())
 
 def test_GraphOperations_ConstantUtils_getInt():
-    assert GraphOperations_ConstantUtils.getInt(GraphOperations_ConstantUtils()) == None
+    GraphOperations_ConstantUtils.getInt(GraphOperations_ConstantUtils())
 
 def test_GraphOperations_ConstantUtils_getEdgeState():
-    assert GraphOperations_ConstantUtils.getEdgeState(GraphOperations_ConstantUtils()) == None
+    GraphOperations_ConstantUtils.getEdgeState(GraphOperations_ConstantUtils())
 from python_code import GraphOperations_EIntContainer
 
 def test_GraphOperations_EIntContainer___init__():
     assert GraphOperations_EIntContainer.__init__(GraphOperations_EIntContainer(0), 0) == None
 
 def test_GraphOperations_EIntContainer_increment():
-    assert GraphOperations_EIntContainer.increment(GraphOperations_EIntContainer(0)) == None
+    GraphOperations_EIntContainer.increment(GraphOperations_EIntContainer(0))
 
 def test_GraphOperations_EIntContainer_incrementBy():
-    assert GraphOperations_EIntContainer.incrementBy(GraphOperations_EIntContainer(0), 0) == None
+    GraphOperations_EIntContainer.incrementBy(GraphOperations_EIntContainer(0), 0)
 from python_code import GraphOperations_Element
 
 def test_GraphOperations_Element___init__():

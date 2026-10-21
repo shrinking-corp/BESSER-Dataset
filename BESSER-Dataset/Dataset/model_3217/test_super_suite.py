@@ -10472,7 +10472,7 @@ def test_gast_annotations_Comment___init__():
     assert gast_annotations_Comment.__init__(gast_annotations_Comment(False, 0, '', False), False, 0, '', True) == None
 
 def test_gast_annotations_Comment_OCLtodo():
-    assert gast_annotations_Comment.OCLtodo(gast_annotations_Comment(False, 0, '', False), '', '') == None
+    gast_annotations_Comment.OCLtodo(gast_annotations_Comment(False, 0, '', False), '', '')
 from python_code import BasePath
 from python_code import Directory
 from python_code import gast_core_Directory
@@ -10485,7 +10485,7 @@ def test_gast_core_Identifier___init__():
     assert gast_core_Identifier.__init__(gast_core_Identifier(''), '') == None
 
 def test_gast_core_Identifier_idHasToBeUnique():
-    assert gast_core_Identifier.idHasToBeUnique(gast_core_Identifier(''), 0, '\x00\x00') == None
+    gast_core_Identifier.idHasToBeUnique(gast_core_Identifier(''), 0, '\x00\x00')
 from python_code import gast_core_ModelElement
 
 def test_gast_core_ModelElement___init__():
@@ -10538,7 +10538,7 @@ def test_gast_types_Member___init__():
     assert gast_types_Member.__init__(gast_types_Member('', False, False, False, False, False, False, False, False, False, gast_types_Member=Member(), SourceEntity=gast_core_Position(0, 0, 0, 0, gast_core_Position=File(), gast_core_Position163=File(), position=SourceEntity())), '', False, False, True, False, False, False, True, False, False, gast_types_Member=Member(), SourceEntity=gast_core_Position(0, 0, 0, 0, gast_core_Position=File(), gast_core_Position163=File(), position=SourceEntity())) == None
 
 def test_gast_types_Member_getSurroundingClass():
-    assert gast_types_Member.getSurroundingClass(gast_types_Member('', False, False, False, False, False, False, False, False, False, gast_types_Member=Member(), SourceEntity=gast_core_Position(0, 0, 0, 0, gast_core_Position=File(), gast_core_Position163=File(), position=SourceEntity()))) == None
+    gast_types_Member.getSurroundingClass(gast_types_Member('', False, False, False, False, False, False, False, False, False, gast_types_Member=Member(), SourceEntity=gast_core_Position(0, 0, 0, 0, gast_core_Position=File(), gast_core_Position163=File(), position=SourceEntity())))
 from python_code import GASTType
 from python_code import gast_types_Reference
 

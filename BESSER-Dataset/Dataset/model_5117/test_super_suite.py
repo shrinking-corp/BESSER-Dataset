@@ -3719,7 +3719,7 @@ def test_diva_BaseModel___init__():
     assert diva_BaseModel.__init__(diva_BaseModel()) == None
 
 def test_diva_BaseModel_weave():
-    assert diva_BaseModel.weave(diva_BaseModel()) == None
+    diva_BaseModel.weave(diva_BaseModel())
 from python_code import diva_BoolVariableValue
 
 def test_diva_BoolVariableValue___init__():

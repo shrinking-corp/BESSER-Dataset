@@ -1621,7 +1621,7 @@ def test_dot_Attributable___init__():
     assert dot_Attributable.__init__(dot_Attributable(dot_Attributable=dot_AttributeList()), dot_Attributable=dot_AttributeList()) == None
 
 def test_dot_Attributable_getAllALists():
-    assert dot_Attributable.getAllALists(dot_Attributable(dot_Attributable=dot_AttributeList())) == None
+    dot_Attributable.getAllALists(dot_Attributable(dot_Attributable=dot_AttributeList()))
 from python_code import dot_AttributeStatement
 
 def test_dot_AttributeStatement___init__():
@@ -1636,7 +1636,7 @@ def test_dot_Graph___init__():
     assert dot_Graph.__init__(dot_Graph('', '\x00'), '\x00\x00', '') == None
 
 def test_dot_Graph_getAllStatements():
-    assert dot_Graph.getAllStatements(dot_Graph('', '')) == None
+    dot_Graph.getAllStatements(dot_Graph('', ''))
 from python_code import dot_Identifiable
 
 def test_dot_Identifiable___init__():

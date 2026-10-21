@@ -5760,10 +5760,10 @@ def test_ast_CallableElement___init__():
     assert ast_CallableElement.__init__(ast_CallableElement(ast_CallableElement=ast_DerivativeOperator(), ast_CallableElement170=ast_FeatureCall(), ast_CallableElement223=ast_ForStatement(), ast_CallableElement190=ast_MemberVariableAccess()), ast_CallableElement=ast_DerivativeOperator(), ast_CallableElement170=ast_FeatureCall(), ast_CallableElement223=ast_ForStatement(), ast_CallableElement190=ast_MemberVariableAccess()) == None
 
 def test_ast_CallableElement_getQualifiedName():
-    assert ast_CallableElement.getQualifiedName(ast_CallableElement(ast_CallableElement=ast_DerivativeOperator(), ast_CallableElement170=ast_FeatureCall(), ast_CallableElement223=ast_ForStatement(), ast_CallableElement190=ast_MemberVariableAccess())) == None
+    ast_CallableElement.getQualifiedName(ast_CallableElement(ast_CallableElement=ast_DerivativeOperator(), ast_CallableElement170=ast_FeatureCall(), ast_CallableElement223=ast_ForStatement(), ast_CallableElement190=ast_MemberVariableAccess()))
 
 def test_ast_CallableElement_getName():
-    assert ast_CallableElement.getName(ast_CallableElement(ast_CallableElement=ast_DerivativeOperator(), ast_CallableElement170=ast_FeatureCall(), ast_CallableElement223=ast_ForStatement(), ast_CallableElement190=ast_MemberVariableAccess())) == None
+    ast_CallableElement.getName(ast_CallableElement(ast_CallableElement=ast_DerivativeOperator(), ast_CallableElement170=ast_FeatureCall(), ast_CallableElement223=ast_ForStatement(), ast_CallableElement190=ast_MemberVariableAccess()))
 from python_code import ast_Definition
 from python_code import ast_Module
 
@@ -5840,7 +5840,7 @@ def test_ast_VariableAccess___init__():
     assert ast_VariableAccess.__init__(ast_VariableAccess(ast_VariableAccess=ast_StepExpression()), ast_VariableAccess=ast_StepExpression()) == None
 
 def test_ast_VariableAccess_isInitial():
-    assert ast_VariableAccess.isInitial(ast_VariableAccess(ast_VariableAccess=ast_StepExpression())) == None
+    ast_VariableAccess.isInitial(ast_VariableAccess(ast_VariableAccess=ast_StepExpression()))
 from python_code import ast_Expression
 from python_code import ast_VariableDeclaration
 

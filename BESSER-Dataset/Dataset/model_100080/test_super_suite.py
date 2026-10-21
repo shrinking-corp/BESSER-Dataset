@@ -3454,10 +3454,10 @@ def test_builds_BuildElement___init__():
     assert builds_BuildElement.__init__(builds_BuildElement('', '', '', '', _ch_datetime.date(1, 1, 1), builds_BuildElement=set()), '', '', '', '', _ch_datetime.date(1, 1, 1), builds_BuildElement=set()) == None
 
 def test_builds_BuildElement_getServer():
-    assert builds_BuildElement.getServer(builds_BuildElement('', '', '\x00\x00', '', _ch_datetime.date(1, 1, 1), builds_BuildElement=set())) == None
+    builds_BuildElement.getServer(builds_BuildElement('', '', '\x00\x00', '', _ch_datetime.date(1, 1, 1), builds_BuildElement=set()))
 
 def test_builds_BuildElement_getLabel():
-    assert builds_BuildElement.getLabel(builds_BuildElement('', '', '\x00\x00', '', _ch_datetime.date(1, 1, 1), builds_BuildElement=set())) == None
+    builds_BuildElement.getLabel(builds_BuildElement('', '', '\x00\x00', '', _ch_datetime.date(1, 1, 1), builds_BuildElement=set()))
 from python_code import builds_ChoiceParameterDefinition
 
 def test_builds_ChoiceParameterDefinition___init__():

@@ -2274,7 +2274,7 @@ def test_diva_BaseModel___init__():
     assert diva_BaseModel.__init__(diva_BaseModel(diva_BaseModel=diva_VariabilityModel()), diva_BaseModel=diva_VariabilityModel()) == None
 
 def test_diva_BaseModel_weave():
-    assert diva_BaseModel.weave(diva_BaseModel(diva_BaseModel=diva_VariabilityModel())) == None
+    diva_BaseModel.weave(diva_BaseModel(diva_BaseModel=diva_VariabilityModel()))
 from python_code import diva_Expression
 from python_code import diva_Invariant
 from python_code import diva_Term

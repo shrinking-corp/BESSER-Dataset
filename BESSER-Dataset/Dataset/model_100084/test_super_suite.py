@@ -699,10 +699,10 @@ def test_maven_MavenProvider___init__():
     assert maven_MavenProvider.__init__(maven_MavenProvider(True, maven_MavenProvider=maven_Mappings(), maven_MavenProvider8=maven_Scopes()), False, maven_MavenProvider=maven_Mappings(), maven_MavenProvider8=maven_Scopes()) == None
 
 def test_maven_MavenProvider_getComponentName():
-    assert maven_MavenProvider.getComponentName(maven_MavenProvider(False, maven_MavenProvider=maven_Mappings(), maven_MavenProvider8=maven_Scopes()), 0, '\x00\x00') == None
+    maven_MavenProvider.getComponentName(maven_MavenProvider(False, maven_MavenProvider=maven_Mappings(), maven_MavenProvider8=maven_Scopes()), 0, '\x00\x00')
 
 def test_maven_MavenProvider_getMapEntry():
-    assert maven_MavenProvider.getMapEntry(maven_MavenProvider(False, maven_MavenProvider=maven_Mappings(), maven_MavenProvider8=maven_Scopes()), 0) == None
+    maven_MavenProvider.getMapEntry(maven_MavenProvider(False, maven_MavenProvider=maven_Mappings(), maven_MavenProvider8=maven_Scopes()), 0)
 from python_code import maven_Scope
 from python_code import maven_Scopes
 

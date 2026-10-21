@@ -1279,10 +1279,10 @@ def test_qvtcorebase_AbstractMapping___init__():
     assert qvtcorebase_AbstractMapping.__init__(qvtcorebase_AbstractMapping()) == None
 
 def test_qvtcorebase_AbstractMapping_getRefinement():
-    assert qvtcorebase_AbstractMapping.getRefinement(qvtcorebase_AbstractMapping()) == None
+    qvtcorebase_AbstractMapping.getRefinement(qvtcorebase_AbstractMapping())
 
 def test_qvtcorebase_AbstractMapping_getContext():
-    assert qvtcorebase_AbstractMapping.getContext(qvtcorebase_AbstractMapping()) == None
+    qvtcorebase_AbstractMapping.getContext(qvtcorebase_AbstractMapping())
 from python_code import qvtcorebase_Area
 from python_code import qvtcorebase_BottomPattern
 from python_code import qvtcorebase_GuardPattern
@@ -1291,7 +1291,7 @@ def test_qvtcorebase_Area___init__():
     assert qvtcorebase_Area.__init__(qvtcorebase_Area(area=qvtcorebase_GuardPattern(), area2=qvtcorebase_BottomPattern(), Area=qvtcorebase_BottomPattern(), Area17=qvtcorebase_GuardPattern()), area=qvtcorebase_GuardPattern(), area2=qvtcorebase_BottomPattern(), Area=qvtcorebase_BottomPattern(), Area17=qvtcorebase_GuardPattern()) == None
 
 def test_qvtcorebase_Area_getAllVariables():
-    assert qvtcorebase_Area.getAllVariables(qvtcorebase_Area(area=qvtcorebase_GuardPattern(), area2=qvtcorebase_BottomPattern(), Area=qvtcorebase_BottomPattern(), Area17=qvtcorebase_GuardPattern())) == None
+    qvtcorebase_Area.getAllVariables(qvtcorebase_Area(area=qvtcorebase_GuardPattern(), area2=qvtcorebase_BottomPattern(), Area=qvtcorebase_BottomPattern(), Area17=qvtcorebase_GuardPattern()))
 from python_code import qvtcorebase_Assignment
 from python_code import qvtcorebase_BottomPattern
 from python_code import qvtcorebase_OCLExpression
@@ -1304,10 +1304,10 @@ def test_qvtcorebase_CorePattern___init__():
     assert qvtcorebase_CorePattern.__init__(qvtcorebase_CorePattern(qvtcorebase_CorePattern=set()), qvtcorebase_CorePattern=set()) == None
 
 def test_qvtcorebase_CorePattern_getAllVariables():
-    assert qvtcorebase_CorePattern.getAllVariables(qvtcorebase_CorePattern(qvtcorebase_CorePattern=set())) == None
+    qvtcorebase_CorePattern.getAllVariables(qvtcorebase_CorePattern(qvtcorebase_CorePattern=set()))
 
 def test_qvtcorebase_CorePattern_getArea():
-    assert qvtcorebase_CorePattern.getArea(qvtcorebase_CorePattern(qvtcorebase_CorePattern=set())) == None
+    qvtcorebase_CorePattern.getArea(qvtcorebase_CorePattern(qvtcorebase_CorePattern=set()))
 from python_code import qvtcorebase_BottomPattern
 from python_code import qvtcorebase_EnforcementOperation
 from python_code import qvtcorebase_OperationCallExp

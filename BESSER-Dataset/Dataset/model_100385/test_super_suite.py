@@ -2871,10 +2871,10 @@ def test_scxmlxt_AbstractTransitionEvent___init__():
     assert scxmlxt_AbstractTransitionEvent.__init__(scxmlxt_AbstractTransitionEvent()) == None
 
 def test_scxmlxt_AbstractTransitionEvent_getSource():
-    assert scxmlxt_AbstractTransitionEvent.getSource(scxmlxt_AbstractTransitionEvent()) == None
+    scxmlxt_AbstractTransitionEvent.getSource(scxmlxt_AbstractTransitionEvent())
 
 def test_scxmlxt_AbstractTransitionEvent_getTarget():
-    assert scxmlxt_AbstractTransitionEvent.getTarget(scxmlxt_AbstractTransitionEvent()) == None
+    scxmlxt_AbstractTransitionEvent.getTarget(scxmlxt_AbstractTransitionEvent())
 from python_code import scxmlxt_AbstractUriLiteral
 
 def test_scxmlxt_AbstractUriLiteral___init__():

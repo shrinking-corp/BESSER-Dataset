@@ -569,14 +569,14 @@ def test_location_Location___init__():
     assert location_Location.__init__(location_Location('', '', '', '', '', '', '', float('inf'), 0.0, 0.0, '', '', '', location_Location=set()), '', '\x00', '', '', '', '', '', 0.0, 0.0, 0.0, '', '', '', location_Location=set()) == None
 
 def test_location_Location_getAddress():
-    assert location_Location.getAddress(location_Location('\x00', '', '', '', '', '', '', 0.0, 0.0, 0.0, '', '', '', location_Location=set())) == None
+    location_Location.getAddress(location_Location('\x00', '', '', '', '', '', '', 0.0, 0.0, 0.0, '', '', '', location_Location=set()))
 
 def test_location_Location_containsPoint():
-    assert location_Location.containsPoint(location_Location('', '', '', '', '', '', '', 0.0, float('inf'), 0.0, '', '', '', location_Location=set()), 0) == None
+    location_Location.containsPoint(location_Location('', '', '', '', '', '', '', 0.0, float('inf'), 0.0, '', '', '', location_Location=set()), 0)
 
 def test_location_Location_getCoordinates():
-    assert location_Location.getCoordinates(location_Location('\x00', '', '', '', '', '', '', 0.0, 0.0, 0.0, '', '', '', location_Location=set())) == None
+    location_Location.getCoordinates(location_Location('\x00', '', '', '', '', '', '', 0.0, 0.0, 0.0, '', '', '', location_Location=set()))
 
 def test_location_Location_locate():
-    assert location_Location.locate(location_Location('', '', '', '', '', '', '', 0.0, float('inf'), 0.0, '', '', '', location_Location=set()), 0) == None
+    location_Location.locate(location_Location('', '', '', '', '', '', '', 0.0, float('inf'), 0.0, '', '', '', location_Location=set()), 0)
 

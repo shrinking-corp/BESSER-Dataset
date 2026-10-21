@@ -955,19 +955,19 @@ def test_file_FileReaderWriter___init__():
     assert file_FileReaderWriter.__init__(file_FileReaderWriter('\x00\x00', '', False, ''), '', '', False, '') == None
 
 def test_file_FileReaderWriter_writeFile():
-    assert file_FileReaderWriter.writeFile(file_FileReaderWriter('', '\x00', False, '\x00'), '') == None
+    file_FileReaderWriter.writeFile(file_FileReaderWriter('', '\x00', False, '\x00'), '')
 
 def test_file_FileReaderWriter_close():
-    assert file_FileReaderWriter.close(file_FileReaderWriter('', '\x00', False, '\x00')) == None
+    file_FileReaderWriter.close(file_FileReaderWriter('', '\x00', False, '\x00'))
 
 def test_file_FileReaderWriter_readFile():
-    assert file_FileReaderWriter.readFile(file_FileReaderWriter('', '\x00', False, '\x00'), '') == None
+    file_FileReaderWriter.readFile(file_FileReaderWriter('', '\x00', False, '\x00'), '')
 
 def test_file_FileReaderWriter_getWriteFeedback():
-    assert file_FileReaderWriter.getWriteFeedback(file_FileReaderWriter('', '\x00', False, '\x00'), '') == None
+    file_FileReaderWriter.getWriteFeedback(file_FileReaderWriter('', '\x00', False, '\x00'), '')
 
 def test_file_FileReaderWriter_getReadFeedback():
-    assert file_FileReaderWriter.getReadFeedback(file_FileReaderWriter('', '\x00', False, '\x00'), '') == None
+    file_FileReaderWriter.getReadFeedback(file_FileReaderWriter('', '\x00', False, '\x00'), '')
 from python_code import file_FileRemote
 
 def test_file_FileRemote___init__():

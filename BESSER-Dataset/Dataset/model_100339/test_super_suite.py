@@ -2877,7 +2877,7 @@ def test_ardurobotml_EmergencyStopAction___init__():
     assert ardurobotml_EmergencyStopAction.__init__(ardurobotml_EmergencyStopAction()) == None
 
 def test_ardurobotml_EmergencyStopAction_begin():
-    assert ardurobotml_EmergencyStopAction.begin(ardurobotml_EmergencyStopAction()) == None
+    ardurobotml_EmergencyStopAction.begin(ardurobotml_EmergencyStopAction())
 from python_code import ardurobotml_MoveBackardAction
 
 def test_ardurobotml_MoveBackardAction___init__():

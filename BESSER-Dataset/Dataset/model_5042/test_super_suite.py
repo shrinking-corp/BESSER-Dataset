@@ -6352,7 +6352,7 @@ def test_model_IEntity___init__():
     assert model_IEntity.__init__(model_IEntity('\x00\x00', _ch_datetime.date(1, 1, 1), '', _ch_datetime.date(1, 1, 1), '', '', _ch_datetime.date(1, 1, 1), _ch_datetime.date(1, 1, 1)), '', _ch_datetime.date(1, 1, 1), '\x00', _ch_datetime.date(1, 1, 1), '', '', _ch_datetime.date(1, 1, 1), _ch_datetime.date(1, 1, 1)) == None
 
 def test_model_IEntity_isSameAs():
-    assert model_IEntity.isSameAs(model_IEntity('', _ch_datetime.date(1, 1, 2), '', _ch_datetime.date(1, 1, 3), '', '', _ch_datetime.date(1, 1, 1), _ch_datetime.date(1, 1, 1))) == None
+    model_IEntity.isSameAs(model_IEntity('', _ch_datetime.date(1, 1, 2), '', _ch_datetime.date(1, 1, 3), '', '', _ch_datetime.date(1, 1, 1), _ch_datetime.date(1, 1, 1)))
 from python_code import model_TextCategory
 from python_code import model_TextModule
 

@@ -1176,5 +1176,5 @@ def test_notation_View___init__():
     assert notation_View.__init__(notation_View('', '', notation_View=set(), notation_View2=notation_EObject(), View=notation_Edge(), View10=notation_Edge(), source=set(), target=set()), '', '', notation_View=set(), notation_View2=notation_EObject(), View=notation_Edge(), View10=notation_Edge(), source=set(), target=set()) == None
 
 def test_notation_View_getAllChildren():
-    assert notation_View.getAllChildren(notation_View('\x00\x00', '', notation_View=set(), notation_View2=notation_EObject(), View=notation_Edge(), View10=notation_Edge(), source=set(), target=set())) == None
+    notation_View.getAllChildren(notation_View('\x00\x00', '', notation_View=set(), notation_View2=notation_EObject(), View=notation_Edge(), View10=notation_Edge(), source=set(), target=set()))
 

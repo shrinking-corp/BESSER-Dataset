@@ -1133,10 +1133,10 @@ def test_webapp_ServerPage___init__():
     assert webapp_ServerPage.__init__(webapp_ServerPage(webapp_ServerPage=webapp_WebApp(), ServerPage23=webapp_ClientPage(), connectsTo=webapp_ClientPage(), providesContent=set(), managedBy=set(), ServerPage=webapp_DataStructure(), ServerPage15=webapp_DataSourceManager()), webapp_ServerPage=webapp_WebApp(), ServerPage23=webapp_ClientPage(), connectsTo=webapp_ClientPage(), providesContent=set(), managedBy=set(), ServerPage=webapp_DataStructure(), ServerPage15=webapp_DataSourceManager()) == None
 
 def test_webapp_ServerPage_request():
-    assert webapp_ServerPage.request(webapp_ServerPage(webapp_ServerPage=webapp_WebApp(), ServerPage23=webapp_ClientPage(), connectsTo=webapp_ClientPage(), providesContent=set(), managedBy=set(), ServerPage=webapp_DataStructure(), ServerPage15=webapp_DataSourceManager())) == None
+    webapp_ServerPage.request(webapp_ServerPage(webapp_ServerPage=webapp_WebApp(), ServerPage23=webapp_ClientPage(), connectsTo=webapp_ClientPage(), providesContent=set(), managedBy=set(), ServerPage=webapp_DataStructure(), ServerPage15=webapp_DataSourceManager()))
 
 def test_webapp_ServerPage_response():
-    assert webapp_ServerPage.response(webapp_ServerPage(webapp_ServerPage=webapp_WebApp(), ServerPage23=webapp_ClientPage(), connectsTo=webapp_ClientPage(), providesContent=set(), managedBy=set(), ServerPage=webapp_DataStructure(), ServerPage15=webapp_DataSourceManager())) == None
+    webapp_ServerPage.response(webapp_ServerPage(webapp_ServerPage=webapp_WebApp(), ServerPage23=webapp_ClientPage(), connectsTo=webapp_ClientPage(), providesContent=set(), managedBy=set(), ServerPage=webapp_DataStructure(), ServerPage15=webapp_DataSourceManager()))
 from python_code import webapp_ClientPage
 from python_code import webapp_DataStructure
 from python_code import webapp_UIElement

@@ -1024,7 +1024,7 @@ def test_fsmcore_Constraint___init__():
     assert fsmcore_Constraint.__init__(fsmcore_Constraint(fsmcore_Constraint=fsmcore_Transition()), fsmcore_Constraint=fsmcore_Transition()) == None
 
 def test_fsmcore_Constraint_evalConstraint():
-    assert fsmcore_Constraint.evalConstraint(fsmcore_Constraint(fsmcore_Constraint=fsmcore_Transition()), '') == None
+    fsmcore_Constraint.evalConstraint(fsmcore_Constraint(fsmcore_Constraint=fsmcore_Transition()), '')
 from python_code import fsmcore_NamedElement
 
 def test_fsmcore_NamedElement___init__():
@@ -1036,7 +1036,7 @@ def test_fsmcore_Program___init__():
     assert fsmcore_Program.__init__(fsmcore_Program(fsmcore_Program=fsmcore_State(), fsmcore_Program11=fsmcore_State(), fsmcore_Program14=fsmcore_State(), fsmcore_Program24=set()), fsmcore_Program=fsmcore_State(), fsmcore_Program11=fsmcore_State(), fsmcore_Program14=fsmcore_State(), fsmcore_Program24=set()) == None
 
 def test_fsmcore_Program_eval():
-    assert fsmcore_Program.eval(fsmcore_Program(fsmcore_Program=fsmcore_State(), fsmcore_Program11=fsmcore_State(), fsmcore_Program14=fsmcore_State(), fsmcore_Program24=set()), 0) == None
+    fsmcore_Program.eval(fsmcore_Program(fsmcore_Program=fsmcore_State(), fsmcore_Program11=fsmcore_State(), fsmcore_Program14=fsmcore_State(), fsmcore_Program24=set()), 0)
 from python_code import fsmcore_Pseudostate
 
 def test_fsmcore_Pseudostate___init__():

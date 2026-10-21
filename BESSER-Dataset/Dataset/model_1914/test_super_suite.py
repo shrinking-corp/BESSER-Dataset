@@ -3234,17 +3234,17 @@ def test_ClassDiagram_IServiceBooking___init__():
     assert ClassDiagram_IServiceBooking.__init__(ClassDiagram_IServiceBooking()) == None
 
 def test_ClassDiagram_IServiceBooking_cancelBookedService():
-    assert ClassDiagram_IServiceBooking.cancelBookedService(ClassDiagram_IServiceBooking(), '') == None
+    ClassDiagram_IServiceBooking.cancelBookedService(ClassDiagram_IServiceBooking(), '')
 
 def test_ClassDiagram_IServiceBooking_findBookedService():
-    assert ClassDiagram_IServiceBooking.findBookedService(ClassDiagram_IServiceBooking(), '') == None
+    ClassDiagram_IServiceBooking.findBookedService(ClassDiagram_IServiceBooking(), '')
 
 def test_ClassDiagram_IServiceBooking_bookFacilityService():
-    assert ClassDiagram_IServiceBooking.bookFacilityService(ClassDiagram_IServiceBooking(), '', '', '', '', '') == None
+    ClassDiagram_IServiceBooking.bookFacilityService(ClassDiagram_IServiceBooking(), '', '', '', '', '')
 
 def test_ClassDiagram_IServiceBooking_getBookedServices():
-    assert ClassDiagram_IServiceBooking.getBookedServices(ClassDiagram_IServiceBooking(), '') == None
+    ClassDiagram_IServiceBooking.getBookedServices(ClassDiagram_IServiceBooking(), '')
 
 def test_ClassDiagram_IServiceBooking_findAvailableServices():
-    assert ClassDiagram_IServiceBooking.findAvailableServices(ClassDiagram_IServiceBooking(), '', '') == None
+    ClassDiagram_IServiceBooking.findAvailableServices(ClassDiagram_IServiceBooking(), '', '')
 

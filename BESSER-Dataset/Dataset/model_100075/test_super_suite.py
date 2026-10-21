@@ -8504,10 +8504,10 @@ def test_build_BuildUnitRepository___init__():
     assert build_BuildUnitRepository.__init__(build_BuildUnitRepository()) == None
 
 def test_build_BuildUnitRepository_initialize():
-    assert build_BuildUnitRepository.initialize(build_BuildUnitRepository(), '', '', '') == None
+    build_BuildUnitRepository.initialize(build_BuildUnitRepository(), '', '', '')
 
 def test_build_BuildUnitRepository_resolve():
-    assert build_BuildUnitRepository.resolve(build_BuildUnitRepository(), '', '', '') == None
+    build_BuildUnitRepository.resolve(build_BuildUnitRepository(), '', '', '')
 from python_code import build_BuilderWrapper
 
 def test_build_BuilderWrapper___init__():
@@ -8521,7 +8521,7 @@ def test_build_Capability___init__():
     assert build_Capability.__init__(build_Capability('', build_Capability=build_BExpression(), build_Capability159=build_IProvidedCapabilityContainer(), build_Capability207=build_EffectiveCapabilityFacade()), '', build_Capability=build_BExpression(), build_Capability159=build_IProvidedCapabilityContainer(), build_Capability207=build_EffectiveCapabilityFacade()) == None
 
 def test_build_Capability_satisfies():
-    assert build_Capability.satisfies(build_Capability('', build_Capability=build_BExpression(), build_Capability159=build_IProvidedCapabilityContainer(), build_Capability207=build_EffectiveCapabilityFacade()), 0) == None
+    build_Capability.satisfies(build_Capability('', build_Capability=build_BExpression(), build_Capability159=build_IProvidedCapabilityContainer(), build_Capability207=build_EffectiveCapabilityFacade()), 0)
 from python_code import build_NameSpacePredicate
 
 def test_build_NameSpacePredicate___init__():
@@ -8543,7 +8543,7 @@ def test_build_UnitProvider___init__():
     assert build_UnitProvider.__init__(build_UnitProvider('', build_UnitProvider=build_CompoundUnitProvider(), build_UnitProvider245=build_DelegatingUnitProvider()), '', build_UnitProvider=build_CompoundUnitProvider(), build_UnitProvider245=build_DelegatingUnitProvider()) == None
 
 def test_build_UnitProvider_resolve():
-    assert build_UnitProvider.resolve(build_UnitProvider('', build_UnitProvider=build_CompoundUnitProvider(), build_UnitProvider245=build_DelegatingUnitProvider()), 0) == None
+    build_UnitProvider.resolve(build_UnitProvider('', build_UnitProvider=build_CompoundUnitProvider(), build_UnitProvider245=build_DelegatingUnitProvider()), 0)
 from python_code import build_VersionedCapability
 
 def test_build_VersionedCapability___init__():

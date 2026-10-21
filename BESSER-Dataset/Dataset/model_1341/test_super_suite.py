@@ -4414,10 +4414,10 @@ def test_baseCST_MultiplicityCS___init__():
     assert baseCST_MultiplicityCS.__init__(baseCST_MultiplicityCS(baseCST_MultiplicityCS=baseCST_TypedRefCS()), baseCST_MultiplicityCS=baseCST_TypedRefCS()) == None
 
 def test_baseCST_MultiplicityCS_getUpper():
-    assert baseCST_MultiplicityCS.getUpper(baseCST_MultiplicityCS(baseCST_MultiplicityCS=baseCST_TypedRefCS())) == None
+    baseCST_MultiplicityCS.getUpper(baseCST_MultiplicityCS(baseCST_MultiplicityCS=baseCST_TypedRefCS()))
 
 def test_baseCST_MultiplicityCS_getLower():
-    assert baseCST_MultiplicityCS.getLower(baseCST_MultiplicityCS(baseCST_MultiplicityCS=baseCST_TypedRefCS())) == None
+    baseCST_MultiplicityCS.getLower(baseCST_MultiplicityCS(baseCST_MultiplicityCS=baseCST_TypedRefCS()))
 from python_code import baseCST_MultiplicityStringCS
 
 def test_baseCST_MultiplicityStringCS___init__():

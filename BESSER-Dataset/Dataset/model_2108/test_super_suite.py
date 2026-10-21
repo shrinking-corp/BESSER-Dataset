@@ -3195,7 +3195,7 @@ def test_DiagonosticModel_TestSpecification___init__():
     assert DiagonosticModel_TestSpecification.__init__(DiagonosticModel_TestSpecification('', '', '', '', '', '', DiagonosticModel_TestSpecification=set(), DiagonosticModel_TestSpecification4=set(), DiagonosticModel_TestSpecification6=set(), DiagonosticModel_TestSpecification2=set()), '\x00', '', '', '', '', '', DiagonosticModel_TestSpecification=set(), DiagonosticModel_TestSpecification4=set(), DiagonosticModel_TestSpecification6=set(), DiagonosticModel_TestSpecification2=set()) == None
 
 def test_DiagonosticModel_TestSpecification_getSignals():
-    assert DiagonosticModel_TestSpecification.getSignals(DiagonosticModel_TestSpecification('', '', '', '', '', '', DiagonosticModel_TestSpecification=set(), DiagonosticModel_TestSpecification4=set(), DiagonosticModel_TestSpecification6=set(), DiagonosticModel_TestSpecification2=set())) == None
+    DiagonosticModel_TestSpecification.getSignals(DiagonosticModel_TestSpecification('', '', '', '', '', '', DiagonosticModel_TestSpecification=set(), DiagonosticModel_TestSpecification4=set(), DiagonosticModel_TestSpecification6=set(), DiagonosticModel_TestSpecification2=set()))
 from python_code import DiagonosticModel_Var
 
 def test_DiagonosticModel_Var___init__():

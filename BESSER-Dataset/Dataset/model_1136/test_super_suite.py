@@ -1362,10 +1362,10 @@ def test_ea_extensions_IExtendible___init__():
     assert ea_extensions_IExtendible.__init__(ea_extensions_IExtendible(owner=set()), owner=set()) == None
 
 def test_ea_extensions_IExtendible_updateExtension():
-    assert ea_extensions_IExtendible.updateExtension(ea_extensions_IExtendible(owner=set()), 0) == None
+    ea_extensions_IExtendible.updateExtension(ea_extensions_IExtendible(owner=set()), 0)
 
 def test_ea_extensions_IExtendible_findExtension():
-    assert ea_extensions_IExtendible.findExtension(ea_extensions_IExtendible(owner=set()), 0) == None
+    ea_extensions_IExtendible.findExtension(ea_extensions_IExtendible(owner=set()), 0)
 from python_code import IExtendible
 from python_code import ea_extensions_IExtension
 

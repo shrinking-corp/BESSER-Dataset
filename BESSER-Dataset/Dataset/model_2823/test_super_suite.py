@@ -9440,7 +9440,7 @@ def test_model_Master___init__():
     assert model_Master.__init__(model_Master(True, model_Master=model_WidgetContainer(), model_Master13=Overrides(), model_Master15=model_WidgetContainer()), False, model_Master=model_WidgetContainer(), model_Master13=Overrides(), model_Master15=model_WidgetContainer()) == None
 
 def test_model_Master_getSourceWidget():
-    assert model_Master.getSourceWidget(model_Master(False, model_Master=model_WidgetContainer(), model_Master13=Overrides(), model_Master15=model_WidgetContainer()), 0) == None
+    model_Master.getSourceWidget(model_Master(False, model_Master=model_WidgetContainer(), model_Master13=Overrides(), model_Master15=model_WidgetContainer()), 0)
 from python_code import model_NameSupport
 
 def test_model_NameSupport___init__():
@@ -9472,7 +9472,7 @@ def test_model_Shape___init__():
     assert model_Shape.__init__(model_Shape(''), '') == None
 
 def test_model_Shape_isRotatable():
-    assert model_Shape.isRotatable(model_Shape('')) == None
+    model_Shape.isRotatable(model_Shape(''))
 from python_code import model_SkinSupport
 
 def test_model_SkinSupport___init__():
@@ -9483,7 +9483,7 @@ def test_model_StateSupport___init__():
     assert model_StateSupport.__init__(model_StateSupport(''), '') == None
 
 def test_model_StateSupport_isValidState():
-    assert model_StateSupport.isValidState(model_StateSupport(''), 0) == None
+    model_StateSupport.isValidState(model_StateSupport(''), 0)
 from python_code import model_TabbedPane
 
 def test_model_TabbedPane___init__():

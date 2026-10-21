@@ -1385,7 +1385,7 @@ def test_tfsm_EvaluateGuard___init__():
     assert tfsm_EvaluateGuard.__init__(tfsm_EvaluateGuard(''), '') == None
 
 def test_tfsm_EvaluateGuard_evaluate():
-    assert tfsm_EvaluateGuard.evaluate(tfsm_EvaluateGuard('')) == None
+    tfsm_EvaluateGuard.evaluate(tfsm_EvaluateGuard(''))
 from python_code import tfsm_NamedElement
 
 def test_tfsm_NamedElement___init__():

@@ -6125,7 +6125,7 @@ def test_haxe_HaxeBlock___init__():
     assert haxe_HaxeBlock.__init__(haxe_HaxeBlock(haxe_HaxeBlock=set()), haxe_HaxeBlock=set()) == None
 
 def test_haxe_HaxeBlock_isEmpty():
-    assert haxe_HaxeBlock.isEmpty(haxe_HaxeBlock(haxe_HaxeBlock=set())) == None
+    haxe_HaxeBlock.isEmpty(haxe_HaxeBlock(haxe_HaxeBlock=set()))
 from python_code import haxe_HaxeBooleanLiteral
 
 def test_haxe_HaxeBooleanLiteral___init__():

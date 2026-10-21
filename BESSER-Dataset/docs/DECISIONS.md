@@ -14,6 +14,20 @@ different, non-overlapping reasons).
 
 ---
 
+## 2026-10-21 — CrossHair assertions on stub operations rewritten to bare calls; mutation scores unchanged
+
+**Finding** (while writing the benchmarking handout). CrossHair records what an operation returned and asserts it: `assert javaMM_InfixExpression.operatorIsEquality(...) == None`. No BUML model specifies an operation body, so every operation in `python_code.py` is an empty stub (`# TODO: Implement` + `pass`), while the PUML declares `+ operatorIsEquality() : str`. These assertions therefore test the stub, not the diagram: code generated from the PUML that implements the operation as declared would fail them, for both the original and the shrunk diagram. That is noise in exactly the comparison the benchmark makes. Scale: **3,371 tests in 407 of the 5,264 models.** Nothing else in the suite tests operations.
+
+Also checked and harmless: CrossHair passes constructor arguments positionally, while the reference's parameter order comes from BUML's unordered sets. Those tests only assert `__init__(...) == None`, which holds in any order (the setters don't check types); only the parameter count matters.
+
+**Decision.** `_common/crosshair.py` rewrites an assertion on a call of a non-dunder attribute (`==` / `is` anything) to the bare call. The test still fails if the operation is missing or takes different arguments, or if its body raises, but no longer asserts a return value. `__init__(...) == None` checks stay. The rewrite runs when the super suite reads `test_crosshair.py`, so CrossHair was not rerun. Idempotent; checked on `model_10010` (exactly its 2 operation tests relaxed).
+
+**Rerun.**
+- `generate_super_suite.py --fresh`: 3,371 assertions relaxed in 407 models; 5,264/5,264 green after the 7 very large models were retried with `--timeout 1200`. Same 1,023,139 tests and 6,250 removed tests as before. `git diff` showed exactly those 407 suites changed.
+- Mutation for the 407 models (`full_super_suite_mutation_relaxed`, same settings) compared with the full run (`compare_mutation_runs.py` → `reports/super_suite_relaxed_check.*`): **407 unchanged, 0 improved, 0 worse**, mean 0.8064 both times, same mutants per model. As expected, since the mutation run only mutates properties, never operation bodies. The full-dataset numbers of the entry below stand unchanged.
+
+---
+
 ## 2026-10-20 — Full regeneration on the 5,264 unique models: super suite 75.61% vs green baseline 35.60% (+40.01 pts), no model worse
 
 **What was run** (`docs/RUNBOOK-full-regeneration.md`, every model in `reports/unique_models.txt`):

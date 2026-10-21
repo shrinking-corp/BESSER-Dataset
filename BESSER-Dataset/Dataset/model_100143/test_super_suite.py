@@ -2455,7 +2455,7 @@ def test_model_FQNamedElement___init__():
     assert model_FQNamedElement.__init__(model_FQNamedElement()) == None
 
 def test_model_FQNamedElement_getFQName():
-    assert model_FQNamedElement.getFQName(model_FQNamedElement()) == None
+    model_FQNamedElement.getFQName(model_FQNamedElement())
 from python_code import model_File
 from python_code import model_TaskFile
 

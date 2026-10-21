@@ -194,7 +194,7 @@ def generate_model(
                                        per_class_timeout, per_condition_timeout, env)
             per_class_status[class_name] = outcome["status"]
             if outcome["test_text"]:
-                sanitized, dropped = sanitize_crosshair_tests(outcome["test_text"])
+                sanitized, dropped, _relaxed = sanitize_crosshair_tests(outcome["test_text"])
                 if sanitized is None:
                     per_class_status[class_name] = "invalid_syntax"
                     continue

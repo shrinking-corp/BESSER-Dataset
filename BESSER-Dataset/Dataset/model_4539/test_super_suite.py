@@ -1333,7 +1333,7 @@ def test_SmartHome_Activator___init__():
     assert SmartHome_Activator.__init__(SmartHome_Activator()) == None
 
 def test_SmartHome_Activator_activate():
-    assert SmartHome_Activator.activate(SmartHome_Activator()) == None
+    SmartHome_Activator.activate(SmartHome_Activator())
 from python_code import SmartHome_AnalValue
 
 def test_SmartHome_AnalValue___init__():

@@ -7,7 +7,9 @@ Merge steps:
 1. CrossHair's output is sanitized first (`_common/crosshair.py`): invalid
    syntax skipped, tests of Python's own `Enum` internals dropped, and
    `datetime.<x>` module references rewritten to a private alias so they
-   can't collide with the `datetime` class the other two parts import.
+   can't collide with the `datetime` class the other two parts import, and
+   assertions on what an (always empty, stub) operation returns rewritten
+   to a bare call, so the suite checks the diagram's API and not the stub.
 2. The parts are concatenated. Repeated top-level test names are renamed
    (`_common/green.py::make_test_names_unique`) -- Python keeps only the last
    definition of a name, so duplicates would otherwise silently never run.
@@ -73,6 +75,7 @@ def merge_model(model_dir: Path, hypothesis_seed: int | None, timeout: float) ->
         "crosshair_tests_added": 0,
         "crosshair_skipped_invalid_syntax": False,
         "crosshair_stdlib_tests_dropped": 0,
+        "crosshair_operation_asserts_relaxed": 0,
         "duplicate_test_names_renamed": 0,
         "tests_before_pruning": None,
         "tests_after_pruning": None,
@@ -97,11 +100,12 @@ def merge_model(model_dir: Path, hypothesis_seed: int | None, timeout: float) ->
 
         crosshair_path = model_dir / CROSSHAIR_FILENAME
         if crosshair_path.is_file():
-            crosshair_text, dropped = sanitize_crosshair_tests(crosshair_path.read_text(encoding="utf-8"))
+            crosshair_text, dropped, relaxed = sanitize_crosshair_tests(crosshair_path.read_text(encoding="utf-8"))
             if crosshair_text is None:
                 result["crosshair_skipped_invalid_syntax"] = True
             else:
                 result["crosshair_stdlib_tests_dropped"] = len(dropped)
+                result["crosshair_operation_asserts_relaxed"] = len(relaxed)
                 parts.append(crosshair_text)
                 result["crosshair_tests_added"] = _count_tests(crosshair_text)
 
@@ -137,6 +141,8 @@ def build_report(results: list[dict]) -> dict:
         "models_with_removed_tests": sum(1 for r in green if r.get("removed_tests")),
         "total_tests_removed": sum(len(r.get("removed_tests") or []) for r in results),
         "total_crosshair_stdlib_tests_dropped": sum(r.get("crosshair_stdlib_tests_dropped") or 0 for r in results),
+        "total_crosshair_operation_asserts_relaxed": sum(r.get("crosshair_operation_asserts_relaxed") or 0 for r in results),
+        "models_with_relaxed_operation_asserts": sum(1 for r in results if r.get("crosshair_operation_asserts_relaxed")),
         "total_duplicate_test_names_renamed": sum(r.get("duplicate_test_names_renamed") or 0 for r in results),
         "crosshair_skipped_invalid_syntax_models": [r["model"] for r in skipped_crosshair],
         "results": results,
@@ -155,6 +161,9 @@ def render_markdown_report(report: dict) -> str:
         f"- **Tests removed for failing on unmutated code:** {report['total_tests_removed']} "
         f"(in {report['models_with_removed_tests']} green models)",
         f"- **CrossHair tests of stdlib internals dropped:** {report['total_crosshair_stdlib_tests_dropped']}",
+        f"- **CrossHair tests whose operation-return assertion became a bare call:** "
+        f"{report['total_crosshair_operation_asserts_relaxed']} "
+        f"(in {report['models_with_relaxed_operation_asserts']} models)",
         f"- **Duplicate test names renamed (would otherwise never run):** "
         f"{report['total_duplicate_test_names_renamed']}",
         f"- **Models with CrossHair skipped for invalid syntax:** "

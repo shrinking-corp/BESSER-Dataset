@@ -3930,34 +3930,34 @@ def test_MARTE_Library_BasicNFP_Types_NFP_CommonType___init__():
     assert MARTE_Library_BasicNFP_Types_NFP_CommonType.__init__(MARTE_Library_BasicNFP_Types_NFP_CommonType('', '', '', '', ''), '', '', '', '', '') == None
 
 def test_MARTE_Library_BasicNFP_Types_NFP_CommonType_normal():
-    assert MARTE_Library_BasicNFP_Types_NFP_CommonType.normal(MARTE_Library_BasicNFP_Types_NFP_CommonType('\x00', '\x00\x00', '', '', ''), '', '') == None
+    MARTE_Library_BasicNFP_Types_NFP_CommonType.normal(MARTE_Library_BasicNFP_Types_NFP_CommonType('\x00', '\x00\x00', '', '', ''), '', '')
 
 def test_MARTE_Library_BasicNFP_Types_NFP_CommonType_uniform():
-    assert MARTE_Library_BasicNFP_Types_NFP_CommonType.uniform(MARTE_Library_BasicNFP_Types_NFP_CommonType('\x00', '\x00\x00', '', '', ''), '', '') == None
+    MARTE_Library_BasicNFP_Types_NFP_CommonType.uniform(MARTE_Library_BasicNFP_Types_NFP_CommonType('\x00', '\x00\x00', '', '', ''), '', '')
 
 def test_MARTE_Library_BasicNFP_Types_NFP_CommonType_triangular():
-    assert MARTE_Library_BasicNFP_Types_NFP_CommonType.triangular(MARTE_Library_BasicNFP_Types_NFP_CommonType('\x00', '\x00\x00', '', '', ''), '', '', '') == None
+    MARTE_Library_BasicNFP_Types_NFP_CommonType.triangular(MARTE_Library_BasicNFP_Types_NFP_CommonType('\x00', '\x00\x00', '', '', ''), '', '', '')
 
 def test_MARTE_Library_BasicNFP_Types_NFP_CommonType_exp():
-    assert MARTE_Library_BasicNFP_Types_NFP_CommonType.exp(MARTE_Library_BasicNFP_Types_NFP_CommonType('\x00', '\x00\x00', '', '', ''), '') == None
+    MARTE_Library_BasicNFP_Types_NFP_CommonType.exp(MARTE_Library_BasicNFP_Types_NFP_CommonType('\x00', '\x00\x00', '', '', ''), '')
 
 def test_MARTE_Library_BasicNFP_Types_NFP_CommonType_bernoulli():
-    assert MARTE_Library_BasicNFP_Types_NFP_CommonType.bernoulli(MARTE_Library_BasicNFP_Types_NFP_CommonType('\x00', '\x00\x00', '', '', ''), '') == None
+    MARTE_Library_BasicNFP_Types_NFP_CommonType.bernoulli(MARTE_Library_BasicNFP_Types_NFP_CommonType('\x00', '\x00\x00', '', '', ''), '')
 
 def test_MARTE_Library_BasicNFP_Types_NFP_CommonType_gamma():
-    assert MARTE_Library_BasicNFP_Types_NFP_CommonType.gamma(MARTE_Library_BasicNFP_Types_NFP_CommonType('\x00', '\x00\x00', '', '', ''), '', '') == None
+    MARTE_Library_BasicNFP_Types_NFP_CommonType.gamma(MARTE_Library_BasicNFP_Types_NFP_CommonType('\x00', '\x00\x00', '', '', ''), '', '')
 
 def test_MARTE_Library_BasicNFP_Types_NFP_CommonType_poisson():
-    assert MARTE_Library_BasicNFP_Types_NFP_CommonType.poisson(MARTE_Library_BasicNFP_Types_NFP_CommonType('\x00', '\x00\x00', '', '', ''), '') == None
+    MARTE_Library_BasicNFP_Types_NFP_CommonType.poisson(MARTE_Library_BasicNFP_Types_NFP_CommonType('\x00', '\x00\x00', '', '', ''), '')
 
 def test_MARTE_Library_BasicNFP_Types_NFP_CommonType_binomial():
-    assert MARTE_Library_BasicNFP_Types_NFP_CommonType.binomial(MARTE_Library_BasicNFP_Types_NFP_CommonType('\x00', '\x00\x00', '', '', ''), '', '') == None
+    MARTE_Library_BasicNFP_Types_NFP_CommonType.binomial(MARTE_Library_BasicNFP_Types_NFP_CommonType('\x00', '\x00\x00', '', '', ''), '', '')
 
 def test_MARTE_Library_BasicNFP_Types_NFP_CommonType_geometric():
-    assert MARTE_Library_BasicNFP_Types_NFP_CommonType.geometric(MARTE_Library_BasicNFP_Types_NFP_CommonType('\x00', '\x00\x00', '', '', ''), '') == None
+    MARTE_Library_BasicNFP_Types_NFP_CommonType.geometric(MARTE_Library_BasicNFP_Types_NFP_CommonType('\x00', '\x00\x00', '', '', ''), '')
 
 def test_MARTE_Library_BasicNFP_Types_NFP_CommonType_logarithmic():
-    assert MARTE_Library_BasicNFP_Types_NFP_CommonType.logarithmic(MARTE_Library_BasicNFP_Types_NFP_CommonType('\x00', '\x00\x00', '', '', ''), '') == None
+    MARTE_Library_BasicNFP_Types_NFP_CommonType.logarithmic(MARTE_Library_BasicNFP_Types_NFP_CommonType('\x00', '\x00\x00', '', '', ''), '')
 from python_code import MARTE_Library_BasicNFP_Types_NFP_DataSize
 
 def test_MARTE_Library_BasicNFP_Types_NFP_DataSize___init__():
@@ -4054,7 +4054,7 @@ def test_MARTE_Library_MARTE_DataTypes_Array___init__():
     assert MARTE_Library_MARTE_DataTypes_Array.__init__(MARTE_Library_MARTE_DataTypes_Array()) == None
 
 def test_MARTE_Library_MARTE_DataTypes_Array_at():
-    assert MARTE_Library_MARTE_DataTypes_Array.at(MARTE_Library_MARTE_DataTypes_Array(), '') == None
+    MARTE_Library_MARTE_DataTypes_Array.at(MARTE_Library_MARTE_DataTypes_Array(), '')
 from python_code import MARTE_Library_MARTE_DataTypes_IntegerInterval
 
 def test_MARTE_Library_MARTE_DataTypes_IntegerInterval___init__():
@@ -4065,28 +4065,28 @@ def test_MARTE_Library_MARTE_DataTypes_IntegerMatrix___init__():
     assert MARTE_Library_MARTE_DataTypes_IntegerMatrix.__init__(MARTE_Library_MARTE_DataTypes_IntegerMatrix(MARTE_Library_MARTE_DataTypes_IntegerMatrix=set()), MARTE_Library_MARTE_DataTypes_IntegerMatrix=set()) == None
 
 def test_MARTE_Library_MARTE_DataTypes_IntegerMatrix_at():
-    assert MARTE_Library_MARTE_DataTypes_IntegerMatrix.at(MARTE_Library_MARTE_DataTypes_IntegerMatrix(MARTE_Library_MARTE_DataTypes_IntegerMatrix=set()), 0) == None
+    MARTE_Library_MARTE_DataTypes_IntegerMatrix.at(MARTE_Library_MARTE_DataTypes_IntegerMatrix(MARTE_Library_MARTE_DataTypes_IntegerMatrix=set()), 0)
 from python_code import MARTE_Library_MARTE_DataTypes_IntegerVector
 
 def test_MARTE_Library_MARTE_DataTypes_IntegerVector___init__():
     assert MARTE_Library_MARTE_DataTypes_IntegerVector.__init__(MARTE_Library_MARTE_DataTypes_IntegerVector(''), '') == None
 
 def test_MARTE_Library_MARTE_DataTypes_IntegerVector_at():
-    assert MARTE_Library_MARTE_DataTypes_IntegerVector.at(MARTE_Library_MARTE_DataTypes_IntegerVector(''), 0) == None
+    MARTE_Library_MARTE_DataTypes_IntegerVector.at(MARTE_Library_MARTE_DataTypes_IntegerVector(''), 0)
 from python_code import MARTE_Library_MARTE_DataTypes_RealMatrix
 
 def test_MARTE_Library_MARTE_DataTypes_RealMatrix___init__():
     assert MARTE_Library_MARTE_DataTypes_RealMatrix.__init__(MARTE_Library_MARTE_DataTypes_RealMatrix(''), '') == None
 
 def test_MARTE_Library_MARTE_DataTypes_RealMatrix_at():
-    assert MARTE_Library_MARTE_DataTypes_RealMatrix.at(MARTE_Library_MARTE_DataTypes_RealMatrix(''), 0, '\x00\x00') == None
+    MARTE_Library_MARTE_DataTypes_RealMatrix.at(MARTE_Library_MARTE_DataTypes_RealMatrix(''), 0, '\x00\x00')
 from python_code import MARTE_Library_MARTE_DataTypes_RealVector
 
 def test_MARTE_Library_MARTE_DataTypes_RealVector___init__():
     assert MARTE_Library_MARTE_DataTypes_RealVector.__init__(MARTE_Library_MARTE_DataTypes_RealVector(''), '') == None
 
 def test_MARTE_Library_MARTE_DataTypes_RealVector_at():
-    assert MARTE_Library_MARTE_DataTypes_RealVector.at(MARTE_Library_MARTE_DataTypes_RealVector(''), 0) == None
+    MARTE_Library_MARTE_DataTypes_RealVector.at(MARTE_Library_MARTE_DataTypes_RealVector(''), 0)
 from python_code import MARTE_Library_MARTE_DataTypes_Realnterval
 
 def test_MARTE_Library_MARTE_DataTypes_Realnterval___init__():
@@ -4097,22 +4097,22 @@ def test_MARTE_Library_MARTE_DataTypes_UtilityType___init__():
     assert MARTE_Library_MARTE_DataTypes_UtilityType.__init__(MARTE_Library_MARTE_DataTypes_UtilityType()) == None
 
 def test_MARTE_Library_MARTE_DataTypes_UtilityType_le():
-    assert MARTE_Library_MARTE_DataTypes_UtilityType.le(MARTE_Library_MARTE_DataTypes_UtilityType(), '') == None
+    MARTE_Library_MARTE_DataTypes_UtilityType.le(MARTE_Library_MARTE_DataTypes_UtilityType(), '')
 
 def test_MARTE_Library_MARTE_DataTypes_UtilityType_gt():
-    assert MARTE_Library_MARTE_DataTypes_UtilityType.gt(MARTE_Library_MARTE_DataTypes_UtilityType(), '') == None
+    MARTE_Library_MARTE_DataTypes_UtilityType.gt(MARTE_Library_MARTE_DataTypes_UtilityType(), '')
 
 def test_MARTE_Library_MARTE_DataTypes_UtilityType_lt():
-    assert MARTE_Library_MARTE_DataTypes_UtilityType.lt(MARTE_Library_MARTE_DataTypes_UtilityType(), '') == None
+    MARTE_Library_MARTE_DataTypes_UtilityType.lt(MARTE_Library_MARTE_DataTypes_UtilityType(), '')
 
 def test_MARTE_Library_MARTE_DataTypes_UtilityType_eq():
-    assert MARTE_Library_MARTE_DataTypes_UtilityType.eq(MARTE_Library_MARTE_DataTypes_UtilityType(), '') == None
+    MARTE_Library_MARTE_DataTypes_UtilityType.eq(MARTE_Library_MARTE_DataTypes_UtilityType(), '')
 
 def test_MARTE_Library_MARTE_DataTypes_UtilityType_ge():
-    assert MARTE_Library_MARTE_DataTypes_UtilityType.ge(MARTE_Library_MARTE_DataTypes_UtilityType(), '') == None
+    MARTE_Library_MARTE_DataTypes_UtilityType.ge(MARTE_Library_MARTE_DataTypes_UtilityType(), '')
 
 def test_MARTE_Library_MARTE_DataTypes_UtilityType_ne():
-    assert MARTE_Library_MARTE_DataTypes_UtilityType.ne(MARTE_Library_MARTE_DataTypes_UtilityType(), '') == None
+    MARTE_Library_MARTE_DataTypes_UtilityType.ne(MARTE_Library_MARTE_DataTypes_UtilityType(), '')
 from python_code import MARTE_Library_RS_Library_ShapeSpecification
 
 def test_MARTE_Library_RS_Library_ShapeSpecification___init__():
@@ -4123,7 +4123,7 @@ def test_MARTE_Library_TimeLibrary_IdealClock___init__():
     assert MARTE_Library_TimeLibrary_IdealClock.__init__(MARTE_Library_TimeLibrary_IdealClock()) == None
 
 def test_MARTE_Library_TimeLibrary_IdealClock_currentTime():
-    assert MARTE_Library_TimeLibrary_IdealClock.currentTime(MARTE_Library_TimeLibrary_IdealClock()) == None
+    MARTE_Library_TimeLibrary_IdealClock.currentTime(MARTE_Library_TimeLibrary_IdealClock())
 from python_code import MARTE_Library_TimeLibrary_TimedValueType
 
 def test_MARTE_Library_TimeLibrary_TimedValueType___init__():

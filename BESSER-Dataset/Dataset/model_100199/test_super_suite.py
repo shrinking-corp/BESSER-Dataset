@@ -2132,13 +2132,13 @@ def test_model_DatabaseVersions___init__():
     assert model_DatabaseVersions.__init__(model_DatabaseVersions('\x00\x00', '', model_DatabaseVersions=set()), '', '', model_DatabaseVersions=set()) == None
 
 def test_model_DatabaseVersions_getFirstVersion():
-    assert model_DatabaseVersions.getFirstVersion(model_DatabaseVersions('', '\x00', model_DatabaseVersions=set())) == None
+    model_DatabaseVersions.getFirstVersion(model_DatabaseVersions('', '\x00', model_DatabaseVersions=set()))
 
 def test_model_DatabaseVersions_getLastVersion():
-    assert model_DatabaseVersions.getLastVersion(model_DatabaseVersions('', '\x00', model_DatabaseVersions=set())) == None
+    model_DatabaseVersions.getLastVersion(model_DatabaseVersions('', '\x00', model_DatabaseVersions=set()))
 
 def test_model_DatabaseVersions_createVersion():
-    assert model_DatabaseVersions.createVersion(model_DatabaseVersions('', '\x00', model_DatabaseVersions=set())) == None
+    model_DatabaseVersions.createVersion(model_DatabaseVersions('', '\x00', model_DatabaseVersions=set()))
 from python_code import Table
 from python_code import model_column_Column
 

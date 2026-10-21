@@ -666,8 +666,8 @@ def test_addressbook_Repository___init__():
     assert addressbook_Repository.__init__(addressbook_Repository(addressbook_Repository=addressbook_AddressBook(), addressbook_Repository6=set()), addressbook_Repository=addressbook_AddressBook(), addressbook_Repository6=set()) == None
 
 def test_addressbook_Repository_checkout():
-    assert addressbook_Repository.checkout(addressbook_Repository(addressbook_Repository=addressbook_AddressBook(), addressbook_Repository6=set()), 0) == None
+    addressbook_Repository.checkout(addressbook_Repository(addressbook_Repository=addressbook_AddressBook(), addressbook_Repository6=set()), 0)
 
 def test_addressbook_Repository_checkin():
-    assert addressbook_Repository.checkin(addressbook_Repository(addressbook_Repository=addressbook_AddressBook(), addressbook_Repository6=set())) == None
+    addressbook_Repository.checkin(addressbook_Repository(addressbook_Repository=addressbook_AddressBook(), addressbook_Repository6=set()))
 

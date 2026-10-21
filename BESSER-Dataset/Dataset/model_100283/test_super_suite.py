@@ -3736,7 +3736,7 @@ def test_highlevelnets_tokentypes_Token___init__():
     assert highlevelnets_tokentypes_Token.__init__(highlevelnets_tokentypes_Token(highlevelnets_tokentypes_Token=set()), highlevelnets_tokentypes_Token=set()) == None
 
 def test_highlevelnets_tokentypes_Token_getType():
-    assert highlevelnets_tokentypes_Token.getType(highlevelnets_tokentypes_Token(highlevelnets_tokentypes_Token=set())) == None
+    highlevelnets_tokentypes_Token.getType(highlevelnets_tokentypes_Token(highlevelnets_tokentypes_Token=set()))
 from python_code import highlevelnets_tokentypes_TokenAttribute
 
 def test_highlevelnets_tokentypes_TokenAttribute___init__():
@@ -3751,8 +3751,8 @@ def test_highlevelnets_tokentypes_TokenTypeElementNet___init__():
     assert highlevelnets_tokentypes_TokenTypeElementNet.__init__(highlevelnets_tokentypes_TokenTypeElementNet(type10=set(), highlevelnets_tokentypes_TokenTypeElementNet=HighLevelPetriNet(), type14=set(), TokenType=highlevelnets_tokenexpressions_TokenMultisetExpression(), TokenType34=highlevelnets_tokenexpressions_TokenMultiSet(), TokenType61=highlevelnets_hlpn_Place()), type10=set(), highlevelnets_tokentypes_TokenTypeElementNet=HighLevelPetriNet(), type14=set(), TokenType=highlevelnets_tokenexpressions_TokenMultisetExpression(), TokenType34=highlevelnets_tokenexpressions_TokenMultiSet(), TokenType61=highlevelnets_hlpn_Place()) == None
 
 def test_highlevelnets_tokentypes_TokenTypeElementNet_createInstance():
-    assert highlevelnets_tokentypes_TokenTypeElementNet.createInstance(highlevelnets_tokentypes_TokenTypeElementNet(type10=set(), highlevelnets_tokentypes_TokenTypeElementNet=HighLevelPetriNet(), type14=set(), TokenType=highlevelnets_tokenexpressions_TokenMultisetExpression(), TokenType34=highlevelnets_tokenexpressions_TokenMultiSet(), TokenType61=highlevelnets_hlpn_Place())) == None
+    highlevelnets_tokentypes_TokenTypeElementNet.createInstance(highlevelnets_tokentypes_TokenTypeElementNet(type10=set(), highlevelnets_tokentypes_TokenTypeElementNet=HighLevelPetriNet(), type14=set(), TokenType=highlevelnets_tokenexpressions_TokenMultisetExpression(), TokenType34=highlevelnets_tokenexpressions_TokenMultiSet(), TokenType61=highlevelnets_hlpn_Place()))
 
 def test_highlevelnets_tokentypes_TokenTypeElementNet_getInstanceByID():
-    assert highlevelnets_tokentypes_TokenTypeElementNet.getInstanceByID(highlevelnets_tokentypes_TokenTypeElementNet(type10=set(), highlevelnets_tokentypes_TokenTypeElementNet=HighLevelPetriNet(), type14=set(), TokenType=highlevelnets_tokenexpressions_TokenMultisetExpression(), TokenType34=highlevelnets_tokenexpressions_TokenMultiSet(), TokenType61=highlevelnets_hlpn_Place()), 0) == None
+    highlevelnets_tokentypes_TokenTypeElementNet.getInstanceByID(highlevelnets_tokentypes_TokenTypeElementNet(type10=set(), highlevelnets_tokentypes_TokenTypeElementNet=HighLevelPetriNet(), type14=set(), TokenType=highlevelnets_tokenexpressions_TokenMultisetExpression(), TokenType34=highlevelnets_tokenexpressions_TokenMultiSet(), TokenType61=highlevelnets_hlpn_Place()), 0)
 

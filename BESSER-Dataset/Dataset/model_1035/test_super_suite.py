@@ -775,7 +775,7 @@ def test_fsm_Block___init__():
     assert fsm_Block.__init__(fsm_Block(fsm_Block15=fsm_State(), fsm_Block=fsm_State(), fsm_Block12=fsm_State()), fsm_Block15=fsm_State(), fsm_Block=fsm_State(), fsm_Block12=fsm_State()) == None
 
 def test_fsm_Block_evalStatement():
-    assert fsm_Block.evalStatement(fsm_Block(fsm_Block15=fsm_State(), fsm_Block=fsm_State(), fsm_Block12=fsm_State()), '') == None
+    fsm_Block.evalStatement(fsm_Block(fsm_Block15=fsm_State(), fsm_Block=fsm_State(), fsm_Block12=fsm_State()), '')
 from python_code import fsm_NamedElement
 
 def test_fsm_NamedElement___init__():

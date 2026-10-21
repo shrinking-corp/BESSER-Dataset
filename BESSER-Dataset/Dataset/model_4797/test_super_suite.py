@@ -1976,7 +1976,7 @@ def test_alldatatypes_Root___init__():
     assert alldatatypes_Root.__init__(alldatatypes_Root(alldatatypes_Root=set()), alldatatypes_Root=set()) == None
 
 def test_alldatatypes_Root_getAllTypes():
-    assert alldatatypes_Root.getAllTypes(alldatatypes_Root(alldatatypes_Root=set())) == None
+    alldatatypes_Root.getAllTypes(alldatatypes_Root(alldatatypes_Root=set()))
 from python_code import alldatatypes_Shorts
 
 def test_alldatatypes_Shorts___init__():

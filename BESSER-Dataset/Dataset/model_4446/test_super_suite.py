@@ -1766,13 +1766,13 @@ def test_iot_Actuator___init__():
     assert iot_Actuator.__init__(iot_Actuator(True), False) == None
 
 def test_iot_Actuator_toggle():
-    assert iot_Actuator.toggle(iot_Actuator(False)) == None
+    iot_Actuator.toggle(iot_Actuator(False))
 
 def test_iot_Actuator_getStatus():
-    assert iot_Actuator.getStatus(iot_Actuator(False)) == None
+    iot_Actuator.getStatus(iot_Actuator(False))
 
 def test_iot_Actuator_switchOnOff():
-    assert iot_Actuator.switchOnOff(iot_Actuator(False), 0) == None
+    iot_Actuator.switchOnOff(iot_Actuator(False), 0)
 from python_code import iot_CounterLoop
 
 def test_iot_CounterLoop___init__():
@@ -1797,7 +1797,7 @@ def test_iot_Sensor___init__():
     assert iot_Sensor.__init__(iot_Sensor(''), '') == None
 
 def test_iot_Sensor_getData():
-    assert iot_Sensor.getData(iot_Sensor('')) == None
+    iot_Sensor.getData(iot_Sensor(''))
 from python_code import iot_Snippet
 
 def test_iot_Snippet___init__():

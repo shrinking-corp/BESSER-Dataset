@@ -3982,22 +3982,22 @@ def test_ocl_query_Query___init__():
     assert ocl_query_Query.__init__(ocl_query_Query('', ocl_query_Query=OCLExpression()), '', ocl_query_Query=OCLExpression()) == None
 
 def test_ocl_query_Query_evaluate():
-    assert ocl_query_Query.evaluate(ocl_query_Query('', ocl_query_Query=OCLExpression()), '') == None
+    ocl_query_Query.evaluate(ocl_query_Query('', ocl_query_Query=OCLExpression()), '')
 
 def test_ocl_query_Query_queryText():
-    assert ocl_query_Query.queryText(ocl_query_Query('', ocl_query_Query=OCLExpression())) == None
+    ocl_query_Query.queryText(ocl_query_Query('', ocl_query_Query=OCLExpression()))
 
 def test_ocl_query_Query_resultType():
-    assert ocl_query_Query.resultType(ocl_query_Query('', ocl_query_Query=OCLExpression())) == None
+    ocl_query_Query.resultType(ocl_query_Query('', ocl_query_Query=OCLExpression()))
 
 def test_ocl_query_Query_select():
-    assert ocl_query_Query.select(ocl_query_Query('', ocl_query_Query=OCLExpression()), '') == None
+    ocl_query_Query.select(ocl_query_Query('', ocl_query_Query=OCLExpression()), '')
 
 def test_ocl_query_Query_reject():
-    assert ocl_query_Query.reject(ocl_query_Query('', ocl_query_Query=OCLExpression()), '') == None
+    ocl_query_Query.reject(ocl_query_Query('', ocl_query_Query=OCLExpression()), '')
 
 def test_ocl_query_Query_check():
-    assert ocl_query_Query.check(ocl_query_Query('', ocl_query_Query=OCLExpression()), '') == None
+    ocl_query_Query.check(ocl_query_Query('', ocl_query_Query=OCLExpression()), '')
 from python_code import ocl_types_CollectionType
 from python_code import types_ocl_EClassifier
 
@@ -4022,22 +4022,22 @@ def test_ocl_utilities_PredefinedType___init__():
     assert ocl_utilities_PredefinedType.__init__(ocl_utilities_PredefinedType()) == None
 
 def test_ocl_utilities_PredefinedType_getOperationCodeFor():
-    assert ocl_utilities_PredefinedType.getOperationCodeFor(ocl_utilities_PredefinedType(), '') == None
+    ocl_utilities_PredefinedType.getOperationCodeFor(ocl_utilities_PredefinedType(), '')
 
 def test_ocl_utilities_PredefinedType_getCommonSupertype():
-    assert ocl_utilities_PredefinedType.getCommonSupertype(ocl_utilities_PredefinedType(), '') == None
+    ocl_utilities_PredefinedType.getCommonSupertype(ocl_utilities_PredefinedType(), '')
 
 def test_ocl_utilities_PredefinedType_getOperations():
-    assert ocl_utilities_PredefinedType.getOperations(ocl_utilities_PredefinedType()) == None
+    ocl_utilities_PredefinedType.getOperations(ocl_utilities_PredefinedType())
 
 def test_ocl_utilities_PredefinedType_getResultTypeFor():
-    assert ocl_utilities_PredefinedType.getResultTypeFor(ocl_utilities_PredefinedType(), '', '', '') == None
+    ocl_utilities_PredefinedType.getResultTypeFor(ocl_utilities_PredefinedType(), '', '', '')
 
 def test_ocl_utilities_PredefinedType_getRelationshipTo():
-    assert ocl_utilities_PredefinedType.getRelationshipTo(ocl_utilities_PredefinedType(), '') == None
+    ocl_utilities_PredefinedType.getRelationshipTo(ocl_utilities_PredefinedType(), '')
 
 def test_ocl_utilities_PredefinedType_getOperationNameFor():
-    assert ocl_utilities_PredefinedType.getOperationNameFor(ocl_utilities_PredefinedType(), '') == None
+    ocl_utilities_PredefinedType.getOperationNameFor(ocl_utilities_PredefinedType(), '')
 from python_code import ocl_utilities_TypedASTNode
 
 def test_ocl_utilities_TypedASTNode___init__():
@@ -4048,5 +4048,5 @@ def test_ocl_utilities_Visitable___init__():
     assert ocl_utilities_Visitable.__init__(ocl_utilities_Visitable()) == None
 
 def test_ocl_utilities_Visitable_accept():
-    assert ocl_utilities_Visitable.accept(ocl_utilities_Visitable(), '') == None
+    ocl_utilities_Visitable.accept(ocl_utilities_Visitable(), '')
 

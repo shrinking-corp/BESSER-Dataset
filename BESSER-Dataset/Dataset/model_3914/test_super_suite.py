@@ -3609,30 +3609,30 @@ def test_cm_composition_AssemblyConnector___init__():
     assert cm_composition_AssemblyConnector.__init__(cm_composition_AssemblyConnector(cm_composition_AssemblyConnector=AssemblyContext(), cm_composition_AssemblyConnector61=AssemblyContext(), cm_composition_AssemblyConnector64=ProvidedRole(), cm_composition_AssemblyConnector67=RequiredRole(), Connector=cm_composition_ComposedStructure(parentStructure=set(), parentStructure43=set())), cm_composition_AssemblyConnector=AssemblyContext(), cm_composition_AssemblyConnector61=AssemblyContext(), cm_composition_AssemblyConnector64=ProvidedRole(), cm_composition_AssemblyConnector67=RequiredRole(), Connector=cm_composition_ComposedStructure(parentStructure=set(), parentStructure43=set())) == None
 
 def test_cm_composition_AssemblyConnector_AssemblyConnectorsReferencedProvidedRolesAndChildContextMustMatch():
-    assert cm_composition_AssemblyConnector.AssemblyConnectorsReferencedProvidedRolesAndChildContextMustMatch(cm_composition_AssemblyConnector(cm_composition_AssemblyConnector=AssemblyContext(), cm_composition_AssemblyConnector61=AssemblyContext(), cm_composition_AssemblyConnector64=ProvidedRole(), cm_composition_AssemblyConnector67=RequiredRole(), Connector=cm_composition_ComposedStructure(parentStructure=set(), parentStructure43=set())), '\x00', '') == None
+    cm_composition_AssemblyConnector.AssemblyConnectorsReferencedProvidedRolesAndChildContextMustMatch(cm_composition_AssemblyConnector(cm_composition_AssemblyConnector=AssemblyContext(), cm_composition_AssemblyConnector61=AssemblyContext(), cm_composition_AssemblyConnector64=ProvidedRole(), cm_composition_AssemblyConnector67=RequiredRole(), Connector=cm_composition_ComposedStructure(parentStructure=set(), parentStructure43=set())), '\x00', '')
 
 def test_cm_composition_AssemblyConnector_AssemblyConnectorsReferencedRequiredRoleAndChildContextMustMatch():
-    assert cm_composition_AssemblyConnector.AssemblyConnectorsReferencedRequiredRoleAndChildContextMustMatch(cm_composition_AssemblyConnector(cm_composition_AssemblyConnector=AssemblyContext(), cm_composition_AssemblyConnector61=AssemblyContext(), cm_composition_AssemblyConnector64=ProvidedRole(), cm_composition_AssemblyConnector67=RequiredRole(), Connector=cm_composition_ComposedStructure(parentStructure=set(), parentStructure43=set())), '\x00', '') == None
+    cm_composition_AssemblyConnector.AssemblyConnectorsReferencedRequiredRoleAndChildContextMustMatch(cm_composition_AssemblyConnector(cm_composition_AssemblyConnector=AssemblyContext(), cm_composition_AssemblyConnector61=AssemblyContext(), cm_composition_AssemblyConnector64=ProvidedRole(), cm_composition_AssemblyConnector67=RequiredRole(), Connector=cm_composition_ComposedStructure(parentStructure=set(), parentStructure43=set())), '\x00', '')
 
 def test_cm_composition_AssemblyConnector_AssemblyConnectorsReferencedInterfacesMustMatch():
-    assert cm_composition_AssemblyConnector.AssemblyConnectorsReferencedInterfacesMustMatch(cm_composition_AssemblyConnector(cm_composition_AssemblyConnector=AssemblyContext(), cm_composition_AssemblyConnector61=AssemblyContext(), cm_composition_AssemblyConnector64=ProvidedRole(), cm_composition_AssemblyConnector67=RequiredRole(), Connector=cm_composition_ComposedStructure(parentStructure=set(), parentStructure43=set())), '\x00', '') == None
+    cm_composition_AssemblyConnector.AssemblyConnectorsReferencedInterfacesMustMatch(cm_composition_AssemblyConnector(cm_composition_AssemblyConnector=AssemblyContext(), cm_composition_AssemblyConnector61=AssemblyContext(), cm_composition_AssemblyConnector64=ProvidedRole(), cm_composition_AssemblyConnector67=RequiredRole(), Connector=cm_composition_ComposedStructure(parentStructure=set(), parentStructure43=set())), '\x00', '')
 from python_code import cm_composition_ComposedStructure
 
 def test_cm_composition_ComposedStructure___init__():
     assert cm_composition_ComposedStructure.__init__(cm_composition_ComposedStructure(parentStructure=set(), parentStructure43=set()), parentStructure=set(), parentStructure43=set()) == None
 
 def test_cm_composition_ComposedStructure_MultipleConnectorsConstraint():
-    assert cm_composition_ComposedStructure.MultipleConnectorsConstraint(cm_composition_ComposedStructure(parentStructure=set(), parentStructure43=set()), '\x00', '') == None
+    cm_composition_ComposedStructure.MultipleConnectorsConstraint(cm_composition_ComposedStructure(parentStructure=set(), parentStructure43=set()), '\x00', '')
 
 def test_cm_composition_ComposedStructure_MultipleConnectorsConstraintForAssemblyConnectors():
-    assert cm_composition_ComposedStructure.MultipleConnectorsConstraintForAssemblyConnectors(cm_composition_ComposedStructure(parentStructure=set(), parentStructure43=set()), '\x00', '') == None
+    cm_composition_ComposedStructure.MultipleConnectorsConstraintForAssemblyConnectors(cm_composition_ComposedStructure(parentStructure=set(), parentStructure43=set()), '\x00', '')
 from python_code import cm_composition_Identifier
 
 def test_cm_composition_Identifier___init__():
     assert cm_composition_Identifier.__init__(cm_composition_Identifier(''), '') == None
 
 def test_cm_composition_Identifier_idHasToBeUnique():
-    assert cm_composition_Identifier.idHasToBeUnique(cm_composition_Identifier(''), 0, '\x00\x00') == None
+    cm_composition_Identifier.idHasToBeUnique(cm_composition_Identifier(''), 0, '\x00\x00')
 from python_code import cm_composition_NamedElement
 
 def test_cm_composition_NamedElement___init__():
@@ -3645,27 +3645,27 @@ def test_cm_composition_ProvidedDelegationConnector___init__():
     assert cm_composition_ProvidedDelegationConnector.__init__(cm_composition_ProvidedDelegationConnector(cm_composition_ProvidedDelegationConnector=ProvidedRole(), cm_composition_ProvidedDelegationConnector46=ProvidedRole(), cm_composition_ProvidedDelegationConnector49=AssemblyContext()), cm_composition_ProvidedDelegationConnector=ProvidedRole(), cm_composition_ProvidedDelegationConnector46=ProvidedRole(), cm_composition_ProvidedDelegationConnector49=AssemblyContext()) == None
 
 def test_cm_composition_ProvidedDelegationConnector_ProvidedDelegationConnectorandtheconnectedComponentmustbepartofthesamecompositestructure():
-    assert cm_composition_ProvidedDelegationConnector.ProvidedDelegationConnectorandtheconnectedComponentmustbepartofthesamecompositestructure(cm_composition_ProvidedDelegationConnector(cm_composition_ProvidedDelegationConnector=ProvidedRole(), cm_composition_ProvidedDelegationConnector46=ProvidedRole(), cm_composition_ProvidedDelegationConnector49=AssemblyContext()), '', '') == None
+    cm_composition_ProvidedDelegationConnector.ProvidedDelegationConnectorandtheconnectedComponentmustbepartofthesamecompositestructure(cm_composition_ProvidedDelegationConnector(cm_composition_ProvidedDelegationConnector=ProvidedRole(), cm_composition_ProvidedDelegationConnector46=ProvidedRole(), cm_composition_ProvidedDelegationConnector49=AssemblyContext()), '', '')
 
 def test_cm_composition_ProvidedDelegationConnector_ComponentOfAssemblyContextAndInnerRoleProvidingComponentNeedToBeTheSame():
-    assert cm_composition_ProvidedDelegationConnector.ComponentOfAssemblyContextAndInnerRoleProvidingComponentNeedToBeTheSame(cm_composition_ProvidedDelegationConnector(cm_composition_ProvidedDelegationConnector=ProvidedRole(), cm_composition_ProvidedDelegationConnector46=ProvidedRole(), cm_composition_ProvidedDelegationConnector49=AssemblyContext()), '', '') == None
+    cm_composition_ProvidedDelegationConnector.ComponentOfAssemblyContextAndInnerRoleProvidingComponentNeedToBeTheSame(cm_composition_ProvidedDelegationConnector(cm_composition_ProvidedDelegationConnector=ProvidedRole(), cm_composition_ProvidedDelegationConnector46=ProvidedRole(), cm_composition_ProvidedDelegationConnector49=AssemblyContext()), '', '')
 from python_code import cm_composition_System
 
 def test_cm_composition_System___init__():
     assert cm_composition_System.__init__(cm_composition_System()) == None
 
 def test_cm_composition_System_SystemMustHaveAtLeastOneProvidedRole():
-    assert cm_composition_System.SystemMustHaveAtLeastOneProvidedRole(cm_composition_System(), '', '') == None
+    cm_composition_System.SystemMustHaveAtLeastOneProvidedRole(cm_composition_System(), '', '')
 from python_code import cm_repository_CompositeComponent
 
 def test_cm_repository_CompositeComponent___init__():
     assert cm_repository_CompositeComponent.__init__(cm_repository_CompositeComponent()) == None
 
 def test_cm_repository_CompositeComponent_ProvideSameInterfaces():
-    assert cm_repository_CompositeComponent.ProvideSameInterfaces(cm_repository_CompositeComponent(), '', '') == None
+    cm_repository_CompositeComponent.ProvideSameInterfaces(cm_repository_CompositeComponent(), '', '')
 
 def test_cm_repository_CompositeComponent_RequireSameInterfaces():
-    assert cm_repository_CompositeComponent.RequireSameInterfaces(cm_repository_CompositeComponent(), '', '') == None
+    cm_repository_CompositeComponent.RequireSameInterfaces(cm_repository_CompositeComponent(), '', '')
 from python_code import cm_repository_ExceptionType
 
 def test_cm_repository_ExceptionType___init__():

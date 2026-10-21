@@ -3024,7 +3024,7 @@ def test_majordomo_BooleanSensor___init__():
     assert majordomo_BooleanSensor.__init__(majordomo_BooleanSensor(majordomo_BooleanSensor=majordomo_BooleanSensorStatement()), majordomo_BooleanSensor=majordomo_BooleanSensorStatement()) == None
 
 def test_majordomo_BooleanSensor_getValue():
-    assert majordomo_BooleanSensor.getValue(majordomo_BooleanSensor(majordomo_BooleanSensor=majordomo_BooleanSensorStatement())) == None
+    majordomo_BooleanSensor.getValue(majordomo_BooleanSensor(majordomo_BooleanSensor=majordomo_BooleanSensorStatement()))
 from python_code import majordomo_CompareOperation
 from python_code import majordomo_ValueExpression
 
@@ -3045,7 +3045,7 @@ def test_majordomo_FloatSensor___init__():
     assert majordomo_FloatSensor.__init__(majordomo_FloatSensor(majordomo_FloatSensor=majordomo_SensorValue()), majordomo_FloatSensor=majordomo_SensorValue()) == None
 
 def test_majordomo_FloatSensor_getValue():
-    assert majordomo_FloatSensor.getValue(majordomo_FloatSensor(majordomo_FloatSensor=majordomo_SensorValue())) == None
+    majordomo_FloatSensor.getValue(majordomo_FloatSensor(majordomo_FloatSensor=majordomo_SensorValue()))
 from python_code import majordomo_House
 from python_code import majordomo_Majordomo
 from python_code import majordomo_Program

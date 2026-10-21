@@ -1570,13 +1570,13 @@ def test_rsgf_mw_Middleware___init__():
     assert rsgf_mw_Middleware.__init__(rsgf_mw_Middleware(rsgf_mw_Middleware21=VM(), rsgf_mw_Middleware=set()), rsgf_mw_Middleware21=VM(), rsgf_mw_Middleware=set()) == None
 
 def test_rsgf_mw_Middleware_send():
-    assert rsgf_mw_Middleware.send(rsgf_mw_Middleware(rsgf_mw_Middleware21=VM(), rsgf_mw_Middleware=set())) == None
+    rsgf_mw_Middleware.send(rsgf_mw_Middleware(rsgf_mw_Middleware21=VM(), rsgf_mw_Middleware=set()))
 
 def test_rsgf_mw_Middleware_bind():
-    assert rsgf_mw_Middleware.bind(rsgf_mw_Middleware(rsgf_mw_Middleware21=VM(), rsgf_mw_Middleware=set())) == None
+    rsgf_mw_Middleware.bind(rsgf_mw_Middleware(rsgf_mw_Middleware21=VM(), rsgf_mw_Middleware=set()))
 
 def test_rsgf_mw_Middleware_establish():
-    assert rsgf_mw_Middleware.establish(rsgf_mw_Middleware(rsgf_mw_Middleware21=VM(), rsgf_mw_Middleware=set())) == None
+    rsgf_mw_Middleware.establish(rsgf_mw_Middleware(rsgf_mw_Middleware21=VM(), rsgf_mw_Middleware=set()))
 from python_code import Tree
 from python_code import rsgf_skeleton_Skeleton
 

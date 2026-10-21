@@ -696,7 +696,7 @@ def test_graphgenerators_GraphGenerator___init__():
     assert graphgenerators_GraphGenerator.__init__(graphgenerators_GraphGenerator()) == None
 
 def test_graphgenerators_GraphGenerator_getGraph():
-    assert graphgenerators_GraphGenerator.getGraph(graphgenerators_GraphGenerator()) == None
+    graphgenerators_GraphGenerator.getGraph(graphgenerators_GraphGenerator())
 from python_code import graphgenerators_LatticeGraphGenerator
 
 def test_graphgenerators_LatticeGraphGenerator___init__():

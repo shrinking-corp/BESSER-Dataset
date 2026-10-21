@@ -1115,5 +1115,5 @@ def test_statemachine_StateMachine___init__():
     assert statemachine_StateMachine.__init__(statemachine_StateMachine(statemachine_StateMachine=set(), statemachine_StateMachine2=set()), statemachine_StateMachine=set(), statemachine_StateMachine2=set()) == None
 
 def test_statemachine_StateMachine_printReachable():
-    assert statemachine_StateMachine.printReachable(statemachine_StateMachine(statemachine_StateMachine=set(), statemachine_StateMachine2=set())) == None
+    statemachine_StateMachine.printReachable(statemachine_StateMachine(statemachine_StateMachine=set(), statemachine_StateMachine2=set()))
 

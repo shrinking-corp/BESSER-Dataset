@@ -3652,7 +3652,7 @@ def test_henshin_GraphElement___init__():
     assert henshin_GraphElement.__init__(henshin_GraphElement(''), '') == None
 
 def test_henshin_GraphElement_getGraph():
-    assert henshin_GraphElement.getGraph(henshin_GraphElement('')) == None
+    henshin_GraphElement.getGraph(henshin_GraphElement(''))
 from python_code import henshin_IteratedUnit
 
 def test_henshin_IteratedUnit___init__():

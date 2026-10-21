@@ -1543,5 +1543,5 @@ def test_types_Type___init__():
     assert types_Type.__init__(types_Type(False, types_Type=set(), types_Type7=types_TypedElement(), types_Type10=types_TypedElement(), types_Type20=types_TypeParameter()), False, types_Type=set(), types_Type7=types_TypedElement(), types_Type10=types_TypedElement(), types_Type20=types_TypeParameter()) == None
 
 def test_types_Type_getOriginType():
-    assert types_Type.getOriginType(types_Type(False, types_Type=set(), types_Type7=types_TypedElement(), types_Type10=types_TypedElement(), types_Type20=types_TypeParameter())) == None
+    types_Type.getOriginType(types_Type(False, types_Type=set(), types_Type7=types_TypedElement(), types_Type10=types_TypedElement(), types_Type20=types_TypeParameter()))
 

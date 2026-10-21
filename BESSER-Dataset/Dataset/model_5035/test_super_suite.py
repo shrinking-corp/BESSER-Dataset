@@ -1903,10 +1903,10 @@ def test_party_DateEffectiveObject___init__():
     assert party_DateEffectiveObject.__init__(party_DateEffectiveObject(_ch_datetime.date(1, 1, 2), _ch_datetime.date(1, 1, 1)), _ch_datetime.date(1, 1, 1), _ch_datetime.date(1, 1, 1)) == None
 
 def test_party_DateEffectiveObject_isEffective():
-    assert party_DateEffectiveObject.isEffective(party_DateEffectiveObject(_ch_datetime.date(1, 1, 2), _ch_datetime.date(1, 1, 1)), '') == None
+    party_DateEffectiveObject.isEffective(party_DateEffectiveObject(_ch_datetime.date(1, 1, 2), _ch_datetime.date(1, 1, 1)), '')
 
 def test_party_DateEffectiveObject_isEffectiveNow():
-    assert party_DateEffectiveObject.isEffectiveNow(party_DateEffectiveObject(_ch_datetime.date(1, 1, 2), _ch_datetime.date(1, 1, 1))) == None
+    party_DateEffectiveObject.isEffectiveNow(party_DateEffectiveObject(_ch_datetime.date(1, 1, 2), _ch_datetime.date(1, 1, 1)))
 from python_code import party_Person
 
 def test_party_Person___init__():

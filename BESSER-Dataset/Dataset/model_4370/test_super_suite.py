@@ -1060,7 +1060,7 @@ def test_klang_Event___init__():
     assert klang_Event.__init__(klang_Event(klang_Event=klang_EventHandler()), klang_Event=klang_EventHandler()) == None
 
 def test_klang_Event_matchingEvent():
-    assert klang_Event.matchingEvent(klang_Event(klang_Event=klang_EventHandler()), '') == None
+    klang_Event.matchingEvent(klang_Event(klang_Event=klang_EventHandler()), '')
 from python_code import klang_KeyPressEvent
 
 def test_klang_KeyPressEvent___init__():

@@ -9718,7 +9718,7 @@ def test_model_ClickSupport___init__():
     assert model_ClickSupport.__init__(model_ClickSupport()) == None
 
 def test_model_ClickSupport_doClick():
-    assert model_ClickSupport.doClick(model_ClickSupport()) == None
+    model_ClickSupport.doClick(model_ClickSupport())
 from python_code import model_ColorAlphaSupport
 
 def test_model_ColorAlphaSupport___init__():
@@ -9749,7 +9749,7 @@ def test_model_DoubleClickSupport___init__():
     assert model_DoubleClickSupport.__init__(model_DoubleClickSupport()) == None
 
 def test_model_DoubleClickSupport_doDoubleClick():
-    assert model_DoubleClickSupport.doDoubleClick(model_DoubleClickSupport()) == None
+    model_DoubleClickSupport.doDoubleClick(model_DoubleClickSupport())
 from python_code import model_FlipSupport
 
 def test_model_FlipSupport___init__():
@@ -9829,14 +9829,14 @@ def test_model_SelectionSupport___init__():
     assert model_SelectionSupport.__init__(model_SelectionSupport(''), '') == None
 
 def test_model_SelectionSupport_doSelect():
-    assert model_SelectionSupport.doSelect(model_SelectionSupport('')) == None
+    model_SelectionSupport.doSelect(model_SelectionSupport(''))
 from python_code import model_Shape
 
 def test_model_Shape___init__():
     assert model_Shape.__init__(model_Shape(''), '') == None
 
 def test_model_Shape_isRotatable():
-    assert model_Shape.isRotatable(model_Shape('')) == None
+    model_Shape.isRotatable(model_Shape(''))
 from python_code import model_SkinSupport
 
 def test_model_SkinSupport___init__():
@@ -9847,7 +9847,7 @@ def test_model_StateSupport___init__():
     assert model_StateSupport.__init__(model_StateSupport(''), '') == None
 
 def test_model_StateSupport_isValidState():
-    assert model_StateSupport.isValidState(model_StateSupport(''), 0) == None
+    model_StateSupport.isValidState(model_StateSupport(''), 0)
 from python_code import model_TabbedPane
 
 def test_model_TabbedPane___init__():
@@ -9870,7 +9870,7 @@ def test_model_TextInputSupport___init__():
     assert model_TextInputSupport.__init__(model_TextInputSupport()) == None
 
 def test_model_TextInputSupport_doEnter():
-    assert model_TextInputSupport.doEnter(model_TextInputSupport()) == None
+    model_TextInputSupport.doEnter(model_TextInputSupport())
 from python_code import model_Tooltip
 
 def test_model_Tooltip___init__():

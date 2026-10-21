@@ -1650,27 +1650,27 @@ def test_architecture_extension_ExtensionRelationship___init__():
     assert architecture_extension_ExtensionRelationship.__init__(architecture_extension_ExtensionRelationship()) == None
 
 def test_architecture_extension_ExtensionRelationship_checkConstraint():
-    assert architecture_extension_ExtensionRelationship.checkConstraint(architecture_extension_ExtensionRelationship()) == None
+    architecture_extension_ExtensionRelationship.checkConstraint(architecture_extension_ExtensionRelationship())
 from python_code import architecture_extension_PatternRelationship
 
 def test_architecture_extension_PatternRelationship___init__():
     assert architecture_extension_PatternRelationship.__init__(architecture_extension_PatternRelationship(''), '') == None
 
 def test_architecture_extension_PatternRelationship_getTarget():
-    assert architecture_extension_PatternRelationship.getTarget(architecture_extension_PatternRelationship('')) == None
+    architecture_extension_PatternRelationship.getTarget(architecture_extension_PatternRelationship(''))
 
 def test_architecture_extension_PatternRelationship_checkConstraint():
-    assert architecture_extension_PatternRelationship.checkConstraint(architecture_extension_PatternRelationship('')) == None
+    architecture_extension_PatternRelationship.checkConstraint(architecture_extension_PatternRelationship(''))
 
 def test_architecture_extension_PatternRelationship_getSource():
-    assert architecture_extension_PatternRelationship.getSource(architecture_extension_PatternRelationship('')) == None
+    architecture_extension_PatternRelationship.getSource(architecture_extension_PatternRelationship(''))
 from python_code import architecture_extension_RelationshipConstraint
 
 def test_architecture_extension_RelationshipConstraint___init__():
     assert architecture_extension_RelationshipConstraint.__init__(architecture_extension_RelationshipConstraint()) == None
 
 def test_architecture_extension_RelationshipConstraint_check():
-    assert architecture_extension_RelationshipConstraint.check(architecture_extension_RelationshipConstraint(), '') == None
+    architecture_extension_RelationshipConstraint.check(architecture_extension_RelationshipConstraint(), '')
 from python_code import architecture_extension_Role
 
 def test_architecture_extension_Role___init__():
@@ -1681,8 +1681,8 @@ def test_architecture_extension_RoleRelationship___init__():
     assert architecture_extension_RoleRelationship.__init__(architecture_extension_RoleRelationship()) == None
 
 def test_architecture_extension_RoleRelationship_getTarget():
-    assert architecture_extension_RoleRelationship.getTarget(architecture_extension_RoleRelationship()) == None
+    architecture_extension_RoleRelationship.getTarget(architecture_extension_RoleRelationship())
 
 def test_architecture_extension_RoleRelationship_checkConstraint():
-    assert architecture_extension_RoleRelationship.checkConstraint(architecture_extension_RoleRelationship()) == None
+    architecture_extension_RoleRelationship.checkConstraint(architecture_extension_RoleRelationship())
 

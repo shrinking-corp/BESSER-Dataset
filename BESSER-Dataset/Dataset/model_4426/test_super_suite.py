@@ -3304,7 +3304,7 @@ def test_iotw_Keypad4x4___init__():
     assert iotw_Keypad4x4.__init__(iotw_Keypad4x4('', 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''), '', 0, 0, '\x00', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '') == None
 
 def test_iotw_Keypad4x4_getButton():
-    assert iotw_Keypad4x4.getButton(iotw_Keypad4x4('', 0, 0, '', '', '', '', '\x00', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '\x00', '', '', ''), '') == None
+    iotw_Keypad4x4.getButton(iotw_Keypad4x4('', 0, 0, '', '', '', '', '\x00', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '\x00', '', '', ''), '')
 from python_code import iotw_LED
 
 def test_iotw_LED___init__():

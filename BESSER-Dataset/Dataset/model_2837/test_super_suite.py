@@ -5199,7 +5199,7 @@ def test_gmfgraph_DiagramElement___init__():
     assert gmfgraph_DiagramElement.__init__(gmfgraph_DiagramElement(referencingElements=gmfgraph_FigureHandle(), gmfgraph_DiagramElement=set(), DiagramElement=gmfgraph_FigureHandle()), referencingElements=gmfgraph_FigureHandle(), gmfgraph_DiagramElement=set(), DiagramElement=gmfgraph_FigureHandle()) == None
 
 def test_gmfgraph_DiagramElement_find():
-    assert gmfgraph_DiagramElement.find(gmfgraph_DiagramElement(referencingElements=gmfgraph_FigureHandle(), gmfgraph_DiagramElement=set(), DiagramElement=gmfgraph_FigureHandle()), 0) == None
+    gmfgraph_DiagramElement.find(gmfgraph_DiagramElement(referencingElements=gmfgraph_FigureHandle(), gmfgraph_DiagramElement=set(), DiagramElement=gmfgraph_FigureHandle()), 0)
 from python_code import gmfgraph_Canvas
 from python_code import gmfgraph_DiagramLabel
 

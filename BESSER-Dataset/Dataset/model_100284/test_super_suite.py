@@ -2725,7 +2725,7 @@ def test_org_k1s_nppn_Label___init__():
     assert org_k1s_nppn_Label.__init__(org_k1s_nppn_Label(label=nppn_HasLabel()), label=nppn_HasLabel()) == None
 
 def test_org_k1s_nppn_Label_asString():
-    assert org_k1s_nppn_Label.asString(org_k1s_nppn_Label(label=nppn_HasLabel())) == None
+    org_k1s_nppn_Label.asString(org_k1s_nppn_Label(label=nppn_HasLabel()))
 from python_code import org_k1s_nppn_PetriNet
 
 def test_org_k1s_nppn_PetriNet___init__():

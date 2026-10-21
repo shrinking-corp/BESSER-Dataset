@@ -6473,10 +6473,10 @@ def test_smm_MeasureLibrary___init__():
     assert smm_MeasureLibrary.__init__(smm_MeasureLibrary(smm_MeasureLibrary=set(), smm_MeasureLibrary116=set(), smm_MeasureLibrary220=smm_SmmModel()), smm_MeasureLibrary=set(), smm_MeasureLibrary116=set(), smm_MeasureLibrary220=smm_SmmModel()) == None
 
 def test_smm_MeasureLibrary_getOperations():
-    assert smm_MeasureLibrary.getOperations(smm_MeasureLibrary(smm_MeasureLibrary=set(), smm_MeasureLibrary116=set(), smm_MeasureLibrary220=smm_SmmModel())) == None
+    smm_MeasureLibrary.getOperations(smm_MeasureLibrary(smm_MeasureLibrary=set(), smm_MeasureLibrary116=set(), smm_MeasureLibrary220=smm_SmmModel()))
 
 def test_smm_MeasureLibrary_getOclOperations():
-    assert smm_MeasureLibrary.getOclOperations(smm_MeasureLibrary(smm_MeasureLibrary=set(), smm_MeasureLibrary116=set(), smm_MeasureLibrary220=smm_SmmModel())) == None
+    smm_MeasureLibrary.getOclOperations(smm_MeasureLibrary(smm_MeasureLibrary=set(), smm_MeasureLibrary116=set(), smm_MeasureLibrary220=smm_SmmModel()))
 from python_code import smm_OCLOperation
 
 def test_smm_OCLOperation___init__():

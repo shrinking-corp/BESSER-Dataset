@@ -1737,7 +1737,7 @@ def test_CarRental2_Person___init__():
     assert CarRental2_Person.__init__(CarRental2_Person(0, 0, 0, False), 0, 0, 0, True) == None
 
 def test_CarRental2_Person_fullname():
-    assert CarRental2_Person.fullname(CarRental2_Person(0, 0, 0, False), '') == None
+    CarRental2_Person.fullname(CarRental2_Person(0, 0, 0, False), '')
 from python_code import CarRental2_ServiceDepot
 from python_code import CarRental2_TernaryRelationMaintenance
 

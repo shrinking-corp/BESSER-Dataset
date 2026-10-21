@@ -1591,12 +1591,12 @@ def test_robo_condition_Condition___init__():
     assert robo_condition_Condition.__init__(robo_condition_Condition()) == None
 
 def test_robo_condition_Condition_evaluate():
-    assert robo_condition_Condition.evaluate(robo_condition_Condition()) == None
+    robo_condition_Condition.evaluate(robo_condition_Condition())
 from python_code import robo_expression_Expr
 
 def test_robo_expression_Expr___init__():
     assert robo_expression_Expr.__init__(robo_expression_Expr()) == None
 
 def test_robo_expression_Expr_evaluate():
-    assert robo_expression_Expr.evaluate(robo_expression_Expr()) == None
+    robo_expression_Expr.evaluate(robo_expression_Expr())
 

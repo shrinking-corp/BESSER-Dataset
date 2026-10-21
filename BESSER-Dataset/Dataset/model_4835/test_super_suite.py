@@ -8571,7 +8571,7 @@ def test_contentfwk_EnterpriseArchitecture___init__():
     assert contentfwk_EnterpriseArchitecture.__init__(contentfwk_EnterpriseArchitecture('\x00', contentfwk_EnterpriseArchitecture=set()), '', contentfwk_EnterpriseArchitecture=set()) == None
 
 def test_contentfwk_EnterpriseArchitecture_forceID():
-    assert contentfwk_EnterpriseArchitecture.forceID(contentfwk_EnterpriseArchitecture('', contentfwk_EnterpriseArchitecture=set()), '') == None
+    contentfwk_EnterpriseArchitecture.forceID(contentfwk_EnterpriseArchitecture('', contentfwk_EnterpriseArchitecture=set()), '')
 from python_code import contentfwk_Principle
 
 def test_contentfwk_Principle___init__():

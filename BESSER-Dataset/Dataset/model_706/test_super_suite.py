@@ -10205,10 +10205,10 @@ def test_FlatQVT_Extent___init__():
     assert FlatQVT_Extent.__init__(FlatQVT_Extent()) == None
 
 def test_FlatQVT_Extent_elements():
-    assert FlatQVT_Extent.elements(FlatQVT_Extent()) == None
+    FlatQVT_Extent.elements(FlatQVT_Extent())
 
 def test_FlatQVT_Extent_useContainment():
-    assert FlatQVT_Extent.useContainment(FlatQVT_Extent()) == None
+    FlatQVT_Extent.useContainment(FlatQVT_Extent())
 from python_code import FlatQVT_IntegerLiteralExp
 
 def test_FlatQVT_IntegerLiteralExp___init__():
@@ -10231,35 +10231,35 @@ def test_FlatQVT_ReflectiveCollection___init__():
     assert FlatQVT_ReflectiveCollection.__init__(FlatQVT_ReflectiveCollection()) == None
 
 def test_FlatQVT_ReflectiveCollection_size():
-    assert FlatQVT_ReflectiveCollection.size(FlatQVT_ReflectiveCollection()) == None
+    FlatQVT_ReflectiveCollection.size(FlatQVT_ReflectiveCollection())
 
 def test_FlatQVT_ReflectiveCollection_remove():
-    assert FlatQVT_ReflectiveCollection.remove(FlatQVT_ReflectiveCollection(), '') == None
+    FlatQVT_ReflectiveCollection.remove(FlatQVT_ReflectiveCollection(), '')
 
 def test_FlatQVT_ReflectiveCollection_clear():
-    assert FlatQVT_ReflectiveCollection.clear(FlatQVT_ReflectiveCollection()) == None
+    FlatQVT_ReflectiveCollection.clear(FlatQVT_ReflectiveCollection())
 
 def test_FlatQVT_ReflectiveCollection_add():
-    assert FlatQVT_ReflectiveCollection.add(FlatQVT_ReflectiveCollection(), '') == None
+    FlatQVT_ReflectiveCollection.add(FlatQVT_ReflectiveCollection(), '')
 
 def test_FlatQVT_ReflectiveCollection_addAll():
-    assert FlatQVT_ReflectiveCollection.addAll(FlatQVT_ReflectiveCollection(), '') == None
+    FlatQVT_ReflectiveCollection.addAll(FlatQVT_ReflectiveCollection(), '')
 from python_code import FlatQVT_ReflectiveSequence
 
 def test_FlatQVT_ReflectiveSequence___init__():
     assert FlatQVT_ReflectiveSequence.__init__(FlatQVT_ReflectiveSequence()) == None
 
 def test_FlatQVT_ReflectiveSequence_remove():
-    assert FlatQVT_ReflectiveSequence.remove(FlatQVT_ReflectiveSequence(), '') == None
+    FlatQVT_ReflectiveSequence.remove(FlatQVT_ReflectiveSequence(), '')
 
 def test_FlatQVT_ReflectiveSequence_set():
-    assert FlatQVT_ReflectiveSequence.set(FlatQVT_ReflectiveSequence(), '', '') == None
+    FlatQVT_ReflectiveSequence.set(FlatQVT_ReflectiveSequence(), '', '')
 
 def test_FlatQVT_ReflectiveSequence_add():
-    assert FlatQVT_ReflectiveSequence.add(FlatQVT_ReflectiveSequence(), '', '') == None
+    FlatQVT_ReflectiveSequence.add(FlatQVT_ReflectiveSequence(), '', '')
 
 def test_FlatQVT_ReflectiveSequence_get():
-    assert FlatQVT_ReflectiveSequence.get(FlatQVT_ReflectiveSequence(), '') == None
+    FlatQVT_ReflectiveSequence.get(FlatQVT_ReflectiveSequence(), '')
 from python_code import FlatQVT_StringLiteralExp
 
 def test_FlatQVT_StringLiteralExp___init__():
@@ -10270,13 +10270,13 @@ def test_FlatQVT_URIExtent___init__():
     assert FlatQVT_URIExtent.__init__(FlatQVT_URIExtent()) == None
 
 def test_FlatQVT_URIExtent_uri():
-    assert FlatQVT_URIExtent.uri(FlatQVT_URIExtent(), '') == None
+    FlatQVT_URIExtent.uri(FlatQVT_URIExtent(), '')
 
 def test_FlatQVT_URIExtent_contextURI():
-    assert FlatQVT_URIExtent.contextURI(FlatQVT_URIExtent()) == None
+    FlatQVT_URIExtent.contextURI(FlatQVT_URIExtent())
 
 def test_FlatQVT_URIExtent_element():
-    assert FlatQVT_URIExtent.element(FlatQVT_URIExtent(), '') == None
+    FlatQVT_URIExtent.element(FlatQVT_URIExtent(), '')
 from python_code import FlatQVT_UnlimitedNaturalExp
 
 def test_FlatQVT_UnlimitedNaturalExp___init__():

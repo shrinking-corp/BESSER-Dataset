@@ -8488,10 +8488,10 @@ def test_rapidml_ConstrainableType___init__():
     assert rapidml_ConstrainableType.__init__(rapidml_ConstrainableType(rapidml_ConstrainableType=set()), rapidml_ConstrainableType=set()) == None
 
 def test_rapidml_ConstrainableType_getAllConstraints():
-    assert rapidml_ConstrainableType.getAllConstraints(rapidml_ConstrainableType(rapidml_ConstrainableType=set())) == None
+    rapidml_ConstrainableType.getAllConstraints(rapidml_ConstrainableType(rapidml_ConstrainableType=set()))
 
 def test_rapidml_ConstrainableType_getConstrainableParent():
-    assert rapidml_ConstrainableType.getConstrainableParent(rapidml_ConstrainableType(rapidml_ConstrainableType=set())) == None
+    rapidml_ConstrainableType.getConstrainableParent(rapidml_ConstrainableType(rapidml_ConstrainableType=set()))
 from python_code import rapidml_Documentable
 from python_code import rapidml_Documentation
 
@@ -8503,16 +8503,16 @@ def test_rapidml_Element___init__():
     assert rapidml_Element.__init__(rapidml_Element(''), '') == None
 
 def test_rapidml_Element_getMaxOccurs():
-    assert rapidml_Element.getMaxOccurs(rapidml_Element('')) == None
+    rapidml_Element.getMaxOccurs(rapidml_Element(''))
 
 def test_rapidml_Element_getDataType():
-    assert rapidml_Element.getDataType(rapidml_Element('')) == None
+    rapidml_Element.getDataType(rapidml_Element(''))
 
 def test_rapidml_Element_getMinOccurs():
-    assert rapidml_Element.getMinOccurs(rapidml_Element('')) == None
+    rapidml_Element.getMinOccurs(rapidml_Element(''))
 
 def test_rapidml_Element_isMultiValued():
-    assert rapidml_Element.isMultiValued(rapidml_Element('')) == None
+    rapidml_Element.isMultiValued(rapidml_Element(''))
 from python_code import rapidml_Example
 from python_code import rapidml_WithExamples
 
@@ -8520,7 +8520,7 @@ def test_rapidml_Example___init__():
     assert rapidml_Example.__init__(rapidml_Example(rapidml_Example=rapidml_WithExamples()), rapidml_Example=rapidml_WithExamples()) == None
 
 def test_rapidml_Example_getBody():
-    assert rapidml_Example.getBody(rapidml_Example(rapidml_Example=rapidml_WithExamples())) == None
+    rapidml_Example.getBody(rapidml_Example(rapidml_Example=rapidml_WithExamples()))
 from python_code import rapidml_Extensible
 from python_code import rapidml_Extension
 
@@ -8532,14 +8532,14 @@ def test_rapidml_ExternalExample___init__():
     assert rapidml_ExternalExample.__init__(rapidml_ExternalExample(''), '') == None
 
 def test_rapidml_ExternalExample_getBody():
-    assert rapidml_ExternalExample.getBody(rapidml_ExternalExample('')) == None
+    rapidml_ExternalExample.getBody(rapidml_ExternalExample(''))
 from python_code import rapidml_HasStringValue
 
 def test_rapidml_HasStringValue___init__():
     assert rapidml_HasStringValue.__init__(rapidml_HasStringValue()) == None
 
 def test_rapidml_HasStringValue_toString():
-    assert rapidml_HasStringValue.toString(rapidml_HasStringValue()) == None
+    rapidml_HasStringValue.toString(rapidml_HasStringValue())
 from python_code import rapidml_HasTitle
 
 def test_rapidml_HasTitle___init__():
@@ -8562,10 +8562,10 @@ def test_rapidml_ReferenceEmbed___init__():
     assert rapidml_ReferenceEmbed.__init__(rapidml_ReferenceEmbed()) == None
 
 def test_rapidml_ReferenceEmbed_getNestedReferenceTreatments():
-    assert rapidml_ReferenceEmbed.getNestedReferenceTreatments(rapidml_ReferenceEmbed()) == None
+    rapidml_ReferenceEmbed.getNestedReferenceTreatments(rapidml_ReferenceEmbed())
 
 def test_rapidml_ReferenceEmbed_getAllNestedReferenceTreatments():
-    assert rapidml_ReferenceEmbed.getAllNestedReferenceTreatments(rapidml_ReferenceEmbed()) == None
+    rapidml_ReferenceEmbed.getAllNestedReferenceTreatments(rapidml_ReferenceEmbed())
 from python_code import rapidml_RegExConstraint
 
 def test_rapidml_RegExConstraint___init__():
@@ -8578,7 +8578,7 @@ def test_rapidml_URIParameter___init__():
     assert rapidml_URIParameter.__init__(rapidml_URIParameter(rapidml_URIParameter=rapidml_URISegmentWithParameter(), uriParameters=rapidml_URI(), URIParameter=rapidml_URI()), rapidml_URIParameter=rapidml_URISegmentWithParameter(), uriParameters=rapidml_URI(), URIParameter=rapidml_URI()) == None
 
 def test_rapidml_URIParameter_getName():
-    assert rapidml_URIParameter.getName(rapidml_URIParameter(rapidml_URIParameter=rapidml_URISegmentWithParameter(), uriParameters=rapidml_URI(), URIParameter=rapidml_URI())) == None
+    rapidml_URIParameter.getName(rapidml_URIParameter(rapidml_URIParameter=rapidml_URISegmentWithParameter(), uriParameters=rapidml_URI(), URIParameter=rapidml_URI()))
 from python_code import rapidml_URI
 from python_code import rapidml_URISegment
 
@@ -8591,7 +8591,7 @@ def test_rapidml_UserDefinedType___init__():
     assert rapidml_UserDefinedType.__init__(rapidml_UserDefinedType(rapidml_UserDefinedType=rapidml_SimpleType()), rapidml_UserDefinedType=rapidml_SimpleType()) == None
 
 def test_rapidml_UserDefinedType_getPrimitiveType():
-    assert rapidml_UserDefinedType.getPrimitiveType(rapidml_UserDefinedType(rapidml_UserDefinedType=rapidml_SimpleType())) == None
+    rapidml_UserDefinedType.getPrimitiveType(rapidml_UserDefinedType(rapidml_UserDefinedType=rapidml_SimpleType()))
 from python_code import rapidml_ValueRangeConstraint
 
 def test_rapidml_ValueRangeConstraint___init__():

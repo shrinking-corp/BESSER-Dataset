@@ -359,5 +359,5 @@ def test_sample_SampleClassInterface___init__():
     assert sample_SampleClassInterface.__init__(sample_SampleClassInterface()) == None
 
 def test_sample_SampleClassInterface_doSomething():
-    assert sample_SampleClassInterface.doSomething(sample_SampleClassInterface(), '') == None
+    sample_SampleClassInterface.doSomething(sample_SampleClassInterface(), '')
 

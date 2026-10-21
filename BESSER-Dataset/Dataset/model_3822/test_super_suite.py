@@ -2126,7 +2126,7 @@ def test_expressions_BinaryExpression___init__():
     assert expressions_BinaryExpression.__init__(expressions_BinaryExpression(expressions_BinaryExpression=expressions_Expression(), expressions_BinaryExpression2=expressions_Expression()), expressions_BinaryExpression=expressions_Expression(), expressions_BinaryExpression2=expressions_Expression()) == None
 
 def test_expressions_BinaryExpression_getOperator():
-    assert expressions_BinaryExpression.getOperator(expressions_BinaryExpression(expressions_BinaryExpression=expressions_Expression(), expressions_BinaryExpression2=expressions_Expression())) == None
+    expressions_BinaryExpression.getOperator(expressions_BinaryExpression(expressions_BinaryExpression=expressions_Expression(), expressions_BinaryExpression2=expressions_Expression()))
 from python_code import expressions_BoolLiteral
 
 def test_expressions_BoolLiteral___init__():
@@ -2189,5 +2189,5 @@ def test_expressions_UnaryExpression___init__():
     assert expressions_UnaryExpression.__init__(expressions_UnaryExpression(expressions_UnaryExpression=expressions_Expression()), expressions_UnaryExpression=expressions_Expression()) == None
 
 def test_expressions_UnaryExpression_getOperator():
-    assert expressions_UnaryExpression.getOperator(expressions_UnaryExpression(expressions_UnaryExpression=expressions_Expression())) == None
+    expressions_UnaryExpression.getOperator(expressions_UnaryExpression(expressions_UnaryExpression=expressions_Expression()))
 

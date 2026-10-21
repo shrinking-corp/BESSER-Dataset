@@ -3685,7 +3685,7 @@ def test_article_LinkTarget___init__():
     assert article_LinkTarget.__init__(article_LinkTarget('', '\x00', article_LinkTarget=article_Link()), '\x00\x00', '', article_LinkTarget=article_Link()) == None
 
 def test_article_LinkTarget_linkFrom():
-    assert article_LinkTarget.linkFrom(article_LinkTarget('', '', article_LinkTarget=article_Link()), '') == None
+    article_LinkTarget.linkFrom(article_LinkTarget('', '', article_LinkTarget=article_Link()), '')
 from python_code import article_Callout
 from python_code import article_Description
 from python_code import article_Formatter

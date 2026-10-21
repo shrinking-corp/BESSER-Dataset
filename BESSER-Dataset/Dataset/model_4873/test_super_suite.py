@@ -3572,7 +3572,7 @@ def test_application_ApplicationKeyConfig___init__():
     assert application_ApplicationKeyConfig.__init__(application_ApplicationKeyConfig(''), '') == None
 
 def test_application_ApplicationKeyConfig_hasApplicationKey():
-    assert application_ApplicationKeyConfig.hasApplicationKey(application_ApplicationKeyConfig(''), 0) == None
+    application_ApplicationKeyConfig.hasApplicationKey(application_ApplicationKeyConfig(''), 0)
 from python_code import application_ConfigurableElement
 from python_code import application_Configuration
 
@@ -3580,25 +3580,25 @@ def test_application_ConfigurableElement___init__():
     assert application_ConfigurableElement.__init__(application_ConfigurableElement('', '', '', '', '', '', application_ConfigurableElement=application_Configuration()), '', '', '', '', '\x00', '', application_ConfigurableElement=application_Configuration()) == None
 
 def test_application_ConfigurableElement_isPropertyTrueElseDefault():
-    assert application_ConfigurableElement.isPropertyTrueElseDefault(application_ConfigurableElement('', '', '\x00\x00', '', '', '', application_ConfigurableElement=application_Configuration()), '', '') == None
+    application_ConfigurableElement.isPropertyTrueElseDefault(application_ConfigurableElement('', '', '\x00\x00', '', '', '', application_ConfigurableElement=application_Configuration()), '', '')
 
 def test_application_ConfigurableElement_removeProperty():
-    assert application_ConfigurableElement.removeProperty(application_ConfigurableElement('', '', '\x00\x00', '', '', '', application_ConfigurableElement=application_Configuration()), '') == None
+    application_ConfigurableElement.removeProperty(application_ConfigurableElement('', '', '\x00\x00', '', '', '', application_ConfigurableElement=application_Configuration()), '')
 
 def test_application_ConfigurableElement_addProperty():
-    assert application_ConfigurableElement.addProperty(application_ConfigurableElement('', '', '\x00\x00', '', '', '', application_ConfigurableElement=application_Configuration()), '') == None
+    application_ConfigurableElement.addProperty(application_ConfigurableElement('', '', '\x00\x00', '', '', '', application_ConfigurableElement=application_Configuration()), '')
 
 def test_application_ConfigurableElement_getProperty():
-    assert application_ConfigurableElement.getProperty(application_ConfigurableElement('', '', '\x00\x00', '', '', '', application_ConfigurableElement=application_Configuration()), '') == None
+    application_ConfigurableElement.getProperty(application_ConfigurableElement('', '', '\x00\x00', '', '', '', application_ConfigurableElement=application_Configuration()), '')
 
 def test_application_ConfigurableElement_getPropertyValueElseDefault():
-    assert application_ConfigurableElement.getPropertyValueElseDefault(application_ConfigurableElement('', '', '\x00\x00', '', '', '', application_ConfigurableElement=application_Configuration()), '', '') == None
+    application_ConfigurableElement.getPropertyValueElseDefault(application_ConfigurableElement('', '', '\x00\x00', '', '', '', application_ConfigurableElement=application_Configuration()), '', '')
 
 def test_application_ConfigurableElement_getPropertyValue():
-    assert application_ConfigurableElement.getPropertyValue(application_ConfigurableElement('', '', '\x00\x00', '', '', '', application_ConfigurableElement=application_Configuration()), '') == None
+    application_ConfigurableElement.getPropertyValue(application_ConfigurableElement('', '', '\x00\x00', '', '', '', application_ConfigurableElement=application_Configuration()), '')
 
 def test_application_ConfigurableElement_isPropertyTrue():
-    assert application_ConfigurableElement.isPropertyTrue(application_ConfigurableElement('', '', '\x00\x00', '', '', '', application_ConfigurableElement=application_Configuration()), '') == None
+    application_ConfigurableElement.isPropertyTrue(application_ConfigurableElement('', '', '\x00\x00', '', '', '', application_ConfigurableElement=application_Configuration()), '')
 from python_code import application_FEEDInterface
 
 def test_application_FEEDInterface___init__():
@@ -3618,19 +3618,19 @@ def test_application_Property___init__():
     assert application_Property.__init__(application_Property('', '', '', '', '', '', '\x00', '', application_Property=application_Configuration()), '', '', '', '', '', '', '', '', application_Property=application_Configuration()) == None
 
 def test_application_Property_isValueRange():
-    assert application_Property.isValueRange(application_Property('\x00\x00', '', '', '', '', '', '', '', application_Property=application_Configuration())) == None
+    application_Property.isValueRange(application_Property('\x00\x00', '', '', '', '', '', '', '', application_Property=application_Configuration()))
 
 def test_application_Property_getMaxValue():
-    assert application_Property.getMaxValue(application_Property('\x00\x00', '', '', '', '', '', '', '', application_Property=application_Configuration())) == None
+    application_Property.getMaxValue(application_Property('\x00\x00', '', '', '', '', '', '', '', application_Property=application_Configuration()))
 
 def test_application_Property_getMinValue():
-    assert application_Property.getMinValue(application_Property('\x00\x00', '', '', '', '', '', '', '', application_Property=application_Configuration())) == None
+    application_Property.getMinValue(application_Property('\x00\x00', '', '', '', '', '', '', '', application_Property=application_Configuration()))
 
 def test_application_Property_isValueList():
-    assert application_Property.isValueList(application_Property('\x00\x00', '', '', '', '', '', '', '', application_Property=application_Configuration())) == None
+    application_Property.isValueList(application_Property('\x00\x00', '', '', '', '', '', '', '', application_Property=application_Configuration()))
 
 def test_application_Property_getListOfValues():
-    assert application_Property.getListOfValues(application_Property('\x00\x00', '', '', '', '', '', '', '', application_Property=application_Configuration())) == None
+    application_Property.getListOfValues(application_Property('\x00\x00', '', '', '', '', '', '', '', application_Property=application_Configuration()))
 from python_code import application_RESTInterface
 
 def test_application_RESTInterface___init__():

@@ -3383,7 +3383,7 @@ def test_CodePack_CheckInMachine___init__():
     assert CodePack_CheckInMachine.__init__(CodePack_CheckInMachine(CodePack_CheckInMachine=CheckInHandler()), CodePack_CheckInMachine=CheckInHandler()) == None
 
 def test_CodePack_CheckInMachine_startUI():
-    assert CodePack_CheckInMachine.startUI(CodePack_CheckInMachine(CodePack_CheckInMachine=CheckInHandler())) == None
+    CodePack_CheckInMachine.startUI(CodePack_CheckInMachine(CodePack_CheckInMachine=CheckInHandler()))
 from python_code import CodePack_DataModels_Bill
 
 def test_CodePack_DataModels_Bill___init__():
@@ -3440,172 +3440,172 @@ def test_CodePack_IBookings___init__():
     assert CodePack_IBookings.__init__(CodePack_IBookings()) == None
 
 def test_CodePack_IBookings_getBookingForId():
-    assert CodePack_IBookings.getBookingForId(CodePack_IBookings(), '') == None
+    CodePack_IBookings.getBookingForId(CodePack_IBookings(), '')
 
 def test_CodePack_IBookings_isRoomAvailable():
-    assert CodePack_IBookings.isRoomAvailable(CodePack_IBookings(), '', '', '') == None
+    CodePack_IBookings.isRoomAvailable(CodePack_IBookings(), '', '', '')
 
 def test_CodePack_IBookings_sendComfimationMail():
-    assert CodePack_IBookings.sendComfimationMail(CodePack_IBookings(), '') == None
+    CodePack_IBookings.sendComfimationMail(CodePack_IBookings(), '')
 
 def test_CodePack_IBookings_getAvailableServices():
-    assert CodePack_IBookings.getAvailableServices(CodePack_IBookings()) == None
+    CodePack_IBookings.getAvailableServices(CodePack_IBookings())
 
 def test_CodePack_IBookings_getAvailableRooms():
-    assert CodePack_IBookings.getAvailableRooms(CodePack_IBookings(), '', '') == None
+    CodePack_IBookings.getAvailableRooms(CodePack_IBookings(), '', '')
 
 def test_CodePack_IBookings_updateTimeForBooking():
-    assert CodePack_IBookings.updateTimeForBooking(CodePack_IBookings(), '', '', '') == None
+    CodePack_IBookings.updateTimeForBooking(CodePack_IBookings(), '', '', '')
 
 def test_CodePack_IBookings_updateRoomForBooking():
-    assert CodePack_IBookings.updateRoomForBooking(CodePack_IBookings(), '', '', '') == None
+    CodePack_IBookings.updateRoomForBooking(CodePack_IBookings(), '', '', '')
 
 def test_CodePack_IBookings_updateServiceForBooking():
-    assert CodePack_IBookings.updateServiceForBooking(CodePack_IBookings(), '', '') == None
+    CodePack_IBookings.updateServiceForBooking(CodePack_IBookings(), '', '')
 
 def test_CodePack_IBookings_createBookingForCustomer():
-    assert CodePack_IBookings.createBookingForCustomer(CodePack_IBookings(), '', '', '', '', '', '', '') == None
+    CodePack_IBookings.createBookingForCustomer(CodePack_IBookings(), '', '', '', '', '', '', '')
 
 def test_CodePack_IBookings_createBooking():
-    assert CodePack_IBookings.createBooking(CodePack_IBookings(), '', '', '', '', '', '', '') == None
+    CodePack_IBookings.createBooking(CodePack_IBookings(), '', '', '', '', '', '', '')
 
 def test_CodePack_IBookings_getBookingsForCustomer():
-    assert CodePack_IBookings.getBookingsForCustomer(CodePack_IBookings(), '') == None
+    CodePack_IBookings.getBookingsForCustomer(CodePack_IBookings(), '')
 
 def test_CodePack_IBookings_cancelBooking():
-    assert CodePack_IBookings.cancelBooking(CodePack_IBookings(), '') == None
+    CodePack_IBookings.cancelBooking(CodePack_IBookings(), '')
 
 def test_CodePack_IBookings_getPaymentForBooking():
-    assert CodePack_IBookings.getPaymentForBooking(CodePack_IBookings(), '') == None
+    CodePack_IBookings.getPaymentForBooking(CodePack_IBookings(), '')
 from python_code import CodePack_ICheckIn
 
 def test_CodePack_ICheckIn___init__():
     assert CodePack_ICheckIn.__init__(CodePack_ICheckIn()) == None
 
 def test_CodePack_ICheckIn_validateBooking():
-    assert CodePack_ICheckIn.validateBooking(CodePack_ICheckIn(), '') == None
+    CodePack_ICheckIn.validateBooking(CodePack_ICheckIn(), '')
 
 def test_CodePack_ICheckIn_assignGuestToBooking():
-    assert CodePack_ICheckIn.assignGuestToBooking(CodePack_ICheckIn(), '', '') == None
+    CodePack_ICheckIn.assignGuestToBooking(CodePack_ICheckIn(), '', '')
 from python_code import CodePack_IManagement
 
 def test_CodePack_IManagement___init__():
     assert CodePack_IManagement.__init__(CodePack_IManagement()) == None
 
 def test_CodePack_IManagement_getServiceTypes():
-    assert CodePack_IManagement.getServiceTypes(CodePack_IManagement()) == None
+    CodePack_IManagement.getServiceTypes(CodePack_IManagement())
 
 def test_CodePack_IManagement_removeRoomType():
-    assert CodePack_IManagement.removeRoomType(CodePack_IManagement(), '') == None
+    CodePack_IManagement.removeRoomType(CodePack_IManagement(), '')
 
 def test_CodePack_IManagement_removeServiceType():
-    assert CodePack_IManagement.removeServiceType(CodePack_IManagement(), '') == None
+    CodePack_IManagement.removeServiceType(CodePack_IManagement(), '')
 
 def test_CodePack_IManagement_removeRoom():
-    assert CodePack_IManagement.removeRoom(CodePack_IManagement(), '') == None
+    CodePack_IManagement.removeRoom(CodePack_IManagement(), '')
 
 def test_CodePack_IManagement_getRoom():
-    assert CodePack_IManagement.getRoom(CodePack_IManagement(), '') == None
+    CodePack_IManagement.getRoom(CodePack_IManagement(), '')
 
 def test_CodePack_IManagement_getRoomTypes():
-    assert CodePack_IManagement.getRoomTypes(CodePack_IManagement()) == None
+    CodePack_IManagement.getRoomTypes(CodePack_IManagement())
 
 def test_CodePack_IManagement_updateServiceType():
-    assert CodePack_IManagement.updateServiceType(CodePack_IManagement(), '') == None
+    CodePack_IManagement.updateServiceType(CodePack_IManagement(), '')
 
 def test_CodePack_IManagement_addRoom():
-    assert CodePack_IManagement.addRoom(CodePack_IManagement(), '', '', '', '') == None
+    CodePack_IManagement.addRoom(CodePack_IManagement(), '', '', '', '')
 
 def test_CodePack_IManagement_getAllRooms():
-    assert CodePack_IManagement.getAllRooms(CodePack_IManagement()) == None
+    CodePack_IManagement.getAllRooms(CodePack_IManagement())
 
 def test_CodePack_IManagement_addRoomType():
-    assert CodePack_IManagement.addRoomType(CodePack_IManagement(), '', '', '', '') == None
+    CodePack_IManagement.addRoomType(CodePack_IManagement(), '', '', '', '')
 
 def test_CodePack_IManagement_updateRoom():
-    assert CodePack_IManagement.updateRoom(CodePack_IManagement(), '') == None
+    CodePack_IManagement.updateRoom(CodePack_IManagement(), '')
 
 def test_CodePack_IManagement_updateRoomType():
-    assert CodePack_IManagement.updateRoomType(CodePack_IManagement(), '') == None
+    CodePack_IManagement.updateRoomType(CodePack_IManagement(), '')
 from python_code import CodePack_IReceptionOperations_rename_required
 
 def test_CodePack_IReceptionOperations_rename_required___init__():
     assert CodePack_IReceptionOperations_rename_required.__init__(CodePack_IReceptionOperations_rename_required()) == None
 
 def test_CodePack_IReceptionOperations_rename_required_isCheckedIn():
-    assert CodePack_IReceptionOperations_rename_required.isCheckedIn(CodePack_IReceptionOperations_rename_required(), '') == None
+    CodePack_IReceptionOperations_rename_required.isCheckedIn(CodePack_IReceptionOperations_rename_required(), '')
 
 def test_CodePack_IReceptionOperations_rename_required_generateReceipt():
-    assert CodePack_IReceptionOperations_rename_required.generateReceipt(CodePack_IReceptionOperations_rename_required(), '') == None
+    CodePack_IReceptionOperations_rename_required.generateReceipt(CodePack_IReceptionOperations_rename_required(), '')
 
 def test_CodePack_IReceptionOperations_rename_required_generateBill():
-    assert CodePack_IReceptionOperations_rename_required.generateBill(CodePack_IReceptionOperations_rename_required(), '') == None
+    CodePack_IReceptionOperations_rename_required.generateBill(CodePack_IReceptionOperations_rename_required(), '')
 from python_code import CodePack_IStaffAdmin
 
 def test_CodePack_IStaffAdmin___init__():
     assert CodePack_IStaffAdmin.__init__(CodePack_IStaffAdmin()) == None
 
 def test_CodePack_IStaffAdmin_getStaffRoles():
-    assert CodePack_IStaffAdmin.getStaffRoles(CodePack_IStaffAdmin()) == None
+    CodePack_IStaffAdmin.getStaffRoles(CodePack_IStaffAdmin())
 
 def test_CodePack_IStaffAdmin_removeStaffRole():
-    assert CodePack_IStaffAdmin.removeStaffRole(CodePack_IStaffAdmin(), '') == None
+    CodePack_IStaffAdmin.removeStaffRole(CodePack_IStaffAdmin(), '')
 
 def test_CodePack_IStaffAdmin_updateStaffRole():
-    assert CodePack_IStaffAdmin.updateStaffRole(CodePack_IStaffAdmin(), '') == None
+    CodePack_IStaffAdmin.updateStaffRole(CodePack_IStaffAdmin(), '')
 
 def test_CodePack_IStaffAdmin_updateStaffAccount():
-    assert CodePack_IStaffAdmin.updateStaffAccount(CodePack_IStaffAdmin(), '') == None
+    CodePack_IStaffAdmin.updateStaffAccount(CodePack_IStaffAdmin(), '')
 
 def test_CodePack_IStaffAdmin_getStaffAccount():
-    assert CodePack_IStaffAdmin.getStaffAccount(CodePack_IStaffAdmin(), '') == None
+    CodePack_IStaffAdmin.getStaffAccount(CodePack_IStaffAdmin(), '')
 
 def test_CodePack_IStaffAdmin_removeStaffAccount():
-    assert CodePack_IStaffAdmin.removeStaffAccount(CodePack_IStaffAdmin(), '') == None
+    CodePack_IStaffAdmin.removeStaffAccount(CodePack_IStaffAdmin(), '')
 
 def test_CodePack_IStaffAdmin_getAllStaffAccounts():
-    assert CodePack_IStaffAdmin.getAllStaffAccounts(CodePack_IStaffAdmin()) == None
+    CodePack_IStaffAdmin.getAllStaffAccounts(CodePack_IStaffAdmin())
 
 def test_CodePack_IStaffAdmin_registerStaffAccount():
-    assert CodePack_IStaffAdmin.registerStaffAccount(CodePack_IStaffAdmin(), '', '', '', '', '') == None
+    CodePack_IStaffAdmin.registerStaffAccount(CodePack_IStaffAdmin(), '', '', '', '', '')
 
 def test_CodePack_IStaffAdmin_addStaffRole():
-    assert CodePack_IStaffAdmin.addStaffRole(CodePack_IStaffAdmin(), '', '', '', '', '') == None
+    CodePack_IStaffAdmin.addStaffRole(CodePack_IStaffAdmin(), '', '', '', '', '')
 from python_code import CodePack_IStaffAuthentication
 
 def test_CodePack_IStaffAuthentication___init__():
     assert CodePack_IStaffAuthentication.__init__(CodePack_IStaffAuthentication()) == None
 
 def test_CodePack_IStaffAuthentication_getRoleForStaff():
-    assert CodePack_IStaffAuthentication.getRoleForStaff(CodePack_IStaffAuthentication(), '') == None
+    CodePack_IStaffAuthentication.getRoleForStaff(CodePack_IStaffAuthentication(), '')
 
 def test_CodePack_IStaffAuthentication_login():
-    assert CodePack_IStaffAuthentication.login(CodePack_IStaffAuthentication(), '', '') == None
+    CodePack_IStaffAuthentication.login(CodePack_IStaffAuthentication(), '', '')
 from python_code import CodePack_IUserAccount
 
 def test_CodePack_IUserAccount___init__():
     assert CodePack_IUserAccount.__init__(CodePack_IUserAccount()) == None
 
 def test_CodePack_IUserAccount_updateCustomerInfo():
-    assert CodePack_IUserAccount.updateCustomerInfo(CodePack_IUserAccount(), '', '', '') == None
+    CodePack_IUserAccount.updateCustomerInfo(CodePack_IUserAccount(), '', '', '')
 
 def test_CodePack_IUserAccount_updateCustomerPwd():
-    assert CodePack_IUserAccount.updateCustomerPwd(CodePack_IUserAccount(), '', '', '') == None
+    CodePack_IUserAccount.updateCustomerPwd(CodePack_IUserAccount(), '', '', '')
 
 def test_CodePack_IUserAccount_getCustomerInfo():
-    assert CodePack_IUserAccount.getCustomerInfo(CodePack_IUserAccount(), '') == None
+    CodePack_IUserAccount.getCustomerInfo(CodePack_IUserAccount(), '')
 
 def test_CodePack_IUserAccount_isEmailAvailable():
-    assert CodePack_IUserAccount.isEmailAvailable(CodePack_IUserAccount(), '') == None
+    CodePack_IUserAccount.isEmailAvailable(CodePack_IUserAccount(), '')
 
 def test_CodePack_IUserAccount_updateCustomerCC():
-    assert CodePack_IUserAccount.updateCustomerCC(CodePack_IUserAccount(), '', '', '', '', '', '', '') == None
+    CodePack_IUserAccount.updateCustomerCC(CodePack_IUserAccount(), '', '', '', '', '', '', '')
 
 def test_CodePack_IUserAccount_login():
-    assert CodePack_IUserAccount.login(CodePack_IUserAccount(), '', '') == None
+    CodePack_IUserAccount.login(CodePack_IUserAccount(), '', '')
 
 def test_CodePack_IUserAccount_registerCustomer():
-    assert CodePack_IUserAccount.registerCustomer(CodePack_IUserAccount(), '', '', '', '', '', '') == None
+    CodePack_IUserAccount.registerCustomer(CodePack_IUserAccount(), '', '', '', '', '', '')
 from python_code import CodePack_Shared_ContactData
 
 def test_CodePack_Shared_ContactData___init__():
@@ -3618,7 +3618,7 @@ def test_CodePack_StaffGUI___init__():
     assert CodePack_StaffGUI.__init__(CodePack_StaffGUI(CodePack_StaffGUI=ManagementHandler(), CodePack_StaffGUI2=ReceptionHandler()), CodePack_StaffGUI=ManagementHandler(), CodePack_StaffGUI2=ReceptionHandler()) == None
 
 def test_CodePack_StaffGUI_startUI():
-    assert CodePack_StaffGUI.startUI(CodePack_StaffGUI(CodePack_StaffGUI=ManagementHandler(), CodePack_StaffGUI2=ReceptionHandler())) == None
+    CodePack_StaffGUI.startUI(CodePack_StaffGUI(CodePack_StaffGUI=ManagementHandler(), CodePack_StaffGUI2=ReceptionHandler()))
 from python_code import CodePack_UserGUI
 from python_code import CustomerHandler
 
@@ -3626,5 +3626,5 @@ def test_CodePack_UserGUI___init__():
     assert CodePack_UserGUI.__init__(CodePack_UserGUI(CodePack_UserGUI=CustomerHandler()), CodePack_UserGUI=CustomerHandler()) == None
 
 def test_CodePack_UserGUI_startUI():
-    assert CodePack_UserGUI.startUI(CodePack_UserGUI(CodePack_UserGUI=CustomerHandler())) == None
+    CodePack_UserGUI.startUI(CodePack_UserGUI(CodePack_UserGUI=CustomerHandler()))
 

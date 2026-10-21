@@ -3977,10 +3977,10 @@ def test_model_Adapter___init__():
     assert model_Adapter.__init__(model_Adapter()) == None
 
 def test_model_Adapter_setAdapter():
-    assert model_Adapter.setAdapter(model_Adapter(), '', '') == None
+    model_Adapter.setAdapter(model_Adapter(), '', '')
 
 def test_model_Adapter_getAdapter():
-    assert model_Adapter.getAdapter(model_Adapter(), '') == None
+    model_Adapter.getAdapter(model_Adapter(), '')
 from python_code import model_Attribute
 from python_code import model_BasicObject
 from python_code import model_BasicRelationship
@@ -3997,7 +3997,7 @@ def test_model_Cloneable___init__():
     assert model_Cloneable.__init__(model_Cloneable()) == None
 
 def test_model_Cloneable_getCopy():
-    assert model_Cloneable.getCopy(model_Cloneable()) == None
+    model_Cloneable.getCopy(model_Cloneable())
 from python_code import model_DiagramModelImageProvider
 
 def test_model_DiagramModelImageProvider___init__():
@@ -4009,10 +4009,10 @@ def test_model_DiagramModelZentaConnection___init__():
     assert model_DiagramModelZentaConnection.__init__(model_DiagramModelZentaConnection(diagConnections=model_BasicRelationship(), DiagramModelZentaConnection=model_BasicRelationship()), diagConnections=model_BasicRelationship(), DiagramModelZentaConnection=model_BasicRelationship()) == None
 
 def test_model_DiagramModelZentaConnection_addRelationshipToModel():
-    assert model_DiagramModelZentaConnection.addRelationshipToModel(model_DiagramModelZentaConnection(diagConnections=model_BasicRelationship(), DiagramModelZentaConnection=model_BasicRelationship()), '') == None
+    model_DiagramModelZentaConnection.addRelationshipToModel(model_DiagramModelZentaConnection(diagConnections=model_BasicRelationship(), DiagramModelZentaConnection=model_BasicRelationship()), '')
 
 def test_model_DiagramModelZentaConnection_removeRelationshipFromModel():
-    assert model_DiagramModelZentaConnection.removeRelationshipFromModel(model_DiagramModelZentaConnection(diagConnections=model_BasicRelationship(), DiagramModelZentaConnection=model_BasicRelationship())) == None
+    model_DiagramModelZentaConnection.removeRelationshipFromModel(model_DiagramModelZentaConnection(diagConnections=model_BasicRelationship(), DiagramModelZentaConnection=model_BasicRelationship()))
 from python_code import model_DiagramModelZentaObject
 from python_code import model_ZentaElement
 
@@ -4020,10 +4020,10 @@ def test_model_DiagramModelZentaObject___init__():
     assert model_DiagramModelZentaObject.__init__(model_DiagramModelZentaObject(0, diagObjects=model_ZentaElement(), DiagramModelZentaObject=model_ZentaElement()), 0, diagObjects=model_ZentaElement(), DiagramModelZentaObject=model_ZentaElement()) == None
 
 def test_model_DiagramModelZentaObject_addZentaElementToModel():
-    assert model_DiagramModelZentaObject.addZentaElementToModel(model_DiagramModelZentaObject(0, diagObjects=model_ZentaElement(), DiagramModelZentaObject=model_ZentaElement()), 0) == None
+    model_DiagramModelZentaObject.addZentaElementToModel(model_DiagramModelZentaObject(0, diagObjects=model_ZentaElement(), DiagramModelZentaObject=model_ZentaElement()), 0)
 
 def test_model_DiagramModelZentaObject_removeZentaElementFromModel():
-    assert model_DiagramModelZentaObject.removeZentaElementFromModel(model_DiagramModelZentaObject(0, diagObjects=model_ZentaElement(), DiagramModelZentaObject=model_ZentaElement())) == None
+    model_DiagramModelZentaObject.removeZentaElementFromModel(model_DiagramModelZentaObject(0, diagObjects=model_ZentaElement(), DiagramModelZentaObject=model_ZentaElement()))
 from python_code import model_Documentable
 
 def test_model_Documentable___init__():
@@ -4034,7 +4034,7 @@ def test_model_FontAttribute___init__():
     assert model_FontAttribute.__init__(model_FontAttribute('\x00\x00', '', 0, 0), '', '', 0, 0) == None
 
 def test_model_FontAttribute_getDefaultTextAlignment():
-    assert model_FontAttribute.getDefaultTextAlignment(model_FontAttribute('', '\x00', 0, 0)) == None
+    model_FontAttribute.getDefaultTextAlignment(model_FontAttribute('', '\x00', 0, 0))
 from python_code import model_Identifier
 
 def test_model_Identifier___init__():
@@ -4076,11 +4076,11 @@ def test_model_ZentaModel___init__():
     assert model_ZentaModel.__init__(model_ZentaModel('', '\x00', model_ZentaModel=model_ZentaModelElement()), '\x00\x00', '', model_ZentaModel=model_ZentaModelElement()) == None
 
 def test_model_ZentaModel_getDefaultDiagramModel():
-    assert model_ZentaModel.getDefaultDiagramModel(model_ZentaModel('', '', model_ZentaModel=model_ZentaModelElement())) == None
+    model_ZentaModel.getDefaultDiagramModel(model_ZentaModel('', '', model_ZentaModel=model_ZentaModelElement()))
 
 def test_model_ZentaModel_getDefaultFolderForElement():
-    assert model_ZentaModel.getDefaultFolderForElement(model_ZentaModel('', '', model_ZentaModel=model_ZentaModelElement()), '') == None
+    model_ZentaModel.getDefaultFolderForElement(model_ZentaModel('', '', model_ZentaModel=model_ZentaModelElement()), '')
 
 def test_model_ZentaModel_getDiagramModels():
-    assert model_ZentaModel.getDiagramModels(model_ZentaModel('', '', model_ZentaModel=model_ZentaModelElement())) == None
+    model_ZentaModel.getDiagramModels(model_ZentaModel('', '', model_ZentaModel=model_ZentaModelElement()))
 
