@@ -16,6 +16,29 @@ Website: https://besser-pearl.org
 
 ---
 
+## This fork: a benchmark for diagram shrinking
+
+This fork turns the dataset into a benchmark for generating Python code
+from (shrunk) UML class diagrams. On top of the original files it adds, per
+model, a lossless PlantUML diagram, structural metadata with a difficulty
+score, and a test suite that passes on the reference implementation. It
+also removes copies: 5,264 distinct models remain of the 8,336 usable ones.
+
+- [`docs/capstone.md`](docs/capstone.md): everything that was done, found
+  and decided, in one document. Start here.
+- [`docs/handout.md`](docs/handout.md): for users of the benchmark export.
+  It covers the PlantUML format, how to run a test suite, the API that
+  generated code must follow, and the train/test split.
+- [`docs/RUNBOOK-full-regeneration.md`](docs/RUNBOOK-full-regeneration.md):
+  how to rebuild everything, step by step.
+- [`docs/DECISIONS.md`](docs/DECISIONS.md): the full decision log, newest
+  first.
+
+Scripts are in `scripts/`, and generated reports and model lists are in
+`reports/`. `reports/unique_models.txt` is the list of the 5,264 models.
+
+---
+
 ## 📦 Dataset Overview
 
 Each entry in the B-UML Dataset includes:

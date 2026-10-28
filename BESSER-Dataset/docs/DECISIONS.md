@@ -14,6 +14,44 @@ different, non-overlapping reasons).
 
 ---
 
+## 2026-10-28 — Seeded runs feed identical inputs to original and shrunk code; one missing class fails a whole suite
+
+**Question.** Does the benchmark's run on code from the shrunk diagram see
+the same Hypothesis inputs as the run on code from the original diagram?
+
+**Answer: yes**, given the same test file, Python, Hypothesis version and
+constructor signatures. Checked in the Hypothesis 6.167.1 source and in all
+5,264 suites:
+- `--hypothesis-seed` gives every test its own fresh `Random(seed)` and
+  turns the example database off, so the order of tests, models and runs
+  doesn't matter.
+- No suite uses `assume`, `target` or `st.data`, so the code under test
+  can't steer the draws.
+- The only way generated code changes the inputs is an extra required
+  constructor parameter that `st.builds(Class)` then fills from its type
+  hint. That code already breaks the API.
+
+**Open.** Every suite imports all model names at module level, so one
+missing class fails collection of the whole suite (0 tests run). This
+matters if shrinking can drop diagram elements. It was asked of the
+benchmarking side; the fix is per-test name lookup in our generator, or
+reporting collection errors separately in their runner.
+
+Full write-up: `docs/2026-10-28-hypothesis-seed-and-comparable-test-runs.md`.
+
+**Also this day.**
+- Pilot sample (`select_pilot_sample.py`): 100 models, 10 per bucket (all 9
+  of 90-100, 11 of 80-90). 3 of them are from the 200-model
+  test-generation sample, all in 90-100, which has nothing else.
+- Recount on the 5,264 unique models (`summarize_method_logic.py`):
+  - 439 models (8.34%) have no logic-bearing method (992 on the 8,336
+    with copies).
+  - 427,336 methods: 2.24% no_logic, 71.73% trivial, 26.03% has_logic.
+  - 8,878 operations in 699 models, every one a stub (19,768 in 1,037 on
+    all 9,082).
+
+---
+
 ## 2026-10-21 — CrossHair assertions on stub operations rewritten to bare calls; mutation scores unchanged
 
 **Finding** (while writing the benchmarking handout). CrossHair records what an operation returned and asserts it: `assert javaMM_InfixExpression.operatorIsEquality(...) == None`. No BUML model specifies an operation body, so every operation in `python_code.py` is an empty stub (`# TODO: Implement` + `pass`), while the PUML declares `+ operatorIsEquality() : str`. These assertions therefore test the stub, not the diagram: code generated from the PUML that implements the operation as declared would fail them, for both the original and the shrunk diagram. That is noise in exactly the comparison the benchmark makes. Scale: **3,371 tests in 407 of the 5,264 models.** Nothing else in the suite tests operations.

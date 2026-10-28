@@ -50,7 +50,7 @@ from _common.io import add_common_io_args  # noqa: E402
 
 CONFIG_FILENAME = "benchmark_export.toml"
 IGNORED = shutil.ignore_patterns("__pycache__", ".hypothesis", ".coverage", ".pytest_cache")
-ENTRY_KEYS = {"model", "split", "bucket", "difficulty_score", "puml_group", "path", "files", "absent"}
+ENTRY_KEYS = {"model", "split", "bucket", "difficulty_score", "path", "files", "absent"}
 
 
 @dataclass(frozen=True)
@@ -284,7 +284,7 @@ def main() -> None:
                 (target / name).write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
         entries.append({
             "model": a["model"], "split": a["split"], "bucket": a["bucket"],
-            "difficulty_score": a["difficulty_score"], "puml_group": a.get("puml_group"),
+            "difficulty_score": a["difficulty_score"],
             "path": f"{a['split']}/{a['model']}",
             **fields,
             "files": {name: source.name for name, source, _payload in actions},

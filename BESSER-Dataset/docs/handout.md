@@ -22,6 +22,7 @@ has to look like to be tested, and what we still need to agree on.
   manifest.json            split parameters, buckets, source commit, export config, one entry per model
   README.md                the layout below, generated
   train.txt, test.txt      model names on each side
+  pilot.txt                100 models for trying the pipeline first (below)
   benchmark_export.toml    the config this export was made with
   train/<model>/  test/<model>/
     model.puml             the class diagram (benchmark input)
@@ -35,6 +36,11 @@ has to look like to be tested, and what we still need to agree on.
 
 Each `manifest.json` entry has `model`, `split`, `bucket`, `difficulty_score`,
 `path`, the original file names, and `absent` (optional files a model lacks).
+
+`pilot.txt` is a small, difficulty-balanced set for trying the whole
+pipeline before a full run: 10 models from each bucket (all 9 of 90-100,
+so 11 of 80-90). It overlaps train and test, so find each model's folder
+through `manifest.json`.
 
 The contents are configurable. `benchmark_export.toml` lists every per-model
 file (optionally only some keys of a JSON file), extra manifest fields, and
@@ -137,9 +143,26 @@ bucket, +61 in the hardest). Per model: `test_suite_quality.json`.
   large models)
 
 The seed matters: unseeded Hypothesis draws different examples on every
-run. Score a model by its pass rate (passed / total), because suite sizes
-vary a lot: under 100 tests for 2,860 models, over 1,000 for 164 (none
-reaches 5,000).
+run. `--hypothesis-seed=0` is given once, on the command line, and every
+`@given` test then starts from its own generator seeded with 0. So the
+examples don't depend on which tests or models ran before, or in what
+order, and with a seed Hypothesis doesn't use its example database at all.
+What a test draws still depends on its strategies, and some build objects
+from the generated classes themselves (see the type-hint rule below). In
+short, runs on code from the original and from the shrunk diagram see
+identical inputs as long as both follow the API below. The evidence is in
+`docs/2026-10-28-hypothesis-seed-and-comparable-test-runs.md`.
+
+Two more things to keep steady:
+- **Load.** Hypothesis fails an example that takes over 200 ms (its
+  deadline), so don't run so many suites in parallel that the machine is
+  overloaded.
+- **Versions.** Another Hypothesis version can draw different examples
+  from the same seed.
+
+Score a model by its pass rate (passed / total), because suite sizes vary a
+lot: median 90 tests, 90% of models under 481, maximum 4,137
+(`reports/test_count_distribution.md`).
 
 **What generated code must look like.** The suite tests the API the
 reference generator produces. Code that implements the diagram differently
@@ -148,11 +171,19 @@ these rules, or include one reference implementation as an example:
 - One module, `python_code.py`. One class per PUML class with the same name
   (characters invalid in Python identifiers dropped). Enumerations are
   `Enum` subclasses with one member per literal (`minutes = "minutes"`).
-  Abstract classes derive from `abc.ABC`. Generalizations are Python
-  inheritance.
+  Generalizations are Python inheritance.
+- **Every class must be instantiable, including the PUML's `abstract`
+  ones.** The tests construct them and assert
+  `not inspect.isabstract(...)` on every class, so no `@abstractmethod`.
+  Deriving from `abc.ABC` alone is harmless (the reference does it for some
+  abstract classes and not others).
 - **Constructor:** one keyword parameter per attribute (required), then one
   per association end the class can navigate, named by its role (optional,
   default `None`). A many-valued end (max > 1) is a `set`, empty by default.
+  **Annotate the attribute parameters with their types** (`name: str`), as
+  the reference does: the suite builds some objects with
+  `st.builds(Class)`, which fills required parameters from their type
+  hints, and fails on a required parameter without one.
 - **Every attribute and association end is a `@property` with a setter.**
   Tests check for the property itself, not just that the attribute exists.
 - **Association setters keep both ends consistent.** Setting
@@ -206,3 +237,10 @@ bucket. Each cell is **train / test**:
    per-method logic classification, or the original Hypothesis tests on
    their own?
 6. **PUML format:** does your shrinker parse the format in section 3 as it is?
+7. **Can shrinking drop diagram elements** (a class, an enumeration, an
+   attribute)? Every suite imports all model names at the top, so code
+   missing one class fails the whole suite at collection: 0 tests run, not
+   "a few failed". If shrinking can drop elements, we'd change the suites
+   so a missing class fails only the tests that use it. Otherwise, your
+   runner could report a collection error as its own outcome.
+   Details: `docs/2026-10-28-hypothesis-seed-and-comparable-test-runs.md`.

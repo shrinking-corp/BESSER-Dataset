@@ -128,17 +128,31 @@ report shows these as "Kills that were only a per-mutant timeout"; if that
 number is more than a handful, rerun the affected models on an idle machine.
 Keep `--workers` at least two below the core count.
 
-## 8. Split and export (after the train ratio is agreed)
+## 8. Pilot sample (independent of the ratio)
 
-This step only needs step 5 (the super suite), so the export can be handed
-over while step 7 is still running. What goes into the export is set in
-`benchmark_export.toml`: enable the mutation-score item there once step 7
-is done, then export again.
+100 models, 10 per difficulty bucket (all 9 of 90-100 and 11 of 80-90), new
+models rather than the 200 test-generation sample where possible. The
+benchmark uses them to try its pipeline before a full run; they overlap
+train and test on purpose. The export ships the list as `pilot.txt`.
+
+```powershell
+& .\.venv\Scripts\python.exe scripts\select_pilot_sample.py --require-file test_super_suite.py
+```
+
+## 9. Split and export (the only step left once the train ratio is agreed)
+
+Everything else is done; `benchmark_export.toml` already lists every file
+the export ships (including the mutation scores and `pilot.txt`). Replace
+`<ratio>` with the train share, e.g. `0.8`:
 
 ```powershell
 & .\.venv\Scripts\python.exe scripts\make_benchmark_split.py --train-ratio <ratio> --require-file test_super_suite.py
 & .\.venv\Scripts\python.exe scripts\export_benchmark_dataset.py --output-dir <folder outside Dataset>
 ```
+
+Check that the split's per-bucket counts match the row for that ratio in
+`docs/split-ratio-options.md`, and that the export ends with
+`Exported 5264 models`.
 
 ## Cost estimate (from the sample, rough)
 
