@@ -148,7 +148,8 @@ any BUML model in the dataset specifies is written out.
   generalizations.
 - **Associations:** role names and multiplicities on both ends, composition
   on either or both ends, `{not navigable}` ends.
-- **Constraints:** OCL constraints as notes (418 in 31 models).
+- **Constraints:** OCL constraints as notes (418 in 31 of the 9,082 models;
+  320 in 28 of the 5,264). Details: `docs/handout.md` section 3.
 - **Metadata:** model, project, owner and description as `'` comments.
 
 This was not the case at first. Role names were missing. They are the
@@ -413,9 +414,9 @@ Reports: `reports/full_mutation_comparison.*`,
   - operations that don't raise
 
   Run with Python 3.11, pytest 9.1.1, hypothesis 6.167.1,
-  `--hypothesis-seed=0`. Score a model by its pass rate, since suite sizes
-  vary widely: median 90 tests, P90 481, maximum 4,137
-  (`reports/test_count_distribution.md`).
+  `--hypothesis-seed=0`, `-p deferred_import_errors`. Score a model by its
+  pass rate, since suite sizes vary widely: median 90 tests, P90 481, maximum
+  4,137 (`reports/test_count_distribution.md`).
 - **Pilot sample** (`select_pilot_sample.py` → `reports/pilot_sample.txt`,
   shipped as `pilot.txt`). 100 models, 10 per bucket (all 9 of 90-100, 11
   of 80-90), avoiding the 200 test-generation sample where possible (3
@@ -429,12 +430,17 @@ Reports: `reports/full_mutation_comparison.*`,
   order therefore gives the same examples. What can still change them: the
   test's strategies (`st.builds(Class)` reads the generated class's type
   hints), the Hypothesis version, and a 200 ms per-example deadline under
-  heavy load. So the runs on original and shrunk code see identical inputs.
-  **Open:** one missing class fails the whole suite at import. Full answer:
+  heavy load. In 8 suites, different enumeration literals can change them too.
+  So the runs on original and shrunk code see identical inputs. Full answer:
   `docs/2026-10-28-hypothesis-seed-and-comparable-test-runs.md`.
+- **A missing class fails only the tests using it.** Every suite imports all
+  model names at the top, so one missing class would otherwise stop the whole
+  suite at collection. The `deferred_import_errors` pytest plugin, shipped
+  once in `tools/`, prevents that without changing the suites. It was tried on
+  8 cases in 5 models, not on all of them (same document, section 5).
 - **Open with them:** `docs/handout.md` section 7 (ratio, a reference
   runner, whether to ship `python_code.py`, where the export lives, more
-  data, the PUML parser).
+  data, the PUML parser, collection errors, enumeration literals).
 
 ## 10. Defects found in the source dataset
 
@@ -517,7 +523,7 @@ For anyone using or maintaining the BESSER dataset:
 | `2026-09-28-explainer-*` | the PCA score, empty models and mutation score, tree-sitter vs model |
 | `2026-10-11-explainer-test-generation-comparison.md` | the generator comparison and the false positive |
 | `2026-10-12-presentation-*` | questions on the difficulty score and mutation work (pre-dedup numbers) |
-| `2026-10-28-hypothesis-seed-and-comparable-test-runs.md` | why seeded runs on original and shrunk code see identical inputs; the import risk |
+| `2026-10-28-hypothesis-seed-and-comparable-test-runs.md` | why seeded runs on original and shrunk code see identical inputs; the import problem and its plugin |
 
 **Scripts** (`scripts/`, shared helpers in `scripts/_common/`):
 
@@ -529,7 +535,7 @@ For anyone using or maintaining the BESSER dataset:
 | Fidelity of the generated code | `validate_generator_fidelity.py`, `validate_generator_fidelity_names.py` |
 | Tests | `generate_structural_tests.py`, `generate_combined_tests.py`, `generate_behavioral_tests.py`, `generate_crosshair_tests.py`, `generate_pynguin_tests.py`, `generate_super_suite.py`, `make_green_suite.py` |
 | Measurement | `validate_coverage*.py`, `validate_class_coverage.py`, `validate_mutation.py`, `validate_mutation_properties.py`, `mutation_export.py`, `compare_mutation_runs.py`, `select_test_generation_sample.py`, `test_count_distribution.py`, `summarize_method_logic.py` |
-| Benchmark | `make_benchmark_split.py`, `select_pilot_sample.py`, `export_benchmark_dataset.py` (+ `benchmark_export.toml`), `check_pipeline_status.py` |
+| Benchmark | `make_benchmark_split.py`, `select_pilot_sample.py`, `export_benchmark_dataset.py` (+ `benchmark_export.toml`), `check_pipeline_status.py`, `deferred_import_errors.py` (pytest plugin, shipped in the export) |
 
 **Key lists and reports** (`reports/`): `unique_models.txt` (the 5,264),
 `usable_models.txt` (the 8,336), `excluded_models_master.*`,

@@ -24,6 +24,7 @@ has to look like to be tested, and what we still need to agree on.
   train.txt, test.txt      model names on each side
   pilot.txt                100 models for trying the pipeline first (below)
   benchmark_export.toml    the config this export was made with
+  tools/deferred_import_errors.py  pytest plugin, needed when running a suite (section 4)
   train/<model>/  test/<model>/
     model.puml             the class diagram (benchmark input)
     model_buml.py          the same model in BUML, the original dataset's format
@@ -93,7 +94,7 @@ Login). **`9999` means unbounded** (`*`).
 
 Rare or unused:
 - `{not navigable}` occurs in one model only.
-- OCL constraints occur in a few dozen models.
+- OCL constraints occur in 28 models (details below).
 - `*--*`, aggregation (`o--`) and association classes are supported but never occur.
 - Free text in comments and constraints is kept on one line, with `\n` and
   `\\` escaped.
@@ -109,6 +110,99 @@ Rare or unused:
 
 The role names matter most: they are the attribute names every association
 test uses, so code generated from a PUML without them could never pass.
+
+### OCL constraints as notes
+
+**How many.** 320 constraints on 147 classes, in 28 of the 5,264 models
+(0.5%). They are concentrated: the 4 largest models hold 212 of them, and 7
+models have just one. Which side of the split each model lands on is in
+`manifest.json`. `pilot.txt` contains only one of them (`model_10026`, one
+constraint), so add `model_10000` if you want to try your parser on more.
+
+**What a note looks like.** Each note holds exactly one constraint, and always
+has these three lines:
+
+```
+note top of bank_Client
+  constraint minAccounts (OCL): context Client inv: self.accounts->size()> 0
+end note
+```
+
+- A class with several constraints has several notes, never one note with
+  several constraints. 49 of the 147 classes have more than one; the most is
+  26, on `RandL_ServiceLevel` in `model_10024`.
+- All notes come after the classes and associations, right before `@enduml`,
+  sorted by class and then by constraint name.
+- All are `note top of` a class (never an enumeration), and the language is
+  always `OCL`.
+- Constraint names have no spaces. Each expression is on one line, starts with
+  `context X inv:` and holds one invariant. There are no `pre:` or `post:`
+  conditions.
+
+**Is each one different?** Within a model, names are unique, and no name and
+expression pair repeats, although 6 expressions appear under a second name.
+Across models they do repeat, because related models share them: `SB`, `Start`
+and `getLevel` each appear in 5 models. Overall, 261 of the 320 are distinct.
+
+**Where they are:**
+
+| Model | Name | Bucket | Constraints | Classes with a note |
+|---|---|---|---:|---:|
+| `model_10024` | RoyalAndLoyal | 40-50 | 98 | 9 |
+| `model_10036` | SlicedUML2InsDataSet1 | 50-60 | 45 | 21 |
+| `model_10011` | java_findbugs | 70-80 | 35 | 18 |
+| `model_10010` | Java_simple | 70-80 | 34 | 17 |
+| `model_10009` | ITCuliacan | 30-40 | 10 | 6 |
+| `model_10029` | SBCSTP3 | 30-40 | 8 | 7 |
+| `model_10030` | SBCSTP4 | 30-40 | 8 | 6 |
+| `model_10028` | SBCSTP2 | 30-40 | 7 | 7 |
+| `model_10008` | game | 30-40 | 7 | 6 |
+| `model_10015` | operators | 40-50 | 7 | 6 |
+| `model_10027` | SBCSTP1 | 30-40 | 7 | 6 |
+| `model_10031` | SBCSTP5 | 30-40 | 7 | 6 |
+| `model_10025` | RoyalAndLoyalLeftOver1 | 20-30 | 7 | 4 |
+| `model_10014` | OCLTest | 30-40 | 7 | 2 |
+| `model_10033` | SlicedCoachBusWithEDataType | 10-20 | 6 | 4 |
+| `model_10023` | RoadTrafficAccident | 20-30 | 4 | 4 |
+| `model_10000` | bank | 20-30 | 4 | 2 |
+| `model_10013` | maps | 30-40 | 4 | 2 |
+| `model_10021` | ProjectsLeftOver0 | 20-30 | 3 | 3 |
+| `model_10038` | T2 | 10-20 | 3 | 2 |
+| `model_10005` | ecoreTest | 10-20 | 2 | 2 |
+| `model_10018` | productionSystem | 10-20 | 1 | 1 |
+| `model_10026` | RoyalAndLoyalLocal0 | 0-10 | 1 | 1 |
+| `model_10032` | SlicedCoachBusMinCoachSize | 0-10 | 1 | 1 |
+| `model_10034` | SlicedCoachBusWithEDataTypeBaseSalaryConstraint | 0-10 | 1 | 1 |
+| `model_10035` | SlicedCoachBusWithEDataTypeUniqueEmployeeID | 0-10 | 1 | 1 |
+| `model_10039` | T3 | 0-10 | 1 | 1 |
+| `model_10040` | TTemp1325866494224 | 20-30 | 1 | 1 |
+
+Constraints appear only in `model.puml` and `model_buml.py`. The difficulty
+score doesn't count them.
+
+**Problems to know about.** The first two come from the source dataset. We
+keep its text unchanged, and no OCL parser has been run on it.
+1. **The class named in the expression never matches the note exactly.** In
+   280 of the 320, the expression leaves out the package prefix: the note is on
+   `bank_Client` and the expression says `context Client`. In the other 40 it
+   names a different class that also exists: the note is on `RandL_CustomerCard`
+   and the expression says `context Customer`. The note follows the source's
+   `context=` field, so use the note's class, not the expression's.
+2. **Not every expression is valid OCL.** At least 5 have lost their spaces
+   (`inif`, `thenself`), and 2 use `Account_allInstances()` instead of
+   `Account.allInstances()`. Don't make your parser depend on parsing them.
+3. **The reference code ignores constraints, and no test checks them.** None of
+   the 28 reference implementations or suites contains OCL logic. So no test
+   rewards keeping a constraint or penalizes removing one, although a constraint
+   could still change what the code agent writes.
+4. **Code that enforces a constraint can fail the suite.** In `model_10000`,
+   `minAccounts` requires at least one account, but the suite builds
+   `bank_Client(capacity=..., name=...)` with none. A constructor that raised an
+   error there would fail those tests. So the code agent must not enforce them
+   (section 4).
+5. **Expressions name other elements.** A shrunk diagram could keep a constraint
+   whose expression mentions a class or attribute that was removed, and a note
+   whose class was removed points at nothing (question 9).
 
 ## 4. The test suite (`test_super_suite.py`)
 
@@ -138,7 +232,9 @@ bucket, +61 in the hardest). Per model: `test_suite_quality.json`.
 **How to run it**, the same way the suites were made green:
 - in a folder containing the generated `python_code.py` and `test_super_suite.py`
 - Python 3.11, pytest 9.1.1, hypothesis 6.167.1
-- `python -m pytest test_super_suite.py -q -p no:cacheprovider --hypothesis-seed=0`
+- with `<export>/tools` on `PYTHONPATH`
+- `python -m pytest test_super_suite.py -q -p no:cacheprovider --hypothesis-seed=0 -p deferred_import_errors`
+- one pytest process per model
 - a time limit of at least 360 s per run (we needed 1,200 s for 7 very
   large models)
 
@@ -159,6 +255,19 @@ Two more things to keep steady:
   overloaded.
 - **Versions.** Another Hypothesis version can draw different examples
   from the same seed.
+
+**Why `-p deferred_import_errors`.** Every suite imports all its model names
+at the top of the file. Without the plugin, code missing one class fails
+while pytest collects the file, so no test runs. With it, only the tests
+using that name fail, with `MissingElement: python_code does not provide X`,
+and the total number of tests stays the same. For example, `model_1` has 47
+tests, 4 of which use `petrinet_Token`. Code without that class scores 43 of
+47 instead of 0.
+- Code that provides every name gets the same results with or without it.
+- Code that doesn't import at all (a syntax error, say) still fails
+  collection (question 7).
+- A wrong path stops the run with `Error importing plugin`, but leaving out
+  the flag gives no warning. Put it in the one place your runner starts pytest.
 
 Score a model by its pass rate (passed / total), because suite sizes vary a
 lot: median 90 tests, 90% of models under 481, maximum 4,137
@@ -191,6 +300,8 @@ these rules, or include one reference implementation as an example:
   removing a link updates the old partner.
 - **Operations:** methods with the PUML's parameters. The body is free, but
   it must not raise: tests call the operation.
+- **OCL constraints are not enforced.** Don't check them in constructors or
+  setters: the tests create objects that break them (section 3).
 
 ## 5. Other per-model data
 
@@ -237,10 +348,13 @@ bucket. Each cell is **train / test**:
    per-method logic classification, or the original Hypothesis tests on
    their own?
 6. **PUML format:** does your shrinker parse the format in section 3 as it is?
-7. **Can shrinking drop diagram elements** (a class, an enumeration, an
-   attribute)? Every suite imports all model names at the top, so code
-   missing one class fails the whole suite at collection: 0 tests run, not
-   "a few failed". If shrinking can drop elements, we'd change the suites
-   so a missing class fails only the tests that use it. Otherwise, your
-   runner could report a collection error as its own outcome.
-   Details: `docs/2026-10-28-hypothesis-seed-and-comparable-test-runs.md`.
+7. **Collection errors:** can your runner report code that doesn't import at
+   all as its own outcome, rather than as a score of 0? No tests can run on
+   that code, even with the plugin from section 4.
+8. **Enumeration literals:** can shrinking drop or reorder them? 8 suites draw
+   values from generated enumerations, so different literals there can change
+   the test inputs between runs. Details:
+   `docs/2026-10-28-hypothesis-seed-and-comparable-test-runs.md`, section 3.
+9. **OCL notes:** does your shrinker treat them as elements it can remove, and
+   does it remove a note along with its class? Should the code agent see them
+   at all? No test depends on them (section 3).

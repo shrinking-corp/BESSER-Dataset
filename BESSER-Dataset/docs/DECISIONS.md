@@ -14,6 +14,36 @@ different, non-overlapping reasons).
 
 ---
 
+## 2026-11-04 — A missing class fails only the tests using it: pytest plugin `deferred_import_errors`
+
+**Problem.** Every suite imports all model names at the top, so code missing
+one class fails collection and no test runs. Shrinking could cause that, and
+so could the code agent forgetting or renaming a class.
+
+**Decision.** One shared pytest plugin, `scripts/deferred_import_errors.py`,
+exported once as `tools/deferred_import_errors.py` and loaded with
+`-p deferred_import_errors`. The suites stay unchanged, so nothing has to be
+regenerated, re-greened or re-measured.
+
+**Rejected.**
+- `try/except` with `None`: `inspect.isabstract(None)` is false and
+  `None.__init__` is callable, so tests pass on a class that doesn't exist
+  (46/47 where 43/47 is correct on `model_1`).
+- Changing the generators: all 5,264 suites regenerated, re-greened and
+  rechecked, right before the split.
+- A `conftest.py` in every model folder: same results, but one copy per model,
+  and forgetting one gives no warning.
+- Only reporting collection errors in their runner: a model missing one class
+  looks the same as one missing all of them. It's still needed for code that
+  doesn't import at all (handout, question 7).
+
+**Evidence.** Trial on 8 cases in 5 models: only the tests using the removed
+name failed, the reference code gave the same results with and without the
+plugin. Not tested on all models or in the benchmarking environment. Details:
+`docs/2026-10-28-hypothesis-seed-and-comparable-test-runs.md`, section 5.
+
+---
+
 ## 2026-10-28 — Seeded runs feed identical inputs to original and shrunk code; one missing class fails a whole suite
 
 **Question.** Does the benchmark's run on code from the shrunk diagram see
@@ -26,16 +56,20 @@ constructor signatures. Checked in the Hypothesis 6.167.1 source and in all
   turns the example database off, so the order of tests, models and runs
   doesn't matter.
 - No suite uses `assume`, `target` or `st.data`, so the code under test
-  can't steer the draws.
-- The only way generated code changes the inputs is an extra required
+  can't steer the draws from inside a test.
+- Generated code can change the inputs in two ways: an extra required
   constructor parameter that `st.builds(Class)` then fills from its type
-  hint. That code already breaks the API.
+  hint (that code already breaks the API), and different enumeration
+  literals in the 8 suites that use `st.sampled_from(SomeEnum)` (27 uses).
+
+(Corrected 2026-11-04: the first version missed the `sampled_from` uses.)
 
 **Open.** Every suite imports all model names at module level, so one
 missing class fails collection of the whole suite (0 tests run). This
 matters if shrinking can drop diagram elements. It was asked of the
 benchmarking side; the fix is per-test name lookup in our generator, or
-reporting collection errors separately in their runner.
+reporting collection errors separately in their runner. (Solved another way:
+see 2026-11-04.)
 
 Full write-up: `docs/2026-10-28-hypothesis-seed-and-comparable-test-runs.md`.
 
